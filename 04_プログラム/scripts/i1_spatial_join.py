@@ -4,37 +4,31 @@ from __future__ import annotations
 
 import pickle
 from pathlib import Path
-from typing import Any
+
+import geopandas as gpd
 
 import config
-
-
-def _require_dependency(module_name: str) -> Any:
-    try:
-        return __import__(module_name)
-    except ImportError as exc:
-        raise RuntimeError(f"Missing dependency: {module_name}. Install requirements.txt first.") from exc
 
 
 def ensure_output_dir(path: str) -> None:
     Path(path).mkdir(parents=True, exist_ok=True)
 
 
-def load_edges(path: str):
-    gpd = _require_dependency("geopandas")
+def load_edges(path: str) -> gpd.GeoDataFrame:
     edges = gpd.read_file(path)
     if edges.crs is None or edges.crs.to_string() != config.CRS_JGD2011:
         edges = edges.to_crs(config.CRS_JGD2011)
     return edges
 
 
-def load_flood_dict(path: str):
+def load_flood_dict(path: str) -> dict[str, gpd.GeoDataFrame]:
     with open(path, "rb") as f:
         return pickle.load(f)
 
 
-def build_closure_dict(edges, flood_dict) -> dict[str, list[str]]:
-    gpd = _require_dependency("geopandas")
+def build_closure_dict(
+    edges: gpd.GeoDataFrame, flood_dict: dict[str, gpd.GeoDataFrame]
+) -> dict[str, list[str]]:
     edge_id_col = "edge_id"
     base = edges.copy()
     if edge_id_col not in base.columns:

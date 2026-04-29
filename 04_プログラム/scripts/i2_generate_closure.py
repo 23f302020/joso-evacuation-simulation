@@ -15,8 +15,6 @@ def ensure_output_dir(path: str) -> None:
 
 
 def load_closure_dict(path: str) -> dict[str, list[str]]:
-    if not Path(path).exists():
-        raise FileNotFoundError(f"Missing input: {path}. Run i1_spatial_join.py first.")
     with open(path, "rb") as f:
         return pickle.load(f)
 
