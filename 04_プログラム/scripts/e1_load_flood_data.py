@@ -39,7 +39,6 @@ def load_a31a_gml(gml_dir: str) -> gpd.GeoDataFrame:
         tree = ET.parse(path)
         root = tree.getroot()
 
-        # Step1: Curve id -> [(lon, lat), ...]
         curves: dict[str, list[tuple[float, float]]] = {}
         for cv in root.iter(f"{{{_NS['gml']}}}Curve"):
             cv_id = cv.get(f"{{{_NS['gml']}}}id")
@@ -47,18 +46,14 @@ def load_a31a_gml(gml_dir: str) -> gpd.GeoDataFrame:
             if cv_id is None or pos is None or not pos.text:
                 continue
             vals = list(map(float, pos.text.split()))
-            # posList: lat lon lat lon … → swap to (lon, lat)
             curves[cv_id] = [(vals[i + 1], vals[i]) for i in range(0, len(vals) - 1, 2)]
 
-        # Step2: Surface id -> Polygon
         surfaces: dict[str, Polygon] = {}
         for sf in root.iter(f"{{{_NS['gml']}}}Surface"):
             sf_id = sf.get(f"{{{_NS['gml']}}}id")
             if sf_id is None:
                 continue
-            ext_ring = sf.find(
-                f".//{{{_NS['gml']}}}exterior/{{{_NS['gml']}}}Ring"
-            )
+            ext_ring = sf.find(f".//{{{_NS['gml']}}}exterior/{{{_NS['gml']}}}Ring")
             if ext_ring is None:
                 continue
             coords: list[tuple[float, float]] = []
@@ -68,7 +63,6 @@ def load_a31a_gml(gml_dir: str) -> gpd.GeoDataFrame:
             if len(coords) >= 3:
                 surfaces[sf_id] = Polygon(coords)
 
-        # Step3: PlanScale -> waterDepth + geometry
         rows = []
         for feat in root.iter(f"{{{_NS['ksj']}}}PlanScale"):
             bounds_el = feat.find(f"{{{_NS['ksj']}}}bounds")
