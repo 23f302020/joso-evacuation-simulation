@@ -13,27 +13,22 @@ import config
 
 
 def ensure_output_dir(path: str) -> None:
-    """出力先ディレクトリを作成する。"""
     Path(path).mkdir(parents=True, exist_ok=True)
 
 
 def get_road_network() -> MultiDiGraph:
-    """常総市の道路ネットワークを OSM から取得する。"""
     return ox.graph_from_place(config.JOSO_PLACE, network_type=config.OSM_NETWORK_TYPE)
 
 
 def save_network(graph: MultiDiGraph, path: str) -> None:
-    """道路ネットワークを GraphML で保存する。"""
     ox.save_graphml(graph, filepath=path)
 
 
 def load_network(path: str) -> MultiDiGraph:
-    """GraphML から道路ネットワークを読み込む。"""
     return ox.load_graphml(path)
 
 
 def network_to_gdf(graph: MultiDiGraph) -> tuple[gpd.GeoDataFrame, gpd.GeoDataFrame]:
-    """道路ネットワークをノード/エッジの GeoDataFrame に変換し CRS を統一する。"""
     nodes, edges = ox.graph_to_gdfs(graph)
     nodes = nodes.to_crs(config.CRS_JGD2011)
     edges = edges.to_crs(config.CRS_JGD2011)
@@ -41,12 +36,10 @@ def network_to_gdf(graph: MultiDiGraph) -> tuple[gpd.GeoDataFrame, gpd.GeoDataFr
 
 
 def save_edges(edges_gdf: gpd.GeoDataFrame, path: str) -> None:
-    """エッジ GeoDataFrame を GeoPackage として保存する。"""
     edges_gdf.to_file(path, driver="GPKG")
 
 
 def visualize_network(edges_gdf: gpd.GeoDataFrame, output_path: str) -> None:
-    """道路エッジを folium 地図へ出力する。"""
     edges_wgs84 = edges_gdf.to_crs(config.CRS_WGS84)
     reps = edges_wgs84.geometry.representative_point()
     center = [float(reps.y.mean()), float(reps.x.mean())]
