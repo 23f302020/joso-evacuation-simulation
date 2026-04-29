@@ -1,75 +1,78 @@
-"""STEP 1a: 常総市の道路ネットワークを取得して保存する。"""
+"""STEP 1a: 常総市の道路ネットワーク取得と保存。"""
 
-import os
+from __future__ import annotations
+
 from pathlib import Path
 
 import folium
-import networkx as nx
+import geopandas as gpd
 import osmnx as ox
+from networkx import MultiDiGraph
 
 import config
 
 
-def get_road_network() -> nx.MultiDiGraph:
-    """GraphMLキャッシュがあれば再利用し、なければOSM APIから取得する。"""
-    if os.path.exists(config.GRAPHML_PATH):
-        print(f"[cache] {config.GRAPHML_PATH} を読み込みます")
-        return ox.load_graphml(config.GRAPHML_PATH)
-
-    print(f"[osmnx] '{config.JOSO_PLACE}' の道路ネットワークを取得します")
-    try:
-        G = ox.graph_from_place(config.JOSO_PLACE, network_type=config.OSM_NETWORK_TYPE)
-    except Exception as e:
-        print(f"[warn] place名取得失敗 ({e})、BBOXで再試行します")
-        lon_min, lat_min, lon_max, lat_max = config.JOSO_BBOX
-        G = ox.graph_from_bbox(
-            (lat_min, lat_max, lon_min, lon_max),
-            network_type=config.OSM_NETWORK_TYPE,
-        )
-    return G
+def ensure_output_dir(path: str) -> None:
+    Path(path).mkdir(parents=True, exist_ok=True)
 
 
-def save_network(G: nx.MultiDiGraph, path: str) -> None:
-    Path(path).parent.mkdir(parents=True, exist_ok=True)
-    ox.save_graphml(G, path)
-    print(f"[save] GraphML -> {path}")
+def get_road_network() -> MultiDiGraph:
+    return ox.graph_from_place(config.JOSO_PLACE, network_type=config.OSM_NETWORK_TYPE)
 
 
-def network_to_gdf(G: nx.MultiDiGraph):
-    _, edges_gdf = ox.graph_to_gdfs(G)
-    edges_gdf = edges_gdf.to_crs(config.CRS_JGD2011)
-    return edges_gdf
+def save_network(graph: MultiDiGraph, path: str) -> None:
+    ox.save_graphml(graph, filepath=path)
 
 
-def save_edges_gpkg(edges_gdf, path: str) -> None:
-    Path(path).parent.mkdir(parents=True, exist_ok=True)
+def load_network(path: str) -> MultiDiGraph:
+    return ox.load_graphml(path)
+
+
+def network_to_gdf(graph: MultiDiGraph) -> tuple[gpd.GeoDataFrame, gpd.GeoDataFrame]:
+    nodes, edges = ox.graph_to_gdfs(graph)
+    nodes = nodes.to_crs(config.CRS_JGD2011)
+    edges = edges.to_crs(config.CRS_JGD2011)
+    return nodes, edges
+
+
+def save_edges(edges_gdf: gpd.GeoDataFrame, path: str) -> None:
     edges_gdf.to_file(path, driver="GPKG")
-    print(f"[save] GeoPackage -> {path}  ({len(edges_gdf)} edges)")
 
 
-def visualize_network(edges_gdf, output_path: str) -> None:
+def visualize_network(edges_gdf: gpd.GeoDataFrame, output_path: str) -> None:
     edges_wgs84 = edges_gdf.to_crs(config.CRS_WGS84)
-    center = [
-        edges_wgs84.geometry.centroid.y.mean(),
-        edges_wgs84.geometry.centroid.x.mean(),
-    ]
-    m = folium.Map(location=center, zoom_start=13)
+    reps = edges_wgs84.geometry.representative_point()
+    center = [float(reps.y.mean()), float(reps.x.mean())]
+    fmap = folium.Map(location=center, zoom_start=12, tiles="OpenStreetMap")
     folium.GeoJson(
-        edges_wgs84.__geo_interface__,
-        name="道路ネットワーク",
-        style_function=lambda _: {"color": "#3388ff", "weight": 1.5, "opacity": 0.7},
-    ).add_to(m)
-    folium.LayerControl().add_to(m)
-    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
-    m.save(output_path)
-    print(f"[save] folium map -> {output_path}")
+        edges_wgs84,
+        name="joso_road_edges",
+        style_function=lambda _: {"color": "#1f77b4", "weight": 1.2, "opacity": 0.8},
+    ).add_to(fmap)
+    folium.LayerControl().add_to(fmap)
+    fmap.save(output_path)
+
+
+def main() -> None:
+    ensure_output_dir(config.OUT_NETWORK_DIR)
+
+    graphml_path = Path(config.GRAPHML_PATH)
+    if graphml_path.exists():
+        print(f"[INFO] GraphML キャッシュを使用: {graphml_path}")
+        graph = load_network(str(graphml_path))
+    else:
+        print("[INFO] OSM から道路ネットワークを取得中...")
+        graph = get_road_network()
+        save_network(graph, str(graphml_path))
+        print(f"[INFO] GraphML 保存完了: {graphml_path}")
+
+    _, edges = network_to_gdf(graph)
+    save_edges(edges, config.EDGES_GPKG_PATH)
+    print(f"[INFO] エッジ GPKG 保存完了: {config.EDGES_GPKG_PATH} ({len(edges)} edges)")
+
+    visualize_network(edges, config.NETWORK_MAP_PATH)
+    print(f"[INFO] 可視化HTML保存完了: {config.NETWORK_MAP_PATH}")
 
 
 if __name__ == "__main__":
-    G = get_road_network()
-    print(f"  ノード数: {len(G.nodes)}, エッジ数: {len(G.edges)}")
-    save_network(G, config.GRAPHML_PATH)
-    edges_gdf = network_to_gdf(G)
-    save_edges_gpkg(edges_gdf, config.EDGES_GPKG_PATH)
-    visualize_network(edges_gdf, config.NETWORK_MAP_PATH)
-    print("STEP 1a 完了")
+    main()

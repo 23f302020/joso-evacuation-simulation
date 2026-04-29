@@ -2,12 +2,14 @@
 
 import glob
 import pickle
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import folium
 import geopandas as gpd
 import pandas as pd
 import pyogrio
+from shapely.geometry import Polygon
 
 import config
 
@@ -22,36 +24,79 @@ _TIMELINE_COLORS = [
 
 
 def load_a31a_gml(gml_dir: str) -> gpd.GeoDataFrame:
-    """A31a GML から waterDepth >= しきい値 のポリゴンを抽出して返す。"""
+    """A31a GML から waterDepth >= しきい値 のポリゴンを抽出して返す。
+
+    国土数値情報A31a形式はpyogrioで読めないため、ETでxlink参照を手動解決する。
+    座標系: gml:posList は (lat, lon) 順 → Shapely用に (lon, lat) へ変換。
+    """
+    _NS = {
+        "gml":   "http://schemas.opengis.net/gml/3.2.1",
+        "ksj":   "http://nlftp.mlit.go.jp/ksj/schemas/ksj-app",
+        "xlink": "http://www.w3.org/1999/xlink",
+    }
+
+    def _parse_one(path: str) -> list[dict]:
+        tree = ET.parse(path)
+        root = tree.getroot()
+
+        # Step1: Curve id -> [(lon, lat), ...]
+        curves: dict[str, list[tuple[float, float]]] = {}
+        for cv in root.iter(f"{{{_NS['gml']}}}Curve"):
+            cv_id = cv.get(f"{{{_NS['gml']}}}id")
+            pos = cv.find(f".//{{{_NS['gml']}}}posList")
+            if cv_id is None or pos is None or not pos.text:
+                continue
+            vals = list(map(float, pos.text.split()))
+            # posList: lat lon lat lon … → swap to (lon, lat)
+            curves[cv_id] = [(vals[i + 1], vals[i]) for i in range(0, len(vals) - 1, 2)]
+
+        # Step2: Surface id -> Polygon
+        surfaces: dict[str, Polygon] = {}
+        for sf in root.iter(f"{{{_NS['gml']}}}Surface"):
+            sf_id = sf.get(f"{{{_NS['gml']}}}id")
+            if sf_id is None:
+                continue
+            ext_ring = sf.find(
+                f".//{{{_NS['gml']}}}exterior/{{{_NS['gml']}}}Ring"
+            )
+            if ext_ring is None:
+                continue
+            coords: list[tuple[float, float]] = []
+            for cm in ext_ring.findall(f"{{{_NS['gml']}}}curveMember"):
+                href = cm.get(f"{{{_NS['xlink']}}}href", "").lstrip("#")
+                coords.extend(curves.get(href, []))
+            if len(coords) >= 3:
+                surfaces[sf_id] = Polygon(coords)
+
+        # Step3: PlanScale -> waterDepth + geometry
+        rows = []
+        for feat in root.iter(f"{{{_NS['ksj']}}}PlanScale"):
+            bounds_el = feat.find(f"{{{_NS['ksj']}}}bounds")
+            depth_el  = feat.find(f"{{{_NS['ksj']}}}waterDepth")
+            if bounds_el is None or depth_el is None:
+                continue
+            sf_ref = bounds_el.get(f"{{{_NS['xlink']}}}href", "").lstrip("#")
+            if sf_ref not in surfaces:
+                continue
+            depth = int(depth_el.text)
+            if depth >= config.FLOOD_DEPTH_THRESHOLD:
+                rows.append({"waterDepth": depth, "geometry": surfaces[sf_ref]})
+        return rows
+
     xml_files = glob.glob(f"{gml_dir}/**/*.xml", recursive=True)
     xml_files = [f for f in xml_files if "META" not in Path(f).name.upper()]
 
-    frames = []
+    all_rows: list[dict] = []
     for path in xml_files:
         try:
-            layers = pyogrio.list_layers(path)
-            for layer_name, _ in layers:
-                gdf = gpd.read_file(path, layer=layer_name, engine="pyogrio")
-                if gdf.empty:
-                    continue
-                depth_col = next(
-                    (c for c in gdf.columns if "waterDepth" in c or "waterdepth" in c.lower()),
-                    None,
-                )
-                if depth_col is None:
-                    continue
-                gdf = gdf[gdf[depth_col].notna()].copy()
-                gdf["waterDepth"] = gdf[depth_col].astype(int)
-                gdf = gdf[gdf["waterDepth"] >= config.FLOOD_DEPTH_THRESHOLD]
-                if not gdf.empty:
-                    frames.append(gdf[["waterDepth", "geometry"]])
+            all_rows.extend(_parse_one(path))
         except Exception as e:
             print(f"[warn] {Path(path).name}: {e}")
 
-    if not frames:
+    if not all_rows:
         raise RuntimeError("A31a GML から浸水ポリゴンを抽出できませんでした")
 
-    a31a = gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), crs="EPSG:6668")
+    a31a = gpd.GeoDataFrame(all_rows, crs="EPSG:6668")
     a31a = a31a.to_crs(config.CRS_JGD2011)
     print(f"[a31a] {len(a31a)} ポリゴン抽出 (waterDepth>={config.FLOOD_DEPTH_THRESHOLD})")
     return a31a
@@ -113,7 +158,7 @@ def save_flood_polygons(flood_dict: dict, path: str) -> None:
 
 def visualize_flood_timeline(flood_dict: dict, output_path: str) -> None:
     first_gdf = next(iter(flood_dict.values()))
-    center_wgs84 = first_gdf.to_crs(config.CRS_WGS84).geometry.centroid
+    center_wgs84 = first_gdf.to_crs(config.CRS_WGS84).geometry.representative_point()
     center = [center_wgs84.y.mean(), center_wgs84.x.mean()]
 
     m = folium.Map(location=center, zoom_start=12)
