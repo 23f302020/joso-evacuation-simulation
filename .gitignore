@@ -1,0 +1,24 @@
+# Python
+04_プログラム/venv/
+04_プログラム/scripts/__pycache__/
+04_プログラム/output/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# 再ダウンロード可能な大容量データ（ZIPアーカイブ）
+04_プログラム/data/**/*.zip
+
+# 展開済みGMLデータ（大量XMLファイル）
+04_プログラム/data/flood_hazard_a31/A31a-24_08_10_GML/
+
+# PDF（大容量バイナリ）
+04_プログラム/data/**/*.pdf
+
+# デバッグダンプ
+**/bash.exe.stackdump
+
+# OS生成ファイル
+.DS_Store
+Thumbs.db
+desktop.ini
