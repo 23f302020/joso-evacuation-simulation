@@ -32,7 +32,17 @@ def build_closure_dict(
     edge_id_col = "edge_id"
     base = edges.copy()
     if edge_id_col not in base.columns:
-        base[edge_id_col] = base.index.astype(str)
+        # osmnx GPKG には u/v/key 列が含まれるため "u_v_key" 形式で生成する。
+        # i3_route_search.py の make_subgraph が edge_id.split("_") で
+        # MultiDiGraph のエッジを特定するために必要。
+        if {"u", "v", "key"}.issubset(base.columns):
+            base[edge_id_col] = (
+                base["u"].astype(str) + "_"
+                + base["v"].astype(str) + "_"
+                + base["key"].astype(str)
+            )
+        else:
+            base[edge_id_col] = base.index.astype(str)
 
     # A31a グリッドセルは 5〜20m 四方の極小ポリゴン。OSM 道路中心線がセル間を
     # 通過して交差ゼロになるため、投影 CRS（EPSG:6690）で 30m バッファを適用する。
