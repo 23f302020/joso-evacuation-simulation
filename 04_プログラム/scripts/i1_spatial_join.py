@@ -1,4 +1,4 @@
-"""コンフリクト解消済み。STEP 2: 浸水ポリゴンと道路エッジの空間照合。"""
+"""STEP 2: 浸水ポリゴンと道路エッジを空間照合し閉鎖候補を生成する。"""
 
 from __future__ import annotations
 
@@ -26,21 +26,43 @@ def load_flood_dict(path: str) -> dict[str, gpd.GeoDataFrame]:
         return pickle.load(f)
 
 
-def build_closure_dict(edges: gpd.GeoDataFrame, flood_dict: dict[str, gpd.GeoDataFrame]) -> dict[str, list[str]]:
+def build_closure_dict(
+    edges: gpd.GeoDataFrame, flood_dict: dict[str, gpd.GeoDataFrame]
+) -> dict[str, list[str]]:
+    edge_id_col = "edge_id"
     base = edges.copy()
-    if not {"u", "v", "key"}.issubset(base.columns):
-        raise KeyError("edges must contain u, v, key columns")
+    if edge_id_col not in base.columns:
+        # osmnx GPKG には u/v/key 列が含まれるため "u_v_key" 形式で生成する。
+        # i3_route_search.py の make_subgraph が edge_id.split("_") で
+        # MultiDiGraph のエッジを特定するために必要。
+        if {"u", "v", "key"}.issubset(base.columns):
+            base[edge_id_col] = (
+                base["u"].astype(str) + "_"
+                + base["v"].astype(str) + "_"
+                + base["key"].astype(str)
+            )
+        else:
+            base[edge_id_col] = base.index.astype(str)
 
-    assert base.crs is not None and base.crs.to_epsg() == 6668
-
-    base["edge_id"] = base.apply(lambda r: f"{int(r.u)}_{int(r.v)}_{int(r.key)}", axis=1)
+    # A31a グリッドセルは 5〜20m 四方の極小ポリゴン。OSM 道路中心線がセル間を
+    # 通過して交差ゼロになるため、投影 CRS（EPSG:6690）で 30m バッファを適用する。
+    # 30m = グリッド離散化誤差（最大 10m）＋車道幅（最大 10m）の余裕を含む値。
+    _CRS_METRIC = "EPSG:6690"  # JGD2011 / UTM zone 54N
+    _FLOOD_BUFFER_M = 30
 
     closure: dict[str, list[str]] = {}
     for ts, flood_gdf in flood_dict.items():
         flood = flood_gdf if flood_gdf.crs == base.crs else flood_gdf.to_crs(base.crs)
-        assert flood.crs is not None and flood.crs.to_epsg() == 6668
-        hit = gpd.sjoin(base[["edge_id", "geometry"]], flood[["geometry"]], predicate="intersects", how="inner")
-        closure[ts] = sorted(hit["edge_id"].astype(str).unique().tolist())
+        # 投影 CRS で dissolve→buffer→元 CRS に戻す
+        flood_buffered = (
+            gpd.GeoDataFrame(
+                geometry=[flood.to_crs(_CRS_METRIC).geometry.union_all().buffer(_FLOOD_BUFFER_M)],
+                crs=_CRS_METRIC,
+            )
+            .to_crs(flood.crs)
+        )
+        hit = gpd.sjoin(base[[edge_id_col, "geometry"]], flood_buffered[["geometry"]], predicate="intersects", how="inner")
+        closure[ts] = sorted(hit[edge_id_col].astype(str).unique().tolist())
     return closure
 
 

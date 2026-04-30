@@ -1,4 +1,4 @@
-"""コンフリクト解消済み。STEP 1a: 常総市の道路ネットワーク取得。"""
+"""STEP 1a: 常総市の道路ネットワーク取得と保存。"""
 
 from __future__ import annotations
 
@@ -41,7 +41,8 @@ def save_edges(edges_gdf: gpd.GeoDataFrame, path: str) -> None:
 
 def visualize_network(edges_gdf: gpd.GeoDataFrame, output_path: str) -> None:
     edges_wgs84 = edges_gdf.to_crs(config.CRS_WGS84)
-    center = [36.05, 140.0]
+    reps = edges_wgs84.geometry.representative_point()
+    center = [float(reps.y.mean()), float(reps.x.mean())]
     fmap = folium.Map(location=center, zoom_start=12, tiles="OpenStreetMap")
     folium.GeoJson(
         edges_wgs84,
@@ -63,14 +64,14 @@ def main() -> None:
         print("[INFO] OSM から道路ネットワークを取得中...")
         graph = get_road_network()
         save_network(graph, str(graphml_path))
+        print(f"[INFO] GraphML 保存完了: {graphml_path}")
 
     _, edges = network_to_gdf(graph)
     save_edges(edges, config.EDGES_GPKG_PATH)
-    visualize_network(edges, config.NETWORK_MAP_PATH)
+    print(f"[INFO] エッジ GPKG 保存完了: {config.EDGES_GPKG_PATH} ({len(edges)} edges)")
 
-    print(f"[INFO] saved: {config.GRAPHML_PATH}")
-    print(f"[INFO] saved: {config.EDGES_GPKG_PATH}")
-    print(f"[INFO] saved: {config.NETWORK_MAP_PATH}")
+    visualize_network(edges, config.NETWORK_MAP_PATH)
+    print(f"[INFO] 可視化HTML保存完了: {config.NETWORK_MAP_PATH}")
 
 
 if __name__ == "__main__":

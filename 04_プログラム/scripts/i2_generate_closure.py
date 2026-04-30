@@ -1,4 +1,4 @@
-"""コンフリクト解消済み。STEP 3: 閉鎖辞書を JSON / CSV 出力。"""
+"""STEP 3: 閉鎖辞書を JSON / CSV に展開する。"""
 
 from __future__ import annotations
 
@@ -38,8 +38,6 @@ def main() -> None:
     closure = load_closure_dict(config.CLOSURE_PKL_PATH)
     save_closure_json(closure, config.CLOSURE_JSON_PATH)
     save_closure_csv(closure, config.CLOSURE_CSV_PATH)
-    for ts, edge_ids in closure.items():
-        print(f"{ts}: {len(edge_ids)} edges")
     print(f"[INFO] saved: {config.CLOSURE_JSON_PATH}")
     print(f"[INFO] saved: {config.CLOSURE_CSV_PATH}")
 

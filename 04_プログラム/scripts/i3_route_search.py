@@ -180,7 +180,7 @@ def main() -> None:
 
     results = run_all_timesteps(G, closure_timeline, origins, shelters)
     unreachable_rows = [row for ts in results for row in results[ts]["unreachable"]]
-    pd.DataFrame(unreachable_rows, columns=["timestamp", "KEY_CODE", "total_pop", "elderly_pop"]).to_csv(config.UNREACHABLE_PATH, index=False)
+    pd.DataFrame(unreachable_rows).to_csv(config.UNREACHABLE_PATH, index=False)
     print(f"[INFO] saved: {config.UNREACHABLE_PATH}")
 
 
