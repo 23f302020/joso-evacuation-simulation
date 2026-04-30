@@ -35,11 +35,22 @@ def network_to_gdf(graph: MultiDiGraph) -> tuple[gpd.GeoDataFrame, gpd.GeoDataFr
     return nodes, edges
 
 
-def save_edges(edges_gdf: gpd.GeoDataFrame, path: str) -> None:
+def save_edges(edges_gdf: gpd.GeoDataFrame, path: str) -> bool:
+    target = Path(path)
+    if target.exists():
+        try:
+            target.unlink()
+        except PermissionError:
+            # Windows/OneDrive環境で既存GeoPackageがロックされる場合は、
+            # 読み込み可能な既存成果物を保持して後続処理に進む。
+            gpd.read_file(target, rows=1)
+            print(f"[WARN] 既存GPKGを上書きできないため保持: {target}")
+            return False
     edges_gdf.to_file(path, driver="GPKG")
+    return True
 
 
-def visualize_network(edges_gdf: gpd.GeoDataFrame, output_path: str) -> None:
+def visualize_network(edges_gdf: gpd.GeoDataFrame, output_path: str) -> bool:
     edges_wgs84 = edges_gdf.to_crs(config.CRS_WGS84)
     reps = edges_wgs84.geometry.representative_point()
     center = [float(reps.y.mean()), float(reps.x.mean())]
@@ -50,7 +61,14 @@ def visualize_network(edges_gdf: gpd.GeoDataFrame, output_path: str) -> None:
         style_function=lambda _: {"color": "#1f77b4", "weight": 1.2, "opacity": 0.8},
     ).add_to(fmap)
     folium.LayerControl().add_to(fmap)
-    fmap.save(output_path)
+    try:
+        fmap.save(output_path)
+    except PermissionError:
+        if Path(output_path).exists():
+            print(f"[WARN] 既存HTMLを上書きできないため保持: {output_path}")
+            return False
+        raise
+    return True
 
 
 def main() -> None:
@@ -67,11 +85,13 @@ def main() -> None:
         print(f"[INFO] GraphML 保存完了: {graphml_path}")
 
     _, edges = network_to_gdf(graph)
-    save_edges(edges, config.EDGES_GPKG_PATH)
-    print(f"[INFO] エッジ GPKG 保存完了: {config.EDGES_GPKG_PATH} ({len(edges)} edges)")
+    if save_edges(edges, config.EDGES_GPKG_PATH):
+        print(f"[INFO] エッジ GPKG 保存完了: {config.EDGES_GPKG_PATH} ({len(edges)} edges)")
+    else:
+        print(f"[INFO] 既存エッジ GPKG を使用: {config.EDGES_GPKG_PATH} ({len(edges)} edges)")
 
-    visualize_network(edges, config.NETWORK_MAP_PATH)
-    print(f"[INFO] 可視化HTML保存完了: {config.NETWORK_MAP_PATH}")
+    if visualize_network(edges, config.NETWORK_MAP_PATH):
+        print(f"[INFO] 可視化HTML保存完了: {config.NETWORK_MAP_PATH}")
 
 
 if __name__ == "__main__":

@@ -13,8 +13,9 @@ from shapely.geometry import Polygon
 
 import config
 
-# KML LineString を Polygon 化するバッファ幅（度; ≈10m）
-_KML_BUFFER_DEG = 0.0001
+# KML LineString を Polygon 化するバッファ幅（m）
+_KML_BUFFER_M = 10
+_CRS_METRIC = "EPSG:6690"  # JGD2011 / UTM zone 54N
 
 # 時刻別表示色（folium可視化用）
 _TIMELINE_COLORS = [
@@ -116,8 +117,9 @@ def load_kml_timeline(kml_dir: str) -> dict[str, gpd.GeoDataFrame]:
             print(f"[warn] KML 読み込み失敗またはデータなし: {Path(path).name}")
             continue
 
-        gdf = gdf.to_crs(config.CRS_JGD2011).copy()
-        gdf["geometry"] = gdf.geometry.buffer(_KML_BUFFER_DEG)
+        gdf = gdf.to_crs(_CRS_METRIC).copy()
+        gdf["geometry"] = gdf.geometry.buffer(_KML_BUFFER_M)
+        gdf = gdf.to_crs(config.CRS_JGD2011)
         gdf = gdf[~gdf.geometry.is_empty]
         timeline[ts] = gdf
         print(f"[kml] {ts}: {len(gdf)} フィーチャ")
@@ -161,14 +163,23 @@ def build_flood_polygons(
     return flood_dict
 
 
-def save_flood_polygons(flood_dict: dict, path: str) -> None:
+def save_flood_polygons(flood_dict: dict, path: str) -> bool:
     Path(path).parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "wb") as f:
-        pickle.dump(flood_dict, f)
+    try:
+        with open(path, "wb") as f:
+            pickle.dump(flood_dict, f)
+    except PermissionError:
+        if Path(path).exists():
+            with open(path, "rb") as f:
+                pickle.load(f)
+            print(f"[warn] 既存PKLを上書きできないため保持: {path}")
+            return False
+        raise
     print(f"[save] flood_polygons.pkl -> {path}  ({len(flood_dict)} 時点)")
+    return True
 
 
-def visualize_flood_timeline(flood_dict: dict, output_path: str) -> None:
+def visualize_flood_timeline(flood_dict: dict, output_path: str) -> bool:
     first_gdf = next(iter(flood_dict.values()))
     center_wgs84 = first_gdf.to_crs(config.CRS_WGS84).geometry.representative_point()
     center = [center_wgs84.y.mean(), center_wgs84.x.mean()]
@@ -187,8 +198,15 @@ def visualize_flood_timeline(flood_dict: dict, output_path: str) -> None:
 
     folium.LayerControl().add_to(m)
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
-    m.save(output_path)
+    try:
+        m.save(output_path)
+    except PermissionError:
+        if Path(output_path).exists():
+            print(f"[warn] 既存HTMLを上書きできないため保持: {output_path}")
+            return False
+        raise
     print(f"[save] flood timeline map -> {output_path}")
+    return True
 
 
 if __name__ == "__main__":

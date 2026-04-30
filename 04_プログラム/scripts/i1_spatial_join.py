@@ -66,9 +66,18 @@ def build_closure_dict(
     return closure
 
 
-def save_closure_dict(closure_dict: dict[str, list[str]], path: str) -> None:
-    with open(path, "wb") as f:
-        pickle.dump(closure_dict, f)
+def save_closure_dict(closure_dict: dict[str, list[str]], path: str) -> bool:
+    try:
+        with open(path, "wb") as f:
+            pickle.dump(closure_dict, f)
+    except PermissionError:
+        if Path(path).exists():
+            with open(path, "rb") as f:
+                pickle.load(f)
+            print(f"[WARN] 既存PKLを上書きできないため保持: {path}")
+            return False
+        raise
+    return True
 
 
 def main() -> None:
@@ -76,9 +85,10 @@ def main() -> None:
     edges = load_edges(config.EDGES_GPKG_PATH)
     flood_dict = load_flood_dict(config.FLOOD_PKL_PATH)
     closure = build_closure_dict(edges, flood_dict)
-    save_closure_dict(closure, config.CLOSURE_PKL_PATH)
     for ts, ids in closure.items():
         print(f"{ts}: {len(ids)} edges closed")
+    if save_closure_dict(closure, config.CLOSURE_PKL_PATH):
+        print(f"[INFO] saved: {config.CLOSURE_PKL_PATH}")
 
 
 if __name__ == "__main__":

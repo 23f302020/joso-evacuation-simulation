@@ -11,8 +11,12 @@ import geopandas as gpd
 import networkx as nx
 import osmnx as ox
 import pandas as pd
+from shapely.geometry import box
 
 import config
+
+_MESH_250M_LAT_DEG = 7.5 / 3600
+_MESH_250M_LON_DEG = 11.25 / 3600
 
 
 def ensure_output_dirs() -> None:
@@ -20,14 +24,27 @@ def ensure_output_dirs() -> None:
     Path(config.OUT_ROUTES_DIR).mkdir(parents=True, exist_ok=True)
 
 
+def _save_csv(df: pd.DataFrame, path: str, label: str) -> bool:
+    try:
+        df.to_csv(path, index=False)
+    except PermissionError:
+        if Path(path).exists():
+            pd.read_csv(path, nrows=1)
+            print(f"[WARN] 既存{label}CSVを上書きできないため保持: {path}")
+            return False
+        raise
+    print(f"[INFO] saved: {path}")
+    return True
+
+
 def meshcode_to_lon_lat(key_code: str) -> tuple[float, float]:
     key = str(key_code).zfill(10)
     p, u = int(key[0:2]), int(key[2:4])
-    _q, v = int(key[4]), int(key[5])
+    q, v = int(key[4]), int(key[5])
     r, w = int(key[6]), int(key[7])
     s, x = int(key[8]), int(key[9])
-    lat = p / 1.5 + (r * 30 + s * 15 / 2) / 3600
-    lon = 100 + u + v * 0.125 + w * 0.125 / 2 + x * 0.125 / 4
+    lat = p / 1.5 + q * 5 / 60 + (r * 30 + s * 7.5 + 3.75) / 3600
+    lon = 100 + u + v * 0.125 + (w * 45 + x * 11.25 + 5.625) / 3600
     return lon, lat
 
 
@@ -53,29 +70,53 @@ def _find_col(candidates: list[str], columns: list[str], default: str) -> str:
 def load_mesh_origins(mesh_file: str, flood_poly: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
     df = _read_mesh_table(mesh_file)
     key_col = _find_col(["KEY_CODE", "メッシュ"], list(df.columns), "col_0")
-    total_col = _find_col(["総数", "人口", "総人口"], list(df.columns), "col_9")
-    elderly_col = _find_col(["65", "高齢"], list(df.columns), "col_22")
+    total_col = "T001178001" if "T001178001" in df.columns else "col_4"
+    elderly_cols = [
+        c for c in ["T001178043", "T001178046", "T001178049", "T001178052", "T001178055"]
+        if c in df.columns
+    ]
+    if not elderly_cols:
+        elderly_cols = ["col_46", "col_49", "col_52", "col_55", "col_58"]
 
-    work = df[[key_col, total_col, elderly_col]].copy()
-    work.columns = ["KEY_CODE", "total_pop", "elderly_pop"]
+    work = df[[key_col, total_col, *elderly_cols]].copy()
+    work = work.rename(columns={key_col: "KEY_CODE", total_col: "total_pop"})
     work["KEY_CODE"] = work["KEY_CODE"].astype(str).str.zfill(10)
     work = work[work["KEY_CODE"].str[:6].isin(["543907", "543917"])].copy()
 
     work[["lon", "lat"]] = work["KEY_CODE"].apply(lambda k: pd.Series(meshcode_to_lon_lat(k)))
     work["total_pop"] = pd.to_numeric(work["total_pop"], errors="coerce").fillna(0).astype(int)
-    work["elderly_pop"] = pd.to_numeric(work["elderly_pop"], errors="coerce").fillna(0).astype(int)
+    work["elderly_pop"] = (
+        work[elderly_cols].apply(pd.to_numeric, errors="coerce").fillna(0).sum(axis=1).astype(int)
+    )
 
-    gdf = gpd.GeoDataFrame(work, geometry=gpd.points_from_xy(work["lon"], work["lat"]), crs=config.CRS_WGS84)
+    cell_geoms = [
+        box(
+            row.lon - _MESH_250M_LON_DEG / 2,
+            row.lat - _MESH_250M_LAT_DEG / 2,
+            row.lon + _MESH_250M_LON_DEG / 2,
+            row.lat + _MESH_250M_LAT_DEG / 2,
+        )
+        for row in work.itertuples()
+    ]
+    cells = gpd.GeoDataFrame(work, geometry=cell_geoms, crs=config.CRS_WGS84)
     flood_wgs = flood_poly.to_crs(config.CRS_WGS84)
-    joined = gpd.sjoin(gdf, flood_wgs[["geometry"]], how="inner", predicate="intersects")
-    joined = joined.drop(columns=[c for c in ["index_right"] if c in joined.columns])
-    return joined
+    joined = gpd.sjoin(cells, flood_wgs[["geometry"]], how="inner", predicate="intersects")
+    joined = joined.drop_duplicates(subset=["KEY_CODE"])
+    joined = joined.drop(columns=[c for c in ["index_right", "geometry"] if c in joined.columns])
+    return gpd.GeoDataFrame(
+        joined,
+        geometry=gpd.points_from_xy(joined["lon"], joined["lat"]),
+        crs=config.CRS_WGS84,
+    )
 
 
 def load_shelters(dbf_path: str) -> gpd.GeoDataFrame:
     shp_path = str(Path(dbf_path).with_suffix(".shp"))
     gdf = gpd.read_file(shp_path, engine="pyogrio")
-    gdf = gdf[(gdf["P20_001"] == config.JOSO_CODE) & (gdf["P20_007"] == "1")].copy()
+    gdf = gdf[
+        (gdf["P20_001"].astype(str) == config.JOSO_CODE)
+        & (gdf["P20_007"].astype(str) == "1")
+    ].copy()
     gdf = gdf.to_crs(config.CRS_WGS84)
     gdf["name"] = gdf.get("P20_002", "unknown")
     gdf["capacity"] = pd.to_numeric(gdf.get("P20_005", 0), errors="coerce").fillna(0).astype(int)
@@ -96,7 +137,14 @@ def make_subgraph(G: nx.MultiDiGraph, closed_edges: list[str]) -> nx.MultiDiGrap
 
 
 def find_nearest_node(G: nx.MultiDiGraph, lon: float, lat: float) -> int:
-    return int(ox.distance.nearest_nodes(G, lon, lat))
+    nearest = min(
+        G.nodes,
+        key=lambda n: (float(G.nodes[n]["x"]) - lon) ** 2 + (float(G.nodes[n]["y"]) - lat) ** 2,
+    )
+    try:
+        return int(nearest)
+    except (TypeError, ValueError):
+        return nearest
 
 
 def compute_route(G: nx.MultiDiGraph, origin_node: int, dest_nodes: list[int]) -> list[int] | None:
@@ -105,7 +153,7 @@ def compute_route(G: nx.MultiDiGraph, origin_node: int, dest_nodes: list[int]) -
     for d in dest_nodes:
         try:
             route = nx.shortest_path(G, origin_node, d, weight="length")
-            length = nx.path_weight(G, route, weight="length")
+            length = nx.shortest_path_length(G, origin_node, d, weight="length")
             if length < best_len:
                 best = route
                 best_len = length
@@ -159,7 +207,13 @@ def _save_routes_map(G: nx.MultiDiGraph, origins: gpd.GeoDataFrame, routes: list
         coords = [(G.nodes[n]["y"], G.nodes[n]["x"]) for n in route if n in G.nodes]
         if len(coords) >= 2:
             folium.PolyLine(coords, weight=2, opacity=0.5).add_to(fmap)
-    fmap.save(out_html)
+    try:
+        fmap.save(out_html)
+    except PermissionError:
+        if Path(out_html).exists():
+            print(f"[WARN] 既存ルートHTMLを上書きできないため保持: {out_html}")
+            return
+        raise
 
 
 def main() -> None:
@@ -175,13 +229,22 @@ def main() -> None:
     origins = load_mesh_origins(config.MESH_FILE, first_flood)
     shelters = load_shelters(config.SHELTER_DBF)
 
-    origins[["KEY_CODE", "lon", "lat", "total_pop", "elderly_pop"]].to_csv(config.ORIGINS_CSV_PATH, index=False)
-    shelters[["name", "capacity", "lon", "lat"]].to_csv(config.SHELTERS_CSV_PATH, index=False)
+    print(f"[INFO] origins: {len(origins)} mesh cells")
+    print(f"[INFO] shelters: {len(shelters)} facilities")
+    _save_csv(
+        origins[["KEY_CODE", "lon", "lat", "total_pop", "elderly_pop"]],
+        config.ORIGINS_CSV_PATH,
+        "出発地",
+    )
+    _save_csv(shelters[["name", "capacity", "lon", "lat"]], config.SHELTERS_CSV_PATH, "避難所")
 
     results = run_all_timesteps(G, closure_timeline, origins, shelters)
     unreachable_rows = [row for ts in results for row in results[ts]["unreachable"]]
-    pd.DataFrame(unreachable_rows).to_csv(config.UNREACHABLE_PATH, index=False)
-    print(f"[INFO] saved: {config.UNREACHABLE_PATH}")
+    unreachable_df = pd.DataFrame(
+        unreachable_rows,
+        columns=["timestamp", "KEY_CODE", "total_pop", "elderly_pop"],
+    )
+    _save_csv(unreachable_df, config.UNREACHABLE_PATH, "到達不可")
 
 
 if __name__ == "__main__":
