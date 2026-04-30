@@ -41,3 +41,68 @@ cd 04_プログラム/scripts && for f in c3_get_road_network.py e1_load_flood_d
 | `e1_load_flood_data.py` | `Missing dependency: geopandas` |
 | `i1_spatial_join.py` | `Missing dependency: geopandas` |
 | `i2_generate_closure.py` | `closure_dict.pkl` 不在 |
+
+---
+
+## 現在のエラー解消方法
+
+正常動作のために必要なのは、コード修正より先に実行環境を揃えることです。今の失敗は主に「依存ライブラリ未導入」と「実行順序」の問題です。
+
+### 原因
+
+| スクリプト | 失敗理由 |
+|---|---|
+| `c3_get_road_network.py` | `osmnx` が未導入 |
+| `e1_load_flood_data.py` / `i1_spatial_join.py` | `geopandas` 等が未導入 |
+| `i2_generate_closure.py` | `i1` が生成する `closure_dict.pkl` が前提 |
+
+実行済み確認：`python -m py_compile ...` は通過、`python c3_get_road_network.py` 等は依存不足で停止。
+
+---
+
+### 正常稼働させる具体手順
+
+#### 1. 仮想環境の作成
+
+```bash
+cd 04_プログラム
+python -m venv venv
+# Windows の場合
+venv\Scripts\activate
+```
+
+#### 2. 依存ライブラリのインストール
+
+```bash
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+> **ProxyError / 403 が出る場合：** 学内・社内プロキシ設定が必要です。ネットワーク管理者のプロキシ値を `HTTP_PROXY` / `HTTPS_PROXY` に設定して再実行してください。
+
+#### 3. 実行順序（重要）
+
+```bash
+cd scripts
+python c3_get_road_network.py   # 道路GPKG を生成
+python e1_load_flood_data.py    # 浸水pickle を生成
+python i1_spatial_join.py       # closure pickle を生成
+python i2_generate_closure.py   # JSON/CSV を出力
+```
+
+この順序は各スクリプトの入出力依存に一致しています。
+
+---
+
+### 成功判定（最低限）
+
+以下のファイルが生成されれば正常稼働です（`config.py` 定義準拠）。
+
+| 出力ファイル | 生成スクリプト |
+|---|---|
+| `output/network/joso_road_network.graphml` | c3 |
+| `output/network/joso_edges.gpkg` | c3 |
+| `output/flood/flood_polygons.pkl` | e1 |
+| `output/closure/closure_dict.pkl` | i1 |
+| `output/closure/road_closure_timeline.json` | i2 |
+| `output/closure/road_closure_timeline.csv` | i2 |
