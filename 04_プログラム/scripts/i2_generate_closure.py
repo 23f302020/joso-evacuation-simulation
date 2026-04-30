@@ -1,4 +1,4 @@
-"""STEP 3: 閉鎖辞書を JSON / CSV 出力。"""
+"""STEP 3: 閉鎖辞書を JSON / CSV に展開する。"""
 
 from __future__ import annotations
 

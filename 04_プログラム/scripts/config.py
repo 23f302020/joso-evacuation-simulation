@@ -53,7 +53,7 @@ OSM_NETWORK_TYPE = "drive"
 DATA_DIR   = "../data"
 OUTPUT_DIR = "../output"
 
-KML_DIR   = f"{DATA_DIR}/flood_kml/D1-No917_joso"
+KML_DIR   = f"{DATA_DIR}/flood_kml"
 GML_DIR   = f"{DATA_DIR}/flood_hazard_a31/A31a-24_08_10_GML"
 MESH_FILE = (
     f"{DATA_DIR}/population_mesh"
