@@ -62,12 +62,15 @@ cd 04_プログラム/scripts && for f in c3_get_road_network.py e1_load_flood_d
 
 ### 正常稼働させる具体手順
 
-#### 1. 仮想環境の作成
+#### 1. 仮想環境の作成・有効化
 
 ```bash
 cd 04_プログラム
+
+# 仮想環境作成
 python -m venv venv
-# Windows の場合
+
+# 仮想環境有効化（Windows）
 venv\Scripts\activate
 ```
 
@@ -78,7 +81,16 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-> **ProxyError / 403 が出る場合：** 学内・社内プロキシ設定が必要です。ネットワーク管理者のプロキシ値を `HTTP_PROXY` / `HTTPS_PROXY` に設定して再実行してください。
+`requirements.txt` の依存が入る前提で、各スクリプトは動作します。
+
+> **ProxyError / 403 が出る場合（プロキシ環境）：**
+>
+> ```powershell
+> # PowerShell の場合
+> $env:HTTP_PROXY  = "http://<proxy-host>:<proxy-port>"
+> $env:HTTPS_PROXY = "http://<proxy-host>:<proxy-port>"
+> python -m pip install -r requirements.txt
+> ```
 
 #### 3. 実行順序（重要）
 
@@ -90,7 +102,7 @@ python i1_spatial_join.py       # closure pickle を生成
 python i2_generate_closure.py   # JSON/CSV を出力
 ```
 
-この順序は各スクリプトの入出力依存に一致しています。
+この順序は各スクリプトの入出力依存に一致しています（i2 は i1 の出力が前提）。
 
 ---
 
@@ -106,3 +118,17 @@ python i2_generate_closure.py   # JSON/CSV を出力
 | `output/closure/closure_dict.pkl` | i1 |
 | `output/closure/road_closure_timeline.json` | i2 |
 | `output/closure/road_closure_timeline.csv` | i2 |
+
+#### 成功確認コマンド（PowerShell）
+
+```powershell
+cd 04_プログラム
+
+# 各ファイルの存在を確認
+if (Test-Path output/network/joso_road_network.graphml) { "OK graphml" } else { "NG graphml" }
+if (Test-Path output/network/joso_edges.gpkg)           { "OK edges gpkg" } else { "NG edges gpkg" }
+if (Test-Path output/flood/flood_polygons.pkl)           { "OK flood pkl" } else { "NG flood pkl" }
+if (Test-Path output/closure/closure_dict.pkl)           { "OK closure pkl" } else { "NG closure pkl" }
+if (Test-Path output/closure/road_closure_timeline.json) { "OK closure json" } else { "NG closure json" }
+if (Test-Path output/closure/road_closure_timeline.csv)  { "OK closure csv" } else { "NG closure csv" }
+```
