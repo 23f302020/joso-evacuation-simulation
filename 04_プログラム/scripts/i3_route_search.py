@@ -172,7 +172,10 @@ def run_all_timesteps(
     results: dict[str, dict[str, list]] = {}
 
     for idx, ts in enumerate(config.KML_TIMESTAMPS):
-        closed = closure_timeline.get(ts, [])
+        all_closed: list[str] = []
+        for past_ts in config.KML_TIMESTAMPS[: idx + 1]:
+            all_closed += closure_timeline.get(past_ts, [])
+        closed = list(set(all_closed))
         sub = make_subgraph(G, closed)
         unreachable: list[dict] = []
         routes: list[list[int]] = []
