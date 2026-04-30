@@ -129,16 +129,34 @@ def build_flood_polygons(
     a31a: gpd.GeoDataFrame,
     kml_timeline: dict[str, gpd.GeoDataFrame],
 ) -> dict[str, gpd.GeoDataFrame]:
-    """各KML時点と A31a を intersects 判定して時刻別浸水ポリゴンを構築する。"""
+    """KML各時点の凸包エンベロープでA31aを絞り込み、時刻別浸水ポリゴンを構築する。
+
+    アプローチ（案2+3複合）:
+      案2: KML各時点の union_all().convex_hull を浸水エンベロープとして使用。
+           時刻ごとに異なる KML 範囲を反映し、時刻別道路閉鎖の変化を表現する。
+      案3: 凸包内に A31a ポリゴンが 0 件の場合は A31a 全体をフォールバック採用。
+           浸水深フィルタ（waterDepth>=2 = 0.5m以上）は A31a 側で保証済み。
+    """
     assert a31a.crs.to_epsg() == 6668, f"a31a CRS 不一致: {a31a.crs}"
 
     flood_dict: dict[str, gpd.GeoDataFrame] = {}
     for ts, kml_gdf in kml_timeline.items():
         assert kml_gdf.crs.to_epsg() == 6668, f"KML CRS 不一致: {kml_gdf.crs}"
-        joined = gpd.sjoin(a31a, kml_gdf[["geometry"]], how="inner", predicate="intersects")
+
+        # KML 全ジオメトリの凸包を浸水エンベロープとして使用（案2）
+        kml_hull = kml_gdf.geometry.union_all().convex_hull
+        kml_envelope = gpd.GeoDataFrame(geometry=[kml_hull], crs=a31a.crs)
+        joined = gpd.sjoin(a31a, kml_envelope, how="inner", predicate="intersects")
         result = a31a.loc[joined.index.unique()].copy()
+
+        if len(result) == 0:
+            # フォールバック: A31a 全体を採用（案3）
+            print(f"[flood] {ts}: KML 凸包内 A31a なし → A31a 全体フォールバック ({len(a31a)} ポリゴン)")
+            result = a31a.copy()
+        else:
+            print(f"[flood] {ts}: {len(result)} ポリゴン (KML 凸包との交差)")
+
         flood_dict[ts] = result
-        print(f"[flood] {ts}: {len(result)} ポリゴン")
 
     return flood_dict
 
