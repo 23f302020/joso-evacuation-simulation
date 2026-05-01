@@ -9,7 +9,14 @@ JOSO_BBOX  = (139.90, 36.00, 140.10, 36.15)  # (lon_min, lat_min, lon_max, lat_m
 JOSO_CODE  = "08211"
 
 # ===== 浸水閾値 =====
-FLOOD_DEPTH_THRESHOLD = 2   # waterDepth コード値（A31a） >= 2 = 0.5m以上
+FLOOD_DEPTH_THRESHOLD = 2      # waterDepth コード値（A31a） >= 2 = 0.5m以上
+FLOOD_DEPTH_THRESHOLD_M = 0.5  # 浸水ナビ API の浸水深（m）
+
+# ===== 道路閉鎖生成 =====
+# "suiboumap_hydrograph": 浸水ナビの時刻別メッシュ深度を使用
+# "kml_a31a": 従来の KML+A31a 浸水ポリゴンを使用
+CLOSURE_SOURCE = "suiboumap_hydrograph"
+USE_CUMULATIVE_CLOSURE = True
 
 # ===== シミュレーション時間 =====
 SIM_START_EPOCH       = "2015-09-10T12:50:00"
@@ -63,6 +70,9 @@ SHELTER_DBF = (
     f"{DATA_DIR}/shelters"
     "/避難施設データ_茨城/P20-12_08.dbf"
 )
+SUIBOUMAP_HYDROGRAPH_PATH = (
+    f"{DATA_DIR}/suiboumap/hydrograph_origins_BP030.json"
+)
 
 # ===== 出力パス =====
 OUT_NETWORK_DIR = f"{OUTPUT_DIR}/network"
@@ -82,6 +92,7 @@ FLOOD_MAP_PATH = f"{OUT_FLOOD_DIR}/flood_timeline_map.html"
 CLOSURE_PKL_PATH  = f"{OUT_CLOSURE_DIR}/closure_dict.pkl"
 CLOSURE_JSON_PATH = f"{OUT_CLOSURE_DIR}/road_closure_timeline.json"
 CLOSURE_CSV_PATH  = f"{OUT_CLOSURE_DIR}/road_closure_timeline.csv"
+CLOSURE_DIAGNOSTICS_CSV_PATH = f"{OUT_CLOSURE_DIR}/closure_diagnostics.csv"
 
 ORIGINS_CSV_PATH  = f"{OUT_AGENTS_DIR}/origin_points.csv"
 SHELTERS_CSV_PATH = f"{OUT_AGENTS_DIR}/shelters.csv"

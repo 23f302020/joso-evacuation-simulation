@@ -170,12 +170,15 @@ def run_all_timesteps(
 ) -> dict[str, dict[str, list]]:
     dest_nodes = [find_nearest_node(G, row.lon, row.lat) for row in destinations.itertuples()]
     results: dict[str, dict[str, list]] = {}
+    cumulative_closed: set[str] = set()
 
     for idx, ts in enumerate(config.KML_TIMESTAMPS):
-        all_closed: list[str] = []
-        for past_ts in config.KML_TIMESTAMPS[: idx + 1]:
-            all_closed += closure_timeline.get(past_ts, [])
-        closed = list(set(all_closed))
+        instant_closed = set(closure_timeline.get(ts, []))
+        if getattr(config, "USE_CUMULATIVE_CLOSURE", True):
+            cumulative_closed |= instant_closed
+            closed = sorted(cumulative_closed)
+        else:
+            closed = sorted(instant_closed)
         sub = make_subgraph(G, closed)
         unreachable: list[dict] = []
         routes: list[list[int]] = []
@@ -197,7 +200,10 @@ def run_all_timesteps(
 
         results[ts] = {"unreachable": unreachable, "routes": routes}
         _save_routes_map(sub, origins, routes, f"{config.OUT_ROUTES_DIR}/evacuation_routes_t{idx}.html")
-        print(f"{ts}: unreachable={len(unreachable)}")
+        print(
+            f"{ts}: instant_closed={len(instant_closed)}, "
+            f"closed={len(closed)}, unreachable={len(unreachable)}"
+        )
 
     return results
 
