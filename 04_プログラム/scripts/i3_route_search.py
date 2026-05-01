@@ -14,6 +14,7 @@ import pandas as pd
 from shapely.geometry import box
 
 import config
+from i1_spatial_join import load_flood_source
 
 _MESH_250M_LAT_DEG = 7.5 / 3600
 _MESH_250M_LON_DEG = 11.25 / 3600
@@ -167,6 +168,7 @@ def run_all_timesteps(
     closure_timeline: dict[str, list[str]],
     origins: gpd.GeoDataFrame,
     destinations: gpd.GeoDataFrame,
+    flood_timeline: dict[str, gpd.GeoDataFrame],
 ) -> dict[str, dict[str, list]]:
     dest_nodes = [find_nearest_node(G, row.lon, row.lat) for row in destinations.itertuples()]
     results: dict[str, dict[str, list]] = {}
@@ -199,7 +201,14 @@ def run_all_timesteps(
                 routes.append(route)
 
         results[ts] = {"unreachable": unreachable, "routes": routes}
-        _save_routes_map(sub, origins, routes, f"{config.OUT_ROUTES_DIR}/evacuation_routes_t{idx}.html")
+        _save_routes_map(
+            sub,
+            origins,
+            routes,
+            flood_timeline.get(ts),
+            ts,
+            f"{config.OUT_ROUTES_DIR}/evacuation_routes_t{idx}.html",
+        )
         print(
             f"{ts}: instant_closed={len(instant_closed)}, "
             f"closed={len(closed)}, unreachable={len(unreachable)}"
@@ -208,14 +217,45 @@ def run_all_timesteps(
     return results
 
 
-def _save_routes_map(G: nx.MultiDiGraph, origins: gpd.GeoDataFrame, routes: list[list[int]], out_html: str) -> None:
+def _save_routes_map(
+    G: nx.MultiDiGraph,
+    origins: gpd.GeoDataFrame,
+    routes: list[list[int]],
+    flood_gdf: gpd.GeoDataFrame | None,
+    timestamp: str,
+    out_html: str,
+) -> None:
     fmap = folium.Map(location=[36.05, 140.0], zoom_start=11)
-    folium.GeoJson(origins[["geometry"]].to_crs(config.CRS_WGS84), name="origins").add_to(fmap)
+
+    if flood_gdf is not None and not flood_gdf.empty:
+        flood_wgs = flood_gdf.to_crs(config.CRS_WGS84)
+        folium.GeoJson(
+            flood_wgs.__geo_interface__,
+            name=f"浸水範囲 {timestamp}",
+            style_function=lambda _: {
+                "fillColor": "#2563eb",
+                "color": "#1d4ed8",
+                "weight": 1,
+                "fillOpacity": 0.28,
+            },
+        ).add_to(fmap)
+
+    folium.GeoJson(
+        origins[["geometry"]].to_crs(config.CRS_WGS84),
+        name="出発地",
+        marker=folium.CircleMarker(radius=4, fill=True),
+    ).add_to(fmap)
 
     for route in routes[:200]:
         coords = [(G.nodes[n]["y"], G.nodes[n]["x"]) for n in route if n in G.nodes]
         if len(coords) >= 2:
-            folium.PolyLine(coords, weight=2, opacity=0.5).add_to(fmap)
+            folium.PolyLine(
+                coords,
+                weight=2,
+                opacity=0.65,
+                color="#111827",
+            ).add_to(fmap)
+    folium.LayerControl().add_to(fmap)
     try:
         fmap.save(out_html)
     except PermissionError:
@@ -233,6 +273,8 @@ def main() -> None:
         closure_timeline = json.load(f)
     with open(config.FLOOD_PKL_PATH, "rb") as f:
         flood_dict = pickle.load(f)
+    flood_source, route_flood_timeline = load_flood_source()
+    print(f"[INFO] route flood overlay: {flood_source}")
 
     first_flood = flood_dict[config.KML_TIMESTAMPS[0]]
     origins = load_mesh_origins(config.MESH_FILE, first_flood)
@@ -247,7 +289,7 @@ def main() -> None:
     )
     _save_csv(shelters[["name", "capacity", "lon", "lat"]], config.SHELTERS_CSV_PATH, "避難所")
 
-    results = run_all_timesteps(G, closure_timeline, origins, shelters)
+    results = run_all_timesteps(G, closure_timeline, origins, shelters, route_flood_timeline)
     unreachable_rows = [row for ts in results for row in results[ts]["unreachable"]]
     unreachable_df = pd.DataFrame(
         unreachable_rows,
