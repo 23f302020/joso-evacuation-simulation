@@ -80,10 +80,10 @@ python i3_route_search.py
 | `output/closure/closure_dict.pkl` | i1 | ✅ |
 | `output/closure/road_closure_timeline.json` | i2 | ✅ |
 | `output/closure/road_closure_timeline.csv` | i2 | ✅ |
-| `output/agents/origins.csv` | i3 | ✅ |
+| `output/agents/origin_points.csv` | i3 | ✅ |
 | `output/agents/shelters.csv` | i3 | ✅ |
 | `output/routes/evacuation_routes_t0.html` 〜 `t7.html` | i3 | ✅（8ファイル） |
-| `output/routes/unreachable.csv` | i3 | ✅ |
+| `output/routes/unreachable_agents.csv` | i3 | ✅ |
 
 ---
 
@@ -109,10 +109,11 @@ python i3_route_search.py
 
 | 優先度 | タスク | 内容 |
 |---|---|---|
-| 1 | I-3 修正方針確定 | 選択肢A（累積封鎖）を採用。`i3_route_search.py` の封鎖リスト構築を累積方式に修正する |
-| 2 | 進捗文書の更新 | `実装タスク一覧.md`・`AGENTS.md` の c3〜i3 完了状態を更新 |
+| ~~1~~ | ~~I-3 修正方針確定~~ | ✅ 完了：選択肢A（累積封鎖）を採用・実装済み |
+| 1 | i1 再検証 | `closure_dict.pkl` の内容をダンプし、t0 が全時点の閉鎖エッジを包含している原因を確認 |
+| 2 | E-1/I-1 修正 | `e1_load_flood_data.py` と `i1_spatial_join.py` の統合ロジックを再検証し、時系列変化を表現できるか判断 |
 | 3 | I-4 SUMO 変換 | `i4_convert_sumo.py` 実装：OSMnx 道路 NW を SUMO `.net.xml` に変換 |
-| 4 | I-5 シナリオA | `origins.csv` から車両エージェントを生成・SUMO `.rou.xml` 作成・走行テスト |
+| 4 | I-5 シナリオA | `origin_points.csv` から車両エージェントを生成・SUMO `.rou.xml` 作成・走行テスト |
 | 5 | I-6 TraCI 動的封鎖 | `road_closure_timeline.json` を使って時刻別に道路閉鎖・逃げ遅れ車両ログ取得 |
 
 ---
@@ -217,7 +218,7 @@ i3 で生成済みの `origins.csv`（11メッシュ・人口723）を SUMO の�
 
 | ファイル | 内容 |
 |---------|------|
-| `output/agents/origins.csv` | メッシュ重心 lon/lat・人口 |
+| `output/agents/origin_points.csv` | メッシュ重心 lon/lat・人口 |
 | `output/agents/shelters.csv` | 避難所 lon/lat 19件 |
 | `output/sumo/joso.net.xml` | 変換済み道路NW |
 
@@ -318,11 +319,13 @@ traci.close()
 ```
 【完了】Phase 1 全スクリプト（c3/e1/i1/i2/i3）
        ↓
-【最優先】指導教員確認 → i3 モデル修正（選択肢A or B）
+【完了】i3 累積封鎖（選択肢A）実装済み
+       ↓
+【課題】i1 再検証：t0 が全時点の閉鎖エッジを包含する原因を解消
        ↓
 i4 SUMO変換 → i5 車両エージェント投入 → i6 TraCI動的封鎖
        ↓
 Phase 2 完了 → Phase 3（バス追加・A/B比較・集計）
 ```
 
-> **I-3 は選択肢A（累積封鎖）を採用。** `i3_route_search.py` の修正後、指導教員に事後報告する。
+> **I-3 は選択肢A（累積封鎖）を採用・実装済み。** ただし `road_closure_timeline.json` が t0 に全時点の閉鎖エッジを包含しているため、i1 再検証が必要。
