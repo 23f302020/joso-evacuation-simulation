@@ -70,6 +70,10 @@ SHELTER_DBF = (
     f"{DATA_DIR}/shelters"
     "/避難施設データ_茨城/P20-12_08.dbf"
 )
+N03_SHP_PATH = (
+    f"{DATA_DIR}/admin_boundary"
+    "/N03-150101_08_GML/N03-20150101_08_GML/N03-15_08_150101.shp"
+)
 SUIBOUMAP_HYDROGRAPH_PATH = (
     f"{DATA_DIR}/suiboumap/hydrograph_origins_BP030.json"
 )

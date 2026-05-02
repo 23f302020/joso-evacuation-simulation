@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import math
-import pickle
 from pathlib import Path
 from typing import Any
 
@@ -40,9 +39,11 @@ BREACH_POINT = {
     "note": "左岸19.5km。2015年実破堤点（左岸21k）に最も近い浸水ナビ破堤点候補。",
 }
 
-# t0でごく一部から始まり、t7で最終浸水範囲全体へ到達する累積シナリオ。
-# 最終浸水範囲の近傍に道路閉鎖候補が集中するため、初期段階を細かく刻む。
-SCENARIO_PROGRESS = [0.0002, 0.0005, 0.001, 0.002, 0.01, 0.02, 0.03, 1.00]
+# 破堤（12:50）から各 KML タイムスタンプまでの経過時間（h）。
+# これを総経過時間（141.5h）で割った比率を距離分位点として使用する（P1-S2 確定案）。
+_ELAPSED_H = [5.2, 17.2, 29.2, 41.2, 53.2, 65.2, 77.2, 141.5]
+_TOTAL_H = 141.5
+SCENARIO_PROGRESS = [h / _TOTAL_H for h in _ELAPSED_H]
 
 CRS_METRIC = "EPSG:6690"
 
@@ -55,21 +56,34 @@ def ensure_output_dirs() -> None:
     SCENARIO_ASSETS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def load_final_flood_area() -> tuple[str, gpd.GeoDataFrame]:
-    """既存の実データ版から最大ポリゴン数の時点を最終浸水範囲として採用する。"""
-    with open(_resolve(config.FLOOD_PKL_PATH), "rb") as f:
-        flood_dict: dict[str, gpd.GeoDataFrame] = pickle.load(f)
+def _load_joso_boundary() -> gpd.GeoDataFrame:
+    """N03 Shapefile から常総市の行政区域ポリゴンを返す（EPSG:6668）。"""
+    n03 = gpd.read_file(str(_resolve(config.N03_SHP_PATH)), engine="pyogrio")
+    joso = n03[n03["N03_007"] == config.JOSO_CODE].copy()
+    if joso.empty:
+        raise ValueError(f"N03 から常総市 ({config.JOSO_CODE}) を取得できませんでした")
+    return joso.to_crs(config.CRS_JGD2011)
 
-    final_ts, final_gdf = max(flood_dict.items(), key=lambda item: len(item[1]))
-    final_gdf = final_gdf.copy()
-    final_gdf = final_gdf[final_gdf.geometry.notna() & ~final_gdf.geometry.is_empty]
+
+def load_final_flood_area() -> gpd.GeoDataFrame:
+    """A31a waterDepth≥2 を N03 常総市境界でクリップして最終浸水範囲を返す（P1-S1 確定案）。
+
+    flood_polygons.pkl は一部時点がフォールバック（茨城県全域 8792件）を含むため、
+    A31a GML を直接ロードして常総市範囲に限定する。
+    """
+    from e1_load_flood_data import load_a31a_gml
+
+    a31a = load_a31a_gml(str(_resolve(config.GML_DIR)))
+    joso_boundary = _load_joso_boundary()
+    joso_union = gpd.GeoDataFrame(
+        geometry=[joso_boundary.geometry.union_all()], crs=config.CRS_JGD2011
+    )
+    joined = gpd.sjoin(a31a, joso_union, how="inner", predicate="intersects")
+    final_gdf = a31a.loc[joined.index.unique()].copy()
     if final_gdf.empty:
-        raise ValueError("最終浸水範囲に利用できるポリゴンがありません。")
-    if final_gdf.crs is None:
-        final_gdf = final_gdf.set_crs(config.CRS_JGD2011)
-    elif final_gdf.crs.to_string() != config.CRS_JGD2011:
-        final_gdf = final_gdf.to_crs(config.CRS_JGD2011)
-    return final_ts, final_gdf
+        raise ValueError("常総市内に A31a waterDepth≥2 ポリゴンが見つかりません")
+    print(f"[v2] final flood area: {len(final_gdf)} polygons (A31a waterDepth>=2, Joso)")
+    return final_gdf
 
 
 def build_scenario_flood_dict(
@@ -273,7 +287,6 @@ def save_data_js(payload: dict[str, Any]) -> None:
 def save_summary_csv(
     summary_rows: list[dict[str, Any]],
     closure_dict: dict[str, list[str]],
-    final_source_timestamp: str,
 ) -> None:
     rows = []
     for idx, (timestamp, row) in enumerate(zip(config.KML_TIMESTAMPS, summary_rows)):
@@ -281,7 +294,7 @@ def save_summary_csv(
             {
                 **row,
                 "closed_edge_count": len(closure_dict.get(timestamp, [])),
-                "final_source_timestamp": final_source_timestamp,
+                "flood_source": "A31a_08_10_waterDepth_ge2_Joso",
                 "breach_point": BREACH_POINT["name"],
                 "breach_lat": BREACH_POINT["lat"],
                 "breach_lon": BREACH_POINT["lon"],
@@ -879,7 +892,7 @@ def save_app_js() -> None:
 def main() -> None:
     ensure_output_dirs()
 
-    final_source_timestamp, final_flood = load_final_flood_area()
+    final_flood = load_final_flood_area()
     scenario_flood, summary_rows = build_scenario_flood_dict(final_flood)
 
     edges = load_edges(str(_resolve(config.EDGES_GPKG_PATH)))
@@ -895,9 +908,8 @@ def main() -> None:
     save_app_js()
     save_css()
     save_html()
-    save_summary_csv(summary_rows, closure_dict, final_source_timestamp)
+    save_summary_csv(summary_rows, closure_dict)
 
-    print(f"[INFO] final flood source timestamp: {final_source_timestamp}")
     print(f"[INFO] saved: {SCENARIO_HTML_PATH}")
     print(f"[INFO] saved: {SCENARIO_SUMMARY_CSV_PATH}")
 
