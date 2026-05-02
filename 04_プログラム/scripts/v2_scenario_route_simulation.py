@@ -212,6 +212,27 @@ def build_time_payload(summary_rows: list[dict[str, Any]]) -> list[dict[str, Any
     return payload
 
 
+def build_support_area_payload(G) -> dict[str, Any]:
+    """シミュレーション対応地域として道路ネットワークの範囲を返す。"""
+    lats = [float(data["y"]) for _, data in G.nodes(data=True)]
+    lons = [float(data["x"]) for _, data in G.nodes(data=True)]
+    south, north = min(lats), max(lats)
+    west, east = min(lons), max(lons)
+    lat_pad = max((north - south) * 0.2, 0.01)
+    lon_pad = max((east - west) * 0.2, 0.01)
+    return {
+        "label": "常総市道路ネットワーク範囲",
+        "bounds": [
+            [round(south, 6), round(west, 6)],
+            [round(north, 6), round(east, 6)],
+        ],
+        "maxBounds": [
+            [round(south - lat_pad, 6), round(west - lon_pad, 6)],
+            [round(north + lat_pad, 6), round(east + lon_pad, 6)],
+        ],
+    }
+
+
 def build_data_payload(
     G,
     scenario_flood: dict[str, gpd.GeoDataFrame],
@@ -222,11 +243,17 @@ def build_data_payload(
     for idx, timestamp in enumerate(config.KML_TIMESTAMPS):
         closures[f"t{idx}"] = closure_dict.get(timestamp, [])
 
-    map_center = [36.06, 139.99]
+    support_area = build_support_area_payload(G)
+    south_west, north_east = support_area["bounds"]
+    map_center = [
+        round((south_west[0] + north_east[0]) / 2, 6),
+        round((south_west[1] + north_east[1]) / 2, 6),
+    ]
     return {
         "version": SCENARIO_VERSION,
         "title": SCENARIO_TITLE,
         "map": {"center": map_center, "zoom": 12},
+        "supportArea": support_area,
         "breachPoint": BREACH_POINT,
         "times": build_time_payload(summary_rows),
         "floods": build_flood_payload(scenario_flood),
@@ -302,6 +329,10 @@ def save_html() -> None:
           <div>
             <dt>避難所</dt>
             <dd id="status-shelters">-</dd>
+          </div>
+          <div>
+            <dt>対象地域</dt>
+            <dd id="status-area">-</dd>
           </div>
         </dl>
       </section>
@@ -508,6 +539,18 @@ dd {
   background: #111827;
 }
 
+.swatch-area {
+  height: 12px;
+  border: 2px solid #047857;
+  background: transparent;
+}
+
+.swatch-outside {
+  height: 12px;
+  background: rgba(31, 41, 55, 0.18);
+  border: 1px solid rgba(31, 41, 55, 0.4);
+}
+
 @media (max-width: 860px) {
   .app-shell {
     grid-template-columns: 1fr;
@@ -532,12 +575,18 @@ def save_app_js() -> None:
   const data = window.SCENARIO_V2_DATA;
   if (!data) return;
 
-  const map = L.map("map").setView(data.map.center, data.map.zoom);
+  const supportBounds = L.latLngBounds(data.supportArea.bounds);
+  const map = L.map("map", {
+    maxBounds: data.supportArea.maxBounds,
+    maxBoundsViscosity: 0.85
+  }).setView(data.map.center, data.map.zoom);
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
     maxZoom: 19,
     attribution: "&copy; OpenStreetMap contributors &copy; CARTO"
   }).addTo(map);
 
+  const outsideLayer = L.layerGroup().addTo(map);
+  const supportLayer = L.layerGroup().addTo(map);
   const floodLayer = L.geoJSON(null, {
     style: {
       color: "#1d4ed8",
@@ -554,6 +603,36 @@ def save_app_js() -> None:
   const nodes = data.graph.nodes;
   const edgesById = new Map();
   const adjacency = new Map();
+
+  function addOutsideMask() {
+    const south = supportBounds.getSouth();
+    const north = supportBounds.getNorth();
+    const west = supportBounds.getWest();
+    const east = supportBounds.getEast();
+    const style = {
+      color: "#1f2937",
+      weight: 0,
+      fillColor: "#1f2937",
+      fillOpacity: 0.18,
+      interactive: false
+    };
+    [
+      [[-90, -180], [south, 180]],
+      [[north, -180], [90, 180]],
+      [[south, -180], [north, west]],
+      [[south, east], [north, 180]]
+    ].forEach((bounds) => L.rectangle(bounds, style).addTo(outsideLayer));
+  }
+
+  addOutsideMask();
+  L.rectangle(supportBounds, {
+    color: "#047857",
+    weight: 2,
+    dashArray: "6 4",
+    fill: false,
+    interactive: false
+  }).addTo(supportLayer);
+  map.fitBounds(supportBounds);
 
   for (const edge of data.graph.edges) {
     edgesById.set(edge.id, edge);
@@ -585,7 +664,9 @@ def save_app_js() -> None:
     div.innerHTML = [
       '<div class="legend-row"><span class="swatch swatch-flood"></span>シナリオ浸水範囲</div>',
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>',
-      '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>'
+      '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>',
+      '<div class="legend-row"><span class="swatch swatch-area"></span>対応地域</div>',
+      '<div class="legend-row"><span class="swatch swatch-outside"></span>対応地域外</div>'
     ].join("");
     return div;
   };
@@ -637,6 +718,7 @@ def save_app_js() -> None:
     document.getElementById("status-progress").textContent = `${time.progressPercent}%`;
     document.getElementById("status-closures").textContent = `${closures.length} 本`;
     document.getElementById("status-shelters").textContent = `${data.shelters.length} 施設`;
+    document.getElementById("status-area").textContent = data.supportArea.label;
   }
 
   function nearestNode(latlng) {
@@ -749,12 +831,22 @@ def save_app_js() -> None:
     activeClick = latlng;
     routeLayer.clearLayers();
     markerLayer.clearLayers();
+    const result = document.getElementById("route-result");
+
+    if (!supportBounds.contains(latlng)) {
+      result.innerHTML = [
+        "<strong>対応地域外です</strong>",
+        `${data.supportArea.label}の緑枠内をクリックしてください。`,
+        "灰色の範囲は、このシミュレーション版の対象外です。"
+      ].join("<br>");
+      return;
+    }
+
     L.marker(latlng).addTo(markerLayer);
 
     const startNode = nearestNode(latlng);
     const closedSet = new Set(data.closures[activeTime] || []);
     const route = shortestRoute(startNode, closedSet);
-    const result = document.getElementById("route-result");
 
     if (!route || route.coords.length < 2) {
       result.textContent = "この時刻では到達可能な避難所が見つかりません。";
