@@ -226,12 +226,12 @@ def build_time_payload(summary_rows: list[dict[str, Any]]) -> list[dict[str, Any
     return payload
 
 
-def build_support_area_payload(G) -> dict[str, Any]:
-    """シミュレーション対応地域として道路ネットワークの範囲を返す。"""
-    lats = [float(data["y"]) for _, data in G.nodes(data=True)]
-    lons = [float(data["x"]) for _, data in G.nodes(data=True)]
-    south, north = min(lats), max(lats)
-    west, east = min(lons), max(lons)
+def build_support_area_payload(_G) -> dict[str, Any]:
+    """シミュレーション対応地域として config.JOSO_BBOX の範囲を返す。"""
+    south = config.BBOX_SOUTH
+    north = config.BBOX_NORTH
+    west  = config.BBOX_WEST
+    east  = config.BBOX_EAST
     lat_pad = max((north - south) * 0.2, 0.01)
     lon_pad = max((east - west) * 0.2, 0.01)
     return {
