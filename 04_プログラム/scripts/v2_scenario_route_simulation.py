@@ -173,7 +173,7 @@ def build_graph_payload(G) -> dict[str, Any]:
 
 
 def build_shelter_payload(G) -> list[dict[str, Any]]:
-    shelters = load_shelters(str(_resolve(config.SHELTER_DBF)))
+    shelters = load_shelters(str(_resolve(config.SHELTER_SHP_PATH)))
     rows: list[dict[str, Any]] = []
     for idx, row in enumerate(shelters.itertuples(index=False)):
         node = find_nearest_node(G, float(row.lon), float(row.lat))

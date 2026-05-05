@@ -17,7 +17,13 @@ def ensure_output_dir(path: str) -> None:
 
 
 def get_road_network() -> MultiDiGraph:
-    return ox.graph_from_place(config.JOSO_PLACE, network_type=config.OSM_NETWORK_TYPE)
+    bbox = (
+        config.BBOX_WEST,
+        config.BBOX_SOUTH,
+        config.BBOX_EAST,
+        config.BBOX_NORTH,
+    )
+    return ox.graph_from_bbox(bbox, network_type=config.OSM_NETWORK_TYPE)
 
 
 def save_network(graph: MultiDiGraph, path: str) -> None:

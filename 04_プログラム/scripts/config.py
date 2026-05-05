@@ -6,6 +6,7 @@ CRS_JGD2000 = "EPSG:4612"   # P20 Shapefile のCRS
 # ===== 対象地域 =====
 JOSO_PLACE = "常総市, 茨城県, 日本"
 JOSO_BBOX  = (139.90, 36.00, 140.10, 36.15)  # (lon_min, lat_min, lon_max, lat_max)
+BBOX_WEST, BBOX_SOUTH, BBOX_EAST, BBOX_NORTH = JOSO_BBOX
 JOSO_CODE  = "08211"
 
 # ===== 浸水閾値 =====
@@ -60,11 +61,18 @@ OSM_NETWORK_TYPE = "drive"
 DATA_DIR   = "../data"
 OUTPUT_DIR = "../output"
 
-KML_DIR   = f"{DATA_DIR}/flood_kml"
+KML_DIR   = f"{DATA_DIR}/flood_kml/D1-No917_joso"
 GML_DIR   = f"{DATA_DIR}/flood_hazard_a31/A31a-24_08_10_GML"
+FLOOD_KML_DIR = KML_DIR
+A31a_GML_DIR = GML_DIR
+KINUGAWA_RIVER_NUMBER = "8303030018"
 MESH_FILE = (
     f"{DATA_DIR}/population_mesh"
     "/5歳階級別人口250メッシュ_茨城/tblT001178Q08.txt"
+)
+SHELTER_SHP_PATH = (
+    f"{DATA_DIR}/shelters"
+    "/避難施設データ_茨城/P20-12_08.shp"
 )
 SHELTER_DBF = (
     f"{DATA_DIR}/shelters"

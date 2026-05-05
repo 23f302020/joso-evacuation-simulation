@@ -14,7 +14,7 @@ from shapely.geometry import Polygon
 import config
 
 # KML LineString を Polygon 化するバッファ幅（m）
-_KML_BUFFER_M = 10
+_KML_BUFFER_M = 50
 _CRS_METRIC = "EPSG:6690"  # JGD2011 / UTM zone 54N
 
 # 時刻別表示色（folium可視化用）
@@ -100,6 +100,11 @@ def load_a31a_gml(gml_dir: str) -> gpd.GeoDataFrame:
 def load_kml_timeline(kml_dir: str) -> dict[str, gpd.GeoDataFrame]:
     """KML 8ファイルをタイムスタンプ順に読み込み、バッファ処理でPolygon化する。"""
     kml_files = sorted(glob.glob(f"{kml_dir}/**/*.kml", recursive=True))
+    if not kml_files:
+        fallback_dir = Path(kml_dir).parent
+        kml_files = sorted(glob.glob(f"{fallback_dir}/**/*.kml", recursive=True))
+        if kml_files:
+            print(f"[warn] KML_DIR にKMLなし → 親フォルダを使用: {fallback_dir}")
     if len(kml_files) != 8:
         print(f"[warn] KMLファイル数が {len(kml_files)} 件（期待値: 8件）")
 

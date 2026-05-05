@@ -111,8 +111,8 @@ def load_mesh_origins(mesh_file: str, flood_poly: gpd.GeoDataFrame) -> gpd.GeoDa
     )
 
 
-def load_shelters(dbf_path: str) -> gpd.GeoDataFrame:
-    shp_path = str(Path(dbf_path).with_suffix(".shp"))
+def load_shelters(shelter_path: str) -> gpd.GeoDataFrame:
+    shp_path = str(Path(shelter_path).with_suffix(".shp"))
     gdf = gpd.read_file(shp_path, engine="pyogrio")
     gdf = gdf[
         (gdf["P20_001"].astype(str) == config.JOSO_CODE)
@@ -278,7 +278,7 @@ def main() -> None:
 
     first_flood = flood_dict[config.KML_TIMESTAMPS[0]]
     origins = load_mesh_origins(config.MESH_FILE, first_flood)
-    shelters = load_shelters(config.SHELTER_DBF)
+    shelters = load_shelters(config.SHELTER_SHP_PATH)
 
     print(f"[INFO] origins: {len(origins)} mesh cells")
     print(f"[INFO] shelters: {len(shelters)} facilities")
