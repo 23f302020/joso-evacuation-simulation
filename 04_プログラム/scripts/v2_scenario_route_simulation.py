@@ -599,7 +599,6 @@ def save_app_js() -> None:
   }).addTo(map);
 
   const outsideLayer = L.layerGroup().addTo(map);
-  const supportLayer = L.layerGroup().addTo(map);
   const floodLayer = L.geoJSON(null, {
     style: {
       color: "#1d4ed8",
@@ -638,13 +637,6 @@ def save_app_js() -> None:
   }
 
   addOutsideMask();
-  L.rectangle(supportBounds, {
-    color: "#047857",
-    weight: 2,
-    dashArray: "6 4",
-    fill: false,
-    interactive: false
-  }).addTo(supportLayer);
   map.fitBounds(supportBounds);
 
   for (const edge of data.graph.edges) {
@@ -678,7 +670,6 @@ def save_app_js() -> None:
       '<div class="legend-row"><span class="swatch swatch-flood"></span>シナリオ浸水範囲</div>',
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>',
       '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>',
-      '<div class="legend-row"><span class="swatch swatch-area"></span>対応地域</div>',
       '<div class="legend-row"><span class="swatch swatch-outside"></span>対応地域外</div>'
     ].join("");
     return div;
