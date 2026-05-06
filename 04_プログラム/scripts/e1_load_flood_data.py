@@ -64,18 +64,24 @@ def load_a31a_gml(gml_dir: str) -> gpd.GeoDataFrame:
             if len(coords) >= 3:
                 surfaces[sf_id] = Polygon(coords)
 
+        # 08_10（国管理）は PlanScale、08_20（都道府県管理）は MaximumScale を使用
+        feature_tags = [
+            f"{{{_NS['ksj']}}}PlanScale",
+            f"{{{_NS['ksj']}}}MaximumScale",
+        ]
         rows = []
-        for feat in root.iter(f"{{{_NS['ksj']}}}PlanScale"):
-            bounds_el = feat.find(f"{{{_NS['ksj']}}}bounds")
-            depth_el  = feat.find(f"{{{_NS['ksj']}}}waterDepth")
-            if bounds_el is None or depth_el is None:
-                continue
-            sf_ref = bounds_el.get(f"{{{_NS['xlink']}}}href", "").lstrip("#")
-            if sf_ref not in surfaces:
-                continue
-            depth = int(depth_el.text)
-            if depth >= config.FLOOD_DEPTH_THRESHOLD:
-                rows.append({"waterDepth": depth, "geometry": surfaces[sf_ref]})
+        for tag in feature_tags:
+            for feat in root.iter(tag):
+                bounds_el = feat.find(f"{{{_NS['ksj']}}}bounds")
+                depth_el  = feat.find(f"{{{_NS['ksj']}}}waterDepth")
+                if bounds_el is None or depth_el is None:
+                    continue
+                sf_ref = bounds_el.get(f"{{{_NS['xlink']}}}href", "").lstrip("#")
+                if sf_ref not in surfaces:
+                    continue
+                depth = int(depth_el.text)
+                if depth >= config.FLOOD_DEPTH_THRESHOLD:
+                    rows.append({"waterDepth": depth, "geometry": surfaces[sf_ref]})
         return rows
 
     xml_files = glob.glob(f"{gml_dir}/**/*.xml", recursive=True)

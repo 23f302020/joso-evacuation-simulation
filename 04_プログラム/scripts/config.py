@@ -78,6 +78,14 @@ SHELTER_DBF = (
     f"{DATA_DIR}/shelters"
     "/避難施設データ_茨城/P20-12_08.dbf"
 )
+# GSI 緊急避難場所（2号・2026年版）― 洪水フラグ付き・全44市区町村対応
+GSI_SHELTERS_2_CSV = (
+    f"{DATA_DIR}/shelters"
+    "/gsi_designated_shelters_ibaraki_20260331"
+    "/08000_2_designated_emergency_evacuation_sites.csv"
+)
+# A31a 都道府県管理河川（08_20）
+A31a_GML_DIR_20 = f"{DATA_DIR}/flood_hazard_a31/A31a-24_08_20_GML"
 N03_SHP_PATH = (
     f"{DATA_DIR}/admin_boundary"
     "/N03-150101_08_GML/N03-20150101_08_GML/N03-15_08_150101.shp"
@@ -88,6 +96,8 @@ SUIBOUMAP_HYDROGRAPH_PATH = (
 
 # ===== 出力パス =====
 OUT_NETWORK_DIR = f"{OUTPUT_DIR}/network"
+OUT_CITIES_NETWORK_DIR = f"{OUTPUT_DIR}/network/cities"
+OUT_SCENARIO_CITIES_DIR = f"{OUTPUT_DIR}/scenario_cities"
 OUT_FLOOD_DIR   = f"{OUTPUT_DIR}/flood"
 OUT_CLOSURE_DIR = f"{OUTPUT_DIR}/closure"
 OUT_AGENTS_DIR  = f"{OUTPUT_DIR}/agents"
