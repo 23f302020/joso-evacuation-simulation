@@ -111,6 +111,9 @@ def write_pages_js(entries: list[dict]) -> None:
   scenario: [
     {{ title: "v2 シミュレーション版（常総市）", meta: "段階的浸水拡大・任意地点ルート検索", href: "scenario_v2/scenario_route_simulation.html" }},
   ],
+  unified: [
+    {{ title: "茨城県 統合シミュレーション", meta: "全36市区町村 ワンマップ・動的データ読込", href: "unified/scenario_route_simulation.html" }},
+  ],
   cities: [
 {cities_js}
   ],
@@ -176,6 +179,7 @@ def write_components_js() -> None:
     renderList("overview-links", pages.overview, createCard);
     renderList("route-links", pages.routes, createRouteItem);
     renderList("scenario-links", pages.scenario || [], createCard);
+    renderList("unified-links", pages.unified || [], createCard);
     renderList("city-links", pages.cities || [], createCityCard);
   });
 })();
@@ -310,6 +314,13 @@ def write_index_html(n_cities: int) -> None:
         <h2 id="scenario-heading">シミュレーション版（常総市 v2）</h2>
       </div>
       <div id="scenario-links" class="card-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="unified-heading">
+      <div class="section-heading">
+        <h2 id="unified-heading">統合シミュレーション（全市区町村 ワンマップ）</h2>
+      </div>
+      <div id="unified-links" class="card-grid"></div>
     </section>
 
     <section class="section" aria-labelledby="cities-heading">
