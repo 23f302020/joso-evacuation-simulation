@@ -264,13 +264,15 @@ def build_data_payload(
     breach_proxy: dict[str, Any],
 ) -> dict[str, Any]:
     bounds_wgs = city_boundary.to_crs(config.CRS_WGS84).total_bounds  # (minx, miny, maxx, maxy)
+    buf_lat = max((bounds_wgs[3] - bounds_wgs[1]) * 0.10, 0.01)
+    buf_lon = max((bounds_wgs[2] - bounds_wgs[0]) * 0.10, 0.01)
     lat_pad = max((bounds_wgs[3] - bounds_wgs[1]) * 0.15, 0.01)
     lon_pad = max((bounds_wgs[2] - bounds_wgs[0]) * 0.15, 0.01)
     support_area = {
         "label": f"{city_name} 道路ネットワーク範囲",
         "bounds": [
-            [round(bounds_wgs[1], 6), round(bounds_wgs[0], 6)],
-            [round(bounds_wgs[3], 6), round(bounds_wgs[2], 6)],
+            [round(bounds_wgs[1] - buf_lat, 6), round(bounds_wgs[0] - buf_lon, 6)],
+            [round(bounds_wgs[3] + buf_lat, 6), round(bounds_wgs[2] + buf_lon, 6)],
         ],
         "maxBounds": [
             [round(bounds_wgs[1] - lat_pad, 6), round(bounds_wgs[0] - lon_pad, 6)],
