@@ -61,10 +61,11 @@ def load_a31a_for_city(city_code: str, city_boundary: gpd.GeoDataFrame) -> gpd.G
 
     ディレクトリごとに読み込みを試みて、失敗した場合は警告して次を試す。
     """
-    from p1_city_road_network import A31A_COVERAGE
+    from p1_city_road_network import A31A_COVERAGE, A31A_EXCLUDED
     coverage = A31A_COVERAGE.get(city_code, [])
     if not coverage:
-        raise RuntimeError(f"{city_code}: A31a洪水データなし（要調査市区町村）")
+        reason = A31A_EXCLUDED.get(city_code, "要調査市区町村")
+        raise RuntimeError(f"{city_code}: A31a洪水データなし（{reason}）")
 
     dir_map = {
         "08_10": str(_resolve(config.GML_DIR)),
@@ -124,12 +125,16 @@ def load_city_network(city_code: str):
 def load_gsi_shelters(city_code: str) -> gpd.GeoDataFrame:
     """GSI 緊急避難場所（2号）から市区町村の洪水対応施設を返す。"""
     csv_path = str(_resolve(config.GSI_SHELTERS_2_CSV))
-    df = pd.read_csv(csv_path, encoding="utf-8-sig")
-    df["_code"] = df["共通ID"].str.extract(r"E(08\d{3})")
-    flood_df = df[(df["_code"] == city_code) & (df["洪水"] == 1.0)].copy()
+    df = pd.read_csv(csv_path, encoding="utf-8-sig", dtype=str).fillna("")
+    df["_code"] = df["共通ID"].astype(str).str.extract(r"E(08\d{3})")
+    flood_flag = df["洪水"].astype(str).str.strip()
+    flood_df = df[(df["_code"] == city_code) & (flood_flag == "1")].copy()
     if flood_df.empty:
         flood_df = df[df["_code"] == city_code].copy()
         print(f"[WARN] {city_code}: 洪水=1施設なし → 全 {len(flood_df)} 件を使用")
+    flood_df["緯度"] = pd.to_numeric(flood_df["緯度"], errors="coerce")
+    flood_df["経度"] = pd.to_numeric(flood_df["経度"], errors="coerce")
+    flood_df = flood_df.dropna(subset=["緯度", "経度"]).copy()
     gdf = gpd.GeoDataFrame(
         flood_df,
         geometry=gpd.points_from_xy(flood_df["経度"], flood_df["緯度"]),

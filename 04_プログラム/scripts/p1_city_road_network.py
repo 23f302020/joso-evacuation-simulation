@@ -124,6 +124,10 @@ A31A_COVERAGE: dict[str, list[str]] = {
     "08564": ["08_20"],           # 利根町
 }
 
+A31A_EXCLUDED: dict[str, str] = {
+    "08341": "対象外(境界内0件)",
+}
+
 # 常総市の既存グラフファイル（Phase 1 の成果物）
 JOSO_EXISTING_GRAPHML = Path(__file__).parent.parent / "output" / "network" / "joso_road_network.graphml"
 JOSO_EXISTING_GPKG    = Path(__file__).parent.parent / "output" / "network" / "joso_edges.gpkg"
@@ -151,7 +155,9 @@ def summary_path(code: str) -> Path:
 
 
 def is_acquired(code: str) -> bool:
-    return graphml_path(code).exists()
+    if code == "08211" and JOSO_EXISTING_GRAPHML.exists() and JOSO_EXISTING_GPKG.exists():
+        return True
+    return graphml_path(code).exists() and gpkg_path(code).exists()
 
 
 def load_modules():
@@ -175,11 +181,11 @@ def fetch_city(code: str, name: str, ox, gpd) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     gml_path = graphml_path(code)
-    gml_exists = gml_path.exists()
+    cache_exists = gml_path.exists() and gpkg_path(code).exists()
 
     # --- 常総市は既存ファイルを流用 ---
     if code == "08211":
-        if not gml_exists:
+        if not cache_exists:
             if JOSO_EXISTING_GRAPHML.exists():
                 import shutil
                 shutil.copy2(JOSO_EXISTING_GRAPHML, gml_path)
@@ -189,9 +195,10 @@ def fetch_city(code: str, name: str, ox, gpd) -> dict:
         if not gpkg_path(code).exists() and JOSO_EXISTING_GPKG.exists():
             import shutil
             shutil.copy2(JOSO_EXISTING_GPKG, gpkg_path(code))
+        cache_exists = gml_path.exists() and gpkg_path(code).exists()
 
     # --- OSMから取得 ---
-    if not gml_exists or code == "08211":
+    if not cache_exists:
         start = datetime.now()
         place_name = f"{name}, 茨城県, 日本"
         print(f"  [FETCH] {place_name} ...")
@@ -238,6 +245,8 @@ def fetch_city(code: str, name: str, ox, gpd) -> dict:
             "name": name,
             "status": "cached",
             "graphml": str(gml_path),
+            "gpkg": str(gpkg_path(code)),
+            "a31a_coverage": A31A_COVERAGE.get(code, []),
         }
 
     # サマリJSON保存
@@ -256,9 +265,9 @@ def print_status():
     print(f"{'-'*65}")
     acquired = 0
     for code, name in MUNICIPALITIES:
-        nw = "✅取得済" if is_acquired(code) else "❌未取得"
+        nw = "[OK]取得済" if is_acquired(code) else "[--]未取得"
         a31a = A31A_COVERAGE.get(code, [])
-        a31a_str = "+".join(a31a) if a31a else "要調査"
+        a31a_str = "+".join(a31a) if a31a else A31A_EXCLUDED.get(code, "要調査")
         print(f"{code:8} {name:20} {nw:8} {a31a_str}")
         if is_acquired(code):
             acquired += 1
@@ -304,7 +313,12 @@ def main():
         results.append(result)
 
     # 全体サマリをJSONで保存
-    summary_all = OUT_BASE / "ibaraki_network_summary.json"
+    summary_name = (
+        "ibaraki_network_summary_selected.json"
+        if args.code
+        else "ibaraki_network_summary.json"
+    )
+    summary_all = OUT_BASE / summary_name
     OUT_BASE.mkdir(parents=True, exist_ok=True)
     with open(summary_all, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
