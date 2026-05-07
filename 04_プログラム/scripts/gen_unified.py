@@ -157,6 +157,13 @@ def write_app_js() -> None:
     interactive: false
   }).addTo(maskLayer);
 
+  // ------------------------------------------------------------------ Ibaraki prefecture boundary line
+  if (window.IBARAKI_BOUNDARY) {
+    L.geoJSON(window.IBARAKI_BOUNDARY, {
+      style: { color: "#374151", weight: 2.5, fill: false, interactive: false }
+    }).addTo(map);
+  }
+
   // ------------------------------------------------------------------ static time definitions
   var TIMES = [
     { id: "t0", label: "t0", note: "2015-09-10 18:00" },
@@ -441,6 +448,23 @@ def write_app_js() -> None:
   };
   legend.addTo(map);
 
+  // ------------------------------------------------------------------ layer toggle buttons
+  function setupToggle(btnId, layer) {
+    var btn = document.getElementById(btnId);
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      if (btn.classList.contains("is-on")) {
+        btn.classList.remove("is-on");
+        map.removeLayer(layer);
+      } else {
+        btn.classList.add("is-on");
+        map.addLayer(layer);
+      }
+    });
+  }
+  setupToggle("toggle-flood", floodLayer);
+  setupToggle("toggle-closed", closedLayer);
+
   // ------------------------------------------------------------------ init
   map.on("click", function (e) { routeFromClick(e.latlng); });
   createTimeButtons();
@@ -480,8 +504,11 @@ dd{margin:0;font-weight:700}
 .swatch-flood{height:12px;background:rgba(37,99,235,0.3);border:1px solid #1d4ed8}
 .swatch-closed{background:var(--danger)}
 .swatch-route{background:#111827}
-.swatch-area{height:12px;background:transparent;border:2px dashed #047857}
 .swatch-outside{height:12px;background:rgba(31,41,55,0.22);border:1px solid rgba(31,41,55,0.4)}
+.toggle-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.toggle-btn{min-height:38px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--muted);font:inherit;font-size:13px;cursor:pointer;transition:background 120ms,border-color 120ms,color 120ms}
+.toggle-btn.is-on{border-color:var(--accent);background:#eff6ff;color:#1d4ed8;font-weight:600}
+.toggle-btn:hover,.toggle-btn:focus-visible{border-color:var(--accent);outline:none}
 @media(max-width:860px){.app-shell{grid-template-columns:1fr}.panel{border-right:0;border-bottom:1px solid var(--line)}.map-wrap,#map{min-height:66vh}}
 """
     (ASSETS_DIR / "style.css").write_text(content, encoding="utf-8")
@@ -500,6 +527,7 @@ def write_html(n_cities: int) -> None:
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="assets/prefecture_boundary.js" defer></script>
   <script src="assets/cities_manifest.js" defer></script>
   <script src="assets/app.js" defer></script>
 </head>
@@ -516,6 +544,13 @@ def write_html(n_cities: int) -> None:
       <section class="control-group">
         <h2>時刻</h2>
         <div id="time-buttons" class="time-grid"></div>
+      </section>
+      <section class="control-group">
+        <h2>表示切替</h2>
+        <div class="toggle-grid">
+          <button type="button" class="toggle-btn is-on" id="toggle-flood">浸水範囲</button>
+          <button type="button" class="toggle-btn is-on" id="toggle-closed">閉鎖道路</button>
+        </div>
       </section>
       <section class="control-group">
         <h2>状態</h2>
@@ -543,7 +578,39 @@ def write_html(n_cities: int) -> None:
     print(f"[write] {UNIFIED_DIR / 'scenario_route_simulation.html'}")
 
 
+def _ensure_prefecture_boundary() -> None:
+    """prefecture_boundary.js が存在しない場合のみ _gen_boundary.py を呼び出す。"""
+    import subprocess
+
+    boundary_js = ASSETS_DIR / "prefecture_boundary.js"
+    if boundary_js.exists():
+        print(f"[ok]    {boundary_js.name} (cached)")
+        return
+
+    gen_script = SCRIPT_DIR / "_gen_boundary.py"
+    venv_py = SCRIPT_DIR.parent / "venv" / "Scripts" / "python.exe"
+
+    def to_win(p: Path) -> str:
+        s = str(p)
+        if s.startswith("/mnt/"):
+            s = s[5].upper() + ":\\" + s[7:].replace("/", "\\")
+        return s
+
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    result = subprocess.run(
+        ["powershell.exe", "-Command", f"& '{to_win(venv_py)}' '{to_win(gen_script)}'"],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        print(f"[warn] prefecture_boundary.js の生成に失敗しました:\n{result.stderr}")
+    else:
+        print(f"[write] {boundary_js}")
+
+
 def main() -> None:
+    _ensure_prefecture_boundary()
+
     cities = []
     for code in sorted(_CITY_NAMES):
         info = extract_city_info(code)
