@@ -113,11 +113,18 @@ def write_app_js() -> None:
   var manifest = window.CITIES_MANIFEST;
   if (!manifest || !manifest.length) return;
 
-  // ------------------------------------------------------------------ map
+  // ------------------------------------------------------------------ map (restricted to Ibaraki prefecture)
+  // Ibaraki approximate bbox: SW [35.71, 139.63] NE [37.01, 140.89]
+  var IBARAKI_SW = [35.71, 139.63];
+  var IBARAKI_NE = [37.01, 140.89];
   var map = L.map("map", {
-    maxBounds: [[34.5, 138.5], [38.5, 142.0]],
-    maxBoundsViscosity: 0.7
-  }).setView([36.35, 140.45], 9);
+    maxBounds: [
+      [IBARAKI_SW[0] - 0.05, IBARAKI_SW[1] - 0.05],
+      [IBARAKI_NE[0] + 0.05, IBARAKI_NE[1] + 0.05]
+    ],
+    maxBoundsViscosity: 1.0,
+    minZoom: 9
+  }).setView([36.35, 140.28], 9);
 
   L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
     maxZoom: 19,
@@ -126,7 +133,6 @@ def write_app_js() -> None:
 
   // ------------------------------------------------------------------ layers (z-order: bottom -> top)
   var maskLayer    = L.layerGroup().addTo(map);
-  var cityLayer    = L.layerGroup().addTo(map);
   var floodLayer   = L.geoJSON(null, {
     style: { color: "#1d4ed8", weight: 1, fillColor: "#2563eb", fillOpacity: 0.28 }
   }).addTo(map);
@@ -135,30 +141,21 @@ def write_app_js() -> None:
   var routeLayer   = L.layerGroup().addTo(map);
   var markerLayer  = L.layerGroup().addTo(map);
 
-  // ------------------------------------------------------------------ gray mask (world box with city holes)
-  var outerRing = [[34, 137], [34, 143], [39, 143], [39, 137]];
-  var holes = manifest.map(function (c) {
-    var s = c.bounds[0][0], w = c.bounds[0][1];
-    var n = c.bounds[1][0], e = c.bounds[1][1];
-    return [[s, w], [s, e], [n, e], [n, w]];
-  });
-  L.polygon([outerRing].concat(holes), {
+  // ------------------------------------------------------------------ gray mask: outside Ibaraki prefecture only
+  // One polygon with a single hole = Ibaraki bbox. Non-Ibaraki Japan is grayed out.
+  var outerRing    = [[30, 128], [30, 147], [42, 147], [42, 128]];
+  var ibarakiHole  = [
+    [IBARAKI_SW[0], IBARAKI_SW[1]],
+    [IBARAKI_SW[0], IBARAKI_NE[1]],
+    [IBARAKI_NE[0], IBARAKI_NE[1]],
+    [IBARAKI_NE[0], IBARAKI_SW[1]]
+  ];
+  L.polygon([outerRing, ibarakiHole], {
     weight: 0,
     fillColor: "#1f2937",
-    fillOpacity: 0.22,
+    fillOpacity: 0.35,
     interactive: false
   }).addTo(maskLayer);
-
-  // ------------------------------------------------------------------ city boundary rectangles
-  manifest.forEach(function (city) {
-    L.rectangle(city.bounds, {
-      color: "#047857",
-      weight: 1.5,
-      dashArray: "5 4",
-      fill: false,
-      interactive: false
-    }).addTo(cityLayer);
-  });
 
   // ------------------------------------------------------------------ static time definitions
   var TIMES = [
@@ -384,9 +381,9 @@ def write_app_js() -> None:
     var city = detectCity(latlng);
     if (!city) {
       resultEl.innerHTML =
-        "<strong>対象外の地域です</strong><br>" +
-        "茨城県内36市区町村の対応エリア（緑枠内）をクリックしてください。<br>" +
-        "灰色のエリアはシミュレーション対象外です。";
+        "<strong>シミュレーション対象外です</strong><br>" +
+        "この地点は36市区町村のデータ対象範囲外です。<br>" +
+        "データが整備されている市区町村の地図上をクリックしてください。";
       return;
     }
 
@@ -439,8 +436,7 @@ def write_app_js() -> None:
       '<div class="legend-row"><span class="swatch swatch-flood"></span>浸水想定区域</div>' +
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>' +
       '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>' +
-      '<div class="legend-row"><span class="swatch swatch-area"></span>対応エリア（緑枠）</div>' +
-      '<div class="legend-row"><span class="swatch swatch-outside"></span>対象外</div>';
+      '<div class="legend-row"><span class="swatch swatch-outside"></span>茨城県外（対象外）</div>';
     return div;
   };
   legend.addTo(map);
@@ -515,7 +511,7 @@ def write_html(n_cities: int) -> None:
       <p class="lead">
         茨城県内{n_cities}市区町村を対象とした統合シミュレーション。
         時刻を選び、地図上をクリックすると浸水回避ルートを検索します。
-        灰色のエリアは対象外です。
+        データが整備されていない地点は「対象外」と表示されます。
       </p>
       <section class="control-group">
         <h2>時刻</h2>
