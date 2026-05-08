@@ -301,6 +301,9 @@ h1 { margin: 4px 0 0; font-size: 28px; font-weight: 700; letter-spacing: 0; }
 h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 .section-note { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.reference-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.reference-block { min-width: 0; }
+.reference-title { margin: 0 0 8px; font-size: 14px; color: var(--muted); font-weight: 700; }
 .card-link, .route-link {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -390,23 +393,9 @@ def write_index_html(n_cities: int) -> None:
   </header>
 
   <main class="page-shell">
-    <section class="section" aria-labelledby="overview-heading">
-      <div class="section-heading">
-        <h2 id="overview-heading">地図</h2>
-      </div>
-      <div id="overview-links" class="card-grid"></div>
-    </section>
-
-    <section class="section" aria-labelledby="routes-heading">
-      <div class="section-heading">
-        <h2 id="routes-heading">避難ルート（実データ版）</h2>
-      </div>
-      <div id="route-links" class="route-list"></div>
-    </section>
-
     <section class="section" aria-labelledby="unified-heading">
       <div class="section-heading">
-        <h2 id="unified-heading">茨城県拡張シミュレーション（36市区町村）</h2>
+        <h2 id="unified-heading">茨城県シミュレーション（{n_cities}市区町村）</h2>
       </div>
       <p class="section-note">県内拡張版はこちらです。クリック地点に応じて対象市区町村のデータを読み込みます。</p>
       <div id="unified-links" class="card-grid"></div>
@@ -445,6 +434,23 @@ def write_index_html(n_cities: int) -> None:
       </div>
       <p class="section-note">下記はA31a浸水想定区域データが境界内に存在しないため、シナリオ生成対象外です。</p>
       <ul id="unavailable-links" class="unavailable-list"></ul>
+    </section>
+
+    <section class="section" aria-labelledby="reference-heading">
+      <div class="section-heading">
+        <h2 id="reference-heading">参考：地図・避難ルート（実データ版）</h2>
+      </div>
+      <p class="section-note">常総市の実データ版成果物です。茨城県シミュレーションの確認後に参照します。</p>
+      <div class="reference-grid">
+        <div class="reference-block">
+          <h3 class="reference-title" id="overview-heading">地図</h3>
+          <div id="overview-links" class="card-grid"></div>
+        </div>
+        <div class="reference-block">
+          <h3 class="reference-title" id="routes-heading">避難ルート</h3>
+          <div id="route-links" class="route-list"></div>
+        </div>
+      </div>
     </section>
   </main>
 </body>
