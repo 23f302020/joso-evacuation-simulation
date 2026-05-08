@@ -30,6 +30,7 @@ _CITY_NAMES: dict[str, str] = {
     "08201": "水戸市",
     "08202": "日立市",
     "08203": "土浦市",
+    "08204": "古河市",
     "08205": "石岡市",
     "08207": "結城市",
     "08208": "龍ケ崎市",
@@ -48,6 +49,7 @@ _CITY_NAMES: dict[str, str] = {
     "08225": "常陸大宮市",
     "08226": "那珂市",
     "08227": "筑西市",
+    "08228": "坂東市",
     "08229": "稲敷市",
     "08230": "かすみがうら市",
     "08231": "桜川市",
@@ -62,6 +64,8 @@ _CITY_NAMES: dict[str, str] = {
     "08442": "美浦村",
     "08443": "阿見町",
     "08447": "河内町",
+    "08521": "八千代町",
+    "08546": "境町",
     "08564": "利根町",
 }
 
@@ -85,11 +89,15 @@ def extract_city_info(code: str) -> dict | None:
         return None
     center = [float(c_m.group(1)), float(c_m.group(2))]
 
+    payload = _load_city_payload(code)
+    boundary = payload.get("cityBoundary") if payload else None
+
     return {
         "code": code,
         "name": _CITY_NAMES.get(code, code),
         "bounds": bounds,
         "center": center,
+        "boundary": boundary,
     }
 
 
@@ -112,10 +120,18 @@ def write_cities_manifest(cities: list[dict]) -> None:
     for city in cities:
         b = json.dumps(city["bounds"], separators=(",", ":"))
         c = json.dumps(city["center"], separators=(",", ":"))
-        lines.append(
-            f'  {{code:"{city["code"]}",name:"{city["name"]}",'
-            f"bounds:{b},center:{c}}}"
-        )
+        boundary = city.get("boundary")
+        if boundary:
+            bd = json.dumps(boundary, ensure_ascii=False, separators=(",", ":"))
+            lines.append(
+                f'  {{code:"{city["code"]}",name:"{city["name"]}",'
+                f"bounds:{b},center:{c},boundary:{bd}}}"
+            )
+        else:
+            lines.append(
+                f'  {{code:"{city["code"]}",name:"{city["name"]}",'
+                f"bounds:{b},center:{c}}}"
+            )
     content = "window.CITIES_MANIFEST = [\n" + ",\n".join(lines) + "\n];\n"
     (ASSETS_DIR / "cities_manifest.js").write_text(content, encoding="utf-8")
     print(f"[write] {ASSETS_DIR / 'cities_manifest.js'}  ({len(cities)} 都市)")
@@ -410,13 +426,18 @@ def write_app_js() -> None:
     cityLayer.clearLayers();
     cities.forEach(function (city) {
       var active = currentCity && currentCity.code === city.code;
-      L.rectangle(city.bounds, {
-        color: active ? "#047857" : "#64748b",
-        weight: active ? 2.5 : 1.2,
-        fill: false,
-        opacity: active ? 0.9 : 0.45,
-        interactive: false
-      }).bindTooltip(city.name, { sticky: true }).addTo(cityLayer);
+      var color = active ? "#374151" : "#64748b";
+      var weight = active ? 2.5 : 1.2;
+      var opacity = active ? 0.9 : 0.45;
+      if (city.boundary) {
+        L.geoJSON(city.boundary, {
+          style: { color: color, weight: weight, fill: false, opacity: opacity, interactive: false }
+        }).bindTooltip(city.name, { sticky: true }).addTo(cityLayer);
+      } else {
+        L.rectangle(city.bounds, {
+          color: color, weight: weight, fill: false, opacity: opacity, interactive: false
+        }).bindTooltip(city.name, { sticky: true }).addTo(cityLayer);
+      }
     });
   }
 
