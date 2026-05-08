@@ -19,6 +19,12 @@
 # デバッグダンプ
 **/bash.exe.stackdump
 
+# GeoDataフォーマット補助ファイル（自動生成）
+*.gfs
+
+# ログファイル
+04_プログラム/*.log
+
 # OS生成ファイル
 .DS_Store
 Thumbs.db

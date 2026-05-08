@@ -24,6 +24,7 @@ OUTPUT_DIR = SCRIPT_DIR.parent / "output"
 UNIFIED_DIR = OUTPUT_DIR / "unified"
 ASSETS_DIR = UNIFIED_DIR / "assets"
 CITIES_DIR = OUTPUT_DIR / "scenario_cities"
+LAYER_DIR = ASSETS_DIR / "prefecture_layers"
 
 _CITY_NAMES: dict[str, str] = {
     "08201": "水戸市",
@@ -92,6 +93,19 @@ def extract_city_info(code: str) -> dict | None:
     }
 
 
+def _load_city_payload(code: str) -> dict | None:
+    data_js = CITIES_DIR / code / "assets" / "data.js"
+    if not data_js.exists():
+        return None
+    text = data_js.read_text(encoding="utf-8", errors="replace")
+    if "=" not in text:
+        return None
+    body = text.split("=", 1)[1].strip()
+    if body.endswith(";"):
+        body = body[:-1]
+    return json.loads(body)
+
+
 def write_cities_manifest(cities: list[dict]) -> None:
     ASSETS_DIR.mkdir(parents=True, exist_ok=True)
     lines = []
@@ -105,6 +119,59 @@ def write_cities_manifest(cities: list[dict]) -> None:
     content = "window.CITIES_MANIFEST = [\n" + ",\n".join(lines) + "\n];\n"
     (ASSETS_DIR / "cities_manifest.js").write_text(content, encoding="utf-8")
     print(f"[write] {ASSETS_DIR / 'cities_manifest.js'}  ({len(cities)} 都市)")
+
+
+def write_prefecture_layers(cities: list[dict]) -> None:
+    """県全体/近辺表示用に、浸水範囲と閉鎖道路だけの軽量データを時刻別に出力する。"""
+    LAYER_DIR.mkdir(parents=True, exist_ok=True)
+    city_payloads = []
+    for city in cities:
+        payload = _load_city_payload(city["code"])
+        if not payload:
+            continue
+        edge_by_id = {edge["id"]: edge for edge in payload["graph"]["edges"]}
+        city_payloads.append((city, payload, edge_by_id))
+
+    time_ids = [f"t{i}" for i in range(8)]
+    for time_id in time_ids:
+        layer = {
+            "timeId": time_id,
+            "floods": {"type": "FeatureCollection", "features": []},
+            "closures": [],
+        }
+        for city, payload, edge_by_id in city_payloads:
+            flood = payload["floods"].get(time_id, {"type": "FeatureCollection", "features": []})
+            for feature in flood.get("features", []):
+                props = dict(feature.get("properties") or {})
+                props["cityCode"] = city["code"]
+                props["cityName"] = city["name"]
+                layer["floods"]["features"].append({
+                    "type": feature.get("type", "Feature"),
+                    "geometry": feature.get("geometry"),
+                    "properties": props,
+                })
+            for edge_id in payload["closures"].get(time_id, []):
+                edge = edge_by_id.get(edge_id)
+                if not edge:
+                    continue
+                layer["closures"].append({
+                    "cityCode": city["code"],
+                    "cityName": city["name"],
+                    "edgeId": edge_id,
+                    "coords": edge["coords"],
+                })
+
+        content = (
+            "window.PREFECTURE_SCENARIO_LAYER = "
+            + json.dumps(layer, ensure_ascii=False, separators=(",", ":"))
+            + ";\n"
+        )
+        out_path = LAYER_DIR / f"{time_id}.js"
+        out_path.write_text(content, encoding="utf-8")
+        print(
+            f"[write] {out_path} "
+            f"(flood={len(layer['floods']['features'])}, closure={len(layer['closures'])})"
+        )
 
 
 def write_app_js() -> None:
@@ -133,6 +200,7 @@ def write_app_js() -> None:
 
   // ------------------------------------------------------------------ layers (z-order: bottom -> top)
   var maskLayer    = L.layerGroup().addTo(map);
+  var cityLayer    = L.layerGroup().addTo(map);
   var floodLayer   = L.geoJSON(null, {
     style: { color: "#1d4ed8", weight: 1, fillColor: "#2563eb", fillOpacity: 0.28 }
   }).addTo(map);
@@ -180,10 +248,17 @@ def write_app_js() -> None:
   var activeClick = null;
   var currentCity = null;
   var currentData = null;
+  var displayScope = "nearby";
+  var showFlood = true;
+  var showClosed = true;
   var dataCache   = {};
+  var prefLayerCache = {};
   var structCache = {};
+  var layerRenderToken = 0;
+  var NEARBY_DISTANCE_KM = 35;
   // Sequential loader lock — prevents concurrent script loads overwriting window.SCENARIO_V2_DATA
   var loadLock = Promise.resolve();
+  var prefLayerLock = Promise.resolve();
 
   // ------------------------------------------------------------------ time buttons
   function createTimeButtons() {
@@ -206,13 +281,29 @@ def write_app_js() -> None:
     document.querySelectorAll(".time-button").forEach(function (btn) {
       btn.setAttribute("aria-pressed", btn.dataset.timeId === id ? "true" : "false");
     });
-    if (currentData) {
-      updateScenarioLayers();
-      if (activeClick) routeFromClick(activeClick);
-    }
+    updateScenarioLayers();
+    if (currentData && activeClick) routeFromClick(activeClick);
   }
 
   // ------------------------------------------------------------------ city detection
+  function asLatLng(value) {
+    if (Array.isArray(value)) return { lat: value[0], lng: value[1] };
+    return value;
+  }
+
+  function distanceKm(a, b) {
+    a = asLatLng(a);
+    b = asLatLng(b);
+    var lat1 = a.lat * Math.PI / 180;
+    var lat2 = b.lat * Math.PI / 180;
+    var dLat = (b.lat - a.lat) * Math.PI / 180;
+    var dLng = (b.lng - a.lng) * Math.PI / 180;
+    var s = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1) * Math.cos(lat2) *
+      Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    return 6371 * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s));
+  }
+
   function detectCity(latlng) {
     var hits = [];
     manifest.forEach(function (city) {
@@ -227,6 +318,34 @@ def write_app_js() -> None:
     if (!hits.length) return null;
     hits.sort(function (a, b) { return a.d2 - b.d2; });
     return hits[0].city;
+  }
+
+  function nearestCity(latlng) {
+    var best = null;
+    var bestD = Infinity;
+    manifest.forEach(function (city) {
+      var d = distanceKm(latlng, city.center);
+      if (d < bestD) {
+        best = city;
+        bestD = d;
+      }
+    });
+    return best;
+  }
+
+  function baseCityForNearby() {
+    if (currentCity) return currentCity;
+    var center = map.getCenter();
+    return detectCity(center) || nearestCity(center);
+  }
+
+  function displayCities() {
+    if (displayScope === "prefecture") return manifest.slice();
+    var base = baseCityForNearby();
+    if (!base) return [];
+    return manifest.filter(function (city) {
+      return city.code === base.code || distanceKm(base.center, city.center) <= NEARBY_DISTANCE_KM;
+    });
   }
 
   // ------------------------------------------------------------------ sequential data loader
@@ -251,6 +370,27 @@ def write_app_js() -> None:
     return p;
   }
 
+  function loadPrefectureLayer(timeId) {
+    if (prefLayerCache[timeId]) return Promise.resolve(prefLayerCache[timeId]);
+    var p = prefLayerLock.then(function () {
+      if (prefLayerCache[timeId]) return prefLayerCache[timeId];
+      return new Promise(function (resolve, reject) {
+        var script = document.createElement("script");
+        script.src = "assets/prefecture_layers/" + timeId + ".js";
+        script.onload = function () {
+          var d = window.PREFECTURE_SCENARIO_LAYER;
+          if (!d || d.timeId !== timeId) { reject(new Error("no layer: " + timeId)); return; }
+          prefLayerCache[timeId] = d;
+          resolve(d);
+        };
+        script.onerror = function () { reject(new Error("layer load failed: " + timeId)); };
+        document.head.appendChild(script);
+      });
+    });
+    prefLayerLock = p.catch(function () {});
+    return p;
+  }
+
   // ------------------------------------------------------------------ adjacency cache
   function getStructures(code, data) {
     if (structCache[code]) return structCache[code];
@@ -266,28 +406,89 @@ def write_app_js() -> None:
   }
 
   // ------------------------------------------------------------------ scenario layers
-  function updateScenarioLayers() {
-    if (!currentData || !currentCity) return;
-    var data     = currentData;
-    var st       = getStructures(currentCity.code, data);
-    var closures = data.closures[activeTime] || [];
-
-    floodLayer.clearLayers();
-    if (data.floods[activeTime]) floodLayer.addData(data.floods[activeTime]);
-
-    closedLayer.clearLayers();
-    closures.forEach(function (eId) {
-      var edge = st.edgesById.get(eId);
-      if (!edge) return;
-      L.polyline(edge.coords, { color: "#dc2626", weight: 3, opacity: 0.65 }).addTo(closedLayer);
+  function renderCityBounds(cities) {
+    cityLayer.clearLayers();
+    cities.forEach(function (city) {
+      var active = currentCity && currentCity.code === city.code;
+      L.rectangle(city.bounds, {
+        color: active ? "#047857" : "#64748b",
+        weight: active ? 2.5 : 1.2,
+        fill: false,
+        opacity: active ? 0.9 : 0.45,
+        interactive: false
+      }).bindTooltip(city.name, { sticky: true }).addTo(cityLayer);
     });
+  }
 
+  function updateStatusFromCurrentData(layerLabel, visibleClosureCount) {
+    var layerScope = document.getElementById("status-layer-scope");
+    if (layerScope) layerScope.textContent = layerLabel || "-";
+
+    if (!currentData || !currentCity) {
+      document.getElementById("status-city").textContent = "-";
+      document.getElementById("status-progress").textContent = "-";
+      document.getElementById("status-closures").textContent =
+        visibleClosureCount == null ? "-" : visibleClosureCount + " 本";
+      document.getElementById("status-shelters").textContent = "-";
+      return;
+    }
+
+    var data = currentData;
+    var closures = data.closures[activeTime] || [];
     var tObj = null;
     data.times.forEach(function (t) { if (t.id === activeTime) tObj = t; });
-    document.getElementById("status-city").textContent     = currentCity.name;
+    document.getElementById("status-city").textContent = currentCity.name;
     document.getElementById("status-progress").textContent = tObj ? tObj.progressPercent + "%" : "-";
-    document.getElementById("status-closures").textContent = closures.length + " 本";
+    document.getElementById("status-closures").textContent =
+      visibleClosureCount == null
+        ? closures.length + " 本"
+        : "選択都市 " + closures.length + " 本 / 表示 " + visibleClosureCount + " 本";
     document.getElementById("status-shelters").textContent = data.shelters.length + " 施設";
+  }
+
+  function renderScopedLayers() {
+    var token = ++layerRenderToken;
+    var cities = displayCities();
+    var codes = new Set(cities.map(function (city) { return city.code; }));
+    var label = displayScope === "prefecture"
+      ? "県全体 " + cities.length + "市区町村"
+      : "近辺 " + cities.length + "市区町村";
+
+    renderCityBounds(cities);
+    updateStatusFromCurrentData(label + " / 読込中", null);
+
+    return loadPrefectureLayer(activeTime).then(function (layer) {
+      if (token !== layerRenderToken) return;
+      floodLayer.clearLayers();
+      closedLayer.clearLayers();
+
+      if (showFlood) {
+        var features = layer.floods.features.filter(function (feature) {
+          return codes.has(feature.properties.cityCode);
+        });
+        floodLayer.addData({ type: "FeatureCollection", features: features });
+      }
+
+      var visibleClosureCount = 0;
+      if (showClosed) {
+        layer.closures.forEach(function (edge) {
+          if (!codes.has(edge.cityCode)) return;
+          visibleClosureCount += 1;
+          L.polyline(edge.coords, { color: "#dc2626", weight: 2.2, opacity: 0.55 }).addTo(closedLayer);
+        });
+      }
+
+      updateStatusFromCurrentData(label, showClosed ? visibleClosureCount : 0);
+    }).catch(function () {
+      if (token !== layerRenderToken) return;
+      floodLayer.clearLayers();
+      closedLayer.clearLayers();
+      updateStatusFromCurrentData(label + " / レイヤー読込失敗", null);
+    });
+  }
+
+  function updateScenarioLayers() {
+    renderScopedLayers();
   }
 
   // ------------------------------------------------------------------ Dijkstra
@@ -398,7 +599,7 @@ def write_app_js() -> None:
     resultEl.textContent = city.name + " のデータを読み込み中...";
 
     loadCityData(city.code).then(function (data) {
-      if (!currentData || currentCity.code !== city.code) {
+      if (!currentData || !currentCity || currentCity.code !== city.code) {
         shelterLayer.clearLayers();
         currentCity = city;
         currentData = data;
@@ -407,8 +608,10 @@ def write_app_js() -> None:
             radius: 5, color: "#047857", fillColor: "#10b981", fillOpacity: 0.8, weight: 1
           }).bindPopup(s.name + "<br>収容人数: " + s.capacity).addTo(shelterLayer);
         });
-        updateScenarioLayers();
       }
+      currentCity = city;
+      currentData = data;
+      updateScenarioLayers();
 
       var st        = getStructures(city.code, data);
       var startNode = nearestNode(data.graph.nodes, latlng);
@@ -443,31 +646,53 @@ def write_app_js() -> None:
       '<div class="legend-row"><span class="swatch swatch-flood"></span>浸水想定区域</div>' +
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>' +
       '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>' +
+      '<div class="legend-row"><span class="swatch swatch-city"></span>表示中の市区町村範囲</div>' +
       '<div class="legend-row"><span class="swatch swatch-outside"></span>茨城県外（対象外）</div>';
     return div;
   };
   legend.addTo(map);
 
   // ------------------------------------------------------------------ layer toggle buttons
-  function setupToggle(btnId, layer) {
+  function setupToggle(btnId, key) {
     var btn = document.getElementById(btnId);
     if (!btn) return;
     btn.addEventListener("click", function () {
       if (btn.classList.contains("is-on")) {
         btn.classList.remove("is-on");
-        map.removeLayer(layer);
+        if (key === "flood") showFlood = false;
+        if (key === "closed") showClosed = false;
       } else {
         btn.classList.add("is-on");
-        map.addLayer(layer);
+        if (key === "flood") showFlood = true;
+        if (key === "closed") showClosed = true;
       }
+      renderScopedLayers();
     });
   }
-  setupToggle("toggle-flood", floodLayer);
-  setupToggle("toggle-closed", closedLayer);
+  setupToggle("toggle-flood", "flood");
+  setupToggle("toggle-closed", "closed");
+
+  function setupScopeButtons() {
+    document.querySelectorAll("[data-scope]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        displayScope = btn.dataset.scope;
+        document.querySelectorAll("[data-scope]").forEach(function (item) {
+          item.classList.toggle("is-on", item.dataset.scope === displayScope);
+          item.setAttribute("aria-pressed", item.dataset.scope === displayScope ? "true" : "false");
+        });
+        renderScopedLayers();
+      });
+    });
+  }
 
   // ------------------------------------------------------------------ init
   map.on("click", function (e) { routeFromClick(e.latlng); });
+  map.on("moveend", function () {
+    if (displayScope === "nearby" && !currentCity) renderScopedLayers();
+  });
   createTimeButtons();
+  setupScopeButtons();
+  renderScopedLayers();
 })();
 """
     (ASSETS_DIR / "app.js").write_text(content, encoding="utf-8")
@@ -504,11 +729,12 @@ dd{margin:0;font-weight:700}
 .swatch-flood{height:12px;background:rgba(37,99,235,0.3);border:1px solid #1d4ed8}
 .swatch-closed{background:var(--danger)}
 .swatch-route{background:#111827}
+.swatch-city{height:12px;border:2px solid #64748b;background:transparent}
 .swatch-outside{height:12px;background:rgba(31,41,55,0.22);border:1px solid rgba(31,41,55,0.4)}
-.toggle-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.toggle-btn{min-height:38px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--muted);font:inherit;font-size:13px;cursor:pointer;transition:background 120ms,border-color 120ms,color 120ms}
-.toggle-btn.is-on{border-color:var(--accent);background:#eff6ff;color:#1d4ed8;font-weight:600}
-.toggle-btn:hover,.toggle-btn:focus-visible{border-color:var(--accent);outline:none}
+.toggle-grid,.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.toggle-btn,.scope-btn{min-height:38px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--muted);font:inherit;font-size:13px;cursor:pointer;transition:background 120ms,border-color 120ms,color 120ms}
+.toggle-btn.is-on,.scope-btn.is-on{border-color:var(--accent);background:#eff6ff;color:#1d4ed8;font-weight:600}
+.toggle-btn:hover,.toggle-btn:focus-visible,.scope-btn:hover,.scope-btn:focus-visible{border-color:var(--accent);outline:none}
 @media(max-width:860px){.app-shell{grid-template-columns:1fr}.panel{border-right:0;border-bottom:1px solid var(--line)}.map-wrap,#map{min-height:66vh}}
 """
     (ASSETS_DIR / "style.css").write_text(content, encoding="utf-8")
@@ -546,15 +772,23 @@ def write_html(n_cities: int) -> None:
         <div id="time-buttons" class="time-grid"></div>
       </section>
       <section class="control-group">
+        <h2>表示範囲</h2>
+        <div class="scope-grid">
+          <button type="button" class="scope-btn is-on" data-scope="nearby" aria-pressed="true">近辺都市</button>
+          <button type="button" class="scope-btn" data-scope="prefecture" aria-pressed="false">県全体</button>
+        </div>
+      </section>
+      <section class="control-group">
         <h2>表示切替</h2>
         <div class="toggle-grid">
-          <button type="button" class="toggle-btn is-on" id="toggle-flood">浸水範囲</button>
+          <button type="button" class="toggle-btn is-on" id="toggle-flood">浸水想定区域</button>
           <button type="button" class="toggle-btn is-on" id="toggle-closed">閉鎖道路</button>
         </div>
       </section>
       <section class="control-group">
         <h2>状態</h2>
         <dl class="status-list">
+          <div><dt>表示対象</dt><dd id="status-layer-scope">-</dd></div>
           <div><dt>選択中の都市</dt><dd id="status-city">-</dd></div>
           <div><dt>浸水進行</dt><dd id="status-progress">-</dd></div>
           <div><dt>閉鎖道路</dt><dd id="status-closures">-</dd></div>
@@ -621,6 +855,7 @@ def main() -> None:
 
     print(f"\n{len(cities)} 都市を検出")
     write_cities_manifest(cities)
+    write_prefecture_layers(cities)
     write_app_js()
     write_style_css()
     write_html(len(cities))
