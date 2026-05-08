@@ -58,6 +58,17 @@ _CITY_NAMES: dict[str, str] = {
     "08564": "利根町",
 }
 
+_UNAVAILABLE_CITIES: list[dict[str, str]] = [
+    {"title": "古河市", "meta": "08204", "reason": "A31a境界内データ確認待ち"},
+    {"title": "鹿嶋市", "meta": "08222", "reason": "A31a境界内データ確認待ち"},
+    {"title": "坂東市", "meta": "08228", "reason": "A31a境界内データ確認待ち"},
+    {"title": "神栖市", "meta": "08232", "reason": "A31a境界内データ確認待ち"},
+    {"title": "東海村", "meta": "08341", "reason": "A31a境界内0件のため対象外"},
+    {"title": "八千代町", "meta": "08521", "reason": "A31a境界内データ確認待ち"},
+    {"title": "五霞町", "meta": "08542", "reason": "A31a境界内データ確認待ち"},
+    {"title": "境町", "meta": "08546", "reason": "A31a境界内データ確認待ち"},
+]
+
 
 def _city_entries() -> list[dict]:
     cities_dir = OUTPUT_DIR / "scenario_cities"
@@ -99,6 +110,10 @@ def write_pages_js(entries: list[dict]) -> None:
         f'    {{ title: "{e["title"]}", meta: "{e["meta"]}", href: "{e["href"]}" }},'
         for e in entries
     )
+    unavailable_js = "\n".join(
+        f'    {{ title: "{e["title"]}", meta: "{e["meta"]}", reason: "{e["reason"]}" }},'
+        for e in _UNAVAILABLE_CITIES
+    )
 
     content = f"""window.PHASE1_PAGES = {{
   overview: [
@@ -109,13 +124,16 @@ def write_pages_js(entries: list[dict]) -> None:
 {routes_js}
   ],
   scenario: [
-    {{ title: "v2 シミュレーション版（常総市）", meta: "段階的浸水拡大・任意地点ルート検索", href: "scenario_v2/scenario_route_simulation.html" }},
+    {{ title: "常総市シミュレーション（参考）", meta: "常総市のみ対象。県内拡張版は上の統合版を使用", href: "scenario_v2/scenario_route_simulation.html" }},
   ],
   unified: [
-    {{ title: "茨城県 統合シミュレーション", meta: "全36市区町村 ワンマップ・動的データ読込", href: "unified/scenario_route_simulation.html" }},
+    {{ title: "茨城県36市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
   ],
   cities: [
 {cities_js}
+  ],
+  unavailable: [
+{unavailable_js}
   ],
 }};
 """
@@ -127,7 +145,7 @@ def write_components_js() -> None:
     content = """(function () {
   function createCard(page) {
     const link = document.createElement("a");
-    link.className = "card-link";
+    link.className = page.primary ? "card-link card-link-primary" : "card-link";
     link.href = page.href;
     const title = document.createElement("span");
     title.className = "card-title";
@@ -167,10 +185,64 @@ def write_components_js() -> None:
     return link;
   }
 
+  function createUnavailableItem(page) {
+    const item = document.createElement("li");
+    item.className = "unavailable-item";
+    const title = document.createElement("span");
+    title.className = "unavailable-title";
+    title.textContent = page.title;
+    const meta = document.createElement("span");
+    meta.className = "unavailable-meta";
+    meta.textContent = `${page.meta} / ${page.reason}`;
+    item.append(title, meta);
+    return item;
+  }
+
   function renderList(targetId, pages, createItem) {
     const target = document.getElementById(targetId);
     if (!target) return;
     target.replaceChildren(...pages.map(createItem));
+  }
+
+  function normalizeText(value) {
+    return String(value || "").toLowerCase().replace(/\\s+/g, "");
+  }
+
+  function renderCities(pages) {
+    const target = document.getElementById("city-links");
+    if (!target) return;
+
+    const search = document.getElementById("city-search");
+    const select = document.getElementById("city-select");
+    const count = document.getElementById("city-count");
+
+    if (select && select.options.length === 0) {
+      const all = document.createElement("option");
+      all.value = "";
+      all.textContent = "すべての市区町村";
+      select.appendChild(all);
+      pages.forEach(function (page) {
+        const option = document.createElement("option");
+        option.value = page.meta;
+        option.textContent = `${page.title}（${page.meta}）`;
+        select.appendChild(option);
+      });
+    }
+
+    function applyFilter() {
+      const query = normalizeText(search ? search.value : "");
+      const selected = select ? select.value : "";
+      const filtered = pages.filter(function (page) {
+        const haystack = normalizeText(`${page.title}${page.meta}`);
+        return (!selected || page.meta === selected) && (!query || haystack.includes(query));
+      });
+      target.replaceChildren(...filtered.map(createCityCard));
+      if (count) count.textContent = `${filtered.length} / ${pages.length} 件`;
+    }
+
+    if (search) search.addEventListener("input", applyFilter);
+    if (select) select.addEventListener("change", applyFilter);
+    applyFilter();
   }
 
   window.addEventListener("DOMContentLoaded", function () {
@@ -180,7 +252,8 @@ def write_components_js() -> None:
     renderList("route-links", pages.routes, createRouteItem);
     renderList("scenario-links", pages.scenario || [], createCard);
     renderList("unified-links", pages.unified || [], createCard);
-    renderList("city-links", pages.cities || [], createCityCard);
+    renderCities(pages.cities || []);
+    renderList("unavailable-links", pages.unavailable || [], createUnavailableItem);
   });
 })();
 """
@@ -225,6 +298,7 @@ h1 { margin: 4px 0 0; font-size: 28px; font-weight: 700; letter-spacing: 0; }
 .section + .section { margin-top: 36px; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
+.section-note { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .card-link, .route-link {
   border: 1px solid var(--line);
@@ -239,6 +313,7 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
   outline: none;
 }
 .card-link { display: flex; flex-direction: column; min-height: 92px; padding: 18px; }
+.card-link-primary { border-color: #93c5fd; background: #eff6ff; }
 .card-title { font-size: 17px; font-weight: 700; }
 .card-meta, .route-meta { color: var(--muted); font-size: 13px; }
 .card-meta { margin-top: 6px; }
@@ -246,6 +321,20 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 .route-link { display: flex; flex-direction: column; min-height: 76px; padding: 14px; }
 .route-title { font-size: 16px; font-weight: 700; }
 .route-meta { margin-top: 3px; }
+.city-tools { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(220px, 1fr) auto; gap: 10px; align-items: end; margin-bottom: 12px; }
+.city-tool { display: flex; flex-direction: column; gap: 4px; color: var(--muted); font-size: 12px; }
+.city-search, .city-select {
+  width: 100%;
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 8px 10px;
+  font: inherit;
+}
+.city-search:focus, .city-select:focus { border-color: var(--accent); outline: none; }
+.city-count { color: var(--muted); font-size: 13px; white-space: nowrap; }
 .city-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .city-card-link {
   display: flex;
@@ -264,10 +353,15 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 }
 .city-card-title { font-size: 14px; font-weight: 700; }
 .city-card-meta { margin-top: 2px; color: var(--muted); font-size: 12px; }
+.unavailable-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.unavailable-item { min-height: 58px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.unavailable-title { display: block; font-size: 14px; font-weight: 700; }
+.unavailable-meta { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
 @media (max-width: 760px) {
   .page-header { display: block; padding-top: 28px; }
   .updated { margin-top: 12px; }
-  .card-grid, .route-list, .city-grid { grid-template-columns: 1fr; }
+  .card-grid, .route-list, .city-grid, .city-tools, .unavailable-list { grid-template-columns: 1fr; }
+  .city-count { white-space: normal; }
 }
 """
     (ASSETS_DIR / "phase1.css").write_text(content, encoding="utf-8")
@@ -309,17 +403,11 @@ def write_index_html(n_cities: int) -> None:
       <div id="route-links" class="route-list"></div>
     </section>
 
-    <section class="section" aria-labelledby="scenario-heading">
-      <div class="section-heading">
-        <h2 id="scenario-heading">シミュレーション版（常総市 v2）</h2>
-      </div>
-      <div id="scenario-links" class="card-grid"></div>
-    </section>
-
     <section class="section" aria-labelledby="unified-heading">
       <div class="section-heading">
-        <h2 id="unified-heading">統合シミュレーション（全市区町村 ワンマップ）</h2>
+        <h2 id="unified-heading">茨城県拡張シミュレーション（36市区町村）</h2>
       </div>
+      <p class="section-note">県内拡張版はこちらです。クリック地点に応じて対象市区町村のデータを読み込みます。</p>
       <div id="unified-links" class="card-grid"></div>
     </section>
 
@@ -327,7 +415,35 @@ def write_index_html(n_cities: int) -> None:
       <div class="section-heading">
         <h2 id="cities-heading">市区町村別シミュレーション（{n_cities}市区町村）</h2>
       </div>
+      <p class="section-note">特定の市区町村だけを確認したい場合はこちらを使用します。</p>
+      <div class="city-tools" aria-label="市区町村リンクの絞り込み">
+        <label class="city-tool" for="city-search">
+          検索
+          <input class="city-search" id="city-search" type="search" placeholder="例：水戸市、08201">
+        </label>
+        <label class="city-tool" for="city-select">
+          市区町村選択
+          <select class="city-select" id="city-select"></select>
+        </label>
+        <span class="city-count" id="city-count"></span>
+      </div>
       <div id="city-links" class="city-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="scenario-heading">
+      <div class="section-heading">
+        <h2 id="scenario-heading">常総市単独シミュレーション（参考）</h2>
+      </div>
+      <p class="section-note">このページは常総市のみ対象です。常総市以外をクリックすると「対応地域外」と表示されます。</p>
+      <div id="scenario-links" class="card-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="unavailable-heading">
+      <div class="section-heading">
+        <h2 id="unavailable-heading">未対象・確認待ち市町村（8市町村）</h2>
+      </div>
+      <p class="section-note">下記は現時点の市別シナリオ生成対象外です。7市町村はA31a境界内データの確認待ち、東海村は境界内0件のため対象外です。</p>
+      <ul id="unavailable-links" class="unavailable-list"></ul>
     </section>
   </main>
 </body>
