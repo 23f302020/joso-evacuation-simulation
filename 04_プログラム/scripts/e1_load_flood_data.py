@@ -221,7 +221,24 @@ def visualize_flood_timeline(flood_dict: dict, output_path: str) -> bool:
 
 
 if __name__ == "__main__":
+    _SCRIPT_DIR = Path(__file__).resolve().parent
+
     a31a = load_a31a_gml(config.GML_DIR)
+
+    # 茨城県全域 A31a を常総市境界にクリップして不要な河川ポリゴンを除外する。
+    # クリップしないと KML 凸包が空の時点でフォールバックが 8792 件全体を返し、
+    # 閉鎖タイムラインが単調増加にならない問題が生じる。
+    _n03 = gpd.read_file(
+        str((_SCRIPT_DIR / config.N03_SHP_PATH).resolve()), engine="pyogrio"
+    )
+    _joso = _n03[_n03["N03_007"] == config.JOSO_CODE].to_crs(config.CRS_JGD2011)
+    _joso_union = gpd.GeoDataFrame(
+        geometry=[_joso.geometry.union_all()], crs=config.CRS_JGD2011
+    )
+    _joined = gpd.sjoin(a31a, _joso_union, how="inner", predicate="intersects")
+    a31a = a31a.loc[_joined.index.unique()].copy()
+    print(f"[main] A31a → 常総市クリップ後: {len(a31a)} polygons")
+
     kml_timeline = load_kml_timeline(config.KML_DIR)
     flood_dict = build_flood_polygons(a31a, kml_timeline)
     save_flood_polygons(flood_dict, config.FLOOD_PKL_PATH)

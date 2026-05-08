@@ -16,7 +16,7 @@ FLOOD_DEPTH_THRESHOLD_M = 0.5  # 浸水ナビ API の浸水深（m）
 # ===== 道路閉鎖生成 =====
 # "suiboumap_hydrograph": 浸水ナビの時刻別メッシュ深度を使用
 # "kml_a31a": 従来の KML+A31a 浸水ポリゴンを使用
-CLOSURE_SOURCE = "suiboumap_hydrograph"
+CLOSURE_SOURCE = "kml_a31a"
 USE_CUMULATIVE_CLOSURE = True
 
 # ===== シミュレーション時間 =====
