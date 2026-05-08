@@ -18,11 +18,12 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = SCRIPT_DIR.parent / "output"
 ASSETS_DIR = OUTPUT_DIR / "assets"
 
-# 市区町村マスタ（コード → 名称）
+# 市区町村マスタ（コード → 名称）― シナリオ生成対象40市区町村
 _CITY_NAMES: dict[str, str] = {
     "08201": "水戸市",
     "08202": "日立市",
     "08203": "土浦市",
+    "08204": "古河市",
     "08205": "石岡市",
     "08207": "結城市",
     "08208": "龍ケ崎市",
@@ -41,6 +42,7 @@ _CITY_NAMES: dict[str, str] = {
     "08225": "常陸大宮市",
     "08226": "那珂市",
     "08227": "筑西市",
+    "08228": "坂東市",
     "08229": "稲敷市",
     "08230": "かすみがうら市",
     "08231": "桜川市",
@@ -55,18 +57,17 @@ _CITY_NAMES: dict[str, str] = {
     "08442": "美浦村",
     "08443": "阿見町",
     "08447": "河内町",
+    "08521": "八千代町",
+    "08546": "境町",
     "08564": "利根町",
 }
 
+# A31a境界内0件のため対象外（4市町村）
 _UNAVAILABLE_CITIES: list[dict[str, str]] = [
-    {"title": "古河市", "meta": "08204", "reason": "A31a境界内データ確認待ち"},
-    {"title": "鹿嶋市", "meta": "08222", "reason": "A31a境界内データ確認待ち"},
-    {"title": "坂東市", "meta": "08228", "reason": "A31a境界内データ確認待ち"},
-    {"title": "神栖市", "meta": "08232", "reason": "A31a境界内データ確認待ち"},
+    {"title": "鹿嶋市", "meta": "08222", "reason": "A31a境界内0件のため対象外"},
+    {"title": "神栖市", "meta": "08232", "reason": "A31a境界内0件のため対象外"},
     {"title": "東海村", "meta": "08341", "reason": "A31a境界内0件のため対象外"},
-    {"title": "八千代町", "meta": "08521", "reason": "A31a境界内データ確認待ち"},
-    {"title": "五霞町", "meta": "08542", "reason": "A31a境界内データ確認待ち"},
-    {"title": "境町", "meta": "08546", "reason": "A31a境界内データ確認待ち"},
+    {"title": "五霞町", "meta": "08542", "reason": "A31a境界内0件のため対象外"},
 ]
 
 
@@ -127,7 +128,7 @@ def write_pages_js(entries: list[dict]) -> None:
     {{ title: "常総市シミュレーション（参考）", meta: "常総市のみ対象。県内拡張版は上の統合版を使用", href: "scenario_v2/scenario_route_simulation.html" }},
   ],
   unified: [
-    {{ title: "茨城県36市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
+    {{ title: "茨城県40市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
   ],
   cities: [
 {cities_js}
@@ -440,9 +441,9 @@ def write_index_html(n_cities: int) -> None:
 
     <section class="section" aria-labelledby="unavailable-heading">
       <div class="section-heading">
-        <h2 id="unavailable-heading">未対象・確認待ち市町村（8市町村）</h2>
+        <h2 id="unavailable-heading">対象外市町村（4市町村）</h2>
       </div>
-      <p class="section-note">下記は現時点の市別シナリオ生成対象外です。7市町村はA31a境界内データの確認待ち、東海村は境界内0件のため対象外です。</p>
+      <p class="section-note">下記はA31a浸水想定区域データが境界内に存在しないため、シナリオ生成対象外です。</p>
       <ul id="unavailable-links" class="unavailable-list"></ul>
     </section>
   </main>
