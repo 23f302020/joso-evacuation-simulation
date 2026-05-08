@@ -13,7 +13,6 @@
   }).addTo(map);
 
   const outsideLayer = L.layerGroup().addTo(map);
-  const supportLayer = L.layerGroup().addTo(map);
   const floodLayer = L.geoJSON(null, {
     style: {
       weight: 0,
@@ -50,13 +49,11 @@
   }
 
   addOutsideMask();
-  L.rectangle(supportBounds, {
-    color: "#047857",
-    weight: 2,
-    dashArray: "6 4",
-    fill: false,
-    interactive: false
-  }).addTo(supportLayer);
+  if (data.cityBoundary) {
+    L.geoJSON(data.cityBoundary, {
+      style: { color: "#374151", weight: 2, fill: false, interactive: false }
+    }).addTo(map);
+  }
   map.fitBounds(supportBounds);
 
   for (const edge of data.graph.edges) {
@@ -90,7 +87,7 @@
       '<div class="legend-row"><span class="swatch swatch-flood"></span>シナリオ浸水範囲</div>',
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>',
       '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>',
-      '<div class="legend-row"><span class="swatch swatch-area"></span>対応地域</div>',
+      '<div class="legend-row"><span class="swatch swatch-area"></span>市区町村境界</div>',
       '<div class="legend-row"><span class="swatch swatch-outside"></span>対応地域外</div>'
     ].join("");
     return div;
@@ -261,7 +258,7 @@
     if (!supportBounds.contains(latlng)) {
       result.innerHTML = [
         "<strong>対応地域外です</strong>",
-        `${data.supportArea.label}の緑枠内をクリックしてください。`,
+        `${data.supportArea.label}の範囲内をクリックしてください。`,
         "灰色の範囲は、このシミュレーション版の対象外です。"
       ].join("<br>");
       return;

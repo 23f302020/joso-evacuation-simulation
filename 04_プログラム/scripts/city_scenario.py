@@ -316,11 +316,19 @@ def build_data_payload(
         for idx, ts in enumerate(config.KML_TIMESTAMPS)
     }
 
+    city_union_geom = (
+        city_boundary.to_crs(config.CRS_WGS84)
+        .geometry.union_all()
+        .simplify(0.0001, preserve_topology=True)
+    )
+    city_boundary_geojson = {"type": "Feature", "properties": {}, "geometry": mapping(city_union_geom)}
+
     return {
         "version": f"city_scenario_{city_code}",
         "title": f"{city_name} シナリオ型避難ルート",
         "map": {"center": map_center, "zoom": 12},
         "supportArea": support_area,
+        "cityBoundary": city_boundary_geojson,
         "breachPoint": breach_proxy,
         "times": times,
         "floods": floods,
@@ -430,6 +438,7 @@ dd{margin:0;font-weight:700}
 .swatch-flood{height:12px;background:rgba(37,99,235,0.3);border:1px solid #1d4ed8}
 .swatch-closed{background:var(--danger)}
 .swatch-route{background:#111827}
+.swatch-area{height:2px;background:#374151}
 .swatch-outside{height:12px;background:rgba(31,41,55,0.18);border:1px solid rgba(31,41,55,0.4)}
 @media(max-width:860px){.app-shell{grid-template-columns:1fr}.panel{border-right:0;border-bottom:1px solid var(--line)}.map-wrap,#map{min-height:66vh}}
 """, encoding="utf-8")

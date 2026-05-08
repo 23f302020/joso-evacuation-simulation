@@ -263,11 +263,22 @@ def build_data_payload(
         round((south_west[0] + north_east[0]) / 2, 6),
         round((south_west[1] + north_east[1]) / 2, 6),
     ]
+
+    from shapely.geometry import mapping as shapely_mapping
+    joso_boundary = _load_joso_boundary()
+    joso_union_geom = (
+        joso_boundary.to_crs("EPSG:4326")
+        .geometry.union_all()
+        .simplify(0.0001, preserve_topology=True)
+    )
+    city_boundary_geojson = {"type": "Feature", "properties": {}, "geometry": shapely_mapping(joso_union_geom)}
+
     return {
         "version": SCENARIO_VERSION,
         "title": SCENARIO_TITLE,
         "map": {"center": map_center, "zoom": 12},
         "supportArea": support_area,
+        "cityBoundary": city_boundary_geojson,
         "breachPoint": BREACH_POINT,
         "times": build_time_payload(summary_rows),
         "floods": build_flood_payload(scenario_flood),
@@ -553,9 +564,8 @@ dd {
 }
 
 .swatch-area {
-  height: 12px;
-  border: 2px solid #047857;
-  background: transparent;
+  height: 2px;
+  background: #374151;
 }
 
 .swatch-outside {
@@ -635,6 +645,11 @@ def save_app_js() -> None:
   }
 
   addOutsideMask();
+  if (data.cityBoundary) {
+    L.geoJSON(data.cityBoundary, {
+      style: { color: "#374151", weight: 2, fill: false, interactive: false }
+    }).addTo(map);
+  }
   map.fitBounds(supportBounds);
 
   for (const edge of data.graph.edges) {
@@ -668,6 +683,7 @@ def save_app_js() -> None:
       '<div class="legend-row"><span class="swatch swatch-flood"></span>シナリオ浸水範囲</div>',
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>',
       '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>',
+      '<div class="legend-row"><span class="swatch swatch-area"></span>市区町村境界</div>',
       '<div class="legend-row"><span class="swatch swatch-outside"></span>対応地域外</div>'
     ].join("");
     return div;
@@ -838,7 +854,7 @@ def save_app_js() -> None:
     if (!supportBounds.contains(latlng)) {
       result.innerHTML = [
         "<strong>対応地域外です</strong>",
-        `${data.supportArea.label}の緑枠内をクリックしてください。`,
+        `${data.supportArea.label}の範囲内をクリックしてください。`,
         "灰色の範囲は、このシミュレーション版の対象外です。"
       ].join("<br>");
       return;
