@@ -601,10 +601,9 @@ def save_app_js() -> None:
   const outsideLayer = L.layerGroup().addTo(map);
   const floodLayer = L.geoJSON(null, {
     style: {
-      color: "#1d4ed8",
-      weight: 1,
+      weight: 0,
       fillColor: "#2563eb",
-      fillOpacity: 0.28
+      fillOpacity: 0.3
     }
   }).addTo(map);
   const closedLayer = L.layerGroup().addTo(map);
@@ -617,23 +616,22 @@ def save_app_js() -> None:
   const adjacency = new Map();
 
   function addOutsideMask() {
-    const south = supportBounds.getSouth();
-    const north = supportBounds.getNorth();
-    const west = supportBounds.getWest();
-    const east = supportBounds.getEast();
-    const style = {
-      color: "#1f2937",
-      weight: 0,
-      fillColor: "#1f2937",
-      fillOpacity: 0.18,
-      interactive: false
-    };
-    [
-      [[-90, -180], [south, 180]],
-      [[north, -180], [90, 180]],
-      [[south, -180], [north, west]],
-      [[south, east], [north, 180]]
-    ].forEach((bounds) => L.rectangle(bounds, style).addTo(outsideLayer));
+    const s = supportBounds.getSouth();
+    const n = supportBounds.getNorth();
+    const w = supportBounds.getWest();
+    const e = supportBounds.getEast();
+    L.polygon(
+      [
+        [[-85, -180], [-85, 180], [85, 180], [85, -180]],
+        [[s, w], [s, e], [n, e], [n, w]]
+      ],
+      {
+        weight: 0,
+        fillColor: "#1f2937",
+        fillOpacity: 0.18,
+        interactive: false
+      }
+    ).addTo(outsideLayer);
   }
 
   addOutsideMask();
