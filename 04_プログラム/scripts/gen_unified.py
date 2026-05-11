@@ -610,13 +610,25 @@ def write_app_js() -> None:
     routeLayer.clearLayers();
     markerLayer.clearLayers();
     var resultEl = document.getElementById("route-result");
+    resultEl.classList.remove("result-box--excluded");
 
     var city = detectCity(latlng);
     if (!city) {
+      L.marker(latlng, {
+        icon: L.divIcon({
+          className: "",
+          html: '<div class="excluded-marker">✕</div>',
+          iconSize: [32, 32],
+          iconAnchor: [16, 16]
+        })
+      }).addTo(markerLayer);
+      resultEl.classList.add("result-box--excluded");
       resultEl.innerHTML =
-        "<strong>シミュレーション対象外です</strong><br>" +
-        "この地点は生成済み41市区町村のデータ対象範囲外です。<br>" +
-        "未対象市町村はトップページの一覧を確認してください。";
+        '<div class="result-excluded">' +
+        '<span class="excluded-icon">✕</span>' +
+        '<strong>対象外エリア</strong>' +
+        '<p>この地点はシミュレーション対象外です。<br>対象は茨城県内41市区町村です。<br>対象外市町村はトップページで確認できます。</p>' +
+        '</div>';
       return;
     }
 
@@ -768,6 +780,12 @@ dd{margin:0;font-weight:700}
 .reach-ok{color:#047857}
 .reach-ng{color:var(--danger)}
 .result-note{margin:8px 0 0;color:var(--muted);font-size:13px}
+.result-box--excluded{border-color:#fca5a5;background:#fef2f2}
+.result-excluded{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px 0;gap:4px}
+.excluded-icon{font-size:26px;color:var(--danger);font-weight:700;line-height:1}
+.result-excluded strong{color:var(--danger)}
+.result-excluded p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+.excluded-marker{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:#dc2626;color:#fff;border-radius:50%;font-size:16px;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,0.3)}
 .legend{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,0.95);padding:10px 12px;line-height:1.7;font-size:13px}
 .legend-row{display:flex;align-items:center;gap:8px}
 .swatch{width:18px;height:4px;border-radius:99px;display:inline-block}
