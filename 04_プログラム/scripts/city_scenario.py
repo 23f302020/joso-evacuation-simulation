@@ -387,6 +387,7 @@ def _write_html(path: Path, city_name: str) -> None:
   <link rel="stylesheet" href="assets/style.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="assets/data.js" defer></script>
+  <script src="../kinugawa_river.js" defer></script>
   <script src="assets/app.js" defer></script>
 </head>
 <body>
@@ -450,6 +451,7 @@ dd{margin:0;font-weight:700}
 .legend{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,0.95);padding:10px 12px;line-height:1.7;font-size:13px}
 .legend-row{display:flex;align-items:center;gap:8px}
 .swatch{width:18px;height:4px;border-radius:99px;display:inline-block}
+.swatch-river{background:#0d9488}
 .swatch-flood{height:12px;background:rgba(37,99,235,0.3);border:1px solid #1d4ed8}
 .swatch-closed{background:var(--danger)}
 .swatch-route{background:#111827}
@@ -459,17 +461,53 @@ dd{margin:0;font-weight:700}
 """, encoding="utf-8")
 
 
+_KINUGAWA_LAYER_JS = """\
+
+  // ------------------------------------------------------------------ Kinugawa River layer
+  if (window.KINUGAWA_RIVER) {
+    L.geoJSON(window.KINUGAWA_RIVER, {
+      style: function (f) {
+        var t = f.geometry ? f.geometry.type : "";
+        if (t === "Polygon" || t === "MultiPolygon") {
+          return { color: "#0d9488", weight: 1.5, opacity: 0.85, fillColor: "#0d9488", fillOpacity: 0.30 };
+        }
+        return { color: "#0d9488", weight: 3.5, opacity: 0.85, fill: false };
+      }
+    }).bindTooltip("鬼怒川", { sticky: true, direction: "top" }).addTo(map);
+  }"""
+
+_KINUGAWA_LEGEND_ENTRY = (
+    '<div class="legend-row"><span class="swatch swatch-river"></span>鬼怒川</div>'
+)
+_LEGEND_ANCHOR = '<div class="legend-row"><span class="swatch swatch-flood"></span>'
+
+
 def _write_app_js(path: Path) -> None:
-    """v2 の app.js をコピーする。未生成の場合は v2 モジュールから生成する。"""
-    import shutil
+    """v2 の app.js に鬼怒川レイヤーコードを追加して出力する。"""
     v2_app_js = (SCRIPT_DIR / ".." / "output" / "scenario_v2" / "assets" / "scenario_v2_app.js").resolve()
     if v2_app_js.exists():
-        shutil.copy2(str(v2_app_js), str(path))
-        return
-    # v2 未実行の場合は save_app_js() を呼んで生成してからコピー
-    from v2_scenario_route_simulation import save_app_js, SCENARIO_APP_JS_PATH
-    save_app_js()
-    shutil.copy2(str(SCENARIO_APP_JS_PATH), str(path))
+        content = v2_app_js.read_text(encoding="utf-8")
+    else:
+        from v2_scenario_route_simulation import save_app_js, SCENARIO_APP_JS_PATH
+        save_app_js()
+        content = SCENARIO_APP_JS_PATH.read_text(encoding="utf-8")
+
+    # 凡例に鬼怒川エントリを挿入（swatch-flood の直前）
+    if _LEGEND_ANCHOR in content and _KINUGAWA_LEGEND_ENTRY not in content:
+        content = content.replace(
+            _LEGEND_ANCHOR,
+            _KINUGAWA_LEGEND_ENTRY + "\n      " + _LEGEND_ANCHOR,
+        )
+
+    # 鬼怒川レイヤーコードを IIFE 末尾に挿入
+    if _KINUGAWA_LAYER_JS not in content:
+        tail = "})();"
+        if content.rstrip().endswith(tail):
+            content = content.rstrip()[:-len(tail)] + _KINUGAWA_LAYER_JS + "\n" + tail + "\n"
+        else:
+            content = content.rstrip() + "\n" + _KINUGAWA_LAYER_JS + "\n"
+
+    path.write_text(content, encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------

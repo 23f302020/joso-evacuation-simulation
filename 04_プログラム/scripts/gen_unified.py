@@ -214,6 +214,19 @@ def write_app_js() -> None:
     attribution: "\\u00a9 OpenStreetMap contributors \\u00a9 CARTO"
   }).addTo(map);
 
+  // ------------------------------------------------------------------ Kinugawa River (static, below dynamic layers)
+  if (window.KINUGAWA_RIVER) {
+    L.geoJSON(window.KINUGAWA_RIVER, {
+      style: function (f) {
+        var t = f.geometry ? f.geometry.type : "";
+        if (t === "Polygon" || t === "MultiPolygon") {
+          return { color: "#0d9488", weight: 1.5, opacity: 0.85, fillColor: "#0d9488", fillOpacity: 0.30 };
+        }
+        return { color: "#0d9488", weight: 3.5, opacity: 0.85, fill: false };
+      }
+    }).bindTooltip("\\u9b3c\\u6012\\u5ddd", { sticky: true, direction: "top" }).addTo(map);
+  }
+
   // ------------------------------------------------------------------ layers (z-order: bottom -> top)
   var maskLayer    = L.layerGroup().addTo(map);
   var cityLayer    = L.layerGroup().addTo(map);
@@ -688,6 +701,7 @@ def write_app_js() -> None:
   legend.onAdd = function () {
     var div = L.DomUtil.create("div", "legend");
     div.innerHTML =
+      '<div class="legend-row"><span class="swatch swatch-river"></span>鬼怒川</div>' +
       '<div class="legend-row"><span class="swatch swatch-flood"></span>浸水想定区域</div>' +
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>' +
       '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>' +
@@ -789,6 +803,7 @@ dd{margin:0;font-weight:700}
 .legend{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,0.95);padding:10px 12px;line-height:1.7;font-size:13px}
 .legend-row{display:flex;align-items:center;gap:8px}
 .swatch{width:18px;height:4px;border-radius:99px;display:inline-block}
+.swatch-river{background:#0d9488}
 .swatch-flood{height:12px;background:rgba(37,99,235,0.3);border:1px solid #1d4ed8}
 .swatch-closed{background:var(--danger)}
 .swatch-route{background:#111827}
@@ -818,6 +833,7 @@ def write_html(n_cities: int) -> None:
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="assets/prefecture_boundary.js" defer></script>
   <script src="assets/cities_manifest.js" defer></script>
+  <script src="assets/kinugawa_river.js" defer></script>
   <script src="assets/app.js" defer></script>
 </head>
 <body>
@@ -911,8 +927,39 @@ def _ensure_prefecture_boundary() -> None:
         print(f"[write] {boundary_js}")
 
 
+def _ensure_kinugawa_river() -> None:
+    """kinugawa_river.js が存在しない場合のみ _gen_kinugawa_river.py を呼び出す。"""
+    import subprocess
+
+    river_js = ASSETS_DIR / "kinugawa_river.js"
+    if river_js.exists():
+        print(f"[ok]    {river_js.name} (cached)")
+        return
+
+    gen_script = SCRIPT_DIR / "_gen_kinugawa_river.py"
+    venv_py = SCRIPT_DIR.parent / "venv" / "Scripts" / "python.exe"
+
+    def to_win(p: Path) -> str:
+        s = str(p)
+        if s.startswith("/mnt/"):
+            s = s[5].upper() + ":\\" + s[7:].replace("/", "\\")
+        return s
+
+    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
+    result = subprocess.run(
+        ["powershell.exe", "-Command", f"& '{to_win(venv_py)}' '{to_win(gen_script)}'"],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        print(f"[warn] kinugawa_river.js の生成に失敗しました:\n{result.stderr}")
+    else:
+        print(f"[write] {river_js}")
+
+
 def main() -> None:
     _ensure_prefecture_boundary()
+    _ensure_kinugawa_river()
 
     cities = []
     for code in sorted(_CITY_NAMES):
