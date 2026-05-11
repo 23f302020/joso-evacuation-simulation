@@ -17,7 +17,7 @@ Phase 1 のHTML成果物は、`04_プログラム/output/index.html` を入口�
 |------|------|------|
 | Phase 1確認トップページ | `04_プログラム/output/index.html` | 成果物全体の入口 |
 | 茨城県統合シミュレーション | `04_プログラム/output/unified/scenario_route_simulation.html` | Phase 1 の主成果物 |
-| 市区町村別シミュレーション | `04_プログラム/output/scenario_cities/{code}/scenario_route_simulation.html` | 40市区町村の個別確認 |
+| 市区町村別シミュレーション | `04_プログラム/output/scenario_cities/{code}/scenario_route_simulation.html` | 41市区町村の個別確認 |
 | 常総市シナリオ版 | `04_プログラム/output/scenario_v2/scenario_route_simulation.html` | シナリオ生成ルールの代表例 |
 | 常総市実データ版ルート | `04_プログラム/output/routes/evacuation_routes_t0.html`〜`t7.html` | 実データ版の参考成果物 |
 | 道路・浸水確認図 | `04_プログラム/output/network/`、`04_プログラム/output/flood/` | 基礎データ確認用 |
@@ -30,7 +30,7 @@ Phase 1 のHTML成果物は、`04_プログラム/output/index.html` を入口�
 |------|----------|------|
 | トップページ | `output/index.html` | Phase 1成果物の入口。統合版、市別版、参考版へ遷移 |
 | 統合版 | `output/unified/scenario_route_simulation.html` | 近辺都市/県全体の表示範囲切替、浸水想定区域/閉鎖道路の表示切替 |
-| 市区町村別版 | `output/scenario_cities/{code}/scenario_route_simulation.html` | 40市区町村の区域内クリックによる避難ルート検索 |
+| 市区町村別版 | `output/scenario_cities/{code}/scenario_route_simulation.html` | 41市区町村の区域内クリックによる避難ルート検索 |
 | 常総市シナリオ版 | `output/scenario_v2/scenario_route_simulation.html` | 常総市における段階的浸水拡大と任意地点ルート検索 |
 | 常総市実データ版 | `output/routes/evacuation_routes_t0.html`〜`t7.html` | 実データに基づく時刻別ルート可視化 |
 | 道路ネットワーク | `output/network/joso_network_map.html` | 常総市道路ネットワークの確認 |
@@ -53,7 +53,7 @@ flowchart TD
     B --> B4["閉鎖道路レイヤー切替"]
     B --> B5["時刻 t0〜t7 切替"]
 
-    A --> C["市区町村別シミュレーション一覧<br/>40市区町村"]
+    A --> C["市区町村別シミュレーション一覧<br/>41市区町村"]
     C --> C1["scenario_cities/{code}/scenario_route_simulation.html<br/>区域内クリックでルート検索"]
 
     A --> D["常総市シナリオ版（参考）<br/>scenario_v2/scenario_route_simulation.html"]
@@ -67,7 +67,7 @@ flowchart TD
     F --> F1["network/joso_network_map.html"]
     F --> F2["flood/flood_timeline_map.html"]
 
-    A --> G["対象外4市町村<br/>鹿嶋市・神栖市・東海村・五霞町"]
+    A --> G["対象外3市町村<br/>鹿嶋市・神栖市・東海村"]
 ```
 
 ---
@@ -81,7 +81,7 @@ flowchart TD
 | `output/scenario_v2/scenario_route_simulation.html` | 存在を確認 |
 | `output/routes/evacuation_routes_t0.html`〜`t7.html` | t0・t7の存在を確認 |
 | `output/scenario_cities/` | 40ディレクトリを確認 |
-| `output/assets/phase1-pages.js` | 市区町村リンク40件、対象外4件を確認 |
+| `output/assets/phase1-pages.js` | 市区町村リンク41件、対象外3件を確認 |
 
 ---
 

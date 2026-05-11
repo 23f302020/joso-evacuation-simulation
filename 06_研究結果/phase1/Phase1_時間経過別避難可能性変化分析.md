@@ -1,7 +1,7 @@
 # Phase 1 時間経過による避難可能性の変化分析
 
 > 作成日：2026/05/09
-> 対象：茨城県内シナリオ版（40市区町村）・常総市実データ版
+> 対象：茨城県内シナリオ版（41市区町村）・常総市実データ版
 > データ源：`output/scenario_cities/{code}/assets/data.js`、`output/closure/closure_diagnostics.csv`
 > 位置づけ：論文「5. 結果」「6. 考察」への転記資料・早期避難の必要性の根拠
 

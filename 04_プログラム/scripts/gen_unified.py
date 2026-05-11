@@ -297,6 +297,10 @@ def write_app_js() -> None:
     document.querySelectorAll(".time-button").forEach(function (btn) {
       btn.setAttribute("aria-pressed", btn.dataset.timeId === id ? "true" : "false");
     });
+    var tObj = null;
+    TIMES.forEach(function (t) { if (t.id === id) tObj = t; });
+    var badge = document.getElementById("map-time-badge");
+    if (badge && tObj) badge.textContent = tObj.label + " — " + tObj.note;
     updateScenarioLayers();
     if (currentData && activeClick) routeFromClick(activeClick);
   }
@@ -642,17 +646,25 @@ def write_app_js() -> None:
       var route     = buildRoute(data, startNode, result, st.edgesById);
 
       if (!route || route.coords.length < 2) {
-        resultEl.textContent = "この時刻では到達可能な避難所が見つかりません。";
+        resultEl.innerHTML =
+          '<dl class="result-dl">' +
+          '<div><dt>到達可否</dt><dd class="reach-ng">到達不可</dd></div>' +
+          '<div><dt>都市</dt><dd>' + city.name + '</dd></div>' +
+          '</dl>' +
+          '<p class="result-note">この時刻では到達可能な避難所が見つかりません。</p>';
         return;
       }
 
       L.polyline(route.coords, { color: "#111827", weight: 5, opacity: 0.82 }).addTo(routeLayer);
       var km = (route.distance / 1000).toFixed(2);
       resultEl.innerHTML =
-        "<strong>" + route.shelter.name + "</strong><br>" +
-        "都市: " + city.name + "<br>" +
-        "距離: " + km + " km<br>" +
-        "閉鎖道路を " + closedSet.size + " 本回避";
+        '<dl class="result-dl">' +
+        '<div><dt>到達可否</dt><dd class="reach-ok">到達可</dd></div>' +
+        '<div><dt>避難所</dt><dd>' + route.shelter.name + '</dd></div>' +
+        '<div><dt>都市</dt><dd>' + city.name + '</dd></div>' +
+        '<div><dt>距離</dt><dd>' + km + ' km</dd></div>' +
+        '<div><dt>閉鎖回避</dt><dd>' + closedSet.size + ' 本</dd></div>' +
+        '</dl>';
 
     }).catch(function () {
       resultEl.textContent = "データの読み込みに失敗しました。";
@@ -668,7 +680,7 @@ def write_app_js() -> None:
       '<div class="legend-row"><span class="swatch swatch-closed"></span>閉鎖道路</div>' +
       '<div class="legend-row"><span class="swatch swatch-route"></span>避難ルート</div>' +
       '<div class="legend-row"><span class="swatch swatch-city"></span>表示中の市区町村範囲</div>' +
-      '<div class="legend-row"><span class="swatch swatch-outside"></span>茨城県外（対象外）</div>';
+      '<div class="legend-row"><span class="swatch swatch-outside"></span>茨城県外</div>';
     return div;
   };
   legend.addTo(map);
@@ -714,6 +726,8 @@ def write_app_js() -> None:
   createTimeButtons();
   setupScopeButtons();
   renderScopedLayers();
+  var badge = document.getElementById("map-time-badge");
+  if (badge) badge.textContent = TIMES[0].label + " — " + TIMES[0].note;
 })();
 """
     (ASSETS_DIR / "app.js").write_text(content, encoding="utf-8")
@@ -743,7 +757,17 @@ dd{margin:0;font-weight:700}
 .result-box{min-height:112px;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:12px;font-size:14px;line-height:1.6}
 .result-box strong{display:block;margin-bottom:4px}
 .back-link{display:inline-flex;margin-top:24px;color:var(--accent);font-size:14px;text-decoration:none}
+.map-wrap{position:relative}
 .map-wrap,#map{min-height:100vh}
+.map-time-badge{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:1001;background:rgba(255,255,255,0.93);border:1px solid var(--line);border-radius:6px;padding:4px 14px;font-size:13px;font-weight:600;pointer-events:none;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+.step-guide{margin:0 0 14px;padding:0 0 0 18px;color:var(--muted);font-size:13px;line-height:2.1}
+.result-dl{margin:0}
+.result-dl div{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)}
+.result-dl dt{color:var(--muted);font-size:13px}
+.result-dl dd{margin:0;font-weight:700;text-align:right}
+.reach-ok{color:#047857}
+.reach-ng{color:var(--danger)}
+.result-note{margin:8px 0 0;color:var(--muted);font-size:13px}
 .legend{border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,0.95);padding:10px 12px;line-height:1.7;font-size:13px}
 .legend-row{display:flex;align-items:center;gap:8px}
 .swatch{width:18px;height:4px;border-radius:99px;display:inline-block}
@@ -783,9 +807,14 @@ def write_html(n_cities: int) -> None:
     <aside class="panel" aria-label="シミュレーション操作">
       <p class="eyebrow">茨城県 統合シミュレーション</p>
       <h1>避難ルート検索</h1>
+      <ol class="step-guide">
+        <li>時刻を選択する</li>
+        <li>表示範囲を切り替える</li>
+        <li>地図上をクリックする</li>
+        <li>避難ルートと避難所を確認する</li>
+      </ol>
       <p class="lead">
         茨城県内{n_cities}市区町村を対象とした統合シミュレーション。
-        時刻を選び、地図上をクリックすると浸水回避ルートを検索します。
         生成対象外の3市町村は「対象外」と表示されます。
       </p>
       <section class="control-group">
@@ -823,6 +852,7 @@ def write_html(n_cities: int) -> None:
       <a class="back-link" href="../index.html">&#8592; トップページへ戻る</a>
     </aside>
     <section class="map-wrap" aria-label="シミュレーション地図">
+      <div id="map-time-badge" class="map-time-badge">t0 — 2015-09-10 18:00</div>
       <div id="map"></div>
     </section>
   </main>

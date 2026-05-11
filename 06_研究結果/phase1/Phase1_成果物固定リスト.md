@@ -19,7 +19,7 @@ Phase 1 の成果物は、茨城県内拡張版を主成果物、常総市単独
 |---:|---|---|---|
 | 1 | Phase 1 確認トップページ | `04_プログラム/output/index.html` | 成果物全体の入口 |
 | 2 | 茨城県統合シミュレーション | `04_プログラム/output/unified/scenario_route_simulation.html` | Phase 1 の主成果物 |
-| 3 | 市区町村別シミュレーション | `04_プログラム/output/scenario_cities/{code}/scenario_route_simulation.html` | 40市区町村の個別確認用成果物 |
+| 3 | 市区町村別シミュレーション | `04_プログラム/output/scenario_cities/{code}/scenario_route_simulation.html` | 41市区町村の個別確認用成果物 |
 | 4 | 常総市シナリオ版 | `04_プログラム/output/scenario_v2/scenario_route_simulation.html` | シナリオ生成ルールの代表例 |
 | 5 | 常総市実データ版ルート | `04_プログラム/output/routes/evacuation_routes_t0.html`〜`t7.html` | 実データ版の参考成果物 |
 | 6 | 道路・浸水地図 | `04_プログラム/output/network/`、`04_プログラム/output/flood/` | 基礎データ確認用成果物 |
@@ -30,13 +30,13 @@ Phase 1 の成果物は、茨城県内拡張版を主成果物、常総市単独
 
 | 項目 | 固定値 |
 |---|---:|
-| 茨城県内シナリオ生成対象 | 40市区町村 |
-| 対象外市町村 | 4市町村 |
-| 対象外市町村名 | 鹿嶋市、神栖市、東海村、五霞町 |
+| 茨城県内シナリオ生成対象 | 41市区町村 |
+| 対象外市町村 | 3市町村 |
+| 対象外市町村名 | 鹿嶋市、神栖市、東海村 |
 | 市区町村別HTML | `output/scenario_cities/{code}/scenario_route_simulation.html` |
 | 統合版HTML | `output/unified/scenario_route_simulation.html` |
 
-対象外4市町村は、A31a浸水想定区域が市町村境界内に存在しない、または対象河川データに未収録であるため、Phase 1 のシナリオ生成対象外とする。
+対象外3市町村は、A31a浸水想定区域が市町村境界内に存在しないため、Phase 1 のシナリオ生成対象外とする。なお、五霞町は±500mバッファ対応でシナリオ生成済みとなり、対象41市区町村に昇格した。
 
 ---
 
@@ -104,9 +104,9 @@ Phase 1 の成果物は、茨城県内拡張版を主成果物、常総市単独
 
 | 確認対象 | 確認内容 |
 |---|---|
-| `04_プログラム/output/index.html` | 茨城県シミュレーション40市区町村、対象外4市町村として表示 |
-| `04_プログラム/output/assets/phase1-pages.js` | 市区町村40件、対象外4件が登録済み |
-| `04_プログラム/output/scenario_cities/` | 市区町村別出力ディレクトリ40件 |
+| `04_プログラム/output/index.html` | 茨城県シミュレーション41市区町村、対象外3市町村として表示 |
+| `04_プログラム/output/assets/phase1-pages.js` | 市区町村41件、対象外3件が登録済み |
+| `04_プログラム/output/scenario_cities/` | 市区町村別出力ディレクトリ41件 |
 | `04_プログラム/output/unified/scenario_route_simulation.html` | 統合シミュレーションHTMLが存在 |
 | `04_プログラム/output/closure/closure_diagnostics.csv` | 実データ版の即時閉鎖・累積閉鎖を確認 |
 | `04_プログラム/output/scenario_v2/scenario_v2_summary.csv` | 常総市シナリオ版の時点別結果を確認 |

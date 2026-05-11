@@ -18,7 +18,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = SCRIPT_DIR.parent / "output"
 ASSETS_DIR = OUTPUT_DIR / "assets"
 
-# 市区町村マスタ（コード → 名称）― シナリオ生成対象40市区町村
+# 市区町村マスタ（コード → 名称）― シナリオ生成対象41市区町村
 _CITY_NAMES: dict[str, str] = {
     "08201": "水戸市",
     "08202": "日立市",
@@ -128,7 +128,7 @@ def write_pages_js(entries: list[dict]) -> None:
     {{ title: "常総市シミュレーション（参考）", meta: "常総市のみ対象。県内拡張版は上の統合版を使用", href: "scenario_v2/scenario_route_simulation.html" }},
   ],
   unified: [
-    {{ title: "茨城県40市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
+    {{ title: "茨城県41市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
   ],
   cities: [
 {cities_js}
@@ -361,11 +361,18 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 .unavailable-item { min-height: 58px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
 .unavailable-title { display: block; font-size: 14px; font-weight: 700; }
 .unavailable-meta { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
+.summary-stats { display: flex; gap: 16px; align-items: center; padding: 16px 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); margin-bottom: 28px; }
+.stat-item { display: flex; flex-direction: column; align-items: center; min-width: 52px; }
+.stat-value { font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; }
+.stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.stat-text { flex: 1; color: var(--muted); font-size: 13px; border-left: 1px solid var(--line); padding-left: 16px; margin-left: 4px; }
 @media (max-width: 760px) {
   .page-header { display: block; padding-top: 28px; }
   .updated { margin-top: 12px; }
   .card-grid, .route-list, .city-grid, .city-tools, .unavailable-list { grid-template-columns: 1fr; }
   .city-count { white-space: normal; }
+  .summary-stats { flex-wrap: wrap; }
+  .stat-text { border-left: 0; padding-left: 0; margin-left: 0; border-top: 1px solid var(--line); padding-top: 10px; width: 100%; }
 }
 """
     (ASSETS_DIR / "phase1.css").write_text(content, encoding="utf-8")
@@ -393,6 +400,13 @@ def write_index_html(n_cities: int) -> None:
   </header>
 
   <main class="page-shell">
+    <div class="summary-stats" aria-label="研究概要">
+      <div class="stat-item"><span class="stat-value">{n_cities}</span><span class="stat-label">市区町村</span></div>
+      <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">対象外</span></div>
+      <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">時点</span></div>
+      <div class="stat-item stat-text">浸水想定区域 / 閉鎖道路 / 避難ルート</div>
+    </div>
+
     <section class="section" aria-labelledby="unified-heading">
       <div class="section-heading">
         <h2 id="unified-heading">茨城県シミュレーション（{n_cities}市区町村）</h2>
