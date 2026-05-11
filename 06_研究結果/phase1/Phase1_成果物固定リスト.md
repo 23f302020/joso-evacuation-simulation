@@ -110,3 +110,5 @@ Phase 1 の成果物は、茨城県内拡張版を主成果物、常総市単独
 | `04_プログラム/output/unified/scenario_route_simulation.html` | 統合シミュレーションHTMLが存在 |
 | `04_プログラム/output/closure/closure_diagnostics.csv` | 実データ版の即時閉鎖・累積閉鎖を確認 |
 | `04_プログラム/output/scenario_v2/scenario_v2_summary.csv` | 常総市シナリオ版の時点別結果を確認 |
+| `03_研究設計文書/Phase1_図表一覧.md` | 卒論用の図表候補と数値確認状況を整理 |
+| `03_研究設計文書/Phase1_HTML画面遷移図.md` | 現行のHTML成果物構成に合わせて更新 |

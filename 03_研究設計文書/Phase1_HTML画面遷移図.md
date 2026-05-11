@@ -1,20 +1,26 @@
 # Phase 1 HTML画面遷移図
 
-> 作成日：2026/05/01  
-> 対象：Phase 1 成果物HTMLの確認用トップページ  
-> 目的：Google Chromeで確認する複数のHTML成果物を、1つのトップページから遷移できる構造に整理する
+> 作成日：2026/05/01
+> 最終確認：2026/05/11
+> 対象：Phase 1 成果物HTMLの確認用トップページと統合シミュレーション
+> 目的：卒論・発表で確認するHTML成果物の主従関係と画面遷移を明確にする
 
 ---
 
-## 1. 方針
+## 1. 現在の固定方針
 
-Phase 1 の成果物として生成済みのHTMLファイルを、確認用トップページから選択して開けるようにする。
+Phase 1 のHTML成果物は、`04_プログラム/output/index.html` を入口とし、茨城県統合シミュレーションを主成果物として扱う。
 
-トップページは以下のパスに作成する想定とする。
+常総市実データ版、常総市シナリオ版、道路ネットワーク図、浸水時系列図は、主成果物を説明するための参考成果物として扱う。
 
-| 種別 | 想定パス | 役割 |
-|------|----------|------|
-| トップページ | `04_プログラム/output/index.html` | Phase 1 成果物HTMLへの入口 |
+| 種別 | パス | 本文での扱い |
+|------|------|------|
+| Phase 1確認トップページ | `04_プログラム/output/index.html` | 成果物全体の入口 |
+| 茨城県統合シミュレーション | `04_プログラム/output/unified/scenario_route_simulation.html` | Phase 1 の主成果物 |
+| 市区町村別シミュレーション | `04_プログラム/output/scenario_cities/{code}/scenario_route_simulation.html` | 40市区町村の個別確認 |
+| 常総市シナリオ版 | `04_プログラム/output/scenario_v2/scenario_route_simulation.html` | シナリオ生成ルールの代表例 |
+| 常総市実データ版ルート | `04_プログラム/output/routes/evacuation_routes_t0.html`〜`t7.html` | 実データ版の参考成果物 |
+| 道路・浸水確認図 | `04_プログラム/output/network/`、`04_プログラム/output/flood/` | 基礎データ確認用 |
 
 ---
 
@@ -22,57 +28,65 @@ Phase 1 の成果物として生成済みのHTMLファイルを、確認用ト�
 
 | 区分 | ファイル | 内容 |
 |------|----------|------|
-| 道路ネットワーク | `output/network/joso_network_map.html` | 常総市の道路ネットワーク |
-| 浸水時系列 | `output/flood/flood_timeline_map.html` | 8時点の浸水範囲 |
-| 避難ルート t0 | `output/routes/evacuation_routes_t0.html` | 2015-09-10T18:00:00 の避難ルート |
-| 避難ルート t1 | `output/routes/evacuation_routes_t1.html` | 2015-09-11T06:00:00 の避難ルート |
-| 避難ルート t2 | `output/routes/evacuation_routes_t2.html` | 2015-09-11T18:00:00 の避難ルート |
-| 避難ルート t3 | `output/routes/evacuation_routes_t3.html` | 2015-09-12T06:00:00 の避難ルート |
-| 避難ルート t4 | `output/routes/evacuation_routes_t4.html` | 2015-09-12T18:00:00 の避難ルート |
-| 避難ルート t5 | `output/routes/evacuation_routes_t5.html` | 2015-09-13T06:00:00 の避難ルート |
-| 避難ルート t6 | `output/routes/evacuation_routes_t6.html` | 2015-09-13T18:00:00 の避難ルート |
-| 避難ルート t7 | `output/routes/evacuation_routes_t7.html` | 2015-09-16T10:20:00 の避難ルート |
+| トップページ | `output/index.html` | Phase 1成果物の入口。統合版、市別版、参考版へ遷移 |
+| 統合版 | `output/unified/scenario_route_simulation.html` | 近辺都市/県全体の表示範囲切替、浸水想定区域/閉鎖道路の表示切替 |
+| 市区町村別版 | `output/scenario_cities/{code}/scenario_route_simulation.html` | 40市区町村の区域内クリックによる避難ルート検索 |
+| 常総市シナリオ版 | `output/scenario_v2/scenario_route_simulation.html` | 常総市における段階的浸水拡大と任意地点ルート検索 |
+| 常総市実データ版 | `output/routes/evacuation_routes_t0.html`〜`t7.html` | 実データに基づく時刻別ルート可視化 |
+| 道路ネットワーク | `output/network/joso_network_map.html` | 常総市道路ネットワークの確認 |
+| 浸水時系列 | `output/flood/flood_timeline_map.html` | 常総市実データ版の浸水範囲確認 |
 
 ---
 
 ## 3. 画面遷移図
 
+**図1 Phase 1 HTML成果物の画面遷移**
+
 ```mermaid
 flowchart TD
-    A["Phase 1 トップページ<br/>output/index.html"]
+    A["Phase 1確認トップページ<br/>output/index.html"]
 
-    A --> B["道路ネットワーク<br/>network/joso_network_map.html"]
-    A --> C["浸水時系列マップ<br/>flood/flood_timeline_map.html"]
+    A --> B["茨城県統合シミュレーション<br/>unified/scenario_route_simulation.html<br/>Phase 1主成果物"]
+    B --> B1["近辺都市表示"]
+    B --> B2["県全体表示"]
+    B --> B3["浸水想定区域レイヤー切替"]
+    B --> B4["閉鎖道路レイヤー切替"]
+    B --> B5["時刻 t0〜t7 切替"]
 
-    A --> D["避難ルート一覧"]
-    D --> R0["t0<br/>routes/evacuation_routes_t0.html"]
-    D --> R1["t1<br/>routes/evacuation_routes_t1.html"]
-    D --> R2["t2<br/>routes/evacuation_routes_t2.html"]
-    D --> R3["t3<br/>routes/evacuation_routes_t3.html"]
-    D --> R4["t4<br/>routes/evacuation_routes_t4.html"]
-    D --> R5["t5<br/>routes/evacuation_routes_t5.html"]
-    D --> R6["t6<br/>routes/evacuation_routes_t6.html"]
-    D --> R7["t7<br/>routes/evacuation_routes_t7.html"]
+    A --> C["市区町村別シミュレーション一覧<br/>40市区町村"]
+    C --> C1["scenario_cities/{code}/scenario_route_simulation.html<br/>区域内クリックでルート検索"]
+
+    A --> D["常総市シナリオ版（参考）<br/>scenario_v2/scenario_route_simulation.html"]
+    A --> E["常総市実データ版ルート（参考）"]
+    E --> E1["routes/evacuation_routes_t0.html"]
+    E --> E2["routes/evacuation_routes_t1.html"]
+    E --> E3["..."]
+    E --> E4["routes/evacuation_routes_t7.html"]
+
+    A --> F["基礎データ確認用HTML"]
+    F --> F1["network/joso_network_map.html"]
+    F --> F2["flood/flood_timeline_map.html"]
+
+    A --> G["対象外4市町村<br/>鹿嶋市・神栖市・東海村・五霞町"]
 ```
 
 ---
 
-## 4. トップページの構成案
+## 4. 確認済み内容
 
-トップページは、以下の3区分でリンクを配置する。
-
-| セクション | 表示内容 | 遷移先 |
-|------------|----------|--------|
-| 道路ネットワーク | 常総市道路NWの確認 | `network/joso_network_map.html` |
-| 浸水時系列 | 浸水範囲の時間変化確認 | `flood/flood_timeline_map.html` |
-| 避難ルート | t0〜t7の避難ルート確認 | `routes/evacuation_routes_t0.html`〜`t7.html` |
+| 確認項目 | 結果 |
+|----------|------|
+| `output/index.html` | 存在を確認 |
+| `output/unified/scenario_route_simulation.html` | 存在を確認 |
+| `output/scenario_v2/scenario_route_simulation.html` | 存在を確認 |
+| `output/routes/evacuation_routes_t0.html`〜`t7.html` | t0・t7の存在を確認 |
+| `output/scenario_cities/` | 40ディレクトリを確認 |
+| `output/assets/phase1-pages.js` | 市区町村リンク40件、対象外4件を確認 |
 
 ---
 
-## 5. 実装時の注意
+## 5. 卒論での使い方
 
-- トップページは `output/` 直下に置き、既存HTMLへの相対リンクで遷移する。
-- 既存の `network/`、`flood/`、`routes/` 配下のHTMLファイル名は変更しない。
-- Phase 1 の成果確認用ページであり、シミュレーション処理や出力データの生成ロジックは変更しない。
-- 後続でHTML生成コードを修正する場合も、まず `output/index.html` を追加する範囲に留める。
+卒論本文では、まず `index.html` を成果物入口として示し、次に統合シミュレーションを主成果物として説明する。
 
+市区町村別ページは、統合シミュレーションで全体像を確認した後、個別自治体の区域内ルート検索を確認する補助資料として扱う。常総市シナリオ版はシナリオ生成ルールを説明する代表例、常総市実データ版は処理パイプラインの成立を示す参考成果物として扱う。
