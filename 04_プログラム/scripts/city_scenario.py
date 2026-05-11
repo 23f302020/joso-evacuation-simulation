@@ -60,6 +60,7 @@ def load_a31a_for_city(city_code: str, city_boundary: gpd.GeoDataFrame) -> gpd.G
     """A31a (08_10 + 08_20) を市区町村境界でクリップして返す。
 
     ディレクトリごとに読み込みを試みて、失敗した場合は警告して次を試す。
+    境界内ポリゴンが0件の場合は500mバッファで再検索する（河川隣接市町村向け）。
     """
     from p1_city_road_network import A31A_COVERAGE, A31A_EXCLUDED
     coverage = A31A_COVERAGE.get(city_code, [])
@@ -94,9 +95,23 @@ def load_a31a_for_city(city_code: str, city_boundary: gpd.GeoDataFrame) -> gpd.G
     )
     joined = gpd.sjoin(a31a, city_union, how="inner", predicate="intersects")
     result = a31a.loc[joined.index.unique()].copy()
+
     if result.empty:
-        raise RuntimeError(f"{city_code}: 市区町村内に A31a ポリゴンが見つかりません")
-    print(f"[flood] {city_code}: {len(result)} ポリゴン (A31a waterDepth>={config.FLOOD_DEPTH_THRESHOLD})")
+        # 河川隣接市町村では行政境界が河川中心線と一致し、浸水ポリゴンが境界外に
+        # わずかにはみ出す場合がある。500mバッファで再検索する。
+        _BUF_M = 500
+        city_metric = city_boundary.to_crs(CRS_METRIC)
+        city_buf = gpd.GeoDataFrame(
+            geometry=[city_metric.geometry.union_all().buffer(_BUF_M)],
+            crs=CRS_METRIC,
+        ).to_crs(config.CRS_JGD2011)
+        joined_buf = gpd.sjoin(a31a, city_buf, how="inner", predicate="intersects")
+        result = a31a.loc[joined_buf.index.unique()].copy()
+        if result.empty:
+            raise RuntimeError(f"{city_code}: 市区町村内（±{_BUF_M}m）に A31a ポリゴンが見つかりません")
+        print(f"[flood] {city_code}: {len(result)} ポリゴン（境界外 ±{_BUF_M}m バッファ使用）")
+    else:
+        print(f"[flood] {city_code}: {len(result)} ポリゴン (A31a waterDepth>={config.FLOOD_DEPTH_THRESHOLD})")
     return result
 
 

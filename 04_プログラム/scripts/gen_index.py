@@ -58,16 +58,16 @@ _CITY_NAMES: dict[str, str] = {
     "08443": "阿見町",
     "08447": "河内町",
     "08521": "八千代町",
+    "08542": "五霞町",
     "08546": "境町",
     "08564": "利根町",
 }
 
-# A31a境界内0件のため対象外（4市町村）
+# A31a境界内0件のため対象外（3市町村）
 _UNAVAILABLE_CITIES: list[dict[str, str]] = [
     {"title": "鹿嶋市", "meta": "08222", "reason": "沿岸・汽水域のため河川洪水想定なし"},
     {"title": "神栖市", "meta": "08232", "reason": "利根川河口・沿岸。利根川系データ未収録"},
     {"title": "東海村", "meta": "08341", "reason": "海岸段丘台地。那珂川浸水域が市境外止まり"},
-    {"title": "五霞町", "meta": "08542", "reason": "利根川・渡良瀬川合流部。利根川系データ未収録"},
 ]
 
 
@@ -430,7 +430,7 @@ def write_index_html(n_cities: int) -> None:
 
     <section class="section" aria-labelledby="unavailable-heading">
       <div class="section-heading">
-        <h2 id="unavailable-heading">対象外市町村（4市町村）</h2>
+        <h2 id="unavailable-heading">対象外市町村（3市町村）</h2>
       </div>
       <p class="section-note">下記はA31a浸水想定区域データが境界内に存在しないため、シナリオ生成対象外です。</p>
       <ul id="unavailable-links" class="unavailable-list"></ul>
