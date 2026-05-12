@@ -617,6 +617,17 @@ def write_app_js() -> None:
     return { shelter: shelter, distance: result.dist, coords: coords };
   }
 
+  // ------------------------------------------------------------------ neighbor city lookup
+  // Returns city codes within THRESHOLD_KM of the clicked point (excluding primary city).
+  // Used to extend shelter search scope across city boundaries.
+  function getNeighborCityCodes(latlng, primaryCity) {
+    var THRESHOLD_KM = 20;
+    return manifest.filter(function (city) {
+      if (city.code === primaryCity.code) return false;
+      return distanceKm(latlng, city.center) < THRESHOLD_KM;
+    }).map(function (city) { return city.code; });
+  }
+
   // ------------------------------------------------------------------ click handler
   function routeFromClick(latlng) {
     activeClick = latlng;
@@ -648,7 +659,15 @@ def write_app_js() -> None:
     L.marker(latlng).addTo(markerLayer);
     resultEl.textContent = city.name + " のデータを読み込み中...";
 
-    loadCityData(city.code).then(function (data) {
+    // Load primary city + neighboring cities in parallel (serialized by loadLock internally)
+    var neighborCodes = getNeighborCityCodes(latlng, city);
+    var neighborLoads = neighborCodes.map(function (code) {
+      return loadCityData(code).catch(function () { return null; });
+    });
+
+    Promise.all([loadCityData(city.code)].concat(neighborLoads)).then(function (datasets) {
+      var data = datasets[0];
+
       if (!currentData || !currentCity || currentCity.code !== city.code) {
         shelterLayer.clearLayers();
         currentCity = city;
@@ -666,11 +685,28 @@ def write_app_js() -> None:
       var st        = getStructures(city.code, data);
       var startNode = nearestNode(data.graph.nodes, latlng);
       var closedSet = new Set(data.closures[activeTime] || []);
-      var shelterSet = new Set(data.shelters.map(function (s) { return s.node; }));
-      var result    = dijkstra(startNode, shelterSet, closedSet, st.adjacency);
-      var route     = buildRoute(data, startNode, result, st.edgesById);
 
-      if (!route || route.coords.length < 2) {
+      // Build shelter node map: primary city shelters use their original graph node IDs.
+      // Neighboring city shelters are snapped to the nearest node in the primary city's graph.
+      // Note: cross-city routes are approximations — road network is still city-bounded (Case 1).
+      var shelterNodeMap = new Map();
+      data.shelters.forEach(function (s) {
+        shelterNodeMap.set(s.node, { name: s.name, capacity: s.capacity, isCrossCity: false });
+      });
+      datasets.slice(1).forEach(function (neighborData) {
+        if (!neighborData) return;
+        neighborData.shelters.forEach(function (s) {
+          var snapNode = nearestNode(data.graph.nodes, { lat: s.lat, lng: s.lon });
+          if (snapNode && !shelterNodeMap.has(snapNode)) {
+            shelterNodeMap.set(snapNode, { name: s.name, capacity: s.capacity, isCrossCity: true });
+          }
+        });
+      });
+
+      var shelterSet = new Set(shelterNodeMap.keys());
+      var result    = dijkstra(startNode, shelterSet, closedSet, st.adjacency);
+
+      if (!result) {
         resultEl.innerHTML =
           '<dl class="result-dl">' +
           '<div><dt>到達可否</dt><dd class="reach-ng">到達不可</dd></div>' +
@@ -680,13 +716,46 @@ def write_app_js() -> None:
         return;
       }
 
-      L.polyline(route.coords, { color: "#111827", weight: 5, opacity: 0.82 }).addTo(routeLayer);
-      var km = (route.distance / 1000).toFixed(2);
+      var ids = [], cur = result.node;
+      while (cur !== startNode) {
+        var step = result.prev.get(cur);
+        if (!step) break;
+        ids.push(step.edgeId);
+        cur = step.from;
+      }
+      ids.reverse();
+      var coords = [];
+      ids.forEach(function (eId) {
+        var edge = st.edgesById.get(eId);
+        if (!edge) return;
+        edge.coords.forEach(function (c) {
+          var last = coords[coords.length - 1];
+          if (!last || last[0] !== c[0] || last[1] !== c[1]) coords.push(c);
+        });
+      });
+
+      if (coords.length < 2) {
+        resultEl.innerHTML =
+          '<dl class="result-dl">' +
+          '<div><dt>到達可否</dt><dd class="reach-ng">到達不可</dd></div>' +
+          '<div><dt>都市</dt><dd>' + city.name + '</dd></div>' +
+          '</dl>' +
+          '<p class="result-note">この時刻では到達可能な避難所が見つかりません。</p>';
+        return;
+      }
+
+      L.polyline(coords, { color: "#111827", weight: 5, opacity: 0.82 }).addTo(routeLayer);
+      var km = (result.dist / 1000).toFixed(2);
+      var info = shelterNodeMap.get(result.node);
+      var crossNote = info && info.isCrossCity
+        ? '<div><dt>種別</dt><dd style="color:#d97706">隣接市避難所（参考）</dd></div>'
+        : '';
       resultEl.innerHTML =
         '<dl class="result-dl">' +
         '<div><dt>到達可否</dt><dd class="reach-ok">到達可</dd></div>' +
-        '<div><dt>避難所</dt><dd>' + route.shelter.name + '</dd></div>' +
+        '<div><dt>避難所</dt><dd>' + (info ? info.name : '-') + '</dd></div>' +
         '<div><dt>都市</dt><dd>' + city.name + '</dd></div>' +
+        crossNote +
         '<div><dt>距離</dt><dd>' + km + ' km</dd></div>' +
         '<div><dt>閉鎖回避</dt><dd>' + closedSet.size + ' 本</dd></div>' +
         '</dl>';
