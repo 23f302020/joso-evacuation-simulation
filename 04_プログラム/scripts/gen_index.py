@@ -116,7 +116,7 @@ def write_pages_js(entries: list[dict]) -> None:
         for e in _UNAVAILABLE_CITIES
     )
 
-    content = f"""window.PHASE1_PAGES = {{
+    content = f"""window.RESULT_PAGES = {{
   overview: [
     {{ title: "道路ネットワーク", meta: "常総市道路NW", href: "network/joso_network_map.html" }},
     {{ title: "浸水時系列マップ", meta: "8時点の浸水範囲", href: "flood/flood_timeline_map.html" }},
@@ -129,6 +129,16 @@ def write_pages_js(entries: list[dict]) -> None:
   ],
   unified: [
     {{ title: "茨城県41市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
+  ],
+  phase2: [
+    {{ title: "避難結果サマリ", meta: "small / 1/10 / full の到着・未到着・逃げ遅れ", href: "sumo/evaluation/evacuation_summary.csv", primary: true }},
+    {{ title: "混雑ログ", meta: "60秒間隔のアクティブ台数・平均速度・停止台数", href: "sumo/evaluation/congestion_log.csv" }},
+    {{ title: "Phase 1 / Phase 2 比較", meta: "静的到達不可と動的逃げ遅れを単位別に整理", href: "sumo/evaluation/phase1_phase2_comparison.csv" }},
+    {{ title: "全量試行サマリJSON", meta: "1,001台試行のTraCI集計", href: "sumo/results/scenario_a_traci_summary.json" }},
+    {{ title: "SUMOネットワーク概要", meta: "netconvert後のedge / junction / connection件数", href: "sumo/network/sumo_network_summary.md" }},
+  ],
+  phase3: [
+    {{ title: "Phase 3", meta: "未実装。デマンド交通バス比較は今後追加", href: "#phase3" }},
   ],
   cities: [
 {cities_js}
@@ -247,12 +257,14 @@ def write_components_js() -> None:
   }
 
   window.addEventListener("DOMContentLoaded", function () {
-    const pages = window.PHASE1_PAGES;
+    const pages = window.RESULT_PAGES;
     if (!pages) return;
     renderList("overview-links", pages.overview, createCard);
     renderList("route-links", pages.routes, createRouteItem);
     renderList("scenario-links", pages.scenario || [], createCard);
     renderList("unified-links", pages.unified || [], createCard);
+    renderList("phase2-links", pages.phase2 || [], createCard);
+    renderList("phase3-links", pages.phase3 || [], createCard);
     renderCities(pages.cities || []);
     renderList("unavailable-links", pages.unavailable || [], createUnavailableItem);
   });
@@ -296,6 +308,19 @@ a { color: inherit; text-decoration: none; }
 .eyebrow, .updated { margin: 0; color: var(--muted); font-size: 13px; }
 h1 { margin: 4px 0 0; font-size: 28px; font-weight: 700; letter-spacing: 0; }
 .page-shell { max-width: 1040px; margin: 0 auto; padding: 28px 24px 48px; }
+.phase-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 28px; }
+.phase-nav a {
+  display: flex;
+  flex-direction: column;
+  min-height: 78px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+}
+.phase-nav a:hover, .phase-nav a:focus-visible { background: var(--surface-hover); border-color: var(--accent); outline: none; }
+.phase-nav-title { font-weight: 700; font-size: 15px; }
+.phase-nav-meta { margin-top: 4px; color: var(--muted); font-size: 12px; }
 .section + .section { margin-top: 36px; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
@@ -369,7 +394,7 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 @media (max-width: 760px) {
   .page-header { display: block; padding-top: 28px; }
   .updated { margin-top: 12px; }
-  .card-grid, .route-list, .city-grid, .city-tools, .unavailable-list { grid-template-columns: 1fr; }
+  .phase-nav, .card-grid, .route-list, .city-grid, .city-tools, .unavailable-list { grid-template-columns: 1fr; }
   .city-count { white-space: normal; }
   .summary-stats { flex-wrap: wrap; }
   .stat-text { border-left: 0; padding-left: 0; margin-left: 0; border-top: 1px solid var(--line); padding-top: 10px; width: 100%; }
@@ -385,7 +410,7 @@ def write_index_html(n_cities: int) -> None:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phase 1 成果物</title>
+  <title>研究成果物トップページ</title>
   <link rel="stylesheet" href="assets/phase1.css">
   <script src="assets/phase1-pages.js" defer></script>
   <script src="assets/phase1-components.js" defer></script>
@@ -394,7 +419,7 @@ def write_index_html(n_cities: int) -> None:
   <header class="page-header">
     <div>
       <p class="eyebrow">2015 鬼怒川氾濫 / 茨城県</p>
-      <h1>Phase 1 成果物</h1>
+      <h1>研究成果物トップページ</h1>
     </div>
     <p class="updated">HTML確認トップページ</p>
   </header>
@@ -407,9 +432,24 @@ def write_index_html(n_cities: int) -> None:
       <div class="stat-item stat-text">浸水想定区域 / 閉鎖道路 / 避難ルート</div>
     </div>
 
-    <section class="section" aria-labelledby="unified-heading">
+    <nav class="phase-nav" aria-label="Phase別成果物">
+      <a href="#phase1">
+        <span class="phase-nav-title">Phase 1</span>
+        <span class="phase-nav-meta">浸水・閉鎖道路・避難ルート確認</span>
+      </a>
+      <a href="#phase2">
+        <span class="phase-nav-title">Phase 2</span>
+        <span class="phase-nav-meta">SUMO自家用車避難シミュレーション</span>
+      </a>
+      <a href="#phase3">
+        <span class="phase-nav-title">Phase 3</span>
+        <span class="phase-nav-meta">デマンド交通バス比較（未実装）</span>
+      </a>
+    </nav>
+
+    <section class="section" id="phase1" aria-labelledby="unified-heading">
       <div class="section-heading">
-        <h2 id="unified-heading">茨城県シミュレーション（{n_cities}市区町村）</h2>
+        <h2 id="unified-heading">Phase 1：茨城県シミュレーション（{n_cities}市区町村）</h2>
       </div>
       <p class="section-note">県内拡張版はこちらです。クリック地点に応じて対象市区町村のデータを読み込みます。</p>
       <div id="unified-links" class="card-grid"></div>
@@ -465,6 +505,22 @@ def write_index_html(n_cities: int) -> None:
           <div id="route-links" class="route-list"></div>
         </div>
       </div>
+    </section>
+
+    <section class="section" id="phase2" aria-labelledby="phase2-heading">
+      <div class="section-heading">
+        <h2 id="phase2-heading">Phase 2：SUMO自家用車避難シミュレーション</h2>
+      </div>
+      <p class="section-note">シナリオA（自家用車のみ）の小規模、1/10、全量試行の評価結果です。</p>
+      <div id="phase2-links" class="card-grid"></div>
+    </section>
+
+    <section class="section" id="phase3" aria-labelledby="phase3-heading">
+      <div class="section-heading">
+        <h2 id="phase3-heading">Phase 3：デマンド交通バス比較</h2>
+      </div>
+      <p class="section-note">Phase 3は未実装です。バス・比較・集計の成果物を作成した時点でこの欄に追加します。</p>
+      <div id="phase3-links" class="card-grid"></div>
     </section>
   </main>
 </body>

@@ -35,12 +35,12 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-1 | SUMO道路ネットワーク変換 | ✅ | `joso.osm.xml`, `joso.net.xml` |
 | P2-IMPL-2 | Phase 1 edge ID と SUMO edge ID の対応 | ✅ | `edge_id_mapping.csv` |
 | P2-IMPL-3 | 派生データ生成 | ✅ | `shelters_safety.csv`, `agent_origins_10pct.csv`, `time_mapping_sumo.csv` |
-| P2-IMPL-4 | SUMO出発地・避難所スナップ | ⏸ | `agent_origins_sumo.csv`, `shelters_sumo.csv` |
-| P2-IMPL-5 | 小規模シナリオA route/config生成 | ⏸ | `scenario_a_small.rou.xml`, `scenario_a_small.sumocfg` |
-| P2-IMPL-6 | TraCI動的道路閉鎖 | ⏸ | `run_scenario_a_traci.py`, `closure_log.csv` |
-| P2-IMPL-7 | 1/10試行・全量試行 | ⏸ | `scenario_a_10pct.*`, `scenario_a.*` |
-| P2-IMPL-8 | 評価CSV・比較表生成 | ⏸ | `evacuation_summary.csv`, `phase1_phase2_comparison.csv` |
-| P2-IMPL-9 | 成果物トップページ更新 | ⏸ | Phase 1/2/3別 `index.html` |
+| P2-IMPL-4 | SUMO出発地・避難所スナップ | ✅ | `agent_origins_sumo.csv`, `shelters_sumo.csv` |
+| P2-IMPL-5 | 小規模シナリオA route/config生成 | ✅ | `scenario_a_small.rou.xml`, `scenario_a_small.sumocfg` |
+| P2-IMPL-6 | TraCI動的道路閉鎖 | ✅ | `p2_traci_closure.py`, `scenario_a_small_closure_log.csv` |
+| P2-IMPL-7 | 1/10試行・全量試行 | ✅ | `scenario_a_10pct.*`, `scenario_a.*` |
+| P2-IMPL-8 | 評価CSV・比較表生成 | ✅ | `evacuation_summary.csv`, `phase1_phase2_comparison.csv` |
+| P2-IMPL-9 | 成果物トップページ更新 | ✅ | Phase 1/2/3別 `index.html` |
 
 ---
 
@@ -104,9 +104,9 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-4-1 | 出発地メッシュをSUMO edgeへスナップする | ⏸ | P2-IMPL-1,3 | `agent_origins_sumo.csv` | `unmatched` が0件 |
-| P2-IMPL-4-2 | 安全避難所をSUMO edgeへスナップする | ⏸ | P2-IMPL-1,3 | `shelters_sumo.csv` | 採用避難所の `unmatched` が0件 |
-| P2-IMPL-4-3 | スナップ距離の外れ値を確認する | ⏸ | 4-1,4-2 | 外れ値メモ | 遠すぎる点を手動確認 |
+| P2-IMPL-4-1 | 出発地メッシュをSUMO edgeへスナップする | ✅ | P2-IMPL-1,3 | `agent_origins_sumo.csv` | 40件すべてmatched |
+| P2-IMPL-4-2 | 安全避難所をSUMO edgeへスナップする | ✅ | P2-IMPL-1,3 | `shelters_sumo.csv` | 19件すべてmatched |
+| P2-IMPL-4-3 | スナップ距離の外れ値を確認する | ✅ | 4-1,4-2 | `snap_validation.json` | 出発地最大468.839m、避難所最大103.35m、未対応0件 |
 
 ---
 
@@ -114,10 +114,10 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-5-1 | 小規模テスト用の車両ID規則を決める | ⏸ | P2-IMPL-4 | 実装メモ | メッシュIDと対応可能 |
-| P2-IMPL-5-2 | `scenario_a_small.rou.xml` を生成する | ⏸ | 5-1 | route XML | XML妥当性、車両数確認 |
-| P2-IMPL-5-3 | `scenario_a_small.sumocfg` を生成する | ⏸ | 5-2 | sumocfg | SUMOで読み込み可能 |
-| P2-IMPL-5-4 | 小規模シナリオを閉鎖なしで実行する | ⏸ | 5-3 | 実行ログ | 車両が発生・走行・到着する |
+| P2-IMPL-5-1 | 小規模テスト用の車両ID規則を決める | ✅ | P2-IMPL-4 | `p2_sumo_scenario.py` | `veh_small_{origin_id}_{連番}` |
+| P2-IMPL-5-2 | `scenario_a_small.rou.xml` を生成する | ✅ | 5-1 | `scenario_a_small.rou.xml` | 40台のtripを生成 |
+| P2-IMPL-5-3 | `scenario_a_small.sumocfg` を生成する | ✅ | 5-2 | `scenario_a_small.sumocfg` | network/route/tripinfo出力を指定 |
+| P2-IMPL-5-4 | 小規模シナリオを閉鎖なしで実行する | ✅ | 5-3 | `scenario_a_small_tripinfo.xml` | 40台すべて到着、平均326.95秒 |
 
 ---
 
@@ -125,11 +125,11 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-6-1 | `closure_timeline_sumo.json` を生成する | ⏸ | P2-IMPL-2,3 | `closure_timeline_sumo.json` | `unmapped_phase1_edge_ids` が空 |
-| P2-IMPL-6-2 | TraCI実行スクリプトを作成する | ⏸ | 6-1,5 | `run_scenario_a_traci.py` | SUMOが起動・終了する |
-| P2-IMPL-6-3 | 指定時刻でedge閉鎖を実行する | ⏸ | 6-2 | `closure_log.csv` | t0〜t7の閉鎖件数が記録される |
-| P2-IMPL-6-4 | 閉鎖後の再経路探索を実装する | ⏸ | 6-3 | ログ | reroute成功・失敗を記録 |
-| P2-IMPL-6-5 | 到達不能・600秒停止を記録する | ⏸ | 6-4 | `vehicle_log.csv` | 主指標に必要な状態を出力 |
+| P2-IMPL-6-1 | `closure_timeline_sumo.json` を生成する | ✅ | P2-IMPL-2,3 | `closure_timeline_sumo.json` | 8時点すべて未対応0件 |
+| P2-IMPL-6-2 | TraCI実行スクリプトを作成する | ✅ | 6-1,5 | `p2_traci_closure.py` | SUMO起動・終了を確認 |
+| P2-IMPL-6-3 | 指定時刻でedge閉鎖を実行する | ✅ | 6-2 | `scenario_a_small_closure_log.csv` | t0〜t7の閉鎖件数を記録 |
+| P2-IMPL-6-4 | 閉鎖後の再経路探索を実装する | ✅ | 6-3 | `scenario_a_small_closure_log.csv` | reroute成功・失敗列を出力 |
+| P2-IMPL-6-5 | 到達不能・600秒停止を記録する | ✅ | 6-4 | `scenario_a_small_vehicle_log.csv` | 主指標列 `stranded_main` を出力 |
 
 ---
 
@@ -137,10 +137,10 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-7-1 | 1/10試行 route/config を生成する | ⏸ | P2-IMPL-6 | `scenario_a_10pct.*` | 車両数が仕様どおり |
-| P2-IMPL-7-2 | 1/10試行を実行する | ⏸ | 7-1 | 実行ログ | 完走または停止理由を記録 |
-| P2-IMPL-7-3 | 全量試行 route/config を生成する | ⏸ | 7-2 | `scenario_a.*` | 車両数が仕様どおり |
-| P2-IMPL-7-4 | 全量試行を実行する | ⏸ | 7-3 | 実行ログ | 処理時間・メモリ負荷を記録 |
+| P2-IMPL-7-1 | 1/10試行 route/config を生成する | ✅ | P2-IMPL-6 | `scenario_a_10pct.*` | 120台 |
+| P2-IMPL-7-2 | 1/10試行を実行する | ✅ | 7-1 | `scenario_a_10pct_traci_summary.json` | 120台すべて到着、逃げ遅れ0台 |
+| P2-IMPL-7-3 | 全量試行 route/config を生成する | ✅ | 7-2 | `scenario_a.*` | 1,001台 |
+| P2-IMPL-7-4 | 全量試行を実行する | ✅ | 7-3 | `scenario_a_traci_summary.json` | 1,001台中987台到着、出発閉鎖14台 |
 
 ---
 
@@ -148,10 +148,10 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-8-1 | `evacuation_summary.csv` を生成する | ⏸ | P2-IMPL-6 | summary CSV | 到着・未到着・逃げ遅れ台数 |
-| P2-IMPL-8-2 | `congestion_log.csv` を生成する | ⏸ | P2-IMPL-6 | congestion CSV | 時刻別平均速度・停止台数 |
-| P2-IMPL-8-3 | `phase1_phase2_comparison.csv` を生成する | ⏸ | 8-1 | 比較CSV | 静的到達不可と動的逃げ遅れを分けて記録 |
-| P2-IMPL-8-4 | 卒論用表テンプレートへ反映する | ⏸ | 8-1〜8-3 | 表案 | 数値・注記を確認 |
+| P2-IMPL-8-1 | `evacuation_summary.csv` を生成する | ✅ | P2-IMPL-6 | `evacuation_summary.csv` | 3ケースの到着・未到着・逃げ遅れ台数 |
+| P2-IMPL-8-2 | `congestion_log.csv` を生成する | ✅ | P2-IMPL-6 | `congestion_log.csv` | 3ケース合算1,080行 |
+| P2-IMPL-8-3 | `phase1_phase2_comparison.csv` を生成する | ✅ | 8-1 | `phase1_phase2_comparison.csv` | Phase 1静的到達不可とPhase 2動的逃げ遅れを分離 |
+| P2-IMPL-8-4 | 卒論用表テンプレートへ反映する | ✅ | 8-1〜8-3 | `Phase2_評価表テンプレート.md` | 主要数値と注記を記載 |
 
 ---
 
@@ -159,10 +159,10 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-9-1 | Phase 2成果物リンク構成を決める | ⏸ | P2-IMPL-8 | リンク案 | Phase 1/2/3が分かれる |
-| P2-IMPL-9-2 | `gen_index.py` を更新する | ⏸ | 9-1 | 更新スクリプト | index再生成可能 |
-| P2-IMPL-9-3 | `output/index.html` を更新する | ⏸ | 9-2 | index HTML | Phase別に確認できる |
-| P2-IMPL-9-4 | ブラウザで導線確認する | ⏸ | 9-3 | 確認メモ | リンク切れがない |
+| P2-IMPL-9-1 | Phase 2成果物リンク構成を決める | ✅ | P2-IMPL-8 | Phase 2評価CSV・summary・network概要 | Phase 1/2/3を別セクション化 |
+| P2-IMPL-9-2 | `gen_index.py` を更新する | ✅ | 9-1 | `gen_index.py` | index再生成可能 |
+| P2-IMPL-9-3 | `output/index.html` を更新する | ✅ | 9-2 | `output/index.html` | Phase別に確認できる |
+| P2-IMPL-9-4 | ブラウザで導線確認する | ✅ | 9-3 | Edge headless確認 | Phase別ナビ表示・Phase 2リンク先5件の存在を確認 |
 
 ---
 
