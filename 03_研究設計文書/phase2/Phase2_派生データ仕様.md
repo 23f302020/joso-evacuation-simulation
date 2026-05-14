@@ -114,7 +114,34 @@ Phase 1のt0〜t7を、6時間SUMOシミュレーションへ圧縮する対応�
 
 ---
 
-## 6. `edge_id_mapping.csv`
+## 6. `phase1_edge_osm_way_mapping.csv`（中間ファイル）
+
+`p2_sumo_network.py export-osm` が `joso.osm.xml` と同時に出力する中間ファイル。  
+OSM XMLに書き込んだ way ID（`phase2_osm_way_id`）とPhase 1 edge IDの対応を保持し、`netconvert` 後の `edge_id_mapping.csv` 生成の基盤となる。
+
+| 列名 | 型 | 内容 |
+|---|---|---|
+| `phase1_edge_id` | string | `{u}_{v}_{key}` 形式のPhase 1エッジID |
+| `u` | integer | 始点ノードID |
+| `v` | integer | 終点ノードID |
+| `key` | integer | MultiDiGraph のキー |
+| `osmid` | string | OSMnx が持つ元のOSM way ID（リスト文字列の場合あり） |
+| `phase2_osm_way_id` | integer | OSM XML書き込み時に付与した連番 way ID |
+| `highway` | string | 道路種別 |
+| `oneway` | string | `yes` 固定（有向グラフ全エッジを一方通行として出力） |
+| `length` | float | エッジ長（m） |
+| `has_geometry` | boolean | shapelyジオメトリが存在するか |
+| `geometry_point_count` | integer | ジオメトリの点数 |
+
+保存先：`04_プログラム/output/sumo/derived/phase1_edge_osm_way_mapping.csv`
+
+採用判断：
+- OSM XML出力時に `phase2_osm_way_id` をタグとして way 要素へ埋め込み、`netconvert` 後のSUMO edge IDと `phase2_osm_way_id` を突き合わせることで `edge_id_mapping.csv` を生成する。
+- このCSVが欠損した場合、`edge_id_mapping.csv` の自動生成は不可能になる。
+
+---
+
+## 7. `edge_id_mapping.csv`
 
 Phase 2最大の確認対象。Phase 1の道路閉鎖エッジを、SUMOのedgeへ対応させる。
 

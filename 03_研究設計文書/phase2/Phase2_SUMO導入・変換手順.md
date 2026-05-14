@@ -110,9 +110,9 @@ Python仮想環境からは次を確認する。
 
 | 手順 | 入力 | 出力 | 目的 |
 |---|---|---|---|
-| 1 | `joso_road_network.graphml` | `joso.osm.xml` | OSMnx由来ネットワークをSUMO変換しやすい形式へ出す |
+| 1 | `joso_road_network.graphml` | `joso.osm.xml`, `phase1_edge_osm_way_mapping.csv` | OSMnxエッジをOSM wayとして出力し、Phase 1 edge ID → way ID の対応を記録 |
 | 2 | `joso.osm.xml` | `joso.net.xml` | `netconvert` でSUMOネットワークへ変換 |
-| 3 | `joso_road_network.graphml`, `joso.net.xml` | `edge_id_mapping.csv` | Phase 1 edge IDとSUMO edge IDを対応 |
+| 3 | `phase1_edge_osm_way_mapping.csv`, `joso.net.xml` | `edge_id_mapping.csv` | way ID経由でPhase 1 edge IDとSUMO edge IDを対応 |
 | 4 | `road_closure_timeline.json`, `edge_id_mapping.csv` | `closure_timeline_sumo.json` | TraCI閉鎖用ファイルへ変換 |
 | 5 | `origin_points.csv`, `joso.net.xml` | `agent_origins_sumo.csv` | 出発地をSUMO edgeへスナップ |
 | 6 | `shelters_safety.csv`, `joso.net.xml` | `shelters_sumo.csv` | 安全避難所をSUMO edgeへスナップ |

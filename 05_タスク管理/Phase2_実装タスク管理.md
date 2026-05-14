@@ -32,9 +32,9 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | マイルストーン | 内容 | 状態 | 主な成果物 |
 |---|---|---:|---|
 | P2-IMPL-0 | 実装環境・作業ディレクトリ準備 | ✅ | SUMO 1.26.0、`output/sumo/` |
-| P2-IMPL-1 | SUMO道路ネットワーク変換 | ❌ | `joso.osm.xml`, `joso.net.xml` |
-| P2-IMPL-2 | Phase 1 edge ID と SUMO edge ID の対応 | ❌ | `edge_id_mapping.csv` |
-| P2-IMPL-3 | 派生データ生成 | ❌ | `shelters_safety.csv`, `agent_origins_10pct.csv`, `time_mapping_sumo.csv` |
+| P2-IMPL-1 | SUMO道路ネットワーク変換 | ✅ | `joso.osm.xml`, `joso.net.xml` |
+| P2-IMPL-2 | Phase 1 edge ID と SUMO edge ID の対応 | ✅ | `edge_id_mapping.csv` |
+| P2-IMPL-3 | 派生データ生成 | ✅ | `shelters_safety.csv`, `agent_origins_10pct.csv`, `time_mapping_sumo.csv` |
 | P2-IMPL-4 | SUMO出発地・避難所スナップ | ⏸ | `agent_origins_sumo.csv`, `shelters_sumo.csv` |
 | P2-IMPL-5 | 小規模シナリオA route/config生成 | ⏸ | `scenario_a_small.rou.xml`, `scenario_a_small.sumocfg` |
 | P2-IMPL-6 | TraCI動的道路閉鎖 | ⏸ | `run_scenario_a_traci.py`, `closure_log.csv` |
@@ -60,11 +60,11 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-1-1 | `joso_road_network.graphml` のノード・エッジ属性を確認する | ❌ | P2-IMPL-0 | 属性確認メモ | `u`, `v`, `key`, `osmid`, `geometry`, `length` の有無 |
-| P2-IMPL-1-2 | GraphMLからOSM XMLへ変換する方針を実装に落とす | ❌ | 1-1 | 変換スクリプト案 | ID保持方法が明記されている |
-| P2-IMPL-1-3 | `joso.osm.xml` を生成する | ❌ | 1-2 | `output/sumo/network/joso.osm.xml` | XMLとして読める |
-| P2-IMPL-1-4 | `netconvert` で `joso.net.xml` を生成する | ❌ | 1-3 | `output/sumo/network/joso.net.xml` | `netconvert` がエラー終了しない |
-| P2-IMPL-1-5 | `sumo-gui` または `netedit` でネットワークを確認する | ❌ | 1-4 | 確認メモ | 道路が空でない、常総市周辺に表示される |
+| P2-IMPL-1-1 | `joso_road_network.graphml` のノード・エッジ属性を確認する | ✅ | P2-IMPL-0 | `graphml_attribute_summary.md` | `u`, `v`, `key`, `osmid`, `geometry`, `length` を確認 |
+| P2-IMPL-1-2 | GraphMLからOSM XMLへ変換する方針を実装に落とす | ✅ | 1-1 | `p2_sumo_network.py` | Phase 1 edge ID と synthetic way ID を保持 |
+| P2-IMPL-1-3 | `joso.osm.xml` を生成する | ✅ | 1-2 | `output/sumo/network/joso.osm.xml`, `output/sumo/derived/phase1_edge_osm_way_mapping.csv` | 12,860 waysを出力、Phase 1 edge ID → way ID 対応CSVを同時生成 |
+| P2-IMPL-1-4 | `netconvert` で `joso.net.xml` を生成する | ✅ | 1-3 | `output/sumo/network/joso.net.xml` | edge 49,356件、returncode 0 |
+| P2-IMPL-1-5 | SUMOでネットワークを読み込み確認する | ✅ | 1-4 | `sumo_network_summary.md` | edge 49,356件、SUMO読込OK |
 
 停止条件：
 
@@ -77,11 +77,11 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-2-1 | SUMO edge一覧を抽出する | ❌ | P2-IMPL-1 | `sumo_edges.csv` | edge数・ID形式を確認 |
-| P2-IMPL-2-2 | Phase 1閉鎖edge一覧を抽出する | ❌ | Phase 1出力 | `phase1_closed_edges.csv` | t0〜t7の閉鎖edgeを重複なしで整理 |
-| P2-IMPL-2-3 | `edge_id_mapping.csv` を生成する | ❌ | 2-1,2-2 | `output/sumo/derived/edge_id_mapping.csv` | `mapping_status` を付与 |
-| P2-IMPL-2-4 | 未対応・曖昧対応edgeを検査する | ❌ | 2-3 | 検査ログ | 閉鎖対象edgeの未対応が0件 |
-| P2-IMPL-2-5 | 必要なら手動確認結果を追記する | ⏸ | 2-4 | 更新済み対応表 | `manual_checked` を記録 |
+| P2-IMPL-2-1 | SUMO edge一覧を抽出する | ✅ | P2-IMPL-1 | `sumo_edges.csv` | 通常edge 49,356件 |
+| P2-IMPL-2-2 | Phase 1閉鎖edge一覧を抽出する | ✅ | Phase 1出力 | `phase1_closed_edges.csv` | 閉鎖edge 764件 |
+| P2-IMPL-2-3 | `edge_id_mapping.csv` を生成する | ✅ | 2-1,2-2 | `output/sumo/derived/edge_id_mapping.csv` | 764件に `mapping_status` を付与 |
+| P2-IMPL-2-4 | 未対応・曖昧対応edgeを検査する | ✅ | 2-3 | `edge_mapping_validation.json` | 764件すべてmatched |
+| P2-IMPL-2-5 | 必要なら手動確認結果を追記する | ✅ | 2-4 | 不要 | `unmatched` 0件のため手動追記なし |
 
 停止条件：
 
@@ -93,10 +93,10 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-3-1 | `time_mapping_sumo.csv` を生成する | ❌ | 実装前仕様 | `output/sumo/derived/time_mapping_sumo.csv` | t0=789、t7=21600 |
-| P2-IMPL-3-2 | 避難所浸水リスクを判定する | ❌ | A31a, shelters | `shelters_safety.csv` | 安全目的地が1件以上 |
-| P2-IMPL-3-3 | 人口メッシュから車両台数を算出する | ❌ | origin_points | `agent_origins_10pct.csv` | 人口ありメッシュの小規模台数が1 |
-| P2-IMPL-3-4 | 派生データの列・件数を仕様書と照合する | ❌ | 3-1〜3-3 | 検査ログ | 欠損・型不一致がない |
+| P2-IMPL-3-1 | `time_mapping_sumo.csv` を生成する | ✅ | 実装前仕様 | `output/sumo/derived/time_mapping_sumo.csv` | t0=789、t7=21600 |
+| P2-IMPL-3-2 | 避難所浸水リスクを判定する | ✅ | A31a, shelters | `shelters_safety.csv` | 19件すべて安全目的地 |
+| P2-IMPL-3-3 | 人口メッシュから車両台数を算出する | ✅ | origin_points | `agent_origins_10pct.csv` | 40メッシュ、小規模40台、1/10試行120台、全量1,001台 |
+| P2-IMPL-3-4 | 派生データの列・件数を仕様書と照合する | ✅ | 3-1〜3-3 | `derived_data_validation.json` | `can_proceed_to_sumo_snap=true` |
 
 ---
 
