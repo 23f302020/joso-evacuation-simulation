@@ -188,11 +188,12 @@ Phase 1 全スクリプト（c3/e1/i1/i2/i3）の実装・動作確認が完了�
 
 ## 次セッションで最初に行うこと
 
-1. **GraphML属性確認**：`joso_road_network.graphml` のノード・エッジ属性を確認し、SUMO変換に保持するIDを実装上で確認する
-2. **SUMOネットワーク変換**：`joso.osm.xml` と `joso.net.xml` を生成する
-3. **edge ID対応表生成**：Phase 1 の閉鎖エッジIDとSUMO edge IDの対応表 `edge_id_mapping.csv` を生成・検査する
-4. **派生データ生成**：`shelters_safety.csv`、`agent_origins_10pct.csv`、`time_mapping_sumo.csv` を生成する
-5. **TraCI閉鎖準備**：`closure_timeline_sumo.json` とSUMO edgeへスナップした出発地・避難所表を作成する
+1. **実装以外の残タスク整理**：Phase 2図表候補一覧、本文章立て、比較解釈、先生コメント対応表、実装後検証チェックリストを作成する
+2. **GraphML属性確認**：`joso_road_network.graphml` のノード・エッジ属性を確認し、SUMO変換に保持するIDを実装上で確認する
+3. **SUMOネットワーク変換**：`joso.osm.xml` と `joso.net.xml` を生成する
+4. **edge ID対応表生成**：Phase 1 の閉鎖エッジIDとSUMO edge IDの対応表 `edge_id_mapping.csv` を生成・検査する
+5. **派生データ生成**：`shelters_safety.csv`、`agent_origins_10pct.csv`、`time_mapping_sumo.csv` を生成する
+6. **TraCI閉鎖準備**：`closure_timeline_sumo.json` とSUMO edgeへスナップした出発地・避難所表を作成する
 
 > **Phase 2 の現在方針：** 常総市実データ版を対象に、まず自家用車避難のみのSUMO/TraCIベースラインを作る。
 > SUMO 1.26.0は公式MSIの管理展開で導入済み。`SUMO_HOME/tools` 経由で `traci` / `sumolib` を利用する。
@@ -217,14 +218,17 @@ Phase 1 全スクリプト（c3/e1/i1/i2/i3）の実装・動作確認が完了�
 | 実装タスク一覧 | `05_タスク管理/実装タスク一覧.md` |
 | **Phase 2 詳細タスク管理** | `05_タスク管理/Phase2_詳細タスク管理.md` |
 | **Phase 2 判断事項一覧** | `05_タスク管理/Phase2_判断事項一覧.md` |
+| **Phase 2 実装タスク管理** | `05_タスク管理/Phase2_実装タスク管理.md` |
 | **実装手順書** | `05_タスク管理/実装手順書_Phase1.md` |
 | **実装仕様書** | `03_研究設計文書/実装仕様書.md` |
-| **Phase 2 データ棚卸し** | `03_研究設計文書/Phase2_データ棚卸し.md` |
-| **Phase 2 時間軸候補表** | `03_研究設計文書/Phase2_時間軸候補表.md` |
-| **Phase 2 出力CSV仕様案** | `03_研究設計文書/Phase2_出力CSV仕様案.md` |
-| **Phase 2 実装前仕様** | `03_研究設計文書/Phase2_実装前仕様.md` |
-| **Phase 2 派生データ仕様** | `03_研究設計文書/Phase2_派生データ仕様.md` |
-| **Phase 2 SUMO導入・変換手順** | `03_研究設計文書/Phase2_SUMO導入・変換手順.md` |
+| **Phase 2 データ棚卸し** | `03_研究設計文書/phase2/Phase2_データ棚卸し.md` |
+| **Phase 2 時間軸候補表** | `03_研究設計文書/phase2/Phase2_時間軸候補表.md` |
+| **Phase 2 出力CSV仕様案** | `03_研究設計文書/phase2/Phase2_出力CSV仕様案.md` |
+| **Phase 2 実装前仕様** | `03_研究設計文書/phase2/Phase2_実装前仕様.md` |
+| **Phase 2 派生データ仕様** | `03_研究設計文書/phase2/Phase2_派生データ仕様.md` |
+| **Phase 2 SUMO導入・変換手順** | `03_研究設計文書/phase2/Phase2_SUMO導入・変換手順.md` |
+| **Phase 2 図表一覧** | `03_研究設計文書/phase2/Phase2_図表一覧.md` |
+| **Phase 2 実装フロー図** | `03_研究設計文書/phase2/Phase2_実装フロー図.md` |
 | **Phase 1 シナリオ型拡張方針** | `03_研究設計文書/Phase1_シナリオ型拡張方針.md` |
 | **Phase 1 本文ドラフト** | `03_研究設計文書/Phase1_本文ドラフト.md` |
 | **論文用説明 Phase 1 経路検索方法** | `03_研究設計文書/論文用説明_Phase1_経路検索方法.md` |
