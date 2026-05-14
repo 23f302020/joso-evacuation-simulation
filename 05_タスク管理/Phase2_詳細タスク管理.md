@@ -6,6 +6,8 @@
 > 開発メモ：`開発メモ/memo.md`
 > 判断事項：`Phase2_判断事項一覧.md`
 > 実装前仕様：`03_研究設計文書/Phase2_実装前仕様.md`
+> 派生データ仕様：`03_研究設計文書/Phase2_派生データ仕様.md`
+> SUMO導入・変換手順：`03_研究設計文書/Phase2_SUMO導入・変換手順.md`
 
 ---
 
@@ -56,6 +58,8 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 | P2-0-8 | 判断が必要な項目をユーザー確認用に詳細化する | ✅ | `Phase2_判断事項一覧.md` |
 | P2-0-9 | 判断不要の下準備文書を作成する | ✅ | データ棚卸し、時間軸候補表、出力CSV仕様案 |
 | P2-0-10 | 判断事項の採用案と理由を記録し、Phase 2実装前仕様を固定する | ✅ | `Phase2_実装前仕様.md` |
+| P2-0-11 | 採用判断に基づく派生データ仕様を作成する | ✅ | `Phase2_派生データ仕様.md` |
+| P2-0-12 | SUMO導入・変換手順書を作成する | ✅ | `Phase2_SUMO導入・変換手順.md` |
 
 ---
 
@@ -63,15 +67,17 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 
 | ID | タスク | 状態 | 備考 |
 |---|---|---:|---|
-| P2-ENV-1 | `sumo` のPATH確認 | ✅ | 2026/05/14時点で未検出 |
-| P2-ENV-2 | `sumo-gui` のPATH確認 | ✅ | 2026/05/14時点で未検出 |
-| P2-ENV-3 | `netconvert` のPATH確認 | ✅ | 2026/05/14時点で未検出 |
-| P2-ENV-4 | `netedit` のPATH確認 | ✅ | 2026/05/14時点で未検出 |
+| P2-ENV-1 | `sumo` のPATH確認 | ✅ | 導入後 `sumo 1.26.0` 確認済み |
+| P2-ENV-2 | `sumo-gui` のPATH確認 | ✅ | 導入後 `sumo-gui 1.26.0` 確認済み |
+| P2-ENV-3 | `netconvert` のPATH確認 | ✅ | 導入後 `netconvert 1.26.0` 確認済み |
+| P2-ENV-4 | `netedit` のPATH確認 | ✅ | 導入後 `netedit 1.26.0` 確認済み |
 | P2-ENV-5 | SUMO本体のインストール方法を決める | ✅ | 公式インストーラを採用 |
-| P2-ENV-6 | `SUMO_HOME` とPATHの設定方針を決める | ✅ | 公式インストール後に設定 |
-| P2-ENV-7 | venvから `traci` をimportできるか確認する | ✅ | 2026/05/14時点で不可 |
-| P2-ENV-8 | venvから `sumolib` をimportできるか確認する | ✅ | 2026/05/14時点で不可 |
+| P2-ENV-6 | `SUMO_HOME` とPATHの設定方針を決める | ✅ | ユーザー環境変数に設定済み |
+| P2-ENV-7 | venvから `traci` をimportできるか確認する | ✅ | `SUMO_HOME/tools` 経由で確認済み |
+| P2-ENV-8 | venvから `sumolib` をimportできるか確認する | ✅ | `SUMO_HOME/tools` 経由で確認済み |
 | P2-ENV-9 | `traci` / `sumolib` の参照方法を決める | ✅ | `SUMO_HOME/tools` 参照を採用 |
+| P2-ENV-10 | SUMO 1.26.0を導入する | ✅ | 公式MSIをユーザー領域へ管理展開 |
+| P2-ENV-11 | SUMO用作業ディレクトリを作成する | ✅ | `output/sumo/{network,derived,scenarios,results}` |
 
 ---
 
@@ -89,6 +95,7 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 | P2-DATA-7 | 出発時刻の分布を決める | ✅ | 基本は一斉出発、30分分散は感度分析 |
 | P2-DATA-8 | 避難完了の判定地点を決める | ✅ | 安全避難所到着 |
 | P2-DATA-9 | データ量増加対策の保存形式を検討する | ✅ | 初回CSV、重くなったらSQLite |
+| P2-DATA-10 | 避難所安全性・1/10試行・SUMO投入用派生データの列仕様を固定する | ✅ | `Phase2_派生データ仕様.md` |
 
 ---
 
@@ -101,6 +108,7 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 | P2-TIME-3 | 6時間シミュレーションとt0〜t7全期間の扱いを決める | ✅ | t0〜t7を6時間へ線形圧縮 |
 | P2-TIME-4 | 閉鎖済み道路上にいる車両の扱いを決める | ✅ | 再経路探索、失敗または長時間停止で候補 |
 | P2-TIME-5 | 逃げ遅れ車両の判定条件を定義する | ✅ | 主指標を仕様化 |
+| P2-TIME-6 | `time_mapping_sumo.csv` の列仕様を固定する | ✅ | `Phase2_派生データ仕様.md` |
 
 ---
 
@@ -110,10 +118,10 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 |---|---|---:|---|
 | P2-NET-1 | GraphMLのノード・エッジ属性を確認する | ❌ | 属性確認メモ |
 | P2-NET-2 | SUMO変換時に保持すべきedge IDを決める | ✅ | Phase 1 edge IDとの対応表を作る方針 |
-| P2-NET-3 | GraphMLをOSM XMLへ変換する手順を設計する | ❌ | `joso.osm` |
-| P2-NET-4 | `netconvert` 変換オプションを決める | ❌ | `joso.net.xml` |
-| P2-NET-5 | Phase 1 edge ID と SUMO edge ID の対応表を設計する | ❌ | `edge_id_mapping.csv` |
-| P2-NET-6 | SUMO-GUI / neteditでネットワーク確認する手順を作る | ❌ | 確認メモ |
+| P2-NET-3 | GraphMLをOSM XMLへ変換する手順を設計する | ✅ | `Phase2_SUMO導入・変換手順.md` |
+| P2-NET-4 | `netconvert` 変換オプションを決める | ✅ | 初期候補を手順書に記録 |
+| P2-NET-5 | Phase 1 edge ID と SUMO edge ID の対応表を設計する | ✅ | `edge_id_mapping.csv` 列仕様を固定 |
+| P2-NET-6 | SUMO-GUI / neteditでネットワーク確認する手順を作る | ✅ | 導入後確認項目として記録 |
 
 ---
 
@@ -121,8 +129,8 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 
 | ID | タスク | 状態 | 成果物候補 |
 |---|---|---:|---|
-| P2-AGENT-1 | 出発地メッシュをSUMO edgeへスナップする方針を決める | ❌ | `agent_origins_sumo.csv` |
-| P2-AGENT-2 | 避難所をSUMO edgeへスナップする方針を決める | ❌ | `shelters_sumo.csv` |
+| P2-AGENT-1 | 出発地メッシュをSUMO edgeへスナップする方針を決める | ✅ | `agent_origins_sumo.csv` 列仕様を固定 |
+| P2-AGENT-2 | 避難所をSUMO edgeへスナップする方針を決める | ✅ | `shelters_sumo.csv` 列仕様を固定 |
 | P2-AGENT-3 | 小規模テスト用の車両リストを設計する | ❌ | `scenario_a_small.rou.xml` |
 | P2-AGENT-4 | 1/10試行用の車両リストを設計する | ❌ | `scenario_a_10pct.rou.xml` |
 | P2-AGENT-5 | 全量実行用の車両リストを設計する | ❌ | `scenario_a.rou.xml` |
@@ -134,7 +142,7 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 
 | ID | タスク | 状態 | 成果物候補 |
 |---|---|---:|---|
-| P2-CLOSE-1 | `road_closure_timeline.json` の閉鎖エッジをSUMO edge IDへ変換する手順を決める | ❌ | `closure_timeline_sumo.json` |
+| P2-CLOSE-1 | `road_closure_timeline.json` の閉鎖エッジをSUMO edge IDへ変換する手順を決める | ✅ | `closure_timeline_sumo.json` 構造を固定 |
 | P2-CLOSE-2 | TraCIで閉鎖するAPIを決める | ✅ | edge通行不可＋再経路探索を採用 |
 | P2-CLOSE-3 | 閉鎖ログの出力項目を決める | ❌ | `closure_log.csv` |
 | P2-CLOSE-4 | 閉鎖後の再経路探索の有無を決める | ✅ | 再経路探索あり |
@@ -172,8 +180,7 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 
 | 優先 | タスク | 理由 |
 |---:|---|---|
-| 1 | SUMO公式インストーラ導入と `SUMO_HOME` / PATH 設定 | Phase 2実行環境の前提 |
-| 2 | Phase 1 edge ID と SUMO edge ID の対応表仕様を詳細化する | TraCIで正しい道路を閉鎖するための最重要リスク |
-| 3 | 避難所浸水リスク判定表の列仕様を詳細化する | 先生コメント対応 |
-| 4 | 1/10試行用エージェント表の列仕様を詳細化する | 軽量化対応 |
-| 5 | SUMO変換手順書を作る | 実装着手前の具体手順 |
+| 1 | GraphML属性確認からSUMO変換実装へ進む | 実装タスク開始点 |
+| 2 | `joso.osm.xml` と `joso.net.xml` を生成する | SUMO道路ネットワーク作成 |
+| 3 | `edge_id_mapping.csv` を生成・検査する | TraCIで正しい道路を閉鎖するため |
+| 4 | `shelters_safety.csv` と `agent_origins_10pct.csv` を生成する | 安全避難所・1/10試行の前提 |

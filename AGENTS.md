@@ -188,14 +188,14 @@ Phase 1 全スクリプト（c3/e1/i1/i2/i3）の実装・動作確認が完了�
 
 ## 次セッションで最初に行うこと
 
-1. **SUMO導入方針の決定**：`sumo`、`sumo-gui`、`netconvert`、`netedit` を利用できるようにする方法を決める
-2. **TraCI利用方針の決定**：`04_プログラム/venv/` から `traci` / `sumolib` を利用する方法を決める
-3. **先生コメント対応の設計**：避難所の浸水リスク確認、データ軽量化、メッシュ人口1/10試行の方針を決める
-4. **時間軸設計**：破堤時刻、t0〜t7、6時間シミュレーションをSUMO秒へどう対応させるか整理する
-5. **ID対応設計**：Phase 1 の閉鎖エッジIDとSUMO edge IDの対応表仕様を決める
+1. **GraphML属性確認**：`joso_road_network.graphml` のノード・エッジ属性を確認し、SUMO変換に保持するIDを実装上で確認する
+2. **SUMOネットワーク変換**：`joso.osm.xml` と `joso.net.xml` を生成する
+3. **edge ID対応表生成**：Phase 1 の閉鎖エッジIDとSUMO edge IDの対応表 `edge_id_mapping.csv` を生成・検査する
+4. **派生データ生成**：`shelters_safety.csv`、`agent_origins_10pct.csv`、`time_mapping_sumo.csv` を生成する
+5. **TraCI閉鎖準備**：`closure_timeline_sumo.json` とSUMO edgeへスナップした出発地・避難所表を作成する
 
 > **Phase 2 の現在方針：** 常総市実データ版を対象に、まず自家用車避難のみのSUMO/TraCIベースラインを作る。
-> 実装に入る前に、環境、避難所安全性、1/10試行、時間軸、edge ID対応を文書上で確定する。
+> SUMO 1.26.0は公式MSIの管理展開で導入済み。`SUMO_HOME/tools` 経由で `traci` / `sumolib` を利用する。
 
 ---
 
@@ -223,6 +223,8 @@ Phase 1 全スクリプト（c3/e1/i1/i2/i3）の実装・動作確認が完了�
 | **Phase 2 時間軸候補表** | `03_研究設計文書/Phase2_時間軸候補表.md` |
 | **Phase 2 出力CSV仕様案** | `03_研究設計文書/Phase2_出力CSV仕様案.md` |
 | **Phase 2 実装前仕様** | `03_研究設計文書/Phase2_実装前仕様.md` |
+| **Phase 2 派生データ仕様** | `03_研究設計文書/Phase2_派生データ仕様.md` |
+| **Phase 2 SUMO導入・変換手順** | `03_研究設計文書/Phase2_SUMO導入・変換手順.md` |
 | **Phase 1 シナリオ型拡張方針** | `03_研究設計文書/Phase1_シナリオ型拡張方針.md` |
 | **Phase 1 本文ドラフト** | `03_研究設計文書/Phase1_本文ドラフト.md` |
 | **論文用説明 Phase 1 経路検索方法** | `03_研究設計文書/論文用説明_Phase1_経路検索方法.md` |
