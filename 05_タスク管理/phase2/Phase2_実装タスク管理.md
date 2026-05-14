@@ -42,6 +42,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-8 | 評価CSV・比較表生成 | ✅ | `evacuation_summary.csv`, `phase1_phase2_comparison.csv` |
 | P2-IMPL-9 | 成果物トップページ更新 | ✅ | Phase 1/2/3別 `index.html` |
 | P2-TEST | 実装内容テスト・修正 | ✅ | `テスト結果_phase2.md`, `p2_sumo_env.py` |
+| P2-IMPL-VIZ | SUMO結果のHTML可視化 | ❌ | `vehicles.json`, `closures.json`, `sumo_viz.html` |
 
 ---
 
@@ -179,6 +180,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 8. P2-IMPL-8：評価CSV・比較表
 9. P2-IMPL-9：成果物トップページ更新
 10. P2-TEST：実装内容テスト・修正
+11. P2-IMPL-VIZ：SUMO結果のHTML可視化
 
 ---
 
@@ -195,7 +197,29 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 ---
 
-## 16. 最重要リスク
+## 16. P2-IMPL-VIZ：SUMO結果のHTML可視化
+
+設計文書：`03_研究設計文書/phase2/Phase2_可視化設計.md`
+
+| ID | タスク | 状態 | 依存 | 成果物 | 検証 |
+|---|---|---:|---|---|---|
+| P2-IMPL-VIZ-1 | `sumocfg` に FCD 出力設定を追加する | ❌ | P2-IMPL-5 | sumocfg 更新（`fcd-output.geo=true`, `period=30`） | FCD XML が出力される |
+| P2-IMPL-VIZ-2 | small シナリオを FCD 出力付きで再実行する | ❌ | VIZ-1 | `output/sumo/results/scenario_a_small_fcd.xml` | ファイルが存在・タイムステップ数が適切 |
+| P2-IMPL-VIZ-3 | `p2_fcd_to_json.py` を作成する | ❌ | VIZ-2 | `output/sumo/viz/vehicles.json`, `closures.json`, `viz_meta.json` | JSON 10MB以内・全車両が含まれる |
+| P2-IMPL-VIZ-4 | `sumo_viz.html` を作成する（地図 + 車両アニメーション） | ❌ | VIZ-3 | `output/sumo/viz/sumo_viz.html` | ブラウザで車両が動く |
+| P2-IMPL-VIZ-5 | タイムラインスライダー・速度倍率・台数表示を実装する | ❌ | VIZ-4 | 同上（機能追加） | 再生・一時停止・シーク・×1/×5/×10が動く |
+| P2-IMPL-VIZ-6 | 道路閉鎖ポリラインのアニメーションを実装する | ❌ | VIZ-5 | 同上（機能追加） | t0〜t7の閉鎖タイミングで赤線が追加される |
+| P2-IMPL-VIZ-7 | `gen_index.py` に Phase 2 可視化リンクを追加する | ❌ | VIZ-4 | `output/index.html` 更新 | index から sumo_viz.html へのリンクが確認できる |
+| P2-IMPL-VIZ-8 | 10pct シナリオへ拡張する | ❌ | VIZ-4 | `output/sumo/viz/vehicles_10pct.json` 等 | ファイルサイズが許容範囲内 |
+
+停止条件：
+
+- `vehicles.json` が 10MB を超える場合は period を 60 秒に変更するかデルタ形式に変更する。
+- TraCI 実行中に FCD が出力されない場合は `traci.start()` オプションを確認する。
+
+---
+
+## 17. 最重要リスク
 
 | リスク | 影響 | 対応 |
 |---|---|---|
