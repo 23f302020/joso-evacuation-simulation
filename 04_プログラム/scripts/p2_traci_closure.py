@@ -5,18 +5,15 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import os
-import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 
+from p2_sumo_env import configure_sumo_environment
 
-if os.environ.get("SUMO_HOME"):
-    sys.path.append(str(Path(os.environ["SUMO_HOME"]) / "tools"))
-
+configure_sumo_environment(require_tools=True)
 import sumolib  # noqa: E402
 import traci  # noqa: E402
 

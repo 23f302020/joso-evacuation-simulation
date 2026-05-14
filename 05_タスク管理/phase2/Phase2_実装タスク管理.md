@@ -41,6 +41,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-7 | 1/10試行・全量試行 | ✅ | `scenario_a_10pct.*`, `scenario_a.*` |
 | P2-IMPL-8 | 評価CSV・比較表生成 | ✅ | `evacuation_summary.csv`, `phase1_phase2_comparison.csv` |
 | P2-IMPL-9 | 成果物トップページ更新 | ✅ | Phase 1/2/3別 `index.html` |
+| P2-TEST | 実装内容テスト・修正 | ✅ | `テスト結果_phase2.md`, `p2_sumo_env.py` |
 
 ---
 
@@ -177,10 +178,24 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 7. P2-IMPL-7：1/10試行・全量試行
 8. P2-IMPL-8：評価CSV・比較表
 9. P2-IMPL-9：成果物トップページ更新
+10. P2-TEST：実装内容テスト・修正
 
 ---
 
-## 15. 最重要リスク
+## 15. P2-TEST：実装内容テスト・修正
+
+| ID | タスク | 状態 | 対象 | 結果 |
+|---|---|---:|---|---|
+| P2-TEST-1 | 構文・ヘルプ・SUMO環境検出を確認する | ✅ | `p2_*.py`, `p2_sumo_env.py` | `sumolib` / `traci` import成功 |
+| P2-TEST-2 | パイプライン再生成テストを行う | ✅ | network, mapping, derived, snap, scenario | すべて終了コード0 |
+| P2-TEST-3 | 小規模・1/10・全量TraCIを再実行する | ✅ | `p2_traci_closure.py` | small 40/40、1/10 120/120、full 987/1001到着 |
+| P2-TEST-4 | 評価CSVとトップページを再生成・確認する | ✅ | `p2_evaluate_results.py`, `gen_index.py` | CSV3件・Phase別トップページを確認 |
+| P2-TEST-5 | テスト中に見つかった改善点を修正する | ✅ | SUMO環境検出 | `p2_sumo_env.py` を追加 |
+| P2-TEST-6 | テスト結果を記録する | ✅ | `04_プログラム/テスト結果_phase2.md` | 合格判定・注意点を記録 |
+
+---
+
+## 16. 最重要リスク
 
 | リスク | 影響 | 対応 |
 |---|---|---|

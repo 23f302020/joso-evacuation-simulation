@@ -14,6 +14,8 @@ import osmnx as ox
 from networkx import MultiDiGraph
 from shapely import wkt
 
+from p2_sumo_env import configure_sumo_environment
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROGRAM_DIR = SCRIPT_DIR.parent
@@ -227,6 +229,7 @@ def export_osm() -> None:
 
 def run_netconvert() -> None:
     ensure_dirs()
+    configure_sumo_environment()
     if not OSM_XML_PATH.exists():
         raise FileNotFoundError(f"OSM XML not found: {OSM_XML_PATH}")
 
