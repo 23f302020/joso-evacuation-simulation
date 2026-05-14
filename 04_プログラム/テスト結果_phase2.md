@@ -184,3 +184,39 @@ Phase 2実装は、現時点のシナリオA（自家用車のみ）について
 テスト中に見つかった `SUMO_HOME` 未設定時のimport失敗は修正済みである。
 
 したがって、Phase 2実装テストは **完了** とする。
+
+---
+
+## 8. P2-IMPL-VIZ テスト（FCD可視化実装）
+
+追加日：2026/05/14  
+対象：`p2_sumo_scenario.py` FCD出力設定追加・`p2_fcd_to_json.py` 新規作成・`gen_index.py` 更新
+
+### 8.1 テスト一覧
+
+| ID | テスト | 結果 | 確認内容 |
+|---|---|---:|---|
+| T21 | `p2_sumo_scenario.py` FCD出力設定確認 | ✅ | `generate_scenario()` が `fcd-output`, `fcd-output.period`, `fcd-output.geo` 要素を sumocfg に出力することを確認（構文チェック + コードレビュー） |
+| T22 | `p2_fcd_to_json.py` 構文チェック | ✅ | `python -m py_compile` 合格 |
+| T23 | `p2_fcd_to_json.py sample` 実行 | ✅ | `vehicles_small.js`（23 KB）、`closures.js`（0 KB）、`viz_meta.js`（0 KB）、`sumo_viz.html`（6.9 KB）が `output/sumo/viz/` に生成されることを確認 |
+| T24 | `gen_index.py` 実行 | ✅ | `phase1-pages.js` の `phase2` 配列に `SUMO走行アニメーション / sumo/viz/sumo_viz.html` が追加されることを確認 |
+
+### 8.2 生成ファイル
+
+| ファイル | サイズ | 内容 |
+|---|---:|---|
+| `output/sumo/viz/vehicles_small.js` | 23 KB | 10台のサンプル車両位置時系列（`window.VIZ_VEHICLES_SMALL`） |
+| `output/sumo/viz/closures.js` | <1 KB | サンプル閉鎖エッジ2イベント（`window.VIZ_CLOSURES`） |
+| `output/sumo/viz/viz_meta.js` | <1 KB | シナリオ名・地図中心・シミュレーション秒数（`window.VIZ_META`） |
+| `output/sumo/viz/sumo_viz.html` | 6.9 KB | Leaflet.js地図 + 車両アニメーション + タイムラインスライダー |
+
+### 8.3 備考
+
+- T23 は `sample` コマンドで実行するため SUMO インストール不要（sumolib は import されるが実使用しない）。
+- `vehicles_10pct.js` の生成（VIZ-8）は FCD 付き TraCI 実行後に `p2_fcd_to_json.py vehicles-10pct` で実施する。
+- FCD 付き sumocfg の実際の動作確認（VIZ-2: FCD XML 生成）は TraCI 再実行時に合わせて実施する。
+
+### 8.4 追加判定
+
+P2-IMPL-VIZ のうち VIZ-1、VIZ-3〜VIZ-7 の実装とサンプル動作確認は **合格** とする。  
+VIZ-2（FCD付きTraCI再実行）および VIZ-8（10pct拡張）は FCD XMLが存在する段階で実施する。

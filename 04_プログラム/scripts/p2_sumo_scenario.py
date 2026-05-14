@@ -45,6 +45,8 @@ SCENARIOS = {
         "assignments": SUMO_DERIVED_DIR / "scenario_a_small_vehicle_assignments.csv",
         "tripinfo": SUMO_RESULTS_DIR / "scenario_a_small_tripinfo.xml",
         "sumo_log": SUMO_RESULTS_DIR / "scenario_a_small_sumo.log",
+        "fcd": SUMO_RESULTS_DIR / "scenario_a_small_fcd.xml",
+        "fcd_period": "30",
     },
     "10pct": {
         "count_column": "vehicle_count_10pct",
@@ -54,6 +56,8 @@ SCENARIOS = {
         "assignments": SUMO_DERIVED_DIR / "scenario_a_10pct_vehicle_assignments.csv",
         "tripinfo": SUMO_RESULTS_DIR / "scenario_a_10pct_tripinfo.xml",
         "sumo_log": SUMO_RESULTS_DIR / "scenario_a_10pct_sumo.log",
+        "fcd": SUMO_RESULTS_DIR / "scenario_a_10pct_fcd.xml",
+        "fcd_period": "30",
     },
     "full": {
         "count_column": "vehicle_count_full",
@@ -63,6 +67,8 @@ SCENARIOS = {
         "assignments": SUMO_DERIVED_DIR / "scenario_a_vehicle_assignments.csv",
         "tripinfo": SUMO_RESULTS_DIR / "scenario_a_tripinfo.xml",
         "sumo_log": SUMO_RESULTS_DIR / "scenario_a_sumo.log",
+        "fcd": SUMO_RESULTS_DIR / "scenario_a_fcd.xml",
+        "fcd_period": "60",
     },
 }
 
@@ -181,6 +187,9 @@ def generate_scenario(scenario_name: str) -> None:
     ET.SubElement(time_el, "end", {"value": "21600"})
     output_el = ET.SubElement(config, "output")
     ET.SubElement(output_el, "tripinfo-output", {"value": f"../results/{scenario['tripinfo'].name}"})
+    ET.SubElement(output_el, "fcd-output", {"value": f"../results/{scenario['fcd'].name}"})
+    ET.SubElement(output_el, "fcd-output.period", {"value": scenario["fcd_period"]})
+    ET.SubElement(output_el, "fcd-output.geo", {"value": "true"})
     processing_el = ET.SubElement(config, "processing")
     ET.SubElement(processing_el, "ignore-route-errors", {"value": "false"})
     report_el = ET.SubElement(config, "report")
