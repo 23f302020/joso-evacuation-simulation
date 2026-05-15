@@ -39,6 +39,7 @@ SCENARIOS = {
         "closure_log": SUMO_RESULTS_DIR / "scenario_a_small_closure_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_small_congestion_log.csv",
         "summary": SUMO_RESULTS_DIR / "scenario_a_small_traci_summary.json",
+        "fcd_period": "30",
     },
     "10pct": {
         "sumocfg": SUMO_SCENARIOS_DIR / "scenario_a_10pct.sumocfg",
@@ -47,6 +48,7 @@ SCENARIOS = {
         "closure_log": SUMO_RESULTS_DIR / "scenario_a_10pct_closure_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_10pct_congestion_log.csv",
         "summary": SUMO_RESULTS_DIR / "scenario_a_10pct_traci_summary.json",
+        "fcd_period": "30",
     },
     "full": {
         "sumocfg": SUMO_SCENARIOS_DIR / "scenario_a.sumocfg",
@@ -55,6 +57,7 @@ SCENARIOS = {
         "closure_log": SUMO_RESULTS_DIR / "scenario_a_closure_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_congestion_log.csv",
         "summary": SUMO_RESULTS_DIR / "scenario_a_traci_summary.json",
+        "fcd_period": "60",
     },
 }
 
@@ -213,6 +216,10 @@ def run_traci_scenario(scenario_name: str = "small") -> None:
         "true",
         "--ignore-route-errors",
         "true",
+        "--fcd-output.geo",
+        "true",
+        "--device.fcd.period",
+        scenario["fcd_period"],
     ]
     traci.start(command)
 
