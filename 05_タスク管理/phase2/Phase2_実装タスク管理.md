@@ -11,6 +11,11 @@
 
 Phase 2では、まず常総市実データ版を対象に、シナリオA（自家用車のみ）の交通流ベースラインを作る。
 
+2026/05/15時点で、常総市ケースの実装・テスト・可視化は完了済みである。
+Phase 1対象地域全域へ広げる作業は、`P2-IMPL-REGION` として別マイルストーン化し、既存の常総市成果物を壊さずに市区町村別バッチ処理へ拡張する。
+
+ここでいう「Phase 1対象地域全域」は、Phase 1で成果物化済みの茨城県内41市区町村を指す。Phase 1対象外として整理済みの鹿嶋市・神栖市・東海村を含めるかどうかは、全域拡張とは別の判断事項として扱う。
+
 Phase 3で扱うバス・デマンド交通は、この実装タスク管理には含めない。
 
 ---
@@ -43,6 +48,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-9 | 成果物トップページ更新 | ✅ | Phase 1/2/3別 `index.html` |
 | P2-TEST | 実装内容テスト・修正 | ✅ | `テスト結果_phase2.md`, `p2_sumo_env.py` |
 | P2-IMPL-VIZ | SUMO結果のHTML可視化 | ✅ | `vehicles_small.js`, `vehicles_10pct.js`, `closures.js`, `sumo_viz.html` |
+| P2-IMPL-REGION | Phase 1対象地域全域へのSUMO拡張 | 🔄 | 対象リスト・入力棚卸し生成済み、市区町村別SUMO入力・評価統合・全域可視化 |
 
 ---
 
@@ -181,6 +187,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 9. P2-IMPL-9：成果物トップページ更新
 10. P2-TEST：実装内容テスト・修正
 11. P2-IMPL-VIZ：SUMO結果のHTML可視化
+12. P2-IMPL-REGION：Phase 1対象地域全域へのSUMO拡張
 
 ---
 
@@ -220,7 +227,42 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 ---
 
-## 17. 最重要リスク
+## 17. P2-IMPL-REGION：Phase 1対象地域全域へのSUMO拡張
+
+目的：常総市単独のPhase 2 SUMO/TraCIパイプラインを、Phase 1で成果物化済みの茨城県内41市区町村へ拡張する。
+方針：いきなり全市区町村の全量試行へ進まず、対象リスト固定 → 市区町村別入力棚卸し → small全域確認 → 10pct全域確認 → full実行方針判断、の順で進める。
+
+2026/05/15に `p2_region_inventory.py` を追加し、Phase 2全域拡張対象41市区町村の正式リストと、44管理単位（対象41件・対象外3件）の入力棚卸しを生成した。対象41件はすべて事前確認OKである。
+
+| ID | タスク | 状態 | 依存 | 成果物 | 検証 |
+|---|---|---:|---|---|---|
+| P2-REGION-1 | Phase 1対象地域リストを固定する | ✅ | Phase 1成果物 | `output/sumo/regions/_management/phase2_region_targets.csv` | 41市区町村を対象、Phase 1対象外3市町村は含めない判断を記録 |
+| P2-REGION-2 | 市区町村別に必要なPhase 1入力・成果物を棚卸しする | ✅ | REGION-1 | `phase2_region_inventory.md`, `phase2_region_inventory.csv` | 44管理単位を確認、対象41件は `phase2_precheck_ready=yes` |
+| P2-REGION-3 | 市区町村別SUMO出力ディレクトリと命名規則を決める | ✅ | REGION-2 | `output/sumo/regions/{city_code}/...` 方針 | 既存の常総市 `output/sumo/` 成果物と衝突しない分離方針を記録 |
+| P2-REGION-4 | 道路ネットワーク生成を市区町村パラメータ対応にする | ❌ | REGION-2, REGION-3 | `p2_sumo_network.py` 拡張案 | 市区町村境界・GraphML/OSM XML・net.xmlを市別に生成できる |
+| P2-REGION-5 | Phase 1閉鎖edgeとSUMO edgeの市別対応表を生成する | ❌ | REGION-4 | 市別 `edge_id_mapping.csv`、統合 `region_edge_mapping_summary.csv` | 市別 `unmatched=0` を原則停止条件にする |
+| P2-REGION-6 | 出発地・避難所・時間軸・閉鎖タイムラインを市別に生成する | ❌ | REGION-5 | 市別 `agent_origins_10pct.csv`, `shelters_safety.csv`, `closure_timeline_sumo.json` | 安全避難所0件、市別出発地0件、未対応edgeありを検出 |
+| P2-REGION-7 | 全対象地域でsmall試行を実行する | ❌ | REGION-6 | `region_small_summary.csv` | 41市区町村でroute/config生成とTraCI起動が成立する |
+| P2-REGION-8 | 全対象地域で10pct試行を実行する | ❌ | REGION-7 | `region_10pct_summary.csv` | 車両数・到着・未到着・逃げ遅れ主指標を市別に集約 |
+| P2-REGION-9 | full試行の実行範囲を判断し、必要範囲を実行する | ❌ | REGION-8 | `region_full_execution_plan.md`, `region_full_summary.csv` | 全41市区町村で実行するか、高リスク・代表地域に限定するかを判断して記録 |
+| P2-REGION-10 | 市区町村別評価CSVとPhase 1/2比較表を統合する | ❌ | REGION-8 | `evacuation_summary_by_municipality.csv`, `phase1_phase2_region_comparison.csv` | Phase 1静的到達不可とPhase 2動的逃げ遅れの単位差を保持 |
+| P2-REGION-11 | 全域版のHTML導線・可視化を追加する | ❌ | REGION-10 | `sumo/regions/index.html` またはトップページ市区町村選択 | `index.html` でPhase 1/2/3を分けたまま市区町村別Phase 2結果へ遷移できる |
+| P2-REGION-12 | 全域拡張テスト結果を記録する | ❌ | REGION-11 | `04_プログラム/テスト結果_phase2_region.md` | 生成件数、失敗市区町村、停止条件、再実行手順を記録 |
+
+判断済み・今後判断が必要な項目：
+
+- `P2-REGION-1`：Phase 1対象外3市町村（鹿嶋市・神栖市・東海村）をPhase 2全域拡張に含めるかは、初回全域拡張では含めないと判断済み。理由は、Phase 1に浸水シナリオと閉鎖道路が存在しない地域を混ぜると、交通挙動の差ではなく入力データ有無の差が比較結果に入るためである。
+- `P2-REGION-9`：full試行を41市区町村すべてで実行するか。現時点の推奨は、small/10pctは全41市区町村で実行し、fullは10pct結果と実行時間を見て代表・高リスク地域を優先する。
+
+停止条件：
+
+- 市区町村別 `edge_id_mapping.csv` に未対応edgeが残る場合、その市区町村のTraCI実行へ進まない。
+- 安全避難所が0件の市区町村は、目的地設定の再検討タスクへ回す。
+- 10pct試行で実行時間・メモリ使用量が大きすぎる場合、full試行は代表地域方式へ切り替える。
+
+---
+
+## 18. 最重要リスク
 
 | リスク | 影響 | 対応 |
 |---|---|---|
@@ -229,3 +271,5 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | 安全避難所が0件になる | 避難目的地が成立しない | `shelters_safety.csv` 生成時に停止 |
 | 車両数が多すぎて実行が重い | 全量試行が完走しない | 小規模→1/10→全量の順に進める |
 | Phase 1とPhase 2の指標誤読 | 卒論の比較が不正確になる | 比較表に静的/動的の注記を付ける |
+| 全域拡張で市区町村ごとの入力不足が混在する | 一括実行が途中停止する | 市区町村別棚卸しと失敗市区町村の隔離実行を先に行う |
+| full試行を全41市区町村で実行して処理時間が膨らむ | テスト・卒論整理が遅れる | small/10pctを全域、fullは結果を見て代表・高リスク地域優先にする |
