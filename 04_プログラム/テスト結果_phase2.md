@@ -196,7 +196,7 @@ Phase 2実装は、現時点のシナリオA（自家用車のみ）について
 
 | ID | テスト | 結果 | 確認内容 |
 |---|---|---:|---|
-| T21 | `p2_sumo_scenario.py` FCD出力設定確認 | ✅ | `generate_scenario()` が `fcd-output`, `fcd-output.period`, `fcd-output.geo` 要素を sumocfg に出力することを確認（構文チェック + コードレビュー） |
+| T21 | `p2_sumo_scenario.py` FCD出力設定確認 | ✅ | `generate_scenario()` が `fcd-output`, `device.fcd.period`, `fcd-output.geo` 要素を sumocfg に出力することを確認（構文チェック + コードレビュー） |
 | T22 | `p2_fcd_to_json.py` 構文チェック | ✅ | `python -m py_compile` 合格 |
 | T23 | `p2_fcd_to_json.py sample` 実行 | ✅ | `vehicles_small.js`（23 KB）、`closures.js`（0 KB）、`viz_meta.js`（0 KB）、`sumo_viz.html`（6.9 KB）が `output/sumo/viz/` に生成されることを確認 |
 | T24 | `gen_index.py` 実行 | ✅ | `phase1-pages.js` の `phase2` 配列に `SUMO走行アニメーション / sumo/viz/sumo_viz.html` が追加されることを確認 |
@@ -220,3 +220,36 @@ Phase 2実装は、現時点のシナリオA（自家用車のみ）について
 
 P2-IMPL-VIZ のうち VIZ-1、VIZ-3〜VIZ-7 の実装とサンプル動作確認は **合格** とする。  
 VIZ-2（FCD付きTraCI再実行）および VIZ-8（10pct拡張）は FCD XMLが存在する段階で実施する。
+
+---
+
+## 9. P2-IMPL-VIZ 追加テスト（実FCD small / 10pct）
+
+追加日：2026/05/15
+対象：実FCD XMLから生成した `vehicles_small.js` / `vehicles_10pct.js` と `sumo_viz.html`
+
+### 9.1 テスト一覧
+
+| ID | テスト | 結果 | 確認内容 |
+|---|---|---:|---|
+| T25 | `p2_sumo_scenario.py small` / `10pct` 再生成 | ✅ | sumocfg に `fcd-output`、`device.fcd.period=30`、`fcd-output.geo=true` が出力されることを確認 |
+| T26 | `p2_traci_closure.py run-small` / `run-10pct` | ✅ | small / 10pct の実FCD XMLを生成。初回は `fcd-output.period` がSUMO 1.26.0未対応で失敗したため、`device.fcd.period` に修正して再実行成功 |
+| T27 | `p2_fcd_to_json.py all` | ✅ | small 40台、10pct 120台をJSへ変換。`closures.js` は8イベント・新規閉鎖edge 3,771件 |
+| T28 | アプリ内ブラウザで `sumo_viz.html` 表示確認 | ✅ | シナリオ選択肢 `small (40台)` / `10pct (120台)` を確認。10pct選択後に `シナリオ: 10pct  車両数: 120` と表示 |
+
+### 9.2 生成ファイル
+
+| ファイル | サイズ | 内容 |
+|---|---:|---|
+| `output/sumo/results/scenario_a_small_fcd.xml` | 103,919 bytes | small実FCD |
+| `output/sumo/results/scenario_a_10pct_fcd.xml` | 287,492 bytes | 10pct実FCD |
+| `output/sumo/viz/vehicles_small.js` | 17,098 bytes | small 40台の車両位置時系列 |
+| `output/sumo/viz/vehicles_10pct.js` | 56,146 bytes | 10pct 120台の車両位置時系列 |
+| `output/sumo/viz/closures.js` | 221,462 bytes | 道路閉鎖ポリライン用データ |
+| `output/sumo/viz/viz_meta.js` | 118 bytes | `scenarios=["small","10pct"]` |
+| `output/sumo/viz/sumo_viz.html` | 8,770 bytes | Leaflet地図、車両アニメーション、シナリオ切替UI |
+
+### 9.3 判定
+
+P2-IMPL-VIZ の VIZ-2 と VIZ-8 を完了とし、Phase 2可視化は **実FCD small / 10pct 対応済み** とする。
+fullシナリオのFCD可視化は、ファイルサイズが大きくなるため現時点では対象外とする。

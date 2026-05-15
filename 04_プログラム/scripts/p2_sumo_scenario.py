@@ -188,6 +188,8 @@ def generate_scenario(scenario_name: str) -> None:
     output_el = ET.SubElement(config, "output")
     ET.SubElement(output_el, "tripinfo-output", {"value": f"../results/{scenario['tripinfo'].name}"})
     ET.SubElement(output_el, "fcd-output", {"value": f"../results/{scenario['fcd'].name}"})
+    ET.SubElement(output_el, "device.fcd.period", {"value": scenario["fcd_period"]})
+    ET.SubElement(output_el, "fcd-output.geo", {"value": "true"})
     processing_el = ET.SubElement(config, "processing")
     ET.SubElement(processing_el, "ignore-route-errors", {"value": "false"})
     report_el = ET.SubElement(config, "report")

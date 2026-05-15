@@ -15,9 +15,9 @@
 | 項目 | 内容 |
 |---|---|
 | SUMO出力形式 | FCD（Floating Car Data）XML — 各タイムステップの車両位置を記録 |
-| 変換 | Python で FCD XML → compact JSON に変換 |
+| 変換 | Python で FCD XML → JS変数ファイルに変換 |
 | フロントエンド | Leaflet.js + カスタムアニメーションループ |
-| 初期対象 | small シナリオ（40台）。10pct / full は後から拡張 |
+| 対象 | small シナリオ（40台）と10pctシナリオ（120台）。full はファイルサイズ増大のため後続検討 |
 | 道路ネットワーク表示 | OSM タイル（背景）+ 道路閉鎖edgeをポリラインで重ね描き |
 
 ---
@@ -26,18 +26,18 @@
 
 ```
 p2_traci_closure.py（TraCIで実行）
-  └─ --fcd-output → scenario_a_small_fcd.xml
+  └─ --fcd-output → scenario_a_small_fcd.xml / scenario_a_10pct_fcd.xml
         │
         ▼
 p2_fcd_to_json.py（新規）
-  ├─ fcd.xml → vehicles.json（車両位置時系列）
-  └─ closure_timeline_sumo.json → closures.json（閉鎖エッジ時系列）
+  ├─ fcd.xml → vehicles_small.js / vehicles_10pct.js（車両位置時系列）
+  └─ closure_timeline_sumo.json → closures.js（閉鎖エッジ時系列）
         │
         ▼
 sumo_viz.html（新規）
   ├─ Leaflet.js（地図タイル）
-  ├─ vehicles.json → 車両アイコンをアニメーション
-  ├─ closures.json → 閉鎖道路をポリラインで強調表示
+  ├─ vehicles_small.js / vehicles_10pct.js → 車両アイコンをアニメーション
+  ├─ closures.js → 閉鎖道路をポリラインで強調表示
   └─ timeline スライダー → 任意時刻へのシーク
 ```
 
@@ -53,7 +53,7 @@ sumo_viz.html（新規）
 <output>
   <tripinfo-output value="../results/scenario_a_small_tripinfo.xml"/>
   <fcd-output value="../results/scenario_a_small_fcd.xml"/>
-  <fcd-output.period value="30"/>
+  <device.fcd.period value="30"/>
   <fcd-output.geo value="true"/>
 </output>
 ```
@@ -61,8 +61,10 @@ sumo_viz.html（新規）
 | オプション | 値 | 説明 |
 |---|---|---|
 | `fcd-output` | ファイルパス | FCD XMLの出力先 |
-| `fcd-output.period` | `30` | 30秒ごとにサンプリング（small: ~720ステップ） |
+| `device.fcd.period` | `30` | 30秒ごとにサンプリング（small: ~720ステップ） |
 | `fcd-output.geo` | `true` | 座標を lon/lat（WGS84）で出力 |
+
+注：SUMO 1.26.0では `fcd-output.period` ではなく `device.fcd.period` を使う。初回実行で `fcd-output.period` が未対応オプションとして失敗したため、実行結果に合わせて修正した。
 
 ### 3-2. ファイルサイズ見積もり
 
@@ -72,7 +74,7 @@ sumo_viz.html（新規）
 | 10pct | 120 | 720 | 86,400 | ~6 MB |
 | full | 1,001 | 720 | 720,720 | ~50 MB |
 
-初期実装は small のみ対象とする。full は別途圧縮・タイル化を検討する。
+実装対象は small と10pctまでとする。full は別途圧縮・タイル化を検討する。
 
 ---
 
@@ -82,7 +84,8 @@ sumo_viz.html（新規）
 
 | ファイル | 内容 |
 |---|---|
-| `output/sumo/results/scenario_a_small_fcd.xml` | SUMO FCD出力 |
+| `output/sumo/results/scenario_a_small_fcd.xml` | small SUMO FCD出力 |
+| `output/sumo/results/scenario_a_10pct_fcd.xml` | 10pct SUMO FCD出力 |
 | `output/sumo/derived/closure_timeline_sumo.json` | SUMO秒基準の閉鎖タイムライン |
 | `output/sumo/derived/edge_id_mapping.csv` | SUMO edge ID → Phase 1 edge ID |
 
@@ -90,21 +93,23 @@ sumo_viz.html（新規）
 
 | ファイル | 保存先 | 内容 |
 |---|---|---|
-| `vehicles.json` | `output/sumo/viz/` | 車両位置時系列 |
-| `closures.json` | `output/sumo/viz/` | 閉鎖エッジの座標・時系列 |
-| `viz_meta.json` | `output/sumo/viz/` | シナリオ名・時刻範囲・統計サマリ |
+| `vehicles_small.js` | `output/sumo/viz/` | small車両位置時系列（`window.VIZ_VEHICLES_SMALL`） |
+| `vehicles_10pct.js` | `output/sumo/viz/` | 10pct車両位置時系列（`window.VIZ_VEHICLES_10PCT`） |
+| `closures.js` | `output/sumo/viz/` | 閉鎖エッジの座標・時系列（`window.VIZ_CLOSURES`） |
+| `viz_meta.js` | `output/sumo/viz/` | シナリオ名・時刻範囲・統計サマリ（`window.VIZ_META`） |
 
-### 4-3. `vehicles.json` 構造
+### 4-3. `vehicles_small.js` / `vehicles_10pct.js` 構造
 
 ```json
 {
   "scenario": "small",
   "period_sec": 30,
   "sim_duration_sec": 21600,
-  "timesteps": [0, 30, 60, ...],
+  "vehicle_count": 40,
   "vehicles": {
     "veh_small_origin_0001_0001": {
-      "frames": [[0, 139.9871, 36.0521, 12.3], [30, 139.9880, 36.0530, 8.1], ...]
+      "frames": [[0, 139.9871, 36.0521, 12.3], [30, 139.9880, 36.0530, 8.1]],
+      "status": "arrived"
     }
   }
 }
@@ -112,7 +117,7 @@ sumo_viz.html（新規）
 
 各フレームは `[sim_time_sec, lon, lat, speed_mps]` の配列。車両が存在しないタイムステップはスキップ。
 
-### 4-4. `closures.json` 構造
+### 4-4. `closures.js` 構造
 
 ```json
 {
@@ -120,15 +125,13 @@ sumo_viz.html（新規）
     {
       "sim_time_sec": 789,
       "time_id": "t0",
-      "closed_edges": [
-        {"sumo_edge_id": "12345", "coords": [[139.97, 36.05], [139.98, 36.06]]}
-      ]
+      "new_edge_ids": ["12345"]
     }
   ]
 }
 ```
 
-エッジ座標は `joso.net.xml` の shape 属性から取得する。
+エッジ座標は `joso.net.xml` の shape 属性から取得し、`edge_coords` にまとめる。
 
 ---
 
@@ -155,7 +158,7 @@ sumo_viz.html（新規）
 │                                            │
 ├────────────────────────────────────────────┤
 │  ◀◀  ▶  ▶▶   [████████░░░░░░░░]   00:13:09  │
-│  速度: [×1] [×5] [×10]                      │
+│  シナリオ: [small/10pct]  速度: [×1] [×5] [×10] │
 │  台数: 走行中 28 / 到着 8 / 逃げ遅れ 4        │
 └────────────────────────────────────────────┘
 ```
@@ -189,12 +192,12 @@ sumo_viz.html（新規）
 |---|---|---|---|
 | P2-IMPL-VIZ-1 | sumocfg に FCD 出力設定を追加する | P2-IMPL-5 | sumocfg 更新 |
 | P2-IMPL-VIZ-2 | small シナリオを FCD 出力付きで再実行する | VIZ-1 | `scenario_a_small_fcd.xml` |
-| P2-IMPL-VIZ-3 | `p2_fcd_to_json.py` を作成する | VIZ-2 | `vehicles.json`, `closures.json`, `viz_meta.json` |
+| P2-IMPL-VIZ-3 | `p2_fcd_to_json.py` を作成する | VIZ-2 | `vehicles_small.js`, `closures.js`, `viz_meta.js` |
 | P2-IMPL-VIZ-4 | `sumo_viz.html` を作成する（地図 + 車両アニメーション） | VIZ-3 | `output/sumo/viz/sumo_viz.html` |
 | P2-IMPL-VIZ-5 | タイムラインスライダー・速度倍率・台数表示を実装する | VIZ-4 | 同上（機能追加） |
 | P2-IMPL-VIZ-6 | 道路閉鎖ポリラインのアニメーションを実装する | VIZ-5, VIZ-3 | 同上（機能追加） |
 | P2-IMPL-VIZ-7 | `gen_index.py` に Phase 2 可視化リンクを追加する | VIZ-4 | `output/index.html` 更新 |
-| P2-IMPL-VIZ-8 | 10pct シナリオへ拡張する（ファイルサイズ確認） | VIZ-4 | `vehicles_10pct.json` 等 |
+| P2-IMPL-VIZ-8 | 10pct シナリオへ拡張する（ファイルサイズ確認） | VIZ-4 | `vehicles_10pct.js` |
 
 ---
 
@@ -203,15 +206,15 @@ sumo_viz.html（新規）
 | 条件 | 理由 |
 |---|---|
 | `fcd-output.geo=true` で lon/lat が返らない | Leaflet の座標系と合わない。`sumolib` の変換関数でフォールバック |
-| `vehicles.json` が 10 MB を超える | ブラウザ読み込みが重くなる。period を 60 秒に変更するか、delta 形式（差分のみ）に変更 |
+| `vehicles_*.js` が 10 MB を超える | ブラウザ読み込みが重くなる。period を 60 秒に変更するか、delta 形式（差分のみ）に変更 |
 | TraCI 実行中に FCD 出力が抑制される | TraCI 起動時の `traci.start()` オプションに FCD 設定を追加する必要がある |
 
 ---
 
 ## 9. TraCI実行時のFCD出力について
 
-`p2_traci_closure.py` では `traci.start()` で SUMO を起動するため、`sumocfg` に FCD 設定を書いておけば自動的に FCD が出力される。  
-ただし TraCI 実行中は `--no-step-log` などのオプションが上書きされる場合があるため、FCD 出力が有効になっていることをログで確認する。
+`p2_traci_closure.py` では `traci.start()` で SUMO を起動するため、`sumocfg` に FCD 設定を書いておけばFCDが出力される。
+TraCI起動時にも `--fcd-output.geo true` と `--device.fcd.period` を渡し、FCDの座標系と周期を明示する。
 
 確認方法：
 

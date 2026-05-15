@@ -84,6 +84,8 @@ body{display:flex;flex-direction:column;background:#1a1a2e;color:#e0e0e0;font-fa
 .sb{background:#16213e;border:1px solid #4a90d9;color:#4a90d9;padding:3px 10px;border-radius:3px;cursor:pointer;font-size:12px}
 .sb.on{background:#4a90d9;color:#000;font-weight:bold}
 .sb:hover:not(.on){background:#1e2f50}
+.scenario-select{background:#16213e;border:1px solid #4a90d9;color:#e0e0e0;padding:3px 8px;border-radius:3px;font-size:12px}
+.scenario-select:disabled{opacity:.6}
 #info{font-size:12px;color:#888;margin-left:auto}
 </style>
 </head>
@@ -104,6 +106,8 @@ body{display:flex;flex-direction:column;background:#1a1a2e;color:#e0e0e0;font-fa
     <span id="stats">走行中 0 / 到着 0 / 逃げ遅れ 0</span>
   </div>
   <div class="cr">
+    <span style="font-size:12px;color:#aaa">シナリオ：</span>
+    <select id="scenario-select" class="scenario-select"></select>
     <span style="font-size:12px;color:#aaa">速度倍率：</span>
     <button class="sb" data-s="1">×1</button>
     <button class="sb" data-s="5">×5</button>
@@ -116,10 +120,25 @@ body{display:flex;flex-direction:column;background:#1a1a2e;color:#e0e0e0;font-fa
 (function(){
   var meta=window.VIZ_META||{map_center:[36.06,140.00],map_zoom:12,sim_duration_sec:21600};
   var cl=window.VIZ_CLOSURES||{edge_coords:{},events:[]};
-  var vd=window.VIZ_VEHICLES_SMALL||window.VIZ_VEHICLES_10PCT||null;
+  var datasets=[
+    {name:'small',label:'small',data:window.VIZ_VEHICLES_SMALL||null},
+    {name:'10pct',label:'10pct',data:window.VIZ_VEHICLES_10PCT||null}
+  ].filter(function(d){return!!d.data;});
+  var vd=datasets.length?datasets[0].data:null;
   var SIM_MAX=meta.sim_duration_sec||21600;
+  var scenarioSelect=document.getElementById('scenario-select');
   document.getElementById('seek').max=SIM_MAX;
+  if(scenarioSelect){
+    datasets.forEach(function(d){
+      var opt=document.createElement('option');
+      opt.value=d.name;
+      opt.textContent=d.label+' ('+d.data.vehicle_count+'台)';
+      scenarioSelect.appendChild(opt);
+    });
+    scenarioSelect.disabled=datasets.length<=1;
+  }
   if(vd)document.getElementById('info').textContent='シナリオ: '+vd.scenario+'  車両数: '+vd.vehicle_count;
+  else document.getElementById('info').textContent='車両データなし';
 
   var map=L.map('map').setView(meta.map_center,meta.map_zoom);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
@@ -140,13 +159,36 @@ body{display:flex;flex-direction:column;background:#1a1a2e;color:#e0e0e0;font-fa
   var mm={};
   var SR={color:'#0288d1',fillColor:'#4fc3f7',fillOpacity:0.9,radius:5,weight:1};
   var SA={color:'#388e3c',fillColor:'#81c784',fillOpacity:0.7,radius:4,weight:1};
-  if(vd){
+  var SB={color:'#c62828',fillColor:'#ef5350',fillOpacity:0.8,radius:5,weight:1};
+
+  function clearVehicles(){
+    Object.keys(mm).forEach(function(vid){map.removeLayer(mm[vid]);});
+    mm={};
+  }
+
+  function initVehicles(){
+    clearVehicles();
+    if(!vd){
+      document.getElementById('info').textContent='車両データなし';
+      return;
+    }
     Object.keys(vd.vehicles).forEach(function(vid){
       var m=L.circleMarker(meta.map_center,SR);
       m.setStyle({opacity:0,fillOpacity:0});
       m.addTo(map);
       mm[vid]=m;
     });
+    document.getElementById('info').textContent='シナリオ: '+vd.scenario+'  車両数: '+vd.vehicle_count;
+  }
+
+  function selectDataset(name){
+    var found=datasets.filter(function(d){return d.name===name;})[0];
+    if(!found)return;
+    vd=found.data;
+    curT=0;
+    lastTs=null;
+    initVehicles();
+    render(0);
   }
 
   function lerp(fr,t){
@@ -173,10 +215,10 @@ body{display:flex;flex-direction:column;background:#1a1a2e;color:#e0e0e0;font-fa
       for(var vid in vs){
         var m=mm[vid];if(!m)continue;
         var v=vs[vid];
-        if(v.status==='blocked'){nb++;continue;}
         var pos=lerp(v.frames,ti);
         if(pos===null){m.setStyle({opacity:0,fillOpacity:0});continue;}
         m.setLatLng(pos);
+        if(v.status==='blocked'||v.status==='stranded'){m.setStyle(SB);nb++;continue;}
         var lt=v.frames[v.frames.length-1][0];
         if(ti>=lt){m.setStyle(SA);na++;}else{m.setStyle(SR);nr++;}
       }
@@ -212,6 +254,10 @@ body{display:flex;flex-direction:column;background:#1a1a2e;color:#e0e0e0;font-fa
       b.classList.add('on');
     });
   });
+  if(scenarioSelect){
+    scenarioSelect.addEventListener('change',function(e){selectDataset(e.target.value);});
+  }
+  initVehicles();
   render(0);
 })();
 </script>
@@ -486,7 +532,11 @@ def main() -> None:
     elif args.command == "sample":
         cmd_sample()
     elif args.command == "all":
-        cmd_vehicles("small")
+        for scenario_name in ["small", "10pct"]:
+            if SCENARIO_CFG[scenario_name]["fcd"].exists():
+                cmd_vehicles(scenario_name)
+            else:
+                print(f"[WARN] skip vehicles-{scenario_name}: FCD file not found")
         cmd_closures()
         cmd_meta()
         cmd_html()

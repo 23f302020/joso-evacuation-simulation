@@ -42,7 +42,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-8 | 評価CSV・比較表生成 | ✅ | `evacuation_summary.csv`, `phase1_phase2_comparison.csv` |
 | P2-IMPL-9 | 成果物トップページ更新 | ✅ | Phase 1/2/3別 `index.html` |
 | P2-TEST | 実装内容テスト・修正 | ✅ | `テスト結果_phase2.md`, `p2_sumo_env.py` |
-| P2-IMPL-VIZ | SUMO結果のHTML可視化 | 🔄 | `vehicles_small.js`, `closures.js`, `sumo_viz.html` |
+| P2-IMPL-VIZ | SUMO結果のHTML可視化 | ✅ | `vehicles_small.js`, `vehicles_10pct.js`, `closures.js`, `sumo_viz.html` |
 
 ---
 
@@ -203,18 +203,19 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
-| P2-IMPL-VIZ-1 | `sumocfg` に FCD 出力設定を追加する | ✅ | P2-IMPL-5 | `p2_sumo_scenario.py` 更新（`fcd-output.geo=true`, `period=30`） | SCENARIOS辞書に `fcd` / `fcd_period` 追加、generate_scenario() に XML要素追加 |
-| P2-IMPL-VIZ-2 | small シナリオを FCD 出力付きで再実行する | ❌ | VIZ-1 | `output/sumo/results/scenario_a_small_fcd.xml` | `p2_sumo_scenario.py small` → `p2_traci_closure.py run-small` を再実行 |
+| P2-IMPL-VIZ-1 | `sumocfg` に FCD 出力設定を追加する | ✅ | P2-IMPL-5 | `p2_sumo_scenario.py` 更新（`fcd-output.geo=true`, `device.fcd.period=30`） | SUMO 1.26.0では `fcd-output.period` ではなく `device.fcd.period` を採用 |
+| P2-IMPL-VIZ-2 | small シナリオを FCD 出力付きで再実行する | ✅ | VIZ-1 | `output/sumo/results/scenario_a_small_fcd.xml` | `run-small` 再実行済み、実FCD XML 103,919 bytes、`vehicles_small.js` 40台へ変換済み |
 | P2-IMPL-VIZ-3 | `p2_fcd_to_json.py` を作成する | ✅ | VIZ-1 | `p2_fcd_to_json.py`（`vehicles-small`, `vehicles-10pct`, `closures`, `meta`, `html`, `sample`, `all`） | `py_compile` 合格・`sample` コマンド実行確認 |
 | P2-IMPL-VIZ-4 | `sumo_viz.html` を作成する（地図 + 車両アニメーション） | ✅ | VIZ-3 | `output/sumo/viz/sumo_viz.html` | Leaflet.js + 車両CircleMarker + サンプルデータで動作確認 |
 | P2-IMPL-VIZ-5 | タイムラインスライダー・速度倍率・台数表示を実装する | ✅ | VIZ-4 | 同上（HTML内に含む） | ×1/×5/×10/×60、スライダー、走行中/到着/逃げ遅れ台数表示 |
 | P2-IMPL-VIZ-6 | 道路閉鎖ポリラインのアニメーションを実装する | ✅ | VIZ-5 | 同上（HTML内に含む） | sim_time_sec 到達時に赤ポリラインを追加する処理 |
 | P2-IMPL-VIZ-7 | `gen_index.py` に Phase 2 可視化リンクを追加する | ✅ | VIZ-4 | `output/index.html` 更新 | `phase2` 配列に `SUMO走行アニメーション / sumo/viz/sumo_viz.html` を追加 |
-| P2-IMPL-VIZ-8 | 10pct シナリオへ拡張する | ❌ | VIZ-2 | `output/sumo/viz/vehicles_10pct.js` | FCD付きTraCI再実行後に `p2_fcd_to_json.py vehicles-10pct` を実行 |
+| P2-IMPL-VIZ-8 | 10pct シナリオへ拡張する | ✅ | VIZ-2 | `output/sumo/results/scenario_a_10pct_fcd.xml`, `output/sumo/viz/vehicles_10pct.js` | 120台のFCDをJS化、HTMLのシナリオ選択で small / 10pct を切替可能 |
+| P2-IMPL-VIZ-9 | 可視化テスト結果を記録する | ✅ | VIZ-8 | `04_プログラム/テスト結果_phase2.md` | アプリ内ブラウザで `small (40台)` / `10pct (120台)` と切替後の台数表示を確認 |
 
 停止条件：
 
-- `vehicles.json` が 10MB を超える場合は period を 60 秒に変更するかデルタ形式に変更する。
+- `vehicles_*.js` が 10MB を超える場合は period を 60 秒に変更するかデルタ形式に変更する。
 - TraCI 実行中に FCD が出力されない場合は `traci.start()` オプションを確認する。
 
 ---
