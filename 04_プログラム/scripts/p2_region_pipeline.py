@@ -1,0 +1,1525 @@
+"""
+Phase 2 全域拡張: 市区町村別SUMO入力生成・試行実行パイプライン。
+
+このスクリプトは P2-REGION-5〜9 を進めるための地域別実行器である。
+常総市単独版の `output/sumo/` は変更せず、出力は
+`output/sumo/regions/{city_code}/` に分離する。
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import math
+import re
+import xml.etree.ElementTree as ET
+from collections import defaultdict
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any
+
+import pandas as pd
+from shapely.geometry import Point, box, shape
+from shapely.ops import unary_union
+from shapely.prepared import prep
+
+import config
+from p2_sumo_env import configure_sumo_environment
+from p2_sumo_network import build_region_target, export_osm, run_netconvert
+
+
+configure_sumo_environment(require_tools=True)
+import sumolib  # noqa: E402
+import traci  # noqa: E402
+
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROGRAM_DIR = SCRIPT_DIR.parent
+OUTPUT_DIR = PROGRAM_DIR / "output"
+SUMO_DIR = OUTPUT_DIR / "sumo"
+REGIONS_DIR = SUMO_DIR / "regions"
+MANAGEMENT_DIR = REGIONS_DIR / "_management"
+TARGETS_CSV = MANAGEMENT_DIR / "phase2_region_targets.csv"
+
+POPULATION_MESH_TXT = (
+    PROGRAM_DIR
+    / "data"
+    / "population_mesh"
+    / "5歳階級別人口250メッシュ_茨城"
+    / "tblT001178Q08.txt"
+)
+
+EDGE_MAPPING_SUMMARY_CSV = MANAGEMENT_DIR / "region_edge_mapping_summary.csv"
+DERIVED_SUMMARY_CSV = MANAGEMENT_DIR / "region_derived_summary.csv"
+RUN_SUMMARY_CSV = MANAGEMENT_DIR / "region_run_summary.csv"
+FULL_PLAN_CSV = MANAGEMENT_DIR / "region_full_execution_plan.csv"
+FULL_PLAN_MD = MANAGEMENT_DIR / "region_full_execution_plan.md"
+
+HOUSEHOLD_SIZE = 2.3
+SEARCH_RADII_M = [100, 250, 500, 1000, 3000, 5000]
+FAR_THRESHOLD_M = 500.0
+STOP_SPEED_THRESHOLD = 0.1
+LONG_STOP_THRESHOLD_SEC = 600
+CONGESTION_LOG_INTERVAL_SEC = 60
+SIM_DURATION_SEC = int(config.SIM_DURATION_H * 3600)
+
+_MESH_250M_LAT_DEG = 7.5 / 3600
+_MESH_250M_LON_DEG = 11.25 / 3600
+
+SCENARIO_SETTINGS = {
+    "small": {
+        "count_column": "vehicle_count_small",
+        "vehicle_prefix": "veh_small",
+        "rou": "scenario_a_small.rou.xml",
+        "sumocfg": "scenario_a_small.sumocfg",
+        "assignments": "scenario_a_small_vehicle_assignments.csv",
+        "tripinfo": "scenario_a_small_tripinfo.xml",
+        "vehicle_log": "scenario_a_small_vehicle_log.csv",
+        "closure_log": "scenario_a_small_closure_log.csv",
+        "congestion_log": "scenario_a_small_congestion_log.csv",
+        "summary": "scenario_a_small_traci_summary.json",
+        "fcd": "scenario_a_small_fcd.xml",
+        "fcd_period": "30",
+    },
+    "10pct": {
+        "count_column": "vehicle_count_10pct",
+        "vehicle_prefix": "veh_10pct",
+        "rou": "scenario_a_10pct.rou.xml",
+        "sumocfg": "scenario_a_10pct.sumocfg",
+        "assignments": "scenario_a_10pct_vehicle_assignments.csv",
+        "tripinfo": "scenario_a_10pct_tripinfo.xml",
+        "vehicle_log": "scenario_a_10pct_vehicle_log.csv",
+        "closure_log": "scenario_a_10pct_closure_log.csv",
+        "congestion_log": "scenario_a_10pct_congestion_log.csv",
+        "summary": "scenario_a_10pct_traci_summary.json",
+        "fcd": "scenario_a_10pct_fcd.xml",
+        "fcd_period": "30",
+    },
+    "full": {
+        "count_column": "vehicle_count_full",
+        "vehicle_prefix": "veh_full",
+        "rou": "scenario_a.rou.xml",
+        "sumocfg": "scenario_a.sumocfg",
+        "assignments": "scenario_a_vehicle_assignments.csv",
+        "tripinfo": "scenario_a_tripinfo.xml",
+        "vehicle_log": "scenario_a_vehicle_log.csv",
+        "closure_log": "scenario_a_closure_log.csv",
+        "congestion_log": "scenario_a_congestion_log.csv",
+        "summary": "scenario_a_traci_summary.json",
+        "fcd": "scenario_a_fcd.xml",
+        "fcd_period": "60",
+    },
+}
+
+
+@dataclass(frozen=True)
+class RegionContext:
+    city_code: str
+    city_name: str
+    region_dir: Path
+    network_dir: Path
+    derived_dir: Path
+    scenarios_dir: Path
+    results_dir: Path
+    viz_dir: Path
+    scenario_data_js: Path
+
+    @property
+    def net_xml(self) -> Path:
+        return self.network_dir / f"{self.city_code}.net.xml"
+
+    @property
+    def osm_way_mapping_csv(self) -> Path:
+        return self.derived_dir / "phase1_edge_osm_way_mapping.csv"
+
+    @property
+    def sumo_edges_csv(self) -> Path:
+        return self.derived_dir / "sumo_edges.csv"
+
+    @property
+    def phase1_closed_edges_csv(self) -> Path:
+        return self.derived_dir / "phase1_closed_edges.csv"
+
+    @property
+    def edge_id_mapping_csv(self) -> Path:
+        return self.derived_dir / "edge_id_mapping.csv"
+
+    @property
+    def edge_mapping_validation_json(self) -> Path:
+        return self.derived_dir / "edge_mapping_validation.json"
+
+    @property
+    def time_mapping_csv(self) -> Path:
+        return self.derived_dir / "time_mapping_sumo.csv"
+
+    @property
+    def shelters_safety_csv(self) -> Path:
+        return self.derived_dir / "shelters_safety.csv"
+
+    @property
+    def agent_origins_csv(self) -> Path:
+        return self.derived_dir / "agent_origins_10pct.csv"
+
+    @property
+    def agent_origins_sumo_csv(self) -> Path:
+        return self.derived_dir / "agent_origins_sumo.csv"
+
+    @property
+    def shelters_sumo_csv(self) -> Path:
+        return self.derived_dir / "shelters_sumo.csv"
+
+    @property
+    def snap_validation_json(self) -> Path:
+        return self.derived_dir / "snap_validation.json"
+
+    @property
+    def closure_timeline_sumo_json(self) -> Path:
+        return self.derived_dir / "closure_timeline_sumo.json"
+
+    @property
+    def derived_validation_json(self) -> Path:
+        return self.derived_dir / "derived_data_validation.json"
+
+
+def rel(path: Path) -> str:
+    try:
+        return path.relative_to(PROGRAM_DIR).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
+def read_csv_rows(path: Path, encoding: str = "utf-8-sig") -> list[dict[str, str]]:
+    with path.open(newline="", encoding=encoding) as f:
+        return list(csv.DictReader(f))
+
+
+def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def upsert_summary(path: Path, key_fields: list[str], row: dict[str, Any]) -> None:
+    rows: list[dict[str, Any]] = []
+    if path.exists():
+        rows = read_csv_rows(path, encoding="utf-8")
+    filtered = [
+        item
+        for item in rows
+        if any(str(item.get(key, "")) != str(row.get(key, "")) for key in key_fields)
+    ]
+    filtered.append(row)
+    fieldnames = list(row.keys())
+    write_csv(path, fieldnames, filtered)
+
+
+def load_targets() -> list[dict[str, str]]:
+    if not TARGETS_CSV.exists():
+        raise FileNotFoundError(f"target CSV not found: {TARGETS_CSV}")
+    return read_csv_rows(TARGETS_CSV)
+
+
+def target_row(city_code: str) -> dict[str, str]:
+    for row in load_targets():
+        if row["city_code"] == city_code:
+            return row
+    raise ValueError(f"{city_code} is not a Phase 2 region target")
+
+
+def context_for(city_code: str) -> RegionContext:
+    row = target_row(city_code)
+    region_dir = REGIONS_DIR / city_code
+    return RegionContext(
+        city_code=city_code,
+        city_name=row["city_name"],
+        region_dir=region_dir,
+        network_dir=region_dir / "network",
+        derived_dir=region_dir / "derived",
+        scenarios_dir=region_dir / "scenarios",
+        results_dir=region_dir / "results",
+        viz_dir=region_dir / "viz",
+        scenario_data_js=OUTPUT_DIR / "scenario_cities" / city_code / "assets" / "data.js",
+    )
+
+
+def ensure_region_dirs(ctx: RegionContext) -> None:
+    for path in [ctx.network_dir, ctx.derived_dir, ctx.scenarios_dir, ctx.results_dir, ctx.viz_dir]:
+        path.mkdir(parents=True, exist_ok=True)
+
+
+def load_city_data(ctx: RegionContext) -> dict[str, Any]:
+    if not ctx.scenario_data_js.exists():
+        raise FileNotFoundError(f"scenario data.js not found: {ctx.scenario_data_js}")
+    text = ctx.scenario_data_js.read_text(encoding="utf-8")
+    data_text = text.split("=", 1)[1].strip().rstrip(";")
+    return json.loads(data_text)
+
+
+def ensure_network(ctx: RegionContext, force: bool = False) -> None:
+    ensure_region_dirs(ctx)
+    if force or not ctx.osm_way_mapping_csv.exists():
+        target = build_region_target(ctx.city_code)
+        export_osm(target)
+    if force or not ctx.net_xml.exists():
+        target = build_region_target(ctx.city_code)
+        run_netconvert(target)
+
+
+def base_sumo_edge_id(edge_id: str) -> str:
+    return edge_id.split("#", 1)[0]
+
+
+def lane_lengths(edge: ET.Element) -> list[float]:
+    values: list[float] = []
+    for lane in edge.findall("lane"):
+        length = lane.get("length")
+        if length:
+            values.append(float(length))
+    return values
+
+
+def extract_sumo_edges(ctx: RegionContext) -> list[dict[str, Any]]:
+    root = ET.parse(ctx.net_xml).getroot()
+    rows: list[dict[str, Any]] = []
+    for edge in root.findall("edge"):
+        if edge.get("function"):
+            continue
+        edge_id = edge.get("id", "")
+        lengths = lane_lengths(edge)
+        rows.append(
+            {
+                "sumo_edge_id": edge_id,
+                "base_sumo_edge_id": base_sumo_edge_id(edge_id),
+                "from": edge.get("from", ""),
+                "to": edge.get("to", ""),
+                "priority": edge.get("priority", ""),
+                "lane_count": len(edge.findall("lane")),
+                "length_m": max(lengths) if lengths else "",
+            }
+        )
+    write_csv(
+        ctx.sumo_edges_csv,
+        ["sumo_edge_id", "base_sumo_edge_id", "from", "to", "priority", "lane_count", "length_m"],
+        rows,
+    )
+    return rows
+
+
+def extract_phase1_closed_edges(ctx: RegionContext, data: dict[str, Any]) -> list[dict[str, Any]]:
+    times_by_id = {item["id"]: item for item in data["times"]}
+    edge_times: dict[str, set[str]] = defaultdict(set)
+    for time_id, edge_ids in data["closures"].items():
+        for edge_id in edge_ids:
+            edge_times[str(edge_id)].add(time_id)
+
+    rows: list[dict[str, Any]] = []
+    for edge_id in sorted(edge_times):
+        time_ids = sorted(edge_times[edge_id])
+        timestamps = [times_by_id[time_id]["timestamp"] for time_id in time_ids if time_id in times_by_id]
+        rows.append(
+            {
+                "phase1_edge_id": edge_id,
+                "closed_time_count": len(time_ids),
+                "first_time_id": time_ids[0],
+                "first_timestamp": timestamps[0] if timestamps else "",
+                "time_ids": ";".join(time_ids),
+                "timestamps": ";".join(timestamps),
+            }
+        )
+    write_csv(
+        ctx.phase1_closed_edges_csv,
+        ["phase1_edge_id", "closed_time_count", "first_time_id", "first_timestamp", "time_ids", "timestamps"],
+        rows,
+    )
+    return rows
+
+
+def parse_phase1_edge_id(edge_id: str) -> tuple[str, str, str]:
+    match = re.match(r"^(.+)_(.+)_([^_]+)$", edge_id)
+    if not match:
+        return "", "", ""
+    return match.group(1), match.group(2), match.group(3)
+
+
+def split_sumo_edge_ids(value: Any) -> list[str]:
+    if pd.isna(value):
+        return []
+    text = str(value).strip()
+    if not text:
+        return []
+    return [item for item in text.split(";") if item]
+
+
+def generate_edge_mapping(ctx: RegionContext, force_network: bool = False) -> dict[str, Any]:
+    ensure_network(ctx, force=force_network)
+    data = load_city_data(ctx)
+    sumo_edges = extract_sumo_edges(ctx)
+    closed_edges = extract_phase1_closed_edges(ctx, data)
+
+    sumo_by_base: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in sumo_edges:
+        sumo_by_base[str(row["base_sumo_edge_id"])].append(row)
+
+    way_rows = read_csv_rows(ctx.osm_way_mapping_csv, encoding="utf-8")
+    way_by_phase1 = {row["phase1_edge_id"]: row for row in way_rows}
+
+    mapping_rows: list[dict[str, Any]] = []
+    for closed in closed_edges:
+        phase1_edge_id = closed["phase1_edge_id"]
+        u, v, key = parse_phase1_edge_id(phase1_edge_id)
+        way = way_by_phase1.get(phase1_edge_id)
+        if not way:
+            mapping_rows.append(
+                {
+                    "phase1_edge_id": phase1_edge_id,
+                    "u": u,
+                    "v": v,
+                    "key": key,
+                    "osmid": "",
+                    "phase2_osm_way_id": "",
+                    "sumo_edge_id": "",
+                    "sumo_edge_count": 0,
+                    "mapping_method": "synthetic_way_id_prefix",
+                    "mapping_status": "unmatched",
+                    "closed_time_count": closed["closed_time_count"],
+                    "first_time_id": closed["first_time_id"],
+                    "first_timestamp": closed["first_timestamp"],
+                    "notes": "phase1 edge was not found in phase1_edge_osm_way_mapping.csv",
+                }
+            )
+            continue
+        way_id = way["phase2_osm_way_id"]
+        matched_edges = sorted(sumo_by_base.get(way_id, []), key=lambda item: item["sumo_edge_id"])
+        sumo_ids = [item["sumo_edge_id"] for item in matched_edges]
+        status = "matched" if sumo_ids else "unmatched"
+        mapping_rows.append(
+            {
+                "phase1_edge_id": phase1_edge_id,
+                "u": way["u"],
+                "v": way["v"],
+                "key": way["key"],
+                "osmid": way["osmid"],
+                "phase2_osm_way_id": way_id,
+                "sumo_edge_id": ";".join(sumo_ids),
+                "sumo_edge_count": len(sumo_ids),
+                "mapping_method": "synthetic_way_id_prefix",
+                "mapping_status": status,
+                "closed_time_count": closed["closed_time_count"],
+                "first_time_id": closed["first_time_id"],
+                "first_timestamp": closed["first_timestamp"],
+                "notes": "" if status == "matched" else "SUMO edge with matching base ID was not found",
+            }
+        )
+
+    write_csv(
+        ctx.edge_id_mapping_csv,
+        [
+            "phase1_edge_id",
+            "u",
+            "v",
+            "key",
+            "osmid",
+            "phase2_osm_way_id",
+            "sumo_edge_id",
+            "sumo_edge_count",
+            "mapping_method",
+            "mapping_status",
+            "closed_time_count",
+            "first_time_id",
+            "first_timestamp",
+            "notes",
+        ],
+        mapping_rows,
+    )
+
+    status_counts: dict[str, int] = defaultdict(int)
+    total_sumo_segments = 0
+    for row in mapping_rows:
+        status_counts[str(row["mapping_status"])] += 1
+        total_sumo_segments += int(row["sumo_edge_count"] or 0)
+
+    summary = {
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "sumo_edge_count": len(sumo_edges),
+        "phase1_closed_edge_count": len(closed_edges),
+        "mapping_count": len(mapping_rows),
+        "matched_count": status_counts.get("matched", 0),
+        "unmatched_count": status_counts.get("unmatched", 0),
+        "total_mapped_sumo_edge_segments": total_sumo_segments,
+        "can_proceed_to_region_closure": status_counts.get("unmatched", 0) == 0,
+        "edge_id_mapping_csv": rel(ctx.edge_id_mapping_csv),
+        "updated_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    ctx.edge_mapping_validation_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    upsert_summary(EDGE_MAPPING_SUMMARY_CSV, ["city_code"], summary)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def parse_dt(text: str) -> datetime:
+    return datetime.fromisoformat(text)
+
+
+def generate_time_mapping(ctx: RegionContext, data: dict[str, Any]) -> list[dict[str, Any]]:
+    start = parse_dt(config.SIM_START_EPOCH)
+    times = data["times"]
+    timestamps = [parse_dt(item["timestamp"]) for item in times]
+    max_elapsed = int((timestamps[-1] - start).total_seconds())
+    rows: list[dict[str, Any]] = []
+    for item, ts in zip(times, timestamps):
+        elapsed = int((ts - start).total_seconds())
+        sim_time = round(elapsed / max_elapsed * SIM_DURATION_SEC)
+        rows.append(
+            {
+                "time_id": item["id"],
+                "source_timestamp": ts.isoformat(),
+                "elapsed_sec_real": elapsed,
+                "sim_time_sec": int(sim_time),
+                "compression_ratio": sim_time / elapsed if elapsed else "",
+                "notes": "linear_compression_to_6h",
+            }
+        )
+    write_csv(
+        ctx.time_mapping_csv,
+        ["time_id", "source_timestamp", "elapsed_sec_real", "sim_time_sec", "compression_ratio", "notes"],
+        rows,
+    )
+    return rows
+
+
+def flood_union(data: dict[str, Any], time_id: str = "t7"):
+    features = data["floods"][time_id]["features"]
+    if not features:
+        return None
+    return unary_union([shape(feature["geometry"]) for feature in features])
+
+
+def generate_shelters_safety(ctx: RegionContext, data: dict[str, Any]) -> list[dict[str, Any]]:
+    flood = flood_union(data, "t7")
+    rows: list[dict[str, Any]] = []
+    for idx, shelter in enumerate(data["shelters"], start=1):
+        shelter_id = str(shelter.get("id") or f"shelter_{idx:03d}")
+        lon = float(shelter["lon"])
+        lat = float(shelter["lat"])
+        flood_risk = bool(flood is not None and flood.intersects(Point(lon, lat)))
+        rows.append(
+            {
+                "shelter_id": shelter_id,
+                "name": shelter.get("name", shelter_id),
+                "capacity": shelter.get("capacity", ""),
+                "lon": lon,
+                "lat": lat,
+                "flood_risk": flood_risk,
+                "max_water_depth_code": "",
+                "is_safe_destination": not flood_risk,
+                "exclusion_reason": "inside_max_scenario_flood" if flood_risk else "",
+                "notes": "from_city_scenario_data",
+            }
+        )
+
+    if rows and not any(bool(row["is_safe_destination"]) for row in rows):
+        for row in rows:
+            row["is_safe_destination"] = True
+            row["exclusion_reason"] = ""
+            row["notes"] = "retained_because_no_safe_shelter_after_scenario_flood_check"
+
+    write_csv(
+        ctx.shelters_safety_csv,
+        [
+            "shelter_id",
+            "name",
+            "capacity",
+            "lon",
+            "lat",
+            "flood_risk",
+            "max_water_depth_code",
+            "is_safe_destination",
+            "exclusion_reason",
+            "notes",
+        ],
+        rows,
+    )
+    return rows
+
+
+def meshcode_to_lon_lat(key_code: str) -> tuple[float, float]:
+    key = str(key_code).zfill(10)
+    p, u = int(key[0:2]), int(key[2:4])
+    q, v = int(key[4]), int(key[5])
+    r, w = int(key[6]), int(key[7])
+    s, x = int(key[8]), int(key[9])
+    lat = p / 1.5 + q * 5 / 60 + (r * 30 + s * 7.5 + 3.75) / 3600
+    lon = 100 + u + v * 0.125 + (w * 45 + x * 11.25 + 5.625) / 3600
+    return lon, lat
+
+
+def read_mesh_table() -> pd.DataFrame:
+    raw = pd.read_csv(POPULATION_MESH_TXT, encoding="shift_jis", header=None, dtype=str)
+    header = raw.iloc[0].tolist()
+    if any(("KEY_CODE" in str(x)) or ("メッシュ" in str(x)) for x in header):
+        df = raw.iloc[2:].copy()
+        df.columns = header
+    else:
+        df = raw.copy()
+        df.columns = [f"col_{i}" for i in range(df.shape[1])]
+    return df
+
+
+def find_col(candidates: list[str], columns: list[str], default: str) -> str:
+    for column in columns:
+        if any(key in str(column) for key in candidates):
+            return column
+    return default
+
+
+def full_vehicle_count(total_pop: int) -> int:
+    if total_pop <= 0:
+        return 0
+    return max(1, math.ceil(total_pop / HOUSEHOLD_SIZE))
+
+
+def ten_percent_vehicle_count(vehicle_count_full: int) -> int:
+    if vehicle_count_full <= 0:
+        return 0
+    return max(1, math.ceil(vehicle_count_full / 10))
+
+
+def generate_agent_origins(ctx: RegionContext, data: dict[str, Any]) -> list[dict[str, Any]]:
+    flood = flood_union(data, "t7")
+    if flood is None or flood.is_empty:
+        rows: list[dict[str, Any]] = []
+        write_csv(
+            ctx.agent_origins_csv,
+            [
+                "origin_id",
+                "KEY_CODE",
+                "lon",
+                "lat",
+                "total_pop",
+                "elderly_pop",
+                "estimated_households",
+                "vehicle_count_full",
+                "vehicle_count_10pct_raw",
+                "vehicle_count_10pct",
+                "vehicle_count_small",
+                "notes",
+            ],
+            rows,
+        )
+        return rows
+
+    prepared_flood = prep(flood)
+    minx, miny, maxx, maxy = flood.bounds
+    df = read_mesh_table()
+    key_col = find_col(["KEY_CODE", "メッシュ"], list(df.columns), "col_0")
+    total_col = "T001178001" if "T001178001" in df.columns else "col_4"
+    elderly_cols = [
+        c for c in ["T001178043", "T001178046", "T001178049", "T001178052", "T001178055"]
+        if c in df.columns
+    ]
+    if not elderly_cols:
+        elderly_cols = ["col_46", "col_49", "col_52", "col_55", "col_58"]
+
+    work = df[[key_col, total_col, *elderly_cols]].copy()
+    work = work.rename(columns={key_col: "KEY_CODE", total_col: "total_pop"})
+    work["KEY_CODE"] = work["KEY_CODE"].astype(str).str.zfill(10)
+    work[["lon", "lat"]] = work["KEY_CODE"].apply(lambda key: pd.Series(meshcode_to_lon_lat(key)))
+    work = work[
+        (work["lon"] >= minx - _MESH_250M_LON_DEG)
+        & (work["lon"] <= maxx + _MESH_250M_LON_DEG)
+        & (work["lat"] >= miny - _MESH_250M_LAT_DEG)
+        & (work["lat"] <= maxy + _MESH_250M_LAT_DEG)
+    ].copy()
+    work["total_pop"] = pd.to_numeric(work["total_pop"], errors="coerce").fillna(0).astype(int)
+    work["elderly_pop"] = (
+        work[elderly_cols].apply(pd.to_numeric, errors="coerce").fillna(0).sum(axis=1).astype(int)
+    )
+
+    rows: list[dict[str, Any]] = []
+    seq = 1
+    for row in work.itertuples():
+        cell = box(
+            row.lon - _MESH_250M_LON_DEG / 2,
+            row.lat - _MESH_250M_LAT_DEG / 2,
+            row.lon + _MESH_250M_LON_DEG / 2,
+            row.lat + _MESH_250M_LAT_DEG / 2,
+        )
+        if not prepared_flood.intersects(cell):
+            continue
+        total_pop = int(row.total_pop)
+        elderly_pop = int(row.elderly_pop)
+        vehicles_full = full_vehicle_count(total_pop)
+        vehicles_10_raw = vehicles_full / 10 if vehicles_full > 0 else 0
+        rows.append(
+            {
+                "origin_id": f"origin_{seq:04d}",
+                "KEY_CODE": row.KEY_CODE,
+                "lon": float(row.lon),
+                "lat": float(row.lat),
+                "total_pop": total_pop,
+                "elderly_pop": elderly_pop,
+                "estimated_households": round(total_pop / HOUSEHOLD_SIZE, 3) if total_pop > 0 else 0,
+                "vehicle_count_full": vehicles_full,
+                "vehicle_count_10pct_raw": round(vehicles_10_raw, 3),
+                "vehicle_count_10pct": ten_percent_vehicle_count(vehicles_full),
+                "vehicle_count_small": 1 if total_pop > 0 else 0,
+                "notes": "mesh_intersects_max_city_scenario_flood",
+            }
+        )
+        seq += 1
+
+    write_csv(
+        ctx.agent_origins_csv,
+        [
+            "origin_id",
+            "KEY_CODE",
+            "lon",
+            "lat",
+            "total_pop",
+            "elderly_pop",
+            "estimated_households",
+            "vehicle_count_full",
+            "vehicle_count_10pct_raw",
+            "vehicle_count_10pct",
+            "vehicle_count_small",
+            "notes",
+        ],
+        rows,
+    )
+    return rows
+
+
+def nearest_edge(net: Any, lon: float, lat: float) -> tuple[str, float, str]:
+    x, y = net.convertLonLat2XY(lon, lat)
+    candidates = []
+    for radius in SEARCH_RADII_M:
+        candidates = net.getNeighboringEdges(x, y, r=radius)
+        if candidates:
+            break
+    if not candidates:
+        return "", float("nan"), "unmatched"
+    edge, distance = min(candidates, key=lambda item: item[1])
+    status = "matched" if distance <= FAR_THRESHOLD_M else "far"
+    return edge.getID(), float(distance), status
+
+
+def snap_points(ctx: RegionContext) -> dict[str, Any]:
+    net = sumolib.net.readNet(str(ctx.net_xml))
+    origins = pd.read_csv(ctx.agent_origins_csv, dtype={"KEY_CODE": str})
+    shelters = pd.read_csv(ctx.shelters_safety_csv)
+
+    origin_rows: list[dict[str, Any]] = []
+    for _, row in origins.iterrows():
+        edge_id, distance, status = nearest_edge(net, float(row["lon"]), float(row["lat"]))
+        origin_rows.append(
+            {
+                "origin_id": row["origin_id"],
+                "KEY_CODE": row["KEY_CODE"],
+                "lon": row["lon"],
+                "lat": row["lat"],
+                "sumo_edge_id": edge_id,
+                "snap_distance_m": round(distance, 3) if pd.notna(distance) else "",
+                "vehicle_count_small": int(row["vehicle_count_small"]),
+                "vehicle_count_10pct": int(row["vehicle_count_10pct"]),
+                "vehicle_count_full": int(row["vehicle_count_full"]),
+                "snap_status": status,
+            }
+        )
+    write_csv(
+        ctx.agent_origins_sumo_csv,
+        [
+            "origin_id",
+            "KEY_CODE",
+            "lon",
+            "lat",
+            "sumo_edge_id",
+            "snap_distance_m",
+            "vehicle_count_small",
+            "vehicle_count_10pct",
+            "vehicle_count_full",
+            "snap_status",
+        ],
+        origin_rows,
+    )
+
+    shelter_rows: list[dict[str, Any]] = []
+    for _, row in shelters.iterrows():
+        is_safe = str(row["is_safe_destination"]).lower() == "true"
+        if is_safe:
+            edge_id, distance, status = nearest_edge(net, float(row["lon"]), float(row["lat"]))
+        else:
+            edge_id, distance, status = "", float("nan"), "excluded_flood_risk"
+        shelter_rows.append(
+            {
+                "shelter_id": row["shelter_id"],
+                "name": row["name"],
+                "lon": row["lon"],
+                "lat": row["lat"],
+                "capacity": row["capacity"],
+                "is_safe_destination": is_safe,
+                "sumo_edge_id": edge_id,
+                "snap_distance_m": round(distance, 3) if pd.notna(distance) else "",
+                "snap_status": status,
+            }
+        )
+    write_csv(
+        ctx.shelters_sumo_csv,
+        [
+            "shelter_id",
+            "name",
+            "lon",
+            "lat",
+            "capacity",
+            "is_safe_destination",
+            "sumo_edge_id",
+            "snap_distance_m",
+            "snap_status",
+        ],
+        shelter_rows,
+    )
+
+    origins_df = pd.DataFrame(origin_rows)
+    shelters_df = pd.DataFrame(shelter_rows)
+    safe_shelters = shelters_df[shelters_df["is_safe_destination"] == True]  # noqa: E712
+    summary = {
+        "origin_count": int(len(origins_df)),
+        "origin_unmatched_count": int((origins_df["snap_status"] == "unmatched").sum()) if len(origins_df) else 0,
+        "origin_far_count": int((origins_df["snap_status"] == "far").sum()) if len(origins_df) else 0,
+        "origin_max_snap_distance_m": float(origins_df["snap_distance_m"].max()) if len(origins_df) else None,
+        "shelter_count": int(len(shelters_df)),
+        "safe_shelter_count": int(len(safe_shelters)),
+        "safe_shelter_unmatched_count": int((safe_shelters["snap_status"] == "unmatched").sum())
+        if len(safe_shelters)
+        else 0,
+        "safe_shelter_max_snap_distance_m": float(safe_shelters["snap_distance_m"].max())
+        if len(safe_shelters)
+        else None,
+        "can_proceed_to_route_generation": bool(
+            len(origins_df) > 0
+            and len(safe_shelters) > 0
+            and int((origins_df["snap_status"] == "unmatched").sum()) == 0
+            and int((safe_shelters["snap_status"] == "unmatched").sum()) == 0
+        ),
+    }
+    ctx.snap_validation_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    return summary
+
+
+def generate_closure_timeline_sumo(ctx: RegionContext, data: dict[str, Any]) -> dict[str, Any]:
+    time_mapping = pd.read_csv(ctx.time_mapping_csv)
+    edge_mapping = pd.read_csv(ctx.edge_id_mapping_csv)
+    mapping_by_phase1 = {
+        row["phase1_edge_id"]: split_sumo_edge_ids(row["sumo_edge_id"])
+        for _, row in edge_mapping.iterrows()
+    }
+    closures = []
+    for _, time_row in time_mapping.iterrows():
+        time_id = time_row["time_id"]
+        phase1_ids = data["closures"].get(time_id, [])
+        closed_sumo_ids: set[str] = set()
+        unmapped: list[str] = []
+        for phase1_edge_id in phase1_ids:
+            sumo_ids = mapping_by_phase1.get(phase1_edge_id, [])
+            if not sumo_ids:
+                unmapped.append(phase1_edge_id)
+                continue
+            closed_sumo_ids.update(sumo_ids)
+        closures.append(
+            {
+                "time_id": time_id,
+                "source_timestamp": time_row["source_timestamp"],
+                "sim_time_sec": int(time_row["sim_time_sec"]),
+                "phase1_edge_count": len(phase1_ids),
+                "closed_sumo_edge_ids": sorted(closed_sumo_ids),
+                "closed_sumo_edge_count": len(closed_sumo_ids),
+                "unmapped_phase1_edge_ids": sorted(unmapped),
+            }
+        )
+    output = {
+        "metadata": {
+            "city_code": ctx.city_code,
+            "city_name": ctx.city_name,
+            "source": rel(ctx.scenario_data_js),
+            "edge_mapping": rel(ctx.edge_id_mapping_csv),
+            "time_mapping": rel(ctx.time_mapping_csv),
+            "closure_rule": "city_scenario_closure_edges",
+            "sim_duration_sec": SIM_DURATION_SEC,
+        },
+        "closures": closures,
+    }
+    ctx.closure_timeline_sumo_json.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
+    return output
+
+
+def generate_region_derived(ctx: RegionContext) -> dict[str, Any]:
+    if not ctx.edge_id_mapping_csv.exists():
+        generate_edge_mapping(ctx)
+    data = load_city_data(ctx)
+    time_rows = generate_time_mapping(ctx, data)
+    shelter_rows = generate_shelters_safety(ctx, data)
+    origin_rows = generate_agent_origins(ctx, data)
+    closure_timeline = generate_closure_timeline_sumo(ctx, data)
+    snap_summary = snap_points(ctx)
+
+    summary = {
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "time_mapping_rows": len(time_rows),
+        "shelter_count": len(shelter_rows),
+        "safe_shelter_count": sum(1 for row in shelter_rows if bool(row["is_safe_destination"])),
+        "origin_count": len(origin_rows),
+        "vehicle_count_small_total": sum(int(row["vehicle_count_small"]) for row in origin_rows),
+        "vehicle_count_10pct_total": sum(int(row["vehicle_count_10pct"]) for row in origin_rows),
+        "vehicle_count_full_total": sum(int(row["vehicle_count_full"]) for row in origin_rows),
+        "closure_time_steps": len(closure_timeline["closures"]),
+        "closure_unmapped_time_steps": sum(
+            1 for item in closure_timeline["closures"] if item["unmapped_phase1_edge_ids"]
+        ),
+        "origin_unmatched_count": snap_summary["origin_unmatched_count"],
+        "safe_shelter_unmatched_count": snap_summary["safe_shelter_unmatched_count"],
+        "can_proceed_to_small": bool(snap_summary["can_proceed_to_route_generation"]),
+        "derived_validation_json": rel(ctx.derived_validation_json),
+        "updated_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    ctx.derived_validation_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    upsert_summary(DERIVED_SUMMARY_CSV, ["city_code"], summary)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def read_net(ctx: RegionContext):
+    return sumolib.net.readNet(str(ctx.net_xml))
+
+
+def net_xy(net: Any, lon: float, lat: float) -> tuple[float, float]:
+    x, y = net.convertLonLat2XY(lon, lat)
+    return float(x), float(y)
+
+
+def nearest_shelter(net: Any, origin: pd.Series, shelters: pd.DataFrame) -> pd.Series:
+    ox, oy = net_xy(net, float(origin["lon"]), float(origin["lat"]))
+    candidates = []
+    for _, shelter in shelters.iterrows():
+        sx, sy = net_xy(net, float(shelter["lon"]), float(shelter["lat"]))
+        dist2 = (ox - sx) ** 2 + (oy - sy) ** 2
+        same_edge_penalty = 1_000_000_000 if shelter["sumo_edge_id"] == origin["sumo_edge_id"] else 0
+        candidates.append((dist2 + same_edge_penalty, shelter))
+    candidates.sort(key=lambda item: item[0])
+    return candidates[0][1]
+
+
+def write_xml(path: Path, root: ET.Element) -> None:
+    tree = ET.ElementTree(root)
+    ET.indent(tree, space="  ")
+    tree.write(path, encoding="utf-8", xml_declaration=True)
+
+
+def scenario_paths(ctx: RegionContext, scenario_name: str) -> dict[str, Path]:
+    settings = SCENARIO_SETTINGS[scenario_name]
+    return {
+        "rou": ctx.scenarios_dir / settings["rou"],
+        "sumocfg": ctx.scenarios_dir / settings["sumocfg"],
+        "assignments": ctx.derived_dir / settings["assignments"],
+        "tripinfo": ctx.results_dir / settings["tripinfo"],
+        "vehicle_log": ctx.results_dir / settings["vehicle_log"],
+        "closure_log": ctx.results_dir / settings["closure_log"],
+        "congestion_log": ctx.results_dir / settings["congestion_log"],
+        "summary": ctx.results_dir / settings["summary"],
+        "fcd": ctx.results_dir / settings["fcd"],
+    }
+
+
+def generate_region_scenario(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
+    ensure_region_dirs(ctx)
+    if not ctx.snap_validation_json.exists():
+        generate_region_derived(ctx)
+    settings = SCENARIO_SETTINGS[scenario_name]
+    paths = scenario_paths(ctx, scenario_name)
+    net = read_net(ctx)
+    origins = pd.read_csv(ctx.agent_origins_sumo_csv, dtype={"KEY_CODE": str})
+    shelters = pd.read_csv(ctx.shelters_sumo_csv)
+    safe_shelters = shelters[shelters["is_safe_destination"] == True].copy()  # noqa: E712
+    if safe_shelters.empty:
+        raise ValueError(f"{ctx.city_code}: no safe shelter is available for route generation")
+
+    routes = ET.Element("routes")
+    ET.SubElement(
+        routes,
+        "vType",
+        {
+            "id": "passenger_car",
+            "vClass": "passenger",
+            "accel": "2.6",
+            "decel": "4.5",
+            "sigma": "0.5",
+            "length": "5.0",
+            "maxSpeed": "13.89",
+        },
+    )
+
+    assignments: list[dict[str, Any]] = []
+    for _, origin in origins.iterrows():
+        if str(origin["snap_status"]) == "unmatched":
+            continue
+        shelter = nearest_shelter(net, origin, safe_shelters)
+        vehicle_count = int(origin[settings["count_column"]])
+        for seq in range(vehicle_count):
+            vehicle_id = f"{settings['vehicle_prefix']}_{origin['origin_id']}_{seq + 1:04d}"
+            ET.SubElement(
+                routes,
+                "trip",
+                {
+                    "id": vehicle_id,
+                    "type": "passenger_car",
+                    "depart": "0",
+                    "from": str(origin["sumo_edge_id"]),
+                    "to": str(shelter["sumo_edge_id"]),
+                },
+            )
+            assignments.append(
+                {
+                    "vehicle_id": vehicle_id,
+                    "origin_id": origin["origin_id"],
+                    "KEY_CODE": origin["KEY_CODE"],
+                    "from_sumo_edge_id": origin["sumo_edge_id"],
+                    "shelter_id": shelter["shelter_id"],
+                    "shelter_name": shelter["name"],
+                    "to_sumo_edge_id": shelter["sumo_edge_id"],
+                    "depart": 0,
+                }
+            )
+
+    write_xml(paths["rou"], routes)
+    write_csv(
+        paths["assignments"],
+        [
+            "vehicle_id",
+            "origin_id",
+            "KEY_CODE",
+            "from_sumo_edge_id",
+            "shelter_id",
+            "shelter_name",
+            "to_sumo_edge_id",
+            "depart",
+        ],
+        assignments,
+    )
+
+    config_el = ET.Element("configuration")
+    input_el = ET.SubElement(config_el, "input")
+    ET.SubElement(input_el, "net-file", {"value": f"../network/{ctx.city_code}.net.xml"})
+    ET.SubElement(input_el, "route-files", {"value": paths["rou"].name})
+    time_el = ET.SubElement(config_el, "time")
+    ET.SubElement(time_el, "begin", {"value": "0"})
+    ET.SubElement(time_el, "end", {"value": str(SIM_DURATION_SEC)})
+    output_el = ET.SubElement(config_el, "output")
+    ET.SubElement(output_el, "tripinfo-output", {"value": f"../results/{paths['tripinfo'].name}"})
+    ET.SubElement(output_el, "fcd-output", {"value": f"../results/{paths['fcd'].name}"})
+    ET.SubElement(output_el, "device.fcd.period", {"value": settings["fcd_period"]})
+    ET.SubElement(output_el, "fcd-output.geo", {"value": "true"})
+    processing_el = ET.SubElement(config_el, "processing")
+    ET.SubElement(processing_el, "ignore-route-errors", {"value": "false"})
+    report_el = ET.SubElement(config_el, "report")
+    ET.SubElement(report_el, "no-step-log", {"value": "true"})
+    ET.SubElement(report_el, "duration-log.disable", {"value": "true"})
+    write_xml(paths["sumocfg"], config_el)
+
+    summary = {
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "scenario": scenario_name,
+        "vehicle_count": len(assignments),
+        "rou": rel(paths["rou"]),
+        "sumocfg": rel(paths["sumocfg"]),
+        "assignments": rel(paths["assignments"]),
+    }
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def load_closure_timeline(ctx: RegionContext) -> list[dict[str, Any]]:
+    if not ctx.closure_timeline_sumo_json.exists():
+        generate_region_derived(ctx)
+    data = json.loads(ctx.closure_timeline_sumo_json.read_text(encoding="utf-8"))
+    return sorted(data["closures"], key=lambda item: int(item["sim_time_sec"]))
+
+
+def parse_int(value: Any, default: int = 0) -> int:
+    if pd.isna(value):
+        return default
+    text = str(value).strip()
+    if not text:
+        return default
+    return int(float(text))
+
+
+def load_planned_vehicles(assignments_path: Path) -> dict[str, dict[str, Any]]:
+    if not assignments_path.exists():
+        return {}
+    assignments = pd.read_csv(assignments_path, dtype=str)
+    planned: dict[str, dict[str, Any]] = {}
+    for _, row in assignments.iterrows():
+        vehicle_id = str(row["vehicle_id"])
+        planned[vehicle_id] = {
+            "vehicle_id": vehicle_id,
+            "origin_id": row.get("origin_id", ""),
+            "KEY_CODE": row.get("KEY_CODE", ""),
+            "from_sumo_edge_id": row.get("from_sumo_edge_id", ""),
+            "to_sumo_edge_id": row.get("to_sumo_edge_id", ""),
+            "planned_depart": parse_int(row.get("depart", 0)),
+        }
+    return planned
+
+
+def close_edges(edge_ids: list[str]) -> int:
+    closed = 0
+    for edge_id in edge_ids:
+        try:
+            traci.edge.setDisallowed(edge_id, ["passenger"])
+            closed += 1
+        except traci.TraCIException:
+            continue
+    return closed
+
+
+def reroute_active_vehicles() -> tuple[int, int, list[str]]:
+    success = 0
+    failed = 0
+    failed_ids: list[str] = []
+    for vehicle_id in traci.vehicle.getIDList():
+        try:
+            traci.vehicle.rerouteTraveltime(vehicle_id)
+            success += 1
+        except traci.TraCIException:
+            failed += 1
+            failed_ids.append(vehicle_id)
+    return success, failed, failed_ids
+
+
+def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
+    if not scenario_paths(ctx, scenario_name)["sumocfg"].exists():
+        generate_region_scenario(ctx, scenario_name)
+    settings = SCENARIO_SETTINGS[scenario_name]
+    paths = scenario_paths(ctx, scenario_name)
+    closures = load_closure_timeline(ctx)
+    if any(item["unmapped_phase1_edge_ids"] for item in closures):
+        raise ValueError(f"{ctx.city_code}: closure_timeline_sumo.json contains unmapped phase1 edges")
+
+    planned_vehicles = load_planned_vehicles(paths["assignments"])
+    planned_by_source_edge: dict[str, list[str]] = defaultdict(list)
+    for vehicle_id, planned in planned_vehicles.items():
+        planned_by_source_edge[str(planned["from_sumo_edge_id"])].append(vehicle_id)
+
+    sumo_binary = sumolib.checkBinary("sumo")
+    command = [
+        sumo_binary,
+        "-c",
+        str(paths["sumocfg"]),
+        "--no-step-log",
+        "true",
+        "--duration-log.disable",
+        "true",
+        "--ignore-route-errors",
+        "true",
+        "--fcd-output.geo",
+        "true",
+        "--device.fcd.period",
+        settings["fcd_period"],
+    ]
+    traci.start(command)
+
+    closure_index = 0
+    applied_edges: set[str] = set()
+    closure_logs: list[dict[str, Any]] = []
+    congestion_logs: list[dict[str, Any]] = []
+    vehicle_state: dict[str, dict[str, Any]] = {}
+    reroute_failed_vehicle_ids: set[str] = set()
+    departed_vehicle_ids: set[str] = set()
+    blocked_before_depart: dict[str, int] = {}
+
+    try:
+        while traci.simulation.getTime() <= SIM_DURATION_SEC and (
+            traci.simulation.getMinExpectedNumber() > 0 or closure_index < len(closures)
+        ):
+            traci.simulationStep()
+            sim_time = int(traci.simulation.getTime())
+
+            for vehicle_id in traci.simulation.getDepartedIDList():
+                departed_vehicle_ids.add(vehicle_id)
+                vehicle_state.setdefault(
+                    vehicle_id,
+                    {
+                        "vehicle_id": vehicle_id,
+                        "depart": sim_time,
+                        "arrival": "",
+                        "duration": "",
+                        "arrived": False,
+                        "reroute_failed": False,
+                        "long_stopped": False,
+                        "max_consecutive_stop_sec": 0,
+                        "current_stop_sec": 0,
+                    },
+                )
+
+            while closure_index < len(closures) and sim_time >= int(closures[closure_index]["sim_time_sec"]):
+                item = closures[closure_index]
+                new_edges = [edge_id for edge_id in item["closed_sumo_edge_ids"] if edge_id not in applied_edges]
+                closed_count = close_edges(new_edges)
+                applied_edges.update(new_edges)
+                departure_blocked_count = 0
+                for edge_id in new_edges:
+                    for vehicle_id in planned_by_source_edge.get(edge_id, []):
+                        if vehicle_id not in departed_vehicle_ids and vehicle_id not in blocked_before_depart:
+                            blocked_before_depart[vehicle_id] = sim_time
+                            departure_blocked_count += 1
+                            try:
+                                traci.vehicle.remove(vehicle_id)
+                            except traci.TraCIException:
+                                pass
+                reroute_success, reroute_failed, failed_ids = reroute_active_vehicles()
+                reroute_failed_vehicle_ids.update(failed_ids)
+                closure_logs.append(
+                    {
+                        "time_id": item["time_id"],
+                        "source_timestamp": item["source_timestamp"],
+                        "sim_time_sec": item["sim_time_sec"],
+                        "phase1_edge_count": item["phase1_edge_count"],
+                        "new_sumo_edge_count": len(new_edges),
+                        "closed_sumo_edge_count": closed_count,
+                        "cumulative_closed_sumo_edge_count": len(applied_edges),
+                        "active_vehicle_count": len(traci.vehicle.getIDList()),
+                        "reroute_success_count": reroute_success,
+                        "reroute_failed_count": reroute_failed,
+                        "departure_blocked_count": departure_blocked_count,
+                    }
+                )
+                closure_index += 1
+
+            for vehicle_id in traci.simulation.getArrivedIDList():
+                state = vehicle_state.setdefault(vehicle_id, {"vehicle_id": vehicle_id})
+                state["arrival"] = sim_time
+                state["arrived"] = True
+                depart = parse_int(state.get("depart", 0))
+                state["duration"] = sim_time - depart
+
+            for vehicle_id in traci.vehicle.getIDList():
+                state = vehicle_state.setdefault(
+                    vehicle_id,
+                    {
+                        "vehicle_id": vehicle_id,
+                        "depart": sim_time,
+                        "arrival": "",
+                        "duration": "",
+                        "arrived": False,
+                        "reroute_failed": False,
+                        "long_stopped": False,
+                        "max_consecutive_stop_sec": 0,
+                        "current_stop_sec": 0,
+                    },
+                )
+                speed = traci.vehicle.getSpeed(vehicle_id)
+                if speed <= STOP_SPEED_THRESHOLD:
+                    state["current_stop_sec"] = int(state.get("current_stop_sec", 0)) + 1
+                else:
+                    state["current_stop_sec"] = 0
+                state["max_consecutive_stop_sec"] = max(
+                    int(state.get("max_consecutive_stop_sec", 0)),
+                    int(state.get("current_stop_sec", 0)),
+                )
+                state["long_stopped"] = state["max_consecutive_stop_sec"] >= LONG_STOP_THRESHOLD_SEC
+
+            if sim_time % CONGESTION_LOG_INTERVAL_SEC == 0:
+                active_ids = list(traci.vehicle.getIDList())
+                speeds = [traci.vehicle.getSpeed(vehicle_id) for vehicle_id in active_ids]
+                congestion_logs.append(
+                    {
+                        "sim_time_sec": sim_time,
+                        "active_vehicle_count": len(active_ids),
+                        "mean_speed_mps": round(sum(speeds) / len(speeds), 4) if speeds else "",
+                        "stopped_vehicle_count": sum(1 for speed in speeds if speed <= STOP_SPEED_THRESHOLD),
+                    }
+                )
+    finally:
+        traci.close()
+
+    for vehicle_id in reroute_failed_vehicle_ids:
+        vehicle_state.setdefault(vehicle_id, {"vehicle_id": vehicle_id})["reroute_failed"] = True
+
+    rows: list[dict[str, Any]] = []
+    for vehicle_id, planned in planned_vehicles.items():
+        state = vehicle_state.get(vehicle_id, {})
+        blocked_time = blocked_before_depart.get(vehicle_id, "")
+        arrived = bool(state.get("arrived", False))
+        long_stopped = bool(state.get("long_stopped", False))
+        reroute_failed = bool(state.get("reroute_failed", False))
+        departure_blocked = blocked_time != ""
+        stranded_main = (not arrived) and (reroute_failed or long_stopped or departure_blocked)
+        rows.append(
+            {
+                "vehicle_id": vehicle_id,
+                "origin_id": planned.get("origin_id", ""),
+                "KEY_CODE": planned.get("KEY_CODE", ""),
+                "from_sumo_edge_id": planned.get("from_sumo_edge_id", ""),
+                "to_sumo_edge_id": planned.get("to_sumo_edge_id", ""),
+                "depart": state.get("depart", planned.get("planned_depart", "")),
+                "arrival": state.get("arrival", ""),
+                "duration": state.get("duration", ""),
+                "arrived": arrived,
+                "reroute_failed": reroute_failed,
+                "long_stopped": long_stopped,
+                "max_consecutive_stop_sec": state.get("max_consecutive_stop_sec", 0),
+                "departure_blocked_by_closure": departure_blocked,
+                "departure_blocked_time_sec": blocked_time,
+                "stranded_main": stranded_main,
+            }
+        )
+
+    write_csv(
+        paths["vehicle_log"],
+        [
+            "vehicle_id",
+            "origin_id",
+            "KEY_CODE",
+            "from_sumo_edge_id",
+            "to_sumo_edge_id",
+            "depart",
+            "arrival",
+            "duration",
+            "arrived",
+            "reroute_failed",
+            "long_stopped",
+            "max_consecutive_stop_sec",
+            "departure_blocked_by_closure",
+            "departure_blocked_time_sec",
+            "stranded_main",
+        ],
+        rows,
+    )
+    write_csv(
+        paths["closure_log"],
+        [
+            "time_id",
+            "source_timestamp",
+            "sim_time_sec",
+            "phase1_edge_count",
+            "new_sumo_edge_count",
+            "closed_sumo_edge_count",
+            "cumulative_closed_sumo_edge_count",
+            "active_vehicle_count",
+            "reroute_success_count",
+            "reroute_failed_count",
+            "departure_blocked_count",
+        ],
+        closure_logs,
+    )
+    write_csv(
+        paths["congestion_log"],
+        ["sim_time_sec", "active_vehicle_count", "mean_speed_mps", "stopped_vehicle_count"],
+        congestion_logs,
+    )
+
+    arrived_count = sum(1 for row in rows if bool(row["arrived"]))
+    stranded_count = sum(1 for row in rows if bool(row["stranded_main"]))
+    summary = {
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "scenario": scenario_name,
+        "vehicle_count": len(rows),
+        "arrived_count": arrived_count,
+        "not_arrived_count": len(rows) - arrived_count,
+        "reroute_failed_count": sum(1 for row in rows if bool(row["reroute_failed"])),
+        "long_stopped_count": sum(1 for row in rows if bool(row["long_stopped"])),
+        "departure_blocked_count": sum(1 for row in rows if bool(row["departure_blocked_by_closure"])),
+        "stranded_main_count": stranded_count,
+        "closure_event_count": len(closure_logs),
+        "final_closed_sumo_edge_count": len(applied_edges),
+        "vehicle_log": rel(paths["vehicle_log"]),
+        "closure_log": rel(paths["closure_log"]),
+        "congestion_log": rel(paths["congestion_log"]),
+        "summary": rel(paths["summary"]),
+        "updated_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    paths["summary"].write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    upsert_summary(RUN_SUMMARY_CSV, ["city_code", "scenario"], summary)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def write_full_execution_plan() -> dict[str, Any]:
+    targets = load_targets()
+    derived_rows = {row["city_code"]: row for row in read_csv_rows(DERIVED_SUMMARY_CSV, "utf-8")} if DERIVED_SUMMARY_CSV.exists() else {}
+    run_rows = read_csv_rows(RUN_SUMMARY_CSV, "utf-8") if RUN_SUMMARY_CSV.exists() else []
+    run_by_city_scenario = {(row["city_code"], row["scenario"]): row for row in run_rows}
+
+    plan_rows: list[dict[str, Any]] = []
+    for target in targets:
+        code = target["city_code"]
+        derived = derived_rows.get(code, {})
+        tenpct = run_by_city_scenario.get((code, "10pct"), {})
+        full_vehicle_count_value = int(float(derived.get("vehicle_count_full_total", 0) or 0))
+        tenpct_ok = tenpct and str(tenpct.get("not_arrived_count", "0")) != ""
+        stranded_10pct = int(float(tenpct.get("stranded_main_count", 0) or 0)) if tenpct else ""
+        if not tenpct:
+            recommendation = "wait_for_10pct"
+            reason = "10pct結果が未生成のためfull実行判断を保留"
+        elif full_vehicle_count_value <= 1000:
+            recommendation = "run_full"
+            reason = "full車両数が1000台以下で実行負荷が比較的小さい"
+        elif stranded_10pct not in ("", 0):
+            recommendation = "run_full_priority"
+            reason = "10pctで逃げ遅れ主指標が発生しており詳細確認を優先"
+        else:
+            recommendation = "representative_or_defer"
+            reason = "10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先"
+        plan_rows.append(
+            {
+                "city_code": code,
+                "city_name": target["city_name"],
+                "origin_count": derived.get("origin_count", ""),
+                "vehicle_count_10pct_total": derived.get("vehicle_count_10pct_total", ""),
+                "vehicle_count_full_total": full_vehicle_count_value if derived else "",
+                "tenpct_available": "yes" if tenpct_ok else "no",
+                "tenpct_stranded_main_count": stranded_10pct,
+                "recommendation": recommendation,
+                "reason": reason,
+            }
+        )
+
+    write_csv(
+        FULL_PLAN_CSV,
+        [
+            "city_code",
+            "city_name",
+            "origin_count",
+            "vehicle_count_10pct_total",
+            "vehicle_count_full_total",
+            "tenpct_available",
+            "tenpct_stranded_main_count",
+            "recommendation",
+            "reason",
+        ],
+        plan_rows,
+    )
+
+    counts = defaultdict(int)
+    for row in plan_rows:
+        counts[row["recommendation"]] += 1
+    lines = [
+        "# Phase 2 全域拡張 full試行 実行計画",
+        "",
+        f"- 生成日時: {datetime.now().isoformat(timespec='seconds')}",
+        "- 判断方針: small / 10pct は全41市区町村で実行し、fullは10pct結果と車両数を見て実行範囲を決める。",
+        "- 現時点の推奨: 10pct結果がない市区町村は保留、10pctで逃げ遅れが出た地域またはfull車両数1000台以下の地域を優先する。",
+        "",
+        "## 推奨区分集計",
+        "",
+        "| 推奨区分 | 件数 |",
+        "|---|---:|",
+    ]
+    for key in sorted(counts):
+        lines.append(f"| {key} | {counts[key]} |")
+    lines.extend(["", "## 市区町村別計画", "", "| コード | 市区町村 | full車両数 | 10pct有無 | 10pct逃げ遅れ | 推奨 | 理由 |", "|---|---|---:|---|---:|---|---|"])
+    for row in plan_rows:
+        lines.append(
+            "| {city_code} | {city_name} | {vehicle_count_full_total} | {tenpct_available} | "
+            "{tenpct_stranded_main_count} | {recommendation} | {reason} |".format(**row)
+        )
+    FULL_PLAN_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    summary = {
+        "plan_csv": rel(FULL_PLAN_CSV),
+        "plan_md": rel(FULL_PLAN_MD),
+        "recommendation_counts": dict(counts),
+    }
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def run_for_targets(command: str, scenario: str | None = None, limit: int | None = None) -> None:
+    rows = load_targets()
+    if limit is not None:
+        rows = rows[:limit]
+    for row in rows:
+        ctx = context_for(row["city_code"])
+        print(f"[INFO] {command}: {ctx.city_code} {ctx.city_name}")
+        if command == "mapping":
+            generate_edge_mapping(ctx)
+        elif command == "derived":
+            generate_region_derived(ctx)
+        elif command == "scenario":
+            if scenario is None:
+                raise ValueError("scenario is required")
+            generate_region_scenario(ctx, scenario)
+        elif command == "run":
+            if scenario is None:
+                raise ValueError("scenario is required")
+            run_region_traci(ctx, scenario)
+        else:
+            raise ValueError(command)
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "command",
+        choices=[
+            "mapping-city",
+            "derived-city",
+            "scenario-city",
+            "run-city",
+            "full-plan",
+            "all-five-city",
+            "mapping-targets",
+            "derived-targets",
+            "scenario-targets",
+            "run-targets",
+        ],
+    )
+    parser.add_argument("--city-code", help="対象市区町村コード")
+    parser.add_argument("--scenario", choices=["small", "10pct", "full"], default="small")
+    parser.add_argument("--limit", type=int, help="targets系コマンドの先頭N件だけ処理する")
+    parser.add_argument("--force-network", action="store_true", help="地域別OSM/net.xmlを再生成する")
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    if args.command.endswith("-city") and not args.city_code:
+        raise ValueError("--city-code is required")
+
+    if args.command == "mapping-city":
+        generate_edge_mapping(context_for(args.city_code), force_network=args.force_network)
+    elif args.command == "derived-city":
+        generate_region_derived(context_for(args.city_code))
+    elif args.command == "scenario-city":
+        generate_region_scenario(context_for(args.city_code), args.scenario)
+    elif args.command == "run-city":
+        run_region_traci(context_for(args.city_code), args.scenario)
+    elif args.command == "full-plan":
+        write_full_execution_plan()
+    elif args.command == "all-five-city":
+        ctx = context_for(args.city_code)
+        generate_edge_mapping(ctx, force_network=args.force_network)
+        generate_region_derived(ctx)
+        generate_region_scenario(ctx, "small")
+        run_region_traci(ctx, "small")
+        generate_region_scenario(ctx, "10pct")
+        run_region_traci(ctx, "10pct")
+        write_full_execution_plan()
+    elif args.command == "mapping-targets":
+        run_for_targets("mapping", limit=args.limit)
+    elif args.command == "derived-targets":
+        run_for_targets("derived", limit=args.limit)
+    elif args.command == "scenario-targets":
+        run_for_targets("scenario", scenario=args.scenario, limit=args.limit)
+    elif args.command == "run-targets":
+        run_for_targets("run", scenario=args.scenario, limit=args.limit)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

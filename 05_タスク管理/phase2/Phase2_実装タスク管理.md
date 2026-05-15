@@ -233,18 +233,20 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 方針：いきなり全市区町村の全量試行へ進まず、対象リスト固定 → 市区町村別入力棚卸し → small全域確認 → 10pct全域確認 → full実行方針判断、の順で進める。
 
 2026/05/15に `p2_region_inventory.py` を追加し、Phase 2全域拡張対象41市区町村の正式リストと、44管理単位（対象41件・対象外3件）の入力棚卸しを生成した。対象41件はすべて事前確認OKである。
+同日、`p2_sumo_network.py` を市区町村コード指定に対応させ、代表確認として常総市の地域別SUMOネットワーク `output/sumo/regions/08211/network/08211.net.xml` を生成した。
+同日、`p2_region_pipeline.py` を追加し、P2-REGION-5〜9の市区町村別実行器を実装した。代表確認として常総市 `08211` でedge対応、派生データ、small試行、10pct試行、full実行計画生成まで完了した。全41市区町村のsmall/10pctバッチ実行は次タスクとして残す。
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
 | P2-REGION-1 | Phase 1対象地域リストを固定する | ✅ | Phase 1成果物 | `output/sumo/regions/_management/phase2_region_targets.csv` | 41市区町村を対象、Phase 1対象外3市町村は含めない判断を記録 |
 | P2-REGION-2 | 市区町村別に必要なPhase 1入力・成果物を棚卸しする | ✅ | REGION-1 | `phase2_region_inventory.md`, `phase2_region_inventory.csv` | 44管理単位を確認、対象41件は `phase2_precheck_ready=yes` |
 | P2-REGION-3 | 市区町村別SUMO出力ディレクトリと命名規則を決める | ✅ | REGION-2 | `output/sumo/regions/{city_code}/...` 方針 | 既存の常総市 `output/sumo/` 成果物と衝突しない分離方針を記録 |
-| P2-REGION-4 | 道路ネットワーク生成を市区町村パラメータ対応にする | ❌ | REGION-2, REGION-3 | `p2_sumo_network.py` 拡張案 | 市区町村境界・GraphML/OSM XML・net.xmlを市別に生成できる |
-| P2-REGION-5 | Phase 1閉鎖edgeとSUMO edgeの市別対応表を生成する | ❌ | REGION-4 | 市別 `edge_id_mapping.csv`、統合 `region_edge_mapping_summary.csv` | 市別 `unmatched=0` を原則停止条件にする |
-| P2-REGION-6 | 出発地・避難所・時間軸・閉鎖タイムラインを市別に生成する | ❌ | REGION-5 | 市別 `agent_origins_10pct.csv`, `shelters_safety.csv`, `closure_timeline_sumo.json` | 安全避難所0件、市別出発地0件、未対応edgeありを検出 |
-| P2-REGION-7 | 全対象地域でsmall試行を実行する | ❌ | REGION-6 | `region_small_summary.csv` | 41市区町村でroute/config生成とTraCI起動が成立する |
-| P2-REGION-8 | 全対象地域で10pct試行を実行する | ❌ | REGION-7 | `region_10pct_summary.csv` | 車両数・到着・未到着・逃げ遅れ主指標を市別に集約 |
-| P2-REGION-9 | full試行の実行範囲を判断し、必要範囲を実行する | ❌ | REGION-8 | `region_full_execution_plan.md`, `region_full_summary.csv` | 全41市区町村で実行するか、高リスク・代表地域に限定するかを判断して記録 |
+| P2-REGION-4 | 道路ネットワーク生成を市区町村パラメータ対応にする | ✅ | REGION-2, REGION-3 | `p2_sumo_network.py --city-code` | 常総市代表確認でOSM XML、net.xml、対応CSVを地域別に生成、通常SUMO edge 49,356件 |
+| P2-REGION-5 | Phase 1閉鎖edgeとSUMO edgeの市別対応表を生成する | ✅ | REGION-4 | 市別 `edge_id_mapping.csv`、統合 `region_edge_mapping_summary.csv` | 実行器実装済み。常総市代表確認で1,900件すべてmatched、未対応0件 |
+| P2-REGION-6 | 出発地・避難所・時間軸・閉鎖タイムラインを市別に生成する | ✅ | REGION-5 | 市別 `agent_origins_10pct.csv`, `shelters_safety.csv`, `closure_timeline_sumo.json` | 実行器実装済み。常総市代表確認で出発地405点、safe shelter 9件、閉鎖未対応0件 |
+| P2-REGION-7 | 全対象地域でsmall試行を実行する | 🔄 | REGION-6 | `region_run_summary.csv` | 実行器実装済み。常総市代表確認では405台すべて到着、全41市区町村バッチは未実行 |
+| P2-REGION-8 | 全対象地域で10pct試行を実行する | 🔄 | REGION-7 | `region_run_summary.csv` | 実行器実装済み。常総市代表確認では1,151台すべて到着、全41市区町村バッチは未実行 |
+| P2-REGION-9 | full試行の実行範囲を判断し、必要範囲を実行する | 🔄 | REGION-8 | `region_full_execution_plan.md`, `region_full_execution_plan.csv` | 初回計画生成済み。常総市はrepresentative_or_defer、残り40件は10pct結果待ち |
 | P2-REGION-10 | 市区町村別評価CSVとPhase 1/2比較表を統合する | ❌ | REGION-8 | `evacuation_summary_by_municipality.csv`, `phase1_phase2_region_comparison.csv` | Phase 1静的到達不可とPhase 2動的逃げ遅れの単位差を保持 |
 | P2-REGION-11 | 全域版のHTML導線・可視化を追加する | ❌ | REGION-10 | `sumo/regions/index.html` またはトップページ市区町村選択 | `index.html` でPhase 1/2/3を分けたまま市区町村別Phase 2結果へ遷移できる |
 | P2-REGION-12 | 全域拡張テスト結果を記録する | ❌ | REGION-11 | `04_プログラム/テスト結果_phase2_region.md` | 生成件数、失敗市区町村、停止条件、再実行手順を記録 |
