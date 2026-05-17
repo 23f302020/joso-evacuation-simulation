@@ -56,6 +56,9 @@ DERIVED_SUMMARY_CSV = MANAGEMENT_DIR / "region_derived_summary.csv"
 RUN_SUMMARY_CSV = MANAGEMENT_DIR / "region_run_summary.csv"
 FULL_PLAN_CSV = MANAGEMENT_DIR / "region_full_execution_plan.csv"
 FULL_PLAN_MD = MANAGEMENT_DIR / "region_full_execution_plan.md"
+BATCH_STATUS_CSV = MANAGEMENT_DIR / "region_batch_status.csv"
+BATCH_STATUS_MD = MANAGEMENT_DIR / "region_batch_status.md"
+BATCH_FAILURES_CSV = MANAGEMENT_DIR / "region_batch_failures.csv"
 
 HOUSEHOLD_SIZE = 2.3
 SEARCH_RADII_M = [100, 250, 500, 1000, 3000, 5000]
@@ -149,6 +152,14 @@ class RegionContext:
     @property
     def edge_mapping_validation_json(self) -> Path:
         return self.derived_dir / "edge_mapping_validation.json"
+
+    @property
+    def edge_mapping_unmatched_inspection_csv(self) -> Path:
+        return self.derived_dir / "edge_mapping_unmatched_inspection.csv"
+
+    @property
+    def edge_mapping_unmatched_inspection_md(self) -> Path:
+        return self.derived_dir / "edge_mapping_unmatched_inspection.md"
 
     @property
     def time_mapping_csv(self) -> Path:
@@ -354,6 +365,37 @@ def split_sumo_edge_ids(value: Any) -> list[str]:
     return [item for item in text.split(";") if item]
 
 
+def write_edge_mapping_validation(
+    ctx: RegionContext,
+    sumo_edge_count: int,
+    phase1_closed_edge_count: int,
+    mapping_rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    status_counts: dict[str, int] = defaultdict(int)
+    total_sumo_segments = 0
+    for row in mapping_rows:
+        status_counts[str(row.get("mapping_status", ""))] += 1
+        total_sumo_segments += int(float(row.get("sumo_edge_count") or 0))
+
+    summary = {
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "sumo_edge_count": sumo_edge_count,
+        "phase1_closed_edge_count": phase1_closed_edge_count,
+        "mapping_count": len(mapping_rows),
+        "matched_count": status_counts.get("matched", 0),
+        "unmatched_count": status_counts.get("unmatched", 0),
+        "excluded_unmapped_count": status_counts.get("excluded_unmapped", 0),
+        "total_mapped_sumo_edge_segments": total_sumo_segments,
+        "can_proceed_to_region_closure": status_counts.get("unmatched", 0) == 0,
+        "edge_id_mapping_csv": rel(ctx.edge_id_mapping_csv),
+        "updated_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    ctx.edge_mapping_validation_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    upsert_summary(EDGE_MAPPING_SUMMARY_CSV, ["city_code"], summary)
+    return summary
+
+
 def generate_edge_mapping(ctx: RegionContext, force_network: bool = False) -> dict[str, Any]:
     ensure_network(ctx, force=force_network)
     data = load_city_data(ctx)
@@ -436,27 +478,186 @@ def generate_edge_mapping(ctx: RegionContext, force_network: bool = False) -> di
         mapping_rows,
     )
 
-    status_counts: dict[str, int] = defaultdict(int)
-    total_sumo_segments = 0
+    summary = write_edge_mapping_validation(ctx, len(sumo_edges), len(closed_edges), mapping_rows)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def limited_join(values: list[str], limit: int = 20) -> str:
+    unique = []
+    seen = set()
+    for value in values:
+        if value in seen:
+            continue
+        seen.add(value)
+        unique.append(value)
+    clipped = unique[:limit]
+    suffix = f";...(+{len(unique) - limit})" if len(unique) > limit else ""
+    return ";".join(clipped) + suffix
+
+
+def inspect_unmatched_edge_mapping(ctx: RegionContext) -> dict[str, Any]:
+    if not ctx.edge_id_mapping_csv.exists():
+        generate_edge_mapping(ctx)
+    if not ctx.sumo_edges_csv.exists():
+        extract_sumo_edges(ctx)
+
+    mapping_rows = read_csv_rows(ctx.edge_id_mapping_csv, encoding="utf-8")
+    sumo_edges = read_csv_rows(ctx.sumo_edges_csv, encoding="utf-8")
+    way_rows = read_csv_rows(ctx.osm_way_mapping_csv, encoding="utf-8") if ctx.osm_way_mapping_csv.exists() else []
+    way_by_phase1 = {row["phase1_edge_id"]: row for row in way_rows}
+
+    rows: list[dict[str, Any]] = []
     for row in mapping_rows:
-        status_counts[str(row["mapping_status"])] += 1
-        total_sumo_segments += int(row["sumo_edge_count"] or 0)
+        if row.get("mapping_status") != "unmatched":
+            continue
+        u = str(row.get("u", ""))
+        v = str(row.get("v", ""))
+        way = way_by_phase1.get(row.get("phase1_edge_id", ""), {})
+        from_u = [edge["sumo_edge_id"] for edge in sumo_edges if str(edge.get("from", "")) == u]
+        to_u = [edge["sumo_edge_id"] for edge in sumo_edges if str(edge.get("to", "")) == u]
+        from_v = [edge["sumo_edge_id"] for edge in sumo_edges if str(edge.get("from", "")) == v]
+        to_v = [edge["sumo_edge_id"] for edge in sumo_edges if str(edge.get("to", "")) == v]
+        adjacent_count = len(set(from_u + to_u + from_v + to_v))
+        recommendation = (
+            "exclude_unmapped_edge"
+            if adjacent_count > 0
+            else "manual_review_required_no_adjacent_sumo_edge"
+        )
+        rationale = (
+            "対象phase1 edgeのsynthetic way IDに対応する通常SUMO edgeが生成されていない。"
+            "近接junctionには通常edgeがあるが、代替閉鎖すると過剰閉鎖になり得るため、"
+            "Phase 2全域試行では未対応edgeとして明示除外する。"
+            if adjacent_count > 0
+            else "対応する通常SUMO edgeと近接通常edgeの双方が確認できないため、手動確認を要する。"
+        )
+        rows.append(
+            {
+                "city_code": ctx.city_code,
+                "city_name": ctx.city_name,
+                "phase1_edge_id": row.get("phase1_edge_id", ""),
+                "u": u,
+                "v": v,
+                "key": row.get("key", ""),
+                "osmid": row.get("osmid", ""),
+                "phase2_osm_way_id": row.get("phase2_osm_way_id", ""),
+                "closed_time_count": row.get("closed_time_count", ""),
+                "first_time_id": row.get("first_time_id", ""),
+                "first_timestamp": row.get("first_timestamp", ""),
+                "way_highway": way.get("highway", ""),
+                "way_length_m": way.get("length_m", ""),
+                "way_geometry_point_count": way.get("geometry_point_count", ""),
+                "adjacent_from_u": limited_join(from_u),
+                "adjacent_to_u": limited_join(to_u),
+                "adjacent_from_v": limited_join(from_v),
+                "adjacent_to_v": limited_join(to_v),
+                "adjacent_normal_edge_count": adjacent_count,
+                "recommendation": recommendation,
+                "rationale": rationale,
+            }
+        )
+
+    fieldnames = [
+        "city_code",
+        "city_name",
+        "phase1_edge_id",
+        "u",
+        "v",
+        "key",
+        "osmid",
+        "phase2_osm_way_id",
+        "closed_time_count",
+        "first_time_id",
+        "first_timestamp",
+        "way_highway",
+        "way_length_m",
+        "way_geometry_point_count",
+        "adjacent_from_u",
+        "adjacent_to_u",
+        "adjacent_from_v",
+        "adjacent_to_v",
+        "adjacent_normal_edge_count",
+        "recommendation",
+        "rationale",
+    ]
+    write_csv(ctx.edge_mapping_unmatched_inspection_csv, fieldnames, rows)
+
+    lines = [
+        f"# {ctx.city_name} ({ctx.city_code}) 未対応edge調査",
+        "",
+        f"- 生成日時: {datetime.now().isoformat(timespec='seconds')}",
+        f"- 未対応edge数: {len(rows)}",
+        "- 採用方針: 近隣edgeへの自動代替閉鎖は行わず、SUMO通常edgeが生成されなかった閉鎖edgeは `excluded_unmapped` として明示除外する。",
+        "- 理由: junction周辺の別edgeを閉鎖すると本来閉鎖対象ではない流入・流出方向まで止める可能性があり、2件の欠落を補う効果より過剰閉鎖による歪みが大きい。",
+        "",
+    ]
+    if rows:
+        lines.extend(
+            [
+                "| phase1_edge_id | phase2_osm_way_id | 初回時点 | 閉鎖時点数 | 近接通常edge数 | 推奨 |",
+                "|---|---|---|---:|---:|---|",
+            ]
+        )
+        for row in rows:
+            lines.append(
+                f"| {row['phase1_edge_id']} | {row['phase2_osm_way_id']} | {row['first_time_id']} | "
+                f"{row['closed_time_count']} | {row['adjacent_normal_edge_count']} | {row['recommendation']} |"
+            )
+    else:
+        lines.append("未対応edgeはありません。")
+    ctx.edge_mapping_unmatched_inspection_md.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     summary = {
         "city_code": ctx.city_code,
         "city_name": ctx.city_name,
-        "sumo_edge_count": len(sumo_edges),
-        "phase1_closed_edge_count": len(closed_edges),
-        "mapping_count": len(mapping_rows),
-        "matched_count": status_counts.get("matched", 0),
-        "unmatched_count": status_counts.get("unmatched", 0),
-        "total_mapped_sumo_edge_segments": total_sumo_segments,
-        "can_proceed_to_region_closure": status_counts.get("unmatched", 0) == 0,
-        "edge_id_mapping_csv": rel(ctx.edge_id_mapping_csv),
-        "updated_at": datetime.now().isoformat(timespec="seconds"),
+        "unmatched_count": len(rows),
+        "inspection_csv": rel(ctx.edge_mapping_unmatched_inspection_csv),
+        "inspection_md": rel(ctx.edge_mapping_unmatched_inspection_md),
     }
-    ctx.edge_mapping_validation_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    upsert_summary(EDGE_MAPPING_SUMMARY_CSV, ["city_code"], summary)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def apply_unmatched_policy(ctx: RegionContext, policy: str = "exclude") -> dict[str, Any]:
+    if policy != "exclude":
+        raise ValueError(f"unsupported unmatched policy: {policy}")
+    if not ctx.edge_id_mapping_csv.exists():
+        generate_edge_mapping(ctx)
+    inspection = inspect_unmatched_edge_mapping(ctx)
+    rows = read_csv_rows(ctx.edge_id_mapping_csv, encoding="utf-8")
+    changed = 0
+    for row in rows:
+        if row.get("mapping_status") != "unmatched":
+            continue
+        row["mapping_status"] = "excluded_unmapped"
+        row["mapping_method"] = "synthetic_way_id_prefix+exclude_unmapped_policy"
+        row["sumo_edge_id"] = ""
+        row["sumo_edge_count"] = "0"
+        row["notes"] = (
+            "excluded by Phase 2 policy: matching SUMO normal edge was not generated; "
+            "adjacent-edge substitution was avoided to prevent over-closure"
+        )
+        changed += 1
+
+    if rows:
+        write_csv(ctx.edge_id_mapping_csv, list(rows[0].keys()), rows)
+
+    previous = read_json_if_exists(ctx.edge_mapping_validation_json)
+    sumo_edge_count = int(previous.get("sumo_edge_count", 0) or 0)
+    if sumo_edge_count == 0 and ctx.sumo_edges_csv.exists():
+        sumo_edge_count = len(read_csv_rows(ctx.sumo_edges_csv, encoding="utf-8"))
+    phase1_closed_edge_count = int(previous.get("phase1_closed_edge_count", 0) or 0)
+    if phase1_closed_edge_count == 0 and ctx.phase1_closed_edges_csv.exists():
+        phase1_closed_edge_count = len(read_csv_rows(ctx.phase1_closed_edges_csv, encoding="utf-8"))
+    validation = write_edge_mapping_validation(ctx, sumo_edge_count, phase1_closed_edge_count, rows)
+    summary = {
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "policy": policy,
+        "changed_count": changed,
+        "inspection": inspection,
+        "validation": validation,
+    }
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return summary
 
@@ -814,7 +1015,10 @@ def generate_closure_timeline_sumo(ctx: RegionContext, data: dict[str, Any]) -> 
     time_mapping = pd.read_csv(ctx.time_mapping_csv)
     edge_mapping = pd.read_csv(ctx.edge_id_mapping_csv)
     mapping_by_phase1 = {
-        row["phase1_edge_id"]: split_sumo_edge_ids(row["sumo_edge_id"])
+        row["phase1_edge_id"]: {
+            "sumo_ids": split_sumo_edge_ids(row["sumo_edge_id"]),
+            "mapping_status": str(row.get("mapping_status", "")),
+        }
         for _, row in edge_mapping.iterrows()
     }
     closures = []
@@ -823,9 +1027,17 @@ def generate_closure_timeline_sumo(ctx: RegionContext, data: dict[str, Any]) -> 
         phase1_ids = data["closures"].get(time_id, [])
         closed_sumo_ids: set[str] = set()
         unmapped: list[str] = []
+        excluded_unmapped: list[str] = []
         for phase1_edge_id in phase1_ids:
-            sumo_ids = mapping_by_phase1.get(phase1_edge_id, [])
+            mapping = mapping_by_phase1.get(phase1_edge_id)
+            if not mapping:
+                unmapped.append(phase1_edge_id)
+                continue
+            sumo_ids = mapping["sumo_ids"]
             if not sumo_ids:
+                if mapping["mapping_status"] == "excluded_unmapped":
+                    excluded_unmapped.append(phase1_edge_id)
+                    continue
                 unmapped.append(phase1_edge_id)
                 continue
             closed_sumo_ids.update(sumo_ids)
@@ -838,6 +1050,9 @@ def generate_closure_timeline_sumo(ctx: RegionContext, data: dict[str, Any]) -> 
                 "closed_sumo_edge_ids": sorted(closed_sumo_ids),
                 "closed_sumo_edge_count": len(closed_sumo_ids),
                 "unmapped_phase1_edge_ids": sorted(unmapped),
+                "unmapped_phase1_edge_count": len(unmapped),
+                "excluded_unmapped_phase1_edge_ids": sorted(excluded_unmapped),
+                "excluded_unmapped_phase1_edge_count": len(excluded_unmapped),
             }
         )
     output = {
@@ -865,6 +1080,19 @@ def generate_region_derived(ctx: RegionContext) -> dict[str, Any]:
     origin_rows = generate_agent_origins(ctx, data)
     closure_timeline = generate_closure_timeline_sumo(ctx, data)
     snap_summary = snap_points(ctx)
+    closure_unmapped_time_steps = sum(
+        1 for item in closure_timeline["closures"] if item["unmapped_phase1_edge_ids"]
+    )
+    closure_excluded_unmapped_time_steps = sum(
+        1 for item in closure_timeline["closures"] if item.get("excluded_unmapped_phase1_edge_ids")
+    )
+    closure_excluded_unmapped_edge_count = len(
+        {
+            edge_id
+            for item in closure_timeline["closures"]
+            for edge_id in item.get("excluded_unmapped_phase1_edge_ids", [])
+        }
+    )
 
     summary = {
         "city_code": ctx.city_code,
@@ -877,12 +1105,14 @@ def generate_region_derived(ctx: RegionContext) -> dict[str, Any]:
         "vehicle_count_10pct_total": sum(int(row["vehicle_count_10pct"]) for row in origin_rows),
         "vehicle_count_full_total": sum(int(row["vehicle_count_full"]) for row in origin_rows),
         "closure_time_steps": len(closure_timeline["closures"]),
-        "closure_unmapped_time_steps": sum(
-            1 for item in closure_timeline["closures"] if item["unmapped_phase1_edge_ids"]
-        ),
+        "closure_unmapped_time_steps": closure_unmapped_time_steps,
+        "closure_excluded_unmapped_time_steps": closure_excluded_unmapped_time_steps,
+        "closure_excluded_unmapped_edge_count": closure_excluded_unmapped_edge_count,
         "origin_unmatched_count": snap_summary["origin_unmatched_count"],
         "safe_shelter_unmatched_count": snap_summary["safe_shelter_unmatched_count"],
-        "can_proceed_to_small": bool(snap_summary["can_proceed_to_route_generation"]),
+        "can_proceed_to_small": bool(
+            snap_summary["can_proceed_to_route_generation"] and closure_unmapped_time_steps == 0
+        ),
         "derived_validation_json": rel(ctx.derived_validation_json),
         "updated_at": datetime.now().isoformat(timespec="seconds"),
     }
@@ -1189,6 +1419,7 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
                         "source_timestamp": item["source_timestamp"],
                         "sim_time_sec": item["sim_time_sec"],
                         "phase1_edge_count": item["phase1_edge_count"],
+                        "excluded_unmapped_phase1_edge_count": item.get("excluded_unmapped_phase1_edge_count", 0),
                         "new_sumo_edge_count": len(new_edges),
                         "closed_sumo_edge_count": closed_count,
                         "cumulative_closed_sumo_edge_count": len(applied_edges),
@@ -1307,6 +1538,7 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
             "source_timestamp",
             "sim_time_sec",
             "phase1_edge_count",
+            "excluded_unmapped_phase1_edge_count",
             "new_sumo_edge_count",
             "closed_sumo_edge_count",
             "cumulative_closed_sumo_edge_count",
@@ -1439,27 +1671,255 @@ def write_full_execution_plan() -> dict[str, Any]:
     return summary
 
 
-def run_for_targets(command: str, scenario: str | None = None, limit: int | None = None) -> None:
+def read_json_if_exists(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {"json_error": "decode_error"}
+
+
+def scenario_summary(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
+    return read_json_if_exists(scenario_paths(ctx, scenario_name)["summary"])
+
+
+def region_status_row(ctx: RegionContext) -> dict[str, Any]:
+    mapping = read_json_if_exists(ctx.edge_mapping_validation_json)
+    derived = read_json_if_exists(ctx.derived_validation_json)
+    small = scenario_summary(ctx, "small")
+    tenpct = scenario_summary(ctx, "10pct")
+
+    network_ready = ctx.net_xml.exists() and ctx.osm_way_mapping_csv.exists()
+    mapping_exists = bool(mapping)
+    mapping_unmatched_count = int(mapping.get("unmatched_count", 0) or 0) if mapping_exists else 0
+    mapping_excluded_unmapped_count = (
+        int(mapping.get("excluded_unmapped_count", 0) or 0) if mapping_exists else 0
+    )
+    mapping_ready = mapping_exists and bool(mapping.get("can_proceed_to_region_closure", False))
+    derived_ready = bool(derived) and bool(derived.get("can_proceed_to_small", False))
+    small_ready = bool(small) and str(small.get("vehicle_count", "")) != ""
+    tenpct_ready = bool(tenpct) and str(tenpct.get("vehicle_count", "")) != ""
+
+    if not network_ready or not mapping_exists:
+        next_action = "mapping"
+    elif mapping_unmatched_count > 0 or not mapping_ready:
+        next_action = "inspect_mapping"
+    elif not derived_ready:
+        next_action = "derived"
+    elif int(derived.get("origin_count", 0) or 0) == 0:
+        next_action = "inspect_no_origin"
+    elif int(derived.get("safe_shelter_count", 0) or 0) == 0:
+        next_action = "inspect_no_safe_shelter"
+    elif int(derived.get("origin_unmatched_count", 0) or 0) > 0:
+        next_action = "inspect_origin_snap"
+    elif int(derived.get("safe_shelter_unmatched_count", 0) or 0) > 0:
+        next_action = "inspect_shelter_snap"
+    elif not small_ready:
+        next_action = "run_small"
+    elif not tenpct_ready:
+        next_action = "run_10pct"
+    else:
+        next_action = "full_plan_or_eval"
+
+    return {
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "network_ready": "yes" if network_ready else "no",
+        "mapping_ready": "yes" if mapping_ready else "no",
+        "mapping_count": mapping.get("mapping_count", ""),
+        "mapping_unmatched_count": mapping.get("unmatched_count", ""),
+        "mapping_excluded_unmapped_count": mapping_excluded_unmapped_count if mapping_exists else "",
+        "derived_ready": "yes" if derived_ready else "no",
+        "origin_count": derived.get("origin_count", ""),
+        "safe_shelter_count": derived.get("safe_shelter_count", ""),
+        "vehicle_count_small_total": derived.get("vehicle_count_small_total", ""),
+        "vehicle_count_10pct_total": derived.get("vehicle_count_10pct_total", ""),
+        "vehicle_count_full_total": derived.get("vehicle_count_full_total", ""),
+        "origin_unmatched_count": derived.get("origin_unmatched_count", ""),
+        "safe_shelter_unmatched_count": derived.get("safe_shelter_unmatched_count", ""),
+        "small_ready": "yes" if small_ready else "no",
+        "small_vehicle_count": small.get("vehicle_count", ""),
+        "small_arrived_count": small.get("arrived_count", ""),
+        "small_stranded_main_count": small.get("stranded_main_count", ""),
+        "tenpct_ready": "yes" if tenpct_ready else "no",
+        "tenpct_vehicle_count": tenpct.get("vehicle_count", ""),
+        "tenpct_arrived_count": tenpct.get("arrived_count", ""),
+        "tenpct_stranded_main_count": tenpct.get("stranded_main_count", ""),
+        "next_action": next_action,
+    }
+
+
+def write_batch_status() -> dict[str, Any]:
+    rows = [region_status_row(context_for(row["city_code"])) for row in load_targets()]
+    fieldnames = [
+        "city_code",
+        "city_name",
+        "network_ready",
+        "mapping_ready",
+        "mapping_count",
+        "mapping_unmatched_count",
+        "mapping_excluded_unmapped_count",
+        "derived_ready",
+        "origin_count",
+        "safe_shelter_count",
+        "vehicle_count_small_total",
+        "vehicle_count_10pct_total",
+        "vehicle_count_full_total",
+        "origin_unmatched_count",
+        "safe_shelter_unmatched_count",
+        "small_ready",
+        "small_vehicle_count",
+        "small_arrived_count",
+        "small_stranded_main_count",
+        "tenpct_ready",
+        "tenpct_vehicle_count",
+        "tenpct_arrived_count",
+        "tenpct_stranded_main_count",
+        "next_action",
+    ]
+    write_csv(BATCH_STATUS_CSV, fieldnames, rows)
+
+    counts: dict[str, int] = defaultdict(int)
+    for row in rows:
+        counts[row["next_action"]] += 1
+
+    lines = [
+        "# Phase 2 全域拡張 バッチ状態",
+        "",
+        f"- 生成日時: {datetime.now().isoformat(timespec='seconds')}",
+        f"- 対象市区町村: {len(rows)} 件",
+        "",
+        "## 次アクション集計",
+        "",
+        "| 次アクション | 件数 |",
+        "|---|---:|",
+    ]
+    for key in sorted(counts):
+        lines.append(f"| {key} | {counts[key]} |")
+    lines.extend(
+        [
+            "",
+            "## 市区町村別状態",
+            "",
+            "| コード | 市区町村 | mapping | derived | small | 10pct | 次アクション |",
+            "|---|---|---|---|---|---|---|",
+        ]
+    )
+    for row in rows:
+        lines.append(
+            f"| {row['city_code']} | {row['city_name']} | {row['mapping_ready']} | "
+            f"{row['derived_ready']} | {row['small_ready']} | {row['tenpct_ready']} | {row['next_action']} |"
+        )
+    BATCH_STATUS_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    summary = {
+        "status_csv": rel(BATCH_STATUS_CSV),
+        "status_md": rel(BATCH_STATUS_MD),
+        "next_action_counts": dict(sorted(counts.items())),
+    }
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return summary
+
+
+def is_step_complete(ctx: RegionContext, command: str, scenario: str | None = None) -> bool:
+    status = region_status_row(ctx)
+    if command == "mapping":
+        return bool(read_json_if_exists(ctx.edge_mapping_validation_json))
+    if command == "derived":
+        return status["derived_ready"] == "yes"
+    if command == "scenario":
+        if scenario is None:
+            return False
+        paths = scenario_paths(ctx, scenario)
+        return paths["rou"].exists() and paths["sumocfg"].exists() and paths["assignments"].exists()
+    if command == "run":
+        if scenario == "small":
+            return status["small_ready"] == "yes"
+        if scenario == "10pct":
+            return status["tenpct_ready"] == "yes"
+        if scenario == "full":
+            return bool(scenario_summary(ctx, "full"))
+    return False
+
+
+def append_batch_failure(command: str, ctx: RegionContext, error: Exception, scenario: str | None = None) -> None:
+    row = {
+        "timestamp": datetime.now().isoformat(timespec="seconds"),
+        "command": command,
+        "scenario": scenario or "",
+        "city_code": ctx.city_code,
+        "city_name": ctx.city_name,
+        "error_type": type(error).__name__,
+        "error_message": str(error),
+    }
+    rows: list[dict[str, Any]] = []
+    if BATCH_FAILURES_CSV.exists():
+        rows = read_csv_rows(BATCH_FAILURES_CSV, encoding="utf-8")
+    rows.append(row)
+    write_csv(
+        BATCH_FAILURES_CSV,
+        ["timestamp", "command", "scenario", "city_code", "city_name", "error_type", "error_message"],
+        rows,
+    )
+
+
+def select_target_rows(codes: list[str] | None = None, limit: int | None = None) -> list[dict[str, str]]:
     rows = load_targets()
+    if codes:
+        code_set = set(codes)
+        rows = [row for row in rows if row["city_code"] in code_set]
     if limit is not None:
         rows = rows[:limit]
-    for row in rows:
+    return rows
+
+
+def run_for_targets(
+    command: str,
+    scenario: str | None = None,
+    limit: int | None = None,
+    max_process: int | None = None,
+    codes: list[str] | None = None,
+    skip_completed: bool = False,
+    continue_on_error: bool = False,
+) -> None:
+    processed = 0
+    skipped = 0
+    failed = 0
+    for row in select_target_rows(codes=codes, limit=limit):
         ctx = context_for(row["city_code"])
+        if skip_completed and is_step_complete(ctx, command, scenario):
+            skipped += 1
+            print(f"[SKIP] {command}: {ctx.city_code} {ctx.city_name}")
+            continue
+        if max_process is not None and processed >= max_process:
+            print(f"[INFO] max_process reached: {max_process}")
+            break
         print(f"[INFO] {command}: {ctx.city_code} {ctx.city_name}")
-        if command == "mapping":
-            generate_edge_mapping(ctx)
-        elif command == "derived":
-            generate_region_derived(ctx)
-        elif command == "scenario":
-            if scenario is None:
-                raise ValueError("scenario is required")
-            generate_region_scenario(ctx, scenario)
-        elif command == "run":
-            if scenario is None:
-                raise ValueError("scenario is required")
-            run_region_traci(ctx, scenario)
-        else:
-            raise ValueError(command)
+        try:
+            if command == "mapping":
+                generate_edge_mapping(ctx)
+            elif command == "derived":
+                generate_region_derived(ctx)
+            elif command == "scenario":
+                if scenario is None:
+                    raise ValueError("scenario is required")
+                generate_region_scenario(ctx, scenario)
+            elif command == "run":
+                if scenario is None:
+                    raise ValueError("scenario is required")
+                run_region_traci(ctx, scenario)
+            else:
+                raise ValueError(command)
+            processed += 1
+        except Exception as error:
+            failed += 1
+            append_batch_failure(command, ctx, error, scenario)
+            print(f"[ERROR] {ctx.city_code} {ctx.city_name}: {type(error).__name__}: {error}")
+            if not continue_on_error:
+                raise
+    print(f"[INFO] batch finished: processed={processed}, skipped={skipped}, failed={failed}")
+    write_batch_status()
 
 
 def parse_args() -> argparse.Namespace:
@@ -1467,7 +1927,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "command",
         choices=[
+            "status",
             "mapping-city",
+            "inspect-mapping-city",
+            "resolve-unmatched-city",
             "derived-city",
             "scenario-city",
             "run-city",
@@ -1482,7 +1945,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--city-code", help="対象市区町村コード")
     parser.add_argument("--scenario", choices=["small", "10pct", "full"], default="small")
     parser.add_argument("--limit", type=int, help="targets系コマンドの先頭N件だけ処理する")
+    parser.add_argument("--max-process", type=int, help="targets系コマンドで未完了を最大N件だけ処理する")
+    parser.add_argument("--codes", nargs="+", help="targets系コマンドで処理する市区町村コードを限定する")
+    parser.add_argument("--skip-completed", action="store_true", help="targets系コマンドで完了済み市区町村をスキップする")
+    parser.add_argument("--continue-on-error", action="store_true", help="targets系コマンドで失敗を記録し、次の市区町村へ進む")
     parser.add_argument("--force-network", action="store_true", help="地域別OSM/net.xmlを再生成する")
+    parser.add_argument("--policy", choices=["exclude"], default="exclude", help="未対応edgeの解決方針")
     return parser.parse_args()
 
 
@@ -1491,8 +1959,15 @@ def main() -> int:
     if args.command.endswith("-city") and not args.city_code:
         raise ValueError("--city-code is required")
 
-    if args.command == "mapping-city":
+    if args.command == "status":
+        write_batch_status()
+    elif args.command == "mapping-city":
         generate_edge_mapping(context_for(args.city_code), force_network=args.force_network)
+    elif args.command == "inspect-mapping-city":
+        inspect_unmatched_edge_mapping(context_for(args.city_code))
+    elif args.command == "resolve-unmatched-city":
+        apply_unmatched_policy(context_for(args.city_code), args.policy)
+        write_batch_status()
     elif args.command == "derived-city":
         generate_region_derived(context_for(args.city_code))
     elif args.command == "scenario-city":
@@ -1511,13 +1986,43 @@ def main() -> int:
         run_region_traci(ctx, "10pct")
         write_full_execution_plan()
     elif args.command == "mapping-targets":
-        run_for_targets("mapping", limit=args.limit)
+        run_for_targets(
+            "mapping",
+            limit=args.limit,
+            max_process=args.max_process,
+            codes=args.codes,
+            skip_completed=args.skip_completed,
+            continue_on_error=args.continue_on_error,
+        )
     elif args.command == "derived-targets":
-        run_for_targets("derived", limit=args.limit)
+        run_for_targets(
+            "derived",
+            limit=args.limit,
+            max_process=args.max_process,
+            codes=args.codes,
+            skip_completed=args.skip_completed,
+            continue_on_error=args.continue_on_error,
+        )
     elif args.command == "scenario-targets":
-        run_for_targets("scenario", scenario=args.scenario, limit=args.limit)
+        run_for_targets(
+            "scenario",
+            scenario=args.scenario,
+            limit=args.limit,
+            max_process=args.max_process,
+            codes=args.codes,
+            skip_completed=args.skip_completed,
+            continue_on_error=args.continue_on_error,
+        )
     elif args.command == "run-targets":
-        run_for_targets("run", scenario=args.scenario, limit=args.limit)
+        run_for_targets(
+            "run",
+            scenario=args.scenario,
+            limit=args.limit,
+            max_process=args.max_process,
+            codes=args.codes,
+            skip_completed=args.skip_completed,
+            continue_on_error=args.continue_on_error,
+        )
     return 0
 
 

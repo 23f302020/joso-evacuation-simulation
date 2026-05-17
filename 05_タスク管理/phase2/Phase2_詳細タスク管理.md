@@ -198,6 +198,7 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 | P2-REGION-NET-1 | ネットワーク変換処理を市区町村パラメータ化する設計を作る | ✅ | `p2_sumo_network.py --city-code` を追加し、代表の常総市で地域別net.xml生成まで確認済み |
 | P2-REGION-MAP-1 | 市区町村別edge対応表の生成・検査手順を作る | ✅ | `p2_region_pipeline.py mapping-city` / `mapping-targets` を追加。常総市代表確認で未対応0件 |
 | P2-REGION-AGENT-1 | 市区町村別の出発地・避難所・安全性判定を生成する設計を作る | ✅ | `p2_region_pipeline.py derived-city` / `derived-targets` を追加。人口メッシュと市別シナリオ最大浸水範囲から出発地を生成 |
+| P2-REGION-BATCH-1 | 全域バッチ状態管理・失敗隔離・再開手順を作る | ✅ | `status`、`--codes`、`--skip-completed`、`--continue-on-error`、`--max-process`、未対応edge調査・除外ポリシーを実装し、`region_batch_status.csv/md` を生成済み |
 | P2-REGION-RUN-1 | small試行を全41市区町村で実行する計画を作る | 🔄 | 実行器は追加済み。常総市代表確認済み、全41市区町村バッチは未実行 |
 | P2-REGION-RUN-2 | 10pct試行を全41市区町村で実行する計画を作る | 🔄 | 実行器は追加済み。常総市代表確認済み、全41市区町村バッチは未実行 |
 | P2-REGION-RUN-3 | full試行を全41市区町村で行うか、代表・高リスク地域に限定するか判断する | 🔄 | `region_full_execution_plan.md/csv` を生成済み。残り40件は10pct結果待ち |
@@ -244,9 +245,15 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 
 | 優先 | タスク | 理由 |
 |---:|---|---|
-| 1 | `mapping-targets` を全41市区町村で実行し、未対応edgeがある地域を隔離する | small/10pctの全域実行へ進む前の停止条件にするため |
-| 2 | `derived-targets` を全41市区町村で実行し、出発地0件・安全避難所0件・スナップ未対応を検出する | route生成不能地域を事前に把握するため |
-| 3 | `run-targets --scenario small` を全41市区町村で実行する | 全域拡張の最初の成立確認にするため |
-| 4 | `run-targets --scenario 10pct` を全41市区町村で実行する | 市区町村別の比較に使う主試行にするため |
-| 5 | `full-plan` を10pct全域結果で再生成する | fullを全域実行するか、代表・高リスク地域に限定するか判断するため |
-| 6 | Phase 2本文ドラフト・比較解釈・SUMO引用を整理する | 実装結果を卒論本文へ移しやすくし、指標誤読を防ぐため |
+| 1 | `mapping-targets --skip-completed --continue-on-error --max-process N` を未処理35市区町村で実行する | small/10pctの全域実行へ進む前の停止条件にするため |
+| 2 | 未対応edgeが出た市区町村を `inspect-mapping-city` と `resolve-unmatched-city --policy exclude` で処理する | 近隣edge代替による過剰閉鎖を避けつつ、除外理由を記録して閉鎖制御へ進めるため |
+| 3 | `derived-targets --skip-completed --continue-on-error --max-process N` を派生未処理4市区町村から進める | route生成不能地域を事前に把握するため |
+| 4 | `run-targets --scenario small --skip-completed --continue-on-error` を全41市区町村で実行する | 全域拡張の最初の成立確認にするため |
+| 5 | `run-targets --scenario 10pct --skip-completed --continue-on-error` を全41市区町村で実行する | 市区町村別の比較に使う主試行にするため |
+| 6 | `full-plan` を10pct全域結果で再生成する | fullを全域実行するか、代表・高リスク地域に限定するか判断するため |
+| 7 | P2-REGION-10として市区町村別評価CSV・比較CSVを統合する | Phase 1/2比較を全域で同じ列構造にそろえるため |
+| 8 | Phase 2本文ドラフト・比較解釈・SUMO引用を整理する | 実装結果を卒論本文へ移しやすくし、指標誤読を防ぐため |
+
+完了済みメモ：
+
+- 日立市 `08202` の未対応edge 2件は、2026/05/17に調査済みである。近隣通常edgeへの代替閉鎖は過剰閉鎖の可能性があるため採用せず、`excluded_unmapped` として明示除外した。日立市は `run_small` へ進める。

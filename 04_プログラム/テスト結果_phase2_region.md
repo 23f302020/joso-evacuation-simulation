@@ -166,3 +166,161 @@ full実行計画：
 - 代表地域（常総市）では、P2-REGION-5〜9の実行器が一連で動作することを確認した。
 - small / 10pct の全41市区町村バッチ実行は未実施であるため、P2-REGION-7、P2-REGION-8、P2-REGION-9は実行器実装済み・全域実行待ちとして扱う。
 - 10pct実行中にSUMOのteleport警告が1台で発生したが、最終集計では全車到着、逃げ遅れ主指標0台である。
+
+## 4. バッチ状態管理・失敗隔離テスト（2026/05/17）
+
+対象スクリプト：
+
+- `04_プログラム/scripts/p2_region_pipeline.py`
+
+追加実装：
+
+- `status`: 41市区町村の進捗と次アクションを `region_batch_status.csv/md` に出力する。
+- `--codes`: targets系コマンドで処理対象コードを限定する。
+- `--skip-completed`: 完了済み工程をスキップする。
+- `--continue-on-error`: 失敗を `region_batch_failures.csv` に記録し、次の市区町村へ進む。
+- `--max-process`: 完了済みスキップ後、未完了を最大N件だけ処理する。
+
+実行コマンド：
+
+```powershell
+04_プログラム\venv\Scripts\python.exe -m py_compile 04_プログラム\scripts\p2_region_pipeline.py
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py status
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py mapping-targets --codes 08211 --skip-completed --continue-on-error
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py mapping-targets --codes 08201 --skip-completed --continue-on-error
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py mapping-targets --skip-completed --continue-on-error --max-process 2
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py mapping-targets --skip-completed --continue-on-error --max-process 1
+```
+
+状態表生成結果：
+
+| 次アクション | 件数 |
+|---|---:|
+| full_plan_or_eval | 1 |
+| mapping | 40 |
+
+完了済みスキップ結果：
+
+| 対象 | 結果 |
+|---|---|
+| 08211 常総市 | `mapping` 完了済みのためskip |
+| processed / skipped / failed | 0 / 1 / 0 |
+
+水戸市mapping実行結果：
+
+| 確認項目 | 結果 |
+|---|---:|
+| OSM way数 | 29,821 |
+| SUMO通常edge数 | 103,816 |
+| 市別シナリオ閉鎖edge数 | 3,639 |
+| edge対応件数 | 3,639 |
+| matched | 3,639 |
+| unmatched | 0 |
+| 対応SUMO edge segment数 | 16,389 |
+
+水戸市実行後の状態：
+
+| 次アクション | 件数 |
+|---|---:|
+| derived | 1 |
+| full_plan_or_eval | 1 |
+| mapping | 39 |
+
+判定：
+
+- 合格。
+- 全域実行前に、完了済みスキップ、対象コード限定、状態表生成、失敗隔離の基盤が成立した。
+- 次は未処理39市区町村の `mapping-targets` を進め、その後 `derived-targets` へ進む。
+
+追加mapping実行結果：
+
+| コード | 市区町村 | 閉鎖edge | matched | unmatched | 判定 |
+|---|---|---:|---:|---:|---|
+| 08202 | 日立市 | 715 | 713 | 2 | `inspect_mapping` |
+| 08203 | 土浦市 | 807 | 807 | 0 | `derived` |
+| 08204 | 古河市 | 1,068 | 1,068 | 0 | `derived` |
+| 08205 | 石岡市 | 777 | 777 | 0 | `derived` |
+
+最終状態：
+
+| 次アクション | 件数 |
+|---|---:|
+| derived | 4 |
+| full_plan_or_eval | 1 |
+| inspect_mapping | 1 |
+| mapping | 35 |
+
+補足：
+
+- `--max-process 2` の実行中に15分タイムアウトしたが、古河市の中間成果物は有効だった。
+- その後、古河市を単独で再実行し、検証JSONと管理summaryを確定した。
+- 実装ミスとして `closure_timeline` 参照位置の誤りを修正し、`py_compile` 合格を確認した。
+
+## 5. 日立市未対応edge調査・除外ポリシーテスト（2026/05/17）
+
+対象スクリプト：
+
+- `04_プログラム/scripts/p2_region_pipeline.py`
+
+追加実装：
+
+- `inspect-mapping-city`: `edge_id_mapping.csv` の `unmatched` を調査し、近接通常SUMO edgeと推奨処理を `edge_mapping_unmatched_inspection.csv/md` に出力する。
+- `resolve-unmatched-city --policy exclude`: SUMO通常edgeが生成されなかった閉鎖edgeを `excluded_unmapped` として明示除外し、`edge_mapping_validation.json` を再生成する。
+- `closure_timeline_sumo.json`: `excluded_unmapped_phase1_edge_ids` と件数を時刻別に記録する。
+- `region_batch_status.csv`: `mapping_excluded_unmapped_count` を追加する。
+
+実行コマンド：
+
+```powershell
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py inspect-mapping-city --city-code 08202
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py resolve-unmatched-city --city-code 08202 --policy exclude
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py derived-city --city-code 08202
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py status
+```
+
+判断：
+
+- 日立市の未対応2件は、OSM XML上のsynthetic way IDは存在するが、netconvert後の通常SUMO edgeとしては生成されていなかった。
+- 近接junctionには通常edgeが存在するが、それらを代替閉鎖すると本来の短い接続部以外の流入・流出edgeまで止める可能性がある。
+- そのため、代替閉鎖ではなく `excluded_unmapped` として明示除外する方針を採用した。欠落は2/715件であり、過剰閉鎖による歪みを避けるほうが適切と判断した。
+
+日立市の結果：
+
+| 確認項目 | 結果 |
+|---|---:|
+| phase1閉鎖edge数 | 715 |
+| matched | 713 |
+| unmatched | 0 |
+| excluded_unmapped | 2 |
+| can_proceed_to_region_closure | true |
+| 出発地メッシュ | 107 |
+| small車両数 | 107 |
+| 10pct車両数 | 488 |
+| full車両数 | 4,336 |
+| 閉鎖未対応時点 | 0 |
+| 除外edgeを含む閉鎖時点 | 5 |
+| 出発地スナップ未対応 | 0 |
+| 安全避難所スナップ未対応 | 0 |
+| can_proceed_to_small | true |
+
+除外edge：
+
+| phase1_edge_id | 初回時点 | 閉鎖時点数 |
+|---|---|---:|
+| `5987717376_5987717380_0` | t3 | 5 |
+| `5987717380_5987717376_0` | t3 | 5 |
+
+最終状態：
+
+| 次アクション | 件数 |
+|---|---:|
+| derived | 4 |
+| full_plan_or_eval | 1 |
+| mapping | 35 |
+| run_small | 1 |
+
+判定：
+
+- 合格。
+- 日立市は `inspect_mapping` から復帰し、次工程 `run_small` に進める状態になった。
+- 今後同種の未対応edgeが出た場合は、調査レポートを生成したうえで、近隣edgeへの自動代替ではなく `excluded_unmapped` として記録除外する。ただし除外件数・割合が大きい場合は市区町村単位で手動確認へ回す。
