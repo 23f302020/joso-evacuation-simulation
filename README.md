@@ -1,7 +1,7 @@
 # 4年次本研究
 
 **研究テーマ：** 河川氾濫時における自家用車避難とデマンド交通バス活用の比較シミュレーション ― 鬼怒川氾濫を事例として ―  
-**最終更新：** 2026/05/12
+**最終更新：** 2026/05/18
 
 ---
 
@@ -9,8 +9,9 @@
 
 2015年9月の鬼怒川氾濫（茨城県常総市）を対象に、道路閉鎖を時系列で再現した上で
 自家用車避難の経路・到達可否を可視化するシミュレーションを構築する。  
-Phase 1（自家用車避難シナリオ）は **茨城県内41市区町村対応で完了**。  
-Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ順次移行予定。
+Phase 1（自家用車避難 静的ルート探索）は **茨城県内41市区町村対応で完了**。  
+Phase 2（SUMO/TraCI 交通シミュレーション）は **全41市区町村対応で完了**。  
+Phase 3（バス比較）へ移行中。
 
 ---
 
@@ -27,17 +28,13 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 │
 ├── 01_経過報告/                  ← 指導教員への報告資料
 │   ├── 経過報告20260401.pptx
-│   ├── 経過報告20260401coment.txt
 │   ├── 経過報告20260422.md
-│   └── 経過報告20260513.md      ← 最新（Phase 1 完了時点）
+│   ├── 経過報告20260513.md      ← Phase 1 完了報告
+│   └── 経過報告20260520.md      ← 最新（Phase 2 実装・全域拡張）
 │
 ├── 02_情報調査/                  ← 各種調査結果
 │   ├── J_実装前調査結果.md       ← データ取得・実装前調査の総括
 │   ├── データカタログ.md
-│   ├── データ取得状況_確認結果.md
-│   ├── 氾濫データ調査_鬼怒川2015.md
-│   ├── 浸水ナビAPI_ハイドログラフ取得結果.md
-│   ├── 茨城県内拡張_必要データ調査.md
 │   └── （その他 法制度・先行文献・ODPT・モデル仮定調査）
 │
 ├── 03_研究設計文書/              ← 研究の前提・設計書
@@ -45,15 +42,16 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 │   ├── RQ・研究課題.md
 │   ├── モデル仮定一覧.md
 │   ├── 評価フレーム設計.md
-│   ├── 論文構成_Phase1.md
-│   ├── 論文構成_Phase2.md
-│   ├── 論文構成_Phase3.md
-│   └── （シーケンス図・データフロー図・ユースケース図 等）
+│   └── phase2/                   ← Phase 2 設計文書
+│       ├── Phase2_実装前仕様.md
+│       ├── Phase2_派生データ仕様.md
+│       ├── Phase2_SUMO導入・変換手順.md
+│       ├── Phase2_可視化設計.md
+│       └── Phase2_図表一覧.md
 │
 ├── 04_プログラム/                ← 実装ファイル本体
 │   ├── scripts/                  ← Pythonスクリプト群
 │   │   ├── config.py             ← 共通定数（CRS・閾値・パス等）
-│   │   ├── c3_get_road_network.py← OSMnxで道路NW取得（常総市）
 │   │   ├── e1_load_flood_data.py ← A31a GML + KML → 浸水ポリゴン
 │   │   ├── i1_spatial_join.py    ← 浸水ポリゴン × 道路エッジ → 閉鎖候補
 │   │   ├── i2_generate_closure.py← 時刻別道路閉鎖リスト生成
@@ -62,7 +60,20 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 │   │   ├── city_scenario.py      ← 市別シナリオHTML生成（41市区町村）
 │   │   ├── v2_scenario_route_simulation.py ← 常総市シナリオHTML生成
 │   │   ├── gen_index.py          ← トップページ index.html 生成
-│   │   └── gen_unified.py        ← 茨城県統合シミュレーション生成
+│   │   ├── gen_unified.py        ← 茨城県統合シミュレーション生成
+│   │   │
+│   │   ├── p2_sumo_env.py        ← SUMO環境検出ユーティリティ
+│   │   ├── p2_sumo_network.py    ← GraphML → OSM XML → SUMO net.xml 変換
+│   │   ├── p2_sumo_mapping.py    ← Phase 1 edge ID と SUMO edge ID の対応
+│   │   ├── p2_sumo_snap.py       ← 出発地・避難所の SUMO edge スナップ
+│   │   ├── p2_derived_data.py    ← 派生データ生成（時間軸・安全避難所・車両台数）
+│   │   ├── p2_sumo_scenario.py   ← route/config XML 生成
+│   │   ├── p2_traci_closure.py   ← TraCI 動的道路閉鎖シミュレーション
+│   │   ├── p2_evaluate_results.py← 評価CSV・Phase 1/2 比較表生成
+│   │   ├── p2_fcd_to_json.py     ← FCD XML → JS変数ファイル変換・可視化HTML生成
+│   │   ├── p2_region_inventory.py← 全域拡張対象リスト・入力棚卸し生成
+│   │   ├── p2_region_pipeline.py ← 市区町村別 SUMO パイプライン実行器
+│   │   └── c3_get_road_network.py← OSMnxで道路NW取得（常総市）
 │   │
 │   ├── data/                     ← 入力データ（再ダウンロード可能）
 │   │   ├── flood_kml/            ← GSI KML 8時点（鬼怒川2015）
@@ -73,41 +84,54 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 │   │   ├── suiboumap/            ← 浸水ナビ BP030 ハイドログラフ
 │   │   └── vehicle_stats/        ← 自家用車統計
 │   │
-│   ├── output/                   ← 生成済みHTML（.gitignore 対象）
-│   │   ├── index.html            ← トップページ（市区町村選択UI）
+│   ├── output/                   ← 生成済み成果物（.gitignore 対象）
+│   │   ├── index.html            ← トップページ（Phase 1/2/3 別）
 │   │   ├── unified/              ← 茨城県41市区町村統合シミュレーション
 │   │   ├── scenario_cities/      ← 市別シナリオHTML（41市区町村）
 │   │   ├── scenario_v2/          ← 常総市単独シナリオ（参考）
 │   │   ├── routes/               ← 実データ版時刻別ルートマップ
-│   │   └── flood/                ← 浸水時系列マップ
+│   │   ├── flood/                ← 浸水時系列マップ
+│   │   └── sumo/                 ← Phase 2 SUMO 成果物
+│   │       ├── network/          ← 常総市 SUMO ネットワーク（joso.net.xml）
+│   │       ├── derived/          ← 派生データ（edge対応・スナップ・時間軸）
+│   │       ├── scenarios/        ← route/config XML（small/10pct/full）
+│   │       ├── results/          ← TraCI 実行結果・FCD XML
+│   │       ├── evaluation/       ← 評価CSV・Phase 1/2 比較CSV
+│   │       ├── viz/              ← FCD 可視化（sumo_viz.html・JS変数ファイル）
+│   │       └── regions/          ← 全41市区町村別 SUMO 成果物
+│   │           ├── _management/  ← 対象リスト・棚卸し・バッチ状態管理CSV
+│   │           └── {city_code}/  ← 市区町村別 network/derived/scenarios/results
 │   │
-│   ├── テスト結果_phase1/         ← Phase 1 各段階のテスト記録
-│   │   ├── README.md             ← テスト結果の索引
-│   │   ├── テスト結果_phase1_final_20260512.md
-│   │   ├── テスト結果_t7到達不可分析_取手市_城里町.md
-│   │   ├── テスト結果_対象外3市町村_除外理由分析.md
-│   │   └── SUMO_TraCI実装メモ.md ← Phase 2 実装設計メモ
-│   └── 環境・ツール記録.md
+│   ├── テスト結果_phase1/         ← Phase 1 テスト記録
+│   │   └── README.md             ← テスト結果の索引
+│   ├── テスト結果_phase2.md       ← Phase 2 常総市テスト記録
+│   └── テスト結果_phase2_region.md← Phase 2 全域拡張テスト記録
 │
 ├── 05_タスク管理/                ← 進捗管理
 │   ├── 実装タスク一覧.md         ← I系タスクの進捗（Phase 1〜3）
 │   ├── 調査タスク一覧.md         ← J系調査タスク（全完了）
 │   ├── 実装手順書_Phase1.md      ← Phase 1 スクリプト実行手順
-│   └── 茨城県内拡張_市区町村別タスク.md ← 41市区町村のA31a確認結果
+│   └── phase2/                   ← Phase 2 タスク管理
+│       ├── Phase2_実装タスク管理.md ← マイルストーン・サブタスク管理
+│       ├── Phase2_詳細タスク管理.md ← 詳細設計・実装タスク
+│       └── Phase2_判断事項一覧.md  ← 採用判断の記録
 │
 └── 06_研究結果/                  ← フェーズ別研究結果・成果物記録
     ├── phase1/
-    │   ├── Phase1_研究結果.md    ← Phase 1 結果・考察・成果物一覧
-    │   └── Phase1_成果物固定リスト.md ← Phase 1 成果物の固定方針・数値
+    │   ├── Phase1_研究結果.md
+    │   └── Phase1_成果物固定リスト.md
     ├── phase2/
-    │   └── Phase2_研究結果.md    ← Phase 2 結果（未着手）
+    │   ├── Phase2_研究結果.md
+    │   └── Phase2_評価表テンプレート.md
     └── phase3/
         └── Phase3_研究結果.md    ← Phase 3 結果（未着手）
 ```
 
 ---
 
-## 実装パイプライン（Phase 1）
+## 実装パイプライン
+
+### Phase 1（完了）
 
 ```
 [データ取得]                        [中間成果物]
@@ -130,12 +154,39 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 
 [市別シナリオ（茨城県41市区町村）]
   A31a 段階的閉鎖             →   scenario_cities/{code}/
-  + GSI 避難所               city_scenario.py   scenario_route_simulation.html
-  + 市別道路NW
+  city_scenario.py                 scenario_route_simulation.html
 
 [統合・インデックス]
   gen_unified.py              →   output/unified/
   gen_index.py                →   output/index.html
+```
+
+### Phase 2（完了）
+
+```
+[SUMO ネットワーク変換]
+  GraphML → OSM XML → net.xml
+  p2_sumo_network.py          →   joso.net.xml / {city_code}.net.xml
+
+[edge 対応・派生データ]
+  p2_sumo_mapping.py          →   edge_id_mapping.csv
+  p2_derived_data.py          →   time_mapping_sumo.csv
+  p2_sumo_snap.py                  agent_origins_sumo.csv / shelters_sumo.csv
+
+[TraCI 動的閉鎖シミュレーション]
+  p2_sumo_scenario.py         →   *.rou.xml / *.sumocfg
+  p2_traci_closure.py         →   *_traci_summary.json / *_vehicle_log.csv
+
+[評価・可視化]
+  p2_evaluate_results.py      →   evacuation_summary.csv
+                                   phase1_phase2_comparison.csv
+  p2_fcd_to_json.py           →   vehicles_*.js / closures.js / sumo_viz.html
+
+[全域拡張（41市区町村）]
+  p2_region_inventory.py      →   phase2_region_targets.csv
+  p2_region_pipeline.py       →   regions/{city_code}/ 成果物一式
+                                   evacuation_summary_by_municipality.csv
+                                   sumo/regions/index.html
 ```
 
 ---
@@ -175,8 +226,8 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 
 | Phase | 内容 | 状態 |
 |-------|------|------|
-| **Phase 1** | 自家用車避難シナリオ（道路閉鎖 + Dijkstra ルート探索） | **完了** |
-| Phase 2 | SUMO 交通シミュレーション（`i4_convert_sumo.py` 等） | 未着手 |
+| **Phase 1** | 自家用車避難シナリオ（道路閉鎖 + Dijkstra ルート探索、41市区町村） | **完了** |
+| **Phase 2** | SUMO/TraCI 交通シミュレーション（41市区町村 small/10pct 完了） | **完了** |
 | Phase 3 | バス比較・集計・評価 | 未着手 |
 
 ### Phase 1 達成事項
@@ -185,13 +236,21 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 - 市別シナリオ：茨城県内**41市区町村** の HTML ページを生成（A31a 段階的閉鎖）
 - 統合シミュレーション：全市区町村を1画面で確認できる統合ページ
 - インデックス：市区町村選択 UI・対象外市区町村一覧を備えたトップページ
-- 可視化改善：浸水ポリゴン格子・マスク矩形の重なりを修正
 
-### 次フェーズへの優先タスク
+### Phase 2 達成事項
 
-1. `i4_convert_sumo.py` 実装（OSMnx → SUMO .net.xml 変換）
-2. TraCI による道路閉鎖・車両エージェント制御（I-5〜6）
-3. バスシミュレーション・比較・集計（I-7〜9）
+- 常総市 SUMO ネットワーク変換・TraCI 動的道路閉鎖シミュレーション（small/10pct/full）
+- FCD 出力・Leaflet.js 車両走行アニメーション（`sumo_viz.html`、small/10pct シナリオ切替 UI）
+- 全 41 市区町村の small/10pct 完了（逃げ遅れ合計 0）
+- full は代表 6 市区町村（守谷市・那珂市・行方市・大洗町・美浦村・五霞町）で実行
+- 市区町村別評価 CSV（41行）・Phase 1/2 比較 CSV（164行）・全域 SUMO 結果 HTML 生成
+
+### Phase 3 への優先タスク
+
+1. Phase 2 本文ドラフト・Phase 1/2 比較解釈の文書化
+2. SUMO 1.26.0 の引用情報・再現手順を卒論用に整理
+3. 先生コメント対応表の更新
+4. バス・デマンド交通シミュレーション設計着手
 
 ---
 
@@ -201,9 +260,9 @@ Phase 2（SUMO交通シミュレーション）、Phase 3（バス比較）へ�
 |------|--------|
 | 道路ネットワーク | OSMnx + NetworkX |
 | 空間解析 | GeoPandas + Shapely |
-| ルート探索 | Dijkstra（JavaScript クライアントサイド） |
-| 可視化 | Leaflet.js + CartoDB tiles |
-| 交通シミュレーション | SUMO + TraCI（Phase 2 以降） |
+| ルート探索（Phase 1） | Dijkstra（JavaScript クライアントサイド） |
+| 交通シミュレーション（Phase 2） | SUMO 1.26.0 + TraCI |
+| 可視化 | Leaflet.js + OpenStreetMap tiles |
 | データ形式 | A31a GML（国土数値情報）, KML, GeoPackage, GraphML |
 
 ---

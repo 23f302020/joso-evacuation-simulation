@@ -48,7 +48,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-9 | 成果物トップページ更新 | ✅ | Phase 1/2/3別 `index.html` |
 | P2-TEST | 実装内容テスト・修正 | ✅ | `テスト結果_phase2.md`, `p2_sumo_env.py` |
 | P2-IMPL-VIZ | SUMO結果のHTML可視化 | ✅ | `vehicles_small.js`, `vehicles_10pct.js`, `closures.js`, `sumo_viz.html` |
-| P2-IMPL-REGION | Phase 1対象地域全域へのSUMO拡張 | 🔄 | 対象リスト・入力棚卸し生成済み、市区町村別SUMO入力・評価統合・全域可視化 |
+| P2-IMPL-REGION | Phase 1対象地域全域へのSUMO拡張 | ✅ | 全41市区町村のsmall/10pct完了、評価CSV・比較CSV・全域HTML生成済み |
 
 ---
 

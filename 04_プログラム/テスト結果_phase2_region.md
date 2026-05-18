@@ -413,3 +413,31 @@ full実行計画：
 
 - 合格。
 - Phase 2全域拡張の残実装は完了し、全41市区町村で `small` / `10pct` のSUMO/TraCI結果を比較可能な形で整理した。
+
+## 7. Phase 1/2考察利用前の追加確認（2026/05/18）
+
+確認内容：
+
+- Phase 1は静的ネットワーク分析、Phase 2はSUMO/TraCIによる動的車両シミュレーションとして分離されているか確認した。
+- `phase1_phase2_region_comparison.csv` では、Phase 1行を `closed_edges_and_origin_meshes`、Phase 2行を `vehicle` または `vehicle_plan` として区別していることを確認した。
+- `evacuation_summary_by_municipality.csv` の `origin_routable_count` と `safe_shelter_routable_count` に空欄が残っていたため、旧形式summaryを読む場合も `origin_count` / `safe_shelter_count` で補完するよう修正し、評価CSVを再生成した。
+
+再検証結果：
+
+| 確認項目 | 結果 |
+|---|---:|
+| 評価CSV行数 | 41 |
+| 比較CSV行数 | 164 |
+| `origin_routable_count` 空欄 | 0 |
+| `safe_shelter_routable_count` 空欄 | 0 |
+| small結果 | 41 |
+| 10pct結果 | 41 |
+| full実行結果 | 6 |
+| 10pct逃げ遅れ合計 | 0 |
+| full逃げ遅れ合計 | 0 |
+
+考察利用上の判定：
+
+- 利用可能。
+- ただし、Phase 1の到達不可・閉鎖道路数とPhase 2の逃げ遅れ台数は同一指標ではないため、本文では「静的な道路ネットワーク制約」と「動的な車両流シミュレーション結果」として分けて説明する。
+- `full` は全41市区町村ではなく6市区町村のみであり、全域比較の主指標は `10pct` とする。

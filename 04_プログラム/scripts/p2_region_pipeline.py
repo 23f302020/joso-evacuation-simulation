@@ -1715,6 +1715,8 @@ def value(row: dict[str, Any], key: str, default: Any = "") -> Any:
     item = row.get(key, default)
     if item is None:
         return default
+    if isinstance(item, str) and item.strip() == "":
+        return default
     return item
 
 
