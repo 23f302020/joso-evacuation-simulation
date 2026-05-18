@@ -188,6 +188,7 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 現段階では、実装に入る前に「対象リスト」「入力成果物の有無」「市区町村別ディレクトリ構造」「一括実行時の停止条件」を固める。
 
 2026/05/15に `p2_region_inventory.py` を追加し、対象41市区町村の正式リスト、対象外3市町村の理由、入力成果物の有無、地域別出力先の命名規則を自動生成した。対象41件はすべて事前確認OKである。
+2026/05/18に全41市区町村のmapping、derived、small、10pctを完了し、fullは代表・軽量対象6市区町村に限定して実行した。市区町村別評価CSV、Phase 1/2比較CSV、全域SUMO結果HTML、トップページ導線を生成し、リンク検証まで完了した。
 
 | ID | タスク | 状態 | 理由 |
 |---|---|---:|---|
@@ -199,18 +200,18 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 | P2-REGION-MAP-1 | 市区町村別edge対応表の生成・検査手順を作る | ✅ | `p2_region_pipeline.py mapping-city` / `mapping-targets` を追加。常総市代表確認で未対応0件 |
 | P2-REGION-AGENT-1 | 市区町村別の出発地・避難所・安全性判定を生成する設計を作る | ✅ | `p2_region_pipeline.py derived-city` / `derived-targets` を追加。人口メッシュと市別シナリオ最大浸水範囲から出発地を生成 |
 | P2-REGION-BATCH-1 | 全域バッチ状態管理・失敗隔離・再開手順を作る | ✅ | `status`、`--codes`、`--skip-completed`、`--continue-on-error`、`--max-process`、未対応edge調査・除外ポリシーを実装し、`region_batch_status.csv/md` を生成済み |
-| P2-REGION-RUN-1 | small試行を全41市区町村で実行する計画を作る | 🔄 | 実行器は追加済み。常総市代表確認済み、全41市区町村バッチは未実行 |
-| P2-REGION-RUN-2 | 10pct試行を全41市区町村で実行する計画を作る | 🔄 | 実行器は追加済み。常総市代表確認済み、全41市区町村バッチは未実行 |
-| P2-REGION-RUN-3 | full試行を全41市区町村で行うか、代表・高リスク地域に限定するか判断する | 🔄 | `region_full_execution_plan.md/csv` を生成済み。残り40件は10pct結果待ち |
-| P2-REGION-EVAL-1 | 市区町村別評価CSV・比較CSVの統合仕様を作る | ❌ | Phase 1/2比較を全域で同じ列構造にそろえるため |
-| P2-REGION-VIZ-1 | 全域版のPhase 2成果物導線を設計する | ❌ | `index.html` でPhase 1/2/3を分けたまま市区町村別結果へ進めるようにするため |
-| P2-REGION-TEST-1 | 全域拡張のテスト結果ファイルを作る | ❌ | 失敗市区町村・停止条件・再実行手順を残すため |
+| P2-REGION-RUN-1 | small試行を全41市区町村で実行する計画を作る | ✅ | 全41市区町村で実行完了 |
+| P2-REGION-RUN-2 | 10pct試行を全41市区町村で実行する計画を作る | ✅ | 全41市区町村で実行完了、逃げ遅れ合計0 |
+| P2-REGION-RUN-3 | full試行を全41市区町村で行うか、代表・高リスク地域に限定するか判断する | ✅ | 6市区町村を実行、35市区町村は代表・後続課題扱い |
+| P2-REGION-EVAL-1 | 市区町村別評価CSV・比較CSVの統合仕様を作る | ✅ | 評価CSV 41行、比較CSV 164行を生成 |
+| P2-REGION-VIZ-1 | 全域版のPhase 2成果物導線を設計する | ✅ | `output/index.html` から `sumo/regions/index.html` へ遷移可能 |
+| P2-REGION-TEST-1 | 全域拡張のテスト結果ファイルを作る | ✅ | `04_プログラム/テスト結果_phase2_region.md` に最終テスト結果を記録 |
 
 採用方針：
 
 - Phase 1対象地域全域は、現時点では成果物化済みの41市区町村として扱う。
-- small / 10pct は全41市区町村で実行する方向で準備する。
-- full は全域実行を最初から前提にせず、10pct結果と実行時間を見て、全域実行または代表・高リスク地域実行を判断する。
+- small / 10pct は全41市区町村で実行済みである。
+- full は全域実行を最初から前提にせず、10pct結果と車両数を見て、代表・軽量対象6市区町村で実行済みである。
 
 ---
 
@@ -245,15 +246,11 @@ Phase 2 の最小成果は、シナリオA（自家用車のみ）の交通流�
 
 | 優先 | タスク | 理由 |
 |---:|---|---|
-| 1 | `mapping-targets --skip-completed --continue-on-error --max-process N` を未処理35市区町村で実行する | small/10pctの全域実行へ進む前の停止条件にするため |
-| 2 | 未対応edgeが出た市区町村を `inspect-mapping-city` と `resolve-unmatched-city --policy exclude` で処理する | 近隣edge代替による過剰閉鎖を避けつつ、除外理由を記録して閉鎖制御へ進めるため |
-| 3 | `derived-targets --skip-completed --continue-on-error --max-process N` を派生未処理4市区町村から進める | route生成不能地域を事前に把握するため |
-| 4 | `run-targets --scenario small --skip-completed --continue-on-error` を全41市区町村で実行する | 全域拡張の最初の成立確認にするため |
-| 5 | `run-targets --scenario 10pct --skip-completed --continue-on-error` を全41市区町村で実行する | 市区町村別の比較に使う主試行にするため |
-| 6 | `full-plan` を10pct全域結果で再生成する | fullを全域実行するか、代表・高リスク地域に限定するか判断するため |
-| 7 | P2-REGION-10として市区町村別評価CSV・比較CSVを統合する | Phase 1/2比較を全域で同じ列構造にそろえるため |
-| 8 | Phase 2本文ドラフト・比較解釈・SUMO引用を整理する | 実装結果を卒論本文へ移しやすくし、指標誤読を防ぐため |
+| 1 | Phase 2本文ドラフト・比較解釈・SUMO引用を整理する | 実装結果を卒論本文へ移しやすくし、指標誤読を防ぐため |
+| 2 | 先生コメント対応表を更新する | 避難所安全性、10pct主試行、full代表実行の説明を揃えるため |
+| 3 | 必要に応じて代表6市区町村以外のfull追加実行を判断する | 卒論で全量結果が必要になった場合に備えるため |
 
 完了済みメモ：
 
 - 日立市 `08202` の未対応edge 2件は、2026/05/17に調査済みである。近隣通常edgeへの代替閉鎖は過剰閉鎖の可能性があるため採用せず、`excluded_unmapped` として明示除外した。日立市は `run_small` へ進める。
+- 2026/05/18時点で、Phase 2全域拡張の実装タスクは完了済みである。全41市区町村のsmall/10pct、代表6市区町村のfull、評価CSV、比較CSV、HTML導線、リンク検証まで実施した。

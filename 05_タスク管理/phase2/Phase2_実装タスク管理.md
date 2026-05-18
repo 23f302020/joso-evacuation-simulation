@@ -239,6 +239,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 同日、`p2_region_pipeline.py status`、`--codes`、`--skip-completed`、`--continue-on-error` を追加し、`region_batch_status.csv/md` と `region_batch_failures.csv` の出力に対応した。水戸市 `08201` のmappingを実行し、未対応0件で完了した。
 同日、`--max-process` を追加し、完了済みスキップ後に未完了を指定件数だけ処理できるようにした。追加確認として日立市、土浦市、古河市、石岡市のmappingを実行し、日立市のみ未対応edge 2件で `inspect_mapping` に隔離した。
 その後、日立市向けに `inspect-mapping-city` と `resolve-unmatched-city --policy exclude` を追加した。未対応2件はnetconvert後に通常SUMO edgeとして生成されない短い接続部であり、近隣edgeへの自動代替は過剰閉鎖になり得るため、`excluded_unmapped` として明示除外する判断を採用した。日立市はmatched 713件、excluded_unmapped 2件、unmatched 0件となり、derived生成も完了して `run_small` へ進める状態になった。
+2026/05/18に、未処理35市区町村のmapping、全41市区町村のderived、small、10pctを完了した。`10pct` 結果に基づき、fullは守谷市・那珂市・行方市・大洗町・美浦村・五霞町の6市区町村に限定して実行し、全6件で逃げ遅れ0を確認した。市区町村別評価CSV、Phase 1/2比較CSV、全域SUMO結果HTML、トップページ導線も生成済みである。
 
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
@@ -249,18 +250,18 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-REGION-5 | Phase 1閉鎖edgeとSUMO edgeの市別対応表を生成する | ✅ | REGION-4 | 市別 `edge_id_mapping.csv`、統合 `region_edge_mapping_summary.csv` | 実行器実装済み。常総市代表確認で1,900件すべてmatched、未対応0件 |
 | P2-REGION-6 | 出発地・避難所・時間軸・閉鎖タイムラインを市別に生成する | ✅ | REGION-5 | 市別 `agent_origins_10pct.csv`, `shelters_safety.csv`, `closure_timeline_sumo.json` | 実行器実装済み。常総市代表確認で出発地405点、safe shelter 9件、閉鎖未対応0件 |
 | P2-REGION-6A | 全域バッチ状態管理・失敗隔離を実装する | ✅ | REGION-5, REGION-6 | `region_batch_status.csv/md`, `region_batch_failures.csv` | `status`、`--codes`、`--skip-completed`、`--continue-on-error`、`--max-process`、未対応edge調査・除外ポリシーを実装し、日立市を `inspect_mapping` から復帰確認済み |
-| P2-REGION-7 | 全対象地域でsmall試行を実行する | 🔄 | REGION-6 | `region_run_summary.csv` | 実行器実装済み。常総市代表確認では405台すべて到着、全41市区町村バッチは未実行 |
-| P2-REGION-8 | 全対象地域で10pct試行を実行する | 🔄 | REGION-7 | `region_run_summary.csv` | 実行器実装済み。常総市代表確認では1,151台すべて到着、全41市区町村バッチは未実行 |
-| P2-REGION-9 | full試行の実行範囲を判断し、必要範囲を実行する | 🔄 | REGION-8 | `region_full_execution_plan.md`, `region_full_execution_plan.csv` | 初回計画生成済み。常総市はrepresentative_or_defer、残り40件は10pct結果待ち |
-| P2-REGION-10 | 市区町村別評価CSVとPhase 1/2比較表を統合する | ❌ | REGION-8 | `evacuation_summary_by_municipality.csv`, `phase1_phase2_region_comparison.csv` | Phase 1静的到達不可とPhase 2動的逃げ遅れの単位差を保持 |
-| P2-REGION-11 | 全域版のHTML導線・可視化を追加する | ❌ | REGION-10 | `sumo/regions/index.html` またはトップページ市区町村選択 | `index.html` でPhase 1/2/3を分けたまま市区町村別Phase 2結果へ遷移できる |
-| P2-REGION-12 | 全域拡張テスト結果を記録する | ❌ | REGION-11 | `04_プログラム/テスト結果_phase2_region.md` | 生成件数、失敗市区町村、停止条件、再実行手順を記録 |
+| P2-REGION-7 | 全対象地域でsmall試行を実行する | ✅ | REGION-6 | `region_run_summary.csv` | 全41市区町村で完了 |
+| P2-REGION-8 | 全対象地域で10pct試行を実行する | ✅ | REGION-7 | `region_run_summary.csv` | 全41市区町村で完了、逃げ遅れ合計0 |
+| P2-REGION-9 | full試行の実行範囲を判断し、必要範囲を実行する | ✅ | REGION-8 | `region_full_execution_plan.md`, `region_full_execution_plan.csv` | fullは6市区町村を実行、35市区町村は代表・後続課題扱い |
+| P2-REGION-10 | 市区町村別評価CSVとPhase 1/2比較表を統合する | ✅ | REGION-8 | `evacuation_summary_by_municipality.csv`, `phase1_phase2_region_comparison.csv` | 評価CSV 41行、比較CSV 164行 |
+| P2-REGION-11 | 全域版のHTML導線・可視化を追加する | ✅ | REGION-10 | `sumo/regions/index.html`, `output/index.html` | Phase 1/2/3を分けたトップページから全域SUMO結果へ遷移可能 |
+| P2-REGION-12 | 全域拡張テスト結果を記録する | ✅ | REGION-11 | `04_プログラム/テスト結果_phase2_region.md` | 生成件数、リンク欠損0、テスト結果を記録 |
 
 判断済み・今後判断が必要な項目：
 
 - `P2-REGION-1`：Phase 1対象外3市町村（鹿嶋市・神栖市・東海村）をPhase 2全域拡張に含めるかは、初回全域拡張では含めないと判断済み。理由は、Phase 1に浸水シナリオと閉鎖道路が存在しない地域を混ぜると、交通挙動の差ではなく入力データ有無の差が比較結果に入るためである。
 - `P2-REGION-6A`：netconvert後に通常SUMO edgeとして生成されない閉鎖edgeが少数発生した場合、近隣edgeへの自動代替ではなく `excluded_unmapped` として明示除外する。理由は、短い接続部を補うために別の流入・流出edgeを閉鎖すると過剰閉鎖になり、交通挙動を実際以上に悪化させる可能性があるためである。日立市では2/715件のため、この扱いで後続処理へ進める。
-- `P2-REGION-9`：full試行を41市区町村すべてで実行するか。現時点の推奨は、small/10pctは全41市区町村で実行し、fullは10pct結果と実行時間を見て代表・高リスク地域を優先する。
+- `P2-REGION-9`：full試行は全41市区町村で一律実行せず、10pct結果と車両数を見て、代表・軽量対象6市区町村（守谷市・那珂市・行方市・大洗町・美浦村・五霞町）を優先実行する判断を採用した。理由は、全41市区町村の比較指標は10pctで揃え、fullは実行負荷を抑えつつ妥当性確認用に使うほうが卒論整理に適しているためである。
 
 停止条件：
 
@@ -268,15 +269,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 - 安全避難所が0件の市区町村は、目的地設定の再検討タスクへ回す。
 - 10pct試行で実行時間・メモリ使用量が大きすぎる場合、full試行は代表地域方式へ切り替える。
 
-直近の実行順序：
-
-1. `mapping-targets --skip-completed --continue-on-error --max-process N` で未処理35市区町村のedge対応を少数バッチで進める。
-2. 未対応edgeが出た市区町村は `inspect-mapping-city` で調査し、少数かつ代替閉鎖が過剰閉鎖になり得る場合は `resolve-unmatched-city --policy exclude` で明示除外する。
-3. `derived-targets --skip-completed --continue-on-error --max-process N` で派生未処理4市区町村（水戸市・土浦市・古河市・石岡市）と今後mapping完了した市区町村を順に生成する。
-4. `run-targets --scenario small --skip-completed --continue-on-error` でsmall全域確認を行う。
-5. `run-targets --scenario 10pct --skip-completed --continue-on-error` で10pct全域確認を行う。
-6. `full-plan` を再生成し、fullを全域実行するか代表・高リスク地域に限定するか判断する。
-7. P2-REGION-10として市区町村別評価CSVとPhase 1/2比較表を統合する。
+直近の実行順序は完了済みである。以後の主な作業は、Phase 2本文ドラフト、Phase 1/2比較解釈、SUMO引用・バージョン記録、先生コメント対応表の更新である。
 
 ---
 

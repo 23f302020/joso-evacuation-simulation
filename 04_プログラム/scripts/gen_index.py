@@ -131,7 +131,10 @@ def write_pages_js(entries: list[dict]) -> None:
     {{ title: "茨城県41市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
   ],
   phase2: [
+    {{ title: "Phase 2 全域SUMO結果", meta: "41市区町村のsmall/10pct/full方針を一覧表示", href: "sumo/regions/index.html", primary: true }},
     {{ title: "SUMO走行アニメーション", meta: "FCD出力ベースの車両移動・道路閉鎖可視化", href: "sumo/viz/sumo_viz.html", primary: true }},
+    {{ title: "市区町村別避難結果サマリ", meta: "Phase 2全域拡張の市区町村別集計CSV", href: "sumo/evaluation/evacuation_summary_by_municipality.csv" }},
+    {{ title: "Phase 1 / Phase 2 全域比較", meta: "静的入力規模と動的SUMO結果を市区町村別に整理", href: "sumo/evaluation/phase1_phase2_region_comparison.csv" }},
     {{ title: "避難結果サマリ", meta: "small / 1/10 / full の到着・未到着・逃げ遅れ", href: "sumo/evaluation/evacuation_summary.csv", primary: true }},
     {{ title: "混雑ログ", meta: "60秒間隔のアクティブ台数・平均速度・停止台数", href: "sumo/evaluation/congestion_log.csv" }},
     {{ title: "Phase 1 / Phase 2 比較", meta: "静的到達不可と動的逃げ遅れを単位別に整理", href: "sumo/evaluation/phase1_phase2_comparison.csv" }},

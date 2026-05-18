@@ -324,3 +324,92 @@ full実行計画：
 - 合格。
 - 日立市は `inspect_mapping` から復帰し、次工程 `run_small` に進める状態になった。
 - 今後同種の未対応edgeが出た場合は、調査レポートを生成したうえで、近隣edgeへの自動代替ではなく `excluded_unmapped` として記録除外する。ただし除外件数・割合が大きい場合は市区町村単位で手動確認へ回す。
+
+## 6. Phase 2全域拡張の最終実行・統合テスト（2026/05/18）
+
+対象スクリプト：
+
+- `04_プログラム/scripts/p2_region_pipeline.py`
+- `04_プログラム/scripts/gen_index.py`
+
+実装・実行内容：
+
+- 未処理35市区町村の `mapping-targets` を実行し、全41市区町村のedge対応表生成を完了した。
+- 全41市区町村の `derived-targets` を完了した。
+- 龍ケ崎市 `08208` と境町 `08546` で、スナップ距離に数値と空文字が混在したため集計処理を修正した。
+- 出発地・安全避難所の一部がSUMO edgeへスナップできない場合でも、到達可能な出発地・安全避難所が残る場合は、未対応点を記録除外して後続処理へ進める方針を実装した。
+- 全41市区町村で `small` と `10pct` を実行した。
+- `10pct` 結果に基づき、`full` は代表・軽量対象6市区町村に限定して実行した。
+- 市区町村別評価CSV、Phase 1/2比較CSV、全域SUMO結果HTML、トップページ導線を生成した。
+
+主な実行コマンド：
+
+```powershell
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py mapping-targets --skip-completed --continue-on-error
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py derived-targets --skip-completed --continue-on-error
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py run-targets --scenario small --skip-completed --continue-on-error
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py run-targets --scenario 10pct --skip-completed --continue-on-error
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py full-plan
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py run-targets --scenario full --codes 08224 08226 08233 08309 08442 08542 --skip-completed --continue-on-error
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\p2_region_pipeline.py region-finalize
+04_プログラム\venv\Scripts\python.exe 04_プログラム\scripts\gen_index.py
+```
+
+実行結果：
+
+| 確認項目 | 結果 |
+|---|---:|
+| Phase 2対象市区町村 | 41 |
+| edge対応完了 | 41 |
+| 派生データ生成完了 | 41 |
+| small実行完了 | 41 |
+| 10pct実行完了 | 41 |
+| full実行完了 | 6 |
+| fullを代表・後続課題扱いにした市区町村 | 35 |
+| `10pct` 逃げ遅れ合計 | 0 |
+| `full` 逃げ遅れ合計 | 0 |
+| 市区町村別評価CSV行数 | 41 |
+| Phase 1/2比較CSV行数 | 164 |
+| `region_batch_status.csv` の `next_action=full_plan_or_eval` | 41 |
+
+`full` 実行対象：
+
+| city_code | 市区町村 | full車両数 | 到着 | 逃げ遅れ |
+|---|---|---:|---:|---:|
+| 08224 | 守谷市 | 333 | 333 | 0 |
+| 08226 | 那珂市 | 498 | 498 | 0 |
+| 08233 | 行方市 | 61 | 61 | 0 |
+| 08309 | 大洗町 | 40 | 40 | 0 |
+| 08442 | 美浦村 | 982 | 982 | 0 |
+| 08542 | 五霞町 | 128 | 128 | 0 |
+
+生成成果物：
+
+| 成果物 | パス |
+|---|---|
+| 市区町村別評価CSV | `04_プログラム/output/sumo/evaluation/evacuation_summary_by_municipality.csv` |
+| Phase 1/2比較CSV | `04_プログラム/output/sumo/evaluation/phase1_phase2_region_comparison.csv` |
+| 全域SUMO結果HTML | `04_プログラム/output/sumo/regions/index.html` |
+| トップページ | `04_プログラム/output/index.html` |
+
+検証：
+
+| テスト | 結果 |
+|---|---|
+| `py_compile` | `p2_region_pipeline.py`、`gen_index.py` とも合格 |
+| 出力件数検証 | small 41、10pct 41、full 6を確認 |
+| 評価CSV検証 | 41行、比較CSV 164行を確認 |
+| HTMLリンク検証 | `sumo/regions/index.html` は92リンク中欠損0 |
+| トップページ静的リンク検証 | `output/index.html` は3リンク中欠損0 |
+| `phase1-pages.js` 動的リンク検証 | 63リンク中欠損0 |
+| 実行プロセス残留確認 | `python`、`sumo`、`netconvert` の残留なし |
+
+注意点：
+
+- SUMO実行中に `No route`、teleport等の警告は複数出たが、全市区町村で実行終了コード0、summary出力あり、主評価指標では `10pct` 逃げ遅れ合計0であった。
+- `msedge` と `playwright` コマンドがPATH上で検出できなかったため、ヘッドレスブラウザによるスクリーンショット検証は未実施である。HTMLリンクと生成ファイルの整合性はスクリプトで確認済みである。
+
+判定：
+
+- 合格。
+- Phase 2全域拡張の残実装は完了し、全41市区町村で `small` / `10pct` のSUMO/TraCI結果を比較可能な形で整理した。

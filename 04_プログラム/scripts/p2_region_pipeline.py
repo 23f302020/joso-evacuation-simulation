@@ -17,6 +17,7 @@ import xml.etree.ElementTree as ET
 from collections import defaultdict
 from dataclasses import dataclass
 from datetime import datetime
+from html import escape
 from pathlib import Path
 from typing import Any
 
@@ -59,6 +60,9 @@ FULL_PLAN_MD = MANAGEMENT_DIR / "region_full_execution_plan.md"
 BATCH_STATUS_CSV = MANAGEMENT_DIR / "region_batch_status.csv"
 BATCH_STATUS_MD = MANAGEMENT_DIR / "region_batch_status.md"
 BATCH_FAILURES_CSV = MANAGEMENT_DIR / "region_batch_failures.csv"
+REGION_EVALUATION_CSV = SUMO_DIR / "evaluation" / "evacuation_summary_by_municipality.csv"
+REGION_COMPARISON_CSV = SUMO_DIR / "evaluation" / "phase1_phase2_region_comparison.csv"
+REGION_INDEX_HTML = REGIONS_DIR / "index.html"
 
 HOUSEHOLD_SIZE = 2.3
 SEARCH_RADII_M = [100, 250, 500, 1000, 3000, 5000]
@@ -909,6 +913,13 @@ def nearest_edge(net: Any, lon: float, lat: float) -> tuple[str, float, str]:
     return edge.getID(), float(distance), status
 
 
+def max_numeric_or_none(values: pd.Series) -> float | None:
+    numeric = pd.to_numeric(values, errors="coerce").dropna()
+    if numeric.empty:
+        return None
+    return float(numeric.max())
+
+
 def snap_points(ctx: RegionContext) -> dict[str, Any]:
     net = sumolib.net.readNet(str(ctx.net_xml))
     origins = pd.read_csv(ctx.agent_origins_csv, dtype={"KEY_CODE": str})
@@ -987,24 +998,35 @@ def snap_points(ctx: RegionContext) -> dict[str, Any]:
     origins_df = pd.DataFrame(origin_rows)
     shelters_df = pd.DataFrame(shelter_rows)
     safe_shelters = shelters_df[shelters_df["is_safe_destination"] == True]  # noqa: E712
+    routable_origins = origins_df[
+        (origins_df["snap_status"] != "unmatched") & (origins_df["sumo_edge_id"].astype(str).str.len() > 0)
+    ] if len(origins_df) else origins_df
+    routable_safe_shelters = safe_shelters[
+        (safe_shelters["snap_status"] != "unmatched")
+        & (safe_shelters["sumo_edge_id"].astype(str).str.len() > 0)
+    ] if len(safe_shelters) else safe_shelters
     summary = {
         "origin_count": int(len(origins_df)),
         "origin_unmatched_count": int((origins_df["snap_status"] == "unmatched").sum()) if len(origins_df) else 0,
         "origin_far_count": int((origins_df["snap_status"] == "far").sum()) if len(origins_df) else 0,
-        "origin_max_snap_distance_m": float(origins_df["snap_distance_m"].max()) if len(origins_df) else None,
+        "origin_routable_count": int(len(routable_origins)),
+        "origin_max_snap_distance_m": max_numeric_or_none(origins_df["snap_distance_m"]) if len(origins_df) else None,
         "shelter_count": int(len(shelters_df)),
         "safe_shelter_count": int(len(safe_shelters)),
         "safe_shelter_unmatched_count": int((safe_shelters["snap_status"] == "unmatched").sum())
         if len(safe_shelters)
         else 0,
-        "safe_shelter_max_snap_distance_m": float(safe_shelters["snap_distance_m"].max())
+        "safe_shelter_routable_count": int(len(routable_safe_shelters)),
+        "safe_shelter_max_snap_distance_m": max_numeric_or_none(safe_shelters["snap_distance_m"])
         if len(safe_shelters)
         else None,
         "can_proceed_to_route_generation": bool(
-            len(origins_df) > 0
-            and len(safe_shelters) > 0
-            and int((origins_df["snap_status"] == "unmatched").sum()) == 0
-            and int((safe_shelters["snap_status"] == "unmatched").sum()) == 0
+            len(routable_origins) > 0
+            and len(routable_safe_shelters) > 0
+        ),
+        "snap_exclusion_policy": (
+            "unmatched origins/shelters are excluded from SUMO route generation when at least one routable "
+            "origin and safe shelter remain"
         ),
     }
     ctx.snap_validation_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -1109,7 +1131,9 @@ def generate_region_derived(ctx: RegionContext) -> dict[str, Any]:
         "closure_excluded_unmapped_time_steps": closure_excluded_unmapped_time_steps,
         "closure_excluded_unmapped_edge_count": closure_excluded_unmapped_edge_count,
         "origin_unmatched_count": snap_summary["origin_unmatched_count"],
+        "origin_routable_count": snap_summary["origin_routable_count"],
         "safe_shelter_unmatched_count": snap_summary["safe_shelter_unmatched_count"],
+        "safe_shelter_routable_count": snap_summary["safe_shelter_routable_count"],
         "can_proceed_to_small": bool(
             snap_summary["can_proceed_to_route_generation"] and closure_unmapped_time_steps == 0
         ),
@@ -1173,9 +1197,13 @@ def generate_region_scenario(ctx: RegionContext, scenario_name: str) -> dict[str
     net = read_net(ctx)
     origins = pd.read_csv(ctx.agent_origins_sumo_csv, dtype={"KEY_CODE": str})
     shelters = pd.read_csv(ctx.shelters_sumo_csv)
-    safe_shelters = shelters[shelters["is_safe_destination"] == True].copy()  # noqa: E712
+    safe_shelters = shelters[
+        (shelters["is_safe_destination"].astype(str).str.lower() == "true")
+        & (shelters["snap_status"].astype(str) != "unmatched")
+        & (shelters["sumo_edge_id"].fillna("").astype(str).str.len() > 0)
+    ].copy()
     if safe_shelters.empty:
-        raise ValueError(f"{ctx.city_code}: no safe shelter is available for route generation")
+        raise ValueError(f"{ctx.city_code}: no routable safe shelter is available for route generation")
 
     routes = ET.Element("routes")
     ET.SubElement(
@@ -1671,6 +1699,410 @@ def write_full_execution_plan() -> dict[str, Any]:
     return summary
 
 
+def row_map(path: Path, key: str = "city_code") -> dict[str, dict[str, str]]:
+    if not path.exists():
+        return {}
+    return {row[key]: row for row in read_csv_rows(path, "utf-8")}
+
+
+def run_row_map() -> dict[tuple[str, str], dict[str, str]]:
+    if not RUN_SUMMARY_CSV.exists():
+        return {}
+    return {(row["city_code"], row["scenario"]): row for row in read_csv_rows(RUN_SUMMARY_CSV, "utf-8")}
+
+
+def value(row: dict[str, Any], key: str, default: Any = "") -> Any:
+    item = row.get(key, default)
+    if item is None:
+        return default
+    return item
+
+
+def write_region_evaluation() -> dict[str, Any]:
+    targets = load_targets()
+    derived_rows = row_map(DERIVED_SUMMARY_CSV)
+    mapping_rows = row_map(EDGE_MAPPING_SUMMARY_CSV)
+    plan_rows = row_map(FULL_PLAN_CSV)
+    runs = run_row_map()
+
+    summary_rows: list[dict[str, Any]] = []
+    comparison_rows: list[dict[str, Any]] = []
+    for target in targets:
+        code = target["city_code"]
+        name = target["city_name"]
+        derived = derived_rows.get(code, {})
+        mapping = mapping_rows.get(code, {})
+        plan = plan_rows.get(code, {})
+        small = runs.get((code, "small"), {})
+        tenpct = runs.get((code, "10pct"), {})
+        full = runs.get((code, "full"), {})
+
+        note_parts: list[str] = []
+        if parse_int(derived.get("origin_unmatched_count", 0)) > 0:
+            note_parts.append(f"origin_unmatched_excluded={derived.get('origin_unmatched_count')}")
+        if parse_int(derived.get("safe_shelter_unmatched_count", 0)) > 0:
+            note_parts.append(f"safe_shelter_unmatched_excluded={derived.get('safe_shelter_unmatched_count')}")
+        if parse_int(mapping.get("excluded_unmapped_count", 0)) > 0:
+            note_parts.append(f"closure_edge_excluded={mapping.get('excluded_unmapped_count')}")
+        if plan and not full and plan.get("recommendation") != "run_full":
+            note_parts.append("full_deferred_by_plan")
+
+        summary_rows.append(
+            {
+                "city_code": code,
+                "city_name": name,
+                "origin_count": value(derived, "origin_count"),
+                "origin_routable_count": value(derived, "origin_routable_count", value(derived, "origin_count")),
+                "origin_unmatched_count": value(derived, "origin_unmatched_count"),
+                "safe_shelter_count": value(derived, "safe_shelter_count"),
+                "safe_shelter_routable_count": value(
+                    derived,
+                    "safe_shelter_routable_count",
+                    value(derived, "safe_shelter_count"),
+                ),
+                "safe_shelter_unmatched_count": value(derived, "safe_shelter_unmatched_count"),
+                "phase1_closed_edge_count": value(mapping, "phase1_closed_edge_count"),
+                "mapping_matched_count": value(mapping, "matched_count"),
+                "mapping_excluded_unmapped_count": value(mapping, "excluded_unmapped_count", 0),
+                "small_vehicle_count": value(small, "vehicle_count"),
+                "small_arrived_count": value(small, "arrived_count"),
+                "small_not_arrived_count": value(small, "not_arrived_count"),
+                "small_stranded_main_count": value(small, "stranded_main_count"),
+                "tenpct_vehicle_count": value(tenpct, "vehicle_count"),
+                "tenpct_arrived_count": value(tenpct, "arrived_count"),
+                "tenpct_not_arrived_count": value(tenpct, "not_arrived_count"),
+                "tenpct_stranded_main_count": value(tenpct, "stranded_main_count"),
+                "full_recommendation": value(plan, "recommendation"),
+                "full_vehicle_count_total": value(plan, "vehicle_count_full_total", value(derived, "vehicle_count_full_total")),
+                "full_vehicle_count_run": value(full, "vehicle_count"),
+                "full_arrived_count": value(full, "arrived_count"),
+                "full_not_arrived_count": value(full, "not_arrived_count"),
+                "full_stranded_main_count": value(full, "stranded_main_count"),
+                "notes": ";".join(note_parts),
+            }
+        )
+
+        base = {
+            "city_code": code,
+            "city_name": name,
+            "phase1_closed_edge_count": value(mapping, "phase1_closed_edge_count"),
+            "origin_count": value(derived, "origin_count"),
+            "origin_routable_count": value(derived, "origin_routable_count", value(derived, "origin_count")),
+            "full_recommendation": value(plan, "recommendation"),
+        }
+        comparison_rows.append(
+            {
+                **base,
+                "analysis_type": "phase1_static_city_scenario",
+                "scenario_name": "city_scenario_t0_to_t7",
+                "unit": "closed_edges_and_origin_meshes",
+                "vehicle_count": "",
+                "arrived_count": "",
+                "not_arrived_vehicle_count": "",
+                "stranded_main_vehicle_count": "",
+                "note": "Phase 1 city scenario input scale; not a dynamic vehicle simulation.",
+            }
+        )
+        for scenario, row in [("small", small), ("10pct", tenpct), ("full", full)]:
+            if not row:
+                if scenario == "full":
+                    comparison_rows.append(
+                        {
+                            **base,
+                            "analysis_type": "phase2_full_plan",
+                            "scenario_name": "full",
+                            "unit": "vehicle_plan",
+                            "vehicle_count": value(plan, "vehicle_count_full_total", value(derived, "vehicle_count_full_total")),
+                            "arrived_count": "",
+                            "not_arrived_vehicle_count": "",
+                            "stranded_main_vehicle_count": "",
+                            "note": f"Full run deferred by plan: {value(plan, 'reason')}",
+                        }
+                    )
+                continue
+            comparison_rows.append(
+                {
+                    **base,
+                    "analysis_type": "phase2_dynamic_sumo",
+                    "scenario_name": scenario,
+                    "unit": "vehicle",
+                    "vehicle_count": value(row, "vehicle_count"),
+                    "arrived_count": value(row, "arrived_count"),
+                    "not_arrived_vehicle_count": value(row, "not_arrived_count"),
+                    "stranded_main_vehicle_count": value(row, "stranded_main_count"),
+                    "note": "Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.",
+                }
+            )
+
+    summary_fields = [
+        "city_code",
+        "city_name",
+        "origin_count",
+        "origin_routable_count",
+        "origin_unmatched_count",
+        "safe_shelter_count",
+        "safe_shelter_routable_count",
+        "safe_shelter_unmatched_count",
+        "phase1_closed_edge_count",
+        "mapping_matched_count",
+        "mapping_excluded_unmapped_count",
+        "small_vehicle_count",
+        "small_arrived_count",
+        "small_not_arrived_count",
+        "small_stranded_main_count",
+        "tenpct_vehicle_count",
+        "tenpct_arrived_count",
+        "tenpct_not_arrived_count",
+        "tenpct_stranded_main_count",
+        "full_recommendation",
+        "full_vehicle_count_total",
+        "full_vehicle_count_run",
+        "full_arrived_count",
+        "full_not_arrived_count",
+        "full_stranded_main_count",
+        "notes",
+    ]
+    comparison_fields = [
+        "city_code",
+        "city_name",
+        "analysis_type",
+        "scenario_name",
+        "unit",
+        "phase1_closed_edge_count",
+        "origin_count",
+        "origin_routable_count",
+        "vehicle_count",
+        "arrived_count",
+        "not_arrived_vehicle_count",
+        "stranded_main_vehicle_count",
+        "full_recommendation",
+        "note",
+    ]
+    write_csv(REGION_EVALUATION_CSV, summary_fields, summary_rows)
+    write_csv(REGION_COMPARISON_CSV, comparison_fields, comparison_rows)
+
+    counts = {
+        "municipality_count": len(summary_rows),
+        "small_completed": sum(1 for row in summary_rows if str(row["small_vehicle_count"]) != ""),
+        "tenpct_completed": sum(1 for row in summary_rows if str(row["tenpct_vehicle_count"]) != ""),
+        "full_completed": sum(1 for row in summary_rows if str(row["full_vehicle_count_run"]) != ""),
+        "tenpct_stranded_total": sum(parse_int(row["tenpct_stranded_main_count"]) for row in summary_rows),
+        "full_stranded_total": sum(parse_int(row["full_stranded_main_count"]) for row in summary_rows),
+    }
+    result = {
+        **counts,
+        "evaluation_csv": rel(REGION_EVALUATION_CSV),
+        "comparison_csv": rel(REGION_COMPARISON_CSV),
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return result
+
+
+def write_region_index_html() -> dict[str, Any]:
+    if not REGION_EVALUATION_CSV.exists() or not REGION_COMPARISON_CSV.exists():
+        write_region_evaluation()
+    rows = read_csv_rows(REGION_EVALUATION_CSV, "utf-8")
+    small_completed = sum(1 for row in rows if row.get("small_vehicle_count"))
+    tenpct_completed = sum(1 for row in rows if row.get("tenpct_vehicle_count"))
+    full_completed = sum(1 for row in rows if row.get("full_vehicle_count_run"))
+    tenpct_stranded = sum(parse_int(row.get("tenpct_stranded_main_count")) for row in rows)
+    full_stranded = sum(parse_int(row.get("full_stranded_main_count")) for row in rows)
+
+    def link_or_dash(city_code: str, scenario: str, label: str) -> str:
+        file_name = SCENARIO_SETTINGS[scenario]["summary"]
+        path = REGIONS_DIR / city_code / "results" / file_name
+        if not path.exists():
+            return "-"
+        return f'<a href="{escape(city_code)}/results/{escape(file_name)}">{escape(label)}</a>'
+
+    table_rows = []
+    for row in rows:
+        full_display = (
+            f"{escape(str(row['full_arrived_count']))}/{escape(str(row['full_vehicle_count_run']))}"
+            if row["full_vehicle_count_run"]
+            else "-"
+        )
+        table_rows.append(
+            "<tr>"
+            f"<td>{escape(row['city_code'])}</td>"
+            f"<td>{escape(row['city_name'])}</td>"
+            f"<td>{escape(str(row['origin_routable_count']))}/{escape(str(row['origin_count']))}</td>"
+            f"<td>{escape(str(row['phase1_closed_edge_count']))}</td>"
+            f"<td>{escape(str(row['small_arrived_count']))}/{escape(str(row['small_vehicle_count']))}</td>"
+            f"<td>{escape(str(row['tenpct_arrived_count']))}/{escape(str(row['tenpct_vehicle_count']))}</td>"
+            f"<td>{escape(str(row['tenpct_stranded_main_count']))}</td>"
+            f"<td>{escape(str(row['full_recommendation']))}</td>"
+            f"<td>{full_display}</td>"
+            f"<td>{link_or_dash(row['city_code'], 'small', 'small')} / {link_or_dash(row['city_code'], '10pct', '10pct')} / {link_or_dash(row['city_code'], 'full', 'full')}</td>"
+            "</tr>"
+        )
+
+    html = f"""<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 2 全域SUMO結果</title>
+  <style>
+    :root {{
+      color-scheme: light;
+      --ink: #1f2933;
+      --muted: #52616f;
+      --line: #d8dee6;
+      --panel: #f6f8fa;
+      --accent: #0f766e;
+      --accent-2: #7c2d12;
+      font-family: "Segoe UI", "Yu Gothic", Meiryo, sans-serif;
+    }}
+    body {{
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.55;
+    }}
+    header {{
+      padding: 32px clamp(18px, 4vw, 48px) 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #f8fbfb 0%, #fff 100%);
+    }}
+    main {{
+      padding: 24px clamp(18px, 4vw, 48px) 48px;
+    }}
+    h1 {{
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }}
+    p {{
+      margin: 0;
+      color: var(--muted);
+    }}
+    .metrics {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }}
+    .metric {{
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: var(--panel);
+    }}
+    .metric strong {{
+      display: block;
+      font-size: 24px;
+      color: var(--accent);
+    }}
+    .links {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 26px;
+    }}
+    a {{
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }}
+    .links a {{
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #fff;
+    }}
+    .table-wrap {{
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }}
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+      font-size: 14px;
+    }}
+    th, td {{
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      white-space: nowrap;
+    }}
+    th {{
+      background: #edf3f2;
+      color: #24413f;
+      position: sticky;
+      top: 0;
+    }}
+    tr:nth-child(even) td {{
+      background: #fafafa;
+    }}
+    .note {{
+      margin-top: 18px;
+      max-width: 980px;
+      color: var(--muted);
+    }}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Phase 2 全域SUMO結果</h1>
+    <p>Phase 1対象41市区町村に対する、市区町村別SUMO/TraCI試行の集計です。</p>
+  </header>
+  <main>
+    <section class="metrics" aria-label="集計">
+      <div class="metric"><strong>{len(rows)}</strong><span>対象市区町村</span></div>
+      <div class="metric"><strong>{small_completed}</strong><span>small完了</span></div>
+      <div class="metric"><strong>{tenpct_completed}</strong><span>10pct完了</span></div>
+      <div class="metric"><strong>{full_completed}</strong><span>full実行</span></div>
+      <div class="metric"><strong>{tenpct_stranded}</strong><span>10pct逃げ遅れ主指標</span></div>
+      <div class="metric"><strong>{full_stranded}</strong><span>full逃げ遅れ主指標</span></div>
+    </section>
+    <nav class="links" aria-label="成果物">
+      <a href="../evaluation/evacuation_summary_by_municipality.csv">市区町村別サマリCSV</a>
+      <a href="../evaluation/phase1_phase2_region_comparison.csv">Phase 1/2全域比較CSV</a>
+      <a href="_management/region_batch_status.md">バッチ状態</a>
+      <a href="_management/region_full_execution_plan.md">full実行計画</a>
+    </nav>
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>コード</th>
+            <th>市区町村</th>
+            <th>経路化出発地/全出発地</th>
+            <th>Phase 1閉鎖edge</th>
+            <th>small到着/車両</th>
+            <th>10pct到着/車両</th>
+            <th>10pct逃げ遅れ</th>
+            <th>full方針</th>
+            <th>full到着/車両</th>
+            <th>summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          {''.join(table_rows)}
+        </tbody>
+      </table>
+    </section>
+    <p class="note">Phase 1は静的な閉鎖道路・経路探索の入力規模、Phase 2はSUMO/TraCIによる動的車両試行です。単位が異なるため、比較CSVでは列を分けています。</p>
+  </main>
+</body>
+</html>
+"""
+    REGION_INDEX_HTML.parent.mkdir(parents=True, exist_ok=True)
+    REGION_INDEX_HTML.write_text(html, encoding="utf-8")
+    result = {
+        "region_index_html": rel(REGION_INDEX_HTML),
+        "municipality_count": len(rows),
+        "small_completed": small_completed,
+        "tenpct_completed": tenpct_completed,
+        "full_completed": full_completed,
+    }
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return result
+
+
 def read_json_if_exists(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
@@ -1711,10 +2143,6 @@ def region_status_row(ctx: RegionContext) -> dict[str, Any]:
         next_action = "inspect_no_origin"
     elif int(derived.get("safe_shelter_count", 0) or 0) == 0:
         next_action = "inspect_no_safe_shelter"
-    elif int(derived.get("origin_unmatched_count", 0) or 0) > 0:
-        next_action = "inspect_origin_snap"
-    elif int(derived.get("safe_shelter_unmatched_count", 0) or 0) > 0:
-        next_action = "inspect_shelter_snap"
     elif not small_ready:
         next_action = "run_small"
     elif not tenpct_ready:
@@ -1935,6 +2363,9 @@ def parse_args() -> argparse.Namespace:
             "scenario-city",
             "run-city",
             "full-plan",
+            "region-eval",
+            "region-html",
+            "region-finalize",
             "all-five-city",
             "mapping-targets",
             "derived-targets",
@@ -1976,6 +2407,15 @@ def main() -> int:
         run_region_traci(context_for(args.city_code), args.scenario)
     elif args.command == "full-plan":
         write_full_execution_plan()
+    elif args.command == "region-eval":
+        write_region_evaluation()
+    elif args.command == "region-html":
+        write_region_index_html()
+    elif args.command == "region-finalize":
+        write_full_execution_plan()
+        write_region_evaluation()
+        write_region_index_html()
+        write_batch_status()
     elif args.command == "all-five-city":
         ctx = context_for(args.city_code)
         generate_edge_mapping(ctx, force_network=args.force_network)
