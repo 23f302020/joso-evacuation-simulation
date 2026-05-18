@@ -172,6 +172,11 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-9-2 | `gen_index.py` を更新する | ✅ | 9-1 | `gen_index.py` | index再生成可能 |
 | P2-IMPL-9-3 | `output/index.html` を更新する | ✅ | 9-2 | `output/index.html` | Phase別に確認できる |
 | P2-IMPL-9-4 | ブラウザで導線確認する | ✅ | 9-3 | Edge headless確認 | Phase別ナビ表示・Phase 2リンク先5件の存在を確認 |
+| P2-IMPL-9-5 | トップページをPhase別入口へ再構成する | ✅ | 9-3 | `output/index.html` | Phase 1/2/3の説明と個別ページリンクを表示 |
+| P2-IMPL-9-6 | Phase 1専用ページを作成する | ✅ | 9-5 | `output/phase1.html` | 統合シミュレーション、市区町村別HTML、常総市参考成果物を分離 |
+| P2-IMPL-9-7 | Phase 2専用ページを作成する | ✅ | 9-5 | `output/phase2.html` | SUMO可視化、評価CSV、主要避難路混雑、全域SUMO結果を分離 |
+| P2-IMPL-9-8 | Phase 3専用ページを作成する | ✅ | 9-5 | `output/phase3.html` | 未実装内容と今後作成する成果物を明記 |
+| P2-IMPL-9-9 | Phase別HTMLリンク検証を行う | ✅ | 9-6, 9-7, 9-8 | HTML/JSリンク検査 | 相対リンク82件、欠損0件 |
 
 ---
 

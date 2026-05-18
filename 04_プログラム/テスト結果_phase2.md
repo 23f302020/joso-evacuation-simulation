@@ -308,3 +308,38 @@ fullシナリオのFCD可視化は、ファイルサイズが大きくなるた�
 
 合格。  
 評価フレームで未実装だった「主要避難路ごとの渋滞指標」は、常総市シナリオAのsmall / 10pct / fullについて実装・出力済みである。
+
+---
+
+## 11. HTMLトップページPhase別分割テスト
+
+追加日：2026/05/18  
+対象：`gen_index.py`、`output/index.html`、`output/phase1.html`、`output/phase2.html`、`output/phase3.html`
+
+### 11.1 実装内容
+
+トップページを成果物一覧の単一ページから、Phase別入口ページへ変更した。  
+トップページにはPhase 1 / Phase 2 / Phase 3それぞれの説明を表示し、詳細確認はPhase別ページへ分割する。
+
+### 11.2 テスト一覧
+
+| ID | テスト | 結果 | 確認内容 |
+|---|---|---:|---|
+| T35 | `gen_index.py` 構文チェック | ✅ | `python -m py_compile` 合格 |
+| T36 | `gen_index.py` 再実行 | ✅ | `index.html`、`phase1.html`、`phase2.html`、`phase3.html` を生成 |
+| T37 | 生成ファイル存在確認 | ✅ | HTML 4件、JS/CSS 3件の存在を確認 |
+| T38 | 相対リンク検証 | ✅ | HTML/JS内の相対リンク82件を検査し、欠損0件 |
+
+### 11.3 生成ファイル
+
+| ファイル | 内容 |
+|---|---|
+| `output/index.html` | Phase 1 / Phase 2 / Phase 3 の説明と入口 |
+| `output/phase1.html` | Phase 1成果物：統合シミュレーション、市区町村別HTML、常総市参考成果物 |
+| `output/phase2.html` | Phase 2成果物：SUMO可視化、評価CSV、主要避難路混雑、全域SUMO結果 |
+| `output/phase3.html` | Phase 3予定：デマンド交通バス比較の未実装内容 |
+
+### 11.4 判定
+
+合格。  
+トップページとPhase別ページは生成済みであり、相対リンク欠損は確認されなかった。
