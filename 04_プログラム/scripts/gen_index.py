@@ -1,10 +1,13 @@
-"""output/index.html と output/assets/ を再生成するスクリプト。
+"""output/index.html、Phase別HTML、output/assets/ を再生成するスクリプト。
 
 使い方:
     python gen_index.py
 
 出力先:
     output/index.html
+    output/phase1.html
+    output/phase2.html
+    output/phase3.html
     output/assets/phase1-pages.js
     output/assets/phase1-components.js
     output/assets/phase1.css
@@ -137,13 +140,12 @@ def write_pages_js(entries: list[dict]) -> None:
     {{ title: "Phase 1 / Phase 2 全域比較", meta: "静的入力規模と動的SUMO結果を市区町村別に整理", href: "sumo/evaluation/phase1_phase2_region_comparison.csv" }},
     {{ title: "避難結果サマリ", meta: "small / 1/10 / full の到着・未到着・逃げ遅れ", href: "sumo/evaluation/evacuation_summary.csv", primary: true }},
     {{ title: "混雑ログ", meta: "60秒間隔のアクティブ台数・平均速度・停止台数", href: "sumo/evaluation/congestion_log.csv" }},
+    {{ title: "主要避難路別混雑集計", meta: "R294・R354・R357・常総IC接続部の平均速度・低速率", href: "sumo/evaluation/major_route_congestion_summary.csv" }},
     {{ title: "Phase 1 / Phase 2 比較", meta: "静的到達不可と動的逃げ遅れを単位別に整理", href: "sumo/evaluation/phase1_phase2_comparison.csv" }},
     {{ title: "全量試行サマリJSON", meta: "1,001台試行のTraCI集計", href: "sumo/results/scenario_a_traci_summary.json" }},
     {{ title: "SUMOネットワーク概要", meta: "netconvert後のedge / junction / connection件数", href: "sumo/network/sumo_network_summary.md" }},
   ],
-  phase3: [
-    {{ title: "Phase 3", meta: "未実装。デマンド交通バス比較は今後追加", href: "#phase3" }},
-  ],
+  phase3: [],
   cities: [
 {cities_js}
   ],
@@ -395,10 +397,47 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 .stat-value { font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; }
 .stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
 .stat-text { flex: 1; color: var(--muted); font-size: 13px; border-left: 1px solid var(--line); padding-left: 16px; margin-left: 4px; }
+.phase-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 28px; }
+.phase-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.phase-card:hover, .phase-card:focus-visible { background: var(--surface-hover); border-color: var(--accent); outline: none; }
+.phase-card-title { font-size: 20px; font-weight: 700; }
+.phase-status { display: inline-flex; width: fit-content; margin-top: 8px; padding: 2px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 12px; }
+.phase-card-meta { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+.phase-card-list { margin: 14px 0 0; padding-left: 18px; font-size: 13px; color: var(--text); }
+.phase-card-list li + li { margin-top: 4px; }
+.header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.github-link:hover, .github-link:focus-visible { background: var(--surface-hover); border-color: var(--accent); outline: none; }
+.github-icon { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+.back-link { display: inline-flex; margin-bottom: 16px; color: var(--accent); font-size: 13px; font-weight: 700; }
+.phase-lead { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+.detail-list { margin: 8px 0 0; padding-left: 18px; color: var(--text); font-size: 14px; }
+.detail-list li + li { margin-top: 4px; }
 @media (max-width: 760px) {
   .page-header { display: block; padding-top: 28px; }
   .updated { margin-top: 12px; }
-  .phase-nav, .card-grid, .route-list, .city-grid, .city-tools, .unavailable-list { grid-template-columns: 1fr; }
+  .phase-nav, .phase-card-grid, .card-grid, .route-list, .city-grid, .city-tools, .unavailable-list { grid-template-columns: 1fr; }
   .city-count { white-space: normal; }
   .summary-stats { flex-wrap: wrap; }
   .stat-text { border-left: 0; padding-left: 0; margin-left: 0; border-top: 1px solid var(--line); padding-top: 10px; width: 100%; }
@@ -406,6 +445,54 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 """
     (ASSETS_DIR / "phase1.css").write_text(content, encoding="utf-8")
     print(f"[write] {ASSETS_DIR / 'phase1.css'}")
+
+
+def _page_header(title: str, subtitle: str, label: str) -> str:
+    return f"""  <header class="page-header">
+    <div>
+      <p class="eyebrow">{subtitle}</p>
+      <h1>{title}</h1>
+    </div>
+    <p class="updated">{label}</p>
+  </header>"""
+
+
+def _phase_nav(active: str | None = None) -> str:
+    def link(phase: str, title: str, meta: str, href: str) -> str:
+        current = ' aria-current="page"' if active == phase else ""
+        return f"""      <a href="{href}"{current}>
+        <span class="phase-nav-title">{title}</span>
+        <span class="phase-nav-meta">{meta}</span>
+      </a>"""
+
+    return "\n".join([
+        '    <nav class="phase-nav" aria-label="Phase別成果物">',
+        link("phase1", "Phase 1", "浸水・閉鎖道路・避難ルート確認", "phase1.html"),
+        link("phase2", "Phase 2", "SUMO自家用車避難シミュレーション", "phase2.html"),
+        link("phase3", "Phase 3", "デマンド交通バス比較（未実装）", "phase3.html"),
+        "    </nav>",
+    ])
+
+
+def _html_doc(title: str, body: str) -> str:
+    return f"""<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{title}</title>
+  <link rel="stylesheet" href="assets/phase1.css">
+  <script src="assets/phase1-pages.js" defer></script>
+  <script src="assets/phase1-components.js" defer></script>
+</head>
+<body>
+{body}
+</body>
+</html>
+"""
+
+
+_GITHUB_URL = "https://github.com/23f302020/joso-evacuation-simulation"
 
 
 def write_index_html(n_cities: int) -> None:
@@ -416,8 +503,6 @@ def write_index_html(n_cities: int) -> None:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>研究成果物トップページ</title>
   <link rel="stylesheet" href="assets/phase1.css">
-  <script src="assets/phase1-pages.js" defer></script>
-  <script src="assets/phase1-components.js" defer></script>
 </head>
 <body>
   <header class="page-header">
@@ -425,7 +510,15 @@ def write_index_html(n_cities: int) -> None:
       <p class="eyebrow">2015 鬼怒川氾濫 / 茨城県</p>
       <h1>研究成果物トップページ</h1>
     </div>
-    <p class="updated">HTML確認トップページ</p>
+    <div class="header-right">
+      <p class="updated">Phase別入口</p>
+      <a class="github-link" href="{_GITHUB_URL}" target="_blank" rel="noopener noreferrer">
+        <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
   </header>
 
   <main class="page-shell">
@@ -433,35 +526,68 @@ def write_index_html(n_cities: int) -> None:
       <div class="stat-item"><span class="stat-value">{n_cities}</span><span class="stat-label">市区町村</span></div>
       <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">対象外</span></div>
       <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">時点</span></div>
-      <div class="stat-item stat-text">浸水想定区域 / 閉鎖道路 / 避難ルート</div>
+      <div class="stat-item stat-text">Phase 1は静的な避難ルート、Phase 2はSUMOによる動的交通流、Phase 3はデマンド交通バス比較の予定です。</div>
     </div>
 
-    <nav class="phase-nav" aria-label="Phase別成果物">
-      <a href="#phase1">
-        <span class="phase-nav-title">Phase 1</span>
-        <span class="phase-nav-meta">浸水・閉鎖道路・避難ルート確認</span>
+    <section class="phase-card-grid" aria-label="Phase別ページ">
+      <a class="phase-card" href="phase1.html">
+        <span class="phase-card-title">Phase 1</span>
+        <span class="phase-status">実装済み</span>
+        <span class="phase-card-meta">浸水想定区域と道路閉鎖を使い、閉鎖道路を除いた避難ルートを確認する静的シミュレーションです。</span>
+        <ul class="phase-card-list">
+          <li>茨城県41市区町村の統合シミュレーション</li>
+          <li>市区町村別シミュレーションHTML</li>
+          <li>常総市の実データ版・時点別避難ルート</li>
+        </ul>
       </a>
-      <a href="#phase2">
-        <span class="phase-nav-title">Phase 2</span>
-        <span class="phase-nav-meta">SUMO自家用車避難シミュレーション</span>
+      <a class="phase-card" href="phase2.html">
+        <span class="phase-card-title">Phase 2</span>
+        <span class="phase-status">実装済み</span>
+        <span class="phase-card-meta">SUMO/TraCIを用いて、自家用車避難の到着・未到着・停止・主要避難路の混雑を確認する動的シミュレーションです。</span>
+        <ul class="phase-card-list">
+          <li>常総市 small / 1/10 / 全量試行</li>
+          <li>SUMO走行アニメーションと評価CSV</li>
+          <li>41市区町村へのPhase 2全域拡張結果</li>
+        </ul>
       </a>
-      <a href="#phase3">
-        <span class="phase-nav-title">Phase 3</span>
-        <span class="phase-nav-meta">デマンド交通バス比較（未実装）</span>
+      <a class="phase-card" href="phase3.html">
+        <span class="phase-card-title">Phase 3</span>
+        <span class="phase-status">未実装</span>
+        <span class="phase-card-meta">Phase 2の自家用車避難を基準に、デマンド交通バスを導入した場合の比較を行う予定のPhaseです。</span>
+        <ul class="phase-card-list">
+          <li>バス台数・定員・運行範囲の仕様化</li>
+          <li>シナリオBの運行ロジック実装</li>
+          <li>自家用車のみとの比較・考察</li>
+        </ul>
       </a>
-    </nav>
+    </section>
+  </main>
+</body>
+</html>
+"""
+    (OUTPUT_DIR / "index.html").write_text(html, encoding="utf-8")
+    print(f"[write] {OUTPUT_DIR / 'index.html'}")
 
-    <section class="section" id="phase1" aria-labelledby="unified-heading">
+
+def write_phase1_html(n_cities: int) -> None:
+    body = f"""{_page_header("Phase 1：避難ルート確認", "浸水想定区域 / 閉鎖道路 / 静的避難ルート", f"{n_cities}市区町村")}
+
+  <main class="page-shell">
+    <a class="back-link" href="index.html">トップページへ戻る</a>
+{_phase_nav("phase1")}
+    <p class="phase-lead">Phase 1では、浸水想定区域から閉鎖道路を抽出し、閉鎖道路を除いた道路ネットワーク上で避難所までのルートを確認します。</p>
+
+    <section class="section" aria-labelledby="unified-heading">
       <div class="section-heading">
-        <h2 id="unified-heading">Phase 1：茨城県シミュレーション（{n_cities}市区町村）</h2>
+        <h2 id="unified-heading">茨城県統合シミュレーション（{n_cities}市区町村）</h2>
       </div>
-      <p class="section-note">県内拡張版はこちらです。クリック地点に応じて対象市区町村のデータを読み込みます。</p>
+      <p class="section-note">県内拡張版の主成果物です。クリック地点に応じて対象市区町村のデータを読み込みます。</p>
       <div id="unified-links" class="card-grid"></div>
     </section>
 
     <section class="section" aria-labelledby="cities-heading">
       <div class="section-heading">
-        <h2 id="cities-heading">市区町村別シミュレーション（{n_cities}市区町村）</h2>
+        <h2 id="cities-heading">市区町村別シミュレーション</h2>
       </div>
       <p class="section-note">特定の市区町村だけを確認したい場合はこちらを使用します。</p>
       <div class="city-tools" aria-label="市区町村リンクの絞り込み">
@@ -482,7 +608,7 @@ def write_index_html(n_cities: int) -> None:
       <div class="section-heading">
         <h2 id="scenario-heading">常総市単独シミュレーション（参考）</h2>
       </div>
-      <p class="section-note">このページは常総市のみ対象です。常総市以外をクリックすると「対応地域外」と表示されます。</p>
+      <p class="section-note">県内拡張前の常総市単独成果物です。常総市以外をクリックすると対応地域外として扱います。</p>
       <div id="scenario-links" class="card-grid"></div>
     </section>
 
@@ -490,48 +616,96 @@ def write_index_html(n_cities: int) -> None:
       <div class="section-heading">
         <h2 id="unavailable-heading">対象外市町村（3市町村）</h2>
       </div>
-      <p class="section-note">下記はA31a浸水想定区域データが境界内に存在しないため、シナリオ生成対象外です。</p>
+      <p class="section-note">A31a浸水想定区域データが境界内に存在しないため、シナリオ生成対象外です。</p>
       <ul id="unavailable-links" class="unavailable-list"></ul>
     </section>
 
     <section class="section" aria-labelledby="reference-heading">
       <div class="section-heading">
-        <h2 id="reference-heading">参考：地図・避難ルート（実データ版）</h2>
+        <h2 id="reference-heading">参考：常総市実データ版</h2>
       </div>
-      <p class="section-note">常総市の実データ版成果物です。茨城県シミュレーションの確認後に参照します。</p>
+      <p class="section-note">道路ネットワーク、浸水時系列、時点別避難ルートを確認します。</p>
       <div class="reference-grid">
         <div class="reference-block">
-          <h3 class="reference-title" id="overview-heading">地図</h3>
+          <h3 class="reference-title">地図</h3>
           <div id="overview-links" class="card-grid"></div>
         </div>
         <div class="reference-block">
-          <h3 class="reference-title" id="routes-heading">避難ルート</h3>
+          <h3 class="reference-title">避難ルート</h3>
           <div id="route-links" class="route-list"></div>
         </div>
       </div>
     </section>
+  </main>
+"""
+    (OUTPUT_DIR / "phase1.html").write_text(_html_doc("Phase 1：避難ルート確認", body), encoding="utf-8")
+    print(f"[write] {OUTPUT_DIR / 'phase1.html'}")
 
-    <section class="section" id="phase2" aria-labelledby="phase2-heading">
+
+def write_phase2_html() -> None:
+    body = f"""{_page_header("Phase 2：SUMO自家用車避難", "交通流シミュレーション / TraCI / 評価CSV", "実装済み")}
+
+  <main class="page-shell">
+    <a class="back-link" href="index.html">トップページへ戻る</a>
+{_phase_nav("phase2")}
+    <p class="phase-lead">Phase 2では、Phase 1の閉鎖道路と避難需要をSUMOネットワークへ接続し、自家用車のみの避難を動的に評価します。</p>
+
+    <section class="section" aria-labelledby="phase2-contents-heading">
       <div class="section-heading">
-        <h2 id="phase2-heading">Phase 2：SUMO自家用車避難シミュレーション</h2>
+        <h2 id="phase2-contents-heading">確認できる内容</h2>
       </div>
-      <p class="section-note">シナリオA（自家用車のみ）の小規模、1/10、全量試行の評価結果です。</p>
-      <div id="phase2-links" class="card-grid"></div>
+      <ul class="detail-list">
+        <li>常総市のsmall / 1/10 / 全量試行における到着・未到着・逃げ遅れ候補</li>
+        <li>60秒間隔のアクティブ車両数、平均速度、停止台数による混雑推移</li>
+        <li>国道294号、国道・県道354号、県道357号、常総IC接続部の主要避難路別混雑</li>
+        <li>41市区町村へ拡張したPhase 2 SUMO入力・結果一覧</li>
+      </ul>
     </section>
 
-    <section class="section" id="phase3" aria-labelledby="phase3-heading">
+    <section class="section" aria-labelledby="phase2-links-heading">
       <div class="section-heading">
-        <h2 id="phase3-heading">Phase 3：デマンド交通バス比較</h2>
+        <h2 id="phase2-links-heading">Phase 2成果物</h2>
       </div>
-      <p class="section-note">Phase 3は未実装です。バス・比較・集計の成果物を作成した時点でこの欄に追加します。</p>
+      <p class="section-note">SUMO可視化HTML、全域一覧、評価CSV、比較CSV、ネットワーク概要を確認します。</p>
+      <div id="phase2-links" class="card-grid"></div>
+    </section>
+  </main>
+"""
+    (OUTPUT_DIR / "phase2.html").write_text(_html_doc("Phase 2：SUMO自家用車避難", body), encoding="utf-8")
+    print(f"[write] {OUTPUT_DIR / 'phase2.html'}")
+
+
+def write_phase3_html() -> None:
+    body = f"""{_page_header("Phase 3：デマンド交通バス比較", "バス活用シナリオ / 比較評価", "未実装")}
+
+  <main class="page-shell">
+    <a class="back-link" href="index.html">トップページへ戻る</a>
+{_phase_nav("phase3")}
+    <p class="phase-lead">Phase 3は未実装です。Phase 2の自家用車避難結果を比較基準として、デマンド交通バスを導入した場合の避難改善効果を検討します。</p>
+
+    <section class="section" aria-labelledby="phase3-plan-heading">
+      <div class="section-heading">
+        <h2 id="phase3-plan-heading">今後作成する内容</h2>
+      </div>
+      <ul class="detail-list">
+        <li>バス台数、定員、運行範囲、乗降地点、配車ルールの仕様化</li>
+        <li>シナリオB（自家用車＋デマンド交通バス）のSUMO/TraCI実装</li>
+        <li>自家用車のみとの到着率、逃げ遅れ候補、所要時間、混雑差分の比較</li>
+        <li>卒論本文で使用する図表、評価表、考察文書の作成</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="phase3-links-heading">
+      <div class="section-heading">
+        <h2 id="phase3-links-heading">Phase 3成果物</h2>
+      </div>
+      <p class="section-note">現時点では成果物はありません。実装後にこのページへ追加します。</p>
       <div id="phase3-links" class="card-grid"></div>
     </section>
   </main>
-</body>
-</html>
 """
-    (OUTPUT_DIR / "index.html").write_text(html, encoding="utf-8")
-    print(f"[write] {OUTPUT_DIR / 'index.html'}")
+    (OUTPUT_DIR / "phase3.html").write_text(_html_doc("Phase 3：デマンド交通バス比較", body), encoding="utf-8")
+    print(f"[write] {OUTPUT_DIR / 'phase3.html'}")
 
 
 def main() -> None:
@@ -540,7 +714,10 @@ def main() -> None:
     write_components_js()
     write_css()
     write_index_html(len(entries))
-    print(f"\n完了: {len(entries)} 市区町村を index.html に登録しました")
+    write_phase1_html(len(entries))
+    write_phase2_html()
+    write_phase3_html()
+    print(f"\n完了: {len(entries)} 市区町村を Phase別HTML に登録しました")
 
 
 if __name__ == "__main__":
