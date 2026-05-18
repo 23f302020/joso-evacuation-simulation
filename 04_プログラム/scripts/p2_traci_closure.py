@@ -9,6 +9,7 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+import networkx as nx
 import pandas as pd
 
 from p2_sumo_env import configure_sumo_environment
@@ -26,10 +27,14 @@ SUMO_DERIVED_DIR = SUMO_DIR / "derived"
 SUMO_SCENARIOS_DIR = SUMO_DIR / "scenarios"
 SUMO_RESULTS_DIR = SUMO_DIR / "results"
 
+GRAPHML_PATH = PROGRAM_DIR / "output" / "network" / "joso_road_network.graphml"
 ROAD_CLOSURE_TIMELINE_JSON = PROGRAM_DIR / "output" / "closure" / "road_closure_timeline.json"
 TIME_MAPPING_CSV = SUMO_DERIVED_DIR / "time_mapping_sumo.csv"
 EDGE_ID_MAPPING_CSV = SUMO_DERIVED_DIR / "edge_id_mapping.csv"
+PHASE1_EDGE_OSM_WAY_MAPPING_CSV = SUMO_DERIVED_DIR / "phase1_edge_osm_way_mapping.csv"
+SUMO_EDGES_CSV = SUMO_DERIVED_DIR / "sumo_edges.csv"
 CLOSURE_TIMELINE_SUMO_JSON = SUMO_DERIVED_DIR / "closure_timeline_sumo.json"
+MAJOR_ROUTE_EDGE_GROUPS_CSV = SUMO_DERIVED_DIR / "major_route_edge_groups.csv"
 
 SCENARIOS = {
     "small": {
@@ -38,6 +43,8 @@ SCENARIOS = {
         "vehicle_log": SUMO_RESULTS_DIR / "scenario_a_small_vehicle_log.csv",
         "closure_log": SUMO_RESULTS_DIR / "scenario_a_small_closure_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_small_congestion_log.csv",
+        "major_route_congestion_log": SUMO_RESULTS_DIR / "scenario_a_small_major_route_congestion_log.csv",
+        "major_route_congestion_summary": SUMO_RESULTS_DIR / "scenario_a_small_major_route_congestion_summary.csv",
         "summary": SUMO_RESULTS_DIR / "scenario_a_small_traci_summary.json",
         "fcd_period": "30",
     },
@@ -47,6 +54,8 @@ SCENARIOS = {
         "vehicle_log": SUMO_RESULTS_DIR / "scenario_a_10pct_vehicle_log.csv",
         "closure_log": SUMO_RESULTS_DIR / "scenario_a_10pct_closure_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_10pct_congestion_log.csv",
+        "major_route_congestion_log": SUMO_RESULTS_DIR / "scenario_a_10pct_major_route_congestion_log.csv",
+        "major_route_congestion_summary": SUMO_RESULTS_DIR / "scenario_a_10pct_major_route_congestion_summary.csv",
         "summary": SUMO_RESULTS_DIR / "scenario_a_10pct_traci_summary.json",
         "fcd_period": "30",
     },
@@ -56,6 +65,8 @@ SCENARIOS = {
         "vehicle_log": SUMO_RESULTS_DIR / "scenario_a_vehicle_log.csv",
         "closure_log": SUMO_RESULTS_DIR / "scenario_a_closure_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_congestion_log.csv",
+        "major_route_congestion_log": SUMO_RESULTS_DIR / "scenario_a_major_route_congestion_log.csv",
+        "major_route_congestion_summary": SUMO_RESULTS_DIR / "scenario_a_major_route_congestion_summary.csv",
         "summary": SUMO_RESULTS_DIR / "scenario_a_traci_summary.json",
         "fcd_period": "60",
     },
@@ -64,6 +75,36 @@ SCENARIOS = {
 STOP_SPEED_THRESHOLD = 0.1
 LONG_STOP_THRESHOLD_SEC = 600
 CONGESTION_LOG_INTERVAL_SEC = 60
+MAJOR_ROUTE_DEFINITIONS = [
+    {
+        "route_id": "r294",
+        "route_name": "国道294号",
+        "refs": {"294"},
+        "name_keywords": set(),
+        "match_rule": "ref=294",
+    },
+    {
+        "route_id": "r354",
+        "route_name": "国道・県道354号",
+        "refs": {"354"},
+        "name_keywords": set(),
+        "match_rule": "ref=354",
+    },
+    {
+        "route_id": "r357",
+        "route_name": "県道357号（谷和原筑西線）",
+        "refs": {"357"},
+        "name_keywords": {"谷和原筑西線"},
+        "match_rule": "ref=357 or name contains 谷和原筑西線",
+    },
+    {
+        "route_id": "joso_ic",
+        "route_name": "常総IC接続部（水海道有料道路）",
+        "refs": set(),
+        "name_keywords": {"水海道有料道路"},
+        "match_rule": "name contains 水海道有料道路",
+    },
+]
 
 
 def ensure_dirs() -> None:
@@ -78,6 +119,189 @@ def split_sumo_edge_ids(value: Any) -> list[str]:
     if not text:
         return []
     return [item for item in text.split(";") if item]
+
+
+def split_refs(value: Any) -> set[str]:
+    if value is None or pd.isna(value):
+        return set()
+    text = str(value).replace(";", ",")
+    return {item.strip() for item in text.split(",") if item.strip()}
+
+
+def route_matches(edge_data: dict[str, Any], definition: dict[str, Any]) -> bool:
+    refs = split_refs(edge_data.get("ref"))
+    name = str(edge_data.get("name") or "")
+    return bool(refs & definition["refs"]) or any(
+        keyword in name for keyword in definition["name_keywords"]
+    )
+
+
+def generate_major_route_edge_groups() -> list[dict[str, Any]]:
+    ensure_dirs()
+    if not GRAPHML_PATH.exists():
+        raise FileNotFoundError(GRAPHML_PATH)
+    if not PHASE1_EDGE_OSM_WAY_MAPPING_CSV.exists():
+        raise FileNotFoundError(PHASE1_EDGE_OSM_WAY_MAPPING_CSV)
+    if not SUMO_EDGES_CSV.exists():
+        raise FileNotFoundError(SUMO_EDGES_CSV)
+
+    way_rows = pd.read_csv(PHASE1_EDGE_OSM_WAY_MAPPING_CSV, dtype=str)
+    sumo_edges = pd.read_csv(SUMO_EDGES_CSV, dtype=str)
+    phase2_way_by_phase1 = dict(zip(way_rows["phase1_edge_id"], way_rows["phase2_osm_way_id"]))
+    sumo_by_base: dict[str, list[str]] = defaultdict(list)
+    length_by_sumo: dict[str, float] = {}
+    for _, row in sumo_edges.iterrows():
+        edge_id = str(row["sumo_edge_id"])
+        sumo_by_base[str(row["base_sumo_edge_id"])].append(edge_id)
+        length_by_sumo[edge_id] = float(row.get("length_m") or 0)
+
+    graph = nx.read_graphml(GRAPHML_PATH)
+    seen: set[tuple[str, str]] = set()
+    rows: list[dict[str, Any]] = []
+    for u, v, key, data in graph.edges(keys=True, data=True):
+        phase1_edge_id = f"{u}_{v}_{key}"
+        phase2_way_id = phase2_way_by_phase1.get(phase1_edge_id)
+        if not phase2_way_id:
+            continue
+        sumo_edge_ids = sumo_by_base.get(str(phase2_way_id), [])
+        if not sumo_edge_ids:
+            continue
+        for definition in MAJOR_ROUTE_DEFINITIONS:
+            if not route_matches(data, definition):
+                continue
+            for sumo_edge_id in sumo_edge_ids:
+                dedupe_key = (definition["route_id"], sumo_edge_id)
+                if dedupe_key in seen:
+                    continue
+                seen.add(dedupe_key)
+                rows.append(
+                    {
+                        "route_id": definition["route_id"],
+                        "route_name": definition["route_name"],
+                        "match_rule": definition["match_rule"],
+                        "phase1_edge_id": phase1_edge_id,
+                        "phase2_osm_way_id": phase2_way_id,
+                        "sumo_edge_id": sumo_edge_id,
+                        "sumo_edge_length_m": round(length_by_sumo.get(sumo_edge_id, 0), 3),
+                        "road_ref": data.get("ref") or "",
+                        "road_name": data.get("name") or "",
+                        "highway": data.get("highway") or "",
+                    }
+                )
+    rows.sort(key=lambda row: (row["route_id"], str(row["sumo_edge_id"])))
+    write_csv(
+        MAJOR_ROUTE_EDGE_GROUPS_CSV,
+        [
+            "route_id",
+            "route_name",
+            "match_rule",
+            "phase1_edge_id",
+            "phase2_osm_way_id",
+            "sumo_edge_id",
+            "sumo_edge_length_m",
+            "road_ref",
+            "road_name",
+            "highway",
+        ],
+        rows,
+    )
+    print(f"[INFO] saved: {MAJOR_ROUTE_EDGE_GROUPS_CSV} ({len(rows)} SUMO edges)")
+    return rows
+
+
+def load_major_route_edge_groups() -> dict[str, dict[str, Any]]:
+    if not MAJOR_ROUTE_EDGE_GROUPS_CSV.exists():
+        generate_major_route_edge_groups()
+    rows = pd.read_csv(MAJOR_ROUTE_EDGE_GROUPS_CSV, dtype=str)
+    groups: dict[str, dict[str, Any]] = {}
+    for _, row in rows.iterrows():
+        route_id = str(row["route_id"])
+        group = groups.setdefault(
+            route_id,
+            {
+                "route_id": route_id,
+                "route_name": row["route_name"],
+                "edge_ids": [],
+            },
+        )
+        group["edge_ids"].append(str(row["sumo_edge_id"]))
+    return groups
+
+
+def sample_major_route_congestion(
+    sim_time: int,
+    route_groups: dict[str, dict[str, Any]],
+    applied_edges: set[str],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for route_id, group in route_groups.items():
+        edge_ids = group["edge_ids"]
+        vehicle_count = 0
+        halting_count = 0
+        speed_weighted_sum = 0.0
+        occupancy_sum = 0.0
+        occupancy_samples = 0
+        valid_edge_count = 0
+        closed_edge_count = 0
+        for edge_id in edge_ids:
+            try:
+                edge_vehicle_count = int(traci.edge.getLastStepVehicleNumber(edge_id))
+                mean_speed = float(traci.edge.getLastStepMeanSpeed(edge_id))
+                halting = int(traci.edge.getLastStepHaltingNumber(edge_id))
+                occupancy = float(traci.edge.getLastStepOccupancy(edge_id))
+            except traci.TraCIException:
+                continue
+            valid_edge_count += 1
+            if edge_id in applied_edges:
+                closed_edge_count += 1
+            vehicle_count += edge_vehicle_count
+            halting_count += halting
+            speed_weighted_sum += mean_speed * edge_vehicle_count
+            occupancy_sum += occupancy
+            occupancy_samples += 1
+        rows.append(
+            {
+                "sim_time_sec": sim_time,
+                "route_id": route_id,
+                "route_name": group["route_name"],
+                "edge_count": valid_edge_count,
+                "closed_edge_count": closed_edge_count,
+                "vehicle_count": vehicle_count,
+                "halting_vehicle_count": halting_count,
+                "mean_speed_mps": round(speed_weighted_sum / vehicle_count, 6) if vehicle_count else "",
+                "mean_occupancy_pct": round(occupancy_sum / occupancy_samples, 6) if occupancy_samples else "",
+            }
+        )
+    return rows
+
+
+def summarize_major_route_congestion(
+    rows: list[dict[str, Any]], scenario_name: str
+) -> list[dict[str, Any]]:
+    by_route: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in rows:
+        by_route[str(row["route_id"])].append(row)
+    summaries: list[dict[str, Any]] = []
+    for route_id, route_rows in sorted(by_route.items()):
+        speeds = [float(row["mean_speed_mps"]) for row in route_rows if str(row["mean_speed_mps"]) != ""]
+        occupancies = [
+            float(row["mean_occupancy_pct"]) for row in route_rows if str(row["mean_occupancy_pct"]) != ""
+        ]
+        summaries.append(
+            {
+                "scenario": scenario_name,
+                "route_id": route_id,
+                "route_name": route_rows[0]["route_name"],
+                "samples": len(route_rows),
+                "edge_count": max(int(row["edge_count"]) for row in route_rows),
+                "max_closed_edge_count": max(int(row["closed_edge_count"]) for row in route_rows),
+                "max_vehicle_count": max(int(row["vehicle_count"]) for row in route_rows),
+                "max_halting_vehicle_count": max(int(row["halting_vehicle_count"]) for row in route_rows),
+                "min_mean_speed_mps": round(min(speeds), 6) if speeds else "",
+                "max_mean_occupancy_pct": round(max(occupancies), 6) if occupancies else "",
+            }
+        )
+    return summaries
 
 
 def generate_closure_timeline_sumo() -> None:
@@ -198,6 +422,7 @@ def run_traci_scenario(scenario_name: str = "small") -> None:
     ensure_dirs()
     scenario = SCENARIOS[scenario_name]
     closures = load_closure_timeline()
+    major_route_groups = load_major_route_edge_groups()
     planned_vehicles = load_planned_vehicles(scenario["assignments"])
     planned_by_source_edge: dict[str, list[str]] = defaultdict(list)
     for vehicle_id, planned in planned_vehicles.items():
@@ -227,6 +452,7 @@ def run_traci_scenario(scenario_name: str = "small") -> None:
     applied_edges: set[str] = set()
     closure_logs: list[dict[str, Any]] = []
     congestion_logs: list[dict[str, Any]] = []
+    major_route_congestion_logs: list[dict[str, Any]] = []
     vehicle_state: dict[str, dict[str, Any]] = {}
     reroute_failed_vehicle_ids: set[str] = set()
     departed_vehicle_ids: set[str] = set()
@@ -338,6 +564,9 @@ def run_traci_scenario(scenario_name: str = "small") -> None:
                         "stopped_vehicle_count": stopped_count,
                     }
                 )
+                major_route_congestion_logs.extend(
+                    sample_major_route_congestion(sim_time, major_route_groups, applied_edges)
+                )
     finally:
         traci.close(False)
 
@@ -397,6 +626,37 @@ def run_traci_scenario(scenario_name: str = "small") -> None:
         congestion_logs,
     )
     write_csv(
+        scenario["major_route_congestion_log"],
+        [
+            "sim_time_sec",
+            "route_id",
+            "route_name",
+            "edge_count",
+            "closed_edge_count",
+            "vehicle_count",
+            "halting_vehicle_count",
+            "mean_speed_mps",
+            "mean_occupancy_pct",
+        ],
+        major_route_congestion_logs,
+    )
+    write_csv(
+        scenario["major_route_congestion_summary"],
+        [
+            "scenario",
+            "route_id",
+            "route_name",
+            "samples",
+            "edge_count",
+            "max_closed_edge_count",
+            "max_vehicle_count",
+            "max_halting_vehicle_count",
+            "min_mean_speed_mps",
+            "max_mean_occupancy_pct",
+        ],
+        summarize_major_route_congestion(major_route_congestion_logs, scenario_name),
+    )
+    write_csv(
         scenario["vehicle_log"],
         [
             "vehicle_id",
@@ -433,12 +693,17 @@ def run_traci_scenario(scenario_name: str = "small") -> None:
         "stranded_main_count": sum(1 for row in vehicle_rows if row["stranded_main"]),
         "closure_event_count": len(closure_logs),
         "final_cumulative_closed_sumo_edge_count": len(applied_edges),
+        "major_route_group_count": len(major_route_groups),
+        "major_route_congestion_log": str(scenario["major_route_congestion_log"]),
+        "major_route_congestion_summary": str(scenario["major_route_congestion_summary"]),
     }
     scenario["summary"].write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(f"[INFO] saved: {scenario['vehicle_log']}")
     print(f"[INFO] saved: {scenario['closure_log']}")
     print(f"[INFO] saved: {scenario['congestion_log']}")
+    print(f"[INFO] saved: {scenario['major_route_congestion_log']}")
+    print(f"[INFO] saved: {scenario['major_route_congestion_summary']}")
     print(f"[INFO] saved: {scenario['summary']}")
 
 
@@ -450,13 +715,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "command",
-        choices=["closure-json", "run-small", "run-10pct", "run-full", "all"],
+        choices=["closure-json", "major-routes", "run-small", "run-10pct", "run-full", "all"],
         help="実行する処理",
     )
     args = parser.parse_args()
 
     if args.command == "closure-json":
         generate_closure_timeline_sumo()
+    elif args.command == "major-routes":
+        generate_major_route_edge_groups()
     elif args.command == "run-small":
         run_traci_scenario("small")
     elif args.command == "run-10pct":

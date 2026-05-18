@@ -160,6 +160,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-8-2 | `congestion_log.csv` を生成する | ✅ | P2-IMPL-6 | `congestion_log.csv` | 3ケース合算1,080行 |
 | P2-IMPL-8-3 | `phase1_phase2_comparison.csv` を生成する | ✅ | 8-1 | `phase1_phase2_comparison.csv` | Phase 1静的到達不可とPhase 2動的逃げ遅れを分離 |
 | P2-IMPL-8-4 | 卒論用表テンプレートへ反映する | ✅ | 8-1〜8-3 | `Phase2_評価表テンプレート.md` | 主要数値と注記を記載 |
+| P2-IMPL-8-5 | 主要避難路別の渋滞指標を生成する | ✅ | P2-IMPL-6 | `major_route_congestion_summary.csv` | 国道294号・国道/県道354号・県道357号・常総IC接続部を路線別集計 |
 
 ---
 

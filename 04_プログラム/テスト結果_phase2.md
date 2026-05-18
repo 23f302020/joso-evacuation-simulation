@@ -253,3 +253,58 @@ VIZ-2（FCD付きTraCI再実行）および VIZ-8（10pct拡張）は FCD XMLが
 
 P2-IMPL-VIZ の VIZ-2 と VIZ-8 を完了とし、Phase 2可視化は **実FCD small / 10pct 対応済み** とする。
 fullシナリオのFCD可視化は、ファイルサイズが大きくなるため現時点では対象外とする。
+
+---
+
+## 10. 主要避難路別渋滞分析 追加テスト
+
+追加日：2026/05/18  
+対象：`p2_traci_closure.py`、`p2_evaluate_results.py`
+
+### 10.1 実装内容
+
+開発メモのギャップ分析で「主要避難路ごとの渋滞指標」が未実装と確認されたため、GraphMLの `ref` / `name` から主要避難路のSUMO edge群を抽出し、TraCI実行中に路線別の渋滞指標を記録する処理を追加した。
+
+対象路線：
+
+- 国道294号
+- 国道・県道354号
+- 県道357号（谷和原筑西線）
+- 常総IC接続部（水海道有料道路）
+
+### 10.2 テスト一覧
+
+| ID | テスト | 結果 | 確認内容 |
+|---|---|---:|---|
+| T29 | `p2_traci_closure.py` 構文チェック | ✅ | `python -m py_compile` 合格 |
+| T30 | `major-routes` 実行 | ✅ | `major_route_edge_groups.csv` 1,398行を生成 |
+| T31 | `run-small` 再実行 | ✅ | small 40/40到着、主要避難路summary 4行を生成 |
+| T32 | `run-10pct` 再実行 | ✅ | 10pct 120/120到着、主要避難路summary 4行を生成 |
+| T33 | `run-full` 再実行 | ✅ | full 1,001台中987台到着、逃げ遅れ14台、主要避難路summary 4行を生成 |
+| T34 | `p2_evaluate_results.py all` | ✅ | `major_route_congestion_summary.csv` を評価フォルダへ統合し、評価表テンプレートへ表3を追加 |
+
+### 10.3 主要結果
+
+| ケース | 路線 | 最大車両数 | 最大停止車両数 | 最低平均速度(m/s) | 最大占有率(%) |
+|---|---|---:|---:|---:|---:|
+| small | 国道294号 | 4 | 0 | 19.845905 | 0.000479 |
+| small | 県道357号 | 9 | 0 | 19.405162 | 0.001049 |
+| 10pct | 国道294号 | 17 | 0 | 15.077378 | 0.001418 |
+| 10pct | 県道357号 | 30 | 0 | 13.403693 | 0.02038 |
+| full | 国道294号 | 61 | 7 | 4.411451 | 0.00547 |
+| full | 県道357号 | 137 | 105 | 1.642703 | 0.050718 |
+
+### 10.4 生成ファイル
+
+| ファイル | 内容 |
+|---|---|
+| `output/sumo/derived/major_route_edge_groups.csv` | 主要避難路とSUMO edgeの対応表 |
+| `output/sumo/results/scenario_a_small_major_route_congestion_log.csv` | smallの路線別時系列ログ |
+| `output/sumo/results/scenario_a_10pct_major_route_congestion_log.csv` | 10pctの路線別時系列ログ |
+| `output/sumo/results/scenario_a_major_route_congestion_log.csv` | fullの路線別時系列ログ |
+| `output/sumo/evaluation/major_route_congestion_summary.csv` | small / 10pct / full の路線別summary統合 |
+
+### 10.5 判定
+
+合格。  
+評価フレームで未実装だった「主要避難路ごとの渋滞指標」は、常総市シナリオAのsmall / 10pct / fullについて実装・出力済みである。

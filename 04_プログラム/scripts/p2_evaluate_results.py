@@ -24,6 +24,7 @@ PHASE1_UNREACHABLE_CSV = OUTPUT_DIR / "routes" / "unreachable_agents.csv"
 
 EVACUATION_SUMMARY_CSV = SUMO_EVAL_DIR / "evacuation_summary.csv"
 CONGESTION_LOG_CSV = SUMO_EVAL_DIR / "congestion_log.csv"
+MAJOR_ROUTE_CONGESTION_SUMMARY_CSV = SUMO_EVAL_DIR / "major_route_congestion_summary.csv"
 PHASE1_PHASE2_COMPARISON_CSV = SUMO_EVAL_DIR / "phase1_phase2_comparison.csv"
 TABLE_TEMPLATE_MD = RESEARCH_RESULTS_PHASE2_DIR / "Phase2_評価表テンプレート.md"
 
@@ -33,18 +34,24 @@ SCENARIOS = {
         "summary": SUMO_RESULTS_DIR / "scenario_a_small_traci_summary.json",
         "vehicle_log": SUMO_RESULTS_DIR / "scenario_a_small_vehicle_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_small_congestion_log.csv",
+        "major_route_congestion_summary": SUMO_RESULTS_DIR
+        / "scenario_a_small_major_route_congestion_summary.csv",
     },
     "10pct": {
         "label": "10pct",
         "summary": SUMO_RESULTS_DIR / "scenario_a_10pct_traci_summary.json",
         "vehicle_log": SUMO_RESULTS_DIR / "scenario_a_10pct_vehicle_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_10pct_congestion_log.csv",
+        "major_route_congestion_summary": SUMO_RESULTS_DIR
+        / "scenario_a_10pct_major_route_congestion_summary.csv",
     },
     "full": {
         "label": "full",
         "summary": SUMO_RESULTS_DIR / "scenario_a_traci_summary.json",
         "vehicle_log": SUMO_RESULTS_DIR / "scenario_a_vehicle_log.csv",
         "congestion_log": SUMO_RESULTS_DIR / "scenario_a_congestion_log.csv",
+        "major_route_congestion_summary": SUMO_RESULTS_DIR
+        / "scenario_a_major_route_congestion_summary.csv",
     },
 }
 
@@ -62,6 +69,12 @@ def ratio(numerator: int, denominator: int) -> float:
     if denominator == 0:
         return 0.0
     return round(numerator / denominator, 6)
+
+
+def md_value(value: Any) -> Any:
+    if pd.isna(value):
+        return ""
+    return value
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
@@ -114,6 +127,21 @@ def generate_congestion_log() -> pd.DataFrame:
         frames.append(df)
     output = pd.concat(frames, ignore_index=True)
     output.to_csv(CONGESTION_LOG_CSV, index=False, encoding="utf-8")
+    return output
+
+
+def generate_major_route_congestion_summary() -> pd.DataFrame:
+    frames: list[pd.DataFrame] = []
+    for scenario_name, scenario in SCENARIOS.items():
+        path = scenario["major_route_congestion_summary"]
+        if not path.exists():
+            continue
+        df = pd.read_csv(path)
+        if "scenario" not in df.columns:
+            df.insert(0, "scenario", scenario_name)
+        frames.append(df)
+    output = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+    output.to_csv(MAJOR_ROUTE_CONGESTION_SUMMARY_CSV, index=False, encoding="utf-8")
     return output
 
 
@@ -178,7 +206,11 @@ def generate_phase1_phase2_comparison(evacuation_summary: pd.DataFrame) -> pd.Da
     return pd.DataFrame(rows)
 
 
-def write_table_template(evacuation_summary: pd.DataFrame, comparison: pd.DataFrame) -> None:
+def write_table_template(
+    evacuation_summary: pd.DataFrame,
+    comparison: pd.DataFrame,
+    major_route_summary: pd.DataFrame,
+) -> None:
     phase1_rows = comparison[comparison["analysis_type"] == "phase1_static_route_search"]
     full = evacuation_summary[evacuation_summary["scenario_name"] == "full"].iloc[0]
     lines = [
@@ -210,10 +242,29 @@ def write_table_template(evacuation_summary: pd.DataFrame, comparison: pd.DataFr
             f"{int(full['stranded_main_count'])}台 | "
             "動的閉鎖下でreroute失敗、600秒以上停止、または出発edge閉鎖により発車不能となった対象 |",
             "",
+            "## 表3 主要避難路別の渋滞指標",
+            "",
+            "| ケース | 路線 | 最大車両数 | 最大停止車両数 | 最低平均速度(m/s) | 最大占有率(%) | 最大閉鎖edge数 |",
+            "|---|---|---:|---:|---:|---:|---:|",
+        ]
+    )
+    if not major_route_summary.empty:
+        for _, row in major_route_summary.iterrows():
+            row_data = {key: md_value(value) for key, value in row.to_dict().items()}
+            lines.append(
+                "| {scenario} | {route_name} | {max_vehicle_count} | {max_halting_vehicle_count} | "
+                "{min_mean_speed_mps} | {max_mean_occupancy_pct} | {max_closed_edge_count} |".format(
+                    **row_data
+                )
+            )
+    lines.extend(
+        [
+            "",
             "## 注記",
             "",
             "- Phase 1はメッシュ・人口単位、Phase 2は車両単位であり、同じ数値として単純比較しない。",
             "- Phase 2全量試行では、未到着14台はいずれも閉鎖済み出発edgeから発車できなかった車両として記録した。",
+            "- 表3の主要避難路はGraphMLの路線番号・道路名から抽出したSUMO edge群であり、国道294号、国道・県道354号、県道357号、常総IC接続部（水海道有料道路）を対象とする。",
             "- SUMOのteleport警告は渋滞・車線遷移問題の解消処理であり、本集計では到着/未到着と逃げ遅れ主指標を優先して評価する。",
         ]
     )
@@ -224,10 +275,12 @@ def run_all() -> None:
     ensure_dirs()
     evacuation_summary = generate_evacuation_summary()
     generate_congestion_log()
+    major_route_summary = generate_major_route_congestion_summary()
     comparison = generate_phase1_phase2_comparison(evacuation_summary)
-    write_table_template(evacuation_summary, comparison)
+    write_table_template(evacuation_summary, comparison, major_route_summary)
     print(f"[INFO] saved: {EVACUATION_SUMMARY_CSV}")
     print(f"[INFO] saved: {CONGESTION_LOG_CSV}")
+    print(f"[INFO] saved: {MAJOR_ROUTE_CONGESTION_SUMMARY_CSV}")
     print(f"[INFO] saved: {PHASE1_PHASE2_COMPARISON_CSV}")
     print(f"[INFO] saved: {TABLE_TEMPLATE_MD}")
 
