@@ -383,3 +383,50 @@ Phase 2ページの成果物を、以下の2セクターへ分割した。
 
 合格。  
 Phase 2ページでは、表として使う成果物をExcel/CSVダウンロード欄、動きで確認する成果物をアニメーション欄として分けて確認できる。
+
+---
+
+## 13. Phase 3前 Phase 2比較基準固定・前処理テスト
+
+追加日：2026/05/19  
+対象：`p2_evaluate_results.py`、`p2_phase3_prep_agents.py`、`p2_build_phase2_excel.py`、`gen_index.py`
+
+### 13.1 実装・補完内容
+
+Phase 3本体へは入らず、Phase 2を比較基準として固定するための不足結果を補完した。
+
+| 区分 | 内容 |
+|---|---|
+| Phase 2比較基準固定 | 成果物固定リスト、Phase 1/2比較概念図、先生コメント対応表を作成 |
+| Phase 3前処理 | エージェント4タイプ分類、バス需要候補、分類集計CSVを生成 |
+| Phase 2不足結果補完 | 避難完了時間、試行設定比較CSV、試行設定比較表を追加 |
+
+### 13.2 テスト一覧
+
+| ID | テスト | 結果 | 確認内容 |
+|---|---|---:|---|
+| T44 | 追加スクリプト構文チェック | ✅ | `p2_evaluate_results.py`、`p2_phase3_prep_agents.py`、`p2_build_phase2_excel.py`、`gen_index.py` の `py_compile` 合格 |
+| T45 | Phase 2評価再集計 | ✅ | `evacuation_summary.csv` に避難完了時間系の列を追加 |
+| T46 | 試行設定比較生成 | ✅ | `trial_settings_comparison.csv` と `Phase2_試行設定比較表.md` を生成 |
+| T47 | エージェント4タイプ分類 | ✅ | `agent_types.csv` 40出発地、`bus_demand_candidates.csv` 30出発地を生成 |
+| T48 | Excel再生成 | ✅ | `phase2_results_excel.xlsx` を `TrialSettings` 含む8シート構成で再生成 |
+| T49 | HTMLリンク検証 | ✅ | 相対リンク82件を検査し、欠損0件 |
+
+### 13.3 主な結果
+
+| 指標 | 値 |
+|---|---:|
+| small避難完了時刻 | 619秒 |
+| 10pct避難完了時刻 | 615秒 |
+| full最終到着時刻 | 9,037秒 |
+| full避難完了状態 | incomplete |
+| Type1 車保有・非高齢者 | 1,400人 |
+| Type2 車保有・高齢者 | 519人 |
+| Type3 車非保有・非高齢者 | 247人 |
+| Type4 車非保有・高齢者 | 92人 |
+| バス優先人口 | 118人 |
+
+### 13.4 判定
+
+合格。  
+Phase 3に入る前の比較基準固定、エージェント前処理、Phase 2不足結果の補完は完了した。残るPhase 2側の主な未処理は、SUMO引用・検証チェックリストの卒論用整理と、必要時の出発時刻分散感度分析である。

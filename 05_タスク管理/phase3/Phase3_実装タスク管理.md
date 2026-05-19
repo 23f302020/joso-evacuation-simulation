@@ -17,8 +17,8 @@ Phase 3では、Phase 2のシナリオA（自家用車のみ）を比較基準�
 | ID | タスク | 状態 | 依存 | 成果物 | 検証 |
 |---|---|---:|---|---|---|
 | P3-IMPL-0 | Phase 3実装前仕様書を作成する | ❌ | P3-JUDGE | `Phase3_実装前仕様.md` | 判断事項と採用理由が記録されている |
-| P3-IMPL-1 | エージェント4種別を既存データへ付与する | ❌ | P3-IMPL-0 | `agent_types.csv` | Type1〜4の件数が集計できる |
-| P3-IMPL-2 | バス利用候補者を抽出する | ❌ | P3-IMPL-1 | `bus_demand_candidates.csv` | 車非保有者・高齢者優先の条件が反映されている |
+| P3-IMPL-1 | エージェント4種別を既存データへ付与する | ✅ | Phase 3前処理 | `agent_types.csv` | Type1〜4の件数を集計済み |
+| P3-IMPL-2 | バス利用候補者を抽出する | ✅ | P3-IMPL-1 | `bus_demand_candidates.csv` | 車非保有者・高齢者優先の候補を抽出済み |
 | P3-IMPL-3 | バス拠点・目的地・乗降地点を設定する | ❌ | P3-IMPL-0 | `bus_stops.csv`, `bus_depots.csv` | SUMO edgeへスナップできる |
 | P3-IMPL-4 | バスroute生成処理を実装する | ❌ | P3-IMPL-2, P3-IMPL-3 | `scenario_b_buses.rou.xml` | SUMOでrouteエラーが出ない |
 | P3-IMPL-5 | シナリオBの車両routeを生成する | ❌ | P3-IMPL-1 | `scenario_b_cars.rou.xml` | 自家用車とバス対象者の重複がない |

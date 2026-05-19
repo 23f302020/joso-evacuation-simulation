@@ -138,6 +138,7 @@ def write_pages_js(entries: list[dict]) -> None:
     {{ title: "市区町村別避難結果サマリCSV", meta: "Phase 2全域拡張の市区町村別集計", href: "sumo/evaluation/evacuation_summary_by_municipality.csv", download: true }},
     {{ title: "Phase 1 / Phase 2 全域比較CSV", meta: "静的入力規模と動的SUMO結果を市区町村別に整理", href: "sumo/evaluation/phase1_phase2_region_comparison.csv", download: true }},
     {{ title: "避難結果サマリCSV", meta: "small / 1/10 / full の到着・未到着・逃げ遅れ", href: "sumo/evaluation/evacuation_summary.csv", download: true }},
+    {{ title: "試行設定比較CSV", meta: "small / 10pct / full の車両数・到着率・避難完了時間", href: "sumo/evaluation/trial_settings_comparison.csv", download: true }},
     {{ title: "混雑ログCSV", meta: "60秒間隔のアクティブ台数・平均速度・停止台数", href: "sumo/evaluation/congestion_log.csv", download: true }},
     {{ title: "主要避難路別混雑集計CSV", meta: "R294・R354・R357・常総IC接続部の平均速度・低速率", href: "sumo/evaluation/major_route_congestion_summary.csv", download: true }},
     {{ title: "Phase 1 / Phase 2 比較CSV", meta: "常総市の静的到達不可と動的逃げ遅れを整理", href: "sumo/evaluation/phase1_phase2_comparison.csv", download: true }},
