@@ -430,3 +430,63 @@ Phase 3本体へは入らず、Phase 2を比較基準として固定するため
 
 合格。  
 Phase 3に入る前の比較基準固定、エージェント前処理、Phase 2不足結果の補完は完了した。残るPhase 2側の主な未処理は、SUMO引用・検証チェックリストの卒論用整理と、必要時の出発時刻分散感度分析である。
+
+---
+
+## 14. Phase 2 最終チェック
+
+追加日：2026/05/19  
+対象：Phase 2全体の最終成果物、評価CSV、Excel、HTML導線、Phase 3前処理CSV
+
+### 14.1 実施内容
+
+Phase 2の最終確認として、以下を再実行・検証した。
+
+| 区分 | 内容 |
+|---|---|
+| 構文確認 | `p2_*.py` 全スクリプトと `gen_index.py` の `py_compile` |
+| 評価再集計 | `p2_evaluate_results.py all` |
+| Phase 3前処理 | `p2_phase3_prep_agents.py all` |
+| Excel再生成 | `p2_build_phase2_excel.py all` |
+| HTML再生成 | `gen_index.py` |
+| 成果物確認 | 必須ファイル25件の存在確認 |
+| リンク確認 | HTML/JS内の相対リンク82件の存在確認 |
+| 整合性確認 | 避難結果CSV、エージェント分類集計、Excelシート構成 |
+
+### 14.2 テスト一覧
+
+| ID | テスト | 結果 | 確認内容 |
+|---|---|---:|---|
+| T50 | Phase 2スクリプト構文チェック | ✅ | `p2_*.py` と `gen_index.py` の `py_compile` 合格 |
+| T51 | 評価CSV再生成 | ✅ | `evacuation_summary.csv`、`trial_settings_comparison.csv`、比較CSV、混雑CSVを再生成 |
+| T52 | Phase 3前処理CSV再生成 | ✅ | `agent_types.csv` 40出発地、`bus_demand_candidates.csv` 30出発地を再生成 |
+| T53 | Excel成果物再生成 | ✅ | `phase2_results_excel.xlsx` を8シート構成で再生成 |
+| T54 | HTML成果物再生成 | ✅ | `index.html`、`phase1.html`、`phase2.html`、`phase3.html` を再生成 |
+| T55 | 必須ファイル存在確認 | ✅ | 必須ファイル25件、欠損0件 |
+| T56 | HTML/JSリンク検証 | ✅ | 相対リンク82件、欠損0件 |
+| T57 | 主要値整合性確認 | ✅ | small 40/40 complete、10pct 120/120 complete、full 1001台中987台到着・incomplete |
+| T58 | Excelシート確認 | ✅ | `Summary, Evacuation, TrialSettings, CongestionLog, MajorRoutes, P1P2_Joso, Municipalities, P1P2_Regions` |
+
+### 14.3 確認値
+
+| 指標 | 値 |
+|---|---:|
+| 必須ファイル確認数 | 25 |
+| HTML/JS相対リンク確認数 | 82 |
+| `evacuation_summary.csv` 行数 | 3 |
+| small到着台数 | 40 / 40 |
+| 10pct到着台数 | 120 / 120 |
+| full到着台数 | 987 / 1,001 |
+| full避難完了状態 | incomplete |
+| バス優先人口 | 118 |
+| Excelシート数 | 8 |
+
+### 14.4 修正結果
+
+最終チェックでは、追加修正が必要なエラーは確認されなかった。  
+ただし、`開発メモ/memo.md` に実装済み項目の完了済み一覧が残っていたため、未実装・判断待ち項目だけに整理し直した。
+
+### 14.5 判定
+
+合格。  
+Phase 2成果物、評価CSV、Excel成果物、HTML導線、Phase 3前処理CSVは最終チェックを通過した。Phase 2は比較基準として固定可能な状態である。
