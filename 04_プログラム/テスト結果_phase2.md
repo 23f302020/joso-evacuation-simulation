@@ -343,3 +343,43 @@ fullシナリオのFCD可視化は、ファイルサイズが大きくなるた�
 
 合格。  
 トップページとPhase別ページは生成済みであり、相対リンク欠損は確認されなかった。
+
+---
+
+## 12. Phase 2ページ Excel/アニメーション分割テスト
+
+追加日：2026/05/19  
+対象：`gen_index.py`、`output/phase2.html`、`output/sumo/evaluation/phase2_results_excel.xlsx`
+
+### 12.1 実装内容
+
+Phase 2ページの成果物を、以下の2セクターへ分割した。
+
+| セクター | 内容 |
+|---|---|
+| Excelでダウンロードする成果物 | 統合Excelブック、元CSV |
+| アニメーションで確認できる成果物 | SUMO走行アニメーション、全域SUMO結果HTML |
+
+### 12.2 テスト一覧
+
+| ID | テスト | 結果 | 確認内容 |
+|---|---|---:|---|
+| T39 | Excelブック生成 | ✅ | `phase2_results_excel.xlsx` を生成、サイズ51,356 bytes |
+| T40 | Excel内容検査 | ✅ | Summary + 評価CSV6シートを生成、エラー文字列検索0件 |
+| T41 | `gen_index.py` 構文チェック | ✅ | `python -m py_compile` 合格 |
+| T42 | HTML再生成 | ✅ | `phase2.html` にExcelセクターとアニメーションセクターを生成 |
+| T43 | 相対リンク検証 | ✅ | HTML/JS内の相対リンク81件を検査し、欠損0件 |
+
+### 12.3 生成・更新ファイル
+
+| ファイル | 内容 |
+|---|---|
+| `output/sumo/evaluation/phase2_results_excel.xlsx` | Phase 2評価CSVを統合したExcelブック |
+| `output/phase2.html` | Excelダウンロード、アニメーション確認の2セクター構成 |
+| `output/assets/phase1-pages.js` | `phase2Excel` と `phase2Animation` のリンク配列 |
+| `output/assets/phase1-components.js` | download属性付きカード表示 |
+
+### 12.4 判定
+
+合格。  
+Phase 2ページでは、表として使う成果物をExcel/CSVダウンロード欄、動きで確認する成果物をアニメーション欄として分けて確認できる。

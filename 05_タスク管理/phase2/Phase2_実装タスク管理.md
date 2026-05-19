@@ -177,6 +177,10 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-IMPL-9-7 | Phase 2専用ページを作成する | ✅ | 9-5 | `output/phase2.html` | SUMO可視化、評価CSV、主要避難路混雑、全域SUMO結果を分離 |
 | P2-IMPL-9-8 | Phase 3専用ページを作成する | ✅ | 9-5 | `output/phase3.html` | 未実装内容と今後作成する成果物を明記 |
 | P2-IMPL-9-9 | Phase別HTMLリンク検証を行う | ✅ | 9-6, 9-7, 9-8 | HTML/JSリンク検査 | 相対リンク82件、欠損0件 |
+| P2-IMPL-9-10 | Phase 2評価CSVをExcelブックへ統合する | ✅ | P2-IMPL-8 | `output/sumo/evaluation/phase2_results_excel.xlsx` | 6種類の評価CSVを7シート構成で統合 |
+| P2-IMPL-9-11 | Phase 2ページにExcelダウンロードセクターを作成する | ✅ | 9-10 | `output/phase2.html` | 統合Excelと元CSVを分離表示 |
+| P2-IMPL-9-12 | Phase 2ページにアニメーション確認セクターを作成する | ✅ | VIZ-4, REGION-11 | `output/phase2.html` | SUMO走行アニメーションと全域結果HTMLを分離表示 |
+| P2-IMPL-9-13 | Excel/アニメーション分割後のリンク検証を行う | ✅ | 9-11, 9-12 | HTML/JSリンク検査 | 相対リンク81件、欠損0件 |
 
 ---
 

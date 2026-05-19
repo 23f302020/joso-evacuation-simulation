@@ -133,17 +133,18 @@ def write_pages_js(entries: list[dict]) -> None:
   unified: [
     {{ title: "茨城県41市区町村 統合シミュレーション", meta: "県内拡張版。まずはこちらから確認", href: "unified/scenario_route_simulation.html", primary: true }},
   ],
-  phase2: [
-    {{ title: "Phase 2 全域SUMO結果", meta: "41市区町村のsmall/10pct/full方針を一覧表示", href: "sumo/regions/index.html", primary: true }},
+  phase2Excel: [
+    {{ title: "Phase 2評価結果 Excel", meta: "評価CSV6種類を1つのExcelブックへ統合", href: "sumo/evaluation/phase2_results_excel.xlsx", primary: true, download: true }},
+    {{ title: "市区町村別避難結果サマリCSV", meta: "Phase 2全域拡張の市区町村別集計", href: "sumo/evaluation/evacuation_summary_by_municipality.csv", download: true }},
+    {{ title: "Phase 1 / Phase 2 全域比較CSV", meta: "静的入力規模と動的SUMO結果を市区町村別に整理", href: "sumo/evaluation/phase1_phase2_region_comparison.csv", download: true }},
+    {{ title: "避難結果サマリCSV", meta: "small / 1/10 / full の到着・未到着・逃げ遅れ", href: "sumo/evaluation/evacuation_summary.csv", download: true }},
+    {{ title: "混雑ログCSV", meta: "60秒間隔のアクティブ台数・平均速度・停止台数", href: "sumo/evaluation/congestion_log.csv", download: true }},
+    {{ title: "主要避難路別混雑集計CSV", meta: "R294・R354・R357・常総IC接続部の平均速度・低速率", href: "sumo/evaluation/major_route_congestion_summary.csv", download: true }},
+    {{ title: "Phase 1 / Phase 2 比較CSV", meta: "常総市の静的到達不可と動的逃げ遅れを整理", href: "sumo/evaluation/phase1_phase2_comparison.csv", download: true }},
+  ],
+  phase2Animation: [
     {{ title: "SUMO走行アニメーション", meta: "FCD出力ベースの車両移動・道路閉鎖可視化", href: "sumo/viz/sumo_viz.html", primary: true }},
-    {{ title: "市区町村別避難結果サマリ", meta: "Phase 2全域拡張の市区町村別集計CSV", href: "sumo/evaluation/evacuation_summary_by_municipality.csv" }},
-    {{ title: "Phase 1 / Phase 2 全域比較", meta: "静的入力規模と動的SUMO結果を市区町村別に整理", href: "sumo/evaluation/phase1_phase2_region_comparison.csv" }},
-    {{ title: "避難結果サマリ", meta: "small / 1/10 / full の到着・未到着・逃げ遅れ", href: "sumo/evaluation/evacuation_summary.csv", primary: true }},
-    {{ title: "混雑ログ", meta: "60秒間隔のアクティブ台数・平均速度・停止台数", href: "sumo/evaluation/congestion_log.csv" }},
-    {{ title: "主要避難路別混雑集計", meta: "R294・R354・R357・常総IC接続部の平均速度・低速率", href: "sumo/evaluation/major_route_congestion_summary.csv" }},
-    {{ title: "Phase 1 / Phase 2 比較", meta: "静的到達不可と動的逃げ遅れを単位別に整理", href: "sumo/evaluation/phase1_phase2_comparison.csv" }},
-    {{ title: "全量試行サマリJSON", meta: "1,001台試行のTraCI集計", href: "sumo/results/scenario_a_traci_summary.json" }},
-    {{ title: "SUMOネットワーク概要", meta: "netconvert後のedge / junction / connection件数", href: "sumo/network/sumo_network_summary.md" }},
+    {{ title: "Phase 2 全域SUMO結果", meta: "41市区町村のsmall/10pct/full方針を一覧表示", href: "sumo/regions/index.html" }},
   ],
   phase3: [],
   cities: [
@@ -164,6 +165,7 @@ def write_components_js() -> None:
     const link = document.createElement("a");
     link.className = page.primary ? "card-link card-link-primary" : "card-link";
     link.href = page.href;
+    if (page.download) link.setAttribute("download", "");
     const title = document.createElement("span");
     title.className = "card-title";
     title.textContent = page.title;
@@ -269,7 +271,8 @@ def write_components_js() -> None:
     renderList("route-links", pages.routes, createRouteItem);
     renderList("scenario-links", pages.scenario || [], createCard);
     renderList("unified-links", pages.unified || [], createCard);
-    renderList("phase2-links", pages.phase2 || [], createCard);
+    renderList("phase2-excel-links", pages.phase2Excel || [], createCard);
+    renderList("phase2-animation-links", pages.phase2Animation || [], createCard);
     renderList("phase3-links", pages.phase3 || [], createCard);
     renderCities(pages.cities || []);
     renderList("unavailable-links", pages.unavailable || [], createUnavailableItem);
@@ -662,12 +665,20 @@ def write_phase2_html() -> None:
       </ul>
     </section>
 
-    <section class="section" aria-labelledby="phase2-links-heading">
+    <section class="section" aria-labelledby="phase2-excel-heading">
       <div class="section-heading">
-        <h2 id="phase2-links-heading">Phase 2成果物</h2>
+        <h2 id="phase2-excel-heading">Excelでダウンロードする成果物</h2>
       </div>
-      <p class="section-note">SUMO可視化HTML、全域一覧、評価CSV、比較CSV、ネットワーク概要を確認します。</p>
-      <div id="phase2-links" class="card-grid"></div>
+      <p class="section-note">統合Excelブックと、Excelで開ける元CSVをまとめています。表・考察・卒論転記に使う成果物です。</p>
+      <div id="phase2-excel-links" class="card-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="phase2-animation-heading">
+      <div class="section-heading">
+        <h2 id="phase2-animation-heading">アニメーションで確認できる成果物</h2>
+      </div>
+      <p class="section-note">SUMOの車両移動、道路閉鎖、対象市区町村別の実行結果を画面で確認します。</p>
+      <div id="phase2-animation-links" class="card-grid"></div>
     </section>
   </main>
 """
