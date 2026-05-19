@@ -25,7 +25,7 @@
 |---:|---|---|---|---|
 | 表P2-1 | Phase 2 実装タスク一覧 | 作成済み | `05_タスク管理/Phase2_実装タスク管理.md` | 実装マイルストーンと依存関係 |
 | 表P2-2 | Phase 2 派生データ列仕様 | 作成済み | `Phase2_派生データ仕様.md` | 各CSV/JSONの列・構造 |
-| 表P2-3 | SUMO導入・確認結果 | 作成済み | `Phase2_SUMO導入・変換手順.md` | SUMO 1.26.0、`SUMO_HOME`、Python API |
+| 表P2-3 | SUMO導入・確認結果 | 作成済み | `Phase2_SUMO導入・変換手順.md`, `Phase2_SUMO引用・再現性メモ.md` | SUMO 1.26.0、`SUMO_HOME`、Python API、引用情報 |
 | 表P2-4 | 小規模・1/10・全量試行の設定比較 | 作成済み | `Phase2_試行設定比較表.md`, `trial_settings_comparison.csv` | 車両数、避難完了時間、到着率 |
 | 表P2-5 | Phase 1/Phase 2 比較表 | 作成済み（CSV） | `evaluation/phase1_phase2_comparison.csv`（常総市）`evaluation/phase1_phase2_region_comparison.csv`（全域164行） | 静的到達不可と動的逃げ遅れを分離して整理済み |
 | 表P2-6 | 先生コメント対応表 | 作成済み | `Phase2_先生コメント対応表.md` | 避難所安全性、1/10試行、軽量化 |
@@ -42,12 +42,12 @@
 
 ---
 
-## 4. 実装後に追加する図表
+## 4. 実装後に追加した図表
 
-| 優先 | 図表 | 追加タイミング |
+| 優先 | 図表 | 状態 |
 |---:|---|---|
-| 1 | 小規模・1/10・全量の車両数比較表 | route/config生成後 |
-| 2 | 時刻別閉鎖edge数と逃げ遅れ台数の表 | TraCI実行後 |
-| 3 | 時刻別平均速度・停止台数のグラフ | `congestion_log.csv` 生成後 |
-| 4 | Phase 1到達不可数とPhase 2逃げ遅れ台数の比較表 | `phase1_phase2_comparison.csv` 生成後 |
-| 5 | SUMO-GUI画面キャプチャ | `joso.net.xml` 確認後 |
+| 1 | 小規模・1/10・全量の車両数比較表 | `Phase2_試行設定比較表.md` と `trial_settings_comparison.csv` で作成済み |
+| 2 | 時刻別閉鎖edge数と逃げ遅れ台数の表 | `evacuation_summary.csv`、`trial_settings_comparison.csv`、`テスト結果_phase2.md` に反映済み |
+| 3 | 時刻別平均速度・停止台数のグラフ | `congestion_log.csv` を生成済み。本文では必要に応じて表またはグラフ化する |
+| 4 | Phase 1到達不可数とPhase 2逃げ遅れ台数の比較表 | `phase1_phase2_comparison.csv` と `phase1_phase2_region_comparison.csv` で作成済み |
+| 5 | SUMO画面・アニメーション確認 | `sumo_viz.html` でsmall / 10pctを確認可能 |
