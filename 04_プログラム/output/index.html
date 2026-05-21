@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>研究成果物トップページ</title>
+  <link rel="stylesheet" href="assets/phase1.css">
+</head>
+<body>
+  <nav class="global-taskbar" aria-label="成果物共通ナビゲーション">
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="index.html" aria-current="page">トップ</a>
+      <div class="taskbar-menu" aria-label="トップページのセクション">
+        <a href="index.html#research-intro">研究の説明</a>
+        <a href="index.html#overview">研究概要</a>
+        <a href="index.html#phase-list">Phase別入口</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase1.html">Phase 1</a>
+      <div class="taskbar-menu" aria-label="Phase 1のセクション">
+        <a href="phase1.html#unified-heading">統合シミュレーション</a>
+        <a href="phase1.html#cities-heading">市区町村別</a>
+        <a href="phase1.html#scenario-heading">常総市単独</a>
+        <a href="phase1.html#unavailable-heading">対象外市町村</a>
+        <a href="phase1.html#reference-heading">実データ版</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase2.html">Phase 2</a>
+      <div class="taskbar-menu" aria-label="Phase 2のセクション">
+        <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
+        <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase3.html">Phase 3</a>
+      <div class="taskbar-menu" aria-label="Phase 3のセクション">
+        <a href="phase3.html#phase3-plan-heading">今後作成する内容</a>
+        <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="faq.html">想定質問</a>
+      <div class="taskbar-menu" aria-label="想定質問のセクション">
+        <a href="faq.html#faq-search">質問を検索</a>
+        <a href="faq.html#faq-list">想定質問一覧</a>
+      </div>
+    </div>
+  </nav>
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">2015 鬼怒川氾濫 / 茨城県</p>
+      <h1>研究成果物トップページ</h1>
+    </div>
+    <div class="header-right">
+      <p class="updated">Phase別入口</p>
+      <a class="github-link" href="https://github.com/23f302020/joso-evacuation-simulation" target="_blank" rel="noopener noreferrer">
+        <svg class="github-icon" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="research-intro" id="research-intro" aria-label="研究の説明">
+      <h2 class="intro-title">この研究について</h2>
+      <p class="intro-lead">河川が氾濫したとき、自家用車で避難できるか。バスがあれば何が変わるか。2015年の鬼怒川氾濫（茨城県常総市）を事例に、コンピュータシミュレーションで検証する卒業研究です。</p>
+      <div class="intro-grid">
+        <div class="intro-card">
+          <span class="intro-icon">🌊</span>
+          <h3>研究の背景</h3>
+          <p>2015年9月、鬼怒川の氾濫で常総市が浸水。自家用車避難が集中し道路が混雑したほか、車を持たない高齢者など要支援者の避難が困難でした。この課題を数値的に評価します。</p>
+        </div>
+        <div class="intro-card">
+          <span class="intro-icon">🗺️</span>
+          <h3>Phase 1：経路検索</h3>
+          <p>浸水により閉鎖される道路を除き、避難所へ到達できる経路があるかを確認する静的な分析です。茨城県内41市区町村を対象にしています。</p>
+        </div>
+        <div class="intro-card">
+          <span class="intro-icon">🚗</span>
+          <h3>Phase 2：交通流シミュレーション</h3>
+          <p>SUMOという交通シミュレーターで自家用車の動きを再現し、どの道路に車が集中するか、閉鎖後に逃げ遅れが起きやすいかを評価しました。</p>
+        </div>
+        <div class="intro-card">
+          <span class="intro-icon">🚌</span>
+          <h3>Phase 3：バス比較（予定）</h3>
+          <p>車を持たない方や高齢者のために、デマンド交通バスを加えた場合の効果を検証予定です。自家用車のみの場合と到着率・混雑を比較します。</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="summary-stats" id="overview" aria-label="研究概要">
+      <div class="stat-item"><span class="stat-value">41</span><span class="stat-label">市区町村</span></div>
+      <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">対象外</span></div>
+      <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">時点</span></div>
+      <div class="stat-item stat-text">Phase 1は静的な避難ルート、Phase 2はSUMOによる動的交通流、Phase 3はデマンド交通バス比較の予定です。</div>
+    </div>
+
+    <section class="phase-card-grid" id="phase-list" aria-label="Phase別ページ">
+      <a class="phase-card" href="phase1.html">
+        <span class="phase-card-title">Phase 1</span>
+        <span class="phase-status">実装済み</span>
+        <span class="phase-card-meta">浸水想定区域と道路閉鎖を使い、閉鎖道路を除いた避難ルートを確認する静的シミュレーションです。</span>
+        <ul class="phase-card-list">
+          <li>茨城県41市区町村の統合シミュレーション</li>
+          <li>市区町村別シミュレーションHTML</li>
+          <li>常総市の実データ版・時点別避難ルート</li>
+        </ul>
+      </a>
+      <a class="phase-card" href="phase2.html">
+        <span class="phase-card-title">Phase 2</span>
+        <span class="phase-status">実装済み</span>
+        <span class="phase-card-meta">SUMO/TraCIを用いて、自家用車避難の到着・未到着・停止・主要避難路の混雑を確認する動的シミュレーションです。</span>
+        <ul class="phase-card-list">
+          <li>常総市 small / 1/10 / 全量試行</li>
+          <li>SUMO走行アニメーションと評価CSV</li>
+          <li>41市区町村へのPhase 2全域拡張結果</li>
+        </ul>
+      </a>
+      <a class="phase-card" href="phase3.html">
+        <span class="phase-card-title">Phase 3</span>
+        <span class="phase-status">未実装</span>
+        <span class="phase-card-meta">Phase 2の自家用車避難を基準に、デマンド交通バスを導入した場合の比較を行う予定のPhaseです。</span>
+        <ul class="phase-card-list">
+          <li>バス台数・定員・運行範囲の仕様化</li>
+          <li>シナリオBの運行ロジック実装</li>
+          <li>自家用車のみとの比較・考察</li>
+        </ul>
+      </a>
+    </section>
+  </main>
+</body>
+</html>
