@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 1：避難ルート確認</title>
+  <link rel="stylesheet" href="assets/phase1.css">
+  <script src="assets/phase1-pages.js" defer></script>
+  <script src="assets/phase1-components.js" defer></script>
+</head>
+<body>
+  <nav class="global-taskbar" aria-label="成果物共通ナビゲーション">
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="index.html">トップ</a>
+      <div class="taskbar-menu" aria-label="トップページのセクション">
+        <a href="index.html#overview">研究概要</a>
+        <a href="index.html#phase-list">Phase別入口</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase1.html" aria-current="page">Phase 1</a>
+      <div class="taskbar-menu" aria-label="Phase 1のセクション">
+        <a href="phase1.html#unified-heading">統合シミュレーション</a>
+        <a href="phase1.html#cities-heading">市区町村別</a>
+        <a href="phase1.html#scenario-heading">常総市単独</a>
+        <a href="phase1.html#unavailable-heading">対象外市町村</a>
+        <a href="phase1.html#reference-heading">実データ版</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase2.html">Phase 2</a>
+      <div class="taskbar-menu" aria-label="Phase 2のセクション">
+        <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
+        <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase3.html">Phase 3</a>
+      <div class="taskbar-menu" aria-label="Phase 3のセクション">
+        <a href="phase3.html#phase3-plan-heading">今後作成する内容</a>
+        <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="faq.html">想定質問</a>
+      <div class="taskbar-menu" aria-label="想定質問のセクション">
+        <a href="faq.html#faq-search">質問を検索</a>
+        <a href="faq.html#faq-list">想定質問一覧</a>
+      </div>
+    </div>
+  </nav>
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">浸水想定区域 / 閉鎖道路 / 静的避難ルート</p>
+      <h1>Phase 1：避難ルート確認</h1>
+    </div>
+    <p class="updated">41市区町村</p>
+  </header>
+
+  <main class="page-shell">
+    <p class="phase-lead">Phase 1では、浸水想定区域から閉鎖道路を抽出し、閉鎖道路を除いた道路ネットワーク上で避難所までのルートを確認します。</p>
+
+    <section class="section" aria-labelledby="unified-heading">
+      <div class="section-heading">
+        <h2 id="unified-heading">茨城県統合シミュレーション（41市区町村）</h2>
+      </div>
+      <p class="section-note">県内拡張版の主成果物です。クリック地点に応じて対象市区町村のデータを読み込みます。</p>
+      <div id="unified-links" class="card-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="cities-heading">
+      <div class="section-heading">
+        <h2 id="cities-heading">市区町村別シミュレーション</h2>
+      </div>
+      <p class="section-note">特定の市区町村だけを確認したい場合はこちらを使用します。</p>
+      <div class="city-tools" aria-label="市区町村リンクの絞り込み">
+        <label class="city-tool" for="city-search">
+          検索
+          <input class="city-search" id="city-search" type="search" placeholder="例：水戸市、08201">
+        </label>
+        <label class="city-tool" for="city-select">
+          市区町村選択
+          <select class="city-select" id="city-select"></select>
+        </label>
+        <span class="city-count" id="city-count"></span>
+      </div>
+      <div id="city-links" class="city-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="scenario-heading">
+      <div class="section-heading">
+        <h2 id="scenario-heading">常総市単独シミュレーション（参考）</h2>
+      </div>
+      <p class="section-note">県内拡張前の常総市単独成果物です。常総市以外をクリックすると対応地域外として扱います。</p>
+      <div id="scenario-links" class="card-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="unavailable-heading">
+      <div class="section-heading">
+        <h2 id="unavailable-heading">対象外市町村（3市町村）</h2>
+      </div>
+      <p class="section-note">A31a浸水想定区域データが境界内に存在しないため、シナリオ生成対象外です。</p>
+      <ul id="unavailable-links" class="unavailable-list"></ul>
+    </section>
+
+    <section class="section" aria-labelledby="reference-heading">
+      <div class="section-heading">
+        <h2 id="reference-heading">参考：常総市実データ版</h2>
+      </div>
+      <p class="section-note">道路ネットワーク、浸水時系列、時点別避難ルートを確認します。</p>
+      <div class="reference-grid">
+        <div class="reference-block">
+          <h3 class="reference-title">地図</h3>
+          <div id="overview-links" class="card-grid"></div>
+        </div>
+        <div class="reference-block">
+          <h3 class="reference-title">避難ルート</h3>
+          <div id="route-links" class="route-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

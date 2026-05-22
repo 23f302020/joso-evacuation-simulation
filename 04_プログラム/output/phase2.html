@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 2：SUMO自家用車避難</title>
+  <link rel="stylesheet" href="assets/phase1.css">
+  <script src="assets/phase1-pages.js" defer></script>
+  <script src="assets/phase1-components.js" defer></script>
+</head>
+<body>
+  <nav class="global-taskbar" aria-label="成果物共通ナビゲーション">
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="index.html">トップ</a>
+      <div class="taskbar-menu" aria-label="トップページのセクション">
+        <a href="index.html#overview">研究概要</a>
+        <a href="index.html#phase-list">Phase別入口</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase1.html">Phase 1</a>
+      <div class="taskbar-menu" aria-label="Phase 1のセクション">
+        <a href="phase1.html#unified-heading">統合シミュレーション</a>
+        <a href="phase1.html#cities-heading">市区町村別</a>
+        <a href="phase1.html#scenario-heading">常総市単独</a>
+        <a href="phase1.html#unavailable-heading">対象外市町村</a>
+        <a href="phase1.html#reference-heading">実データ版</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase2.html" aria-current="page">Phase 2</a>
+      <div class="taskbar-menu" aria-label="Phase 2のセクション">
+        <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
+        <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="phase3.html">Phase 3</a>
+      <div class="taskbar-menu" aria-label="Phase 3のセクション">
+        <a href="phase3.html#phase3-plan-heading">今後作成する内容</a>
+        <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
+      </div>
+    </div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="faq.html">想定質問</a>
+      <div class="taskbar-menu" aria-label="想定質問のセクション">
+        <a href="faq.html#faq-search">質問を検索</a>
+        <a href="faq.html#faq-list">想定質問一覧</a>
+      </div>
+    </div>
+  </nav>
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">交通流シミュレーション / TraCI / 評価CSV</p>
+      <h1>Phase 2：SUMO自家用車避難</h1>
+    </div>
+    <p class="updated">実装済み</p>
+  </header>
+
+  <main class="page-shell">
+    <p class="phase-lead">Phase 2では、Phase 1の閉鎖道路と避難需要をSUMOネットワークへ接続し、自家用車のみの避難を動的に評価します。</p>
+
+    <section class="section" aria-labelledby="phase2-contents-heading">
+      <div class="section-heading">
+        <h2 id="phase2-contents-heading">確認できる内容</h2>
+      </div>
+      <ul class="detail-list">
+        <li>常総市のsmall / 1/10 / 全量試行における到着・未到着・逃げ遅れ候補</li>
+        <li>60秒間隔のアクティブ車両数、平均速度、停止台数による混雑推移</li>
+        <li>国道294号、国道・県道354号、県道357号、常総IC接続部の主要避難路別混雑</li>
+        <li>41市区町村へ拡張したPhase 2 SUMO入力・結果一覧</li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="phase2-excel-heading">
+      <div class="section-heading">
+        <h2 id="phase2-excel-heading">Excelでダウンロードする成果物</h2>
+      </div>
+      <p class="section-note">統合Excelブックと、Excelで開ける元CSVをまとめています。表・考察・卒論転記に使う成果物です。</p>
+      <div id="phase2-excel-links" class="card-grid"></div>
+    </section>
+
+    <section class="section" aria-labelledby="phase2-animation-heading">
+      <div class="section-heading">
+        <h2 id="phase2-animation-heading">アニメーションで確認できる成果物</h2>
+      </div>
+      <p class="section-note">SUMOの車両移動、道路閉鎖、対象市区町村別の実行結果を画面で確認します。</p>
+      <div id="phase2-animation-links" class="card-grid"></div>
+    </section>
+  </main>
+
+</body>
+</html>
