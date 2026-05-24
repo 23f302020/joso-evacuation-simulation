@@ -45,7 +45,8 @@
       <div class="taskbar-menu" aria-label="想定質問のセクション">
         <a href="faq.html#faq-search">質問を検索</a>
         <a href="faq.html#faq-list">想定質問一覧</a>
-        <a href="faq.html#chatbot-section">チャットで質問</a>
+        <a href="faq.html#chatbot-section">RAGチャット</a>
+        <a href="faq.html#faq-fallback-chatbot">FAQ予備チャット</a>
       </div>
     </div>
   </nav>
@@ -191,11 +192,32 @@
       </details>
     </section>
 
-    <section class="chatbot-section" id="chatbot-section" aria-label="チャットで質問">
+    <section class="chatbot-section" id="chatbot-section" aria-label="研究資料RAGチャット">
       <div class="chatbot-header">
-        <span class="chatbot-header-icon">💬</span>
-        <span class="chatbot-header-title">研究Q&amp;Aチャット</span>
-        <span class="chatbot-header-sub">FAQをもとに回答します</span>
+        <span class="chatbot-header-icon">AI</span>
+        <span class="chatbot-header-title">研究資料RAGチャット</span>
+        <span class="chatbot-header-sub">GitHub資料をもとに回答</span>
+      </div>
+      <div class="rag-chatbot-body">
+        <p class="rag-chatbot-lead">GitHubリポジトリ内のMarkdown資料を検索し、参照ファイル付きで回答するチャットボットです。Hugging Face Spaceの初回起動には時間がかかる場合があります。</p>
+        <div class="rag-chatbot-frame-wrap">
+          <iframe
+            class="rag-chatbot-frame"
+            title="避難シミュレーション研究 RAGチャット"
+            src="https://23f302020-joso-evacuation-chatbot.hf.space"
+            loading="lazy"
+            allow="clipboard-read; clipboard-write"
+          ></iframe>
+        </div>
+        <p class="rag-chatbot-note">Spaceをまだ作成していない場合、または起動待ちの場合は、下のFAQ予備チャットを使用してください。Hugging Faceのユーザー名やSpace名が異なる場合は、このiframeのURLを実際のSpace URLに変更します。</p>
+      </div>
+    </section>
+
+    <section class="chatbot-section chatbot-section--fallback" id="faq-fallback-chatbot" aria-label="FAQ予備チャット">
+      <div class="chatbot-header">
+        <span class="chatbot-header-icon">FAQ</span>
+        <span class="chatbot-header-title">FAQ予備チャット</span>
+        <span class="chatbot-header-sub">想定質問をもとに回答</span>
       </div>
       <div class="chatbot-log" id="chatbot-log" aria-live="polite" aria-label="チャット履歴">
         <div class="chat-bubble bot">こんにちは。この研究に関する質問を入力してください。SUMOの入力データ、浸水条件、試行結果、Phase 3の予定などについて回答します。</div>
