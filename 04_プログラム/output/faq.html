@@ -89,7 +89,7 @@
 
     <section class="faq-answer-section" id="faq-answers" aria-label="想定質問への回答">
       <h2>想定質問への回答</h2>
-      <p class="section-note">中間発表で想定される質問を、前提条件、Phase 1、Phase 2、結果解釈、Phase 3、発表運用に分けて確認できます。</p>
+      <p class="section-note">中間発表で想定される質問をカテゴリ別に整理しています。サブセクターをクリックすると、該当する個別質問を確認できます。</p>
 
     <div class="faq-tools" aria-label="想定質問の検索">
       <label class="faq-search-label" for="faq-search">
@@ -102,7 +102,7 @@
     <section class="faq-list" id="faq-list" aria-label="想定質問一覧">
       <h3 class="faq-subsector-heading">1. 入力データ・基本前提</h3>
       <p class="faq-subsector-note">SUMOに投入しているデータ、浸水の扱い、車両台数など、研究の前提を確認する質問です。</p>
-      <details class="faq-item" open>
+      <details class="faq-item">
         <summary class="faq-question">Q1. SUMOは何のデータをもとに動いているのか。</summary>
         <div class="faq-answer">
           <p>道路ネットワーク、人口メッシュ、自動車保有台数、避難施設データ、浸水による道路閉鎖時系列をもとにしています。ただし、これらをそのままSUMOへ入れるのではなく、道路はSUMOネットワーク、出発地と避難所はSUMO edgeにスナップしたCSV、道路閉鎖はSUMO edge IDへ変換したJSONとして入力しています。</p>
@@ -433,27 +433,79 @@
 
   <script>
     (function () {
+      const list = document.getElementById("faq-list");
       const search = document.getElementById("faq-search");
       const count = document.getElementById("faq-count");
-      const items = Array.from(document.querySelectorAll(".faq-item"));
+
+      function buildSubsectors() {
+        const headings = Array.from(list.querySelectorAll(".faq-subsector-heading"));
+        headings.forEach(function (heading) {
+          const panel = document.createElement("details");
+          panel.className = "faq-subsector";
+
+          const summary = document.createElement("summary");
+          summary.className = "faq-subsector-summary";
+
+          const note = heading.nextElementSibling && heading.nextElementSibling.classList.contains("faq-subsector-note")
+            ? heading.nextElementSibling
+            : null;
+
+          heading.before(panel);
+          summary.appendChild(heading);
+          if (note) summary.appendChild(note);
+          panel.appendChild(summary);
+
+          let node = panel.nextSibling;
+          while (node) {
+            const next = node.nextSibling;
+            if (node.nodeType === 1 && node.classList.contains("faq-subsector-heading")) break;
+            panel.appendChild(node);
+            node = next;
+          }
+        });
+      }
 
       function normalize(value) {
         return String(value || "").toLowerCase().replace(/\s+/g, "");
       }
 
+      buildSubsectors();
+
+      const sectors = Array.from(document.querySelectorAll(".faq-subsector"));
+      const items = Array.from(document.querySelectorAll(".faq-item"));
+      items.forEach(function (item) {
+        item.open = false;
+      });
+
       function applyFilter() {
         const query = normalize(search.value);
         let visible = 0;
-        items.forEach(function (item) {
-          const text = normalize(item.textContent);
-          const match = !query || text.includes(query);
-          item.hidden = !match;
-          if (match) visible += 1;
+
+        sectors.forEach(function (sector) {
+          const sectorText = normalize(sector.querySelector(".faq-subsector-summary").textContent);
+          const sectorMatch = !!query && sectorText.includes(query);
+          let sectorVisible = 0;
+
+          Array.from(sector.querySelectorAll(".faq-item")).forEach(function (item) {
+            const text = normalize(item.textContent);
+            const match = !query || sectorMatch || text.includes(query);
+            item.hidden = !match;
+            item.open = false;
+            if (match) {
+              visible += 1;
+              sectorVisible += 1;
+            }
+          });
+
+          sector.hidden = !!query && sectorVisible === 0;
+          sector.open = !!query && sectorVisible > 0;
         });
+
         count.textContent = `${visible} / ${items.length} 件`;
       }
 
       search.addEventListener("input", applyFilter);
+      applyFilter();
     })();
   </script>
 

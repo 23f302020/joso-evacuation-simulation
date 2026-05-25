@@ -258,21 +258,54 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
   display: grid;
   gap: 12px;
 }
+.faq-subsector {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.faq-subsector[open] {
+  padding-bottom: 12px;
+}
+.faq-subsector-summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+}
+.faq-subsector-summary::-webkit-details-marker { display: none; }
+.faq-subsector-summary::after {
+  content: "+";
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 700;
+}
+.faq-subsector[open] .faq-subsector-summary::after { content: "-"; }
 .faq-subsector-heading {
-  margin: 12px 0 0;
-  padding: 12px 14px;
+  margin: 0;
+  padding: 12px 44px 8px 14px;
   border-left: 4px solid var(--accent);
   background: #eef6ff;
-  border-radius: 8px;
+  border-radius: 0;
   color: var(--text);
   font-size: 15px;
   font-weight: 700;
 }
 .faq-subsector-note {
-  margin: -4px 0 0;
+  margin: 0;
+  padding: 0 44px 12px 18px;
+  background: #eef6ff;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.7;
+}
+.faq-subsector .faq-item {
+  margin: 0 12px;
+}
+.faq-subsector .faq-item + .faq-item {
+  margin-top: 10px;
 }
 .faq-item {
   border: 1px solid var(--line);
