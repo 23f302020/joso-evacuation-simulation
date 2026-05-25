@@ -43,9 +43,8 @@
     <div class="taskbar-item">
       <a class="taskbar-trigger" href="faq.html" aria-current="page">想定質問</a>
       <div class="taskbar-menu" aria-label="想定質問のセクション">
-        <a href="faq.html#faq-search">質問を検索</a>
-        <a href="faq.html#faq-list">想定質問一覧</a>
-        <a href="faq.html#chatbot-section">RAGチャット</a>
+        <a href="faq.html#chatbot-section">研究資料RAGチャット</a>
+        <a href="faq.html#faq-answers">想定質問への回答</a>
         <a href="faq.html#faq-fallback-chatbot">FAQ予備チャット</a>
       </div>
     </div>
@@ -56,21 +55,53 @@
       <p class="eyebrow">中間発表 / 質疑応答 / 前提条件</p>
       <h1>想定質問への回答</h1>
     </div>
-    <p class="updated">Q1-Q15</p>
+    <p class="updated">Q1-Q36</p>
   </header>
 
   <main class="page-shell">
     <p class="phase-lead">進捗中間発表で質問されやすい、SUMO入力、時間軸、避難開始地点、試行条件、結果の解釈についてまとめています。</p>
 
+    <section class="chatbot-section" id="chatbot-section" aria-label="研究資料RAGチャット">
+      <div class="chatbot-header">
+        <span class="chatbot-header-icon">AI</span>
+        <span class="chatbot-header-title">研究資料RAGチャット</span>
+        <span class="chatbot-header-sub">GitHub資料をもとに回答</span>
+      </div>
+      <div class="rag-chatbot-body">
+        <p class="rag-chatbot-lead">GitHubリポジトリ内のMarkdown資料を検索し、参照ファイル付きで回答するチャットボットです。Hugging Face Spaceの初回起動には時間がかかる場合があります。</p>
+        <div class="rag-chatbot-notice" role="note" aria-label="発表時の利用上の注意">
+          <strong>発表時の注意</strong>
+          <p>このチャットボットはHugging Faceの無料Space上で動作します。未使用時はスリープし、初回起動や初回質問には時間がかかる場合があります。</p>
+          <p>多人数が同時に質問すると、応答遅延、タイムアウト、LLM無料クレジット消費が発生する可能性があります。発表時は事前にSpaceを起動し、代表質問を発表者PCで実演してください。</p>
+        </div>
+        <div class="rag-chatbot-frame-wrap">
+          <iframe
+            class="rag-chatbot-frame"
+            title="避難シミュレーション研究 RAGチャット"
+            src="https://23f302020-joso-evacuation-chatbot.hf.space"
+            loading="lazy"
+            allow="clipboard-read; clipboard-write"
+          ></iframe>
+        </div>
+        <p class="rag-chatbot-note">Spaceをまだ作成していない場合、または起動待ちの場合は、下のFAQ予備チャットを使用してください。Hugging Faceのユーザー名やSpace名が異なる場合は、このiframeのURLを実際のSpace URLに変更します。</p>
+      </div>
+    </section>
+
+    <section class="faq-answer-section" id="faq-answers" aria-label="想定質問への回答">
+      <h2>想定質問への回答</h2>
+      <p class="section-note">中間発表で想定される質問を、前提条件、Phase 1、Phase 2、結果解釈、Phase 3、発表運用に分けて確認できます。</p>
+
     <div class="faq-tools" aria-label="想定質問の検索">
       <label class="faq-search-label" for="faq-search">
         質問を検索
-        <input class="faq-search" id="faq-search" type="search" placeholder="例：SUMO、時間軸、避難所、full">
+        <input class="faq-search" id="faq-search" type="search" placeholder="例：SUMO、時間軸、避難所、full、Phase 3、RAG">
       </label>
-      <span class="faq-count" id="faq-count">15 / 15 件</span>
+      <span class="faq-count" id="faq-count">36 / 36 件</span>
     </div>
 
     <section class="faq-list" id="faq-list" aria-label="想定質問一覧">
+      <h3 class="faq-subsector-heading">1. 入力データ・基本前提</h3>
+      <p class="faq-subsector-note">SUMOに投入しているデータ、浸水の扱い、車両台数など、研究の前提を確認する質問です。</p>
       <details class="faq-item" open>
         <summary class="faq-question">Q1. SUMOは何のデータをもとに動いているのか。</summary>
         <div class="faq-answer">
@@ -98,6 +129,9 @@
           <p>安全を保証するものではありません。10pct試行は全メッシュを残しつつ車両数を縮小した比較用の条件です。一斉出発、6時間圧縮、安全避難所固定などの仮定もあるため、結果は今回のモデル条件下での自家用車避難ベースラインとして扱います。</p>
         </div>
       </details>
+
+      <h3 class="faq-subsector-heading">2. 研究フェーズ・対象地域</h3>
+      <p class="faq-subsector-note">Phase 1、Phase 2、Phase 3の役割と、常総市を基準地域にした理由を説明する質問です。</p>
 
       <details class="faq-item">
         <summary class="faq-question">Q5. Phase 3で何を比較するのか。</summary>
@@ -131,6 +165,9 @@
           <p>つまり、Phase 2の目的は対象範囲を広げることよりも、実データからSUMO入力を作成し、自家用車避難の交通流ベースラインを構築することです。常総市で方法を固定したあと、Phase 3以降でバス追加や他地域展開を検討します。</p>
         </div>
       </details>
+
+      <h3 class="faq-subsector-heading">3. 道路閉鎖・避難所・試行条件</h3>
+      <p class="faq-subsector-note">浸水深0.5m以上の閉鎖条件、避難所の選定、small・10pct・full試行の意味を扱います。</p>
 
       <details class="faq-item">
         <summary class="faq-question">Q9. 道路閉鎖の基準はどのように決めているのか。</summary>
@@ -175,6 +212,9 @@
         </div>
       </details>
 
+      <h3 class="faq-subsector-heading">4. 時間軸・結果解釈</h3>
+      <p class="faq-subsector-note">6時間圧縮、アニメーションで見える範囲、Phase 2結果を考察へ使う範囲を整理します。</p>
+
       <details class="faq-item">
         <summary class="faq-question">Q14. 6時間に圧縮した時間設定は結果に影響しないのか。</summary>
         <div class="faq-answer">
@@ -190,32 +230,181 @@
           <p>一方で、実際の避難行動、出発時刻のばらつき、信号制御、道路規制、避難者の判断、徒歩避難や公共交通との混在までは十分に再現していません。したがって、Phase 2の結果は実災害の再現値ではなく、Phase 3でデマンド交通バスを追加した場合と比較するための自家用車避難ベースラインとして使います。</p>
         </div>
       </details>
-    </section>
 
-    <section class="chatbot-section" id="chatbot-section" aria-label="研究資料RAGチャット">
-      <div class="chatbot-header">
-        <span class="chatbot-header-icon">AI</span>
-        <span class="chatbot-header-title">研究資料RAGチャット</span>
-        <span class="chatbot-header-sub">GitHub資料をもとに回答</span>
-      </div>
-      <div class="rag-chatbot-body">
-        <p class="rag-chatbot-lead">GitHubリポジトリ内のMarkdown資料を検索し、参照ファイル付きで回答するチャットボットです。Hugging Face Spaceの初回起動には時間がかかる場合があります。</p>
-        <div class="rag-chatbot-notice" role="note" aria-label="発表時の利用上の注意">
-          <strong>発表時の注意</strong>
-          <p>このチャットボットはHugging Faceの無料Space上で動作します。未使用時はスリープし、初回起動や初回質問には時間がかかる場合があります。</p>
-          <p>多人数が同時に質問すると、応答遅延、タイムアウト、LLM無料クレジット消費が発生する可能性があります。発表時は事前にSpaceを起動し、代表質問を発表者PCで実演してください。</p>
+      <h3 class="faq-subsector-heading">5. Phase 1・Phase 2の妥当性</h3>
+      <p class="faq-subsector-note">静的経路検索とSUMO交通流の違い、データ統合、モデル化の限界を深掘りする質問です。</p>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q16. Phase 1とPhase 2は何が違うのか。</summary>
+        <div class="faq-answer">
+          <p>Phase 1は、閉鎖道路を除いた道路ネットワーク上で、出発地から避難所までの経路が存在するかを確認する静的な経路検索です。交通量や車両同士の干渉は扱いません。</p>
+          <p>Phase 2は、SUMO上で車両を発生させ、道路閉鎖時系列をTraCIで反映しながら走行、到着、未到着を記録する動的な交通流シミュレーションです。つまり、Phase 1は「経路があるか」、Phase 2は「車両が流れたときに到着できるか」を見る段階です。</p>
         </div>
-        <div class="rag-chatbot-frame-wrap">
-          <iframe
-            class="rag-chatbot-frame"
-            title="避難シミュレーション研究 RAGチャット"
-            src="https://23f302020-joso-evacuation-chatbot.hf.space"
-            loading="lazy"
-            allow="clipboard-read; clipboard-write"
-          ></iframe>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q17. Phase 1の到達不可人口とPhase 2の未到着台数は同じ意味か。</summary>
+        <div class="faq-answer">
+          <p>同じ意味ではありません。Phase 1の到達不可人口は、人口メッシュ単位で避難所までの経路が見つからない人口を表します。Phase 2の未到着台数は、SUMO上で投入した車両のうち、出発できない、到着できない、または停止条件に該当した車両数です。</p>
+          <p>単位が人口と車両で異なるため、数値を直接比較せず、Phase 1は空間的な到達可能性、Phase 2は交通流としての避難挙動を示す結果として分けて説明します。</p>
         </div>
-        <p class="rag-chatbot-note">Spaceをまだ作成していない場合、または起動待ちの場合は、下のFAQ予備チャットを使用してください。Hugging Faceのユーザー名やSpace名が異なる場合は、このiframeのURLを実際のSpace URLに変更します。</p>
-      </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q18. Phase 1の経路検索はどのような方法で行っているのか。</summary>
+        <div class="faq-answer">
+          <p>道路ネットワークの各リンクに道路距離を重みとして持たせ、閉鎖対象となる道路リンクを除外したうえで、出発地から洪水対応避難所までの最短経路を探索しています。主に「通れる道路だけを使った場合に避難所へ到達できるか」を確認する処理です。</p>
+          <p>この段階では、渋滞、信号、車両台数、運転者の判断は扱わないため、Phase 2のSUMO交通流とは役割が異なります。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q19. なぜKMLとA31a浸水想定区域を組み合わせているのか。</summary>
+        <div class="faq-answer">
+          <p>GSIのKMLは時刻ごとの浸水範囲を確認しやすい一方で、浸水深の属性を持っていません。A31a浸水想定区域は浸水深属性を持つ一方で、そのままでは今回の時刻別進行を表しません。</p>
+          <p>そのため、時刻別の広がりを表す情報と、道路閉鎖基準に使う浸水深情報を組み合わせ、道路閉鎖時系列を作成しています。発表では「SUMOが浸水を計算しているのではなく、事前に作成した閉鎖時系列を反映している」と説明します。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q20. 250m人口メッシュを出発地に使う理由は何か。</summary>
+        <div class="faq-answer">
+          <p>個人や世帯ごとの正確な居住地点データは利用していないため、人口分布を空間的に扱える250m人口メッシュを出発地の単位にしています。各メッシュの代表点をSUMO edgeへスナップし、その地点から車両を発生させます。</p>
+          <p>この方法は実住所を再現するものではありませんが、人口が多い場所ほど車両が多く発生するという地域分布を反映できます。個人情報を使わずに避難需要を近似できる点も利点です。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q21. 浸水深0.5m以上で道路閉鎖とする基準は妥当か。</summary>
+        <div class="faq-answer">
+          <p>0.5m以上は、自動車通行が危険または困難になりやすい水深の目安として、比較シミュレーションの統一基準にしています。A31aではwaterDepthコード2以上が0.5m以上に対応するため、データ処理上も明確に判定できます。</p>
+          <p>ただし、実際の通行可否は車両の種類、流速、路面状況、冠水時間、現地規制に左右されます。したがって、0.5m基準は絶対的な通行可否ではなく、全シナリオを同一条件で比較するための仮定です。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q22. 全車両を同時に出発させる設定は結果に影響するか。</summary>
+        <div class="faq-answer">
+          <p>影響します。同時出発は避難開始直後の交通集中を強める可能性があり、実際の避難行動のような時差出発を再現していません。一方で、Phase 2では基準シナリオを明確にするため、まず同じ出発条件で自家用車避難を評価しています。</p>
+          <p>今後は、避難開始時刻に分布を持たせた試行を追加すると、より現実的な交通集中や到着時間の差を評価できます。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q23. 信号や警察による交通規制は再現しているのか。</summary>
+        <div class="faq-answer">
+          <p>現時点では、実際の信号現示、警察誘導、臨時交通規制、道路管理者による規制判断までは精密には再現していません。SUMOネットワーク上の基本的な交通流と、浸水による道路閉鎖を中心に扱っています。</p>
+          <p>このため、結果は現実の交通運用を完全再現したものではなく、浸水閉鎖が発生した場合の自家用車避難ベースラインとして解釈します。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q24. 道路閉鎖後に車両は再経路探索するのか。</summary>
+        <div class="faq-answer">
+          <p>TraCIで閉鎖edgeを反映し、閉鎖後に通行できない道路を使わないように扱います。再経路探索後も目的地へ到達できない場合や、閉鎖済み出発edgeに該当する場合は、未到着または逃げ遅れ候補として記録します。</p>
+          <p>ただし、運転者が自分で避難所を変更する、混雑を見て別ルートを選ぶ、情報を受け取って行動を変える、といった意思決定モデルはまだ入っていません。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q25. 現在のアニメーションで閉鎖後の動きが見えにくい点はどう説明するのか。</summary>
+        <div class="faq-answer">
+          <p>small試行と10pct試行では、最初の閉鎖時点であるt0=789秒より前に全車両が到着しているため、アニメーションでは閉鎖後の迂回や滞留が見えにくくなっています。これは、可視化の不具合ではなく、現在表示している試行条件の到着が早いことによるものです。</p>
+          <p>発表では、現在のアニメーションはSUMO入力、車両発生、目的地到着の確認用であり、閉鎖後の挙動を示すにはfull試行の可視化や、閉鎖時刻と車両軌跡を重ねた表示が追加課題であると説明します。</p>
+        </div>
+      </details>
+
+      <h3 class="faq-subsector-heading">6. 結果の限界・Phase 3・発表運用</h3>
+      <p class="faq-subsector-note">研究としての言える範囲、バス導入時の論点、HTML公開やRAGチャット利用時の注意を扱います。</p>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q26. full試行の未到着14台を人口に換算してよいのか。</summary>
+        <div class="faq-answer">
+          <p>直接人口に換算するのは避けます。full試行の14台は、人口メッシュから推定した車両のうち、SUMO上で未到着になった台数です。1台が必ず何人を表すとは限らないため、人数として断定すると過剰な解釈になります。</p>
+          <p>考察では、未到着14台を「今回の自家用車避難条件で発生した逃げ遅れ候補車両」として扱い、人口規模を議論する場合は別途乗車人数の仮定を明示する必要があります。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q27. 10pct試行を比較に使う理由は何か。</summary>
+        <div class="faq-answer">
+          <p>10pct試行は、全出発地メッシュを残したまま車両数だけを縮小するため、地域分布を保ちつつ計算負荷を下げられます。small試行は動作確認には向きますが、車両数が少なすぎるため交通流の比較には弱いです。</p>
+          <p>full試行は詳細確認に重要ですが、他地域や複数条件へ広げる場合は計算負荷が大きくなります。そのため、10pctは比較条件を増やすときの中間的な基準として使います。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q28. このシミュレーション結果の信頼性はどう説明するのか。</summary>
+        <div class="faq-answer">
+          <p>道路、人口、避難所、浸水想定区域などは実データをもとにしています。一方で、車両台数、出発時刻、避難所選択、道路閉鎖基準、時間圧縮にはモデル上の仮定があります。</p>
+          <p>したがって、結果は「実データを使った条件付きシミュレーション」として説明します。実災害の絶対的な再現値ではなく、同じ条件でシナリオAとシナリオBを比較するための基準値として使うことが妥当です。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q29. 実際の鬼怒川氾濫を完全に再現したと言えるのか。</summary>
+        <div class="faq-answer">
+          <p>完全再現とは言えません。実際の避難では、出発時刻のばらつき、家族構成、車両保有、道路規制、情報伝達、天候、夜間移動、徒歩避難など、多くの要素が影響します。</p>
+          <p>本研究では、それらをすべて再現するのではなく、浸水に伴う道路閉鎖と自家用車避難の関係を交通流として評価することに焦点を当てています。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q30. Phase 3に入る前に固定すべき比較基準は何か。</summary>
+        <div class="faq-answer">
+          <p>Phase 3でバス活用の効果を評価するためには、Phase 2の自家用車のみシナリオAを固定する必要があります。固定すべき内容は、対象地域、出発地、車両台数、避難所候補、閉鎖時系列、時間軸、評価指標です。</p>
+          <p>この基準が変わると、バスを追加した効果なのか、前提条件の違いなのかが分からなくなります。そのため、Phase 2の条件を固定したうえでPhase 3のシナリオBを作成します。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q31. Phase 3でバスの乗降地点はどう決める予定か。</summary>
+        <div class="faq-answer">
+          <p>候補としては、人口メッシュ代表点、避難所、既存のデマンド交通利用範囲、公共施設、浸水リスクの低い集合地点が考えられます。Phase 3では、徒歩で集まりやすく、かつバスが走行可能な道路に接続できる地点を優先して設定します。</p>
+          <p>乗降地点の決め方によって輸送効率や支援対象者数が変わるため、任意に置くのではなく、人口分布、浸水リスク、道路接続性を根拠として説明できる形にします。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q32. デマンド交通バスを入れると何が評価できるのか。</summary>
+        <div class="faq-answer">
+          <p>バスを追加すると、自家用車だけでは避難が難しい人をどの程度輸送できるか、車両台数を減らすことで道路混雑を抑えられるか、未到着や逃げ遅れ候補を減らせるかを評価できます。</p>
+          <p>特に、高齢者や車を使えない世帯を想定した輸送支援効果を議論できる点がPhase 3の目的です。ただし、バス台数、定員、運行ルール、乗降時間をどう設定するかが重要な前提になります。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q33. 高齢者や車を持たない人は現在のモデルで扱っているのか。</summary>
+        <div class="faq-answer">
+          <p>Phase 2では、自家用車避難のベースラインを作ることを優先しているため、高齢者や車を持たない人の個別行動はまだ直接モデル化していません。人口メッシュと高齢者人口は把握していますが、SUMO上の車両行動にはまだ分離して入れていません。</p>
+          <p>Phase 3では、バス輸送の対象として高齢者人口や車を使えない避難者を扱い、自家用車のみでは支援が届きにくい層への効果を比較する予定です。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q34. GitHub Pagesで公開したHTMLを見るときの注意は何か。</summary>
+        <div class="faq-answer">
+          <p>GitHub Pages上のHTMLは、リポジトリリンクを知っている人がブラウザで確認できます。Phase 1、Phase 2、Phase 3、想定質問ページは静的ページとして閲覧できます。</p>
+          <p>ただし、RAGチャット部分はHugging Face Spaceのiframeに依存します。HTML本体が表示できても、Spaceがスリープ中、起動待ち、利用制限中の場合はチャットの応答が遅れる可能性があります。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q35. 発表時にRAGチャットを使う場合の注意は何か。</summary>
+        <div class="faq-answer">
+          <p>発表の10分から15分前にHugging Face Spaceを開き、代表質問を1回入力して起動状態を確認します。無料版では未使用時にスリープし、初回起動や同時アクセスで遅延やタイムアウトが起こる可能性があります。</p>
+          <p>発表時は参加者全員に同時利用してもらうのではなく、発表者PCで代表質問を実演する運用が適切です。チャットが不安定な場合は、同じページ内の想定質問リストとFAQ予備チャットで説明を補います。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Q36. RAGチャットの回答を研究結果として扱ってよいのか。</summary>
+        <div class="faq-answer">
+          <p>RAGチャットは、研究資料を探しやすくするための補助機能です。最終的な研究結果や考察は、固定済みのCSV、HTML成果物、設計文書、考察文書にもとづいて説明します。</p>
+          <p>チャットの回答は参照ファイル付きで確認し、発表や論文に使う内容は必ず元のMarkdownや成果物で確認します。チャットの生成文をそのまま研究結果として扱うのではなく、資料確認の入口として使います。</p>
+        </div>
+      </details>
+    </section>
     </section>
 
     <section class="chatbot-section chatbot-section--fallback" id="faq-fallback-chatbot" aria-label="FAQ予備チャット">
@@ -326,6 +515,46 @@
         {
           keys: ["結果", "考察", "どこまで言える", "主張"],
           answer: "Phase 2の結果から言えるのは、設定条件下での到着率・混雑・未到着発生箇所です。出発時刻分散・信号制御・徒歩避難・公共交通との混在は再現していないため、実災害の再現値ではなく、Phase 3でのシナリオA/B比較の基準として使います。→ Q15"
+        },
+        {
+          keys: ["phase1", "phase 1", "phase2", "phase 2", "違い", "静的", "動的"],
+          answer: "Phase 1は閉鎖道路を除いた道路ネットワークで避難所までの経路があるかを見る静的経路検索です。Phase 2はSUMOで車両を動かし、道路閉鎖時系列を反映しながら到着や未到着を見る動的交通流シミュレーションです。→ Q16"
+        },
+        {
+          keys: ["到達不可", "未到着", "人口", "台数", "同じ意味"],
+          answer: "Phase 1の到達不可は人口メッシュ単位の到達可能性、Phase 2の未到着はSUMOに投入した車両の到着状況です。人口と車両で単位が異なるため直接比較しません。→ Q17"
+        },
+        {
+          keys: ["経路検索", "最短経路", "length", "ルート", "方法"],
+          answer: "Phase 1では閉鎖道路を除外した道路ネットワーク上で、道路距離を重みとする最短経路を探索しています。渋滞や信号は扱わず、通れる道路だけで避難所へ到達できるかを確認します。→ Q18"
+        },
+        {
+          keys: ["kml", "a31a", "組み合わせ", "浸水深", "時系列"],
+          answer: "KMLは時刻別の浸水範囲を確認しやすい一方で浸水深属性がありません。A31aは浸水深属性を持つため、時系列と浸水深条件を組み合わせて道路閉鎖時系列を作成しています。→ Q19"
+        },
+        {
+          keys: ["同時出発", "出発時刻", "一斉", "分散"],
+          answer: "全車両同時出発は交通集中を強める可能性があります。Phase 2では比較基準を明確にするため同時出発にしており、今後は出発時刻に分布を持たせる試行が必要です。→ Q22"
+        },
+        {
+          keys: ["信号", "警察", "交通規制", "誘導"],
+          answer: "現時点では実際の信号現示、警察誘導、臨時交通規制までは精密に再現していません。基本交通流と浸水による道路閉鎖を中心に扱っています。→ Q23"
+        },
+        {
+          keys: ["アニメーション", "閉鎖後", "見えにくい", "可視化"],
+          answer: "small・10pct試行は最初の閉鎖時点t0=789秒より前に全車両が到着するため、閉鎖後の動きが見えにくくなっています。閉鎖後の説明にはfull試行の可視化や閉鎖時系列との重ね合わせが必要です。→ Q25"
+        },
+        {
+          keys: ["人口換算", "14台", "何人", "人数換算"],
+          answer: "full試行の未到着14台をそのまま人数へ換算するのは避けます。1台が何人を表すかは別の仮定が必要なため、現在は逃げ遅れ候補車両として扱います。→ Q26"
+        },
+        {
+          keys: ["github", "pages", "公開", "html", "space"],
+          answer: "GitHub Pages上の静的HTMLは閲覧できますが、RAGチャットはHugging Face Spaceに依存します。Spaceがスリープ中や利用制限中の場合、チャット応答が遅れることがあります。→ Q34"
+        },
+        {
+          keys: ["rag", "チャット", "研究結果", "発表", "無料"],
+          answer: "RAGチャットは資料検索と説明補助用です。研究結果そのものは固定済みCSV、HTML成果物、設計文書、考察文書にもとづいて説明します。発表前にはSpaceを起動し、代表質問で動作確認します。→ Q35・Q36"
         }
       ];
 
