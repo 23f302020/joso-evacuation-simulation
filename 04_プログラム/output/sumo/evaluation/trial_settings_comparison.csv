@@ -1,0 +1,4 @@
+scenario_name,scale_label,vehicle_count,departed_count,arrived_count,not_arrived_count,stranded_main_count,arrival_rate,last_arrival_time_sec,evacuation_completion_time_sec,evacuation_completion_status,mean_travel_time_sec,max_travel_time_sec,note
+small,small,40,40,40,0,0,1.0,619,619,complete,326.95,618,1メッシュ1台の小規模確認。route・閉鎖制御・ログ出力の検証用。
+10pct,10pct,120,120,120,0,0,1.0,615,615,complete,380.725,614,全メッシュを保持し車両台数を約1/10にした全域比較の主試行。
+full,full,1001,987,987,14,14,0.986014,9037,,incomplete,1186.154,8882,常総市全量試行。出発edge閉鎖による未到着を含む基準確認。

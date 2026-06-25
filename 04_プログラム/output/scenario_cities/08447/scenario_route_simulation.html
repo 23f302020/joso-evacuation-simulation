@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>河内町 避難ルートシミュレーション</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="assets/data.js" defer></script>
+  <script src="../kinugawa_river.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="panel" aria-label="シミュレーション操作">
+      <p class="eyebrow">市区町村別シナリオ</p>
+      <h1>河内町</h1>
+      <p class="lead">時刻を選び、地図上の任意地点をクリックすると、浸水道路を避けて到達可能な最寄り避難所までのルートを検索します。</p>
+      <section class="control-group">
+        <h2>時刻</h2>
+        <div id="time-buttons" class="time-grid"></div>
+      </section>
+      <section class="control-group">
+        <h2>状態</h2>
+        <dl class="status-list">
+          <div><dt>浸水進行</dt><dd id="status-progress">-</dd></div>
+          <div><dt>閉鎖道路</dt><dd id="status-closures">-</dd></div>
+          <div><dt>避難所</dt><dd id="status-shelters">-</dd></div>
+          <div><dt>対象地域</dt><dd id="status-area">-</dd></div>
+        </dl>
+      </section>
+      <section class="control-group">
+        <h2>検索結果</h2>
+        <div id="route-result" class="result-box">地図上の地点をクリックしてください。</div>
+      </section>
+      <a class="back-link" href="../../index.html">トップページへ戻る</a>
+    </aside>
+    <section class="map-wrap" aria-label="シミュレーション地図">
+      <div id="map"></div>
+    </section>
+  </main>
+</body>
+</html>

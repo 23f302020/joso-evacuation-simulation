@@ -1,0 +1,12 @@
+analysis_type,scenario_name,time_or_scale,unit,vehicle_count,departed_count,arrived_count,not_arrived_vehicle_count,stranded_main_vehicle_count,unreachable_mesh_count,unreachable_population,unreachable_elderly_population,note
+phase1_static_route_search,phase1_static,2015-09-10T18:00:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase1_static_route_search,phase1_static,2015-09-11T06:00:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase1_static_route_search,phase1_static,2015-09-11T18:00:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase1_static_route_search,phase1_static,2015-09-12T06:00:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase1_static_route_search,phase1_static,2015-09-12T18:00:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase1_static_route_search,phase1_static,2015-09-13T06:00:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase1_static_route_search,phase1_static,2015-09-13T18:00:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase1_static_route_search,phase1_static,2015-09-16T10:20:00,mesh_population,,,,,,17,952,223,Phase 1 static shortest path result; not directly a vehicle count.
+phase2_dynamic_sumo,small,small,vehicle,40,40,40,0,0,,,,"Phase 2 dynamic SUMO result; stranded_main includes reroute failure, 600s stop, and departure blocked by closure."
+phase2_dynamic_sumo,10pct,10pct,vehicle,120,120,120,0,0,,,,"Phase 2 dynamic SUMO result; stranded_main includes reroute failure, 600s stop, and departure blocked by closure."
+phase2_dynamic_sumo,full,full,vehicle,1001,987,987,14,14,,,,"Phase 2 dynamic SUMO result; stranded_main includes reroute failure, 600s stop, and departure blocked by closure."

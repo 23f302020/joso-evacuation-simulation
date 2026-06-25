@@ -1,0 +1,4 @@
+scenario_name,scale_label,vehicle_count,departed_count,arrived_count,not_arrived_count,arrival_rate,reroute_failed_count,long_stopped_count,departure_blocked_by_closure_count,stranded_main_count,stranded_rate,closure_event_count,final_cumulative_closed_sumo_edge_count,first_arrival_time_sec,last_arrival_time_sec,mean_travel_time_sec,max_travel_time_sec,evacuation_completion_time_sec,evacuation_completion_status
+small,small,40,40,40,0,1.0,0,0,0,0,0.0,8,3158,71,619,326.95,618,619,complete
+10pct,10pct,120,120,120,0,1.0,0,0,0,0,0.0,8,3158,80,615,380.725,614,615,complete
+full,full,1001,987,987,14,0.986014,0,0,14,14,0.013986,8,3158,71,9037,1186.154,8882,,incomplete

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>茨城県 統合避難ルートシミュレーション</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="assets/prefecture_boundary.js" defer></script>
+  <script src="assets/cities_manifest.js" defer></script>
+  <script src="assets/kinugawa_river.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="panel" aria-label="シミュレーション操作">
+      <p class="eyebrow">茨城県 統合シミュレーション</p>
+      <h1>避難ルート検索</h1>
+      <ol class="step-guide">
+        <li>時刻を選択する</li>
+        <li>表示範囲を切り替える</li>
+        <li>地図上をクリックする</li>
+        <li>避難ルートと避難所を確認する</li>
+      </ol>
+      <p class="lead">
+        茨城県内41市区町村を対象とした統合シミュレーション。
+        生成対象外の3市町村は「対象外」と表示されます。
+      </p>
+      <section class="control-group">
+        <h2>時刻</h2>
+        <div id="time-buttons" class="time-grid"></div>
+      </section>
+      <section class="control-group">
+        <h2>表示範囲</h2>
+        <div class="scope-grid">
+          <button type="button" class="scope-btn is-on" data-scope="nearby" aria-pressed="true">近辺都市</button>
+          <button type="button" class="scope-btn" data-scope="prefecture" aria-pressed="false">県全体</button>
+        </div>
+      </section>
+      <section class="control-group">
+        <h2>表示切替</h2>
+        <div class="toggle-grid">
+          <button type="button" class="toggle-btn is-on" id="toggle-flood">浸水想定区域</button>
+          <button type="button" class="toggle-btn is-on" id="toggle-closed">閉鎖道路</button>
+        </div>
+      </section>
+      <section class="control-group">
+        <h2>状態</h2>
+        <dl class="status-list">
+          <div><dt>表示対象</dt><dd id="status-layer-scope">-</dd></div>
+          <div><dt>選択中の都市</dt><dd id="status-city">-</dd></div>
+          <div><dt>浸水進行</dt><dd id="status-progress">-</dd></div>
+          <div><dt>閉鎖道路</dt><dd id="status-closures">-</dd></div>
+          <div><dt>避難所</dt><dd id="status-shelters">-</dd></div>
+        </dl>
+      </section>
+      <section class="control-group">
+        <h2>検索結果</h2>
+        <div id="route-result" class="result-box">地図上をクリックして都市を選択してください。</div>
+      </section>
+      <a class="back-link" href="../index.html">&#8592; トップページへ戻る</a>
+    </aside>
+    <section class="map-wrap" aria-label="シミュレーション地図">
+      <div id="map-time-badge" class="map-time-badge">t0 — 2015-09-10 18:00</div>
+      <div id="map"></div>
+    </section>
+  </main>
+</body>
+</html>

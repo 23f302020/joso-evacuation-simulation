@@ -1,0 +1,26 @@
+timestamp,command,scenario,city_code,city_name,error_type,error_message
+2026-05-17T13:21:20,mapping,,08204,古河市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:22:09,mapping,,08205,石岡市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:22:32,mapping,,08207,結城市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:22:58,mapping,,08208,龍ケ崎市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:23:32,mapping,,08210,下妻市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:24:41,mapping,,08212,常陸太田市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:25:18,mapping,,08214,高萩市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:26:14,mapping,,08215,北茨城市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:27:17,mapping,,08216,笠間市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:27:51,mapping,,08217,取手市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:28:16,mapping,,08219,牛久市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:31:28,mapping,,08220,つくば市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:32:12,mapping,,08221,ひたちなか市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:32:28,mapping,,08223,潮来市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:32:45,mapping,,08224,守谷市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:33:28,mapping,,08225,常陸大宮市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:33:50,mapping,,08226,那珂市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:34:23,mapping,,08227,筑西市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:34:49,mapping,,08228,坂東市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:35:14,mapping,,08229,稲敷市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:35:36,mapping,,08230,かすみがうら市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:36:00,mapping,,08231,桜川市,NameError,name 'closure_timeline' is not defined
+2026-05-17T13:37:43,mapping,,08204,古河市,NameError,name 'closure_timeline' is not defined
+2026-05-18T12:34:31,derived,,08208,龍ケ崎市,TypeError,'>=' not supported between instances of 'float' and 'str'
+2026-05-18T14:34:22,derived,,08546,境町,TypeError,'>=' not supported between instances of 'float' and 'str'

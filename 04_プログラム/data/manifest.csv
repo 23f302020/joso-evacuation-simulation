@@ -1,0 +1,9 @@
+dataset_id,name,source,source_url,license_or_terms,local_path,download_method,archive_name,notes
+a31a_08_10,国土数値情報 A31a-2024 茨城県 国管理河川,国土交通省 国土数値情報,https://nlftp.mlit.go.jp/ksj/gml/data/A31a/A31a-24/A31a-24_08_10_GML.zip,国土数値情報利用約款,data/flood_hazard_a31/A31a-24_08_10_GML,direct_zip,A31a-24_08_10_GML.zip,洪水浸水想定区域。waterDepth>=2を道路閉鎖条件に使用。
+a31a_08_20,国土数値情報 A31a-2024 茨城県 その他河川,国土交通省 国土数値情報,https://nlftp.mlit.go.jp/ksj/gml/data/A31a/A31a-24/A31a-24_08_20_GML.zip,国土数値情報利用約款,data/flood_hazard_a31/A31a-24_08_20_GML,direct_zip,A31a-24_08_20_GML.zip,茨城県内41市区町村への拡張で使用。
+n03_2015_08,国土数値情報 N03 2015年 茨城県 行政区域,国土交通省 国土数値情報,https://nlftp.mlit.go.jp/ksj/gml/data/N03/N03-2015/N03-150101_08_GML.zip,国土数値情報利用約款,data/admin_boundary/N03-150101_08_GML,direct_zip,N03-150101_08_GML.zip,2015年鬼怒川氾濫時点と整合させるため2015年版を使用。
+p20_2012_08,国土数値情報 P20 2012年 茨城県 避難施設,国土交通省 国土数値情報,https://nlftp.mlit.go.jp/ksj/gml/data/P20/P20-12/P20-12_08_GML.zip,国土数値情報利用約款（非商用）,data/shelters/P20-12_08_GML,direct_zip,P20-12_08_GML.zip,洪水対応避難施設の抽出に使用。既存コードの古いShapefile配置と異なる場合はパス調整が必要。
+gsi_d1_no917,平成27年9月関東・東北豪雨 常総地区浸水範囲,国土地理院,https://www.gsi.go.jp/BOUSAI/H27.taihuu18gou.html,国土地理院コンテンツ利用規約,data/flood_kml/D1-No917_joso,manual,D1-No917_joso.zip,KML 8時点。配布ページから手動取得。
+estat_t001178_q08,2015年国勢調査 250mメッシュ 5歳階級別人口 茨城県,e-Stat,https://www.e-stat.go.jp/,e-Stat利用規約,data/population_mesh/5歳階級別人口250メッシュ_茨城,manual,,統計ID T001178。Q08=茨城県。
+suiboumap_bp030,浸水ナビ BP030 ハイドログラフ,国土交通省 浸水ナビ,https://suiboumap.gsi.go.jp/,浸水ナビ利用条件,data/suiboumap,manual,,破堤点・時系列条件の補助データ。
+vehicle_stats_ibaraki,市区町村別自動車保有車両数 茨城県,関東運輸局,https://wwwtb.mlit.go.jp/kanto/content/000106365.pdf,国土交通省ウェブサイト利用規約,data/vehicle_stats,manual,,自家用乗用車台数の仮定値に使用。

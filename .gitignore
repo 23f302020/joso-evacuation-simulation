@@ -1,30 +1,57 @@
 # Python
 04_プログラム/venv/
 04_プログラム/scripts/__pycache__/
-04_プログラム/output/
-!04_プログラム/output/index.html
-!04_プログラム/output/faq.html
-!04_プログラム/output/phase1.html
-!04_プログラム/output/phase2.html
-!04_プログラム/output/phase3.html
-!04_プログラム/output/assets/phase1.css
-!04_プログラム/output/scenario_v2/assets/scenario_v2_data.js
-!04_プログラム/output/scenario_v2/assets/scenario_v2_app.js
-!04_プログラム/output/scenario_v2/assets/scenario_v2_style.css
 **/__pycache__/
 *.pyc
 *.pyo
 
-# 再ダウンロード可能な大容量データ（ZIPアーカイブ）
-04_プログラム/data/**/*.zip
+# GitHub Pages 公開成果物
+# output/ は原則除外し、HTMLビューアが参照する軽量な静的資産だけを追跡する。
+04_プログラム/output/**
+!04_プログラム/output/
+!04_プログラム/output/**/
+!04_プログラム/output/**/*.html
+!04_プログラム/output/**/*.css
+!04_プログラム/output/**/*.js
+!04_プログラム/output/**/*.json
+!04_プログラム/output/**/*.csv
+!04_プログラム/output/**/*.md
 
-# 展開済みGMLデータ（大量XMLファイル）
-04_プログラム/data/flood_hazard_a31/A31a-24_08_10_GML/
-04_プログラム/data/flood_hazard_a31/A31a-24_11_10_GML/
-04_プログラム/data/flood_hazard_a31/A31a-24_12_10_GML/
+# SUMO配下は公開ビューアと集計表に限定する
+04_プログラム/output/sumo/**
+!04_プログラム/output/sumo/
+!04_プログラム/output/sumo/viz/
+!04_プログラム/output/sumo/viz/**
+!04_プログラム/output/sumo/evaluation/
+!04_プログラム/output/sumo/evaluation/**/*.csv
+!04_プログラム/output/sumo/evaluation/**/*.json
+!04_プログラム/output/sumo/regions/
+!04_プログラム/output/sumo/regions/index.html
+!04_プログラム/output/sumo/regions/_management/
+!04_プログラム/output/sumo/regions/_management/*.csv
+!04_プログラム/output/sumo/regions/_management/*.md
 
-# PDF（大容量バイナリ）
-04_プログラム/data/**/*.pdf
+# Pages に不要な中間生成物・大容量ファイル
+04_プログラム/output/network/**
+04_プログラム/output/**/*.gpkg
+04_プログラム/output/**/*.graphml
+04_プログラム/output/**/*.net.xml
+04_プログラム/output/**/*.rou.xml
+04_プログラム/output/**/*.sumocfg
+04_プログラム/output/**/*.xml
+04_プログラム/output/**/*.pkl
+04_プログラム/output/**/*.log
+04_プログラム/output/**/*.xlsx
+04_プログラム/output/**/*.png
+04_プログラム/output/**/*.jpg
+04_プログラム/output/**/*.jpeg
+
+# 再ダウンロード可能な入力データ
+# 生データはGitHubに置かず、README/manifest/download_data.pyで再現する。
+04_プログラム/data/**
+!04_プログラム/data/
+!04_プログラム/data/README.md
+!04_プログラム/data/manifest.csv
 
 # デバッグダンプ
 **/bash.exe.stackdump
@@ -47,6 +74,8 @@
 # バージョンアップ時は新フォルダを除外リストから外し、旧フォルダをここに追加すること
 01_経過報告/計画進捗_中間発表資料_0704/中間発表資料ver01/
 01_経過報告/計画進捗_中間発表資料_0704/中間発表資料ver02/
+01_経過報告/計画進捗_中間発表資料_0704/SLIDE-PATTERN/
+01_経過報告/計画進捗_中間発表資料_0704/SLIDE-md/
 
 # 資料作成用の参考資料（ローカル作業用・GitHub管理対象外）
 01_経過報告/計画進捗_中間発表資料_0704/資料作成_参考資料/

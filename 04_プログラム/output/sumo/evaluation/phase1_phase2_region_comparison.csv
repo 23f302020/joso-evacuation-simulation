@@ -1,0 +1,165 @@
+city_code,city_name,analysis_type,scenario_name,unit,phase1_closed_edge_count,origin_count,origin_routable_count,vehicle_count,arrived_count,not_arrived_vehicle_count,stranded_main_vehicle_count,full_recommendation,note
+08201,水戸市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,3639,611,611,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08201,水戸市,phase2_dynamic_sumo,small,vehicle,3639,611,611,611,611,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08201,水戸市,phase2_dynamic_sumo,10pct,vehicle,3639,611,611,2647,2647,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08201,水戸市,phase2_full_plan,full,vehicle_plan,3639,611,611,23518,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08202,日立市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,715,107,107,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08202,日立市,phase2_dynamic_sumo,small,vehicle,715,107,107,107,107,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08202,日立市,phase2_dynamic_sumo,10pct,vehicle,715,107,107,488,488,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08202,日立市,phase2_full_plan,full,vehicle_plan,715,107,107,4336,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08203,土浦市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,807,121,121,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08203,土浦市,phase2_dynamic_sumo,small,vehicle,807,121,121,121,121,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08203,土浦市,phase2_dynamic_sumo,10pct,vehicle,807,121,121,611,611,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08203,土浦市,phase2_full_plan,full,vehicle_plan,807,121,121,5529,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08204,古河市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1068,284,284,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08204,古河市,phase2_dynamic_sumo,small,vehicle,1068,284,284,284,284,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08204,古河市,phase2_dynamic_sumo,10pct,vehicle,1068,284,284,1052,1052,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08204,古河市,phase2_full_plan,full,vehicle_plan,1068,284,284,9273,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08205,石岡市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,777,296,296,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08205,石岡市,phase2_dynamic_sumo,small,vehicle,777,296,296,296,296,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08205,石岡市,phase2_dynamic_sumo,10pct,vehicle,777,296,296,521,521,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08205,石岡市,phase2_full_plan,full,vehicle_plan,777,296,296,3682,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08207,結城市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,529,157,157,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08207,結城市,phase2_dynamic_sumo,small,vehicle,529,157,157,157,157,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08207,結城市,phase2_dynamic_sumo,10pct,vehicle,529,157,157,612,612,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08207,結城市,phase2_full_plan,full,vehicle_plan,529,157,157,5402,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08208,龍ケ崎市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1239,207,194,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08208,龍ケ崎市,phase2_dynamic_sumo,small,vehicle,1239,207,194,194,194,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08208,龍ケ崎市,phase2_dynamic_sumo,10pct,vehicle,1239,207,194,1072,1072,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08208,龍ケ崎市,phase2_full_plan,full,vehicle_plan,1239,207,194,9981,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08210,下妻市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,565,150,150,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08210,下妻市,phase2_dynamic_sumo,small,vehicle,565,150,150,150,150,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08210,下妻市,phase2_dynamic_sumo,10pct,vehicle,565,150,150,438,438,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08210,下妻市,phase2_full_plan,full,vehicle_plan,565,150,150,3640,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08211,常総市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1900,405,405,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08211,常総市,phase2_dynamic_sumo,small,vehicle,1900,405,405,405,405,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08211,常総市,phase2_dynamic_sumo,10pct,vehicle,1900,405,405,1151,1151,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08211,常総市,phase2_full_plan,full,vehicle_plan,1900,405,405,9569,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08212,常陸太田市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1272,264,264,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08212,常陸太田市,phase2_dynamic_sumo,small,vehicle,1272,264,264,264,264,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08212,常陸太田市,phase2_dynamic_sumo,10pct,vehicle,1272,264,264,414,414,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08212,常陸太田市,phase2_full_plan,full,vehicle_plan,1272,264,264,2799,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08214,高萩市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,816,104,104,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08214,高萩市,phase2_dynamic_sumo,small,vehicle,816,104,104,104,104,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08214,高萩市,phase2_dynamic_sumo,10pct,vehicle,816,104,104,547,547,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08214,高萩市,phase2_full_plan,full,vehicle_plan,816,104,104,5011,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08215,北茨城市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1104,152,152,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08215,北茨城市,phase2_dynamic_sumo,small,vehicle,1104,152,152,152,152,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08215,北茨城市,phase2_dynamic_sumo,10pct,vehicle,1104,152,152,632,632,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08215,北茨城市,phase2_full_plan,full,vehicle_plan,1104,152,152,5634,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08216,笠間市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1826,384,384,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08216,笠間市,phase2_dynamic_sumo,small,vehicle,1826,384,384,384,384,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08216,笠間市,phase2_dynamic_sumo,10pct,vehicle,1826,384,384,906,906,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08216,笠間市,phase2_full_plan,full,vehicle_plan,1826,384,384,7149,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08217,取手市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,2328,259,259,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08217,取手市,phase2_dynamic_sumo,small,vehicle,2328,259,259,259,259,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08217,取手市,phase2_dynamic_sumo,10pct,vehicle,2328,259,259,1302,1302,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08217,取手市,phase2_full_plan,full,vehicle_plan,2328,259,259,11754,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08219,牛久市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,282,108,108,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08219,牛久市,phase2_dynamic_sumo,small,vehicle,282,108,108,108,108,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08219,牛久市,phase2_dynamic_sumo,10pct,vehicle,282,108,108,390,390,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08219,牛久市,phase2_full_plan,full,vehicle_plan,282,108,108,3313,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08220,つくば市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,2347,501,501,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08220,つくば市,phase2_dynamic_sumo,small,vehicle,2347,501,501,501,501,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08220,つくば市,phase2_dynamic_sumo,10pct,vehicle,2347,501,501,1530,1530,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08220,つくば市,phase2_full_plan,full,vehicle_plan,2347,501,501,12798,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08221,ひたちなか市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,634,153,153,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08221,ひたちなか市,phase2_dynamic_sumo,small,vehicle,634,153,153,153,153,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08221,ひたちなか市,phase2_dynamic_sumo,10pct,vehicle,634,153,153,724,724,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08221,ひたちなか市,phase2_full_plan,full,vehicle_plan,634,153,153,6477,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08223,潮来市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,251,38,38,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08223,潮来市,phase2_dynamic_sumo,small,vehicle,251,38,38,38,38,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08223,潮来市,phase2_dynamic_sumo,10pct,vehicle,251,38,38,199,199,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08223,潮来市,phase2_full_plan,full,vehicle_plan,251,38,38,1806,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08224,守谷市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,82,18,18,,,,,run_full,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08224,守谷市,phase2_dynamic_sumo,small,vehicle,82,18,18,18,18,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08224,守谷市,phase2_dynamic_sumo,10pct,vehicle,82,18,18,40,40,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08224,守谷市,phase2_dynamic_sumo,full,vehicle,82,18,18,333,333,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08225,常陸大宮市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,598,90,90,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08225,常陸大宮市,phase2_dynamic_sumo,small,vehicle,598,90,90,90,90,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08225,常陸大宮市,phase2_dynamic_sumo,10pct,vehicle,598,90,90,149,149,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08225,常陸大宮市,phase2_full_plan,full,vehicle_plan,598,90,90,1051,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08226,那珂市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,6,24,24,,,,,run_full,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08226,那珂市,phase2_dynamic_sumo,small,vehicle,6,24,24,24,24,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08226,那珂市,phase2_dynamic_sumo,10pct,vehicle,6,24,24,61,61,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08226,那珂市,phase2_dynamic_sumo,full,vehicle,6,24,24,498,498,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08227,筑西市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,3235,526,526,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08227,筑西市,phase2_dynamic_sumo,small,vehicle,3235,526,526,526,526,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08227,筑西市,phase2_dynamic_sumo,10pct,vehicle,3235,526,526,1704,1704,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08227,筑西市,phase2_full_plan,full,vehicle_plan,3235,526,526,14471,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08228,坂東市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,854,325,325,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08228,坂東市,phase2_dynamic_sumo,small,vehicle,854,325,325,325,325,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08228,坂東市,phase2_dynamic_sumo,10pct,vehicle,854,325,325,777,777,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08228,坂東市,phase2_full_plan,full,vehicle_plan,854,325,325,6242,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08229,稲敷市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1567,297,297,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08229,稲敷市,phase2_dynamic_sumo,small,vehicle,1567,297,297,297,297,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08229,稲敷市,phase2_dynamic_sumo,10pct,vehicle,1567,297,297,618,618,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08229,稲敷市,phase2_full_plan,full,vehicle_plan,1567,297,297,4656,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08230,かすみがうら市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,435,174,174,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08230,かすみがうら市,phase2_dynamic_sumo,small,vehicle,435,174,174,174,174,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08230,かすみがうら市,phase2_dynamic_sumo,10pct,vehicle,435,174,174,316,316,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08230,かすみがうら市,phase2_full_plan,full,vehicle_plan,435,174,174,2267,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08231,桜川市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1093,255,255,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08231,桜川市,phase2_dynamic_sumo,small,vehicle,1093,255,255,255,255,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08231,桜川市,phase2_dynamic_sumo,10pct,vehicle,1093,255,255,618,618,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08231,桜川市,phase2_full_plan,full,vehicle_plan,1093,255,255,4905,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08233,行方市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,4,3,3,,,,,run_full,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08233,行方市,phase2_dynamic_sumo,small,vehicle,4,3,3,3,3,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08233,行方市,phase2_dynamic_sumo,10pct,vehicle,4,3,3,7,7,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08233,行方市,phase2_dynamic_sumo,full,vehicle,4,3,3,61,61,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08234,鉾田市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,320,146,146,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08234,鉾田市,phase2_dynamic_sumo,small,vehicle,320,146,146,146,146,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08234,鉾田市,phase2_dynamic_sumo,10pct,vehicle,320,146,146,276,276,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08234,鉾田市,phase2_full_plan,full,vehicle_plan,320,146,146,2004,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08235,つくばみらい市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,811,202,202,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08235,つくばみらい市,phase2_dynamic_sumo,small,vehicle,811,202,202,202,202,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08235,つくばみらい市,phase2_dynamic_sumo,10pct,vehicle,811,202,202,422,422,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08235,つくばみらい市,phase2_full_plan,full,vehicle_plan,811,202,202,3293,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08236,小美玉市,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,204,157,157,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08236,小美玉市,phase2_dynamic_sumo,small,vehicle,204,157,157,157,157,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08236,小美玉市,phase2_dynamic_sumo,10pct,vehicle,204,157,157,294,294,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08236,小美玉市,phase2_full_plan,full,vehicle_plan,204,157,157,2167,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08302,茨城町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,584,227,227,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08302,茨城町,phase2_dynamic_sumo,small,vehicle,584,227,227,227,227,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08302,茨城町,phase2_dynamic_sumo,10pct,vehicle,584,227,227,442,442,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08302,茨城町,phase2_full_plan,full,vehicle_plan,584,227,227,3319,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08309,大洗町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,0,2,2,,,,,run_full,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08309,大洗町,phase2_dynamic_sumo,small,vehicle,0,2,2,2,2,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08309,大洗町,phase2_dynamic_sumo,10pct,vehicle,0,2,2,5,5,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08309,大洗町,phase2_dynamic_sumo,full,vehicle,0,2,2,40,40,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08310,城里町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1030,186,186,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08310,城里町,phase2_dynamic_sumo,small,vehicle,1030,186,186,186,186,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08310,城里町,phase2_dynamic_sumo,10pct,vehicle,1030,186,186,280,280,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08310,城里町,phase2_full_plan,full,vehicle_plan,1030,186,186,1875,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08364,大子町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,1004,203,203,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08364,大子町,phase2_dynamic_sumo,small,vehicle,1004,203,203,203,203,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08364,大子町,phase2_dynamic_sumo,10pct,vehicle,1004,203,203,349,349,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08364,大子町,phase2_full_plan,full,vehicle_plan,1004,203,203,2450,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08442,美浦村,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,230,36,36,,,,,run_full,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08442,美浦村,phase2_dynamic_sumo,small,vehicle,230,36,36,36,36,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08442,美浦村,phase2_dynamic_sumo,10pct,vehicle,230,36,36,115,115,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08442,美浦村,phase2_dynamic_sumo,full,vehicle,230,36,36,982,982,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08443,阿見町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,297,69,69,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08443,阿見町,phase2_dynamic_sumo,small,vehicle,297,69,69,69,69,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08443,阿見町,phase2_dynamic_sumo,10pct,vehicle,297,69,69,249,249,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08443,阿見町,phase2_full_plan,full,vehicle_plan,297,69,69,2115,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08447,河内町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,812,138,138,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08447,河内町,phase2_dynamic_sumo,small,vehicle,812,138,138,138,138,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08447,河内町,phase2_dynamic_sumo,10pct,vehicle,812,138,138,261,261,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08447,河内町,phase2_full_plan,full,vehicle_plan,812,138,138,1893,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08521,八千代町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,780,208,208,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08521,八千代町,phase2_dynamic_sumo,small,vehicle,780,208,208,208,208,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08521,八千代町,phase2_dynamic_sumo,10pct,vehicle,780,208,208,409,409,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08521,八千代町,phase2_full_plan,full,vehicle_plan,780,208,208,3113,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08542,五霞町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,0,7,7,,,,,run_full,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08542,五霞町,phase2_dynamic_sumo,small,vehicle,0,7,7,7,7,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08542,五霞町,phase2_dynamic_sumo,10pct,vehicle,0,7,7,16,16,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08542,五霞町,phase2_dynamic_sumo,full,vehicle,0,7,7,128,128,0,0,run_full,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08546,境町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,636,86,86,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08546,境町,phase2_dynamic_sumo,small,vehicle,636,86,86,86,86,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08546,境町,phase2_dynamic_sumo,10pct,vehicle,636,86,86,236,236,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08546,境町,phase2_full_plan,full,vehicle_plan,636,86,86,1891,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先
+08564,利根町,phase1_static_city_scenario,city_scenario_t0_to_t7,closed_edges_and_origin_meshes,384,53,53,,,,,representative_or_defer,Phase 1 city scenario input scale; not a dynamic vehicle simulation.
+08564,利根町,phase2_dynamic_sumo,small,vehicle,384,53,53,53,53,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08564,利根町,phase2_dynamic_sumo,10pct,vehicle,384,53,53,174,174,0,0,representative_or_defer,Dynamic SUMO/TraCI result; teleport warnings are retained as SUMO runtime notes and summary metrics are counted after simulation.
+08564,利根町,phase2_full_plan,full,vehicle_plan,384,53,53,1457,,,,representative_or_defer,Full run deferred by plan: 10pctで大きな問題が見えず、full車両数が多いため代表地域方式を優先

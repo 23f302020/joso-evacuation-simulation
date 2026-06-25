@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phase 2 全域SUMO結果</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2933;
+      --muted: #52616f;
+      --line: #d8dee6;
+      --panel: #f6f8fa;
+      --accent: #0f766e;
+      --accent-2: #7c2d12;
+      font-family: "Segoe UI", "Yu Gothic", Meiryo, sans-serif;
+    }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #ffffff;
+      line-height: 1.55;
+    }
+    header {
+      padding: 32px clamp(18px, 4vw, 48px) 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #f8fbfb 0%, #fff 100%);
+    }
+    main {
+      padding: 24px clamp(18px, 4vw, 48px) 48px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: var(--panel);
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      color: var(--accent);
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 26px;
+    }
+    a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .links a {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #fff;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      white-space: nowrap;
+    }
+    th {
+      background: #edf3f2;
+      color: #24413f;
+      position: sticky;
+      top: 0;
+    }
+    tr:nth-child(even) td {
+      background: #fafafa;
+    }
+    .note {
+      margin-top: 18px;
+      max-width: 980px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Phase 2 全域SUMO結果</h1>
+    <p>Phase 1対象41市区町村に対する、市区町村別SUMO/TraCI試行の集計です。</p>
+  </header>
+  <main>
+    <section class="metrics" aria-label="集計">
+      <div class="metric"><strong>41</strong><span>対象市区町村</span></div>
+      <div class="metric"><strong>41</strong><span>small完了</span></div>
+      <div class="metric"><strong>41</strong><span>10pct完了</span></div>
+      <div class="metric"><strong>6</strong><span>full実行</span></div>
+      <div class="metric"><strong>0</strong><span>10pct逃げ遅れ主指標</span></div>
+      <div class="metric"><strong>0</strong><span>full逃げ遅れ主指標</span></div>
+    </section>
+    <nav class="links" aria-label="成果物">
+      <a href="../evaluation/evacuation_summary_by_municipality.csv">市区町村別サマリCSV</a>
+      <a href="../evaluation/phase1_phase2_region_comparison.csv">Phase 1/2全域比較CSV</a>
+      <a href="_management/region_batch_status.md">バッチ状態</a>
+      <a href="_management/region_full_execution_plan.md">full実行計画</a>
+    </nav>
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>コード</th>
+            <th>市区町村</th>
+            <th>経路化出発地/全出発地</th>
+            <th>Phase 1閉鎖edge</th>
+            <th>small到着/車両</th>
+            <th>10pct到着/車両</th>
+            <th>10pct逃げ遅れ</th>
+            <th>full方針</th>
+            <th>full到着/車両</th>
+            <th>summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>08201</td><td>水戸市</td><td>611/611</td><td>3639</td><td>611/611</td><td>2647/2647</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08201/results/scenario_a_small_traci_summary.json">small</a> / <a href="08201/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08202</td><td>日立市</td><td>107/107</td><td>715</td><td>107/107</td><td>488/488</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08202/results/scenario_a_small_traci_summary.json">small</a> / <a href="08202/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08203</td><td>土浦市</td><td>121/121</td><td>807</td><td>121/121</td><td>611/611</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08203/results/scenario_a_small_traci_summary.json">small</a> / <a href="08203/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08204</td><td>古河市</td><td>284/284</td><td>1068</td><td>284/284</td><td>1052/1052</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08204/results/scenario_a_small_traci_summary.json">small</a> / <a href="08204/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08205</td><td>石岡市</td><td>296/296</td><td>777</td><td>296/296</td><td>521/521</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08205/results/scenario_a_small_traci_summary.json">small</a> / <a href="08205/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08207</td><td>結城市</td><td>157/157</td><td>529</td><td>157/157</td><td>612/612</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08207/results/scenario_a_small_traci_summary.json">small</a> / <a href="08207/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08208</td><td>龍ケ崎市</td><td>194/207</td><td>1239</td><td>194/194</td><td>1072/1072</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08208/results/scenario_a_small_traci_summary.json">small</a> / <a href="08208/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08210</td><td>下妻市</td><td>150/150</td><td>565</td><td>150/150</td><td>438/438</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08210/results/scenario_a_small_traci_summary.json">small</a> / <a href="08210/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08211</td><td>常総市</td><td>405/405</td><td>1900</td><td>405/405</td><td>1151/1151</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08211/results/scenario_a_small_traci_summary.json">small</a> / <a href="08211/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08212</td><td>常陸太田市</td><td>264/264</td><td>1272</td><td>264/264</td><td>414/414</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08212/results/scenario_a_small_traci_summary.json">small</a> / <a href="08212/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08214</td><td>高萩市</td><td>104/104</td><td>816</td><td>104/104</td><td>547/547</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08214/results/scenario_a_small_traci_summary.json">small</a> / <a href="08214/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08215</td><td>北茨城市</td><td>152/152</td><td>1104</td><td>152/152</td><td>632/632</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08215/results/scenario_a_small_traci_summary.json">small</a> / <a href="08215/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08216</td><td>笠間市</td><td>384/384</td><td>1826</td><td>384/384</td><td>906/906</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08216/results/scenario_a_small_traci_summary.json">small</a> / <a href="08216/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08217</td><td>取手市</td><td>259/259</td><td>2328</td><td>259/259</td><td>1302/1302</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08217/results/scenario_a_small_traci_summary.json">small</a> / <a href="08217/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08219</td><td>牛久市</td><td>108/108</td><td>282</td><td>108/108</td><td>390/390</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08219/results/scenario_a_small_traci_summary.json">small</a> / <a href="08219/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08220</td><td>つくば市</td><td>501/501</td><td>2347</td><td>501/501</td><td>1530/1530</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08220/results/scenario_a_small_traci_summary.json">small</a> / <a href="08220/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08221</td><td>ひたちなか市</td><td>153/153</td><td>634</td><td>153/153</td><td>724/724</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08221/results/scenario_a_small_traci_summary.json">small</a> / <a href="08221/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08223</td><td>潮来市</td><td>38/38</td><td>251</td><td>38/38</td><td>199/199</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08223/results/scenario_a_small_traci_summary.json">small</a> / <a href="08223/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08224</td><td>守谷市</td><td>18/18</td><td>82</td><td>18/18</td><td>40/40</td><td>0</td><td>run_full</td><td>333/333</td><td><a href="08224/results/scenario_a_small_traci_summary.json">small</a> / <a href="08224/results/scenario_a_10pct_traci_summary.json">10pct</a> / <a href="08224/results/scenario_a_traci_summary.json">full</a></td></tr><tr><td>08225</td><td>常陸大宮市</td><td>90/90</td><td>598</td><td>90/90</td><td>149/149</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08225/results/scenario_a_small_traci_summary.json">small</a> / <a href="08225/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08226</td><td>那珂市</td><td>24/24</td><td>6</td><td>24/24</td><td>61/61</td><td>0</td><td>run_full</td><td>498/498</td><td><a href="08226/results/scenario_a_small_traci_summary.json">small</a> / <a href="08226/results/scenario_a_10pct_traci_summary.json">10pct</a> / <a href="08226/results/scenario_a_traci_summary.json">full</a></td></tr><tr><td>08227</td><td>筑西市</td><td>526/526</td><td>3235</td><td>526/526</td><td>1704/1704</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08227/results/scenario_a_small_traci_summary.json">small</a> / <a href="08227/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08228</td><td>坂東市</td><td>325/325</td><td>854</td><td>325/325</td><td>777/777</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08228/results/scenario_a_small_traci_summary.json">small</a> / <a href="08228/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08229</td><td>稲敷市</td><td>297/297</td><td>1567</td><td>297/297</td><td>618/618</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08229/results/scenario_a_small_traci_summary.json">small</a> / <a href="08229/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08230</td><td>かすみがうら市</td><td>174/174</td><td>435</td><td>174/174</td><td>316/316</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08230/results/scenario_a_small_traci_summary.json">small</a> / <a href="08230/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08231</td><td>桜川市</td><td>255/255</td><td>1093</td><td>255/255</td><td>618/618</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08231/results/scenario_a_small_traci_summary.json">small</a> / <a href="08231/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08233</td><td>行方市</td><td>3/3</td><td>4</td><td>3/3</td><td>7/7</td><td>0</td><td>run_full</td><td>61/61</td><td><a href="08233/results/scenario_a_small_traci_summary.json">small</a> / <a href="08233/results/scenario_a_10pct_traci_summary.json">10pct</a> / <a href="08233/results/scenario_a_traci_summary.json">full</a></td></tr><tr><td>08234</td><td>鉾田市</td><td>146/146</td><td>320</td><td>146/146</td><td>276/276</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08234/results/scenario_a_small_traci_summary.json">small</a> / <a href="08234/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08235</td><td>つくばみらい市</td><td>202/202</td><td>811</td><td>202/202</td><td>422/422</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08235/results/scenario_a_small_traci_summary.json">small</a> / <a href="08235/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08236</td><td>小美玉市</td><td>157/157</td><td>204</td><td>157/157</td><td>294/294</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08236/results/scenario_a_small_traci_summary.json">small</a> / <a href="08236/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08302</td><td>茨城町</td><td>227/227</td><td>584</td><td>227/227</td><td>442/442</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08302/results/scenario_a_small_traci_summary.json">small</a> / <a href="08302/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08309</td><td>大洗町</td><td>2/2</td><td>0</td><td>2/2</td><td>5/5</td><td>0</td><td>run_full</td><td>40/40</td><td><a href="08309/results/scenario_a_small_traci_summary.json">small</a> / <a href="08309/results/scenario_a_10pct_traci_summary.json">10pct</a> / <a href="08309/results/scenario_a_traci_summary.json">full</a></td></tr><tr><td>08310</td><td>城里町</td><td>186/186</td><td>1030</td><td>186/186</td><td>280/280</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08310/results/scenario_a_small_traci_summary.json">small</a> / <a href="08310/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08364</td><td>大子町</td><td>203/203</td><td>1004</td><td>203/203</td><td>349/349</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08364/results/scenario_a_small_traci_summary.json">small</a> / <a href="08364/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08442</td><td>美浦村</td><td>36/36</td><td>230</td><td>36/36</td><td>115/115</td><td>0</td><td>run_full</td><td>982/982</td><td><a href="08442/results/scenario_a_small_traci_summary.json">small</a> / <a href="08442/results/scenario_a_10pct_traci_summary.json">10pct</a> / <a href="08442/results/scenario_a_traci_summary.json">full</a></td></tr><tr><td>08443</td><td>阿見町</td><td>69/69</td><td>297</td><td>69/69</td><td>249/249</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08443/results/scenario_a_small_traci_summary.json">small</a> / <a href="08443/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08447</td><td>河内町</td><td>138/138</td><td>812</td><td>138/138</td><td>261/261</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08447/results/scenario_a_small_traci_summary.json">small</a> / <a href="08447/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08521</td><td>八千代町</td><td>208/208</td><td>780</td><td>208/208</td><td>409/409</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08521/results/scenario_a_small_traci_summary.json">small</a> / <a href="08521/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08542</td><td>五霞町</td><td>7/7</td><td>0</td><td>7/7</td><td>16/16</td><td>0</td><td>run_full</td><td>128/128</td><td><a href="08542/results/scenario_a_small_traci_summary.json">small</a> / <a href="08542/results/scenario_a_10pct_traci_summary.json">10pct</a> / <a href="08542/results/scenario_a_traci_summary.json">full</a></td></tr><tr><td>08546</td><td>境町</td><td>86/86</td><td>636</td><td>86/86</td><td>236/236</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08546/results/scenario_a_small_traci_summary.json">small</a> / <a href="08546/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr><tr><td>08564</td><td>利根町</td><td>53/53</td><td>384</td><td>53/53</td><td>174/174</td><td>0</td><td>representative_or_defer</td><td>-</td><td><a href="08564/results/scenario_a_small_traci_summary.json">small</a> / <a href="08564/results/scenario_a_10pct_traci_summary.json">10pct</a> / -</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <p class="note">Phase 1は静的な閉鎖道路・経路探索の入力規模、Phase 2はSUMO/TraCIによる動的車両試行です。単位が異なるため、比較CSVでは列を分けています。</p>
+  </main>
+</body>
+</html>
