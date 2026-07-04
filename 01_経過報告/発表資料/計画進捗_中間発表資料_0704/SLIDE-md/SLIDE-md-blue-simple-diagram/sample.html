@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Sample Slides — Blue Simple Diagram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary:    #29ABE2;
+      --color-secondary:  #A8DCF0;
+      --color-background: #FFFFFF;
+      --color-accent:     #111111;
+      --color-text:       #1A1A1A;
+      --color-subpanel:   #EDEFF2;
+      --font-heading:     'Noto Sans JP', sans-serif;
+      --font-body:        'Noto Sans JP', sans-serif;
+      --font-size-h1:     60px;
+      --font-size-h2:     28px;
+      --font-size-body:   18px;
+      --font-size-caption:13px;
+      --slide-padding-v:  48px;
+      --slide-padding-h:  60px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #b8c4ce;
+      padding: 48px 0;
+      font-family: var(--font-body);
+    }
+
+    /* ─────────────────────────────────────────────
+       BASE SLIDE
+    ───────────────────────────────────────────── */
+    .slide {
+      width: 960px;
+      height: 540px;
+      background: var(--color-background);
+      font-family: var(--font-body);
+      color: var(--color-text);
+      margin: 36px auto;
+      box-shadow: 0 6px 36px rgba(0,0,0,0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ─────────────────────────────────────────────
+       BLOB DECORATIONS
+    ───────────────────────────────────────────── */
+    .blob-tl {
+      position: absolute;
+      top: -75px;
+      left: -75px;
+      width: 290px;
+      height: 290px;
+      background: linear-gradient(140deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+      border-radius: 60% 40% 65% 35% / 55% 50% 50% 45%;
+      z-index: 0;
+    }
+
+    .blob-r {
+      position: absolute;
+      top: 38%;
+      right: -58px;
+      transform: translateY(-50%);
+      width: 145px;
+      height: 250px;
+      background: linear-gradient(190deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+      z-index: 0;
+    }
+
+    /* Cover slide: larger blobs on both sides */
+    .slide-cover .blob-tl {
+      width: 360px;
+      height: 360px;
+      top: -100px;
+      left: -85px;
+    }
+
+    .slide-cover .blob-r {
+      bottom: -90px;
+      right: -90px;
+      top: auto;
+      transform: none;
+      width: 310px;
+      height: 310px;
+      border-radius: 40% 60% 35% 65% / 55% 45% 55% 45%;
+      background: linear-gradient(315deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    }
+
+    /* ─────────────────────────────────────────────
+       CONTENT LAYOUT (shared by content slides)
+    ───────────────────────────────────────────── */
+    .slide-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px var(--slide-padding-h) 14px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-text);
+      flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+
+    .section-title .dots {
+      flex: 1;
+      border-top: 2px dotted #AABBCC;
+    }
+
+    .inner-panel {
+      margin: 0 var(--slide-padding-h) 16px;
+      background: #FFFFFF;
+      border: 1.5px solid #CDD8E3;
+      border-radius: 3px;
+      padding: 24px 32px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* =====================================================
+       SLIDE 1: DESIGN SYSTEM OVERVIEW
+    ===================================================== */
+    .slide-system { padding: 0; }
+
+    .sys-header {
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      letter-spacing: 0.09em;
+    }
+
+    .sys-overview {
+      background: rgba(41, 171, 226, 0.09);
+      padding: 0 20px;
+      font-size: 12px;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      height: 100px;
+    }
+
+    .sys-body {
+      display: flex;
+      height: calc(540px - 38px - 100px);
+    }
+
+    .sys-col {
+      flex: 1;
+      padding: 14px 22px;
+      overflow: hidden;
+    }
+
+    .sys-col + .sys-col { border-left: 1px solid #DDE6EE; }
+
+    .sys-col-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 7px;
+    }
+
+    .sys-col-rule {
+      border: none;
+      border-top: 1px solid #D2DCE6;
+      margin-bottom: 10px;
+    }
+
+    .colors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 140px);
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .color-card {
+      border: 1px solid #E5E5E5;
+      border-radius: 7px;
+      overflow: hidden;
+      background: #FFF;
+    }
+
+    .color-swatch { height: 52px; }
+
+    .color-card-body { padding: 5px 7px; }
+
+    .swatch-role { font-size: 10px; font-weight: 600; color: #333; }
+    .swatch-hex  { font-size: 9px; color: #888; font-family: monospace; }
+
+    .type-row { margin-bottom: 11px; }
+
+    .type-role {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+
+    .type-spec { font-size: 9px; color: #999; margin-top: 2px; }
+
+    /* =====================================================
+       SLIDE 2: COVER
+    ===================================================== */
+    .slide-cover {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cover-frame {
+      position: absolute;
+      inset: 18px;
+      border: 1.5px solid #C5D2DC;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .cover-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 375px;
+      height: 375px;
+      border: 1.5px solid #D0DAE4;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .cover-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    .cover-rule {
+      border: none;
+      border-top: 2.5px solid var(--color-text);
+      margin: 0 auto 14px;
+      width: 480px;
+    }
+
+    .cover-title {
+      font-size: 54px;
+      font-weight: 900;
+      color: var(--color-text);
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+    }
+
+    .cover-meta {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-top: 16px;
+    }
+
+    /* =====================================================
+       SLIDE 3: SECTION TITLE
+    ===================================================== */
+    .slide-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-badge {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 auto 22px;
+    }
+
+    .section-name {
+      font-size: 38px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--color-text);
+      line-height: 1.45;
+    }
+
+    /* =====================================================
+       SLIDE 4: BULLET POINTS
+    ===================================================== */
+    .slide-lead {
+      font-size: 16px;
+      color: var(--color-text);
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .bullet-list { list-style: none; }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 16px;
+      color: var(--color-text);
+      margin-bottom: 13px;
+      line-height: 1.65;
+    }
+
+    .bullet-list li::before {
+      content: '●';
+      color: var(--color-primary);
+      font-size: 9px;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    /* =====================================================
+       SLIDE 5: BAR CHART
+    ===================================================== */
+    .chart-layout {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      height: 100%;
+    }
+
+    .chart-desc { flex: 0 0 238px; }
+
+    .chart-tag {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 2px;
+      margin-bottom: 10px;
+    }
+
+    .chart-h {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .chart-p { font-size: 14px; line-height: 1.8; }
+
+    .bar-chart-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bar-legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 10px;
+      font-size: 11px;
+      color: var(--color-text);
+    }
+
+    .legend-item { display: flex; align-items: center; gap: 5px; }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .bar-chart-canvas {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      height: 185px;
+      border-bottom: 1.5px solid #CCC;
+      border-left: 1.5px solid #CCC;
+      padding: 0 8px 0 8px;
+    }
+
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+    .bar-stack {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 38px;
+    }
+
+    .bar-seg { width: 100%; }
+
+    .bar-lbl {
+      font-size: 10px;
+      color: #666;
+      margin-top: 6px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .chart-footnote {
+      text-align: right;
+      font-size: 11px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    /* =====================================================
+       SLIDE 6: SUMMARY
+    ===================================================== */
+    .summary-top {
+      display: flex;
+      gap: 28px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .summary-headline {
+      font-size: 23px;
+      font-weight: 700;
+      line-height: 1.55;
+      flex: 0 0 230px;
+    }
+
+    .summary-body {
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .summary-cards { display: flex; gap: 12px; }
+
+    .summary-card {
+      flex: 1;
+      background: var(--color-subpanel);
+      border-radius: 4px;
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- =====================================================
+     SLIDE 1: DESIGN SYSTEM OVERVIEW
+===================================================== -->
+<section class="slide slide-system">
+  <div class="sys-header">DESIGN SYSTEM — Blue Simple Diagram</div>
+  <div class="sys-overview">
+    <span><strong>参照ソース：</strong>青　シンプル　グラフ　図解のプレゼンテーション.pdf</span>
+    <span>／</span>
+    <span><strong>マッチするシーン：</strong>教育・研修資料、ビジネス発表・提案資料、グラフ・図解を多用した情報整理型プレゼン</span>
+  </div>
+  <div class="sys-body">
+
+    <!-- Colors -->
+    <div class="sys-col">
+      <div class="sys-col-label">Colors</div>
+      <hr class="sys-col-rule">
+
+      <div class="colors-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#29ABE2;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Primary</div>
+            <div class="swatch-hex">#29ABE2</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#A8DCF0;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Secondary</div>
+            <div class="swatch-hex">#A8DCF0</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#FFFFFF; border-bottom:1px solid #E5E5E5;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Background</div>
+            <div class="swatch-hex">#FFFFFF</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#111111;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Accent</div>
+            <div class="swatch-hex">#111111</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#1A1A1A;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Text</div>
+            <div class="swatch-hex">#1A1A1A</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="sys-col">
+      <div class="sys-col-label">Typography</div>
+      <hr class="sys-col-rule">
+
+      <div class="type-row">
+        <div class="type-role">HEADING H1</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:26px;font-weight:700;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 60px · Bold</div>
+      </div>
+      <div class="type-row">
+        <div class="type-role">HEADING H2</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:18px;font-weight:700;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 28px · Bold</div>
+      </div>
+      <div class="type-row">
+        <div class="type-role">BODY TEXT</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:400;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 18px · Regular</div>
+      </div>
+      <div class="type-row">
+        <div class="type-role">CAPTION</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:400;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 13px · Regular</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SLIDE 2: COVER
+===================================================== -->
+<section class="slide slide-cover">
+  <div class="blob-tl"></div>
+  <div class="blob-r"></div>
+  <div class="cover-frame"></div>
+  <div class="cover-circle"></div>
+  <div class="cover-content">
+    <div class="cover-label">[ デザインを学ぶ ]</div>
+    <hr class="cover-rule">
+    <div class="cover-title">図解で伝える<br>プレゼン資料</div>
+    <hr class="cover-rule" style="margin-top:14px;">
+    <div class="cover-meta">日付 / 氏名</div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SLIDE 3: SECTION TITLE
+===================================================== -->
+<section class="slide slide-section">
+  <div class="blob-tl"></div>
+  <div class="blob-r"></div>
+  <div class="slide-content" style="display:flex;align-items:center;justify-content:center;flex-direction:column;">
+    <div class="section-badge">01</div>
+    <div class="section-name">グラフと図の<br>効果的な使用法</div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SLIDE 4: BULLET POINTS
+===================================================== -->
+<section class="slide">
+  <div class="blob-tl"></div>
+  <div class="blob-r"></div>
+  <div class="slide-content">
+    <div class="section-title">
+      <div class="dots"></div>
+      <span>[ グラフと図の効果的な使用法 ]</span>
+      <div class="dots"></div>
+    </div>
+    <div class="inner-panel">
+      <p class="slide-lead">
+        伝えたい情報の種類に合わせて適切な図やグラフを選ぶ。<br>
+        要点を強調することで分かりやすさを保つ。
+      </p>
+      <ul class="bullet-list">
+        <li>棒グラフは異なるグループのデータを比較する際に最適</li>
+        <li>円グラフは要素の割合やシェアを視覚的に示す際に効果的</li>
+        <li>表は異なるカテゴリ間での要素の比較を目的とする場合に使用</li>
+        <li>シンプルで明確なデザインを心掛け、視覚的な流れを意識する</li>
+        <li>適切なアイコンやイラストを使って直感的な理解を促す</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SLIDE 5: DATA CHART
+===================================================== -->
+<section class="slide">
+  <div class="blob-tl"></div>
+  <div class="blob-r"></div>
+  <div class="slide-content">
+    <div class="section-title">
+      <div class="dots"></div>
+      <span>[ 図解で伝えるグラフ ]</span>
+      <div class="dots"></div>
+    </div>
+    <div class="inner-panel">
+      <div class="chart-layout">
+
+        <!-- Left: description -->
+        <div class="chart-desc">
+          <div class="chart-tag">棒グラフの特徴</div>
+          <div class="chart-h">異なるグループの<br>データを比較したい<br>場合に最適</div>
+          <p class="chart-p">月ごとの売上高や、各部門のパフォーマンスなど、数値が異なる複数の要素を比較する際に役立ちます。</p>
+        </div>
+
+        <!-- Right: stacked bar chart (CSS only) -->
+        <div class="bar-chart-wrap">
+          <div class="bar-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#C0E8F8;"></div>系列1
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#29ABE2;"></div>系列2
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#1A6F9C;"></div>系列3
+            </div>
+          </div>
+          <div class="bar-chart-canvas">
+            <!-- scale: 185px / 60 ≈ 3.08px per unit -->
+            <!-- アイテム1: 20 units = 62px -->
+            <div class="bar-group">
+              <div class="bar-stack" style="height:62px;">
+                <div class="bar-seg" style="height:20px;background:#1A6F9C;"></div>
+                <div class="bar-seg" style="height:21px;background:#29ABE2;"></div>
+                <div class="bar-seg" style="height:21px;background:#C0E8F8;"></div>
+              </div>
+              <div class="bar-lbl">アイテム1</div>
+            </div>
+            <!-- アイテム2: 30 units = 92px -->
+            <div class="bar-group">
+              <div class="bar-stack" style="height:92px;">
+                <div class="bar-seg" style="height:31px;background:#1A6F9C;"></div>
+                <div class="bar-seg" style="height:30px;background:#29ABE2;"></div>
+                <div class="bar-seg" style="height:31px;background:#C0E8F8;"></div>
+              </div>
+              <div class="bar-lbl">アイテム2</div>
+            </div>
+            <!-- アイテム3: 36 units = 111px -->
+            <div class="bar-group">
+              <div class="bar-stack" style="height:111px;">
+                <div class="bar-seg" style="height:37px;background:#1A6F9C;"></div>
+                <div class="bar-seg" style="height:37px;background:#29ABE2;"></div>
+                <div class="bar-seg" style="height:37px;background:#C0E8F8;"></div>
+              </div>
+              <div class="bar-lbl">アイテム3</div>
+            </div>
+            <!-- アイテム4: 50 units = 154px -->
+            <div class="bar-group">
+              <div class="bar-stack" style="height:154px;">
+                <div class="bar-seg" style="height:51px;background:#1A6F9C;"></div>
+                <div class="bar-seg" style="height:51px;background:#29ABE2;"></div>
+                <div class="bar-seg" style="height:52px;background:#C0E8F8;"></div>
+              </div>
+              <div class="bar-lbl">アイテム4</div>
+            </div>
+            <!-- アイテム5: 60 units = 185px -->
+            <div class="bar-group">
+              <div class="bar-stack" style="height:185px;">
+                <div class="bar-seg" style="height:62px;background:#1A6F9C;"></div>
+                <div class="bar-seg" style="height:61px;background:#29ABE2;"></div>
+                <div class="bar-seg" style="height:62px;background:#C0E8F8;"></div>
+              </div>
+              <div class="bar-lbl">アイテム5</div>
+            </div>
+          </div>
+          <div class="chart-footnote">(2030年計測)</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================
+     SLIDE 6: SUMMARY
+===================================================== -->
+<section class="slide">
+  <div class="blob-tl"></div>
+  <div class="blob-r"></div>
+  <div class="slide-content">
+    <div class="section-title">
+      <div class="dots"></div>
+      <span>[ まとめ ]</span>
+      <div class="dots"></div>
+    </div>
+    <div class="inner-panel">
+      <div class="summary-top">
+        <div class="summary-headline">図解は適切に活用<br>することで<br>効果が向上</div>
+        <div class="summary-body">
+          効果的な図解を作成するためには、目的を明確にし、シンプルで直感的に理解しやすいデザインを心掛けることが大切です。
+        </div>
+      </div>
+      <div class="summary-cards">
+        <div class="summary-card">目的の<br>明確化</div>
+        <div class="summary-card">視聴者中心<br>の設計</div>
+        <div class="summary-card">複雑な情報を<br>削ぎ落とす</div>
+        <div class="summary-card">図解と<br>デザイン</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

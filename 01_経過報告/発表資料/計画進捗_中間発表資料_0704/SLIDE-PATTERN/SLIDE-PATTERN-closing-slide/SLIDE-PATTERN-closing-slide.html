@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIDE-PATTERN-closing-slide</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #E8E8E8;
+      font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .slide-label {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    /* フルサイズ・タイトルエリアなし */
+    .slide {
+      display: flex;
+      width: 960px;
+      height: 540px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      overflow: hidden;
+      gap: 20px;
+    }
+    .accent-line {
+      width: 48px;
+      height: 2px;
+      background: #CCCCCC;
+    }
+    .main-message {
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+    }
+    .sub-message {
+      font-size: 14px;
+      color: #999;
+      text-align: center;
+      margin-top: -8px;
+    }
+    .divider {
+      width: 320px;
+      height: 1px;
+      background: #EEEEEE;
+    }
+    .presenter-info {
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      line-height: 1.8;
+    }
+    .contact-info {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: -8px;
+    }
+  </style>
+</head>
+<body>
+  <p class="slide-label">[closing-slide]</p>
+
+  <!-- タイトルエリアなし・フルサイズ -->
+  <div class="slide">
+
+    <!-- アクセント線 -->
+    <div class="accent-line"></div>
+
+    <!-- メインメッセージ -->
+    <p class="main-message">ご清聴ありがとうございました</p>
+
+    <!-- サブメッセージ（英語） -->
+    <p class="sub-message">Thank you for your attention</p>
+
+    <!-- 区切り線 -->
+    <div class="divider"></div>
+
+    <!-- 発表者情報 -->
+    <div class="presenter-info">
+      株式会社サンプル　営業企画部<br>
+      山田 太郎
+    </div>
+
+    <!-- 連絡先 -->
+    <p class="contact-info">yamada@sample.co.jp</p>
+
+  </div>
+</body>
+</html>

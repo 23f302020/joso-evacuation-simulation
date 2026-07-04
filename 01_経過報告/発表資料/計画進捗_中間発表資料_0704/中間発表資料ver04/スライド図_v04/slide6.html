@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Slide6 データの組み合わせ図</title>
+<style>
+  /* --- 図以外は最低限のスタイルのみ --- */
+  :root{--p:#29ABE2;--s:#A8DCF0;--ink:#1A1A1A;--line:#CDD8E3;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Noto Sans JP","Yu Gothic",sans-serif;color:var(--ink);background:#fff;}
+  #fig{width:1120px;padding:26px 30px 30px;}
+  h1{font-size:22px;font-weight:700;margin-bottom:2px;}
+  .sub{font-size:13px;color:#555;margin-bottom:18px;}
+
+  /* 3列レイアウト: 入力データ → 組み合わせ → わかること */
+  .flow{display:grid;grid-template-columns:300px 56px 1fr;gap:0 0;align-items:stretch;}
+  .colhdr{font-size:13px;font-weight:700;color:#fff;background:var(--p);border-radius:4px;
+          padding:5px 10px;text-align:center;margin-bottom:10px;}
+  .colhdr.alt{background:#5b6b7a;}
+  .colhdr.out{background:#0e7a4f;}
+
+  /* データチップ */
+  .chip{border:1.5px solid var(--line);border-left:5px solid var(--p);border-radius:4px;
+        padding:7px 10px;margin-bottom:9px;background:#fff;}
+  .chip b{font-size:13.5px;display:block;}
+  .chip span{font-size:11.5px;color:#555;}
+  .chip.t{border-left-color:#e08a00;}      /* 時間条件 */
+  .chip.sp{border-left-color:#29ABE2;}     /* 空間条件 */
+  .chip.base{border-left-color:#888;}      /* 基盤データ */
+
+  /* 中央の合成記号列 */
+  .ops{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:38px;}
+  .op{font-size:26px;color:#888;font-weight:700;}
+
+  /* わかること（出力）3段 */
+  .reveals{display:flex;flex-direction:column;gap:11px;}
+  .rev{border:1.5px solid var(--line);border-radius:6px;padding:10px 13px;background:#F4FAFD;position:relative;}
+  .rev .tag{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#0e7a4f;
+            border-radius:10px;padding:1px 9px;margin-bottom:4px;}
+  .rev h3{font-size:15px;font-weight:700;margin-bottom:3px;}
+  .rev p{font-size:12px;color:#444;line-height:1.5;}
+  .rev .src{font-size:11px;color:#0e7a4f;margin-top:4px;}
+  .down{text-align:center;font-size:18px;color:#0e7a4f;line-height:0.6;}
+
+  /* 詳細説明文 */
+  .note{margin-top:18px;border-top:2px solid var(--p);padding-top:12px;}
+  .note h2{font-size:14px;color:var(--p);margin-bottom:6px;}
+  .note ul{list-style:none;}
+  .note li{font-size:12px;line-height:1.65;margin-bottom:4px;padding-left:16px;text-indent:-16px;}
+  .note li::before{content:"●";color:var(--p);font-size:9px;margin-right:7px;vertical-align:1.5px;}
+  .k{font-weight:700;}
+</style>
+</head>
+<body>
+<div id="fig">
+  <h1>主な使用データと組み合わせ方 ― 何がわかるようになるか</h1>
+  <div class="sub">各データ単体ではなく「組み合わせ」によって、時刻別の通行困難道路 → 避難経路の有無 → 避難困難者 が段階的に判明する</div>
+
+  <div class="flow">
+    <!-- 入力データ列 -->
+    <div>
+      <div class="colhdr">入力データ</div>
+      <div class="chip sp"><b>A31a 浸水想定区域</b><span>浸水深0.5m以上の範囲＝閉鎖対象の「空間条件」（どの道路か）</span></div>
+      <div class="chip t"><b>GSI 浸水範囲（8時点）</b><span>時系列の浸水拡大＝閉鎖の「時間条件」（いつ閉鎖か）</span></div>
+      <div class="chip base"><b>道路ネットワーク（OSM）</b><span>常総市 12,860エッジ。経路探索の土台</span></div>
+      <div class="chip base"><b>250m人口メッシュ</b><span>避難の出発地・人口（高齢者を含む）</span></div>
+      <div class="chip base"><b>P20 避難施設</b><span>洪水対応避難所 19件＝経路の目的地</span></div>
+      <div class="chip base"><b>N03 行政区域</b><span>常総市域で対象範囲を画定</span></div>
+    </div>
+
+    <!-- 中央の合成記号 -->
+    <div class="ops">
+      <div class="op">＋</div>
+      <div class="op">＋</div>
+      <div class="op">＋</div>
+    </div>
+
+    <!-- わかること（出力）列 -->
+    <div>
+      <div class="colhdr out">組み合わせて わかること</div>
+      <div class="reveals">
+        <div class="rev">
+          <span class="tag">わかること ②</span>
+          <h3>各住民が避難所まで到達できる経路があるか</h3>
+          <p>通行困難道路を除いた道路網で、人口メッシュ（出発地）から最寄り避難所まで迂回路を含めて経路探索する。</p>
+          <div class="src">使用：通行困難道路（A31a×GSI）＋ 人口メッシュ ＋ P20避難所</div>
+        </div>
+        <div class="down">▼</div>
+        <div class="rev">
+          <span class="tag">わかること ③</span>
+          <h3>避難困難者（避難所に到達できない住民）</h3>
+          <p>いずれの避難所にも経路が無い住民を避難困難者として機械的に抽出。<span class="k">到達不可17メッシュ・952人（うち高齢者223人）</span>を算出した。</p>
+          <div class="src">使用：②の経路探索結果 ＋ N03行政区域（範囲画定）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 詳細説明文 -->
+  <div class="note">
+    <h2>図の詳細説明</h2>
+    <ul>
+      <li>本図は「どのデータとどのデータを繋ぐと何がわかるか」を示す<span class="k">関係図</span>であり、データの単なる一覧ではない。左の入力データを組み合わせ、右の「わかること②→③」が段階的に導かれる。</li>
+      <li><span class="k">経路の有無：</span>A31a（浸水深0.5m以上）×GSI 8時点で特定した時刻別の通行困難道路を除いた道路網上で、出発地（人口メッシュ40・人口2,257人）から洪水対応避難所19件へ迂回路を含めて探索し、避難所への到達可否を判定する（わかること②）。</li>
+      <li><span class="k">避難困難者の抽出：</span>いずれの避難所にも経路が無い住民を、N03で画定した常総市域内で集計し、避難困難者（到達不可17メッシュ・952人・高齢者223人）として静的に推計する（わかること③）。これが次段階の動的シミュレーションの入力となる。</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>SLIDE-PATTERN-two-column-split-boxes</title>
+<style>
+  body { background: #E8E8E8; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; font-family: sans-serif; }
+  .slide-label { font-size: 12px; color: #666; margin-bottom: 6px; }
+  .slide { width: 960px; height: 540px; background: #FFFFFF; border: 1px solid #CCCCCC; overflow: hidden; display: flex; flex-direction: column; }
+  .area-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .title-area { padding: 14px 40px 12px; border-bottom: 1px dashed #CCCCCC; flex-shrink: 0; background: #FAFAFA; }
+  .content-area { flex: 1; display: flex; align-items: center; padding: 24px 32px; gap: 0; }
+  .box { flex: 1; border: 1px dashed #CCCCCC; background: #F8F8F8; padding: 28px 32px; height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .box-heading { font-size: 20px; font-weight: bold; color: #333; margin-bottom: 14px; }
+  .box-body { font-size: 13px; color: #555; line-height: 1.8; }
+  .connector { width: 60px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .connector-circle { width: 44px; height: 44px; border-radius: 50%; background: #E8E8E8; border: 1px dashed #CCCCCC; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #AAAAAA; }
+</style>
+</head>
+<body>
+<p class="slide-label">[two-column-split-boxes]</p>
+<div class="slide">
+  <!-- タイトルエリア（SLIDE.mdの Slide Frame で定義） -->
+  <div class="title-area">
+    <div class="area-label">Title Area — SLIDE.md 参照</div>
+    <div style="font-size:16px; color:#CCCCCC; margin-top:4px;">スライドタイトルが入ります</div>
+  </div>
+  <!-- コンテンツエリア -->
+  <div class="content-area">
+    <div class="box">
+      <div class="area-label">左ボックス</div>
+      <div class="box-heading">左側の見出しが入ります</div>
+      <div class="box-body">
+        左側のコンテンツ本文が入ります。対比の左側（例：導入前、課題、現状）を説明します。3〜5行程度のテキストが配置されます。具体的な数値や事実を記述するとより効果的です。
+      </div>
+    </div>
+    <div class="connector">
+      <div class="connector-circle">→</div>
+    </div>
+    <div class="box">
+      <div class="area-label">右ボックス</div>
+      <div class="box-heading">右側の見出しが入ります</div>
+      <div class="box-body">
+        右側のコンテンツ本文が入ります。対比の右側（例：導入後、解決策、目標）を説明します。3〜5行程度のテキストが配置されます。具体的な数値や効果を記述するとより効果的です。
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

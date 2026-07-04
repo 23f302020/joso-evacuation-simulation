@@ -38,7 +38,7 @@ $python = "..\venv\Scripts\python.exe"
 ### 手順
 
 1. **Claude Code が `scripts/config.py` を作成する**
-   - 実装仕様書（`03_研究設計文書/実装仕様書.md` セクション3）の定数をそのまま書き込む
+   - 実装仕様書（`03_研究設計文書/共通設計/実装仕様書.md` セクション3）の定数をそのまま書き込む
    - 変更禁止の値：`JOSO_CODE = "08211"`・`FLOOD_DEPTH_THRESHOLD = 2`・`CRS_JGD2011 = "EPSG:6668"`
 
 2. **ユーザーが動作確認を実行する**
@@ -72,7 +72,7 @@ $python = "..\venv\Scripts\python.exe"
    以下の仕様書に従い、scripts/c3_get_road_network.py を実装してください。
 
    【参照ファイル】
-   - 03_研究設計文書/実装仕様書.md（セクション5-1）
+   - 03_研究設計文書/共通設計/実装仕様書.md（セクション5-1）
    - scripts/config.py
 
    【実装する関数】
@@ -138,7 +138,7 @@ $python = "..\venv\Scripts\python.exe"
    以下の仕様書に従い、scripts/e1_load_flood_data.py を実装してください。
 
    【参照ファイル】
-   - 03_研究設計文書/実装仕様書.md（セクション5-2）
+   - 03_研究設計文書/共通設計/実装仕様書.md（セクション5-2）
    - scripts/config.py
 
    【データの特性（重要）】
@@ -225,7 +225,7 @@ $python = "..\venv\Scripts\python.exe"
    以下の仕様書に従い、scripts/i1_spatial_join.py を実装してください。
 
    【参照ファイル】
-   - 03_研究設計文書/実装仕様書.md（セクション5-3）
+   - 03_研究設計文書/共通設計/実装仕様書.md（セクション5-3）
    - scripts/config.py
 
    【実装する関数】
@@ -273,7 +273,7 @@ $python = "..\venv\Scripts\python.exe"
    以下の仕様書に従い、scripts/i2_generate_closure.py を実装してください。
 
    【参照ファイル】
-   - 03_研究設計文書/実装仕様書.md（セクション5-4）
+   - 03_研究設計文書/共通設計/実装仕様書.md（セクション5-4）
    - scripts/config.py
 
    【入力】
@@ -346,7 +346,7 @@ $python = "..\venv\Scripts\python.exe"
    以下の仕様書に従い、scripts/i3_route_search.py を実装してください。
 
    【参照ファイル】
-   - 03_研究設計文書/実装仕様書.md（セクション5-5）
+   - 03_研究設計文書/共通設計/実装仕様書.md（セクション5-5）
    - scripts/config.py
 
    【T001178 のデータ構造（事前確認済み）】

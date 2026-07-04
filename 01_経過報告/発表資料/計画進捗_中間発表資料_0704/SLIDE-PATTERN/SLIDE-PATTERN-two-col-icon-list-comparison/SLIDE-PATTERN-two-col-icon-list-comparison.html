@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>SLIDE-PATTERN-two-col-icon-list-comparison</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 960px;
+      height: 540px;
+      font-family: sans-serif;
+      background: #FFFFFF;
+      color: #333333;
+      overflow: hidden;
+    }
+    .slide {
+      width: 960px;
+      height: 540px;
+      display: flex;
+      flex-direction: column;
+    }
+    /* タイトルエリア */
+    .title-area {
+      padding: 14px 40px 12px;
+      border-bottom: 1px dashed #CCCCCC;
+      flex-shrink: 0;
+      background: #FAFAFA;
+    }
+    .area-label {
+      font-size: 11px;
+      color: #999999;
+      text-transform: uppercase;
+    }
+    .title-placeholder {
+      font-size: 16px;
+      color: #CCCCCC;
+      margin-top: 4px;
+    }
+    /* コンテンツエリア */
+    .content-area {
+      flex: 1;
+      padding: 16px 40px 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .content-label {
+      font-size: 11px;
+      color: #999999;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    /* リード文 */
+    .lead-text {
+      text-align: center;
+      font-size: 13px;
+      color: #444444;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+    .lead-label {
+      font-size: 10px;
+      color: #BBBBBB;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 4px;
+    }
+    /* 2カラム本体 */
+    .two-col-wrap {
+      flex: 1;
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+    }
+    /* 各カラムボックス */
+    .col-box {
+      flex: 1;
+      border-radius: 6px;
+      border: 1px solid #CCCCCC;
+      background: #F0F0F0;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    /* カラム見出し */
+    .col-header {
+      font-size: 14px;
+      font-weight: bold;
+      color: #555555;
+      text-align: center;
+      margin-bottom: 12px;
+      flex-shrink: 0;
+    }
+    .col-header-label {
+      font-size: 10px;
+      color: #BBBBBB;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+    /* リストアイテム */
+    .icon-item {
+      display: flex;
+      align-items: center;
+      padding: 8px 10px;
+      background: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      flex: 1;
+    }
+    .icon-item:last-child { margin-bottom: 0; }
+    /* アイコンプレースホルダー */
+    .icon-placeholder {
+      width: 36px;
+      height: 36px;
+      background: #DDDDDD;
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-placeholder-label {
+      font-size: 8px;
+      color: #AAAAAA;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    /* アイテムテキスト */
+    .item-text {
+      margin-left: 12px;
+      font-size: 12px;
+      color: #444444;
+      line-height: 1.5;
+    }
+    /* 中央コネクター */
+    .center-connector {
+      width: 28px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .connector-arrow {
+      font-size: 20px;
+      color: #AAAAAA;
+    }
+    .connector-label {
+      font-size: 9px;
+      color: #BBBBBB;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <!-- タイトルエリア（SLIDE.md参照） -->
+    <div class="title-area">
+      <div class="area-label">Title Area — SLIDE.md 参照</div>
+      <div class="title-placeholder">スライドタイトルが入ります</div>
+    </div>
+
+    <!-- コンテンツエリア -->
+    <div class="content-area">
+      <div class="content-label">Content Area — two-col-icon-list-comparison</div>
+
+      <!-- リード文 -->
+      <div class="lead-text">
+        <span class="lead-label">Lead Text（省略可）</span>
+        社会のオンラインシフトに合わせて、<br>
+        オンラインストレージサービスを用いて企業のデジタル化を促進します。
+      </div>
+
+      <!-- 2カラム -->
+      <div class="two-col-wrap">
+
+        <!-- 左カラム -->
+        <div class="col-box">
+          <div class="col-header">
+            <span class="col-header-label">Col Header（Left）</span>
+            左グループの見出し
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-placeholder">
+              <span class="icon-placeholder-label">Icon</span>
+            </div>
+            <span class="item-text">アイテムテキスト１が入ります</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-placeholder">
+              <span class="icon-placeholder-label">Icon</span>
+            </div>
+            <span class="item-text">アイテムテキスト２が入ります</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-placeholder">
+              <span class="icon-placeholder-label">Icon</span>
+            </div>
+            <span class="item-text">アイテムテキスト３が入ります</span>
+          </div>
+        </div>
+
+        <!-- 中央コネクター（省略可） -->
+        <div class="center-connector">
+          <div>
+            <div class="connector-arrow">▶</div>
+            <div class="connector-label">Connector（optional）</div>
+          </div>
+        </div>
+
+        <!-- 右カラム -->
+        <div class="col-box">
+          <div class="col-header">
+            <span class="col-header-label">Col Header（Right）</span>
+            右グループの見出し
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-placeholder">
+              <span class="icon-placeholder-label">Icon</span>
+            </div>
+            <span class="item-text">アイテムテキスト１が入ります</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-placeholder">
+              <span class="icon-placeholder-label">Icon</span>
+            </div>
+            <span class="item-text">アイテムテキスト２が入ります</span>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-placeholder">
+              <span class="icon-placeholder-label">Icon</span>
+            </div>
+            <span class="item-text">アイテムテキスト３が入ります</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

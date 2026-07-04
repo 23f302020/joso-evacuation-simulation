@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIDE-PATTERN-action-items-list</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #E8E8E8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    }
+    .slide-label {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+    .slide {
+      width: 960px;
+      height: 540px;
+      background: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    /* タイトルエリア */
+    .title-area {
+      padding: 14px 40px 12px;
+      border-bottom: 1px dashed #CCCCCC;
+      flex-shrink: 0;
+      background: #FAFAFA;
+    }
+    .area-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .title-placeholder {
+      font-size: 16px;
+      color: #CCCCCC;
+      margin-top: 4px;
+    }
+    /* コンテンツエリア */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      padding: 16px 48px;
+      gap: 0;
+      flex: 1;
+    }
+    .action-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    /* グリッドレイアウト共通 */
+    .grid-row {
+      display: grid;
+      grid-template-columns: 32px 1fr 120px 90px;
+      gap: 16px;
+      align-items: center;
+    }
+    /* ヘッダー行 */
+    .header-row {
+      padding: 8px 0;
+      border-bottom: 2px solid #CCCCCC;
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 0.04em;
+    }
+    /* アクション行 */
+    .action-row {
+      padding: 10px 0;
+      border-bottom: 1px solid #F0F0F0;
+    }
+    /* 番号バッジ */
+    .number-badge {
+      width: 28px;
+      height: 28px;
+      background: #F0F0F0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      color: #555;
+      justify-self: center;
+    }
+    /* アクション内容 */
+    .action-text {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.4;
+    }
+    /* 担当者 */
+    .assignee {
+      font-size: 12px;
+      color: #555;
+      background: #F5F5F5;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* 期限 */
+    .deadline {
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <p class="slide-label">[action-items-list]</p>
+  <div class="slide">
+    <!-- タイトルエリア -->
+    <div class="title-area">
+      <div class="area-label">Title Area — SLIDE.md 参照</div>
+      <div class="title-placeholder">スライドタイトルが入ります</div>
+    </div>
+
+    <!-- コンテンツエリア -->
+    <div class="content-area">
+      <div class="action-label">Action Items</div>
+
+      <!-- ヘッダー行 -->
+      <div class="grid-row header-row">
+        <div>No</div>
+        <div>アクション</div>
+        <div>担当</div>
+        <div>期限</div>
+      </div>
+
+      <!-- アクション行 1 -->
+      <div class="grid-row action-row">
+        <div class="number-badge">1</div>
+        <div class="action-text">要件定義書の最終レビューと承認</div>
+        <div><span class="assignee">田中（PM）</span></div>
+        <div class="deadline">6/10</div>
+      </div>
+
+      <!-- アクション行 2 -->
+      <div class="grid-row action-row">
+        <div class="number-badge">2</div>
+        <div class="action-text">デザインモックアップの作成（3画面分）</div>
+        <div><span class="assignee">山田（デザイン）</span></div>
+        <div class="deadline">6/12</div>
+      </div>
+
+      <!-- アクション行 3 -->
+      <div class="grid-row action-row">
+        <div class="number-badge">3</div>
+        <div class="action-text">APIエンドポイント仕様書の作成</div>
+        <div><span class="assignee">鈴木（開発）</span></div>
+        <div class="deadline">6/12</div>
+      </div>
+
+      <!-- アクション行 4 -->
+      <div class="grid-row action-row">
+        <div class="number-badge">4</div>
+        <div class="action-text">ステークホルダーへの進捗報告メール送付</div>
+        <div><span class="assignee">田中（PM）</span></div>
+        <div class="deadline">6/14</div>
+      </div>
+
+      <!-- アクション行 5 -->
+      <div class="grid-row action-row">
+        <div class="number-badge">5</div>
+        <div class="action-text">テスト環境のセットアップ確認</div>
+        <div><span class="assignee">開発チーム全員</span></div>
+        <div class="deadline">6/15</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
