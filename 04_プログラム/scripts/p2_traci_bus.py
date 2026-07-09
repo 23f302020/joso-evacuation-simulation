@@ -98,7 +98,7 @@ def configure_paths(city_code: str | None = None) -> None:
     """出力先を旧単独ディレクトリまたは地域別ディレクトリへ切り替える。"""
     global NET_XML_PATH, DERIVED_DIR, SCENARIOS_DIR, RESULTS_DIR
     global BUS_PLAN_CSV, AGENT_TYPES_CSV, BUS_STOPS_ADD_XML, BUS_VTYPES_ADD_XML
-    global SMOKE_BUS_SUMOCFG, CLOSURE_TIMELINE_JSON
+    global SMOKE_BUS_SUMOCFG, SMOKE_BUS_TRIPINFO, SMOKE_BUS_FCD, CLOSURE_TIMELINE_JSON
     global PASSENGER_LOG_CSV, BUS_LOG_CSV, BUS_SUMMARY_JSON
     global VEHICLE_LOG_CSV, CLOSURE_LOG_CSV, CONGESTION_LOG_CSV, TRACI_SUMMARY_JSON
 
@@ -119,6 +119,8 @@ def configure_paths(city_code: str | None = None) -> None:
     BUS_STOPS_ADD_XML = SCENARIOS_DIR / "bus_stops.add.xml"
     BUS_VTYPES_ADD_XML = SCENARIOS_DIR / "bus_vtypes.add.xml"
     SMOKE_BUS_SUMOCFG = SCENARIOS_DIR / "scenario_b_busonly.sumocfg"
+    SMOKE_BUS_TRIPINFO = RESULTS_DIR / "scenario_b_busonly_tripinfo.xml"
+    SMOKE_BUS_FCD = RESULTS_DIR / "scenario_b_busonly_fcd.xml"
     CLOSURE_TIMELINE_JSON = DERIVED_DIR / "closure_timeline_sumo.json"
     PASSENGER_LOG_CSV = RESULTS_DIR / "scenario_b_passenger_log.csv"
     BUS_LOG_CSV = RESULTS_DIR / "scenario_b_bus_log.csv"
@@ -241,7 +243,11 @@ def write_bus_sumocfg(
 
 def write_bus_only_sumocfg() -> None:
     """バスのみ（車なし）の sumocfg。乗降会計の検証用スモーク。"""
-    write_bus_sumocfg(SMOKE_BUS_SUMOCFG)
+    write_bus_sumocfg(
+        SMOKE_BUS_SUMOCFG,
+        tripinfo_output=SMOKE_BUS_TRIPINFO,
+        fcd_output=SMOKE_BUS_FCD,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -579,6 +585,7 @@ def run_traci_scenario_b(
     run_id: str | None = None,
     tripinfo_output: Path | None = None,
     fcd_output: Path | None = None,
+    archived_outputs: dict[str, str] | None = None,
 ) -> dict[str, Any]:
     """B-c 本体。バスを投入し6hまで動的往復させ、乗降を会計して3ログを出力する。
 
@@ -686,7 +693,7 @@ def run_traci_scenario_b(
                     }
                 )
     finally:
-        traci.close(False)
+        traci.close()
 
     # 終了時：まだ onboard の客がいれば到着未確定として arrived=False で確定
     for bus in units:
@@ -721,6 +728,7 @@ def run_traci_scenario_b(
         "apply_closures": apply_closures,
         "sim_end_sec": SIM_END_SEC,
         "last_sim_time": last_sim_time,
+        "archived_outputs": archived_outputs or {},
     }
     summary = _build_summary(
         units,
@@ -898,6 +906,22 @@ def run_bus_smoke(n_bus: int, with_closure: bool) -> None:
         raise FileNotFoundError(
             "先に p3_bus_scenario.py smoke で bus_plan.csv / bus_stops.add.xml を生成してください"
         )
+    archived_outputs = traci_common.archive_existing_outputs(
+        {
+            "sumocfg": SMOKE_BUS_SUMOCFG,
+            "tripinfo": SMOKE_BUS_TRIPINFO,
+            "fcd": SMOKE_BUS_FCD,
+            "passenger_log": PASSENGER_LOG_CSV,
+            "bus_log": BUS_LOG_CSV,
+            "vehicle_log": VEHICLE_LOG_CSV,
+            "closure_log": CLOSURE_LOG_CSV,
+            "congestion_log": CONGESTION_LOG_CSV,
+            "bus_summary": BUS_SUMMARY_JSON,
+            "traci_summary": TRACI_SUMMARY_JSON,
+        },
+        RESULTS_DIR / "archive_runs",
+        "scenario_b_busonly",
+    )
     write_bus_vtypes_add()
     write_bus_only_sumocfg()
     summary = run_traci_scenario_b(
@@ -905,6 +929,9 @@ def run_bus_smoke(n_bus: int, with_closure: bool) -> None:
         non_car_households_total=0.0,
         apply_closures=with_closure,
         phase="busonly",
+        tripinfo_output=SMOKE_BUS_TRIPINFO,
+        fcd_output=SMOKE_BUS_FCD,
+        archived_outputs=archived_outputs,
     )
     print("\n=== 乗降検証スモーク結果 ===")
     print(f"  投入バス {summary['bus_count']} 台／輸送 {summary['bus_arrived_passengers']} 人"
@@ -958,6 +985,22 @@ def run_bus_for_scenario(route_file: Path, phase: str, apply_closures: bool) -> 
     sumocfg = SCENARIOS_DIR / "scenario_b.sumocfg"
     tripinfo = RESULTS_DIR / "scenario_b_tripinfo.xml"
     fcd = RESULTS_DIR / "scenario_b_fcd.xml"
+    archived_outputs = traci_common.archive_existing_outputs(
+        {
+            "sumocfg": sumocfg,
+            "tripinfo": tripinfo,
+            "fcd": fcd,
+            "passenger_log": PASSENGER_LOG_CSV,
+            "bus_log": BUS_LOG_CSV,
+            "vehicle_log": VEHICLE_LOG_CSV,
+            "closure_log": CLOSURE_LOG_CSV,
+            "congestion_log": CONGESTION_LOG_CSV,
+            "bus_summary": BUS_SUMMARY_JSON,
+            "traci_summary": TRACI_SUMMARY_JSON,
+        },
+        RESULTS_DIR / "archive_runs",
+        f"scenario_b_{phase}",
+    )
     write_bus_sumocfg(sumocfg, route_file=route_file, tripinfo_output=tripinfo, fcd_output=fcd)
     summary = run_traci_scenario_b(
         sumocfg,
@@ -968,6 +1011,7 @@ def run_bus_for_scenario(route_file: Path, phase: str, apply_closures: bool) -> 
         phase=phase,
         tripinfo_output=tripinfo,
         fcd_output=fcd,
+        archived_outputs=archived_outputs,
     )
     print("\n=== シナリオB TraCI結果 ===")
     print(f"  phase: {phase}")

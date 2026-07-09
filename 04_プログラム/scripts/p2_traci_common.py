@@ -10,9 +10,11 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import shutil
 import subprocess
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -95,6 +97,33 @@ def file_manifest(paths: dict[str, Path]) -> dict[str, dict[str, Any]]:
                 "missing": True,
             }
     return manifest
+
+
+def archive_existing_outputs(
+    paths: dict[str, Path],
+    archive_root: Path,
+    run_label: str,
+) -> dict[str, str]:
+    """Move existing output files aside before a rerun.
+
+    The rerun policy is automatic evacuation, not execution refusal.  Missing
+    paths are ignored; existing paths are moved into one timestamped directory.
+    """
+    existing = {label: path for label, path in paths.items() if path.exists()}
+    if not existing:
+        return {}
+
+    stamp = datetime.now().strftime("%Y%m%dT%H%M%S%f")
+    safe_label = "".join(ch if ch.isalnum() or ch in ("-", "_") else "_" for ch in run_label)
+    archive_dir = archive_root / f"{stamp}_{safe_label}"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+
+    moved: dict[str, str] = {}
+    for label, path in existing.items():
+        destination = archive_dir / path.name
+        shutil.move(str(path), str(destination))
+        moved[label] = str(destination)
+    return moved
 
 
 def count_route_vehicles(route_path: Path) -> dict[str, Any]:

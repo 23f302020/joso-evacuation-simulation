@@ -20,6 +20,7 @@ from datetime import datetime
 from html import escape
 from pathlib import Path
 from typing import Any
+from uuid import uuid4
 
 import pandas as pd
 from shapely.geometry import Point, box, shape
@@ -1581,6 +1582,20 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
 
     planned_vehicles = traci_common.load_planned_vehicles(paths["assignments"])
     planned_by_source_edge = traci_common.group_planned_by_source_edge(planned_vehicles)
+    archived_outputs = traci_common.archive_existing_outputs(
+        {
+            "tripinfo": paths["tripinfo"],
+            "fcd": paths["fcd"],
+            "vehicle_log": paths["vehicle_log"],
+            "closure_log": paths["closure_log"],
+            "congestion_log": paths["congestion_log"],
+            "summary": paths["summary"],
+        },
+        ctx.results_dir / "archive_runs",
+        f"scenario_a_{scenario_name}",
+    )
+    run_id = f"{scenario_name}_{datetime.now().strftime('%Y%m%dT%H%M%S')}_{uuid4().hex[:8]}"
+    started_at = datetime.now()
 
     sumo_binary = sumolib.checkBinary("sumo")
     command = [
@@ -1687,6 +1702,35 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
         ["sim_time_sec", "active_vehicle_count", "mean_speed_mps", "stopped_vehicle_count"],
         congestion_logs,
     )
+    ended_at = datetime.now()
+    manifest_paths = {
+        "sumocfg": paths["sumocfg"],
+        "route_file": paths["rou"],
+        "assignments": paths["assignments"],
+        "tripinfo": paths["tripinfo"],
+        "fcd": paths["fcd"],
+        "vehicle_log": paths["vehicle_log"],
+        "closure_log": paths["closure_log"],
+        "congestion_log": paths["congestion_log"],
+    }
+    run_manifest = {
+        "run_id": run_id,
+        "phase": "scenario_a",
+        "scenario": scenario_name,
+        "started_at": started_at.isoformat(timespec="seconds"),
+        "ended_at": ended_at.isoformat(timespec="seconds"),
+        "sumocfg": str(paths["sumocfg"]),
+        "sumocfg_content": paths["sumocfg"].read_text(encoding="utf-8") if paths["sumocfg"].exists() else "",
+        "route_file": str(paths["rou"]),
+        "route_sha256": traci_common.sha256_file(paths["rou"]) if paths["rou"].exists() else "",
+        "route_vehicle_counts": traci_common.count_route_vehicles(paths["rou"]) if paths["rou"].exists() else {},
+        "assignments": str(paths["assignments"]),
+        "apply_closures": True,
+        "sim_end_sec": SIM_DURATION_SEC,
+        "archived_outputs": archived_outputs,
+        "outputs": traci_common.file_manifest(manifest_paths),
+    }
+    run_manifest.update(traci_common.git_state(PROGRAM_DIR))
 
     summary = traci_common.build_traci_summary(
         city_code=ctx.city_code,
@@ -1699,10 +1743,16 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
         closure_log_rel=rel(paths["closure_log"]),
         congestion_log_rel=rel(paths["congestion_log"]),
         summary_rel=rel(paths["summary"]),
-        extra={"updated_at": datetime.now().isoformat(timespec="seconds")},
+        extra={
+            "updated_at": ended_at.isoformat(timespec="seconds"),
+            "run_id": run_id,
+            "run_manifest": run_manifest,
+        },
     )
     paths["summary"].write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    upsert_summary(RUN_SUMMARY_CSV, ["city_code", "scenario"], summary)
+    summary_for_csv = dict(summary)
+    summary_for_csv.pop("run_manifest", None)
+    upsert_summary(RUN_SUMMARY_CSV, ["city_code", "scenario"], summary_for_csv)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return summary
 
