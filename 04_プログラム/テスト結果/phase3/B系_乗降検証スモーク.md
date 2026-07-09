@@ -1,5 +1,7 @@
 # Phase 3 B系 乗降検証スモーク（p2_traci_bus.py smoke-bus）
 
+> **2026-07-09追記：** 本メモのBLOCKED結論は、WSL/Windows SUMO接続問題が残っていた時点の履歴である。その後、PowerShell実行・パス変換・SUMO binary解決を修正し、乗降検証は完走済み。最新結果は `04_プログラム/テスト結果/phase3/B系_常総full再実行_20260709.md` を正とする。最新のバス単独検証では5台・候補247人・乗車215人・到着215人・未到着0人・`conservation_ok=true`、full交通同時実行では乗車91人・到着67人・未到着24人・`conservation_ok=true`。full交通のdespawn 3便は到着扱いしない。
+
 **対象：** `04_プログラム/scripts/p2_traci_bus.py`（B-c本体・`run_traci_scenario_b`）
 **目的：** `_Bc実装ブループリント_fable5.md` §5の「乗降検証スモーク」を実行し、不変条件I1〜I8（Σboarded=Σalight+…／queue非負／二重計上なし／JB-4／等）を実測値で検証する。
 **実行担当：** Sonnet（コード変更なし。バグは修正せず報告のみ）
