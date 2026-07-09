@@ -851,7 +851,7 @@ def write_bus_outputs(
     )
     ended_at = datetime.now()
     summary["run_manifest"]["ended_at"] = ended_at.isoformat(timespec="seconds")
-    summary["run_manifest"].update(traci_common.git_state(PROGRAM_DIR.parent))
+    summary["run_manifest"].update(traci_common.git_state(PROGRAM_DIR, SCRIPT_DIR))
     manifest_paths: dict[str, Path] = {
         "passenger_log": PASSENGER_LOG_CSV,
         "bus_log": BUS_LOG_CSV,

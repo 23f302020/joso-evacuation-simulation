@@ -19,7 +19,11 @@ from pathlib import Path
 from typing import Any, Iterable
 
 import pandas as pd
-import traci
+
+try:
+    import traci
+except ModuleNotFoundError:
+    traci = None
 
 
 VEHICLE_LOG_FIELDS = [
@@ -58,12 +62,12 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def git_state(repo_dir: Path) -> dict[str, Any]:
-    def run_git(args: list[str]) -> str:
+def git_state(repo_dir: Path, scripts_dir: Path | None = None) -> dict[str, Any]:
+    def run_git(args: list[str], cwd: Path) -> str:
         try:
             result = subprocess.run(
                 ["git", *args],
-                cwd=repo_dir,
+                cwd=cwd,
                 check=True,
                 capture_output=True,
                 text=True,
@@ -72,11 +76,22 @@ def git_state(repo_dir: Path) -> dict[str, Any]:
         except (OSError, subprocess.CalledProcessError):
             return ""
 
-    commit = run_git(["rev-parse", "HEAD"])
-    status = run_git(["status", "--porcelain"])
+    repo_dir = repo_dir.resolve()
+    scope_path = (
+        scripts_dir.resolve()
+        if scripts_dir is not None
+        else (repo_dir / "scripts").resolve()
+    )
+
+    commit = run_git(["rev-parse", "HEAD"], repo_dir)
+    status_repo = run_git(["status", "--porcelain", "--", ":/"], repo_dir)
+    status_scripts = run_git(["status", "--porcelain", "--", str(scope_path)], repo_dir)
     return {
         "git_commit": commit,
-        "git_dirty": bool(status),
+        "git_dirty": bool(status_repo),
+        "git_dirty_repo": bool(status_repo),
+        "git_dirty_scripts": bool(status_scripts),
+        "git_scope_path": str(scope_path),
     }
 
 

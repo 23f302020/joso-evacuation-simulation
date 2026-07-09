@@ -1730,7 +1730,7 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
         "archived_outputs": archived_outputs,
         "outputs": traci_common.file_manifest(manifest_paths),
     }
-    run_manifest.update(traci_common.git_state(PROGRAM_DIR))
+    run_manifest.update(traci_common.git_state(PROGRAM_DIR, SCRIPT_DIR))
 
     summary = traci_common.build_traci_summary(
         city_code=ctx.city_code,
