@@ -98,10 +98,13 @@ Phase 3（バス比較）へ移行中。
 │   │           ├── _management/  ← 対象リスト・棚卸し・バッチ状態管理CSV
 │   │           └── {city_code}/  ← 市区町村別 network/derived/scenarios/results
 │   │
-│   ├── テスト結果_phase1/         ← Phase 1 テスト記録
-│   │   └── README.md             ← テスト結果の索引
-│   ├── テスト結果_phase2.md       ← Phase 2 常総市テスト記録
-│   └── テスト結果_phase2_region.md← Phase 2 全域拡張テスト記録
+│   ├── docs/                     ← 環境・ツール記録
+│   ├── logs/                     ← 実行ログ（.gitignore対象）
+│   └── テスト結果/                ← テスト記録（フェーズ別）
+│       ├── phase1/               ← Phase 1 テスト記録（README.md で索引化）
+│       ├── phase2/               ← Phase 2 常総市・全域拡張テスト記録
+│       ├── phase3/               ← Phase 3 B系テスト記録
+│       └── chatbot/              ← チャットボットのテスト記録
 │
 ├── 05_タスク管理/                ← 進捗管理
 │   ├── 実装タスク一覧.md         ← I系タスクの進捗（Phase 1〜3）

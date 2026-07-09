@@ -26,7 +26,7 @@ Phase 2の考察では、Phase 1とPhase 2を同一指標として直接比較�
 | Phase 1経路検索方法 | `03_研究設計文書/phase1/論文用説明_Phase1_経路検索方法.md` | Phase 1が静的分析であることの説明 |
 | Phase 1考察 | `03_研究設計文書/phase1/論文用説明_Phase1_考察.md` | Phase 1側の既存考察との接続 |
 | Phase 2実装前仕様 | `03_研究設計文書/phase2/Phase2_実装前仕様.md` | SUMO導入、時間軸、逃げ遅れ定義、車両台数仮定 |
-| Phase 2テスト結果 | `04_プログラム/テスト結果_phase2_region.md` | 実行結果・検証結果・注意点 |
+| Phase 2テスト結果 | `04_プログラム/テスト結果/phase2/テスト結果_phase2_region.md` | 実行結果・検証結果・注意点 |
 | 市区町村別評価CSV | `04_プログラム/output/sumo/evaluation/evacuation_summary_by_municipality.csv` | Phase 2全域結果の表化 |
 | Phase 1/2比較CSV | `04_プログラム/output/sumo/evaluation/phase1_phase2_region_comparison.csv` | Phase 1/2比較の注記付き整理 |
 | 全域SUMO結果HTML | `04_プログラム/output/sumo/regions/index.html` | 図表・画面確認用 |
