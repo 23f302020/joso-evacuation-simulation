@@ -29,7 +29,7 @@ SHELTERS_SAFETY_CSV = SUMO_DERIVED_DIR / "shelters_safety.csv"
 AGENT_ORIGINS_10PCT_CSV = SUMO_DERIVED_DIR / "agent_origins_10pct.csv"
 DERIVED_VALIDATION_JSON = SUMO_DERIVED_DIR / "derived_data_validation.json"
 
-HOUSEHOLD_SIZE = 2.3
+HOUSEHOLD_SIZE = getattr(config, "HOUSEHOLD_SIZE", 2.3)
 
 
 def ensure_dirs() -> None:

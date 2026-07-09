@@ -8,6 +8,8 @@ from typing import Any
 
 import pandas as pd
 
+import config
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROGRAM_DIR = SCRIPT_DIR.parent
@@ -24,9 +26,15 @@ BUS_DEMAND_CANDIDATES_CSV = SUMO_DERIVED_DIR / "bus_demand_candidates.csv"
 AGENT_TYPE_SUMMARY_CSV = SUMO_DERIVED_DIR / "agent_type_summary.csv"
 AGENT_TYPE_SUMMARY_MD = RESEARCH_RESULTS_PHASE2_DIR / "Phase3前_エージェント4タイプ前処理結果.md"
 
-NON_CAR_RATE = 0.15
+NON_CAR_RATE = getattr(config, "NON_CAR_RATE", 0.15)
 TYPE3_MOBILITY_LIMITED_RATE = 500 / 4700
-BASE_BUS_CAPACITY_PEOPLE = 324
+BASE_BUS_CAPACITY_PEOPLE = (
+    (getattr(config, "BUS_COUNT_BASE", 5) - 1)
+    * getattr(config, "BUS_CAPACITY_STD", 8)
+    * 9
+    + getattr(config, "BUS_CAPACITY_WELFARE", 4)
+    * 9
+)
 
 
 def ensure_dirs() -> None:
@@ -60,10 +68,15 @@ def allocate_agent_types(row: pd.Series) -> dict[str, Any]:
     }
 
 
-def build_agent_types() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    ensure_dirs()
-    origins = pd.read_csv(ORIGIN_POINTS_CSV, dtype={"KEY_CODE": str})
-    origins_sumo = pd.read_csv(AGENT_ORIGINS_SUMO_CSV, dtype={"KEY_CODE": str})
+def build_agent_types_for_paths(
+    origins_path: Path,
+    origins_sumo_path: Path,
+    out_dir: Path,
+    summary_md_path: Path | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    out_dir.mkdir(parents=True, exist_ok=True)
+    origins = pd.read_csv(origins_path, dtype={"KEY_CODE": str})
+    origins_sumo = pd.read_csv(origins_sumo_path, dtype={"KEY_CODE": str})
     merged = origins_sumo.merge(
         origins[["KEY_CODE", "total_pop", "elderly_pop"]],
         on="KEY_CODE",
@@ -132,14 +145,42 @@ def build_agent_types() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         ]
     )
 
-    agent_types.to_csv(AGENT_TYPES_CSV, index=False, encoding="utf-8")
-    bus_candidates.to_csv(BUS_DEMAND_CANDIDATES_CSV, index=False, encoding="utf-8")
-    summary.to_csv(AGENT_TYPE_SUMMARY_CSV, index=False, encoding="utf-8")
-    write_summary_md(summary.iloc[0], len(bus_candidates))
+    agent_types_csv = out_dir / "agent_types.csv"
+    bus_candidates_csv = out_dir / "bus_demand_candidates.csv"
+    summary_csv = out_dir / "agent_type_summary.csv"
+    agent_types.to_csv(agent_types_csv, index=False, encoding="utf-8")
+    bus_candidates.to_csv(bus_candidates_csv, index=False, encoding="utf-8")
+    summary.to_csv(summary_csv, index=False, encoding="utf-8")
+    if summary_md_path is not None:
+        write_summary_md(
+            summary.iloc[0],
+            len(bus_candidates),
+            agent_types_csv,
+            bus_candidates_csv,
+            summary_csv,
+            summary_md_path,
+        )
     return agent_types, bus_candidates, summary
 
 
-def write_summary_md(summary: pd.Series, bus_candidate_origin_count: int) -> None:
+def build_agent_types() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    ensure_dirs()
+    return build_agent_types_for_paths(
+        ORIGIN_POINTS_CSV,
+        AGENT_ORIGINS_SUMO_CSV,
+        SUMO_DERIVED_DIR,
+        AGENT_TYPE_SUMMARY_MD,
+    )
+
+
+def write_summary_md(
+    summary: pd.Series,
+    bus_candidate_origin_count: int,
+    agent_types_csv: Path,
+    bus_candidates_csv: Path,
+    summary_csv: Path,
+    summary_md_path: Path,
+) -> None:
     lines = [
         "# Phase 3前 エージェント4タイプ前処理結果",
         "",
@@ -175,9 +216,9 @@ def write_summary_md(summary: pd.Series, bus_candidate_origin_count: int) -> Non
         "",
         "| ファイル | 内容 |",
         "|---|---|",
-        f"| `{AGENT_TYPES_CSV}` | 出発地ごとの4タイプ人口とSUMO edge対応 |",
-        f"| `{BUS_DEMAND_CANDIDATES_CSV}` | バス優先人口がある出発地を優先順位付きで抽出 |",
-        f"| `{AGENT_TYPE_SUMMARY_CSV}` | 4タイプ分類の集計値 |",
+        f"| `{agent_types_csv}` | 出発地ごとの4タイプ人口とSUMO edge対応 |",
+        f"| `{bus_candidates_csv}` | バス優先人口がある出発地を優先順位付きで抽出 |",
+        f"| `{summary_csv}` | 4タイプ分類の集計値 |",
         "",
         "## 4. 注意点",
         "",
@@ -185,19 +226,35 @@ def write_summary_md(summary: pd.Series, bus_candidate_origin_count: int) -> Non
         "- 現時点では非車保有率15%を全メッシュへ一律適用する第1近似である。",
         "- Phase 3実装時には、この候補表からバス容量・往復回数に応じて実際の乗車対象を選ぶ。",
     ]
-    AGENT_TYPE_SUMMARY_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    summary_md_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["all"], help="task to run")
+    parser.add_argument(
+        "--city-code",
+        help="地域別SUMO出力を対象にする場合の市区町村コード（例: 08211）",
+    )
     args = parser.parse_args()
     if args.command == "all":
-        agent_types, bus_candidates, summary = build_agent_types()
-        print(f"[INFO] saved: {AGENT_TYPES_CSV} ({len(agent_types)} origins)")
-        print(f"[INFO] saved: {BUS_DEMAND_CANDIDATES_CSV} ({len(bus_candidates)} origins)")
-        print(f"[INFO] saved: {AGENT_TYPE_SUMMARY_CSV}")
-        print(f"[INFO] saved: {AGENT_TYPE_SUMMARY_MD}")
+        if args.city_code:
+            derived_dir = OUTPUT_DIR / "sumo" / "regions" / args.city_code / "derived"
+            agent_types, bus_candidates, summary = build_agent_types_for_paths(
+                derived_dir / "agent_origins_10pct.csv",
+                derived_dir / "agent_origins_sumo.csv",
+                derived_dir,
+                None,
+            )
+            print(f"[INFO] saved: {derived_dir / 'agent_types.csv'} ({len(agent_types)} origins)")
+            print(f"[INFO] saved: {derived_dir / 'bus_demand_candidates.csv'} ({len(bus_candidates)} origins)")
+            print(f"[INFO] saved: {derived_dir / 'agent_type_summary.csv'}")
+        else:
+            agent_types, bus_candidates, summary = build_agent_types()
+            print(f"[INFO] saved: {AGENT_TYPES_CSV} ({len(agent_types)} origins)")
+            print(f"[INFO] saved: {BUS_DEMAND_CANDIDATES_CSV} ({len(bus_candidates)} origins)")
+            print(f"[INFO] saved: {AGENT_TYPE_SUMMARY_CSV}")
+            print(f"[INFO] saved: {AGENT_TYPE_SUMMARY_MD}")
         print(summary.to_string(index=False))
 
 
