@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import json
 import math
 import os
 import xml.etree.ElementTree as ET
@@ -446,18 +447,59 @@ def allocate_reductions(raw_by_origin: dict[str, float], caps: dict[str, int]) -
     return reductions
 
 
-def build_scenario_b_routes() -> None:
+def read_bool(value: Any) -> bool:
+    return str(value).strip().lower() in {"true", "1", "yes"}
+
+
+def route_vehicle_count(root: ET.Element) -> int:
+    return sum(1 for child in root if child.tag in {"trip", "vehicle"})
+
+
+def arrived_passengers_for_reduction(
+    passenger_log: Path,
+    bus_log: Path,
+    *,
+    sim_end_sec: int = SIM_END_SEC,
+) -> pd.DataFrame:
+    passengers = pd.read_csv(passenger_log, dtype={"origin_id": str, "bus_id": str, "trip_seq": str})
+    buses = pd.read_csv(bus_log, dtype={"bus_id": str, "trip_seq": str})
+    terminated = buses[
+        buses["terminated"].astype(str).str.lower().isin(["true", "1", "yes"])
+        & (buses["boarded_count"].astype(float) > 0)
+    ]
+    terminated_keys = set(zip(terminated["bus_id"], terminated["trip_seq"]))
+    terminal_arrival = passengers["arrival_time_s"].astype(str).str.split(".", n=1).str[0] == str(sim_end_sec)
+    arrived = passengers["arrived"].astype(str).str.lower().isin(["true", "1", "yes"])
+    terminated_trip = [
+        (str(row.bus_id), str(row.trip_seq)) in terminated_keys
+        for row in passengers[["bus_id", "trip_seq"]].itertuples(index=False)
+    ]
+    return passengers[arrived & ~pd.Series(terminated_trip, index=passengers.index) & ~terminal_arrival].copy()
+
+
+def build_scenario_b_routes(
+    *,
+    expected_reduction_count: int | None = None,
+    expected_vehicle_count: int | None = None,
+) -> None:
     """実測バス輸送人数を救出走行削減へ反映した scenario_b.rou.xml を作る。"""
     passenger_log = RESULTS_DIR / "scenario_b_passenger_log.csv"
+    bus_log = RESULTS_DIR / "scenario_b_bus_log.csv"
+    bus_summary = RESULTS_DIR / "scenario_b_bus_summary.json"
     scenario_a_rou = SCENARIOS_DIR / "scenario_a.rou.xml"
     scenario_a_assignments = DERIVED_DIR / "scenario_a_vehicle_assignments.csv"
     if not passenger_log.exists():
         raise FileNotFoundError(f"missing bus passenger log: {passenger_log}")
+    if not bus_log.exists():
+        raise FileNotFoundError(f"missing bus log: {bus_log}")
     if not scenario_a_rou.exists() or not scenario_a_assignments.exists():
         raise FileNotFoundError("scenario_a.rou.xml / scenario_a_vehicle_assignments.csv が必要です")
 
-    passengers = pd.read_csv(passenger_log, dtype={"origin_id": str})
-    arrived = passengers[passengers["arrived"].astype(str).str.lower() == "true"]
+    sim_end_sec = SIM_END_SEC
+    if bus_summary.exists():
+        summary = json.loads(bus_summary.read_text(encoding="utf-8"))
+        sim_end_sec = int(float(summary.get("run_manifest", {}).get("sim_end_sec", SIM_END_SEC)))
+    arrived = arrived_passengers_for_reduction(passenger_log, bus_log, sim_end_sec=sim_end_sec)
     arrived_by_origin = arrived.groupby("origin_id").size().to_dict()
 
     assignments = pd.read_csv(scenario_a_assignments, dtype={"origin_id": str, "vehicle_id": str})
@@ -466,6 +508,11 @@ def build_scenario_b_routes() -> None:
     k = float(getattr(config, "RESCUE_PER_VEHICLE_K", getattr(config, "HOUSEHOLD_SIZE", 2.3)))
     raw_by_origin = {origin_id: count / k for origin_id, count in arrived_by_origin.items()}
     reductions = allocate_reductions(raw_by_origin, rescue_by_origin)
+    reduction_total = sum(reductions.values())
+    if expected_reduction_count is not None and reduction_total != expected_reduction_count:
+        raise AssertionError(
+            f"rescue reduction mismatch: expected {expected_reduction_count}, got {reduction_total}"
+        )
 
     remove_ids: set[str] = set()
     reduction_rows: list[dict[str, Any]] = []
@@ -491,12 +538,21 @@ def build_scenario_b_routes() -> None:
     tree = ET.parse(scenario_a_rou)
     root = tree.getroot()
     for child in list(root):
-        if child.tag == "vehicle" and child.attrib.get("id") in remove_ids:
+        if child.tag in {"trip", "vehicle"} and child.attrib.get("id") in remove_ids:
             root.remove(child)
+    route_count = route_vehicle_count(root)
     ET.indent(tree, space="  ")
     tree.write(SCENARIO_B_ROU_XML, encoding="utf-8", xml_declaration=True)
 
     scenario_b_assignments = assignments[~assignments["vehicle_id"].isin(remove_ids)].copy()
+    if route_count != len(scenario_b_assignments):
+        raise AssertionError(
+            f"AC3 route/assignment count mismatch: route={route_count}, assignments={len(scenario_b_assignments)}"
+        )
+    if expected_vehicle_count is not None and route_count != expected_vehicle_count:
+        raise AssertionError(
+            f"AC3 vehicle count mismatch: expected {expected_vehicle_count}, got {route_count}"
+        )
     scenario_b_assignments.to_csv(SCENARIO_B_ASSIGNMENTS_CSV, index=False, encoding="utf-8")
     pd.DataFrame(reduction_rows).sort_values("origin_id").to_csv(
         SCENARIO_B_REDUCTION_CSV, index=False, encoding="utf-8"
@@ -508,7 +564,8 @@ def build_scenario_b_routes() -> None:
     print(
         "[INFO] scenario_b accounting: "
         f"bus_arrived={len(arrived)}, rescue_removed={len(remove_ids)}, "
-        f"vehicles_before={len(assignments)}, vehicles_after={len(scenario_b_assignments)}"
+        f"vehicles_before={len(assignments)}, vehicles_after={len(scenario_b_assignments)}, "
+        f"route_vehicles={route_count}"
     )
 
 
@@ -534,13 +591,18 @@ def main() -> None:
         "--city-code",
         help="地域別SUMO出力を対象にする場合の市区町村コード（例: 08211）",
     )
+    p_build_b.add_argument("--expected-reduction", type=int)
+    p_build_b.add_argument("--expected-vehicles", type=int)
     args = parser.parse_args()
     if args.command == "smoke":
         configure_paths(args.city_code)
         run_smoke(args.buses)
     elif args.command == "build-scenario-b":
         configure_paths(args.city_code)
-        build_scenario_b_routes()
+        build_scenario_b_routes(
+            expected_reduction_count=args.expected_reduction,
+            expected_vehicle_count=args.expected_vehicles,
+        )
 
 
 if __name__ == "__main__":
