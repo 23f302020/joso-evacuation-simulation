@@ -176,20 +176,66 @@ def validate_ac5(
     }
 
 
+def validate_terminated_passenger_accounting(summary: dict[str, Any]) -> dict[str, Any]:
+    outputs = summary.get("run_manifest", {}).get("outputs", {})
+    passenger_item = outputs.get("passenger_log")
+    bus_item = outputs.get("bus_log")
+    if not passenger_item or not bus_item:
+        return {
+            "ok": True,
+            "checked": False,
+            "terminated_passenger_count": 0,
+            "terminated_arrived_passenger_count": 0,
+            "terminal_arrival_time_arrived_count": 0,
+        }
+
+    passenger_rows = load_csv_rows(Path(passenger_item["path"]))
+    bus_rows = load_csv_rows(Path(bus_item["path"]))
+    terminated_keys = {
+        (row.get("bus_id", ""), row.get("trip_seq", ""))
+        for row in bus_rows
+        if read_bool(row.get("terminated")) and int(float(row.get("boarded_count") or 0)) > 0
+    }
+    terminated_passengers = [
+        row
+        for row in passenger_rows
+        if (row.get("bus_id", ""), row.get("trip_seq", "")) in terminated_keys
+    ]
+    terminated_arrived = [row for row in terminated_passengers if read_bool(row.get("arrived"))]
+    sim_end = str(int(float(summary.get("run_manifest", {}).get("sim_end_sec", 21600))))
+    terminal_arrived = [
+        row
+        for row in passenger_rows
+        if read_bool(row.get("arrived")) and str(row.get("arrival_time_s", "")).split(".")[0] == sim_end
+    ]
+    return {
+        "ok": not terminated_arrived and not terminal_arrived,
+        "checked": True,
+        "terminated_trip_keys": [list(key) for key in sorted(terminated_keys)],
+        "terminated_passenger_count": len(terminated_passengers),
+        "terminated_arrived_passenger_count": len(terminated_arrived),
+        "terminal_arrival_time_arrived_count": len(terminal_arrived),
+    }
+
+
 def validate_ac6(summary: dict[str, Any]) -> dict[str, Any]:
     boarded = int(summary.get("bus_boarded_passengers", 0))
     arrived = int(summary.get("bus_arrived_passengers", 0))
     not_arrived = int(summary.get("bus_not_arrived_passengers", 0))
     candidates = int(summary.get("initial_bus_candidate_total", 0))
     residual = int(summary.get("two_layer_report", {}).get("residual_queue_total", 0))
+    terminated_accounting = validate_terminated_passenger_accounting(summary)
     return {
         "name": "AC6",
-        "ok": boarded == arrived + not_arrived and candidates == boarded + residual,
+        "ok": boarded == arrived + not_arrived
+        and candidates == boarded + residual
+        and terminated_accounting["ok"],
         "boarded": boarded,
         "arrived": arrived,
         "not_arrived": not_arrived,
         "candidates": candidates,
         "residual_queue": residual,
+        "terminated_passenger_accounting": terminated_accounting,
     }
 
 

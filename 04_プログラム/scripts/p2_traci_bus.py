@@ -389,7 +389,7 @@ def handle_bus_closure(
 
     閉鎖適用時に走行中だったバスも、乗車後に閉鎖 edge を含む経路を張ったバスも捕捉する。
     迂回を試み、**迂回後も残ルートに閉鎖が残る（迂回路なし）なら当該便を打切り**、
-    onboard 客を最寄避難所へ送届＝完了計上（判断6-4）してバスを撤収する。
+    onboard 客を到着未確定として not_arrived 計上し、バスを撤収する。
     """
     bus_id = bus.bus_id
     if rt.terminated or not applied_edges or bus_id not in traci.vehicle.getIDList():
@@ -496,7 +496,7 @@ def step_bus(
 
     elif rt.phase == "boarding" and not at_pickup:
         # 乗車滞在終了 → shelter へ。changeTarget で閉鎖を回避して動的に経路計算する。
-        # 直行路が閉鎖に当たるなら JB-2 遭遇として記録。迂回路も無ければ打切り＋送届。
+        # 直行路が閉鎖に当たるなら JB-2 遭遇として記録。迂回路も無ければ打切り＋未到着。
         route_edges = _traci_route_edges(bus.pickup_edge, bus.shelter_edge, bus.vtype)
         if not route_edges or (applied_edges and (set(route_edges) & applied_edges)):
             rt.closure_hit_this_trip = True
@@ -521,7 +521,7 @@ def step_bus(
             traci.vehicle.setBusStop(bus_id, bus.shelter_stop_id, duration=BOARDING_S)
             rt.phase = "to_shelter"
         except traci.TraCIException:
-            # shelter へ到達不能（全経路閉鎖）→ 当該便打切り＋onboard客を送届＝完了（JB-2・6-4）
+            # shelter へ到達不能（全経路閉鎖）→ 当該便打切り＋onboard客を未到着確定
             rt.reroute_ok = False
             rt.closure_hit_this_trip = True
             alight_passengers(

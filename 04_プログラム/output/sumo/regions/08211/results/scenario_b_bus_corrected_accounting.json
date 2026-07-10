@@ -1,0 +1,26 @@
+{
+  "passenger_log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\results\\scenario_b_passenger_log.csv",
+  "passenger_log_sha256": "ae205757ba41c89c4fc8075ee9ed3af881952f0c385cc147e3d4069eed477aa1",
+  "bus_log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\results\\scenario_b_bus_log.csv",
+  "bus_log_sha256": "a9abf7d90bc9125d2e8ffbaa574940f6d7829428e9707249d542c6dd3161fb2e",
+  "source_summary": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\results\\scenario_b_bus_summary.json",
+  "source_summary_sha256": "990197c97783221a1e8146b3e4c8d7710de397484f87e0188ffd297b2de98063",
+  "source_run_id": "measure_20260711T000129_79ef4dc8",
+  "sim_end_sec": 21600,
+  "terminated_trip_keys": [
+    [
+      "bus_std_2",
+      "0"
+    ],
+    [
+      "bus_std_5",
+      "1"
+    ]
+  ],
+  "source_boarded_passengers": 141,
+  "corrected_bus_arrived_passengers": 125,
+  "corrected_bus_not_arrived_passengers": 16,
+  "residual_queue_total": 106,
+  "initial_bus_candidate_total": 247,
+  "conservation_ok": true
+}

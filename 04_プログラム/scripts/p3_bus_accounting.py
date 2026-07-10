@@ -221,9 +221,9 @@ def alight_passengers(
     trip_seq を +1 する。deadhead（乗車0）も1往復として記録する。
     """
     for passenger in rt.onboard:
-        passenger["arrival_time_s"] = sim_time
+        passenger["arrival_time_s"] = "" if terminated else sim_time
         passenger["duration_s"] = sim_time - int(passenger["board_time_s"])
-        passenger["arrived"] = True
+        passenger["arrived"] = not terminated
         passenger_rows.append(passenger)
 
     bus_rows.append(
@@ -235,8 +235,8 @@ def alight_passengers(
             "shelter_id": bus.shelter_id,
             "board_time_s": rt.trip_board_time,
             "boarded_count": len(rt.onboard),
-            "arrive_shelter_time_s": sim_time,
-            "alight_count": len(rt.onboard),
+            "arrive_shelter_time_s": "" if terminated else sim_time,
+            "alight_count": 0 if terminated else len(rt.onboard),
             "trip_duration_s": sim_time - rt.trip_board_time,
             "deadhead": len(rt.onboard) == 0,
             "closure_encountered": rt.closure_hit_this_trip,

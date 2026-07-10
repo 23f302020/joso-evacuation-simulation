@@ -6,7 +6,12 @@ import json
 from pathlib import Path
 
 import p3_validate_b_measure_gate as gate
-from p3_validate_b_measure_gate import validate_ac2, validate_ac5, validate_ac6
+from p3_validate_b_measure_gate import (
+    validate_ac2,
+    validate_ac5,
+    validate_ac6,
+    validate_terminated_passenger_accounting,
+)
 
 
 def _sha(path: Path) -> str:
@@ -89,6 +94,35 @@ def test_validate_ac6_checks_bus_conservation() -> None:
     broken = dict(summary)
     broken["bus_not_arrived_passengers"] = 1
     assert validate_ac6(broken)["ok"] is False
+
+
+def test_validate_terminated_passenger_accounting_rejects_arrived_terminal_trip(tmp_path: Path) -> None:
+    passenger_log = tmp_path / "passenger.csv"
+    passenger_log.write_text(
+        "bus_id,trip_seq,arrival_time_s,arrived\nbus_std_2,0,21600,True\n",
+        encoding="utf-8",
+    )
+    bus_log = tmp_path / "bus.csv"
+    bus_log.write_text(
+        "bus_id,trip_seq,boarded_count,terminated\nbus_std_2,0,1,True\n",
+        encoding="utf-8",
+    )
+    summary = {
+        "run_manifest": {
+            "sim_end_sec": 21600,
+            "outputs": {
+                "passenger_log": {"path": str(passenger_log)},
+                "bus_log": {"path": str(bus_log)},
+            },
+        }
+    }
+
+    result = validate_terminated_passenger_accounting(summary)
+
+    assert result["ok"] is False
+    assert result["terminated_passenger_count"] == 1
+    assert result["terminated_arrived_passenger_count"] == 1
+    assert result["terminal_arrival_time_arrived_count"] == 1
 
 
 def test_validate_b_measure_generates_layers_without_total_divergence(monkeypatch, tmp_path: Path) -> None:
