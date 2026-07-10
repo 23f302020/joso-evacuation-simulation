@@ -1,0 +1,15 @@
+{
+  "vehicle_count": 9569,
+  "not_arrived_count": 479,
+  "not_arrived_origin_kind_closure_row_count": 147,
+  "route_shelter_row_count": 18,
+  "allocation_shadow_row_count": 352,
+  "allocation_shadow": {
+    "origin_count": 352,
+    "pearson_assigned_type4_share_vs_type34_completion_rate": 0.049207,
+    "mean_type4_minus_type3_completion_rate_by_origin": 0.002377
+  },
+  "not_arrived_csv": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\evaluation\\scenario_a_diag_not_arrived_origin_kind_closure.csv",
+  "route_shelter_csv": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\evaluation\\scenario_a_diag_vehicle_kind_route_shelter.csv",
+  "allocation_shadow_csv": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\evaluation\\scenario_a_diag_allocation_shadow_by_origin.csv"
+}

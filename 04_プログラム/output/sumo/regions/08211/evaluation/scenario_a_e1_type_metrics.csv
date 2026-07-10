@@ -1,6 +1,7 @@
-person_type,type_label,vehicle_count,arrived_count,not_arrived_count,completion_rate,people_equivalent_total,people_equivalent_arrived,people_equivalent_completion_rate,conditional_mean_duration_sec,conditional_median_duration_sec,conditional_p90_duration_sec,conditional_max_duration_sec,worst_off_fraction,worst_off_count,worst_off_mean_duration_sec
-all,all,9569,9090,479,0.949943,22008.7,20907.0,0.949943,2586.736,2094.0,5490.1,8885.0,0.1,909,6574.151
-type1,car_non_elderly,5870,5578,292,0.950256,13501.0,12829.4,0.950256,2641.101,2160.0,5655.6,8885.0,0.1,558,6737.151
-type2,car_elderly,2294,2171,123,0.946382,5276.2,4993.3,0.946382,2362.964,1708.0,5364.0,8807.0,0.1,217,6342.747
-type3,no_car_non_elderly,1036,984,52,0.949807,2382.8,2263.2,0.949807,2784.137,2501.0,5192.1,8625.0,0.1,98,6159.061
-type4,no_car_elderly,369,357,12,0.96748,848.7,821.1,0.96748,2554.014,2024.0,4914.8,8705.0,0.1,36,6094.278
+person_type,type_label,vehicle_count,arrived_count,not_arrived_count,completion_rate,people_equivalent_total,people_equivalent_arrived,people_equivalent_completion_rate,type34_fixed_denominator_people,type34_reference_population_people,type34_reference_gap_people,rescue_arrived_people,bus_arrived_people,arrived_people_with_bus,fixed_denominator_completion_rate,reference_population_completion_rate,fleet_total_completion_rate_diagnostic,conditional_mean_duration_sec,conditional_median_duration_sec,conditional_p90_duration_sec,conditional_max_duration_sec,worst_off_fraction,worst_off_count,worst_off_mean_duration_sec
+all,all,9569,9090,479,0.949943,22008.7,20907.0,0.949943,,,,,,,,,,2586.736,2094.0,5490.1,8885.0,0.1,909,6574.151
+type1,car_non_elderly,5870,5578,292,0.950256,13501.0,12829.4,0.950256,,,,,,,,,,2641.101,2160.0,5655.6,8885.0,0.1,558,6737.151
+type2,car_elderly,2294,2171,123,0.946382,5276.2,4993.3,0.946382,,,,,,,,,,2362.964,1708.0,5364.0,8807.0,0.1,217,6342.747
+type3,no_car_non_elderly,1036,984,52,0.949807,2382.8,2263.2,0.949807,,,,,,,,,,2784.137,2501.0,5192.1,8625.0,0.1,98,6159.061
+type4,no_car_elderly,369,357,12,0.96748,848.7,821.1,0.96748,,,,,,,,,,2554.014,2024.0,4914.8,8705.0,0.1,36,6094.278
+type34,no_car_type3_type4_combined,1405,1341,64,0.954448,3231.5,3084.3,0.954448,3231.5,3255.0,23.5,3084.3,0.0,3084.3,0.954448,0.947558,0.954448,2722.874,2407.0,5120.0,8705.0,0.1,134,6153.709

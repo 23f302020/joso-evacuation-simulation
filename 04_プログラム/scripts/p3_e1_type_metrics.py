@@ -28,6 +28,8 @@ PROGRAM_DIR = SCRIPT_DIR.parent
 OUTPUT_DIR = PROGRAM_DIR / "output"
 SUMO_DIR = OUTPUT_DIR / "sumo"
 WORST_OFF_FRACTION = 0.10
+TYPE34_DENOMINATOR_PEOPLE = 3231.5
+TYPE34_REFERENCE_POPULATION = 3255.0
 TYPE_LABELS = {
     "type1": "car_non_elderly",
     "type2": "car_elderly",
@@ -61,6 +63,19 @@ def parse_float(value: Any, default: float = 0.0) -> float:
     if value is None or value == "":
         return default
     return float(value)
+
+
+def safe_divide(numerator: float, denominator: float) -> float | str:
+    if denominator == 0:
+        return ""
+    return round(numerator / denominator, 6)
+
+
+def load_bus_arrived_people(passenger_log_path: Path | None) -> float:
+    if passenger_log_path is None:
+        return 0.0
+    rows = read_csv_rows(passenger_log_path)
+    return float(sum(1 for row in rows if read_bool(row.get("arrived"))))
 
 
 def proportional_counts(raw_values: list[float], target_total: int) -> list[int]:
@@ -185,8 +200,12 @@ def compute_e1_metrics(
     vehicle_log_path: Path,
     assignments_path: Path,
     agent_types_path: Path,
+    bus_passenger_log_path: Path | None = None,
+    type34_denominator_people: float = TYPE34_DENOMINATOR_PEOPLE,
+    type34_reference_population: float = TYPE34_REFERENCE_POPULATION,
 ) -> dict[str, Any]:
     type_map, diagnostics = assign_vehicle_types(assignments_path, agent_types_path)
+    bus_arrived_people = load_bus_arrived_people(bus_passenger_log_path)
     vehicle_rows = read_csv_rows(vehicle_log_path)
     detail_rows: list[dict[str, Any]] = []
     unmatched_vehicle_ids: list[str] = []
@@ -250,6 +269,15 @@ def compute_e1_metrics(
                 "people_equivalent_completion_rate": round(people_arrived / people_total, 6)
                 if people_total
                 else "",
+                "type34_fixed_denominator_people": "",
+                "type34_reference_population_people": "",
+                "type34_reference_gap_people": "",
+                "rescue_arrived_people": "",
+                "bus_arrived_people": "",
+                "arrived_people_with_bus": "",
+                "fixed_denominator_completion_rate": "",
+                "reference_population_completion_rate": "",
+                "fleet_total_completion_rate_diagnostic": "",
                 **stats,
             }
         )
@@ -259,10 +287,52 @@ def compute_e1_metrics(
     type34_durations = [
         float(row["duration"]) for row in type34_arrived if row["duration"] != ""
     ]
+    type34_people_total = sum(float(row["passenger_equivalent"]) for row in type34_rows)
+    type34_rescue_arrived_people = sum(float(row["passenger_equivalent"]) for row in type34_arrived)
+    type34_arrived_people_with_bus = type34_rescue_arrived_people + bus_arrived_people
+    type34_fixed_completion_rate = safe_divide(
+        type34_arrived_people_with_bus,
+        type34_denominator_people,
+    )
+    type34_reference_completion_rate = safe_divide(
+        type34_arrived_people_with_bus,
+        type34_reference_population,
+    )
+    type34_fleet_completion_rate = safe_divide(
+        type34_rescue_arrived_people,
+        type34_people_total,
+    )
+    type34_stats = duration_stats(type34_durations)
+    metric_rows.append(
+        {
+            "person_type": "type34",
+            "type_label": "no_car_type3_type4_combined",
+            "vehicle_count": len(type34_rows),
+            "arrived_count": len(type34_arrived),
+            "not_arrived_count": len(type34_rows) - len(type34_arrived),
+            "completion_rate": safe_divide(float(len(type34_arrived)), float(len(type34_rows)))
+            if type34_rows
+            else "",
+            "people_equivalent_total": round(type34_people_total, 3),
+            "people_equivalent_arrived": round(type34_rescue_arrived_people, 3),
+            "people_equivalent_completion_rate": type34_fleet_completion_rate,
+            "type34_fixed_denominator_people": round(type34_denominator_people, 3),
+            "type34_reference_population_people": round(type34_reference_population, 3),
+            "type34_reference_gap_people": round(type34_reference_population - type34_denominator_people, 3),
+            "rescue_arrived_people": round(type34_rescue_arrived_people, 3),
+            "bus_arrived_people": round(bus_arrived_people, 3),
+            "arrived_people_with_bus": round(type34_arrived_people_with_bus, 3),
+            "fixed_denominator_completion_rate": type34_fixed_completion_rate,
+            "reference_population_completion_rate": type34_reference_completion_rate,
+            "fleet_total_completion_rate_diagnostic": type34_fleet_completion_rate,
+            **type34_stats,
+        }
+    )
     summary = {
         "vehicle_log": str(vehicle_log_path),
         "assignments": str(assignments_path),
         "agent_types": str(agent_types_path),
+        "bus_passenger_log": str(bus_passenger_log_path) if bus_passenger_log_path else "",
         "vehicle_count": len(vehicle_rows),
         "typed_vehicle_count": len(detail_rows) - len(unmatched_vehicle_ids),
         "unmatched_vehicle_count": len(unmatched_vehicle_ids),
@@ -273,7 +343,17 @@ def compute_e1_metrics(
         "type34_completion_rate": round(len(type34_arrived) / len(type34_rows), 6)
         if type34_rows
         else "",
-        "type34_conditional_duration": duration_stats(type34_durations),
+        "type34_people_equivalent_total": round(type34_people_total, 3),
+        "type34_rescue_arrived_people": round(type34_rescue_arrived_people, 3),
+        "type34_bus_arrived_people": round(bus_arrived_people, 3),
+        "type34_arrived_people_with_bus": round(type34_arrived_people_with_bus, 3),
+        "type34_fixed_denominator_people": round(type34_denominator_people, 3),
+        "type34_reference_population_people": round(type34_reference_population, 3),
+        "type34_reference_gap_people": round(type34_reference_population - type34_denominator_people, 3),
+        "type34_fixed_denominator_completion_rate": type34_fixed_completion_rate,
+        "type34_reference_population_completion_rate": type34_reference_completion_rate,
+        "type34_fleet_total_completion_rate_diagnostic": type34_fleet_completion_rate,
+        "type34_conditional_duration": type34_stats,
     }
     return {
         "summary": summary,
@@ -318,6 +398,15 @@ def write_e1_outputs(
             "people_equivalent_total",
             "people_equivalent_arrived",
             "people_equivalent_completion_rate",
+            "type34_fixed_denominator_people",
+            "type34_reference_population_people",
+            "type34_reference_gap_people",
+            "rescue_arrived_people",
+            "bus_arrived_people",
+            "arrived_people_with_bus",
+            "fixed_denominator_completion_rate",
+            "reference_population_completion_rate",
+            "fleet_total_completion_rate_diagnostic",
             "conditional_mean_duration_sec",
             "conditional_median_duration_sec",
             "conditional_p90_duration_sec",
@@ -345,16 +434,20 @@ def default_paths(city_code: str, scenario: str) -> dict[str, Path]:
         "vehicle_type_map_csv": base / "evaluation" / f"{prefix}_e1_vehicle_type_map.csv",
         "type_metrics_csv": base / "evaluation" / f"{prefix}_e1_type_metrics.csv",
         "summary_json": base / "evaluation" / f"{prefix}_e1_summary.json",
+        "bus_passenger_log": base / "results" / f"{prefix}_passenger_log.csv",
     }
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--city-code", default="08211")
-    parser.add_argument("--scenario", default="scenario_a", choices=["scenario_a"])
+    parser.add_argument("--scenario", default="scenario_a")
     parser.add_argument("--vehicle-log", type=Path)
     parser.add_argument("--assignments", type=Path)
     parser.add_argument("--agent-types", type=Path)
+    parser.add_argument("--bus-passenger-log", type=Path)
+    parser.add_argument("--type34-denominator-people", type=float, default=TYPE34_DENOMINATOR_PEOPLE)
+    parser.add_argument("--type34-reference-population", type=float, default=TYPE34_REFERENCE_POPULATION)
     parser.add_argument("--vehicle-type-map-csv", type=Path)
     parser.add_argument("--type-metrics-csv", type=Path)
     parser.add_argument("--summary-json", type=Path)
@@ -364,10 +457,14 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     paths = default_paths(args.city_code, args.scenario)
+    default_bus_log = paths["bus_passenger_log"] if paths["bus_passenger_log"].exists() else None
     result = compute_e1_metrics(
         vehicle_log_path=args.vehicle_log or paths["vehicle_log"],
         assignments_path=args.assignments or paths["assignments"],
         agent_types_path=args.agent_types or paths["agent_types"],
+        bus_passenger_log_path=args.bus_passenger_log or default_bus_log,
+        type34_denominator_people=args.type34_denominator_people,
+        type34_reference_population=args.type34_reference_population,
     )
     write_e1_outputs(
         result,
