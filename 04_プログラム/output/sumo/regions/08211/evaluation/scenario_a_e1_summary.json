@@ -1,0 +1,26 @@
+{
+  "vehicle_log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\results\\scenario_a_vehicle_log.csv",
+  "assignments": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\derived\\scenario_a_vehicle_assignments.csv",
+  "agent_types": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\derived\\agent_types.csv",
+  "vehicle_count": 9569,
+  "typed_vehicle_count": 9569,
+  "unmatched_vehicle_count": 0,
+  "unmatched_vehicle_ids": [],
+  "assignment_count": 9569,
+  "unmatched_origin_count": 0,
+  "unmatched_origin_ids": [],
+  "type34_vehicle_count": 1405,
+  "type34_arrived_count": 1341,
+  "type34_completion_rate": 0.954448,
+  "type34_conditional_duration": {
+    "conditional_mean_duration_sec": 2722.874,
+    "conditional_median_duration_sec": 2407.0,
+    "conditional_p90_duration_sec": 5120.0,
+    "conditional_max_duration_sec": 8705.0,
+    "worst_off_fraction": 0.1,
+    "worst_off_count": 134,
+    "worst_off_mean_duration_sec": 6153.709
+  },
+  "vehicle_type_map_csv": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\evaluation\\scenario_a_e1_vehicle_type_map.csv",
+  "type_metrics_csv": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\evaluation\\scenario_a_e1_type_metrics.csv"
+}

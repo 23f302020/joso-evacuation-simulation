@@ -34,6 +34,7 @@ PROGRAM_DIR = SCRIPT_DIR.parent
 OUTPUT_DIR = PROGRAM_DIR / "output"
 
 DEFAULT_A_NOT_ARRIVED = 479
+DEFAULT_A_LAYER1 = 68
 DEFAULT_EXPECTED_VEHICLES = 9569
 
 
@@ -224,6 +225,7 @@ def validate_b_measure(
     bus_summary_path: Path,
     expected_vehicles: int = DEFAULT_EXPECTED_VEHICLES,
     a_not_arrived: int = DEFAULT_A_NOT_ARRIVED,
+    a_layer1: int = DEFAULT_A_LAYER1,
 ) -> dict[str, Any]:
     summary = json.loads(bus_summary_path.read_text(encoding="utf-8"))
     manifest = summary["run_manifest"]
@@ -234,26 +236,45 @@ def validate_b_measure(
     ac5 = validate_ac5(summary, SCRIPT_DIR)
     ac6 = validate_ac6(summary)
     b_not_arrived = int(ac2["not_arrived_total"])
-    lower = a_not_arrived / 2
-    upper = a_not_arrived * 2
-    divergence = b_not_arrived < lower or b_not_arrived > upper
+    total_lower = a_not_arrived / 2
+    total_upper = a_not_arrived * 2
+    total_divergence = b_not_arrived < total_lower or b_not_arrived > total_upper
     layer_comparison = (
-        compare_stagnation_layers(city_code, "scenario_a", "scenario_b") if divergence else None
+        compare_stagnation_layers(city_code, "scenario_a", "scenario_b")
+        if b_not_arrived > 0
+        else None
     )
+    layer1_lower = a_layer1 / 2
+    layer1_upper = a_layer1 * 2
+    layer1_divergence = False
+    layer2_ge_layer3 = False
+    if layer_comparison:
+        b_layers = layer_comparison["b_summary"].get("layer_counts", {})
+        b_layer1 = int(b_layers.get("physical_isolation", 0))
+        b_layer2 = int(b_layers.get("intersection_blockage", 0))
+        b_layer3 = int(b_layers.get("queue_behind_blockage", 0))
+        layer1_divergence = b_layer1 < layer1_lower or b_layer1 > layer1_upper
+        layer2_ge_layer3 = b_layer2 >= b_layer3
+    halt_reasons = []
+    if total_divergence:
+        halt_reasons.append("B not_arrived is outside the accepted half-to-double range of A' baseline")
+    if layer1_divergence:
+        halt_reasons.append("B physical_isolation layer is outside the accepted half-to-double range of A' layer 1")
+    if layer2_ge_layer3:
+        halt_reasons.append("B intersection_blockage layer is greater than or equal to queue_behind_blockage layer")
     gates_ok = bool(ac2["ok"] and ac5["ok"] and ac6["ok"])
     return {
         "city_code": city_code,
         "bus_summary": str(bus_summary_path),
         "gates_ok": gates_ok,
-        "halt_required": bool(gates_ok and divergence),
-        "halt_reason": (
-            "B not_arrived is outside the accepted half-to-double range of A' baseline"
-            if divergence
-            else ""
-        ),
+        "halt_required": bool(gates_ok and halt_reasons),
+        "halt_reason": "; ".join(halt_reasons),
+        "halt_reasons": halt_reasons,
         "a_not_arrived_baseline": a_not_arrived,
+        "a_layer1_baseline": a_layer1,
         "b_not_arrived": b_not_arrived,
-        "accepted_not_arrived_range": {"min_exclusive": lower, "max_exclusive": upper},
+        "accepted_not_arrived_range": {"min_exclusive": total_lower, "max_exclusive": total_upper},
+        "accepted_layer1_range": {"min_exclusive": layer1_lower, "max_exclusive": layer1_upper},
         "ac2": ac2,
         "ac5": ac5,
         "ac6": ac6,
@@ -267,6 +288,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--bus-summary", type=Path)
     parser.add_argument("--expected-vehicles", type=int, default=DEFAULT_EXPECTED_VEHICLES)
     parser.add_argument("--a-not-arrived", type=int, default=DEFAULT_A_NOT_ARRIVED)
+    parser.add_argument("--a-layer1", type=int, default=DEFAULT_A_LAYER1)
     parser.add_argument("--output-json", type=Path)
     return parser.parse_args()
 
@@ -281,6 +303,7 @@ def main() -> int:
         bus_summary_path=bus_summary,
         expected_vehicles=args.expected_vehicles,
         a_not_arrived=args.a_not_arrived,
+        a_layer1=args.a_layer1,
     )
     if args.output_json:
         args.output_json.parent.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,41 @@
+{
+  "vehicle_log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\results\\scenario_a_vehicle_log.csv",
+  "fcd": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\results\\scenario_a_fcd.xml",
+  "net_xml": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\network\\08211.net.xml",
+  "closure_timeline": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\derived\\closure_timeline_sumo.json",
+  "fcd_final_time_sec": 21600.0,
+  "effective_closure_rule": "closed edges with sim_time_sec < fcd_final_time_sec",
+  "effective_closed_edge_count": 4822,
+  "not_arrived_count": 479,
+  "classified_count": 479,
+  "missing_fcd_count": 0,
+  "missing_fcd_vehicle_ids": [],
+  "layer_counts": {
+    "physical_isolation": 68,
+    "intersection_blockage": 24,
+    "queue_behind_blockage": 387
+  },
+  "moving_speed_gt_0_1_count_by_layer": {
+    "physical_isolation": 0,
+    "intersection_blockage": 0,
+    "queue_behind_blockage": 4
+  },
+  "layer_has_open_path_cross": {
+    "physical_isolation": {
+      "has_open_path_true": 0,
+      "has_open_path_false": 68
+    },
+    "intersection_blockage": {
+      "has_open_path_true": 24,
+      "has_open_path_false": 0
+    },
+    "queue_behind_blockage": {
+      "has_open_path_true": 387,
+      "has_open_path_false": 0
+    }
+  },
+  "closed_current_edge_vehicle_count": 75,
+  "open_path_to_destination_vehicle_count": 411,
+  "distinct_current_edge_count": 109,
+  "detail_csv": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\results\\scenario_a_stagnation_decomposition.csv"
+}

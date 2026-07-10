@@ -94,8 +94,26 @@ def test_decompose_stagnation_classifies_three_layers(tmp_path: Path) -> None:
     )
     assert result["summary"]["not_arrived_count"] == 3
     assert result["summary"]["effective_closed_edge_count"] == 2
-    assert result["summary"]["layer_counts"] == {
+    summary = result["summary"]
+    assert summary["layer_counts"] == {
         LAYER_PHYSICAL: 1,
         LAYER_INTERSECTION: 1,
         LAYER_QUEUE: 1,
+    }
+    assert summary["moving_speed_gt_0_1_count_by_layer"] == {
+        LAYER_PHYSICAL: 0,
+        LAYER_INTERSECTION: 0,
+        LAYER_QUEUE: 0,
+    }
+    assert summary["layer_has_open_path_cross"][LAYER_PHYSICAL] == {
+        "has_open_path_true": 0,
+        "has_open_path_false": 1,
+    }
+    assert summary["layer_has_open_path_cross"][LAYER_INTERSECTION] == {
+        "has_open_path_true": 1,
+        "has_open_path_false": 0,
+    }
+    assert summary["layer_has_open_path_cross"][LAYER_QUEUE] == {
+        "has_open_path_true": 1,
+        "has_open_path_false": 0,
     }

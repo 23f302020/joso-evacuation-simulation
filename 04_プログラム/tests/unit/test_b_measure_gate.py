@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import json
 from pathlib import Path
 
+import p3_validate_b_measure_gate as gate
 from p3_validate_b_measure_gate import validate_ac2, validate_ac5, validate_ac6
 
 
@@ -87,3 +89,76 @@ def test_validate_ac6_checks_bus_conservation() -> None:
     broken = dict(summary)
     broken["bus_not_arrived_passengers"] = 1
     assert validate_ac6(broken)["ok"] is False
+
+
+def test_validate_b_measure_generates_layers_without_total_divergence(monkeypatch, tmp_path: Path) -> None:
+    bus_summary = tmp_path / "summary.json"
+    bus_summary.write_text(
+        json.dumps({"run_manifest": {"outputs": {"vehicle_log": {"path": "vehicle.csv"}}}}),
+        encoding="utf-8",
+    )
+    calls = {"compare": 0}
+
+    monkeypatch.setattr(
+        gate,
+        "validate_ac2",
+        lambda _path, _expected: {"ok": True, "not_arrived_total": 479},
+    )
+    monkeypatch.setattr(gate, "validate_ac5", lambda _summary, _scope: {"ok": True})
+    monkeypatch.setattr(gate, "validate_ac6", lambda _summary: {"ok": True})
+
+    def fake_compare(_city_code: str, _a_scenario: str, _b_scenario: str) -> dict:
+        calls["compare"] += 1
+        return {
+            "a_summary": {"layer_counts": {"physical_isolation": 68}},
+            "b_summary": {
+                "layer_counts": {
+                    "physical_isolation": 68,
+                    "intersection_blockage": 24,
+                    "queue_behind_blockage": 387,
+                }
+            },
+        }
+
+    monkeypatch.setattr(gate, "compare_stagnation_layers", fake_compare)
+
+    result = gate.validate_b_measure(city_code="08211", bus_summary_path=bus_summary)
+    assert calls["compare"] == 1
+    assert result["gates_ok"] is True
+    assert result["halt_required"] is False
+    assert result["layer_comparison"] is not None
+
+
+def test_validate_b_measure_halts_on_layer1_and_layer2_rules(monkeypatch, tmp_path: Path) -> None:
+    bus_summary = tmp_path / "summary.json"
+    bus_summary.write_text(
+        json.dumps({"run_manifest": {"outputs": {"vehicle_log": {"path": "vehicle.csv"}}}}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(
+        gate,
+        "validate_ac2",
+        lambda _path, _expected: {"ok": True, "not_arrived_total": 479},
+    )
+    monkeypatch.setattr(gate, "validate_ac5", lambda _summary, _scope: {"ok": True})
+    monkeypatch.setattr(gate, "validate_ac6", lambda _summary: {"ok": True})
+    monkeypatch.setattr(
+        gate,
+        "compare_stagnation_layers",
+        lambda _city_code, _a_scenario, _b_scenario: {
+            "a_summary": {"layer_counts": {"physical_isolation": 68}},
+            "b_summary": {
+                "layer_counts": {
+                    "physical_isolation": 10,
+                    "intersection_blockage": 50,
+                    "queue_behind_blockage": 50,
+                }
+            },
+        },
+    )
+
+    result = gate.validate_b_measure(city_code="08211", bus_summary_path=bus_summary)
+    assert result["halt_required"] is True
+    assert len(result["halt_reasons"]) == 2
+    assert "physical_isolation" in result["halt_reason"]
+    assert "intersection_blockage" in result["halt_reason"]

@@ -40,6 +40,7 @@ SUMO_DIR = OUTPUT_DIR / "sumo"
 LAYER_PHYSICAL = "physical_isolation"
 LAYER_INTERSECTION = "intersection_blockage"
 LAYER_QUEUE = "queue_behind_blockage"
+LAYERS = (LAYER_PHYSICAL, LAYER_INTERSECTION, LAYER_QUEUE)
 
 DETAIL_FIELDS = [
     "vehicle_id",
@@ -292,6 +293,24 @@ def decompose_stagnation(
         )
 
     layer_counts = Counter(row["layer"] for row in detail_rows)
+    moving_counts = Counter(
+        row["layer"] for row in detail_rows if float(row["speed_mps"]) > 0.1
+    )
+    layer_path_cross = {
+        layer: {
+            "has_open_path_true": sum(
+                1
+                for row in detail_rows
+                if row["layer"] == layer and row["has_open_path_to_destination"]
+            ),
+            "has_open_path_false": sum(
+                1
+                for row in detail_rows
+                if row["layer"] == layer and not row["has_open_path_to_destination"]
+            ),
+        }
+        for layer in LAYERS
+    }
     closed_edge_rows = sum(1 for row in detail_rows if row["current_edge_closed"])
     open_path_rows = sum(1 for row in detail_rows if row["has_open_path_to_destination"])
     summary = {
@@ -306,11 +325,11 @@ def decompose_stagnation(
         "classified_count": len(detail_rows),
         "missing_fcd_count": len(missing_fcd),
         "missing_fcd_vehicle_ids": missing_fcd,
-        "layer_counts": {
-            LAYER_PHYSICAL: layer_counts.get(LAYER_PHYSICAL, 0),
-            LAYER_INTERSECTION: layer_counts.get(LAYER_INTERSECTION, 0),
-            LAYER_QUEUE: layer_counts.get(LAYER_QUEUE, 0),
+        "layer_counts": {layer: layer_counts.get(layer, 0) for layer in LAYERS},
+        "moving_speed_gt_0_1_count_by_layer": {
+            layer: moving_counts.get(layer, 0) for layer in LAYERS
         },
+        "layer_has_open_path_cross": layer_path_cross,
         "closed_current_edge_vehicle_count": closed_edge_rows,
         "open_path_to_destination_vehicle_count": open_path_rows,
         "distinct_current_edge_count": len({row["current_edge"] for row in detail_rows}),
