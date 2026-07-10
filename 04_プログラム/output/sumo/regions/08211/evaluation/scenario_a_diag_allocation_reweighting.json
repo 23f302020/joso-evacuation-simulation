@@ -1,0 +1,18 @@
+{
+  "vehicle_type_map": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\evaluation\\scenario_a_e1_vehicle_type_map.csv",
+  "type3_total": 1036,
+  "type3_arrived": 984,
+  "type3_completion_rate": 0.949807,
+  "type4_total": 369,
+  "type4_arrived": 357,
+  "type4_completion_rate": 0.96748,
+  "observed_type4_minus_type3_gap": 0.017673,
+  "type3_reweighted_to_type4_origin_mix": 0.964597,
+  "composition_effect": 0.01479,
+  "within_origin_residual": 0.002883,
+  "composition_share_of_observed_gap": 0.83687,
+  "paired_origin_count": 202,
+  "paired_equal_completion_origin_count": 173,
+  "paired_equal_completion_origin_share": 0.856436,
+  "by_origin_csv": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\evaluation\\scenario_a_diag_allocation_reweighting_by_origin.csv"
+}
