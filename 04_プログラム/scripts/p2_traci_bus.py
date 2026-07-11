@@ -77,6 +77,7 @@ SIM_END_SEC = 21600  # 6時間
 BUS_STOP_SPEED = 0.1  # これ未満を「停車」とみなす
 LONG_STOP_THRESHOLD_SEC = 600
 CONGESTION_LOG_INTERVAL_SEC = 60
+DEFAULT_SUMO_SEED = 23423
 BOARDING_S = int(config.BUS_BOARDING_TIME_S)  # 300
 # 6時間残りがこれ未満なら新しい往復を始めない（往復推定。空車往復2028s＋乗降＋余裕）。
 CYCLE_EST_S = 3000
@@ -165,6 +166,18 @@ def path_for_sumo(path: Path, sumo_binary: str) -> str:
         except (OSError, subprocess.CalledProcessError):
             return path_str
     return path_str
+
+
+def build_sumo_command(sumocfg: Path, sumo_binary: str, sumo_seed: int) -> list[str]:
+    return [
+        sumo_binary,
+        "-c",
+        path_for_sumo(sumocfg, sumo_binary),
+        "--no-step-log",
+        "true",
+        "--seed",
+        str(sumo_seed),
+    ]
 
 
 # ---------------------------------------------------------------------------
@@ -586,6 +599,7 @@ def run_traci_scenario_b(
     tripinfo_output: Path | None = None,
     fcd_output: Path | None = None,
     archived_outputs: dict[str, str] | None = None,
+    sumo_seed: int = DEFAULT_SUMO_SEED,
 ) -> dict[str, Any]:
     """B-c 本体。バスを投入し6hまで動的往復させ、乗降を会計して3ログを出力する。
 
@@ -623,7 +637,7 @@ def run_traci_scenario_b(
     last_sim_time = 0
 
     sumo_binary = resolve_sumo_binary()
-    traci.start([sumo_binary, "-c", path_for_sumo(sumocfg, sumo_binary), "--no-step-log", "true"])
+    traci.start(build_sumo_command(sumocfg, sumo_binary, sumo_seed))
     inject_buses(units, net)
 
     try:
@@ -726,6 +740,7 @@ def run_traci_scenario_b(
         "route_vehicle_counts": traci_common.count_route_vehicles(route_file) if route_file else {},
         "assignments": str(assignments_path) if assignments_path else "",
         "apply_closures": apply_closures,
+        "sumo_seed": sumo_seed,
         "sim_end_sec": SIM_END_SEC,
         "last_sim_time": last_sim_time,
         "archived_outputs": archived_outputs or {},
@@ -974,7 +989,12 @@ def validate_route_for_phase(route_file: Path, phase: str, assignments_path: Pat
         )
 
 
-def run_bus_for_scenario(route_file: Path, phase: str, apply_closures: bool) -> None:
+def run_bus_for_scenario(
+    route_file: Path,
+    phase: str,
+    apply_closures: bool,
+    sumo_seed: int = DEFAULT_SUMO_SEED,
+) -> None:
     if not BUS_STOPS_ADD_XML.exists() or not BUS_PLAN_CSV.exists():
         raise FileNotFoundError(
             "先に p3_bus_scenario.py smoke で bus_plan.csv / bus_stops.add.xml を生成してください"
@@ -1012,6 +1032,7 @@ def run_bus_for_scenario(route_file: Path, phase: str, apply_closures: bool) -> 
         tripinfo_output=tripinfo,
         fcd_output=fcd,
         archived_outputs=archived_outputs,
+        sumo_seed=sumo_seed,
     )
     print("\n=== シナリオB TraCI結果 ===")
     print(f"  phase: {phase}")
@@ -1037,6 +1058,7 @@ def main() -> None:
         help="同時走行させるroute XML。measure=scenario_a.rou.xml / final=scenario_b.rou.xml",
     )
     p_run.add_argument("--phase", choices=["measure", "final"], required=True)
+    p_run.add_argument("--sumo-seed", type=int, default=DEFAULT_SUMO_SEED)
     p_run.add_argument("--no-closure", action="store_true", help="閉鎖タイムラインを適用しない")
     args = parser.parse_args()
     if args.command == "smoke-bus":
@@ -1047,7 +1069,12 @@ def main() -> None:
         route_file = args.route_file
         if not route_file.is_absolute():
             route_file = (PROGRAM_DIR / route_file).resolve()
-        run_bus_for_scenario(route_file, phase=args.phase, apply_closures=not args.no_closure)
+        run_bus_for_scenario(
+            route_file,
+            phase=args.phase,
+            apply_closures=not args.no_closure,
+            sumo_seed=args.sumo_seed,
+        )
 
 
 if __name__ == "__main__":
