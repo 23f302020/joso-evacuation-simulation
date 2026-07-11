@@ -1020,6 +1020,7 @@ def run_bus_for_scenario(
         },
         RESULTS_DIR / "archive_runs",
         f"scenario_b_{phase}",
+        copy_paths={"route_file": route_file},
     )
     write_bus_sumocfg(sumocfg, route_file=route_file, tripinfo_output=tripinfo, fcd_output=fcd)
     summary = run_traci_scenario_b(
