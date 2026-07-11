@@ -73,6 +73,7 @@ STOP_SPEED_THRESHOLD = 0.1
 LONG_STOP_THRESHOLD_SEC = 600
 CONGESTION_LOG_INTERVAL_SEC = 60
 SIM_DURATION_SEC = int(config.SIM_DURATION_H * 3600)
+DEFAULT_SUMO_SEED = 23423
 
 _MESH_250M_LAT_DEG = 7.5 / 3600
 _MESH_250M_LON_DEG = 11.25 / 3600
@@ -1571,7 +1572,36 @@ def parse_int(value: Any, default: int = 0) -> int:
     return int(float(text))
 
 
-def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
+def build_region_sumo_command(
+    sumo_binary: str,
+    sumocfg: Path,
+    fcd_period: str,
+    sumo_seed: int,
+) -> list[str]:
+    return [
+        sumo_binary,
+        "-c",
+        str(sumocfg),
+        "--no-step-log",
+        "true",
+        "--duration-log.disable",
+        "true",
+        "--ignore-route-errors",
+        "true",
+        "--fcd-output.geo",
+        "true",
+        "--device.fcd.period",
+        fcd_period,
+        "--seed",
+        str(sumo_seed),
+    ]
+
+
+def run_region_traci(
+    ctx: RegionContext,
+    scenario_name: str,
+    sumo_seed: int = DEFAULT_SUMO_SEED,
+) -> dict[str, Any]:
     if not scenario_paths(ctx, scenario_name)["sumocfg"].exists():
         generate_region_scenario(ctx, scenario_name)
     settings = SCENARIO_SETTINGS[scenario_name]
@@ -1593,26 +1623,18 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
         },
         ctx.results_dir / "archive_runs",
         f"scenario_a_{scenario_name}",
+        copy_paths={"route_file": paths["rou"]},
     )
     run_id = f"{scenario_name}_{datetime.now().strftime('%Y%m%dT%H%M%S')}_{uuid4().hex[:8]}"
     started_at = datetime.now()
 
     sumo_binary = sumolib.checkBinary("sumo")
-    command = [
+    command = build_region_sumo_command(
         sumo_binary,
-        "-c",
-        str(paths["sumocfg"]),
-        "--no-step-log",
-        "true",
-        "--duration-log.disable",
-        "true",
-        "--ignore-route-errors",
-        "true",
-        "--fcd-output.geo",
-        "true",
-        "--device.fcd.period",
+        paths["sumocfg"],
         settings["fcd_period"],
-    ]
+        sumo_seed,
+    )
     traci.start(command)
 
     closure_index = 0
@@ -1726,6 +1748,7 @@ def run_region_traci(ctx: RegionContext, scenario_name: str) -> dict[str, Any]:
         "route_vehicle_counts": traci_common.count_route_vehicles(paths["rou"]) if paths["rou"].exists() else {},
         "assignments": str(paths["assignments"]),
         "apply_closures": True,
+        "sumo_seed": sumo_seed,
         "sim_end_sec": SIM_DURATION_SEC,
         "archived_outputs": archived_outputs,
         "outputs": traci_common.file_manifest(manifest_paths),
@@ -2524,6 +2547,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--city-code", help="対象市区町村コード")
     parser.add_argument("--scenario", choices=["small", "10pct", "full"], default="small")
+    parser.add_argument("--sumo-seed", type=int, default=DEFAULT_SUMO_SEED)
     parser.add_argument("--limit", type=int, help="targets系コマンドの先頭N件だけ処理する")
     parser.add_argument("--max-process", type=int, help="targets系コマンドで未完了を最大N件だけ処理する")
     parser.add_argument("--codes", nargs="+", help="targets系コマンドで処理する市区町村コードを限定する")
@@ -2553,7 +2577,7 @@ def main() -> int:
     elif args.command == "scenario-city":
         generate_region_scenario(context_for(args.city_code), args.scenario)
     elif args.command == "run-city":
-        run_region_traci(context_for(args.city_code), args.scenario)
+        run_region_traci(context_for(args.city_code), args.scenario, sumo_seed=args.sumo_seed)
     elif args.command == "full-plan":
         write_full_execution_plan()
     elif args.command == "region-eval":

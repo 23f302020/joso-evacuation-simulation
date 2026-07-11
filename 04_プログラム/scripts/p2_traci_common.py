@@ -118,6 +118,7 @@ def archive_existing_outputs(
     paths: dict[str, Path],
     archive_root: Path,
     run_label: str,
+    copy_paths: dict[str, Path] | None = None,
 ) -> dict[str, str]:
     """Move existing output files aside before a rerun.
 
@@ -125,7 +126,12 @@ def archive_existing_outputs(
     paths are ignored; existing paths are moved into one timestamped directory.
     """
     existing = {label: path for label, path in paths.items() if path.exists()}
-    if not existing:
+    copies = {
+        label: path
+        for label, path in (copy_paths or {}).items()
+        if path.exists()
+    }
+    if not existing and not copies:
         return {}
 
     stamp = datetime.now().strftime("%Y%m%dT%H%M%S%f")
@@ -137,6 +143,10 @@ def archive_existing_outputs(
     for label, path in existing.items():
         destination = archive_dir / path.name
         shutil.move(str(path), str(destination))
+        moved[label] = str(destination)
+    for label, path in copies.items():
+        destination = archive_dir / path.name
+        shutil.copy2(str(path), str(destination))
         moved[label] = str(destination)
     return moved
 
