@@ -473,7 +473,7 @@ def _phase_nav(active: str | None = None) -> str:
         '    <nav class="phase-nav" aria-label="Phase別成果物">',
         link("phase1", "Phase 1", "浸水・閉鎖道路・避難ルート確認", "phase1.html"),
         link("phase2", "Phase 2", "SUMO自家用車避難シミュレーション", "phase2.html"),
-        link("phase3", "Phase 3", "デマンド交通バス比較（未実装）", "phase3.html"),
+        link("phase3", "Phase 3", "デマンド交通バス比較・感度分析", "phase3.html"),
         "    </nav>",
     ])
 
@@ -688,22 +688,22 @@ def write_phase2_html() -> None:
 
 
 def write_phase3_html() -> None:
-    body = f"""{_page_header("Phase 3：デマンド交通バス比較", "バス活用シナリオ / 比較評価", "未実装")}
+    body = f"""{_page_header("Phase 3：デマンド交通バス比較", "バス活用シナリオ / 比較評価", "実装・評価済み")}
 
   <main class="page-shell">
     <a class="back-link" href="index.html">トップページへ戻る</a>
 {_phase_nav("phase3")}
-    <p class="phase-lead">Phase 3は未実装です。Phase 2の自家用車避難結果を比較基準として、デマンド交通バスを導入した場合の避難改善効果を検討します。</p>
+    <p class="phase-lead">自家用車のみのA側3runと、バス活用B側5runを比較しました。完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できませんでした。</p>
 
     <section class="section" aria-labelledby="phase3-plan-heading">
       <div class="section-heading">
-        <h2 id="phase3-plan-heading">今後作成する内容</h2>
+        <h2 id="phase3-plan-heading">評価結果</h2>
       </div>
       <ul class="detail-list">
-        <li>バス台数、定員、運行範囲、乗降地点、配車ルールの仕様化</li>
-        <li>シナリオB（自家用車＋デマンド交通バス）のSUMO/TraCI実装</li>
-        <li>自家用車のみとの到着率、逃げ遅れ候補、所要時間、混雑差分の比較</li>
-        <li>卒論本文で使用する図表、評価表、考察文書の作成</li>
+        <li>Type3/4完了率のraw帯：−4.23〜＋22.67%pt</li>
+        <li>保守帯：−4.23〜＋21.32%pt</li>
+        <li>15組合せはrawで正10・負5となり、符号は非一貫</li>
+        <li>10台感度でも正10・負5となり、増車後もヌル結論は頑健</li>
       </ul>
     </section>
 
@@ -711,12 +711,20 @@ def write_phase3_html() -> None:
       <div class="section-heading">
         <h2 id="phase3-links-heading">Phase 3成果物</h2>
       </div>
-      <p class="section-note">現時点では成果物はありません。実装後にこのページへ追加します。</p>
-      <div id="phase3-links" class="card-grid"></div>
+      <div class="card-grid">
+        <a class="result-card" href="sumo/viz/phase3_viz.html"><strong>結果可視化・交通アニメーション</strong><span>不確実性帯、二峰性、バスと車両の移動</span></a>
+        <a class="result-card" href="sumo/regions/08211/evaluation/phase3_ab_comparison.csv"><strong>A/B比較CSV</strong><span>raw・保守帯と15組合せ符号</span></a>
+        <a class="result-card" href="sumo/regions/08211/evaluation/phase3r_e1_15_combination_signs.csv"><strong>15組合せ符号表</strong><span>完了率実値ベース</span></a>
+        <a class="result-card" href="sumo/regions/08211/evaluation/phase3_s10_15_combination_signs.csv"><strong>10台感度符号表</strong><span>5seed×A側3run</span></a>
+      </div>
     </section>
   </main>
 """
-    (OUTPUT_DIR / "phase3.html").write_text(_html_doc("Phase 3：デマンド交通バス比較", body), encoding="utf-8")
+    (OUTPUT_DIR / "phase3.html").write_text(
+        _html_doc("Phase 3：デマンド交通バス比較", body),
+        encoding="utf-8",
+        newline="\n",
+    )
     print(f"[write] {OUTPUT_DIR / 'phase3.html'}")
 
 
