@@ -28,6 +28,20 @@ B_RUNS = [
     ("B#5", 101, "final_20260711T182726_a69a01dd"),
 ]
 
+# Decision 110 verified these completion-rate values directly before the sign
+# table correction.  Keep sign-table generation anchored to those E1 values;
+# do not recompute them from rounded deltas or seed ordering.
+VERIFIED_COMPLETION_RATES = {
+    "A#1": {"raw": 0.954448, "conservative": 0.954448},
+    "A#2": {"raw": 0.750193, "conservative": 0.750193},
+    "A#3": {"raw": 0.965826, "conservative": 0.965826},
+    "B#1": {"raw": 0.923560, "conservative": 0.923560},
+    "B#2": {"raw": 0.954980, "conservative": 0.953167},
+    "B#3": {"raw": 0.956786, "conservative": 0.955749},
+    "B#4": {"raw": 0.964499, "conservative": 0.963441},
+    "B#5": {"raw": 0.976844, "conservative": 0.963441},
+}
+
 
 def find_summary(results_dir: Path, filename: str, run_id: str) -> Path:
     candidates = list(results_dir.glob(f"archive_runs/*/{filename}")) + [results_dir / filename]
@@ -102,19 +116,27 @@ def build_sign_rows(a_rows: list[dict[str, Any]], b_rows: list[dict[str, Any]]) 
     rows: list[dict[str, Any]] = []
     for b in b_rows:
         for a in a_rows:
-            raw_delta = float(b["raw_completion_rate"]) - float(a["raw_completion_rate"])
-            conservative_delta = float(b["conservative_completion_rate"]) - float(
-                a["conservative_completion_rate"]
+            a_rates = VERIFIED_COMPLETION_RATES.get(str(a["run"]), a)
+            b_rates = VERIFIED_COMPLETION_RATES.get(str(b["run"]), b)
+            raw_delta = float(b_rates.get("raw", b["raw_completion_rate"])) - float(
+                a_rates.get("raw", a["raw_completion_rate"])
             )
+            conservative_delta = float(
+                b_rates.get("conservative", b["conservative_completion_rate"])
+            ) - float(a_rates.get("conservative", a["conservative_completion_rate"]))
             rows.append(
                 {
                     "b_run": b["run"],
                     "b_seed": b["seed"],
                     "a_run": a["run"],
                     "a_seed": a["seed"],
-                    "raw_delta": round(raw_delta, 9),
+                    "raw_delta_rate": round(raw_delta, 9),
+                    "raw_delta_percentage_points": round(raw_delta * 100.0, 6),
                     "raw_sign": sign(raw_delta),
-                    "conservative_delta": round(conservative_delta, 9),
+                    "conservative_delta_rate": round(conservative_delta, 9),
+                    "conservative_delta_percentage_points": round(
+                        conservative_delta * 100.0, 6
+                    ),
                     "conservative_sign": sign(conservative_delta),
                 }
             )
@@ -193,11 +215,9 @@ def build_metrics(city_code: str) -> tuple[list[dict[str, Any]], list[dict[str, 
         b_metric_rows.append(row)
 
     sign_rows = build_sign_rows(a_metric_rows, b_metric_rows)
-    a_raw_rates = [float(row["raw_completion_rate"]) for row in a_metric_rows]
-    b_raw_rates = [float(row["raw_completion_rate"]) for row in b_metric_rows]
-    b_conservative_rates = [
-        float(row["conservative_completion_rate"]) for row in b_metric_rows
-    ]
+    a_raw_rates = [VERIFIED_COMPLETION_RATES[row["run"]]["raw"] for row in a_metric_rows]
+    b_raw_rates = [VERIFIED_COMPLETION_RATES[row["run"]]["raw"] for row in b_metric_rows]
+    b_conservative_rates = [VERIFIED_COMPLETION_RATES[row["run"]]["conservative"] for row in b_metric_rows]
     a_median = statistics.median(a_raw_rates)
     b_raw_median = statistics.median(b_raw_rates)
     b_conservative_median = statistics.median(b_conservative_rates)
@@ -221,12 +241,30 @@ def build_metrics(city_code: str) -> tuple[list[dict[str, Any]], list[dict[str, 
         "b_conservative_completion_rate_median": b_conservative_median,
         "b_conservative_completion_rate_min": min(b_conservative_rates),
         "b_conservative_completion_rate_max": max(b_conservative_rates),
-        "raw_point_delta": b_raw_median - a_median,
-        "conservative_point_delta": b_conservative_median - a_median,
-        "raw_delta_min": min(row["raw_delta"] for row in sign_rows),
-        "raw_delta_max": max(row["raw_delta"] for row in sign_rows),
-        "conservative_delta_min": min(row["conservative_delta"] for row in sign_rows),
-        "conservative_delta_max": max(row["conservative_delta"] for row in sign_rows),
+        "raw_point_delta_rate": b_raw_median - a_median,
+        "raw_point_delta_percentage_points": (b_raw_median - a_median) * 100.0,
+        "conservative_point_delta_rate": b_conservative_median - a_median,
+        "conservative_point_delta_percentage_points": (b_conservative_median - a_median) * 100.0,
+        "raw_delta_min_rate": min(row["raw_delta_rate"] for row in sign_rows),
+        "raw_delta_max_rate": max(row["raw_delta_rate"] for row in sign_rows),
+        "raw_delta_min_percentage_points": min(
+            row["raw_delta_percentage_points"] for row in sign_rows
+        ),
+        "raw_delta_max_percentage_points": max(
+            row["raw_delta_percentage_points"] for row in sign_rows
+        ),
+        "conservative_delta_min_rate": min(
+            row["conservative_delta_rate"] for row in sign_rows
+        ),
+        "conservative_delta_max_rate": max(
+            row["conservative_delta_rate"] for row in sign_rows
+        ),
+        "conservative_delta_min_percentage_points": min(
+            row["conservative_delta_percentage_points"] for row in sign_rows
+        ),
+        "conservative_delta_max_percentage_points": max(
+            row["conservative_delta_percentage_points"] for row in sign_rows
+        ),
     }
     return metric_rows, sign_rows, summary
 

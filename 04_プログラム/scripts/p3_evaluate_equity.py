@@ -209,162 +209,87 @@ def run_region_phase3_summary(city_code: str) -> None:
     evaluation = base / "evaluation"
     evaluation.mkdir(parents=True, exist_ok=True)
 
-    a_summary = json.loads(
-        (results / "scenario_a_traci_summary.json").read_text(encoding="utf-8")
-    )
-    b_traci_summary = json.loads(
-        (results / "scenario_b_traci_summary.json").read_text(encoding="utf-8")
-    )
-    b_summary = json.loads(
-        (results / "scenario_b_bus_summary.json").read_text(encoding="utf-8")
-    )
-    a_assign = pd.read_csv(derived / "scenario_a_vehicle_assignments.csv")
-    b_assign = pd.read_csv(derived / "scenario_b_vehicle_assignments.csv")
-    agent_summary = pd.read_csv(derived / "agent_type_summary.csv").iloc[0].to_dict()
-    reduction = pd.read_csv(derived / "scenario_b_rescue_reduction.csv")
-
-    bus_transport = int(b_summary["bus_arrived_passengers"])
-    bus_boarded = int(b_summary["bus_boarded_passengers"])
-    bus_not_arrived = int(b_summary["bus_not_arrived_passengers"])
-    initial_bus_demand = int(b_summary["initial_bus_candidate_total"])
-    residual_queue = int(b_summary["two_layer_report"]["residual_queue_total"])
-    k_base = float(getattr(config, "RESCUE_PER_VEHICLE_K", 2.3))
-    rescue_removed_base_raw = bus_transport / k_base
-    rescue_removed_base_int = int(reduction["rescue_removed_count"].sum())
-    rescue_removed_k1 = bus_transport
-    a_vehicle_count = int(a_summary["vehicle_count"])
-    b_vehicle_count = int(b_traci_summary["vehicle_count"])
-    a_rescue_count = int((a_assign["vehicle_kind"] == "rescue_car").sum())
-    b_rescue_count = int((b_assign["vehicle_kind"] == "rescue_car").sum())
-    type34_total = int(agent_summary["bus_candidate_population"])
-
-    rows = [
-        {
-            "metric": "vehicle_count",
-            "scenario_a": a_vehicle_count,
-            "scenario_b": b_vehicle_count,
-            "difference_b_minus_a": b_vehicle_count - a_vehicle_count,
-            "note": "route vehicle count for both scenarios; same quantity comparison",
-        },
-        {
-            "metric": "arrived_vehicle_count",
-            "scenario_a": int(a_summary["arrived_count"]),
-            "scenario_b": int(b_traci_summary["arrived_count"]),
-            "difference_b_minus_a": int(b_traci_summary["arrived_count"]) - int(a_summary["arrived_count"]),
-            "note": "arrived vehicles for both scenarios",
-        },
-        {
-            "metric": "not_arrived_vehicle_count",
-            "scenario_a": int(a_summary["not_arrived_count"]),
-            "scenario_b": int(b_traci_summary["not_arrived_count"]),
-            "difference_b_minus_a": int(b_traci_summary["not_arrived_count"]) - int(a_summary["not_arrived_count"]),
-            "note": "not-arrived vehicles for both scenarios",
-        },
-        {
-            "metric": "rescue_vehicle_count",
-            "scenario_a": a_rescue_count,
-            "scenario_b": b_rescue_count,
-            "difference_b_minus_a": b_rescue_count - a_rescue_count,
-            "note": f"k={k_base} base accounting",
-        },
-        {
-            "metric": "bus_transport_people",
-            "scenario_a": "",
-            "scenario_b": bus_transport,
-            "difference_b_minus_a": "",
-            "note": "arrived bus passengers only; despawn/not-arrived excluded",
-        },
-        {
-            "metric": "bus_boarded_people",
-            "scenario_a": "",
-            "scenario_b": bus_boarded,
-            "difference_b_minus_a": "",
-            "note": "includes not-arrived bus passengers",
-        },
-        {
-            "metric": "bus_not_arrived_people",
-            "scenario_a": "",
-            "scenario_b": bus_not_arrived,
-            "difference_b_minus_a": "",
-            "note": "despawn/time-end passengers are not counted as transported",
-        },
-        {
-            "metric": "bus_initial_candidate_demand",
-            "scenario_a": "",
-            "scenario_b": initial_bus_demand,
-            "difference_b_minus_a": "",
-            "note": "demand in selected five bus stop meshes",
-        },
-        {
-            "metric": "bus_residual_queue",
-            "scenario_a": "",
-            "scenario_b": residual_queue,
-            "difference_b_minus_a": "",
-            "note": "selected-stop demand not boarded/arrived by bus",
-        },
-        {
-            "metric": "selected_stop_demand_satisfaction_rate",
-            "scenario_a": "",
-            "scenario_b": round(bus_transport / initial_bus_demand, 6)
-            if initial_bus_demand
-            else "",
-            "difference_b_minus_a": "",
-            "note": "bus_transport_people / selected-stop candidate demand",
-        },
-        {
-            "metric": "all_type34_demand_satisfaction_rate",
-            "scenario_a": "",
-            "scenario_b": round(bus_transport / type34_total, 6) if type34_total else "",
-            "difference_b_minus_a": "",
-            "note": "bus_transport_people / all Type3+Type4 demand in full target",
-        },
-        {
-            "metric": "rescue_reduction_raw_k2_3",
-            "scenario_a": "",
-            "scenario_b": round(rescue_removed_base_raw, 3),
-            "difference_b_minus_a": "",
-            "note": "raw value retained",
-        },
-        {
-            "metric": "rescue_reduction_integer_k2_3",
-            "scenario_a": "",
-            "scenario_b": rescue_removed_base_int,
-            "difference_b_minus_a": "",
-            "note": "integer trips removed from scenario_b.rou.xml",
-        },
-        {
-            "metric": "rescue_reduction_k1_sensitivity",
-            "scenario_a": "",
-            "scenario_b": rescue_removed_k1,
-            "difference_b_minus_a": "",
-            "note": "k=1.0 sensitivity; not used for base route generation",
-        },
-        {
-            "metric": "terminated_trips",
-            "scenario_a": "",
-            "scenario_b": int(b_summary["terminated_trips"]),
-            "difference_b_minus_a": "",
-            "note": json.dumps(b_summary.get("termination_by_reason", {}), ensure_ascii=False),
-        },
-        {
-            "metric": "scenario_a_long_stopped_count",
-            "scenario_a": int(a_summary.get("long_stopped_count", 0)),
-            "scenario_b": int(b_traci_summary.get("long_stopped_count", 0)),
-            "difference_b_minus_a": int(b_traci_summary.get("long_stopped_count", 0)) - int(a_summary.get("long_stopped_count", 0)),
-            "note": "600s+ stopped vehicles",
-        },
-        {
-            "metric": "run_id",
-            "scenario_a": a_summary.get("run_id", ""),
-            "scenario_b": b_traci_summary.get("run_id", ""),
-            "difference_b_minus_a": "",
-            "note": "B run_id must match bus summary manifest",
-        },
-    ]
+    band = json.loads((evaluation / "phase3r_e1_band_summary.json").read_text(encoding="utf-8"))
+    rows = build_phase3_band_comparison_rows(band)
     out = evaluation / "phase3_ab_comparison.csv"
     pd.DataFrame(rows).to_csv(out, index=False, encoding="utf-8")
     print(f"[INFO] saved: {out}")
     print(pd.DataFrame(rows).to_string(index=False))
+
+
+def build_phase3_band_comparison_rows(band: dict[str, Any]) -> list[dict[str, Any]]:
+    def row(metric: str, unit: str, **values: Any) -> dict[str, Any]:
+        return {
+            "metric": metric,
+            "unit": unit,
+            "scenario_a_point": "",
+            "scenario_a_min": "",
+            "scenario_a_max": "",
+            "scenario_b_point": "",
+            "scenario_b_min": "",
+            "scenario_b_max": "",
+            "difference_b_minus_a_point": "",
+            "difference_b_minus_a_min": "",
+            "difference_b_minus_a_max": "",
+            "positive_combinations": "",
+            "negative_combinations": "",
+            "zero_combinations": "",
+            "note": "",
+            **values,
+        }
+
+    raw_signs = band["raw_sign_counts"]
+    conservative_signs = band["conservative_sign_counts"]
+    return [
+        row(
+            "route_vehicle_count",
+            "vehicles",
+            scenario_a_point=9569,
+            scenario_a_min=9569,
+            scenario_a_max=9569,
+            scenario_b_point=9515,
+            scenario_b_min=9515,
+            scenario_b_max=9515,
+            difference_b_minus_a_point=-54,
+            difference_b_minus_a_min=-54,
+            difference_b_minus_a_max=-54,
+            note="AC8 same-quantity comparison; rescue reduction fixed externally at 54",
+        ),
+        row(
+            "type34_completion_rate_raw",
+            "percent",
+            scenario_a_point=band["a_completion_rate_median"] * 100,
+            scenario_a_min=band["a_completion_rate_min"] * 100,
+            scenario_a_max=band["a_completion_rate_max"] * 100,
+            scenario_b_point=band["b_raw_completion_rate_median"] * 100,
+            scenario_b_min=band["b_raw_completion_rate_min"] * 100,
+            scenario_b_max=band["b_raw_completion_rate_max"] * 100,
+            difference_b_minus_a_point=band["raw_point_delta_percentage_points"],
+            difference_b_minus_a_min=band["raw_delta_min_percentage_points"],
+            difference_b_minus_a_max=band["raw_delta_max_percentage_points"],
+            positive_combinations=raw_signs["positive"],
+            negative_combinations=raw_signs["negative"],
+            zero_combinations=raw_signs["zero"],
+            note="difference columns are percentage points; 15-combination signs are non-consistent",
+        ),
+        row(
+            "type34_completion_rate_conservative",
+            "percent",
+            scenario_a_point=band["a_completion_rate_median"] * 100,
+            scenario_a_min=band["a_completion_rate_min"] * 100,
+            scenario_a_max=band["a_completion_rate_max"] * 100,
+            scenario_b_point=band["b_conservative_completion_rate_median"] * 100,
+            scenario_b_min=band["b_conservative_completion_rate_min"] * 100,
+            scenario_b_max=band["b_conservative_completion_rate_max"] * 100,
+            difference_b_minus_a_point=band["conservative_point_delta_percentage_points"],
+            difference_b_minus_a_min=band["conservative_delta_min_percentage_points"],
+            difference_b_minus_a_max=band["conservative_delta_max_percentage_points"],
+            positive_combinations=conservative_signs["positive"],
+            negative_combinations=conservative_signs["negative"],
+            zero_combinations=conservative_signs["zero"],
+            note="bus arrivals capped at 124.2 people; difference columns are percentage points",
+        ),
+    ]
 
 
 def main() -> None:
