@@ -1,6 +1,15 @@
 from __future__ import annotations
 
-from p3_phase3r_e1_bands import build_sign_rows, completion_rate, sign
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+from p3_phase3r_e1_bands import (
+    assert_summary_matches_metrics,
+    build_metrics,
+    build_sign_rows,
+    completion_rate,
+    sign,
+)
 
 
 def test_completion_rate_uses_fixed_denominator() -> None:
@@ -29,21 +38,52 @@ def test_build_sign_rows_produces_all_combinations_for_both_series() -> None:
     assert [row["conservative_sign"] for row in rows] == ["negative", "negative"]
 
 
-def test_verified_completion_rates_produce_decision_110_sign_counts() -> None:
-    a_rows = [
-        {"run": run, "seed": seed, "raw_completion_rate": 0, "conservative_completion_rate": 0}
-        for run, seed in [("A#1", 23423), ("A#2", 42), ("A#3", 1)]
-    ]
-    b_rows = [
-        {"run": run, "seed": seed, "raw_completion_rate": 0, "conservative_completion_rate": 0}
-        for run, seed in [("B#1", 23423), ("B#2", 42), ("B#3", 1), ("B#4", 7), ("B#5", 101)]
-    ]
+def test_build_metrics_matches_archive_ground_truth() -> None:
+    metrics, rows, summary = build_metrics("08211")
 
-    rows = build_sign_rows(a_rows, b_rows)
-
-    assert sum(row["raw_sign"] == "positive" for row in rows) == 10
-    assert sum(row["raw_sign"] == "negative" for row in rows) == 5
+    expected_arrivals = [
+        1341,
+        1066,
+        1349,
+        1273,
+        1304,
+        1298,
+        1330,
+        1317,
+    ]
+    assert [row["rescue_arrived_total"] for row in metrics] == expected_arrivals
+    tripinfo_arrivals = []
+    for row in metrics:
+        prefix = "scenario_a" if row["scenario"] == "A" else "scenario_b"
+        tripinfo = Path(row["artifact_dir"]) / f"{prefix}_tripinfo.xml"
+        tripinfo_arrivals.append(
+            sum(
+                1
+                for _event, element in ET.iterparse(tripinfo, events=("end",))
+                if element.tag == "tripinfo"
+                and str(element.attrib.get("id", "")).startswith("rescue_")
+            )
+        )
+    assert tripinfo_arrivals == expected_arrivals
+    assert summary["raw_sign_counts"] == {"positive": 13, "negative": 2, "zero": 0}
+    assert summary["conservative_sign_counts"] == {
+        "positive": 13,
+        "negative": 2,
+        "zero": 0,
+    }
     assert all(
-        row["raw_delta_percentage_points"] == round(row["raw_delta_rate"] * 100, 6)
+        abs(row["raw_delta_percentage_points"] - row["raw_delta_rate"] * 100) <= 1e-6
         for row in rows
     )
+
+
+def test_summary_consistency_assert_halts_on_mismatch() -> None:
+    metrics, _, summary = build_metrics("08211")
+    summary["a_completion_rate_values"] = [0.0]
+
+    try:
+        assert_summary_matches_metrics(metrics, summary)
+    except AssertionError as exc:
+        assert "summary/replicate mismatch" in str(exc)
+    else:
+        raise AssertionError("self-consistency tripwire did not halt")

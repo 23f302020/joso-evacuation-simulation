@@ -15,6 +15,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -688,6 +689,13 @@ def write_phase2_html() -> None:
 
 
 def write_phase3_html() -> None:
+    evaluation = OUTPUT_DIR / "sumo" / "regions" / "08211" / "evaluation"
+    band = json.loads((evaluation / "phase3r_e1_band_summary.json").read_text(encoding="utf-8"))
+    s10 = json.loads((evaluation / "phase3_s10_band_summary.json").read_text(encoding="utf-8"))
+    raw_signs = band["raw_sign_counts"]
+    conservative_signs = band["conservative_sign_counts"]
+    s10_raw_signs = s10["raw_sign_counts"]
+    s10_conservative_signs = s10["conservative_sign_counts"]
     body = f"""{_page_header("Phase 3：デマンド交通バス比較", "バス活用シナリオ / 比較評価", "実装・評価済み")}
 
   <main class="page-shell">
@@ -700,10 +708,10 @@ def write_phase3_html() -> None:
         <h2 id="phase3-plan-heading">評価結果</h2>
       </div>
       <ul class="detail-list">
-        <li>Type3/4完了率のraw帯：−4.23〜＋22.67%pt</li>
-        <li>保守帯：−4.23〜＋21.32%pt</li>
-        <li>15組合せはrawで正10・負5となり、符号は非一貫</li>
-        <li>10台感度でも正10・負5となり、増車後もヌル結論は頑健</li>
+        <li>Type3/4完了率のraw点推定：{band['raw_point_delta_percentage_points']:+.2f}%pt、帯：{band['raw_delta_min_percentage_points']:+.2f}〜{band['raw_delta_max_percentage_points']:+.2f}%pt</li>
+        <li>保守点推定：{band['conservative_point_delta_percentage_points']:+.2f}%pt、帯：{band['conservative_delta_min_percentage_points']:+.2f}〜{band['conservative_delta_max_percentage_points']:+.2f}%pt</li>
+        <li>15組合せはrawで正{raw_signs['positive']}・負{raw_signs['negative']}、保守で正{conservative_signs['positive']}・負{conservative_signs['negative']}となり、いずれも符号は非一貫</li>
+        <li>10台感度はrawで正{s10_raw_signs['positive']}・負{s10_raw_signs['negative']}、保守で正{s10_conservative_signs['positive']}・負{s10_conservative_signs['negative']}。S10#4はraw 102.01%・保守97.15%を併記</li>
       </ul>
     </section>
 

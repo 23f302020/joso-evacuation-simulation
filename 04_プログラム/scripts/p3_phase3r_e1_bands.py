@@ -28,21 +28,6 @@ B_RUNS = [
     ("B#5", 101, "final_20260711T182726_a69a01dd"),
 ]
 
-# Decision 110 verified these completion-rate values directly before the sign
-# table correction.  Keep sign-table generation anchored to those E1 values;
-# do not recompute them from rounded deltas or seed ordering.
-VERIFIED_COMPLETION_RATES = {
-    "A#1": {"raw": 0.954448, "conservative": 0.954448},
-    "A#2": {"raw": 0.750193, "conservative": 0.750193},
-    "A#3": {"raw": 0.965826, "conservative": 0.965826},
-    "B#1": {"raw": 0.923560, "conservative": 0.923560},
-    "B#2": {"raw": 0.954980, "conservative": 0.953167},
-    "B#3": {"raw": 0.956786, "conservative": 0.955749},
-    "B#4": {"raw": 0.964499, "conservative": 0.963441},
-    "B#5": {"raw": 0.976844, "conservative": 0.963441},
-}
-
-
 def find_summary(results_dir: Path, filename: str, run_id: str) -> Path:
     candidates = list(results_dir.glob(f"archive_runs/*/{filename}")) + [results_dir / filename]
     for path in candidates:
@@ -116,14 +101,10 @@ def build_sign_rows(a_rows: list[dict[str, Any]], b_rows: list[dict[str, Any]]) 
     rows: list[dict[str, Any]] = []
     for b in b_rows:
         for a in a_rows:
-            a_rates = VERIFIED_COMPLETION_RATES.get(str(a["run"]), a)
-            b_rates = VERIFIED_COMPLETION_RATES.get(str(b["run"]), b)
-            raw_delta = float(b_rates.get("raw", b["raw_completion_rate"])) - float(
-                a_rates.get("raw", a["raw_completion_rate"])
+            raw_delta = float(b["raw_completion_rate"]) - float(a["raw_completion_rate"])
+            conservative_delta = float(b["conservative_completion_rate"]) - float(
+                a["conservative_completion_rate"]
             )
-            conservative_delta = float(
-                b_rates.get("conservative", b["conservative_completion_rate"])
-            ) - float(a_rates.get("conservative", a["conservative_completion_rate"]))
             rows.append(
                 {
                     "b_run": b["run"],
@@ -141,6 +122,33 @@ def build_sign_rows(a_rows: list[dict[str, Any]], b_rows: list[dict[str, Any]]) 
                 }
             )
     return rows
+
+
+def assert_summary_matches_metrics(
+    metric_rows: list[dict[str, Any]], summary: dict[str, Any]
+) -> None:
+    """Halt if the band summary diverges from its per-run source rows."""
+    a_rows = [row for row in metric_rows if row["scenario"] == "A"]
+    b_rows = [row for row in metric_rows if row["scenario"] == "B"]
+    expected = {
+        "a_completion_rate_values": sorted(float(row["raw_completion_rate"]) for row in a_rows),
+        "b_raw_completion_rate_values": sorted(
+            float(row["raw_completion_rate"]) for row in b_rows
+        ),
+        "b_conservative_completion_rate_values": sorted(
+            float(row["conservative_completion_rate"]) for row in b_rows
+        ),
+    }
+    for key, values in expected.items():
+        actual = summary.get(key)
+        if actual != values:
+            raise AssertionError(f"E1 summary/replicate mismatch: {key}: {actual} != {values}")
+    if len(summary["a_completion_rate_values"]) != len(a_rows):
+        raise AssertionError("E1 A raw series count mismatch")
+    if len(summary["b_raw_completion_rate_values"]) != len(b_rows):
+        raise AssertionError("E1 B raw series count mismatch")
+    if len(summary["b_conservative_completion_rate_values"]) != len(b_rows):
+        raise AssertionError("E1 B conservative series count mismatch")
 
 
 def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
@@ -215,9 +223,9 @@ def build_metrics(city_code: str) -> tuple[list[dict[str, Any]], list[dict[str, 
         b_metric_rows.append(row)
 
     sign_rows = build_sign_rows(a_metric_rows, b_metric_rows)
-    a_raw_rates = [VERIFIED_COMPLETION_RATES[row["run"]]["raw"] for row in a_metric_rows]
-    b_raw_rates = [VERIFIED_COMPLETION_RATES[row["run"]]["raw"] for row in b_metric_rows]
-    b_conservative_rates = [VERIFIED_COMPLETION_RATES[row["run"]]["conservative"] for row in b_metric_rows]
+    a_raw_rates = [float(row["raw_completion_rate"]) for row in a_metric_rows]
+    b_raw_rates = [float(row["raw_completion_rate"]) for row in b_metric_rows]
+    b_conservative_rates = [float(row["conservative_completion_rate"]) for row in b_metric_rows]
     a_median = statistics.median(a_raw_rates)
     b_raw_median = statistics.median(b_raw_rates)
     b_conservative_median = statistics.median(b_conservative_rates)
@@ -266,6 +274,7 @@ def build_metrics(city_code: str) -> tuple[list[dict[str, Any]], list[dict[str, 
             row["conservative_delta_percentage_points"] for row in sign_rows
         ),
     }
+    assert_summary_matches_metrics(metric_rows, summary)
     return metric_rows, sign_rows, summary
 
 
