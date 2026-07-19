@@ -16,6 +16,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -531,7 +532,7 @@ def write_index_html(n_cities: int) -> None:
       <div class="stat-item"><span class="stat-value">{n_cities}</span><span class="stat-label">市区町村</span></div>
       <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">対象外</span></div>
       <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">時点</span></div>
-      <div class="stat-item stat-text">Phase 1は静的な避難ルート、Phase 2はSUMOによる動的交通流、Phase 3はデマンド交通バス比較の予定です。</div>
+      <div class="stat-item stat-text">Phase 1は静的な避難ルート、Phase 2はSUMOによる動的交通流、Phase 3はデマンド交通バスとの比較評価です。</div>
     </div>
 
     <section class="phase-card-grid" aria-label="Phase別ページ">
@@ -557,12 +558,12 @@ def write_index_html(n_cities: int) -> None:
       </a>
       <a class="phase-card" href="phase3.html">
         <span class="phase-card-title">Phase 3</span>
-        <span class="phase-status">未実装</span>
-        <span class="phase-card-meta">Phase 2の自家用車避難を基準に、デマンド交通バスを導入した場合の比較を行う予定のPhaseです。</span>
+        <span class="phase-status">実装・評価済み</span>
+        <span class="phase-card-meta">自家用車のみのシナリオAとデマンド交通バスを活用するシナリオBを比較評価しました。</span>
         <ul class="phase-card-list">
-          <li>バス台数・定員・運行範囲の仕様化</li>
-          <li>シナリオBの運行ロジック実装</li>
-          <li>自家用車のみとの比較・考察</li>
+          <li>完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できない</li>
+          <li>組合せごとの符号は非一貫</li>
+          <li>走行状態の二峰性を確認</li>
         </ul>
       </a>
     </section>
@@ -665,6 +666,7 @@ def write_phase2_html() -> None:
         <li>国道294号、国道・県道354号、県道357号、常総IC接続部の主要避難路別混雑</li>
         <li>41市区町村へ拡張したPhase 2 SUMO入力・結果一覧</li>
       </ul>
+      <p class="section-note">Phase 2の到着・未到着はSUMO既定teleport設定下の記録値であり、「渋滞由来の逃げ遅れは発生しない」という一般主張はしません。</p>
     </section>
 
     <section class="section" aria-labelledby="phase2-excel-heading">
@@ -737,6 +739,19 @@ def write_phase3_html() -> None:
 
 
 def main() -> None:
+    # 実行封印ガード（Fable裁定・HTMLダッシュボード最新化判断）。
+    # gen_index.py は1世代古い設計であり、再生成は多ページ副作用で
+    # taskbarナビ・FAQ・chat等の手作り込みを巻き戻す（V5-2事故）。
+    # HTML成果物（index/phase1/phase2/phase3/faq＋CSS/JS）は手保守が正本。
+    # 更新は該当HTMLの外科的手編集で行う。方針＝
+    # 開発メモ/方針判断_fable5/07_段4_結論・感度/段4_HTMLダッシュボード最新化判断_方針判断_fable5.md
+    # 意図的な再生成が必要なときのみ GEN_INDEX_UNSEAL=1 で解除（方針判断を経てから）。
+    if os.environ.get("GEN_INDEX_UNSEAL") != "1":
+        raise SystemExit(
+            "gen_index.py は実行封印されています（HTMLダッシュボードは手保守が正本）。"
+            "再生成は手作り込みを巻き戻すため、更新は外科的手編集で行ってください。"
+            "意図的に再生成する場合のみ環境変数 GEN_INDEX_UNSEAL=1 を設定してください。"
+        )
     entries = _city_entries()
     write_pages_js(entries)
     write_components_js()

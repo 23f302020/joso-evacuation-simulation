@@ -37,7 +37,7 @@
     <div class="taskbar-item">
       <a class="taskbar-trigger" href="phase3.html">Phase 3</a>
       <div class="taskbar-menu" aria-label="Phase 3のセクション">
-        <a href="phase3.html#phase3-plan-heading">今後作成する内容</a>
+        <a href="phase3.html#phase3-plan-heading">評価結果</a>
         <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
       </div>
     </div>
@@ -87,8 +87,8 @@
         </div>
         <div class="intro-card">
           <span class="intro-icon">🚌</span>
-          <h3>Phase 3：バス比較（予定）</h3>
-          <p>車を持たない方や高齢者のために、デマンド交通バスを加えた場合の効果を検証予定です。自家用車のみの場合と到着率・混雑を比較します。</p>
+          <h3>Phase 3：バス比較</h3>
+          <p>車を持たない方や高齢者を含む避難を対象に、自家用車のみのシナリオAとデマンド交通バスを活用するシナリオBを比較評価しました。完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できませんでした。</p>
         </div>
       </div>
     </section>
@@ -97,7 +97,7 @@
       <div class="stat-item"><span class="stat-value">41</span><span class="stat-label">市区町村</span></div>
       <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">対象外</span></div>
       <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">時点</span></div>
-      <div class="stat-item stat-text">Phase 1は静的な避難ルート、Phase 2はSUMOによる動的交通流、Phase 3はデマンド交通バス比較の予定です。</div>
+      <div class="stat-item stat-text">Phase 1は静的な避難ルート、Phase 2はSUMOによる動的交通流、Phase 3はデマンド交通バスとの比較評価です。</div>
     </div>
 
     <section class="phase-card-grid" id="phase-list" aria-label="Phase別ページ">
@@ -123,12 +123,12 @@
       </a>
       <a class="phase-card" href="phase3.html">
         <span class="phase-card-title">Phase 3</span>
-        <span class="phase-status">未実装</span>
-        <span class="phase-card-meta">Phase 2の自家用車避難を基準に、デマンド交通バスを導入した場合の比較を行う予定のPhaseです。</span>
+        <span class="phase-status">実装・評価済み</span>
+        <span class="phase-card-meta">自家用車のみのシナリオAとデマンド交通バスを活用するシナリオBを比較評価しました。</span>
         <ul class="phase-card-list">
-          <li>バス台数・定員・運行範囲の仕様化</li>
-          <li>シナリオBの運行ロジック実装</li>
-          <li>自家用車のみとの比較・考察</li>
+          <li>完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できない</li>
+          <li>組合せごとの符号は非一貫</li>
+          <li>走行状態の二峰性を確認</li>
         </ul>
       </a>
     </section>

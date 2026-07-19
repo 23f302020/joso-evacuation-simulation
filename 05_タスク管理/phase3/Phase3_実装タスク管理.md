@@ -5,6 +5,10 @@
 
 > **⚠️ 実装の詳細・再開手順（2026-07-03）：新規セッションで着手できる粒度のタスクカードは `Phase3_実装タスク詳細_常総先行.md`（A0/R1〜R4/B1〜B5/E1〜E3/S1〜S2/V1〜V4）を参照。方針判断（規模＝A31a想定最大約2万人・車両会計案A・時間軸＝加速シナリオ）と会計式は `Phase3実装前仕様_P3-IMPL-0.md` が正本。手順は `Phase3実装指示書_常総先行_Codex向け.md`。本表の I-系旧命名より P3-IMPL/詳細カードを優先。**
 
+> **2026-07-18 追加：V5系＝HTMLダッシュボード最新化（index/phase1/phase2/faq）。** 主結論ヌル・E3確定稿に整合させる文言是正（gen_index.pyソース是正＋G1〜G5ゲート付き再生成／faq手編集）。方針＝[[段4_HTMLダッシュボード最新化判断_方針判断_fable5]]（決定150〜154）・カード V5-1〜V5-5 は `Phase3_実装タスク詳細_常総先行.md`。
+
+> **2026-07-18 V5実装状況：** V5-1（生成器のindex/phase2文言是正）とV5-3（faq本文・検索KB同期）は完了。V5-2はG3で`assets/phase1.css`の内容ドリフトを検出し停止した。生成器の`write_css()`が現物のナビ・FAQ・チャット等の追加スタイルを保持していないため、CSSはscratchpadから復旧済み。`write_css()`へ現物差分を取り込むか、CSSを再生成対象から外すかの判断後にV5-2から再開する。V5-4/V5-5は依存未達のため未着手。
+
 ---
 
 ## 1. 実装方針
@@ -34,7 +38,7 @@ Phase 3では、Phase 2のシナリオA（自家用車のみ）を比較基準�
 
 ### ⚠️ 2026-07-09 差し戻し（上記 B3〜B5・E2 の記録を撤回）
 
-正本＝`開発メモ/方針判断_fable5/シナリオB再実行_方針判断_fable5.md`（論点整理 opus → 判断 fable-5 → 記録 sonnet-5）。
+正本＝`開発メモ/方針判断_fable5/02_実行系是正/シナリオB再実行_方針判断_fable5.md`（論点整理 opus → 判断 fable-5 → 記録 sonnet-5）。
 
 - **完走した「車＋バス」のシナリオB runは一度も存在しない。** B側成果物は 14:48:43 の計測run（バスログ）と 15:24:14 の中断run（fcd／tripinfo、`write_bus_outputs` 未到達）の混合物。バスログは現存する `scenario_b.rou.xml`（14:50:06）・`scenario_b.sumocfg`（14:51:09）より前に書かれており、**14:48 runの実行条件は復元不能**。
 - 根本原因：`p2_traci_bus.py:779` が `route_file = SCENARIOS_DIR / "scenario_a.rou.xml"` をハードコード既定にしていたため、**B4で生成した `scenario_b.rou.xml`（9,540台）は一度もSUMOに読み込まれていない**。
@@ -63,7 +67,7 @@ Phase 3では、Phase 2のシナリオA（自家用車のみ）を比較基準�
 | P3-IMPL-5 | シナリオBの車両routeを生成する | ⚠️ 要再生成 | P3-IMPL-1, P3-IMPL-F | `scenario_b.rou.xml`, `scenario_b_vehicle_assignments.csv` | **9,540台・削減29台は撤回**（入力のバス到着67人が出所不明run由来／かつ本routeは一度もSUMOに読まれていない）。AC3で再固定 |
 | P3-IMPL-6 | TraCI実行をシナリオB対応にする | ⚠️ 実測値撤回・再計測待ち | P3-IMPL-4, P3-IMPL-5 | `scenario_b_bus_summary.json`, `scenario_b_passenger_log.csv`, `scenario_b_bus_log.csv`, `scenario_b_traci_summary.json`, `scenario_b_vehicle_log.csv` | **完走した車＋バスrunが存在しない**（成果物がrun混合）。AC2・AC5・AC6で再計測 |
 | P3-IMPL-7 | A/B比較CSVを生成する | ⚠️ ✅取消 | P3-IMPL-6 | `phase3_ab_comparison.csv` | **既存CSVは破棄**（A=到着台数・B=route行数という異種量の引き算／未到着1,010台が不可視）。AC8で再生成 |
-| P3-IMPL-8 | Phase 3 Excel成果物を生成する | ❌ | P3-IMPL-7 | `phase3_results_excel.xlsx` | 比較表をExcelで確認できる |
+| P3-IMPL-8 | Phase 3 Excel成果物を生成する | ✅ | P3-IMPL-7 | `outputs/p3-impl-8/phase3_results_excel.xlsx` | 8run完了率・15組符号表・raw/保守帯・S系10台を7シートへ集約し、全シート目視QA済み |
 | P3-IMPL-9 | Phase 3アニメーションHTMLを作成する | ❌ | P3-IMPL-6 | `sumo/viz/phase3_viz.html` | バスと自家用車を区別して表示できる |
 | P3-IMPL-10 | `phase3.html` を更新する | ❌ | P3-IMPL-8, P3-IMPL-9 | `output/phase3.html` | Excel欄とアニメーション欄に分けて表示される |
 | P3-IMPL-11 | Phase 3テスト結果を記録する | ❌ | P3-IMPL-10 | `テスト結果_phase3.md` | 実行結果、警告、限界が記録されている |
