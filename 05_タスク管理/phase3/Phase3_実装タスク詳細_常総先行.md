@@ -43,9 +43,9 @@
 | **G1.7** | churn是正：`.gitattributes`（`*.py text eol=lf`）＋scripts/tests限定renormalize（単一コミット・run無し） | Claude | G1.6 | ✅（コミット d11df9e・git_dirty_scripts=false を確認） |
 | **B3** | 救出走行削減の会計連動（バス実輸送÷k） | Claude | R4',B2 | ✅（段2 B計測run完走・run_id measure_20260711T000129_79ef4dc8・gates_ok=true・バス到着141人）／⚠️バス到着は141ではなく**125人**（terminated 2便の車内16人は乗車中孤立=not_arrived・決定59-60） |
 | **B4** | シナリオB車両route生成（自家用車＋救出走行(削減後)＋バス） | Claude | B3 | ✅（段2'完了・4コミット bb82252/c602dab/320afa7/23e0375・削減54台・B側9,515台・AC3一致・pytest 64 passed） |
-| **B5** | TraCIシナリオB実行（乗降＋動的閉鎖＋乗車人数集計） | Claude+Codex | B4 | ▶次にやる（段3＝B確定run・phase final・9,515台＋バス5台・`--expected-vehicles 9515` 必須・AC7合格帯 n'∈[120,131]） |
-| **E1** | 評価を人単位・Type別へ拡張（逃げ遅れ人/完了時間/渋滞/公平性） | Claude | R4',B5 | ✅ 8run帯充填完了（コミット 21c5eb3・A/B完了率算出済み）／主指標ヌル確定（決定105）／⚠️ 再集計要（決定118・replicate_metricsが band_summary/E2と非整合・run無し・主結論ヌルは不変） |
-| **E2** | A/B比較CSV生成（人単位・Type別） | Claude+Codex | E1 | 未着手（✅取消・既存CSVは破棄） |
+| **B5** | TraCIシナリオB実行（乗降＋動的閉鎖＋乗車人数集計） | Claude+Codex | B4 | ✅ 完了（段3R B側5run＋S系10台5runを確定パイプラインで完走。全runの会計・マニフェスト・route SHAゲートを確認済み） |
+| **E1** | 評価を人単位・Type別へ拡張（逃げ遅れ人/完了時間/渋滞/公平性） | Claude | R4',B5 | ✅ 完了（A3＋B5の8run再集計、15組合せraw/保守帯、Type3/4完了率を地上真実から確定。決定126〜144の監査是正済み） |
+| **E2** | A/B比較CSV生成（人単位・Type別） | Claude+Codex | E1 | ✅ 完了（`phase3_ab_comparison.csv`と`phase3r_e1_*`を再生成。旧run混合版は撤回記録として区別し、現行値をV1/V2/V3/E3へ反映済み） |
 | **E3** | 床効果判定・主指標の確定 | Claude(判断) | E2 | ✅ 主指標ヌル確定（決定105・106・符号表e2004d7）／S系10台も条件付き終了・ヌル頑健（決定113・S-1で確定）／残＝E3本文（regime bimodality主役・方向主張禁止） |
 | **S1** | バス台数感度 3/5/10 実行 | Codex | B5 | ✅ **確定終了**（バス10台×B5seed＝5run・`e2d6c55`）。S-1（10台E1符号表 raw 正10/負5・非一貫・`decision109_stop_s_series=True`）で決定113の条件付き終了を解消→ヌルは増車でも頑健。s10_b2 seed42はロックregime帯内保持（決定112）。3台不要（決定115） |
 | **S2** | 圧縮率感度でA/B順位の不変性確認 | Claude+Codex | E2 | 取り止め（決定109・[[S系帰結判断_方針判断_fable5]]）。ヌルには順位がなく圧縮率のA/B順位不変性は適用不能 |
@@ -57,7 +57,7 @@
 | **V5-2** | ~~ゲート付き再生成~~→**方針転換・破棄**（決定155） | Claude | V5-1 | 🔁 方針転換（2026-07-18・G3で`phase1.css`内容差を検出し停止→原因究明で`gen_index.py`が1世代古い生成器と判明〔taskbar/FAQ/chat未反映・再生成がindex/phase1/phase2をcard-grid化〕。**再生成方針を放棄**し[[段4_HTMLダッシュボード最新化判断_方針判断_fable5]]決定155で「全ページ手保守・再生成全面禁止」へ改訂。index/phase1/phase2はgit HEADから復元し外科的手編集で再適用〔決定156〕） |
 | **V5-3** | faq.html外科的手編集（本文＋検索インデックス同期・V5-1/2と並行可） | Claude | — | ✅ 完了（2026-07-18・将来形を実装済みのヌル結論へ更新、Q4のteleport格下げ、本文と検索KBを同期、phase3評価結果へリンク） |
 | **V5-4** | 静的QA（ソフトゲート・navリンク/アンカー/撤回値grep/方向主張精査） | Claude | V5-2,V5-3 | ✅ 完了（2026-07-18・全5ページ横断：stale framing 0件・撤回済み数値/X-5違反 0件・欠損アンカー`#overview`/`#phase-list`は復旧で実在復活〔決定158〕・phase3.html不変〔git diff HEAD空〕・真の内容差分は最小〔`--ignore-cr-at-eol`〕。ブラウザ描画QAはWSL/Chrome不在で不能＝環境制約として明記） |
-| **V5-5** | 単一allowlistコミット（gen_index.py＋4 HTML＋判断記録） | Claude | V5-1〜V5-4 | ⏳ 実行中（2026-07-18・allowlist＝index/phase1/phase2/faq/gen_index.py＋判断記録＋本タスク文書。EOL churn整形・route等pre-existing除外。ユーザー承認：commit＋push） |
+| **V5-5** | 単一allowlistコミット（gen_index.py＋4 HTML＋タスク文書） | Claude | V5-1〜V5-4 | ✅ 完了（2026-07-18・`86a5990`・commit＋push済。allowlist7ファイル＝index/phase1/phase2/faq/gen_index.py＋タスク文書2。HTMLはLF統一・route等pre-existing除外・判断記録は`開発メモ/`がgitignoreのためローカル保持） |
 
 > **2026-07-10 段構成の改訂（[[段2計画_方針判断_fable5]] 決定40）：** 段1.5（E1本体のA側先行実装＋ゲート改修）を段2の前に挿入する。**正本run進行中は `04_プログラム/scripts/` 配下を編集しない**（マニフェストの `git_dirty_scripts=false` を壊すため）。run待ち時間の作業は文書（`01_`／`03_`／`05_`）に限る。卒論本文 P2-DOC-2 は即時着手し、run待ち時間の既定作業とする。
 
@@ -81,7 +81,7 @@
 
 > **2026-07-12 S系（バス10台）完走・帰結判断（[[S系帰結判断_方針判断_fable5]] 決定112〜117）：** バス10台×B側5seed＝5run完走（確定route 9,515台・削減54固定・SHA `3d6977…8297` 一致）。バス到着n'={120, 24(s10_b2 seed42・halt), 180, 281, 257}。**s10_b2（seed42）はnot_arrived 2,159で halt**（A'受容域外）だが、AC全PASS・層2(157)<層3(1,862)・departure_blocked=0 で **valid regimeデータ点として帯内保持・除外禁止**（決定112・段3RのA#2と同型）。**seed42はA側（A#2）とB側10台（s10_b2）で独立にロックregimeへ落ちた**が B側5台では正常＝「seed×構成の相互作用」＝regime bimodality強化（決定116）。**S系は「条件付き終了」**（決定113）：ヌル頑健の裁定は下すが、確定は10台E1完了率の15組符号表（raw＋保守控除・削減54固定）計算後（b2上界0.969>A#1 0.954で符号は計算しないと閉じない）。事前登録判定則＝raw非一貫→即確定・全同符号→Fable差し戻し。バス3台は不要（決定115）。次＝S-1（10台E1集計・機械的・run無し）。決定31〜111は文言不変。
 
-> **2026-07-12 S系確定終了・V系（[[S系帰結判断_方針判断_fable5]] 決定113の解消・コミット `e2d6c55`）：** S-1（10台E1符号表）完了＝raw 正10/負5・非一貫（`decision109_stop_s_series=True`）→ 決定113の判定則で**S系確定終了・「増車してもヌル」確定**（Fable再判断不要）。10台完了率 71.35〜102.01%（S10#4 102%は削減54固定・増車のみ設計の二重計上バイアス＝決定113/114想定内・バイアス下でも非一貫でa fortioriヌル）。**V2（phase3_viz.html）・V3（phase3.html）完了**（帯ゼロまたぎ図・二峰性図・Canvasアニメ）。**V1 Excel未完**（Spreadsheetsローダー不応答・ツール障害）・ブラウザ視覚QA未実施（webview timeout・静的ゲートPASS）。残＝E3本文（決定106文言・regime bimodality 2事例・増車非単調性・方向主張禁止）→ V1/QA → P2-DOC-2。実装検証＝`04_プログラム/テスト結果/phase3/段4_S系V系実装検証_20260712.md`。
+> **2026-07-12 S系確定終了・V系（[[S系帰結判断_方針判断_fable5]] 決定113の解消・コミット `e2d6c55`）：** S-1（10台E1符号表）完了＝raw 正10/負5・非一貫（`decision109_stop_s_series=True`）→ 決定113の判定則で**S系確定終了・「増車してもヌル」確定**（Fable再判断不要）。10台完了率 71.35〜102.01%（S10#4 102%は削減54固定・増車のみ設計の二重計上バイアス＝決定113/114想定内・バイアス下でも非一貫でa fortioriヌル）。**V2（phase3_viz.html）・V3（phase3.html）完了**（帯ゼロまたぎ図・二峰性図・Canvasアニメ）。当時残っていたV1/QA/E3は後続タスクで完了済み（現行状態は進捗ボードと2026-07-20 session-end同期を参照）。実装検証＝`04_プログラム/テスト結果/phase3/段4_S系V系実装検証_20260712.md`。
 
 > **2026-07-12 I-1〜I-3完了：** V1 Excel（`outputs/p3-impl-8/phase3_results_excel.xlsx`・7シート・エラーセル0）完了＝V系はExcelも含め完了（ブラウザ視覚QAのみ残）。S系CSVの単位系（rate×100=%pt）は修正不要（I-2）。s10_b2 missing_fcd 13台は「走行中滞留」（未挿入ではない・I-3）——ただし対象IDはゲートJSON正本では **`rescue_origin_0088_0004`〜`0016`（救出走行=Type3/4）**（実装者記録の `veh_full` は転記ミス）。決定112のS-2＝非ブロッキング・ヌル結論に無影響。**研究の主結論（ヌル）は不変。残＝E3本文・ブラウザ視覚QA・P2-DOC-2。** 検証記録＝`04_プログラム/テスト結果/phase3/段4_I1I3完了検証_20260712.md`。
 
@@ -297,34 +297,34 @@
 ---
 
 ## V5系：HTMLダッシュボード最新化（index/phase1/phase2/faq）
-> **読む正本**：[[段4_HTMLダッシュボード最新化判断_方針判断_fable5]]（決定150〜154）。主結論はヌル確定（決定105・106・不変）。E3本文は確定稿（決定147〜149）。
-> **共通制約（各カードに再掲・必須）**：`git add .` 禁止＝allowlistコミットのみ／`git restore`・`git checkout -- output/` 全面禁止（決定86・復旧は退避コピーのみ）／route `scenario_b.rou.xml` SHA `3d6977…8297` を作業前後で実測し不変を確認／EOL churnは `--ignore-cr-at-eol` で内容差と分離／**数値リテラルのHTML直書き禁止**（真実源＝band JSON経由生成のみ・決定129）／**X-5文言境界**＝許可「完了率差の帯はゼロをまたぎ本モデルの分解能では方向差を検出できない」「15組合せの符号は非一貫」・禁止「バスが有利/不利」「改善」「効果があった/なかった」「削減効果」**および「A/Bに差はなかった」「同等だった」等のequivalence表現**（ヌル＝検出不能であって差の不存在証明ではない）／アンカーid `phase3-plan-heading` は改名しない。
+> **読む正本**：[[段4_HTMLダッシュボード最新化判断_方針判断_fable5]]（決定150〜158）。主結論はヌル確定（決定105・106・不変）。更新機構の現行正本は決定155〜158（全ページ手保守・`gen_index.py`再生成禁止・taskbar維持）。
+> **共通制約（各カードに再掲・必須）**：`git add .` 禁止＝allowlistコミットのみ／`git restore`・`git checkout -- output/` 全面禁止／`gen_index.py`再生成禁止（解除には`GEN_INDEX_UNSEAL=1`が必要）／route `scenario_b.rou.xml` SHA `3d6977…8297` を作業前後で実測し不変を確認／EOL churnは `--ignore-cr-at-eol` で内容差と分離／X-5方向主張・equivalence表現禁止／アンカーid `phase3-plan-heading` は改名しない。
 > **grep等の完了条件は実行時に再実測すること**（行番号・ヒット数を本カードにハードコードしない・決定134）。
 
-### V5-1｜gen_index.pyソース是正
-- **担当**：Claude Code ／ **依存**：— ／ **読む正本**：決定151・153
-- **作業内容**：`scripts/gen_index.py` の (a) `write_index_html` のstat-text（「Phase 3は…予定です」）除去、(b) Phase 3カード「未実装／行う予定のPhase」→「実装・評価済み」＋ヌル結論の**定性表現**（数値リテラル追加なし・regime bimodality 1箇条書き可・phase3.htmlへ誘導）、(c) `write_phase2_html` にteleport格下げ注記1行追加（「Phase 2の到着・未到着はSUMO既定teleport(300秒)下の記録値であり『渋滞由来の逃げ遅れは発生しない』という一般主張はしない」旨・定性・数値なし）。**HTML生成物は直接手編集しない**（ソース是正のみ）。
-- **完了条件**：diffが上記(a)(b)(c)の該当箇所に限定・数値リテラル追加ゼロ・X-5定型文適合。phase1 writerは無変更（navは再生成で自動是正）。
+### V5-1｜gen_index.pyソース是正＋実行封印ガード
+- **担当**：Claude Code ／ **依存**：— ／ **読む正本**：決定155
+- **作業内容**：旧生成器を監査用に保存し、`main()`冒頭へ`GEN_INDEX_UNSEAL=1`でのみ解除できる`SystemExit`ガードを追加する。HTML成果物の正本は手保守とし、通常運用で再生成しない。
+- **完了記録**：✅ `86a5990`。封印ガードの既定拒否と、解除環境変数の明示を実装済み。
 
-### V5-2｜ゲート付き再生成（依存V5-1）
-- **担当**：Claude Code ／ **依存**：V5-1 ／ **読む正本**：決定151・152
-- **作業内容**：gen_index.pyが触れる7出力（index/phase1/phase2/phase3.html＋assets3本）をscratchpadへ退避（**G1**）→ `gen_index.py` 実行 → **G2**（再生成後phase3.htmlが現物と `--ignore-cr-at-eol` で内容同一）／**G3**（assets3本の内容差ゼロ・EOL差のみ許容）／**G4**（route SHA `3d6977…8297` 前後不変を実測）／**G5**（差分が対象ファイル群のみ）を全PASS確認。
-- **完了条件**：index/phase1/phase2から「今後作成｜未実装｜予定です」のgrepがゼロ（**実行時に再実測**）・phase3.html内容不変（G2 PASS）・G1〜G5全PASS。**いずれかのゲート不一致＝即halt・Fable差し戻し**（`git restore`での復旧禁止＝退避コピーのみ）。
+### V5-2｜再生成方針の破棄・taskbar版復旧
+- **担当**：Claude Code ／ **依存**：V5-1 ／ **読む正本**：決定155〜158
+- **作業内容**：G3不合格を受けて再生成を恒久停止し、index/phase1/phase2をgit HEADブロブからファイル単位で復旧する。taskbar設計を維持し、indexのPhase 3文言とphase2のteleport注記だけを外科的に再適用する。
+- **完了記録**：✅ `86a5990`。phase3.html・phase1.css・routeは不変。欠損していた`#overview`・`#phase-list`はtaskbar版復旧で解消済み。
 
 ### V5-3｜faq.html外科的手編集（V5-1/2と独立・並行可）
-- **担当**：Claude Code ／ **依存**：—（V5-1/2と並行可） ／ **読む正本**：決定153
+- **担当**：Claude Code ／ **依存**：— ／ **読む正本**：決定153・155
 - **作業内容**：faq.html（生成器なし・手保守）を外科的に手編集＝①「今後作成」「未完」全除去／②Phase 3将来形→ヌル結論の定型文／③Q4（「逃げ遅れが0なら安全といえるのか」）回答にteleport格下げ注記（**値0は保持＝撤回ではなく格下げ**）／④検索インデックス（keys/answer JSデータ）を本文と同期／⑤数値なし・phase3.htmlリンク。
-- **完了条件**：「今後作成｜未完」のgrepがゼロ（**実行時に再実測**）・本文と検索インデックスの主張一致・X-5適合（equivalence表現なし）。
+- **完了記録**：✅ `86a5990`。「今後作成｜未完」ゼロ、本文と検索KB同期、X-5適合、Phase 3評価結果へのリンクを確認済み。
 
-### V5-4｜静的QA（ソフトゲート・依存V5-2,V5-3）
-- **担当**：Claude Code ／ **依存**：V5-2, V5-3 ／ **読む正本**：決定154
+### V5-4｜静的QA（ソフトゲート）
+- **担当**：Claude Code ／ **依存**：V5-2, V5-3 ／ **読む正本**：決定154・158
 - **作業内容**：全対象ページ（index/phase1/phase2/faq）のソース精査＝navリンク整合・アンカー切れなし（`phase3-plan-heading` 含む）・撤回済み数値（バス到着67／削減29台／9,540／充足率0.271／0.0206）のgrepがゼロ・方向主張/equivalence表現の目視精査。
-- **完了条件**：上記すべてPASS（grep系は**実行時に再実測**）。ブラウザ描画QAはWSL/Chrome未インストール等の環境制約で不能な場合は**未実施を隠さず環境事実として明記**（描画コード精査・preview代替で補う＝決定120ソフトゲート）。
+- **完了記録**：✅ 全5ページでstale framing、撤回値、X-5違反、欠損アンカーがゼロ。ブラウザ描画QAは環境制約のため未実施と明記し、ソース・リンク検査で代替済み。
 
-### V5-5｜単一allowlistコミット（依存V5-1〜V5-4）
-- **担当**：Claude Code ／ **依存**：V5-1〜V5-4 ／ **読む正本**：決定152（G5）・共通制約
-- **作業内容**：allowlist＝`scripts/gen_index.py`・`output/index.html`・`output/phase1.html`・`output/phase2.html`・`output/faq.html`＋本タスク文書・判断記録。assetsはG3で内容差ゼロ確認済みなら含めない（EOL差のみならstageしない）。コミット前にroute SHA `3d6977…8297` を再実測。種別 `docs:` または `fix:`。
-- **完了条件**：`git add .` 不使用・allowlistのみstage・route SHA不変を実測確認・差分が対象ファイル群に限定（G5）。
+### V5-5｜単一allowlistコミット（確定）
+- **担当**：Claude Code ／ **依存**：V5-1〜V5-4 ／ **読む正本**：決定155〜158・共通制約
+- **確定allowlist**：`scripts/gen_index.py`、`output/index.html`、`output/phase1.html`、`output/phase2.html`、`output/faq.html`、`Phase3_実装タスク管理.md`、本詳細タスク文書の7ファイル。判断記録は`開発メモ/`がgitignore対象のためローカル正本として保持。
+- **完了記録**：✅ commit `86a5990`（`fix: HTMLダッシュボードをヌル結論へ最新化＋gen_index封印`）を`master`へ作成し、`origin/master`へpush済み。`git add .`不使用、assets・phase3.html・route・無関係な既存変更は非混入。route SHA `3d6977500b7dba4eec6d5dfb3ca654ca82642caa2ac752229557639c8ad88297`不変を確認済み。
 
 ---
 
