@@ -33,18 +33,145 @@
         <span class="phase-nav-meta">デマンド交通バス比較・感度分析</span>
       </a>
     </nav>
-    <p class="phase-lead">自家用車のみのA側3runと、バス活用B側5runを比較しました。完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できませんでした。</p>
+    <p class="phase-lead">自家用車避難を基本とするA側3runと、デマンド交通バスを導入したB側5runを比較しました。完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できませんでした。A側の交通流には車非保有者を迎えに行く救出走行も含みます。</p>
 
     <section class="section" aria-labelledby="phase3-plan-heading">
       <div class="section-heading">
-        <h2 id="phase3-plan-heading">評価結果</h2>
+        <h2 id="phase3-plan-heading">正式判定指標の比較</h2>
       </div>
-      <ul class="detail-list">
-        <li>Type3/4完了率のraw点推定：+1.23%pt、帯：-3.09〜+22.97%pt</li>
-        <li>保守点推定：+1.21%pt、帯：-3.09〜+22.63%pt</li>
-        <li>15組合せはrawで正13・負2、保守で正13・負2となり、いずれも符号は非一貫</li>
-        <li>10台感度はrawで正10・負5、保守で正8・負7。S10#4はraw 102.01%・保守97.15%を併記</li>
-      </ul>
+      <p class="section-note">正式判定にはType 3/4避難完了率だけを使用します。数値は表示用に丸め、判定には正本の未丸め値を使用しています。</p>
+      <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="正式判定指標のA/B比較表">
+        <table class="comparison-table">
+          <caption>Scenario AとScenario BのType 3/4避難完了率比較</caption>
+          <thead>
+            <tr>
+              <th scope="col">指標</th>
+              <th scope="col">A：自家用車避難</th>
+              <th scope="col">B：バス導入 raw</th>
+              <th scope="col">B：保守集計</th>
+              <th scope="col">判定</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">完了率中央値</th>
+              <td>95.44%</td>
+              <td>96.68%</td>
+              <td>96.65%</td>
+              <td>中央値はBが高い</td>
+            </tr>
+            <tr>
+              <th scope="row">最小〜最大</th>
+              <td>75.87〜96.01%</td>
+              <td>92.93〜98.84%</td>
+              <td>92.93〜98.51%</td>
+              <td>run間変動あり</td>
+            </tr>
+            <tr>
+              <th scope="row">B−A中央値差</th>
+              <td>基準</td>
+              <td>+1.23 pt</td>
+              <td>+1.21 pt</td>
+              <td>点推定だけで方向判断しない</td>
+            </tr>
+            <tr>
+              <th scope="row">全15組合せ差</th>
+              <td>—</td>
+              <td>−3.09〜+22.97 pt</td>
+              <td>−3.09〜+22.63 pt</td>
+              <td><strong>0をまたぐ</strong></td>
+            </tr>
+            <tr>
+              <th scope="row">15組の符号</th>
+              <td>—</td>
+              <td>正13／負2／零0</td>
+              <td>正13／負2／零0</td>
+              <td>符号非一貫</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="interpretation-note"><strong>結論：</strong>中央値ではBが約1.2ポイント高い一方、全組合せ差が0をまたぐため、バス導入による改善・悪化の方向差は確定できません。「効果がない」「同等」とも解釈しません。</p>
+    </section>
+
+    <section class="section" aria-labelledby="phase3-runs-heading">
+      <div class="section-heading">
+        <h2 id="phase3-runs-heading">試行別の取得結果</h2>
+      </div>
+      <details class="comparison-details">
+        <summary>8 runの完了率とバス到着人数を表示</summary>
+        <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="試行別Type 3/4避難完了率表">
+          <table class="comparison-table comparison-table-compact">
+            <caption>Scenario A 3試行とScenario B 5試行の取得結果</caption>
+            <thead>
+              <tr>
+                <th scope="col">run</th>
+                <th scope="col">seed</th>
+                <th scope="col">raw完了率</th>
+                <th scope="col">保守完了率</th>
+                <th scope="col">rawバス到着</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">A#1</th><td>23423</td><td>95.44%</td><td>95.44%</td><td>—</td></tr>
+              <tr><th scope="row">A#2</th><td>42</td><td>75.87%</td><td>75.87%</td><td>—</td></tr>
+              <tr><th scope="row">A#3</th><td>1</td><td>96.01%</td><td>96.01%</td><td>—</td></tr>
+              <tr><th scope="row">B#1</th><td>23423</td><td>92.93%</td><td>92.93%</td><td>75人</td></tr>
+              <tr><th scope="row">B#2</th><td>42</td><td>96.68%</td><td>96.65%</td><td>125人</td></tr>
+              <tr><th scope="row">B#3</th><td>1</td><td>96.16%</td><td>96.16%</td><td>122人</td></tr>
+              <tr><th scope="row">B#4</th><td>7</td><td>98.53%</td><td>98.51%</td><td>125人</td></tr>
+              <tr><th scope="row">B#5</th><td>101</td><td>98.84%</td><td>97.58%</td><td>165人</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+      <p class="section-note comparison-followup">A#2は75.87%の低完了regimeです。正規の有効runとして保持し、事後除外や都合のよいrunだけの選択は行いません。</p>
+    </section>
+
+    <section class="section" aria-labelledby="phase3-diagnostics-heading">
+      <div class="section-heading">
+        <h2 id="phase3-diagnostics-heading">記述・診断指標</h2>
+      </div>
+      <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="診断指標のA/B比較表">
+        <table class="comparison-table">
+          <caption>正式判定に使用しない診断指標の比較</caption>
+          <thead>
+            <tr>
+              <th scope="col">指標</th>
+              <th scope="col">A：自家用車避難</th>
+              <th scope="col">B：バス導入</th>
+              <th scope="col">読み取り上の制約</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">全車両到着率・中央値</th>
+              <td>94.99%</td>
+              <td>96.24%</td>
+              <td>交通流の診断値</td>
+            </tr>
+            <tr>
+              <th scope="row">全車両到着率・範囲</th>
+              <td>80.62〜95.30%</td>
+              <td>94.59〜97.27%</td>
+              <td>A#2の非到着の影響あり</td>
+            </tr>
+            <tr>
+              <th scope="row">遅い10%の平均所要時間・中央値</th>
+              <td>102.2分</td>
+              <td>111.5分</td>
+              <td>到着車両のみ、Bのバス乗客を含まない</td>
+            </tr>
+            <tr>
+              <th scope="row">遅い10%の平均所要時間・範囲</th>
+              <td>92.9〜109.6分</td>
+              <td>107.8〜115.9分</td>
+              <td>完了率と必ず対で読む</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="section-note comparison-followup">worst-offは車単位・到着者条件付き・B側バス乗客非含有です。この値だけでバス導入の政策効果や公平性の方向を判定できません。</p>
     </section>
 
     <section class="section" aria-labelledby="phase3-limitations-heading">
@@ -60,6 +187,7 @@
       </div>
       <div class="card-grid">
         <a class="result-card" href="sumo/viz/phase3_viz.html"><strong>結果可視化・交通アニメーション</strong><span>不確実性帯、強い初期条件感応性、バスと車両の移動</span></a>
+        <a class="result-card" href="../../06_研究結果/phase3/Phase3_A_B比較表.md"><strong>A/B比較表</strong><span>正式指標、8run、診断指標と解釈制約</span></a>
         <a class="result-card" href="sumo/regions/08211/evaluation/phase3_ab_comparison.csv"><strong>A/B比較CSV</strong><span>raw・保守帯と15組合せ符号</span></a>
         <a class="result-card" href="sumo/regions/08211/evaluation/phase3r_e1_15_combination_signs.csv"><strong>15組合せ符号表</strong><span>完了率実値ベース</span></a>
         <a class="result-card" href="sumo/regions/08211/evaluation/phase3_s10_15_combination_signs.csv"><strong>10台感度符号表</strong><span>5seed×A側3run</span></a>

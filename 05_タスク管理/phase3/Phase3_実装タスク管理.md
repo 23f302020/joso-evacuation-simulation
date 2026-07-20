@@ -7,14 +7,20 @@
 
 > **2026-07-20 V5完了：** HTMLダッシュボード最新化V5-1〜V5-5は完了（commit/push `86a5990`）。G3不合格後の再判断（決定155〜158）により、HTML5ページ＋CSSはtaskbar版の手保守を正本とし、`gen_index.py`再生成を恒久禁止して実行ガードを追加した。V5-5のallowlist 7ファイル以外、assets・phase3.html・route・既存変更は非混入。詳細カードは `Phase3_実装タスク詳細_常総先行.md`。
 
-> **2026-07-20 AUD系追加：** 研究結果充足性監査の修正タスク（AUD-0〜AUD-6・監査§9手順0〜6対応・全run不要）を `Phase3_実装タスク詳細_常総先行.md` に追加した。正本＝`開発メモ/研究結果充足性監査_20260720.md` §9（Fable 5確定・ローカルgitignore）。実行順＝AUD-0（最優先）→AUD-1→AUD-2∥AUD-3→AUD-4→AUD-5→AUD-6。主結論ヌルは不変。
+> **2026-07-20 AUD系完了・実装終了再監査：** 研究結果充足性監査の修正タスクAUD-0〜AUD-6を完了し、AUD-7で実装終了時点を再監査した。Phase 1〜3の正本、Phase 3の正式判定・記述報告・感度分析・限界・V4検証記録が存在し、正本SHAとunit 78件を再確認したため、**確定RQに必要な研究結果は充足、追加run・追加実装は不要**と判定する。残るP2-DOC-2と論文用静的図表は年末の編集タスクとして分離する。正本＝`開発メモ/研究結果充足性監査_20260720.md` §10、詳細カード＝`Phase3_実装タスク詳細_常総先行.md`。
+
+> **2026-07-20 P3-DOC-COMP-1完了：** Scenario A/Bの取得済み結果を、正式判定、試行別値、記述・診断指標、解釈制約に分けた `06_研究結果/phase3/Phase3_A_B比較表.md` として記録した。主結果文書からの参照も追加し、全15組合せ差が0をまたぐため方向差を断定しない既存結論と同期した。
+
+> **2026-07-20 P3-HTML-COMP-1実装完了：** `04_プログラム/output/phase3.html` に正式判定比較、8run詳細、診断指標比較、比較表Markdownへの導線を追加し、`assets/phase1.css` に横スクロール対応の比較表専用スタイルを追加した。HTML構文・リンク10件・禁止表現・撤回値・`git diff --check` は合格。アプリ内ブラウザQAは接続初期化が `Cannot redefine property: process` で2回失敗したため環境ブロックとして残し、許可なしの別ブラウザ切替は行っていない。
+
+> **2026-07-20 P3-HTML-AUDIT-1完了：** 公開HTML5ページとPhase 3可視化HTMLを正本・充足性監査へ横断照合した。Scenario Aを「自家用車のみ」とする旧説明3箇所を救出走行込みの定義へ修正し、トップページの「二峰性を確認」を「強い初期条件感応性を観測し、複数regimeの存在を示唆」へ格下げした。あわせて本表のV4未完、A/B検算取消、リンク検証未完等の旧状態と、ルート引継ぎ文書の次作業を最新化した。HTML構文・全5ページのローカルリンク・撤回値・禁止表現・`git diff --check` は合格。
 
 ---
 
 ## 1. 実装方針
 
-Phase 3では、Phase 2のシナリオA（自家用車のみ）を比較基準として、シナリオB（自家用車＋デマンド交通バス）を追加する。  
-最初は常総市で小規模試行を作り、挙動確認後に10pct、full、必要に応じて全域拡張へ進む。
+Phase 3では、自家用車避難を基本として救出走行を含むシナリオAを比較基準とし、デマンド交通バスを導入したシナリオBを比較した。
+常総市で小規模試行による挙動確認後、fullのA側3run・B側5runとバス10台感度5runを完了した。41市区町村へのPhase 3拡張は将来課題とし、現研究では追加run・追加実装を行わない。
 
 ---
 
@@ -63,14 +69,17 @@ Phase 3では、Phase 2のシナリオA（自家用車のみ）を比較基準�
 | P3-IMPL-2 | バス利用候補者を抽出する | ✅ | P3-IMPL-1 | `bus_demand_candidates.csv` | 車非保有者・高齢者優先の候補を抽出済み |
 | P3-IMPL-3 | バス拠点・目的地・乗降地点を設定する | ✅ | P3-IMPL-0 | `bus_plan.csv`, `bus_stops.add.xml` | 5停留所をSUMO edgeへスナップ済み。短すぎるpickup edgeは除外 |
 | P3-IMPL-4 | バスroute生成処理を実装する | ✅ | P3-IMPL-2, P3-IMPL-3 | `scenario_b_smoke.rou.xml`, `scenario_b.rou.xml` | repeat撤廃＋TraCI動的往復。バス単独で route error なし |
-| P3-IMPL-F | 実行系是正（共通モジュール抽出／break削除／teleport=-1統一／route既定値廃止＋出所マニフェスト） | ✅ コード実装済み | — | `p2_traci_common.py`, 改修後の `p2_traci_bus.py` | `py_compile`、pytest 28 passed、route台数アサーション確認済み。AC1はR4'未完走のため未達 |
+| P3-IMPL-F | 実行系是正（共通モジュール抽出／break削除／teleport=-1統一／route既定値廃止＋出所マニフェスト） | ✅ | — | `p2_traci_common.py`, 改修後の `p2_traci_bus.py` | 後続のA側3run・B側5runを共通実行系で完走し、V4統合記録で検証済み |
 | P3-IMPL-5 | シナリオBの車両routeを生成する | ✅ | P3-IMPL-1, P3-IMPL-F | `scenario_b.rou.xml`, `scenario_b_vehicle_assignments.csv` | 削減54台、B側9,515台（private 8,164/rescue 1,351）でAC3一致。確定SHAを固定 |
 | P3-IMPL-6 | TraCI実行をシナリオB対応にする | ✅ | P3-IMPL-4, P3-IMPL-5 | `scenario_b_bus_summary.json`, `scenario_b_passenger_log.csv`, `scenario_b_bus_log.csv`, `scenario_b_traci_summary.json`, `scenario_b_vehicle_log.csv` | 共通TraCI・マニフェスト・会計ゲート下でB側5runと感度runを完走 |
 | P3-IMPL-7 | A/B比較CSVを生成する | ✅ | P3-IMPL-6 | `phase3_ab_comparison.csv`, `phase3r_e1_replicate_metrics.csv`, `phase3r_e1_15_combination_signs.csv`, `phase3r_e1_band_summary.json` | 8run・15組合せを同一定義で再集計し、raw/保守帯とヌル結論を確定 |
 | P3-IMPL-8 | Phase 3 Excel成果物を生成する | ✅ | P3-IMPL-7 | `outputs/p3-impl-8/phase3_results_excel.xlsx` | 8run完了率・15組符号表・raw/保守帯・S系10台を7シートへ集約し、全シート目視QA済み |
-| P3-IMPL-9 | Phase 3アニメーションHTMLを作成する | ✅ | P3-IMPL-6 | `sumo/viz/phase3_viz.html` | バス/自家用車、完了率帯、二峰性を表示。視覚QA済み |
+| P3-IMPL-9 | Phase 3アニメーションHTMLを作成する | ✅ | P3-IMPL-6 | `sumo/viz/phase3_viz.html` | バス/自家用車、完了率帯、強い初期条件感応性と複数regimeの示唆を表示。視覚QA済み |
 | P3-IMPL-10 | `phase3.html` を更新する | ✅ | P3-IMPL-8, P3-IMPL-9 | `output/phase3.html` | Excel、アニメーション、E2、符号表、感度成果物へのリンクを確認済み |
-| P3-IMPL-11 | Phase 3テスト結果を記録する | ❌ | P3-IMPL-10 | `テスト結果_phase3.md` | 実行結果、警告、限界が記録されている |
+| P3-IMPL-11 | Phase 3テスト結果を記録する | ✅ | P3-IMPL-10 | `テスト結果_phase3.md` | V4統合記録へ実行結果、警告、限界、unit 78件の結果を集約済み |
+| P3-DOC-COMP-1 | Scenario A/Bの比較表を研究結果へ記録する | ✅ | P3-IMPL-7 | `06_研究結果/phase3/Phase3_A_B比較表.md` | 正本値と照合し、正式判定と診断指標を分離して記載 |
+| P3-HTML-COMP-1 | 新しいA/B比較内容をPhase 3 HTMLへ反映する | ⚠️ 実装完了 | P3-DOC-COMP-1 | `04_プログラム/output/phase3.html`, `output/assets/phase1.css` | 静的QA合格。アプリ内ブラウザ初期化エラーにより描画QAのみ環境ブロック |
+| P3-HTML-AUDIT-1 | 公開HTMLと現行状態文書の最新性を横断監査する | ✅ | P3-HTML-COMP-1 | HTML5ページ、`AGENTS.md`, `CLAUDE.md`, 本タスク表 | 旧定義・過大な二峰性断定・完了状態の不整合を修正。静的QA合格 |
 
 ---
 
@@ -79,10 +88,10 @@ Phase 3では、Phase 2のシナリオA（自家用車のみ）を比較基準�
 | ID | タスク | 状態 | 理由 |
 |---|---|---:|---|
 | P3-TEST-1 | 小規模試行でroute生成を確認する | ✅ | repeat方式の不成立を確認後、repeat撤廃版でSUMO完走・busStop 2停を確認 |
-| P3-TEST-2 | 10pct試行で輸送人数・逃げ遅れ候補を確認する | ❌ | Phase 2の10pct結果と比較するため |
+| P3-TEST-2 | 10pct試行で輸送人数・逃げ遅れ候補を確認する | ➖ 不採用 | 常総市fullを正式評価へ採用したため、中間規模の追加実行は不要と判断 |
 | P3-TEST-3 | full試行を行うか判断する | ✅ | 常総市fullでA/Bを実行済み |
-| P3-TEST-4 | A/B比較CSVの値を検算する | ⚠️ ✅取消 | 既存CSVと29台削減は撤回。B確定run後にAC8で再検算 |
-| P3-TEST-5 | HTMLリンク・Excelリンクを検証する | ❌ | 成果物入口の欠損を防ぐため |
+| P3-TEST-4 | A/B比較CSVの値を検算する | ✅ | 正本8runと15組合せから再集計し、raw・保守帯、車両会計を検算済み |
+| P3-TEST-5 | HTMLリンク・Excelリンクを検証する | ✅ | V3/V4および今回の全5ページ静的監査で成果物リンクを確認済み |
 
 ---
 

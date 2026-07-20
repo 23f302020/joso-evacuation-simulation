@@ -19,6 +19,7 @@
 | E1全組合せ符号 | `04_プログラム/output/sumo/regions/08211/evaluation/phase3r_e1_15_combination_signs.csv` |
 | E2 A/B比較 | `04_プログラム/output/sumo/regions/08211/evaluation/phase3_ab_comparison.csv` |
 | worst-off記述統計 | `04_プログラム/output/sumo/regions/08211/evaluation/phase3_worst_off_descriptive.csv` |
+| A/B比較表（説明用） | [Phase3_A_B比較表.md](Phase3_A_B比較表.md) |
 | 論文本文ドラフト | `03_研究設計文書/phase3/Phase3_E3本文ドラフト.md` |
 | HTML成果物入口 | `04_プログラム/output/phase3.html` |
 | Phase 3統合テスト記録（V4） | `04_プログラム/テスト結果/phase3/テスト結果_phase3.md` |
