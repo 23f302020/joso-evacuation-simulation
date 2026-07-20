@@ -35,6 +35,14 @@ DEFAULT_WORST_OFF_FRACTION = 0.10
 # 分布として報告するパーセンタイル点。
 REPORTED_PERCENTILES = (0.50, 0.75, 0.90, 0.95, 0.99)
 
+REPLICATE_SCOPE = {
+    "unit_scope": "vehicle",
+    "population_conditioning": "arrived_vehicles_only",
+    "scenario_b_bus_passengers": "excluded",
+    "analysis_role": "descriptive_diagnostic_only",
+    "directional_claim": "prohibited",
+}
+
 # シナリオA（自家用車）の既定の入力。R4 後もパスは同じなので再実行結果に追随する。
 DEFAULT_SCENARIO_A = {
     "small": SUMO_RESULTS_DIR / "scenario_a_small_vehicle_log.csv",
@@ -141,6 +149,75 @@ def build_scenario_table(
         row = {"scenario": label, **compute_equity_metrics(path, worst_off_fraction)}
         rows.append(row)
     return pd.DataFrame(rows)
+
+
+def build_replicate_descriptive_table(
+    replicate_metrics_path: Path,
+    worst_off_fraction: float = DEFAULT_WORST_OFF_FRACTION,
+) -> pd.DataFrame:
+    """既存runの車両ログを、方向判定を含まない記述統計へ集約する。"""
+    replicates = pd.read_csv(replicate_metrics_path)
+    required = {"scenario", "run", "seed", "run_id", "artifact_dir"}
+    missing = required.difference(replicates.columns)
+    if missing:
+        raise ValueError(f"replicate CSVの必須列がありません: {sorted(missing)}")
+
+    rows: list[dict[str, Any]] = []
+    for record in replicates.to_dict(orient="records"):
+        scenario = str(record["scenario"]).strip().upper()
+        artifact_dir = Path(str(record["artifact_dir"]))
+        vehicle_log = artifact_dir / f"scenario_{scenario.lower()}_vehicle_log.csv"
+        if not vehicle_log.exists():
+            raise FileNotFoundError(f"archived vehicle logがありません: {vehicle_log}")
+
+        metrics = compute_equity_metrics(vehicle_log, worst_off_fraction)
+        rows.append(
+            {
+                "scenario": scenario,
+                "run": record["run"],
+                "seed": record["seed"],
+                "run_id": record["run_id"],
+                "source_vehicle_log": str(vehicle_log.resolve()),
+                **REPLICATE_SCOPE,
+                "total_vehicle_count": metrics["total_count"],
+                "arrived_vehicle_count": metrics["arrived_count"],
+                "arrival_rate": round(
+                    metrics["arrived_count"] / metrics["total_count"], 6
+                )
+                if metrics["total_count"]
+                else "",
+                "worst_off_fraction": metrics["worst_off_fraction"],
+                "worst_off_count": metrics.get("worst_off_count", ""),
+                "mean_duration_sec": metrics["mean_duration_sec"],
+                "p50_duration_sec": metrics["p50_duration_sec"],
+                "p75_duration_sec": metrics["p75_duration_sec"],
+                "p90_duration_sec": metrics["p90_duration_sec"],
+                "p95_duration_sec": metrics["p95_duration_sec"],
+                "p99_duration_sec": metrics["p99_duration_sec"],
+                "worst_off_mean_duration_sec": metrics[
+                    "worst_off_mean_duration_sec"
+                ],
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def run_replicate_descriptive(
+    city_code: str,
+    worst_off_fraction: float,
+    replicate_metrics_path: Path | None = None,
+    out_path: Path | None = None,
+) -> Path:
+    """地域別の既存replicateからworst-off記述統計CSVを1枚生成する。"""
+    evaluation = region_dir(city_code) / "evaluation"
+    source = replicate_metrics_path or evaluation / "phase3r_e1_replicate_metrics.csv"
+    out = out_path or evaluation / "phase3_worst_off_descriptive.csv"
+    table = build_replicate_descriptive_table(source, worst_off_fraction)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    table.to_csv(out, index=False, encoding="utf-8")
+    print(f"[INFO] saved: {out}")
+    print(table.to_string(index=False))
+    return out
 
 
 def compare_ab(
@@ -324,6 +401,17 @@ def main() -> None:
     p_region = sub.add_parser("region-phase3", help="地域別Phase3 A/B従指標CSVを生成")
     p_region.add_argument("--city-code", required=True)
 
+    p_replicates = sub.add_parser(
+        "replicates-descriptive",
+        help="既存replicateのworst-off記述統計CSVを生成（SUMO実行なし）",
+    )
+    p_replicates.add_argument("--city-code", required=True)
+    p_replicates.add_argument(
+        "--worst-off-fraction", type=float, default=DEFAULT_WORST_OFF_FRACTION
+    )
+    p_replicates.add_argument("--replicate-metrics", type=Path, default=None)
+    p_replicates.add_argument("--out", type=Path, default=None)
+
     args = parser.parse_args()
 
     if args.command == "scenario-a":
@@ -346,6 +434,13 @@ def main() -> None:
             print(f"[INFO] saved: {args.out}")
     elif args.command == "region-phase3":
         run_region_phase3_summary(args.city_code)
+    elif args.command == "replicates-descriptive":
+        run_replicate_descriptive(
+            args.city_code,
+            args.worst_off_fraction,
+            args.replicate_metrics,
+            args.out,
+        )
 
 
 if __name__ == "__main__":
