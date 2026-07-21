@@ -88,3 +88,6 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ローカル環境のnode依存キャッシュへのシンボリックリンク（マシン固有パス）
+outputs/**/node_modules
