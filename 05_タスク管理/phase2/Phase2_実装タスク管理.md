@@ -3,7 +3,9 @@
 > 作成日：2026/05/14  
 > 目的：Phase 2（SUMO/TraCIによる自家用車避難シミュレーション）の実装作業を、実行可能な粒度まで分割して管理する。  
 > 関連：`Phase2_詳細タスク管理.md`、`Phase2_判断事項一覧.md`、`03_研究設計文書/phase2/Phase2_実装前仕様.md`  
-> 進捗記録先：`01_経過報告/経過報告20260520.md`
+> 進捗記録先：`01_経過報告/経過報告2026年07月/経過報告20260729.md`
+
+> **2026-07-20 P2-HTML-SUMO-GUIDE完了：** `04_プログラム/output/phase2.html`へ「SUMOの使い方と入力データの取得方法」を追加した。初心者向け概要、データ取得から結果までの5段階フロー図、5段階の実行手順、公式取得先6分類の表、生データからSUMO入力への対応表、自動取得コマンドを掲載した。図はデスクトップ横並び・モバイル縦並びに対応。HTML構造・ID・ローカルリンク・公式URL到達は合格。アプリ内ブラウザは初期化時の`Cannot redefine property: process`により描画QAのみ環境ブロック。
 
 ---
 
@@ -49,6 +51,7 @@ Phase 3で扱うバス・デマンド交通は、この実装タスク管理に�
 | P2-TEST | 実装内容テスト・修正 | ✅ | `テスト結果_phase2.md`, `p2_sumo_env.py` |
 | P2-IMPL-VIZ | SUMO結果のHTML可視化 | ✅ | `vehicles_small.js`, `vehicles_10pct.js`, `closures.js`, `sumo_viz.html` |
 | P2-IMPL-REGION | Phase 1対象地域全域へのSUMO拡張 | ✅ | 全41市区町村のsmall/10pct完了、評価CSV・比較CSV・全域HTML生成済み |
+| P2-HTML-SUMO-GUIDE | SUMOの使い方・データ取得方法と図表をHTMLへ追加 | ✅ | `output/phase2.html`, `output/assets/phase1.css` |
 
 ---
 

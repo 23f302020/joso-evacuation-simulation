@@ -1,0 +1,16 @@
+b_run,b_seed,a_run,a_seed,raw_delta_rate,raw_delta_percentage_points,raw_sign,conservative_delta_rate,conservative_delta_percentage_points,conservative_sign
+B#1,23423,A#1,23423,-0.030888,-3.0888,negative,-0.030888,-3.0888,negative
+B#1,23423,A#2,42,0.173367,17.3367,positive,0.173367,17.3367,positive
+B#1,23423,A#3,1,-0.042266,-4.2266,negative,-0.042266,-4.2266,negative
+B#2,42,A#1,23423,0.000532,0.0532,positive,-0.001281,-0.1281,negative
+B#2,42,A#2,42,0.204787,20.4787,positive,0.202974,20.2974,positive
+B#2,42,A#3,1,-0.010846,-1.0846,negative,-0.012659,-1.2659,negative
+B#3,1,A#1,23423,0.002338,0.2338,positive,0.001301,0.1301,positive
+B#3,1,A#2,42,0.206593,20.6593,positive,0.205556,20.5556,positive
+B#3,1,A#3,1,-0.00904,-0.904,negative,-0.010077,-1.0077,negative
+B#4,7,A#1,23423,0.010051,1.0051,positive,0.008993,0.8993,positive
+B#4,7,A#2,42,0.214306,21.4306,positive,0.213248,21.3248,positive
+B#4,7,A#3,1,-0.001327,-0.1327,negative,-0.002385,-0.2385,negative
+B#5,101,A#1,23423,0.022396,2.2396,positive,0.008993,0.8993,positive
+B#5,101,A#2,42,0.226651,22.6651,positive,0.213248,21.3248,positive
+B#5,101,A#3,1,0.011018,1.1018,positive,-0.002385,-0.2385,negative

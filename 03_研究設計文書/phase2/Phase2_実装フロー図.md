@@ -1,6 +1,7 @@
 # Phase 2 実装フロー図
 
 作成日：2026/05/14  
+最終更新：2026/07/20（実行と評価の分離、teleport条件を追記）
 対象：常総市実データ版 / シナリオA（自家用車のみ）
 
 ---
@@ -32,12 +33,14 @@ flowchart TD
 
     ROUTE["scenario_a_small.rou.xml\nscenario_a_small.sumocfg"]
     RUN0["閉鎖なし小規模走行確認"]
-    TRACI["TraCI動的閉鎖\nrun_scenario_a_traci.py"]
+    TRACI["TraCI動的閉鎖\np2_traci_closure.py"]
     RUN1["小規模→1/10→全量"]
 
     OUT1["vehicle_log.csv"]
     OUT2["closure_log.csv"]
     OUT3["congestion_log.csv"]
+    OUT0["tripinfo.xml"]
+    EVAL["p2_evaluate_results.py\n実行ログを評価CSVへ集約"]
     OUT4["evacuation_summary.csv"]
     OUT5["phase1_phase2_comparison.csv"]
     INDEX["Phase別 index.html 更新"]
@@ -66,7 +69,13 @@ flowchart TD
     TRACI --> OUT1
     TRACI --> OUT2
     TRACI --> OUT3
-    RUN1 --> OUT4
+    TRACI --> OUT0
+    RUN1 --> EVAL
+    OUT0 --> EVAL
+    OUT1 --> EVAL
+    OUT2 --> EVAL
+    OUT3 --> EVAL
+    EVAL --> OUT4
     OUT4 --> OUT5
     OUT1 --> OUT5
     OUT2 --> OUT5
@@ -108,10 +117,15 @@ flowchart LR
         CFG["scenario_a_*.sumocfg"]
     end
 
-    subgraph RESULTS["結果"]
+    subgraph RESULTS["実行結果"]
         VEH["vehicle_log.csv"]
         CLO["closure_log.csv"]
         CONG["congestion_log.csv"]
+        TRIP["tripinfo.xml"]
+    end
+
+    subgraph EVALUATION["評価"]
+        EVAL["p2_evaluate_results.py"]
         SUM["evacuation_summary.csv"]
         COMP["phase1_phase2_comparison.csv"]
     end
@@ -132,9 +146,9 @@ flowchart LR
     CFG --> VEH
     CLOSE --> CLO
     CFG --> CONG
-    VEH --> SUM
-    CLO --> SUM
-    CONG --> SUM
+    CFG --> TRIP
+    VEH & CLO & CONG & TRIP --> EVAL
+    EVAL --> SUM
     SUM --> COMP
 ```
 
@@ -155,5 +169,9 @@ flowchart TD
     E -- "はい" --> F["小規模SUMO走行"]
     F --> G{"閉鎖なしで到着確認?"}
     G -- "いいえ" --> G_FIX["route/configを修正"]
-    G -- "はい" --> H["TraCI動的閉鎖へ進む"]
+    G -- "はい" --> H{"teleport条件を\n実行記録に固定した?"}
+    H -- "いいえ" --> H_FIX["sumocfg・実行ログへ\ntime-to-teleportを記録"]
+    H -- "はい" --> I["TraCI動的閉鎖へ進む"]
 ```
+
+> **条件の区別：** Phase 2で固定した旧small/10pct/full結果はSUMO既定のteleport 300秒を含む。Phase 3の比較正本A/Bは`time-to-teleport=-1`で実行している。両者を同一条件の結果として接続しない。

@@ -31,6 +31,7 @@
       <a class="taskbar-trigger" href="phase2.html" aria-current="page">Phase 2</a>
       <div class="taskbar-menu" aria-label="Phase 2のセクション">
         <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-sumo-guide-heading">SUMOの使い方・データ取得</a>
         <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
         <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
       </div>
@@ -72,6 +73,154 @@
         <li>41市区町村へ拡張したPhase 2 SUMO入力・結果一覧</li>
       </ul>
       <p class="section-note">Phase 2の到着・未到着はSUMO既定teleport設定下の記録値であり、「渋滞由来の逃げ遅れは発生しない」という一般主張はしません。</p>
+    </section>
+
+    <section class="section" aria-labelledby="phase2-sumo-guide-heading">
+      <div class="section-heading">
+        <h2 id="phase2-sumo-guide-heading">SUMOの使い方と入力データの取得方法</h2>
+      </div>
+      <p class="section-note">SUMOは道路上の車両移動を再現する交通シミュレーターです。本研究では、地図・人口・避難所・浸水データをSUMO用ファイルへ変換し、Pythonから道路閉鎖を時間ごとに反映しました。</p>
+
+      <div class="intro-grid" aria-label="SUMOで使用する4種類の情報">
+        <article class="intro-card">
+          <p class="eyebrow">1 / 道路</p>
+          <h3>走行できる道路を作る</h3>
+          <p>OpenStreetMap由来の道路を<code>netconvert</code>で<code>.net.xml</code>へ変換し、交差点と道路のつながりをSUMOへ読み込みます。</p>
+        </article>
+        <article class="intro-card">
+          <p class="eyebrow">2 / 避難需要</p>
+          <h3>車の出発地と台数を作る</h3>
+          <p>250m人口メッシュから出発地点と車両数を作り、最寄りのSUMO道路へ結び付けます。</p>
+        </article>
+        <article class="intro-card">
+          <p class="eyebrow">3 / 目的地</p>
+          <h3>安全な避難所を設定する</h3>
+          <p>洪水対応避難施設から浸水想定区域内の施設を除き、目的地をSUMO道路へ結び付けます。</p>
+        </article>
+        <article class="intro-card">
+          <p class="eyebrow">4 / 浸水</p>
+          <h3>道路を時間ごとに閉鎖する</h3>
+          <p>浸水深0.5m以上と判定した道路を、PythonのTraCIから閉鎖し、走行中の車へ別経路を探させます。</p>
+        </article>
+      </div>
+
+      <figure class="sumo-flow-figure" aria-labelledby="sumo-flow-caption">
+        <ol class="sumo-flow" aria-label="公的データから研究結果までの5段階">
+          <li class="sumo-flow-step">
+            <span class="sumo-flow-number">1</span>
+            <strong>公的データ</strong>
+            <span>道路・人口・避難所・浸水</span>
+          </li>
+          <li class="sumo-flow-step">
+            <span class="sumo-flow-number">2</span>
+            <strong>前処理</strong>
+            <span>対象地域の抽出と安全判定</span>
+          </li>
+          <li class="sumo-flow-step">
+            <span class="sumo-flow-number">3</span>
+            <strong>SUMO入力</strong>
+            <span>道路網・車両・避難先・閉鎖時刻</span>
+          </li>
+          <li class="sumo-flow-step">
+            <span class="sumo-flow-number">4</span>
+            <strong>TraCI実行</strong>
+            <span>道路閉鎖と別経路探索</span>
+          </li>
+          <li class="sumo-flow-step">
+            <span class="sumo-flow-number">5</span>
+            <strong>結果</strong>
+            <span>到着・未到着・速度・停止台数</span>
+          </li>
+        </ol>
+        <figcaption id="sumo-flow-caption">図：本研究におけるデータ取得からSUMO結果作成までの流れ</figcaption>
+      </figure>
+
+      <h3>本研究での実行手順</h3>
+      <ol class="detail-list">
+        <li><strong>SUMOを導入する：</strong><a href="https://sumo.dlr.de/docs/Installing/index.html" target="_blank" rel="noopener noreferrer">SUMO公式の導入手順</a>から本体を入れ、<code>sumo --version</code>と<code>netconvert --version</code>で確認する。本研究の確認済み版は1.26.0。</li>
+        <li><strong>道路網を作る：</strong>道路データを<code>joso.osm.xml</code>へ変換し、<code>netconvert</code>で<code>joso.net.xml</code>を生成する。OpenStreetMapの読み込み方法は<a href="https://sumo.dlr.de/docs/Networks/Import/OpenStreetMap.html" target="_blank" rel="noopener noreferrer">SUMO公式資料</a>を参照する。</li>
+        <li><strong>出発地・避難所・閉鎖道路を接続する：</strong>人口メッシュと避難所を最寄りのSUMO道路へ対応付け、Phase 1の道路IDをSUMOの道路IDへ変換する。</li>
+        <li><strong>車両と設定を作る：</strong><code>.rou.xml</code>へ車両の出発地・目的地、<code>.sumocfg</code>へ道路網・車両・実行時間を記録する。</li>
+        <li><strong>実行して確認する：</strong>SUMOまたはSUMO-GUIを起動し、TraCIから道路閉鎖と再経路探索を行う。到着・未到着、速度、停止台数をCSVへ保存する。</li>
+      </ol>
+
+      <h3>元データの取得先</h3>
+      <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="SUMO入力データの取得先一覧">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th scope="col">データ</th>
+              <th scope="col">本研究での用途</th>
+              <th scope="col">取得先</th>
+              <th scope="col">取得方法</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">洪水浸水想定区域 A31a</th>
+              <td>浸水深0.5m以上の道路閉鎖、避難所の安全確認</td>
+              <td><a href="https://nlftp.mlit.go.jp/ksj/" target="_blank" rel="noopener noreferrer">国土交通省 国土数値情報</a></td>
+              <td><code>download_data.py</code>で自動取得</td>
+            </tr>
+            <tr>
+              <th scope="row">行政区域 N03</th>
+              <td>常総市境界の抽出、41市区町村への拡張</td>
+              <td><a href="https://nlftp.mlit.go.jp/ksj/" target="_blank" rel="noopener noreferrer">国土交通省 国土数値情報</a></td>
+              <td><code>download_data.py</code>で自動取得</td>
+            </tr>
+            <tr>
+              <th scope="row">避難施設 P20</th>
+              <td>洪水対応避難所の候補作成</td>
+              <td><a href="https://nlftp.mlit.go.jp/ksj/" target="_blank" rel="noopener noreferrer">国土交通省 国土数値情報</a></td>
+              <td><code>download_data.py</code>で自動取得</td>
+            </tr>
+            <tr>
+              <th scope="row">2015年豪雨の浸水範囲</th>
+              <td>鬼怒川氾濫の時系列浸水範囲</td>
+              <td><a href="https://www.gsi.go.jp/BOUSAI/H27.taihuu18gou.html" target="_blank" rel="noopener noreferrer">国土地理院</a></td>
+              <td>配布ページから手動取得</td>
+            </tr>
+            <tr>
+              <th scope="row">2015年250m人口メッシュ</th>
+              <td>出発地、人口、高齢者数、車両数の基礎</td>
+              <td><a href="https://www.e-stat.go.jp/gis/statmap-search" target="_blank" rel="noopener noreferrer">e-Stat 地図で見る統計</a></td>
+              <td>統計ID T001178、茨城県を手動取得</td>
+            </tr>
+            <tr>
+              <th scope="row">浸水ナビ・車両統計</th>
+              <td>破堤条件の補助、自家用車台数の設定</td>
+              <td><a href="https://suiboumap.gsi.go.jp/" target="_blank" rel="noopener noreferrer">浸水ナビ</a>／<a href="https://wwwtb.mlit.go.jp/kanto/" target="_blank" rel="noopener noreferrer">関東運輸局</a></td>
+              <td>配布ページ・APIから手動取得</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>生データからSUMO入力への変換</h3>
+      <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="生データとSUMO入力ファイルの対応">
+        <table class="comparison-table comparison-table-compact">
+          <thead>
+            <tr>
+              <th scope="col">作るもの</th>
+              <th scope="col">主な入力</th>
+              <th scope="col">SUMOでの役割</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><code>joso.net.xml</code></th><td>道路データ</td><td>道路と交差点のネットワーク</td></tr>
+            <tr><th scope="row"><code>agent_origins_sumo.csv</code></th><td>人口メッシュ、道路網</td><td>車両の出発地点と台数</td></tr>
+            <tr><th scope="row"><code>shelters_sumo.csv</code></th><td>避難施設、浸水想定区域、道路網</td><td>安全な避難先</td></tr>
+            <tr><th scope="row"><code>closure_timeline_sumo.json</code></th><td>浸水時系列、道路ID対応表</td><td>時間ごとの道路閉鎖</td></tr>
+            <tr><th scope="row"><code>scenario_a.rou.xml</code></th><td>出発地、避難所、車両台数</td><td>各車両の出発地・目的地</td></tr>
+            <tr><th scope="row"><code>scenario_a.sumocfg</code></th><td>道路網、車両、実行条件</td><td>SUMOを起動する設定ファイル</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>研究データを再取得するコマンド</h3>
+      <pre><code>cd 04_プログラム
+python scripts/download_data.py</code></pre>
+      <p class="section-note"><code>data/manifest.csv</code>で<code>direct_zip</code>のデータは自動取得・展開されます。<code>manual</code>のデータは表示された公式URLから取得し、指定された保存先へ配置します。大容量の生データはGitへ登録せず、利用規約と取得時点を確認してください。</p>
     </section>
 
     <section class="section" aria-labelledby="phase2-excel-heading">

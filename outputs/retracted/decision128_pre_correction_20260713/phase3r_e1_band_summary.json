@@ -1,0 +1,57 @@
+{
+  "type34_denominator_people": 3231.5,
+  "people_per_rescue_vehicle": 2.3,
+  "conservative_bus_cap_people": 124.2,
+  "replicate_count": 8,
+  "combination_count": 15,
+  "raw_sign_counts": {
+    "positive": 10,
+    "negative": 5,
+    "zero": 0
+  },
+  "conservative_sign_counts": {
+    "positive": 8,
+    "negative": 7,
+    "zero": 0
+  },
+  "a_completion_rate_values": [
+    0.750193,
+    0.954448,
+    0.965826
+  ],
+  "a_completion_rate_median": 0.954448,
+  "a_completion_rate_min": 0.750193,
+  "a_completion_rate_max": 0.965826,
+  "b_raw_completion_rate_values": [
+    0.92356,
+    0.95498,
+    0.956786,
+    0.964499,
+    0.976844
+  ],
+  "b_raw_completion_rate_median": 0.956786,
+  "b_raw_completion_rate_min": 0.92356,
+  "b_raw_completion_rate_max": 0.976844,
+  "b_conservative_completion_rate_values": [
+    0.92356,
+    0.953167,
+    0.955749,
+    0.963441,
+    0.963441
+  ],
+  "b_conservative_completion_rate_median": 0.955749,
+  "b_conservative_completion_rate_min": 0.92356,
+  "b_conservative_completion_rate_max": 0.963441,
+  "raw_point_delta_rate": 0.0023380000000000623,
+  "raw_point_delta_percentage_points": 0.23380000000000623,
+  "conservative_point_delta_rate": 0.0013009999999999966,
+  "conservative_point_delta_percentage_points": 0.13009999999999966,
+  "raw_delta_min_rate": -0.042266,
+  "raw_delta_max_rate": 0.226651,
+  "raw_delta_min_percentage_points": -4.2266,
+  "raw_delta_max_percentage_points": 22.6651,
+  "conservative_delta_min_rate": -0.042266,
+  "conservative_delta_max_rate": 0.213248,
+  "conservative_delta_min_percentage_points": -4.2266,
+  "conservative_delta_max_percentage_points": 21.3248
+}
