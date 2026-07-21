@@ -21,6 +21,7 @@
       <a class="taskbar-trigger" href="phase1.html" aria-current="page">Phase 1</a>
       <div class="taskbar-menu" aria-label="Phase 1のセクション">
         <a href="phase1.html#unified-heading">統合シミュレーション</a>
+        <a href="phase1.html#phase1-result-heading">確定結果</a>
         <a href="phase1.html#cities-heading">市区町村別</a>
         <a href="phase1.html#scenario-heading">常総市単独</a>
         <a href="phase1.html#unavailable-heading">対象外市町村</a>
@@ -31,6 +32,8 @@
       <a class="taskbar-trigger" href="phase2.html">Phase 2</a>
       <div class="taskbar-menu" aria-label="Phase 2のセクション">
         <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-figure-heading">交通状態図</a>
+        <a href="phase2.html#phase2-sumo-guide-heading">SUMOの使い方・データ取得</a>
         <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
         <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
       </div>
@@ -39,6 +42,7 @@
       <a class="taskbar-trigger" href="phase3.html">Phase 3</a>
       <div class="taskbar-menu" aria-label="Phase 3のセクション">
         <a href="phase3.html#phase3-plan-heading">評価結果</a>
+        <a href="phase3.html#phase3-figures-heading">研究図表</a>
         <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
       </div>
     </div>
@@ -59,13 +63,26 @@
   </header>
 
   <main class="page-shell">
-    <p class="phase-lead">Phase 1では、浸水想定区域から閉鎖道路を抽出し、閉鎖道路を除いた道路ネットワーク上で避難所までのルートを確認します。</p>
+    <p class="phase-lead">Phase 1では、浸水想定区域から閉鎖道路を抽出し、閉鎖道路を除いた道路ネットワーク上で避難所までの静的な到達可能性を確認します。車両相互作用や渋滞はPhase 2以降で扱います。</p>
+
+    <section class="section" aria-labelledby="phase1-result-heading">
+      <div class="section-heading">
+        <h2 id="phase1-result-heading">Phase 1の確定結果と位置づけ</h2>
+      </div>
+      <div class="summary-stats" aria-label="Phase 1確定結果">
+        <div class="stat-item"><span class="stat-value">40</span><span class="stat-label">出発地メッシュ</span></div>
+        <div class="stat-item"><span class="stat-value">2,257</span><span class="stat-label">対象人口</span></div>
+        <div class="stat-item"><span class="stat-value">17</span><span class="stat-label">到達不可メッシュ</span></div>
+        <div class="stat-item"><span class="stat-value">952</span><span class="stat-label">到達不可人口</span></div>
+      </div>
+      <p class="section-note">常総市実データ版の静的最短経路結果です。41市区町村版は手法移転可能性を示すデモであり、各地域の実災害を再現した結果ではありません。Phase 1の人口値とPhase 2の車両値は単位が異なるため、直接比較しません。</p>
+    </section>
 
     <section class="section" aria-labelledby="unified-heading">
       <div class="section-heading">
         <h2 id="unified-heading">茨城県統合シミュレーション（41市区町村）</h2>
       </div>
-      <p class="section-note">県内拡張版の主成果物です。クリック地点に応じて対象市区町村のデータを読み込みます。</p>
+      <p class="section-note">県内拡張版の主成果物です。クリック地点に応じて対象市区町村のデータを読み込みます。A31a想定最大規模を使う手法移転デモとして確認してください。</p>
       <div id="unified-links" class="card-grid"></div>
     </section>
 
@@ -100,7 +117,7 @@
       <div class="section-heading">
         <h2 id="unavailable-heading">対象外市町村（3市町村）</h2>
       </div>
-      <p class="section-note">A31a浸水想定区域データが境界内に存在しないため、シナリオ生成対象外です。</p>
+      <p class="section-note">鹿嶋市・東海村は地形・対象災害との適合性、神栖市は利根川系データ未収録を含むデータ制約により、本研究の河川洪水シナリオ生成対象外です。</p>
       <ul id="unavailable-links" class="unavailable-list"></ul>
     </section>
 

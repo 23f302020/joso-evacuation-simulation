@@ -76,6 +76,10 @@ worst-off所要時間は、車単位・到着者条件付き・Scenario B側バ�
 ## 6. 出典
 
 - 正式判定帯：`04_プログラム/output/sumo/regions/08211/evaluation/phase3r_e1_band_summary.json`
+- 15組差の静的図：`06_研究結果/phase3/figures/fig4-7-1_pairwise_completion_rate_differences.svg`
+- 8run完了率図：`06_研究結果/phase3/figures/fig5-4-1_replicate_completion_rates.svg`
+- A基準run出発地診断：`06_研究結果/phase3/figures/fig4-9-1_origin_completion_diagnostic.svg`
+- B側5run運行詳細：`06_研究結果/phase3/Phase3_バス運行サービス詳細表.md`
 - 試行別完了率：`04_プログラム/output/sumo/regions/08211/evaluation/phase3r_e1_replicate_metrics.csv`
 - 全15組合せ符号：`04_プログラム/output/sumo/regions/08211/evaluation/phase3r_e1_15_combination_signs.csv`
 - 車両会計：`04_プログラム/output/sumo/regions/08211/evaluation/phase3_ab_comparison.csv`

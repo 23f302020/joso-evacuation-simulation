@@ -1,6 +1,6 @@
 # Phase 3 図表一覧
 
-> 作成日：2026-07-20  
+> 作成日：2026-07-20／最終更新：2026-07-21
 > 対象：常総市先行・シナリオA/B比較・感度分析  
 > 状態表記：✅作成済み／△素材あり・本文接続待ち／❌未作成／—方針上作成しない
 
@@ -22,9 +22,10 @@
 
 | 論文番号 | 図表名 | 状態 | 参照先・正本 | 改善・残作業 |
 |---|---|---:|---|---|
-| 図4-7-1 | Type3/4完了率の15組差とゼロ線 | △ | `phase3r_e1_15_combination_signs.csv`、`phase3r_e1_band_summary.json` | 論文用SVG/PNG未作成。15組が非独立である注記を入れる |
+| 図4-7-1 | Type3/4完了率の15組差とゼロ線 | ✅ | `06_研究結果/phase3/figures/fig4-7-1_pairwise_completion_rate_differences.svg` | raw・保守、ゼロ線、15組非独立の注記を表示 |
 | 図4-8-1 | 完了時間ECDF（A3・B5） | ✅ | `06_研究結果/phase3/figures/fig4-8-1_completion_time_ecdf.svg` | E3本文へ実体パスを接続。A#2の条件付き分布注記を維持 |
-| 図5-4-1 | run別完了率と初期条件感応性 | △ | `phase3r_e1_replicate_metrics.csv` | 旧称「二峰性を示す図」を使用しない。論文用SVG/PNG未作成 |
+| 図4-9-1 | A基準runの出発地別Type3/4完了率診断 | ✅ | `06_研究結果/phase3/figures/fig4-9-1_origin_completion_diagnostic.svg` | N03常総市境界。全run一般化・因果解釈・正式判定を禁止 |
+| 図5-4-1 | run別完了率と初期条件感応性 | ✅ | `06_研究結果/phase3/figures/fig5-4-1_replicate_completion_rates.svg` | A3/B5全点、raw・保守・中央値。二峰性の実証とは呼ばない |
 | 図5-5-1 | バス5台・10台感度（raw/保守） | △ | `phase3_s10_replicate_metrics.csv`、`phase3_s10_band_summary.json` | raw 102.01%と保守値を同時表示 |
 | 図P3-CONG | Phase 3渋滞A/B比較 | ❌ | 最終統合CSVなし | RQを維持する場合のみ追加実装。現状は効果図を作成しない |
 | 図P3-EQ | worst-off公平性A/B比較 | ❌ | 最終A/B成果物なし | RQを維持する場合のみ追加実装 |
@@ -39,6 +40,7 @@
 | 表4-7-1 | run別Type3/4完了率（raw・保守） | ✅ | 同上 |
 | 表4-7-2 | 15組符号集計・点推定・範囲 | ✅ | `phase3r_e1_band_summary.json` |
 | 表4-8-1 | バス輸送・需要充足・乗車中孤立 | ✅ | `scenario_b_bus_corrected_accounting.json`、`scenario_b_bus_summary.json` |
+| 表4-8-2 | B側5runのバス輸送・車内時間・出発地別内訳 | ✅ | `06_研究結果/phase3/Phase3_バス運行サービス詳細表.md` |
 | 表5-5-1 | バス10台のrun別完了率 | ✅ | `phase3_s10_replicate_metrics.csv` |
 | 表5-6-1 | 仮定・未評価項目・外的妥当性 | △ | E3限界節・本一覧 | 卒論統合時に作成 |
 
@@ -59,11 +61,7 @@
 
 ## 5. 現時点の未完了図表
 
-- 図4-7-1の論文用静的画像
-- 図5-4-1の「run別完了率と初期条件感応性」静的画像
 - 図5-5-1のraw/保守感度比較画像
-- 図4-8-1のE3本文への実体リンク
 - RQを維持する場合のPhase 3渋滞比較・worst-off公平性図
 
 未完了図を作成済みと扱わない。渋滞・公平性図はRQの扱いに関する判断後まで実装を保留する。
-

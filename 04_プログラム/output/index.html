@@ -12,6 +12,7 @@
       <a class="taskbar-trigger" href="index.html" aria-current="page">トップ</a>
       <div class="taskbar-menu" aria-label="トップページのセクション">
         <a href="index.html#research-intro">研究の説明</a>
+        <a href="index.html#current-conclusion">現在の結論</a>
         <a href="index.html#overview">研究概要</a>
         <a href="index.html#phase-list">Phase別入口</a>
       </div>
@@ -30,6 +31,8 @@
       <a class="taskbar-trigger" href="phase2.html">Phase 2</a>
       <div class="taskbar-menu" aria-label="Phase 2のセクション">
         <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-figure-heading">交通状態図</a>
+        <a href="phase2.html#phase2-sumo-guide-heading">SUMOの使い方・データ取得</a>
         <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
         <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
       </div>
@@ -38,6 +41,7 @@
       <a class="taskbar-trigger" href="phase3.html">Phase 3</a>
       <div class="taskbar-menu" aria-label="Phase 3のセクション">
         <a href="phase3.html#phase3-plan-heading">評価結果</a>
+        <a href="phase3.html#phase3-figures-heading">研究図表</a>
         <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
       </div>
     </div>
@@ -83,21 +87,34 @@
         <div class="intro-card">
           <span class="intro-icon">🚗</span>
           <h3>Phase 2：交通流シミュレーション</h3>
-          <p>SUMOという交通シミュレーターで自家用車の動きを再現し、どの道路に車が集中するか、閉鎖後に逃げ遅れが起きやすいかを評価しました。</p>
+          <p>SUMOという交通シミュレーターで車両相互作用、道路閉鎖、再経路探索を実装しました。旧結果は単一run・テレポート300秒のため、交通流基盤として扱います。</p>
         </div>
         <div class="intro-card">
           <span class="intro-icon">🚌</span>
           <h3>Phase 3：バス比較</h3>
-          <p>車を持たない方や高齢者を含む避難を対象に、自家用車避難を基本として救出走行を含むシナリオAと、デマンド交通バスを導入したシナリオBを比較評価しました。完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できませんでした。</p>
+          <p>自家用車＋救出走行のScenario Aと、デマンド交通車両転用型の固定経路避難シャトルを加えたScenario Bを比較しました。本モデルの分解能ではType3/4完了率の方向差を検出できませんでした。</p>
         </div>
       </div>
+    </section>
+
+    <section class="section" id="current-conclusion" aria-labelledby="current-conclusion-heading">
+      <div class="section-heading">
+        <h2 id="current-conclusion-heading">現在の研究結論</h2>
+      </div>
+      <p class="interpretation-note"><strong>正式結論：</strong>本研究で実施した条件と試行回数の範囲では、デマンド交通車両を固定経路避難シャトルとして導入した場合と、バスを導入せず自家用車と救出走行で避難した場合の間で、Type3/4避難完了率の一貫した改善または悪化は確認できませんでした。本モデルの分解能では、方向性のある差を検出できませんでした。</p>
+      <ul class="detail-list">
+        <li>Scenario A：自家用車8,164台＋救出走行1,405台、A側3run</li>
+        <li>Scenario B：自家用車8,164台＋救出走行1,351台＋固定経路避難シャトル、B側5run</li>
+        <li>バスは各runで75〜165人を避難所へ輸送。ただし地域全体の完了率改善とは分けて解釈</li>
+      </ul>
+      <p class="section-note">「バスに効果がない」「両条件が同等」という証明ではありません。15組は8runを組み替えた非独立な比較です。</p>
     </section>
 
     <div class="summary-stats" id="overview" aria-label="研究概要">
       <div class="stat-item"><span class="stat-value">41</span><span class="stat-label">市区町村</span></div>
       <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">対象外</span></div>
       <div class="stat-item"><span class="stat-value">8</span><span class="stat-label">時点</span></div>
-      <div class="stat-item stat-text">Phase 1は静的な避難ルート、Phase 2はSUMOによる動的交通流、Phase 3はデマンド交通バスとの比較評価です。</div>
+      <div class="stat-item stat-text">Phase 1は静的到達性、Phase 2は動的交通流の実装基盤、Phase 3は救出走行を含むAと固定経路避難シャトルを含むBの正式比較です。</div>
     </div>
 
     <section class="phase-card-grid" id="phase-list" aria-label="Phase別ページ">
@@ -114,7 +131,7 @@
       <a class="phase-card" href="phase2.html">
         <span class="phase-card-title">Phase 2</span>
         <span class="phase-status">実装済み</span>
-        <span class="phase-card-meta">SUMO/TraCIを用いて、自家用車避難の到着・未到着・停止・主要避難路の混雑を確認する動的シミュレーションです。</span>
+        <span class="phase-card-meta">SUMO/TraCIを用いて、車両の到着・未到着・停止・主要避難路の混雑を確認する動的交通流の実装基盤です。</span>
         <ul class="phase-card-list">
           <li>常総市 small / 1/10 / 全量試行</li>
           <li>SUMO走行アニメーションと評価CSV</li>
@@ -124,7 +141,7 @@
       <a class="phase-card" href="phase3.html">
         <span class="phase-card-title">Phase 3</span>
         <span class="phase-status">実装・評価済み</span>
-        <span class="phase-card-meta">自家用車避難を基本として救出走行を含むシナリオAと、デマンド交通バスを導入したシナリオBを比較評価しました。</span>
+        <span class="phase-card-meta">自家用車＋救出走行のScenario Aと、デマンド交通車両転用型の固定経路避難シャトルを含むScenario Bを比較評価しました。</span>
         <ul class="phase-card-list">
           <li>完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できない</li>
           <li>組合せごとの符号は非一貫</li>

@@ -493,6 +493,39 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 .intro-card p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.65; }
 .intro-icon { font-size: 22px; }
 
+/* ── 研究結果図 ── */
+.research-figure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.research-figure {
+  margin: 0;
+  min-width: 0;
+}
+.research-figure a {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg);
+  overflow: hidden;
+}
+.research-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.research-figure figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.research-figure-wide {
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
 /* ── チャットボット（faq.html） ── */
 .chatbot-section {
   margin-top: 40px;
@@ -646,6 +679,7 @@ h2 { margin: 0; font-size: 17px; font-weight: 700; letter-spacing: 0; }
 .chatbot-suggestion:hover { background: #eff6ff; }
 @media (max-width: 760px) {
   .intro-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .research-figure-grid { grid-template-columns: 1fr; }
   .rag-chatbot-frame { min-height: 560px; }
   .chat-bubble { max-width: 92%; }
 }

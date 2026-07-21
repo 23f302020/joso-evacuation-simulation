@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phase 2：SUMO自家用車避難</title>
+  <title>Phase 2：SUMO動的交通流</title>
   <link rel="stylesheet" href="assets/phase1.css">
   <script src="assets/phase1-pages.js" defer></script>
   <script src="assets/phase1-components.js" defer></script>
@@ -31,6 +31,7 @@
       <a class="taskbar-trigger" href="phase2.html" aria-current="page">Phase 2</a>
       <div class="taskbar-menu" aria-label="Phase 2のセクション">
         <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-figure-heading">交通状態図</a>
         <a href="phase2.html#phase2-sumo-guide-heading">SUMOの使い方・データ取得</a>
         <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
         <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
@@ -40,6 +41,7 @@
       <a class="taskbar-trigger" href="phase3.html">Phase 3</a>
       <div class="taskbar-menu" aria-label="Phase 3のセクション">
         <a href="phase3.html#phase3-plan-heading">評価結果</a>
+        <a href="phase3.html#phase3-figures-heading">研究図表</a>
         <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
       </div>
     </div>
@@ -54,13 +56,13 @@
   <header class="page-header">
     <div>
       <p class="eyebrow">交通流シミュレーション / TraCI / 評価CSV</p>
-      <h1>Phase 2：SUMO自家用車避難</h1>
+      <h1>Phase 2：SUMO動的交通流</h1>
     </div>
     <p class="updated">実装済み</p>
   </header>
 
   <main class="page-shell">
-    <p class="phase-lead">Phase 2では、Phase 1の閉鎖道路と避難需要をSUMOネットワークへ接続し、自家用車のみの避難を動的に評価します。</p>
+    <p class="phase-lead">Phase 2では、Phase 1の閉鎖道路と避難需要をSUMOネットワークへ接続し、車両相互作用、動的閉鎖、再経路探索を実装します。ここで示す旧small・10pct・fullは交通流基盤の結果であり、Phase 3の正式Scenario A（自家用車＋救出走行）とは区別します。</p>
 
     <section class="section" aria-labelledby="phase2-contents-heading">
       <div class="section-heading">
@@ -73,6 +75,19 @@
         <li>41市区町村へ拡張したPhase 2 SUMO入力・結果一覧</li>
       </ul>
       <p class="section-note">Phase 2の到着・未到着はSUMO既定teleport設定下の記録値であり、「渋滞由来の逃げ遅れは発生しない」という一般主張はしません。</p>
+    </section>
+
+    <section class="section" aria-labelledby="phase2-figure-heading">
+      <div class="section-heading">
+        <h2 id="phase2-figure-heading">試行規模別の交通状態</h2>
+      </div>
+      <figure class="research-figure research-figure-wide">
+        <a href="assets/research_figures/fig_phase2_congestion_timeseries.svg">
+          <img src="assets/research_figures/fig_phase2_congestion_timeseries.svg" alt="Phase 2のsmall、10pct、fullにおける車両数、停止台数、平均速度の時系列図">
+        </a>
+        <figcaption>small・10pct・fullの60秒別交通状態。small/10pctの速度有効値は開始10分の各10点です。</figcaption>
+      </figure>
+      <p class="section-note">旧単一run・SUMO既定teleport=300秒の結果です。実装基盤と時間変化の説明に限定し、一般的な逃げ遅れ確定値やPhase 3の正式A/B判定には使用しません。</p>
     </section>
 
     <section class="section" aria-labelledby="phase2-sumo-guide-heading">

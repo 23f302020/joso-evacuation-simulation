@@ -1,7 +1,7 @@
 # Phase 2 図表一覧
 
 作成日：2026/05/14  
-最終更新：2026/05/19（Phase 3前整理に伴い不足図表を補完）  
+最終更新：2026/07/21（60秒渋滞時系列図を追加）
 目的：Phase 2の実装・卒論本文・進捗報告で使う図表候補を整理する。
 
 ---
@@ -16,6 +16,7 @@
 | 図P2-4 | TraCI動的閉鎖シーケンス | 作成済み | `シーケンス図.md` | SUMO起動、時刻進行、edge閉鎖、再経路探索、ログ出力 |
 | 図P2-5 | Phase 1静的分析とPhase 2動的分析の比較概念図 | 作成済み | `Phase1_Phase2比較概念図.md` | 到達不可数と逃げ遅れ台数の違い |
 | 図P2-6 | Phase 2成果物トップページ構成 | 作成済み | `output/phase2.html`, `output/index.html` | Phase 1/2/3別ページ構成・Phase 2成果物11件リンク |
+| 図P2-7 | 常総市small・10pct・full交通状態の60秒推移 | 作成済み | `06_研究結果/phase2/figures/fig_phase2_congestion_timeseries.svg` | シミュレーション内・停止車両数と平均速度。単一run・teleport=300を注記 |
 
 ---
 
@@ -48,6 +49,6 @@
 |---:|---|---|
 | 1 | 小規模・1/10・全量の車両数比較表 | `Phase2_試行設定比較表.md` と `trial_settings_comparison.csv` で作成済み |
 | 2 | 時刻別閉鎖edge数と逃げ遅れ台数の表 | `evacuation_summary.csv`、`trial_settings_comparison.csv`、`テスト結果_phase2.md` に反映済み |
-| 3 | 時刻別平均速度・停止台数のグラフ | `congestion_log.csv` を生成済み。本文では必要に応じて表またはグラフ化する |
+| 3 | 時刻別平均速度・停止台数のグラフ | `06_研究結果/phase2/figures/fig_phase2_congestion_timeseries.svg` とPNGを作成済み |
 | 4 | Phase 1到達不可数とPhase 2逃げ遅れ台数の比較表 | `phase1_phase2_comparison.csv` と `phase1_phase2_region_comparison.csv` で作成済み |
 | 5 | SUMO画面・アニメーション確認 | `sumo_viz.html` でsmall / 10pctを確認可能 |

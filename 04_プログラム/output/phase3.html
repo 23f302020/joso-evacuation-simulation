@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Phase 3：デマンド交通バス比較</title>
+  <title>Phase 3：固定経路避難シャトル比較</title>
   <link rel="stylesheet" href="assets/phase1.css">
   <script src="assets/phase1-pages.js" defer></script>
   <script src="assets/phase1-components.js" defer></script>
@@ -31,6 +31,7 @@
       <a class="taskbar-trigger" href="phase2.html">Phase 2</a>
       <div class="taskbar-menu" aria-label="Phase 2のセクション">
         <a href="phase2.html#phase2-contents-heading">確認できる内容</a>
+        <a href="phase2.html#phase2-figure-heading">交通状態図</a>
         <a href="phase2.html#phase2-sumo-guide-heading">SUMOの使い方・データ取得</a>
         <a href="phase2.html#phase2-excel-heading">Excelでダウンロード</a>
         <a href="phase2.html#phase2-animation-heading">アニメーションで確認</a>
@@ -40,6 +41,7 @@
       <a class="taskbar-trigger" href="phase3.html" aria-current="page">Phase 3</a>
       <div class="taskbar-menu" aria-label="Phase 3のセクション">
         <a href="phase3.html#phase3-plan-heading">評価結果</a>
+        <a href="phase3.html#phase3-figures-heading">研究図表</a>
         <a href="phase3.html#phase3-links-heading">Phase 3成果物</a>
       </div>
     </div>
@@ -53,8 +55,8 @@
   </nav>
   <header class="page-header">
     <div>
-      <p class="eyebrow">バス活用シナリオ / 比較評価</p>
-      <h1>Phase 3：デマンド交通バス比較</h1>
+      <p class="eyebrow">交通弱者輸送 / 複数seed / 比較評価</p>
+      <h1>Phase 3：固定経路避難シャトル比較</h1>
     </div>
     <p class="updated">実装・評価済み</p>
   </header>
@@ -68,14 +70,14 @@
       </a>
       <a href="phase2.html">
         <span class="phase-nav-title">Phase 2</span>
-        <span class="phase-nav-meta">SUMO自家用車避難シミュレーション</span>
+        <span class="phase-nav-meta">SUMO動的交通流の実装基盤</span>
       </a>
       <a href="phase3.html" aria-current="page">
         <span class="phase-nav-title">Phase 3</span>
-        <span class="phase-nav-meta">デマンド交通バス比較・感度分析</span>
+        <span class="phase-nav-meta">固定経路避難シャトル比較・感度分析</span>
       </a>
     </nav>
-    <p class="phase-lead">自家用車避難を基本とするA側3runと、デマンド交通バスを導入したB側5runを比較しました。完了率差の帯はゼロをまたぎ、本モデルの分解能では方向差を検出できませんでした。A側の交通流には車非保有者を迎えに行く救出走行も含みます。</p>
+    <p class="phase-lead">自家用車8,164台＋救出走行1,405台のScenario Aを3run、自家用車8,164台＋救出走行1,351台＋デマンド交通車両転用型の固定経路避難シャトルのScenario Bを5run実行しました。現行Bは予約に応じて経路を最適化する動的DRTではありません。</p>
 
     <section class="section" aria-labelledby="phase3-plan-heading">
       <div class="section-heading">
@@ -88,8 +90,8 @@
           <thead>
             <tr>
               <th scope="col">指標</th>
-              <th scope="col">A：自家用車避難</th>
-              <th scope="col">B：バス導入 raw</th>
+              <th scope="col">A：自家用車＋救出走行</th>
+              <th scope="col">B：固定経路シャトル raw</th>
               <th scope="col">B：保守集計</th>
               <th scope="col">判定</th>
             </tr>
@@ -133,7 +135,8 @@
           </tbody>
         </table>
       </div>
-      <p class="interpretation-note"><strong>結論：</strong>中央値ではBが約1.2ポイント高い一方、全組合せ差が0をまたぐため、バス導入による改善・悪化の方向差は確定できません。「効果がない」「同等」とも解釈しません。</p>
+      <p class="interpretation-note"><strong>正式結論：</strong>本研究で実施した条件と試行回数の範囲では、デマンド交通車両を固定経路避難シャトルとして導入した場合と、バスを導入せず自家用車と救出走行で避難した場合の間で、Type3/4避難完了率の一貫した改善または悪化は確認できませんでした。本モデルの分解能では、方向性のある差を検出できませんでした。</p>
+      <p class="section-note">中央値差+1.23ポイントだけを改善方向とは読みません。また、「効果がない」「同等」とも解釈しません。</p>
     </section>
 
     <section class="section" aria-labelledby="phase3-runs-heading">
@@ -167,7 +170,58 @@
           </table>
         </div>
       </details>
-      <p class="section-note comparison-followup">A#2は75.87%の低完了regimeです。正規の有効runとして保持し、事後除外や都合のよいrunだけの選択は行いません。</p>
+      <p class="section-note comparison-followup">A#2は75.87%の低完了状態です。正規の有効runとして保持し、事後除外しません。同じseed 42でもfull-busのB#2はraw 96.68%で低完了ではなく、A#2の低位をB#2へ一般化しません。</p>
+    </section>
+
+    <section class="section" aria-labelledby="phase3-type34-heading">
+      <div class="section-heading">
+        <h2 id="phase3-type34-heading">Type3・Type4分離会計の追加診断</h2>
+      </div>
+      <p>3,255人へA/B共通の個人IDを付け、バスと救出走行の重複を除いた別会計を実装しました。Type4高齢者の完了率中央値はA側4runが93.53%、B側5runが94.12%でした。</p>
+      <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="Type3とType4の対応差表">
+        <table class="comparison-table comparison-table-compact">
+          <caption>共通seed 4組の完了率差（B−A）</caption>
+          <thead><tr><th scope="col">種別</th><th scope="col">中央値</th><th scope="col">範囲</th><th scope="col">符号</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Type3</th><td>+1.94 pt</td><td>−2.24〜+17.67 pt</td><td>正2・負2</td></tr>
+            <tr><th scope="row">Type4</th><td>+1.98 pt</td><td>−4.71〜+23.21 pt</td><td>正2・負1・ゼロ1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="interpretation-note"><strong>読み取り：</strong>Type4だけに分けても差の符号は一致せず、バスが高齢者の逃げ遅れを一貫して減らしたとは判断できません。既存ログへ個人台帳を接続した追加診断であり、正式8runの判定を置き換えません。</p>
+      <p class="section-note">5組目のA側seed 101は強い渋滞で完走時間が現実的でなかったため未完・集計対象外です。</p>
+    </section>
+
+    <section class="section" aria-labelledby="phase3-figures-heading">
+      <div class="section-heading">
+        <h2 id="phase3-figures-heading">正式結果と診断を示す図</h2>
+      </div>
+      <div class="research-figure-grid">
+        <figure class="research-figure">
+          <a href="assets/research_figures/fig4-7-1_pairwise_completion_rate_differences.svg">
+            <img src="assets/research_figures/fig4-7-1_pairwise_completion_rate_differences.svg" alt="Scenario AとBの全15組合せにおけるType3/4完了率差">
+          </a>
+          <figcaption>15組差はゼロをまたぐ。15組は8runを再利用した非独立な組合せ。</figcaption>
+        </figure>
+        <figure class="research-figure">
+          <a href="assets/research_figures/fig5-4-1_replicate_completion_rates.svg">
+            <img src="assets/research_figures/fig5-4-1_replicate_completion_rates.svg" alt="Scenario Aの3runとScenario Bの5runのType3/4避難完了率">
+          </a>
+          <figcaption>8runの初期条件感応性。統計的な二峰性の実証とはしない。</figcaption>
+        </figure>
+        <figure class="research-figure">
+          <a href="assets/research_figures/fig4-9-1_origin_completion_diagnostic.svg">
+            <img src="assets/research_figures/fig4-9-1_origin_completion_diagnostic.svg" alt="A基準runにおける出発地別Type3/4完了率と割当数">
+          </a>
+          <figcaption>A基準runの出発地診断。色は完了率、点サイズは割当数。正式A/B判定には使用しない。</figcaption>
+        </figure>
+        <figure class="research-figure">
+          <a href="assets/research_figures/fig5-5-1_type34_split_completion_rates.svg">
+            <img src="assets/research_figures/fig5-5-1_type34_split_completion_rates.svg" alt="Type3とType4に分けたScenario AとBの避難完了率">
+          </a>
+          <figcaption>個人台帳による属性別追加診断。Type4の共通seed差も方向不一致。</figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="section" aria-labelledby="phase3-diagnostics-heading">
@@ -180,8 +234,8 @@
           <thead>
             <tr>
               <th scope="col">指標</th>
-              <th scope="col">A：自家用車避難</th>
-              <th scope="col">B：バス導入</th>
+              <th scope="col">A：自家用車＋救出走行</th>
+              <th scope="col">B：固定経路シャトル</th>
               <th scope="col">読み取り上の制約</th>
             </tr>
           </thead>
@@ -220,7 +274,7 @@
       <div class="section-heading">
         <h2 id="phase3-limitations-heading">解釈上の限界</h2>
       </div>
-      <p><a href="../../03_研究設計文書/共通設計/Phase3_限界固定文言.md#phase3-limitations-fixed">Phase 3限界固定文言 L1〜L4</a>をそのまま適用し、このページでは再掲しません。</p>
+      <p>避難開始時刻の均一仮定、固定経路運行、実際の予約型DRT・避難行動・運行制約との乖離、常総市外へ一般化できない点を主な限界とします。出発地診断と完了時間は補助・診断であり、正式な方向判定には用いません。</p>
     </section>
 
     <section class="section" aria-labelledby="phase3-links-heading">
@@ -229,7 +283,11 @@
       </div>
       <div class="card-grid">
         <a class="result-card" href="sumo/viz/phase3_viz.html"><strong>結果可視化・交通アニメーション</strong><span>不確実性帯、強い初期条件感応性、バスと車両の移動</span></a>
-        <a class="result-card" href="../../06_研究結果/phase3/Phase3_A_B比較表.md"><strong>A/B比較表</strong><span>正式指標、8run、診断指標と解釈制約</span></a>
+        <a class="result-card" href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/06_研究結果/phase3/Phase3_A_B比較表.md" target="_blank" rel="noopener noreferrer"><strong>A/B比較表</strong><span>正式指標、8run、診断指標と解釈制約</span></a>
+        <a class="result-card" href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/06_研究結果/phase3/Phase3_バス運行サービス詳細表.md" target="_blank" rel="noopener noreferrer"><strong>バス運行サービス詳細表</strong><span>B側5runの乗車・到着・車内時間とseed 42注記</span></a>
+        <a class="result-card" href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/03_研究設計文書/卒論本文ドラフト_Phase1-3統合.md" target="_blank" rel="noopener noreferrer"><strong>卒論本文統合ドラフト</strong><span>第1章〜第6章へ確定研究内容を統合</span></a>
+        <a class="result-card" href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/03_研究設計文書/共通設計/ODD準拠モデル記述.md" target="_blank" rel="noopener noreferrer"><strong>ODD準拠モデル記述</strong><span>主体・状態・処理順・入力・適用範囲</span></a>
+        <a class="result-card" href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/03_研究設計文書/共通設計/Phase横断_比較条件・単位一覧.md" target="_blank" rel="noopener noreferrer"><strong>Phase横断条件・単位</strong><span>人口・車両・Type3/4人換算の違い</span></a>
         <a class="result-card" href="sumo/regions/08211/evaluation/phase3_ab_comparison.csv"><strong>A/B比較CSV</strong><span>raw・保守帯と15組合せ符号</span></a>
         <a class="result-card" href="sumo/regions/08211/evaluation/phase3r_e1_15_combination_signs.csv"><strong>15組合せ符号表</strong><span>完了率実値ベース</span></a>
         <a class="result-card" href="sumo/regions/08211/evaluation/phase3_s10_15_combination_signs.csv"><strong>10台感度符号表</strong><span>5seed×A側3run</span></a>
