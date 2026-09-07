@@ -1,7 +1,7 @@
 # 03_研究設計文書
 
 研究の設計・実装仕様・論文用文書をまとめたフォルダ。
-2026-07-04に phase横断文書を `共通設計/`・`図表・UML/`・`ChatBot/` に再編。2026-07-20にPhase 3実装・評価フローを追加。
+2026-07-04に phase横断文書を `共通設計/`・`図表・UML/`・`ChatBot/` に再編。2026-07-20にPhase 3実装・評価フロー、2026-08-11に常総市JDRT実装方針、2026-08-26にJDRT v2のPAP・Parameter Registryを追加。
 
 ---
 
@@ -25,6 +25,7 @@
 | `図表・UML/` | データフロー図・シーケンス図・ファイル構造図・ユースケース図（Mermaid） |
 | `ChatBot/` | 避難チャットボットのRAG導入記録 |
 | `phase1/` `phase2/` `phase3/` | 各フェーズ固有の設計・論文用文書 |
+| `jdrt/` | 常総市限定JDRTの実装方針・PAP・Parameter Registry（v1/v2を分離） |
 
 ---
 
@@ -113,3 +114,17 @@
 | `Phase3_図表一覧.md` | Phase 3図表候補・作成状況・表現ルール |
 | `Phase3_E3本文ドラフト.md` | Phase 3結果・考察の確定稿 |
 | `論文構成_Phase3.md` | Phase 3 の章構成案 |
+
+---
+
+## jdrt/
+
+| ファイル | 内容 |
+|---------|------|
+| `常総市JDRT_実装方針.md` | 既存成果との境界、JDRT名前空間、初期API、実装順、受入条件 |
+| `常総市JDRT_PreAnalysisPlan_判断入力版.md` | 主RQ、主比較候補、指標、run採否、正式判断が必要な論点 |
+| `常総市JDRT_ParameterRegistry_判断入力版.md` | パラメータ候補、根拠区分、不確実性、感度候補、未決定状態 |
+| `常総市JDRT_PreAnalysisPlan_v1.md` | 正式主比較、主指標、需要、5seed、採否条件、主張範囲 |
+| `常総市JDRT_ParameterRegistry_v1.md` | 正式値、根拠、不確実性、感度候補、機械可読設定への対応 |
+| `常総市JDRT_PreAnalysisPlan_v2.md` | v1技術停止後のv2実験条件、全20セル再実行、停止・採否規則 |
+| `常総市JDRT_ParameterRegistry_v2.md` | v2の0.5秒step、1秒controller、衝突観測条件と設定SHA |

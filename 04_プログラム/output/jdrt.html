@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>常総市JDRT：動的な避難車両配車</title>
+  <link rel="stylesheet" href="assets/phase1.css">
+</head>
+<body>
+  <nav class="global-taskbar" aria-label="成果物共通ナビゲーション">
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="index.html">トップ</a>
+      <div class="taskbar-menu" aria-label="トップページのセクション">
+        <a href="index.html#research-intro">研究の説明</a>
+        <a href="index.html#jdrt-current">常総市JDRT</a>
+        <a href="index.html#current-conclusion">これまでの結論</a>
+      </div>
+    </div>
+    <div class="taskbar-item"><a class="taskbar-trigger" href="phase1.html">Phase 1</a></div>
+    <div class="taskbar-item"><a class="taskbar-trigger" href="phase2.html">Phase 2</a></div>
+    <div class="taskbar-item"><a class="taskbar-trigger" href="phase3.html">Phase 3</a></div>
+    <div class="taskbar-item">
+      <a class="taskbar-trigger" href="jdrt.html" aria-current="page">常総市JDRT</a>
+      <div class="taskbar-menu" aria-label="常総市JDRTのセクション">
+        <a href="#plain-language">何ができる研究か</a>
+        <a href="#current-status">現在地</a>
+        <a href="#implementation-flow">実装の流れ</a>
+        <a href="#smoke-checks">小規模確認</a>
+        <a href="#comparison-plan">比較予定</a>
+        <a href="#not-results">まだ結果ではないもの</a>
+      </div>
+    </div>
+    <div class="taskbar-item"><a class="taskbar-trigger" href="faq.html">想定質問</a></div>
+  </nav>
+
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">常総市08211 / 洪水避難 / 動的な車両配分</p>
+      <h1>常総市JDRT</h1>
+    </div>
+    <p class="updated">v2中核7/20・比較評価前</p>
+  </header>
+
+  <main class="page-shell">
+    <section class="section" id="plain-language" aria-labelledby="plain-language-heading">
+      <div class="section-heading">
+        <h2 id="plain-language-heading">何ができる研究か</h2>
+      </div>
+      <p class="interpretation-note">洪水時には、時間がたつほど通れない道路が増えます。この研究では、限られた避難車両を「今いちばん近い人」に向かわせる場合と、「長く待っている人、支援が必要な人、まもなく道路で孤立しそうな人」を考えて向かわせる場合を比べます。</p>
+      <ul class="detail-list">
+        <li>どの順番で迎えに行くと、避難できる人が増えるかを確認する</li>
+        <li>高齢者など支援が必要な人だけが不利になっていないかを確認する</li>
+        <li>迎えに行けなかった理由を、道路閉鎖、車両不足、時間切れなどに分ける</li>
+        <li>助かった人数だけでなく、待ち時間や空車移動の増減も確認する</li>
+      </ul>
+    </section>
+
+    <section class="section" id="current-status" aria-labelledby="current-status-heading">
+      <div class="section-heading">
+        <h2 id="current-status-heading">現在地</h2>
+      </div>
+      <div class="summary-stats" aria-label="JDRT実装状況">
+        <div class="stat-item"><span class="stat-value">08211</span><span class="stat-label">対象地域</span></div>
+        <div class="stat-item"><span class="stat-value">7/20</span><span class="stat-label">v2中核セル</span></div>
+        <div class="stat-item stat-text">v1は技術停止して保全しています。共通条件を改訂したv2では、seed 23423の4方式とseed 42のB3・B2・P1が技術ゲートを通過しました。次はP2-L15 seed 42です。</div>
+      </div>
+      <p class="section-note">常総市以外の地域別SUMO出力は削除せず、SHA-256付きのアーカイブへ移動しました。必要な場合は元の位置へ復元できます。</p>
+    </section>
+
+    <section class="section" id="implementation-flow" aria-labelledby="implementation-flow-heading">
+      <div class="section-heading">
+        <h2 id="implementation-flow-heading">実装と実験の流れ</h2>
+      </div>
+      <ol class="sumo-flow jdrt-flow" aria-label="JDRT実装手順">
+        <li class="sumo-flow-step"><span class="sumo-flow-number">1</span><strong>実験条件を決める（完了）</strong><span>比べる方法、対象者、車両数、評価方法を結果を見る前に固定しました。</span></li>
+        <li class="sumo-flow-step"><span class="sumo-flow-number">2</span><strong>常総市データをつなぐ（完了）</strong><span>人口、避難所、道路、閉鎖時刻を既存の正本から読み込みます。</span></li>
+        <li class="sumo-flow-step"><span class="sumo-flow-number">3</span><strong>SUMOと連携する（完了）</strong><span>車両の現在位置を受け取り、決めた迎え先と避難所への走行へ反映します。</span></li>
+        <li class="sumo-flow-step"><span class="sumo-flow-number">4</span><strong>小さく確認する（完了）</strong><span>車両1台・要求10件で、通常時と道路閉鎖時の状態変化と人数の一致を確認しました。</span></li>
+        <li class="sumo-flow-step"><span class="sumo-flow-number">5</span><strong>比較実験を行う（進行中）</strong><span>同じ需要と道路条件を使い、v2中核20セルを1件ずつ技術検証しています。現在は7/20です。</span></li>
+      </ol>
+    </section>
+
+    <section class="section" id="smoke-checks" aria-labelledby="smoke-checks-heading">
+      <div class="section-heading">
+        <h2 id="smoke-checks-heading">小規模確認で分かったこと</h2>
+      </div>
+      <p class="interpretation-note"><strong>位置づけ：</strong>次の2件はプログラムが決めた手順で動くかを確認した技術試験です。対象要求が異なるため、避難人数を比べて方式の良し悪しを判断することはできません。</p>
+      <div class="summary-stats" aria-label="JDRT小規模確認結果">
+        <div class="stat-item"><span class="stat-value">10件</span><span class="stat-label">閉鎖なし要求</span></div>
+        <div class="stat-item"><span class="stat-value">22人</span><span class="stat-label">乗降完了・未処理0</span></div>
+        <div class="stat-item stat-text">閉鎖なしでは、1台が10回の迎車と送迎を行い、配車から降車完了までの記録が各10件そろいました。<a href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/05_%E3%82%BF%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86/jdrt/JDRT_%E5%AE%9F%E8%A3%85%E3%82%BF%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86.md">確認記録</a></div>
+      </div>
+      <div class="summary-stats" aria-label="JDRT道路閉鎖確認結果">
+        <div class="stat-item"><span class="stat-value">789秒</span><span class="stat-label">最初の道路閉鎖</span></div>
+        <div class="stat-item"><span class="stat-value">10件</span><span class="stat-label">理由付きで処理</span></div>
+        <div class="stat-item stat-text">閉鎖ありでは、迎車中1件と配車前9件を区別して記録し、同じ人を二重に数えず、未処理を残さないことを確認しました。<a href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/05_%E3%82%BF%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86/jdrt/JDRT_%E5%AE%9F%E8%A3%85%E3%82%BF%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86.md">確認記録</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="first-full-cell" aria-labelledby="first-full-cell-heading">
+      <div class="section-heading">
+        <h2 id="first-full-cell-heading">v1の最初のfull実験セル（保全記録）</h2>
+      </div>
+      <p class="interpretation-note"><strong>位置づけ：</strong>以下はv1で最初に完了したB2・seed 23423の保全記録です。v1は後続の技術ゲートで停止し、現在のv2比較には混在させません。</p>
+      <div class="summary-stats" aria-label="B2 seed 23423の結果">
+        <div class="stat-item"><span class="stat-value">18人</span><span class="stat-label">避難完了／対象3,255人</span></div>
+        <div class="stat-item"><span class="stat-value">6件</span><span class="stat-label">完了要求／全1,440件</span></div>
+        <div class="stat-item"><span class="stat-value">30.178km</span><span class="stat-label">バス5台の総走行</span></div>
+        <div class="stat-item stat-text">人物・要求・出力SHAが一致し、teleport 0、未処理SUMO Error 0でした。捕捉済みの個別route拒否1件は隠さず別記録しています。<a href="https://github.com/23f302020/joso-evacuation-simulation/blob/master/05_%E3%82%BF%E3%82%B9%E3%82%AF%E7%AE%A1%E7%90%86/jdrt/JDRT-R1_B2_full%E5%AE%9F%E9%A8%93%E8%A8%98%E9%8C%B2.md">v1実験記録</a></div>
+      </div>
+    </section>
+
+    <section class="section" id="comparison-plan" aria-labelledby="comparison-plan-heading">
+      <div class="section-heading">
+        <h2 id="comparison-plan-heading">比較する予定の配車方法</h2>
+      </div>
+      <div class="comparison-table-wrap" tabindex="0" role="region" aria-label="JDRT比較方式" aria-describedby="comparison-plan-note">
+        <table class="comparison-table">
+          <thead><tr><th>方式</th><th>かんたんな説明</th><th>位置づけ</th></tr></thead>
+          <tbody>
+            <tr><td>B1</td><td>現在近くにいる人から迎える</td><td>分かりやすい基準</td></tr>
+            <tr><td>B2</td><td>現在の混雑を含む移動時間が短い人から迎える</td><td>強い基準候補</td></tr>
+            <tr><td>B3</td><td>待ち時間と支援の必要度を考えて迎える</td><td>強い基準候補</td></tr>
+            <tr><td>P1</td><td>道路が通れなくなる時刻を完全に知っている想定</td><td>理論上限</td></tr>
+            <tr><td>P2</td><td>誤差を含む道路閉鎖予測を使う</td><td>現実性を持つ提案方式</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="section-note" id="comparison-plan-note">主比較はB3対P2（道路閉鎖を15分遅く予測する条件）、fleetは5台、対象はType3/4、paired 5seedに固定しました。ここに示した内容は実験条件であり、実験結果ではありません。</p>
+    </section>
+
+    <section class="section" id="not-results" aria-labelledby="not-results-heading">
+      <div class="section-heading">
+        <h2 id="not-results-heading">まだ結果ではないもの</h2>
+      </div>
+      <p class="interpretation-note"><strong>重要：</strong>現在確認できたのは、基礎部品、小規模運行、v1の技術停止条件、v2中核7/20セルが決められた規則どおり動き、不整合を検出できることです。どの配車方法が有利か、何人多く避難できるかは、まだ答えが出ていません。</p>
+      <ul class="detail-list">
+        <li>基礎テストの合格数は研究効果を示す数値ではない</li>
+        <li>既存Phase 3のA/B比較はヌル結論のままで、JDRTの予想結果へ読み替えない</li>
+        <li>本実験後はCSVとrun manifestを真実源として表示し、結果値をHTMLへ直接書き写さない</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

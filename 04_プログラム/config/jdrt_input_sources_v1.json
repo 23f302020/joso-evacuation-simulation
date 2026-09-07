@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "city_code": "08211",
+  "status": "frozen_for_jdrt_v1",
+  "files": [
+    {
+      "role": "population_and_types",
+      "path": "04_プログラム/output/sumo/regions/08211/derived/agent_types.csv",
+      "size_bytes": 45147,
+      "sha256": "1d38fefd691c83b44a6b148678cce2fa4f7595ae2991e9291a7fb10d605f1c72",
+      "expected_rows": 405
+    },
+    {
+      "role": "rescue_substitution_and_fixed_shelter",
+      "path": "04_プログラム/output/sumo/regions/08211/derived/rescue_od.csv",
+      "size_bytes": 82520,
+      "sha256": "493dbc46b7fad53b9ed65129bf5127dd3091a0a9a07ad6a82f4bba4ea3e2050b",
+      "expected_rows": 405
+    },
+    {
+      "role": "safe_shelters",
+      "path": "04_プログラム/output/sumo/regions/08211/derived/shelters_sumo.csv",
+      "size_bytes": 801,
+      "sha256": "4f325976efd23af4c3c4fa716710b17375491d7c4d2f120e1cf1b24b80ce08fa",
+      "expected_rows": 9
+    },
+    {
+      "role": "true_closure_timeline",
+      "path": "04_プログラム/output/sumo/regions/08211/derived/closure_timeline_sumo.json",
+      "size_bytes": 507642,
+      "sha256": "04b35335f8acf495e5e9f5916ad31d36900d1b4e66f8dd50fe1b07cc62d68e1f",
+      "expected_time_steps": 8
+    },
+    {
+      "role": "time_mapping",
+      "path": "04_プログラム/output/sumo/regions/08211/derived/time_mapping_sumo.csv",
+      "size_bytes": 719,
+      "sha256": "2316f275396c9bacd48056733e4c3e2c706a45b922111c76ee185b49046b54a5",
+      "expected_rows": 8
+    },
+    {
+      "role": "drt_initial_vehicle_edges",
+      "path": "04_プログラム/output/sumo/regions/08211/derived/bus_plan.csv",
+      "size_bytes": 1241,
+      "sha256": "ff917397c17ce42319f0405dea1458a18eae1993f4fd0d913b325db20282d260",
+      "expected_rows": 5
+    },
+    {
+      "role": "private_vehicle_demand",
+      "path": "04_プログラム/output/sumo/regions/08211/derived/scenario_a_vehicle_assignments.csv",
+      "size_bytes": 1080224,
+      "sha256": "9bfbdbacb3a7ae1ffb7a08be5c37905fa3eed45ff15b88f8fd150fe99a052d34",
+      "expected_rows": 9569,
+      "filter": "vehicle_kind == private_car",
+      "expected_filtered_rows": 8164
+    },
+    {
+      "role": "sumo_network",
+      "path": "04_プログラム/output/sumo/regions/08211/network/08211.net.xml",
+      "size_bytes": 87931924,
+      "sha256": "b4a7e33ccf129ef5e3bbb4940ce2415a5c609780084cf7e58a54ee3399c42ccd"
+    }
+  ]
+}

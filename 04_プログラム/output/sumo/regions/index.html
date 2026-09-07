@@ -108,7 +108,7 @@
 <body>
   <header>
     <h1>Phase 2 全域SUMO結果</h1>
-    <p>Phase 1対象41市区町村に対する、市区町村別SUMO/TraCI試行の集計です。</p>
+    <p>Phase 1対象41市区町村に対する、市区町村別SUMO/TraCI試行の集計です。常総市以外の実行結果は、常総市JDRTの作業領域を軽量化するためアーカイブへ移動しています。</p>
   </header>
   <main>
     <section class="metrics" aria-label="集計">
@@ -124,6 +124,7 @@
       <a href="../evaluation/phase1_phase2_region_comparison.csv">Phase 1/2全域比較CSV</a>
       <a href="_management/region_batch_status.md">バッチ状態</a>
       <a href="_management/region_full_execution_plan.md">full実行計画</a>
+      <a href="../../../../07_アーカイブ/茨城県他市町村_SUMO_20260811/README.md">他市町村アーカイブ・復元手順</a>
     </nav>
     <section class="table-wrap">
       <table>
@@ -148,5 +149,18 @@
     </section>
     <p class="note">Phase 1は静的な閉鎖道路・経路探索の入力規模、Phase 2はSUMO/TraCIによる動的車両試行です。単位が異なるため、比較CSVでは列を分けています。</p>
   </main>
+  <script>
+    (() => {
+      const archiveRoot = "../../../../07_アーカイブ/茨城県他市町村_SUMO_20260811/regions/";
+      document.querySelectorAll('a[href]').forEach((link) => {
+        const original = link.getAttribute("href");
+        const cityMatch = original.match(/^(\d{5})\//);
+        if (cityMatch && cityMatch[1] !== "08211") {
+          link.setAttribute("href", archiveRoot + original);
+          link.setAttribute("title", "アーカイブ済みの地域別SUMO結果");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

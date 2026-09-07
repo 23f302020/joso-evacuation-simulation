@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "parameter_version": "jdrt-v1-20260811",
+  "status": "formally_fixed_before_experiments",
+  "city_code": "08211",
+  "simulation_end_sec": 21600,
+  "population": {
+    "total": 21539,
+    "origin_count": 405,
+    "type3": 2320,
+    "type4": 935,
+    "drt_eligible": 3255,
+    "drt_request_rate": 1.0,
+    "request_time_sec": 0,
+    "request_grouping": {
+      "capacity_reference": 8,
+      "expected_request_count": 1440,
+      "expected_party_size_min": 1,
+      "expected_party_size_max": 8,
+      "group_count_rule": "min(type34_people, max(1, rescue_vehicle_count, ceil(type34_people / 8)))",
+      "category_allocation": "balanced_round_robin_type4_then_type3_mobility_then_type3",
+      "request_vulnerability": "mean_member_vulnerability"
+    },
+    "vulnerability_scores": {
+      "type4": 1.0,
+      "type3_mobility_limited": 0.5,
+      "type3": 0.0
+    }
+  },
+  "traffic_demand": {
+    "private_vehicle_count": 8164,
+    "substituted_rescue_vehicle_count": 1405,
+    "generate_rescue_vehicles_in_jdrt": false
+  },
+  "fleet": {
+    "total": 5,
+    "standard_count": 4,
+    "standard_capacity": 8,
+    "welfare_count": 1,
+    "welfare_capacity": 4,
+    "initial_edge_source": "bus_plan.csv",
+    "boarding_time_sec": 300,
+    "alighting_time_sec": 300
+  },
+  "operation": {
+    "dispatch_interval_sec": 60,
+    "travel_time_refresh_sec": 60,
+    "assignment_lock": true,
+    "pooling": false,
+    "safety_margin_sec": 300,
+    "safety_margin_sensitivity_sec": [180, 600]
+  },
+  "dispatchers": {
+    "primary_baseline": "JDRT-B3",
+    "primary_proposal": "JDRT-P2-L15",
+    "supporting": ["JDRT-B2", "JDRT-P1"],
+    "weights": {
+      "waiting": 1.0,
+      "vulnerability": 1.0,
+      "pickup": 1.0,
+      "flood": 1.0
+    }
+  },
+  "forecast": {
+    "true_closure_source": "closure_timeline_sumo.json",
+    "perfect_error_sec": 0,
+    "primary_temporal_error_sec": 900,
+    "temporal_sensitivity_sec": [-3600, -1800, 1800, 3600],
+    "clamp_predicted_time_min_sec": 0,
+    "spatial_error_enabled": false
+  },
+  "shelters": {
+    "expected_count": 9,
+    "selection_rule": "fixed_origin_destination_from_rescue_od",
+    "capacity_constraint_enabled": false,
+    "active_from_sec": 0,
+    "active_until_sec": 21600
+  },
+  "experiment": {
+    "paired_seeds": [23423, 42, 1, 7, 101],
+    "core_scenarios": ["JDRT-B2", "JDRT-B3", "JDRT-P1", "JDRT-P2-L15"],
+    "expected_core_run_count": 20,
+    "primary_outcome": "type4_evacuation_success_rate",
+    "primary_outcome_denominator": 935
+  }
+}
