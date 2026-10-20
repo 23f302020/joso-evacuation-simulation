@@ -336,3 +336,6 @@ G1橋梁検索入口の限定調査を[取得監査](../../02_情報調査/交�
 新契約を満たさないRED（3件）を確認後、専用CLIの25試験PASS。7ファイルの部分失敗時rollback、日付順・重複拒否、HTMLエスケープ、冪等性を確認した。Markdown/HTML一致検査PASS。Browser pluginがないためPlaywright＋既存Edgeで1280×900/390×844を確認。最新日だけ展開・過去日の開閉・報告欄の横あふれなし・pageerrorなし。初回はPlaywright付属browser未導入で起動失敗し、既存Edgeで検証。差分レビューは記録対象・SHA・復旧・原本保全を確認し、今回の契約変更に未解決指摘なし。研究suiteや新coreは実行していない。設定SHA変更のため旧preflight証跡を流用しない。
 
 GitHubは公開repo 23f302020/joso-evacuation-simulation。取得時masterは2026-07-20の4b0b79f、作業branchは2026-09-07のb1a3a83。masterは作業branchの祖先なのでfast-forward可能。未反映の研究文書・実装・テスト・集計結果を同期対象とし、取得元配布物・依存・端末キャッシュ・私的Drive参照記録を除外する。パターン検査で候補の秘密情報検出なし。commit/pushはユーザー明示依頼の範囲で行う。Cloudflare公開更新はこの依頼の対象外。
+
+
+GitHub同期完了：e48972be0469987287e1cd917b8af65aea529e78（622ファイル）をmasterとcodex/update-latest-research-resultsへatomic pushし、両refとGitHub APIをreadback確認。初回はJI-lifeのpush権限不足で403。保存済み所有者アカウント23f302020を使用して成功し、アクティブアカウントはJI-lifeへ復帰した。秘密情報の転記なし。Cloudflare公開更新なし。

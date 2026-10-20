@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "installed_date": "2026-10-20",
+  "scope": "repository",
+  "mode": "project-adapted skills; no agents, hooks, model mappings, or MCP configuration imported",
+  "previous_version": "not installed",
+  "packages": [
+    {
+      "name": "debugging-and-error-recovery",
+      "repository": "https://github.com/addyosmani/agent-skills",
+      "commit": "aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "source_directory": "skills/debugging-and-error-recovery",
+      "files": [
+        {
+          "source_path": "skills/debugging-and-error-recovery/SKILL.md",
+          "local_path": ".agents/skills/debugging-and-error-recovery/references/upstream/skills/debugging-and-error-recovery/source.md",
+          "sha256": "21f3960f5d7ae2cc95c40896545004dbbcbbd752ea65fc2d53962554d4174220"
+        },
+        {
+          "source_path": "LICENSE",
+          "local_path": ".agents/skills/debugging-and-error-recovery/LICENSE",
+          "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7"
+        }
+      ],
+      "project_entrypoint": {
+        "path": ".agents/skills/debugging-and-error-recovery/SKILL.md",
+        "sha256": "e8a2228af218e053b491f43c163c30a3010683153c852eac4bf9f91c17e3e859"
+      },
+      "documentation_migration": {
+        "date": "2026-10-20",
+        "previous_entrypoint_sha256": "b6ccb9e18d48c10733ba3d1a42a4d55f13fc862cdbdb1f2ee7e5301828af2db3",
+        "reason": "Canonical operations document renamed and consolidated; workflow unchanged."
+      }
+    },
+    {
+      "name": "test-driven-development",
+      "repository": "https://github.com/addyosmani/agent-skills",
+      "commit": "aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "source_directory": "skills/test-driven-development",
+      "files": [
+        {
+          "source_path": "skills/test-driven-development/SKILL.md",
+          "local_path": ".agents/skills/test-driven-development/references/upstream/skills/test-driven-development/source.md",
+          "sha256": "a3aa6ba95638497025577469eda10ed17918698209615aeafbc26f131bf2469d"
+        },
+        {
+          "source_path": "references/testing-patterns.md",
+          "local_path": ".agents/skills/test-driven-development/references/upstream/references/testing-patterns.md",
+          "sha256": "f0bf05acd0edcadc27297ad5b74f104c8103ccfedba1a05cd6d6ae4af8364c56"
+        },
+        {
+          "source_path": "LICENSE",
+          "local_path": ".agents/skills/test-driven-development/LICENSE",
+          "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7"
+        }
+      ],
+      "project_entrypoint": {
+        "path": ".agents/skills/test-driven-development/SKILL.md",
+        "sha256": "fa9a6d9401b7edd3c87916f6e8aa5427a35208e1bd0b5c5279b9d914977dc190"
+      },
+      "documentation_migration": {
+        "date": "2026-10-20",
+        "previous_entrypoint_sha256": "4f424da3bad43c86d8112d6c29f94d35bd10c83ed3dea12813573a584fdb7890",
+        "reason": "Canonical operations document renamed and consolidated; workflow unchanged."
+      }
+    },
+    {
+      "name": "code-review-and-quality",
+      "repository": "https://github.com/addyosmani/agent-skills",
+      "commit": "aeac41d4d005999432bb7312f7ff06383a91d59d",
+      "source_directory": "skills/code-review-and-quality",
+      "files": [
+        {
+          "source_path": "skills/code-review-and-quality/SKILL.md",
+          "local_path": ".agents/skills/code-review-and-quality/references/upstream/skills/code-review-and-quality/source.md",
+          "sha256": "2db1e850379f255fd3091ef278cde24cd6c7d2ba23e360cc52ea522c40d4396e"
+        },
+        {
+          "source_path": "references/security-checklist.md",
+          "local_path": ".agents/skills/code-review-and-quality/references/upstream/references/security-checklist.md",
+          "sha256": "37774056502fe8970dcd2fd27dca5fa31f2a55232649fc3056c89c3af7d62755"
+        },
+        {
+          "source_path": "references/performance-checklist.md",
+          "local_path": ".agents/skills/code-review-and-quality/references/upstream/references/performance-checklist.md",
+          "sha256": "fffc38b8f3b328a973aab8b1a2efdd72b65710d8f4b57f28f8374ddae7f8a88b"
+        },
+        {
+          "source_path": "LICENSE",
+          "local_path": ".agents/skills/code-review-and-quality/LICENSE",
+          "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7"
+        }
+      ],
+      "project_entrypoint": {
+        "path": ".agents/skills/code-review-and-quality/SKILL.md",
+        "sha256": "d685d57e26f5818fd5e59879b7b2d05e3b9cb7dcbe4be903d81554de4f830616"
+      },
+      "documentation_migration": {
+        "date": "2026-10-20",
+        "previous_entrypoint_sha256": "4d47d560d808fb035ef52830dcab6dbfab643f2af1bc62faf91b17de09ab1a70",
+        "reason": "Canonical operations document renamed and consolidated; workflow unchanged."
+      }
+    },
+    {
+      "name": "python-testing-patterns",
+      "repository": "https://github.com/wshobson/agents",
+      "commit": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "source_directory": "plugins/python-development/skills/python-testing-patterns",
+      "files": [
+        {
+          "source_path": "plugins/python-development/skills/python-testing-patterns/SKILL.md",
+          "local_path": ".agents/skills/python-testing-patterns/references/upstream/plugins/python-development/skills/python-testing-patterns/source.md",
+          "sha256": "a1020718f31629c2a5b20731cad1804dbb81b18800495c5cebdf16e6cac9c175"
+        },
+        {
+          "source_path": "plugins/python-development/skills/python-testing-patterns/references/advanced-patterns.md",
+          "local_path": ".agents/skills/python-testing-patterns/references/upstream/plugins/python-development/skills/python-testing-patterns/references/advanced-patterns.md",
+          "sha256": "f560ee8b3cffc0fe971e78269bed21dc74f541c2056eae58d34259d9e537176a"
+        },
+        {
+          "source_path": "plugins/python-development/skills/python-testing-patterns/references/details.md",
+          "local_path": ".agents/skills/python-testing-patterns/references/upstream/plugins/python-development/skills/python-testing-patterns/references/details.md",
+          "sha256": "baaa88e2997d960c19f981248b9e3e850e36e2cdf4d97b50297f5d9764826349"
+        },
+        {
+          "source_path": "LICENSE",
+          "local_path": ".agents/skills/python-testing-patterns/LICENSE",
+          "sha256": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746"
+        }
+      ],
+      "project_entrypoint": {
+        "path": ".agents/skills/python-testing-patterns/SKILL.md",
+        "sha256": "07282e5f11475d369f2a06bb3281b0fa1911b98dc27b8f11337daece3235b204"
+      },
+      "documentation_migration": {
+        "date": "2026-10-20",
+        "previous_entrypoint_sha256": "904514f44af5a979f487d5436c865839ca7a9344595dddf144b867cd2a30bd9b",
+        "reason": "Canonical operations document renamed and consolidated; workflow unchanged."
+      }
+    },
+    {
+      "name": "python-performance-optimization",
+      "repository": "https://github.com/wshobson/agents",
+      "commit": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "source_directory": "plugins/python-development/skills/python-performance-optimization",
+      "files": [
+        {
+          "source_path": "plugins/python-development/skills/python-performance-optimization/SKILL.md",
+          "local_path": ".agents/skills/python-performance-optimization/references/upstream/plugins/python-development/skills/python-performance-optimization/source.md",
+          "sha256": "807aa725cc2b46b4d68a11a52e5b345be0449e80b7f4b60c32bfd2c35345afb5"
+        },
+        {
+          "source_path": "plugins/python-development/skills/python-performance-optimization/references/advanced-patterns.md",
+          "local_path": ".agents/skills/python-performance-optimization/references/upstream/plugins/python-development/skills/python-performance-optimization/references/advanced-patterns.md",
+          "sha256": "dc1bca8a377572ba1583316b8288af0e5ca2d2be864dc33889b2d3b1ee5c2abf"
+        },
+        {
+          "source_path": "plugins/python-development/skills/python-performance-optimization/references/details.md",
+          "local_path": ".agents/skills/python-performance-optimization/references/upstream/plugins/python-development/skills/python-performance-optimization/references/details.md",
+          "sha256": "8643031fabcbaf555ae1b4e702f1b5159689a31a4b286280d4df2822c9731281"
+        },
+        {
+          "source_path": "LICENSE",
+          "local_path": ".agents/skills/python-performance-optimization/LICENSE",
+          "sha256": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746"
+        }
+      ],
+      "project_entrypoint": {
+        "path": ".agents/skills/python-performance-optimization/SKILL.md",
+        "sha256": "e83ac365c1beac93b92d5235ccc9443ba937ee104f1ee3970a835261ed1a0581"
+      },
+      "documentation_migration": {
+        "date": "2026-10-20",
+        "previous_entrypoint_sha256": "cad77058159773ebaeb9f41aca9161e999d0c960738590217f0dfe0451c602eb",
+        "reason": "Canonical operations document renamed and consolidated; workflow unchanged."
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-20",
+  "result": "PASS_INSTALLATION_AND_DEFINITIONS",
+  "skill_validator": {
+    "runtime": "04_プログラム/venv/Scripts/python.exe",
+    "yaml_version": "6.0.3",
+    "initial_system_python_missing_yaml": true,
+    "checks": [
+      {
+        "name": "debugging-and-error-recovery",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "test-driven-development",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "code-review-and-quality",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "python-testing-patterns",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "python-performance-optimization",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      }
+    ]
+  },
+  "pinned_upstream_files_verified": 17,
+  "entrypoint_and_operating_doc_local_links": {
+    "checked": 22,
+    "missing": []
+  },
+  "archived_source_markdown_links": {
+    "missing": []
+  },
+  "protected_audit": {
+    "baseline_files": 135,
+    "concurrent_changes_detected": [
+      ".agents/skills/joso-jdrt-runner/SKILL.md",
+      ".agents/skills/joso-jdrt-runner/references/workflow.md",
+      ".agents/skills/joso-jdrt-runner/scripts/choice_sync_status.py",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py",
+      "04_プログラム/config/jdrt_realtime_choice_v1.json"
+    ],
+    "disposition": "Preserved concurrent updates outside this task. Not an assertion that the shared working tree stayed unchanged."
+  },
+  "scope": {
+    "new_skills": 5,
+    "upstream_agents_imported": 0,
+    "subagents_spawned": 0,
+    "research_runs_started": 0,
+    "research_executor_or_input_edits_by_this_task": 0,
+    "package_installs": 0,
+    "model_settings_changed": false
+  },
+  "routing_evaluation": "Definition-level review of ten examples only. Automatic model selection has not been behaviorally measured.",
+  "diff_check": "PASS for selected tracked paths; newly added entrypoints and operating document checked separately",
+  "final_checks": {
+    "entrypoint_hashes_match": true,
+    "new_doc_trailing_whitespace": [],
+    "status_html_article_count": 1,
+    "status_html_only_task_article_added": true,
+    "legacy_progress_markdown_unchanged_this_turn": false,
+    "legacy_progress_markdown_disposition": "A difference from the turn baseline was detected. This task did not write the legacy report; the concurrent update is preserved and is not an installation failure."
+  },
+  "operations_unification": {
+    "date": "2026-10-20",
+    "canonical": "05_タスク管理/スキル・エージェント運用.md",
+    "old_external_file": "renamed",
+    "old_model_file": "compatibility pointer only; full prior text preserved in canonical historical appendix",
+    "skill_checks": [
+      {
+        "name": "code-review-and-quality",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "debugging-and-error-recovery",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "joso-jdrt-runner",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "python-performance-optimization",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "python-testing-patterns",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "research-status-publisher",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "test-driven-development",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      }
+    ],
+    "local_links_checked": 36,
+    "missing_links": [],
+    "role_toml_changed": false,
+    "research_code_or_parameters_changed": false,
+    "final_checks": {
+      "history_text_preserved": true,
+      "history_trailing_hardbreak_whitespace_normalized": true,
+      "source_hashes_match": true,
+      "adapter_hashes_match": true,
+      "old_external_document_absent": true,
+      "old_model_document_pointer_only": true,
+      "dated_progress_md_html_check": "PASS",
+      "target_diff_check": "PASS"
+    }
+  }
+}
