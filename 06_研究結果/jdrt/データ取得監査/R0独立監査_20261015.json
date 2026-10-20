@@ -1,0 +1,381 @@
+{
+  "generated_at": "2026-10-15T18:03:01+09:00",
+  "scope": "preserved REAL-R0 pilot CSV readback; not formal record or new simulation",
+  "run_id": "real_r0_seed23423_20260911_skill03",
+  "checks": {
+    "registered_input_sha": true,
+    "mode_ids_unique": true,
+    "walk_ids_unique": true,
+    "occupant_ids_unique": true,
+    "mode_partition_exact": true,
+    "walk_log_ids_exact_unique": true,
+    "vehicle_ids_exact_unique": true,
+    "occupant_vehicle_references_exact": true,
+    "vehicle_occupancy_counts_match": true,
+    "car_person_origin_age_match": true,
+    "assigned_modes_match_ledgers": true,
+    "population_matches_registry": true,
+    "completion_matches_accounting": true,
+    "edge_time_ids_unique": true,
+    "edge_time_grid_matches_registry": true,
+    "edge_counts_valid": true,
+    "edge_closure_flags_match": true,
+    "closure_event_times_match": true,
+    "closure_cumulative_counts_match": true,
+    "edge_ids_exist_in_pedestrian_network": true,
+    "sumo_error_lines_zero": true,
+    "sumo_teleport_collision_tokens_absent": true,
+    "read_run_output_sha": true
+  },
+  "checked_csv_invariants": "PASS",
+  "registered_input_sha_checks": {
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/routes_20260826/non_car_15pct/walk_person_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/cars.rou.xml": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/persons_elderly_0.58.rou.xml": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_assignment.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_occupancy_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/network/08211_ped.net.xml": true,
+    "04_プログラム/output/sumo/regions/08211/derived/closure_timeline_sumo.json": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/static_alignment_20260826/pedestrian_flood_timeline.json": true,
+    "04_プログラム/scripts/scenario_c_integrated.py": true
+  },
+  "read_run_output_sha_checks": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/run_manifest.json": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/accounting_validation.json": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/scenario_c_mode_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/walk_person_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/car_occupancy_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/car_assignment.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/person_log.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/vehicle_log.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/closure_log.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/edge_congestion.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/scenario_c.sumocfg": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/sumo.log": true
+  },
+  "population": {
+    "total": 21539,
+    "walk": 3231,
+    "car_people": 18308,
+    "vehicles": 7960,
+    "completed": 16091,
+    "unfinished": 5448,
+    "by_type": {
+      "type1": 12999,
+      "type2": 5309,
+      "type3": 2294,
+      "type4": 937
+    },
+    "completed_by_type": {
+      "type1": 10728,
+      "type2": 4528,
+      "type3": 570,
+      "type4": 265
+    },
+    "terminal_people_by_reason": {
+      "arrived": 16091,
+      "preflight_distance_limit_exceeded": 2057,
+      "preflight_route_unreachable": 238,
+      "reroute_failed": 175,
+      "simulation_end_active": 1824,
+      "flood_blocked_on_edge": 1146,
+      "departure_blocked": 8
+    },
+    "occupancy_histogram": {
+      "1": 13,
+      "2": 5555,
+      "3": 2383,
+      "4": 9
+    }
+  },
+  "departures": {
+    "planned_time_counts": {
+      "0": 7960
+    },
+    "actual_count": 7956,
+    "missing_actual_count": 4,
+    "actual_min_sec": 1.0,
+    "actual_max_sec": 7495.0,
+    "arrivals_after_registered_horizon": 0
+  },
+  "edge_coverage": {
+    "row_count": 104686,
+    "unique_time_edge_count": 104686,
+    "time_count": 361,
+    "time_min_sec": 0,
+    "time_max_sec": 21600,
+    "time_gap_histogram_sec": {
+      "60": 360
+    },
+    "observed_edges": 3867,
+    "noninternal_pedestrian_net_edges": 49356,
+    "unobserved_pedestrian_net_edges": 45489,
+    "zero_vehicle_rows": 0,
+    "closed_true_rows": 2,
+    "closed_flag_mismatches": 0,
+    "coverage_denominator_limit": "Pedestrian-enabled network edge count, not a vehicle-passable-road denominator; vehicle-class permission filtering not performed. Only occupied noninternal edges are written; absent rows are not observed zero traffic."
+  },
+  "technical_evidence": {
+    "registered_step_sec": 1.0,
+    "sumocfg_explicit_step_sec": null,
+    "fcd_period_sec": 60.0,
+    "engine_last_sim_time_sec": 21601,
+    "requested_end_sec": 21600,
+    "sumo_error_line_count": 0,
+    "sumo_warning_line_count": 163,
+    "engine_reported_closed_entry_violations": 0,
+    "engine_reported_pending_person_reroutes": 0,
+    "engine_reported_pending_vehicle_reroutes": 0,
+    "distinction": "Closure timeline/CSV flags and error lines were recomputed. Entry violations and pending queues above are engine reports, not independently reconstructed trajectories."
+  },
+  "cross_series": {
+    "v2_example_type4_denominator": 935,
+    "r0_type4_population": 937,
+    "v2_example_drt_denominator": 3255,
+    "r0_walk_population": 3231,
+    "paired_person_mapping": "not supplied; v2 and R0 are different cohorts/protocols; R0/R1/R2 common person ledger is not yet available"
+  },
+  "not_verified": [
+    "Per-step runtime observation continuity; step length is registered 1 second but not explicitly present in saved SUMO config.",
+    "Full FCD trajectory reconstruction and independently recomputed closure-entry violations; full FCD was not parsed.",
+    "Vehicle-class-specific network denominator and route capacity limits.",
+    "R0/R1/R2 common-person, mode-transfer and permitted-condition-difference checks: R1/R2 not available.",
+    "Shelter capacity/opening/overflow, real fleet/depot availability, real reservations/modal shares/background demand.",
+    "Full run-output SHA rehash in this script: only sources read here are rehashed; existing skill validate separately returned PASS for registered full output hashes.",
+    "Formal REAL-R0 adoption is withheld; technical CSV PASS does not satisfy REAL-P1/P2 research gates."
+  ],
+  "sources": {
+    "04_プログラム/config/jdrt_realistic_parameters_v1.json": {
+      "sha256": "605d83baf1065454449a255c18946ed50fa720d6d0b126c210d54d46982a3780",
+      "size_bytes": 3089
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/manifest.json": {
+      "sha256": "313b66e98edfaab2312f9f86764b565e7de49b6283c8e8d24d00015847b70b0a",
+      "size_bytes": 7678
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/run_manifest.json": {
+      "sha256": "7683ba68fe8dae7eeb7e7257207b2cd9bdeeca49f53eca7ea3f24c9b4d180175",
+      "size_bytes": 3993
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/accounting_validation.json": {
+      "sha256": "770f00285b7db2b5d2288e41ccc0ea6673b2512bfe6acaba5653262a48f9729d",
+      "size_bytes": 453
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/scenario_c_mode_ledger.csv": {
+      "sha256": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f",
+      "size_bytes": 2403665,
+      "columns": [
+        "person_id",
+        "origin_id",
+        "KEY_CODE",
+        "person_type",
+        "age_group",
+        "car_ownership",
+        "assigned_mode",
+        "scenario",
+        "ownership_scenario_id",
+        "ownership_role"
+      ],
+      "row_count": 21539
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/walk_person_ledger.csv": {
+      "sha256": "898169d3d9c55a5d088c6fe6845c1e1b956edea865c230c626d479618cd7badf",
+      "size_bytes": 3355380,
+      "columns": [
+        "person_id",
+        "origin_id",
+        "KEY_CODE",
+        "person_type",
+        "age_group",
+        "walk_speed_mps",
+        "origin_edge_id",
+        "shelter_id",
+        "shelter_edge_id",
+        "total_walk_distance_m",
+        "free_flow_walk_time_s",
+        "route_status",
+        "person_xml_emitted",
+        "not_emitted_reason",
+        "route_edges"
+      ],
+      "row_count": 3231
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/car_occupancy_ledger.csv": {
+      "sha256": "97882eeac34c47db8467c75e178c7c78621b29c1886657eb0d30dbbb073f5f9a",
+      "size_bytes": 1754703,
+      "columns": [
+        "scenario_id",
+        "person_id",
+        "age_group",
+        "origin_id",
+        "KEY_CODE",
+        "vehicle_id"
+      ],
+      "row_count": 18308
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/car_assignment.csv": {
+      "sha256": "55abf6ab1969dd4f3b89199ba9d4411169beca9fd8a058716b1dab01bc67aa4a",
+      "size_bytes": 744236,
+      "columns": [
+        "vehicle_id",
+        "origin_id",
+        "KEY_CODE",
+        "from_sumo_edge_id",
+        "shelter_id",
+        "shelter_name",
+        "to_sumo_edge_id",
+        "depart"
+      ],
+      "row_count": 7960
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/person_log.csv": {
+      "sha256": "14d362c288367b28ceae907acaa0045319bc6ec3db4bbd8d1c7c42a885924f0e",
+      "size_bytes": 483572,
+      "columns": [
+        "person_id",
+        "origin_id",
+        "KEY_CODE",
+        "age_group",
+        "planned_speed_mps",
+        "person_xml_emitted",
+        "preflight_route_status",
+        "depart",
+        "arrival",
+        "duration",
+        "arrived",
+        "final_status",
+        "termination_time_sec",
+        "reroute_count",
+        "reroute_failed",
+        "shallow_time_sec",
+        "shallow_entry_count",
+        "dry_speed_restore_count",
+        "distance_integral_m",
+        "max_consecutive_stop_sec"
+      ],
+      "row_count": 3231
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/vehicle_log.csv": {
+      "sha256": "fb78679f6e91d27cd946ae381243c831c07a0ec4fd810e16ef2012da06deaad2",
+      "size_bytes": 875643,
+      "columns": [
+        "vehicle_id",
+        "origin_id",
+        "KEY_CODE",
+        "from_sumo_edge_id",
+        "to_sumo_edge_id",
+        "occupancy_count",
+        "depart",
+        "arrival",
+        "duration",
+        "arrived",
+        "final_status",
+        "termination_time_sec",
+        "reroute_count",
+        "reroute_failed",
+        "long_stopped",
+        "max_consecutive_stop_sec"
+      ],
+      "row_count": 7960
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/closure_log.csv": {
+      "sha256": "02db3a7bcd604f008b20a42a85354bfa53f373bb0926e004f0583c64253d0840",
+      "size_bytes": 941,
+      "columns": [
+        "time_id",
+        "source_timestamp",
+        "sim_time_sec",
+        "vehicle_new_closed_edges",
+        "vehicle_cumulative_closed_edges",
+        "pedestrian_new_closed_edges",
+        "pedestrian_cumulative_closed_edges",
+        "wade_shallow_edges",
+        "vehicle_blocked_on_edge",
+        "vehicle_departure_blocked",
+        "vehicle_reroute_success",
+        "vehicle_reroute_failed",
+        "person_blocked_on_edge",
+        "person_departure_blocked",
+        "person_reroute_success",
+        "person_reroute_failed",
+        "person_reroute_deferred"
+      ],
+      "row_count": 8
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/edge_congestion.csv": {
+      "sha256": "37e8d88a460feda1a74589704f250ef19636c10434db24257f19de9728d9edca",
+      "size_bytes": 3377598,
+      "columns": [
+        "sim_time_sec",
+        "edge_id",
+        "vehicle_count",
+        "mean_speed_mps",
+        "halting_vehicle_count",
+        "closed"
+      ],
+      "row_count": 104686
+    },
+    "04_プログラム/output/sumo/regions/08211/derived/closure_timeline_sumo.json": {
+      "sha256": "04b35335f8acf495e5e9f5916ad31d36900d1b4e66f8dd50fe1b07cc62d68e1f",
+      "size_bytes": 507642
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": {
+      "sha256": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3",
+      "size_bytes": 145930
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": {
+      "sha256": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f",
+      "size_bytes": 2403665
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/routes_20260826/non_car_15pct/walk_person_ledger.csv": {
+      "sha256": "898169d3d9c55a5d088c6fe6845c1e1b956edea865c230c626d479618cd7badf",
+      "size_bytes": 3355380
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/cars.rou.xml": {
+      "sha256": "abdd46e1c841334813705e9c8736255434376f2397be46a106fb5ae8088dda9a",
+      "size_bytes": 5180676
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/persons_elderly_0.58.rou.xml": {
+      "sha256": "b4a0a8d4920d80babfbe8e5aa4dec68d8068a34c9e2575cf4be7043f81fcbd7b",
+      "size_bytes": 458086
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_assignment.csv": {
+      "sha256": "55abf6ab1969dd4f3b89199ba9d4411169beca9fd8a058716b1dab01bc67aa4a",
+      "size_bytes": 744236
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_occupancy_ledger.csv": {
+      "sha256": "97882eeac34c47db8467c75e178c7c78621b29c1886657eb0d30dbbb073f5f9a",
+      "size_bytes": 1754703
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/network/08211_ped.net.xml": {
+      "sha256": "c94f6261e970e83c33ea3f164046dbdf7383bb841ad5e807b457c44705463688",
+      "size_bytes": 147390413
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/static_alignment_20260826/pedestrian_flood_timeline.json": {
+      "sha256": "335fd4bf2da9598a97c3059d0d24f9c309e86a46130303b545bfdf902d7f1efb",
+      "size_bytes": 1047877
+    },
+    "04_プログラム/scripts/scenario_c_integrated.py": {
+      "sha256": "372712073c7281b8d2c50e514804b952a7401fdde78a0696a483962ec0f1c6a3",
+      "size_bytes": 59256
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/scenario_c.sumocfg": {
+      "sha256": "fa5b15bec8cb1aa54f1e1f5ae03256d4605e1ed00d5b0a99dbd449498c09e474",
+      "size_bytes": 928
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realistic/runs/real_r0_seed23423_20260911_skill03/engine/scenario_c_real_r0_23423_full_20260911T112101_fb602b12/sumo.log": {
+      "sha256": "ff6253fd26cebb85a30dcfaa767731e8ca620f03b9efcee026962182e13660f2",
+      "size_bytes": 15203
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt/runs/core_v2_b3_seed23423_20260826_codex01/metrics.json": {
+      "sha256": "1bddaec080a85aa938b081bec5d385faa9e84c65a6f80f1f129b17b789d3f5ed",
+      "size_bytes": 1163
+    },
+    "06_研究結果/jdrt/データ取得監査/verify_real_r0.py": {
+      "sha256": "a13f1fc167c96c949a6b4b57c08046a965d585b4d788aff875ec6a8cfb48d4bf",
+      "size_bytes": 13252
+    }
+  }
+}

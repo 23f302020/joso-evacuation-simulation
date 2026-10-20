@@ -1,0 +1,18 @@
+{
+  "recorded_at": "2026-10-18T10:33:56.0322432+09:00",
+  "file": "05_タスク管理/モデル運用基準.md",
+  "before_sha256": "95b0bc1834828c2f9cbc3b2da7c0615103ea78c6410925afdb6bf64af3c78f25",
+  "after_sha256": "c4bbd68837b49d387744c0435f9dd28f35a7dea262c7c4871409f4a4926fc053",
+  "backup": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\document_history\\95b0bc1834828c2f9cbc3b2da7c0615103ea78c6410925afdb6bf64af3c78f25.md.bytes",
+  "model_source": "task runtime selected by parent; not changed by document edit",
+  "user_instruction": "2回以上重複する作業はスキル化し、記録は思考が少ないため、モデルを下げるか試行量を下げるようにしたい。判断や試行量が多く必要な場合は、6.1 sol highを使用したい",
+  "changed_scope": "現行§0のみ。旧§1以下を保全",
+  "verification": "git diff --check passed; reviewed scoped diff",
+  "correction_backup": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\document_history\\c4bbd68837b49d387744c0435f9dd28f35a7dea262c7c4871409f4a4926fc053.md.bytes",
+  "current_after_sha256": "2335e1cc515d52ea4984ca49bbcab3f2f6afdb4f46b880aeb4c5376874e67793",
+  "correction_reason": "Restored original §0 from SHA-verified backup; added role-based bullets only; preserved original §1 onward bytes and retained existing source-of-truth, judgment-recording, and verification guidance.",
+  "requested_model": "gpt-6-luna",
+  "requested_reasoning_effort": "low",
+  "actual_verified_model": null,
+  "verification_basis": "parent spawn arguments; backend actual model not separately observable"
+}

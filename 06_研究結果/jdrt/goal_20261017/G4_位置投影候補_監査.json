@@ -1,0 +1,28 @@
+{
+  "status": "CANDIDATE_ONLY",
+  "adopted": false,
+  "places": 275,
+  "statuses": {
+    "candidate": 266,
+    "no_origin_connection": 9
+  },
+  "net_offset": [
+    -400762.88,
+    -3981792.9
+  ],
+  "net_projection": "proj=utm zone=54 datum=WGS84 units=m no_defs ellps=WGS84 towgs84=0,0,0",
+  "independent_max_error_m": 2.842170943040401e-14,
+  "candidate_min_front_position_m": 7,
+  "candidate_end_buffer_m": 1,
+  "clamped_places": 65,
+  "max_clamp_shift_m": 7.0,
+  "max_lane_point_gap_m": 2.609463519938163,
+  "max_reference_access_m": 280.14894413759697,
+  "source_sha256": {
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered01\\manifest.json": "0e63c29ae965a24388e46de7f3232426534797b82b9f7cc0bd9e698186968cf8",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered01\\bounded.net.xml": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\scenario_c\\inputs\\ownership_sensitivity_20260826\\non_car_15pct\\scenario_c_agent_types.csv": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3",
+    "04_プログラム\\output\\sumo\\regions\\08211\\derived\\shelters_sumo.csv": "4f325976efd23af4c3c4fa716710b17375491d7c4d2f120e1cf1b24b80ce08fa",
+    "06_研究結果\\jdrt\\goal_20261017\\G4_位置投影候補.py": "c642c00f97ed31f8ad51b1d7f689ba080f41a2f12c70afa3b6ee4aaa8c689578"
+  }
+}

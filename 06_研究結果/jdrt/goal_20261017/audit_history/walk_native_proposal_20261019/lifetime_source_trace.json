@@ -1,0 +1,128 @@
+[
+  {
+    "path": "src/libsumo/Person.cpp",
+    "start": 751,
+    "end": 762,
+    "claim": "convert + insert replacement + remove current; no destruction of current stage here",
+    "source_sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/libsumo/Person.cpp#L751",
+    "excerpt": "751: Person::replaceStage(const std::string& personID, const int stageIndex, const TraCIStage& stage) {\n752:     MSTransportable* p = getPerson(personID);\n753:     if (stageIndex >= p->getNumRemainingStages()) {\n754:         throw TraCIException(\"Specified stage index:  is not valid for person \" + personID);\n755:     }\n756:     MSStage* personStage = convertTraCIStage(stage, personID);\n757:     // removing the current stage triggers abort+proceed so the replacement\n758:     // stage must be ready beforehand\n759:     p->appendStage(personStage, stageIndex + 1);\n760:     p->removeStage(stageIndex);\n761: }\n762: "
+  },
+  {
+    "path": "src/microsim/transportables/MSTransportable.cpp",
+    "start": 331,
+    "end": 353,
+    "claim": "next=0 retains prior stage in plan; only future-stage branch next>0 deletes; synchronous abort then proceed",
+    "source_sha256": "d717c0c2eb4623d96803aa6d0f299b29c1691065847695e5cabdc4cbe26a4eb8",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSTransportable.cpp#L331",
+    "excerpt": "331: MSTransportable::removeStage(int next, bool stayInSim) {\n332:     assert(myStep + next < myPlan->end());\n333:     assert(next >= 0);\n334:     if (next > 0) {\n335:         // myStep is invalidated upon modifying myPlan\n336:         int stepIndex = (int)(myStep - myPlan->begin());\n337:         delete *(myStep + next);\n338:         myPlan->erase(myStep + next);\n339:         myStep = myPlan->begin() + stepIndex;\n340:     } else {\n341:         if (myStep + 1 == myPlan->end() && stayInSim) {\n342:             // stay in the simulation until the start of simStep to allow appending new stages (at the correct position)\n343:             appendStage(new MSStageWaiting(getEdge(), nullptr, 0, 0, getEdgePos(), \"last stage removed\", false));\n344:         } else if (myStep + 1 != myPlan->end()) {\n345:             (*(myStep + 1))->setOrigin(getEdge(), getEdge() == getFromEdge() ? (*myStep)->getOriginStop() : nullptr, getEdgePos());\n346:         }\n347:         (*myStep)->abort(this);\n348:         if (!proceed(MSNet::getInstance(), SIMSTEP)) {\n349:             MSNet::getInstance()->getPersonControl().erase(this);\n350:         } else if (myPlan->front()->getDeparted() < 0) {\n351:             myPlan->front()->setDeparted(SIMSTEP);\n352:         }\n353:     }"
+  },
+  {
+    "path": "src/microsim/transportables/MSStageWalking.cpp",
+    "start": 153,
+    "end": 155,
+    "claim": "abort calls movement model remove with old PState",
+    "source_sha256": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSStageWalking.cpp#L153",
+    "excerpt": "153: MSStageWalking::abort(MSTransportable*) {\n154:     MSNet::getInstance()->getPersonControl().getMovementModel()->remove(myPState);\n155: }"
+  },
+  {
+    "path": "src/microsim/transportables/MSPModel_Interacting.cpp",
+    "start": 57,
+    "end": 68,
+    "claim": "remove erases pointer from active-lane collection and decreases count; no delete, field reset or lateral mutation",
+    "source_sha256": "1a04f7114293f50b92e063a29a60279ed74b14f78b43b20d10ab9b319c3dc674",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSPModel_Interacting.cpp#L57",
+    "excerpt": "57: MSPModel_Interacting::remove(MSTransportableStateAdapter* state) {\n58:     Pedestrians& pedestrians = myActiveLanes[state->getLane()];\n59:     MSPModel_InteractingState* const p = static_cast<MSPModel_InteractingState*>(state);\n60:     const auto& it = std::find(pedestrians.begin(), pedestrians.end(), p);\n61:     if (it != pedestrians.end()) {\n62:         if (p->getNextCrossing() != nullptr) {\n63:             unregisterCrossingApproach(*p, p->getNextCrossing());\n64:         }\n65:         pedestrians.erase(it);\n66:         myNumActivePedestrians--;\n67:     }\n68: }"
+  },
+  {
+    "path": "src/microsim/transportables/MSTransportable.cpp",
+    "start": 102,
+    "end": 148,
+    "claim": "prior retained; setArrived; remove edge membership; advance current stage; synchronous new proceed",
+    "source_sha256": "d717c0c2eb4623d96803aa6d0f299b29c1691065847695e5cabdc4cbe26a4eb8",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSTransportable.cpp#L102",
+    "excerpt": "102: MSTransportable::proceed(MSNet* net, SUMOTime time, const bool vehicleArrived) {\n103:     MSStage* const prior = *myStep;\n104:     const std::string& error = prior->setArrived(net, this, time, vehicleArrived);\n105:     // must be done before increasing myStep to avoid invalid state for rendering\n106:     prior->getEdge()->removeTransportable(this);\n107:     myStep++;\n108:     if (error != \"\") {\n109:         throw ProcessError(error);\n110:     }\n111:     /* We need to check whether an access stage is needed (or maybe even two).\n112:        The general scheme is: If the prior stage ended at a stop and the next stage\n113:        starts at an edge which is not the one the stop is at, but the stop has an access to it\n114:        we need an access stage. The same is true if prior ends at an edge, the next stage\n115:        is allowed to start at any stop the edge has access to.\n116:        If we start at a stop or end at a stop no access is needed.\n117:     */\n118:     bool accessToStop = false;\n119:     if (prior->getStageType() == MSStageType::WALKING || prior->getStageType() == MSStageType::DRIVING) {\n120:         accessToStop = checkAccess(prior);\n121:     } else if (prior->getStageType() == MSStageType::WAITING_FOR_DEPART) {\n122:         for (MSTransportableDevice* const dev : myDevices) {\n123:             dev->notifyEnter(*this, MSMoveReminder::NOTIFICATION_DEPARTED, nullptr);\n124:         }\n125:     }\n126:     if (!accessToStop && (myStep == myPlan->end()\n127:                           || ((*myStep)->getStageType() != MSStageType::DRIVING\n128:                               && (*myStep)->getStageType() != MSStageType::TRIP))) {\n129:         MSStoppingPlace* priorStop = prior->getStageType() == MSStageType::TRIP ? prior->getOriginStop() : prior->getDestinationStop();\n130:         // a trip might resolve to DRIVING so we would have to stay at the stop\n131:         // if a trip resolves to something else, this step will do stop removal\n132:         if (priorStop != nullptr) {\n133:             priorStop->removeTransportable(this);\n134:         }\n135:     }\n136:     if (myStep != myPlan->end()) {\n137:         if ((*myStep)->getStageType() == MSStageType::WALKING && (prior->getStageType() != MSStageType::ACCESS || prior->getDestination() != (*myStep)->getFromEdge())) {\n138:             checkAccess(prior, false);\n139:         } else if ((*myStep)->getStageType() == MSStageType::WAITING && prior->getStageType() == MSStageType::WAITING && prior->getDestination() != (*myStep)->getFromEdge()) {\n140:             checkAccess(prior, false);\n141:         }\n142:         (*myStep)->proceed(net, this, time, prior);\n143:         return true;\n144:     } else {\n145:         MSNet::getInstance()->getPersonControl().addArrived();\n146:         return false;\n147:     }\n148: }"
+  },
+  {
+    "path": "src/microsim/transportables/MSStage.cpp",
+    "start": 160,
+    "end": 163,
+    "claim": "setArrived mutates arrived timestamp only",
+    "source_sha256": "7284c708bc2aa3886bcefc452a0777a25dfb0d60c56b31e858304af2bf86c016",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSStage.cpp#L160",
+    "excerpt": "160: MSStage::setArrived(MSNet* /* net */, MSTransportable* /* transportable */, SUMOTime now, const bool /* vehicleArrived */) {\n161:     myArrived = now;\n162:     return \"\";\n163: }"
+  },
+  {
+    "path": "src/microsim/MSEdge.cpp",
+    "start": 1233,
+    "end": 1239,
+    "claim": "removeTransportable erases pointer membership only",
+    "source_sha256": "8d3e8ce8fe90a78675eb7ca1b5e1d34ff84cf58f6833aa67346a672a2df97343",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/MSEdge.cpp#L1233",
+    "excerpt": "1233: MSEdge::removeTransportable(MSTransportable* t) const {\n1234:     std::set<MSTransportable*, ComparatorNumericalIdLess>& tc = t->isPerson() ? myPersons : myContainers;\n1235:     auto it = tc.find(t);\n1236:     if (it != tc.end()) {\n1237:         tc.erase(it);\n1238:     }\n1239: }"
+  },
+  {
+    "path": "src/microsim/transportables/MSStageWalking.cpp",
+    "start": 114,
+    "end": 146,
+    "claim": "new walk sets departed/current route and carries old longitudinal position before add",
+    "source_sha256": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSStageWalking.cpp#L114",
+    "excerpt": "114: MSStageWalking::proceed(MSNet* net, MSTransportable* person, SUMOTime now, MSStage* previous) {\n115:     myDeparted = now;\n116:     myRouteStep = myRoute.begin();\n117:     myLastEdgeEntryTime = now;\n118:     if (myWalkingTime == 0) {\n119:         if (!person->proceed(net, now)) {\n120:             MSNet::getInstance()->getPersonControl().erase(person);\n121:         }\n122:         return;\n123:     }\n124:     const OptionsCont& oc = OptionsCont::getOptions();\n125:     if (previous->getEdgePos(now) >= 0 && previous->getEdge() == *myRouteStep) {\n126:         // we need to adapt to the arrival position of the vehicle unless we have an explicit access\n127:         myDepartPos = previous->getEdgePos(now);\n128:         if (oc.getString(\"pedestrian.model\") == \"jupedsim\") {\n129:             myDepartPosLat = previous->getEdgePosLat(now);\n130:         }\n131:         if (myWalkingTime > 0) {\n132:             mySpeed = computeAverageSpeed();\n133:         }\n134:     }\n135:     MSTransportableControl& pControl = net->getPersonControl();\n136:     myPState = pControl.getMovementModel()->add(person, this, now);\n137:     if (myPState == nullptr) {\n138:         pControl.erase(person);\n139:         return;\n140:     }\n141:     if (previous->getStageType() != MSStageType::WALKING || previous->getEdge() != getEdge()) {\n142:         // we only need new move reminders if we are walking a different edge (else it is probably a rerouting)\n143:         activateEntryReminders(person, true);\n144:     }\n145:     if (oc.getBool(\"vehroute-output.exit-times\")) {\n146:         myExitTimes = new std::vector<SUMOTime>();"
+  },
+  {
+    "path": "src/microsim/transportables/MSPModel_Striping.cpp",
+    "start": 161,
+    "end": 188,
+    "claim": "add creates new PState synchronously",
+    "source_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSPModel_Striping.cpp#L161",
+    "excerpt": "161: MSPModel_Striping::add(MSTransportable* transportable, MSStageMoving* stage, SUMOTime) {\n162:     if (!transportable->isPerson()) {\n163:         // containers are not supported (TODO add a warning here?)\n164:         return nullptr;\n165:     }\n166:     MSPerson* person = static_cast<MSPerson*>(transportable);\n167:     MSNet* net = MSNet::getInstance();\n168:     if (!myAmActive) {\n169:         net->getBeginOfTimestepEvents()->addEvent(new MovePedestrians(this), net->getCurrentTimeStep() + DELTA_T);\n170:         myAmActive = true;\n171:     }\n172:     assert(person->getCurrentStageType() == MSStageType::WALKING);\n173:     const MSLane* lane = stage->checkDepartLane(person->getEdge(), person->getVClass(), stage->getDepartLane(), person->getID());\n174:     if (lane == nullptr) {\n175:         const char* error = TL(\"Person '%' could not find sidewalk on edge '%', time=%.\");\n176:         if (OptionsCont::getOptions().getBool(\"ignore-route-errors\")) {\n177:             WRITE_WARNINGF(error, person->getID(), person->getEdge()->getID(), time2string(net->getCurrentTimeStep()));\n178:             return nullptr;\n179:         } else {\n180:             throw ProcessError(TLF(error, person->getID(), person->getEdge()->getID(), time2string(net->getCurrentTimeStep())));\n181:         }\n182:     }\n183:     PState* ped = new PState(person, stage, lane);\n184:     myActiveLanes[lane].push_back(ped);\n185:     myNumActivePedestrians++;\n186:     return ped;\n187: }\n188: "
+  },
+  {
+    "path": "src/microsim/transportables/MSTransportable.h",
+    "start": 253,
+    "end": 269,
+    "claim": "getNextStage(-1) resolves prior retained stage; total-remain count proves index in range",
+    "source_sha256": "8d48888dd9431c2e665de1cae391c8d6f240696ba66da0437dd24f4668828d04",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSTransportable.h#L253",
+    "excerpt": "253:     inline MSStage* getNextStage(int offset) const {\n254:         assert(myStep + offset >= myPlan->begin());\n255:         assert(myStep + offset < myPlan->end());\n256:         return *(myStep + offset);\n257:     }\n258: \n259:     /// @brief returns the numerical IDs of edges to be used (possibly of future stages)\n260:     const std::set<NumericalID> getUpcomingEdgeIDs() const override;\n261: \n262:     /// @brief Return the total number stages in this person's plan\n263:     inline int getNumStages() const {\n264:         return (int)myPlan->size();\n265:     }\n266: \n267:     /// @brief Return the number of remaining stages (including the current)\n268:     inline int getNumRemainingStages() const {\n269:         return (int)(myPlan->end() - myStep);"
+  },
+  {
+    "path": "src/microsim/transportables/MSStageMoving.cpp",
+    "start": 38,
+    "end": 42,
+    "claim": "only stage destructor deletes old PState; no destructor in current-stage replacement path before new add",
+    "source_sha256": "9f55fcb195ba96dbe5dab3ccb6985595d976633e2345fb959723410ab05a4d6e",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSStageMoving.cpp#L38",
+    "excerpt": "38: MSStageMoving::~MSStageMoving() {\n39:     if (myPState != nullptr && myPState->isFinished()) {\n40:         delete myPState;\n41:     }\n42: }"
+  },
+  {
+    "path": "src/microsim/transportables/MSPModel_Striping.cpp",
+    "start": 1776,
+    "end": 1813,
+    "claim": "natural completion sets old myLane=null before proceeding; same-lane guard excludes boundary",
+    "source_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSPModel_Striping.cpp#L1776",
+    "excerpt": "1776: MSPModel_Striping::PState::moveToNextLane(SUMOTime currentTime) {\n1777:     double dist = distToLaneEnd();\n1778:     if (DEBUGCOND(*this)) {\n1779:         std::cout << SIMTIME << \" ped=\" << myPerson->getID() << \" myEdgePos=\" << myEdgePos << \" dist=\" << dist << \"\\n\";\n1780:     }\n1781:     if (dist <= 0) {\n1782:         //if (ped.getPerson()->getID() == DEBUG1) {\n1783:         //    std::cout << SIMTIME << \" addToLane x=\" << ped.myEdgePos << \" newDir=\" << newDir << \" newLane=\" << newLane->getID() << \" walkingAreaShape=\" << walkingAreaShape << \"\\n\";\n1784:         //}\n1785:         //std::cout << \" changing to \" << newLane->getID() << \" myPosLat=\" << ped.myPosLat << \" oldStripes=\" << numStripes(myLane) << \" newStripes=\" << numStripes(newLane);\n1786:         //std::cout << \" newY=\" << ped.myPosLat << \" myDir=\" << ped.getDirection() << \" newDir=\" << newDir;\n1787:         const int oldDir = myDir;\n1788:         const MSLane* oldLane = myLane;\n1789:         myLane = myNLI.lane;\n1790:         myDir = myNLI.dir;\n1791:         const bool normalLane = (myLane == nullptr || myLane->getEdge().getFunction() == SumoXMLEdgeFunc::NORMAL || &myLane->getEdge() == myStage->getNextRouteEdge());\n1792:         if DEBUGCOND(*this) {\n1793:             std::cout << SIMTIME\n1794:                       << \" ped=\" << myPerson->getID()\n1795:                       << \" moveToNextLane old=\" << oldLane->getID()\n1796:                       << \" new=\" << (myLane == nullptr ? \"NULL\" : myLane->getID())\n1797:                       << \" oldDir=\" << oldDir\n1798:                       << \" newDir=\" << myDir\n1799:                       << \" myEdgePos=\" << myEdgePos\n1800:                       << \" dist=\" << dist\n1801:                       << \"\\n\";\n1802:         }\n1803:         if (myLane == nullptr) {\n1804:             myEdgePos = myStage->getArrivalPos();\n1805:         }\n1806:         // moveToNextEdge might destroy the person and thus mess up the heap. Better check first\n1807:         if (myStage->getRouteStep() == myStage->getRoute().end() - 1) {\n1808:             myLane = nullptr;\n1809:         } else {\n1810:             const bool arrived = myStage->moveToNextEdge(myPerson, currentTime, oldDir, normalLane ? nullptr : &myLane->getEdge());\n1811:             UNUSED_PARAMETER(arrived);\n1812:             assert(!arrived);\n1813:             assert(myDir != UNDEFINED_DIRECTION);"
+  },
+  {
+    "path": "src/microsim/transportables/MSPModel_Striping.cpp",
+    "start": 1023,
+    "end": 1039,
+    "claim": "natural finished stage proceeds after old state loses lane",
+    "source_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSPModel_Striping.cpp#L1023",
+    "excerpt": "1023:         PState* const p = static_cast<PState*>(pedestrians[i]);\n1024:         if (p->isRemoteControlled()) {\n1025:             continue;\n1026:         }\n1027:         if (p->getDirection() == dir && p->distToLaneEnd() < 0) {\n1028:             // moveToNextLane may trigger re-insertion (for consecutive\n1029:             // walks) so erase must be called first\n1030:             pedestrians.erase(pedestrians.begin() + i);\n1031:             i--;\n1032:             p->moveToNextLane(currentTime);\n1033:             if (p->getLane() != nullptr) {\n1034:                 changedLane.insert(p->getPerson());\n1035:                 myActiveLanes[p->getLane()].push_back(p);\n1036:             } else {\n1037:                 // end walking stage and destroy PState\n1038:                 p->getStage()->moveToNextEdge(p->getPerson(), currentTime, dir);\n1039:                 myNumActivePedestrians--;"
+  },
+  {
+    "path": "src/microsim/transportables/MSPModel_Striping.h",
+    "start": 347,
+    "end": 353,
+    "claim": "getPosLat returns raw myPosLat directly, unlike center-offset conversion",
+    "source_sha256": "44d6419e930810ca62d2dd3efbad7786bfc89e157cbca3c4fbc91763174a3e8d",
+    "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSPModel_Striping.h#L347",
+    "excerpt": "347:         double getLatOffset() const {\n348:             return posLatConversion(myPosLat, myLane->getWidth());\n349:         }\n350: \n351:         inline double getPosLat() const {\n352:             return myPosLat;\n353:         }"
+  }
+]

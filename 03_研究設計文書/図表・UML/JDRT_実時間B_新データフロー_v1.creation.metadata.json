@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-16T07:09:25.885042+09:00",
+  "protocol": "realtime_b_v1",
+  "input_manifest_sha256": "403af2f1d754c88d8ba9e8ccf2938d4c96de283dac4dc647a805694a27b70460",
+  "input_validation_sha256": "4a3857fc2f191e2460387765033ffc28df7ba3fc9f4944b2b498cbfaf31b56f8",
+  "sources": {
+    "04_プログラム/config/jdrt_realtime_b_v1.json": "08c2922aa1379a80ac86d1bb118215a033ba069779abb7905825fc3d295de5dc",
+    "04_プログラム/scripts/jdrt_realtime_b_inputs.py": "b6dbfa666a4af94ec1bf82f6626e048b83450a4d5f99db583d94853d27529fc9",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_original/LifeSim_Validation_Joso/Hydraulic_Data/Calibrated/Calibrated.hdf": "df8704b3abf0a245d61dc530280bde446163cb59bae4943181a4f73a936acdc6",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_original/LifeSim_Validation_Joso/Hydraulic_Data/Terrains/Terrain1/Terrain.kinugawa.tif": "7f1bcb9794419e3f66492cd33ef3a434ebcac38d385a266bad4c96c7ee071110",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/network/08211_ped.net.xml": "c94f6261e970e83c33ea3f164046dbdf7383bb841ad5e807b457c44705463688",
+    "04_プログラム/output/sumo/regions/08211/network/08211.osm.xml": "fef928042eb345f7c6ecde7989175fe481742596a411f4f7875591c22afd0c36",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/cells_utm54n.geojson": "9209e5019c343d6c49276dae012c5f7a03daa99ead12f7d5b00cffa3b526c306",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/network_domain_coverage.csv": "7aea43ef49d2df41cb9102387a6d0edb8303465f5a37b6d288132c10ba1fe1ec",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/structure_tags_audit.csv": "5bbc6864e769f20e70c0e5d9bee83232b5648fa261b87349779ccdbb83249180",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_occupancy_ledger.csv": "97882eeac34c47db8467c75e178c7c78621b29c1886657eb0d30dbbb073f5f9a",
+    "04_プログラム/output/sumo/regions/08211/derived/shelters_sumo.csv": "4f325976efd23af4c3c4fa716710b17375491d7c4d2f120e1cf1b24b80ce08fa",
+    "02_情報調査/交通・地域/jdrt_realistic/既存9施設_公表容量照合_20261015.csv": "cc488ea0497838975c28e069379230ae172ed35b39e2b9ff582ed8e2c469c71c",
+    "03_研究設計文書/jdrt/常総市JDRT_実時間B_PreAnalysisPlan_v1.md": "69119e5017e9a7120ba203a1dd05998cdcd9f17ed501544cd332e07a90730d7c"
+  },
+  "artifacts": {
+    "JDRT_実時間B_新データフロー_v1.md": "f4477301c78b425dc1df361f2f947dbbde14db4a28e7048737fe88627b7a88c9",
+    "JDRT_実時間B_新データフロー_v1.html": "a518196c4fd5a724300439da3f471b287daa4bc51c19509d2eb57fdf65699b3b"
+  }
+}

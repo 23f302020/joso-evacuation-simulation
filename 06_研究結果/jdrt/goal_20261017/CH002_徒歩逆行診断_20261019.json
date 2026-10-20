@@ -1,0 +1,731 @@
+{
+  "status": "NATIVE_LATERAL_RESET_CONFIRMED_REPAIR_NOT_IMPLEMENTED",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend_identity": "not_verified",
+  "scope": "technical diagnosis plus approved observation-only runtime/test change; new technical pair executed and failed; native repair not implemented",
+  "run_id": "wf26101801_c26",
+  "manifest": {
+    "protocol": "realtime_choice_fixture_v1",
+    "run_id": "wf26101801_c26",
+    "cell_id": "fixture_walk_short_repeated",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u50",
+    "scenario": "R0",
+    "seed": 23423,
+    "purpose": "fixture",
+    "pid": 19160,
+    "status": "FAILED",
+    "started_at_jst": "2026-10-18T20:55:02.943543+09:00",
+    "parameter_sha256": "1c9517ae82292ed90eae43ff1777b5e2fd118f83ebadb7465913af2f234bab3f",
+    "parameter_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/wf26101801_c26/fixture_inputs/fixture_parameters.json",
+    "input_manifest_sha256": "57dc821a07e9d820d551083bbe9a781813f83fd6235e1d5cc580a8fe806444a3",
+    "input_directory": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/wf26101801_c26/fixture_inputs",
+    "implementation_sha256": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+    },
+    "execution_contract": {
+      "timing_contract": "pre_step_end_v1",
+      "max_control_lead_sec": 0.5,
+      "initial_closure_call_sec": 0,
+      "strict_closed_entry_inclusive": true,
+      "common_implementation_required": true,
+      "excluded_comparison_protocols": [
+        "v1",
+        "v2",
+        "realistic_v1",
+        "realtime_b_v1",
+        "realtime_b_boundary_v2"
+      ],
+      "implementation_files": [
+        "04_プログラム/scripts/jdrt_realtime_choice.py",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+        "04_プログラム/scripts/jdrt_choice_policy.py",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py"
+      ],
+      "legacy_cli_may_start": false
+    },
+    "end_sec": 1500,
+    "step_sec": 0.5,
+    "snapshot_sec": 60,
+    "research_adoption_permitted": false,
+    "fixture_case": "walk_short_repeated",
+    "implementation_archive_sha256": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+    },
+    "runtime_sha256": {
+      "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+      "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+      "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+      "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+      "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+    },
+    "sumo_version": [
+      22,
+      "SUMO 1.26.0"
+    ],
+    "finished_at_jst": "2026-10-18T20:55:04.060484+09:00",
+    "error_type": "RuntimeError",
+    "error": "Walking stage replacement moved the person"
+  },
+  "failure_site": "jdrt_realtime_choice.py:901 old_remaining -> replace_walk_stage_receipt:230",
+  "last_native_before_control_frame": [
+    {
+      "time_sec": "52.5",
+      "phase": "after_step_before_control",
+      "actor_id": "fixture_person_0",
+      "kind": "walk",
+      "road_id": "d0",
+      "lane_id": "",
+      "lane_position_m": "12.592627737109952",
+      "x": "134.16",
+      "y": "116.59262773710995",
+      "speed_mps": "0.8667788926046341",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"fixture_person_0\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": "",
+      "native_stop_lane_id": "",
+      "native_stop_start_pos_m": "",
+      "native_stop_end_pos_m": "",
+      "native_stop_flags": ""
+    },
+    {
+      "time_sec": "52.5",
+      "phase": "after_step_before_control",
+      "actor_id": "fixture_person_1",
+      "kind": "walk",
+      "road_id": "d0",
+      "lane_id": "",
+      "lane_position_m": "1.0503751161088488",
+      "x": "134.79999999999998",
+      "y": "105.05037511610885",
+      "speed_mps": "0.5661462267953902",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"fixture_person_1\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": "",
+      "native_stop_lane_id": "",
+      "native_stop_start_pos_m": "",
+      "native_stop_end_pos_m": "",
+      "native_stop_flags": ""
+    }
+  ],
+  "last_event": {
+    "time_sec": 52.5,
+    "event": "closure_applied",
+    "edge_id": "d1",
+    "mode": "pedestrian",
+    "scheduled_sec": 53,
+    "control_call_sec": 52.5,
+    "observation_upper_sec": 53,
+    "control_lead_sec": 0.5,
+    "phase": "before_step_ending_at_closure"
+  },
+  "successful_receipts_at_first_reroute": [
+    {
+      "time_sec": 0.5,
+      "event": "walk_plan",
+      "person_id": "fixture_person_0",
+      "stage": "reroute",
+      "route": [
+        "e0",
+        "d0",
+        "d1",
+        "d2",
+        "e2"
+      ],
+      "depart_pos": 3.9375,
+      "arrival_pos": 50.0,
+      "endpoint_estimate_m": 378.49249999999995,
+      "previous_plan_m": 239.8125,
+      "old_remaining_m": 239.8125,
+      "signed_progress_m": 0.0,
+      "model_passed_m": 0.0,
+      "speed_integral_m": 0.0,
+      "sumo_plan_length_m": 368.7212325704741,
+      "enforced_stage_speed_mps": 1.0,
+      "replacement_receipts": [
+        {
+          "purpose": "old_remaining",
+          "stage_index": 0,
+          "requested_edges": [
+            "e0",
+            "e1",
+            "e2"
+          ],
+          "requested_depart_pos_m": 3.9375,
+          "requested_arrival_pos_m": 50.0,
+          "before": {
+            "edge_id": "e0",
+            "lane_position_m": 3.9375,
+            "xy": [
+              114.1875,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 239.8125
+          },
+          "after": {
+            "edge_id": "e0",
+            "lane_position_m": 3.9375,
+            "xy": [
+              114.1875,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 239.8125
+          }
+        },
+        {
+          "purpose": "new_route",
+          "stage_index": 0,
+          "requested_edges": [
+            "e0",
+            "d0",
+            "d1",
+            "d2",
+            "e2"
+          ],
+          "requested_depart_pos_m": 3.9375,
+          "requested_arrival_pos_m": 50.0,
+          "before": {
+            "edge_id": "e0",
+            "lane_position_m": 3.9375,
+            "xy": [
+              114.1875,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 239.8125
+          },
+          "after": {
+            "edge_id": "e0",
+            "lane_position_m": 3.9375,
+            "xy": [
+              114.1875,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "d0",
+              "d1",
+              "d2",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 368.7212325704741
+          }
+        }
+      ],
+      "person_type_id": "walk_type3@fixture_person_0",
+      "person_type_max_mps": 1.0,
+      "person_max_mps": 0.8,
+      "person_speed_factor": 0.8
+    },
+    {
+      "time_sec": 0.5,
+      "event": "walk_plan",
+      "person_id": "fixture_person_1",
+      "stage": "reroute",
+      "route": [
+        "e0",
+        "d0",
+        "d1",
+        "d2",
+        "e2"
+      ],
+      "depart_pos": 11.8125,
+      "arrival_pos": 50.0,
+      "endpoint_estimate_m": 370.61749999999995,
+      "previous_plan_m": 231.9375,
+      "old_remaining_m": 231.9375,
+      "signed_progress_m": 0.0,
+      "model_passed_m": 0.0,
+      "speed_integral_m": 0.0,
+      "sumo_plan_length_m": 360.8462325704741,
+      "enforced_stage_speed_mps": 0.58,
+      "replacement_receipts": [
+        {
+          "purpose": "old_remaining",
+          "stage_index": 0,
+          "requested_edges": [
+            "e0",
+            "e1",
+            "e2"
+          ],
+          "requested_depart_pos_m": 11.8125,
+          "requested_arrival_pos_m": 50.0,
+          "before": {
+            "edge_id": "e0",
+            "lane_position_m": 11.8125,
+            "xy": [
+              122.0625,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 231.9375
+          },
+          "after": {
+            "edge_id": "e0",
+            "lane_position_m": 11.8125,
+            "xy": [
+              122.0625,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 231.9375
+          }
+        },
+        {
+          "purpose": "new_route",
+          "stage_index": 0,
+          "requested_edges": [
+            "e0",
+            "d0",
+            "d1",
+            "d2",
+            "e2"
+          ],
+          "requested_depart_pos_m": 11.8125,
+          "requested_arrival_pos_m": 50.0,
+          "before": {
+            "edge_id": "e0",
+            "lane_position_m": 11.8125,
+            "xy": [
+              122.0625,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 231.9375
+          },
+          "after": {
+            "edge_id": "e0",
+            "lane_position_m": 11.8125,
+            "xy": [
+              122.0625,
+              95.2
+            ],
+            "stage_edges": [
+              "e0",
+              "d0",
+              "d1",
+              "d2",
+              "e2"
+            ],
+            "stage_arrival_pos_m": 50.0,
+            "stage_length_m": 360.8462325704741
+          }
+        }
+      ],
+      "person_type_id": "walk_type4@fixture_person_1",
+      "person_type_max_mps": 0.58,
+      "person_max_mps": 0.46399999999999997,
+      "person_speed_factor": 0.8
+    }
+  ],
+  "evidence_sha256": {
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101801_c26\\execution\\manifest.json": "0205f9ce5be4fd2605506b5a5879b4e8ff51ebbd89634558f999eb0da98460b9",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101801_c26\\execution\\events.jsonl": "d2c063c41dec2337922709323ed26473f1c6d65964b7284c430b51aa080e8b5b",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101801_c26\\execution\\actor_observations.csv.gz": "63904b71df35abaf9fbbe7f24b9dba654f4b872c3e725bcf291e2c3c9ad7d826",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101801_c26\\execution\\exception.txt": "0958a2a5963281efa0ba86979737eaa72851de327504d200937fa1d17d19c815",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101801_c26\\execution\\sumo_errors.log": "875fd0d01a9d992f3458bca86044e4c215c517b3584b5632f9b8ab8a40f9892f",
+    "04_プログラム\\scripts\\jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム\\scripts\\jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム\\scripts\\jdrt_choice_fixtures.py": "3fc3fa32f2a49c36738b0484e60918a6e124edcf2c120bb65f118727f23e5ce7",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\sumo-1.26.0-msi-extract\\PFiles\\Eclipse\\Sumo\\tools\\traci\\_person.py": "9eade4f03792eeb9a9f5ce8a69db57b0ec72ae54cab800a2ef9b317e3455bbbd",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\sumo-1.26.0-msi-extract\\PFiles\\Eclipse\\Sumo\\tools\\traci\\_simulation.py": "8b7f97ced4dd6774271e8e0da270d687aa9a5ff438c8090023a941beb4e8bbec"
+  },
+  "local_traci_write_stage_source": "def _writeStage(stage):\n    format = \"tisssldddsddds\"\n    values = [13, stage.type, stage.vType, stage.line, stage.destStop, stage.edges,\n              stage.travelTime, stage.cost, stage.length, stage.intended,\n              stage.depart, stage.departPos, stage.arrivalPos, stage.description]\n    return format, values\n",
+  "official_sources": {
+    "person": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/libsumo/Person.cpp",
+    "walking": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSStageWalking.cpp",
+    "striping": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSPModel_Striping.cpp"
+  },
+  "established": [
+    "Failure occurs at second closure (d1 scheduled 53; control 52.5), while replacing the original remaining stage, before new reversed route installation.",
+    "Runtime mutates Stage.departPos, but SUMO 1.26 convertTraCIStage constructs walking stage from person arrival position. Warning departPos50 alone does not establish a position jump because proceed can reset departure position from previous stage.",
+    "replaceStage destroys/recreates striping movement state; constructor selects lateral stripe from unspecified lateral departure. Lateral reset is a concrete source-supported hypothesis.",
+    "Original failed call does not return or serialize receipt. Exact before/after mismatch cannot be independently recovered from preserved outputs."
+  ],
+  "deferred": [
+    "No physical repair selected before native mismatch is known.",
+    "Any distance-budget replacement must retain old_remaining source/recurrence evidence; no endpoint-estimate substitution without proof.",
+    "Complete current 26 suite, independent audit, 14 smokes and preflight remain required before core."
+  ],
+  "observation_only_change": {
+    "archive": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_receipt_before_20261019T093036",
+    "patch": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_receipt_before_20261019T093036\\observation_only.patch",
+    "target_tests": {
+      "count": 2,
+      "subtests_position_change": 3,
+      "status": "PASS",
+      "command": "venv/Scripts/python.exe -X utf8 -m unittest tests.test_jdrt_choice_runtime.RuntimeContracts.test_walk_replacement_receipt_records_native_api_arguments_and_positions tests.test_jdrt_choice_runtime.RuntimeContracts.test_walk_replacement_receipt_rejects_native_position_change",
+      "cwd": "04_プログラム"
+    },
+    "git_diff_check": "PASS",
+    "runtime_after_sha256": "b2e60b3a556399ff378bfb7495be375e2c7abfc07ab4b41824012e5232d654c2",
+    "tests_after_sha256": "346f4ed1b1738261180b5f41b6989b27e37b1860f3bc499e5d8d7daf4bc3e25b"
+  },
+  "new_native_diagnosis": {
+    "suite": {
+      "protocol": "realtime_choice_fixture_suite_v1",
+      "purpose": "technical_fixture_suite",
+      "run_id": "wf26101901",
+      "pid": 13900,
+      "status": "FAILED",
+      "started_at_jst": "2026-10-19T09:31:21.946695+09:00",
+      "research_adoption_permitted": false,
+      "factory_sha256": "3fc3fa32f2a49c36738b0484e60918a6e124edcf2c120bb65f118727f23e5ce7",
+      "cases": [
+        {
+          "case": "walk_short_calibration",
+          "status": "PASS",
+          "checks": {
+            "same_real_controller_completed": true,
+            "technical_only": true,
+            "zero_physical_errors": true,
+            "sumo_error_zero": true,
+            "all_output_hashes": true,
+            "both_type3_type4_fixture_people": true,
+            "all_people_short_edge_reroute_sequence": true,
+            "native_forward_then_reverse_positions": true,
+            "two_unchanged_native_replacement_receipts_per_plan": true,
+            "both_types_getter_below_registered_stage_speed": true,
+            "native_invalid_departpos_positive_exact_receipt_count": true,
+            "all_fixture_walkers_reach_fixed_terminal": true,
+            "shared_native_second_short_edge_frame": true
+          },
+          "outcomes": {
+            "admitted": 2
+          },
+          "request_states": {},
+          "event_counts": {
+            "person_ready": 2,
+            "walk_plan": 4,
+            "person_state": 4,
+            "walk_departure": 2,
+            "closure_applied": 1,
+            "walk_reroute": 2,
+            "person_terminal": 2
+          },
+          "sumo_log_summary": {
+            "bytes": 472,
+            "warning_count": 4,
+            "error_count": 0,
+            "handled_route_rejection_count": 0,
+            "unhandled_error_count": 0,
+            "collision_teleport_count": 0,
+            "gridlock_teleport_count": 0
+          },
+          "execution_manifest_sha256": "f76bc6424353c0ff459f807c0c32584779e44a82c4e0c5aea4e1f8d2d265829d",
+          "child_run_id": "wf26101901_c25"
+        }
+      ],
+      "finished_at_jst": "2026-10-19T09:31:40.738723+09:00",
+      "error_type": "RuntimeError",
+      "error": "Walking stage replacement moved the person: {\"after\": {\"edge_id\": \"d0\", \"lane_position_m\": 12.592627737109952, \"stage_arrival_pos_m\": 50.0, \"stage_edges\": [\"d0\", \"d1\", \"d2\", \"e2\"], \"stage_length_m\": 332.71955362190477, \"xy\": [134.79999999999998, 116.59262773710995]}, \"before\": {\"edge_id\": \"d0\", \"lane_position_m\": 12.592627737109952, \"stage_arrival_pos_m\": 50.0, \"stage_edges\": [\"e0\", \"d0\", \"d1\", \"d2\", \"e2\"], \"stage_length_m\": 361.39079020725706, \"xy\": [134.16, 116.59262773710995]}, \"changed_keys\": [\"xy\"], \"purpose\": \"old_remaining\", \"requested_arrival_pos_m\": 50.0, \"requested_depart_pos_m\": 12.592627737109952, \"requested_edges\": [\"d0\", \"d1\", \"d2\", \"e2\"], \"stage_index\": 0}"
+    },
+    "manifest": {
+      "protocol": "realtime_choice_fixture_v1",
+      "run_id": "wf26101901_c26",
+      "cell_id": "fixture_walk_short_repeated",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R0",
+      "seed": 23423,
+      "purpose": "fixture",
+      "pid": 13900,
+      "status": "FAILED",
+      "started_at_jst": "2026-10-19T09:31:39.663809+09:00",
+      "parameter_sha256": "1c9517ae82292ed90eae43ff1777b5e2fd118f83ebadb7465913af2f234bab3f",
+      "parameter_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/wf26101901_c26/fixture_inputs/fixture_parameters.json",
+      "input_manifest_sha256": "e1820af0c885a610bac669047ff60b650e12342a4539b54c46b32671394da81a",
+      "input_directory": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/wf26101901_c26/fixture_inputs",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "b2e60b3a556399ff378bfb7495be375e2c7abfc07ab4b41824012e5232d654c2",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "execution_contract": {
+        "timing_contract": "pre_step_end_v1",
+        "max_control_lead_sec": 0.5,
+        "initial_closure_call_sec": 0,
+        "strict_closed_entry_inclusive": true,
+        "common_implementation_required": true,
+        "excluded_comparison_protocols": [
+          "v1",
+          "v2",
+          "realistic_v1",
+          "realtime_b_v1",
+          "realtime_b_boundary_v2"
+        ],
+        "implementation_files": [
+          "04_プログラム/scripts/jdrt_realtime_choice.py",
+          "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+          "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+          "04_プログラム/scripts/jdrt_choice_policy.py",
+          ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py"
+        ],
+        "legacy_cli_may_start": false
+      },
+      "end_sec": 1500,
+      "step_sec": 0.5,
+      "snapshot_sec": 60,
+      "research_adoption_permitted": false,
+      "fixture_case": "walk_short_repeated",
+      "implementation_archive_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "b2e60b3a556399ff378bfb7495be375e2c7abfc07ab4b41824012e5232d654c2",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "sumo_version": [
+        22,
+        "SUMO 1.26.0"
+      ],
+      "finished_at_jst": "2026-10-19T09:31:40.735228+09:00",
+      "error_type": "RuntimeError",
+      "error": "Walking stage replacement moved the person: {\"after\": {\"edge_id\": \"d0\", \"lane_position_m\": 12.592627737109952, \"stage_arrival_pos_m\": 50.0, \"stage_edges\": [\"d0\", \"d1\", \"d2\", \"e2\"], \"stage_length_m\": 332.71955362190477, \"xy\": [134.79999999999998, 116.59262773710995]}, \"before\": {\"edge_id\": \"d0\", \"lane_position_m\": 12.592627737109952, \"stage_arrival_pos_m\": 50.0, \"stage_edges\": [\"e0\", \"d0\", \"d1\", \"d2\", \"e2\"], \"stage_length_m\": 361.39079020725706, \"xy\": [134.16, 116.59262773710995]}, \"changed_keys\": [\"xy\"], \"purpose\": \"old_remaining\", \"requested_arrival_pos_m\": 50.0, \"requested_depart_pos_m\": 12.592627737109952, \"requested_edges\": [\"d0\", \"d1\", \"d2\", \"e2\"], \"stage_index\": 0}"
+    },
+    "receipt": {
+      "after": {
+        "edge_id": "d0",
+        "lane_position_m": 12.592627737109952,
+        "stage_arrival_pos_m": 50.0,
+        "stage_edges": [
+          "d0",
+          "d1",
+          "d2",
+          "e2"
+        ],
+        "stage_length_m": 332.71955362190477,
+        "xy": [
+          134.79999999999998,
+          116.59262773710995
+        ]
+      },
+      "before": {
+        "edge_id": "d0",
+        "lane_position_m": 12.592627737109952,
+        "stage_arrival_pos_m": 50.0,
+        "stage_edges": [
+          "e0",
+          "d0",
+          "d1",
+          "d2",
+          "e2"
+        ],
+        "stage_length_m": 361.39079020725706,
+        "xy": [
+          134.16,
+          116.59262773710995
+        ]
+      },
+      "changed_keys": [
+        "xy"
+      ],
+      "purpose": "old_remaining",
+      "requested_arrival_pos_m": 50.0,
+      "requested_depart_pos_m": 12.592627737109952,
+      "requested_edges": [
+        "d0",
+        "d1",
+        "d2",
+        "e2"
+      ],
+      "stage_index": 0
+    },
+    "delta_xy_m": [
+      0.6399999999999864,
+      0.0
+    ],
+    "euclidean_m": 0.6399999999999864,
+    "edge_unchanged": true,
+    "longitudinal_unchanged": true,
+    "failed_changed_keys_recomputed": [
+      "xy"
+    ],
+    "observed_processes": {
+      "fixture_launcher_pid": 6032,
+      "fixture_driver_pid": 13900,
+      "sumo_pid": 20436
+    },
+    "command_start_jst": "2026-10-19T09:31:19.7729952+09:00",
+    "command_exit_jst": "2026-10-19T09:31:40.8915470+09:00",
+    "command_exit_code": 1,
+    "process_after_exit": "CIM all Python/SUMO list empty",
+    "artifacts_sha256": {
+      "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101901\\manifest.json": "f23aed5b63f3de6fd2efd8392a5e2c7b1c0bffacf3eca197acfd696c3c997a95",
+      "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101901_c26\\execution\\manifest.json": "2b9672d56c6f575bb6021b9582ec02ea0e4a4a16c052c171c2d414b4da2384bc",
+      "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101901_c26\\execution\\exception.txt": "aec5e80221f4b381dee972ad6386672d1c17ea14bce103afa4556e748e7b360f",
+      "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101901_c26\\execution\\events.jsonl": "d2c063c41dec2337922709323ed26473f1c6d65964b7284c430b51aa080e8b5b",
+      "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101901_c26\\execution\\actor_observations.csv.gz": "ea83df2e5fea9283b80f2d89998fc888b21c35bf82c39e9397651c57438c14e5",
+      "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\wf26101901_c26\\execution\\sumo_errors.log": "875fd0d01a9d992f3458bca86044e4c215c517b3584b5632f9b8ab8a40f9892f",
+      "06_研究結果\\jdrt\\goal_20261017\\wf26101901.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "06_研究結果\\jdrt\\goal_20261017\\wf26101901.stderr.log": "8c11b908622817e2668ad54727fbd89e1a7ec7b0ed468c9f692b861fac33b7df"
+    }
+  },
+  "official_release_review": {
+    "latest_official_download_page": "https://eclipse.dev/sumo/docs/Downloads.html",
+    "latest_official_page_release": "1.28.0",
+    "release_date": "2026-10-08",
+    "main_commit": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "main_commit_date_utc": "2026-10-18T22:28:35Z",
+    "comparisons": [
+      {
+        "ref": "v1_26_0",
+        "proceed_section_sha256": "fa13cf5175e00d768d19a01e5c795c07f043885da84215ac2cf44cd89b81141a",
+        "walking_poslat_transfer_only_jupedsim": true,
+        "convert_traci_walk_unspecified_poslat": true
+      },
+      {
+        "ref": "v1_28_0",
+        "proceed_section_sha256": "fa13cf5175e00d768d19a01e5c795c07f043885da84215ac2cf44cd89b81141a",
+        "walking_poslat_transfer_only_jupedsim": true,
+        "convert_traci_walk_unspecified_poslat": true
+      },
+      {
+        "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+        "proceed_section_sha256": "fa13cf5175e00d768d19a01e5c795c07f043885da84215ac2cf44cd89b81141a",
+        "walking_poslat_transfer_only_jupedsim": true,
+        "convert_traci_walk_unspecified_poslat": true
+      }
+    ],
+    "source_inventory": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_source_review_20261019\\sources.json",
+    "fixed_official_binary_confirmed": false,
+    "note": "All inspected source versions retain the same lateral-reset path. Upgrading alone is unsupported as a repair."
+  },
+  "native_repair_candidate": {
+    "status": "PROPOSAL_ONLY_NO_NATIVE_PATCH_OR_BUILD_OR_GLOBAL_INSTALL",
+    "base": "pinned v1_26_0 source, workspace-only binary; preserve current global SUMO",
+    "location": "MSPModel_Striping::PState constructor lateral initialization, after direction selection and before myNLI initialization",
+    "algorithm": [
+      "When the immediately preceding stage is walking, its retained PState is striping, and the same normal external lane/edge and longitudinal position carry into the new stage, copy its raw getPosLat() into new myPosLat instead of choosing an unspecified departure stripe.",
+      "Keep existing route-dependent direction initialization and next-lane computation; do not restore XY using moveTo/moveToXY.",
+      "Do not use a lane-center offset roundtrip when direct raw stripe position is available; avoid numerical loss from self-inverse coordinate conversion.",
+      "For all other cases, retain original constructor branch unchanged."
+    ],
+    "rationale": "Old PState remains readable: MSPModel_Interacting::remove removes lane registration but does not delete state; new stage receives preceding stage through MSTransportable::proceed. Verify lifetime with native tests before adoption.",
+    "not_sufficient": "Replacing the jupedsim if condition with generic previous->getEdgePosLat is insufficient: walking inherits MSStage::getEdgePosLat returning myArrivalPosLat, not current striping offset.",
+    "required_verification": [
+      "new calibration/repeated native pair preserves exact edge/longitudinal/XY at old_remaining and new_route for Type3/Type4",
+      "next native timestep changes direction correctly and respects registered walking stage speed",
+      "walking stage-budget recurrence independently recomputed from raw plan receipts and CSV speed integral",
+      "native no-reroute, initial departure, multi-person, same-edge forward/reverse and previous-nonwalking regression controls",
+      "full current26 suite then independent audit then all14 smoke then new preflight with pinned binary/dependency SHA"
+    ],
+    "build_feasibility": "UNCONFIRMED: parent read-only inventory found no Windows compiler/CMake/Ninja/VS tools and WSL inventory did not establish any usable toolchain or libraries. No installation attempted.",
+    "dependency_impact": [
+      "new sumo_binary SHA invalidates runtime receipts and G6 source proof; all70 must share final pinned toolchain",
+      "workspace-only binary resolution needs choice-specific pin; shared legacy resolve_sumo_binary must remain unchanged",
+      "archive official source commit/tag, patch, compiler/build flags, linked DLL hashes and binary SHA/version; native build cannot be assumed byte equivalent to installer",
+      "GUI not needed for runtime, but official Windows build requires suitable compiler/CMake and Xerces-C; optional libraries/flags must be declared and must not alter registered network/movement behavior"
+    ],
+    "source_lines_v1_26_0": {
+      "src/libsumo/Person.cpp": {
+        "convertTraCIStage": 615,
+        "walking_constructor": 670,
+        "replaceStage": 751
+      },
+      "src/microsim/transportables/MSStageWalking.cpp": {
+        "proceed": 114,
+        "jupedsim_lateral_transfer": 129
+      },
+      "src/microsim/transportables/MSPModel_Striping.cpp": {
+        "PState_constructor": 1508,
+        "unspecified_lateral_branch": 1559,
+        "offset_conversion": 1575,
+        "new_next_lane": 1581
+      },
+      "src/microsim/transportables/MSPModel_Striping.h": {
+        "getLatOffset": 347,
+        "raw_getPosLat": 351
+      },
+      "src/microsim/transportables/MSStage.cpp": {
+        "base_getEdgePosLat": 89
+      },
+      "src/microsim/transportables/MSTransportable.cpp": {
+        "proceed": 102,
+        "removeStage": 331
+      }
+    }
+  },
+  "current_gate": "READY=false, formal0/70, no core; old invalid preserved; old technical receipts and G6 runtime sourceproof stale after observation runtime SHA change",
+  "original_failed_after_receipt_present": false,
+  "original_failed_changed_keys_known_from_original_run": false,
+  "initial_next_change_proposal_history": [
+    "Keep exact edge/lane_position/xy rejection unchanged.",
+    "Include complete failed receipt and changed_keys in raised exception so existing exception.txt preserves native after values.",
+    "Add focused unit tests asserting diagnostic payload and unchanged failure on edge, longitudinal and lateral movement.",
+    "After parent Gate, run fresh calibration/repeated pair only. Do not rerun old ID."
+  ],
+  "native_proposal_artifact": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_native_proposal_20261019",
+    "manifest_sha256": "abd750761f4cc99f457ef95d6ad4d223ad93a248b6b864a71995b9c90f11c4eb",
+    "status": "PROPOSAL_ONLY_NOT_APPLIED_NOT_BUILT_NOT_RUN",
+    "proposed_source_sha256": "65f4824cf896f46fbfb9199bdfcced3711ce365e88c1a455ad15f3d746c47934",
+    "patch_sha256": "93d3ca0c2318e1bc2402c6449670f05546f4d600ad4b0cf3521486d9b6601771"
+  }
+}

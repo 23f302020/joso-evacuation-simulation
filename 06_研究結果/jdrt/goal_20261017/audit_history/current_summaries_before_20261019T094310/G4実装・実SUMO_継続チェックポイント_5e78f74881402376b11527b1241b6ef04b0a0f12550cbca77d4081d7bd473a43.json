@@ -1,0 +1,75 @@
+{
+  "at_jst": "2026-10-19T09:38:03.468294+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "technical_fixture_failed_native_lateral_reset_confirmed",
+  "summary": "最終goal ACTIVE。realtime_choice_v1正式記録0/70、研究core稼働0。wf26101901 c25 PASS後c26 FAILED。old_remaining receiptでedge=d0/lane位置12.592627737109952m不変、XY横0.64m変化。FAILED原本保全、terminal output SHAなし。技術READY=false、core開始禁止。native striping原因は診断済み、patch/buildは未実施/未確認。common5/runtime変更により旧technical READY・G6 source proof stale。G1限定取得は公的2原本+NPO補足1原本、7頁目視/3PDF SHA/JSON検証PASS、災害時陸上旅客fleet/driver/便別輸送系列は未取得。20:55→翌09:28の監視空白維持。",
+  "core_recorded": "0/70",
+  "core_running": 0,
+  "technical_ready": false,
+  "suite": "wf26101901",
+  "suite_status": "FAILED",
+  "passed_case": "wf26101901_c25",
+  "failed_case": "wf26101901_c26",
+  "monitor_at_jst": "2026-10-19T09:36:00.737201+09:00",
+  "monitor_report": "06_研究結果/jdrt/goal_20261017/技術監視_wf26101901_20261019T093600737201.json",
+  "monitor_exit_code": 1,
+  "anomalies": [
+    "terminal_failure_or_reported_error",
+    "terminal_output_SHA_missing"
+  ],
+  "receipt": {
+    "purpose": "old_remaining",
+    "edge_id": "d0",
+    "lane_position_before_m": 12.592627737109952,
+    "lane_position_after_m": 12.592627737109952,
+    "xy_before_m": [
+      134.16,
+      116.59262773710995
+    ],
+    "xy_after_m": [
+      134.79999999999998,
+      116.59262773710995
+    ],
+    "lateral_displacement_m": 0.6399999999999864
+  },
+  "progress_observation": {
+    "heartbeat_sim_sec": 0.0,
+    "raw_actor_last_sec": 52.5,
+    "event_last_sec": 52.5,
+    "raw_actor_rows": 210,
+    "native_error_prefixes": 0,
+    "native_warning_prefixes": 5,
+    "pid": 13900,
+    "pid_identity": "absent",
+    "final_output_sha": "unfinalized_missing"
+  },
+  "originals_unchanged": true,
+  "formal_validation_or_adoption": false,
+  "downstream_start_permitted": false,
+  "current_common5_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "b2e60b3a556399ff378bfb7495be375e2c7abfc07ab4b41824012e5232d654c2",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2a11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "g1_bounded_audit": "02_情報調査/交通・地域/jdrt_goal_20261017/disaster_transport_20261019/避難支援旅客輸送_限定取得監査.md",
+  "g1_verification": "02_情報調査/交通・地域/jdrt_goal_20261017/disaster_transport_20261019/verification.json",
+  "g1_sources": {
+    "government_originals": 2,
+    "practitioner_supplement": 1,
+    "pdf_sha_match": 3,
+    "visually_inspected_pages": 7,
+    "verification_pass": true
+  },
+  "g1_missing": [
+    "disaster passenger land fleet and vehicle availability",
+    "drivers/attendants/shifts",
+    "trip-level passengers and timings"
+  ],
+  "model_routing": {
+    "routine_requested": "gpt-6-luna/low",
+    "analysis_requested": "gpt-6.1-sol/high",
+    "actual_backend": "unverified"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "at_jst": "2026-10-17T10:21:54.866102+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "substantial_implementation_and_independent_validation_progress",
+  "core_runs": 0,
+  "technical_ready": false,
+  "input_validation": {
+    "status": "PASS",
+    "scope": "registered_physical_and_choice_inputs",
+    "technical_ready": false,
+    "at_jst": "2026-10-17T09:45:37.836607+09:00",
+    "checks": {
+      "choice_all_sources_current": true,
+      "choice_all_artifacts_current": true,
+      "choice_physical_copy_exact": true,
+      "choice_lineage": true,
+      "choice_d0_byte_identical": true,
+      "choice_d1_origins_exact": true,
+      "choice_d1_priority_distance_and_paths": true,
+      "choice_population_unique": true,
+      "choice_common_realization_independent": true,
+      "choice_cell_set_unique_and_exact": true,
+      "physical_current_sources": true,
+      "physical_population_from_primary_domain": true,
+      "physical_attributes_from_primary": true,
+      "physical_source_population_partition": true,
+      "physical_origins_from_primary_domain": true,
+      "physical_native_times_from_hdf": true,
+      "physical_elevation_from_primary_tif": true,
+      "physical_all_road_depths_threshold_intervals_from_hdf_tif": true,
+      "physical_unverified_structures_excluded": true,
+      "physical_facility_capacity_primary": true,
+      "physical_terminal_access_model_dry_window": true,
+      "physical_exit_separate_from_facilities": true,
+      "position_places_unique_and_exact": true,
+      "position_independent_positions_lanes_projection_ranges": true,
+      "position_people_destinations_masks_times_cells_unchanged": true,
+      "position_old_input_and_preregistration_preserved": true,
+      "position_contracts_bound_to_registry": true,
+      "sources_current_after_recomputation": true
+    },
+    "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+    "validator_sha256": "be312d211e762473fd92191e2629dad2c00d84503a15382b36caae096a6b8743",
+    "component_reports_sha256": {
+      "choice_table_validation.json": "19910b672670e8ff38752030d125ef591c07c69a4e04c21beee3cd2e230ca526",
+      "physical_input_validation.json": "8823b8d83d04b31e5b162b5c851078196babd5b6db42c72199a83e6afe599d5a",
+      "position_input_validation.json": "cbd4869c8af6a1aa838ca6d9ffa3a2a2f979514e6dc6adf22dde9cb26affa063"
+    },
+    "pending": [
+      "core_executor_and_run_validator",
+      "actual_sumo_cancellation_timing",
+      "all_14_setting_smoke",
+      "skill_cli_and_record"
+    ]
+  },
+  "latest_smoke": "choice_smoke_u50r2p0_seed23423_20261017_01",
+  "partial_audits": [
+    "PASS",
+    "PASS"
+  ],
+  "current_implementation_match": [
+    true,
+    true
+  ],
+  "unit_tests_pass": 26,
+  "current_probe": "choice_probe_20261017_10",
+  "actual_sumo_cases_pass": 7,
+  "old_series_preservation": {
+    "at_jst": "2026-10-17T09:55:15.199439+09:00",
+    "scope": "old_boundary15_source_and_implementation_preservation",
+    "source_files": 249,
+    "implementation_files": 4,
+    "status": "PASS",
+    "mismatch": []
+  },
+  "next": "independent15 primary artifact audit, formal run validator integration, all14 smokes, six-file transaction and READY",
+  "summary": "最終goal ACTIVE。受付・代替行動70セルは登録済み・研究core 0。registered02の独立入力28検査は保持。人工fixtureを本番と同じ実行器へ渡す技術専用モードを追加し、core/smokeとの混入拒否を含む26unit PASS。実SUMO統合15ケース（再経路、3000m予算、乗降中閉鎖、予測単独拒否/迂回後受付、容量/退出、窓末、同edge後方の前進閉路/経路なし）がcf26101707で全PASS。再経路後の速度上限逸脱を検出し登録速度の再指定で修正、初期試行は全保全。到着直前の観測空白を監査するroute_index/route_versionを毎step出力へ追加し、現在cf26101708を同じhandle（exec86893）で検証中。技術未READY。次は同suite終了確認→独立一次監査→正式run検証器統合・全14設定・record/preflight。旧研究保全、監視PAUSED、Drive読取のみ・外部送信なし。",
+  "current_smoke": null,
+  "current_smoke_manifest": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\smoke\\choice_smoke_u50r2p0_seed23423_20261017_01\\manifest.json",
+  "current_smoke_pid": null,
+  "current_smoke_status": "TECHNICAL_SUITE_RUNNING",
+  "monitor_exec_session_id": 86893,
+  "latest_partial_audit_checks": [
+    17,
+    11,
+    13
+  ],
+  "candidate_tamper_tests_pass": 10,
+  "coverage": {
+    "finite_forecast_rows": 70,
+    "gate_false_rows": 20,
+    "forecast_as_primary_reject": 0,
+    "walk_reroute_events": 0,
+    "walk_budget_stops": 0
+  },
+  "current_technical_suite": "cf26101708",
+  "current_suite_pid": 22644,
+  "latest_completed_suite": "cf26101707",
+  "integrated_cases_pass": 15
+}

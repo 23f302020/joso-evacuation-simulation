@@ -1,0 +1,114 @@
+{
+  "formal_cells": 0,
+  "at_jst": "2026-10-18T20:32:06.9929006+09:00",
+  "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/parked_lane_before_20261018T202713/sha256.json",
+  "last_native_actor": {
+    "time_sec": "367.0",
+    "phase": "after_step_before_control",
+    "actor_id": "choice_drt_0",
+    "kind": "drt",
+    "road_id": "e0",
+    "lane_id": "",
+    "lane_position_m": "19.99812165723844",
+    "x": "119.99812165723844",
+    "y": "92.6",
+    "speed_mps": "0.0",
+    "decel_mps2": "4.5",
+    "distance_m": "115.49812165723844",
+    "route_index": "1",
+    "route_version": "1",
+    "stop_state": "3",
+    "status": "boarding",
+    "active_person": "fixture_person_0",
+    "members": "[]",
+    "observation_kind": "parked",
+    "reentry_source_edge": "g0"
+  },
+  "simulations_started": 0,
+  "old_reports_byte_preserved": true,
+  "alternatives_rejected": [
+    "Invent a default actual lane from edge, origin or stale reentry_source.",
+    "Always bypass lane checks for all empty lanes or all stopped vehicles.",
+    "Add arbitrary stop-position tolerance or change position, speed, route or stop endpoint to make tests pass."
+  ],
+  "sources": "06_研究結果/jdrt/goal_20261017/auditor_history/parked_lane_sources_20261018/sources.json",
+  "modified_sha256": {
+    "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py": "af78c003464dc95ee8829507ed06c5a0dab6ab31d0dab841db4170a74538b42d",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/tests/test_jdrt_choice_runtime.py": "af06d0e8d73f8e98cbe4762c380c8fa5c09f3959ca210cd9f3a879c59ac2d10c",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "2ea42ee9d410d9ece4b3781d182e1f16f619760f0de8c57a8f89359f9dc0a5e9",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e"
+  },
+  "uncertainty": [
+    "Old failed fixture has no new getStops receipt; its exact stop interval cannot be retroactively asserted.",
+    "Tagged source describes API semantics; local binary reproducible-build identity is not established.",
+    "New source/actor receipts and full26 native PASS remain unverified by this worker.",
+    "Stop bounds are native values with no newly introduced tolerance; native suite may expose a genuine contract mismatch."
+  ],
+  "requested_model": "gpt-6.1-sol",
+  "core_adoption_permitted": false,
+  "old_run_modified": false,
+  "primary_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c07/execution/progress.json": "0ccb95e5b02f59fc049df65cd7a728ac1afefaa68695e25245cadb05a70ded79",
+    "06_研究結果/jdrt/goal_20261017/cf26101802_revalidate_fixture.stderr.log": "4fe012c5100ecc1d1e1ee129303b789f6d642774465403a4c44699c26819ae38",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c07/execution/actor_observations.csv.gz": "26ceb9d02ea9f25d8dfb5f60d1d295acef31524b366fb01c4b58d7df65e91e17",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c07/execution/manifest.json": "11b554e4330ffffe961294bfe963a7956bce83e21df694fdad2a46e8aafb7d9b",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c07/execution/events.jsonl": "9ca855ae56365bfd5ff767f5b001780b7f0c46bfbec05449b7d0685a582e47d7"
+  },
+  "downstream": [
+    "Parent single writer runs new cf26101803/cs261018c full26 suite, independent counterexamples, all14 smoke, new preflight.",
+    "Preserve cf26101802 and ch261018_002 INVALID_PRESERVED; no record/reuse of either.",
+    "Do not treat old cases1-6, READY or smoke as current common-five evidence."
+  ],
+  "registered_cells": 70,
+  "method_changes": [],
+  "unit": {
+    "compile_exit": 0,
+    "receipt": "06_研究結果/jdrt/goal_20261017/auditor_history/parked_lane_unit_20261018T2040.json",
+    "status": "PASS",
+    "runtime": 21,
+    "own_no_index_diff_check": "PASS",
+    "git_diff_check": "PASS",
+    "validator": 14
+  },
+  "actual_backend": "not_independently_verified",
+  "last_periodic_progress": {
+    "at_jst": "2026-10-18T15:49:37.462+09:00",
+    "run_id": "cf26101802_c07",
+    "time_sec": 360.0,
+    "end_sec": 2000,
+    "wall_sec": 0.9277442999882624,
+    "counts": {
+      "steps": 720,
+      "controller_ticks": 361,
+      "snapshots": 7,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 1,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 1,
+      "dispatch_cycles": 7,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 0,
+      "departure_pending_frames": 0,
+      "snapshot_actor_rows": 5
+    },
+    "people_states": {
+      "boarding": 1
+    },
+    "request_states": {
+      "boarding": 1
+    }
+  },
+  "technical_correction": [
+    "Keep source_lane_id empty when native getter is empty; record source_kind/reference lane and raw native getter/stop receipt separately.",
+    "Accept parked source only with stopped+parking bits, zero native speed, passenger native stop lane on same edge, route source and stop endpoint, native start<=front position<=end<=lane length.",
+    "Use original lane_constrained_car_route and stopped braking_room=0; preserve source physical position, graph and fixed target.",
+    "Independently compare raw event to same-frame actor and native stop columns, original net/permissions/connections, reconstructed route/index and preceding stop target.",
+    "Unknown or nonstopped empty lane, missing stop and contradictory native position remain rejected."
+  ],
+  "scope": "technical_correction_unit_verified_native_pending",
+  "requested_reasoning": "high"
+}

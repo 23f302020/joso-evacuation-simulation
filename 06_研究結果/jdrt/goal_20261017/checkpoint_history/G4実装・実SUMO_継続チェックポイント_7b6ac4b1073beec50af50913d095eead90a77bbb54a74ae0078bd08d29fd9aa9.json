@@ -1,0 +1,40 @@
+{
+  "at_jst": "2026-10-17T10:40:16.895761+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "implementation_and_actual_integration_evidence",
+  "summary": "最終goal ACTIVE。受付・代替行動70セルは登録済み・研究core 0。registered02の独立入力28検査を保持、26unit・スキル検証PASS。本番と同じ実行器の人工16ケースがcf26101710で全PASSし、一次CSV/event/SHA・経路index/版・VKT末端補正・制御前後phase・道路全件再集計・native道路IDとの交通/駐車判定を独立検証PASS。毎step29,514行/snapshot actor231行の人工試験であり研究効果ではない。候補10種＋統合9種の故意改変を拒否。再経路後の速度上限逸脱を登録速度の再指定で修正、全初期試行と旧研究を保全。技術未READY・実行中0。次は正式run検証器への統合（全研究人口/共通実現、全観測/候補/会計、距離・閉鎖、採用境界/故意改変）→現行全14設定smoke→6ファイルrecord/preflight。旧監視PAUSED、Drive読取のみ・外部送信なし。",
+  "core_runs": 0,
+  "technical_ready": false,
+  "running": [],
+  "registered_input_directory": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered02",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "input_validation_checks_pass": 28,
+  "unit_tests_pass": 26,
+  "skill_validation": "PASS",
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "5bca7813aa5c160155a9c70fcd5e4a67924a8b45cbd5430dee6a658200b56562",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "be312d211e762473fd92191e2629dad2c00d84503a15382b36caae096a6b8743",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "267815c1ef7022f64bb4a1722e363a6737641730e60bb7f10afae601a4dc1afe"
+  },
+  "integrated_suite": "cf26101710",
+  "integrated_cases_pass": 16,
+  "suite_manifest_sha256": "b0ef40177310a66eb9a67391160021385977d88df9d2b33d107d31df9a6134a3",
+  "independent_audit": "06_研究結果\\jdrt\\goal_20261017\\cf26101710_統合fixture独立監査.json",
+  "independent_audit_status": "PASS",
+  "independent_audit_sha256": "d6b7a16c8fbfcccc7c11363b77a04df17c956187766e093e65d7b31f2b8f885a",
+  "tamper_tests_pass": {
+    "candidate": 10,
+    "integration": 9
+  },
+  "old_preservation_checks": {
+    "sources": 249,
+    "implementation": 4,
+    "mismatch": []
+  },
+  "historical_smokes_current_implementation": false,
+  "new_diagram": "03_研究設計文書/図表・UML/JDRT_受付代替行動_観測位相・統合検証_v3.html",
+  "next_source": "05_タスク管理/jdrt/JDRT-受付代替行動_正式検証器_統合手順.md",
+  "next": "Integrate formal run validator for all population/common realization, complete observations/candidates/accounting/distance/adoption and tamper gates; then all14 current smokes, six-file CLI transaction and preflight. No core starts before READY."
+}

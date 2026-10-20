@@ -1,0 +1,4313 @@
+{
+  "paired": [
+    {
+      "seed": 23423,
+      "comparison": "R1−R0",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": -1,
+        "boundary_exit": -289,
+        "capacity_rejected": -43,
+        "initial_or_current_closed": -36,
+        "no_origin_connection": 0,
+        "no_route": -161,
+        "route_cut": -3,
+        "time_limit": 747,
+        "walk_limit": -214
+      },
+      "admission_pct_point_difference": -0.008357709987463435
+    },
+    {
+      "seed": 23423,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": -2,
+        "boundary_exit": -211,
+        "capacity_rejected": -34,
+        "initial_or_current_closed": -27,
+        "no_origin_connection": 0,
+        "no_route": -109,
+        "time_limit": 537,
+        "walk_limit": -154
+      },
+      "admission_pct_point_difference": -0.1593625498007968
+    },
+    {
+      "seed": 23423,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "admitted": 1,
+        "boundary_exit": -78,
+        "capacity_rejected": -6,
+        "initial_or_current_closed": -15,
+        "no_origin_connection": 0,
+        "no_route": -52,
+        "time_limit": 210,
+        "walk_limit": -60
+      },
+      "admission_pct_point_difference": 0.18382352941176472
+    },
+    {
+      "seed": 23423,
+      "comparison": "R2−R1",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -14,
+        "capacity_rejected": 2,
+        "initial_or_current_closed": -1,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "stranded_drt": 1,
+        "time_limit": 12,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 23423,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": 0,
+        "capacity_rejected": 3,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "time_limit": -3,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 23423,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -14,
+        "capacity_rejected": -2,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "stranded_drt": 1,
+        "time_limit": 15,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 42,
+      "comparison": "R1−R0",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -262,
+        "capacity_rejected": -23,
+        "initial_or_current_closed": -28,
+        "no_origin_connection": 0,
+        "no_route": -170,
+        "route_cut": 3,
+        "time_limit": 713,
+        "walk_limit": -233
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 42,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": -2,
+        "boundary_exit": -211,
+        "capacity_rejected": -34,
+        "initial_or_current_closed": -20,
+        "no_origin_connection": 0,
+        "no_route": -113,
+        "time_limit": 540,
+        "walk_limit": -160
+      },
+      "admission_pct_point_difference": -0.1593625498007968
+    },
+    {
+      "seed": 42,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "admitted": 1,
+        "boundary_exit": -51,
+        "capacity_rejected": 15,
+        "initial_or_current_closed": -8,
+        "no_origin_connection": 0,
+        "no_route": -57,
+        "route_cut": 0,
+        "time_limit": 173,
+        "walk_limit": -73
+      },
+      "admission_pct_point_difference": 0.18382352941176472
+    },
+    {
+      "seed": 42,
+      "comparison": "R2−R1",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -36,
+        "capacity_rejected": -25,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "route_cut": 2,
+        "stranded_drt": 1,
+        "time_limit": 58,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 42,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": 0,
+        "capacity_rejected": 1,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "time_limit": -1,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 42,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -36,
+        "capacity_rejected": -24,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "route_cut": 0,
+        "stranded_drt": 1,
+        "time_limit": 59,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 1,
+      "comparison": "R1−R0",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": -2,
+        "boundary_exit": -259,
+        "capacity_rejected": -32,
+        "initial_or_current_closed": -39,
+        "no_origin_connection": 0,
+        "no_route": -170,
+        "route_cut": 3,
+        "stranded_drt": 1,
+        "time_limit": 734,
+        "walk_limit": -236
+      },
+      "admission_pct_point_difference": -0.01671541997492687
+    },
+    {
+      "seed": 1,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": -2,
+        "boundary_exit": -202,
+        "capacity_rejected": -29,
+        "initial_or_current_closed": -27,
+        "no_origin_connection": 0,
+        "no_route": -117,
+        "time_limit": 533,
+        "walk_limit": -156
+      },
+      "admission_pct_point_difference": -0.1593625498007968
+    },
+    {
+      "seed": 1,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "boundary_exit": -57,
+        "capacity_rejected": 2,
+        "initial_or_current_closed": -14,
+        "no_origin_connection": 0,
+        "no_route": -53,
+        "stranded_drt": 1,
+        "time_limit": 201,
+        "walk_limit": -80
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 1,
+      "comparison": "R2−R1",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -29,
+        "capacity_rejected": -12,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "route_cut": -1,
+        "stranded_drt": 1,
+        "time_limit": 41,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 1,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": 0,
+        "capacity_rejected": 0,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "time_limit": 0,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 1,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "boundary_exit": -29,
+        "capacity_rejected": -13,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "stranded_drt": 1,
+        "time_limit": 41,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 7,
+      "comparison": "R1−R0",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -263,
+        "capacity_rejected": -9,
+        "initial_or_current_closed": -36,
+        "no_origin_connection": 0,
+        "no_route": -180,
+        "route_cut": -3,
+        "time_limit": 705,
+        "walk_limit": -214
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 7,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": -1,
+        "boundary_exit": -210,
+        "capacity_rejected": -32,
+        "initial_or_current_closed": -24,
+        "no_origin_connection": 0,
+        "no_route": -121,
+        "time_limit": 537,
+        "walk_limit": -149
+      },
+      "admission_pct_point_difference": -0.0796812749003984
+    },
+    {
+      "seed": 7,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "boundary_exit": -53,
+        "capacity_rejected": 18,
+        "initial_or_current_closed": -9,
+        "no_origin_connection": 0,
+        "no_route": -59,
+        "time_limit": 168,
+        "walk_limit": -65
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 7,
+      "comparison": "R2−R1",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -36,
+        "capacity_rejected": -25,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "route_cut": 2,
+        "time_limit": 59,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 7,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": 0,
+        "capacity_rejected": 0,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "time_limit": 0,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 7,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "boundary_exit": -36,
+        "capacity_rejected": -23,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "time_limit": 59,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 101,
+      "comparison": "R1−R0",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -268,
+        "capacity_rejected": -23,
+        "initial_or_current_closed": -39,
+        "no_origin_connection": 0,
+        "no_route": -181,
+        "route_cut": -1,
+        "time_limit": 713,
+        "walk_limit": -201
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 101,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": 1,
+        "boundary_exit": -219,
+        "capacity_rejected": -33,
+        "initial_or_current_closed": -27,
+        "no_origin_connection": 0,
+        "no_route": -123,
+        "route_cut": 0,
+        "time_limit": 543,
+        "walk_limit": -142
+      },
+      "admission_pct_point_difference": 0.0796812749003984
+    },
+    {
+      "seed": 101,
+      "comparison": "R1−R0",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "boundary_exit": -49,
+        "capacity_rejected": 12,
+        "initial_or_current_closed": -15,
+        "no_origin_connection": 0,
+        "no_route": -58,
+        "route_cut": -1,
+        "time_limit": 170,
+        "walk_limit": -59
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 101,
+      "comparison": "R2−R1",
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "state_count_differences": {
+        "admitted": 0,
+        "boundary_exit": -33,
+        "capacity_rejected": -14,
+        "initial_or_current_closed": -7,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "route_cut": 2,
+        "time_limit": 52,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    },
+    {
+      "seed": 101,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "state_count_differences": {
+        "admitted": -1,
+        "boundary_exit": 1,
+        "capacity_rejected": 0,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "route_cut": 0,
+        "time_limit": 0,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": -0.0796812749003984
+    },
+    {
+      "seed": 101,
+      "comparison": "R2−R1",
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "state_count_differences": {
+        "boundary_exit": -34,
+        "capacity_rejected": -18,
+        "initial_or_current_closed": 0,
+        "no_origin_connection": 0,
+        "no_route": 0,
+        "time_limit": 52,
+        "walk_limit": 0
+      },
+      "admission_pct_point_difference": 0.0
+    }
+  ],
+  "individual_state_matrices": [
+    {
+      "seed": 23423,
+      "comparison": "R1−R0",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 330
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4908
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 907
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "initial_or_current_closed",
+          "people": 2
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 354
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 223
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 134
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2160
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 426
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "initial_or_current_closed",
+          "people": 4
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 120
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 121
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 3
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 219
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 25
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 38
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 36
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 160
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 146
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "admitted",
+          "to_status": "time_limit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 15
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 196
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 34
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 23
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 26
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 33
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 17
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 125
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 154
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 93
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 19
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 73
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 74
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 13
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 10
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 72
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 12
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 8
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 13
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 10
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "boundary_exit",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "capacity_rejected",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 54
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 59
+        }
+      ]
+    },
+    {
+      "seed": 23423,
+      "comparison": "R2−R1",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 332
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4908
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 908
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "initial_or_current_closed",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "capacity_rejected",
+          "people": 2
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 354
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 223
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 134
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2160
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 427
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "capacity_rejected",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 122
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 121
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 3
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 219
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 25
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 38
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 36
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 160
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 146
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 23
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 33
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 33
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 534
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 93
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 19
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 73
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 74
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 14
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 8
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 10
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 16
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "capacity_rejected",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "stranded_drt",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 204
+        }
+      ]
+    },
+    {
+      "seed": 42,
+      "comparison": "R1−R0",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 374
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4923
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 895
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "route_cut",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 309
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 225
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 109
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2163
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 450
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 116
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 126
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 219
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 26
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 42
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 38
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 160
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 140
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "admitted",
+          "to_status": "time_limit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 15
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 197
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 34
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 25
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 19
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 31
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 14
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 128
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 160
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 94
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 13
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 20
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 76
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 59
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 40
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 47
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 11
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "boundary_exit",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "capacity_rejected",
+          "people": 18
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 43
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 73
+        }
+      ]
+    },
+    {
+      "seed": 42,
+      "comparison": "R2−R1",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 374
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4923
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 896
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 309
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 225
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 3
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 111
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2163
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 448
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "route_cut",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 116
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 126
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 219
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 26
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 42
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 38
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 160
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 140
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 25
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 31
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 30
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 539
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 94
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 13
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 20
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 76
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 59
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 37
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 26
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 15
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "capacity_rejected",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "stranded_drt",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 169
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "comparison": "R1−R0",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 337
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4920
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 901
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "route_cut",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 342
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 223
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 4
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 141
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2164
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 424
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "initial_or_current_closed",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 112
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 123
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 228
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 30
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 39
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 28
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 155
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 145
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "admitted",
+          "to_status": "time_limit",
+          "people": 3
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 10
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 192
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 28
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 20
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 25
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 41
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 19
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 129
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 156
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 97
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 10
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 23
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 80
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 55
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 29
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 56
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 13
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "boundary_exit",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "capacity_rejected",
+          "people": 11
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 44
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "stranded_drt",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 79
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "comparison": "R2−R1",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 337
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4920
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 901
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 342
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 223
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 4
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 141
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2164
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 420
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "initial_or_current_closed",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "route_cut",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "capacity_rejected",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 112
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 123
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 228
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 30
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 39
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 28
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 155
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 145
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 20
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 41
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 31
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 533
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 97
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 10
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 23
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 80
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 55
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 31
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 14
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 12
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "stranded_drt",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "stranded_drt",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 197
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "comparison": "R1−R0",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 366
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "capacity_rejected",
+          "people": 1
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4921
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "admitted",
+          "people": 4
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 899
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 321
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 210
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 115
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2160
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 443
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 124
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 120
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 220
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 28
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 45
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 31
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 153
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 148
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "admitted",
+          "to_status": "time_limit",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 12
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 199
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 32
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 19
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 23
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 38
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 19
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 133
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 149
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 85
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 14
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 25
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 73
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 70
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 43
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 51
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 3
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 8
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "boundary_exit",
+          "people": 7
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "capacity_rejected",
+          "people": 21
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 41
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 65
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "comparison": "R2−R1",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 370
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4921
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 906
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 321
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 210
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 116
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2160
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 444
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "route_cut",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 124
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 120
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 220
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 28
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 45
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 31
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 153
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 148
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 19
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 38
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 32
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 537
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 85
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 14
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 25
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 73
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 70
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 10
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 40
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 23
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 9
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 12
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "boundary_exit",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 164
+        }
+      ]
+    },
+    {
+      "seed": 101,
+      "comparison": "R1−R0",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 349
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4923
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 891
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "initial_or_current_closed",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 333
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 231
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 130
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2160
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 412
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "initial_or_current_closed",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "capacity_rejected",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 126
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 129
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 213
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 27
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 43
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 27
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 156
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 158
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 12
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 207
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 33
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 15
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "no_route",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 26
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 42
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 14
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 135
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 142
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 86
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 11
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 20
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 8
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 74
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 73
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 49
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "no_route",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 47
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 8
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "time_limit",
+          "people": 15
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "boundary_exit",
+          "people": 4
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "capacity_rejected",
+          "people": 16
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 8
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "time_limit",
+          "people": 44
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "route_cut",
+          "to_status": "time_limit",
+          "people": 1
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "walk_limit",
+          "to_status": "time_limit",
+          "people": 59
+        }
+      ]
+    },
+    {
+      "seed": 101,
+      "comparison": "R2−R1",
+      "rows": [
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 349
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 4923
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 891
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "capacity_rejected",
+          "people": 3
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 331
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "route_cut",
+          "people": 2
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 384
+        },
+        {
+          "person_type": "type1",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 231
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 132
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 2160
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "admitted",
+          "people": 1
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 416
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "capacity_rejected",
+          "people": 2
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 126
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 86
+        },
+        {
+          "person_type": "type2",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 129
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "admitted",
+          "to_status": "admitted",
+          "people": 2
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 213
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 27
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 43
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 27
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 156
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "route_cut",
+          "to_status": "route_cut",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 158
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "admitted",
+          "to_status": "time_limit",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 15
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 42
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 27
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "boundary_exit",
+          "people": 1
+        },
+        {
+          "person_type": "type3",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 542
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 86
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 11
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 20
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 8
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 74
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "False",
+          "from_status": "walk_limit",
+          "to_status": "walk_limit",
+          "people": 73
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "boundary_exit",
+          "people": 17
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "boundary_exit",
+          "to_status": "time_limit",
+          "people": 36
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "capacity_rejected",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "capacity_rejected",
+          "to_status": "time_limit",
+          "people": 18
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "initial_or_current_closed",
+          "to_status": "initial_or_current_closed",
+          "people": 5
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_origin_connection",
+          "to_status": "no_origin_connection",
+          "people": 6
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "no_route",
+          "to_status": "no_route",
+          "people": 14
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "boundary_exit",
+          "people": 2
+        },
+        {
+          "person_type": "type4",
+          "selected_jdrt": "True",
+          "from_status": "time_limit",
+          "to_status": "time_limit",
+          "people": 168
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "run_id": "rtbb2_core_r0_seed23423_20261016T182150",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed23423_20261016T183134",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 30,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed23423_20261016T184653",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 18,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed42_20261016T190325",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed42_20261016T191543",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 75,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed42_20261016T193033",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 17,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed1_20261016T194541",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed1_20261016T200038",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 55,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed1_20261016T201545",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 12,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed7_20261016T203031",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed7_20261016T204541",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 83,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed7_20261016T210045",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 21,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed101_20261016T211544",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed101_20261016T231553",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 81,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed101_20261016T233034",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 26,
+      "candidate_rows_reconcile": true
+    }
+  ]
+}

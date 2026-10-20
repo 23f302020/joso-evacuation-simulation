@@ -1,0 +1,91 @@
+{
+  "captured_at": "2026-10-18T20:28:59.2533024+09:00",
+  "status": "PASS_PREPARATION_COMPONENT_ONLY",
+  "model_requested": "gpt-6.1-sol / high",
+  "actual_backend": "not_independently_verified",
+  "authority": "Parent-assigned independent analysis preparation; PAP section 7 registered diagnostics minimal implementation interpretation; no new comparison",
+  "observed_partial_archive": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_integration_resume_20261018T202736209/manifest.json",
+  "earlier_source_archive": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_integration_20261018",
+  "own_change": "target.mkdir(parents=True, exist_ok=False), one source line",
+  "primary_contract": {
+    "tests": 6,
+    "exit_code": 0,
+    "timing_sec": 0.171,
+    "command": "./04_プログラム/venv/Scripts/python.exe -B 06_研究結果/jdrt/goal_20261017/G6_主指標集計_契約テスト.py"
+  },
+  "request_contract": {
+    "tests": 6,
+    "exit_code": 0,
+    "timing_sec": 0.003,
+    "command": "./04_プログラム/venv/Scripts/python.exe -B 06_研究結果/jdrt/goal_20261017/G6_要求待ち集計_契約テスト.py"
+  },
+  "integrated_before_fix": {
+    "failure": "Successful artificial all70 path: FileNotFoundError at target.mkdir(exist_ok=False); parent directories absent",
+    "tests": 4,
+    "errors": 1,
+    "elapsed_sec": 12.6,
+    "exit_code": 1,
+    "passed": 3
+  },
+  "integrated_after_fix": {
+    "checks": [
+      "all70 incomplete ledger rejects before request helper load and output directory creation",
+      "request helper changed after loading is rejected before result output",
+      "primary artifact SHA mutation rejects before result output",
+      "complete artificial all70 outputs and every output SHA match; mixed requests and zero-R0 checked"
+    ],
+    "tests": 4,
+    "exit_code": 0,
+    "timing_sec": 10.78,
+    "command": "./04_プログラム/venv/Scripts/python.exe -B 06_研究結果/jdrt/goal_20261017/G6_統合集計_人工契約テスト.py"
+  },
+  "synthetic_accounting": {
+    "person_boundary_exit": 1,
+    "fallback_attempted": 2,
+    "observed_wait_mean": "2022/7",
+    "closure_vehicle_sec_sum": 42,
+    "request_served": 1,
+    "requests": 7,
+    "closure_ped_sec_sum": 21,
+    "artificial_only": true,
+    "horizon_right_censored_preboarding": 1,
+    "observed_wait_total_sec": 2022,
+    "person_admitted": 1
+  },
+  "diagnostic_definitions": {
+    "artificial_DID_check": "(8-3)-(4-1)=2 persons / 10 = 20 percentage points",
+    "key_provenance": "Diagnostic cell_terms carries signed run_id/D/u/scenario/seed; primary rows retain run_id/cell_id; primary contrasts retain left/right run_id; output manifest discloses formula/pairing/R0",
+    "shared_R0": "Same D/seed R0 used for each u primary pair; no duplicate R0 run or diagnostic demand row",
+    "interaction": "(D1_u50-D0_u50)-(D1_u05-D0_u05) within the same DRT scenario and seed",
+    "denominator": "All paired Type4 denominators must be equal; percentage points = 100 times rate difference",
+    "D0": "fixed_reference",
+    "no_scenario_DID_extension": true,
+    "D1": "facility_first",
+    "D_difference": "For every registered scenario and demand coordinate, D1-D0 within seed; R0 has no demand and occurs once per seed",
+    "demand_difference": "u50-u05 for each D and DRT scenario within seed; R0 not applicable"
+  },
+  "technical_correction": "Integrated existing pure request helper after complete-record gate and bound artifact verification; helper bytes hashed at actual exec and checked again before output; registered diagnostics and seed summaries are present",
+  "research_method_change": "None: no PAP/Registry/conditions/denominator/seed/exclusion/comparison changes",
+  "unresolved_evidence": [
+    "Real accepted all70 set aggregation has not run; registered core remains 0/70 in current context",
+    "Full-horizon native request histories and aggregation performance unverified",
+    "Candidate/road/movement/vehicle secondary tables incomplete",
+    "Structural bounds/workload and joint interpretation incomplete",
+    "Full final report and completion audit incomplete",
+    "Artificial proof stubs verify aggregation contracts; they are not native validator or research acceptance evidence",
+    "Not every bound artifact category was individually tampered in these tests"
+  ],
+  "no_simulation_or_real_analysis": true,
+  "no_shared_record_edits": true,
+  "source_sha256": {
+    "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py": "49b8206b73db27e7d28dcc8e1daf297a37c9c7b2d4d03023248771bd520bb77d",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標集計_契約テスト.py": "9e58da6b40e2dd82bdaf1a7ccb96bb4a4ad5fc0f07f872e6138e2a89f05042f7",
+    "06_研究結果/jdrt/goal_20261017/G6_独立高推論レビュー_20261018.md": "a41f3c199138b45a827c1dcadfbf75952dfe59888df8bf0d8308dd6eb8446696",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6",
+    "06_研究結果/jdrt/goal_20261017/G6_統合集計_人工契約テスト.py": "a07877494e0a90801c532741c1d7e84d5fc97867a4646b5d82ce36c1909225c6",
+    "06_研究結果/jdrt/goal_20261017/G6_要求待ち集計_契約テスト.py": "8a508b3f3086661a3c9b5c95b646c1a38ec1aa9c4c497b8b7b2d2dbd906f1f3a",
+    "06_研究結果/jdrt/goal_20261017/G6_要求待ち・打切り_集計.py": "66978b52c8d8a96080e2544f19a17a0b758c2fbd28c4d97a99ff0c0c479854b7",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_事前登録分析・出力対応表.md": "0d88798cba371e1b409fd388f4f8d0daf9228b63a1fde0bf0ece080788cf7cee"
+  }
+}

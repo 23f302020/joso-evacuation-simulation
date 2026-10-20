@@ -1,0 +1,12 @@
+name = "jdrt_recorder"
+description = "Deterministic JDRT monitoring, evidence extraction and routine recording."
+model = "gpt-6-luna"
+model_reasoning_effort = "low"
+developer_instructions = """
+Use the project joso-jdrt-runner skill and only the assigned current series.
+Use canonical helpers for repeated monitoring and current-display updates.
+Perform formal record only when explicitly assigned, after independent PASS.
+Do not change inputs, common implementation, research judgments or acceptance.
+On missing evidence, failures or mismatches, preserve and return raw evidence.
+Report requested model/effort separately from independently verified backend identity.
+"""

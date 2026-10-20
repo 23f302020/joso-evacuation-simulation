@@ -1,0 +1,3982 @@
+{
+  "at_jst": "2026-10-17T17:24:09.762372+09:00",
+  "status": "PASS",
+  "scope": "canonical_validator_current_fixture_components_not_READY",
+  "suite": "cf26101713",
+  "historical_diagnostic": false,
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "fixture_components": [
+    {
+      "run_id": "cf26101713_c01",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:51.745665+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 8,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 7,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 989,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c02",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:52.772235+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 79,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {
+            "fixture_person_0": {
+              "time_sec": "39.5",
+              "road_id": "e0",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "",
+              "status": "travelling_walk"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c03",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:53.437072+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 55,
+          "road_rows": 2016,
+          "grid_bytes": 2016,
+          "sparse_occupied_keys": 55,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 6662,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {
+            "fixture_person_0": {
+              "time_sec": "3331.0",
+              "road_id": "long",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "",
+              "status": "travelling_walk"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c04",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:54.340713+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 133,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c05",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:55.020588+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 4,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 649,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.00037620605552035613,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "64.5",
+              "road_id": "e0",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "g0",
+              "status": "pickup"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [
+            {
+              "raw": "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+              "actor": "choice_drt_0",
+              "closure_native_sec": 65.0,
+              "removal_control_sec": 64.5,
+              "evidence": {
+                "time_sec": "64.5",
+                "road_id": "e0",
+                "observation_kind": "onroad",
+                "reentry_source_edge": "g0",
+                "status": "pickup"
+              }
+            }
+          ],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c06",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:55.649095+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 239,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0018783427615574055,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "119.5",
+              "road_id": "e0",
+              "observation_kind": "parked",
+              "reentry_source_edge": "g0",
+              "status": "boarding"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 1,
+          "actual_transition_rows": 1,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [
+            {
+              "raw": "Warning: Vehicle 'choice_drt_0' aborts stop.",
+              "actor": "choice_drt_0",
+              "closure_native_sec": 120.0,
+              "removal_control_sec": 119.5,
+              "evidence": {
+                "time_sec": "119.5",
+                "road_id": "e0",
+                "observation_kind": "parked",
+                "reentry_source_edge": "g0",
+                "status": "boarding"
+              }
+            }
+          ],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c07",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:56.304249+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 6,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 6,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 899,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "449.5",
+              "road_id": "e2",
+              "observation_kind": "parked",
+              "reentry_source_edge": "e0",
+              "status": "alighting"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [
+            {
+              "raw": "Warning: Vehicle 'choice_drt_0' aborts stop.",
+              "actor": "choice_drt_0",
+              "closure_native_sec": 450.0,
+              "removal_control_sec": 449.5,
+              "evidence": {
+                "time_sec": "449.5",
+                "road_id": "e2",
+                "observation_kind": "parked",
+                "reentry_source_edge": "e0",
+                "status": "alighting"
+              }
+            }
+          ],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c08",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:57.015336+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c09",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:57.885765+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 14,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 37,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 37,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4520,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0004943101702963304,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 2,
+          "actual_transition_rows": 2,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c10",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:58.628479+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c11",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:23:59.301975+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 12,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0031257457126230292,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 5,
+          "actual_transition_rows": 5,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c12",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:00.022939+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 3,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 12,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 1565,
+          "actor_count": 3,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 6,
+          "actual_transition_rows": 6,
+          "walkers": 3,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c13",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:00.696314+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 12,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 10,
+          "road_rows": 288,
+          "grid_bytes": 288,
+          "sparse_occupied_keys": 10,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 1412,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c14",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:01.373307+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 780,
+          "grid_bytes": 780,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 194,
+          "actor_count": 1,
+          "vkt": {
+            "fixture_car": {
+              "arrival_tail_m": 2.4218398074762675,
+              "residual_m": -7.105427357601002e-15,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c15",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:02.152477+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 0,
+          "actor_count": 0,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c16",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:02.865451+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 173,
+          "actor_count": 1,
+          "vkt": {
+            "fixture_car": {
+              "arrival_tail_m": 1.1683150942396594,
+              "residual_m": -8.526512829121202e-14,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c17",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:03.505812+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 36,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 36,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4520,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0018783427615574055,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_deadline_equal",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "same_straight_pickup_reference": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "accepted_timeout_before_boarding_once_fallback": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    },
+    {
+      "run_id": "cf26101713_c18",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:04.328649+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_before_deadline",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "same_straight_pickup_reference": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "boarding_strictly_before_then_continues": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    },
+    {
+      "run_id": "cf26101713_c19",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:05.170404+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0012148814029160349,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 5,
+          "actual_transition_rows": 5,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_internal_calibration",
+          "checks": {
+            "calibration_physically_served": true,
+            "native_internal_integer_window_present": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101713_c20",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:05.932725+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 35,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 34,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4403,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.000632707148611189,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_internal_timeout",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "native_internal_reference": true,
+            "explicit_artificial_underprediction_same_geometry": true,
+            "actual_internal_at_cancel": true,
+            "safe_external_wait_after_internal_cancel": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "accepted_timeout_before_boarding_once_fallback": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    },
+    {
+      "run_id": "cf26101713_c21",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T17:24:06.720254+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 3,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 2,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 570,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.002893662039468836,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "83.5",
+              "road_id": ":B_1",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "g0",
+              "status": "cancel_pending"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_internal_timeout_closed_next",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "native_internal_reference": true,
+            "explicit_artificial_underprediction_same_geometry": true,
+            "actual_internal_at_cancel": true,
+            "next_external_closure_and_removal": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "accepted_timeout_before_boarding_once_fallback": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    }
+  ],
+  "counterexamples": [
+    {
+      "case": "population_missing",
+      "expected": "complete_population",
+      "pass": true,
+      "failed_checks": [
+        "complete_population"
+      ]
+    },
+    {
+      "case": "population_duplicate",
+      "expected": "unique_tables",
+      "pass": true,
+      "failed_checks": [
+        "unique_tables"
+      ]
+    },
+    {
+      "case": "source_attribute_corrupted",
+      "expected": "common_realization_and_attributes",
+      "pass": true,
+      "failed_checks": [
+        "common_realization_and_attributes"
+      ]
+    },
+    {
+      "case": "request_omitted",
+      "expected": "request_set",
+      "pass": true,
+      "failed_checks": [
+        "request_set",
+        "state_chains",
+        "summary_accounting"
+      ]
+    },
+    {
+      "case": "boarding_duration_corrupted",
+      "expected": "request_lifecycle",
+      "pass": true,
+      "failed_checks": [
+        "request_lifecycle"
+      ]
+    },
+    {
+      "case": "shared_capacity_account_corrupted",
+      "expected": "shared_capacity_and_exit",
+      "pass": true,
+      "failed_checks": [
+        "shared_capacity_and_exit"
+      ]
+    },
+    {
+      "case": "candidate_shortest_time_corrupted",
+      "expected": "candidate_shortest_paths",
+      "pass": true,
+      "failed_checks": [
+        "candidate_shortest_paths",
+        "candidate_gates"
+      ]
+    },
+    {
+      "case": "candidate_missing",
+      "expected": "cycle_counts",
+      "pass": true,
+      "failed_checks": [
+        "candidate_selection",
+        "cycle_counts"
+      ]
+    },
+    {
+      "case": "candidate_nan_source_speed",
+      "expected": "ValueError",
+      "pass": true,
+      "failed_checks": [
+        "Nonfinite candidate scalar: source_speed_mps"
+      ]
+    },
+    {
+      "case": "native_braking_bound_corrupted",
+      "expected": "candidate_source",
+      "pass": true,
+      "failed_checks": [
+        "candidate_source"
+      ]
+    },
+    {
+      "case": "native_deceleration_corrupted",
+      "expected": "candidate_source",
+      "pass": true,
+      "failed_checks": [
+        "candidate_source"
+      ]
+    },
+    {
+      "case": "zero_road_row_missing",
+      "expected": "full_road_grid",
+      "pass": true,
+      "failed_checks": [
+        "full_road_grid"
+      ]
+    },
+    {
+      "case": "snapshot_raw_speed_corrupted",
+      "expected": "snapshot_primary_reaggregation",
+      "pass": true,
+      "failed_checks": [
+        "snapshot_primary_reaggregation"
+      ]
+    },
+    {
+      "case": "native_road_membership_corrupted",
+      "expected": "native_edge_membership",
+      "pass": true,
+      "failed_checks": [
+        "native_edge_membership"
+      ]
+    },
+    {
+      "case": "actor_step_omitted",
+      "expected": "actor_grid_completeness",
+      "pass": true,
+      "failed_checks": [
+        "actor_grid_completeness"
+      ]
+    },
+    {
+      "case": "actor_wrong_phase",
+      "expected": "actor_phase_unique_membership",
+      "pass": true,
+      "failed_checks": [
+        "actor_phase_unique_membership"
+      ]
+    },
+    {
+      "case": "actor_route_index_corrupted",
+      "expected": "actor_route_index",
+      "pass": true,
+      "failed_checks": [
+        "actor_route_index"
+      ]
+    },
+    {
+      "case": "walking_speed_exceeded",
+      "expected": "actor_walk_integral_and_speed",
+      "pass": true,
+      "failed_checks": [
+        "actor_walk_integral_and_speed"
+      ]
+    },
+    {
+      "case": "VKT_backend_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "native_controller_clock_conflated",
+      "expected": "actor_arrival_clock",
+      "pass": true,
+      "failed_checks": [
+        "actor_arrival_clock"
+      ]
+    },
+    {
+      "case": "external_entry_omitted",
+      "expected": "all_entries_primary_multiset",
+      "pass": true,
+      "failed_checks": [
+        "all_entries_primary_multiset",
+        "no_closed_or_ambiguous_entries"
+      ]
+    },
+    {
+      "case": "external_entry_duplicate",
+      "expected": "all_entries_primary_multiset",
+      "pass": true,
+      "failed_checks": [
+        "all_entries_primary_multiset",
+        "no_closed_or_ambiguous_entries"
+      ]
+    },
+    {
+      "case": "walk_native_remaining_corrupted",
+      "expected": "walk_stage_budget_recurrence",
+      "pass": true,
+      "failed_checks": [
+        "walk_stage_budget_recurrence"
+      ]
+    },
+    {
+      "case": "walk_budget_stop_event_omitted",
+      "expected": "walk_pre_step_budget_stop",
+      "pass": true,
+      "failed_checks": [
+        "walk_stage_budget_recurrence",
+        "walk_pre_step_budget_stop"
+      ]
+    },
+    {
+      "case": "person_invalid_state_transition",
+      "expected": "person_fsm",
+      "pass": true,
+      "failed_checks": [
+        "state_chains",
+        "person_fsm"
+      ]
+    },
+    {
+      "case": "unknown_native_warning",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "native_error",
+      "expected": "no_native_errors",
+      "pass": true,
+      "failed_checks": [
+        "no_native_errors",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "known_warning_without_raw_removal_observation",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified"
+      ]
+    }
+  ],
+  "current_SHA_gate_rejects_old_suite": true,
+  "primary_outputs_unchanged": true,
+  "primary_files_rechecked": 357,
+  "validator_sha256": "39d3ac6f36596332b49a25cb394e59968f602c7f6dc110fdc3cfb81283269fa3",
+  "test_sha256": "511ed8838111c7052584066959a8c274d0fdc812ab4e262a88cf351c47d1e06f"
+}

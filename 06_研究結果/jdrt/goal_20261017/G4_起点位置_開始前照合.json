@@ -1,0 +1,817 @@
+{
+  "at_jst": "2026-10-17T09:23:45.568908+09:00",
+  "source_origins_sha256": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec",
+  "source_graph_sha256": "f559afebdf6639be0a0dce6f42a7ab3ee699dc962c1ce8badb1e8f1b4befdc1c",
+  "schema": [
+    "origin_id",
+    "edge_id",
+    "snap_m",
+    "terminal_id",
+    "car_route",
+    "walk_route",
+    "walk_length_m"
+  ],
+  "origin_position_field_present": false,
+  "connected_origins": 158,
+  "min_origin_edge_length_m": 15.25,
+  "max_origin_edge_length_m": 489.77,
+  "runtime_current_rules": {
+    "walk_person_add_pos": 0,
+    "drt_pickup_stop_pos": "passenger_lane_length_minus_1m",
+    "private_car_depart_pos": "SUMO default; not explicitly aligned"
+  },
+  "adopted_new_position_rule": false,
+  "next": "CH-POS: verify projection, coordinate system, shared location and preregister before any core",
+  "origins": [
+    {
+      "origin_id": "origin_0010",
+      "edge_id": "12742#9",
+      "edge_length_m": 103.16
+    },
+    {
+      "origin_id": "origin_0020",
+      "edge_id": "1133#3",
+      "edge_length_m": 103.76
+    },
+    {
+      "origin_id": "origin_0021",
+      "edge_id": "1133#1",
+      "edge_length_m": 39.5
+    },
+    {
+      "origin_id": "origin_0022",
+      "edge_id": "309#0",
+      "edge_length_m": 63.07
+    },
+    {
+      "origin_id": "origin_0023",
+      "edge_id": "312#10",
+      "edge_length_m": 15.26
+    },
+    {
+      "origin_id": "origin_0024",
+      "edge_id": "8789#4",
+      "edge_length_m": 200.97
+    },
+    {
+      "origin_id": "origin_0025",
+      "edge_id": "6650#8",
+      "edge_length_m": 19.82
+    },
+    {
+      "origin_id": "origin_0026",
+      "edge_id": "1102#18",
+      "edge_length_m": 40.11
+    },
+    {
+      "origin_id": "origin_0027",
+      "edge_id": "1059#2",
+      "edge_length_m": 18.21
+    },
+    {
+      "origin_id": "origin_0028",
+      "edge_id": "8766#0",
+      "edge_length_m": 36.72
+    },
+    {
+      "origin_id": "origin_0029",
+      "edge_id": "310#4",
+      "edge_length_m": 47.52
+    },
+    {
+      "origin_id": "origin_0030",
+      "edge_id": "6652#2",
+      "edge_length_m": 145.33
+    },
+    {
+      "origin_id": "origin_0031",
+      "edge_id": "1101#2",
+      "edge_length_m": 74.0
+    },
+    {
+      "origin_id": "origin_0032",
+      "edge_id": "8799#0",
+      "edge_length_m": 23.11
+    },
+    {
+      "origin_id": "origin_0033",
+      "edge_id": "8810#4",
+      "edge_length_m": 19.44
+    },
+    {
+      "origin_id": "origin_0036",
+      "edge_id": "8788#6",
+      "edge_length_m": 60.73
+    },
+    {
+      "origin_id": "origin_0037",
+      "edge_id": "8786#9",
+      "edge_length_m": 16.25
+    },
+    {
+      "origin_id": "origin_0054",
+      "edge_id": "8771#1",
+      "edge_length_m": 70.16
+    },
+    {
+      "origin_id": "origin_0055",
+      "edge_id": "8835",
+      "edge_length_m": 144.39
+    },
+    {
+      "origin_id": "origin_0056",
+      "edge_id": "8927",
+      "edge_length_m": 40.99
+    },
+    {
+      "origin_id": "origin_0057",
+      "edge_id": "8896#1",
+      "edge_length_m": 52.75
+    },
+    {
+      "origin_id": "origin_0058",
+      "edge_id": "1469#5",
+      "edge_length_m": 49.41
+    },
+    {
+      "origin_id": "origin_0059",
+      "edge_id": "323",
+      "edge_length_m": 29.13
+    },
+    {
+      "origin_id": "origin_0061",
+      "edge_id": "1462#3",
+      "edge_length_m": 27.01
+    },
+    {
+      "origin_id": "origin_0062",
+      "edge_id": "9059#4",
+      "edge_length_m": 32.01
+    },
+    {
+      "origin_id": "origin_0063",
+      "edge_id": "9043#0",
+      "edge_length_m": 32.7
+    },
+    {
+      "origin_id": "origin_0080",
+      "edge_id": "5188#1",
+      "edge_length_m": 32.22
+    },
+    {
+      "origin_id": "origin_0081",
+      "edge_id": "5200#1",
+      "edge_length_m": 23.55
+    },
+    {
+      "origin_id": "origin_0082",
+      "edge_id": "1470#1",
+      "edge_length_m": 25.43
+    },
+    {
+      "origin_id": "origin_0083",
+      "edge_id": "9063",
+      "edge_length_m": 43.09
+    },
+    {
+      "origin_id": "origin_0084",
+      "edge_id": "11856#2",
+      "edge_length_m": 15.29
+    },
+    {
+      "origin_id": "origin_0086",
+      "edge_id": "11525#21",
+      "edge_length_m": 18.79
+    },
+    {
+      "origin_id": "origin_0087",
+      "edge_id": "9371#5",
+      "edge_length_m": 73.64
+    },
+    {
+      "origin_id": "origin_0088",
+      "edge_id": "1408#3",
+      "edge_length_m": 57.47
+    },
+    {
+      "origin_id": "origin_0089",
+      "edge_id": "11257#7",
+      "edge_length_m": 41.42
+    },
+    {
+      "origin_id": "origin_0090",
+      "edge_id": "9168#3",
+      "edge_length_m": 36.82
+    },
+    {
+      "origin_id": "origin_0091",
+      "edge_id": "9224#1",
+      "edge_length_m": 30.61
+    },
+    {
+      "origin_id": "origin_0092",
+      "edge_id": "9163#0",
+      "edge_length_m": 112.29
+    },
+    {
+      "origin_id": "origin_0093",
+      "edge_id": "9377#4",
+      "edge_length_m": 19.31
+    },
+    {
+      "origin_id": "origin_0107",
+      "edge_id": "9241#0",
+      "edge_length_m": 33.2
+    },
+    {
+      "origin_id": "origin_0108",
+      "edge_id": "9183#4",
+      "edge_length_m": 28.66
+    },
+    {
+      "origin_id": "origin_0109",
+      "edge_id": "5217#0",
+      "edge_length_m": 23.97
+    },
+    {
+      "origin_id": "origin_0110",
+      "edge_id": "9721#21",
+      "edge_length_m": 21.83
+    },
+    {
+      "origin_id": "origin_0111",
+      "edge_id": "9196#1",
+      "edge_length_m": 79.53
+    },
+    {
+      "origin_id": "origin_0112",
+      "edge_id": "11012#2",
+      "edge_length_m": 36.75
+    },
+    {
+      "origin_id": "origin_0113",
+      "edge_id": "5234#5",
+      "edge_length_m": 283.57
+    },
+    {
+      "origin_id": "origin_0114",
+      "edge_id": "9722#3",
+      "edge_length_m": 29.13
+    },
+    {
+      "origin_id": "origin_0115",
+      "edge_id": "11545",
+      "edge_length_m": 42.26
+    },
+    {
+      "origin_id": "origin_0116",
+      "edge_id": "11033",
+      "edge_length_m": 61.06
+    },
+    {
+      "origin_id": "origin_0117",
+      "edge_id": "9725#5",
+      "edge_length_m": 26.56
+    },
+    {
+      "origin_id": "origin_0118",
+      "edge_id": "5338",
+      "edge_length_m": 54.05
+    },
+    {
+      "origin_id": "origin_0119",
+      "edge_id": "11056",
+      "edge_length_m": 70.04
+    },
+    {
+      "origin_id": "origin_0130",
+      "edge_id": "5394#8",
+      "edge_length_m": 21.19
+    },
+    {
+      "origin_id": "origin_0131",
+      "edge_id": "5429#3",
+      "edge_length_m": 101.03
+    },
+    {
+      "origin_id": "origin_0132",
+      "edge_id": "5389#2",
+      "edge_length_m": 82.28
+    },
+    {
+      "origin_id": "origin_0133",
+      "edge_id": "5404",
+      "edge_length_m": 101.86
+    },
+    {
+      "origin_id": "origin_0134",
+      "edge_id": "5375#4",
+      "edge_length_m": 47.41
+    },
+    {
+      "origin_id": "origin_0135",
+      "edge_id": "5451",
+      "edge_length_m": 149.12
+    },
+    {
+      "origin_id": "origin_0136",
+      "edge_id": "5430#1",
+      "edge_length_m": 71.12
+    },
+    {
+      "origin_id": "origin_0137",
+      "edge_id": "5427#1",
+      "edge_length_m": 88.01
+    },
+    {
+      "origin_id": "origin_0138",
+      "edge_id": "5451",
+      "edge_length_m": 149.12
+    },
+    {
+      "origin_id": "origin_0139",
+      "edge_id": "5458#2",
+      "edge_length_m": 78.43
+    },
+    {
+      "origin_id": "origin_0140",
+      "edge_id": "5487#1",
+      "edge_length_m": 45.68
+    },
+    {
+      "origin_id": "origin_0141",
+      "edge_id": "5493",
+      "edge_length_m": 193.52
+    },
+    {
+      "origin_id": "origin_0142",
+      "edge_id": "10959#2",
+      "edge_length_m": 27.07
+    },
+    {
+      "origin_id": "origin_0143",
+      "edge_id": "5571#0",
+      "edge_length_m": 30.62
+    },
+    {
+      "origin_id": "origin_0158",
+      "edge_id": "12265#5",
+      "edge_length_m": 18.02
+    },
+    {
+      "origin_id": "origin_0159",
+      "edge_id": "5617#0",
+      "edge_length_m": 91.55
+    },
+    {
+      "origin_id": "origin_0160",
+      "edge_id": "5571#6",
+      "edge_length_m": 24.31
+    },
+    {
+      "origin_id": "origin_0161",
+      "edge_id": "10988#2",
+      "edge_length_m": 49.41
+    },
+    {
+      "origin_id": "origin_0162",
+      "edge_id": "5695#1",
+      "edge_length_m": 72.5
+    },
+    {
+      "origin_id": "origin_0163",
+      "edge_id": "5653#1",
+      "edge_length_m": 83.44
+    },
+    {
+      "origin_id": "origin_0164",
+      "edge_id": "5749#5",
+      "edge_length_m": 51.94
+    },
+    {
+      "origin_id": "origin_0165",
+      "edge_id": "5729#3",
+      "edge_length_m": 31.17
+    },
+    {
+      "origin_id": "origin_0175",
+      "edge_id": "6316#1",
+      "edge_length_m": 54.55
+    },
+    {
+      "origin_id": "origin_0176",
+      "edge_id": "11836#5",
+      "edge_length_m": 112.67
+    },
+    {
+      "origin_id": "origin_0177",
+      "edge_id": "5782#6",
+      "edge_length_m": 153.73
+    },
+    {
+      "origin_id": "origin_0178",
+      "edge_id": "5821#0",
+      "edge_length_m": 172.24
+    },
+    {
+      "origin_id": "origin_0180",
+      "edge_id": "5972#6",
+      "edge_length_m": 21.75
+    },
+    {
+      "origin_id": "origin_0181",
+      "edge_id": "5950#3",
+      "edge_length_m": 30.44
+    },
+    {
+      "origin_id": "origin_0191",
+      "edge_id": "8673#16",
+      "edge_length_m": 28.67
+    },
+    {
+      "origin_id": "origin_0192",
+      "edge_id": "6000#1",
+      "edge_length_m": 31.92
+    },
+    {
+      "origin_id": "origin_0193",
+      "edge_id": "6330#1",
+      "edge_length_m": 31.35
+    },
+    {
+      "origin_id": "origin_0194",
+      "edge_id": "6435#4",
+      "edge_length_m": 171.98
+    },
+    {
+      "origin_id": "origin_0195",
+      "edge_id": "5826#24",
+      "edge_length_m": 47.06
+    },
+    {
+      "origin_id": "origin_0196",
+      "edge_id": "6341#1",
+      "edge_length_m": 204.49
+    },
+    {
+      "origin_id": "origin_0197",
+      "edge_id": "9249#3",
+      "edge_length_m": 73.45
+    },
+    {
+      "origin_id": "origin_0198",
+      "edge_id": "6343#4",
+      "edge_length_m": 125.26
+    },
+    {
+      "origin_id": "origin_0199",
+      "edge_id": "9248",
+      "edge_length_m": 55.66
+    },
+    {
+      "origin_id": "origin_0208",
+      "edge_id": "6138#0",
+      "edge_length_m": 31.28
+    },
+    {
+      "origin_id": "origin_0209",
+      "edge_id": "6118#2",
+      "edge_length_m": 103.36
+    },
+    {
+      "origin_id": "origin_0210",
+      "edge_id": "9261#0",
+      "edge_length_m": 23.61
+    },
+    {
+      "origin_id": "origin_0211",
+      "edge_id": "6121#10",
+      "edge_length_m": 55.77
+    },
+    {
+      "origin_id": "origin_0212",
+      "edge_id": "1784#6",
+      "edge_length_m": 35.05
+    },
+    {
+      "origin_id": "origin_0222",
+      "edge_id": "1951#0",
+      "edge_length_m": 82.58
+    },
+    {
+      "origin_id": "origin_0223",
+      "edge_id": "1824",
+      "edge_length_m": 139.53
+    },
+    {
+      "origin_id": "origin_0224",
+      "edge_id": "12319#4",
+      "edge_length_m": 105.98
+    },
+    {
+      "origin_id": "origin_0225",
+      "edge_id": "1914#20",
+      "edge_length_m": 20.71
+    },
+    {
+      "origin_id": "origin_0226",
+      "edge_id": "1976#2",
+      "edge_length_m": 101.89
+    },
+    {
+      "origin_id": "origin_0227",
+      "edge_id": "1866#3",
+      "edge_length_m": 15.25
+    },
+    {
+      "origin_id": "origin_0228",
+      "edge_id": "138#3",
+      "edge_length_m": 15.28
+    },
+    {
+      "origin_id": "origin_0229",
+      "edge_id": "1932#1",
+      "edge_length_m": 162.6
+    },
+    {
+      "origin_id": "origin_0230",
+      "edge_id": "1931#2",
+      "edge_length_m": 185.46
+    },
+    {
+      "origin_id": "origin_0240",
+      "edge_id": "1956#2",
+      "edge_length_m": 51.15
+    },
+    {
+      "origin_id": "origin_0242",
+      "edge_id": "2139#1",
+      "edge_length_m": 87.51
+    },
+    {
+      "origin_id": "origin_0243",
+      "edge_id": "4607#4",
+      "edge_length_m": 37.61
+    },
+    {
+      "origin_id": "origin_0244",
+      "edge_id": "2097#3",
+      "edge_length_m": 77.29
+    },
+    {
+      "origin_id": "origin_0258",
+      "edge_id": "11300#0",
+      "edge_length_m": 52.15
+    },
+    {
+      "origin_id": "origin_0279",
+      "edge_id": "7025#1",
+      "edge_length_m": 48.44
+    },
+    {
+      "origin_id": "origin_0280",
+      "edge_id": "7025#4",
+      "edge_length_m": 32.33
+    },
+    {
+      "origin_id": "origin_0282",
+      "edge_id": "12744",
+      "edge_length_m": 80.71
+    },
+    {
+      "origin_id": "origin_0284",
+      "edge_id": "154#1",
+      "edge_length_m": 119.8
+    },
+    {
+      "origin_id": "origin_0285",
+      "edge_id": "4629",
+      "edge_length_m": 138.74
+    },
+    {
+      "origin_id": "origin_0322",
+      "edge_id": "3459",
+      "edge_length_m": 56.25
+    },
+    {
+      "origin_id": "origin_0323",
+      "edge_id": "7050",
+      "edge_length_m": 64.05
+    },
+    {
+      "origin_id": "origin_0325",
+      "edge_id": "3051#1",
+      "edge_length_m": 192.53
+    },
+    {
+      "origin_id": "origin_0326",
+      "edge_id": "3177#3",
+      "edge_length_m": 103.19
+    },
+    {
+      "origin_id": "origin_0327",
+      "edge_id": "3178#3",
+      "edge_length_m": 41.51
+    },
+    {
+      "origin_id": "origin_0328",
+      "edge_id": "6417#1",
+      "edge_length_m": 103.19
+    },
+    {
+      "origin_id": "origin_0329",
+      "edge_id": "4636#2",
+      "edge_length_m": 31.57
+    },
+    {
+      "origin_id": "origin_0330",
+      "edge_id": "8375",
+      "edge_length_m": 75.42
+    },
+    {
+      "origin_id": "origin_0331",
+      "edge_id": "11348",
+      "edge_length_m": 115.79
+    },
+    {
+      "origin_id": "origin_0358",
+      "edge_id": "3593#1",
+      "edge_length_m": 216.83
+    },
+    {
+      "origin_id": "origin_0359",
+      "edge_id": "3730#0",
+      "edge_length_m": 34.94
+    },
+    {
+      "origin_id": "origin_0361",
+      "edge_id": "3915#9",
+      "edge_length_m": 163.24
+    },
+    {
+      "origin_id": "origin_0371",
+      "edge_id": "4242#3",
+      "edge_length_m": 107.28
+    },
+    {
+      "origin_id": "origin_0373",
+      "edge_id": "8536#1",
+      "edge_length_m": 36.14
+    },
+    {
+      "origin_id": "origin_0374",
+      "edge_id": "9352#3",
+      "edge_length_m": 26.14
+    },
+    {
+      "origin_id": "origin_0375",
+      "edge_id": "9384#0",
+      "edge_length_m": 106.39
+    },
+    {
+      "origin_id": "origin_0376",
+      "edge_id": "9389#0",
+      "edge_length_m": 160.95
+    },
+    {
+      "origin_id": "origin_0377",
+      "edge_id": "9387#2",
+      "edge_length_m": 50.41
+    },
+    {
+      "origin_id": "origin_0378",
+      "edge_id": "9404#2",
+      "edge_length_m": 98.78
+    },
+    {
+      "origin_id": "origin_0379",
+      "edge_id": "9709#16",
+      "edge_length_m": 20.23
+    },
+    {
+      "origin_id": "origin_0380",
+      "edge_id": "9416#1",
+      "edge_length_m": 87.08
+    },
+    {
+      "origin_id": "origin_0381",
+      "edge_id": "9720#4",
+      "edge_length_m": 49.17
+    },
+    {
+      "origin_id": "origin_0382",
+      "edge_id": "9396#1",
+      "edge_length_m": 356.09
+    },
+    {
+      "origin_id": "origin_0383",
+      "edge_id": "9438#1",
+      "edge_length_m": 341.19
+    },
+    {
+      "origin_id": "origin_0384",
+      "edge_id": "9427#2",
+      "edge_length_m": 86.57
+    },
+    {
+      "origin_id": "origin_0385",
+      "edge_id": "9436#0",
+      "edge_length_m": 180.09
+    },
+    {
+      "origin_id": "origin_0386",
+      "edge_id": "9434#9",
+      "edge_length_m": 132.64
+    },
+    {
+      "origin_id": "origin_0387",
+      "edge_id": "9434#0",
+      "edge_length_m": 31.75
+    },
+    {
+      "origin_id": "origin_0388",
+      "edge_id": "9425#1",
+      "edge_length_m": 489.77
+    },
+    {
+      "origin_id": "origin_0389",
+      "edge_id": "9439#0",
+      "edge_length_m": 183.91
+    },
+    {
+      "origin_id": "origin_0390",
+      "edge_id": "9439#5",
+      "edge_length_m": 183.48
+    },
+    {
+      "origin_id": "origin_0391",
+      "edge_id": "11111#1",
+      "edge_length_m": 85.5
+    },
+    {
+      "origin_id": "origin_0392",
+      "edge_id": "5470#0",
+      "edge_length_m": 248.91
+    },
+    {
+      "origin_id": "origin_0393",
+      "edge_id": "5477#0",
+      "edge_length_m": 284.1
+    },
+    {
+      "origin_id": "origin_0394",
+      "edge_id": "123#9",
+      "edge_length_m": 215.4
+    },
+    {
+      "origin_id": "origin_0395",
+      "edge_id": "5480#0",
+      "edge_length_m": 204.79
+    },
+    {
+      "origin_id": "origin_0396",
+      "edge_id": "5476#0",
+      "edge_length_m": 446.92
+    },
+    {
+      "origin_id": "origin_0397",
+      "edge_id": "11143#1",
+      "edge_length_m": 32.99
+    },
+    {
+      "origin_id": "origin_0398",
+      "edge_id": "5704#1",
+      "edge_length_m": 99.38
+    },
+    {
+      "origin_id": "origin_0399",
+      "edge_id": "124#1",
+      "edge_length_m": 38.01
+    },
+    {
+      "origin_id": "origin_0400",
+      "edge_id": "5869#7",
+      "edge_length_m": 209.76
+    },
+    {
+      "origin_id": "origin_0401",
+      "edge_id": "9457#0",
+      "edge_length_m": 57.1
+    },
+    {
+      "origin_id": "origin_0402",
+      "edge_id": "5869#2",
+      "edge_length_m": 110.51
+    },
+    {
+      "origin_id": "origin_0403",
+      "edge_id": "127",
+      "edge_length_m": 62.85
+    },
+    {
+      "origin_id": "origin_0404",
+      "edge_id": "129#5",
+      "edge_length_m": 33.78
+    }
+  ]
+}

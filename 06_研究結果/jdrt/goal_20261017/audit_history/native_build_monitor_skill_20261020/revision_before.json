@@ -1,0 +1,11 @@
+{
+  "reason": "Repeated isolated native-build monitoring has a distinct state and CIM identity schema; core and fixture check do not apply.",
+  "old_reference": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_build_monitor_skill_20261020\\routine_operations.before.md",
+  "old_reference_sha256": "a20977d799c7568ecc37f4956262d0fced2e5dd379833f2be14125424cec34cf",
+  "prior_helpers": {
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_monitor.py": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical_monitor.py": "72ecc92a8c1acc70863215d307f65b6ccbfbf44586b309b7b12eb70098581e75"
+  },
+  "requested_backend": "inherited parent; no model override",
+  "actual_backend": "not independently observable"
+}

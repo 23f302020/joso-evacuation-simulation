@@ -1,0 +1,19 @@
+{
+  "at_jst": "2026-10-17T08:53:08.283828+09:00",
+  "old_sources_checked": 249,
+  "old_source_mismatches": [],
+  "authored_files_checked": 22,
+  "local_links_checked": 204,
+  "broken_links": [],
+  "ast_files": 4,
+  "git_diff_check": 0,
+  "new_control_files_sha256": {
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "606a583b082be7a755a28a304b886915e6c2831444666661d7880b8ae2f19206",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "76c5766a29f88fab1ee62037fd3cfdc01b89d63d5f86ed83d01ca8944194f64a",
+    "04_プログラム/tests/test_jdrt_choice_policy.py": "1643fa10559996dcbeecac742a703f8045ca654306e90e848fc172c06b275ed0"
+  },
+  "new_core_runs": 0,
+  "technical_ready": false,
+  "status": "PASS"
+}

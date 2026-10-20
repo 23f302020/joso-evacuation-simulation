@@ -1,0 +1,22 @@
+{
+  "at_utc": "2026-10-19T23:16:23.535098+00:00",
+  "orchestrator_source": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\rebuild_attempt02.py",
+  "orchestrator_source_sha256": "7da4573586f8830ac16c333b43c16e61bf62ff216c8e77cbbcf23407c8e0762b",
+  "source_status_lines": {
+    "48": "STATE.update(status='RUNNING', phase=phase, log=str(log))",
+    "128": "STATE.update(status='COMPILED_VERSION_CHECKED_NOT_SIMULATED', phase='completed', child_pid=None)",
+    "132": "STATE.update(status='FAILED_PRESERVED', error=repr(exc), child_pid=None)"
+  },
+  "preserved_previous_state": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\previous_build_state.json",
+  "preserved_previous_state_sha256": "55a79bbb66b93916fb5d74dcbe34cb8f1085fba2654c494c36babb9fcbc8e0ef",
+  "preserved_previous_status": "FAILED_PRESERVED",
+  "tests": "12 temporary/mock unit tests PASS; skill quick_validate PASS",
+  "requested_backend": "inherited parent; no override",
+  "actual_backend": "not independently observable",
+  "after_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_build_monitor.py": "557faf3834d0295e3301cfaa00f7bd089cac330c6cac2c9cd27d00c7261e7eba",
+    ".agents/skills/joso-jdrt-runner/tests/test_choice_native_build_monitor.py": "a474f2427d9b82eb4b37adeb300e90f77bd8f9f6b0d1038c33f2d66fefec9074",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "eff25efa64a7d78b3b4d072743c4922cf77fcc733764633c9333e1647787e719"
+  },
+  "reference_document_append_safeguard": "Parent-observed NUL/EOL failure documented; existing prefix preserved exactly and owned files have no NUL/trailing whitespace."
+}

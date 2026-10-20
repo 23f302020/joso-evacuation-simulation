@@ -4,7 +4,7 @@
 > 対象：常総市（08211）のみ  
 > PAP：`03_研究設計文書/jdrt/常総市JDRT_PreAnalysisPlan_v2.md`  
 > Parameter Registry：`03_研究設計文書/jdrt/常総市JDRT_ParameterRegistry_v2.md`  
-> 状態：中核7/20セル完了（seed 23423完了、seed 42は3/4）
+> 状態：中核20/20セル完了（seed 23423・42・1・7・101完了）
 
 ## 1. 実行条件
 
@@ -29,8 +29,21 @@
 | 5 | JDRT-B3 | 42 | `core_v2_b3_seed42_20260827_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
 | 6 | JDRT-B2 | 42 | `core_v2_b2_seed42_20260827_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
 | 7 | JDRT-P1 | 42 | `core_v2_p1_seed42_20260827_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 8 | JDRT-P2-L15 | 42 | `core_v2_p2_l15_seed42_20260907_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 9 | JDRT-B3 | 1 | `core_v2_b3_seed1_20260907_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 10 | JDRT-B2 | 1 | `core_v2_b2_seed1_20260908_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 11 | JDRT-P1 | 1 | `core_v2_p1_seed1_20260908_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 12 | JDRT-P2-L15 | 1 | `core_v2_p2_l15_seed1_20260908_codex02` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS。`codex01`は外部中断FAILED保全 |
+| 13 | JDRT-B3 | 7 | `core_v2_b3_seed7_20260908_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 14 | JDRT-B2 | 7 | `core_v2_b2_seed7_20260908_codex01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 15 | JDRT-P1 | 7 | `core_v2_p1_seed7_20260912_skill01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 16 | JDRT-P2-L15 | 7 | `core_v2_p2_l15_seed7_20260912_skill01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 17 | JDRT-B3 | 101 | `core_v2_b3_seed101_20260912_skill01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 18 | JDRT-B2 | 101 | `core_v2_b2_seed101_20261009_skill01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 19 | JDRT-P1 | 101 | `core_v2_p1_seed101_20261015_skill01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
+| 20 | JDRT-P2-L15 | 101 | `core_v2_p2_l15_seed101_20261015_skill01` | COMPLETED | true | 0 | 0 | 0 | 全会計・SHA PASS |
 
-残り13セル。方式間比較・方向判断は20セル完了後まで行わない。
+残り0セル。方式間比較・方向判断は20セル完了後まで行わない。
 
 ## 3. B3 seed 23423 技術ゲート
 
@@ -184,6 +197,258 @@ Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、Warning/
 
 Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、Warning/Error実数を独立再計算して全て一致した。seed42のP2-L15と残る3seedが未完了のため方向判断は行わない。
 
-## 10. 次のセル
+## 10. P2-L15 seed 42
 
-`JDRT-P2-L15` seed 42を1セルだけ実行する。完了・記録後にのみ次セルへ進む。
+`JDRT-P2-L15` seed 42を8番目のセルとして実行した。manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 8 / 3,247 |
+| Type4 / Type3避難完了 | 5 / 3 |
+| 完了 / 立ち往生request | 4 / 1,436 |
+| DRT総VKT | 57.150706 km |
+| event | 1,480 |
+| Warning / Error | 1,172 / 5 |
+| 捕捉済み / 未処理Error | 5 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、Warning/Error実数を独立再計算して全て一致した。これでseed42の4方式が揃ったが、残る3seed完了前に方向判断を行わない。
+
+## 11. B3 seed 1
+
+`JDRT-B3` seed 1を9番目のセルとして実行した。manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 36 / 3,219 |
+| Type4 / Type3避難完了 | 33 / 3 |
+| 完了 / 立ち往生request | 12 / 1,428 |
+| DRT総VKT | 106.562820 km |
+| event | 1,526 |
+| Warning / Error | 1,269 / 4 |
+| 捕捉済み / 未処理Error | 4 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、Warning/Error実数を独立再計算して全て一致した。seed1の残る3方式と残る2seed完了前に方向判断を行わない。
+
+## 12. B2 seed 1
+
+`JDRT-B2` seed 1を10番目のセルとして実行した。manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 20 / 3,235 |
+| Type4 / Type3避難完了 | 8 / 12 |
+| 完了 / 立ち往生request | 7 / 1,433 |
+| DRT総VKT | 34.171033 km |
+| event | 1,500 |
+| Warning / Error | 1,179 / 1 |
+| 捕捉済み / 未処理Error | 1 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、Warning/Error実数を独立再計算して全て一致した。途中の方式間方向判断は行わない。
+
+## 13. P1 seed 1
+
+`JDRT-P1` seed 1を11番目のセルとして実行した。manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 9 / 3,246 |
+| Type4 / Type3避難完了 | 4 / 5 |
+| 完了 / 立ち往生request | 4 / 1,436 |
+| DRT総VKT | 48.964886 km |
+| event | 1,486 |
+| Warning / Error | 1,148 / 4 |
+| 捕捉済み / 未処理Error | 4 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、Warning/Error実数を独立再計算して全て一致した。seed1のP2-L15と残る2seed完了前に方向判断を行わない。
+
+## 14. P2-L15 seed 1
+
+最初の`core_v2_p2_l15_seed1_20260908_codex01`は監視セッション終了時にプロセスが残らず、孤児`RUNNING` manifestを既存復旧関数で`FAILED`へ確定・保全した。同じセルを`core_v2_p2_l15_seed1_20260908_codex02`として再実行し、12番目の有効セルとして採用した。新runのmanifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 8 / 3,247 |
+| Type4 / Type3避難完了 | 4 / 4 |
+| 完了 / 立ち往生request | 4 / 1,436 |
+| DRT総VKT | 56.722154 km |
+| 空車VKT | 33.838942 km |
+| 到着時刻P95 | 3,649 sec |
+| event | 1,480 |
+| Warning / Error | 1,363 / 5 |
+| 捕捉済み / 未処理Error | 5 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。これでseed1の4方式が揃ったが、残る2seed完了前に方向判断を行わない。
+
+## 15. B3 seed 7
+
+`JDRT-B3` seed 7を13番目のセルとして実行した。manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 52 / 3,203 |
+| Type4 / Type3避難完了 | 45 / 7 |
+| 完了 / 立ち往生request | 18 / 1,422 |
+| DRT総VKT | 127.955678 km |
+| 空車VKT | 96.430714 km |
+| 到着時刻P95 | 12,185 sec |
+| event | 1,549 |
+| Warning / Error | 1,432 / 5 |
+| 捕捉済み / 未処理Error | 5 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。seed7の残る3方式とseed101完了前に方向判断を行わない。
+
+## 16. B2 seed 7
+
+`JDRT-B2` seed 7を14番目のセルとして実行した。run IDは`core_v2_b2_seed7_20260908_codex01`、manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 26 / 3,229 |
+| Type4 / Type3避難完了 | 11 / 15 |
+| 完了 / 立ち往生request | 9 / 1,431 |
+| DRT総VKT | 36.908887 km |
+| 空車VKT | 22.085438 km |
+| 到着時刻P95 | 7,334 sec |
+| event | 1,509 |
+| Warning / Error | 1,186 / 1 |
+| 捕捉済み / 未処理Error | 1 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。全20セル完了前の方向判断は行わない。
+
+## 17. P1 seed 7
+
+`JDRT-P1` seed 7を15番目のセルとして実行した。run IDは`core_v2_p1_seed7_20260912_skill01`、manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 9 / 3,246 |
+| Type4 / Type3避難完了 | 5 / 4 |
+| 完了 / 立ち往生request | 4 / 1,436 |
+| DRT総VKT | 53.226622 km |
+| 空車VKT | 39.024221 km |
+| 到着時刻P95 | 3,333 sec |
+| event | 1,485 |
+| Warning / Error | 1,154 / 4 |
+| 捕捉済み / 未処理Error | 4 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。全20セル完了前の方向判断は行わない。
+
+## 18. P2-L15 seed 7
+
+`JDRT-P2-L15` seed 7を16番目のセルとして実行した。run IDは`core_v2_p2_l15_seed7_20260912_skill01`、manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 16 / 3,239 |
+| Type4 / Type3避難完了 | 11 / 5 |
+| 完了 / 立ち往生request | 8 / 1,432 |
+| DRT総VKT | 71.612915 km |
+| 空車VKT | 42.692037 km |
+| 到着時刻P95 | 8,975 sec |
+| event | 1,498 |
+| Warning / Error | 1,185 / 5 |
+| 捕捉済み / 未処理Error | 5 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。全20セル完了前の方向判断は行わない。
+
+## 19. B3 seed 101
+
+`JDRT-B3` seed 101を17番目のセルとして実行した。run IDは`core_v2_b3_seed101_20260912_skill01`、manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 47 / 3,208 |
+| Type4 / Type3避難完了 | 42 / 5 |
+| 完了 / 立ち往生request | 16 / 1,424 |
+| DRT総VKT | 129.757827 km |
+| 空車VKT | 103.652441 km |
+| 到着時刻P95 | 9,938 sec |
+| event | 1,547 |
+| Warning / Error | 1,321 / 5 |
+| 捕捉済み / 未処理Error | 5 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。全20セル完了前の方向判断は行わない。
+
+## 20. B2 seed 101
+
+`JDRT-B2` seed 101を18番目のセルとして実行した。run IDは`core_v2_b2_seed101_20261009_skill01`、manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 42 / 3,213 |
+| Type4 / Type3避難完了 | 13 / 29 |
+| 完了 / 立ち往生request | 17 / 1,423 |
+| DRT総VKT | 103.910107 km |
+| 空車VKT | 69.769975 km |
+| 到着時刻P95 | 18,322 sec |
+| event | 1,551 |
+| Warning / Error | 1,439 / 1 |
+| 捕捉済み / 未処理Error | 1 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。全20セル完了前の方向判断は行わない。
+
+## 21. P1 seed 101
+
+`JDRT-P1` seed 101を19番目のセルとして実行した。run IDは`core_v2_p1_seed101_20261015_skill01`、manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 22 / 3,233 |
+| Type4 / Type3避難完了 | 17 / 5 |
+| 完了 / 立ち往生request | 7 / 1,433 |
+| DRT総VKT | 63.826115 km |
+| 空車VKT | 43.026289 km |
+| 到着時刻P95 | 8,375 sec |
+| event | 1,495 |
+| Warning / Error | 1,205 / 5 |
+| 捕捉済み / 未処理Error | 5 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。全20セル完了前の方向判断は行わない。
+
+## 22. P2-L15 seed 101
+
+`JDRT-P2-L15` seed 101を20番目のセルとして実行した。run IDは`core_v2_p2_l15_seed101_20261015_skill01`、manifestは`COMPLETED`、`summary.valid=true`だった。
+
+| 項目 | 実測 |
+|---|---:|
+| controller / observation | 21,600 / 43,200 |
+| 避難完了 / 立ち往生 | 10 / 3,245 |
+| Type4 / Type3避難完了 | 6 / 4 |
+| 完了 / 立ち往生request | 5 / 1,435 |
+| DRT総VKT | 59.043182 km |
+| 空車VKT | 33.841274 km |
+| 到着時刻P95 | 3,778 sec |
+| event | 1,482 |
+| Warning / Error | 1,158 / 5 |
+| 捕捉済み / 未処理Error | 5 / 0 |
+| teleport / collision | 0 / 0 |
+
+Parameter SHA 1/1、入力SHA 8/8、出力SHA 9/9、event行数・SHA、人物・request CSV集計、VKT、Warning/Error実数を独立再計算して全て一致した。これで中核20セルが全て揃った。
+
+## 23. 中核20セル完了
+
+全セルの集計・頑健性評価へ進む。

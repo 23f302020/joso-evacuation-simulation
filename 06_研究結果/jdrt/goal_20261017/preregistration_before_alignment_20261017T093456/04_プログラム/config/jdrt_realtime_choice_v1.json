@@ -1,0 +1,723 @@
+{
+  "municipality_code": "08211",
+  "seeds": [
+    23423,
+    42,
+    1,
+    7,
+    101
+  ],
+  "simulation": {
+    "start_jst": "2015-09-10T12:50:00+09:00",
+    "duration_sec": 21600,
+    "step_sec": 0.5,
+    "controller_sec": 1,
+    "dispatch_sec": 60,
+    "snapshot_sec": 60,
+    "stop_speed_mps": 0.1
+  },
+  "hazard": {
+    "sample_spacing_m": 5,
+    "vehicle_depth_m": 0.5,
+    "pedestrian_depth_m": 0.1,
+    "reopen": false,
+    "unverified_structure_policy": "exclude_edges_keep_people"
+  },
+  "operation": {
+    "fleet_count": 4,
+    "passenger_capacity": 3,
+    "boarding_sec": 300,
+    "alighting_sec": 300,
+    "margin_sec": 300,
+    "reference_depot_shelter": "shelter_3",
+    "pooling": false
+  },
+  "evaluation": {
+    "primary_type": "type4",
+    "primary_status": "admitted",
+    "boundary_exit_in_primary": false,
+    "finite_facility_capacity": true,
+    "same_tick_order": "person_id"
+  },
+  "dispatch_weights": {
+    "waiting": 1,
+    "vulnerability": 1,
+    "pickup": 1,
+    "flood": 1
+  },
+  "population": {
+    "ownership_reference": "non_car_15pct",
+    "ready_interval_sec": [
+      0,
+      7200
+    ],
+    "walk_mps": {
+      "type3": 1.0,
+      "type4": 0.58
+    },
+    "walk_limit_m": 3000,
+    "snap_limit_m": 300
+  },
+  "protocol": "realtime_choice_v1",
+  "registered_at_jst": "2026-10-17T08:43:44.101848+09:00",
+  "status": "DESIGN_REGISTERED_TECHNICAL_NOT_READY",
+  "authorization": "2026-10-17 user /goal; delegated within-goal design guided by more realistic simulations and mathematical reasoning; no external send; preserve old protocols",
+  "pap": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
+  "registry_document": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md",
+  "state_contract": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1",
+  "input_directory": "inputs/registered01",
+  "parent_input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2/inputs/registered01/manifest.json",
+  "parent_registry": "04_プログラム/config/jdrt_realtime_b_boundary_v2.json",
+  "destination_policies": [
+    "fixed_reference",
+    "facility_first"
+  ],
+  "demand_levels": {
+    "u05": {
+      "fraction": 0.05,
+      "basis": "hypothetical_low_load_one_order_below_registered_50_percent"
+    },
+    "u50": {
+      "fraction": 0.5,
+      "basis": "hypothetical_high_load_inherited_stress"
+    }
+  },
+  "scenarios": [
+    "R0",
+    "R1",
+    "R2P900",
+    "R2P0"
+  ],
+  "forecast": {
+    "R0": null,
+    "R1": null,
+    "R2P900": {
+      "scheduled_time_error_sec": 900
+    },
+    "R2P0": {
+      "scheduled_time_error_sec": 0,
+      "diagnostic_only": true
+    }
+  },
+  "request_policy": {
+    "intent_is_not_acceptance": true,
+    "max_unboarded_wait_sec": 900,
+    "deadline_anchor": "ready_sec",
+    "boarding_start_strictly_before_deadline": true,
+    "cancel_at_deadline_before_boarding": true,
+    "fallback": "walk_once_same_origin_same_terminal_current_graph",
+    "retry_requests": false,
+    "fallback_after_boarding_started": false,
+    "communication_delay_sec": 0,
+    "waiting_origin_hazard": "record_overlap_no_casualty_inference",
+    "pickup_estimate_before_deadline": true,
+    "completion_estimate_at_most_horizon": true,
+    "cancel_vehicle": "physical_wait_at_current_safe_external_no_reset"
+  },
+  "destination_selection": {
+    "fixed_reference": "byte_identical_parent_origin_terminal_id",
+    "facility_first_priority": [
+      [
+        "facility",
+        "passenger"
+      ],
+      [
+        "facility",
+        "pedestrian"
+      ],
+      [
+        "boundary_exit",
+        "passenger"
+      ],
+      [
+        "boundary_exit",
+        "pedestrian"
+      ]
+    ],
+    "information": "initial_current_closures_only",
+    "distance_weight": "length",
+    "tie_break": [
+      "terminal_id",
+      "lexicographic_edge_id_path"
+    ],
+    "fixed_for_all_scenarios_seeds_and_demands": true,
+    "dynamic_reassignment": false,
+    "use_future_or_capacity_in_selection": false,
+    "distance_arithmetic": "Decimal(str(length)); retain exact decimal and display float"
+  },
+  "forecast_gate": {
+    "required_components": [
+      "pickup_sec",
+      "boarding_sec",
+      "delivery_sec",
+      "alighting_sec",
+      "margin_sec"
+    ],
+    "strict_less_than_forecast_remaining": true,
+    "flood_priority_weight": 1,
+    "interpretation": "gate_and_urgency_package_not_gate_only"
+  },
+  "record_files": [
+    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+    "context.md",
+    "00_全体整理/決定ログ.md",
+    "01_経過報告/経過報告2026年08月/経過報告20260826.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_セル検証台帳.jsonl"
+  ],
+  "execution": {
+    "timing_contract": "pre_step_end_v1",
+    "max_control_lead_sec": 0.5,
+    "initial_closure_call_sec": 0,
+    "strict_closed_entry_inclusive": true,
+    "common_implementation_required": true,
+    "excluded_comparison_protocols": [
+      "v1",
+      "v2",
+      "realistic_v1",
+      "realtime_b_v1",
+      "realtime_b_boundary_v2"
+    ],
+    "implementation_files": [
+      "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+      "04_プログラム/scripts/jdrt_choice_policy.py",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py"
+    ],
+    "legacy_cli_may_start": false
+  },
+  "acceptance_gates": {
+    "unhandled_errors": 0,
+    "teleports": 0,
+    "collisions": 0,
+    "accounting_difference": 0,
+    "missing_snapshots": 0,
+    "gridlocks": 0,
+    "closed_entry": 0,
+    "ambiguous_transition": 0,
+    "duplicate_active_mode": 0,
+    "invalid_state_transition": 0,
+    "request_orphan": 0,
+    "input_independent_validation": "PASS",
+    "all_14_setting_smoke": "PASS",
+    "actual_sumo_cancellation_timing": "PASS",
+    "one_common_implementation_sha_set": true
+  },
+  "cells": [
+    {
+      "cell_id": "fixed_reference_r0_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_r0_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_r0_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_r0_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_r0_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_r0_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 101
+    }
+  ],
+  "baseline_reuse": "same_destination_and_seed_R0_shared_across_u05_u50_only_within_new_protocol",
+  "analysis": {
+    "no_direction_before_all_registered_cells": true,
+    "primary_contrasts": [
+      "R1-R0",
+      "R2P900-R1",
+      "R2P0-R1",
+      "R2P900-R2P0"
+    ],
+    "diagnostic_contrasts": [
+      "facility_first-fixed_reference",
+      "u50-u05",
+      "difference_in_differences"
+    ],
+    "summaries": [
+      "all_seed_values",
+      "mean",
+      "min",
+      "max"
+    ],
+    "population_inference": false,
+    "unadmitted_time_integral": "sum(min(admitted_sec,H); H if never admitted)/(H*N_type4)"
+  }
+}

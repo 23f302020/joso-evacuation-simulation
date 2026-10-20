@@ -1,0 +1,67 @@
+{
+  "at_jst": "2026-10-19T09:43:35.4535615+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "native_lateral_reset_confirmed_patch_reviewed_isolated_build_pending",
+  "summary": "2026-10-19時点のcurrent: realtime_choice_v1正式記録0/70、研究core稼働0、READY=false。wf26101901 c25 PASS後c26 FAILED。old_remaining置換receiptでedge=d0/lane位置12.592627737109952m不変、XY横0.6399999999999864m変化。native lateral resetを確認し、修正提案REVIEWとnative regression計画を完成。patch未適用、build/native実行なし。隔離build許可済みだがbuilder process開始/identityは未確認。旧technical READYとG6 source proofはcommon5/runtime変更でstale。全suite/audit/14 smoke/preflight未完、core start禁止。",
+  "core_recorded": "0/70",
+  "core_running": 0,
+  "technical_ready": false,
+  "suite": "wf26101901",
+  "suite_status": "FAILED",
+  "passed_case": "wf26101901_c25",
+  "failed_case": "wf26101901_c26",
+  "latest_monitor": {
+    "at_jst": "2026-10-19T09:36:00.737201+09:00",
+    "report": "06_研究結果/jdrt/goal_20261017/技術監視_wf26101901_20261019T093600737201.json",
+    "exit_code": 1,
+    "originals_unchanged": true,
+    "actual_child_run_id": "wf26101901_c26",
+    "error": "terminal lateral displacement 0.6399999999999864m on old_remaining stage replacement"
+  },
+  "latest_diagnosis": {
+    "status": "NATIVE_LATERAL_RESET_CONFIRMED_REPAIR_NOT_IMPLEMENTED",
+    "path": "06_研究結果/jdrt/goal_20261017/CH002_徒歩逆行診断_20261019.md",
+    "confirmed": "XY only changed by +0.6399999999999864m; edge d0 and lane position 12.592627737109952m unchanged",
+    "proposal_review": "06_研究結果/jdrt/goal_20261017/audit_history/walk_native_proposal_20261019/REVIEW.md",
+    "proposal_review_status": "COMPLETE_PROPOSAL_ONLY_NOT_APPLIED_NOT_BUILT_NOT_RUN",
+    "native_regression_plan": "06_研究結果/jdrt/goal_20261017/audit_history/walk_native_proposal_20261019/NATIVE_REGRESSION.md",
+    "native_regression_plan_status": "COMPLETE_PLAN_NOT_EXECUTED"
+  },
+  "pending": [
+    "Isolated native build is authorized; builder process/start identity not confirmed",
+    "Build and native regression execution results pending",
+    "After native regression passes, rerun current full fixture suite, independent audit, all14 smoke, then preflight; do not start research core before current READY"
+  ],
+  "technical_state": {
+    "READY": false,
+    "research_core_running": 0,
+    "formal_records": "0/70",
+    "patch_applied": false,
+    "native_binary_built": false,
+    "native_regression_executed": false,
+    "isolated_build_authorized": true,
+    "builder_process_confirmed": false,
+    "old_ready_stale": true,
+    "g6_source_proof_stale": true,
+    "current_suite_complete": false,
+    "independent_audit_complete": false,
+    "all14_smoke_complete": false,
+    "preflight_complete": false
+  },
+  "current_receipt": {
+    "purpose": "old_remaining",
+    "edge_id": "d0",
+    "lane_position_before_m": 12.592627737109952,
+    "lane_position_after_m": 12.592627737109952,
+    "xy_before_m": [
+      134.16,
+      116.59262773710995
+    ],
+    "xy_after_m": [
+      134.79999999999998,
+      116.59262773710995
+    ],
+    "lateral_displacement_m": 0.6399999999999864
+  },
+  "stale_summary_archive": "06_研究結果/jdrt/goal_20261017/audit_history/current_summaries_before_20261019T094310/manifest.json"
+}

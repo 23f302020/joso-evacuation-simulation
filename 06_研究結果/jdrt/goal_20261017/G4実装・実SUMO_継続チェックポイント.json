@@ -1,0 +1,425 @@
+﻿{
+  "at_jst": "2026-10-20T08:28:00.972801+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "isolated_native_build_point_observation",
+  "summary": "最新HOLD（観測時点 2026-10-20T08:28:00.972801+09:00）：goal ACTIVE。realtime_choice_v1正式記録0/70、研究core稼働0、技術READY=false。隔離native build attempt06_20261020 は当該観測時点でRUNNING、phase sumo_netconvert_build_short_path。owner PID 17468 identity=matched、child PID 12700 identity=matched。これは過去のポイント観測で、現在のPID生存や連続監視は主張しない。compile完成はnative回帰の合格やREADYを意味しない。旧FAILED/INVALID・attempt履歴を保全。登録上の次セルはfixed_reference_r0_seed23423（開始許可ではない）。後続開始は禁止。native回帰・現行全fixture suite・独立audit・全設定smoke・新preflight・G6再監査が必要。研究入力/PAP/受入条件不変。Drive読取のみ・外部送信/公開更新なし。観測証拠：06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.json。",
+  "core_runs": 1,
+  "technical_ready": false,
+  "running": [],
+  "registered_input_directory": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered02",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "input_validation_checks_pass": 28,
+  "unit_tests_pass": 52,
+  "skill_validation": "PASS",
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "05ddf759f39cdcedb234f4c414198176c117dca02968b93e6d1c46830b2b3819",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "64f194824c879f16e5987d339d9932a6377f55d5f503b332a3661589c7977287",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "dcaa9fe4ca3854efca38b988f83b9b93d3995d2f3b04039795d1811e1dc88c7f"
+  },
+  "integrated_suite": "cf26101804",
+  "integrated_cases_pass": 24,
+  "suite_manifest_sha256": "50539b6b31a9fe2b5967f490ba78e6bbe15f1f335a9b9f3902190e0f3fdc640d",
+  "independent_audit": "06_研究結果\\jdrt\\goal_20261017\\cf26101710_統合fixture独立監査.json",
+  "independent_audit_status": "STALE historical: PASS",
+  "independent_audit_sha256": "d6b7a16c8fbfcccc7c11363b77a04df17c956187766e093e65d7b31f2b8f885a",
+  "tamper_tests_pass": {
+    "candidate": 10,
+    "integration": 9
+  },
+  "old_preservation_checks": {
+    "sources": 249,
+    "implementation": 4,
+    "mismatch": []
+  },
+  "historical_smokes_current_implementation": false,
+  "new_diagram": "03_研究設計文書/図表・UML/JDRT_受付代替行動_READY・資料位置づけ_v7.html",
+  "next_source": "05_タスク管理/jdrt/JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md",
+  "next": "HOLD: finish native regression, current suite/audit/all-setting smokes/new preflight/G6 before any core",
+  "current_suite_required": true,
+  "canonical_partial_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261018T095748.json",
+  "canonical_partial_report_sha256": "8d9e79804133ce2257c6e48e11894467a39b1a89a8706b6b4b41534c49a0507f",
+  "canonical_counterexamples_pass": 35,
+  "verifier_dependencies": {
+    "numpy": "2.4.4",
+    "scipy": "1.16.3",
+    "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+    "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+  },
+  "remaining_formal_gates": [
+    "complete current 26-case suite on a fresh authorized technical run after high-reasoning diagnosis",
+    "independent counterexample audit",
+    "all 14 setting smokes",
+    "new preflight and READY review"
+  ],
+  "technical_api_run": "cf26101714_c08",
+  "technical_api_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cf26101714_c08_20261017T172744116533.json",
+  "lifecycle_implemented": true,
+  "primary_files_rechecked": 357,
+  "smoke_sequence_session": 46869,
+  "smoke_sequence_state": "06_研究結果/jdrt/goal_20261017/cs261018a_smoke_sequence.json",
+  "fixture_session": 67470,
+  "smoke_sequence_status": "STALE historical: COMPLETED 14 independently PASS",
+  "smoke_setting_count": 14,
+  "preflight_session": 94282,
+  "preflight_state": "STALE historical: READY current cf26101801/cs261018a",
+  "launch_failure": "ch261018_001 FAILED_LAUNCH_PRESERVED no core manifest/SUMO",
+  "monitor_status": "ACTIVE realtime_choice_v1",
+  "latest_monitor": {
+    "at_jst": "2026-10-18T10:28:26.473379+09:00",
+    "action": "detailed_same_core_monitor",
+    "run_id": "ch261018_002",
+    "cell_id": "fixed_reference_r0_seed23423",
+    "pid": 16372,
+    "skill_check": {
+      "run_id": "ch261018_002",
+      "status": "RUNNING",
+      "pid_alive": true,
+      "progress": {
+        "at_jst": "2026-10-18T10:28:22.833906+09:00",
+        "run_id": "ch261018_002",
+        "time_sec": 6540.0,
+        "end_sec": 21600,
+        "wall_sec": 451.57915330000105,
+        "counts": {
+          "steps": 13080,
+          "controller_ticks": 6541,
+          "snapshots": 110,
+          "teleports": 0,
+          "collisions": 0,
+          "transition_rows": 229204,
+          "closed_entry_rows": 0,
+          "ambiguous_transitions": 0,
+          "candidate_rows": 0,
+          "dispatch_cycles": 0,
+          "missing_vehicle_subscriptions": 0,
+          "missing_person_subscriptions": 0,
+          "reentry_pending_frames": 0,
+          "departure_pending_frames": 318,
+          "snapshot_actor_rows": 28129
+        },
+        "people_states": {
+          "capacity_rejected": 1224,
+          "not_ready": 1096,
+          "no_route": 716,
+          "no_origin_connection": 517,
+          "admitted": 460,
+          "travelling_walk": 205,
+          "travelling_car": 197,
+          "boundary_exit": 6658,
+          "walk_limit": 394,
+          "initial_or_current_closed": 498
+        },
+        "request_states": {}
+      },
+      "error": null
+    },
+    "input_population_rows": 11965,
+    "integrity": {
+      "input_manifest": true,
+      "archived_READY": true,
+      "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+      "04_プログラム/scripts/jdrt_choice_policy.py": true,
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+    },
+    "anomaly_flags": [],
+    "manifest_sha256_at_observation": "6fc91cf907db8c448f0da6da0bcfaa75ee58fe7f95102dcac27516cd54c271b4",
+    "current_run_bytes": 266466867,
+    "free_bytes": 259997876224,
+    "native_error_lines": 0,
+    "native_log_bytes": 0,
+    "driver_stderr_bytes": 856,
+    "monitor_source_sha256": "08d9796c97907404f8042b2e4a761798d5395635836b4e6d1446437d6cb41e34",
+    "formal_validation_or_adoption": false,
+    "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+  },
+  "primary_analysis_preparation": {
+    "source": "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py",
+    "source_sha256": "4ceaef07c440896c513055ab4c36aa7f6e6e67128315466124eb1dfcdf5f4015",
+    "contract_report": "06_研究結果/jdrt/goal_20261017/G6_主指標分析器_準備検証_20261018b.json",
+    "actual_all_registered_analysis_completed": false
+  },
+  "monitor_helper": "06_研究結果/jdrt/goal_20261017/G5_同一セル監視_記録.py",
+  "unrecorded_runs": [],
+  "observed_formally_recorded": 0,
+  "latest_status_sync": {
+    "at_jst": "2026-10-20T08:28:00.972801+09:00",
+    "action": "skill_current_display_sync",
+    "summary": "最新HOLD（観測時点 2026-10-20T08:28:00.972801+09:00）：goal ACTIVE。realtime_choice_v1正式記録0/70、研究core稼働0、技術READY=false。隔離native build attempt06_20261020 は当該観測時点でRUNNING、phase sumo_netconvert_build_short_path。owner PID 17468 identity=matched、child PID 12700 identity=matched。これは過去のポイント観測で、現在のPID生存や連続監視は主張しない。compile完成はnative回帰の合格やREADYを意味しない。旧FAILED/INVALID・attempt履歴を保全。登録上の次セルはfixed_reference_r0_seed23423（開始許可ではない）。後続開始は禁止。native回帰・現行全fixture suite・独立audit・全設定smoke・新preflight・G6再監査が必要。研究入力/PAP/受入条件不変。Drive読取のみ・外部送信/公開更新なし。観測証拠：06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.json。",
+    "state": {
+      "protocol": "realtime_choice_v1",
+      "registered_cells": 70,
+      "recorded_cells": 0,
+      "running": [],
+      "unrecorded": [],
+      "partial_records": [],
+      "record_identity_mismatch": [],
+      "unresolved_failures": [],
+      "unresolved_launches": [],
+      "pending_record_journals": [],
+      "foreign_running_manifests": [],
+      "next_cell": {
+        "cell_id": "fixed_reference_r0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "smoke_completed": [
+        "choice_smoke_u05r1_seed23423_20261017_03",
+        "choice_smoke_u05r1_seed23423_20261017_04",
+        "choice_smoke_u05r1_seed23423_20261017_06",
+        "choice_smoke_u05r1_seed23423_20261017_07",
+        "choice_smoke_u05r2p900_seed23423_20261017_01",
+        "choice_smoke_u05r2p900_seed23423_20261017_02",
+        "choice_smoke_u50r2p0_seed23423_20261017_01",
+        "cs261017c_01",
+        "cs261017c_02",
+        "cs261017c_03",
+        "cs261017c_04",
+        "cs261017c_05",
+        "cs261017c_06",
+        "cs261017c_07",
+        "cs261017c_08",
+        "cs261017c_09",
+        "cs261017c_10",
+        "cs261017c_11",
+        "cs261017c_12",
+        "cs261017c_13",
+        "cs261017c_14",
+        "cs261018a_01",
+        "cs261018a_02",
+        "cs261018a_03",
+        "cs261018a_04",
+        "cs261018a_05",
+        "cs261018a_06",
+        "cs261018a_07",
+        "cs261018a_08",
+        "cs261018a_09",
+        "cs261018a_10",
+        "cs261018a_11",
+        "cs261018a_12",
+        "cs261018a_13",
+        "cs261018a_14"
+      ],
+      "failed": [
+        "choice_smoke_u05r1_seed23423_20261017_01",
+        "choice_smoke_u05r1_seed23423_20261017_02",
+        "choice_smoke_u05r1_seed23423_20261017_05"
+      ],
+      "active_native_processes": [],
+      "core_ready": false,
+      "core_start_available": false
+    },
+    "observation": null,
+    "formal_adoption_created": false,
+    "skill_source_sha256": "4535a2d96bef94d57ace957eebffa112d38255c849b31ec55430bb343c363ac4",
+    "build_observation": {
+      "report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.json",
+      "at_jst": "2026-10-20T08:28:00.972801+09:00",
+      "status": "RUNNING",
+      "phase": "sumo_netconvert_build_short_path",
+      "attempt_id": "attempt06_20261020",
+      "owner": {
+        "pid": 17468,
+        "expected": {
+          "ProcessId": 17468,
+          "ParentProcessId": 20740,
+          "CreationDate": "/Date(1792452286878)/",
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/resume_configured06.py"
+        },
+        "identity": "matched",
+        "observed_cim": {
+          "ProcessId": 17468,
+          "ParentProcessId": 20740,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/resume_configured06.py",
+          "CreationDate": 1792452286878
+        }
+      },
+      "child": {
+        "pid": 12700,
+        "expected": {
+          "ProcessId": 12700,
+          "ParentProcessId": 17468,
+          "CreationDate": "/Date(1792452371725)/",
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/b05 --target sumo netconvert --parallel 2"
+        },
+        "identity": "matched",
+        "observed_cim": {
+          "ProcessId": 12700,
+          "ParentProcessId": 17468,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/b05 --target sumo netconvert --parallel 2",
+          "CreationDate": 1792452371725
+        }
+      },
+      "state_snapshot_sha256": "110178b351a628a5ee13356602727a2f9168949b05638c5036f10c343a711e8f",
+      "anomaly_flags": []
+    },
+    "build_evidence_sha256": {
+      "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.json": "d6873a02b96c10c28bf633597c60be2201c9301ebc55f05bb3b470277a3416af",
+      "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.state.snapshot.bin": "110178b351a628a5ee13356602727a2f9168949b05638c5036f10c343a711e8f"
+    }
+  },
+  "goal_status_observation": "Parent-observed goal API readback at 2026-10-18T20:24:49 JST: ACTIVE; 15:30:34 ACTIVE remains historical, and earlier usageLimited is superseded.",
+  "current_hold": {
+    "run_id": "ch261018_002",
+    "disposition": "INVALID_PRESERVED",
+    "at_jst": "2026-10-18T15:32:05.072443+09:00",
+    "diagnosis": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/driver_logs/ch261018_002.diagnosis.json",
+    "formal_recorded_cells": "0/70",
+    "technical_repair": "in progress",
+    "technical_core_or_SUMO_trial_started": false,
+    "new_version_ready": false,
+    "core_start_allowed": false,
+    "old_ready_suite_smokes": "preserved as old-version history"
+  },
+  "routine_model": {
+    "requested": "gpt-6-luna",
+    "reasoning_effort_requested": "low",
+    "actual_backend": "not independently verified"
+  },
+  "automation_current": {
+    "id": "jdrt-b-15",
+    "name": "JDRT 受付・代替行動70セル 15分監視",
+    "status": "ACTIVE",
+    "interval": "FREQ=MINUTELY;INTERVAL=15",
+    "target_thread_id": "01a13e8c-3441-7eb0-b67a-3d6d1070af2b",
+    "prompt_chars": 1125,
+    "prompt_sha256": "ea1abf1d789ec953c902627f8c8bbb4ed36857f78dbc726a2b2bf94055f240e0",
+    "toml_sha256": "c8472ca6200db160e91aab9f225b04c999e6941096940ef46e86b6c52761aeb0",
+    "history_archive": "06_研究結果/jdrt/goal_20261017/automation_history/8d123ebf1255f25c0ab705e6628d0b5e847bfded430774c926b5507be84e2a83.toml",
+    "same_identity_and_target": true
+  },
+  "current_gate_progress_reported": {
+    "at_jst": "2026-10-18T15:44:19+09:00",
+    "runtime_unit_cases": 19,
+    "validator_unit_cases": 13,
+    "orchestration_artificial_cases": 13,
+    "additional_vehicle_lane_cases_planned": 3,
+    "additional_native_walking_cases_planned": 2,
+    "planned_total_cases": 26,
+    "source": "parent/responsible-worker progress report; not independently rerun",
+    "implementation": "still editing",
+    "new_core_or_SUMO_started": false,
+    "legacy_52_unit_21_case": "historical old-READY only; not current PASS"
+  },
+  "revalidation_pipeline": {
+    "path": "06_研究結果/jdrt/goal_20261017/cf26101804_revalidate.json",
+    "status": "FAILED",
+    "parent_pid": 29180,
+    "parent_finished_at_jst": "2026-10-18T20:41:20.916659+09:00",
+    "owner_exec_session": 34712,
+    "fixture_pid": 12360,
+    "owner_alive": false,
+    "completed_cases": 24,
+    "failed_evaluation_case": "walk_short_calibration",
+    "monitor_report": "06_研究結果/jdrt/goal_20261017/技術再検証_停止監視_2026-10-18T204339.156865+0900.json",
+    "new_start_permitted": false,
+    "remaining_unexecuted_cases": 1
+  },
+  "latest_failed_revalidation_observation": "06_研究結果/jdrt/goal_20261017/技術再検証_停止再観測_20261018T200836887551.json",
+  "latest_recovery_observation": {
+    "at_jst": "2026-10-18T20:24:49+09:00",
+    "source": "parent current-series handoff observation",
+    "goal_status": "ACTIVE",
+    "revalidation_pipeline": "cf26101802 FAILED, case7 alighting_closure; original suite/prefix preserved",
+    "failed_case_evidence": "parked DRT empty lane ID passed to net.getLane; technical repair in progress, new version not READY",
+    "owned_processes": "none observed",
+    "formal_recorded_cells": "0/70",
+    "core_or_validator_start_permitted": false,
+    "next_gate": "finish lane evidence repair and unit check; then new-ID full 26-case suite, independent counterexample audit, 14-setting smoke, and preflight before any core"
+  },
+  "preliminary_high_reasoning_diagnosis": {
+    "status": "速報・独立再計算根拠/正式診断文書の完成待ち",
+    "source": "parent message from high-reasoning diagnostic owner",
+    "reported_findings": {
+      "d0_length_m": 22.52,
+      "type3_on_edge_interval_sec": [
+        34,
+        58.5
+      ],
+      "type4_on_edge_interval_sec": [
+        59,
+        102
+      ],
+      "overlap_sec": 0,
+      "shared_interior_frame_count": 0,
+      "invalid_depart_pos_warnings": 4,
+      "warning_source": "two reroutes × two receipts"
+    },
+    "interpretation": "fixture time placement issue is a candidate; runtime defect is not established",
+    "method_or_gate_change": false
+  },
+  "latest_diagnosis": "attempt02 helper macro assertion failure after successful ZLIB configure, not native/SUMO build failure. Corrected helper is running isolated attempt03; native simulation and core remain unstarted.",
+  "latest_g6_preparation": "G6_副指標上限_統合準備検証_20261018.md",
+  "registered_input_source_sha_audit": "G6_登録入力sourceSHA監査_20261018.json",
+  "g6_real_core_analysis_complete": false,
+  "pending": "attempt03_20261020 isolated build RUNNING at 08:03:02.904215 JST; phase sumo_netconvert_build_static_zlib, owner PID 5796, child PID 22460, parallel 2. Research core/native simulation not started. Formal 0/70; READY=false. Current CLI readback at 08:01: no running/unrecorded/native; core_ready=false/start=false. Full 26 suite/audit/14 smoke/new preflight incomplete; core remains blocked.",
+  "historical_implementation_sha256_20261018": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "current_build_observation": {
+    "report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.json",
+    "at_jst": "2026-10-20T08:28:00.972801+09:00",
+    "status": "RUNNING",
+    "phase": "sumo_netconvert_build_short_path",
+    "attempt_id": "attempt06_20261020",
+    "owner": {
+      "pid": 17468,
+      "expected": {
+        "ProcessId": 17468,
+        "ParentProcessId": 20740,
+        "CreationDate": "/Date(1792452286878)/",
+        "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "CommandLine": "\"C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/resume_configured06.py"
+      },
+      "identity": "matched",
+      "observed_cim": {
+        "ProcessId": 17468,
+        "ParentProcessId": 20740,
+        "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "CommandLine": "\"C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/resume_configured06.py",
+        "CreationDate": 1792452286878
+      }
+    },
+    "child": {
+      "pid": 12700,
+      "expected": {
+        "ProcessId": 12700,
+        "ParentProcessId": 17468,
+        "CreationDate": "/Date(1792452371725)/",
+        "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+        "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/b05 --target sumo netconvert --parallel 2"
+      },
+      "identity": "matched",
+      "observed_cim": {
+        "ProcessId": 12700,
+        "ParentProcessId": 17468,
+        "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+        "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/b05 --target sumo netconvert --parallel 2",
+        "CreationDate": 1792452371725
+      }
+    },
+    "state_snapshot_sha256": "110178b351a628a5ee13356602727a2f9168949b05638c5036f10c343a711e8f",
+    "anomaly_flags": []
+  },
+  "integrated_suite_current_status": "stale historical cf26101804/cs261018d; wf26101901 c25 PASS/c26 FAILED; current full suite not complete",
+  "technical_evidence_classification": "STALE/historical: legacy PASS fields do not establish current READY",
+  "historical_display_checkpoints": [
+    {
+      "sha256": "30ffcc5bed2430a0533b41bd740fbb97f99f59c022d16bb0140945d49eae11cd",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/30ffcc5bed2430a0533b41bd740fbb97f99f59c022d16bb0140945d49eae11cd.json"
+    }
+  ]
+}

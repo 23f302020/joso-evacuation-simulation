@@ -1,0 +1,1052 @@
+[
+  {
+    "tag": "v1_26_0",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSTransportable.cpp",
+    "retrieved_at_jst": "2026-10-18T15:41:28.895389+09:00",
+    "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/validator_sources_20261018T154128/MSTransportable.cpp",
+    "sha256": "d717c0c2eb4623d96803aa6d0f299b29c1691065847695e5cabdc4cbe26a4eb8",
+    "bytes": 26989,
+    "selections": [
+      {
+        "pattern": "MSTransportable::setSpeed(",
+        "lines": [
+          {
+            "line": 357,
+            "text": "void"
+          },
+          {
+            "line": 358,
+            "text": "MSTransportable::setSpeed(double speed) {"
+          },
+          {
+            "line": 359,
+            "text": "    for (MSTransportablePlan::const_iterator i = myStep; i != myPlan->end(); ++i) {"
+          },
+          {
+            "line": 360,
+            "text": "        (*i)->setSpeed(speed);"
+          },
+          {
+            "line": 361,
+            "text": "    }"
+          },
+          {
+            "line": 362,
+            "text": "    getSingularType().setMaxSpeed(speed);"
+          },
+          {
+            "line": 363,
+            "text": "}"
+          },
+          {
+            "line": 364,
+            "text": ""
+          },
+          {
+            "line": 365,
+            "text": ""
+          },
+          {
+            "line": 366,
+            "text": "bool"
+          },
+          {
+            "line": 367,
+            "text": "MSTransportable::replaceRoute(ConstMSRoutePtr newRoute, const std::string& /* info */, bool /* onInit */, int /* offset */, bool /* addRouteStops */, bool /* removeStops */, std::string* /* msgReturn */) {"
+          },
+          {
+            "line": 368,
+            "text": "    if (isPerson()) {"
+          },
+          {
+            "line": 369,
+            "text": "        static_cast<MSPerson*>(this)->replaceWalk(newRoute->getEdges(), getPositionOnLane(), 0, 1);"
+          },
+          {
+            "line": 370,
+            "text": "        return true;"
+          },
+          {
+            "line": 371,
+            "text": "    }"
+          },
+          {
+            "line": 372,
+            "text": "    return false;"
+          },
+          {
+            "line": 373,
+            "text": "}"
+          },
+          {
+            "line": 374,
+            "text": ""
+          },
+          {
+            "line": 375,
+            "text": ""
+          },
+          {
+            "line": 376,
+            "text": "bool"
+          },
+          {
+            "line": 377,
+            "text": "MSTransportable::reroute(SUMOTime t, const std::string& /* info */, MSTransportableRouter& router, const bool /* onInit */, const bool /* withTaz */, const bool /* silent */, const MSEdge* /* sink */) {"
+          },
+          {
+            "line": 378,
+            "text": "    MSStageTrip* trip = getCurrentStage()->getTrip();"
+          },
+          {
+            "line": 379,
+            "text": "    if (trip == nullptr) {"
+          },
+          {
+            "line": 380,
+            "text": "        // TODO this should be possible after factoring out MSStageTrip::reroute"
+          }
+        ]
+      },
+      {
+        "pattern": "MSTransportable::getMaxSpeed()",
+        "lines": [
+          {
+            "line": 638,
+            "text": "double"
+          },
+          {
+            "line": 639,
+            "text": "MSTransportable::getMaxSpeed() const {"
+          },
+          {
+            "line": 640,
+            "text": "    return MIN2(getVehicleType().getMaxSpeed(), getVehicleType().getDesiredMaxSpeed() * getChosenSpeedFactor());"
+          },
+          {
+            "line": 641,
+            "text": "}"
+          },
+          {
+            "line": 642,
+            "text": ""
+          },
+          {
+            "line": 643,
+            "text": ""
+          },
+          {
+            "line": 644,
+            "text": "SUMOVehicleClass"
+          },
+          {
+            "line": 645,
+            "text": "MSTransportable::getVClass() const {"
+          },
+          {
+            "line": 646,
+            "text": "    return getVehicleType().getVehicleClass();"
+          },
+          {
+            "line": 647,
+            "text": "}"
+          },
+          {
+            "line": 648,
+            "text": ""
+          },
+          {
+            "line": 649,
+            "text": ""
+          },
+          {
+            "line": 650,
+            "text": "int"
+          },
+          {
+            "line": 651,
+            "text": "MSTransportable::getRoutingMode() const {"
+          },
+          {
+            "line": 652,
+            "text": "    /// @todo: allow configuring routing mode"
+          },
+          {
+            "line": 653,
+            "text": "    return libsumo::ROUTING_MODE_DEFAULT;"
+          },
+          {
+            "line": 654,
+            "text": "}"
+          },
+          {
+            "line": 655,
+            "text": ""
+          },
+          {
+            "line": 656,
+            "text": "void"
+          },
+          {
+            "line": 657,
+            "text": "MSTransportable::saveState(OutputDevice& out) {"
+          },
+          {
+            "line": 658,
+            "text": "    // this saves lots of departParameters which are only needed for transportables that did not yet depart"
+          },
+          {
+            "line": 659,
+            "text": "    // the parameters may hold the name of a vTypeDistribution but we are interested in the actual type"
+          },
+          {
+            "line": 660,
+            "text": "    const SUMOTime desiredDepart = myParameter->depart;"
+          },
+          {
+            "line": 661,
+            "text": "    if (myPlan->front()->getDeparted() >= 0) {"
+          }
+        ]
+      },
+      {
+        "pattern": "MSTransportable::getSingularType()",
+        "lines": [
+          {
+            "line": 456,
+            "text": "MSVehicleType&"
+          },
+          {
+            "line": 457,
+            "text": "MSTransportable::getSingularType() {"
+          },
+          {
+            "line": 458,
+            "text": "    if (myVType->isVehicleSpecific()) {"
+          },
+          {
+            "line": 459,
+            "text": "        return *const_cast<MSVehicleType*>(myVType);"
+          },
+          {
+            "line": 460,
+            "text": "    }"
+          },
+          {
+            "line": 461,
+            "text": "    MSVehicleType* type = myVType->buildSingularType(myVType->getID() + \"@\" + getID());"
+          },
+          {
+            "line": 462,
+            "text": "    replaceVehicleType(type);"
+          },
+          {
+            "line": 463,
+            "text": "    return *type;"
+          },
+          {
+            "line": 464,
+            "text": "}"
+          },
+          {
+            "line": 465,
+            "text": ""
+          },
+          {
+            "line": 466,
+            "text": ""
+          },
+          {
+            "line": 467,
+            "text": "PositionVector"
+          },
+          {
+            "line": 468,
+            "text": "MSTransportable::getBoundingBox() const {"
+          },
+          {
+            "line": 469,
+            "text": "    PositionVector centerLine;"
+          },
+          {
+            "line": 470,
+            "text": "    const Position p = getPosition();"
+          },
+          {
+            "line": 471,
+            "text": "    const double angle = getAngle();"
+          },
+          {
+            "line": 472,
+            "text": "    const double length = getVehicleType().getLength();"
+          },
+          {
+            "line": 473,
+            "text": "    const Position back = p + Position(-cos(angle) * length, -sin(angle) * length);"
+          },
+          {
+            "line": 474,
+            "text": "    centerLine.push_back(p);"
+          },
+          {
+            "line": 475,
+            "text": "    centerLine.push_back(back);"
+          },
+          {
+            "line": 476,
+            "text": "    centerLine.move2side(0.5 * getVehicleType().getWidth());"
+          },
+          {
+            "line": 477,
+            "text": "    PositionVector result = centerLine;"
+          },
+          {
+            "line": 478,
+            "text": "    centerLine.move2side(-getVehicleType().getWidth());"
+          },
+          {
+            "line": 479,
+            "text": "    result.append(centerLine.reverse(), POSITION_EPS);"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "v1_26_0",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/libsumo/Person.cpp",
+    "retrieved_at_jst": "2026-10-18T15:41:29.166113+09:00",
+    "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/validator_sources_20261018T154128/Person.cpp",
+    "sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+    "bytes": 52242,
+    "selections": [
+      {
+        "pattern": "case STAGE_WALKING:",
+        "lines": [
+          {
+            "line": 651,
+            "text": ""
+          },
+          {
+            "line": 652,
+            "text": "        case STAGE_WALKING: {"
+          },
+          {
+            "line": 653,
+            "text": "            MSTransportable* p = getPerson(personID);"
+          },
+          {
+            "line": 654,
+            "text": "            ConstMSEdgeVector edges;"
+          },
+          {
+            "line": 655,
+            "text": "            try {"
+          },
+          {
+            "line": 656,
+            "text": "                MSEdge::parseEdgesList(stage.edges, edges, \"<unknown>\");"
+          },
+          {
+            "line": 657,
+            "text": "            } catch (ProcessError& e) {"
+          },
+          {
+            "line": 658,
+            "text": "                throw TraCIException(e.what());"
+          },
+          {
+            "line": 659,
+            "text": "            }"
+          },
+          {
+            "line": 660,
+            "text": "            if (edges.empty()) {"
+          },
+          {
+            "line": 661,
+            "text": "                throw TraCIException(\"Empty edge list for walking stage of person '\" + personID + \"'.\");"
+          },
+          {
+            "line": 662,
+            "text": "            }"
+          },
+          {
+            "line": 663,
+            "text": "            double arrivalPos = stage.arrivalPos;"
+          },
+          {
+            "line": 664,
+            "text": "            if (fabs(arrivalPos) > edges.back()->getLength()) {"
+          },
+          {
+            "line": 665,
+            "text": "                throw TraCIException(\"Invalid arrivalPos for walking stage of person '\" + personID + \"'.\");"
+          },
+          {
+            "line": 666,
+            "text": "            }"
+          },
+          {
+            "line": 667,
+            "text": "            if (arrivalPos < 0) {"
+          },
+          {
+            "line": 668,
+            "text": "                arrivalPos += edges.back()->getLength();"
+          },
+          {
+            "line": 669,
+            "text": "            }"
+          },
+          {
+            "line": 670,
+            "text": "            return new MSStageWalking(p->getID(), edges, bs, -1, -1, p->getArrivalPos(), arrivalPos, MSPModel::UNSPECIFIED_POS_LAT);"
+          },
+          {
+            "line": 671,
+            "text": "        }"
+          },
+          {
+            "line": 672,
+            "text": ""
+          },
+          {
+            "line": 673,
+            "text": "        case STAGE_WAITING: {"
+          },
+          {
+            "line": 674,
+            "text": "            MSTransportable* p = getPerson(personID);"
+          }
+        ]
+      },
+      {
+        "pattern": "Person::getMaxSpeed(",
+        "lines": [
+          {
+            "line": 479,
+            "text": "double"
+          },
+          {
+            "line": 480,
+            "text": "Person::getMaxSpeed(const std::string& personID) {"
+          },
+          {
+            "line": 481,
+            "text": "    return getPerson(personID)->getMaxSpeed();"
+          },
+          {
+            "line": 482,
+            "text": "}"
+          },
+          {
+            "line": 483,
+            "text": ""
+          },
+          {
+            "line": 484,
+            "text": ""
+          },
+          {
+            "line": 485,
+            "text": "double"
+          },
+          {
+            "line": 486,
+            "text": "Person::getMaxSpeedLat(const std::string& personID) {"
+          },
+          {
+            "line": 487,
+            "text": "    return getPerson(personID)->getVehicleType().getMaxSpeedLat();"
+          },
+          {
+            "line": 488,
+            "text": "}"
+          },
+          {
+            "line": 489,
+            "text": ""
+          },
+          {
+            "line": 490,
+            "text": ""
+          },
+          {
+            "line": 491,
+            "text": "std::string"
+          },
+          {
+            "line": 492,
+            "text": "Person::getLateralAlignment(const std::string& personID) {"
+          },
+          {
+            "line": 493,
+            "text": "    return toString(getPerson(personID)->getVehicleType().getPreferredLateralAlignment());"
+          },
+          {
+            "line": 494,
+            "text": "}"
+          },
+          {
+            "line": 495,
+            "text": ""
+          },
+          {
+            "line": 496,
+            "text": ""
+          },
+          {
+            "line": 497,
+            "text": "double"
+          },
+          {
+            "line": 498,
+            "text": "Person::getWidth(const std::string& personID) {"
+          },
+          {
+            "line": 499,
+            "text": "    return getPerson(personID)->getVehicleType().getWidth();"
+          },
+          {
+            "line": 500,
+            "text": "}"
+          },
+          {
+            "line": 501,
+            "text": ""
+          },
+          {
+            "line": 502,
+            "text": ""
+          }
+        ]
+      },
+      {
+        "pattern": "Person::getSpeedFactor(",
+        "lines": [
+          {
+            "line": 410,
+            "text": "double"
+          },
+          {
+            "line": 411,
+            "text": "Person::getSpeedFactor(const std::string& personID) {"
+          },
+          {
+            "line": 412,
+            "text": "    return getPerson(personID)->getChosenSpeedFactor();"
+          },
+          {
+            "line": 413,
+            "text": "}"
+          },
+          {
+            "line": 414,
+            "text": ""
+          },
+          {
+            "line": 415,
+            "text": ""
+          },
+          {
+            "line": 416,
+            "text": "double"
+          },
+          {
+            "line": 417,
+            "text": "Person::getAccel(const std::string& personID) {"
+          },
+          {
+            "line": 418,
+            "text": "    return getPerson(personID)->getVehicleType().getCarFollowModel().getMaxAccel();"
+          },
+          {
+            "line": 419,
+            "text": "}"
+          },
+          {
+            "line": 420,
+            "text": ""
+          },
+          {
+            "line": 421,
+            "text": ""
+          },
+          {
+            "line": 422,
+            "text": "double"
+          },
+          {
+            "line": 423,
+            "text": "Person::getDecel(const std::string& personID) {"
+          },
+          {
+            "line": 424,
+            "text": "    return getPerson(personID)->getVehicleType().getCarFollowModel().getMaxDecel();"
+          },
+          {
+            "line": 425,
+            "text": "}"
+          },
+          {
+            "line": 426,
+            "text": ""
+          },
+          {
+            "line": 427,
+            "text": ""
+          },
+          {
+            "line": 428,
+            "text": "double Person::getEmergencyDecel(const std::string& personID) {"
+          },
+          {
+            "line": 429,
+            "text": "    return getPerson(personID)->getVehicleType().getCarFollowModel().getEmergencyDecel();"
+          },
+          {
+            "line": 430,
+            "text": "}"
+          },
+          {
+            "line": 431,
+            "text": ""
+          },
+          {
+            "line": 432,
+            "text": ""
+          },
+          {
+            "line": 433,
+            "text": "double Person::getApparentDecel(const std::string& personID) {"
+          }
+        ]
+      },
+      {
+        "pattern": "Person::getStage(",
+        "lines": [
+          {
+            "line": 291,
+            "text": "TraCIStage"
+          },
+          {
+            "line": 292,
+            "text": "Person::getStage(const std::string& personID, int nextStageIndex) {"
+          },
+          {
+            "line": 293,
+            "text": "    MSTransportable* p = getPerson(personID);"
+          },
+          {
+            "line": 294,
+            "text": "    TraCIStage result;"
+          },
+          {
+            "line": 295,
+            "text": "    if (nextStageIndex >= p->getNumRemainingStages()) {"
+          },
+          {
+            "line": 296,
+            "text": "        throw TraCIException(\"The stage index must be lower than the number of remaining stages.\");"
+          },
+          {
+            "line": 297,
+            "text": "    }"
+          },
+          {
+            "line": 298,
+            "text": "    if (nextStageIndex < (p->getNumRemainingStages() - p->getNumStages())) {"
+          },
+          {
+            "line": 299,
+            "text": "        throw TraCIException(\"The negative stage index \" + toString(nextStageIndex) + \" must refer to a valid previous stage.\");"
+          },
+          {
+            "line": 300,
+            "text": "    }"
+          },
+          {
+            "line": 301,
+            "text": "    //stageType, arrivalPos, edges, destStop, vType, and description can be retrieved directly from the base Stage class."
+          },
+          {
+            "line": 302,
+            "text": "    MSStage* stage = p->getNextStage(nextStageIndex);"
+          },
+          {
+            "line": 303,
+            "text": "    result.type = (int)stage->getStageType();"
+          },
+          {
+            "line": 304,
+            "text": "    result.arrivalPos = stage->getArrivalPos();"
+          },
+          {
+            "line": 305,
+            "text": "    for (auto e : stage->getEdges()) {"
+          },
+          {
+            "line": 306,
+            "text": "        if (e != nullptr) {"
+          },
+          {
+            "line": 307,
+            "text": "            result.edges.push_back(e->getID());"
+          },
+          {
+            "line": 308,
+            "text": "        }"
+          },
+          {
+            "line": 309,
+            "text": "    }"
+          },
+          {
+            "line": 310,
+            "text": "    MSStoppingPlace* destinationStop = stage->getDestinationStop();"
+          },
+          {
+            "line": 311,
+            "text": "    if (destinationStop != nullptr) {"
+          },
+          {
+            "line": 312,
+            "text": "        result.destStop = destinationStop->getID();"
+          },
+          {
+            "line": 313,
+            "text": "    }"
+          },
+          {
+            "line": 314,
+            "text": "    result.description = stage->getStageDescription(p->isPerson());"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "v1_26_0",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSStageWalking.cpp",
+    "retrieved_at_jst": "2026-10-18T15:41:29.400953+09:00",
+    "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/validator_sources_20261018T154128/MSStageWalking.cpp",
+    "sha256": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+    "bytes": 20998,
+    "selections": [
+      {
+        "pattern": "myDepartPos = SUMOVehicleParameter::interpretEdgePos",
+        "lines": [
+          {
+            "line": 70,
+            "text": "    myInternalDistance(0) {"
+          },
+          {
+            "line": 71,
+            "text": "    myDepartPos = SUMOVehicleParameter::interpretEdgePos(departPos, route.front()->getLength(), SUMO_ATTR_DEPARTPOS,"
+          },
+          {
+            "line": 72,
+            "text": "                  \"person '\" + personID + \"' walking from edge '\" + route.front()->getID() + \"'\");"
+          },
+          {
+            "line": 73,
+            "text": "    myArrivalPos = SUMOVehicleParameter::interpretEdgePos(arrivalPos, route.back()->getLength(), SUMO_ATTR_ARRIVALPOS,"
+          },
+          {
+            "line": 74,
+            "text": "                   \"person '\" + personID + \"' walking to edge '\" + route.back()->getID() + \"'\");"
+          },
+          {
+            "line": 75,
+            "text": "    if (walkingTime > 0) {"
+          },
+          {
+            "line": 76,
+            "text": "        mySpeed = computeAverageSpeed();"
+          },
+          {
+            "line": 77,
+            "text": "    }"
+          },
+          {
+            "line": 78,
+            "text": "}"
+          },
+          {
+            "line": 79,
+            "text": ""
+          },
+          {
+            "line": 80,
+            "text": ""
+          },
+          {
+            "line": 81,
+            "text": "MSStageWalking::~MSStageWalking() {"
+          },
+          {
+            "line": 82,
+            "text": "    delete myExitTimes;"
+          },
+          {
+            "line": 83,
+            "text": "}"
+          },
+          {
+            "line": 84,
+            "text": ""
+          },
+          {
+            "line": 85,
+            "text": ""
+          },
+          {
+            "line": 86,
+            "text": "MSStage*"
+          },
+          {
+            "line": 87,
+            "text": "MSStageWalking::clone() const {"
+          },
+          {
+            "line": 88,
+            "text": "    std::vector<const MSEdge*> route = myRoute;"
+          },
+          {
+            "line": 89,
+            "text": "    double departPos = myDepartPos;"
+          },
+          {
+            "line": 90,
+            "text": "    double arrivalPos = myArrivalPos;"
+          },
+          {
+            "line": 91,
+            "text": "    int departLane = myDepartLane;"
+          },
+          {
+            "line": 92,
+            "text": "    if (myRouteID != \"\" && MSRoute::distDictionary(myRouteID) != nullptr) {"
+          },
+          {
+            "line": 93,
+            "text": "        route = MSRoute::dictionary(myRouteID, MSRouteHandler::getParsingRNG())->getEdges();"
+          }
+        ]
+      },
+      {
+        "pattern": "previous->getEdgePos(now) >= 0",
+        "lines": [
+          {
+            "line": 124,
+            "text": "    const OptionsCont& oc = OptionsCont::getOptions();"
+          },
+          {
+            "line": 125,
+            "text": "    if (previous->getEdgePos(now) >= 0 && previous->getEdge() == *myRouteStep) {"
+          },
+          {
+            "line": 126,
+            "text": "        // we need to adapt to the arrival position of the vehicle unless we have an explicit access"
+          },
+          {
+            "line": 127,
+            "text": "        myDepartPos = previous->getEdgePos(now);"
+          },
+          {
+            "line": 128,
+            "text": "        if (oc.getString(\"pedestrian.model\") == \"jupedsim\") {"
+          },
+          {
+            "line": 129,
+            "text": "            myDepartPosLat = previous->getEdgePosLat(now);"
+          },
+          {
+            "line": 130,
+            "text": "        }"
+          },
+          {
+            "line": 131,
+            "text": "        if (myWalkingTime > 0) {"
+          },
+          {
+            "line": 132,
+            "text": "            mySpeed = computeAverageSpeed();"
+          },
+          {
+            "line": 133,
+            "text": "        }"
+          },
+          {
+            "line": 134,
+            "text": "    }"
+          },
+          {
+            "line": 135,
+            "text": "    MSTransportableControl& pControl = net->getPersonControl();"
+          },
+          {
+            "line": 136,
+            "text": "    myPState = pControl.getMovementModel()->add(person, this, now);"
+          },
+          {
+            "line": 137,
+            "text": "    if (myPState == nullptr) {"
+          },
+          {
+            "line": 138,
+            "text": "        pControl.erase(person);"
+          },
+          {
+            "line": 139,
+            "text": "        return;"
+          },
+          {
+            "line": 140,
+            "text": "    }"
+          },
+          {
+            "line": 141,
+            "text": "    if (previous->getStageType() != MSStageType::WALKING || previous->getEdge() != getEdge()) {"
+          },
+          {
+            "line": 142,
+            "text": "        // we only need new move reminders if we are walking a different edge (else it is probably a rerouting)"
+          },
+          {
+            "line": 143,
+            "text": "        activateEntryReminders(person, true);"
+          },
+          {
+            "line": 144,
+            "text": "    }"
+          },
+          {
+            "line": 145,
+            "text": "    if (oc.getBool(\"vehroute-output.exit-times\")) {"
+          },
+          {
+            "line": 146,
+            "text": "        myExitTimes = new std::vector<SUMOTime>();"
+          },
+          {
+            "line": 147,
+            "text": "    }"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tag": "v1_26_0",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/utils/vehicle/SUMOVehicleParserHelper.cpp",
+    "retrieved_at_jst": "2026-10-18T15:41:29.649886+09:00",
+    "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/validator_sources_20261018T154128/SUMOVehicleParserHelper.cpp",
+    "sha256": "03d1b7aef5d645087d6e0008c24fab78ad86c437417e457fc040de688f5611d6",
+    "bytes": 88395,
+    "selections": [
+      {
+        "pattern": "if (attrs.hasAttribute(SUMO_ATTR_DESIRED_MAXSPEED))",
+        "lines": [
+          {
+            "line": 806,
+            "text": "        }"
+          },
+          {
+            "line": 807,
+            "text": "        if (attrs.hasAttribute(SUMO_ATTR_DESIRED_MAXSPEED)) {"
+          },
+          {
+            "line": 808,
+            "text": "            bool ok = true;"
+          },
+          {
+            "line": 809,
+            "text": "            const double desiredMaxSpeed = attrs.get<double>(SUMO_ATTR_DESIRED_MAXSPEED, vType->id.c_str(), ok);"
+          },
+          {
+            "line": 810,
+            "text": "            if (!ok) {"
+          },
+          {
+            "line": 811,
+            "text": "                return handleVehicleTypeError(hardFail, vType);"
+          },
+          {
+            "line": 812,
+            "text": "            } else if (desiredMaxSpeed <= 0) {"
+          },
+          {
+            "line": 813,
+            "text": "                return handleVehicleTypeError(hardFail, vType, toString(SUMO_ATTR_DESIRED_MAXSPEED) + \" must be greater than 0\");"
+          },
+          {
+            "line": 814,
+            "text": "            } else {"
+          },
+          {
+            "line": 815,
+            "text": "                vType->desiredMaxSpeed = desiredMaxSpeed;"
+          },
+          {
+            "line": 816,
+            "text": "                vType->parametersSet |= VTYPEPARS_DESIRED_MAXSPEED_SET;"
+          },
+          {
+            "line": 817,
+            "text": "            }"
+          },
+          {
+            "line": 818,
+            "text": "        } else if (attrs.hasAttribute(SUMO_ATTR_MAXSPEED)) {"
+          },
+          {
+            "line": 819,
+            "text": "            if (vClass == SVC_PEDESTRIAN) {"
+          },
+          {
+            "line": 820,
+            "text": "                // backward compatibility because pedestrian maxSpeed was subject to speedFactor up to 1.14.1"
+          },
+          {
+            "line": 821,
+            "text": "                vType->desiredMaxSpeed = vType->maxSpeed;;"
+          },
+          {
+            "line": 822,
+            "text": "                vType->maxSpeed = MAX2(vType->maxSpeed, SUMOVTypeParameter::VClassDefaultValues(vClass).maxSpeed);"
+          },
+          {
+            "line": 823,
+            "text": "            } else if (vClass == SVC_BICYCLE) {"
+          },
+          {
+            "line": 824,
+            "text": "                // backward compatibility because default desired speed did not exist up to 1.14.1"
+          },
+          {
+            "line": 825,
+            "text": "                vType->desiredMaxSpeed = MAX2(vType->maxSpeed, vType->desiredMaxSpeed);"
+          },
+          {
+            "line": 826,
+            "text": "            }"
+          },
+          {
+            "line": 827,
+            "text": "        }"
+          },
+          {
+            "line": 828,
+            "text": ""
+          },
+          {
+            "line": 829,
+            "text": "        if (attrs.hasAttribute(SUMO_ATTR_SPEEDFACTOR)) {"
+          }
+        ]
+      }
+    ]
+  }
+]

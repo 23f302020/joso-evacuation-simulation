@@ -1,0 +1,60 @@
+{
+  "purpose": "technical_prerequisites_only",
+  "research_adoption_permitted": false,
+  "status": "FAILED",
+  "pid": 29180,
+  "started_at_jst": "2026-10-18T20:38:29.092959+09:00",
+  "suite": "cf26101804",
+  "smoke_prefix": "cs261018d",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "source_sha256": {
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_revalidate.py": "9e335faeedd236e8f9934093c6a2362be07b0d9b43e70b2fd730580d4d2fd43a",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_technical.py": "c2a7bd279f84f8aeaabf369fb3eb2fc8a0a39debac874ddf78b53d794a1ccf7b",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_smoke_sequence.py": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846",
+    "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py": "af78c003464dc95ee8829507ed06c5a0dab6ab31d0dab841db4170a74538b42d",
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": "439aa736dd6c3dcaf27302822d565ebec0275c11303af19dd82375feb9a7253e"
+  },
+  "completed": [],
+  "active": {
+    "stage": "fixture",
+    "command": [
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical.py",
+      "--project-root",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究",
+      "fixture",
+      "--run-id",
+      "cf26101804"
+    ],
+    "suite": "cf26101804",
+    "smoke_prefix": "cs261018d",
+    "started_at_jst": "2026-10-18T20:38:29.100311+09:00",
+    "stdout": "06_研究結果/jdrt/goal_20261017/cf26101804_revalidate_fixture.stdout.log",
+    "stderr": "06_研究結果/jdrt/goal_20261017/cf26101804_revalidate_fixture.stderr.log",
+    "pid": 28712,
+    "exit_code": 1,
+    "monitor_paths": [
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804/manifest.json",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804/progress.json",
+      "06_研究結果/jdrt/goal_20261017/cs261018d_smoke_sequence.json"
+    ],
+    "observed_at_jst": "2026-10-18T20:41:14.243539+09:00",
+    "child_alive": false,
+    "elapsed_sec": 165.1,
+    "finished_at_jst": "2026-10-18T20:41:20.914690+09:00"
+  },
+  "artifacts": {},
+  "finished_at_jst": "2026-10-18T20:41:20.916659+09:00",
+  "error_type": "ValueError",
+  "error": "fixture command failed; preserved exit code 1"
+}

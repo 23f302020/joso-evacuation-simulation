@@ -1,0 +1,190 @@
+{
+  "at_jst": "2026-10-17T17:30:09.402464+09:00",
+  "scope": "synthetic native boundary proof, not policy effect",
+  "core_adoption_permitted": false,
+  "data": [
+    {
+      "case": "pickup_deadline_equal",
+      "accepted_sec": "60.0",
+      "deadline_sec": "67",
+      "boarding_started_sec": "",
+      "cancel_sec": "67.0",
+      "request_status": "cancelled_timeout",
+      "native_timing_reference": {
+        "reference_run_id": "cf26101713_c08",
+        "native_boarding_started_sec": 67.0,
+        "native_accepted_sec": 60.0,
+        "internal_windows": [],
+        "source_sha256": {
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c08/execution/manifest.json": "55017402f40d306f87c18b7e39f241f0e9d01051f1f818efaae4953dfc610f89",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c08/execution/request_results.csv": "4c031e4bdcd1c9bdd0d3fc330aaa68c0f0bf5eac8899155dda70b8a9666dafba",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c08/execution/actor_observations.csv.gz": "812f60843497658cfd20c0618f14f3249466b62b008e7766bf7654fc31d337b2"
+        },
+        "derived_deadline_sec": 67.0
+      }
+    },
+    {
+      "case": "pickup_before_deadline",
+      "accepted_sec": "60.0",
+      "deadline_sec": "68",
+      "boarding_started_sec": "67.0",
+      "cancel_sec": "",
+      "request_status": "served",
+      "native_timing_reference": {
+        "reference_run_id": "cf26101713_c08",
+        "native_boarding_started_sec": 67.0,
+        "native_accepted_sec": 60.0,
+        "internal_windows": [],
+        "source_sha256": {
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c08/execution/manifest.json": "55017402f40d306f87c18b7e39f241f0e9d01051f1f818efaae4953dfc610f89",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c08/execution/request_results.csv": "4c031e4bdcd1c9bdd0d3fc330aaa68c0f0bf5eac8899155dda70b8a9666dafba",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c08/execution/actor_observations.csv.gz": "812f60843497658cfd20c0618f14f3249466b62b008e7766bf7654fc31d337b2"
+        },
+        "derived_deadline_sec": 68.0
+      }
+    },
+    {
+      "case": "pickup_internal_calibration",
+      "accepted_sec": "60.0",
+      "deadline_sec": "900",
+      "boarding_started_sec": "90.0",
+      "cancel_sec": "",
+      "request_status": "served",
+      "native_timing_reference": null
+    },
+    {
+      "case": "pickup_internal_timeout",
+      "accepted_sec": "60.0",
+      "deadline_sec": "79",
+      "boarding_started_sec": "",
+      "cancel_sec": "79.0",
+      "request_status": "cancelled_timeout",
+      "native_timing_reference": {
+        "reference_run_id": "cf26101713_c19",
+        "native_boarding_started_sec": 90.0,
+        "native_accepted_sec": 60.0,
+        "internal_windows": [
+          {
+            "deadline_sec": 79.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 80.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 81.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 82.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 83.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          }
+        ],
+        "source_sha256": {
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/manifest.json": "6706688ce462a294ddad0f0842a43c306a18eb99ae8a61b69780c00257b968e7",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/request_results.csv": "6d4a9f83e3f324a60d28db4e42e233b40c79a41b7a7d1fe3b23a2e311e118e9f",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/actor_observations.csv.gz": "01b533d41afd901ff97cc1febfeebd04b3be0d564ce2a42ed41059f025646c30"
+        },
+        "selected_internal_window": {
+          "deadline_sec": 79.0,
+          "internal_edge": ":B_1",
+          "next_external_edge": "d0",
+          "next_external_native_sec": 84.5
+        },
+        "technical_free_time_scale": 0.5,
+        "derived_deadline_sec": 79.0
+      }
+    },
+    {
+      "case": "pickup_internal_timeout_closed_next",
+      "accepted_sec": "60.0",
+      "deadline_sec": "79",
+      "boarding_started_sec": "",
+      "cancel_sec": "79.0",
+      "request_status": "cancelled_timeout",
+      "native_timing_reference": {
+        "reference_run_id": "cf26101713_c19",
+        "native_boarding_started_sec": 90.0,
+        "native_accepted_sec": 60.0,
+        "internal_windows": [
+          {
+            "deadline_sec": 79.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 80.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 81.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 82.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          },
+          {
+            "deadline_sec": 83.0,
+            "internal_edge": ":B_1",
+            "next_external_edge": "d0",
+            "next_external_native_sec": 84.5
+          }
+        ],
+        "source_sha256": {
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/manifest.json": "6706688ce462a294ddad0f0842a43c306a18eb99ae8a61b69780c00257b968e7",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/request_results.csv": "6d4a9f83e3f324a60d28db4e42e233b40c79a41b7a7d1fe3b23a2e311e118e9f",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/actor_observations.csv.gz": "01b533d41afd901ff97cc1febfeebd04b3be0d564ce2a42ed41059f025646c30"
+        },
+        "selected_internal_window": {
+          "deadline_sec": 79.0,
+          "internal_edge": ":B_1",
+          "next_external_edge": "d0",
+          "next_external_native_sec": 84.5
+        },
+        "technical_free_time_scale": 0.5,
+        "derived_deadline_sec": 79.0
+      }
+    }
+  ],
+  "source_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c17/execution/manifest.json": "3f453296db3ffda4ec8d5a4688526768f3aed9f83547829ffb203a7022124958",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c17/execution/request_results.csv": "8a59befbba02926dc6261bef8e9674aa77b9e222a15b44baccb56ea3255a3a64",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c17/fixture_inputs/manifest.json": "ec34dc20f3c74d98e310be147385d0ed38a45502e1f8f0847734396cc554403d",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c18/execution/manifest.json": "21a6756930b5f4e026932705db91945bb917843eab8db535a5e65ecec8b6e744",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c18/execution/request_results.csv": "a13979c3d60e53926d90af915439a9b6b2bfff7bb2064620f932371fecc93ac0",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c18/fixture_inputs/manifest.json": "3f368fc9a6f0829328dde89310214dab92ae3d4520d5c317c9a58e2f01d89a32",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/manifest.json": "6706688ce462a294ddad0f0842a43c306a18eb99ae8a61b69780c00257b968e7",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/execution/request_results.csv": "6d4a9f83e3f324a60d28db4e42e233b40c79a41b7a7d1fe3b23a2e311e118e9f",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c19/fixture_inputs/manifest.json": "38578805f2b5c39cda08033e1ed456c72a72bca22bba7995dd03757a7ea7a96d",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c20/execution/manifest.json": "66e36ba5c2cd68c2a20bd5d7301216e897108170b99dae79c6f801f91085271f",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c20/execution/request_results.csv": "4758347eed22d485d8928295b3dd65c8e1d90c72733c63102fcfbc70c8b64697",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c20/fixture_inputs/manifest.json": "31d61b7231dd01da63f3d09932088a78821a4675229fea4be3c2bccfd4d656d1",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c21/execution/manifest.json": "679a413213cc9d91ecd72edd0ad303ec4cfcb7e8fdf009a05341f9c3c5534ac2",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c21/execution/request_results.csv": "4758347eed22d485d8928295b3dd65c8e1d90c72733c63102fcfbc70c8b64697",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c21/fixture_inputs/manifest.json": "750d8f1db97d9f9558f3a78b84ec2b61001c4ba71ac7bc26819bfdbe039035a7",
+    "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261017T172905.json": "9d65136d479f7b362038ccbac16a3f5e077fc3c49264315f246bd7ec9a96d1e7"
+  }
+}

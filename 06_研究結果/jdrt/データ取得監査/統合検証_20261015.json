@@ -1,0 +1,40 @@
+{
+  "verified_at_jst": "2026-10-15T18:08:15+09:00",
+  "files_checked": 11,
+  "local_references_checked": 114,
+  "missing_references": [],
+  "duplicate_html_ids": [],
+  "source_hashes": {
+    "README.md": "df00c5e1271d3a64a7a76f7deaee26d53a3056037c70c7706f76f8987f496444",
+    "04_プログラム/README.md": "e0f1a9ab238171d7d4a02c66dc5362822b583368df5cad1038e498ec8832cf35",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": "dbaf72bef3f31e35ac007c2258c313fa4674d84dc89f5b24557d8b501e5de523",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": "11b46cb45a16f5599e8ea4d9ad6ae3e09e97e0005c54063703aa08661093659b",
+    "04_プログラム/output/index.html": "0c7f0733f6f4fd163f17d8555d4aa3b8f3c2b7238e8bcf218eed338e7025c114",
+    "04_プログラム/output/jdrt.html": "65f79beb783c9ba580c0039fb2387c7b1db114a28032b529db5e56c405ad1534",
+    "06_研究結果/jdrt/JDRT-v2_中核比較.html": "ad4eea4a6421b79861181a7c8ff60c827f912fe5ffb89799ddaf9294a0122a63",
+    "06_研究結果/jdrt/JDRT-v2_中核比較_報告.md": "2f45c46be08a7dcfed22c50bc528e02992f1d3c8cb20db48e408dcf81c44b1e4",
+    "06_研究結果/jdrt/JDRT-v2_データ取得監査.md": "56ad05ebbca9abab45a7d533f7e274d7213543456351fcbf960f87fe04e2828a",
+    "05_タスク管理/jdrt/JDRT-v2_完了後方針・タスク.md": "8af070d1081a12ef8948e384cb2af80d505f1d2a95b0c51a48dbf742a4cbe41b",
+    "06_研究結果/README.md": "5780ec86b4235abaac13851c490a73944b9c2ef82253859cddc8608220dbf5bf"
+  },
+  "browser_qa": {
+    "browser": "Chrome",
+    "width": 1280,
+    "surfaces": [
+      "現状把握",
+      "output/jdrt.html",
+      "中核比較"
+    ],
+    "horizontal_document_overflow": false,
+    "comparison_title_and_chart_verified": true,
+    "entry_to_comparison_navigation": true,
+    "relevant_console_errors_warnings": 0,
+    "other_viewports": "not tested"
+  },
+  "public_cloudflare": {
+    "http_status": 200,
+    "contains_14_of_20": true,
+    "redeployed": false
+  },
+  "status": "PASS"
+}

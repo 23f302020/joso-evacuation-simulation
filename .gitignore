@@ -101,3 +101,9 @@ outputs/**/node_modules
 !07_アーカイブ/
 !07_アーカイブ/**/
 !07_アーカイブ/**/README.md
+
+# Local publication caches and per-machine pointers
+.wrangler/
+.codex/*_path.txt
+00_全体整理/公開用_cloudflare/deployment_history/
+06_研究結果/jdrt/goal_20261017/dependencies/

@@ -1,0 +1,251 @@
+{
+  "schema": "choice_routine_skills_forward_review_v1",
+  "date_jst": "2026-10-18",
+  "model": {
+    "requested": "gpt-6.1-sol",
+    "reasoning_effort_requested": "high",
+    "actual_backend": "not independently observable; no backend identity assertion"
+  },
+  "status": "PASS_AFTER_MINIMAL_FIX",
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_sync_status.py": "21f8e1a2294a04395f86284d4c2ead8a8ff9a156e1342d11ebc16923687396fd",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_monitor.py": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "1e8a5e9cd84f726e9c32abc6c97500aa7b7c43133a67b5758e86c13d40fc3c32",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "changed_file": ".agents/skills/joso-jdrt-runner/scripts/choice_sync_status.py",
+  "original_sha256": "893f3c1c7940e791434ec487387f257a60141b575f64676518fd9077601f485a",
+  "original_archive": "06_研究結果/jdrt/goal_20261017/auditor_history/choice_sync_status_893f3c1c7940e791434ec487387f257a60141b575f64676518fd9077601f485a.py",
+  "archive_bytes_sha256": "893f3c1c7940e791434ec487387f257a60141b575f64676518fd9077601f485a",
+  "finding": {
+    "id": "R1",
+    "priority": "P2",
+    "status": "FIXED_AND_ARTIFICIALLY_VERIFIED",
+    "location": ".agents/skills/joso-jdrt-runner/scripts/choice_sync_status.py:91",
+    "trigger": "Path.write_text truncates/partially writes the current document, then raises OSError before changed.append(path).",
+    "before_observation": "Earlier completed targets restored but failing target retained PARTIAL and lost its existing choice_record marker; writer lock still released.",
+    "impact": "A caught filesystem failure could damage a display document and its existing adoption marker, blocking subsequent formal record integrity checks until byte recovery.",
+    "minimal_fix": "Move changed.append(path) before document write; move changed.append(checkpoint_path) before save_json; no other code changes.",
+    "after_observation": "All four documents plus checkpoint restored byte-for-byte after partial-document failure and after checkpoint replacement followed by injected failure."
+  },
+  "targets": {
+    "ordinary_sync_document_count": 4,
+    "ordinary_sync_checkpoint_count": 1,
+    "ordinary_sync_total": 5,
+    "formal_record_documents": 5,
+    "formal_record_ledger": 1,
+    "formal_record_total": 6,
+    "distinction": "Ordinary sync never creates formal adoption or new choice_record markers."
+  },
+  "tests": {
+    "sync_before": {
+      "status": "REVIEW_COMPLETED_WITH_CONFIRMED_DEFECT",
+      "cases": [
+        {
+          "case": "normal_CRLF_repeated_apply_COMPLETED",
+          "status": "PASS",
+          "markers_preserved": true,
+          "no_duplicate_row_or_summary": true,
+          "completed_not_running": true
+        },
+        {
+          "case": "writer_lock",
+          "status": "PASS",
+          "blocked": "FileExistsError",
+          "message": "Existing owned temporary workspace writer.lock rejected with FileExistsError",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "recovery_lock",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Administrative writer recovery is in progress",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "pending_record",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Partial or inconsistent formal records require diagnosis before display sync",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "partial_marker",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Partial or inconsistent formal records require diagnosis before display sync",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "accepted_SHA_mismatch",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Partial or inconsistent formal records require diagnosis before display sync",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "partial_write_rollback",
+          "status": "CONFIRMED_DEFECT",
+          "damaged_targets": [
+            "00_全体整理/現状把握_静的・動的シミュレーション整理.md"
+          ],
+          "damaged_bytes": "PARTIAL",
+          "failing_target_marker_removed": true,
+          "earlier_targets_restored": true,
+          "writer_lock_released": true
+        }
+      ]
+    },
+    "sync_after": {
+      "status": "PASS_AFTER_MINIMAL_FIX",
+      "cases": [
+        {
+          "case": "normal_CRLF_repeated_apply_COMPLETED",
+          "status": "PASS",
+          "markers_preserved": true,
+          "no_duplicate_row_or_summary": true,
+          "completed_not_running": true
+        },
+        {
+          "case": "writer_lock",
+          "status": "PASS",
+          "blocked": "FileExistsError",
+          "message": "Existing owned temporary workspace writer.lock rejected with FileExistsError",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "recovery_lock",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Administrative writer recovery is in progress",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "pending_record",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Partial or inconsistent formal records require diagnosis before display sync",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "partial_marker",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Partial or inconsistent formal records require diagnosis before display sync",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "accepted_SHA_mismatch",
+          "status": "PASS",
+          "blocked": "RuntimeError",
+          "message": "Partial or inconsistent formal records require diagnosis before display sync",
+          "target_bytes_unchanged": true
+        },
+        {
+          "case": "partial_write_rollback",
+          "status": "PASS",
+          "damaged_targets": [],
+          "failing_target_marker_preserved": true,
+          "all_original_bytes_restored": true,
+          "writer_lock_released": true
+        },
+        {
+          "case": "checkpoint_postreplacement_failure",
+          "status": "PASS",
+          "all_original_bytes_restored": true,
+          "writer_lock_released": true
+        }
+      ]
+    },
+    "monitor": {
+      "status": "PASS",
+      "check_subprocess": "mocked; no simulation or research CLI called",
+      "cases": [
+        {
+          "case": "normal_completed",
+          "status": "PASS",
+          "flags": [],
+          "exit_code": 0
+        },
+        {
+          "case": "implementation_SHA",
+          "status": "PASS",
+          "flags": [
+            "input_or_implementation_or_READY_SHA_mismatch"
+          ],
+          "exit_code": 1
+        },
+        {
+          "case": "input_manifest_SHA",
+          "status": "PASS",
+          "flags": [
+            "input_or_implementation_or_READY_SHA_mismatch"
+          ],
+          "exit_code": 1
+        },
+        {
+          "case": "READY_SHA",
+          "status": "PASS",
+          "flags": [
+            "input_or_implementation_or_READY_SHA_mismatch"
+          ],
+          "exit_code": 1
+        },
+        {
+          "case": "orphan_RUNNING",
+          "status": "PASS",
+          "flags": [
+            "orphan_RUNNING"
+          ],
+          "exit_code": 1
+        },
+        {
+          "case": "collision",
+          "status": "PASS",
+          "flags": [
+            "nonzero_collisions"
+          ],
+          "exit_code": 1
+        },
+        {
+          "case": "population_mismatch",
+          "status": "PASS",
+          "flags": [
+            "whole_population_accounting_mismatch"
+          ],
+          "exit_code": 1
+        },
+        {
+          "case": "native_Error",
+          "status": "PASS",
+          "flags": [
+            "native_SUMO_Error_lines"
+          ],
+          "exit_code": 1
+        },
+        {
+          "case": "check_command_failure",
+          "status": "PASS",
+          "flags": [
+            "skill_check_command_failure"
+          ],
+          "exit_code": 1
+        }
+      ]
+    },
+    "ast_parse": "PASS",
+    "isolation": "Owned TemporaryDirectory; ROOT/OUT patched. Real ChoiceController, writer lock and save_json used for sync; monitor subprocess.check mocked so no research CLI or simulation launched."
+  },
+  "reproducibility": {
+    "sync_after_program": "from pathlib import Path\nfrom hashlib import sha256\nimport importlib.util, tempfile, json, sys, io, contextlib\nfrom unittest.mock import patch\nskill=Path('.agents/skills/joso-jdrt-runner/scripts').resolve()\nsys.path.insert(0,str(skill))\nspec=importlib.util.spec_from_file_location('review_sync',skill/'choice_sync_status.py')\nsync=importlib.util.module_from_spec(spec);spec.loader.exec_module(sync)\nresults=[]\ndef setup(root):\n    out=root/'06_研究結果/jdrt/goal_20261017';out.mkdir(parents=True)\n    ws=root/'ws';(ws/'driver_logs').mkdir(parents=True)\n    impl=root/'impl.py';impl.write_bytes(b'# fixed implementation\\n')\n    marker='<!-- choice_record:accepted -->'\n    task='05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md'\n    docs=sync.DISPLAY_FILES+[task,'fifth.md']\n    for name in docs:\n        p=root/name;p.parent.mkdir(parents=True,exist_ok=True)\n        text=('OLD summary\\r\\n| CH-M1 | monitor | definition | OLD display |\\r\\n' if name==task else 'OLD summary\\r\\n')+marker+'\\r\\n'\n        if name=='context.md':text+='<!-- AGENT_CURRENT_END -->\\r\\n'\n        p.write_bytes(text.encode())\n    cfg={'protocol':'synthetic_choice','workspace':'ws','cells':[{'cell_id':'a'},{'cell_id':'b'}],\n         'record_files':docs+['ledger.jsonl'],'execution':{'implementation_files':['impl.py']}}\n    p=root/'04_プログラム/config/jdrt_realtime_choice_v1.json';p.parent.mkdir(parents=True);p.write_text(json.dumps(cfg),encoding='utf-8')\n    for run,cell in [('accepted','a'),('current','b')]:\n        folder=ws/'runs'/run;folder.mkdir(parents=True)\n        m={'run_id':run,'cell_id':cell,'purpose':'core','status':'COMPLETED','pid':999999,'end_sec':21600}\n        (folder/'manifest.json').write_text(json.dumps(m),encoding='utf-8')\n    proof=root/'proof.json';proof.write_text(json.dumps({'status':'PASS','core_adoption_permitted':True}),encoding='utf-8')\n    row={'run_id':'accepted','cell_id':'a','protocol':cfg['protocol'],'purpose':'core','validation_status':'PASS',\n         'manifest_sha256':sync.file_sha(ws/'runs/accepted/manifest.json'),'implementation_sha256':{'impl.py':sync.file_sha(impl)},\n         'validation_report':'proof.json','validation_report_sha256':sync.file_sha(proof)}\n    (root/'ledger.jsonl').write_text(json.dumps(row)+'\\n',encoding='utf-8')\n    cp=out/'G4実装・実SUMO_継続チェックポイント.json';cp.write_text(json.dumps({'summary':'OLD summary','goal_status':'ACTIVE'}),encoding='utf-8')\n    return out,ws,docs,cp,marker\ndef call(root,out,apply=True):\n    with patch.object(sync,'ROOT',root),patch.object(sync,'OUT',out),patch.object(sync,'pid_alive',lambda _:False),patch.object(sys,'argv',['sync']+(['--apply'] if apply else [])),contextlib.redirect_stdout(io.StringIO()):\n        sync.main()\nwith tempfile.TemporaryDirectory(prefix='choice_forward_review_') as temp:\n    root=Path(temp)/'normal';root.mkdir();out,ws,docs,cp,marker=setup(root)\n    call(root,out)\n    first={name:(root/name).read_bytes() for name in docs}\n    check=json.loads(cp.read_text(encoding='utf-8'))\n    assert check['running']==[] and check['unrecorded_runs']==['current'] and check['observed_formally_recorded']==1\n    assert 'COMPLETED' in check['summary'] and '正式記録1/2' in check['summary']\n    call(root,out)\n    second={name:(root/name).read_bytes() for name in docs}\n    assert first==second\n    assert all(raw.decode().count(marker)==1 for raw in second.values())\n    assert (root/docs[3]).read_text(encoding='utf-8').count('| CH-M1 |')==1\n    assert not (ws/'driver_logs/writer.lock').exists()\n    results.append({'case':'normal_CRLF_repeated_apply_COMPLETED','status':'PASS','markers_preserved':True,'no_duplicate_row_or_summary':True,'completed_not_running':True})\n    for case in ['writer_lock','recovery_lock','pending_record','partial_marker','accepted_SHA_mismatch']:\n        root=Path(temp)/case;root.mkdir();out,ws,docs,cp,marker=setup(root)\n        if case=='writer_lock':(ws/'driver_logs/writer.lock').write_text('existing owner')\n        if case=='recovery_lock':(ws/'driver_logs/recovery.lock').write_text('existing recovery')\n        if case=='pending_record':\n            p=ws/'record_transactions/t/journal.json';p.parent.mkdir(parents=True);p.write_text(json.dumps({'status':'PREPARED','run_id':'current'}))\n        if case=='partial_marker':(root/'fifth.md').write_text('missing marker')\n        if case=='accepted_SHA_mismatch':(root/'impl.py').write_text('# changed implementation')\n        before={p:p.read_bytes() for p in [*[root/name for name in docs],cp]}\n        try:call(root,out)\n        except (RuntimeError,FileExistsError) as error:\n            assert all(p.read_bytes()==raw for p,raw in before.items())\n            results.append({'case':case,'status':'PASS','blocked':type(error).__name__,'message':str(error),'target_bytes_unchanged':True})\n        else:raise AssertionError('Did not reject '+case)\n    root=Path(temp)/'partial_write';root.mkdir();out,ws,docs,cp,marker=setup(root)\n    target=root/docs[1];before={p:p.read_bytes() for p in [*[root/name for name in docs],cp]}\n    original_write=Path.write_text;injected=[False]\n    def broken_write(path,data,*a,**kw):\n        if path==target and not injected[0]:\n            injected[0]=True;path.write_bytes(b'PARTIAL');raise OSError('synthetic disk failure after truncation')\n        return original_write(path,data,*a,**kw)\n    try:\n        with patch.object(Path,'write_text',broken_write):call(root,out)\n    except OSError:pass\n    else:raise AssertionError('injected failure was not raised')\n    damaged=[p.relative_to(root).as_posix() for p,raw in before.items() if p.read_bytes()!=raw]\n    assert damaged==[]\n    assert all(p.read_bytes()==raw for p,raw in before.items())\n    assert not (ws/'driver_logs/writer.lock').exists()\n    results.append({'case':'partial_write_rollback','status':'PASS','damaged_targets':damaged,'failing_target_marker_preserved':marker in target.read_text(),'all_original_bytes_restored':True,'writer_lock_released':True})\n    root=Path(temp)/'checkpoint_failure';root.mkdir();out,ws,docs,cp,marker=setup(root)\n    before={p:p.read_bytes() for p in [*[root/name for name in docs],cp]}\n    real_save=sync.save_json\n    def saved_then_failed(path,value):\n        real_save(path,value)\n        raise OSError('synthetic failure after checkpoint replacement')\n    try:\n        with patch.object(sync,'save_json',saved_then_failed):call(root,out)\n    except OSError:pass\n    else:raise AssertionError('checkpoint failure was not raised')\n    assert all(p.read_bytes()==raw for p,raw in before.items())\n    assert not (ws/'driver_logs/writer.lock').exists()\n    results.append({'case':'checkpoint_postreplacement_failure','status':'PASS','all_original_bytes_restored':True,'writer_lock_released':True})\nprint(json.dumps({'status':'PASS_AFTER_MINIMAL_FIX','cases':results},ensure_ascii=True))\n",
+    "monitor_program": "from pathlib import Path\nfrom types import SimpleNamespace\nimport importlib.util,tempfile,json,sys,io,contextlib\nfrom unittest.mock import patch\nskill=Path('.agents/skills/joso-jdrt-runner/scripts').resolve()\nspec=importlib.util.spec_from_file_location('review_monitor',skill/'choice_monitor.py')\nm=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)\nresults=[]\nwith tempfile.TemporaryDirectory(prefix='choice_monitor_forward_review_') as temp:\n    for case in ['normal_completed','implementation_SHA','input_manifest_SHA','READY_SHA','orphan_RUNNING','collision','population_mismatch','native_Error','check_command_failure']:\n        root=Path(temp)/case;root.mkdir();out=root/'06_研究結果/jdrt/goal_20261017';out.mkdir(parents=True)\n        ws=root/'ws';folder=ws/'runs/r';folder.mkdir(parents=True);logs=ws/'driver_logs';logs.mkdir()\n        inputs=root/'inputs';inputs.mkdir()\n        (inputs/'people.csv').write_text('person_id\\np\\nq\\n',encoding='utf-8')\n        (inputs/'manifest.json').write_text('{}',encoding='utf-8')\n        (folder/'preflight_ready.json').write_text('{}',encoding='utf-8')\n        (folder/'sumo_errors.log').write_text('',encoding='utf-8')\n        (logs/'r.stderr.log').write_text('',encoding='utf-8')\n        (root/'impl.py').write_text('# fixed',encoding='utf-8')\n        cfg={'workspace':'ws','protocol':'synthetic_choice'}\n        config=root/'04_プログラム/config/jdrt_realtime_choice_v1.json';config.parent.mkdir(parents=True);config.write_text(json.dumps(cfg),encoding='utf-8')\n        manifest={'protocol':cfg['protocol'],'purpose':'core','run_id':'r','cell_id':'c','pid':999999,'status':'COMPLETED',\n                  'input_directory':'inputs','input_manifest_sha256':m.file_sha(inputs/'manifest.json'),\n                  'preflight_ready_sha256':m.file_sha(folder/'preflight_ready.json'),'implementation_sha256':{'impl.py':m.file_sha(root/'impl.py')}}\n        (folder/'manifest.json').write_text(json.dumps(manifest),encoding='utf-8')\n        check={'status':'COMPLETED','pid_alive':False,'error':None,'progress':{'time_sec':1000,'people_states':{'time_limit':2},\n               'counts':{k:0 for k in ['teleports','collisions','closed_entry_rows','ambiguous_transitions','missing_vehicle_subscriptions','missing_person_subscriptions']}}}\n        expected=[];returncode=0\n        if case in ['implementation_SHA','input_manifest_SHA','READY_SHA']:\n            target={'implementation_SHA':root/'impl.py','input_manifest_SHA':inputs/'manifest.json','READY_SHA':folder/'preflight_ready.json'}[case]\n            target.write_text('changed',encoding='utf-8');expected=['input_or_implementation_or_READY_SHA_mismatch']\n        if case=='orphan_RUNNING':check['status']='RUNNING';expected=['orphan_RUNNING']\n        if case=='collision':check['progress']['counts']['collisions']=1;expected=['nonzero_collisions']\n        if case=='population_mismatch':check['progress']['people_states']['time_limit']=1;expected=['whole_population_accounting_mismatch']\n        if case=='native_Error':(folder/'sumo_errors.log').write_text('  Error: synthetic\\nWarning: retained\\n',encoding='utf-8');expected=['native_SUMO_Error_lines']\n        if case=='check_command_failure':returncode=1;expected=['skill_check_command_failure']\n        def fake_check(command,cwd,stdout,stderr):\n            assert command[-3:]==['check','--run-id','r']\n            stdout.write(json.dumps(check).encode());stdout.flush();return SimpleNamespace(returncode=returncode)\n        with patch.object(m,'ROOT',root),patch.object(m,'OUT',out),patch.object(m.subprocess,'run',fake_check),patch.object(sys,'argv',['monitor','--run-id','r']),contextlib.redirect_stdout(io.StringIO()):\n            exitcode=m.main()\n        files=list(out.glob('監視_*.json'));assert len(files)==1\n        report=json.loads(files[0].read_text(encoding='utf-8'))\n        assert report['anomaly_flags']==expected\n        assert exitcode==(1 if expected else 0)\n        assert report['formal_validation_or_adoption'] is False\n        assert report['input_population_rows']==2\n        assert all(p.is_file() and len(p.read_text(encoding='utf-8').splitlines())==1 for p in [out/'operations.jsonl',logs/'operations.jsonl',logs/'monitoring.jsonl'])\n        results.append({'case':case,'status':'PASS','flags':expected,'exit_code':exitcode})\nprint(json.dumps({'status':'PASS','check_subprocess':'mocked; no simulation or research CLI called','cases':results},ensure_ascii=True))\n"
+  },
+  "limits": [
+    "No --apply against actual documents or checkpoint; no formal adoption, recovery, new run or SUMO execution.",
+    "Full real monitor execution reported by parent was not repeated by this reviewer; monitor artificial checks mock only the check subprocess.",
+    "Ordinary sync intentionally does not revalidate all run output data, input artifacts, driver/native logs or certify core adoption.",
+    "Caught-exception rollback is verified while restoration writes remain possible; persistent disk errors or machine/process interruption can still require archived-byte recovery.",
+    "Operations JSONL appends occur after the display transaction; a logging failure can leave synchronized documents while the command raises. No atomic all-logs guarantee was added."
+  ],
+  "scope": "Only choice_sync_status.py was minimally edited; before bytes archived and this Markdown/JSON written. Existing G6 review outputs preserved. Shared research scripts/config/inputs/runs and actual current documents were not edited."
+}

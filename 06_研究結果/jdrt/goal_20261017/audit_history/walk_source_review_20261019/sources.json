@@ -1,0 +1,293 @@
+[
+  {
+    "ref": "v1_26_0",
+    "path": "src/libsumo/Person.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/libsumo/Person.cpp",
+    "sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSStageWalking.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSStageWalking.cpp",
+    "sha256": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSStageMoving.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSStageMoving.cpp",
+    "sha256": "9f55fcb195ba96dbe5dab3ccb6985595d976633e2345fb959723410ab05a4d6e"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSPModel_Striping.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSPModel_Striping.cpp",
+    "sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSPModel_Interacting.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSPModel_Interacting.h",
+    "sha256": "b8af524f1b8340dfb1a390023651d292b098c4ea09e3a3f25d9421514d545e05"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSStage.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSStage.h",
+    "sha256": "34b498b94f05fb1553765eba9c1dbf6af694009d5c52f922a1599e6eab31da1c"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSTransportable.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSTransportable.cpp",
+    "sha256": "d717c0c2eb4623d96803aa6d0f299b29c1691065847695e5cabdc4cbe26a4eb8"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "docs/web/docs/Installing/Windows_Build.md",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/docs/web/docs/Installing/Windows_Build.md",
+    "sha256": "9d9c5fcbc570573179e4516601c94ec5f8e4a0e33407bfb15e0ee447e1b04e53"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/libsumo/Person.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/libsumo/Person.cpp",
+    "sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSStageWalking.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSStageWalking.cpp",
+    "sha256": "9a2cf947ba22c1fb7188afee62e2dd9f40ccaa37dcedbd859c4c60cf633a8473"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSStageMoving.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSStageMoving.cpp",
+    "sha256": "5abde1e1f21cad6fd63eae04b0b470259238ab1f5fe5aec74c387d3d47553f39"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSPModel_Striping.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSPModel_Striping.cpp",
+    "sha256": "8ed4282db3af336e34d59f8787d6695f873eb4a6116dee20dd90d3cdc048a1b7"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSPModel_Interacting.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSPModel_Interacting.h",
+    "sha256": "cb20e5e36f0b69d2749748738091730bbb00ed47fccd5100857cb9a10ad6eb6b"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSStage.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSStage.h",
+    "sha256": "c0a5117a6e91663d7aa4d3c1722d3337d14d04c46201613f02654e4eed0cf576"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSTransportable.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSTransportable.cpp",
+    "sha256": "1f8f24d59788facdf77553836d49b5f7f1b8d6f38a50e01a9dc9e904b436da0f"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "docs/web/docs/Installing/Windows_Build.md",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/docs/web/docs/Installing/Windows_Build.md",
+    "sha256": "9d9c5fcbc570573179e4516601c94ec5f8e4a0e33407bfb15e0ee447e1b04e53"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/libsumo/Person.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/libsumo/Person.cpp",
+    "sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSStageWalking.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSStageWalking.cpp",
+    "sha256": "9a2cf947ba22c1fb7188afee62e2dd9f40ccaa37dcedbd859c4c60cf633a8473"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSStageMoving.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSStageMoving.cpp",
+    "sha256": "5abde1e1f21cad6fd63eae04b0b470259238ab1f5fe5aec74c387d3d47553f39"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSPModel_Striping.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSPModel_Striping.cpp",
+    "sha256": "8ed4282db3af336e34d59f8787d6695f873eb4a6116dee20dd90d3cdc048a1b7"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSPModel_Interacting.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSPModel_Interacting.h",
+    "sha256": "cb20e5e36f0b69d2749748738091730bbb00ed47fccd5100857cb9a10ad6eb6b"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSStage.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSStage.h",
+    "sha256": "c0a5117a6e91663d7aa4d3c1722d3337d14d04c46201613f02654e4eed0cf576"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSTransportable.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSTransportable.cpp",
+    "sha256": "1f8f24d59788facdf77553836d49b5f7f1b8d6f38a50e01a9dc9e904b436da0f"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "docs/web/docs/Installing/Windows_Build.md",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/docs/web/docs/Installing/Windows_Build.md",
+    "sha256": "9d9c5fcbc570573179e4516601c94ec5f8e4a0e33407bfb15e0ee447e1b04e53"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSStage.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSStage.cpp",
+    "sha256": "7284c708bc2aa3886bcefc452a0777a25dfb0d60c56b31e858304af2bf86c016"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSStageWalking.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSStageWalking.h",
+    "sha256": "619a49355054daa2bf821a8e76d4b7abbdef2c0adacfd89db4dcdb810156f00a"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSPModel_Striping.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSPModel_Striping.h",
+    "sha256": "44d6419e930810ca62d2dd3efbad7786bfc89e157cbca3c4fbc91763174a3e8d"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSTransportableStateAdapter.h",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "CMakeLists.txt",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/CMakeLists.txt",
+    "sha256": "3216944ca8a85caa6d2fc6b43fe62e251b0f7bffcbf33833baaa2470ad301b90"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSStage.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSStage.cpp",
+    "sha256": "e63b04027f35b2dcbb0b89831f26e14109b2f230d562c76533500924a6c02179"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSStageWalking.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSStageWalking.h",
+    "sha256": "e2f008d09cf55c8b33bc2f00f6d3abce121d687408c158f1e4eb7598ee29b8b6"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSPModel_Striping.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSPModel_Striping.h",
+    "sha256": "44d6419e930810ca62d2dd3efbad7786bfc89e157cbca3c4fbc91763174a3e8d"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSTransportableStateAdapter.h",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "CMakeLists.txt",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/CMakeLists.txt",
+    "sha256": "c398dd76802ac6aede652914ba8a3831cd69441f8bef57f38cdf0c3ba3660dec"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSStage.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSStage.cpp",
+    "sha256": "e63b04027f35b2dcbb0b89831f26e14109b2f230d562c76533500924a6c02179"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSStageWalking.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSStageWalking.h",
+    "sha256": "e2f008d09cf55c8b33bc2f00f6d3abce121d687408c158f1e4eb7598ee29b8b6"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSPModel_Striping.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSPModel_Striping.h",
+    "sha256": "44d6419e930810ca62d2dd3efbad7786bfc89e157cbca3c4fbc91763174a3e8d"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSTransportableStateAdapter.h",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "CMakeLists.txt",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/CMakeLists.txt",
+    "sha256": "e3b0f8349ee051ef6ea4878c256a6b33925b16360b7c44829fbe1cf7b7e41b88"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSPModel_Interacting.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSPModel_Interacting.cpp",
+    "sha256": "1a04f7114293f50b92e063a29a60279ed74b14f78b43b20d10ab9b319c3dc674"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSTransportable.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSTransportable.h",
+    "sha256": "8d48888dd9431c2e665de1cae391c8d6f240696ba66da0437dd24f4668828d04"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/transportables/MSPModel.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSPModel.h",
+    "sha256": "890ecfd182552ad342d024549e5761626ebb8f5828416dbf1346fa062fd23a49"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSPModel_Interacting.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSPModel_Interacting.cpp",
+    "sha256": "1a04f7114293f50b92e063a29a60279ed74b14f78b43b20d10ab9b319c3dc674"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSTransportable.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSTransportable.h",
+    "sha256": "c3b8752c54de7f3360c719c2566c6e397217bdf97306198f6453606aeb586d37"
+  },
+  {
+    "ref": "v1_28_0",
+    "path": "src/microsim/transportables/MSPModel.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_28_0/src/microsim/transportables/MSPModel.h",
+    "sha256": "890ecfd182552ad342d024549e5761626ebb8f5828416dbf1346fa062fd23a49"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSPModel_Interacting.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSPModel_Interacting.cpp",
+    "sha256": "1a04f7114293f50b92e063a29a60279ed74b14f78b43b20d10ab9b319c3dc674"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSTransportable.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSTransportable.h",
+    "sha256": "c3b8752c54de7f3360c719c2566c6e397217bdf97306198f6453606aeb586d37"
+  },
+  {
+    "ref": "6cc2da1964718a94d44eb3fc9ff56c5d2c43982c",
+    "path": "src/microsim/transportables/MSPModel.h",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/6cc2da1964718a94d44eb3fc9ff56c5d2c43982c/src/microsim/transportables/MSPModel.h",
+    "sha256": "890ecfd182552ad342d024549e5761626ebb8f5828416dbf1346fa062fd23a49"
+  },
+  {
+    "ref": "v1_26_0",
+    "path": "src/microsim/MSEdge.cpp",
+    "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/MSEdge.cpp",
+    "sha256": "8d3e8ce8fe90a78675eb7ca1b5e1d34ff84cf58f6833aa67346a672a2df97343"
+  }
+]

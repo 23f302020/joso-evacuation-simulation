@@ -1,0 +1,62 @@
+{
+  "at_jst": "2026-10-18T10:05:34.221523+09:00",
+  "scope": "whole active final research goal, not a single simulation",
+  "reported_percent_approx": 50,
+  "estimated_weighted_percent": 48.0,
+  "phases_subjective_work_weights": [
+    {
+      "phase": "G1",
+      "weight": 15,
+      "estimated_completion": 0.6
+    },
+    {
+      "phase": "G2",
+      "weight": 10,
+      "estimated_completion": 1
+    },
+    {
+      "phase": "G3",
+      "weight": 10,
+      "estimated_completion": 1
+    },
+    {
+      "phase": "G4",
+      "weight": 20,
+      "estimated_completion": 0.9
+    },
+    {
+      "phase": "G5",
+      "weight": 25,
+      "estimated_completion": 0
+    },
+    {
+      "phase": "G6",
+      "weight": 15,
+      "estimated_completion": 0
+    },
+    {
+      "phase": "G7",
+      "weight": 5,
+      "estimated_completion": 0.2
+    }
+  ],
+  "current_core_recorded": 0,
+  "registered_core_cells": 70,
+  "smoke_verified_at_status_query": 5,
+  "smoke_verified_at_record": 6,
+  "old_series_actual_completed_runs": 15,
+  "old_series_actual_median_minutes": 5.941088916666667,
+  "remaining_minutes_estimate": [
+    900,
+    2400
+  ],
+  "estimate_basis": "legacy median*70, assumed2-4x combined new simulation/independent-verification workload plus120-240min analysis/report and0-500min orchestration margin; uncalibrated current-series forecast, not a guaranteed bound",
+  "assumptions": [
+    "same machine stays awake and available",
+    "no further implementation/input/validation failure",
+    "no storage migration",
+    "no new research design extension"
+  ],
+  "reestimate_after": "first1-3 actual current-series core cells incl validation and record",
+  "completion_claim": false
+}

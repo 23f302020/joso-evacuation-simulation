@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-17T08:57:25.796093+09:00",
+  "goal_status": "ACTIVE",
+  "G3": "REGISTERED",
+  "G4": "INPUT_PASS_RUNTIME_PENDING",
+  "old_sources_checked": 249,
+  "old_source_mismatches": [],
+  "new_input_source_mismatches": [],
+  "input_checks_passed": 23,
+  "policy_tests_passed": 13,
+  "registered_new_cells": 70,
+  "new_core_runs": 0,
+  "technical_ready": false,
+  "authored_files": 22,
+  "local_links_checked": 204,
+  "broken_links": [],
+  "git_diff_check": 0,
+  "old_six_file_missing": {
+    "05_タスク管理/jdrt/JDRT-実時間B境界整合_full実験記録.md": [],
+    "05_タスク管理/jdrt/JDRT-v2_完了後方針・タスク.md": [],
+    "context.md": [],
+    "00_全体整理/決定ログ.md": [],
+    "01_経過報告/経過報告2026年08月/経過報告20260826.md": [],
+    "05_タスク管理\\jdrt\\JDRT-実時間B境界整合_セル検証台帳.jsonl": []
+  },
+  "next": "Official/local SUMO API check -> actual cancellation/internal/fallback fixtures -> new executor/run validator/14-setting smoke/skill CLI -> READY -> one cell and 15-min monitoring",
+  "snapshots_sha256": {
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "606a583b082be7a755a28a304b886915e6c2831444666661d7880b8ae2f19206",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "7ccd83331fccee7acb6151d9472a4778516d61d85a1b44e56f074211aba1da13",
+    "04_プログラム/tests/test_jdrt_choice_policy.py": "1643fa10559996dcbeecac742a703f8045ca654306e90e848fc172c06b275ed0",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/input_validation.json": "e34c51acd54d5b0f8151c8d26d8c11d0c7350041c0a6f83a98e12367bf008a4e",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered01/manifest.json": "0e63c29ae965a24388e46de7f3232426534797b82b9f7cc0bd9e698186968cf8"
+  },
+  "status": "PASS"
+}

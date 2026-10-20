@@ -1,0 +1,4395 @@
+{
+  "at_jst": "2026-10-18T09:57:47.926942+09:00",
+  "status": "PASS",
+  "scope": "canonical_validator_fixture_components_not_READY",
+  "suite": "cf26101801",
+  "historical_diagnostic": false,
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "fixture_components": [
+    {
+      "run_id": "cf26101801_c01",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:31.311716+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "465f4e1eafd287e9c74011903d9ea9c0fc15eb079712ebdc23954979f87b6b79",
+      "parameter_sha256": "027367b94298c05a95af1402775b2adbcffe3b8763d9996ce84c9f9b07cc3350",
+      "input_manifest_sha256": "d6c602bcee506dfc6c5ee5b8511d5ae9d53adc3c18d704e1172081351cb13f04",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 8,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 7,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 989,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c02",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:32.272922+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "8b0277d3ebf1a7a4887c1d8b5eda21d3e9732634c00a7eb63c247e7f14dc95ed",
+      "parameter_sha256": "ccfe8ebb06ee50913626031f8c8a8b0928ba581684bda54f6bb5fb6a8c08342f",
+      "input_manifest_sha256": "8480857f99eb7ba40a83ce930c2bf2d7c7e0a7ee7cccb58c9c3a228546453723",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 79,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {
+            "fixture_person_0": {
+              "time_sec": "39.5",
+              "road_id": "e0",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "",
+              "status": "travelling_walk"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c03",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:32.858608+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "5787471d62b5d9d191e7fd9893aa5b8c3755f3af0157d542807140610b9c9df9",
+      "parameter_sha256": "26463f11a996799e844a9dbcebc4d783c5571f3a578e754c3c67f701b22521a6",
+      "input_manifest_sha256": "dd8426404f3eb0ebc99935760173452c9747fdf930951133ed5ce9be878e13df",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 55,
+          "road_rows": 2016,
+          "grid_bytes": 2016,
+          "sparse_occupied_keys": 55,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 6662,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {
+            "fixture_person_0": {
+              "time_sec": "3331.0",
+              "road_id": "long",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "",
+              "status": "travelling_walk"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c04",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:33.670847+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "9cd8313cbce799fb404a652d908929dae1c2230e34cb0901b0ee091ea486ad8d",
+      "parameter_sha256": "1acb4c6ba7ae160da530643596a1b9ecb5e6364412b3f5f3069587d6a9db77a0",
+      "input_manifest_sha256": "5f83d478880eaa12dd1070cbc5a8d7566df638f322fdeddf672443c491999886",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 133,
+          "actor_count": 1,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c05",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:34.230041+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "50d525365ccf6b55e4789ba225020f33396b5c3d215ac50308eb476fc933c19a",
+      "parameter_sha256": "deedd17c0ee44991c680035fc789f37a2bae2726b10f52ef0cc8e554b01c6295",
+      "input_manifest_sha256": "69ab935975cd4ede7ff39ac3decc4b0e7761b46863d79cc58284db07df052a14",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 4,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 649,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.00037620605552035613,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "64.5",
+              "road_id": "e0",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "g0",
+              "status": "pickup"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [
+            {
+              "raw": "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+              "actor": "choice_drt_0",
+              "closure_native_sec": 65.0,
+              "removal_control_sec": 64.5,
+              "evidence": {
+                "time_sec": "64.5",
+                "road_id": "e0",
+                "observation_kind": "onroad",
+                "reentry_source_edge": "g0",
+                "status": "pickup"
+              }
+            }
+          ],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c06",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:34.803838+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "9b9b58df962daaf9a3dc975c423c1dcc4f99acb264238e074fa1d82c39983d97",
+      "parameter_sha256": "17cb685588aee17f9dd41dc1085a05d71e8b3312689400397cbfd7a013fe549f",
+      "input_manifest_sha256": "c589452e788e0dc05398e1564e180c6a0b95ffd3d9b89a91d4fa07ad8b0d8689",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 239,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0018783427615574055,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "119.5",
+              "road_id": "e0",
+              "observation_kind": "parked",
+              "reentry_source_edge": "g0",
+              "status": "boarding"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 1,
+          "actual_transition_rows": 1,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [
+            {
+              "raw": "Warning: Vehicle 'choice_drt_0' aborts stop.",
+              "actor": "choice_drt_0",
+              "closure_native_sec": 120.0,
+              "removal_control_sec": 119.5,
+              "evidence": {
+                "time_sec": "119.5",
+                "road_id": "e0",
+                "observation_kind": "parked",
+                "reentry_source_edge": "g0",
+                "status": "boarding"
+              }
+            }
+          ],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c07",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:35.361534+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "9279f453260e77eda84474586e130b1cdf2dbd8a4bf7e2af8a0c28a1129a597f",
+      "parameter_sha256": "dfbcdf17fe3c3b94561183abfd7361e433e07876d4f66d552ecafc8878e0c39d",
+      "input_manifest_sha256": "43c7febaebffd89e7d36a998576e670a7466d4f30d0e98ff345a8e1a8163d3cf",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 6,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 6,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 899,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "449.5",
+              "road_id": "e2",
+              "observation_kind": "parked",
+              "reentry_source_edge": "e0",
+              "status": "alighting"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [
+            {
+              "raw": "Warning: Vehicle 'choice_drt_0' aborts stop.",
+              "actor": "choice_drt_0",
+              "closure_native_sec": 450.0,
+              "removal_control_sec": 449.5,
+              "evidence": {
+                "time_sec": "449.5",
+                "road_id": "e2",
+                "observation_kind": "parked",
+                "reentry_source_edge": "e0",
+                "status": "alighting"
+              }
+            }
+          ],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c08",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:35.943016+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "8fbd4882be5ae25c9e6f89bccbe8aa2a98358ccf380c7cefafc2a470cdb2953c",
+      "parameter_sha256": "35d16a0e6de1ea7463f15d2d43afe58092ff6ed608ab5b02cbd425a4e4ee02c0",
+      "input_manifest_sha256": "93452645c1bf460dd4ecd1f786a16762fb2a4583a0e68e55c40584263998038f",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c09",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:36.573634+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "b4a4ecf11e26ca86ddb62fed0519087f19d05e44d0db187ea388d8bb2758e37f",
+      "parameter_sha256": "10963776114c5492b69ae8546d0512242d96be09d764c8771cd45d0b14dab4ae",
+      "input_manifest_sha256": "9b2583b754256423eb303ffd404ffb6eeac67e80484b431eadbe83c552681011",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 14,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 37,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 37,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4520,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0004943101702963304,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 2,
+          "actual_transition_rows": 2,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c10",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:37.217279+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "07379e91580f7048225b47ef47414d0551fc19de191e5a1efae3af4d04c49bf3",
+      "parameter_sha256": "1312fee09876a9ca0bc4b51beb4cce03dd66014496a0bd752ef3d150dfd76b8b",
+      "input_manifest_sha256": "19ff9bebc2b2444babba98e45f231cf0f79d4414a72e7262d02a8e469b14146d",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c11",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:37.858735+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "90b56c46e7e90e1852f426b2258bfd4c9fa1c3fa88e5c2a0518ec70788555e1b",
+      "parameter_sha256": "b96646c44bf754d13ef693cfdae55b11b1f5bb347c1a773e2a9b8f44fcd89dbd",
+      "input_manifest_sha256": "b2b60c1e33aaba325bb21d92d145b49f2c879d924abd60f6615275f0acfa4359",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 12,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0031257457126230292,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 5,
+          "actual_transition_rows": 5,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c12",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:38.488750+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "2443263dfaac464f9644e9cbc908b59de668f2eaa3d5a29915772267fb066435",
+      "parameter_sha256": "3205b587a910fc1ae8547059fec1ec45cdc708a641b5e055fd3b8e9888f1e74b",
+      "input_manifest_sha256": "6e14f8444b8897845b99c6fa2ba63c833efb3c59da42de98c1d829b71dbd4780",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 3,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 12,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 1565,
+          "actor_count": 3,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 6,
+          "actual_transition_rows": 6,
+          "walkers": 3,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c13",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:39.102485+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "2f4fb501fce50576db5f346e3950e6240e7095c34c675e5e372457eab36f7f2f",
+      "parameter_sha256": "5c8a9bc895f74c1e4955abdb52b34ce9c22b8924505d5a00cc3ef427d7d55ca7",
+      "input_manifest_sha256": "84047f8ae348376932b44a7650d6a4f0f95b6110f1b3c40cb780b3f48341c786",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 12,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 10,
+          "road_rows": 288,
+          "grid_bytes": 288,
+          "sparse_occupied_keys": 10,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 1412,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c14",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:39.661575+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "8020060aee410f997704805612d89d0e52f098b42a000c2903ea5b860ef4fced",
+      "parameter_sha256": "a3f5d0d9e5ecc9be9097728059eb5ee69d3b31148c9063038e071217e4bb3baa",
+      "input_manifest_sha256": "2c72d1faf83e09c6fc0389df3d62b54cb0ab8a66407512a15d8a463fe139ec9b",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 780,
+          "grid_bytes": 780,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 194,
+          "actor_count": 1,
+          "vkt": {
+            "fixture_car": {
+              "arrival_tail_m": 2.4218398074762675,
+              "residual_m": -7.105427357601002e-15,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c15",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:40.185659+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "fe3b482925bc48b80cd34a603549ffdaa6b381a9bfd5b99daf51c2d710dbeb90",
+      "parameter_sha256": "c45506e31cc52080e3ca7039d473bd2ba897c5b845d25e42ce945472fcaa49d3",
+      "input_manifest_sha256": "31a24a8a20614c3cc3d02624872a745ad23fe881d4e044d004508b6c2c9bb11a",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 0,
+          "actor_count": 0,
+          "vkt": {},
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 0,
+          "actual_transition_rows": 0,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c16",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:40.768198+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "f853a19b7282a2307b18a16654b885267dbcb1ccec797ab677f305ab5906c57c",
+      "parameter_sha256": "2dcf3bf30ea256b41a496f80692916ccecbb2734dfd6e86e14fc92a66b7c5785",
+      "input_manifest_sha256": "e606320b42ac630cfa67b560b4cfc00658cef54eac235e76da60ebfa42244917",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 173,
+          "actor_count": 1,
+          "vkt": {
+            "fixture_car": {
+              "arrival_tail_m": 1.1683150942396594,
+              "residual_m": -8.526512829121202e-14,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": false,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c17",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:41.308091+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "be71cd79544ff8170a7faf632eda0f40a7f9419cf48e7df148dab5338776d804",
+      "parameter_sha256": "0cad1504ce6e09f98c35eadb102a131b2150b07b71ddac2f9cfbc0557455588d",
+      "input_manifest_sha256": "89497c458392fcb7ccd96a16768d6cd02234d922233b1f728ab3f5f95ba4d10c",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 36,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 36,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4520,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0018783427615574055,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_deadline_equal",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "same_straight_pickup_reference": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "accepted_timeout_before_boarding_once_fallback": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    },
+    {
+      "run_id": "cf26101801_c18",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:41.970490+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "41564351f4f8d79a778bd96742f1d4022ae8ca54af298e88fb78d228eaed68cd",
+      "parameter_sha256": "603624299c68a063a07c4928f3f8d8f87280a4f298ce1626f3d9ee160700a973",
+      "input_manifest_sha256": "9fdef908999249eb77f5154dc163ec97aa7d5b60c5fb49a6a3f5eafe9db9c465",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_before_deadline",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "same_straight_pickup_reference": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "boarding_strictly_before_then_continues": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    },
+    {
+      "run_id": "cf26101801_c19",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:42.634833+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "f638087628857893bafce46a6bb6d335fd344a00953687a426cb7b2385c3dbe7",
+      "parameter_sha256": "ca040658f28f62e2c10ee6b2bf5faa5bfa374d3a39ef88e45c6c3fc2aafc986a",
+      "input_manifest_sha256": "53dc3706e570882b651fdbe59523c6855d55bba34203f7715600b82c879e353e",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0012148814029160349,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 5,
+          "actual_transition_rows": 5,
+          "walkers": 0,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_internal_calibration",
+          "checks": {
+            "calibration_physically_served": true,
+            "native_internal_integer_window_present": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 44
+    },
+    {
+      "run_id": "cf26101801_c20",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:43.281483+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "848b6f783b80e3b3be2ec97b11819b067974c1a42f4bc54f395973411db74027",
+      "parameter_sha256": "3b1621a1531a7b825fc07fa81d520e1829614ba1928d6bf22293e193c3efe2e4",
+      "input_manifest_sha256": "9324f089bfc9c1c10f6f3837a392a2fced7c1321146a87d9576aa124b5e569ad",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 35,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 34,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4403,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.000632707148611189,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {},
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 4,
+          "actual_transition_rows": 4,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_internal_timeout",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "native_internal_reference": true,
+            "explicit_artificial_underprediction_same_geometry": true,
+            "actual_internal_at_cancel": true,
+            "safe_external_wait_after_internal_cancel": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "accepted_timeout_before_boarding_once_fallback": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    },
+    {
+      "run_id": "cf26101801_c21",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-18T09:57:44.000095+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": false,
+      "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "formal_adoption_and_preflight_transaction",
+        "current_complete_suite_and_all14_smokes"
+      ],
+      "manifest_sha256": "f608ea5f42285dd09daf7cac2d76729d5efdaeeaf1f775033bb677e29cab07aa",
+      "parameter_sha256": "bb4f4f685f5847278275df42029fd4cc7f14a0fb661dc6eb09f33fabc46ae570",
+      "input_manifest_sha256": "4036ba55b8c3b97e7ee130d1e81203c05cabfd4525044c6bc70a0636f64f7b00",
+      "implementation_sha256": {
+        "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+        "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+        "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+        ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+      },
+      "runtime_sha256": {
+        "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+        "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+        "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+        "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+        "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+      },
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "current_runtime_bytes": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "person_fsm": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 3,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 2,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 570,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.002893662039468836,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "removal_observations": {
+            "choice_drt_0": {
+              "time_sec": "83.5",
+              "road_id": ":B_1",
+              "observation_kind": "onroad",
+              "reentry_source_edge": "g0",
+              "status": "cancel_pending"
+            }
+          },
+          "core_adoption_permitted": false
+        },
+        "movement_events": {
+          "status": "PASS",
+          "checks": {
+            "transition_route_reconstruction": true,
+            "all_entries_primary_multiset": true,
+            "route_change_source_continuity": true,
+            "walk_stage_budget_recurrence": true,
+            "walk_pre_step_budget_stop": true,
+            "no_closed_or_ambiguous_entries": true
+          },
+          "errors": {},
+          "examples": {},
+          "expected_transition_rows": 3,
+          "actual_transition_rows": 3,
+          "walkers": 1,
+          "core_adoption_permitted": false
+        },
+        "native_logs": {
+          "status": "PASS",
+          "checks": {
+            "no_native_errors": true,
+            "all_warnings_evidence_classified": true,
+            "no_teleports_or_collisions": true,
+            "no_subscription_missing": true,
+            "native_summary_recomputed": true
+          },
+          "classified_warnings": [],
+          "unknown": [],
+          "errors": [],
+          "core_adoption_permitted": false
+        },
+        "native_fixture_boundaries": {
+          "status": "PASS",
+          "applicable": true,
+          "case": "pickup_internal_timeout_closed_next",
+          "checks": {
+            "timing_reference_primary_bytes": true,
+            "native_boarding_reference": true,
+            "native_internal_reference": true,
+            "explicit_artificial_underprediction_same_geometry": true,
+            "actual_internal_at_cancel": true,
+            "next_external_closure_and_removal": true,
+            "derived_deadline_registered_only_in_fixture": true,
+            "accepted_timeout_before_boarding_once_fallback": true
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 47
+    }
+  ],
+  "counterexamples": [
+    {
+      "case": "population_missing",
+      "expected": "complete_population",
+      "pass": true,
+      "failed_checks": [
+        "complete_population"
+      ]
+    },
+    {
+      "case": "population_duplicate",
+      "expected": "unique_tables",
+      "pass": true,
+      "failed_checks": [
+        "unique_tables"
+      ]
+    },
+    {
+      "case": "source_attribute_corrupted",
+      "expected": "common_realization_and_attributes",
+      "pass": true,
+      "failed_checks": [
+        "common_realization_and_attributes"
+      ]
+    },
+    {
+      "case": "request_omitted",
+      "expected": "request_set",
+      "pass": true,
+      "failed_checks": [
+        "request_set",
+        "state_chains",
+        "summary_accounting"
+      ]
+    },
+    {
+      "case": "boarding_duration_corrupted",
+      "expected": "request_lifecycle",
+      "pass": true,
+      "failed_checks": [
+        "request_lifecycle"
+      ]
+    },
+    {
+      "case": "shared_capacity_account_corrupted",
+      "expected": "shared_capacity_and_exit",
+      "pass": true,
+      "failed_checks": [
+        "shared_capacity_and_exit"
+      ]
+    },
+    {
+      "case": "candidate_shortest_time_corrupted",
+      "expected": "candidate_shortest_paths",
+      "pass": true,
+      "failed_checks": [
+        "candidate_shortest_paths",
+        "candidate_gates"
+      ]
+    },
+    {
+      "case": "candidate_missing",
+      "expected": "cycle_counts",
+      "pass": true,
+      "failed_checks": [
+        "candidate_selection",
+        "cycle_counts"
+      ]
+    },
+    {
+      "case": "candidate_nan_source_speed",
+      "expected": "ValueError",
+      "pass": true,
+      "failed_checks": [
+        "Nonfinite candidate scalar: source_speed_mps"
+      ]
+    },
+    {
+      "case": "native_braking_bound_corrupted",
+      "expected": "candidate_source",
+      "pass": true,
+      "failed_checks": [
+        "candidate_source"
+      ]
+    },
+    {
+      "case": "native_deceleration_corrupted",
+      "expected": "candidate_source",
+      "pass": true,
+      "failed_checks": [
+        "candidate_source"
+      ]
+    },
+    {
+      "case": "zero_road_row_missing",
+      "expected": "full_road_grid",
+      "pass": true,
+      "failed_checks": [
+        "full_road_grid"
+      ]
+    },
+    {
+      "case": "snapshot_raw_speed_corrupted",
+      "expected": "snapshot_primary_reaggregation",
+      "pass": true,
+      "failed_checks": [
+        "snapshot_primary_reaggregation"
+      ]
+    },
+    {
+      "case": "native_road_membership_corrupted",
+      "expected": "native_edge_membership",
+      "pass": true,
+      "failed_checks": [
+        "native_edge_membership"
+      ]
+    },
+    {
+      "case": "actor_step_omitted",
+      "expected": "actor_grid_completeness",
+      "pass": true,
+      "failed_checks": [
+        "actor_grid_completeness"
+      ]
+    },
+    {
+      "case": "actor_wrong_phase",
+      "expected": "actor_phase_unique_membership",
+      "pass": true,
+      "failed_checks": [
+        "actor_phase_unique_membership"
+      ]
+    },
+    {
+      "case": "actor_route_index_corrupted",
+      "expected": "actor_route_index",
+      "pass": true,
+      "failed_checks": [
+        "actor_route_index"
+      ]
+    },
+    {
+      "case": "walking_speed_exceeded",
+      "expected": "actor_walk_integral_and_speed",
+      "pass": true,
+      "failed_checks": [
+        "actor_walk_integral_and_speed"
+      ]
+    },
+    {
+      "case": "VKT_backend_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "native_controller_clock_conflated",
+      "expected": "actor_arrival_clock",
+      "pass": true,
+      "failed_checks": [
+        "actor_arrival_clock"
+      ]
+    },
+    {
+      "case": "external_entry_omitted",
+      "expected": "all_entries_primary_multiset",
+      "pass": true,
+      "failed_checks": [
+        "all_entries_primary_multiset",
+        "no_closed_or_ambiguous_entries"
+      ]
+    },
+    {
+      "case": "external_entry_duplicate",
+      "expected": "all_entries_primary_multiset",
+      "pass": true,
+      "failed_checks": [
+        "all_entries_primary_multiset",
+        "no_closed_or_ambiguous_entries"
+      ]
+    },
+    {
+      "case": "walk_native_remaining_corrupted",
+      "expected": "walk_stage_budget_recurrence",
+      "pass": true,
+      "failed_checks": [
+        "walk_stage_budget_recurrence"
+      ]
+    },
+    {
+      "case": "walk_budget_stop_event_omitted",
+      "expected": "walk_pre_step_budget_stop",
+      "pass": true,
+      "failed_checks": [
+        "walk_stage_budget_recurrence",
+        "walk_pre_step_budget_stop"
+      ]
+    },
+    {
+      "case": "person_invalid_state_transition",
+      "expected": "person_fsm",
+      "pass": true,
+      "failed_checks": [
+        "state_chains",
+        "person_fsm"
+      ]
+    },
+    {
+      "case": "before_deadline_boarding_moved_to_equality",
+      "expected": "boarding_strictly_before_then_continues",
+      "pass": true,
+      "failed_checks": [
+        "boarding_strictly_before_then_continues"
+      ]
+    },
+    {
+      "case": "internal_cancel_time_corrupted",
+      "expected": "accepted_timeout_before_boarding_once_fallback",
+      "pass": true,
+      "failed_checks": [
+        "accepted_timeout_before_boarding_once_fallback"
+      ]
+    },
+    {
+      "case": "next_closed_edge_removal_time_corrupted",
+      "expected": "next_external_closure_and_removal",
+      "pass": true,
+      "failed_checks": [
+        "next_external_closure_and_removal"
+      ]
+    },
+    {
+      "case": "derived_deadline_metadata_corrupted",
+      "expected": "derived_deadline_registered_only_in_fixture",
+      "pass": true,
+      "failed_checks": [
+        "derived_deadline_registered_only_in_fixture"
+      ]
+    },
+    {
+      "case": "artificial_time_scale_hidden",
+      "expected": "explicit_artificial_underprediction_same_geometry",
+      "pass": true,
+      "failed_checks": [
+        "explicit_artificial_underprediction_same_geometry"
+      ]
+    },
+    {
+      "case": "internal_reference_edge_corrupted",
+      "expected": "native_internal_reference",
+      "pass": true,
+      "failed_checks": [
+        "native_internal_reference"
+      ]
+    },
+    {
+      "case": "historical_factory_archive_hash_corrupted",
+      "expected": "all_bound_bytes_before",
+      "pass": true,
+      "failed_checks": [
+        "all_bound_bytes_before"
+      ]
+    },
+    {
+      "case": "unknown_native_warning",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "native_error",
+      "expected": "no_native_errors",
+      "pass": true,
+      "failed_checks": [
+        "no_native_errors",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "known_warning_without_raw_removal_observation",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified"
+      ]
+    }
+  ],
+  "current_SHA_gate_rejects_old_suite": true,
+  "primary_outputs_unchanged": true,
+  "primary_files_rechecked": 357,
+  "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+  "test_sha256": "afe5bf268ba319dd40e4f73d6491a097feefdde5e3579c4420a28ce20acf6840"
+}

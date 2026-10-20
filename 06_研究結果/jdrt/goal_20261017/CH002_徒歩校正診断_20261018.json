@@ -1,0 +1,241 @@
+{
+  "diagnosis_id": "CH002_徒歩校正診断_20261018",
+  "created_at_jst": "2026-10-18T20:45:09.292693+09:00",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend_identity": "not_verified",
+  "scope": "read-only independent recomputation; new diagnosis md/json only; no code/input/run/acceptance edits",
+  "suite_id": "cf26101804",
+  "smoke_prefix": "cs261018d",
+  "case_run_id": "cf26101804_c25",
+  "research_adoption_permitted": false,
+  "suite_status": "FAILED",
+  "suite_passed_case_count": 24,
+  "pipeline_status": "FAILED",
+  "pipeline_completed_stages": [],
+  "exception": "Calibration lacks a shared interior short-edge walking frame",
+  "native_length_m": 22.52,
+  "step_sec": 0.5,
+  "calibration_predicate": "actor belongs to all person_results IDs; road_id=d0; (time_sec+step_sec)%1==0; 2*speed_mps*step_sec < lane_position_m < d0_length-2*speed_mps*step_sec; every person at the same time",
+  "people": {
+    "fixture_person_0": {
+      "type": "type3",
+      "status": "admitted",
+      "arrival_sec": 430.5,
+      "all_d0": {
+        "count": 50,
+        "first_sec": 34.0,
+        "last_sec": 58.5
+      },
+      "interior_d0": {
+        "count": 46,
+        "first_sec": 35.0,
+        "last_sec": 57.5
+      },
+      "controller_grid_interior_d0": {
+        "count": 23,
+        "first_sec": 35.5,
+        "last_sec": 57.5
+      },
+      "grid_time_sec": [
+        35.5,
+        36.5,
+        37.5,
+        38.5,
+        39.5,
+        40.5,
+        41.5,
+        42.5,
+        43.5,
+        44.5,
+        45.5,
+        46.5,
+        47.5,
+        48.5,
+        49.5,
+        50.5,
+        51.5,
+        52.5,
+        53.5,
+        54.5,
+        55.5,
+        56.5,
+        57.5
+      ]
+    },
+    "fixture_person_1": {
+      "type": "type4",
+      "status": "admitted",
+      "arrival_sec": 743.0,
+      "all_d0": {
+        "count": 87,
+        "first_sec": 59.0,
+        "last_sec": 102.0
+      },
+      "interior_d0": {
+        "count": 83,
+        "first_sec": 60.0,
+        "last_sec": 101.0
+      },
+      "controller_grid_interior_d0": {
+        "count": 41,
+        "first_sec": 60.5,
+        "last_sec": 100.5
+      },
+      "grid_time_sec": [
+        60.5,
+        61.5,
+        62.5,
+        63.5,
+        64.5,
+        65.5,
+        66.5,
+        67.5,
+        68.5,
+        69.5,
+        70.5,
+        71.5,
+        72.5,
+        73.5,
+        74.5,
+        75.5,
+        76.5,
+        77.5,
+        78.5,
+        79.5,
+        80.5,
+        81.5,
+        82.5,
+        83.5,
+        84.5,
+        85.5,
+        86.5,
+        87.5,
+        88.5,
+        89.5,
+        90.5,
+        91.5,
+        92.5,
+        93.5,
+        94.5,
+        95.5,
+        96.5,
+        97.5,
+        98.5,
+        99.5,
+        100.5
+      ]
+    }
+  },
+  "shared_raw_d0_time_sec": [],
+  "shared_interior_grid_d0_time_sec": [],
+  "independent_checks": {
+    "all_output_hashes_match": true,
+    "all_fixture_input_hashes_match": true,
+    "all_common_current_hashes_match_execution": true,
+    "factory_current_hash_matches_input_manifest": true,
+    "case25_completed": true,
+    "case25_all_walkers_admitted": true,
+    "case25_zero_errors": true,
+    "case25_zero_teleports_collisions": true,
+    "one_first_reroute_per_person": true,
+    "forward_native_next_frame_after_first_reroute": false,
+    "two_position_preserving_replacement_receipts_per_plan": true,
+    "warning_count_equals_receipt_count_positive": true,
+    "shared_d0_raw_frame_exists": false,
+    "shared_d0_interior_controller_grid_frame_exists": false
+  },
+  "warning_count": 4,
+  "replacement_receipt_count": 4,
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "source_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/execution/manifest.json": "d4d72951ce3d404a03eeccac8a92d13d138a22d26eea0c89eef3a28994028131",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/execution/actor_observations.csv.gz": "127fc2c69336332987fa256b9839c2b5d9139bf343b30fa4ecd97127feb79ee9",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/execution/events.jsonl": "530c279c15f0d25a80ff6ab647ee08f424985da185052f57e36355454c84930e",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/execution/person_results.csv": "ef03471392149fe657c5f65da0ce4d125bf3aa6e53676b94966741f3ffd825c7",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/execution/sumo_errors.log": "106ca9b2b17a3d74a6cc4c71b026fc3d99cc29e922d8a71a3448782b5394099a",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/manifest.json": "989bd49f95d96b5e625ef52ab2307b9fae06b9b6f8f195dad1aa8b8cf89b414f",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/fixture_parameters.json": "f594e6cbc15946ef12820a4bc90fcb0f08da4ec974024d198fe05475b5969edf",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/graphs.json": "7d352dc83c1775ae579bae70a4cae1a2221de0aa0a7d7c07b59ee3412702c28d",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/bounded.net.xml": "1ad9d7e624210078fd6422cf6dca03980787f07637b8c9c9715f49ec6e00d392",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/nodes.xml": "1ccfc951f8f70e403e6e9f3ac9d5258d8efbeea63dc1b45c2b86c061e082da82",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/edges.xml": "1fa1c0c1cc8ce046e7b16d330be88f8cde420cf90767b73439be5f1e44d21380",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/people.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/place_positions.csv": "13154a7c26ac34f5bcc46c41c83efed02fdf75d2acd09c54ef31b8deebb0384c",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c25/fixture_inputs/hazard.csv": "b134adb4bc1e8e89fd5ffd50f93d929c12884aec67cfcd8a81aa1616fda3890b",
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": "439aa736dd6c3dcaf27302822d565ebec0275c11303af19dd82375feb9a7253e",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "06_研究結果/jdrt/goal_20261017/cf26101804_revalidate.json": "bed84c0b66999ef546393e52995172beb7ed2ff7be3fd5810ba2a2c24bbf065f",
+    "06_研究結果/jdrt/goal_20261017/cf26101804_revalidate_fixture.stderr.log": "86be236d67f65731559b511c3d57ce254f2b9c62bc92d0bc41f6626d516e7107"
+  },
+  "observed_cause": "Both types enter d0 at different native times. Type3 leaves before Type4 enters; requiring a common interior frame therefore correctly raises ValueError. This is an artificial calibration design coverage failure, not evidence that runtime walking failed.",
+  "minimal_proposal": {
+    "target": "jdrt_choice_fixtures.py prepare() walk_short_ origin positions only",
+    "idea": "Give Type3 a rear artificial origin and Type4 a front origin on the same short e0. This separates initial native positions and reduces the faster Type3 versus slower Type4 arrival gap at d0. Preserve both ready_sec=0, type speeds, fixture0.8 factors, all graph geometry and native shared-frame/next-step checks.",
+    "candidate_only_not_adopted": "Derive Type3 origin position=e0 native length/4; Type4=3*e0 native length/4. Unlike an observed closure time, these are artificial interior geometry fractions. This candidate is untested; exact native movement and shared d0 frame must be measured.",
+    "fallback_if_proven_needed": "If separated origins fix next-step motion but still lack a shared d0 frame, minimally lengthen artificial d0 while keeping its native length less than terminal arrival position. Do not modify the shared-frame acceptance test.",
+    "required_verification": [
+      "Use fresh IDs to test calibration and repeated cases; verify both persons move forward on the very next step after first e0 reroute.",
+      "Derive one common interior d0 controller-grid frame from the new calibration raw actors for both types and SHA-bind all source artifacts.",
+      "Use that one time for d1 closure; verify both Type3/4 second reroute starts on d0 and native next-step position decreases.",
+      "Retain two unchanged native replacement receipts per reroute, exact classified constructor warnings and final admission for both types.",
+      "Freeze implementation; run a fresh full26 suite, independent counterexample audit, all14 registered-setting smoke validations and new preflight before any core start."
+    ]
+  },
+  "rejected_shortcuts": [
+    "Do not accept two independent times as one shared frame.",
+    "Do not remove type4 or change registered speed/acceptance conditions.",
+    "Do not delay type3 readiness past e1 closure: that can remove the required first e0 reroute.",
+    "Do not reinterpret four native Invalid departPos warnings as the shared-frame failure or classify them formally using count alone."
+  ],
+  "limitations": [
+    "No SUMO/new net generation or formal validate invoked by this diagnosis.",
+    "The raw reconstruction also finds the latent next-step directional predicate failure. This diagnosis is not a formal case_validation PASS.",
+    "Separated-origin candidate, fallback geometry and case26 success remain unproven; initial overlap is not a confirmed causal mechanism.",
+    "ch261018_002 remains INVALID_PRESERVED and formal adoption remains 0/70; old runs and evidence are unchanged."
+  ],
+  "first_reroute_next_step_observation": {
+    "fixture_person_0": [
+      {
+        "time_sec": "0.5",
+        "lane_position_m": "7.875",
+        "speed_mps": "0.0"
+      },
+      {
+        "time_sec": "1.0",
+        "lane_position_m": "8.285899128438905",
+        "speed_mps": "0.8217982568778097"
+      },
+      {
+        "time_sec": "1.5",
+        "lane_position_m": "8.781351186311804",
+        "speed_mps": "0.9909041157457977"
+      }
+    ],
+    "fixture_person_1": [
+      {
+        "time_sec": "0.5",
+        "lane_position_m": "7.875",
+        "speed_mps": "0.0"
+      },
+      {
+        "time_sec": "1.0",
+        "lane_position_m": "7.875",
+        "speed_mps": "0.0"
+      },
+      {
+        "time_sec": "1.5",
+        "lane_position_m": "8.136496178329457",
+        "speed_mps": "0.5229923566589132"
+      }
+    ]
+  },
+  "additional_observed_latent_failure": "evaluate() native_forward_then_reverse_positions is also false for Type4 first reroute: time0.5 and1.0 position both7.875, speed0. At1.5 it moves forward. Both persons share the same initial position/xy; initial pedestrian interference is a hypothesis, not proven without a new run."
+}

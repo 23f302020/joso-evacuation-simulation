@@ -1,0 +1,49 @@
+{
+  "bound": "Sum_v floor((H-t_available_v)/(b+a)); registered all t_available_v=0; success/direct admission only, no population improvement bound",
+  "source_extracts": [
+    {
+      "start_line": 547,
+      "source": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "text": "        for i in range(parameters['operation']['fleet_count'] if scenario != 'R0' else 0):\n            vehicles[f'choice_drt_{i}'] = {'kind': 'drt', 'members': [], 'origin_id': '', 'terminal_id': '',\n                'ready_sec': 0, 'status': 'pending_idle', 'route': [input_manifest['depot_edge']],\n                'distance_m': 0., 'empty_distance_m': 0., 'route_version': 0, 'active_person': '', 'reentry_expected': False}\n        binary = resolve_sumo_binary()"
+    },
+    {
+      "start_line": 1006,
+      "source": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "text": "                    trigger = 'boarding_started' if boarding else 'alighting_started'\n                    if boarding and not now < people[pid]['deadline_sec']:\n                        raise RuntimeError('Deadline cancellation did not precede boarding')\n                    request_event(pid, trigger, now, vehicle_id=vid)\n                    requests[pid][trigger + '_sec'] = people[pid][trigger + '_sec'] = now\n                    person_state(pid, 'boarding' if boarding else 'alighting', now)\n                    v.update(status='boarding' if boarding else 'alighting', until_sec=now + parameters['operation']['boarding_sec' if boarding else 'alighting_sec'])\n                    event(now, trigger, person_id=pid, vehicle_id=vid)\n                elif v['status'] == 'boarding' and now >= v['until_sec']:\n                    pid = v['active_person']\n                    target_position = point('terminal', people[pid]['terminal_id'], 'passenger')\n                    path, _ = vehicle_path(vid, destination(pid), target_position)\n                    if not path:\n                        remove_actor(vid, 'passenger', 'stranded_drt', now)\n                        continue\n                    request_event(pid, 'boarded', now, vehicle_id=vid)\n                    requests[pid]['boarded_sec'] = people[pid]['boarded_sec'] = now\n                    v['members'], v['maximum_onboard'] = [pid], 1\n                    person_state(pid, 'onboard', now)\n                    bus_route(vid, path, now, target_position)\n                    v['status'] = 'delivery'\n                    event(now, 'drt_boarded', person_id=pid, vehicle_id=vid, onboard_count=1)\n                elif v['status'] == 'alighting' and now >= v['until_sec']:\n                    pid = v['active_person']\n                    request_event(pid, 'alighted', now, vehicle_id=vid)\n                    requests[pid]['alighted_sec'] = people[pid]['alighted_sec'] = now\n                    pending_arrivals.append(pid)\n                    v.update(members=[], active_person='', status='idle')\n                    event(now, 'drt_alighted', person_id=pid, vehicle_id=vid, onboard_count=0)\n            if pending_arrivals:\n                previous = {pid: people[pid]['status'] for pid in set(pending_arrivals)}"
+    },
+    {
+      "start_line": 1044,
+      "source": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "text": "                counts['dispatch_cycles'] += 1\n                free = sorted(vid for vid, v in vehicles.items() if v['kind'] == 'drt' and v['status'] == 'idle')\n                cycle_info = {'cycle': cycle, 'time_sec': now, 'free_start': len(free), 'pending_start': len(waiting),\n                              'stages': 0, 'candidate_rows': 0, 'accepted': 0}\n                while free and waiting:\n                    cycle_info['stages'] += 1\n                    candidates = []\n                    for vid in free:\n                        if not t.vehicle.isStopped(vid):\n                            raise RuntimeError('Idle dispatch vehicle is not physically stopped')\n                        current = t.vehicle.getRoadID(vid)"
+    },
+    {
+      "start_line": 1112,
+      "source": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "text": "                    vid, pid = chosen['vehicle_id'], chosen['person_id']\n                    bus_route(vid, chosen['_pickup_path'], now, chosen['pickup_pos_m'])\n                    vehicles[vid].update(status='pickup', active_person=pid)\n                    requests[pid]['vehicle_id'] = vid\n                    request_event(pid, 'accepted', now, vehicle_id=vid, cycle=cycle, stage=cycle_info['stages'])\n                    requests[pid]['accepted_sec'] = people[pid]['accepted_sec'] = now\n                    person_state(pid, 'assigned_origin', now)\n                    waiting.remove(pid)\n                    free.remove(vid)\n                    cycle_info['accepted'] += 1\n                    event(now, 'request_accepted', person_id=pid, vehicle_id=vid, cycle=cycle, stage=cycle_info['stages'])"
+    },
+    {
+      "start_line": 124,
+      "source": "04_プログラム/scripts/jdrt_choice_policy.py",
+      "text": "def request_transition(status, event):\n    transitions = {\n        ('none', 'received'): 'pending',\n        ('pending', 'invalid_input'): 'rejected_input',\n        ('pending', 'accepted'): 'accepted',\n        ('accepted', 'boarding_started'): 'boarding',\n        ('boarding', 'boarded'): 'onboard',\n        ('onboard', 'alighting_started'): 'alighting',\n        ('alighting', 'alighted'): 'served',\n        ('pending', 'timeout'): 'cancelled_timeout',"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "start_line": 985,
+      "text": "                if v['kind'] != 'drt' or vid not in active_ids or v['status'] == 'stranded':\n                    continue\n                if v['status'] == 'cancel_pending':\n                    path = cancel_vehicle_to_wait(t, vid, lane_info, end + 1, manifest['step_sec'])\n                    if path:\n                        v.update(route=path, status='cancel_wait', route_version=v['route_version'] + 1)\n                        source = path[-1]\n                        last[vid] = (source, now, len(path) - 1)\n                        event(now, 'cancel_wait_route', vehicle_id=vid, route=path, route_version=v['route_version'],\n                              requested_remaining_route=[source], source_edge=source,\n                              source_lane_position=t.vehicle.getLanePosition(vid))\n                    continue\n                if not controller_tick:\n                    continue\n                current = t.vehicle.getRoadID(vid)\n                stopped = t.vehicle.isStopped(vid)"
+    }
+  ],
+  "captured_at": "2026-10-18T20:37:07.2344292+09:00",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7"
+  },
+  "reasoning": "DRT vehicles start ready_sec 0 with empty members. A single active_person and removal from free on assignment serialize the whole service. Boarding/alighting complete only after configured timers; alighted maps to served. Cancellation retains physical vehicle and does not reset time. Failed attempts consume nonnegative time and cannot increase successful services. All successful intervals are also checked independently from request timestamps/vehicle IDs.",
+  "kind": "Manual source-contract audit SHA-bound to exact implementation; not native execution evidence",
+  "conditions": {
+    "all_available_at_zero": true,
+    "initially_empty": true,
+    "full_processing_times": true,
+    "no_vehicle_time_reset": true,
+    "serial_one_person": true
+  }
+}

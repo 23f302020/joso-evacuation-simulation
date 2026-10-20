@@ -1,0 +1,21 @@
+{
+  "at_jst": "2026-10-17T00:30:02.460920+09:00",
+  "status": "PASS",
+  "source_files_unchanged": 249,
+  "formal_record_run_ids_preserved_in_six_files": 15,
+  "local_links_checked": 187,
+  "new_links_broken": [],
+  "historical_links_for_review": [],
+  "scoped_git_diff_check": 0,
+  "html_heading_table_structure": true,
+  "analysis_script_compilation": true,
+  "automation": "PAUSED",
+  "new_simulations": 0,
+  "external_sends": 0,
+  "source_implementation": {
+    "04_プログラム/scripts/jdrt_realtime_b_boundary.py": "e9e071cf1f0cb1e05252f042393083570a08961e32496a0d7886d641d1faaf56",
+    "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py": "0a95170b70fc90a26c22ee67201ef9ee641e0ab78ce61cab930b9bf555768b32",
+    "04_プログラム/scripts/jdrt_realtime_b_boundary_validate.py": "b99d1eff82cb2975dce7721e6afd7cde67153b3feee00dae44a6bf6e6d0b4834",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_b_boundary_cell.py": "9e0d78b8232f613686571d4eeee4b6e3c25d9eac68a0a665cefe94a4ad8686e5"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "purpose": "technical_prerequisites_only",
+  "status": "FAILED",
+  "pid": 22732,
+  "started_at_jst": "2026-10-18T09:55:28.958655+09:00",
+  "suite": "cf26101801",
+  "smoke_prefix": "cs261018a",
+  "completed": [
+    {
+      "stage": "fixture",
+      "pid": 1924,
+      "started_at_jst": "2026-10-18T09:55:28.966141+09:00",
+      "command": [
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical.py",
+        "--project-root",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究",
+        "fixture",
+        "--run-id",
+        "cf26101801"
+      ],
+      "finished_at_jst": "2026-10-18T09:57:28.347543+09:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "independent",
+      "pid": 10700,
+      "started_at_jst": "2026-10-18T09:57:28.378431+09:00",
+      "command": [
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\G4_正式検証器_表会計候補試験.py",
+        "--suite",
+        "cf26101801"
+      ],
+      "finished_at_jst": "2026-10-18T09:57:48.211982+09:00",
+      "exit_code": 0
+    }
+  ],
+  "active": null,
+  "finished_at_jst": "2026-10-18T09:57:48.394201+09:00",
+  "error_type": "AttributeError",
+  "error": "'list' object has no attribute 'get'"
+}

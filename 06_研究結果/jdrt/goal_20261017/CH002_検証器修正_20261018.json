@@ -1,0 +1,175 @@
+{
+  "at_jst": "2026-10-18T15:43:36.503745+09:00",
+  "scope": "technical_validator_repair_not_research_acceptance",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend": "not_independently_verified",
+  "simulations_started": 0,
+  "full_validation_restarted": false,
+  "core_adoption_permitted": false,
+  "old_run_status": "INVALID_preserved",
+  "old_validation_replaced": false,
+  "original_archive": "06_研究結果/jdrt/goal_20261017/auditor_history/validator_before_20261018T153404/sha256.json",
+  "official_sources": "06_研究結果/jdrt/goal_20261017/auditor_history/validator_sources_20261018T154128/sources.json",
+  "primary_artifacts_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/manifest.json": "e0c21569530c60a65241eab38e8cd4e26cfdfdb697f3b0f5f17543cb8d3928b5",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/events.jsonl": "9d6b28ea3fdeaa64fe02cebcc7d59fd501dfd1eccb369e627630b4b33f86c218",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/types.rou.xml": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/tripinfo.xml": "a9397d51f438e6fdf09130380eb028b90f435461f522efee678fcfec46e0b065",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/sumo_errors.log": "a99a00cac670475b4dc4076a1f20d3318572f789551061e6088f0c84aa2b56fa",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6"
+  },
+  "primary_reroute_recomputation": [
+    {
+      "person_id": "b_origin_0285_type3_0001",
+      "time_sec": 2699.5,
+      "stage_speed": 1.0,
+      "xml_max_speed": 1.0,
+      "desired_from_native_parser": 1.0,
+      "native_chosen_factor_receipt": 1.0145,
+      "native_personinfo_factor_rounded": "1.01",
+      "observed_getter": 1.0,
+      "computed_getter": 1.0,
+      "getter_matches_native_formula": true,
+      "old_exact_stage_getter_equal": true,
+      "signed_progress_recomputed": 39.567352772876575,
+      "signed_progress_matches": true,
+      "passed_recomputed": 39.567352772876575,
+      "passed_matches": true,
+      "has_direct_replacement_receipts": false
+    },
+    {
+      "person_id": "b_origin_0285_type3_0005",
+      "time_sec": 2705.0,
+      "stage_speed": 1.0,
+      "xml_max_speed": 1.0,
+      "desired_from_native_parser": 1.0,
+      "native_chosen_factor_receipt": 1.0486,
+      "native_personinfo_factor_rounded": "1.05",
+      "observed_getter": 1.0,
+      "computed_getter": 1.0,
+      "getter_matches_native_formula": true,
+      "old_exact_stage_getter_equal": true,
+      "signed_progress_recomputed": 363.31158688278583,
+      "signed_progress_matches": true,
+      "passed_recomputed": 363.31158688278583,
+      "passed_matches": true,
+      "has_direct_replacement_receipts": false
+    },
+    {
+      "person_id": "b_origin_0285_type4_0003",
+      "time_sec": 3602.5,
+      "stage_speed": 0.58,
+      "xml_max_speed": 0.58,
+      "desired_from_native_parser": 0.58,
+      "native_chosen_factor_receipt": 0.9364,
+      "native_personinfo_factor_rounded": "0.94",
+      "observed_getter": 0.5431119999999999,
+      "computed_getter": 0.5431119999999999,
+      "getter_matches_native_formula": true,
+      "old_exact_stage_getter_equal": false,
+      "signed_progress_recomputed": 308.77579164057556,
+      "signed_progress_matches": true,
+      "passed_recomputed": 308.77579164057556,
+      "passed_matches": true,
+      "has_direct_replacement_receipts": false
+    },
+    {
+      "person_id": "b_origin_0285_type4_0003",
+      "time_sec": 4499.5,
+      "stage_speed": 0.58,
+      "xml_max_speed": 0.58,
+      "desired_from_native_parser": 0.58,
+      "native_chosen_factor_receipt": 0.9364,
+      "native_personinfo_factor_rounded": "0.94",
+      "observed_getter": 0.5431119999999999,
+      "computed_getter": 0.5431119999999999,
+      "getter_matches_native_formula": true,
+      "old_exact_stage_getter_equal": false,
+      "signed_progress_recomputed": 457.9282746046483,
+      "signed_progress_matches": true,
+      "passed_recomputed": 766.7040662452239,
+      "passed_matches": true,
+      "has_direct_replacement_receipts": false
+    }
+  ],
+  "unchanged_research_conditions": [
+    "PAP",
+    "Registry",
+    "all70_cells",
+    "seeds",
+    "speeds_and_speedFactor_distribution",
+    "waiting_deadlines",
+    "thresholds",
+    "fixed_comparisons",
+    "denominators",
+    "existing_runs"
+  ],
+  "alternatives": [
+    {
+      "proposal": "force speedFactor=1",
+      "adopted": false,
+      "reason": "changes native individual behaviour"
+    },
+    {
+      "proposal": "getter <= registered only",
+      "adopted": false,
+      "reason": "cannot detect incorrect factor or getter"
+    },
+    {
+      "proposal": "recompute native min formula from XML plus native exact getters, retain every-step speed integral and plan recurrence",
+      "adopted": true
+    },
+    {
+      "proposal": "allow all Invalid departPos or vehicle braking warnings",
+      "adopted": false,
+      "reason": "no independent position/source evidence"
+    },
+    {
+      "proposal": "two native replacement receipts plus net/actor/step/end position and exact warning multiplicity",
+      "adopted": true
+    }
+  ],
+  "uncertainty": [
+    "SUMO tag source semantics agree with observed artifacts; binary build identity to tag is not reproducibly proved",
+    "Native walking stage serialization omits requested walking speed; direct setSpeed receipt and native type upper bound are supplemented by every-step actual speed and integral",
+    "Historical CH002 lacks new direct receipts and remains INVALID; no validation rerun or adoption",
+    "Complete current native suite, counterexamples, all14 smokes and new preflight remain required"
+  ],
+  "downstream_tasks": [
+    "finish native short walking/repeated direction fixture and independent boundary checks",
+    "run final pure unit tests bound to final implementation",
+    "parent executes sequential new suite, counterexamples, all14 smokes and preflight after every edit is complete",
+    "preserve old READY and old CH002; perform reasoned dedicated recovery only as a separate authorized operation"
+  ],
+  "unit_evidence": "06_研究結果/jdrt/goal_20261017/auditor_history/validator_unit_20261018T154640.json",
+  "unit_status": "PASS",
+  "unit_tests_run": 13,
+  "source_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "124a2d93b74f73f51de5592d5515fa1efa963ea455576f945fa3581b2e333337",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "5f3b63914e9fe52f7bf702fb67a2be98e67291341ed55da9f585621a2ace0e2c",
+    "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py": "81bf715f45c3b5521036a081f292905f0ca9b61528f9943c87c6f50e7001e72c"
+  },
+  "source_matches_final_unit": true,
+  "diff_check": "PASS_no_index_against_archived_bytes",
+  "diff_statistics": [
+    {
+      "path": "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+      "added": 320,
+      "removed": 10
+    },
+    {
+      "path": "04_プログラム/tests/test_jdrt_choice_validate.py",
+      "added": 179,
+      "removed": 1
+    },
+    {
+      "path": "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py",
+      "added": 54,
+      "removed": 1
+    }
+  ],
+  "required_native_fixture_cases": 26,
+  "remaining_native_work_not_started": true,
+  "warning_key_revisit_limitation": "Same person/edge/formatted arrival position across distinct reroute frames remains INVALID because raw warnings have no timestamps. Ordered-multiset generalization considered but not adopted in this repair."
+}

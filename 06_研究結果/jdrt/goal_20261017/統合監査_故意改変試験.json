@@ -1,0 +1,83 @@
+{
+  "at_jst": "2026-10-17T10:35:28.716289+09:00",
+  "status": "PASS",
+  "scope": "independent_fixture_auditor_counterexamples_not_core_readiness",
+  "primary_artifacts_modified": false,
+  "suite": "cf26101710",
+  "cases": [
+    {
+      "case": "route_index_invalid",
+      "expected_rejection": "actual_route_index_and_version",
+      "pass": true,
+      "failed_checks": [
+        "actual_route_index_and_version"
+      ]
+    },
+    {
+      "case": "phase_mislabeled",
+      "expected_rejection": "observed_vehicle_empty_distances",
+      "pass": true,
+      "failed_checks": [
+        "observed_vehicle_empty_distances"
+      ]
+    },
+    {
+      "case": "walking_speed_exceeds_bound",
+      "expected_rejection": "walking_speed_and_independent_integral",
+      "pass": true,
+      "failed_checks": [
+        "walking_speed_and_independent_integral"
+      ]
+    },
+    {
+      "case": "walking_integral_corrupted",
+      "expected_rejection": "walking_speed_and_independent_integral",
+      "pass": true,
+      "failed_checks": [
+        "walking_speed_and_independent_integral"
+      ]
+    },
+    {
+      "case": "backend_distance_corrupted",
+      "expected_rejection": "backend_vkt_with_arrival_tail_and_rounding",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt_with_arrival_tail_and_rounding"
+      ]
+    },
+    {
+      "case": "boarding_duration_corrupted",
+      "expected_rejection": "strict_deadline_and_service_durations",
+      "pass": true,
+      "failed_checks": [
+        "strict_deadline_and_service_durations"
+      ]
+    },
+    {
+      "case": "snapshot_speed_corrupted",
+      "expected_rejection": "post_control_snapshot_full_zero_inclusive_reaggregation",
+      "pass": true,
+      "failed_checks": [
+        "post_control_snapshot_full_zero_inclusive_reaggregation"
+      ]
+    },
+    {
+      "case": "native_parking_membership_flipped",
+      "expected_rejection": "parking_traffic_filter_matches_native_edge_vehicle_ids",
+      "pass": true,
+      "failed_checks": [
+        "parking_traffic_filter_matches_native_edge_vehicle_ids"
+      ]
+    },
+    {
+      "case": "reroute_events_omitted",
+      "expected_rejection": "named_branch_exercised",
+      "pass": true,
+      "failed_checks": [
+        "named_branch_exercised"
+      ]
+    }
+  ],
+  "auditor_sha256": "7ebc54394998e5766340b9318b58e6efe1d6ab5fafa7c25b42576998134cbca5",
+  "test_sha256": "d3652d13703090e1fe3beea71e13a5b1645d81f4ce19ddbf74c55f1a8c496bab"
+}

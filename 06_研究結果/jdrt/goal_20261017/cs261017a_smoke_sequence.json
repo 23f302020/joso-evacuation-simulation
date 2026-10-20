@@ -1,0 +1,29 @@
+{
+  "protocol": "realtime_choice_v1",
+  "purpose": "technical_smoke_sequence",
+  "pid": 20460,
+  "status": "FAILED",
+  "started_at_jst": "2026-10-17T17:57:10.154241+09:00",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "77c4d9e87f967a0cf48558bfd106cf4fd28d8c71ec6f63d14c588400c9382480",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "f3207743fe87fb1e3c285b8f1612bd9087bfe683d5eade94d5941df715196c66",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "b1b2831a4b79afe2fb3733498af387eb3b5a145ab5bfe32d5bf44672aad2120b"
+  },
+  "audit_path": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261017T175640.json",
+  "audit_sha256": "661907a1ee888c93698cfc6c375e6d6224ada23174facde0c6d5e050c449c3ca",
+  "runner_sha256": "9cf8c09890e851c06204ed561727a415494c6b2da1970b6b650999f585f1312b",
+  "research_adoption_permitted": false,
+  "completed": [],
+  "active": {
+    "run_id": "cs261017a_01",
+    "cell_id": "fixed_reference_r0_seed23423",
+    "started_at_jst": "2026-10-17T17:57:10.156577+09:00",
+    "command": "validate",
+    "pid": 26396
+  },
+  "finished_at_jst": "2026-10-17T17:58:03.632546+09:00",
+  "error_type": "RuntimeError",
+  "error": "validate failed: cs261017a_01"
+}

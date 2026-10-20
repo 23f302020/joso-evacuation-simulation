@@ -1,0 +1,194 @@
+{
+  "scope": "fixture_design_technical_correction",
+  "unchanged": [
+    "Common-five bytes",
+    "PAP/Registry/research inputs",
+    "Artificial speed,length,position,clock",
+    "Native calibration strict remaining<braking and integer next-step grid",
+    "Required26 suite and current acceptance gates",
+    "Old cf03/cf02/CH002 artifacts"
+  ],
+  "failed_execution_status": "COMPLETED",
+  "unit": {
+    "status": "PASS",
+    "receipt": "06_研究結果/jdrt/goal_20261017/auditor_history/lane_calibration_unit_20261018T203751.json",
+    "tests_run": 22,
+    "compile_exit": 0
+  },
+  "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/lane_calibration_before_20261018T203725/sha256.json",
+  "cause": "Explicit connection lane indices remained pre-sidewalk 0/1 while netconvert inserted pedestrian lane0; single-passenger-edge connections point to pedestrian endpoints, leaving passenger graph only g0->e0.",
+  "raw_events": [
+    {
+      "time_sec": 0.0,
+      "event": "person_state",
+      "person_id": "fixture_person_0",
+      "before": "not_ready",
+      "after": "no_route",
+      "reason": ""
+    }
+  ],
+  "correction": [
+    "Use actual passenger lane1/2 in the artificial car_lane connection input.",
+    "After netconvert require all declared connections to have passenger endpoints and a native outgoing link.",
+    "Require short source lane e0_1 successors exactly e1 and s0; reject missing or additional d0 connection before simulation."
+  ],
+  "modified_sha256": {
+    "04_プログラム/tests/test_jdrt_choice_runtime.py": "dbfde992201e4351589b240621a5eff7ec2ee99dd0083882eb7800ef0f5302ca",
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": "439aa736dd6c3dcaf27302822d565ebec0275c11303af19dd82375feb9a7253e"
+  },
+  "alternatives_rejected": [
+    "Treat missing actor/frame as successful calibration",
+    "Weaken strict native frame/connection/grid checks",
+    "Change research or artificial speed/length before fixing disconnected roads",
+    "Inject a lane or expected native outcome"
+  ],
+  "core_adoption_permitted": false,
+  "common_five": {
+    "04_プログラム/scripts/jdrt_choice_policy.py": {
+      "current": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "failed_run": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "current": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+      "failed_run": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": {
+      "current": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "failed_run": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "current": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+      "failed_run": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e"
+    },
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": {
+      "current": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846",
+      "failed_run": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+    }
+  },
+  "downstream": [
+    "Parent single writer starts fresh cf26101804/cs261018d full pipeline.",
+    "Preserve c22 COMPLETED technical execution and failed factory suite; neither is accepted research.",
+    "If a connected native calibration still lacks the required frame, preserve it and diagnose actual frames without weakening gate."
+  ],
+  "native_actor_rows": 0,
+  "actual_backend": "not_independently_verified",
+  "passenger_graph_arcs": [
+    [
+      "g0",
+      "e0",
+      {
+        "length": 31.0,
+        "travel_sec": 2.066666666666667
+      }
+    ]
+  ],
+  "native_starts_by_worker": 0,
+  "requested_reasoning": "high",
+  "uncertainty": [
+    "Correct passenger connections have pure/mock verification only; actual netconvert and natural short-lane exposure need new suite.",
+    "New full26, independent counterexamples,all14 smoke,preflight not executed by worker."
+  ],
+  "primary_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/execution/events.jsonl": "6120172a5527399ce8bd38524d972213dbf5992439b7b0ca47e59667f4627019",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/execution/actor_observations.csv.gz": "5463a9b23347bf1b2d161c5293cec7500d47fe29bccfca33b0da8ab778c455a9",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/fixture_inputs/bounded.net.xml": "70712da3f6c6bb0a6e93b7d6ffd107f23d76662f77daffdd856589553e027d37",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/fixture_inputs/graphs.json": "74fa25ed492a18151ba33757b6f01584aec8b0ed189ad8697eb21af618c6e1bc",
+    "06_研究結果/jdrt/goal_20261017/cf26101803_revalidate_fixture.stderr.log": "28d90888ce1381befff143cc5aaa282425b4e6b74c59a60d2f9d2c92874355fa",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/execution/manifest.json": "04ffe20f4fe24119162918eb9e9e10f6c6673340161fdc318c309a2c848517ab",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/execution/person_results.csv": "9a9ae957f366378f52222636fa2b87070758442f7627accf67e5ab432a6a2add",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/fixture_inputs/netconvert.log": "b2cf97b464723d6f98fc1efd1602a9cfc4ee5c2a7c460d02eb2e1a59ace561ac",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c22/fixture_inputs/connections.xml": "2991171f85dfdfdaa8cf02bb027459951987072e470226d0f659707bcbd3c927"
+  },
+  "requested_model": "gpt-6.1-sol",
+  "at_jst": "2026-10-18T20:38:55.0417360+09:00",
+  "raw_connections": [
+    {
+      "from": "d0",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "d1",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "d1",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "d2",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "d2",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "e2",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "e0",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "s0",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "e0",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "e1",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "e0",
+      "to_allow": "pedestrian",
+      "from_lane": "1",
+      "to": "d0",
+      "to_lane": "0",
+      "from_allow": "passenger"
+    },
+    {
+      "from": "e1",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "e2",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "g0",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "e0",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "g0",
+      "to_allow": "passenger",
+      "from_lane": "1",
+      "to": "e0",
+      "to_lane": "1",
+      "from_allow": "passenger"
+    },
+    {
+      "from": "s0",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "s1",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    },
+    {
+      "from": "s1",
+      "to_allow": "pedestrian",
+      "from_lane": "0",
+      "to": "e2",
+      "to_lane": "0",
+      "from_allow": "pedestrian"
+    }
+  ]
+}

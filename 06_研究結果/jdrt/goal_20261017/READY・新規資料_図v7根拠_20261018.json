@@ -1,0 +1,352 @@
+{
+  "at_jst": "2026-10-18T10:19:42.097487+09:00",
+  "receipt": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/preflight/20261018T101404862963/receipt.json",
+  "receipt_sha256": "47e2bc3ea7280dbaa9f999d445e113803374e2c14fac6d8bfb684d464ff7d91e",
+  "unit_tests_pass": 52,
+  "common_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "smokes": [
+    {
+      "run_id": "cs261018a_01",
+      "cell": {
+        "cell_id": "fixed_reference_r0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "d9d1034687791659b4441f4fd836fe2e45e2bcb8b9155d12382c103c0f673e04",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_01_20261018T095926239644.json",
+      "finished_at_jst": "2026-10-18T09:59:26.368217+09:00"
+    },
+    {
+      "run_id": "cs261018a_02",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "ab680f324389adcbb0bc16a6e77c2554cbad12efed41a1236ef5f9d632b1e72d",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_02_20261018T100024086213.json",
+      "finished_at_jst": "2026-10-18T10:00:24.437005+09:00"
+    },
+    {
+      "run_id": "cs261018a_03",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "76e6e8df86a672fb50b5857983792e77b0405d78dd2f223c9e104f6d6445a514",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_03_20261018T100136546573.json",
+      "finished_at_jst": "2026-10-18T10:01:36.689577+09:00"
+    },
+    {
+      "run_id": "cs261018a_04",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "a951808616b84f1992709293530e5a51410039641326df31c0e9dbda7a2c72ac",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_04_20261018T100240318189.json",
+      "finished_at_jst": "2026-10-18T10:02:40.493677+09:00"
+    },
+    {
+      "run_id": "cs261018a_05",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "0be6a0e9c1f76edd0153533ad70139fe97e0d6bb0ee05381bc217d28ea755b84",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_05_20261018T100347145628.json",
+      "finished_at_jst": "2026-10-18T10:03:47.526841+09:00"
+    },
+    {
+      "run_id": "cs261018a_06",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "7633d6b6870bebeed5e8063a512f8e919461c96ae8fb21d2e14234cb75989b1d",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_06_20261018T100451497951.json",
+      "finished_at_jst": "2026-10-18T10:04:51.767305+09:00"
+    },
+    {
+      "run_id": "cs261018a_07",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "e5105baa88102c52dbea0fe7e19a466fbdc5750839fb712228388a0a9c979347",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_07_20261018T100548513940.json",
+      "finished_at_jst": "2026-10-18T10:05:48.898676+09:00"
+    },
+    {
+      "run_id": "cs261018a_08",
+      "cell": {
+        "cell_id": "facility_first_r0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "3b90173f90f193b67305988c2ffd8c1c71b94f0f8743f9797bae65cfeefe25a2",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_08_20261018T100642082552.json",
+      "finished_at_jst": "2026-10-18T10:06:42.247673+09:00"
+    },
+    {
+      "run_id": "cs261018a_09",
+      "cell": {
+        "cell_id": "facility_first_u05_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "e99935ca8d815add669f63e368d4866e3e9e2bbf093d7890d86d099a5d470f05",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_09_20261018T100745778838.json",
+      "finished_at_jst": "2026-10-18T10:07:45.969095+09:00"
+    },
+    {
+      "run_id": "cs261018a_10",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p900_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "eaf149f105dad05101044e2ba6dc729a0bc0f40ac99029eae43f3b49b6ad7ec7",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_10_20261018T100931835837.json",
+      "finished_at_jst": "2026-10-18T10:09:31.987627+09:00"
+    },
+    {
+      "run_id": "cs261018a_11",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "f0be880ea9be4ae59c4c403b77cf0672b4751de8d5b648a553fff9448f04e750",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_11_20261018T101031459705.json",
+      "finished_at_jst": "2026-10-18T10:10:31.635909+09:00"
+    },
+    {
+      "run_id": "cs261018a_12",
+      "cell": {
+        "cell_id": "facility_first_u50_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "5c450f1339bc317f0ffff965538dcf14db7a2bc59c0985e5b990034e5bccdbaf",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_12_20261018T101131061795.json",
+      "finished_at_jst": "2026-10-18T10:11:31.226739+09:00"
+    },
+    {
+      "run_id": "cs261018a_13",
+      "cell": {
+        "cell_id": "facility_first_u50_r2p900_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "fad565d3b9e483b9ee028620438a269c31ce387cecd00c1339bbf84af1cd9bcc",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_13_20261018T101230670504.json",
+      "finished_at_jst": "2026-10-18T10:12:30.846286+09:00"
+    },
+    {
+      "run_id": "cs261018a_14",
+      "cell": {
+        "cell_id": "facility_first_u50_r2p0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "589b2558e4444a003baced57069ce36a99e567b58ca7971690b2861cf129f7cc",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261018a_14_20261018T101341607523.json",
+      "finished_at_jst": "2026-10-18T10:13:41.808457+09:00"
+    }
+  ],
+  "independent_receipt_checks": {
+    "required_nonempty_READY_checks": true,
+    "current_metadata": true,
+    "primary_evidence_nonempty_and_current": true,
+    "evidence_schema": true,
+    "all_receipts_bound": true,
+    "independent_input_PASS": true,
+    "unit_and_record_transaction_PASS": true,
+    "storage_and_writer_proof_PASS": true,
+    "complete_native_fixture_suite": true,
+    "fixture_primary_manifest_roles": true,
+    "current_fixture_independent_PASS": true,
+    "current_counterexamples_PASS": true,
+    "all_registered_smoke_settings_PASS": true
+  },
+  "evidence_file_count": 1190,
+  "storage": {
+    "status": "PASS",
+    "at_jst": "2026-10-18T10:18:45.992888+09:00",
+    "implementation_sha256": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+    },
+    "parameter_sha256": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6",
+    "population": 11965,
+    "free_bytes": 261038436352,
+    "one_run_reserve_bytes": 191676334748,
+    "remaining_runs": 70,
+    "remaining_projection_bytes": 13417343432360,
+    "all_remaining_projected_fit": false,
+    "writer_checks_pass": true,
+    "policy": "rolling_one_run_reserve_rechecked_before_each_start_preserve_all_outputs",
+    "limitation": "empirical scaled estimate with 4x headroom and 5GiB reserve; not a gzip worst-case proof",
+    "sources": [
+      {
+        "run_id": "cs261018a_01",
+        "bytes": 9034613,
+        "cohort": 31,
+        "end_sec": 1800,
+        "manifest_sha256": "d9d1034687791659b4441f4fd836fe2e45e2bcb8b9155d12382c103c0f673e04",
+        "scaled_bytes_with_headroom": 167379320586
+      },
+      {
+        "run_id": "cs261018a_02",
+        "bytes": 8560119,
+        "cohort": 31,
+        "end_sec": 1800,
+        "manifest_sha256": "ab680f324389adcbb0bc16a6e77c2554cbad12efed41a1236ef5f9d632b1e72d",
+        "scaled_bytes_with_headroom": 158588630455
+      },
+      {
+        "run_id": "cs261018a_03",
+        "bytes": 8964804,
+        "cohort": 31,
+        "end_sec": 1800,
+        "manifest_sha256": "76e6e8df86a672fb50b5857983792e77b0405d78dd2f223c9e104f6d6445a514",
+        "scaled_bytes_with_headroom": 166086007526
+      },
+      {
+        "run_id": "cs261018a_04",
+        "bytes": 8964056,
+        "cohort": 31,
+        "end_sec": 1800,
+        "manifest_sha256": "a951808616b84f1992709293530e5a51410039641326df31c0e9dbda7a2c72ac",
+        "scaled_bytes_with_headroom": 166072149740
+      },
+      {
+        "run_id": "cs261018a_05",
+        "bytes": 8683380,
+        "cohort": 31,
+        "end_sec": 1800,
+        "manifest_sha256": "0be6a0e9c1f76edd0153533ad70139fe97e0d6bb0ee05381bc217d28ea755b84",
+        "scaled_bytes_with_headroom": 160872219407
+      },
+      {
+        "run_id": "cs261018a_06",
+        "bytes": 9265716,
+        "cohort": 31,
+        "end_sec": 1800,
+        "manifest_sha256": "7633d6b6870bebeed5e8063a512f8e919461c96ae8fb21d2e14234cb75989b1d",
+        "scaled_bytes_with_headroom": 171660839133
+      },
+      {
+        "run_id": "cs261018a_07",
+        "bytes": 9266430,
+        "cohort": 31,
+        "end_sec": 1800,
+        "manifest_sha256": "e5105baa88102c52dbea0fe7e19a466fbdc5750839fb712228388a0a9c979347",
+        "scaled_bytes_with_headroom": 171674067020
+      },
+      {
+        "run_id": "cs261018a_08",
+        "bytes": 9407510,
+        "cohort": 29,
+        "end_sec": 1800,
+        "manifest_sha256": "3b90173f90f193b67305988c2ffd8c1c71b94f0f8743f9797bae65cfeefe25a2",
+        "scaled_bytes_with_headroom": 186307625628
+      },
+      {
+        "run_id": "cs261018a_09",
+        "bytes": 9096244,
+        "cohort": 29,
+        "end_sec": 1800,
+        "manifest_sha256": "e99935ca8d815add669f63e368d4866e3e9e2bbf093d7890d86d099a5d470f05",
+        "scaled_bytes_with_headroom": 180143270831
+      },
+      {
+        "run_id": "cs261018a_10",
+        "bytes": 9171380,
+        "cohort": 29,
+        "end_sec": 1800,
+        "manifest_sha256": "eaf149f105dad05101044e2ba6dc729a0bc0f40ac99029eae43f3b49b6ad7ec7",
+        "scaled_bytes_with_headroom": 181631274538
+      },
+      {
+        "run_id": "cs261018a_11",
+        "bytes": 9171895,
+        "cohort": 29,
+        "end_sec": 1800,
+        "manifest_sha256": "f0be880ea9be4ae59c4c403b77cf0672b4751de8d5b648a553fff9448f04e750",
+        "scaled_bytes_with_headroom": 181641473669
+      },
+      {
+        "run_id": "cs261018a_12",
+        "bytes": 8493542,
+        "cohort": 29,
+        "end_sec": 1800,
+        "manifest_sha256": "5c450f1339bc317f0ffff965538dcf14db7a2bc59c0985e5b990034e5bccdbaf",
+        "scaled_bytes_with_headroom": 168207277292
+      },
+      {
+        "run_id": "cs261018a_13",
+        "bytes": 9111158,
+        "cohort": 29,
+        "end_sec": 1800,
+        "manifest_sha256": "fad565d3b9e483b9ee028620438a269c31ce387cecd00c1339bbf84af1cd9bcc",
+        "scaled_bytes_with_headroom": 180438629744
+      },
+      {
+        "run_id": "cs261018a_14",
+        "bytes": 9112090,
+        "cohort": 29,
+        "end_sec": 1800,
+        "manifest_sha256": "589b2558e4444a003baced57069ce36a99e567b58ca7971690b2861cf129f7cc",
+        "scaled_bytes_with_headroom": 180457087200
+      }
+    ]
+  },
+  "new_source_classification": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/河道特性_取得・用途・目視検証.json",
+  "research_core_started_at_creation": false,
+  "comparison_or_method_changed": false,
+  "new_source_classification_sha256": "04ef6cbcbb5f73d7454eb5dae655831fc1c459501d028e6cb9f180447c873448"
+}

@@ -1,0 +1,135 @@
+{"at_jst": "2026-10-17T00:12:15.424555+09:00", "action": "postanalysis_start", "tasks": ["BA-02", "BA-03", "BA-04", "BA-05", "BA-06"], "authorization": "同じように次の方針を進めて", "input": "realtime_b_boundary_v2 registered 15 cells only", "method": "primary CSV/event joins; observed durations with coverage; all road/candidate rows; no new estimand or simulation", "drive": "two folders/five contents read only, evidence saved", "success": "all-person accounts, source SHA, road/candidate/clock checks, docs synchronized", "status": "IN_PROGRESS"}
+{"at_jst": "2026-10-17T00:15:02.118861+09:00", "action": "preflight_start", "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]", "pandas": "3.0.2", "command": "project venv Python -X utf8 scripts/jdrt_realtime_b_boundary_postanalysis.py"}
+{"at_jst": "2026-10-17T00:15:04.768390+09:00", "action": "preflight_pass", "sources": 249, "cells": 15, "simulation_started": false}
+{"at_jst": "2026-10-17T00:15:04.769357+09:00", "action": "cell_start", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "seed": 23423, "scenario": "R0"}
+{"at_jst": "2026-10-17T00:15:05.731593+09:00", "action": "analysis_failure", "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_b_boundary_postanalysis.py\", line 349, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_b_boundary_postanalysis.py\", line 322, in main\n    cell.update(people_analysis(directory, manifest))\n                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_b_boundary_postanalysis.py\", line 124, in people_analysis\n    assert people.loc[people.status == 'boundary_exit', 'terminal_kind'].eq('exit').all()\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n"}
+{"at_jst": "2026-10-17T00:15:25.832419+09:00", "action": "preflight_start", "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]", "pandas": "3.0.2", "command": "project venv Python -X utf8 scripts/jdrt_realtime_b_boundary_postanalysis.py"}
+{"at_jst": "2026-10-17T00:15:28.464743+09:00", "action": "preflight_pass", "sources": 249, "cells": 15, "simulation_started": false}
+{"at_jst": "2026-10-17T00:15:28.465872+09:00", "action": "cell_start", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "seed": 23423, "scenario": "R0"}
+{"at_jst": "2026-10-17T00:15:29.836897+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r0_seed23423_20261016T182150"}
+{"at_jst": "2026-10-17T00:15:29.843751+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 0}
+{"at_jst": "2026-10-17T00:15:36.669710+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 5000000}
+{"at_jst": "2026-10-17T00:15:43.591861+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 10000000}
+{"at_jst": "2026-10-17T00:15:50.774098+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 15000000}
+{"at_jst": "2026-10-17T00:15:58.489403+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "roads": 19197258, "transitions": 268049}
+{"at_jst": "2026-10-17T00:15:58.490720+09:00", "action": "cell_start", "run_id": "rtbb2_core_r1_seed23423_20261016T183134", "seed": 23423, "scenario": "R1"}
+{"at_jst": "2026-10-17T00:15:59.980595+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r1_seed23423_20261016T183134"}
+{"at_jst": "2026-10-17T00:16:00.407131+09:00", "action": "analysis_failure", "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_b_boundary_postanalysis.py\", line 349, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_b_boundary_postanalysis.py\", line 324, in main\n    cell['candidates'] = candidate_analysis(directory, validation)\n                         ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_b_boundary_postanalysis.py\", line 206, in candidate_analysis\n    assert required.notna().all()\n           ~~~~~~~~~~~~~~~~~~~~^^\nAssertionError\n"}
+{"at_jst": "2026-10-17T00:16:45.818541+09:00", "action": "preflight_start", "python": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]", "pandas": "3.0.2", "command": "project venv Python -X utf8 scripts/jdrt_realtime_b_boundary_postanalysis.py"}
+{"at_jst": "2026-10-17T00:16:49.786514+09:00", "action": "preflight_pass", "sources": 249, "cells": 15, "simulation_started": false}
+{"at_jst": "2026-10-17T00:16:49.788425+09:00", "action": "cell_start", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "seed": 23423, "scenario": "R0"}
+{"at_jst": "2026-10-17T00:16:52.475040+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r0_seed23423_20261016T182150"}
+{"at_jst": "2026-10-17T00:16:52.488027+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 0}
+{"at_jst": "2026-10-17T00:17:02.907298+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 5000000}
+{"at_jst": "2026-10-17T00:17:14.414530+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 10000000}
+{"at_jst": "2026-10-17T00:17:15.168340+09:00", "action": "analysis_attempt02_preserved", "detail": "Required_sec blank for no-route candidates denotes serialized infinity, not missing observation. Initial blanket numeric assertion corrected. Completed/partial attempt02 derived files and script moved within resolved local analysis directory to failed_attempt02. No source run changed."}
+{"at_jst": "2026-10-17T00:17:15.168459+09:00", "action": "source_recheck", "detail": {"fetched_at_jst": "2026-10-17T00:17:14.863530+09:00", "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/public_transport_institution/noriai_hureaigou.html", "published_at": null, "updated_at_source": "2026-09-04", "scope": "current public normal service, not disaster fleet availability", "web_search": "site.city.joso.lg.jp 令和8年 10月 ふれあい号 4台 災害 避難 輸送 協定", "search_limit": "targeted search; not exhaustive; no new guarantee fleet/uptake data identified", "http_status": 200, "raw_file": "current_service_20261017.html", "sha256": "1fc93fd307320416230b36aa239130a0958b70d1fa0479f6d910a80e92710b94", "bytes": 28756}}
+{"at_jst": "2026-10-17T00:17:26.098693+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "rows": 15000000}
+{"at_jst": "2026-10-17T00:17:36.090355+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r0_seed23423_20261016T182150", "roads": 19197258, "transitions": 268049}
+{"at_jst": "2026-10-17T00:17:36.091443+09:00", "action": "cell_start", "run_id": "rtbb2_core_r1_seed23423_20261016T183134", "seed": 23423, "scenario": "R1"}
+{"at_jst": "2026-10-17T00:17:38.011737+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r1_seed23423_20261016T183134"}
+{"at_jst": "2026-10-17T00:17:40.315312+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r1_seed23423_20261016T183134", "rows": 722086}
+{"at_jst": "2026-10-17T00:17:47.648190+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed23423_20261016T183134", "rows": 5000000}
+{"at_jst": "2026-10-17T00:17:54.562057+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed23423_20261016T183134", "rows": 10000000}
+{"at_jst": "2026-10-17T00:18:01.629350+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed23423_20261016T183134", "rows": 15000000}
+{"at_jst": "2026-10-17T00:18:08.941527+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r1_seed23423_20261016T183134", "roads": 19197258, "transitions": 256318}
+{"at_jst": "2026-10-17T00:18:08.942296+09:00", "action": "cell_start", "run_id": "rtbb2_core_r2_seed23423_20261016T184653", "seed": 23423, "scenario": "R2"}
+{"at_jst": "2026-10-17T00:18:10.622768+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r2_seed23423_20261016T184653"}
+{"at_jst": "2026-10-17T00:18:12.657364+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r2_seed23423_20261016T184653", "rows": 617262}
+{"at_jst": "2026-10-17T00:18:19.848275+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed23423_20261016T184653", "rows": 5000000}
+{"at_jst": "2026-10-17T00:18:26.660014+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed23423_20261016T184653", "rows": 10000000}
+{"at_jst": "2026-10-17T00:18:33.561969+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed23423_20261016T184653", "rows": 15000000}
+{"at_jst": "2026-10-17T00:18:41.009123+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r2_seed23423_20261016T184653", "roads": 19197258, "transitions": 255175}
+{"at_jst": "2026-10-17T00:18:41.010227+09:00", "action": "cell_start", "run_id": "rtbb2_core_r0_seed42_20261016T190325", "seed": 42, "scenario": "R0"}
+{"at_jst": "2026-10-17T00:18:42.601317+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r0_seed42_20261016T190325"}
+{"at_jst": "2026-10-17T00:18:42.609715+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r0_seed42_20261016T190325", "rows": 0}
+{"at_jst": "2026-10-17T00:18:50.856961+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed42_20261016T190325", "rows": 5000000}
+{"at_jst": "2026-10-17T00:18:57.914174+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed42_20261016T190325", "rows": 10000000}
+{"at_jst": "2026-10-17T00:19:04.981129+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed42_20261016T190325", "rows": 15000000}
+{"at_jst": "2026-10-17T00:19:12.632978+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r0_seed42_20261016T190325", "roads": 19197258, "transitions": 269019}
+{"at_jst": "2026-10-17T00:19:12.634126+09:00", "action": "cell_start", "run_id": "rtbb2_core_r1_seed42_20261016T191543", "seed": 42, "scenario": "R1"}
+{"at_jst": "2026-10-17T00:19:14.326364+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r1_seed42_20261016T191543"}
+{"at_jst": "2026-10-17T00:19:15.283583+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r1_seed42_20261016T191543", "rows": 303860}
+{"at_jst": "2026-10-17T00:19:22.725799+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed42_20261016T191543", "rows": 5000000}
+{"at_jst": "2026-10-17T00:19:29.677745+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed42_20261016T191543", "rows": 10000000}
+{"at_jst": "2026-10-17T00:19:37.282090+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed42_20261016T191543", "rows": 15000000}
+{"at_jst": "2026-10-17T00:19:44.674319+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r1_seed42_20261016T191543", "roads": 19197258, "transitions": 261853}
+{"at_jst": "2026-10-17T00:19:44.675245+09:00", "action": "cell_start", "run_id": "rtbb2_core_r2_seed42_20261016T193033", "seed": 42, "scenario": "R2"}
+{"at_jst": "2026-10-17T00:19:46.641017+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r2_seed42_20261016T193033"}
+{"at_jst": "2026-10-17T00:19:48.881482+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r2_seed42_20261016T193033", "rows": 637681}
+{"at_jst": "2026-10-17T00:19:56.268011+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed42_20261016T193033", "rows": 5000000}
+{"at_jst": "2026-10-17T00:20:02.966494+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed42_20261016T193033", "rows": 10000000}
+{"at_jst": "2026-10-17T00:20:09.657092+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed42_20261016T193033", "rows": 15000000}
+{"at_jst": "2026-10-17T00:20:16.814243+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r2_seed42_20261016T193033", "roads": 19197258, "transitions": 256052}
+{"at_jst": "2026-10-17T00:20:16.815221+09:00", "action": "cell_start", "run_id": "rtbb2_core_r0_seed1_20261016T194541", "seed": 1, "scenario": "R0"}
+{"at_jst": "2026-10-17T00:20:18.368898+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r0_seed1_20261016T194541"}
+{"at_jst": "2026-10-17T00:20:18.376980+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r0_seed1_20261016T194541", "rows": 0}
+{"at_jst": "2026-10-17T00:20:25.755892+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed1_20261016T194541", "rows": 5000000}
+{"at_jst": "2026-10-17T00:20:32.389471+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed1_20261016T194541", "rows": 10000000}
+{"at_jst": "2026-10-17T00:20:39.097149+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed1_20261016T194541", "rows": 15000000}
+{"at_jst": "2026-10-17T00:20:46.426476+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r0_seed1_20261016T194541", "roads": 19197258, "transitions": 268419}
+{"at_jst": "2026-10-17T00:20:46.428912+09:00", "action": "cell_start", "run_id": "rtbb2_core_r1_seed1_20261016T200038", "seed": 1, "scenario": "R1"}
+{"at_jst": "2026-10-17T00:20:48.128954+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r1_seed1_20261016T200038"}
+{"at_jst": "2026-10-17T00:20:49.107468+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r1_seed1_20261016T200038", "rows": 293919}
+{"at_jst": "2026-10-17T00:20:56.621432+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed1_20261016T200038", "rows": 5000000}
+{"at_jst": "2026-10-17T00:21:03.276298+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed1_20261016T200038", "rows": 10000000}
+{"at_jst": "2026-10-17T00:21:10.129462+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed1_20261016T200038", "rows": 15000000}
+{"at_jst": "2026-10-17T00:21:17.244855+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r1_seed1_20261016T200038", "roads": 19197258, "transitions": 259227}
+{"at_jst": "2026-10-17T00:21:17.245891+09:00", "action": "cell_start", "run_id": "rtbb2_core_r2_seed1_20261016T201545", "seed": 1, "scenario": "R2"}
+{"at_jst": "2026-10-17T00:21:18.916023+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r2_seed1_20261016T201545"}
+{"at_jst": "2026-10-17T00:21:20.440187+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r2_seed1_20261016T201545", "rows": 450390}
+{"at_jst": "2026-10-17T00:21:27.549439+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed1_20261016T201545", "rows": 5000000}
+{"at_jst": "2026-10-17T00:21:34.204457+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed1_20261016T201545", "rows": 10000000}
+{"at_jst": "2026-10-17T00:21:40.889339+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed1_20261016T201545", "rows": 15000000}
+{"at_jst": "2026-10-17T00:21:47.978665+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r2_seed1_20261016T201545", "roads": 19197258, "transitions": 255415}
+{"at_jst": "2026-10-17T00:21:47.979597+09:00", "action": "cell_start", "run_id": "rtbb2_core_r0_seed7_20261016T203031", "seed": 7, "scenario": "R0"}
+{"at_jst": "2026-10-17T00:21:49.504091+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r0_seed7_20261016T203031"}
+{"at_jst": "2026-10-17T00:21:49.513140+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r0_seed7_20261016T203031", "rows": 0}
+{"at_jst": "2026-10-17T00:21:56.976721+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed7_20261016T203031", "rows": 5000000}
+{"at_jst": "2026-10-17T00:22:04.603128+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed7_20261016T203031", "rows": 10000000}
+{"at_jst": "2026-10-17T00:22:11.967301+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed7_20261016T203031", "rows": 15000000}
+{"at_jst": "2026-10-17T00:22:19.584082+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r0_seed7_20261016T203031", "roads": 19197258, "transitions": 268506}
+{"at_jst": "2026-10-17T00:22:19.585419+09:00", "action": "cell_start", "run_id": "rtbb2_core_r1_seed7_20261016T204541", "seed": 7, "scenario": "R1"}
+{"at_jst": "2026-10-17T00:22:21.478174+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r1_seed7_20261016T204541"}
+{"at_jst": "2026-10-17T00:22:22.542698+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r1_seed7_20261016T204541", "rows": 305015}
+{"at_jst": "2026-10-17T00:22:29.979935+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed7_20261016T204541", "rows": 5000000}
+{"at_jst": "2026-10-17T00:22:37.237918+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed7_20261016T204541", "rows": 10000000}
+{"at_jst": "2026-10-17T00:22:44.156144+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed7_20261016T204541", "rows": 15000000}
+{"at_jst": "2026-10-17T00:22:51.498013+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r1_seed7_20261016T204541", "roads": 19197258, "transitions": 262110}
+{"at_jst": "2026-10-17T00:22:51.499125+09:00", "action": "cell_start", "run_id": "rtbb2_core_r2_seed7_20261016T210045", "seed": 7, "scenario": "R2"}
+{"at_jst": "2026-10-17T00:22:53.235580+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r2_seed7_20261016T210045"}
+{"at_jst": "2026-10-17T00:22:55.950163+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r2_seed7_20261016T210045", "rows": 828313}
+{"at_jst": "2026-10-17T00:23:03.368716+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed7_20261016T210045", "rows": 5000000}
+{"at_jst": "2026-10-17T00:23:10.213580+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed7_20261016T210045", "rows": 10000000}
+{"at_jst": "2026-10-17T00:23:18.214548+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed7_20261016T210045", "rows": 15000000}
+{"at_jst": "2026-10-17T00:23:25.734968+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r2_seed7_20261016T210045", "roads": 19197258, "transitions": 255986}
+{"at_jst": "2026-10-17T00:23:25.736092+09:00", "action": "cell_start", "run_id": "rtbb2_core_r0_seed101_20261016T211544", "seed": 101, "scenario": "R0"}
+{"at_jst": "2026-10-17T00:23:27.287463+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r0_seed101_20261016T211544"}
+{"at_jst": "2026-10-17T00:23:27.296334+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r0_seed101_20261016T211544", "rows": 0}
+{"at_jst": "2026-10-17T00:23:34.661176+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed101_20261016T211544", "rows": 5000000}
+{"at_jst": "2026-10-17T00:23:41.263703+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed101_20261016T211544", "rows": 10000000}
+{"at_jst": "2026-10-17T00:23:47.977671+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r0_seed101_20261016T211544", "rows": 15000000}
+{"at_jst": "2026-10-17T00:23:55.299617+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r0_seed101_20261016T211544", "roads": 19197258, "transitions": 268186}
+{"at_jst": "2026-10-17T00:23:55.300775+09:00", "action": "cell_start", "run_id": "rtbb2_core_r1_seed101_20261016T231553", "seed": 101, "scenario": "R1"}
+{"at_jst": "2026-10-17T00:23:57.035910+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r1_seed101_20261016T231553"}
+{"at_jst": "2026-10-17T00:23:58.127552+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r1_seed101_20261016T231553", "rows": 325962}
+{"at_jst": "2026-10-17T00:24:05.651259+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed101_20261016T231553", "rows": 5000000}
+{"at_jst": "2026-10-17T00:24:12.244430+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed101_20261016T231553", "rows": 10000000}
+{"at_jst": "2026-10-17T00:24:18.938638+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r1_seed101_20261016T231553", "rows": 15000000}
+{"at_jst": "2026-10-17T00:24:25.989736+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r1_seed101_20261016T231553", "roads": 19197258, "transitions": 260095}
+{"at_jst": "2026-10-17T00:24:25.991427+09:00", "action": "cell_start", "run_id": "rtbb2_core_r2_seed101_20261016T233034", "seed": 101, "scenario": "R2"}
+{"at_jst": "2026-10-17T00:24:27.688117+09:00", "action": "people_and_time_pass", "run_id": "rtbb2_core_r2_seed101_20261016T233034"}
+{"at_jst": "2026-10-17T00:24:30.260165+09:00", "action": "candidate_pass", "run_id": "rtbb2_core_r2_seed101_20261016T233034", "rows": 785960}
+{"at_jst": "2026-10-17T00:24:37.331092+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed101_20261016T233034", "rows": 5000000}
+{"at_jst": "2026-10-17T00:24:44.866669+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed101_20261016T233034", "rows": 10000000}
+{"at_jst": "2026-10-17T00:24:51.839541+09:00", "action": "road_checkpoint", "run_id": "rtbb2_core_r2_seed101_20261016T233034", "rows": 15000000}
+{"at_jst": "2026-10-17T00:24:59.022533+09:00", "action": "cell_complete", "run_id": "rtbb2_core_r2_seed101_20261016T233034", "roads": 19197258, "transitions": 255144}
+{"at_jst": "2026-10-17T00:25:04.354277+09:00", "action": "analysis_complete", "cells": 15, "source_files": 249, "output_artifacts": 84}
+{"at_jst": "2026-10-17T00:25:37.348999+09:00", "action": "report_complete", "cells": 15, "independent_candidate_assignment_join": true, "static_diagnostic": true}
+{"at_jst": "2026-10-17T00:25:44.596567+09:00", "action": "current_documents_updated", "files": 13, "detail": "文書更新記録.json"}
+{"at_jst": "2026-10-17T00:26:20.193320+09:00", "action": "document_eol_failure_corrected", "detail": {"at_jst": "2026-10-17T00:26:20.192311+09:00", "reason": "Initial document updater decoded CRLF bytes without newline normalization; write_text doubled CR. Corrected only CRCRLF in the 13 edited documents. Source run/output EOL untouched. Updater fixed to read_text.", "files": ["context.md", "00_全体整理/現状把握_静的・動的シミュレーション整理.md", "00_全体整理/現状把握_静的・動的シミュレーション整理.html", "05_タスク管理/jdrt/JDRT_実装タスク管理.md", "05_タスク管理/jdrt/JDRT-実時間B境界整合_開始準備監査.md", "00_全体整理/決定ログ.md", "01_経過報告/経過報告2026年08月/経過報告20260826.md", "00_全体整理/INDEX.md", "README.md", "04_プログラム/README.md", "04_プログラム/output/jdrt.html"]}}
+{"at_jst": "2026-10-17T00:27:57.128056+09:00", "action": "primary_listing_links_updated", "failed_attempts": 2, "cause": "Both body-tag assumptions wrong; actual file uses implicit body and main. Read actual markup and updated main. MD applied once and both artifact SHA synchronized.", "files": [{"path": "06_研究結果\\jdrt\\realtime_b_boundary_v2\\全セル結果一覧.md", "before_sha256": "7d589632ff917d6059e6cd3a68f16b040da5c8da386c8e6e7854e8ec2292b643", "after_sha256": "beed1c7a12365901dbea67bca5ff6690873d42fe2bd73e804ff0c46266daea87"}, {"path": "06_研究結果\\jdrt\\realtime_b_boundary_v2\\全セル結果一覧.html", "before_sha256": "863aa9532fa485706b9e98787406e4f877ca5a7745bfbd42609caa6fbf301592", "after_sha256": "e7e9a2fcb55fa6830f509664723406f932ee409ea61a26689dab95815d81b66a"}]}
+{"at_jst": "2026-10-17T00:29:06.192272+09:00", "action": "final_link_check_scope_corrected", "failure": "Raw downloaded municipal HTML relative web asset/navigation links were treated as local authored links. Preserve raw bytes and original URL; restrict local-document link gate to authored HTML, verify raw via HTTP metadata/SHA."}
+{"at_jst": "2026-10-17T00:29:06.400432+09:00", "action": "final_verified", "result": {"at_jst": "2026-10-17T00:29:06.400432+09:00", "status": "PASS", "source_files_unchanged": 249, "formal_record_run_ids_preserved_in_six_files": 15, "local_links_checked": 187, "new_links_broken": [], "historical_links_for_review": [], "scoped_git_diff_check": 0, "html_heading_table_structure": true, "analysis_script_compilation": true, "automation": "PAUSED", "new_simulations": 0, "external_sends": 0, "source_implementation": {"04_プログラム/scripts/jdrt_realtime_b_boundary.py": "e9e071cf1f0cb1e05252f042393083570a08961e32496a0d7886d641d1faaf56", "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py": "0a95170b70fc90a26c22ee67201ef9ee641e0ab78ce61cab930b9bf555768b32", "04_プログラム/scripts/jdrt_realtime_b_boundary_validate.py": "b99d1eff82cb2975dce7721e6afd7cde67153b3feee00dae44a6bf6e6d0b4834", ".agents/skills/joso-jdrt-runner/scripts/realtime_b_boundary_cell.py": "9e0d78b8232f613686571d4eeee4b6e3c25d9eac68a0a665cefe94a4ad8686e5"}}}
+{"at_jst": "2026-10-17T00:30:02.044070+09:00", "action": "report_complete", "cells": 15, "independent_candidate_assignment_join": true, "static_diagnostic": true}
+{"at_jst": "2026-10-17T00:30:02.460920+09:00", "action": "final_verified", "result": {"at_jst": "2026-10-17T00:30:02.460920+09:00", "status": "PASS", "source_files_unchanged": 249, "formal_record_run_ids_preserved_in_six_files": 15, "local_links_checked": 187, "new_links_broken": [], "historical_links_for_review": [], "scoped_git_diff_check": 0, "html_heading_table_structure": true, "analysis_script_compilation": true, "automation": "PAUSED", "new_simulations": 0, "external_sends": 0, "source_implementation": {"04_プログラム/scripts/jdrt_realtime_b_boundary.py": "e9e071cf1f0cb1e05252f042393083570a08961e32496a0d7886d641d1faaf56", "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py": "0a95170b70fc90a26c22ee67201ef9ee641e0ab78ce61cab930b9bf555768b32", "04_プログラム/scripts/jdrt_realtime_b_boundary_validate.py": "b99d1eff82cb2975dce7721e6afd7cde67153b3feee00dae44a6bf6e6d0b4834", ".agents/skills/joso-jdrt-runner/scripts/realtime_b_boundary_cell.py": "9e0d78b8232f613686571d4eeee4b6e3c25d9eac68a0a665cefe94a4ad8686e5"}}}

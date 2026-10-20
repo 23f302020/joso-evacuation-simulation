@@ -1,0 +1,9 @@
+{
+  "command": ".\\venv\\Scripts\\python.exe -X utf8 -m unittest tests.test_jdrt_choice_toolchain tests.test_jdrt_choice_policy tests.test_jdrt_choice_runtime tests.test_jdrt_choice_validate tests.test_jdrt_choice_skill -q",
+  "cwd": "04_プログラム",
+  "chunk_id": "ef8dd4",
+  "wall_time_seconds": 2.5881881,
+  "exit_code": 0,
+  "original_token_count": 26,
+  "output": "----------------------------------------------------------------------\r\nRan 84 tests in 16.276s\r\n\r\nOK\r\n"
+}

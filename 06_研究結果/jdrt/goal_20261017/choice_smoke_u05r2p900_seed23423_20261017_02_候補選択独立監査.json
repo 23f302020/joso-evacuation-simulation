@@ -1,0 +1,30 @@
+{
+  "run_id": "choice_smoke_u05r2p900_seed23423_20261017_02",
+  "at_jst": "2026-10-17T10:02:15.604680+09:00",
+  "scope": "partial_candidate_smoke_audit_not_formal_core_acceptance",
+  "status": "PASS",
+  "checks": {
+    "candidate_matrix": true,
+    "candidate_free_stage_count": true,
+    "candidate_source_observation": true,
+    "candidate_registered_positions": true,
+    "candidate_shortest_time": true,
+    "candidate_open_path": true,
+    "candidate_gate_components": true,
+    "candidate_forecast_required": true,
+    "candidate_score_components": true,
+    "candidate_ineligible_score": true,
+    "candidate_score": true,
+    "candidate_choice_and_acceptance": true,
+    "cycle_primary_counts": true
+  },
+  "candidate_rows": 100,
+  "candidate_stages": 6,
+  "cycles": 31,
+  "numeric_sum_tolerance_sec": 1e-09,
+  "tolerance_scope": "addition-order numerical agreement only; strict Gate boolean outcomes checked separately",
+  "errors": {},
+  "core_adoption_permitted": false,
+  "auditor_sha256": "a2050b6bdfd098803ee69f73ac63e52bcbee58825edabdc38a38b41b4d480d78",
+  "manifest_sha256": "5770a53fc1d9df6906f44ab5ea25a47e6a320a11b2e5d7701e20880df439bfb0"
+}

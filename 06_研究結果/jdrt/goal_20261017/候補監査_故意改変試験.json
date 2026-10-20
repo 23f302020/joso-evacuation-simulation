@@ -1,0 +1,97 @@
+{
+  "at_jst": "2026-10-17T10:35:50.367957+09:00",
+  "status": "PASS",
+  "run_id": "choice_smoke_u05r2p900_seed23423_20261017_02",
+  "scope": "candidate_auditor_counterexamples_only_not_core_readiness",
+  "baseline": "PASS",
+  "cases": [
+    {
+      "case": "source_position_shift",
+      "expected_rejection": "candidate_source_observation",
+      "pass": true,
+      "failed_checks": [
+        "candidate_source_observation",
+        "candidate_shortest_time"
+      ]
+    },
+    {
+      "case": "pickup_time_shift",
+      "expected_rejection": "candidate_shortest_time",
+      "pass": true,
+      "failed_checks": [
+        "candidate_shortest_time",
+        "candidate_forecast_required",
+        "candidate_score"
+      ]
+    },
+    {
+      "case": "forecast_time_shift",
+      "expected_rejection": "candidate_forecast_required",
+      "pass": true,
+      "failed_checks": [
+        "candidate_forecast_required"
+      ]
+    },
+    {
+      "case": "score_shift",
+      "expected_rejection": "candidate_score",
+      "pass": true,
+      "failed_checks": [
+        "candidate_score"
+      ]
+    },
+    {
+      "case": "selection_omitted",
+      "expected_rejection": "candidate_choice_and_acceptance",
+      "pass": true,
+      "failed_checks": [
+        "candidate_choice_and_acceptance"
+      ]
+    },
+    {
+      "case": "candidate_omitted",
+      "expected_rejection": "cycle_primary_counts",
+      "pass": true,
+      "failed_checks": [
+        "candidate_matrix",
+        "cycle_primary_counts"
+      ]
+    },
+    {
+      "case": "gate_boolean_flipped",
+      "expected_rejection": "candidate_gate_components",
+      "pass": true,
+      "failed_checks": [
+        "candidate_gate_components"
+      ]
+    },
+    {
+      "case": "path_origin_corrupted",
+      "expected_rejection": "candidate_open_path",
+      "pass": true,
+      "failed_checks": [
+        "candidate_open_path"
+      ]
+    },
+    {
+      "case": "urgency_shift",
+      "expected_rejection": "candidate_score_components",
+      "pass": true,
+      "failed_checks": [
+        "candidate_score_components"
+      ]
+    },
+    {
+      "case": "nan_disguised_finite",
+      "expected_rejection": "exception",
+      "pass": true,
+      "exception": "ValueError",
+      "message": "Invalid numeric/missingness pair"
+    }
+  ],
+  "primary_artifacts_modified": false,
+  "auditor_sha256": "c4a37b66d9505023fa0484d7057cb3f549902169bae45a0c34b8edeec1befd2e",
+  "test_sha256": "18d783e34f9617c92e54766e5080d46652b170d51541eab449187b5cbbd7fae4",
+  "sparse_traffic_rows": 67,
+  "snapshot_times_preserved": 31
+}

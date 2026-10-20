@@ -1,0 +1,179 @@
+{
+  "observed_at_jst": "2026-10-18T20:43:39.156865+09:00",
+  "action": "single_terminal_pipeline_monitor",
+  "suite_id": "cf26101804",
+  "smoke_prefix": "cs261018d",
+  "goal_status": "ACTIVE (parent-shared status)",
+  "formal_research_recorded": "0/70",
+  "core_runs": 0,
+  "technical_ready": false,
+  "core_start_permitted": false,
+  "pipeline": {
+    "state_path": "06_研究結果/jdrt/goal_20261017/cf26101804_revalidate.json",
+    "status": "FAILED",
+    "parent_pid": 29180,
+    "parent_pid_started_at_jst": "2026-10-18T20:38:29.092959+09:00",
+    "parent_pid_finished_at_jst": "2026-10-18T20:41:20.916659+09:00",
+    "parent_exit_code": 1,
+    "owner_exec_session": 34712,
+    "command": [
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical.py",
+      "--project-root",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究",
+      "fixture",
+      "--run-id",
+      "cf26101804"
+    ],
+    "wrapper_pid": 28712,
+    "wrapper_pid_started_at_jst": "2026-10-18T20:38:29.100311+09:00",
+    "wrapper_pid_finished_at_jst": "2026-10-18T20:41:20.914690+09:00",
+    "wrapper_exit_code": 1,
+    "native_fixture_pid": 12360,
+    "pids_at_observation": {
+      "29180": {
+        "current_process_observation": "ABSENT at observation; creation time/command unavailable after exit"
+      },
+      "28712": {
+        "current_process_observation": "ABSENT at observation; creation time/command unavailable after exit"
+      },
+      "12360": {
+        "current_process_observation": "ABSENT at observation; creation time/command unavailable after exit"
+      }
+    },
+    "active_stage": "fixture",
+    "child_alive": false,
+    "exception_type": "ValueError",
+    "state_error": "fixture command failed; preserved exit code 1",
+    "fixture_exception": "Calibration lacks a shared interior short-edge walking frame",
+    "fixture_exception_type": "ValueError"
+  },
+  "fixture": {
+    "manifest_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804/manifest.json",
+    "manifest_sha256": "861442653a0c0fc44ecfb9ac09474480bf68643ca7c90acbe2e4f363b2017664",
+    "status": "FAILED",
+    "registered_case_count": 26,
+    "passed_case_count": 24,
+    "last_case": "car_lane_cut",
+    "last_status": "PASS",
+    "progress_at_jst": "2026-10-18T20:41:14.801170+09:00",
+    "unexecuted_case_count": 1,
+    "failed_evaluation_case": "walk_short_calibration (case 25)",
+    "failure": "ValueError: Calibration lacks a shared interior short-edge walking frame",
+    "finished_at_jst": "2026-10-18T20:41:20.795708+09:00",
+    "artifacts_bytes": 72205,
+    "case25_evaluator_failed_count": 1
+  },
+  "case25_native_check": {
+    "run_id": "cf26101804_c25",
+    "status": "COMPLETED",
+    "pid_alive": false,
+    "pid": 12360,
+    "started_at_jst": "2026-10-18T20:41:16.273154+09:00",
+    "finished_at_jst": "2026-10-18T20:41:20.365700+09:00",
+    "sim_sec": 1500.0,
+    "end_sec": 1500,
+    "steps": 3000,
+    "controller_ticks": 1501,
+    "snapshots": 26,
+    "people_states": {
+      "admitted": 2
+    },
+    "person_rows": 2,
+    "teleports": 0,
+    "collisions": 0,
+    "missing_vehicle_subscriptions": 0,
+    "missing_person_subscriptions": 0,
+    "sumo_error_log_bytes": 472,
+    "sumo_warnings": 4,
+    "warning_detail": "Invalid departPos 50.00 for fixture_person_0 and fixture_person_1, twice each; SUMO used edge end",
+    "sumo_log_sha256": "c7e6e2c4b5b57a67160987db953d13741a8a71db892a2da1559f0365e838f217",
+    "people_accounting_total": 2,
+    "no_independent_validation": true
+  },
+  "last_completed_case": {
+    "run_id": "cf26101804_c24",
+    "sim_sec": 1500.0,
+    "end_sec": 1500,
+    "counts": {
+      "steps": 3000,
+      "controller_ticks": 1501,
+      "snapshots": 26,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 8,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 0,
+      "dispatch_cycles": 0,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 0,
+      "departure_pending_frames": 0,
+      "snapshot_actor_rows": 19
+    },
+    "people_states": {
+      "admitted": 2
+    }
+  },
+  "implementation_sha256_at_state": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "implementation_sha256_observed": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "implementation_sha_match": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "common5_all_match": true,
+  "input_pap_acceptance_changed": false,
+  "technical_stages": {
+    "suite": "FAILED",
+    "independent_counterexample_audit": "NOT_RUN",
+    "14_setting_smokes": "NOT_RUN",
+    "new_preflight": "NOT_RUN",
+    "technical_ready": false,
+    "formal_adoption": false
+  },
+  "capacity_free_bytes": 262021623808,
+  "requested_recorder_model": "gpt-6-luna",
+  "requested_reasoning_effort": "low",
+  "requested_decision_source": "gpt-6.1-sol/high",
+  "actual_backend_identity": "not independently verified",
+  "observation_is_point_in_time": true,
+  "preliminary_high_reasoning_diagnosis": {
+    "status": "速報・独立再計算根拠/正式診断文書の完成待ち",
+    "source": "parent message from high-reasoning diagnostic owner",
+    "reported_findings": {
+      "d0_length_m": 22.52,
+      "type3_on_edge_interval_sec": [
+        34,
+        58.5
+      ],
+      "type4_on_edge_interval_sec": [
+        59,
+        102
+      ],
+      "overlap_sec": 0,
+      "shared_interior_frame_count": 0,
+      "invalid_depart_pos_warnings": 4,
+      "warning_source": "two reroutes × two receipts"
+    },
+    "interpretation": "fixture time placement issue is a candidate; runtime defect is not established",
+    "method_or_gate_change": false
+  }
+}

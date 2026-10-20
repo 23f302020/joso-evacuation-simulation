@@ -1,0 +1,31 @@
+{
+  "definition": "Initial closure removed passenger graph; directed reachability from registered depot only. Not dispatch outcome or future vehicle position.",
+  "depot_edge": "11531#5",
+  "reachable_graph_nodes": 7378,
+  "initial_graph_nodes": 15750,
+  "origin_count": 167,
+  "reachable_origin_count": 87,
+  "population_by_type": [
+    {
+      "person_type": "type1",
+      "people": 7114,
+      "initial_depot_reachable": 3262
+    },
+    {
+      "person_type": "type2",
+      "people": 3052,
+      "initial_depot_reachable": 1556
+    },
+    {
+      "person_type": "type3",
+      "people": 1255,
+      "initial_depot_reachable": 571
+    },
+    {
+      "person_type": "type4",
+      "people": 544,
+      "initial_depot_reachable": 276
+    }
+  ],
+  "no_policy_change": true
+}

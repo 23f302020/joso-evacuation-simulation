@@ -1,0 +1,53 @@
+"""Offline observation-phase diagram; create a new artifact, preserve earlier diagrams."""
+from pathlib import Path
+from datetime import datetime, timezone, timedelta
+import hashlib
+import html
+import json
+
+ROOT = Path(__file__).resolve().parents[3]
+HERE = Path(__file__).parent
+audit = HERE / 'cf26101710_統合fixture独立監査.json'
+report = json.loads(audit.read_text(encoding='utf-8'))
+if report['status'] != 'PASS':
+    raise ValueError('Current fixture audit required')
+rows = sum(c['actor_rows'] for c in report['cases'])
+snapshots = sum(c['snapshot_actor_rows'] for c in report['cases'])
+cases = len(report['cases'])
+stamp = datetime.now(timezone(timedelta(hours=9))).isoformat()
+proof = {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+         for p in (audit, HERE / 'G4_統合fixture独立監査.py', HERE / 'G4_候補選択独立監査.py',
+                   ROOT / '04_プログラム/scripts/jdrt_realtime_choice.py', Path(__file__))}
+target = ROOT / '03_研究設計文書/図表・UML/JDRT_受付代替行動_観測位相・統合検証_v3.html'
+document = f'''<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>受付・代替行動：観測位相と統合検証</title><style>
+body{{margin:0;background:#f4f7f8;color:#19333f;font:16px/1.85 system-ui,sans-serif}}main{{max-width:1160px;margin:auto;padding:28px 22px}}article{{background:white;border:1px solid #c9d9e0;border-radius:9px;margin:20px 0;padding:22px}}svg{{display:block;width:100%;height:auto}}table{{border-collapse:collapse;width:100%}}td,th{{text-align:left;vertical-align:top;padding:10px;border-bottom:1px solid #d5e1e6}}a{{color:#006584}}.flag{{background:#fff1d8;padding:12px}}code{{overflow-wrap:anywhere}}</style></head><body><main>
+<h1>同じ時刻でも、制御の前後を区別する</h1><p>realtime_choice_v1 / 生成 {stamp}</p><p class="flag">人工の統合{cases}ケースと独立監査がPASS。研究coreは未開始、技術未READY。正式run検証・全14設定・記録ゲートを満たしてから開始します。</p>
+<article><h2>時刻とphaseを結合した観測の流れ</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" role="img" aria-label="移動後のactor記録、制御、制御後snapshot、道路集計と次の移動を別位相として記録する図">
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#426679"/></marker></defs>
+<g fill="none" stroke="#426679" stroke-width="2" marker-end="url(#a)"><path d="M315 100H390"/><path d="M700 100H775"/><path d="M930 165V255"/><path d="M775 320H700"/><path d="M390 320H315"/></g>
+<g stroke="#8aa4b1"><rect x="5" y="35" width="310" height="130" rx="8" fill="#e9f0f5"/><rect x="390" y="35" width="310" height="130" rx="8" fill="#e4f2f8"/><rect x="775" y="35" width="310" height="130" rx="8" fill="#e6f1e9"/>
+<rect x="775" y="255" width="310" height="130" rx="8" fill="#fff1d9"/><rect x="390" y="255" width="310" height="130" rx="8" fill="#fff1d9"/><rect x="5" y="255" width="310" height="130" rx="8" fill="#e9f0f5"/></g>
+<g font-family="system-ui,sans-serif" font-size="17" text-anchor="middle" fill="#19333f">
+<text x="160" y="72">① 0.5秒の移動が完了</text><text x="160" y="105">SUMO実位置・速度・距離</text><text x="160" y="138">到着者はsubscriptionから消える</text>
+<text x="545" y="70">② 毎step actorを保存</text><text x="545" y="100" font-size="14">after_step_before_control</text><text x="545" y="131">経路index・経路版も保存</text>
+<text x="930" y="72">③ 閉鎖・期限・配車を制御</text><text x="930" y="105">取消・乗降・迂回のevent</text><text x="930" y="138">実経路と版番号を対応</text>
+<text x="930" y="291">④ 60秒ごとのsnapshot actor</text><text x="930" y="322" font-size="14">after_control_before_step</text><text x="930" y="353">APIの道路別車両IDも照合</text>
+<text x="545" y="291">⑤ 全道路を0件も含めて保存</text><text x="545" y="322">raw／路上／駐車／再出庫待ち</text><text x="545" y="353">配車速度は路上のみ・0件はfree-flow</text>
+<text x="160" y="291">⑥ 次step、または窓末会計</text><text x="160" y="322">人物・要求・容量・退出を分離</text><text x="160" y="353">来歴とSHAを保存</text>
+<text x="550" y="445" font-size="16">snapshotの集計を、制御前actorと無条件に比較しない。時刻＋phaseで結合する。</text></g></svg></article>
+<article><h2>実行で確認したこと</h2><table><tr><th>根拠</th><th>検査と限界</th></tr>
+<tr><td>人工{cases}ケース／毎step {rows:,}行／snapshot actor {snapshots:,}行</td><td>歩行再経路・距離上限・逆向き徒歩、乗降中閉鎖、予測単独拒否/900秒オフセット/閉鎖後迂回、共有容量・退出、窓末、後方車両移動と私有車迂回を強制発生。研究人口の効果比較ではない。</td></tr>
+<tr><td>再経路後も登録歩行速度を維持</td><td>stage置換が速度指定を保持しない事象を検出し、登録上限を再指定。上限検査を緩めていない。</td></tr>
+<tr><td>走行距離＝最終観測距離＋到着直前の残距離</td><td>終点位置と最後のlane位置から残距離を再計算。SUMOの表示丸め幅を文字列から導く。未完了車両へ仮の到着を補わない。</td></tr>
+<tr><td>毎step速度積分とstage予定長</td><td>personinfoの過去stage長を単純合算しない。通過済み・残り計画・速度積分を別会計する。</td></tr></table></article>
+<article><h2>次の開始ゲートと根拠</h2><p>この人工ケース監査を、全研究人口・共通実現・候補全行・会計/SHA・閉鎖・距離・故意改変を扱う正式run検証器へ統合します。現行全14設定のsmokeと6ファイル記録の往復検査・READYが残っています。</p>
+<p><a href="JDRT_受付代替行動_位置・観測・距離_v2.html">位置整合図v2（保全）</a> / <a href="../../05_タスク管理/jdrt/JDRT-受付代替行動_実SUMO・位置整合監査.md">技術監査</a> / <a href="../../06_研究結果/jdrt/goal_20261017/cf26101710_統合fixture独立監査.json">独立一次監査</a></p>
+<p>Drive読取のみ。外部送信・公開更新なし。旧研究/runは保全。</p><details><summary>生成根拠SHA-256</summary><pre><code>{html.escape(json.dumps(proof,ensure_ascii=False,indent=2))}</code></pre></details></article></main></body></html>'''
+with target.open('x', encoding='utf-8') as stream:
+    stream.write(document)
+entry = {'recorded_at_jst': stamp, 'operation': 'create_observation_phase_diagram_v3',
+         'artifact': target.relative_to(ROOT).as_posix(), 'artifact_sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
+         'source_sha256': proof, 'integrated_cases': cases, 'actor_rows': rows, 'snapshot_actor_rows': snapshots}
+with (HERE / 'operations.jsonl').open('a', encoding='utf-8') as stream:
+    stream.write(json.dumps(entry,ensure_ascii=False) + '\n')
+print(json.dumps({k:v for k,v in entry.items() if k!='source_sha256'},ensure_ascii=False,indent=2))

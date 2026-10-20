@@ -1,0 +1,69 @@
+{
+  "created_at_jst": "2026-10-16T18:15:59.143090+09:00",
+  "protocol": "realtime_b_boundary_v2",
+  "input_manifest_sha256": "e7d68ddd1f934619df3d283bc79bbebae53ef14f2f15e708cab6d7426ca1b598",
+  "parent_manifest_sha256": "403af2f1d754c88d8ba9e8ccf2938d4c96de283dac4dc647a805694a27b70460",
+  "input_validation_sha256": "33fac3ceec35923dee24dbeff17b983e287e1c900094a928d13709df14f3db1d",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_b_boundary.py": "e9e071cf1f0cb1e05252f042393083570a08961e32496a0d7886d641d1faaf56",
+    "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py": "0a95170b70fc90a26c22ee67201ef9ee641e0ab78ce61cab930b9bf555768b32",
+    "04_プログラム/scripts/jdrt_realtime_b_boundary_validate.py": "b99d1eff82cb2975dce7721e6afd7cde67153b3feee00dae44a6bf6e6d0b4834",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_b_boundary_cell.py": "9e0d78b8232f613686571d4eeee4b6e3c25d9eac68a0a665cefe94a4ad8686e5"
+  },
+  "timing_gate_sha256": "20a8dff08d36f962159652c208e200d2c257c6f8055e474bb6872cd79a33c768",
+  "artifacts": {
+    "JDRT_実時間B_境界整合_新データフロー_v2.md": "76d49b2fd7152adcc854c9b778cdfb779b213761c48aefd4e1d1181b090bda86",
+    "JDRT_実時間B_境界整合_新データフロー_v2.html": "aaea83f48ecb15c4d12f0b7a91d08ea81f5057b44ad9120251832065e7f545d6"
+  },
+  "sources": {
+    "04_プログラム/config/jdrt_realtime_b_v1.json": "08c2922aa1379a80ac86d1bb118215a033ba069779abb7905825fc3d295de5dc",
+    "04_プログラム/scripts/jdrt_realtime_b_inputs.py": "b6dbfa666a4af94ec1bf82f6626e048b83450a4d5f99db583d94853d27529fc9",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_original/LifeSim_Validation_Joso/Hydraulic_Data/Calibrated/Calibrated.hdf": "df8704b3abf0a245d61dc530280bde446163cb59bae4943181a4f73a936acdc6",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_original/LifeSim_Validation_Joso/Hydraulic_Data/Terrains/Terrain1/Terrain.kinugawa.tif": "7f1bcb9794419e3f66492cd33ef3a434ebcac38d385a266bad4c96c7ee071110",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/network/08211_ped.net.xml": "c94f6261e970e83c33ea3f164046dbdf7383bb841ad5e807b457c44705463688",
+    "04_プログラム/output/sumo/regions/08211/network/08211.osm.xml": "fef928042eb345f7c6ecde7989175fe481742596a411f4f7875591c22afd0c36",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/cells_utm54n.geojson": "9209e5019c343d6c49276dae012c5f7a03daa99ead12f7d5b00cffa3b526c306",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/network_domain_coverage.csv": "7aea43ef49d2df41cb9102387a6d0edb8303465f5a37b6d288132c10ba1fe1ec",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/structure_tags_audit.csv": "5bbc6864e769f20e70c0e5d9bee83232b5648fa261b87349779ccdbb83249180",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_occupancy_ledger.csv": "97882eeac34c47db8467c75e178c7c78621b29c1886657eb0d30dbbb073f5f9a",
+    "04_プログラム/output/sumo/regions/08211/derived/shelters_sumo.csv": "4f325976efd23af4c3c4fa716710b17375491d7c4d2f120e1cf1b24b80ce08fa",
+    "02_情報調査/交通・地域/jdrt_realistic/既存9施設_公表容量照合_20261015.csv": "cc488ea0497838975c28e069379230ae172ed35b39e2b9ff582ed8e2c469c71c",
+    "03_研究設計文書/jdrt/常総市JDRT_実時間B_PreAnalysisPlan_v1.md": "69119e5017e9a7120ba203a1dd05998cdcd9f17ed501544cd332e07a90730d7c",
+    "04_プログラム/config/jdrt_realtime_b_boundary_v2.json": "1b5e84ad82e0f8db015997c7815dba199e95e67d04c3de1a595090440a348457",
+    "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py": "0a95170b70fc90a26c22ee67201ef9ee641e0ab78ce61cab930b9bf555768b32",
+    "03_研究設計文書/jdrt/常総市JDRT_実時間B_境界整合_PreAnalysisPlan_v2.md": "e6e3389f6f5f07cd59995eb1a0d9a3da35c9f79e1c67cb6bce95eb22ecbffded",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b/inputs/build02/manifest.json": "403af2f1d754c88d8ba9e8ccf2938d4c96de283dac4dc647a805694a27b70460"
+  },
+  "phase": "15/15正式記録完了・実行中0・未記録0。独立一覧と主指標記述表を作成、次は副指標/取得監査。旧8は分離保全",
+  "last_verified_at_jst": "2026-10-16T23:51:46.375409+09:00",
+  "smoke_runs": {
+    "R0": "rtbb2_smoke_r0_seed23423_20261016T181244",
+    "R1": "rtbb2_smoke_r1_seed23423_20261016T181432",
+    "R2": "rtbb2_smoke_r2_seed23423_20261016T181624"
+  },
+  "visual_qa": "Local IAB at narrow width; initially tiny SVG corrected to stacked clock cards. Clock/legacy separation visibly verified.",
+  "current_run_id": null,
+  "formally_recorded_run_ids": [
+    "rtbb2_core_r0_seed23423_20261016T182150",
+    "rtbb2_core_r1_seed23423_20261016T183134",
+    "rtbb2_core_r2_seed23423_20261016T184653",
+    "rtbb2_core_r0_seed42_20261016T190325",
+    "rtbb2_core_r1_seed42_20261016T191543",
+    "rtbb2_core_r2_seed42_20261016T193033",
+    "rtbb2_core_r0_seed1_20261016T194541",
+    "rtbb2_core_r1_seed1_20261016T200038",
+    "rtbb2_core_r2_seed1_20261016T201545",
+    "rtbb2_core_r0_seed7_20261016T203031",
+    "rtbb2_core_r1_seed7_20261016T204541",
+    "rtbb2_core_r2_seed7_20261016T210045",
+    "rtbb2_core_r0_seed101_20261016T211544",
+    "rtbb2_core_r1_seed101_20261016T231553",
+    "rtbb2_core_r2_seed101_20261016T233034"
+  ],
+  "result_listing": "06_研究結果/jdrt/realtime_b_boundary_v2/全セル結果一覧.html",
+  "next_tasks": "05_タスク管理/jdrt/JDRT-実時間B境界整合_完了後分析タスク.md",
+  "monitoring_status": "PAUSED",
+  "monitoring_stopped_at_jst": "2026-10-16T23:53:20.635716+09:00"
+}

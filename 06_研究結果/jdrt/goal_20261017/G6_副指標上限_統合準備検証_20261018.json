@@ -1,0 +1,306 @@
+{
+  "captured_at": "2026-10-18T20:47:18.4125945+09:00",
+  "status": "PASS_ARTIFICIAL_PREPARATION_NOT_G6_COMPLETE",
+  "model_requested": "gpt-6.1-sol / high",
+  "actual_backend": "not_independently_verified",
+  "scope": "PAP section 7 registered secondary tables, fixed assignment capacity, offered service workload, conditional direct DRT completion bound",
+  "before_archive": "analysis_history/G6_secondary_20261018T203458461/manifest.json",
+  "final_source_freeze": "analysis_history/G6_secondary_final_20261018T204510595/manifest.json",
+  "frozen_source_count": 8,
+  "frozen_source_mismatches": [],
+  "tests": [
+    {
+      "elapsed_sec": 0.004,
+      "exit_code": 0,
+      "tests": 7,
+      "name": "G6_副指標上限_人工契約テスト.py"
+    },
+    {
+      "elapsed_sec": 39.707,
+      "exit_code": 0,
+      "tests": 5,
+      "output_csv_count": 19,
+      "name": "G6_統合集計_人工契約テスト.py"
+    },
+    {
+      "elapsed_sec": 0.109,
+      "exit_code": 0,
+      "tests": 6,
+      "name": "G6_主指標集計_契約テスト.py"
+    }
+  ],
+  "intermediate_failure": {
+    "research_run_failure": false,
+    "exit_code": 1,
+    "command": "G6_登録入力_理論値確認.py",
+    "reason": "Blank registered terminal was initially treated as unknown",
+    "resolution": "Allow blank terminal only if both registered routes absent; keep persons in major denominator, exclude only from fixed facility assignments; add artificial case"
+  },
+  "input_only_theory": {
+    "serial_completion_upper": 144,
+    "report_sha256": "14b716212c804e6bfead4844460b0204d3f70ea2feed62a874f5e678966a8962",
+    "bound_file_count": 15,
+    "type4_denominator": 544,
+    "facility_bounds": {
+      "fixed_reference": [
+        {
+          "terminal_id": "shelter_2",
+          "capacity_all_modes_shared": 195,
+          "type4_fixed": 12,
+          "registered_passenger_route_present": 12,
+          "registered_walk_route_present": 5,
+          "registered_walk_route_within_limit": 5,
+          "fixed_assignment_capacity_upper": 12,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 432
+        },
+        {
+          "terminal_id": "shelter_3",
+          "capacity_all_modes_shared": 519,
+          "type4_fixed": 0,
+          "registered_passenger_route_present": 0,
+          "registered_walk_route_present": 0,
+          "registered_walk_route_within_limit": 0,
+          "fixed_assignment_capacity_upper": 0,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 432
+        },
+        {
+          "terminal_id": "shelter_4",
+          "capacity_all_modes_shared": 193,
+          "type4_fixed": 72,
+          "registered_passenger_route_present": 72,
+          "registered_walk_route_present": 72,
+          "registered_walk_route_within_limit": 72,
+          "fixed_assignment_capacity_upper": 72,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 432
+        },
+        {
+          "terminal_id": "shelter_8",
+          "capacity_all_modes_shared": 100,
+          "type4_fixed": 28,
+          "registered_passenger_route_present": 28,
+          "registered_walk_route_present": 22,
+          "registered_walk_route_within_limit": 16,
+          "fixed_assignment_capacity_upper": 28,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 432
+        },
+        {
+          "terminal_id": "all_facilities",
+          "capacity_all_modes_shared": 1007,
+          "type4_fixed": 112,
+          "registered_passenger_route_present": 112,
+          "registered_walk_route_present": 99,
+          "registered_walk_route_within_limit": 93,
+          "fixed_assignment_capacity_upper": 112,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 432
+        }
+      ],
+      "facility_first": [
+        {
+          "terminal_id": "shelter_2",
+          "capacity_all_modes_shared": 195,
+          "type4_fixed": 230,
+          "registered_passenger_route_present": 230,
+          "registered_walk_route_present": 5,
+          "registered_walk_route_within_limit": 5,
+          "fixed_assignment_capacity_upper": 195,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 38
+        },
+        {
+          "terminal_id": "shelter_3",
+          "capacity_all_modes_shared": 519,
+          "type4_fixed": 122,
+          "registered_passenger_route_present": 122,
+          "registered_walk_route_present": 63,
+          "registered_walk_route_within_limit": 63,
+          "fixed_assignment_capacity_upper": 122,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 38
+        },
+        {
+          "terminal_id": "shelter_4",
+          "capacity_all_modes_shared": 193,
+          "type4_fixed": 109,
+          "registered_passenger_route_present": 109,
+          "registered_walk_route_present": 109,
+          "registered_walk_route_within_limit": 109,
+          "fixed_assignment_capacity_upper": 109,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 38
+        },
+        {
+          "terminal_id": "shelter_8",
+          "capacity_all_modes_shared": 100,
+          "type4_fixed": 45,
+          "registered_passenger_route_present": 42,
+          "registered_walk_route_present": 30,
+          "registered_walk_route_within_limit": 16,
+          "fixed_assignment_capacity_upper": 45,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 38
+        },
+        {
+          "terminal_id": "all_facilities",
+          "capacity_all_modes_shared": 1007,
+          "type4_fixed": 506,
+          "registered_passenger_route_present": 503,
+          "registered_walk_route_present": 207,
+          "registered_walk_route_within_limit": 193,
+          "fixed_assignment_capacity_upper": 471,
+          "type4_population_denominator": 544,
+          "type4_without_fixed_facility": 38
+        }
+      ]
+    },
+    "report": "G6_登録入力_理論値確認_20261018T204348564254.json",
+    "workloads": [
+      {
+        "seed": 23423,
+        "demand_level": "u05",
+        "intended_requests": 90,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 0.625
+      },
+      {
+        "seed": 23423,
+        "demand_level": "u50",
+        "intended_requests": 900,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 6.25
+      },
+      {
+        "seed": 42,
+        "demand_level": "u05",
+        "intended_requests": 90,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 0.625
+      },
+      {
+        "seed": 42,
+        "demand_level": "u50",
+        "intended_requests": 900,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 6.25
+      },
+      {
+        "seed": 1,
+        "demand_level": "u05",
+        "intended_requests": 90,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 0.625
+      },
+      {
+        "seed": 1,
+        "demand_level": "u50",
+        "intended_requests": 900,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 6.25
+      },
+      {
+        "seed": 7,
+        "demand_level": "u05",
+        "intended_requests": 90,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 0.625
+      },
+      {
+        "seed": 7,
+        "demand_level": "u50",
+        "intended_requests": 900,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 6.25
+      },
+      {
+        "seed": 101,
+        "demand_level": "u05",
+        "intended_requests": 90,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 0.625
+      },
+      {
+        "seed": 101,
+        "demand_level": "u50",
+        "intended_requests": 900,
+        "fleet_count": 4,
+        "horizon_sec": 21600,
+        "boarding_sec": 300,
+        "alighting_sec": 300,
+        "rho_service_only": 6.25
+      }
+    ]
+  },
+  "input_source_current_byte_audit": {
+    "meaning": "No current mismatch; future source mutation intentionally blocks the unchanged all70 gate",
+    "mismatch_count": 0,
+    "count": 29,
+    "manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe"
+  },
+  "source_contract": {
+    "kind": "Manual source audit plus independent artificial successful-service interval checks; not native validation",
+    "proof_sha256": "221d9454d793a6ed8d14fbda7509f65ec0ac411d3b3d580a5729d7cb4196f8f8",
+    "implementation_sha256": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7"
+    },
+    "conditions": {
+      "all_available_at_zero": true,
+      "initially_empty": true,
+      "full_processing_times": true,
+      "no_vehicle_time_reset": true,
+      "serial_one_person": true
+    }
+  },
+  "bound_proof": "Within each vehicle, nonoverlapping successful [boarding_started,alighted] intervals in [0,H] each occupy >=b+a. Therefore kv<=floor(H/(b+a)); sum over vehicles. Failed/unfinished/late/deadline-constrained attempts cannot add available time. Direct admitted subset of served; no bound on all-person or Type4 improvement difference.",
+  "schema_notes": [
+    "19 CSVs only after all70 gate",
+    "Input workload D/seed/u rows contain no R0 scenario or run outcome identifier",
+    "Empty detailed candidate/cycle tables have explicit headers; no fake data rows",
+    "Missing native distance remains missing; zero actors imply speed not applicable, not speed zero",
+    "Road aggregates use formal validator same-phase actor reaggregation proof; helper does not duplicate complete native validation"
+  ],
+  "research_method_change": "None",
+  "no_actual_core_artifact_reads": true,
+  "no_simulation": true,
+  "no_04scripts_config_skill_PAP_run_or_shared_doc_changes": true,
+  "unresolved": [
+    "Real accepted all70 aggregation and full-horizon native request histories not run",
+    "Real all70 road/candidate execution performance and memory not measured",
+    "Complete joint interpretation, limitations, final report and completion audit remain",
+    "Disaster field evidence gaps remain as registered PAP limitations",
+    "Artificial native-validation metadata are stubs and cannot support research adoption",
+    "Not every artifact SHA category has been independently mutated in these tests"
+  ],
+  "readable_report": "G6_副指標上限_統合準備検証_20261018.md"
+}

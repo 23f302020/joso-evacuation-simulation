@@ -1,0 +1,62 @@
+{
+  "at_jst": "2026-10-17T17:57:50.037328+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "canonical_validator_components_implemented_and_independently_countertested",
+  "summary": "最終goal ACTIVE。受付・代替行動70セルは登録済み・研究core 0、技術未READY。READY証跡/正式採用/6ファイル記録/復旧/単一writer/1セル起動を実装し48unit PASS。固定した共通5実装のcf26101715全21実SUMOケースと独立再計算がPASS、35種改変を拒否・一次357ファイル不変。全14設定smokeをcs261017aで逐次実行中（sequence session3285、各smoke完走・独立PASS後だけ次へ、失敗時停止）。次は全14/容量/READY生成を検証→70セル逐次実行・15分監視。旧系列/失敗/図v5は保全、旧監視PAUSED、Drive読取のみ・外部送信なし。",
+  "core_runs": 0,
+  "technical_ready": false,
+  "running": [
+    "cs261017a smoke sequence"
+  ],
+  "registered_input_directory": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered02",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "input_validation_checks_pass": 28,
+  "unit_tests_pass": 48,
+  "skill_validation": "PASS",
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "77c4d9e87f967a0cf48558bfd106cf4fd28d8c71ec6f63d14c588400c9382480",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "f3207743fe87fb1e3c285b8f1612bd9087bfe683d5eade94d5941df715196c66",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "b1b2831a4b79afe2fb3733498af387eb3b5a145ab5bfe32d5bf44672aad2120b"
+  },
+  "integrated_suite": "cf26101715 current common5",
+  "integrated_cases_pass": 21,
+  "suite_manifest_sha256": "389a345b909735e9dd3a18afb8f97ee5b5dbeda7f234dfd8cb40cda228389b76",
+  "independent_audit": "06_研究結果\\jdrt\\goal_20261017\\cf26101710_統合fixture独立監査.json",
+  "independent_audit_status": "PASS",
+  "independent_audit_sha256": "d6b7a16c8fbfcccc7c11363b77a04df17c956187766e093e65d7b31f2b8f885a",
+  "tamper_tests_pass": {
+    "candidate": 10,
+    "integration": 9
+  },
+  "old_preservation_checks": {
+    "sources": 249,
+    "implementation": 4,
+    "mismatch": []
+  },
+  "historical_smokes_current_implementation": false,
+  "new_diagram": "03_研究設計文書/図表・UML/JDRT_受付代替行動_native期限・internal取消_v5.html",
+  "next_source": "05_タスク管理/jdrt/JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md",
+  "next": "monitor same sequence; on failure preserve and diagnose; after14 PASS preflight current READY; then core single-cell",
+  "current_suite_required": true,
+  "canonical_partial_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261017T175640.json",
+  "canonical_partial_report_sha256": "661907a1ee888c93698cfc6c375e6d6224ada23174facde0c6d5e050c449c3ca",
+  "canonical_counterexamples_pass": 35,
+  "verifier_dependencies": {
+    "numpy": "2.4.4",
+    "scipy": "1.16.3",
+    "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+    "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+  },
+  "remaining_formal_gates": [
+    "final current21/all14 and counterexamples",
+    "capacity empirical proof and current READY"
+  ],
+  "technical_api_run": "cf26101714_c08",
+  "technical_api_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cf26101714_c08_20261017T172744116533.json",
+  "lifecycle_implemented": true,
+  "primary_files_rechecked": 357,
+  "smoke_sequence_session": 3285,
+  "smoke_sequence_state": "06_研究結果/jdrt/goal_20261017/cs261017a_smoke_sequence.json"
+}

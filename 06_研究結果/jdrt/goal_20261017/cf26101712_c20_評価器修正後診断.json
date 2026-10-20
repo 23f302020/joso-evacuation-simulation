@@ -1,0 +1,46 @@
+{
+  "case": "pickup_internal_timeout",
+  "status": "PASS",
+  "checks": {
+    "same_real_controller_completed": true,
+    "technical_only": true,
+    "zero_physical_errors": true,
+    "sumo_error_zero": true,
+    "all_output_hashes": true,
+    "accepted_then_deadline_cancel_without_boarding": true,
+    "one_fallback_same_origin_terminal": true,
+    "cancellation_occurs_on_native_internal": true,
+    "later_safe_external_wait_without_respawn": true
+  },
+  "outcomes": {
+    "admitted": 1
+  },
+  "request_states": {
+    "cancelled_timeout": 1
+  },
+  "event_counts": {
+    "person_ready": 1,
+    "request_state": 3,
+    "request_received": 1,
+    "person_state": 5,
+    "drt_route": 1,
+    "request_accepted": 1,
+    "vehicle_reentry_observed": 1,
+    "request_cancelled": 1,
+    "fallback_attempt": 1,
+    "walk_plan": 1,
+    "walk_departure": 1,
+    "cancel_wait_route": 1,
+    "person_terminal": 1
+  },
+  "sumo_log_summary": {
+    "bytes": 0,
+    "warning_count": 0,
+    "error_count": 0,
+    "handled_route_rejection_count": 0,
+    "unhandled_error_count": 0,
+    "collision_teleport_count": 0,
+    "gridlock_teleport_count": 0
+  },
+  "execution_manifest_sha256": "ad00e41d70e86c52d7ed8b607a1b0e95bbfbaef4c214228d6629ab6b0cc01665"
+}

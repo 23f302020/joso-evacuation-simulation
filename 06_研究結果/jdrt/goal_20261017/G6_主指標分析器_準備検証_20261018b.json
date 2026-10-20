@@ -1,0 +1,22 @@
+{
+  "at_jst": "2026-10-18T10:27:35.471403+09:00",
+  "action": "primary_analysis_gate_metadata_contract_extended",
+  "files": {
+    "G6_主指標・事前登録差分_集計.py": {
+      "sha256": "4ceaef07c440896c513055ab4c36aa7f6e6e67128315466124eb1dfcdf5f4015",
+      "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/4ceaef07c440896c513055ab4c36aa7f6e6e67128315466124eb1dfcdf5f4015.py"
+    },
+    "G6_主指標集計_契約テスト.py": {
+      "sha256": "960978e74c7ff57ce0270a44c89ad7f4c4744e5241b3efdae332839e14884314",
+      "archive": "06_研究結果/jdrt/goal_20261017/auditor_history/960978e74c7ff57ce0270a44c89ad7f4c4744e5241b3efdae332839e14884314.py"
+    }
+  },
+  "test_log": "06_研究結果/jdrt/goal_20261017/G6_主指標集計_契約試験_20261018b.stderr.log",
+  "test_log_sha256": "d29b230a788c0ad48cea5f1ae7f2b9385cfe194053cd383e1b2fd83d91e843e4",
+  "status": "PASS",
+  "added_verification": "complete synthetic metadata set accepted; missing native_logs component rejected even when checksum is updated; live core rejected; manifest cell attributes compared",
+  "scope": "analysis preparation, synthetic metadata and formulas only; actual all70 integration remains unproven",
+  "research_results_generated": false,
+  "simulation_sources_inputs_modified": false,
+  "prior_metadata_preserved": "G6_主指標分析器_準備・拒否検証_20261018.json is earlier source revision"
+}

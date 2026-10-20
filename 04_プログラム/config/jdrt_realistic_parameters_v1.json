@@ -1,0 +1,43 @@
+{
+  "protocol_version": "realistic_v1",
+  "municipality_code": "08211",
+  "scenario": {
+    "id": "REAL-R0",
+    "label": "バス導入なし",
+    "bus_vehicle_count": 0,
+    "rescue_vehicle_count": 0,
+    "scenario_c_condition": {
+      "cohort": "REAL-R0",
+      "scenario_id": "non_car_15pct",
+      "policy": "strict",
+      "elderly_speed_mps": 0.58
+    }
+  },
+  "experiment": {
+    "purpose": "realistic_core_baseline",
+    "paired_seeds": [23423, 42, 1, 7, 101],
+    "end_sec": 21600,
+    "step_length_sec": 1.0,
+    "edge_observation_interval_sec": 60
+  },
+  "population": {
+    "total_people": 21539,
+    "car_people": 18308,
+    "walk_people": 3231,
+    "private_vehicle_count": 7960,
+    "non_car_rate_role": "reference_assumption_not_observed"
+  },
+  "inputs": [
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv", "sha256": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv", "sha256": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/routes_20260826/non_car_15pct/walk_person_ledger.csv", "sha256": "898169d3d9c55a5d088c6fe6845c1e1b956edea865c230c626d479618cd7badf"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/cars.rou.xml", "sha256": "abdd46e1c841334813705e9c8736255434376f2397be46a106fb5ae8088dda9a"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/persons_elderly_0.58.rou.xml", "sha256": "b4a0a8d4920d80babfbe8e5aa4dec68d8068a34c9e2575cf4be7043f81fcbd7b"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_assignment.csv", "sha256": "55abf6ab1969dd4f3b89199ba9d4411169beca9fd8a058716b1dab01bc67aa4a"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_occupancy_ledger.csv", "sha256": "97882eeac34c47db8467c75e178c7c78621b29c1886657eb0d30dbbb073f5f9a"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/network/08211_ped.net.xml", "sha256": "c94f6261e970e83c33ea3f164046dbdf7383bb841ad5e807b457c44705463688"},
+    {"path": "04_プログラム/output/sumo/regions/08211/derived/closure_timeline_sumo.json", "sha256": "04b35335f8acf495e5e9f5916ad31d36900d1b4e66f8dd50fe1b07cc62d68e1f"},
+    {"path": "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/static_alignment_20260826/pedestrian_flood_timeline.json", "sha256": "335fd4bf2da9598a97c3059d0d24f9c309e86a46130303b545bfdf902d7f1efb"},
+    {"path": "04_プログラム/scripts/scenario_c_integrated.py", "sha256": "372712073c7281b8d2c50e514804b952a7401fdde78a0696a483962ec0f1c6a3"}
+  ]
+}

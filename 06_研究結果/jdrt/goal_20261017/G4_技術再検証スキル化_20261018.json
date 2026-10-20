@@ -1,0 +1,96 @@
+{
+  "at_jst": "2026-10-18T15:41:20.639850+09:00",
+  "purpose": "technical_skill_revision_only",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend": "not independently observable",
+  "reason": "Repeated fixture/audit/all-setting smoke/preflight orchestration had been rewritten inline; old parent preserved FAILED after independent stage due to list.get AttributeError.",
+  "technical_correction": "Use schema-specific dict/list checks and compare actual manifests/reports; independent report selected by unique directory difference and SHA binding. Serial Popen children, persistent state/PID/commands/results, short observation waits, source/artifact freeze, permanent ID reservations, failure stop and no automatic resume.",
+  "research_method_change": false,
+  "authorization_boundary": "No SUMO or research operation invoked during implementation/tests. No core/start-next/record/recover commands. Existing CLI and research gates remain authoritative. Actual prerequisite workflow awaits parent review.",
+  "alternatives": [
+    {
+      "option": "Keep inline parent block",
+      "disposition": "Rejected: repeated parsing/state logic and observed shape failure."
+    },
+    {
+      "option": "Change frozen validator/fixture or adopt new evidence rules",
+      "disposition": "Outside scope; existing technical CLI/artifact contracts reused."
+    },
+    {
+      "option": "Automatic resume/retry",
+      "disposition": "Excluded: failed attempts and run IDs preserved; live child timeout remains same handle."
+    }
+  ],
+  "assumptions": [
+    "Registered first-seed cells define complete setting smoke order.",
+    "One owner starts this workflow; no other technical/core simulation is started concurrently.",
+    "Independent auditor retains its existing report filename convention and stdout object minus fixture_components."
+  ],
+  "changed_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_revalidate.py": "9e335faeedd236e8f9934093c6a2362be07b0d9b43e70b2fd730580d4d2fd43a",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_revalidate.py": "0672fb653a3dcdffa5b5e37cc6795ee927ee6575dec941c24392b80b315e9000",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "f5d23aef80fafbfbabccb5ec4015a29ac042045b573a9f2e8d58c3ae346739e9"
+  },
+  "primary_source_sha256": {
+    "06_研究結果/jdrt/goal_20261017/G4pipeline_20261018a.json": "e1c4932adc98a703204ec669cb80fdf0dfff6f7dc1408d231823e7bc31dbfb61",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_technical.py": "c2a7bd279f84f8aeaabf369fb3eb2fc8a0a39debac874ddf78b53d794a1ccf7b",
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": "98f20d959c684e296025a434489e9a3be0b04589a7a31e5ef56b174603a38455",
+    "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py": "bd86a35e39583a7e1a8237a7925a416aed3f53e9a2297e5bf64992bc7b4e3bfa",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_smoke_sequence.py": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "old_routine_sha256": "69787bb9c835173e78592a03c2214ea41422d21e7d36f3346482cc7c6d93168d",
+  "old_routine_archive": "06_研究結果/jdrt/goal_20261017/skill_history/routine_operations_69787bb9c835173e78592a03c2214ea41422d21e7d36f3346482cc7c6d93168d.md",
+  "verification": [
+    {
+      "command": "project venv python -X utf8 -m unittest discover -s .agents/skills/joso-jdrt-runner/scripts -p test_choice_revalidate.py -v",
+      "result": "PASS",
+      "tests": 13,
+      "scope": "Temporary artificial project and mocked subprocess only"
+    },
+    {
+      "command": "project venv python -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_revalidate.py --help",
+      "result": "PASS"
+    },
+    {
+      "command": "skill-creator/scripts/quick_validate.py .agents/skills/joso-jdrt-runner",
+      "result": "Skill is valid!"
+    },
+    {
+      "command": "git diff --check -- .agents/skills/joso-jdrt-runner/references/routine_operations.md",
+      "result": "PASS"
+    },
+    {
+      "command": "compile current bytes of choice_revalidate.py and test_choice_revalidate.py",
+      "result": "PASS; no runtime import or SUMO"
+    }
+  ],
+  "contracts": [
+    "serial complete workflow",
+    "list result rejection",
+    "counterexample list type",
+    "ambiguous audit path",
+    "source mutation stop",
+    "duplicate state immutability",
+    "failed-prefix reservation",
+    "incomplete smoke stop",
+    "timeout same PID/no kill",
+    "nonzero subprocess failure",
+    "preflight evidence SHA rejection",
+    "interruption retains lock/PID",
+    "local evidence boundary"
+  ],
+  "unresolved_evidence": [
+    "Actual fixture/audit/all14 smoke/preflight execution not performed in this subtask. Artificial contracts establish orchestration behavior, not current scientific or technical READY.",
+    "Parent review and fresh unique IDs are required before actual workflow launch.",
+    "Interrupted parent may leave live child; state/lock require manual inspection, with no automatic recovery.",
+    "Atomic state replace may encounter a transient Windows PermissionError. It fails closed and retains live-child lock/evidence; no unbounded retry or automatic restart is implemented."
+  ],
+  "downstream_tasks": [
+    "Parent review current artifact schemas and change scope.",
+    "After review, authorized technical owner may use fresh suite/prefix with Fact-Forcing Gate; monitor same process and inspect actual receipts.",
+    "Parent updates shared progress/current task records; this subtask did not edit them."
+  ],
+  "parent_review": "Parent confirmed current fixture/audit/preflight schemas against CLI sources and prior READY; actual workflow remains blocked pending frozen validator and native fixture evidence."
+}

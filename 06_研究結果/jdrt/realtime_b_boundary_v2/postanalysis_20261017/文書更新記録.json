@@ -1,0 +1,88 @@
+{
+  "at_jst": "2026-10-17T00:25:44.596567+09:00",
+  "current_state": "新境界整合Bは15/15正式記録済み。BA-02〜06の副指標・時間・候補・道路・取得監査と方針整理を完了。道路287,958,870行・候補5,270,448行を全読取し、全人物会計・時刻・選択候補/配車event・3時計・遷移を照合。Type4の固定終点・施設空き・拠点接続を診断。次はNP-02/03の災害時供給/需要・路面高/施設条件の不足資料整理。追加run・方法変更は未採用、監視PAUSED。Driveは5文書読取のみ、外部送信なし。",
+  "changes": [
+    {
+      "path": "context.md",
+      "before_sha256": "47ada74507bd11fc28cc0c64bdeac4b8f13a294b9af8b3c12cfe1ccbba45c584",
+      "after_sha256": "d8fb8f25fa2c00ea73c83cdc5039cec0654508d52ba239141a18151cc23a7776"
+    },
+    {
+      "path": "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+      "before_sha256": "1ef2e9b719af74ea6a1decc259e1564cb63ad704afc20bf94ba67afa6f6bda97",
+      "after_sha256": "f03ba9c18103063b9428a70a3fdb0e29ca09f451bce120878e773ab0671b7330"
+    },
+    {
+      "path": "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+      "before_sha256": "eb0da9a33a813b775698d02624c1359a6a4d6d2adc6131aaeaa1c7a2910d60f6",
+      "after_sha256": "a6430f106bb5140701b61880f567adad90ad5e012aa59060841cfc556641c942"
+    },
+    {
+      "path": "05_タスク管理/jdrt/JDRT-実時間B境界整合_完了後分析タスク.md",
+      "before_sha256": "3dffebdb372ae5cb4efe89a1cb8af93798c960381edc18cce8d887ea15b8c22a",
+      "after_sha256": "f8378b131ca0d0e3f9132cee802a2630710b413bac754a54fcb54f13f188a775"
+    },
+    {
+      "path": "05_タスク管理/jdrt/JDRT_実装タスク管理.md",
+      "before_sha256": "4a42665b7c81688458436c07660dfabcc95d61bac1647435bd096ba815824f93",
+      "after_sha256": "b411149242a7a6a30e21ea26ca442e73aec8d2b0d082124bcadf523b5e7f2884"
+    },
+    {
+      "path": "05_タスク管理/jdrt/JDRT-実時間B境界整合_開始準備監査.md",
+      "before_sha256": "8532769916f660b1d48ca87c785a5e576e1fb748fadf445c60caff01be31b278",
+      "after_sha256": "f6304c2466b7b5cae67ec54779c6993800d107879ce688051388e3de4fbd893f"
+    },
+    {
+      "path": "00_全体整理/決定ログ.md",
+      "before_sha256": "2e17097b7182b3f3d699448a2de0c86faabc7ede59ae4549dd4c8ef5c43cab3c",
+      "after_sha256": "78714fe4dfb0660039ed3ff682d23f5752f41f0b6bb05d2872dae1237118ec3b"
+    },
+    {
+      "path": "01_経過報告/経過報告2026年08月/経過報告20260826.md",
+      "before_sha256": "d7232df9ee8c5acae191412bacb0973a25a0d619ca2cc4ccd900e2663cec1cd3",
+      "after_sha256": "a4f1ca98e1e1b4721febd6b4c97463549554ec7690ab72d3990f0014917e54c9"
+    },
+    {
+      "path": "00_全体整理/INDEX.md",
+      "before_sha256": "bcb32df7b343d1f9a8abc3bcb2fff819cc9a633f2e2098bceda83fd3eb8e6b79",
+      "after_sha256": "cbe4092b8a00f9d942391c3c0a53617fccb9fd63ffc9f65c61944f90469ac626"
+    },
+    {
+      "path": "06_研究結果/README.md",
+      "before_sha256": "5780ec86b4235abaac13851c490a73944b9c2ef82253859cddc8608220dbf5bf",
+      "after_sha256": "c7bcc8fc3a8601dd67d6e5cc6944efa559bf83430b238ad86cdec68ca2cc73ba"
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "ea65dcd6e31e63354fe1773f114e7744fa89049d529680891ba6c8deab1b01c3",
+      "after_sha256": "3a4d3189f1e77f99a0ac7ea69c2e3e159acc7945928fb27c0ab8b7cc24dd3e40"
+    },
+    {
+      "path": "04_プログラム/README.md",
+      "before_sha256": "28bbc9f20f5a01931947fa5c4d2a127afab04dee58761fdb5a322b5884376649",
+      "after_sha256": "64dbbeb2b3eb4ee237889f7a7378fc56688db102020c5fa0bfdc7c2415cd2ff9"
+    },
+    {
+      "path": "04_プログラム/output/jdrt.html",
+      "before_sha256": "bc83020f033090a8b6cd5af5582b41fa9350024e17b809c58ed7b77b85c1f886",
+      "after_sha256": "41f3cefe94f0ed5554d2d9ba381ba8bc7c2d7c9dda430654c31c1d5f6310fb2f"
+    }
+  ],
+  "eol_correction": {
+    "at_jst": "2026-10-17T00:26:20.192311+09:00",
+    "reason": "Initial document updater decoded CRLF bytes without newline normalization; write_text doubled CR. Corrected only CRCRLF in the 13 edited documents. Source run/output EOL untouched. Updater fixed to read_text.",
+    "files": [
+      "context.md",
+      "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+      "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+      "05_タスク管理/jdrt/JDRT_実装タスク管理.md",
+      "05_タスク管理/jdrt/JDRT-実時間B境界整合_開始準備監査.md",
+      "00_全体整理/決定ログ.md",
+      "01_経過報告/経過報告2026年08月/経過報告20260826.md",
+      "00_全体整理/INDEX.md",
+      "README.md",
+      "04_プログラム/README.md",
+      "04_プログラム/output/jdrt.html"
+    ]
+  }
+}

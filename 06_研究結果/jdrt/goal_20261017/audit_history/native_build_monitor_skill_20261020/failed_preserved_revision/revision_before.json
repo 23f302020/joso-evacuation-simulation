@@ -1,0 +1,18 @@
+{
+  "at_utc": "2026-10-19T23:15:50.809532+00:00",
+  "reason": "Actual isolated native build schema uses FAILED_PRESERVED for retained terminal failures.",
+  "before": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_build_monitor.py": {
+      "sha256": "b2b403a2a2b7fc745c5f0e28ec13999a154c3840d160a855593627c03772d9e3",
+      "archive": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_build_monitor_skill_20261020\\failed_preserved_revision\\choice_native_build_monitor.py.before"
+    },
+    ".agents/skills/joso-jdrt-runner/tests/test_choice_native_build_monitor.py": {
+      "sha256": "58511598c25e4b28cdd90dfe89ad1a923e7cdf924544e71e4824d3c427de4840",
+      "archive": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_build_monitor_skill_20261020\\failed_preserved_revision\\test_choice_native_build_monitor.py.before"
+    },
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": {
+      "sha256": "60b8d3d5684db862925e8405450e2bb340e700ac6a8aaf636afbd7b7a03f7b92",
+      "archive": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_build_monitor_skill_20261020\\failed_preserved_revision\\routine_operations.md.before"
+    }
+  }
+}

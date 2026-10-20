@@ -1,0 +1,1911 @@
+{
+  "at_jst": "2026-10-18T15:05:16.126999+09:00",
+  "scope": "read_only_diagnosis_not_acceptance",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend": "not_independently_verified",
+  "run_id": "ch261018_002",
+  "manifest_status": "COMPLETED",
+  "validation_status": "INVALID",
+  "core_adoption_permitted": false,
+  "simulations_started": 0,
+  "full_validation_restarted": false,
+  "input_or_implementation_changed": false,
+  "bound_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/manifest.json": "4649e74b0dacf2a31b792905a4df286878515ab9ff72266178fd55249274e7b4",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/events.jsonl": "9d6b28ea3fdeaa64fe02cebcc7d59fd501dfd1eccb369e627630b4b33f86c218",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/actor_observations.csv.gz": "a52d593d2f397dfffb1038481bdc6f67ce5dd104c11cec5532cf6c3cf8a13153",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/sumo_errors.log": "a99a00cac670475b4dc4076a1f20d3318572f789551061e6088f0c84aa2b56fa",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/person_results.csv": "0bc234a09861eb6ec22746ae9415bcfc59d6dc458204aea3d0f266ec9913b0a0",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/vehicle_results.csv": "b94362e9647a92098d4ce2557369ca2765104a2d8afec086d6f99dd9710de449",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/types.rou.xml": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261018_002/preflight_ready.json": "47e2bc3ea7280dbaa9f999d445e113803374e2c14fac6d8bfb684d464ff7d91e",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261018_002_20261018T105146384839.json": "e3b6c35c5d97f62e6096d2759396281409d1146ce94baeb086cf96a7b710c965",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/bounded.net.xml": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/hazard.csv": "d6817945fa46685a36ed24c94f816d987bbee8f06403a40f11f9fe65d762281a",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6"
+  },
+  "common_five": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "manifest": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+      "current": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+      "archive": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": {
+      "manifest": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "current": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "archive": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "manifest": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "current": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+      "archive": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034"
+    },
+    "04_プログラム/scripts/jdrt_choice_policy.py": {
+      "manifest": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "current": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "archive": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7"
+    },
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": {
+      "manifest": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846",
+      "current": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846",
+      "archive": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+    }
+  },
+  "original_failure_components": {
+    "movement_events": {
+      "status": "INVALID",
+      "checks": {
+        "transition_route_reconstruction": true,
+        "all_entries_primary_multiset": true,
+        "route_change_source_continuity": true,
+        "walk_stage_budget_recurrence": false,
+        "walk_pre_step_budget_stop": true,
+        "no_closed_or_ambiguous_entries": true
+      },
+      "errors": {
+        "walk_stage_budget_recurrence": 2
+      },
+      "examples": {
+        "walk_stage_budget_recurrence": [
+          [
+            "b_origin_0285_type4_0003",
+            3602.5,
+            "passed/speed"
+          ],
+          [
+            "b_origin_0285_type4_0003",
+            4499.5,
+            "passed/speed"
+          ]
+        ]
+      }
+    },
+    "native_logs": {
+      "status": "INVALID",
+      "checks": {
+        "no_native_errors": true,
+        "all_warnings_evidence_classified": false,
+        "no_teleports_or_collisions": true,
+        "no_subscription_missing": true,
+        "native_summary_recomputed": true
+      },
+      "errors": [],
+      "unknown": [
+        "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type3_0005' walking from edge '4636#3'. Using edge end instead.",
+        "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type3_0005' walking from edge '4636#3'. Using edge end instead.",
+        "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type4_0003' walking from edge '113#0'. Using edge end instead.",
+        "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type4_0003' walking from edge '113#0'. Using edge end instead.",
+        "Warning: Vehicle 'scen_c_origin_0210_0017' performs emergency braking on lane '6415#3_1' with decel=9.00, wished=4.50, severity=1.00, time=6000.00.",
+        "Warning: Vehicle 'scen_c_origin_0210_0017' performs emergency stop at the end of lane '6415#3_1' because there is no connection to the next edge (decel=-17.35, offset=3.64), time=6000.00."
+      ]
+    }
+  },
+  "reroute_recomputation": [
+    {
+      "person_id": "b_origin_0285_type3_0001",
+      "time_sec": 2699.5,
+      "signed_recomputed_m": 39.567352772876575,
+      "signed_matches": true,
+      "passed_recomputed_m": 39.567352772876575,
+      "passed_matches": true,
+      "enforced_matches": true,
+      "native_max_matches_registered": true,
+      "native_max_mps": 1.0,
+      "registered_maximum_mps": 1.0,
+      "speed_factor": 1.0145,
+      "expected_native_min_formula": 1.0,
+      "min_formula_matches": true
+    },
+    {
+      "person_id": "b_origin_0285_type3_0005",
+      "time_sec": 2705.0,
+      "signed_recomputed_m": 363.31158688278583,
+      "signed_matches": true,
+      "passed_recomputed_m": 363.31158688278583,
+      "passed_matches": true,
+      "enforced_matches": true,
+      "native_max_matches_registered": true,
+      "native_max_mps": 1.0,
+      "registered_maximum_mps": 1.0,
+      "speed_factor": 1.0486,
+      "expected_native_min_formula": 1.0,
+      "min_formula_matches": true
+    },
+    {
+      "person_id": "b_origin_0285_type4_0003",
+      "time_sec": 3602.5,
+      "signed_recomputed_m": 308.77579164057556,
+      "signed_matches": true,
+      "passed_recomputed_m": 308.77579164057556,
+      "passed_matches": true,
+      "enforced_matches": true,
+      "native_max_matches_registered": false,
+      "native_max_mps": 0.5431119999999999,
+      "registered_maximum_mps": 0.58,
+      "speed_factor": 0.9364,
+      "expected_native_min_formula": 0.5431119999999999,
+      "min_formula_matches": true
+    },
+    {
+      "person_id": "b_origin_0285_type4_0003",
+      "time_sec": 4499.5,
+      "signed_recomputed_m": 457.9282746046483,
+      "signed_matches": true,
+      "passed_recomputed_m": 766.7040662452239,
+      "passed_matches": true,
+      "enforced_matches": true,
+      "native_max_matches_registered": false,
+      "native_max_mps": 0.5431119999999999,
+      "registered_maximum_mps": 0.58,
+      "speed_factor": 0.9364,
+      "expected_native_min_formula": 0.5431119999999999,
+      "min_formula_matches": true
+    }
+  ],
+  "target_walk_stats": {
+    "b_origin_0285_type3_0005": {
+      "rows": 2523,
+      "max_speed_mps": 0.9996126329991967,
+      "integral_m": 1133.2652602666167,
+      "integral_at_reroutes": {
+        "2705.0": 368.71075883995644
+      }
+    },
+    "b_origin_0285_type4_0003": {
+      "rows": 5124,
+      "max_speed_mps": 0.5799882307583466,
+      "integral_m": 1337.8281507432057,
+      "integral_at_reroutes": {
+        "3602.5": 313.61788238187904,
+        "4499.5": 782.2891576480272
+      }
+    }
+  },
+  "actor_rows_scanned": 4338887,
+  "target_events": [
+    {
+      "time_sec": 2295.0,
+      "event": "person_ready",
+      "person_id": "b_origin_0285_type3_0005"
+    },
+    {
+      "time_sec": 2295.0,
+      "event": "walk_plan",
+      "person_id": "b_origin_0285_type3_0005",
+      "stage": "initial",
+      "route": [
+        "4629",
+        "4633#1",
+        "4633#0",
+        "116#1",
+        "116#0",
+        "113#1",
+        "113#0",
+        "11339#2",
+        "11339#1",
+        "11339#0",
+        "4636#3",
+        "4636#2",
+        "4636#1",
+        "4636#0",
+        "4640#5",
+        "4640#4",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 137.73437328724225,
+      "arrival_pos": 33.02920669826723,
+      "endpoint_estimate_m": 1063.7035799855096,
+      "sumo_plan_length_m": 1084.0039012144523,
+      "model_passed_m": 0.0,
+      "speed_integral_m": 0.0
+    },
+    {
+      "time_sec": 2295.0,
+      "event": "person_state",
+      "person_id": "b_origin_0285_type3_0005",
+      "before": "not_ready",
+      "after": "travelling_walk",
+      "reason": ""
+    },
+    {
+      "time_sec": 2295.0,
+      "event": "walk_departure",
+      "person_id": "b_origin_0285_type3_0005",
+      "fallback": false,
+      "route": [
+        "4629",
+        "4633#1",
+        "4633#0",
+        "116#1",
+        "116#0",
+        "113#1",
+        "113#0",
+        "11339#2",
+        "11339#1",
+        "11339#0",
+        "4636#3",
+        "4636#2",
+        "4636#1",
+        "4636#0",
+        "4640#5",
+        "4640#4",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "length_m": 1084.0039012144523
+    },
+    {
+      "time_sec": 2705.0,
+      "event": "walk_plan",
+      "person_id": "b_origin_0285_type3_0005",
+      "stage": "reroute",
+      "route": [
+        "4636#3",
+        "11340#1",
+        "11340#2",
+        "4636#0",
+        "4640#5",
+        "4640#4",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 20.873212284716796,
+      "arrival_pos": 33.02920669826723,
+      "endpoint_estimate_m": 738.472418982984,
+      "previous_plan_m": 1084.0039012144523,
+      "old_remaining_m": 720.6923143316665,
+      "signed_progress_m": 363.31158688278583,
+      "model_passed_m": 363.31158688278583,
+      "speed_integral_m": 368.71075883995644,
+      "sumo_plan_length_m": 743.5213965553163,
+      "enforced_stage_speed_mps": 1.0,
+      "person_max_mps": 1.0,
+      "person_speed_factor": 1.0486
+    },
+    {
+      "time_sec": 2705.0,
+      "event": "walk_reroute",
+      "person_id": "b_origin_0285_type3_0005",
+      "route": [
+        "4636#3",
+        "11340#1",
+        "11340#2",
+        "4636#0",
+        "4640#5",
+        "4640#4",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 20.873212284716796
+    },
+    {
+      "time_sec": 3003.0,
+      "event": "person_ready",
+      "person_id": "b_origin_0285_type4_0003"
+    },
+    {
+      "time_sec": 3003.0,
+      "event": "walk_plan",
+      "person_id": "b_origin_0285_type4_0003",
+      "stage": "initial",
+      "route": [
+        "4629",
+        "4633#1",
+        "4633#0",
+        "116#1",
+        "116#0",
+        "113#1",
+        "113#0",
+        "11339#2",
+        "11339#1",
+        "11339#0",
+        "4636#3",
+        "11340#1",
+        "11340#2",
+        "4636#0",
+        "4640#5",
+        "4640#4",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 137.73437328724225,
+      "arrival_pos": 33.02920669826723,
+      "endpoint_estimate_m": 1088.9535799855096,
+      "sumo_plan_length_m": 1106.832983438102,
+      "model_passed_m": 0.0,
+      "speed_integral_m": 0.0
+    },
+    {
+      "time_sec": 3003.0,
+      "event": "person_state",
+      "person_id": "b_origin_0285_type4_0003",
+      "before": "not_ready",
+      "after": "travelling_walk",
+      "reason": ""
+    },
+    {
+      "time_sec": 3003.0,
+      "event": "walk_departure",
+      "person_id": "b_origin_0285_type4_0003",
+      "fallback": false,
+      "route": [
+        "4629",
+        "4633#1",
+        "4633#0",
+        "116#1",
+        "116#0",
+        "113#1",
+        "113#0",
+        "11339#2",
+        "11339#1",
+        "11339#0",
+        "4636#3",
+        "11340#1",
+        "11340#2",
+        "4636#0",
+        "4640#5",
+        "4640#4",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "length_m": 1106.832983438102
+    },
+    {
+      "time_sec": 3557.0,
+      "event": "person_state",
+      "person_id": "b_origin_0285_type3_0005",
+      "before": "travelling_walk",
+      "after": "capacity_rejected",
+      "reason": "terminal"
+    },
+    {
+      "time_sec": 3557.0,
+      "event": "person_terminal",
+      "person_id": "b_origin_0285_type3_0005",
+      "status": "capacity_rejected",
+      "terminal_id": "shelter_8"
+    },
+    {
+      "time_sec": 3602.5,
+      "event": "walk_plan",
+      "person_id": "b_origin_0285_type4_0003",
+      "stage": "reroute",
+      "route": [
+        "113#0",
+        "11339#2",
+        "11339#1",
+        "112#2",
+        "2967#3",
+        "2967#2",
+        "2967#1",
+        "2967#0",
+        "11344#4",
+        "11344#3",
+        "11344#2",
+        "11344#1",
+        "11344#0",
+        "3083#3",
+        "3083#2",
+        "3083#1",
+        "3083#0",
+        "3081",
+        "4637#0",
+        "4637#1",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 8.778690137829006,
+      "arrival_pos": 33.02920669826723,
+      "endpoint_estimate_m": 970.3878968360965,
+      "previous_plan_m": 1106.832983438102,
+      "old_remaining_m": 798.0571917975265,
+      "signed_progress_m": 308.77579164057556,
+      "model_passed_m": 308.77579164057556,
+      "speed_integral_m": 313.61788238187904,
+      "sumo_plan_length_m": 985.4615745559671,
+      "enforced_stage_speed_mps": 0.58,
+      "person_max_mps": 0.5431119999999999,
+      "person_speed_factor": 0.9364
+    },
+    {
+      "time_sec": 3602.5,
+      "event": "walk_reroute",
+      "person_id": "b_origin_0285_type4_0003",
+      "route": [
+        "113#0",
+        "11339#2",
+        "11339#1",
+        "112#2",
+        "2967#3",
+        "2967#2",
+        "2967#1",
+        "2967#0",
+        "11344#4",
+        "11344#3",
+        "11344#2",
+        "11344#1",
+        "11344#0",
+        "3083#3",
+        "3083#2",
+        "3083#1",
+        "3083#0",
+        "3081",
+        "4637#0",
+        "4637#1",
+        "4640#3",
+        "4640#2",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 8.778690137829006
+    },
+    {
+      "time_sec": 4499.5,
+      "event": "walk_plan",
+      "person_id": "b_origin_0285_type4_0003",
+      "stage": "reroute",
+      "route": [
+        "3083#1",
+        "3083#0",
+        "3081",
+        "4637#0",
+        "4637#1",
+        "4637#2",
+        "4637#3",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 7.409666763512576,
+      "arrival_pos": 33.02920669826723,
+      "endpoint_estimate_m": 520.7388734617798,
+      "previous_plan_m": 985.4615745559671,
+      "old_remaining_m": 527.5332999513188,
+      "signed_progress_m": 457.9282746046483,
+      "model_passed_m": 766.7040662452239,
+      "speed_integral_m": 782.2891576480272,
+      "sumo_plan_length_m": 530.0326676871185,
+      "enforced_stage_speed_mps": 0.58,
+      "person_max_mps": 0.5431119999999999,
+      "person_speed_factor": 0.9364
+    },
+    {
+      "time_sec": 4499.5,
+      "event": "walk_reroute",
+      "person_id": "b_origin_0285_type4_0003",
+      "route": [
+        "3083#1",
+        "3083#0",
+        "3081",
+        "4637#0",
+        "4637#1",
+        "4637#2",
+        "4637#3",
+        "4640#1",
+        "4640#0",
+        "4641#0",
+        "4641#1",
+        "4645#0",
+        "4645#1",
+        "4645#2",
+        "8389#0",
+        "8389#1",
+        "8389#2",
+        "168#0",
+        "168#1"
+      ],
+      "depart_pos": 7.409666763512576
+    },
+    {
+      "time_sec": 5565.5,
+      "event": "person_state",
+      "person_id": "b_origin_0285_type4_0003",
+      "before": "travelling_walk",
+      "after": "capacity_rejected",
+      "reason": "terminal"
+    },
+    {
+      "time_sec": 5565.5,
+      "event": "person_terminal",
+      "person_id": "b_origin_0285_type4_0003",
+      "status": "capacity_rejected",
+      "terminal_id": "shelter_8"
+    },
+    {
+      "time_sec": 5957.0,
+      "event": "private_departure_requested",
+      "vehicle_id": "scen_c_origin_0210_0017",
+      "members": [
+        "b_origin_0210_type2_0013",
+        "b_origin_0210_type2_0014"
+      ],
+      "route": [
+        "9261#0",
+        "9261#1",
+        "9261#2",
+        "9261#3",
+        "9261#4",
+        "4664#0",
+        "4664#1",
+        "4664#2",
+        "4664#3",
+        "4664#4",
+        "9260#0",
+        "9260#1",
+        "9260#2",
+        "9260#3",
+        "11449",
+        "6415#0",
+        "6415#1",
+        "6415#2",
+        "6415#3",
+        "12248#0",
+        "12248#1",
+        "1744#0",
+        "1744#1",
+        "1744#2",
+        "1744#3",
+        "6351#0",
+        "6351#1",
+        "6351#2",
+        "6351#3",
+        "6351#4",
+        "6177",
+        "8153#0",
+        "8153#1",
+        "8153#2",
+        "6180",
+        "1736",
+        "7069",
+        "1729#0",
+        "1729#1",
+        "1729#2",
+        "1729#3",
+        "8113#0",
+        "8113#1",
+        "8109#0"
+      ],
+      "route_version": 0,
+      "depart_pos": 16.913958668302282,
+      "arrival_pos": 34.1
+    },
+    {
+      "time_sec": 6000.0,
+      "event": "private_reroute",
+      "vehicle_id": "scen_c_origin_0210_0017",
+      "route": [
+        "6415#3",
+        "12247#0",
+        "12247#1",
+        "12247#2",
+        "12247#3",
+        "6413",
+        "11450",
+        "6342",
+        "6412#0",
+        "6412#1",
+        "6412#2",
+        "6412#3",
+        "6412#4",
+        "6082#0",
+        "6082#1",
+        "6082#2",
+        "6082#3",
+        "6082#4",
+        "6075#0",
+        "6075#1",
+        "6075#2",
+        "6094#0",
+        "6094#1",
+        "6094#2",
+        "6094#3",
+        "6129",
+        "6138#0",
+        "6138#1",
+        "6149",
+        "6157#0",
+        "6157#1",
+        "8141#0",
+        "8141#1",
+        "8145#0",
+        "8145#1",
+        "8146#0",
+        "8146#1",
+        "8133",
+        "8123",
+        "8126",
+        "6164",
+        "8121#0",
+        "8121#1",
+        "8121#2",
+        "8121#3",
+        "8121#4",
+        "8113#0",
+        "8113#1",
+        "8109#0"
+      ],
+      "requested_remaining_route": [
+        "6415#3",
+        "12247#0",
+        "12247#1",
+        "12247#2",
+        "12247#3",
+        "6413",
+        "11450",
+        "6342",
+        "6412#0",
+        "6412#1",
+        "6412#2",
+        "6412#3",
+        "6412#4",
+        "6082#0",
+        "6082#1",
+        "6082#2",
+        "6082#3",
+        "6082#4",
+        "6075#0",
+        "6075#1",
+        "6075#2",
+        "6094#0",
+        "6094#1",
+        "6094#2",
+        "6094#3",
+        "6129",
+        "6138#0",
+        "6138#1",
+        "6149",
+        "6157#0",
+        "6157#1",
+        "8141#0",
+        "8141#1",
+        "8145#0",
+        "8145#1",
+        "8146#0",
+        "8146#1",
+        "8133",
+        "8123",
+        "8126",
+        "6164",
+        "8121#0",
+        "8121#1",
+        "8121#2",
+        "8121#3",
+        "8121#4",
+        "8113#0",
+        "8113#1",
+        "8109#0"
+      ],
+      "source_edge": "6415#3",
+      "source_lane_position": 3.8028888640850376,
+      "target_position_m": 34.1,
+      "route_version": 1
+    }
+  ],
+  "selected_actor_observations": [
+    {
+      "time_sec": "2704.0",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type3_0005",
+      "kind": "walk",
+      "road_id": ":4623534482_w0",
+      "lane_position_m": "0.906041123881953",
+      "x": "8815.550805444858",
+      "y": "14940.9147902368",
+      "speed_mps": "0.8896263582631946",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type3_0005\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "2704.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type3_0005",
+      "kind": "walk",
+      "road_id": ":4623534482_w0",
+      "lane_position_m": "0.4463467205418443",
+      "x": "8815.70680851311",
+      "y": "14941.34720437528",
+      "speed_mps": "0.9193888066802174",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type3_0005\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "2705.0",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type3_0005",
+      "kind": "walk",
+      "road_id": "4636#3",
+      "lane_position_m": "20.873212284716796",
+      "x": "8815.535525038955",
+      "y": "14941.933247908362",
+      "speed_mps": "0.9862688716500998",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type3_0005\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "2705.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type3_0005",
+      "kind": "walk",
+      "road_id": "4636#3",
+      "lane_position_m": "20.388549304340053",
+      "x": "8815.700013908969",
+      "y": "14942.389183255102",
+      "speed_mps": "0.9693259607534855",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type3_0005\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "2706.0",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type3_0005",
+      "kind": "walk",
+      "road_id": "4636#3",
+      "lane_position_m": "19.91503402831128",
+      "x": "8815.860719380278",
+      "y": "14942.834631660086",
+      "speed_mps": "0.9470305520575494",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type3_0005\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "3601.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": ":9000000000373_w0",
+      "lane_position_m": "0.3488824742248547",
+      "x": "8795.840032671218",
+      "y": "14890.822270629113",
+      "speed_mps": "0.5216727349320426",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "3602.0",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": ":9000000000373_w0",
+      "lane_position_m": "0.07848008804472956",
+      "x": "8795.961803514663",
+      "y": "14891.063702425152",
+      "speed_mps": "0.5408047723602503",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "3602.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "113#0",
+      "lane_position_m": "8.778690137829006",
+      "x": "8796.08771262893",
+      "y": "14891.313339060122",
+      "speed_mps": "0.5595799004314467",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "3603.0",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "113#0",
+      "lane_position_m": "8.540796601463414",
+      "x": "8796.19473822881",
+      "y": "14891.525535855922",
+      "speed_mps": "0.4757870727311819",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "3603.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "113#0",
+      "lane_position_m": "8.25967739641045",
+      "x": "8796.32121056605",
+      "y": "14891.776289178024",
+      "speed_mps": "0.5622384101059288",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "4498.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "3083#1",
+      "lane_position_m": "7.918533336590203",
+      "x": "8900.105322683445",
+      "y": "15143.338719083855",
+      "speed_mps": "0.4819680067272856",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "4499.0",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "3083#1",
+      "lane_position_m": "7.663814957151814",
+      "x": "8899.984480885112",
+      "y": "15143.563046975274",
+      "speed_mps": "0.5094367588767782",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "4499.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "3083#1",
+      "lane_position_m": "7.409666763512576",
+      "x": "8899.863909590533",
+      "y": "15143.786872709848",
+      "speed_mps": "0.5082963872784748",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "4500.0",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "3083#1",
+      "lane_position_m": "7.162598320197938",
+      "x": "8899.746697023986",
+      "y": "15144.00446338017",
+      "speed_mps": "0.4941368866292759",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "4500.5",
+      "phase": "after_step_before_control",
+      "actor_id": "b_origin_0285_type4_0003",
+      "kind": "walk",
+      "road_id": "3083#1",
+      "lane_position_m": "6.901887966206456",
+      "x": "8899.623012552966",
+      "y": "15144.23406834276",
+      "speed_mps": "0.5214207079829648",
+      "decel_mps2": "",
+      "distance_m": "",
+      "route_index": "",
+      "route_version": "",
+      "stop_state": "",
+      "status": "travelling_walk",
+      "active_person": "",
+      "members": "[\"b_origin_0285_type4_0003\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "5998.0",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": ":1695391410_2",
+      "lane_position_m": "7.986822590005527",
+      "x": "8035.455923870434",
+      "y": "10957.687155381664",
+      "speed_mps": "8.341610885376",
+      "decel_mps2": "4.5",
+      "distance_m": "487.0228639217032",
+      "route_index": "14",
+      "route_version": "0",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "5998.5",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": "6415#0",
+      "lane_position_m": "0.07767053092050347",
+      "x": "8030.672526602407",
+      "y": "10958.274874533494",
+      "speed_mps": "9.501695881829953",
+      "decel_mps2": "4.5",
+      "distance_m": "491.7737118626182",
+      "route_index": "15",
+      "route_version": "0",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "5999.0",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": "6415#1",
+      "lane_position_m": "0.12374668800162292",
+      "x": "8025.227396996731",
+      "y": "10957.946733257108",
+      "speed_mps": "10.712152314162239",
+      "decel_mps2": "4.5",
+      "distance_m": "497.12978801969933",
+      "route_index": "16",
+      "route_version": "0",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "5999.5",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": ":9000000021030_0",
+      "lane_position_m": "0.577248629064778",
+      "x": "8020.103557107357",
+      "y": "10957.455704738239",
+      "speed_mps": "11.72700388212631",
+      "decel_mps2": "4.5",
+      "distance_m": "502.99328996076247",
+      "route_index": "16",
+      "route_version": "0",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "6000.0",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": "6415#3",
+      "lane_position_m": "3.8028888640850376",
+      "x": "8015.595873552653",
+      "y": "10957.2195033305",
+      "speed_mps": "12.85128047004052",
+      "decel_mps2": "4.5",
+      "distance_m": "509.41893019578276",
+      "route_index": "18",
+      "route_version": "0",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "6000.5",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": "6415#3",
+      "lane_position_m": "4.34",
+      "x": "8015.41",
+      "y": "10953.99",
+      "speed_mps": "0.0",
+      "decel_mps2": "4.5",
+      "distance_m": "509.9560413316977",
+      "route_index": "0",
+      "route_version": "1",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "6001.0",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": ":11049177552_3",
+      "lane_position_m": "0.6500000000000004",
+      "x": "8014.9056",
+      "y": "10953.574",
+      "speed_mps": "1.3",
+      "decel_mps2": "4.5",
+      "distance_m": "510.6060413316977",
+      "route_index": "0",
+      "route_version": "1",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "6001.5",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": ":11049177552_11",
+      "lane_position_m": "0.38821955299354194",
+      "x": "8014.251415595429",
+      "y": "10952.863774921143",
+      "speed_mps": "1.9764391059870832",
+      "decel_mps2": "4.5",
+      "distance_m": "511.59426088469127",
+      "route_index": "0",
+      "route_version": "1",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "6002.0",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": ":11049177552_11",
+      "lane_position_m": "1.7694650911900682",
+      "x": "8014.452726544707",
+      "y": "10951.645020918182",
+      "speed_mps": "2.7624910763930526",
+      "decel_mps2": "4.5",
+      "distance_m": "512.9755064228879",
+      "route_index": "0",
+      "route_version": "1",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "6002.5",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": "12247#0",
+      "lane_position_m": "0.31219803031948956",
+      "x": "8016.04442801625",
+      "y": "10950.963449788964",
+      "speed_mps": "3.5854658782588427",
+      "decel_mps2": "4.5",
+      "distance_m": "514.7682393620172",
+      "route_index": "1",
+      "route_version": "1",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    },
+    {
+      "time_sec": "6003.0",
+      "phase": "after_step_before_control",
+      "actor_id": "scen_c_origin_0210_0017",
+      "kind": "car",
+      "road_id": "12247#0",
+      "lane_position_m": "2.7319207639714347",
+      "x": "8018.481434483714",
+      "y": "10951.222705796139",
+      "speed_mps": "4.83944546730389",
+      "decel_mps2": "4.5",
+      "distance_m": "517.1879620956691",
+      "route_index": "1",
+      "route_version": "1",
+      "stop_state": "0",
+      "status": "travelling",
+      "active_person": "",
+      "members": "[\"b_origin_0210_type2_0013\", \"b_origin_0210_type2_0014\"]",
+      "observation_kind": "onroad",
+      "reentry_source_edge": ""
+    }
+  ],
+  "net_lanes": {
+    "113#0": [
+      {
+        "id": "113#0_0",
+        "index": "0",
+        "allow": "pedestrian",
+        "speed": "27.78",
+        "length": "8.98",
+        "width": "2.00",
+        "shape": "8799.43,14899.45 8795.39,14891.44"
+      },
+      {
+        "id": "113#0_1",
+        "index": "1",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "27.78",
+        "length": "8.98",
+        "shape": "8801.75,14898.28 8797.71,14890.26"
+      }
+    ],
+    "12247#0": [
+      {
+        "id": "12247#0_0",
+        "index": "0",
+        "allow": "pedestrian",
+        "speed": "16.67",
+        "length": "4.20",
+        "width": "2.00",
+        "shape": "8016.35,10945.16 8020.48,10945.60"
+      },
+      {
+        "id": "12247#0_1",
+        "index": "1",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "16.67",
+        "length": "4.20",
+        "shape": "8016.08,10947.75 8020.25,10948.19"
+      },
+      {
+        "id": "12247#0_2",
+        "index": "2",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "16.67",
+        "length": "4.20",
+        "shape": "8015.73,10950.93 8019.96,10951.38"
+      }
+    ],
+    "12248#0": [
+      {
+        "id": "12248#0_0",
+        "index": "0",
+        "allow": "pedestrian",
+        "speed": "16.67",
+        "length": "24.96",
+        "width": "2.00",
+        "shape": "8000.64,10958.39 7975.81,10955.87"
+      },
+      {
+        "id": "12248#0_1",
+        "index": "1",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "16.67",
+        "length": "24.96",
+        "shape": "8000.90,10955.80 7976.07,10953.29"
+      },
+      {
+        "id": "12248#0_2",
+        "index": "2",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "16.67",
+        "length": "24.96",
+        "shape": "8001.22,10952.62 7976.39,10950.10"
+      }
+    ],
+    "3083#1": [
+      {
+        "id": "3083#1_0",
+        "index": "0",
+        "allow": "pedestrian",
+        "speed": "13.89",
+        "length": "35.37",
+        "width": "2.00",
+        "shape": "8895.75,15149.99 8912.53,15118.84"
+      },
+      {
+        "id": "3083#1_1",
+        "index": "1",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "13.89",
+        "length": "35.37",
+        "shape": "8898.04,15151.22 8914.82,15120.08"
+      }
+    ],
+    "4636#3": [
+      {
+        "id": "4636#3_0",
+        "index": "0",
+        "allow": "pedestrian",
+        "speed": "11.11",
+        "length": "20.92",
+        "width": "2.00",
+        "shape": "8821.98,14961.80 8814.88,14942.12"
+      },
+      {
+        "id": "4636#3_1",
+        "index": "1",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "11.11",
+        "length": "20.92",
+        "shape": "8824.43,14960.92 8817.33,14941.24"
+      },
+      {
+        "id": "4636#3_2",
+        "index": "2",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "11.11",
+        "length": "20.92",
+        "shape": "8827.44,14959.83 8820.35,14940.16"
+      }
+    ],
+    "6415#3": [
+      {
+        "id": "6415#3_0",
+        "index": "0",
+        "allow": "pedestrian",
+        "speed": "16.67",
+        "length": "4.34",
+        "width": "2.00",
+        "shape": "8019.15,10960.16 8014.79,10959.76"
+      },
+      {
+        "id": "6415#3_1",
+        "index": "1",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "16.67",
+        "length": "4.34",
+        "shape": "8019.39,10957.57 8015.06,10957.17"
+      },
+      {
+        "id": "6415#3_2",
+        "index": "2",
+        "disallow": "pedestrian tram rail_urban rail rail_electric rail_fast ship container cable_car subway aircraft wheelchair scooter drone",
+        "speed": "16.67",
+        "length": "4.34",
+        "shape": "8019.68,10954.38 8015.41,10953.99"
+      }
+    ]
+  },
+  "source_connections": [
+    {
+      "from": "6415#3",
+      "to": "12246#0",
+      "fromLane": "1",
+      "toLane": "1",
+      "via": ":11049177552_0_0",
+      "dir": "r",
+      "state": "m"
+    },
+    {
+      "from": "6415#3",
+      "to": "12248#0",
+      "fromLane": "1",
+      "toLane": "1",
+      "via": ":11049177552_1_0",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "6415#3",
+      "to": "12248#0",
+      "fromLane": "2",
+      "toLane": "2",
+      "via": ":11049177552_1_1",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "6415#3",
+      "to": "12247#0",
+      "fromLane": "2",
+      "toLane": "2",
+      "via": ":11049177552_3_0",
+      "dir": "t",
+      "state": "m"
+    },
+    {
+      "from": "6415#3",
+      "to": ":11049177552_w0",
+      "fromLane": "0",
+      "toLane": "0",
+      "dir": "s",
+      "state": "M"
+    }
+  ],
+  "local_hazards": [
+    {
+      "edge_id": "12247#0",
+      "mode": "passenger",
+      "closure_sec": "8700",
+      "lower_sec": "8400",
+      "upper_sec": "8700",
+      "initial_depth_m": "0.0",
+      "max_depth_m": "1.5413084030151367",
+      "sample_count": "4",
+      "threshold_m": "0.5"
+    },
+    {
+      "edge_id": "12247#0",
+      "mode": "pedestrian",
+      "closure_sec": "6300",
+      "lower_sec": "6000",
+      "upper_sec": "6300",
+      "initial_depth_m": "0.0",
+      "max_depth_m": "1.5413084030151367",
+      "sample_count": "2",
+      "threshold_m": "0.1"
+    },
+    {
+      "edge_id": "12248#0",
+      "mode": "passenger",
+      "closure_sec": "6900",
+      "lower_sec": "6600",
+      "upper_sec": "6900",
+      "initial_depth_m": "0.0",
+      "max_depth_m": "1.340977668762207",
+      "sample_count": "12",
+      "threshold_m": "0.5"
+    },
+    {
+      "edge_id": "12248#0",
+      "mode": "pedestrian",
+      "closure_sec": "5700",
+      "lower_sec": "5400",
+      "upper_sec": "5700",
+      "initial_depth_m": "0.0",
+      "max_depth_m": "1.653477668762207",
+      "sample_count": "6",
+      "threshold_m": "0.1"
+    },
+    {
+      "edge_id": "6415#3",
+      "mode": "passenger",
+      "closure_sec": "8700",
+      "lower_sec": "8400",
+      "upper_sec": "8700",
+      "initial_depth_m": "0.0",
+      "max_depth_m": "1.215977668762207",
+      "sample_count": "4",
+      "threshold_m": "0.5"
+    },
+    {
+      "edge_id": "6415#3",
+      "mode": "pedestrian",
+      "closure_sec": "6000",
+      "lower_sec": "5700",
+      "upper_sec": "6000",
+      "initial_depth_m": "0.0",
+      "max_depth_m": "1.122227668762207",
+      "sample_count": "2",
+      "threshold_m": "0.1"
+    }
+  ],
+  "car_recomputation": {
+    "remaining_lane_m": 0.5371111359149623,
+    "speed_mps": 12.85128047004052,
+    "nominal_braking_distance_m": 18.35060107996054,
+    "existing_vehicle_path_braking_expression_m": 25.7762413149808,
+    "next_step_odometer_increment_m": 0.5371111359149268,
+    "next_step_xy_displacement_m": 3.234847869573782
+  },
+  "raw_warnings": [
+    "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type3_0005' walking from edge '4636#3'. Using edge end instead.",
+    "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type3_0005' walking from edge '4636#3'. Using edge end instead.",
+    "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type4_0003' walking from edge '113#0'. Using edge end instead.",
+    "Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type4_0003' walking from edge '113#0'. Using edge end instead.",
+    "Warning: Vehicle 'scen_c_origin_0210_0017' performs emergency braking on lane '6415#3_1' with decel=9.00, wished=4.50, severity=1.00, time=6000.00.",
+    "Warning: Vehicle 'scen_c_origin_0210_0017' performs emergency stop at the end of lane '6415#3_1' because there is no connection to the next edge (decel=-17.35, offset=3.64), time=6000.00."
+  ],
+  "official_versioned_sources": [
+    {
+      "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/libsumo/Person.cpp",
+      "lines": "615-670, 751-760",
+      "finding": "Walking-stage conversion uses prior arrival position during construction, not TraCI stage.departPos.",
+      "tag": "v1_26_0",
+      "retrieved_at_jst": "2026-10-18T15:05:24.459806+09:00",
+      "raw_url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/libsumo/Person.cpp",
+      "download_sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+      "download_bytes": 52242,
+      "local_evidence": "this JSON official_versioned_sources excerpt_lines",
+      "excerpt_lines": [
+        {
+          "line": 652,
+          "text": "        case STAGE_WALKING: {"
+        },
+        {
+          "line": 653,
+          "text": "            MSTransportable* p = getPerson(personID);"
+        },
+        {
+          "line": 654,
+          "text": "            ConstMSEdgeVector edges;"
+        },
+        {
+          "line": 655,
+          "text": "            try {"
+        },
+        {
+          "line": 656,
+          "text": "                MSEdge::parseEdgesList(stage.edges, edges, \"<unknown>\");"
+        },
+        {
+          "line": 657,
+          "text": "            } catch (ProcessError& e) {"
+        },
+        {
+          "line": 658,
+          "text": "                throw TraCIException(e.what());"
+        },
+        {
+          "line": 659,
+          "text": "            }"
+        },
+        {
+          "line": 660,
+          "text": "            if (edges.empty()) {"
+        },
+        {
+          "line": 661,
+          "text": "                throw TraCIException(\"Empty edge list for walking stage of person '\" + personID + \"'.\");"
+        },
+        {
+          "line": 662,
+          "text": "            }"
+        },
+        {
+          "line": 663,
+          "text": "            double arrivalPos = stage.arrivalPos;"
+        },
+        {
+          "line": 664,
+          "text": "            if (fabs(arrivalPos) > edges.back()->getLength()) {"
+        },
+        {
+          "line": 665,
+          "text": "                throw TraCIException(\"Invalid arrivalPos for walking stage of person '\" + personID + \"'.\");"
+        },
+        {
+          "line": 666,
+          "text": "            }"
+        },
+        {
+          "line": 667,
+          "text": "            if (arrivalPos < 0) {"
+        },
+        {
+          "line": 668,
+          "text": "                arrivalPos += edges.back()->getLength();"
+        },
+        {
+          "line": 669,
+          "text": "            }"
+        },
+        {
+          "line": 670,
+          "text": "            return new MSStageWalking(p->getID(), edges, bs, -1, -1, p->getArrivalPos(), arrivalPos, MSPModel::UNSPECIFIED_POS_LAT);"
+        },
+        {
+          "line": 751,
+          "text": "Person::replaceStage(const std::string& personID, const int stageIndex, const TraCIStage& stage) {"
+        },
+        {
+          "line": 752,
+          "text": "    MSTransportable* p = getPerson(personID);"
+        },
+        {
+          "line": 753,
+          "text": "    if (stageIndex >= p->getNumRemainingStages()) {"
+        },
+        {
+          "line": 754,
+          "text": "        throw TraCIException(\"Specified stage index:  is not valid for person \" + personID);"
+        },
+        {
+          "line": 755,
+          "text": "    }"
+        },
+        {
+          "line": 756,
+          "text": "    MSStage* personStage = convertTraCIStage(stage, personID);"
+        },
+        {
+          "line": 757,
+          "text": "    // removing the current stage triggers abort+proceed so the replacement"
+        },
+        {
+          "line": 758,
+          "text": "    // stage must be ready beforehand"
+        },
+        {
+          "line": 759,
+          "text": "    p->appendStage(personStage, stageIndex + 1);"
+        },
+        {
+          "line": 760,
+          "text": "    p->removeStage(stageIndex);"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSStageWalking.cpp",
+      "lines": "61-78, 114-136",
+      "finding": "Constructor validates source position; proceed can restore prior physical position on the same source edge.",
+      "tag": "v1_26_0",
+      "retrieved_at_jst": "2026-10-18T15:05:24.518316+09:00",
+      "raw_url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSStageWalking.cpp",
+      "download_sha256": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+      "download_bytes": 20998,
+      "local_evidence": "this JSON official_versioned_sources excerpt_lines",
+      "excerpt_lines": [
+        {
+          "line": 61,
+          "text": "MSStageWalking::MSStageWalking(const std::string& personID,"
+        },
+        {
+          "line": 62,
+          "text": "                               const ConstMSEdgeVector& route,"
+        },
+        {
+          "line": 63,
+          "text": "                               MSStoppingPlace* toStop,"
+        },
+        {
+          "line": 64,
+          "text": "                               SUMOTime walkingTime, double speed,"
+        },
+        {
+          "line": 65,
+          "text": "                               double departPos, double arrivalPos, double departPosLat, int departLane,"
+        },
+        {
+          "line": 66,
+          "text": "                               const std::string& routeID) :"
+        },
+        {
+          "line": 67,
+          "text": "    MSStageMoving(MSStageType::WALKING, route, routeID, toStop, speed, departPos, arrivalPos, departPosLat, departLane),"
+        },
+        {
+          "line": 68,
+          "text": "    myWalkingTime(walkingTime),"
+        },
+        {
+          "line": 69,
+          "text": "    myExitTimes(nullptr),"
+        },
+        {
+          "line": 70,
+          "text": "    myInternalDistance(0) {"
+        },
+        {
+          "line": 71,
+          "text": "    myDepartPos = SUMOVehicleParameter::interpretEdgePos(departPos, route.front()->getLength(), SUMO_ATTR_DEPARTPOS,"
+        },
+        {
+          "line": 72,
+          "text": "                  \"person '\" + personID + \"' walking from edge '\" + route.front()->getID() + \"'\");"
+        },
+        {
+          "line": 73,
+          "text": "    myArrivalPos = SUMOVehicleParameter::interpretEdgePos(arrivalPos, route.back()->getLength(), SUMO_ATTR_ARRIVALPOS,"
+        },
+        {
+          "line": 74,
+          "text": "                   \"person '\" + personID + \"' walking to edge '\" + route.back()->getID() + \"'\");"
+        },
+        {
+          "line": 124,
+          "text": "    const OptionsCont& oc = OptionsCont::getOptions();"
+        },
+        {
+          "line": 125,
+          "text": "    if (previous->getEdgePos(now) >= 0 && previous->getEdge() == *myRouteStep) {"
+        },
+        {
+          "line": 126,
+          "text": "        // we need to adapt to the arrival position of the vehicle unless we have an explicit access"
+        },
+        {
+          "line": 127,
+          "text": "        myDepartPos = previous->getEdgePos(now);"
+        },
+        {
+          "line": 128,
+          "text": "        if (oc.getString(\"pedestrian.model\") == \"jupedsim\") {"
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/transportables/MSTransportable.cpp",
+      "lines": "358-363, 639-641",
+      "finding": "setSpeed updates stages/type maximum; getter returns min(type maximum, desired maximum times chosen speed factor).",
+      "tag": "v1_26_0",
+      "retrieved_at_jst": "2026-10-18T15:05:24.596041+09:00",
+      "raw_url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/transportables/MSTransportable.cpp",
+      "download_sha256": "d717c0c2eb4623d96803aa6d0f299b29c1691065847695e5cabdc4cbe26a4eb8",
+      "download_bytes": 26989,
+      "local_evidence": "this JSON official_versioned_sources excerpt_lines",
+      "excerpt_lines": [
+        {
+          "line": 358,
+          "text": "MSTransportable::setSpeed(double speed) {"
+        },
+        {
+          "line": 359,
+          "text": "    for (MSTransportablePlan::const_iterator i = myStep; i != myPlan->end(); ++i) {"
+        },
+        {
+          "line": 360,
+          "text": "        (*i)->setSpeed(speed);"
+        },
+        {
+          "line": 361,
+          "text": "    }"
+        },
+        {
+          "line": 362,
+          "text": "    getSingularType().setMaxSpeed(speed);"
+        },
+        {
+          "line": 363,
+          "text": "}"
+        },
+        {
+          "line": 639,
+          "text": "MSTransportable::getMaxSpeed() const {"
+        },
+        {
+          "line": 640,
+          "text": "    return MIN2(getVehicleType().getMaxSpeed(), getVehicleType().getDesiredMaxSpeed() * getChosenSpeedFactor());"
+        },
+        {
+          "line": 641,
+          "text": "}"
+        }
+      ]
+    }
+  ],
+  "diagnosis": {
+    "walk_recurrence": "Validator equality of getter and registered stage speed is inconsistent with native getter semantics; cumulative passed and speed integral recompute correctly. Do not change speed factor to force equality.",
+    "walk_warnings": "Versioned source explains endpoint coordinate reused at constructor, then physical position restored. Exact evidence classification may be feasible, but unknown warning gate remains unchanged here.",
+    "car_warning": "Edge-level reroute from current short lane selects turn available only from neighboring lane; insufficient remaining lane/braking distance. Unresolved physical implementation issue, not shown to be harmless by zero teleport/collision counters.",
+    "input_mismatch": "No direct evidence of malformed registered inputs; graph edge connection is valid, lane-level attainability is absent from current route choice.",
+    "method_change": "No method change adopted; no extra cells/seeds/population/metrics/thresholds or warning blanket exemption."
+  }
+}

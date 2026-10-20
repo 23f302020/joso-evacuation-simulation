@@ -1,0 +1,53 @@
+{
+  "status": "LAUNCHED",
+  "created_at_jst": "2026-10-18T20:54:45.361023+09:00",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend_identity": "not_verified",
+  "purpose": "technical fixture calibration/repeated only; no research adoption",
+  "suite_id": "wf26101801",
+  "selected_case": "walk_short_repeated",
+  "archive": "06_研究結果/jdrt/goal_20261017/audit_history/walk_origin_20261018T205341398029",
+  "source_before_launch_sha256": {
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": "3fc3fa32f2a49c36738b0484e60918a6e124edcf2c120bb65f118727f23e5ce7",
+    "04_プログラム/tests/test_jdrt_choice_runtime.py": "1aad92495c56f73a3aeaf6c8db3938afdce55fbcaea4a615b4794f5345c7f2a8",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "command": [
+    "04_プログラム/venv/Scripts/python.exe",
+    "-X",
+    "utf8",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_technical.py",
+    "--project-root",
+    ".",
+    "fixture",
+    "--run-id",
+    "wf26101801",
+    "--case",
+    "walk_short_repeated"
+  ],
+  "unit": {
+    "initial_root_command": "FAILED: tests module import unavailable from repository root; no test body ran",
+    "corrected_cwd": "04_プログラム",
+    "corrected_command": "venv/Scripts/python.exe -X utf8 -m unittest tests.test_jdrt_choice_runtime.RuntimeContracts.test_selected_repeated_walk_fixture_runs_its_calibration_in_same_new_suite tests.test_jdrt_choice_runtime.RuntimeContracts.test_walk_calibration_uses_shared_native_interior_frame_and_rejects_sha_change",
+    "count": 2,
+    "status": "PASS"
+  },
+  "change_scope": [
+    "prepare: walk_short_ origins derived at e0 length/4 and 3*length/4; other cases retain start_pos",
+    "run_suite: selected walk_short_repeated expands to calibration then repeated only",
+    "test: dependency order, child IDs and same-suite overwrite rejection"
+  ],
+  "notes": [
+    "Initial byte replacement expected CRLF but file is LF; failed before modifying bytes, then newline-preserving replacement succeeded.",
+    "Parent authorized dependency expansion and confirmed no native simulation processes."
+  ],
+  "launch_pid": 29992,
+  "launch_started_at_jst": "2026-10-18T20:54:45.4577623+09:00",
+  "stdout": "06_研究結果/jdrt/goal_20261017/wf26101801.stdout.log",
+  "stderr": "06_研究結果/jdrt/goal_20261017/wf26101801.stderr.log"
+}

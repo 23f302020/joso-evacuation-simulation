@@ -1,0 +1,68 @@
+{
+  "status": "PROPOSAL_ONLY_NOT_APPLIED_NOT_BUILT_NOT_RUN",
+  "base_tag": "v1_26_0",
+  "target": "src/microsim/transportables/MSPModel_Striping.cpp",
+  "official_before_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+  "before_copy_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+  "proposed_sha256": "65f4824cf896f46fbfb9199bdfcced3711ce365e88c1a455ad15f3d746c47934",
+  "patch_sha256": "93d3ca0c2318e1bc2402c6449670f05546f4d600ad4b0cf3521486d9b6601771",
+  "trace_sha256": "b75b5abf92808395fdbae3e9c518bc52f391b2c954a26035a2b9ab70cc13a87b",
+  "changed_files": 1,
+  "added_lines": 19,
+  "physical_repair_proven_by_native_execution": false,
+  "lifetime_static_evidence": "No deletion or mutation of old raw lateral/longitudinal/lane on the synchronous current-stage replacement path before the new PState constructor. Prior stage remains stored in plan. No pointer escapes constructor.",
+  "guards": [
+    "UNSPECIFIED_POS_LAT only",
+    "legacy departure lateral mode false",
+    "normal external edge",
+    "at least one previous stage",
+    "previous stage walking",
+    "previous current edge matches new external edge",
+    "previous arrival time equals new departure time",
+    "old state is striping PState",
+    "same person pointer",
+    "same physical native lane pointer",
+    "exact longitudinal position equality"
+  ],
+  "excluded_behavior": [
+    "new departure or waiting/nonwalking predecessor",
+    "natural walk completion with old lane nullptr",
+    "explicit or random desired departure lateral position",
+    "legacy departure lateral behavior",
+    "different lane/edge or internal/walkingarea replacement",
+    "no stage history"
+  ],
+  "unchanged_paths": [
+    "route-dependent walking direction",
+    "next-lane computation and new registration",
+    "speed/waiting/interaction algorithms",
+    "stage length and distance accounting",
+    "native model and registered input",
+    "runtime exact position acceptance"
+  ],
+  "limitations": [
+    "Not compiled; C++ type/include compatibility is statically reviewed only.",
+    "Native exact XY, direction, speed bounds, interaction and budget acceptance remain untested.",
+    "Natural-stage discrimination relies on the pinned v1_26_0 lifecycle, requiring native regression.",
+    "Does not repair ignored Stage.departPos warning; not needed for established lateral-reset cause.",
+    "Only future agreed workspace binary may use this patch; old global SUMO and frozen series must remain unchanged.",
+    "Failure-case native diagnostics must confirm the unspecified lateral and nonlegacy guards are actually reached; source review alone does not establish runtime option values."
+  ],
+  "artifact_validation": {
+    "before_copy_matches_official_sha": true,
+    "git_apply_no_index_check": "PASS without apply",
+    "compile": "NOT_RUN",
+    "native_regression": "NOT_RUN",
+    "actual_guard_reached_on_failed_case": "UNPROVEN_REQUIRES_NATIVE_DIAGNOSTIC",
+    "no_index_whitespace_check": {
+      "exit_code": 1,
+      "meaning": "diff-present status; no whitespace diagnostics",
+      "warnings": "Git LF-to-CRLF conversion warning only; source bytes retained and SHA verified"
+    }
+  },
+  "review_artifacts_sha256": {
+    "REVIEW.md": "ebeff325a4013c7fac846cec4e601c827475ea35a1074290735c92c8652150a6",
+    "NATIVE_REGRESSION.md": "dc7862bc08fcda2e8a058fc98f0e6d1d5556f8632de5c1c1e9c2c2a41b0247e1"
+  },
+  "official_sources_inventory_sha256": "5fd41894dae1a6f54d00803ef0cb8081f0888fecdb5cd5ac48b6b17415cede78"
+}

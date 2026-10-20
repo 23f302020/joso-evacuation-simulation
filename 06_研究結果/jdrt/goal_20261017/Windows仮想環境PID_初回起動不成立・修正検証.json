@@ -1,0 +1,20 @@
+{
+  "at_jst": "2026-10-18T09:55:18.852705+09:00",
+  "action": "windows_venv_redirector_identity_fix",
+  "failed_launch": "ch261018_001",
+  "research_run_directory_exists": false,
+  "core_started": false,
+  "unit_tests_pass": 52,
+  "regression_evidence": "actual project venv Popen child/parent identities live; actual reserved execute handshake with only runtime.run mocked in isolated owned root; no SUMO/research writes",
+  "repair": "accept exact reserved PID or Windows immediate parent launcher with liveness; save distinct launcher/executor PIDs; bounded6 PermissionError rename retries, persistent denial fails closed",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "monitor_status": "PAUSED",
+  "next": "new complete prerequisites via G4pipeline_20261018a",
+  "summary": "最終goal ACTIVE。受付・代替行動70セルの研究core 0・実SUMO稼働0。旧共通版は入力28/49unit/全21・35改変/全14smoke・1,190証跡でREADYだったが、初回ch261018_001はWindows venvランチャーと実行子のPID差を本人確認で拒否し、SUMO/研究run作成前に停止・原起動記録付きFAILED保全。PID親子確認と実行PID記録を修正、実project Pythonの予約executeハンドシェイクをSUMOなしで実証し52unit PASS。短期rename競合の限定再試行も試験済み。共通5実装更新で旧READY/全技術試験は履歴化、現行版をcf26101801→独立/改変→cs261018a全14→preflightの順に再検証する。監視jdrt-b-15は新系列設定を保持し再検証中PAUSED。次のREADY後に再有効化して新IDの最初の1セルを開始する。図v6/旧研究/全失敗保全、Drive読取のみ・外部送信なし。"
+}

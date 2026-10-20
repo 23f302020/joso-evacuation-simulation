@@ -1,0 +1,12 @@
+{
+  "role": "coverage verification; not inundation map or simulation result",
+  "source_sha256": {
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/cells_utm54n.geojson": "9209e5019c343d6c49276dae012c5f7a03daa99ead12f7d5b00cffa3b526c306",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3",
+    "04_プログラム/output/sumo/regions/08211/derived/shelters_sumo.csv": "4f325976efd23af4c3c4fa716710b17375491d7c4d2f120e1cf1b24b80ce08fa"
+  },
+  "artifact_sha256": {
+    "JDRT_実時間版_計算域照合_v1.svg": "f372c609189780598ccf338d9a0125c56e25922c6eef1e17db810347e2131671",
+    "JDRT_実時間版_計算域照合_v1.png": "a95b3dfece70ebf712546a7ebda209766c28955b78007e1640ba47599c74a6f2"
+  }
+}

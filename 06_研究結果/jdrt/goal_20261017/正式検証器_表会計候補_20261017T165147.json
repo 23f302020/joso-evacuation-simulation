@@ -1,0 +1,2304 @@
+{
+  "at_jst": "2026-10-17T16:51:47.266820+09:00",
+  "status": "PASS",
+  "scope": "canonical_validator_partial_tables_historical_fixture_diagnostics_not_READY",
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "historical_fixture_components": [
+    {
+      "run_id": "cf26101710_c01",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:32.956940+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 8,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 7,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 989,
+          "actor_count": 1,
+          "vkt": {},
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c02",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:33.657084+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 79,
+          "actor_count": 1,
+          "vkt": {},
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c03",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:34.335929+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 55,
+          "road_rows": 2016,
+          "grid_bytes": 2016,
+          "sparse_occupied_keys": 55,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 6662,
+          "actor_count": 1,
+          "vkt": {},
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c04",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:34.936122+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 133,
+          "actor_count": 1,
+          "vkt": {},
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c05",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:35.953126+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 4,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 649,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.00037620605552035613,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c06",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:36.961196+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 239,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0018783427615574055,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c07",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:37.860504+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 6,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 6,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 899,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c08",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:38.689347+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c09",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:39.404434+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 14,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 37,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 37,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4520,
+          "actor_count": 2,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0004943101702963304,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c10",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:40.074620+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c11",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:40.701472+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 12,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 4000,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.0031257457126230292,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c12",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:41.256515+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 3,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 12,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 1565,
+          "actor_count": 3,
+          "vkt": {},
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c13",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:41.792230+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 12,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 10,
+          "road_rows": 288,
+          "grid_bytes": 288,
+          "sparse_occupied_keys": 10,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 1412,
+          "actor_count": 1,
+          "vkt": {
+            "choice_drt_0": {
+              "arrival_tail_m": 0,
+              "residual_m": 0.004698825438310905,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c14",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:42.361030+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 780,
+          "grid_bytes": 780,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 194,
+          "actor_count": 1,
+          "vkt": {
+            "fixture_car": {
+              "arrival_tail_m": 2.4218398074762675,
+              "residual_m": -7.105427357601002e-15,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c15",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:42.941455+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 0,
+          "actor_count": 0,
+          "vkt": {},
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c16",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:51:43.813454+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "independent_complete_transition_reconstruction_and_walk_stage_budget",
+        "moving_idle_vehicle_native_deceleration_braking_bound",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "cycle_availability": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        },
+        "actor_stream": {
+          "status": "PASS",
+          "checks": {
+            "actor_grid_completeness": true,
+            "actor_arrival_clock": true,
+            "actor_phase_unique_membership": true,
+            "actor_observation_state": true,
+            "actor_walk_integral_and_speed": true,
+            "actor_vehicle_distances": true,
+            "actor_route_index": true,
+            "actor_closed_external_edge": true,
+            "reroute_position_continuity": true,
+            "backend_vkt": true
+          },
+          "errors": {},
+          "examples": {},
+          "actor_rows": 173,
+          "actor_count": 1,
+          "vkt": {
+            "fixture_car": {
+              "arrival_tail_m": 1.1683150942396594,
+              "residual_m": -8.526512829121202e-14,
+              "rounding_bound_m": 0.0100001
+            }
+          },
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    }
+  ],
+  "counterexamples": [
+    {
+      "case": "population_missing",
+      "expected": "complete_population",
+      "pass": true,
+      "failed_checks": [
+        "complete_population"
+      ]
+    },
+    {
+      "case": "population_duplicate",
+      "expected": "unique_tables",
+      "pass": true,
+      "failed_checks": [
+        "unique_tables"
+      ]
+    },
+    {
+      "case": "source_attribute_corrupted",
+      "expected": "common_realization_and_attributes",
+      "pass": true,
+      "failed_checks": [
+        "common_realization_and_attributes"
+      ]
+    },
+    {
+      "case": "request_omitted",
+      "expected": "request_set",
+      "pass": true,
+      "failed_checks": [
+        "request_set",
+        "state_chains",
+        "summary_accounting"
+      ]
+    },
+    {
+      "case": "boarding_duration_corrupted",
+      "expected": "request_lifecycle",
+      "pass": true,
+      "failed_checks": [
+        "request_lifecycle"
+      ]
+    },
+    {
+      "case": "shared_capacity_account_corrupted",
+      "expected": "shared_capacity_and_exit",
+      "pass": true,
+      "failed_checks": [
+        "shared_capacity_and_exit"
+      ]
+    },
+    {
+      "case": "candidate_shortest_time_corrupted",
+      "expected": "candidate_shortest_paths",
+      "pass": true,
+      "failed_checks": [
+        "candidate_shortest_paths",
+        "candidate_gates"
+      ]
+    },
+    {
+      "case": "candidate_missing",
+      "expected": "cycle_counts",
+      "pass": true,
+      "failed_checks": [
+        "candidate_selection",
+        "cycle_counts"
+      ]
+    },
+    {
+      "case": "candidate_nan_source_speed",
+      "expected": "ValueError",
+      "pass": true,
+      "failed_checks": [
+        "Nonfinite candidate scalar: source_speed_mps"
+      ]
+    },
+    {
+      "case": "zero_road_row_missing",
+      "expected": "full_road_grid",
+      "pass": true,
+      "failed_checks": [
+        "full_road_grid"
+      ]
+    },
+    {
+      "case": "snapshot_raw_speed_corrupted",
+      "expected": "snapshot_primary_reaggregation",
+      "pass": true,
+      "failed_checks": [
+        "snapshot_primary_reaggregation"
+      ]
+    },
+    {
+      "case": "native_road_membership_corrupted",
+      "expected": "native_edge_membership",
+      "pass": true,
+      "failed_checks": [
+        "native_edge_membership"
+      ]
+    },
+    {
+      "case": "actor_step_omitted",
+      "expected": "actor_grid_completeness",
+      "pass": true,
+      "failed_checks": [
+        "actor_grid_completeness"
+      ]
+    },
+    {
+      "case": "actor_wrong_phase",
+      "expected": "actor_phase_unique_membership",
+      "pass": true,
+      "failed_checks": [
+        "actor_phase_unique_membership"
+      ]
+    },
+    {
+      "case": "actor_route_index_corrupted",
+      "expected": "actor_route_index",
+      "pass": true,
+      "failed_checks": [
+        "actor_route_index"
+      ]
+    },
+    {
+      "case": "walking_speed_exceeded",
+      "expected": "actor_walk_integral_and_speed",
+      "pass": true,
+      "failed_checks": [
+        "actor_walk_integral_and_speed"
+      ]
+    },
+    {
+      "case": "VKT_backend_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "native_controller_clock_conflated",
+      "expected": "actor_arrival_clock",
+      "pass": true,
+      "failed_checks": [
+        "actor_arrival_clock"
+      ]
+    }
+  ],
+  "current_SHA_gate_rejects_old_suite": true,
+  "primary_outputs_unchanged": true,
+  "primary_files_rechecked": 272,
+  "validator_sha256": "3657894c60512900621892483eee7124c7464d867191d28cf1edc634f3817d44",
+  "test_sha256": "f3e6a9a1956806c4bd083684dff5d3ea1876eaa697590c3654d357b03d3278ce"
+}

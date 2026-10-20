@@ -1,0 +1,3463 @@
+{
+  "run_id": "rtbb2_core_r2_seed7_20261016T210045",
+  "seed": 7,
+  "scenario": "R2",
+  "analysis_script_sha256": "6b62fb94555e49f62735057b9d75532f328075a1571494429c61322cca78a95e",
+  "outcomes": [
+    {
+      "dimension": "all",
+      "group": "all",
+      "denominator": 11965,
+      "states": {
+        "capacity_rejected": 1397,
+        "admitted": 488,
+        "no_route": 600,
+        "no_origin_connection": 553,
+        "time_limit": 764,
+        "boundary_exit": 7402,
+        "walk_limit": 218,
+        "initial_or_current_closed": 539,
+        "route_cut": 4
+      },
+      "terminal_arrived": 9287,
+      "facility_arrived": 1885,
+      "admitted": 488,
+      "boundary_exit": 7402
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "denominator": 7114,
+      "states": {
+        "capacity_rejected": 906,
+        "admitted": 370,
+        "no_origin_connection": 384,
+        "boundary_exit": 4921,
+        "no_route": 210,
+        "initial_or_current_closed": 321,
+        "route_cut": 2
+      },
+      "terminal_arrived": 6197,
+      "facility_arrived": 1276,
+      "admitted": 370,
+      "boundary_exit": 4921
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "denominator": 3052,
+      "states": {
+        "capacity_rejected": 444,
+        "no_origin_connection": 86,
+        "admitted": 116,
+        "boundary_exit": 2160,
+        "no_route": 120,
+        "initial_or_current_closed": 124,
+        "route_cut": 2
+      },
+      "terminal_arrived": 2720,
+      "facility_arrived": 560,
+      "admitted": 116,
+      "boundary_exit": 2160
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "denominator": 1255,
+      "states": {
+        "no_route": 185,
+        "no_origin_connection": 69,
+        "capacity_rejected": 28,
+        "time_limit": 537,
+        "boundary_exit": 222,
+        "walk_limit": 148,
+        "initial_or_current_closed": 64,
+        "admitted": 2
+      },
+      "terminal_arrived": 252,
+      "facility_arrived": 30,
+      "admitted": 2,
+      "boundary_exit": 222
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "denominator": 544,
+      "states": {
+        "no_route": 85,
+        "no_origin_connection": 14,
+        "time_limit": 227,
+        "capacity_rejected": 19,
+        "boundary_exit": 99,
+        "walk_limit": 70,
+        "initial_or_current_closed": 30
+      },
+      "terminal_arrived": 118,
+      "facility_arrived": 19,
+      "admitted": 0,
+      "boundary_exit": 99
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "denominator": 10166,
+      "states": {
+        "capacity_rejected": 1350,
+        "admitted": 486,
+        "no_origin_connection": 470,
+        "boundary_exit": 7081,
+        "no_route": 330,
+        "initial_or_current_closed": 445,
+        "route_cut": 4
+      },
+      "terminal_arrived": 8917,
+      "facility_arrived": 1836,
+      "admitted": 486,
+      "boundary_exit": 7081
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "denominator": 900,
+      "states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "capacity_rejected": 5,
+        "boundary_exit": 16,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "terminal_arrived": 21,
+      "facility_arrived": 5,
+      "admitted": 0,
+      "boundary_exit": 16
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "denominator": 899,
+      "states": {
+        "no_route": 226,
+        "no_origin_connection": 36,
+        "capacity_rejected": 42,
+        "boundary_exit": 305,
+        "walk_limit": 218,
+        "initial_or_current_closed": 70,
+        "admitted": 2
+      },
+      "terminal_arrived": 349,
+      "facility_arrived": 44,
+      "admitted": 2,
+      "boundary_exit": 305
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "denominator": 8761,
+      "states": {
+        "boundary_exit": 7402,
+        "time_limit": 604,
+        "no_route": 364,
+        "walk_limit": 209,
+        "initial_or_current_closed": 182
+      },
+      "terminal_arrived": 7402,
+      "facility_arrived": 0,
+      "admitted": 0,
+      "boundary_exit": 7402
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "denominator": 2355,
+      "states": {
+        "capacity_rejected": 1397,
+        "admitted": 488,
+        "no_route": 114,
+        "time_limit": 160,
+        "walk_limit": 9,
+        "initial_or_current_closed": 183,
+        "route_cut": 4
+      },
+      "terminal_arrived": 1885,
+      "facility_arrived": 1885,
+      "admitted": 488,
+      "boundary_exit": 0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "denominator": 849,
+      "states": {
+        "no_origin_connection": 553,
+        "initial_or_current_closed": 174,
+        "no_route": 122
+      },
+      "terminal_arrived": 0,
+      "facility_arrived": 0,
+      "admitted": 0,
+      "boundary_exit": 0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "denominator": 11065,
+      "states": {
+        "capacity_rejected": 1392,
+        "admitted": 488,
+        "no_route": 556,
+        "no_origin_connection": 506,
+        "boundary_exit": 7386,
+        "walk_limit": 218,
+        "initial_or_current_closed": 515,
+        "route_cut": 4
+      },
+      "terminal_arrived": 9266,
+      "facility_arrived": 1880,
+      "admitted": 488,
+      "boundary_exit": 7386
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "denominator": 900,
+      "states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "capacity_rejected": 5,
+        "boundary_exit": 16,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "terminal_arrived": 21,
+      "facility_arrived": 5,
+      "admitted": 0,
+      "boundary_exit": 16
+    }
+  ],
+  "timing": [
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 11065,
+      "observed": 9273,
+      "missing_endpoint": 1792,
+      "incomplete_states": {
+        "no_route": 556,
+        "no_origin_connection": 506,
+        "walk_limit": 218,
+        "initial_or_current_closed": 512
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 1610.6666666666667,
+      "median_sec": 1826.0,
+      "min_sec": 77.0,
+      "max_sec": 3013.0
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 1910.6666666666667,
+      "median_sec": 2126.0,
+      "min_sec": 377.0,
+      "max_sec": 3313.0
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 136.42857142857142,
+      "median_sec": 101.0,
+      "min_sec": 35.0,
+      "max_sec": 384.0
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 11965,
+      "observed": 9287,
+      "missing_endpoint": 2678,
+      "incomplete_states": {
+        "no_route": 600,
+        "no_origin_connection": 553,
+        "time_limit": 764,
+        "walk_limit": 218,
+        "initial_or_current_closed": 539,
+        "route_cut": 4
+      },
+      "mean_sec": 249.58452675783354,
+      "median_sec": 154.0,
+      "min_sec": 14.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 11065,
+      "observed": 9266,
+      "missing_endpoint": 1799,
+      "incomplete_states": {
+        "no_route": 556,
+        "no_origin_connection": 506,
+        "walk_limit": 218,
+        "initial_or_current_closed": 515,
+        "route_cut": 4
+      },
+      "mean_sec": 244.83083315346428,
+      "median_sec": 154.0,
+      "min_sec": 14.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "all",
+      "group": "all",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 11965,
+      "observed": 488,
+      "missing_endpoint": 11477,
+      "incomplete_states": {
+        "capacity_rejected": 1397,
+        "no_route": 600,
+        "no_origin_connection": 553,
+        "time_limit": 764,
+        "boundary_exit": 7402,
+        "walk_limit": 218,
+        "initial_or_current_closed": 539,
+        "route_cut": 4
+      },
+      "mean_sec": 127.45901639344262,
+      "median_sec": 106.5,
+      "min_sec": 14.5,
+      "max_sec": 1082.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 7114,
+      "observed": 6202,
+      "missing_endpoint": 912,
+      "incomplete_states": {
+        "no_origin_connection": 384,
+        "no_route": 210,
+        "initial_or_current_closed": 318
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 7114,
+      "observed": 6197,
+      "missing_endpoint": 917,
+      "incomplete_states": {
+        "no_origin_connection": 384,
+        "no_route": 210,
+        "initial_or_current_closed": 321,
+        "route_cut": 2
+      },
+      "mean_sec": 170.4589317411651,
+      "median_sec": 148.5,
+      "min_sec": 17.0,
+      "max_sec": 580.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 7114,
+      "observed": 6197,
+      "missing_endpoint": 917,
+      "incomplete_states": {
+        "no_origin_connection": 384,
+        "no_route": 210,
+        "initial_or_current_closed": 321,
+        "route_cut": 2
+      },
+      "mean_sec": 170.4589317411651,
+      "median_sec": 148.5,
+      "min_sec": 17.0,
+      "max_sec": 580.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type1",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 7114,
+      "observed": 370,
+      "missing_endpoint": 6744,
+      "incomplete_states": {
+        "capacity_rejected": 906,
+        "no_origin_connection": 384,
+        "boundary_exit": 4921,
+        "no_route": 210,
+        "initial_or_current_closed": 321,
+        "route_cut": 2
+      },
+      "mean_sec": 123.83378378378379,
+      "median_sec": 107.5,
+      "min_sec": 17.0,
+      "max_sec": 549.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 3052,
+      "observed": 2722,
+      "missing_endpoint": 330,
+      "incomplete_states": {
+        "no_origin_connection": 86,
+        "no_route": 120,
+        "initial_or_current_closed": 124
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 3052,
+      "observed": 2720,
+      "missing_endpoint": 332,
+      "incomplete_states": {
+        "no_origin_connection": 86,
+        "no_route": 120,
+        "initial_or_current_closed": 124,
+        "route_cut": 2
+      },
+      "mean_sec": 168.18198529411765,
+      "median_sec": 149.0,
+      "min_sec": 33.5,
+      "max_sec": 843.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 3052,
+      "observed": 2720,
+      "missing_endpoint": 332,
+      "incomplete_states": {
+        "no_origin_connection": 86,
+        "no_route": 120,
+        "initial_or_current_closed": 124,
+        "route_cut": 2
+      },
+      "mean_sec": 168.18198529411765,
+      "median_sec": 149.0,
+      "min_sec": 33.5,
+      "max_sec": 843.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type2",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 3052,
+      "observed": 116,
+      "missing_endpoint": 2936,
+      "incomplete_states": {
+        "capacity_rejected": 444,
+        "no_origin_connection": 86,
+        "boundary_exit": 2160,
+        "no_route": 120,
+        "initial_or_current_closed": 124,
+        "route_cut": 2
+      },
+      "mean_sec": 131.76293103448276,
+      "median_sec": 101.75,
+      "min_sec": 39.0,
+      "max_sec": 422.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 627,
+      "observed": 250,
+      "missing_endpoint": 377,
+      "incomplete_states": {
+        "no_route": 153,
+        "walk_limit": 148,
+        "no_origin_connection": 31,
+        "initial_or_current_closed": 45
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 628,
+      "observed": 2,
+      "missing_endpoint": 626,
+      "incomplete_states": {
+        "no_origin_connection": 38,
+        "time_limit": 537,
+        "no_route": 32,
+        "initial_or_current_closed": 19
+      },
+      "mean_sec": 264.0,
+      "median_sec": 264.0,
+      "min_sec": 124.0,
+      "max_sec": 404.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 628,
+      "observed": 2,
+      "missing_endpoint": 626,
+      "incomplete_states": {
+        "no_origin_connection": 38,
+        "time_limit": 537,
+        "no_route": 32,
+        "initial_or_current_closed": 19
+      },
+      "mean_sec": 564.0,
+      "median_sec": 564.0,
+      "min_sec": 424.0,
+      "max_sec": 704.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 628,
+      "observed": 2,
+      "missing_endpoint": 626,
+      "incomplete_states": {
+        "no_origin_connection": 38,
+        "time_limit": 537,
+        "no_route": 32,
+        "initial_or_current_closed": 19
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 628,
+      "observed": 2,
+      "missing_endpoint": 626,
+      "incomplete_states": {
+        "no_origin_connection": 38,
+        "time_limit": 537,
+        "no_route": 32,
+        "initial_or_current_closed": 19
+      },
+      "mean_sec": 131.5,
+      "median_sec": 131.5,
+      "min_sec": 46.0,
+      "max_sec": 217.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 628,
+      "observed": 2,
+      "missing_endpoint": 626,
+      "incomplete_states": {
+        "no_origin_connection": 38,
+        "time_limit": 537,
+        "no_route": 32,
+        "initial_or_current_closed": 19
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 1255,
+      "observed": 252,
+      "missing_endpoint": 1003,
+      "incomplete_states": {
+        "no_route": 185,
+        "no_origin_connection": 69,
+        "time_limit": 537,
+        "walk_limit": 148,
+        "initial_or_current_closed": 64
+      },
+      "mean_sec": 1870.079365079365,
+      "median_sec": 1751.75,
+      "min_sec": 14.5,
+      "max_sec": 3333.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 627,
+      "observed": 250,
+      "missing_endpoint": 377,
+      "incomplete_states": {
+        "no_route": 153,
+        "walk_limit": 148,
+        "no_origin_connection": 31,
+        "initial_or_current_closed": 45
+      },
+      "mean_sec": 1877.076,
+      "median_sec": 1765.75,
+      "min_sec": 14.5,
+      "max_sec": 3333.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type3",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 1255,
+      "observed": 2,
+      "missing_endpoint": 1253,
+      "incomplete_states": {
+        "no_route": 185,
+        "no_origin_connection": 69,
+        "capacity_rejected": 28,
+        "time_limit": 537,
+        "boundary_exit": 222,
+        "walk_limit": 148,
+        "initial_or_current_closed": 64
+      },
+      "mean_sec": 548.5,
+      "median_sec": 548.5,
+      "min_sec": 14.5,
+      "max_sec": 1082.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 272,
+      "observed": 99,
+      "missing_endpoint": 173,
+      "incomplete_states": {
+        "no_route": 73,
+        "no_origin_connection": 5,
+        "walk_limit": 70,
+        "initial_or_current_closed": 25
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 272,
+      "observed": 19,
+      "missing_endpoint": 253,
+      "incomplete_states": {
+        "no_origin_connection": 9,
+        "time_limit": 227,
+        "no_route": 12,
+        "initial_or_current_closed": 5
+      },
+      "mean_sec": 1752.421052631579,
+      "median_sec": 1861.0,
+      "min_sec": 77.0,
+      "max_sec": 3013.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 272,
+      "observed": 19,
+      "missing_endpoint": 253,
+      "incomplete_states": {
+        "no_origin_connection": 9,
+        "time_limit": 227,
+        "no_route": 12,
+        "initial_or_current_closed": 5
+      },
+      "mean_sec": 2052.4210526315787,
+      "median_sec": 2161.0,
+      "min_sec": 377.0,
+      "max_sec": 3313.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 272,
+      "observed": 19,
+      "missing_endpoint": 253,
+      "incomplete_states": {
+        "no_origin_connection": 9,
+        "time_limit": 227,
+        "no_route": 12,
+        "initial_or_current_closed": 5
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 272,
+      "observed": 19,
+      "missing_endpoint": 253,
+      "incomplete_states": {
+        "no_origin_connection": 9,
+        "time_limit": 227,
+        "no_route": 12,
+        "initial_or_current_closed": 5
+      },
+      "mean_sec": 136.94736842105263,
+      "median_sec": 101.0,
+      "min_sec": 35.0,
+      "max_sec": 384.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 272,
+      "observed": 19,
+      "missing_endpoint": 253,
+      "incomplete_states": {
+        "no_origin_connection": 9,
+        "time_limit": 227,
+        "no_route": 12,
+        "initial_or_current_closed": 5
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 544,
+      "observed": 118,
+      "missing_endpoint": 426,
+      "incomplete_states": {
+        "no_route": 85,
+        "no_origin_connection": 14,
+        "time_limit": 227,
+        "walk_limit": 70,
+        "initial_or_current_closed": 30
+      },
+      "mean_sec": 2820.6991525423728,
+      "median_sec": 2609.25,
+      "min_sec": 622.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 272,
+      "observed": 99,
+      "missing_endpoint": 173,
+      "incomplete_states": {
+        "no_route": 73,
+        "no_origin_connection": 5,
+        "walk_limit": 70,
+        "initial_or_current_closed": 25
+      },
+      "mean_sec": 2884.287878787879,
+      "median_sec": 2623.5,
+      "min_sec": 622.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "person_type",
+      "group": "type4",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 544,
+      "observed": 0,
+      "missing_endpoint": 544,
+      "incomplete_states": {
+        "no_route": 85,
+        "no_origin_connection": 14,
+        "time_limit": 227,
+        "capacity_rejected": 19,
+        "boundary_exit": 99,
+        "walk_limit": 70,
+        "initial_or_current_closed": 30
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 10166,
+      "observed": 8924,
+      "missing_endpoint": 1242,
+      "incomplete_states": {
+        "no_origin_connection": 470,
+        "no_route": 330,
+        "initial_or_current_closed": 442
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 10166,
+      "observed": 8917,
+      "missing_endpoint": 1249,
+      "incomplete_states": {
+        "no_origin_connection": 470,
+        "no_route": 330,
+        "initial_or_current_closed": 445,
+        "route_cut": 4
+      },
+      "mean_sec": 169.7643826399013,
+      "median_sec": 149.0,
+      "min_sec": 17.0,
+      "max_sec": 843.0
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 10166,
+      "observed": 8917,
+      "missing_endpoint": 1249,
+      "incomplete_states": {
+        "no_origin_connection": 470,
+        "no_route": 330,
+        "initial_or_current_closed": 445,
+        "route_cut": 4
+      },
+      "mean_sec": 169.7643826399013,
+      "median_sec": 149.0,
+      "min_sec": 17.0,
+      "max_sec": 843.0
+    },
+    {
+      "dimension": "mode",
+      "group": "car",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 10166,
+      "observed": 486,
+      "missing_endpoint": 9680,
+      "incomplete_states": {
+        "capacity_rejected": 1350,
+        "no_origin_connection": 470,
+        "boundary_exit": 7081,
+        "no_route": 330,
+        "initial_or_current_closed": 445,
+        "route_cut": 4
+      },
+      "mean_sec": 125.72633744855968,
+      "median_sec": 106.5,
+      "min_sec": 17.0,
+      "max_sec": 549.5
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 1610.6666666666667,
+      "median_sec": 1826.0,
+      "min_sec": 77.0,
+      "max_sec": 3013.0
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 1910.6666666666667,
+      "median_sec": 2126.0,
+      "min_sec": 377.0,
+      "max_sec": 3313.0
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 136.42857142857142,
+      "median_sec": 101.0,
+      "min_sec": 35.0,
+      "max_sec": 384.0
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 2347.095238095238,
+      "median_sec": 2527.0,
+      "min_sec": 721.0,
+      "max_sec": 3997.0
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "drt",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 900,
+      "observed": 0,
+      "missing_endpoint": 900,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "capacity_rejected": 5,
+        "boundary_exit": 16,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 899,
+      "observed": 349,
+      "missing_endpoint": 550,
+      "incomplete_states": {
+        "no_route": 226,
+        "no_origin_connection": 36,
+        "walk_limit": 218,
+        "initial_or_current_closed": 70
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 899,
+      "observed": 349,
+      "missing_endpoint": 550,
+      "incomplete_states": {
+        "no_route": 226,
+        "no_origin_connection": 36,
+        "walk_limit": 218,
+        "initial_or_current_closed": 70
+      },
+      "mean_sec": 2162.7893982808023,
+      "median_sec": 2069.5,
+      "min_sec": 14.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 899,
+      "observed": 349,
+      "missing_endpoint": 550,
+      "incomplete_states": {
+        "no_route": 226,
+        "no_origin_connection": 36,
+        "walk_limit": 218,
+        "initial_or_current_closed": 70
+      },
+      "mean_sec": 2162.7893982808023,
+      "median_sec": 2069.5,
+      "min_sec": 14.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "mode",
+      "group": "walk",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 899,
+      "observed": 2,
+      "missing_endpoint": 897,
+      "incomplete_states": {
+        "no_route": 226,
+        "no_origin_connection": 36,
+        "capacity_rejected": 42,
+        "boundary_exit": 305,
+        "walk_limit": 218,
+        "initial_or_current_closed": 70
+      },
+      "mean_sec": 548.5,
+      "median_sec": 548.5,
+      "min_sec": 14.5,
+      "max_sec": 1082.5
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 8110,
+      "observed": 7386,
+      "missing_endpoint": 724,
+      "incomplete_states": {
+        "no_route": 342,
+        "walk_limit": 209,
+        "initial_or_current_closed": 173
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 651,
+      "observed": 16,
+      "missing_endpoint": 635,
+      "incomplete_states": {
+        "time_limit": 604,
+        "no_route": 22,
+        "initial_or_current_closed": 9
+      },
+      "mean_sec": 1617.4375,
+      "median_sec": 1843.5,
+      "min_sec": 77.0,
+      "max_sec": 3013.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 651,
+      "observed": 16,
+      "missing_endpoint": 635,
+      "incomplete_states": {
+        "time_limit": 604,
+        "no_route": 22,
+        "initial_or_current_closed": 9
+      },
+      "mean_sec": 1917.4375,
+      "median_sec": 2143.5,
+      "min_sec": 377.0,
+      "max_sec": 3313.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 651,
+      "observed": 16,
+      "missing_endpoint": 635,
+      "incomplete_states": {
+        "time_limit": 604,
+        "no_route": 22,
+        "initial_or_current_closed": 9
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 651,
+      "observed": 16,
+      "missing_endpoint": 635,
+      "incomplete_states": {
+        "time_limit": 604,
+        "no_route": 22,
+        "initial_or_current_closed": 9
+      },
+      "mean_sec": 144.3125,
+      "median_sec": 96.5,
+      "min_sec": 44.0,
+      "max_sec": 384.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 651,
+      "observed": 16,
+      "missing_endpoint": 635,
+      "incomplete_states": {
+        "time_limit": 604,
+        "no_route": 22,
+        "initial_or_current_closed": 9
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 8761,
+      "observed": 7402,
+      "missing_endpoint": 1359,
+      "incomplete_states": {
+        "time_limit": 604,
+        "no_route": 364,
+        "walk_limit": 209,
+        "initial_or_current_closed": 182
+      },
+      "mean_sec": 263.07531748176166,
+      "median_sec": 175.5,
+      "min_sec": 41.0,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 8110,
+      "observed": 7386,
+      "missing_endpoint": 724,
+      "incomplete_states": {
+        "no_route": 342,
+        "walk_limit": 209,
+        "initial_or_current_closed": 173
+      },
+      "mean_sec": 258.52904142973193,
+      "median_sec": 175.5,
+      "min_sec": 41.0,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "boundary_exit",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 8761,
+      "observed": 0,
+      "missing_endpoint": 8761,
+      "incomplete_states": {
+        "boundary_exit": 7402,
+        "time_limit": 604,
+        "no_route": 364,
+        "walk_limit": 209,
+        "initial_or_current_closed": 182
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 2173,
+      "observed": 1887,
+      "missing_endpoint": 286,
+      "incomplete_states": {
+        "no_route": 112,
+        "walk_limit": 9,
+        "initial_or_current_closed": 165
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 182,
+      "observed": 5,
+      "missing_endpoint": 177,
+      "incomplete_states": {
+        "time_limit": 160,
+        "initial_or_current_closed": 15,
+        "no_route": 2
+      },
+      "mean_sec": 1589.0,
+      "median_sec": 1315.0,
+      "min_sec": 1213.0,
+      "max_sec": 2234.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 182,
+      "observed": 5,
+      "missing_endpoint": 177,
+      "incomplete_states": {
+        "time_limit": 160,
+        "initial_or_current_closed": 15,
+        "no_route": 2
+      },
+      "mean_sec": 1889.0,
+      "median_sec": 1615.0,
+      "min_sec": 1513.0,
+      "max_sec": 2534.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 182,
+      "observed": 5,
+      "missing_endpoint": 177,
+      "incomplete_states": {
+        "time_limit": 160,
+        "initial_or_current_closed": 15,
+        "no_route": 2
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 182,
+      "observed": 5,
+      "missing_endpoint": 177,
+      "incomplete_states": {
+        "time_limit": 160,
+        "initial_or_current_closed": 15,
+        "no_route": 2
+      },
+      "mean_sec": 111.2,
+      "median_sec": 110.0,
+      "min_sec": 35.0,
+      "max_sec": 238.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 182,
+      "observed": 5,
+      "missing_endpoint": 177,
+      "incomplete_states": {
+        "time_limit": 160,
+        "initial_or_current_closed": 15,
+        "no_route": 2
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 2355,
+      "observed": 1885,
+      "missing_endpoint": 470,
+      "incomplete_states": {
+        "no_route": 114,
+        "time_limit": 160,
+        "walk_limit": 9,
+        "initial_or_current_closed": 183,
+        "route_cut": 4
+      },
+      "mean_sec": 196.60901856763925,
+      "median_sec": 105.5,
+      "min_sec": 14.5,
+      "max_sec": 5567.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 2173,
+      "observed": 1880,
+      "missing_endpoint": 293,
+      "incomplete_states": {
+        "no_route": 112,
+        "walk_limit": 9,
+        "initial_or_current_closed": 168,
+        "route_cut": 4
+      },
+      "mean_sec": 191.01436170212767,
+      "median_sec": 105.5,
+      "min_sec": 14.5,
+      "max_sec": 5567.0
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "facility",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 2355,
+      "observed": 488,
+      "missing_endpoint": 1867,
+      "incomplete_states": {
+        "capacity_rejected": 1397,
+        "no_route": 114,
+        "time_limit": 160,
+        "walk_limit": 9,
+        "initial_or_current_closed": 183,
+        "route_cut": 4
+      },
+      "mean_sec": 127.45901639344262,
+      "median_sec": 106.5,
+      "min_sec": 14.5,
+      "max_sec": 1082.5
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 782,
+      "observed": 0,
+      "missing_endpoint": 782,
+      "incomplete_states": {
+        "no_origin_connection": 506,
+        "initial_or_current_closed": 174,
+        "no_route": 102
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 67,
+      "observed": 0,
+      "missing_endpoint": 67,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "no_route": 20
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 67,
+      "observed": 0,
+      "missing_endpoint": 67,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "no_route": 20
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 67,
+      "observed": 0,
+      "missing_endpoint": 67,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "no_route": 20
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 67,
+      "observed": 0,
+      "missing_endpoint": 67,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "no_route": 20
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 67,
+      "observed": 0,
+      "missing_endpoint": 67,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "no_route": 20
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 849,
+      "observed": 0,
+      "missing_endpoint": 849,
+      "incomplete_states": {
+        "no_origin_connection": 553,
+        "initial_or_current_closed": 174,
+        "no_route": 122
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 782,
+      "observed": 0,
+      "missing_endpoint": 782,
+      "incomplete_states": {
+        "no_origin_connection": 506,
+        "initial_or_current_closed": 174,
+        "no_route": 102
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "terminal_kind",
+      "group": "unassigned",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 849,
+      "observed": 0,
+      "missing_endpoint": 849,
+      "incomplete_states": {
+        "no_origin_connection": 553,
+        "initial_or_current_closed": 174,
+        "no_route": 122
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 11065,
+      "observed": 9273,
+      "missing_endpoint": 1792,
+      "incomplete_states": {
+        "no_route": 556,
+        "no_origin_connection": 506,
+        "walk_limit": 218,
+        "initial_or_current_closed": 512
+      },
+      "mean_sec": 0.0,
+      "median_sec": 0.0,
+      "min_sec": 0.0,
+      "max_sec": 0.0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 11065,
+      "observed": 9266,
+      "missing_endpoint": 1799,
+      "incomplete_states": {
+        "no_route": 556,
+        "no_origin_connection": 506,
+        "walk_limit": 218,
+        "initial_or_current_closed": 515,
+        "route_cut": 4
+      },
+      "mean_sec": 244.83083315346428,
+      "median_sec": 154.0,
+      "min_sec": 14.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 11065,
+      "observed": 9266,
+      "missing_endpoint": 1799,
+      "incomplete_states": {
+        "no_route": 556,
+        "no_origin_connection": 506,
+        "walk_limit": 218,
+        "initial_or_current_closed": 515,
+        "route_cut": 4
+      },
+      "mean_sec": 244.83083315346428,
+      "median_sec": 154.0,
+      "min_sec": 14.5,
+      "max_sec": 5720.5
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "False",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 11065,
+      "observed": 488,
+      "missing_endpoint": 10577,
+      "incomplete_states": {
+        "capacity_rejected": 1392,
+        "no_route": 556,
+        "no_origin_connection": 506,
+        "boundary_exit": 7386,
+        "walk_limit": 218,
+        "initial_or_current_closed": 515,
+        "route_cut": 4
+      },
+      "mean_sec": 127.45901639344262,
+      "median_sec": 106.5,
+      "min_sec": 14.5,
+      "max_sec": 1082.5
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "ready_to_depart",
+      "scope": "non_drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "request_to_boarding_start",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 1610.6666666666667,
+      "median_sec": 1826.0,
+      "min_sec": 77.0,
+      "max_sec": 3013.0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "request_to_pickup_complete",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 1910.6666666666667,
+      "median_sec": 2126.0,
+      "min_sec": 377.0,
+      "max_sec": 3313.0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "boarding_processing",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "pickup_to_alighting_start",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 136.42857142857142,
+      "median_sec": 101.0,
+      "min_sec": 35.0,
+      "max_sec": 384.0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "alighting_processing",
+      "scope": "drt",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 300.0,
+      "median_sec": 300.0,
+      "min_sec": 300.0,
+      "max_sec": 300.0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "ready_to_terminal",
+      "scope": "all",
+      "eligible": 900,
+      "observed": 21,
+      "missing_endpoint": 879,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": 2347.095238095238,
+      "median_sec": 2527.0,
+      "min_sec": 721.0,
+      "max_sec": 3997.0
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "depart_to_terminal",
+      "scope": "non_drt",
+      "eligible": 0,
+      "observed": 0,
+      "missing_endpoint": 0,
+      "incomplete_states": {},
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    },
+    {
+      "dimension": "selected_jdrt",
+      "group": "True",
+      "metric": "ready_to_admission",
+      "scope": "all",
+      "eligible": 900,
+      "observed": 0,
+      "missing_endpoint": 900,
+      "incomplete_states": {
+        "no_origin_connection": 47,
+        "time_limit": 764,
+        "capacity_rejected": 5,
+        "boundary_exit": 16,
+        "no_route": 44,
+        "initial_or_current_closed": 24
+      },
+      "mean_sec": null,
+      "median_sec": null,
+      "min_sec": null,
+      "max_sec": null
+    }
+  ],
+  "fixed_terminal_population": [
+    {
+      "terminal_id": "",
+      "terminal_kind": "unassigned",
+      "person_type": "type1",
+      "people": 567
+    },
+    {
+      "terminal_id": "",
+      "terminal_kind": "unassigned",
+      "person_type": "type2",
+      "people": 155
+    },
+    {
+      "terminal_id": "",
+      "terminal_kind": "unassigned",
+      "person_type": "type3",
+      "people": 101
+    },
+    {
+      "terminal_id": "",
+      "terminal_kind": "unassigned",
+      "person_type": "type4",
+      "people": 26
+    },
+    {
+      "terminal_id": "exit_1429740319",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 107
+    },
+    {
+      "terminal_id": "exit_1429740319",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 65
+    },
+    {
+      "terminal_id": "exit_1429740319",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 19
+    },
+    {
+      "terminal_id": "exit_1429740319",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 12
+    },
+    {
+      "terminal_id": "exit_1429744481",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 2524
+    },
+    {
+      "terminal_id": "exit_1429744481",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 993
+    },
+    {
+      "terminal_id": "exit_1429744481",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 450
+    },
+    {
+      "terminal_id": "exit_1429744481",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 177
+    },
+    {
+      "terminal_id": "exit_1429772987",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 1550
+    },
+    {
+      "terminal_id": "exit_1429772987",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 762
+    },
+    {
+      "terminal_id": "exit_1429772987",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 275
+    },
+    {
+      "terminal_id": "exit_1429772987",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 135
+    },
+    {
+      "terminal_id": "exit_9000000000831",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 19
+    },
+    {
+      "terminal_id": "exit_9000000000831",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 8
+    },
+    {
+      "terminal_id": "exit_9000000000831",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 3
+    },
+    {
+      "terminal_id": "exit_9000000000831",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 1
+    },
+    {
+      "terminal_id": "exit_9000000000942",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 122
+    },
+    {
+      "terminal_id": "exit_9000000000942",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 44
+    },
+    {
+      "terminal_id": "exit_9000000000942",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 22
+    },
+    {
+      "terminal_id": "exit_9000000000942",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 8
+    },
+    {
+      "terminal_id": "exit_9000000012183",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 144
+    },
+    {
+      "terminal_id": "exit_9000000012183",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 52
+    },
+    {
+      "terminal_id": "exit_9000000012183",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 25
+    },
+    {
+      "terminal_id": "exit_9000000012183",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 9
+    },
+    {
+      "terminal_id": "exit_9000000020124",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 19
+    },
+    {
+      "terminal_id": "exit_9000000020124",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 7
+    },
+    {
+      "terminal_id": "exit_9000000020124",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 3
+    },
+    {
+      "terminal_id": "exit_9000000020124",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 1
+    },
+    {
+      "terminal_id": "exit_9000000024656",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 47
+    },
+    {
+      "terminal_id": "exit_9000000024656",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 29
+    },
+    {
+      "terminal_id": "exit_9000000024656",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 8
+    },
+    {
+      "terminal_id": "exit_9000000024656",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 6
+    },
+    {
+      "terminal_id": "exit_9000000024666",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 128
+    },
+    {
+      "terminal_id": "exit_9000000024666",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 70
+    },
+    {
+      "terminal_id": "exit_9000000024666",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 22
+    },
+    {
+      "terminal_id": "exit_9000000024666",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 14
+    },
+    {
+      "terminal_id": "exit_9000000027569",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 418
+    },
+    {
+      "terminal_id": "exit_9000000027569",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 196
+    },
+    {
+      "terminal_id": "exit_9000000027569",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 71
+    },
+    {
+      "terminal_id": "exit_9000000027569",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 32
+    },
+    {
+      "terminal_id": "exit_9000000032909",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type1",
+      "people": 78
+    },
+    {
+      "terminal_id": "exit_9000000032909",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type2",
+      "people": 61
+    },
+    {
+      "terminal_id": "exit_9000000032909",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type3",
+      "people": 14
+    },
+    {
+      "terminal_id": "exit_9000000032909",
+      "terminal_kind": "boundary_exit",
+      "person_type": "type4",
+      "people": 11
+    },
+    {
+      "terminal_id": "shelter_2",
+      "terminal_kind": "facility",
+      "person_type": "type1",
+      "people": 241
+    },
+    {
+      "terminal_id": "shelter_2",
+      "terminal_kind": "facility",
+      "person_type": "type2",
+      "people": 64
+    },
+    {
+      "terminal_id": "shelter_2",
+      "terminal_kind": "facility",
+      "person_type": "type3",
+      "people": 42
+    },
+    {
+      "terminal_id": "shelter_2",
+      "terminal_kind": "facility",
+      "person_type": "type4",
+      "people": 12
+    },
+    {
+      "terminal_id": "shelter_4",
+      "terminal_kind": "facility",
+      "person_type": "type1",
+      "people": 861
+    },
+    {
+      "terminal_id": "shelter_4",
+      "terminal_kind": "facility",
+      "person_type": "type2",
+      "people": 407
+    },
+    {
+      "terminal_id": "shelter_4",
+      "terminal_kind": "facility",
+      "person_type": "type3",
+      "people": 149
+    },
+    {
+      "terminal_id": "shelter_4",
+      "terminal_kind": "facility",
+      "person_type": "type4",
+      "people": 72
+    },
+    {
+      "terminal_id": "shelter_8",
+      "terminal_kind": "facility",
+      "person_type": "type1",
+      "people": 289
+    },
+    {
+      "terminal_id": "shelter_8",
+      "terminal_kind": "facility",
+      "person_type": "type2",
+      "people": 139
+    },
+    {
+      "terminal_id": "shelter_8",
+      "terminal_kind": "facility",
+      "person_type": "type3",
+      "people": 51
+    },
+    {
+      "terminal_id": "shelter_8",
+      "terminal_kind": "facility",
+      "person_type": "type4",
+      "people": 28
+    }
+  ],
+  "facilities": [
+    {
+      "terminal_id": "shelter_2",
+      "capacity": 195,
+      "admitted": 195
+    },
+    {
+      "terminal_id": "shelter_3",
+      "capacity": 519,
+      "admitted": 0
+    },
+    {
+      "terminal_id": "shelter_4",
+      "capacity": 193,
+      "admitted": 193
+    },
+    {
+      "terminal_id": "shelter_8",
+      "capacity": 100,
+      "admitted": 100
+    }
+  ],
+  "event_counts": {
+    "closure_applied": 13665,
+    "private_departure_requested": 3881,
+    "walk_departure": 349,
+    "person_terminal": 9287,
+    "drt_route": 42,
+    "drt_assigned": 21,
+    "boarding_started": 21,
+    "drt_boarded": 21,
+    "alighting_started": 21,
+    "drt_alighted": 21,
+    "actor_removed": 3,
+    "walk_reroute": 1,
+    "vehicle_closure_control": 1
+  },
+  "control_reasons": {
+    "actor_removed:route_cut": 2,
+    "vehicle_closure_control:remove_current": 1,
+    "actor_removed:initial_or_current_closed": 1
+  },
+  "control_examples": {
+    "actor_removed:route_cut": {
+      "time_sec": 1499.5,
+      "event": "actor_removed",
+      "actor_id": "scen_c_origin_0242_0010",
+      "mode": "passenger",
+      "reason": "route_cut"
+    },
+    "vehicle_closure_control:remove_current": {
+      "time_sec": 2999.5,
+      "event": "vehicle_closure_control",
+      "vehicle_id": "scen_c_origin_0330_0005",
+      "current_edge": "8375",
+      "next_external": "",
+      "action": "remove_current"
+    },
+    "actor_removed:initial_or_current_closed": {
+      "time_sec": 2999.5,
+      "event": "actor_removed",
+      "actor_id": "scen_c_origin_0330_0005",
+      "mode": "passenger",
+      "reason": "initial_or_current_closed"
+    }
+  },
+  "closure_clock": [
+    {
+      "scheduled_sec": 0,
+      "control_call_sec": 0.0,
+      "observation_upper_sec": 0,
+      "control_lead_sec": 0.0,
+      "phase": "initial_before_observation",
+      "closures": 6172
+    },
+    {
+      "scheduled_sec": 300,
+      "control_call_sec": 299.5,
+      "observation_upper_sec": 300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 57
+    },
+    {
+      "scheduled_sec": 600,
+      "control_call_sec": 599.5,
+      "observation_upper_sec": 600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 89
+    },
+    {
+      "scheduled_sec": 900,
+      "control_call_sec": 899.5,
+      "observation_upper_sec": 900,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 105
+    },
+    {
+      "scheduled_sec": 1200,
+      "control_call_sec": 1199.5,
+      "observation_upper_sec": 1200,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 129
+    },
+    {
+      "scheduled_sec": 1500,
+      "control_call_sec": 1499.5,
+      "observation_upper_sec": 1500,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 115
+    },
+    {
+      "scheduled_sec": 1800,
+      "control_call_sec": 1799.5,
+      "observation_upper_sec": 1800,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 116
+    },
+    {
+      "scheduled_sec": 2100,
+      "control_call_sec": 2099.5,
+      "observation_upper_sec": 2100,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 168
+    },
+    {
+      "scheduled_sec": 2400,
+      "control_call_sec": 2399.5,
+      "observation_upper_sec": 2400,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 206
+    },
+    {
+      "scheduled_sec": 2700,
+      "control_call_sec": 2699.5,
+      "observation_upper_sec": 2700,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 195
+    },
+    {
+      "scheduled_sec": 3000,
+      "control_call_sec": 2999.5,
+      "observation_upper_sec": 3000,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 168
+    },
+    {
+      "scheduled_sec": 3300,
+      "control_call_sec": 3299.5,
+      "observation_upper_sec": 3300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 128
+    },
+    {
+      "scheduled_sec": 3600,
+      "control_call_sec": 3599.5,
+      "observation_upper_sec": 3600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 126
+    },
+    {
+      "scheduled_sec": 3900,
+      "control_call_sec": 3899.5,
+      "observation_upper_sec": 3900,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 123
+    },
+    {
+      "scheduled_sec": 4200,
+      "control_call_sec": 4199.5,
+      "observation_upper_sec": 4200,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 160
+    },
+    {
+      "scheduled_sec": 4500,
+      "control_call_sec": 4499.5,
+      "observation_upper_sec": 4500,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 143
+    },
+    {
+      "scheduled_sec": 4800,
+      "control_call_sec": 4799.5,
+      "observation_upper_sec": 4800,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 126
+    },
+    {
+      "scheduled_sec": 5100,
+      "control_call_sec": 5099.5,
+      "observation_upper_sec": 5100,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 107
+    },
+    {
+      "scheduled_sec": 5400,
+      "control_call_sec": 5399.5,
+      "observation_upper_sec": 5400,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 137
+    },
+    {
+      "scheduled_sec": 5700,
+      "control_call_sec": 5699.5,
+      "observation_upper_sec": 5700,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 126
+    },
+    {
+      "scheduled_sec": 6000,
+      "control_call_sec": 5999.5,
+      "observation_upper_sec": 6000,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 175
+    },
+    {
+      "scheduled_sec": 6300,
+      "control_call_sec": 6299.5,
+      "observation_upper_sec": 6300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 155
+    },
+    {
+      "scheduled_sec": 6600,
+      "control_call_sec": 6599.5,
+      "observation_upper_sec": 6600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 166
+    },
+    {
+      "scheduled_sec": 6900,
+      "control_call_sec": 6899.5,
+      "observation_upper_sec": 6900,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 163
+    },
+    {
+      "scheduled_sec": 7200,
+      "control_call_sec": 7199.5,
+      "observation_upper_sec": 7200,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 112
+    },
+    {
+      "scheduled_sec": 7500,
+      "control_call_sec": 7499.5,
+      "observation_upper_sec": 7500,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 122
+    },
+    {
+      "scheduled_sec": 7800,
+      "control_call_sec": 7799.5,
+      "observation_upper_sec": 7800,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 93
+    },
+    {
+      "scheduled_sec": 8100,
+      "control_call_sec": 8099.5,
+      "observation_upper_sec": 8100,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 108
+    },
+    {
+      "scheduled_sec": 8400,
+      "control_call_sec": 8399.5,
+      "observation_upper_sec": 8400,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 112
+    },
+    {
+      "scheduled_sec": 8700,
+      "control_call_sec": 8699.5,
+      "observation_upper_sec": 8700,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 108
+    },
+    {
+      "scheduled_sec": 9000,
+      "control_call_sec": 8999.5,
+      "observation_upper_sec": 9000,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 113
+    },
+    {
+      "scheduled_sec": 9300,
+      "control_call_sec": 9299.5,
+      "observation_upper_sec": 9300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 107
+    },
+    {
+      "scheduled_sec": 9600,
+      "control_call_sec": 9599.5,
+      "observation_upper_sec": 9600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 96
+    },
+    {
+      "scheduled_sec": 9900,
+      "control_call_sec": 9899.5,
+      "observation_upper_sec": 9900,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 96
+    },
+    {
+      "scheduled_sec": 10200,
+      "control_call_sec": 10199.5,
+      "observation_upper_sec": 10200,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 100
+    },
+    {
+      "scheduled_sec": 10500,
+      "control_call_sec": 10499.5,
+      "observation_upper_sec": 10500,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 105
+    },
+    {
+      "scheduled_sec": 10800,
+      "control_call_sec": 10799.5,
+      "observation_upper_sec": 10800,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 122
+    },
+    {
+      "scheduled_sec": 11100,
+      "control_call_sec": 11099.5,
+      "observation_upper_sec": 11100,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 94
+    },
+    {
+      "scheduled_sec": 11400,
+      "control_call_sec": 11399.5,
+      "observation_upper_sec": 11400,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 76
+    },
+    {
+      "scheduled_sec": 11700,
+      "control_call_sec": 11699.5,
+      "observation_upper_sec": 11700,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 109
+    },
+    {
+      "scheduled_sec": 12000,
+      "control_call_sec": 11999.5,
+      "observation_upper_sec": 12000,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 101
+    },
+    {
+      "scheduled_sec": 12300,
+      "control_call_sec": 12299.5,
+      "observation_upper_sec": 12300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 66
+    },
+    {
+      "scheduled_sec": 12600,
+      "control_call_sec": 12599.5,
+      "observation_upper_sec": 12600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 70
+    },
+    {
+      "scheduled_sec": 12900,
+      "control_call_sec": 12899.5,
+      "observation_upper_sec": 12900,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 75
+    },
+    {
+      "scheduled_sec": 13200,
+      "control_call_sec": 13199.5,
+      "observation_upper_sec": 13200,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 85
+    },
+    {
+      "scheduled_sec": 13500,
+      "control_call_sec": 13499.5,
+      "observation_upper_sec": 13500,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 104
+    },
+    {
+      "scheduled_sec": 13800,
+      "control_call_sec": 13799.5,
+      "observation_upper_sec": 13800,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 109
+    },
+    {
+      "scheduled_sec": 14100,
+      "control_call_sec": 14099.5,
+      "observation_upper_sec": 14100,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 79
+    },
+    {
+      "scheduled_sec": 14400,
+      "control_call_sec": 14399.5,
+      "observation_upper_sec": 14400,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 79
+    },
+    {
+      "scheduled_sec": 14700,
+      "control_call_sec": 14699.5,
+      "observation_upper_sec": 14700,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 81
+    },
+    {
+      "scheduled_sec": 15000,
+      "control_call_sec": 14999.5,
+      "observation_upper_sec": 15000,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 74
+    },
+    {
+      "scheduled_sec": 15300,
+      "control_call_sec": 15299.5,
+      "observation_upper_sec": 15300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 49
+    },
+    {
+      "scheduled_sec": 15600,
+      "control_call_sec": 15599.5,
+      "observation_upper_sec": 15600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 74
+    },
+    {
+      "scheduled_sec": 15900,
+      "control_call_sec": 15899.5,
+      "observation_upper_sec": 15900,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 72
+    },
+    {
+      "scheduled_sec": 16200,
+      "control_call_sec": 16199.5,
+      "observation_upper_sec": 16200,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 75
+    },
+    {
+      "scheduled_sec": 16500,
+      "control_call_sec": 16499.5,
+      "observation_upper_sec": 16500,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 46
+    },
+    {
+      "scheduled_sec": 16800,
+      "control_call_sec": 16799.5,
+      "observation_upper_sec": 16800,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 73
+    },
+    {
+      "scheduled_sec": 17100,
+      "control_call_sec": 17099.5,
+      "observation_upper_sec": 17100,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 74
+    },
+    {
+      "scheduled_sec": 17400,
+      "control_call_sec": 17399.5,
+      "observation_upper_sec": 17400,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 51
+    },
+    {
+      "scheduled_sec": 17700,
+      "control_call_sec": 17699.5,
+      "observation_upper_sec": 17700,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 84
+    },
+    {
+      "scheduled_sec": 18000,
+      "control_call_sec": 17999.5,
+      "observation_upper_sec": 18000,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 84
+    },
+    {
+      "scheduled_sec": 18300,
+      "control_call_sec": 18299.5,
+      "observation_upper_sec": 18300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 99
+    },
+    {
+      "scheduled_sec": 18600,
+      "control_call_sec": 18599.5,
+      "observation_upper_sec": 18600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 101
+    },
+    {
+      "scheduled_sec": 18900,
+      "control_call_sec": 18899.5,
+      "observation_upper_sec": 18900,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 112
+    },
+    {
+      "scheduled_sec": 19200,
+      "control_call_sec": 19199.5,
+      "observation_upper_sec": 19200,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 89
+    },
+    {
+      "scheduled_sec": 19500,
+      "control_call_sec": 19499.5,
+      "observation_upper_sec": 19500,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 92
+    },
+    {
+      "scheduled_sec": 19800,
+      "control_call_sec": 19799.5,
+      "observation_upper_sec": 19800,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 88
+    },
+    {
+      "scheduled_sec": 20100,
+      "control_call_sec": 20099.5,
+      "observation_upper_sec": 20100,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 102
+    },
+    {
+      "scheduled_sec": 20400,
+      "control_call_sec": 20399.5,
+      "observation_upper_sec": 20400,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 80
+    },
+    {
+      "scheduled_sec": 20700,
+      "control_call_sec": 20699.5,
+      "observation_upper_sec": 20700,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 63
+    },
+    {
+      "scheduled_sec": 21000,
+      "control_call_sec": 20999.5,
+      "observation_upper_sec": 21000,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 67
+    },
+    {
+      "scheduled_sec": 21300,
+      "control_call_sec": 21299.5,
+      "observation_upper_sec": 21300,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 66
+    },
+    {
+      "scheduled_sec": 21600,
+      "control_call_sec": 21599.5,
+      "observation_upper_sec": 21600,
+      "control_lead_sec": 0.5,
+      "phase": "before_step_ending_at_closure",
+      "closures": 73
+    }
+  ],
+  "warnings": {},
+  "checks": {
+    "population_and_common": true,
+    "request_bijection": true,
+    "terminal_events_and_times": true,
+    "facility_accounts": true,
+    "drt_event_endpoints": true,
+    "duration_nonnegative": true,
+    "closure_three_clocks": true
+  },
+  "candidates": {
+    "rows": 828313,
+    "groups": [
+      {
+        "decision": "not_selected",
+        "reason": "eligible",
+        "gate_class": "not_applicable",
+        "rows": 2473
+      },
+      {
+        "decision": "not_selected",
+        "reason": "eligible",
+        "gate_class": "pass",
+        "rows": 291
+      },
+      {
+        "decision": "not_selected",
+        "reason": "forecast_gate",
+        "gate_class": "reject",
+        "rows": 133
+      },
+      {
+        "decision": "not_selected",
+        "reason": "no_pickup_route",
+        "gate_class": "not_applicable",
+        "rows": 510564
+      },
+      {
+        "decision": "not_selected",
+        "reason": "no_pickup_route",
+        "gate_class": "reject",
+        "rows": 314831
+      },
+      {
+        "decision": "selected",
+        "reason": "eligible",
+        "gate_class": "not_applicable",
+        "rows": 17
+      },
+      {
+        "decision": "selected",
+        "reason": "eligible",
+        "gate_class": "pass",
+        "rows": 4
+      }
+    ],
+    "checks": {
+      "row_count": true,
+      "strict_gate_recomputed": true,
+      "required_terms_recomputed": true
+    }
+  },
+  "roads": {
+    "rows": 19197258,
+    "snapshots": 361,
+    "edge_mode_pairs": 53178,
+    "by_mode": [
+      {
+        "mode": "car",
+        "rows": 6430132,
+        "zero_rows": 6422208,
+        "occupied_rows": 7924,
+        "count": 8897,
+        "halting_count": 80,
+        "weighted_speed": 127813.5231788822,
+        "closed": 1438570
+      },
+      {
+        "mode": "drt",
+        "rows": 6430132,
+        "zero_rows": 6429607,
+        "occupied_rows": 525,
+        "count": 1416,
+        "halting_count": 1325,
+        "weighted_speed": 1168.0741940938,
+        "closed": 1438570
+      },
+      {
+        "mode": "walk",
+        "rows": 6336994,
+        "zero_rows": 6328941,
+        "occupied_rows": 8053,
+        "count": 10386,
+        "halting_count": 9,
+        "weighted_speed": 7889.204024652,
+        "closed": 2292805
+      }
+    ],
+    "checks": {
+      "all_keys_once": true,
+      "observed_status": true,
+      "zero_speed_null_semantics": true,
+      "count_and_halting_bounds": true
+    }
+  },
+  "transitions": {
+    "rows": 255986,
+    "closed_entries": 0,
+    "ambiguous": 0,
+    "groups": [
+      {
+        "mode": "passenger",
+        "kind": "transition",
+        "rows": 240865
+      },
+      {
+        "mode": "pedestrian",
+        "kind": "transition",
+        "rows": 15121
+      }
+    ],
+    "checks": {
+      "hazard_time_recomputed": true
+    }
+  }
+}

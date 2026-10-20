@@ -1,0 +1,51 @@
+{
+  "protocol": "realtime_choice_v1",
+  "registered_cells": 70,
+  "recorded_cells": 0,
+  "running": [],
+  "unrecorded": [],
+  "partial_records": [],
+  "record_identity_mismatch": [],
+  "unresolved_failures": [],
+  "unresolved_launches": [],
+  "pending_record_journals": [],
+  "foreign_running_manifests": [],
+  "next_cell": {
+    "cell_id": "fixed_reference_r0_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": null,
+    "scenario": "R0",
+    "seed": 23423
+  },
+  "smoke_completed": [
+    "choice_smoke_u05r1_seed23423_20261017_03",
+    "choice_smoke_u05r1_seed23423_20261017_04",
+    "choice_smoke_u05r1_seed23423_20261017_06",
+    "choice_smoke_u05r1_seed23423_20261017_07",
+    "choice_smoke_u05r2p900_seed23423_20261017_01",
+    "choice_smoke_u05r2p900_seed23423_20261017_02",
+    "choice_smoke_u50r2p0_seed23423_20261017_01",
+    "cs261017c_01",
+    "cs261017c_02",
+    "cs261017c_03",
+    "cs261017c_04",
+    "cs261017c_05",
+    "cs261017c_06",
+    "cs261017c_07",
+    "cs261017c_08",
+    "cs261017c_09",
+    "cs261017c_10",
+    "cs261017c_11",
+    "cs261017c_12",
+    "cs261017c_13",
+    "cs261017c_14"
+  ],
+  "failed": [
+    "choice_smoke_u05r1_seed23423_20261017_01",
+    "choice_smoke_u05r1_seed23423_20261017_02",
+    "choice_smoke_u05r1_seed23423_20261017_05"
+  ],
+  "active_native_processes": [],
+  "core_ready": true,
+  "core_start_available": true
+}

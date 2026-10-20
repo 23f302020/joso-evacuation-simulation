@@ -1,0 +1,43 @@
+{
+  "schema": "choice_smoke_sequence_skill_migration_v1",
+  "at_jst": "2026-10-18T15:34:00+09:00",
+  "reason": "The same 14-setting sequential technical-smoke procedure was run repeatedly; consolidate it into the Joso JDRT runner skill as authorized.",
+  "history": {
+    "old_entry": "06_研究結果/jdrt/goal_20261017/G4_最終14設定smoke逐次実行.py",
+    "old_sha256": "e398ee9b339b4e82def305efd87bc7df74035a00dc02368a00f87e51112cf0fa",
+    "old_archive": "06_研究結果/jdrt/goal_20261017/skill_history/G4_最終14設定smoke逐次実行_e398ee9b339b4e82def305efd87bc7df74035a00dc02368a00f87e51112cf0fa.py",
+    "new_entry": ".agents/skills/joso-jdrt-runner/scripts/choice_smoke_sequence.py",
+    "new_sha256": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920",
+    "compatibility_wrapper_sha256": "f55b1f46f93c77436d7453c456e1f45c5554d90fc58430814e7669db804b5731",
+    "routine_operations_before_sha256": "1e8a5e9cd84f726e9c32abc6c97500aa7b7c43133a67b5758e86c13d40fc3c32",
+    "routine_operations_archive": "06_研究結果/jdrt/goal_20261017/skill_history/routine_operations_1e8a5e9cd84f726e9c32abc6c97500aa7b7c43133a67b5758e86c13d40fc3c32.md",
+    "routine_operations_after_sha256": "69787bb9c835173e78592a03c2214ea41422d21e7d36f3346482cc7c6d93168d"
+  },
+  "scope": "Only ROOT/OUT location derivation changed in migrated main; old entry is a runpy wrapper preserving argv. No smoke/core was run. No common-five, CLI, validator, config or input touched.",
+  "validation": {
+    "source_equivalence": "PASS: exact expected source equals legacy source after the two location-only replacements",
+    "ast_parse_compile": "PASS",
+    "new_help_exit_code": 0,
+    "compatibility_wrapper_help_exit_code": 0,
+    "help_options_equivalent": "PASS",
+    "help_options": [
+      "usage: choice_smoke_sequence.py [-h] --prefix PREFIX --audit AUDIT",
+      "",
+      "options:",
+      "  -h, --help       show this help message and exit",
+      "  --prefix PREFIX",
+      "  --audit AUDIT"
+    ],
+    "run_performed": false,
+    "syntax_compile": "PASS: both entrypoints compile without writing bytecode",
+    "compatibility_wrapper_argv": "PASS: wrapper does not alter sys.argv; parsed --help output is byte-identical",
+    "routine_reference_link": "PASS",
+    "skill_creator_quick_validate": "BLOCKED: missing PyYAML (`ModuleNotFoundError: No module named yaml`) under both project and bundled Python; no dependency installed"
+  },
+  "requested_model": "gpt-6-luna",
+  "reasoning_effort_requested": "low",
+  "actual_backend_identity": "not independently verified",
+  "routine_operations_sha256": "69787bb9c835173e78592a03c2214ea41422d21e7d36f3346482cc7c6d93168d",
+  "compatibility_wrapper_sha256": "f55b1f46f93c77436d7453c456e1f45c5554d90fc58430814e7669db804b5731",
+  "new_sha256": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920"
+}

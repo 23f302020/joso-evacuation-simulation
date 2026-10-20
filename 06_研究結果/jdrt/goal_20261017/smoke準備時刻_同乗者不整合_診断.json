@@ -1,0 +1,42 @@
+{
+  "at_jst": "2026-10-17T17:59:42.520861+09:00",
+  "action": "smoke_private_crew_readiness_diagnosed_and_fixed",
+  "failed_run": "cs261017a_01",
+  "failed_sequence": "cs261017a",
+  "sequence_session": 3285,
+  "sequence_exit": 1,
+  "reason": "index_mod10 per person overrode shared crew ready; 5 passengers moved before ready; FSM independent rejection correct",
+  "disposition": "original manifest preserved and run INVALID via skill reject; no ledger adoption; no subsequent setting started",
+  "research_input_crew_audit": {
+    "23423": {
+      "vehicles": 4424,
+      "inconsistent": 0
+    },
+    "42": {
+      "vehicles": 4424,
+      "inconsistent": 0
+    },
+    "1": {
+      "vehicles": 4424,
+      "inconsistent": 0
+    },
+    "7": {
+      "vehicles": 4424,
+      "inconsistent": 0
+    },
+    "101": {
+      "vehicles": 4424,
+      "inconsistent": 0
+    }
+  },
+  "research_input_changed": false,
+  "unit_PASS": 49,
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "ca7a5ceb7f07753100b7234e62f31c078ef92e82d13b6b30c748c334178f1c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "b1b2831a4b79afe2fb3733498af387eb3b5a145ab5bfe32d5bf44672aad2120b"
+  },
+  "next": "new full21 cf26101716 plus independent audit, then new14 sequence; prior cf15 historical after common source repair"
+}

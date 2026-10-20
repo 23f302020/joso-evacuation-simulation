@@ -1,0 +1,52 @@
+{
+  "run_id": "choice_smoke_u05r1_seed23423_20261017_07",
+  "at_jst": "2026-10-17T09:58:19.470515+09:00",
+  "scope": "partial_candidate_smoke_audit_not_formal_core_acceptance",
+  "status": "FAIL",
+  "checks": {
+    "candidate_matrix": true,
+    "candidate_free_stage_count": true,
+    "candidate_source_observation": true,
+    "candidate_registered_positions": true,
+    "candidate_shortest_time": true,
+    "candidate_open_path": true,
+    "candidate_gate_components": true,
+    "candidate_forecast_required": false,
+    "candidate_score_components": true,
+    "candidate_ineligible_score": true,
+    "candidate_score": true,
+    "candidate_choice_and_acceptance": true,
+    "cycle_primary_counts": true
+  },
+  "candidate_rows": 53,
+  "candidate_stages": 6,
+  "cycles": 31,
+  "errors": {
+    "candidate_forecast_required": [
+      [
+        [
+          2,
+          1
+        ],
+        "b_origin_0384_type4_0002"
+      ],
+      [
+        [
+          2,
+          1
+        ],
+        "b_origin_0056_type3_0009"
+      ],
+      [
+        [
+          2,
+          2
+        ],
+        "b_origin_0056_type3_0009"
+      ]
+    ]
+  },
+  "core_adoption_permitted": false,
+  "auditor_sha256": "9ac25b5baea9c6ada8c6a6b42398a247a3991bcd50b8b12f83d173a2a20777a2",
+  "manifest_sha256": "c83d6d259c48e162e7c971e8341375dce09fe66c459da02f81e84a6ad7473492"
+}

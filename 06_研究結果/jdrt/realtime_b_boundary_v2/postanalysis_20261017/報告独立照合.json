@@ -1,0 +1,143 @@
+{
+  "at_jst": "2026-10-17T00:30:02.042841+09:00",
+  "cells": [
+    {
+      "run_id": "rtbb2_core_r0_seed23423_20261016T182150",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed23423_20261016T183134",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 30,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed23423_20261016T184653",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 18,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed42_20261016T190325",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed42_20261016T191543",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 75,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed42_20261016T193033",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 17,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed1_20261016T194541",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed1_20261016T200038",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 55,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed1_20261016T201545",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 12,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed7_20261016T203031",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed7_20261016T204541",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 83,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed7_20261016T210045",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 21,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r0_seed101_20261016T211544",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 0,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r1_seed101_20261016T231553",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 81,
+      "candidate_rows_reconcile": true
+    },
+    {
+      "run_id": "rtbb2_core_r2_seed101_20261016T233034",
+      "independent_person_groups": true,
+      "selected_candidates_equal_assignments": true,
+      "selected": 26,
+      "candidate_rows_reconcile": true
+    }
+  ],
+  "paired_count_accounts": true,
+  "common_person_realization": true,
+  "initial_graph_diagnostic": {
+    "definition": "Initial closure removed passenger graph; directed reachability from registered depot only. Not dispatch outcome or future vehicle position.",
+    "depot_edge": "11531#5",
+    "reachable_graph_nodes": 7378,
+    "initial_graph_nodes": 15750,
+    "origin_count": 167,
+    "reachable_origin_count": 87,
+    "population_by_type": [
+      {
+        "person_type": "type1",
+        "people": 7114,
+        "initial_depot_reachable": 3262
+      },
+      {
+        "person_type": "type2",
+        "people": 3052,
+        "initial_depot_reachable": 1556
+      },
+      {
+        "person_type": "type3",
+        "people": 1255,
+        "initial_depot_reachable": 571
+      },
+      {
+        "person_type": "type4",
+        "people": 544,
+        "initial_depot_reachable": 276
+      }
+    ],
+    "no_policy_change": true
+  }
+}

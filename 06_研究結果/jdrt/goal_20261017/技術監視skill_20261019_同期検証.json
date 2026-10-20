@@ -1,0 +1,41 @@
+{
+  "monitor_report": "06_研究結果/jdrt/goal_20261017/技術監視_wf26101801_20261019T093333093993.json",
+  "report_sha256": "a503a8bac408369e0b949d9a04cb82b0e54b27faceac713c7d54df8fb3de8ce6",
+  "at_jst": "2026-10-19T09:33:33.093993+09:00",
+  "synchronized_entry_counts": {
+    "06_研究結果\\jdrt\\goal_20261017\\operations.jsonl": 1,
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\driver_logs\\operations.jsonl": 1,
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\driver_logs\\monitoring.jsonl": 1
+  },
+  "exact_JSONL_content_match": true,
+  "original_files_checked": 77,
+  "originals_still_unchanged": true,
+  "common_five_SHA": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "recorded": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+      "current": "b2e60b3a556399ff378bfb7495be375e2c7abfc07ab4b41824012e5232d654c2",
+      "archive": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": {
+      "recorded": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "current": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+      "archive": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "recorded": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+      "current": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+      "archive": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6"
+    },
+    "04_プログラム/scripts/jdrt_choice_policy.py": {
+      "recorded": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "current": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "archive": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7"
+    },
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": {
+      "recorded": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846",
+      "current": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846",
+      "archive": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+    }
+  },
+  "helper_source_sha256": "72ecc92a8c1acc70863215d307f65b6ccbfbf44586b309b7b12eb70098581e75"
+}

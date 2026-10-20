@@ -1,0 +1,23 @@
+{
+  "at_jst": "2026-10-18T10:25:49.013053+09:00",
+  "action": "all_cell_gated_primary_analysis_component_prepared",
+  "source": "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py",
+  "sha256": "229311463b80f1ac257819e632aa1080bab45c006146234ed91e842f501b078d",
+  "test_source": "06_研究結果/jdrt/goal_20261017/G6_主指標集計_契約テスト.py",
+  "contract_test_log_sha256": "5b15d6b0e14a3464bf1befc8e724e85e36a7ab55bd507d315bb9880025435ed4",
+  "contract_tests": "PASS: time0/exit-H integral, exit admission/missing population rejection, incomplete set before outputs, shared R0/percentage-point scale/denominator mismatch",
+  "actual_incomplete_ledger_gate": {
+    "exit_code": 1,
+    "expected_refusal": true,
+    "result_directories_created": []
+  },
+  "research_results_generated": false,
+  "remaining_G6": [
+    "diagnostic contrasts and difference in differences",
+    "all request wait/censoring lifecycle",
+    "candidate/road/movement/vehicle secondary data",
+    "bounds workload joint interpretation",
+    "full report and goal completion audit"
+  ],
+  "common_runtime_or_inputs_changed": false
+}

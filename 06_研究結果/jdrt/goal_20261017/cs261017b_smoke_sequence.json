@@ -1,0 +1,27 @@
+{
+  "protocol": "realtime_choice_v1",
+  "purpose": "technical_smoke_sequence",
+  "pid": 25724,
+  "status": "FAILED",
+  "started_at_jst": "2026-10-17T18:02:29.936659+09:00",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "ca7a5ceb7f07753100b7234e62f31c078ef92e82d13b6b30c748c334178f1c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "b1b2831a4b79afe2fb3733498af387eb3b5a145ab5bfe32d5bf44672aad2120b"
+  },
+  "audit_path": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261017T180218.json",
+  "audit_sha256": "e5dc6316d0e8dd43b826ee892c8149c556281a69bbaba93cc67fbae8a10d95f0",
+  "runner_sha256": "9cf8c09890e851c06204ed561727a415494c6b2da1970b6b650999f585f1312b",
+  "research_adoption_permitted": false,
+  "completed": [],
+  "active": {
+    "run_id": "cs261017b_01",
+    "cell_id": "fixed_reference_r0_seed23423",
+    "started_at_jst": "2026-10-17T18:02:29.941076+09:00"
+  },
+  "finished_at_jst": "2026-10-17T18:02:29.943815+09:00",
+  "error_type": "PermissionError",
+  "error": "[WinError 5] アクセスが拒否されました。: 'C:\\\\Users\\\\Ko_rr\\\\OneDrive - stu.teikyo-u.ac.jp\\\\研究室\\\\4年次本研究\\\\06_研究結果\\\\jdrt\\\\goal_20261017\\\\cs261017b_smoke_sequence.tmp' -> 'C:\\\\Users\\\\Ko_rr\\\\OneDrive - stu.teikyo-u.ac.jp\\\\研究室\\\\4年次本研究\\\\06_研究結果\\\\jdrt\\\\goal_20261017\\\\cs261017b_smoke_sequence.json'"
+}

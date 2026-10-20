@@ -1,0 +1,1844 @@
+{
+  "at_jst": "2026-10-17T16:47:06.033103+09:00",
+  "status": "FAIL",
+  "scope": "canonical_validator_partial_tables_historical_fixture_diagnostics_not_READY",
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "historical_fixture_components": [
+    {
+      "run_id": "cf26101710_c01",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:52.290369+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 8,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 7,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c02",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:53.018412+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c03",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:53.736559+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 55,
+          "road_rows": 2016,
+          "grid_bytes": 2016,
+          "sparse_occupied_keys": 55,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c04",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:54.426083+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c05",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:55.078677+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 4,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c06",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:55.789623+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c07",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:56.866249+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 6,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 6,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c08",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:57.765350+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c09",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:58.507929+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 14,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 37,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 37,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c10",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:59.202112+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c11",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:46:59.960658+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 12,
+          "cycles": 34,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 32,
+          "road_rows": 816,
+          "grid_bytes": 816,
+          "sparse_occupied_keys": 32,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c12",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:47:00.717702+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 3,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 12,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 4,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c13",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:47:01.423930+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 1,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 1,
+          "cycles": 12,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 10,
+          "road_rows": 288,
+          "grid_bytes": 288,
+          "sparse_occupied_keys": 10,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c14",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:47:02.085736+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 780,
+          "grid_bytes": 780,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c15",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:47:02.823410+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 0,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 0,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    },
+    {
+      "run_id": "cf26101710_c16",
+      "purpose": "fixture",
+      "scope": "partial_run_tables_not_formal_acceptance",
+      "at_jst": "2026-10-17T16:47:03.454016+09:00",
+      "core_adoption_permitted": false,
+      "technical_ready": false,
+      "historical_diagnostic": true,
+      "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+      "verifier_dependencies": {
+        "numpy": "2.4.4",
+        "scipy": "1.16.3",
+        "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+        "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+      },
+      "pending": [
+        "streaming_actor_completeness_routes_transitions_and_walk_budget",
+        "independent_backend_vkt",
+        "native_error_warning_classification",
+        "formal_adoption_and_preflight_transaction"
+      ],
+      "status": "INCOMPLETE",
+      "checks": {
+        "terminal_completed_identity": true,
+        "protocol_config_input_identity": true,
+        "isolated_technical_fixture": true,
+        "registered_cell": true,
+        "registered_clocks": true,
+        "complete_output_file_set": true,
+        "common_implementation_set": true,
+        "implementation_archives_match_manifest": true,
+        "all_bound_bytes_before": true,
+        "all_bound_bytes_after": true
+      },
+      "components": {
+        "person_tables": {
+          "status": "PASS",
+          "checks": {
+            "unique_tables": true,
+            "complete_population": true,
+            "common_realization_and_attributes": true,
+            "assigned_intent_mode_terminal": true,
+            "request_set": true,
+            "vehicle_set": true,
+            "event_clock": true,
+            "state_chains": true,
+            "request_fsm": true,
+            "request_lifecycle": true,
+            "shared_capacity_and_exit": true,
+            "closure_clocks": true,
+            "waiting_hazard_overlap": true,
+            "summary_accounting": true
+          },
+          "errors": {},
+          "examples": {},
+          "people": 1,
+          "requests": 0,
+          "primary_denominator": 0,
+          "primary_admitted": 0,
+          "primary_boundary_exit_separate": 0,
+          "primary_unaccepted_person_sec": 0,
+          "core_adoption_permitted": false
+        },
+        "candidate_tables": {
+          "status": "PASS",
+          "checks": {
+            "dispatch_grid": true,
+            "candidate_matrix": true,
+            "candidate_free_stages": true,
+            "candidate_source": true,
+            "candidate_positions": true,
+            "candidate_shortest_paths": true,
+            "candidate_gates": true,
+            "candidate_score_components": true,
+            "candidate_score": true,
+            "candidate_selection": true,
+            "cycle_counts": true
+          },
+          "errors": {},
+          "examples": {},
+          "candidate_rows": 0,
+          "cycles": 0,
+          "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+          "numeric_time_tolerance_sec": 1e-07,
+          "required_sum_tolerance_sec": 1e-09,
+          "strict_gate_predicates_checked_separately": true,
+          "core_adoption_permitted": false
+        },
+        "road_snapshots": {
+          "status": "PASS",
+          "checks": {
+            "snapshot_actor_identity_phase": true,
+            "snapshot_actor_states": true,
+            "native_edge_membership": true,
+            "full_road_grid": true,
+            "snapshot_primary_reaggregation": true
+          },
+          "errors": {},
+          "examples": {},
+          "snapshot_actor_rows": 1,
+          "road_rows": 624,
+          "grid_bytes": 624,
+          "sparse_occupied_keys": 1,
+          "core_adoption_permitted": false
+        }
+      },
+      "bound_files": 39
+    }
+  ],
+  "counterexamples": [
+    {
+      "case": "population_missing",
+      "expected": "complete_population",
+      "pass": true,
+      "failed_checks": [
+        "complete_population"
+      ]
+    },
+    {
+      "case": "population_duplicate",
+      "expected": "unique_tables",
+      "pass": true,
+      "failed_checks": [
+        "unique_tables"
+      ]
+    },
+    {
+      "case": "source_attribute_corrupted",
+      "expected": "common_realization_and_attributes",
+      "pass": false,
+      "failed_checks": [
+        "invalid literal for int() with base 10: '1.0'"
+      ]
+    },
+    {
+      "case": "request_omitted",
+      "expected": "request_set",
+      "pass": true,
+      "failed_checks": [
+        "request_set",
+        "state_chains",
+        "summary_accounting"
+      ]
+    },
+    {
+      "case": "boarding_duration_corrupted",
+      "expected": "request_lifecycle",
+      "pass": true,
+      "failed_checks": [
+        "request_lifecycle"
+      ]
+    },
+    {
+      "case": "shared_capacity_account_corrupted",
+      "expected": "shared_capacity_and_exit",
+      "pass": true,
+      "failed_checks": [
+        "shared_capacity_and_exit"
+      ]
+    },
+    {
+      "case": "candidate_shortest_time_corrupted",
+      "expected": "candidate_shortest_paths",
+      "pass": true,
+      "failed_checks": [
+        "candidate_shortest_paths",
+        "candidate_gates"
+      ]
+    },
+    {
+      "case": "candidate_missing",
+      "expected": "cycle_counts",
+      "pass": true,
+      "failed_checks": [
+        "candidate_selection",
+        "cycle_counts"
+      ]
+    },
+    {
+      "case": "candidate_nan_source_speed",
+      "expected": "ValueError",
+      "pass": true,
+      "failed_checks": [
+        "Nonfinite candidate scalar: source_speed_mps"
+      ]
+    },
+    {
+      "case": "zero_road_row_missing",
+      "expected": "full_road_grid",
+      "pass": true,
+      "failed_checks": [
+        "full_road_grid"
+      ]
+    },
+    {
+      "case": "snapshot_raw_speed_corrupted",
+      "expected": "snapshot_primary_reaggregation",
+      "pass": true,
+      "failed_checks": [
+        "snapshot_primary_reaggregation"
+      ]
+    },
+    {
+      "case": "native_road_membership_corrupted",
+      "expected": "native_edge_membership",
+      "pass": true,
+      "failed_checks": [
+        "native_edge_membership"
+      ]
+    }
+  ],
+  "current_SHA_gate_rejects_old_suite": true,
+  "primary_outputs_unchanged": true,
+  "primary_files_rechecked": 272,
+  "validator_sha256": "8f9f9ad8168fa95bd6de685dc3156045b6a0da738baab771856f2e9b4bab9c4c",
+  "test_sha256": "663d5f6b662aa74531763a7a06c05f1da5ef845fdeb5e07824da9c7e52dfdbcd"
+}

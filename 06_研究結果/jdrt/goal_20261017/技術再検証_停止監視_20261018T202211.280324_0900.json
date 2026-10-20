@@ -1,0 +1,66 @@
+{
+  "at_jst": "2026-10-18T20:22:11.280324+09:00",
+  "action": "unchanged_failed_technical_pipeline_heartbeat",
+  "pipeline": "cf26101802",
+  "pipeline_status": "FAILED",
+  "pipeline_finished_at_jst": "2026-10-18T15:49:37.671578+09:00",
+  "fixture_status": "FAILED",
+  "completed_fixture_cases": 6,
+  "failed_child": "cf26101802_c07",
+  "child_status": "FAILED",
+  "child_error": "not enough values to unpack (expected 2, got 1)",
+  "progress": {
+    "at_jst": "2026-10-18T15:49:37.462000+09:00",
+    "run_id": "cf26101802_c07",
+    "time_sec": 360.0,
+    "end_sec": 2000,
+    "wall_sec": 0.9277442999882624,
+    "counts": {
+      "steps": 720,
+      "controller_ticks": 361,
+      "snapshots": 7,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 1,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 1,
+      "dispatch_cycles": 7,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 0,
+      "departure_pending_frames": 0,
+      "snapshot_actor_rows": 5
+    },
+    "people_states": {
+      "boarding": 1
+    },
+    "request_states": {
+      "boarding": 1
+    }
+  },
+  "owners_alive": {
+    "30232": false,
+    "18244": false,
+    "29820": false
+  },
+  "formal_recorded": 0,
+  "registered_cells": 70,
+  "running": [],
+  "active_native_processes": [],
+  "partial_records": [],
+  "pending_record_journals": [],
+  "implementation_matches_failed_attempt": true,
+  "source_sha256": {
+    "06_研究結果/jdrt/goal_20261017/cf26101802_revalidate.json": "aff06a8326e7dc1bda8af76544569a14627c075609f7deebcc261462f09dad52",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802/manifest.json": "8488158a3aa77cacd778e12385d85dbdfbdf0c5e81414f32673c020cbc4eaf89",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c07/execution/manifest.json": "11b554e4330ffffe961294bfe963a7956bce83e21df694fdad2a46e8aafb7d9b",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c07/execution/progress.json": "0ccb95e5b02f59fc049df65cd7a728ac1afefaa68695e25245cadb05a70ded79"
+  },
+  "free_bytes": 262329233408,
+  "goal_api_observed": "usageLimited",
+  "routine_subagent_attempted_this_heartbeat": false,
+  "routing_limitation": "Previous requested gpt-6-luna/low worker failed with workspace out of credits. No model execution or credit recovery is asserted here. Parent performs deterministic terminal-state preservation only.",
+  "simulation_or_validation_started": false,
+  "formal_adoption_created": false
+}

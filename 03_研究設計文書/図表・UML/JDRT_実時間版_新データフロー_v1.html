@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>常総市JDRT 実時間版・新データフロー v1</title>
+<style>
+:root{color-scheme:light;--ink:#153c48;--line:#c9dadd;--new:#e5f4ef;--warn:#fff3d9;--paper:#fff}
+*{box-sizing:border-box}body{margin:0;background:#f4f7f7;color:var(--ink);font:16px/1.8 "Yu Gothic UI",Meiryo,sans-serif}
+main{max-width:1150px;margin:auto;padding:36px 24px 64px}header{border-top:6px solid #197867;padding-top:24px}h1{font-size:30px;line-height:1.5;margin:6px 0 12px}h2{font-size:22px;margin:36px 0 14px}h3{font-size:17px;margin:0 0 6px}p{margin:6px 0 12px}a{color:#116a86}small{color:#526a72}.status{display:inline-block;background:var(--warn);padding:7px 16px;border-radius:6px;font-weight:bold}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:20px}.new{background:var(--new);border-color:#75ac9b}.pending{background:var(--warn);border-color:#deb96c}.tag{font-size:12px;letter-spacing:.08em;font-weight:bold;color:#32655d}.arrow{text-align:center;font-size:26px;color:#597980;line-height:1.4;margin:10px}.center{max-width:760px;margin:0 auto}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.outputs{background:#e9f0fa;border-color:#9fb8da}.note{border-left:4px solid #be8a2f;padding:10px 18px;background:#fff9ee;margin:24px 0}table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#eaf0f1}footer{margin-top:30px;font-size:14px;color:#526a72}
+@media(max-width:760px){.row,.split{grid-template-columns:1fr}h1{font-size:24px}main{padding:22px 16px}table{font-size:14px}th,td{padding:9px}}
+@media print{body{background:#fff}main{padding:10px}.card{break-inside:avoid}a{color:inherit}}
+</style></head><body><main>
+<header><small>常総市08211 ／ 独立図解 v1 ／ 2026-10-15作成</small><h1>実時間の洪水データを、<br>避難と配車の比較へつなぐ</h1><p class="status">数値水位を新規取得・道路入力は変換前 ／ 新シミュレーション未開始</p><p>現在運用を参照した2015年型洪水の反実仮想。原本・候補・採用入力・結果の役割を区別します。</p></header>
+<h2>1. 新しく加わるデータと、照合に使うデータ</h2>
+<div class="row"><article class="card new"><div class="tag">新取得・再現計算</div><h3>USACE 校正済みHDFと地形</h3><p>2015/9/9〜9/12の水位865点、保存間隔5分。7,697面積セルと477境界列。</p><small>実測水深そのものではありません。内部計算5秒と出力5分も別です。</small></article><article class="card"><div class="tag">観測・外部照合</div><h3>GSIの2015年原本</h3><p>8時点のKML線形状とPDF。浸水範囲・公表時刻を照合します。</p><small>凸包・最大深・補間で15分の観測を作りません。</small></article><article class="card"><div class="tag">運用根拠と参照入力</div><h3>交通・施設・人物</h3><p>R7実績とR8改編計画、9施設容量、避難行動調査、既存人口・乗員台帳。</p><small>災害時の利用率・4台確保・即時開設は仮定です。</small></article></div>
+<div class="arrow" aria-label="次の工程へ">↓</div>
+<article class="card pending center"><div class="tag">現在の検証工程</div><h3>2. 時計・座標・道路・初期状態をそろえる</h3><p>原本SHA → Daysから秒 → UTM54N → 道路上の地形と水位の差 → 車道・歩道・橋梁 → 到達時刻の区間と欠測。</p><p>域外を乾燥0で埋めません。橋梁の路面高を地面と同一扱いにしません。採用する領域・閾値・仮定をPAPへ固定します。</p></article>
+<div class="arrow">↓</div>
+<div class="split"><article class="card"><h3>True閉鎖表</h3><p>物理制御と独立監査用。開始時浸水を保持し、旧圧縮閉鎖とは別に保存。</p></article><article class="card"><h3>予測表</h3><p>候補はTrue時刻＋900実秒。R2だけへ渡し、R1へ未来を漏らさない。</p><small>閉鎖時刻の予測誤差です。情報の受信遅延とは区別します。</small></article></div>
+<div class="arrow">↓</div>
+<article class="card pending center"><h3>3. 事前登録と実行準備</h3><p>同じ人物・外生時刻・洪水・施設をSHA固定。方法採用判断 → 入力独立照合 → 新executor/observer → 境界テスト・smoke → スキルの新protocol対応。</p></article>
+<div class="arrow">↓</div>
+<div class="row"><article class="card"><div class="tag">R0</div><h3>車＋徒歩</h3><p>移動支援を追加しない基準。</p></article><article class="card"><div class="tag">R1</div><h3>JDRTを導入</h3><p>同じ利用選択者が徒歩からJDRTへ転換。予測なし。</p></article><article class="card"><div class="tag">R2</div><h3>JDRT＋予測</h3><p>R1と同じ需要・車両に、予測利用を追加。</p></article></div>
+<div class="arrow">↓</div>
+<article class="card outputs center"><h3>4. 新しく必要な観測と独立検証</h3><p>全人物のmode・乗員・要求・到着・受入、全対象edgeの0台/欠測、Gate候補の採否、全車両の閉鎖後進入を記録。SHA・会計・Errorを検査します。</p><p>1セルずつ <strong>status → start → check → validate → record</strong>。開始後は15分監視し、経過・終了・異常と全記録の同期を残します。</p></article>
+<div class="note"><strong>モデルの対象範囲を確認します。</strong><p>候補水理計算域に入る起点人口は21,539人中11,965人。域外・橋梁・地形欠測の扱いと交通仮定が未採用のため、まだ新runを開始していません。5分間隔での保存は、実際の到達時刻が5分精度という意味ではありません。</p></div>
+<h2>計算域と既存入力の位置照合</h2><p>緑の面は水理計算域です。浸水範囲ではありません。</p><a href="JDRT_実時間版_計算域照合_v1.svg"><img src="JDRT_実時間版_計算域照合_v1.png" alt="USACE計算域と元人口起点、9施設の位置照合。全利用経路の安全性を保証する図ではありません" style="display:block;max-width:100%;width:760px;margin:auto"></a><h2>資料の入口</h2><p><a href="../jdrt/常総市JDRT_実時間版_開始前判断案_v1.md">具体的な開始前判断案</a> ／ <a href="../../02_情報調査/氾濫・浸水/jdrt_realtime_20261015/USACE_取得・入力化監査.md">新データ取得・入力化監査</a> ／ <a href="JDRT_実時間版_新データフロー_v1.md">図のMarkdown版</a> ／ <a href="../../00_全体整理/現状把握_静的・動的シミュレーション整理.html">全体の現状把握</a></p>
+<footer>旧Phase1〜3・Scenario C・JDRT v2の入力/結果は保全。旧図解は上書きせず、この図を独立作成しました。状態は作成時点、現在地の正本はcontext.md。外部送信・Drive編集・公開更新は行いません。</footer>
+</main></body></html>

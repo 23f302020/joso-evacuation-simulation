@@ -1,0 +1,82 @@
+{
+  "verified_at_jst": "2026-10-15T21:50:33.505339+09:00",
+  "scope": "source SHA, shelter reference extraction by two PDF engines, preserved input comparison; no formal adoption",
+  "status": "PASS",
+  "failures": [],
+  "source_hashes": {
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B01_cabinet_2016_survey.pdf": "8852ca49e6dc4fe48be0dd4a574d179661f4020d86a06f0e2c19d4fa920526e7",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B02_river_2016_morooka.pdf": "6a34eb032808508c0fb7079f04ceb6228f06aee2a4ce214b85243178e5777e2d",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B03_river_2017_morooka.pdf": "49dd89340b92bf15398f95628a751951449f4cba2e6c17c81433e2fc0123465a",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B04_cidir_2016.html": "c44bc0bbf291926713bed20c07a029433a76f39e7f001a3f63c605cf53fa7ad3",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B04_destination_type_6.png": "b74dc40a24df960f01d9a33ed77301b840dd9fe6f3b2ffd44fa1010276c1ba7e",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B04_destination_area_5.png": "e75ee07b36444f8af601a1b160b013a330a67292d974a31a30b026137fbdf4c6",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B04_timing_table.png": "71acc36f78eec0583606d873d658a2c64e61945e35e4b3f278a0f39f01df8df7",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B04_fig_8_1.png": "817decf51027da83dd1c05e90b307096ee19cc033281ba08bd44a015066cdb6c",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B04_fig_9.png": "e01890d78a74187af519b6e6b355b87d7a2493fb30810d3331c04198ddd75433",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B04_fig_7.png": "ee3adf1bb75e69dc7c62a44448a6a93daaef4438da8ad854652de2585d15f741",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B05_joso_plan_revised_202512.pdf": "c5783231f3f509ea994bef1b9cb8699bf4a224c76b0c0493e2cbf26d19acbc94",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_behavior/B05_joso_plan_landing.html": "6d2e667f44175baae600a0f5c3a50e91f4aa2a4c32214b62d856100bfc58952a",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/current_service.html": "1fc93fd307320416230b36aa239130a0958b70d1fa0479f6d910a80e92710b94",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/r7_usage.pdf": "aaf382f7b2c4997c222938945eff0f1dc811f53152bb44983f51728b5aa15fb6",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/h27_usage.pdf": "6a84f607a6ea683c124f6b01e57ebd9560614283bec17bd1d39320f414738bcf",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/r7_issues.pdf": "d59992fbc083dd5b007b644852976673c755bc5be68e96a2af0a34d277488d67",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/r8_council_index.html": "898af702a06e9358d573045da8d05eafd4d63c80351c0e0b24132d0b73ac438b",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/r8_1_meeting.pdf": "c2e6a30b83678b9855d58e6ddd5125262e402f6fa3a9a29323b9b363fe92a6ce",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/r8_1_minutes.pdf": "b49ecc1b02849cd4435543407cf8a06ef69600e2851d77e0037e23acafd8d241",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/r8_2_explanation.pdf": "3802f10f2c0280f03fd4637ded1cc27238020d081643926e8484e61de4b24d5c",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/r8_2_result.pdf": "b4541ab1fe718d0a8560b385ef4e7505eded426c1dc7d55dbd756fdaa5a9b1d2",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/h27_council_index.html": "d248f8b1b63edd2bc32842f6174a153998517fca31a23972b92d28d73f942334",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/disaster_agreements.html": "cc833d6fc98fa27f38f46e2640a7567249853449b7122d81815ad886416fee63",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/disaster_shelters_current.html": "3f5eb85a4d82a8faeb0fbc3f462dd0c998debf4b53957819dc3057e1b8360b69",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/welfare_shelters_current.html": "be2bb076e81e40cc3a67dfb6321f01b0188f9b6300a991aceb49457350b99dc8",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/plan_landing_current.html": "474668f9212d9563325de0254994f7816d63badd1eab1d0ee09ec9663e1ff6ef",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/joso_plan_appendix_r8_202604.pdf": "0fe21a56eb9f07acb26ddde14acbd1bd702f8e5492abea50c5281f2a0906ec84",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/joso_plan_main_r8.pdf": "40e91ce43f25dccd613aed2ae1c9a662011896af3c8f6c78919c9daeb548fb55",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/reorganization_schedule_202603.pdf": "e944342aaf1713cb475c93f05f47ae2ea269047012ef6b9f005a4c6599296870",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/primary_schools_current.html": "413cf17916675598d360c8c9770f9f704527a1acb7b45c63df60a5f581b26568",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_transport/reorganization_202609_council.pdf": "afea29d3a60e605fd98b48f6b80d1431586d8d25de38461313f7e941c0dc3859",
+    "04_プログラム/output/sumo/regions/08211/derived/shelters_sumo.csv": "4f325976efd23af4c3c4fa716710b17375491d7c4d2f120e1cf1b24b80ce08fa",
+    "02_情報調査/交通・地域/jdrt_realistic/既存9施設_公表容量照合_20261015.csv": "cc488ea0497838975c28e069379230ae172ed35b39e2b9ff582ed8e2c469c71c",
+    "04_プログラム/output/sumo/regions/08211/derived/agent_types.csv": "1d38fefd691c83b44a6b148678cce2fa4f7595ae2991e9291a7fb10d605f1c72",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3"
+  },
+  "unacquired_sources": [
+    {
+      "manifest": "sources_behavior/metadata.json",
+      "url": "https://www.tokyo-pt.jp/static/ptdata/file/manual.pdf",
+      "status": null,
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+    },
+    {
+      "manifest": "sources_shelters/fetch_metadata.json",
+      "url": "https://www.city.joso.lg.jp/data/doc/1775001679_doc_28_0.pdf",
+      "status": null,
+      "error": "HTTPError: HTTP Error 404: Not Found"
+    }
+  ],
+  "shelter_count": 9,
+  "capacity_sum_people": 1740,
+  "adopted_input_changes": false,
+  "population_comparison": {
+    "total_pop": {
+      "v2": 21539,
+      "r0": 21539,
+      "different_origins": 0
+    },
+    "elderly_pop": {
+      "v2": 6191,
+      "r0": 6246,
+      "different_origins": 144
+    },
+    "type3_no_car_non_elderly_pop": {
+      "v2": 2320,
+      "r0": 2294,
+      "different_origins": 58
+    },
+    "type4_no_car_elderly_pop": {
+      "v2": 935,
+      "r0": 937,
+      "different_origins": 44
+    }
+  }
+}

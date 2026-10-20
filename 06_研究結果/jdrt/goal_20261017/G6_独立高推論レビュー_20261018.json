@@ -1,0 +1,102 @@
+{
+  "schema": "g6_independent_technical_review_v1",
+  "date_jst": "2026-10-18",
+  "model_requested": "gpt-6.1-sol",
+  "reasoning_effort_requested": "high",
+  "model_attestation": "Subagent dispatched with gpt-6.1-sol/high; provider execution model not separately introspected.",
+  "scope": "Static primary-source review and synthetic analysis contracts; no research result aggregation or direction interpretation.",
+  "source_sha256": {
+    "06_研究結果/jdrt/goal_20261017/G6_要求待ち・打切り_集計.py": "66978b52c8d8a96080e2544f19a17a0b758c2fbd28c4d97a99ff0c0c479854b7",
+    "06_研究結果/jdrt/goal_20261017/G6_要求待ち集計_契約テスト.py": "8a508b3f3086661a3c9b5c95b646c1a38ec1aa9c4c497b8b7b2d2dbd906f1f3a",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py": "4ceaef07c440896c513055ab4c36aa7f6e6e67128315466124eb1dfcdf5f4015",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標集計_契約テスト.py": "960978e74c7ff57ce0270a44c89ad7f4c4744e5241b3efdae332839e14884314",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md": "55fe4ac4b1ad7456f9b586801fa2527b6bfef67a130ab34a3d3200c8892dde81",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_事前登録分析・出力対応表.md": "0d88798cba371e1b409fd388f4f8d0daf9228b63a1fde0bf0ece080788cf7cee"
+  },
+  "status": "NO_CONFIRMED_MATERIAL_DEFECT_IN_REVIEWED_COMPONENTS",
+  "confirmed_defects": [],
+  "not_final_analysis_approval": true,
+  "tests": {
+    "existing_request_contracts": {
+      "passed": 6,
+      "exit_code": 0
+    },
+    "existing_primary_contracts": {
+      "passed": 5,
+      "exit_code": 0
+    },
+    "independent_request_semantics": {
+      "status": "PASS",
+      "population": "7 artificial requests, no research outputs",
+      "independent_checks": 9,
+      "expected_waits": {
+        "served_capacity": 2,
+        "timeout_admitted": 900,
+        "failure_exit": 100,
+        "rejected": 0,
+        "waiting_H": 100,
+        "boarding_failure": 20,
+        "boarding_H": 900
+      },
+      "summary": {
+        "group": "all",
+        "requests": 7,
+        "observed_wait_mean_sec": 288.85714285714283,
+        "observed_wait_min_sec": 0,
+        "observed_wait_max_sec": 900,
+        "horizon_right_censored_preboarding": 1,
+        "request_served": 1,
+        "person_admitted": 1,
+        "fallback_attempted": 2,
+        "received_observed_count": 7,
+        "accepted_observed_count": 0,
+        "boarding_started_observed_count": 3,
+        "boarded_observed_count": 1,
+        "alighting_started_observed_count": 1,
+        "alighted_observed_count": 1,
+        "cancel_observed_count": 2,
+        "fallback_observed_count": 2
+      },
+      "source_sha256": "66978b52c8d8a96080e2544f19a17a0b758c2fbd28c4d97a99ff0c0c479854b7"
+    }
+  },
+  "reviewed_properties": [
+    "all selected requests retained; duplicate IDs and missing/extra requests rejected",
+    "cancelled_timeout, cancelled_vehicle_failure, rejected_input are observed endpoints; only unresolved preboarding at H is right censored",
+    "boarding start ends preboarding wait even when boarding/service later fails or reaches H",
+    "request served and person admission are independent counts; cancelled request can belong to admitted walk person",
+    "origin closure exposure explicitly includes boarding; no division by preboarding wait",
+    "complete_records matches the full registered cell set and all six record markers before population/output access",
+    "implementation, configuration, proof, manifest, input manifest, input sources/artifacts, all declared outputs and archived implementation bytes checked",
+    "R0 shared paired reference; all Type4 denominator and nonadmission H contribution retained"
+  ],
+  "completion_blockers": [
+    {
+      "id": "B1",
+      "classification": "KNOWN_UNIMPLEMENTED_COMPONENT_NOT_CONFIRMED_REGRESSION",
+      "location": "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py:222",
+      "detail": "main writes five primary tables and does not invoke/persist request_summary; remaining explicitly lists all_request_wait_censoring_and_lifecycle.",
+      "reproduction": "Run only against a complete artificial corpus in a future integration test; present code has no call/import of request_summary.",
+      "impact": "Running this component alone cannot deliver PAP all-request waits/stages/cancellations.",
+      "minimal_fix": "Integrate the pure helper after complete_records and source byte checks; preserve detail/summary/distribution outputs, explicit zero R0 groups, and helper source hash in analysis provenance; retain other pending work."
+    },
+    {
+      "id": "B2",
+      "classification": "KNOWN_PLANNED_SCOPE",
+      "location": "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py:229",
+      "detail": "Destination/demand/difference-in-differences, vehicle/candidate/road secondary metrics, structural bounds/workload and final report are explicit remaining tasks.",
+      "impact": "G6/final report must remain incomplete until every PAP item is implemented and verified.",
+      "minimal_fix": "Complete registered analyses without adding or selecting research conditions."
+    }
+  ],
+  "unverified": [
+    "Real all70 accepted evidence set, full-horizon CSV lifecycles, whole-set integration and performance were not exercised.",
+    "Source-byte mutation rejection inside main was inspected statically; existing tests cover incomplete-set, metadata component and running-manifest rejection, not all source mutations.",
+    "Independent seven-case fixture isolates aggregation semantics and is not a native simulator lifecycle validation or core acceptance proof.",
+    "No SUMO/new core started; active run, scripts/config/inputs/runs and common five implementations unchanged by this review."
+  ],
+  "record_policy": "Only this review Markdown and JSON were written; shared task/context/progress logs left to parent."
+}

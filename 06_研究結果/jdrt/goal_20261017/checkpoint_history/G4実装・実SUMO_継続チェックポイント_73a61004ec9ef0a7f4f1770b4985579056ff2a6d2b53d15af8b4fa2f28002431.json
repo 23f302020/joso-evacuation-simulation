@@ -1,0 +1,57 @@
+{
+  "at_jst": "2026-10-17T17:23:57.894272+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "canonical_validator_components_implemented_and_independently_countertested",
+  "summary": "最終goal ACTIVE。受付・代替行動70セルは登録済み・研究core 0、技術未READY・人工21ケースcf26101713完了・独立検算中（SUMO実行中0）（研究coreは未開始）。遷移アンカー保持とnative減速度観測を追加し、専用スキルcf26101711の人工16ケースを完走。検証器6成分（人口/要求、候補、道路、actor/VKT、全進入/徒歩予算、nativeログ）を一次再計算。人物FSM追加後の履歴診断・28種改変拒否、現行35unit・入力28検査PASS。6ファイル記録プリミティブの成功/重複/rollback/部分修復/ロック/未解決journal阻止を隔離試験し、実研究台帳へは未接続。開始条件監査で、受理済迎車の期限同時取消・直前乗車継続・internal取消の共通run実証が不足と確認。次はその追加fixture→専用CLI/正式validate/復旧/READY→最終共通5実装のsuite/全14設定→70セル逐次実行・15分監視。旧suite/全試行を保全し、SHA混在や未実装ゲートを通さない。新図v4を独立作成。旧監視PAUSED、Drive読取のみ・外部送信なし。 同一handle51587で正常終了を確認。次は独立検算の結果確認。 cf12は20番native完了後の評価器gzip局所import衝突でFAILED保全し、修正後単独診断PASS。新IDの全21実行は正常終了。",
+  "core_runs": 0,
+  "technical_ready": false,
+  "running": [],
+  "registered_input_directory": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered02",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "input_validation_checks_pass": 28,
+  "unit_tests_pass": 35,
+  "skill_validation": "PASS",
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "14ce2425f35b30f07879e146261653ffe7e9a6b97993c408c7820fffba29c800",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "f50cdf977c29d867c67568184abb357223fc8e1a50dd5d45fc87ada51837eda9",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "9a63e02499a8f82ba31fd5a80f4c47c2cdc50e34506c160c8564dd6987743900"
+  },
+  "integrated_suite": "cf26101711 historical after FSM/CLI additions",
+  "integrated_cases_pass": 16,
+  "suite_manifest_sha256": "b0ef40177310a66eb9a67391160021385977d88df9d2b33d107d31df9a6134a3",
+  "independent_audit": "06_研究結果\\jdrt\\goal_20261017\\cf26101710_統合fixture独立監査.json",
+  "independent_audit_status": "PASS",
+  "independent_audit_sha256": "d6b7a16c8fbfcccc7c11363b77a04df17c956187766e093e65d7b31f2b8f885a",
+  "tamper_tests_pass": {
+    "candidate": 10,
+    "integration": 9
+  },
+  "old_preservation_checks": {
+    "sources": 249,
+    "implementation": 4,
+    "mismatch": []
+  },
+  "historical_smokes_current_implementation": false,
+  "new_diagram": "03_研究設計文書/図表・UML/JDRT_受付代替行動_遷移・制動・開始ゲート_v4.html",
+  "next_source": "05_タスク管理/jdrt/JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md",
+  "next": "current native21 primary independent audit; then finish dedicated CLI/preflight before final smoke matrix",
+  "current_suite_required": true,
+  "canonical_partial_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261017T170440.json",
+  "canonical_partial_report_sha256": "cce5a44618f38d3a7f9000d1d6b186b2f4401764c5cea8f1bb86a91e54856887",
+  "canonical_counterexamples_pass": 28,
+  "verifier_dependencies": {
+    "numpy": "2.4.4",
+    "scipy": "1.16.3",
+    "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+    "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+  },
+  "remaining_formal_gates": [
+    "missing accepted deadline/internal common-run branches",
+    "formal validate/core preflight archive",
+    "CLI record/recover/status/start-next wiring",
+    "current full suite/all14 smoke",
+    "storage estimate/READY"
+  ]
+}

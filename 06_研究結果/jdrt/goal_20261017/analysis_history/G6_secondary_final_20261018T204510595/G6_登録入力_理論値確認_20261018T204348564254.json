@@ -1,0 +1,256 @@
+{
+  "status": "INPUT_ONLY_THEORY_NOT_RESEARCH_RESULT",
+  "observed_at": "2026-10-18T20:43:48.564254+09:00",
+  "scope": "PAP section 7 fixed assignment capacity, offered service workload and conditional serial DRT upper bound",
+  "people": 11965,
+  "type4_denominator": 544,
+  "facility_bounds": {
+    "fixed_reference": [
+      {
+        "terminal_id": "shelter_2",
+        "capacity_all_modes_shared": 195,
+        "type4_fixed": 12,
+        "registered_passenger_route_present": 12,
+        "registered_walk_route_present": 5,
+        "registered_walk_route_within_limit": 5,
+        "fixed_assignment_capacity_upper": 12,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 432
+      },
+      {
+        "terminal_id": "shelter_3",
+        "capacity_all_modes_shared": 519,
+        "type4_fixed": 0,
+        "registered_passenger_route_present": 0,
+        "registered_walk_route_present": 0,
+        "registered_walk_route_within_limit": 0,
+        "fixed_assignment_capacity_upper": 0,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 432
+      },
+      {
+        "terminal_id": "shelter_4",
+        "capacity_all_modes_shared": 193,
+        "type4_fixed": 72,
+        "registered_passenger_route_present": 72,
+        "registered_walk_route_present": 72,
+        "registered_walk_route_within_limit": 72,
+        "fixed_assignment_capacity_upper": 72,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 432
+      },
+      {
+        "terminal_id": "shelter_8",
+        "capacity_all_modes_shared": 100,
+        "type4_fixed": 28,
+        "registered_passenger_route_present": 28,
+        "registered_walk_route_present": 22,
+        "registered_walk_route_within_limit": 16,
+        "fixed_assignment_capacity_upper": 28,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 432
+      },
+      {
+        "terminal_id": "all_facilities",
+        "capacity_all_modes_shared": 1007,
+        "type4_fixed": 112,
+        "registered_passenger_route_present": 112,
+        "registered_walk_route_present": 99,
+        "registered_walk_route_within_limit": 93,
+        "fixed_assignment_capacity_upper": 112,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 432
+      }
+    ],
+    "facility_first": [
+      {
+        "terminal_id": "shelter_2",
+        "capacity_all_modes_shared": 195,
+        "type4_fixed": 230,
+        "registered_passenger_route_present": 230,
+        "registered_walk_route_present": 5,
+        "registered_walk_route_within_limit": 5,
+        "fixed_assignment_capacity_upper": 195,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 38
+      },
+      {
+        "terminal_id": "shelter_3",
+        "capacity_all_modes_shared": 519,
+        "type4_fixed": 122,
+        "registered_passenger_route_present": 122,
+        "registered_walk_route_present": 63,
+        "registered_walk_route_within_limit": 63,
+        "fixed_assignment_capacity_upper": 122,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 38
+      },
+      {
+        "terminal_id": "shelter_4",
+        "capacity_all_modes_shared": 193,
+        "type4_fixed": 109,
+        "registered_passenger_route_present": 109,
+        "registered_walk_route_present": 109,
+        "registered_walk_route_within_limit": 109,
+        "fixed_assignment_capacity_upper": 109,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 38
+      },
+      {
+        "terminal_id": "shelter_8",
+        "capacity_all_modes_shared": 100,
+        "type4_fixed": 45,
+        "registered_passenger_route_present": 42,
+        "registered_walk_route_present": 30,
+        "registered_walk_route_within_limit": 16,
+        "fixed_assignment_capacity_upper": 45,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 38
+      },
+      {
+        "terminal_id": "all_facilities",
+        "capacity_all_modes_shared": 1007,
+        "type4_fixed": 506,
+        "registered_passenger_route_present": 503,
+        "registered_walk_route_present": 207,
+        "registered_walk_route_within_limit": 193,
+        "fixed_assignment_capacity_upper": 471,
+        "type4_population_denominator": 544,
+        "type4_without_fixed_facility": 38
+      }
+    ]
+  },
+  "offered_request_workloads": [
+    {
+      "seed": 23423,
+      "demand_level": "u05",
+      "intended_requests": 90,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 0.625
+    },
+    {
+      "seed": 23423,
+      "demand_level": "u50",
+      "intended_requests": 900,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 6.25
+    },
+    {
+      "seed": 42,
+      "demand_level": "u05",
+      "intended_requests": 90,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 0.625
+    },
+    {
+      "seed": 42,
+      "demand_level": "u50",
+      "intended_requests": 900,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 6.25
+    },
+    {
+      "seed": 1,
+      "demand_level": "u05",
+      "intended_requests": 90,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 0.625
+    },
+    {
+      "seed": 1,
+      "demand_level": "u50",
+      "intended_requests": 900,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 6.25
+    },
+    {
+      "seed": 7,
+      "demand_level": "u05",
+      "intended_requests": 90,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 0.625
+    },
+    {
+      "seed": 7,
+      "demand_level": "u50",
+      "intended_requests": 900,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 6.25
+    },
+    {
+      "seed": 101,
+      "demand_level": "u05",
+      "intended_requests": 90,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 0.625
+    },
+    {
+      "seed": 101,
+      "demand_level": "u50",
+      "intended_requests": 900,
+      "fleet_count": 4,
+      "horizon_sec": 21600,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "rho_service_only": 6.25
+    }
+  ],
+  "serial_drt_completion_upper": 144,
+  "service_contract_conditions": {
+    "all_available_at_zero": true,
+    "initially_empty": true,
+    "full_processing_times": true,
+    "no_vehicle_time_reset": true,
+    "serial_one_person": true
+  },
+  "limitations": [
+    "Capacity bound counts all assigned Type4, keeps disconnected people and shares facility capacity with other modes; no attainment guarantee",
+    "rho uses offered intent including rejected connections; not utilization or feasibility",
+    "Direct DRT admitted <= served <= service upper; not a Type4 or population improvement bound",
+    "No accepted core results, method comparisons, direction interpretation or simulation execution"
+  ],
+  "sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/people.csv": "0d40f8c4e7d3d1440377d83e0e89c7d180d75a52f72b2f897f484b1b2a1f57ef",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/terminals.csv": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/destinations_fixed_reference.csv": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/destinations_facility_first.csv": "13a38dc27bc5aa43b1dcdef6f01221dfd31714c943294301ef7f77b7a37153d4",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/common_realization_seed23423.csv": "a88daef10103b2be3d6e8e0fb63d7429717b4087313a2c9ca29eda46223847df",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/common_realization_seed42.csv": "69801697a19e831cb60d11f6eb2a1c814fb9327fac788244e6730a6b2948fa8c",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/common_realization_seed1.csv": "b00296daa71a8ebfea5975a4a841f28490a7c7db050974328c984eee9da9b5e3",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/common_realization_seed7.csv": "5a61eb7d90de1353916ccc73933aedd32dd409b1a33fa6be3114f04cb4a33e86",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/common_realization_seed101.csv": "a67b1b809b882abefd8477bb470d2e463022b45319a559dd31a3223b5b34de70",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/manifest.json": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6",
+    "06_研究結果/jdrt/goal_20261017/G6_副指標・理論上限_集計.py": "8b030aa56f9f977aabf16833ab01496546b7fe5ae227adede81a21501ee57d2e",
+    "06_研究結果/jdrt/goal_20261017/G6_副指標・理論上限_実装証跡.json": "221d9454d793a6ed8d14fbda7509f65ec0ac411d3b3d580a5729d7cb4196f8f8"
+  }
+}

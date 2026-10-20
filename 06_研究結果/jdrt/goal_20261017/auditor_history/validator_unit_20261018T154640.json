@@ -1,0 +1,31 @@
+{
+  "at_jst": "2026-10-18T15:46:40.088369+09:00",
+  "status": "PASS",
+  "scope": "unit_mock_no_SUMO_no_formal_validation",
+  "tests_run": 13,
+  "test_ids": [
+    "tests.test_jdrt_choice_validate.NativeWalkingContracts.test_independent_stage_type_getter_factor_and_integral_tampering_rejected",
+    "tests.test_jdrt_choice_validate.NativeWalkingContracts.test_native_getter_factor_below_equal_above_one_and_type_speeds",
+    "tests.test_jdrt_choice_validate.NativeWalkingContracts.test_replacement_receipt_step_route_position_length_and_count_reject",
+    "tests.test_jdrt_choice_validate.NativeWalkingContracts.test_vehicle_first_turn_recomputed_from_lane_actor_graph_and_closure",
+    "tests.test_jdrt_choice_validate.NativeWalkingContracts.test_warning_requires_exact_receipts_native_version_and_count",
+    "tests.test_jdrt_choice_validate.PreflightProvenance.test_current_chain_accepts_and_changed_or_missing_evidence_rejects",
+    "tests.test_jdrt_choice_validate.SparseVerifierContracts.test_compiled_paths_match_exhaustive_forward_oracle",
+    "tests.test_jdrt_choice_validate.SparseVerifierContracts.test_historical_core_and_path_traversal_rejected",
+    "tests.test_jdrt_choice_validate.SparseVerifierContracts.test_numeric_missingness_and_nonfinite_rejected",
+    "tests.test_jdrt_choice_validate.SparseVerifierContracts.test_partial_edges_backward_cycle_closed_and_unreachable",
+    "tests.test_jdrt_choice_validate.TechnicalValidationBoundary.test_complete_technical_pass_never_authorizes_core",
+    "tests.test_jdrt_choice_validate.TechnicalValidationBoundary.test_core_needs_complete_integrity_and_archived_preflight_provenance",
+    "tests.test_jdrt_choice_validate.TechnicalValidationBoundary.test_empty_historical_or_partial_proofs_fail_closed"
+  ],
+  "skipped": [],
+  "failures": [],
+  "errors": [],
+  "duration_sec": 5.8668651999905705,
+  "source_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "124a2d93b74f73f51de5592d5515fa1efa963ea455576f945fa3581b2e333337",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "5f3b63914e9fe52f7bf702fb67a2be98e67291341ed55da9f585621a2ace0e2c",
+    "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py": "81bf715f45c3b5521036a081f292905f0ca9b61528f9943c87c6f50e7001e72c"
+  },
+  "output": "test_independent_stage_type_getter_factor_and_integral_tampering_rejected (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_independent_stage_type_getter_factor_and_integral_tampering_rejected) ... ok\ntest_native_getter_factor_below_equal_above_one_and_type_speeds (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_native_getter_factor_below_equal_above_one_and_type_speeds) ... ok\ntest_replacement_receipt_step_route_position_length_and_count_reject (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_replacement_receipt_step_route_position_length_and_count_reject) ... ok\ntest_vehicle_first_turn_recomputed_from_lane_actor_graph_and_closure (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_vehicle_first_turn_recomputed_from_lane_actor_graph_and_closure) ... ok\ntest_warning_requires_exact_receipts_native_version_and_count (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_warning_requires_exact_receipts_native_version_and_count) ... ok\ntest_current_chain_accepts_and_changed_or_missing_evidence_rejects (tests.test_jdrt_choice_validate.PreflightProvenance.test_current_chain_accepts_and_changed_or_missing_evidence_rejects) ... ok\ntest_compiled_paths_match_exhaustive_forward_oracle (tests.test_jdrt_choice_validate.SparseVerifierContracts.test_compiled_paths_match_exhaustive_forward_oracle) ... ok\ntest_historical_core_and_path_traversal_rejected (tests.test_jdrt_choice_validate.SparseVerifierContracts.test_historical_core_and_path_traversal_rejected) ... ok\ntest_numeric_missingness_and_nonfinite_rejected (tests.test_jdrt_choice_validate.SparseVerifierContracts.test_numeric_missingness_and_nonfinite_rejected) ... ok\ntest_partial_edges_backward_cycle_closed_and_unreachable (tests.test_jdrt_choice_validate.SparseVerifierContracts.test_partial_edges_backward_cycle_closed_and_unreachable) ... ok\ntest_complete_technical_pass_never_authorizes_core (tests.test_jdrt_choice_validate.TechnicalValidationBoundary.test_complete_technical_pass_never_authorizes_core) ... ok\ntest_core_needs_complete_integrity_and_archived_preflight_provenance (tests.test_jdrt_choice_validate.TechnicalValidationBoundary.test_core_needs_complete_integrity_and_archived_preflight_provenance) ... ok\ntest_empty_historical_or_partial_proofs_fail_closed (tests.test_jdrt_choice_validate.TechnicalValidationBoundary.test_empty_historical_or_partial_proofs_fail_closed) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 5.867s\n\nOK\n"
+}

@@ -1,0 +1,67 @@
+{
+  "at_jst": "2026-10-18T09:55:18.852705+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "canonical_validator_components_implemented_and_independently_countertested",
+  "summary": "最終goal ACTIVE。受付・代替行動70セルの研究core 0・実SUMO稼働0。旧共通版は入力28/49unit/全21・35改変/全14smoke・1,190証跡でREADYだったが、初回ch261018_001はWindows venvランチャーと実行子のPID差を本人確認で拒否し、SUMO/研究run作成前に停止・原起動記録付きFAILED保全。PID親子確認と実行PID記録を修正、実project Pythonの予約executeハンドシェイクをSUMOなしで実証し52unit PASS。短期rename競合の限定再試行も試験済み。共通5実装更新で旧READY/全技術試験は履歴化、現行版をcf26101801→独立/改変→cs261018a全14→preflightの順に再検証する。監視jdrt-b-15は新系列設定を保持し再検証中PAUSED。次のREADY後に再有効化して新IDの最初の1セルを開始する。図v6/旧研究/全失敗保全、Drive読取のみ・外部送信なし。",
+  "core_runs": 0,
+  "technical_ready": false,
+  "running": [],
+  "registered_input_directory": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered02",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "input_validation_checks_pass": 28,
+  "unit_tests_pass": 52,
+  "skill_validation": "PASS",
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "integrated_suite": "cf26101716 historical after source update",
+  "integrated_cases_pass": 21,
+  "suite_manifest_sha256": "50539b6b31a9fe2b5967f490ba78e6bbe15f1f335a9b9f3902190e0f3fdc640d",
+  "independent_audit": "06_研究結果\\jdrt\\goal_20261017\\cf26101710_統合fixture独立監査.json",
+  "independent_audit_status": "PASS",
+  "independent_audit_sha256": "d6b7a16c8fbfcccc7c11363b77a04df17c956187766e093e65d7b31f2b8f885a",
+  "tamper_tests_pass": {
+    "candidate": 10,
+    "integration": 9
+  },
+  "old_preservation_checks": {
+    "sources": 249,
+    "implementation": 4,
+    "mismatch": []
+  },
+  "historical_smokes_current_implementation": false,
+  "new_diagram": "03_研究設計文書/図表・UML/JDRT_受付代替行動_READY証跡・逐次記録_v6.html",
+  "next_source": "05_タスク管理/jdrt/JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md",
+  "next": "run new G4pipeline_20261018a; verify all stages; activate monitor then launch new core ID; preserve all prior attempts",
+  "current_suite_required": true,
+  "canonical_partial_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261017T180218.json",
+  "canonical_partial_report_sha256": "e5dc6316d0e8dd43b826ee892c8149c556281a69bbaba93cc67fbae8a10d95f0",
+  "canonical_counterexamples_pass": 35,
+  "verifier_dependencies": {
+    "numpy": "2.4.4",
+    "scipy": "1.16.3",
+    "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+    "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+  },
+  "remaining_formal_gates": [
+    "final current21/all14 and counterexamples",
+    "capacity empirical proof and current READY"
+  ],
+  "technical_api_run": "cf26101714_c08",
+  "technical_api_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cf26101714_c08_20261017T172744116533.json",
+  "lifecycle_implemented": true,
+  "primary_files_rechecked": 357,
+  "smoke_sequence_session": 3285,
+  "smoke_sequence_state": "06_研究結果/jdrt/goal_20261017/cs261017c_smoke_sequence.json",
+  "fixture_session": 67470,
+  "smoke_sequence_status": "cs261017c COMPLETED 14 independently PASS",
+  "smoke_setting_count": 14,
+  "preflight_session": 19561,
+  "preflight_state": "previous READY historical after Windows launcher/atomic rename correction",
+  "launch_failure": "ch261018_001 FAILED_LAUNCH_PRESERVED no core manifest/SUMO",
+  "monitor_status": "PAUSED during new common5 verification"
+}

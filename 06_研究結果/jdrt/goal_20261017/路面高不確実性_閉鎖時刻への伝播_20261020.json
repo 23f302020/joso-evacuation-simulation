@@ -1,0 +1,166 @@
+{
+  "schema": "road_height_first_threshold_math_note_v1",
+  "created_utc": "2026-10-19T23:19:49.220749+00:00",
+  "scope": "mathematical consideration and artificial verification; no research run or input adoption",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend": "unverified",
+  "formal_records_at_reference": "0/70",
+  "directional_method_interpretation": "not performed before all 70 records",
+  "sources": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "75280fa3df3ad486f2d91c596adb2e5e591348ff867f1191823d0f6bf9f13856",
+      "bytes": 11211,
+      "role": "repository instructions"
+    },
+    {
+      "path": "context.md",
+      "sha256": "36b9ad55265b130cc6f5a1f7b77d726624a7e9f01ba9e82d058933f03c4f112b",
+      "bytes": 55374,
+      "role": "status reference read through standalone AGENT_CURRENT_END"
+    },
+    {
+      "path": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md",
+      "sha256": "01af5c43e480f14cba02fb7e3b6d7e1488f0fde88f27c41e1e730d32159c702d",
+      "bytes": 5317,
+      "role": "prior G1 facts and depth Lipschitz result"
+    },
+    {
+      "path": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261020/GIS_橋梁位置検索_用途判定.md",
+      "sha256": "c0a41bf4f4c7456f484913e2525c1725db4f6f82c242b2de1f0c40b4614ad5bf",
+      "bytes": 3052,
+      "role": "GIS purpose and outstanding bridge identity/elevation"
+    }
+  ],
+  "note": {
+    "path": "06_研究結果/jdrt/goal_20261017/路面高不確実性_閉鎖時刻への伝播_20261020.md",
+    "sha256": "a262c3e590b0cb277863028e8b448fdb729cc2af61c9ecda1c2fb6cc7283f712"
+  },
+  "classification": {
+    "assumptions": [
+      "Common vertical datum, location and time for water and road-surface elevation.",
+      "Uniform deterministic bounds |w-what|<=epsilon_w and |z-zhat|<=epsilon_z across the full evaluation window; no statistical independence is required.",
+      "Positive fixed threshold c; first crossing defined by infimum, empty set as +infinity within the evaluation window.",
+      "Sufficient finite error theorem only: continuous qhat, qhat(t)-qhat(s)>=m*(t-s) for all s<t with m>0; qhat(a)<c-E and qhat(b)>c+E."
+    ],
+    "unverified_in_research_input": [
+      "Road-surface/bridge-deck elevation itself remains unavailable.",
+      "Vertical datum alignment and full hydraulic/road uniform deterministic error bounds remain unverified.",
+      "Positive lower growth bound m and persistent closure are not established.",
+      "Sample-time error bounds do not establish interpolation or spatial coverage errors."
+    ],
+    "proofs": [
+      {
+        "id": "P1",
+        "claim": "L<=h<=U",
+        "basis": "triangle inequality and monotonicity of clipping",
+        "status": "deduced under stated assumptions"
+      },
+      {
+        "id": "P2",
+        "claim": "T(U)<=T(h)<=T(L)",
+        "basis": "nested superlevel sets and order reversal of infimum",
+        "continuity_required": false,
+        "monotonicity_required": false,
+        "status": "proved in note section 2"
+      },
+      {
+        "id": "P3",
+        "claim": "|Ttrue-That|<=E/m; Tlate-Tearly<=2E/m",
+        "basis": "unique crossings at c-E,c,c+E under sufficient global lower slope condition; apply P2",
+        "status": "proved in note section 3; conditions unverified for research inputs"
+      },
+      {
+        "id": "P4",
+        "claim": "max_i L_i<=max_i h_i<=max_i U_i; T(max_i h_i)=min_i T(h_i)",
+        "basis": "same finite point set; union of superlevel sets",
+        "status": "deduced; does not cover unmeasured road surface"
+      }
+    ],
+    "counterexamples": [
+      "flat offset changes finite/absent closure",
+      "arbitrarily small positive slope produces arbitrarily large finite timing gap for fixed height error",
+      "nonmonotonic tangency can disappear under arbitrarily small downward offset",
+      "continuous between-sample pulse may be missed"
+    ],
+    "artificial_confirmation": {
+      "status": "PASS",
+      "arithmetic": "fractions.Fraction (exact rationals)",
+      "single_point_grid": {
+        "cases": 50625,
+        "initially_closed": 30375,
+        "true_unreached": 1296,
+        "finite_true": 49329
+      },
+      "multiple_point_grid_cases": 50625,
+      "affine_cases": 320,
+      "affine_max_normalized_error": "1",
+      "finite_slow_slope_counterexamples": [
+        {
+          "v": "1",
+          "epsilon": "1/4",
+          "nominal_time": "1/8",
+          "true_time": "3/8",
+          "gap": "1/4"
+        },
+        {
+          "v": "1/10",
+          "epsilon": "1/4",
+          "nominal_time": "5/4",
+          "true_time": "15/4",
+          "gap": "5/2"
+        },
+        {
+          "v": "1/100",
+          "epsilon": "1/4",
+          "nominal_time": "25/2",
+          "true_time": "75/2",
+          "gap": "25"
+        },
+        {
+          "v": "1/1000",
+          "epsilon": "1/4",
+          "nominal_time": "125",
+          "true_time": "375",
+          "gap": "250"
+        }
+      ],
+      "flat_counterexample": "nominal unreached, true initial crossing",
+      "tangency_counterexample": "nominal t=1, true unreached by analytic negative offset",
+      "missed_pulse": {
+        "first_crossing_seconds": "75",
+        "grid_seconds": [
+          0,
+          300
+        ],
+        "sampled_crossing": "unreached"
+      },
+      "persistent_grid_cases": 351,
+      "scope": "Artificial arithmetic checks only; not field calibration or continuous-function proof."
+    }
+  },
+  "prohibited_inferences": [
+    "RMS25cm is not epsilon_z.",
+    "T+900 experiment offset is not a physical prediction confidence interval.",
+    "Maximum 0.5-second early native call consistency is separate from physical closure-time validity.",
+    "No actual road closure-time interval, statistical coverage, or comparative method advantage inferred."
+  ],
+  "unchanged_scope": [
+    "research input",
+    "PAP",
+    "Registry",
+    "acceptance criteria",
+    "existing runs",
+    "research scripts",
+    "status Markdown",
+    "published artifacts"
+  ],
+  "verification": {
+    "python": "3.13.12",
+    "oracle_source": "\nfrom fractions import Fraction as F\nfrom itertools import product\nc, E = F(1,2), F(1,4)\nclip = lambda v: max(F(0), v)\ndef first(values):\n    return next((i for i, v in enumerate(values) if v >= c), len(values))\noptions = [(q, e) for q in (0, E, c, c+E, c+2*E) for e in (-E, 0, E)]\ncounts = dict(cases=0, initially_closed=0, true_unreached=0, finite_true=0)\nfor seq in product(options, repeat=4):\n    lower = [clip(q-E) for q,e in seq]\n    true = [clip(q+e) for q,e in seq]\n    upper = [clip(q+E) for q,e in seq]\n    te, tt, tl = map(first, (upper,true,lower))\n    assert all(l <= t <= u for l,t,u in zip(lower,true,upper))\n    assert te <= tt <= tl\n    counts['cases'] += 1\n    counts['initially_closed'] += (tt == 0)\n    counts['true_unreached'] += (tt == len(seq))\n    counts['finite_true'] += (tt < len(seq))\nmultiple_count = 0\nfor seq in product(options, repeat=4):\n    # Two road evaluation points, two time instants; same point set for all envelopes.\n    point_pairs = (seq[:2], seq[2:])\n    lower = [[clip(q-E) for q,e in point] for point in point_pairs]\n    true = [[clip(q+e) for q,e in point] for point in point_pairs]\n    upper = [[clip(q+E) for q,e in point] for point in point_pairs]\n    aggregate = lambda points: [max(row[t] for row in points) for t in range(2)]\n    te, tt, tl = (first(aggregate(points)) for points in (upper,true,lower))\n    assert te <= tt <= tl\n    assert tt == min(map(first, true))\n    multiple_count += 1\nlinear_count = 0\nmax_ratio = F(0)\nfor denominator, e_den, error_factor in product(range(1,9), range(2,10), (-1,F(-1,2),0,F(1,2),1)):\n    m, error = F(1,denominator), F(1,e_den)\n    # qhat(t) = c - 2*error + m*t, window [0,6*error/m].\n    # Independent affine root formula: solve qhat(t)+error_factor*error = c.\n    intercept = c-2*error+error_factor*error\n    true_root = (c-intercept)/m\n    nominal_root = 2*error/m\n    early_root, late_root = error/m, 3*error/m\n    assert early_root <= true_root <= late_root\n    assert abs(true_root-nominal_root) <= error/m\n    assert late_root-early_root <= 2*error/m\n    max_ratio = max(max_ratio,abs(true_root-nominal_root)/(error/m))\n    linear_count += 1\ncounterexamples = []\nfor denominator in (1,10,100,1000):\n    v, epsilon = F(1,denominator), E\n    nominal, true = epsilon/(2*v), 3*epsilon/(2*v)\n    assert true-nominal == epsilon/v\n    counterexamples.append(dict(v=str(v),epsilon=str(epsilon),nominal_time=str(nominal),true_time=str(true),gap=str(true-nominal)))\n# Flat nominal q=c-E/2 versus true q=c+E/2.\nassert first([clip(c-E/2)]*2) == 2\nassert first([clip(c+E/2)]*2) == 0\n# Tangency qhat=c-(t-1)^2, true=qhat-E; algebra gives no true crossing.\nassert max(c-(t-1)**2 for t in (F(0),F(1),F(2))) == c\nassert max(c-(t-1)**2-E for t in (F(0),F(1),F(2))) < c\n# Continuous triangular pulse: first true crossing at 75 s, grid {0,300} misses it.\npulse = lambda t: c-E + 2*E*t/150 if t <= 150 else c+E-2*E*(t-150)/150\ncrossing = E/(2*E/150)\nassert pulse(crossing) == c\nassert pulse(150) > c\nassert first([pulse(F(0)),pulse(F(300))]) == 2\n# Persistent closure and next grid point give the separate quantization bound.\ngrid_count = 0\nfor delta_den, root_num in product(range(1,10),range(1,40)):\n    delta, t = F(1,delta_den), F(root_num,13)\n    k = -((-t)//delta)\n    tg = k*delta\n    assert 0 <= tg-t < delta\n    grid_count += 1\noracle_result = dict(status='PASS',arithmetic='fractions.Fraction (exact rationals)',single_point_grid=counts,multiple_point_grid_cases=multiple_count,affine_cases=linear_count,affine_max_normalized_error=str(max_ratio),finite_slow_slope_counterexamples=counterexamples,flat_counterexample='nominal unreached, true initial crossing',tangency_counterexample='nominal t=1, true unreached by analytic negative offset',missed_pulse=dict(first_crossing_seconds=str(crossing),grid_seconds=[0,300],sampled_crossing='unreached'),persistent_grid_cases=grid_count,scope='Artificial arithmetic checks only; not field calibration or continuous-function proof.')\n",
+    "oracle_sha256": "31b09d34607ca102f74fcf0a34178651adfab4b1e3be04e33c9135db141f1f30",
+    "rerun": "Execute oracle_source using Python standard library; read oracle_result. No files or network needed.",
+    "continuous_theorem_validation": "Manual proof check in note; finite checks are not a replacement for proof."
+  }
+}

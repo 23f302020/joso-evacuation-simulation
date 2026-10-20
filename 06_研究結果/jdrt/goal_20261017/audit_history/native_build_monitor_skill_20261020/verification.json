@@ -1,0 +1,19 @@
+{
+  "real_observation_report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T081105716995.json",
+  "matching_entries_per_jsonl": [
+    1,
+    1,
+    1
+  ],
+  "three_entries_equal_report": true,
+  "snapshot_sha256_matches": true,
+  "prior_helpers_unchanged": true,
+  "old_reference_prefix_preserved": true,
+  "tests": "9 temporary/mock tests PASS",
+  "skill_validator": "Skill is valid!",
+  "owned_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_build_monitor.py": "b2b403a2a2b7fc745c5f0e28ec13999a154c3840d160a855593627c03772d9e3",
+    ".agents/skills/joso-jdrt-runner/tests/test_choice_native_build_monitor.py": "58511598c25e4b28cdd90dfe89ad1a923e7cdf924544e71e4824d3c427de4840",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "60b8d3d5684db862925e8405450e2bb340e700ac6a8aaf636afbd7b7a03f7b92"
+  }
+}

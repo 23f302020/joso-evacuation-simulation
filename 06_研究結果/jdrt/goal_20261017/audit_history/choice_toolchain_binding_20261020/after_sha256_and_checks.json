@@ -1,0 +1,80 @@
+{
+  "current_owned_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "64f194824c879f16e5987d339d9932a6377f55d5f503b332a3661589c7977287",
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": "1cbfd394c1a75d7c2462418c400798097126b95dba9bad37fa5d1884cbfc17d5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "05ddf759f39cdcedb234f4c414198176c117dca02968b93e6d1c46830b2b3819",
+    "04_プログラム/scripts/jdrt_choice_sumo_probe.py": "ce5f10a276d61c8f96a374e5ca5a4b4ebc6ea0df2b6fe92fd44d9b6ad7039bdb",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "8dabec17ca5a9f6baa95fde438d61f8179307b0ecda11c56b0d7a7bf323bb494",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "309f185cd38e50e911fa2a8e28fe1c5a6589f9ba635ed9458495f45fef8eebad",
+    ".agents/skills/joso-jdrt-runner/references/realtime_choice.md": "41459336c65c0baa8deb1a9635bf360e17f917d62dac839fe3d8f00b9a1a0560",
+    "04_プログラム/scripts/jdrt_choice_toolchain.py": "97cd450b34d1804ecc3c7ca4b894d5125cebf00bca8ae8662dc326a5756b24f2",
+    "04_プログラム/tests/test_jdrt_choice_toolchain.py": "a42d57dfb752c257c5b69c48d5c74b18e8923cfd1f4274d8e22fbca192c81fea"
+  },
+  "current_common_five_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "05ddf759f39cdcedb234f4c414198176c117dca02968b93e6d1c46830b2b3819",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "64f194824c879f16e5987d339d9932a6377f55d5f503b332a3661589c7977287",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "8dabec17ca5a9f6baa95fde438d61f8179307b0ecda11c56b0d7a7bf323bb494"
+  },
+  "changed_common_five": [
+    "04_プログラム/scripts/jdrt_realtime_choice.py",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py"
+  ],
+  "checks": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "warning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\choice_toolchain_binding_20261020\\before\\04_プログラム\\scripts\\jdrt_realtime_choice.py', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_choice.py', CRLF will be replaced by LF the next time Git touches it\n",
+      "git_diff_exit_code": 1
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "warning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\choice_toolchain_binding_20261020\\before\\04_プログラム\\scripts\\jdrt_realtime_choice_validate.py', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\scripts\\jdrt_realtime_choice_validate.py', CRLF will be replaced by LF the next time Git touches it\n",
+      "git_diff_exit_code": 1
+    },
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "",
+      "git_diff_exit_code": 1
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "",
+      "git_diff_exit_code": 1
+    },
+    "04_プログラム/scripts/jdrt_choice_sumo_probe.py": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "",
+      "git_diff_exit_code": 1
+    },
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "warning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\choice_toolchain_binding_20261020\\before\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py', CRLF will be replaced by LF the next time Git touches it\n",
+      "git_diff_exit_code": 1
+    },
+    "04_プログラム/tests/test_jdrt_choice_validate.py": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "",
+      "git_diff_exit_code": 1
+    },
+    ".agents/skills/joso-jdrt-runner/references/realtime_choice.md": {
+      "trailing_whitespace_lines": [],
+      "git_diff_check_diagnostics": "warning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\choice_toolchain_binding_20261020\\before\\.agents\\skills\\joso-jdrt-runner\\references\\realtime_choice.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\references\\realtime_choice.md', LF will be replaced by CRLF the next time Git touches it\n",
+      "git_diff_exit_code": 1
+    },
+    "04_プログラム/scripts/jdrt_choice_toolchain.py": {
+      "trailing_whitespace_lines": []
+    },
+    "04_プログラム/tests/test_jdrt_choice_toolchain.py": {
+      "trailing_whitespace_lines": []
+    }
+  },
+  "shared_smoke_sha256": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+  "simulation_started": false,
+  "real_toolchain_manifest_created": false,
+  "native_patch_success_claimed": false,
+  "actual_backend_identity": "unconfirmed; requested model routing does not establish backend identity"
+}

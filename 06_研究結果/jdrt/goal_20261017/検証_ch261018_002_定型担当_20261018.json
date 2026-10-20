@@ -1,0 +1,19 @@
+{
+  "run_id": "ch261018_002",
+  "purpose": "core",
+  "validation_started_at": "2026-10-18T10:36:14.1510562+09:00",
+  "validation_ended_at": "2026-10-18T10:51:46.8209833+09:00",
+  "validation_process_pid": 24728,
+  "run_pid": 16372,
+  "process_handle": "not separately exposed by Start-Process",
+  "exit_code": 1,
+  "validation_report": "04_�v���O����/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261018_002_20261018T105146384839.json",
+  "pass": false,
+  "core_adoption_permitted": false,
+  "requested_model": "gpt-6-luna",
+  "requested_reasoning_effort": "low",
+  "actual_verified_model": null,
+  "verification_basis": "parent spawn arguments; backend actual model not separately observable",
+  "stdout_path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\validate_ch261018_002_luna01.stdout.json",
+  "stderr_path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\validate_ch261018_002_luna01.stderr.log"
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "sumo_native_build_feasibility_v1",
+  "observed_at_jst": "2026-10-19T09:43:21.3667105+09:00",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend_verified": false,
+  "phase": "READ_ONLY_REPORT_COMPLETED_BUILD_AUTHORIZED_NOT_STARTED",
+  "research_simulation_performed": false,
+  "old_environment_modified": false,
+  "source": {
+    "sumo_version": "1.26.0",
+    "sumo_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+    "xerces_version": "3.3.0",
+    "xerces_commit": "31b4b3a06105dcd607db9fda9d1883ad7e489bfe",
+    "cmake_version": "3.31.9",
+    "cmake_zip_bytes": 46643973,
+    "cmake_zip_sha256": "dc16867d0c0ffb35026976aff119335d5b47def44e76ae82ffafdc1f98b3d59d"
+  },
+  "environment": {
+    "gcc_path": "C:/Ruby31-x64/msys64/ucrt64/bin/g++.exe",
+    "gcc_version": "12.2.0 Rev10",
+    "make_path": "C:/Ruby31-x64/msys64/ucrt64/bin/mingw32-make.exe",
+    "make_version": "4.4",
+    "compiler_prefix_logical_bytes": 476623835,
+    "cpu": "i5-1240P",
+    "logical_processors": 16,
+    "ram_bytes": 8275980288,
+    "c_free_bytes_at_observation": 268594790400,
+    "cmake_found": false,
+    "xerces_development_found": false,
+    "msvc_standard_locations_found": false,
+    "wsl_build_tools_found": false
+  },
+  "old_artifacts": {
+    "xerces_sha256": "93de20ed9a381e0ec20a960085d8257314e4778951036af602781156b36d2b1a",
+    "xerces_fileversion": "3, 3, 0",
+    "sumo_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926"
+  },
+  "tool_sha256": {
+    "make": "f37068248b71ed71906c15a1572f8c3f816f49979b19a1e7b8788ef1de2ffd59",
+    "libgcc": "4db5f6842c093b431c4b2aea434dddf59fe8146a6897d8945e7bb088a1ee4891",
+    "libstdcpp": "8e05ba23eade419bcfa4b84528ec8f7701f4981a0879bf65ed68fe1c4a11c069",
+    "gcc": "5c25285b4ee7fdd75af34b6e85786828f1002f753c11d25c06280e4a63a1e4c6",
+    "ld": "e0599d3498344a32be539b34d9730f1af9fedde46dd7832196ab119133e4a3e3",
+    "cc1plus": "2556f12a73e1ec2157c8958c7e1ba6694f8c654de99046a7f619a4a728753617",
+    "libwinpthread": "3e9a3dd2748f1f96096c28ba1af3b60ced44ca95410e8b1d8a14851dffa82f4c",
+    "gxx": "5308f584a4a2ce18aa9da7df4df978b1703e22110f7c857a5d8401977152d5af"
+  },
+  "patch": {
+    "after_sha256": "65f4824cf896f46fbfb9199bdfcced3711ce365e88c1a455ad15f3d746c47934",
+    "path": "audit_history/walk_native_proposal_20261019/preserve_aborted_walk_raw_lateral.patch",
+    "base_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "sha256": "93d3ca0c2318e1bc2402c6449670f05546f4d600ad4b0cf3521486d9b6601771"
+  },
+  "recommendation": "isolated_windows_native_existing_gcc_same_compiler_xerces",
+  "estimates": {
+    "download_gb_range": [
+      0.1,
+      0.5
+    ],
+    "excludes": "all technical suite audit 14 smoke preflight and research simulations",
+    "confidence": "LOW_UNMEASURED",
+    "staging_gb_range": [
+      3,
+      8
+    ],
+    "initial_build_minutes_range": [
+      30,
+      120
+    ]
+  },
+  "pending": [
+    "Download and verify sources/tools under authorized staging",
+    "Apply exact reviewed native patch",
+    "Build Xerces SUMO and netconvert with 2 jobs",
+    "Check versions and DLL closure without simulation",
+    "Freeze bundle provenance",
+    "Parent-owned full gates before research switch"
+  ]
+}

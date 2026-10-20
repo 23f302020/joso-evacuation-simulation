@@ -1,0 +1,57 @@
+{
+  "at_jst": "2026-10-17T17:53:53.225844+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "canonical_validator_components_implemented_and_independently_countertested",
+  "summary": "最終goal ACTIVE。受付・代替行動70セルは登録済み・研究core 0、技術未READY・実行中0。READY原本のrun内保存/一次証跡拘束、正式採用validate、6ファイルrecord/途中記録rollback/孤児復旧/単一writer/status/1セル起動を実装し、隔離48unit PASS。旧cf13全21とcf14単独は共通実装更新により履歴として保全。次は固定した共通5実装で全21ケースの実SUMO・独立再計算/故意改変→全14設定smoke→容量/READY生成を検証し、通過後70セルを逐次実行・15分監視。容量は実測拡大4倍＋5GiB余裕の1セル予約を毎回再確認し、残全件投影も明示する。旧系列/失敗/図v5は保全、旧監視PAUSED、Drive読取のみ・外部送信なし。",
+  "core_runs": 0,
+  "technical_ready": false,
+  "running": [],
+  "registered_input_directory": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered02",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "input_validation_checks_pass": 28,
+  "unit_tests_pass": 48,
+  "skill_validation": "PASS",
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "77c4d9e87f967a0cf48558bfd106cf4fd28d8c71ec6f63d14c588400c9382480",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "f3207743fe87fb1e3c285b8f1612bd9087bfe683d5eade94d5941df715196c66",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "b1b2831a4b79afe2fb3733498af387eb3b5a145ab5bfe32d5bf44672aad2120b"
+  },
+  "integrated_suite": "cf26101713 historical; final current suite pending",
+  "integrated_cases_pass": 21,
+  "suite_manifest_sha256": "b0ef40177310a66eb9a67391160021385977d88df9d2b33d107d31df9a6134a3",
+  "independent_audit": "06_研究結果\\jdrt\\goal_20261017\\cf26101710_統合fixture独立監査.json",
+  "independent_audit_status": "PASS",
+  "independent_audit_sha256": "d6b7a16c8fbfcccc7c11363b77a04df17c956187766e093e65d7b31f2b8f885a",
+  "tamper_tests_pass": {
+    "candidate": 10,
+    "integration": 9
+  },
+  "old_preservation_checks": {
+    "sources": 249,
+    "implementation": 4,
+    "mismatch": []
+  },
+  "historical_smokes_current_implementation": false,
+  "new_diagram": "03_研究設計文書/図表・UML/JDRT_受付代替行動_native期限・internal取消_v5.html",
+  "next_source": "05_タスク管理/jdrt/JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md",
+  "next": "final frozen21 native suite, independent/counterexample audit, all14 current smokes, measured capacity/preflight READY, then single core with15min monitoring",
+  "current_suite_required": true,
+  "canonical_partial_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261017T172905.json",
+  "canonical_partial_report_sha256": "9d65136d479f7b362038ccbac16a3f5e077fc3c49264315f246bd7ec9a96d1e7",
+  "canonical_counterexamples_pass": 35,
+  "verifier_dependencies": {
+    "numpy": "2.4.4",
+    "scipy": "1.16.3",
+    "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+    "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+  },
+  "remaining_formal_gates": [
+    "final current21/all14 and counterexamples",
+    "capacity empirical proof and current READY"
+  ],
+  "technical_api_run": "cf26101714_c08",
+  "technical_api_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cf26101714_c08_20261017T172744116533.json",
+  "lifecycle_implemented": true
+}

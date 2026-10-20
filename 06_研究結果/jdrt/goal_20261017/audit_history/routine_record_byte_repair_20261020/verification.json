@@ -1,0 +1,8 @@
+{
+  "reason": "Repair only routine recorder introduced NUL and whole-file CRLF conversion; retain all document text and appended observations. Previous repository index uses LF. No research artifact changes.",
+  "before_sha256": "6476ffc2f4b830eaef11a20eb42121dbfe0cc28782446d01577c98d1e6c37808",
+  "after_sha256": "48a086da16ddba38ad9f4bbfcc8a6a65d36fc085ff0c219c5c4fe25fe210e5ec",
+  "nul_removed": 1,
+  "crlf_to_lf": 1910,
+  "text_equivalence_except_report_path_zero_and_line_endings": true
+}
