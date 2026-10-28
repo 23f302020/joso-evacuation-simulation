@@ -4,247 +4,173 @@
 > **更新のしかた：** 状態が変わったらこのファイルを上書きする。経緯は消さず `00_全体整理/決定ログ.md` へ追記する。
 > **エージェント読込範囲：** 通常は`<!-- AGENT_CURRENT_END -->`までで十分。以降は過去結果を確認するときだけ読む。
 
-**最終更新：** 2026-10-20（隔離native build失敗を反映）
+**最終更新：** 2026-10-28（短道路・到着観測の技術訂正、新登録v3の全実SUMO再検証）
 
 ---
 
 **経過報告の運用変更（2026-10-20）：** 経過報告は`00_全体整理/現状把握_静的・動的シミュレーション整理.md`へ更新日ごとに短く先に記録してから、日付別に開閉できるHTMLへ反映し、詳細はGitHubへプッシュする際のコミットメッセージ本文へ残す。`01_経過報告/`はPPTX形式の発表資料を作成するときだけ使用し、既存Markdownは履歴として保存する。
 
+**後続実験の方針（2026-10-24）：** ユーザー指定により、現小型車系列の全登録セルの検証・正式記録・分析と結果整理の後、大型バスが一定区画を巡回して集団輸送する別系列を検証する。[後続実験計画](05_タスク管理/jdrt/大型バス巡回輸送_後続実験計画.md)へ作業順・設計事項・開始条件を登録。台数・定員・停留所・経路・比較条件等は未確定、本実験未開始。現系列・凍結系列の条件変更なし。
+
 ## 一行で言うと
 
+**現状把握・GitHub入口の整理（2026-10-28）：** 現状把握MD/HTMLへ各実験の固定条件・変更条件・進行度・結果と、現行v3の正式9回の個別人数表を追加。READMEに確認先を集約。10:43 JST観測の本実験稼働0・正式9/70・技術停止を区別し、人物CSVの分母・受入・退出と台帳/SHAを照合。[更新検証](00_全体整理/現状把握_更新検証_20261028.md)参照。開始・採用条件は変更していない。
+
+**モデル運用更新（2026-10-21）：** ユーザー承認済みの作業別分担・切替基準・短い引継ぎ・検証証跡再利用条件を[運用正本§0](05_タスク管理/スキル・エージェント運用.md)へ反映し、通常開発用role定義を追加。研究の次の1件・開始/採用ゲートは維持。初回の明示委任による起動確認と代表課題での節約効果比較は未実施。
+
 <!-- CHOICE_CURRENT_CONTEXT_BEGIN -->
-最新HOLD（観測時点 2026-10-20T08:28:00.972801+09:00）：goal ACTIVE。realtime_choice_v1正式記録0/70、研究core稼働0、技術READY=false。隔離native build attempt06_20261020 は当該観測時点でRUNNING、phase sumo_netconvert_build_short_path。owner PID 17468 identity=matched、child PID 12700 identity=matched。これは過去のポイント観測で、現在のPID生存や連続監視は主張しない。compile完成はnative回帰の合格やREADYを意味しない。旧FAILED/INVALID・attempt履歴を保全。登録上の次セルはfixed_reference_r0_seed23423（開始許可ではない）。後続開始は禁止。native回帰・現行全fixture suite・独立audit・全設定smoke・新preflight・G6再監査が必要。研究入力/PAP/受入条件不変。Drive読取のみ・外部送信/公開更新なし。観測証拠：06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.json。
+最新HOLD（表示根拠 2026-10-28T10:43:01.498851+09:00）：正式記録9/70。技術READY=false。旧READY/技術PASSはSTALE/historical。後続開始禁止。元summaryと旧証拠はcheckpoint履歴に保全。
 <!-- CHOICE_CURRENT_CONTEXT_END -->
 
-[停止再観測の一次記録](06_研究結果/jdrt/goal_20261017/技術再検証_停止再観測_20261018T200836887551.json)
-> **履歴（2026-10-18時点）：HOLD — ch261018_002 は2026-10-18 10:51:46 JSTの独立検証がINVALIDでした。正式記録0/70。未PASSは `movement_events.walk_stage_budget_recurrence` と `native_logs.all_warnings_evidence_classified`。診断保存後、15:32:05 JSTに専用CLI rejectを実行し `INVALID_PRESERVED`。run/元manifest/validator原本・stdout/stderr/原ログと成果物を保全し、採用していません。lane-feasibility/runtimeとnative-speed verifierの技術修正を開始。旧READY・suite・14smokeは旧SHA履歴として保持し、現行技術READYとは扱いません。新common5実装、全新版技術suite/反例検証/全14設定smoke/新preflightが完了するまでcore start禁止。ch261018_002のvalidate再実行・record・再利用は禁止。新runは独立PASS後に新IDで開始。入力・PAP・受入条件の変更なし。15:01まで約10:43以降に監視証跡がない観測空白も履歴として維持。goal APIは15:30:34 JST readback ACTIVE（以前のusageLimitedは過去観測）。**
+**受付・代替行動の次の1件：** 採用数・実行中run・登録上の次セルは上の現行表示と専用CLI status/check、新系列台帳を正本とする。元session/実PID/作成時刻・次の具体操作はG4実装・実SUMO_継続チェックポイント.jsonとoperations.jsonlを参照する。未記録run・未完操作がある間は次セルを開始しない。
 
+> 履歴：**受付・代替行動の次の1件（2026-10-27T11:12:19.817853+09:00）：** 新v3正式1/70。低需要R1 nv26102702は11:10:58に21600秒COMPLETED、元wait83231 exit0・実4748不在・親check異常なしを確認。まだ採用せず、独立validate/専用record7と元終端7ファイル読戻し後だけ次へ。次のfinishを1担当で開始し、進行中は別validate/record/表示writerを作らない。全70/分析・後続大型バス・最終報告は未完。
 
-> **履歴（2026-10-19 09:43 JST時点）：** 最終goal ACTIVE。`realtime_choice_v1`正式記録0/70、研究core稼働0、READY=false。wf26101901 c25 PASS/c26 FAILED、native lateral reset +0.64mを確認。提案レビュー・native regression計画完了、build未実施。隔離build許可済みだがbuilder process未確認。旧READY/G6 source proof stale。全suite/audit/14 smoke/preflight完了までcore start禁止。[monitor JSON](06_研究結果/jdrt/goal_20261017/技術監視_wf26101901_20261019T093600737201.json)・[proposal](06_研究結果/jdrt/goal_20261017/audit_history/walk_native_proposal_20261019/REVIEW.md)・[regression plan](06_研究結果/jdrt/goal_20261017/audit_history/walk_native_proposal_20261019/NATIVE_REGRESSION.md)。
+> **受付・代替行動の次の1件（2026-10-27T10:13:29.678939+09:00）：** nv26102701（新登録v3、fixed_reference_r0_seed23423）を開始済み。実PID13636/作成10:08:46.0913759、launcher23204、元start99879 exit0。親check正常。07のCIM照会失敗を保全し監視だけ26988へ再起動、同じ本run13636の作成時刻/コマンド/進捗と監視の鮮度を確認済み。本runは再起動しない。完了後に専用validate/record7/readback/statusを終えるまで次セル禁止。全70/分析・報告は未完。
 
-**既存系列の完了状態（保全）：** **Phase 1〜3・Scenario Cは凍結、JDRT v1は保全。v2全20セルの主比較と一次再集計が完了。固定条件のType4主差は5seedすべて負。PAP副指標の候補Gate拒否・全車両の網羅的閉鎖後進入は不足として残し、現実条件版は「現在運用＋2015年型洪水」で仮定設計と資料収集を並行。圧縮第一案は不採用。実時間入力の再構築を先行し、USACEの2015再現水位を入力化し、ユーザー採用Bを新PAPへ登録。域内11,965人/4施設/退出別計上。新境界整合PAP/Registryを登録。入力17検査・23テスト・実SUMO9ケース・現行3条件smoke PASS、新15/15正式記録完了、独立一覧とBA-02〜06の副指標/観測/取得監査を完了。次は不足資料の整理。旧8記録/失敗は保全し新主比較へ混ぜない。**
+> **受付・代替行動の次の1件（2026-10-24T23:39:54.926219+09:00）：** 全14と同一commonsourceの読戻し済み。表示同期の後に専用preflight --suite-id nt261024d --counterexamples 06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261024T231243.jsonを1回だけ起動。同じhandle/PID/attemptの入力・unit・43独立再検証・容量・新READYを追跡し、タイムアウトで再実行しない。preflight生存中は表示writerを保留。新READY全binding/status/容量/G6/監視の最終確認前にcore禁止。
 
----
+> 履歴：**受付・代替行動の次の1件（2026-10-24T18:03:44.851009+09:00）：** 技術HOLD・正式8/70保全。nc26102402は専用validate元session13369/実PID19672がexit1/INVALIDで終端、recordなし。専用rejectでINVALID_PRESERVEDとし、元COMPLETED manifestをSHA付き保存。元計算終了17:40:16.885273と管理reject時刻を区別する。主因は短道路を3299.0までに通過済みなのに次external3300.5を上限に付ける生成/検証の共有時刻誤り。native_logs側はmovement全体INVALIDにより歩行Warning照合辞書を空にする二次判定で、6warningと3組のnative stage receiptは一致し、version supportも確認。分類器の条件は緩めない。候補はgoal/transition_time_candidate_20261024へ隔離し、元凍結RED・13人工契約・1個体の読取replay PASS、未組込/非採用。次は観測のみのproducerと独立validator修正、初期/到着/再経路/short/internalの実SUMO反例と全技術再検証、全70共通版の別技術登録/新workspace/READY。旧8採用/旧9原本を新比較へ混ぜず、gate迂回/旧run修正・再利用なし。原検証担当は不在を確認、現common5/config/入力はまだ不変。
 
-## フェーズ状態
+**独立監視導入（2026-10-20）：** ユーザー依頼の別goalとして`07_監視システム/`を導入。Windowsタスク`JDRT-SimulationWatch`でチャット外に常駐し、PID終了1秒・状態/ログ10秒・時刻停滞10分でイベント検出、イベント時だけ読取専用Codex短報とWindows通知。履歴349件を基準登録、研究core稼働0・READY=falseは専用statusで観測。人工通知/診断・19試験・監視異常終了からの別PID自動復帰を確認。runtimeはOneDrive外の`~/.jdrt-monitor/10afa40fb646/`、受信箱は同所`status.html`。このchatへの自動投稿・研究の自動start/recordは行わず、既存研究ゲートを維持。経過報告は現状把握Markdown先行→HTML反映。[導入タスク](05_タスク管理/jdrt/独立監視システム_導入タスク.md)。監視生存の最新状態は専用`watch.py status`を確認する。
 
-| Phase | 内容 | 状態 |
-|-------|------|------|
-| Phase 1 | 自家用車避難（道路閉鎖＋Dijkstra・茨城県内41市区町村） | ✅ 完了 |
-| Phase 2 | SUMO/TraCI 交通シミュレーション（41市区町村 small/10pct、full は代表6市区町村） | ✅ 完了 |
-| Phase 3 | シナリオA/B比較・段3Rレプリケーション・感度分析・成果物化 | ✅ 完了（主結論ヌル確定） |
-| 追加研究 | 先生コメント対応：車のみ詳細化・車＋徒歩Scenario C・同条件静的分析 | ✅ 全15run・統合評価完了 |
-| JDRT | 常総市限定：動的配車・将来道路閉鎖情報の活用 | ✅ 全20セル採用・主比較と取得済み副指標の再集計完了。⚠️ PAP副指標2項目は未取得。報告と取得監査を参照 |
-| JDRT現実条件版 | 新境界整合B：R0/R1/R2 × 5seed | ✅ 15/15正式記録完了。独立一覧と副指標/観測/取得監査・方針整理完了。次は不足資料 |
 
----
+<!-- choice_record:ch261021_001 -->
+### ch261021_001（2026-10-21T16:24:23.209096+09:00正式記録）
 
-## 研究主結論（確定・2026-07-12／決定105〜111）
+protocol=realtime_choice_v1、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261021_001_20261021T162423107374.json`。次の1件は専用CLI statusを参照。
 
-**主指標 Type3/4 避難完了率の A/B 差は「本モデルの分解能では検出されない」＝ヌル。**
 
-- 15組合せの符号が非一貫（raw 正13/負2・保守 正13/負2）
-- raw 点推定 **+1.234721%pt**・帯 **[−3.088349, +22.970757]%pt**
-- 保守 点推定 **+1.209964%pt**・帯 **[−3.088349, +22.633452]%pt**（max=B#4対A#2・決定139）
-- 帯がゼロをまたぐため **方向主張は全面禁止**
 
-**副次的発見：** 強い初期条件感応性（regime bimodality）を第一級の発見として扱う。同一モデルでシードのみを変えたときの大差は、単一run避難シミュレーションの初期条件脆弱性を示す（決定107）。
+**判断学習の統一運用（2026-10-22）：** 入口は[運用正本§0.4](05_タスク管理/スキル・エージェント運用.md)のみ。「ACEで基準確認→台帳へ判断/結果記録→本chatが教訓を整理してACE更新」の一つの流れに統合。各実行chatは重要判断前のACE参照と台帳記録、本chatは判断基準の更新を担当。ユーザー指示で実行中chatへ参照手順を送信し、受領応答とace.ps1 showを含むコマンド完了を確認。適用理由/結果の記録は今後確認する。過去の手作業まとめは履歴であり並行更新しない。API自動LLM未接続・改善効果未測定。導入/監査/技術制約は[技術説明](.agents/tools/ace/README.md)参照。
 
-**正本：** `開発メモ/方針判断_fable5/07_段4_結論・感度/段4_主指標ヌル確定_方針判断_fable5.md`
 
----
+<!-- choice_record:nc26102201 -->
+### nc26102201（2026-10-22T21:34:37.888584+09:00正式記録）
 
-## 残タスク
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102201_20261022T213437797252.json`。次の1件は専用CLI statusを参照。
 
-| # | 内容 | 状態 |
-|---|------|------|
-| 1 | 既存A側正本3runから車のみ詳細データを再集計 | ✅ 完了（CSV 9種・67,174行、全検証PASS） |
-| 2 | 公的なメッシュ別車保有データを調査 | ✅ 完了（直接250m値なし、PT市区町村集計は登録制） |
-| 3 | 車・徒歩人口配分を正式化 | ✅ 完了（10/15/20%、各21,539人、重複・未割当0） |
-| 4 | 歩行速度・浸水時歩行条件の根拠調査 | ✅ 完了（一般1.00m/s、高齢0.58m/s、STRICT/WADE） |
-| 5 | Scenario Cの徒歩経路・車両route実装 | ✅ 完了（3感度入力、会計・SHA・1秒検査PASS） |
-| 6 | 静的分析とSUMOの共通条件固定 | ✅ 完了（9,720経路行・72集計行、会計・閉鎖・SHA検証PASS） |
-| 7 | Scenario Cの新規実験・評価 | ✅ 15/15run、CSV 11種・12,645行、再生成SHA一致、26テストPASS |
-| 8 | JDRT実装方針・タスク管理・初期Python基盤・常総市workspace分離 | ✅ 完了（JDRT 25件、unit全体137件PASS） |
-| 9 | JDRT Pre-Analysis Plan・Parameter Registry | ✅ 正式固定（B3対P2-L15、Type4主指標、5seed、8入力SHA） |
-| 10 | JDRT常総市入力アダプター・run記録 | ✅ 人物3,255、request 1,440、車両5、避難所9、自家用車8,164、unit 146件PASS |
-| 11 | JDRT TraCI controller・情報分離統合テスト | ✅ 全体165件PASS |
-| 12 | JDRT小規模smoke | ✅ 閉鎖なし10要求・22人全員避難、閉鎖あり10要求・19人理由別終端、両方SUMOエラー0 |
-| 13 | JDRT HTML・現状把握md/html | ✅ 現状表示更新、一次生成した中核比較HTMLへ接続。ローカル実画面を確認。公開版への再配信は未実施 |
-| 14 | JDRT中核full実験・主比較 | ✅ v2全20セル再検証・主比較、8CSVと報告/HTML/manifest。⚠️ PAP副指標の候補拒否・網羅的閉鎖後進入は取得不足 |
-| 15 | JDRT現実条件追加実験 | ✅ 新境界整合15/15採用・BA-02〜06完了。最終goalは新系列70セルを事前登録し技術準備中 |
-| 16 | 論文提出用編集 | 年末まで保留 |
-| 17 | JDRT v2独立結果一覧 | ✅ 全20セル再検証・記録確認後に独立HTML生成、20行・25根拠SHA・実画面確認済み |
+**現状把握資料の改訂（2026-10-22）：** 非専門者向けの文章・記録ルールを制定し、現状把握MD/HTMLと表示用補助へ反映。研究実装・入力・採用条件は維持。改訂前の技術記録は別ファイルで保全。PC/スマートフォン表示、開閉・キーボード、経過同期・リンク・marker・固定SHAを確認。状況同期の既存試験1件は変更前にも失敗する問題として履歴に記録。公開更新なし。[文章・記録ルール](00_全体整理/現状把握_文章・記録ルール.md)。
 
-**完了済みPhase 3へ追加run・追加seedを加えない。** AC7・不動点反復、第3巡、ダンピング反復、再配分変更は禁止のまま。Scenario CはPRE-8で承認された別実験15runだけを実行する。
+**デザイン維持の引継ぎ（2026-10-22）：** 別チャットでも現在のHTMLを使って内容を更新する。[更新ガイド](00_全体整理/現状把握_デザイン維持・更新ガイド.md)に、配色・文字組・余白・開閉と更新箇所を整理。通常の内容更新ではCSS・操作用JavaScript・節の識別名を維持する。文章ルールとAGENTSから参照できる。
 
-詳細設計：`開発メモ/先生コメント対応_20260826/11_追加研究_詳細進行設計.md`  
-タスク正本：`05_タスク管理/先生コメント対応_20260826.md`
 
-JDRT実装方針：`03_研究設計文書/jdrt/常総市JDRT_実装方針.md`  
-JDRT PAP判断入力：`03_研究設計文書/jdrt/常総市JDRT_PreAnalysisPlan_判断入力版.md`  
-JDRT Parameter Registry判断入力：`03_研究設計文書/jdrt/常総市JDRT_ParameterRegistry_判断入力版.md`  
-JDRT正式PAP：`03_研究設計文書/jdrt/常総市JDRT_PreAnalysisPlan_v1.md`  
-JDRT正式Parameter Registry：`03_研究設計文書/jdrt/常総市JDRT_ParameterRegistry_v1.md`  
-JDRT機械可読設定：`04_プログラム/config/jdrt_parameters_v1.json`  
-JDRT v2正式PAP：`03_研究設計文書/jdrt/常総市JDRT_PreAnalysisPlan_v2.md`  
-JDRT v2正式Parameter Registry：`03_研究設計文書/jdrt/常総市JDRT_ParameterRegistry_v2.md`  
-JDRT v2機械可読設定：`04_プログラム/config/jdrt_parameters_v2.json`  
-JDRTタスク正本：`05_タスク管理/jdrt/JDRT_実装タスク管理.md`
-JDRT逐次運用：`.agents/skills/joso-jdrt-runner/SKILL.md`
-JDRT現実条件追加実験方針：`03_研究設計文書/jdrt/常総市JDRT_現実条件追加実験_詳細方針_v1.md`
-JDRT現実条件版判断入力：`03_研究設計文書/jdrt/常総市JDRT_現実条件版_PAP・パラメータ判断入力.md`
-JDRT具体仮定案：`03_研究設計文書/jdrt/常総市JDRT_現実条件版_仮定シナリオ設計案_v1.md`
-JDRT人物/観測仕様案：`03_研究設計文書/jdrt/常総市JDRT_現実条件版_人物対応・観測仕様_判断入力.md`
-JDRT境界整合PAP：`03_研究設計文書/jdrt/常総市JDRT_実時間B_境界整合_PreAnalysisPlan_v2.md`
-JDRT境界整合Registry：`03_研究設計文書/jdrt/常総市JDRT_実時間B_境界整合_ParameterRegistry_v2.md`
-JDRT境界整合準備・進行監査：`05_タスク管理/jdrt/JDRT-実時間B境界整合_開始準備監査.md`
-JDRT境界整合専用CLI：`.agents/skills/joso-jdrt-runner/scripts/realtime_b_boundary_cell.py`
+<!-- choice_record:nc26102202 -->
+### nc26102202（2026-10-22T22:43:22.004413+09:00正式記録）
 
-**実行状況（2026-10-15）：** 全20セル独立検証PASS・正式記録済み、実行中0・未記録0。最終採用run：`core_v2_p2_l15_seed101_20261015_skill01`。`06_研究結果/jdrt/JDRT-v2_中核比較.html`・`JDRT-v2_中核比較_報告.md`・`JDRT-v2_データ取得監査.md`を作成。元run不変と主比較を別実装でも確認。実施順/担当/判断入力は`05_タスク管理/jdrt/JDRT-v2_完了後方針・タスク.md`。主差はP2-L15−B3の5seed記述比較に限定し、既存Phase 3のヌル結論と区別。この段落はv2完了時点の履歴。現在の実時間Bは下記を参照。
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102202_20261022T224321901062.json`。次の1件は専用CLI statusを参照。
 
-**エージェント運用（2026-10-09更新）：** AGENTS.mdを公式資料に基づき現行化。技術作業の自律完了・必要範囲読込・重要操作前のGateを適用。旧モデル固定分担は履歴、研究条件変更はユーザー判断と事前登録。
 
-**運転記録改善（2026-10-09）：** v2スキルは操作履歴JSONLとevent観測を記録。旧13セルの台帳欠落を独立検証後に補完し、実験記録と台帳17セルが一致。6成果物rollbackと補完時の現在地維持を改善。当時B2 seed101は継続中だった。現在は上記の完了数と実行中欄を参照。
+<!-- choice_record:nc26102203 -->
+### nc26102203（2026-10-23T09:46:46.812523+09:00正式記録）
 
-**全件完了監視（2026-10-15）：** heartbeat `jdrt-v2`の依頼対象は全20セル記録と独立HTML生成・表示確認まで完了。監視はPAUSED（停止確認済み）。詳細・生成根拠SHA・Error分類はJDRTタスク正本と経過報告の全20セル完了節。
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u05_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102203_20261023T094646729135.json`。次の1件は専用CLI statusを参照。
 
 
-**履歴・現実条件版の再開（2026-10-15）（後続Bで更新）：** ユーザーは「現在の運用＋2015年型洪水（推奨）」、続いて「A：仮定を明示した比較設計と不足資料の収集を並行（推奨）」を選択。公表根拠/母数/対象時点、施設照合、共通人物差を再確認し、技術仕様・具体仮定案を保存。既存閉鎖は数日をモデル6時間へ圧縮しており、モデル900秒を実時間15分の効果としない。ユーザーは続いて実時間再構築先行を選択し、圧縮第一案を不採用とした。具体値は未採用。元入力/実行器/run変更なし、新run/監視なし。
+<!-- choice_record:nc26102301 -->
+### nc26102301（2026-10-23T10:45:59.599303+09:00正式記録）
 
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u05_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102301_20261023T104559490974.json`。次の1件は専用CLI statusを参照。
 
-**実時間洪水入力（2026-10-15）：** 原本ZIP再取得一致、8時点と121線形状を実時刻で整理。旧汎用KML loaderの設定時刻に6件不一致、現JDRTは別の距離分位シナリオ閉鎖が元であり時刻伸長だけでは再現不可。公式BP030生応答は実経過時間だがL2想定洪水で2015再現ではなく、probeの0.5m到達区間幅も900秒超。現在NOT_READY_FOR_ROAD_CLOSURE_INPUT。必要データ仕様・公開研究候補・未送信照会草案を`02_情報調査/氾濫・浸水/jdrt_realtime_20261015/実時間洪水入力_再構築方針・取得監査.md`と同フォルダへ保存。数値格子取得後に初期状態/評価窓/road mappingを検証する。新runなし。
 
+<!-- choice_record:nc26102302 -->
+### nc26102302（2026-10-23T11:42:07.707939+09:00正式記録）
 
-**履歴・新シミュレーション開始準備（2026-10-15〜16）（後続Bで更新）：** ユーザーの準備・開始依頼、外部送信全面禁止を受領。FirecrawlでUSACE公式配布先を確認し匿名ブラウザで公開ZIP取得。865時点・5分間隔の水位と地形を調査用候補として保存、ZIPから独立再照合15検査PASS・旧18依存不変。計算域/元人口/9施設の照合図と新データフローを`03_研究設計文書/図表・UML/JDRT_実時間版_新データフロー_v1.html`等へ独立作成。数値データ未取得という前段の障害は解消したが、道路水深/橋梁/域外/初期状態の採用入力化とPAP・Registry、新executor/observer/スキル対応・smokeは未完。`03_研究設計文書/jdrt/常総市JDRT_実時間版_開始前判断案_v1.md`のA/B/Cと具体交通仮定を明示質問中。正式な新run・監視はまだ開始していない。詳細は`02_情報調査/氾濫・浸水/jdrt_realtime_20261015/USACE_取得・入力化監査.md`と完了後タスク§9。現在の次の1件はこの入力化の技術検証と方法判断の確定。Drive編集・問い合わせ・先生/Dropbox/Gmail送信・Web公開更新なし。
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u50_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102302_20261023T114207604398.json`。次の1件は専用CLI statusを参照。
 
+**現状把握の公開更新（2026-10-23）：** ユーザーの明示依頼で改訂HTML1件を既存Cloudflareへ配信。原本/staged/配信SHA一致、HTTP200、PC・スマートフォン表示と開閉を確認。最終配信ID73306013f5654c559312a7149c7b5dd1。[公開先](https://joso-research-status.30k-012rei.workers.dev/)、[配信証跡](00_全体整理/公開用_cloudflare/deployment_history/20261023T172045508346/verification.final.json)。研究実装・入力・採用条件不変。
 
-**履歴・B採用・実装開始（2026-10-16）（後続Bで更新）：** ユーザーが「開始前判断案はBを採用してください」と新run開始を明示。判断待ちは解消。実時間B PAPと機械Registryを新規作成し、計算域に合わせた人口/網/4施設/流出境界へ再設計する。退出は受入と分離、域内Type4を主要分母へ保持。現在は入力構築→独立検証→新実行器/スキル対応・smoke→1セル開始を進行中。旧系列の入力/コード/runは保全し、外部送信禁止/Drive読取のみを継続する。
 
+<!-- choice_record:nc26102303 -->
+### nc26102303（2026-10-23T17:58:09.033066+09:00正式記録）
 
-**履歴・実時間B開始前ゲート（2026-10-16）：** B採用は明示回答済み。新PAPと機械Registryを固定し、inputs/build02独立15検査PASS。R0/R1/R2の現行コードsmoke PASS、9テストPASS、preflight READY。次は専用スキルCLI start-nextでR0 seed23423を開始し、15分監視→validate→6ファイルrecord→status。詳細は `05_タスク管理/jdrt/JDRT-実時間B_開始準備監査.md`、新図解は `03_研究設計文書/図表・UML/JDRT_実時間B_新データフロー_v1.html`。全15セル前に方向解釈しない。
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u50_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102303_20261023T175808936607.json`。次の1件は専用CLI statusを参照。
 
 
-**履歴・実時間B初回開始：** 実時間B R0 seed23423、run `rtb_core_r0_seed23423_20261016T071205` を2026-10-16 07:12:05 JST開始。15分監視 `jdrt-b-15` ACTIVE。開始後のcheckはstatus=RUNNING、PID alive=True、sim=2280.0/21600秒。終了後validate→6ファイルrecord→status、未記録のまま後続を開始しない。
+<!-- choice_record:nc26102304 -->
+### nc26102304（2026-10-23T18:54:04.292700+09:00正式記録）
 
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u50_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102304_20261023T185404222375.json`。次の1件は専用CLI statusを参照。
 
-**履歴・実時間B初回異常検知：** rtb_core_r0_seed23423_20261016T071205 の閉鎖除去後TraCI unknown vehicle Errorを検知。正式採用と後続開始を止め、現run自然終了後に購読解除を技術修正する。稼働中コード/入力編集なし。詳細は準備監査。
+**監視の所要時間記録（2026-10-24）：** 新規イベントと監視stateへmanifestの開始・終了・実所要秒数/出典を追加し、受信箱へJSTで表示。34試験PASS、新実監視16536/現source一致・旧167イベント不変を確認。旧イベントは書換えず時刻不明。研究の次セル/正式記録には作用しない。[反映証跡](07_監視システム/verification/execution_timing_20261024/deployment.json)。
 
 
-**履歴・実時間B技術修正：** 最初のR0は6時間終了後にスキルrejectでINVALID保全、台帳未採用。元コード/manifestを保存。購読解除と歩行stage位置を修正し、検証器のdriver stderr盲点を解消。入力/PAP/Registry不変。9テストと入力15検査PASS、R0/R1/R2 smokeを再検証後、新run IDでR0を再開する。
+<!-- choice_record:nc26102401 -->
+### nc26102401（2026-10-24T17:21:48.069182+09:00正式記録）
 
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=facility_first_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=1/544、退出12は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102401_20261024T172147959246.json`。次の1件は専用CLI statusを参照。
 
-**履歴・修正後R0開始：** `rtb_core_r0_seed23423_20261016T072257`（R0 seed23423、07:22:57 JST開始）。入力/PAP/Registry不変、修正後3条件smoke・9テスト・入力15検査PASS。最初のrunはINVALID・未採用、理由/旧コード保全。監視jdrt-b-15 ACTIVE。次はこのrunの終了を確認→validate→6ファイルrecord→status。古い開始/修正中段落は時系列履歴。稼働中はscripts/入力編集禁止。
 
+<!-- choice_record:nv26102701 -->
+### nv26102701（2026-10-27T10:54:15.691248+09:00正式記録）
 
-> **履歴（2026-10-19 09:43 JST時点）：** 最終goal ACTIVE。`realtime_choice_v1`正式記録0/70、研究core稼働0、READY=false。wf26101901 c25 PASS/c26 FAILED、native lateral reset +0.64mを確認。提案レビュー・native regression計画完了、build未実施。隔離build許可済みだがbuilder process未確認。旧READY/G6 source proof stale。全suite/audit/14 smoke/preflight完了までcore start禁止。[monitor JSON](06_研究結果/jdrt/goal_20261017/技術監視_wf26101901_20261019T093600737201.json)・[proposal](06_研究結果/jdrt/goal_20261017/audit_history/walk_native_proposal_20261019/REVIEW.md)・[regression plan](06_研究結果/jdrt/goal_20261017/audit_history/walk_native_proposal_20261019/NATIVE_REGRESSION.md)。
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102701_20261027T105415588821.json`。次の1件は専用CLI statusを参照。
 
-**直前の完了後監査の履歴：** 新境界整合Bは15/15正式記録済み。BA-02〜06の副指標・時間・候補・道路・取得監査と方針整理を完了。道路287,958,870行・候補5,270,448行を全読取し、全人物会計・時刻・選択候補/配車event・3時計・遷移を照合。Type4の固定終点・施設空き・拠点接続を診断。次はNP-02/03の災害時供給/需要・路面高/施設条件の不足資料整理。追加run・方法変更は未採用、監視PAUSED。Driveは5文書読取のみ、外部送信なし。
 
+<!-- choice_record:nv26102702 -->
+### nv26102702（2026-10-27T11:42:36.677532+09:00正式記録）
 
-**境界整合採用履歴：** rtbb2_core_r1_seed23423_20261016T183134、R1 seed23423、独立PASS・6ファイルrecord確認。Type4施設受入1/544、退出110は別計上。
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102702_20261027T114236594092.json`。次の1件は専用CLI statusを参照。
 
 
-**実時間B境界整合正式記録：** rtbb2_core_r0_seed23423_20261016T182150、R0 seed23423、validate PASS・record完了。Type4=0/544、退出は別アウトカム。次セルはスキルstatusを参照。
+<!-- choice_record:nv26102703 -->
+### nv26102703（2026-10-27T19:17:08.842651+09:00正式記録）
 
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u05_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102703_20261027T191708762630.json`。次の1件は専用CLI statusを参照。
 
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：2/15正式記録。R1 seed23423 `rtbb2_core_r1_seed23423_20261016T183134`は独立PASS・6ファイル同期・台帳一意確認済み。R2 seed23423 `rtbb2_core_r2_seed23423_20261016T184653`を2026-10-16T18:46:55.399168+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
 
+<!-- choice_record:nv26102704 -->
+### nv26102704（2026-10-27T23:16:03.906995+09:00正式記録）
 
-**境界整合採用履歴：** rtbb2_core_r2_seed23423_20261016T184653、R2 seed23423、独立PASS・6ファイルrecord確認。Type4施設受入1/544、退出96は別計上。
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u05_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102704_20261027T231603812315.json`。次の1件は専用CLI statusを参照。
 
 
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：3/15正式記録。R2 seed23423 `rtbb2_core_r2_seed23423_20261016T184653`は独立PASS・6ファイル同期・台帳一意確認済み。R0 seed42 `rtbb2_core_r0_seed42_20261016T190325`を2026-10-16T19:03:27.779577+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
+<!-- choice_record:nv26102705 -->
+### nv26102705（2026-10-28T00:05:09.957506+09:00正式記録）
 
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u50_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102705_20261028T000509870415.json`。次の1件は専用CLI statusを参照。
 
-**境界整合採用履歴：** rtbb2_core_r0_seed42_20261016T190325、R0 seed42、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出188は別計上。
 
+<!-- choice_record:nv26102806 -->
+### nv26102806（2026-10-28T01:00:29.242226+09:00正式記録）
 
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：4/15正式記録。R0 seed42 `rtbb2_core_r0_seed42_20261016T190325`は独立PASS・6ファイル同期・台帳一意確認済み。R1 seed42 `rtbb2_core_r1_seed42_20261016T191543`を2026-10-16T19:15:46.646693+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u50_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102806_20261028T010029136672.json`。次の1件は専用CLI statusを参照。
 
 
-**境界整合採用履歴：** rtbb2_core_r1_seed42_20261016T191543、R1 seed42、独立PASS・6ファイルrecord確認。Type4施設受入1/544、退出137は別計上。
+<!-- choice_record:nv26102807 -->
+### nv26102807（2026-10-28T01:48:13.117875+09:00正式記録）
 
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u50_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102807_20261028T014813025726.json`。次の1件は専用CLI statusを参照。
 
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：5/15正式記録。R1 seed42 `rtbb2_core_r1_seed42_20261016T191543`は独立PASS・6ファイル同期・台帳一意確認済み。R2 seed42 `rtbb2_core_r2_seed42_20261016T193033`を2026-10-16T19:30:35.177397+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
 
+<!-- choice_record:nv26102808 -->
+### nv26102808（2026-10-28T02:31:22.117948+09:00正式記録）
 
-**境界整合採用履歴：** rtbb2_core_r2_seed42_20261016T193033、R2 seed42、独立PASS・6ファイルrecord確認。Type4施設受入1/544、退出101は別計上。
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=facility_first_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=1/544、退出12は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102808_20261028T023122042209.json`。次の1件は専用CLI statusを参照。
 
 
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：6/15正式記録。R2 seed42 `rtbb2_core_r2_seed42_20261016T193033`は独立PASS・6ファイル同期・台帳一意確認済み。R0 seed1 `rtbb2_core_r0_seed1_20261016T194541`を2026-10-16T19:45:43.695126+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
+<!-- choice_record:nv26102809 -->
+### nv26102809（2026-10-28T08:29:47.360404+09:00正式記録）
 
-
-**境界整合採用履歴：** rtbb2_core_r0_seed1_20261016T194541、R0 seed1、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出188は別計上。
-
-
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：7/15正式記録。R0 seed1 `rtbb2_core_r0_seed1_20261016T194541`は独立PASS・6ファイル同期・台帳一意確認済み。R1 seed1 `rtbb2_core_r1_seed1_20261016T200038`を2026-10-16T20:00:41.182660+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-
-**境界整合採用履歴：** rtbb2_core_r1_seed1_20261016T200038、R1 seed1、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出131は別計上。
-
-
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：8/15正式記録。R1 seed1 `rtbb2_core_r1_seed1_20261016T200038`は独立PASS・6ファイル同期・台帳一意確認済み。R2 seed1 `rtbb2_core_r2_seed1_20261016T201545`を2026-10-16T20:15:48.184318+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-
-**境界整合採用履歴：** rtbb2_core_r2_seed1_20261016T201545、R2 seed1、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出102は別計上。
-
-
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：9/15正式記録。R2 seed1 `rtbb2_core_r2_seed1_20261016T201545`は独立PASS・6ファイル同期・台帳一意確認済み。R0 seed7 `rtbb2_core_r0_seed7_20261016T203031`を2026-10-16T20:30:33.429765+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-
-**境界整合採用履歴：** rtbb2_core_r0_seed7_20261016T203031、R0 seed7、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出188は別計上。
-
-
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：10/15正式記録。R0 seed7 `rtbb2_core_r0_seed7_20261016T203031`は独立PASS・6ファイル同期・台帳一意確認済み。R1 seed7 `rtbb2_core_r1_seed7_20261016T204541`を2026-10-16T20:45:43.693994+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-
-**境界整合採用履歴：** rtbb2_core_r1_seed7_20261016T204541、R1 seed7、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出135は別計上。
-
-
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：11/15正式記録。R1 seed7 `rtbb2_core_r1_seed7_20261016T204541`は独立PASS・6ファイル同期・台帳一意確認済み。R2 seed7 `rtbb2_core_r2_seed7_20261016T210045`を2026-10-16T21:00:48.558798+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-
-**境界整合採用履歴：** rtbb2_core_r2_seed7_20261016T210045、R2 seed7、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出99は別計上。
-
-
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：12/15正式記録。R2 seed7 `rtbb2_core_r2_seed7_20261016T210045`は独立PASS・6ファイル同期・台帳一意確認済み。R0 seed101 `rtbb2_core_r0_seed101_20261016T211544`を2026-10-16T21:15:47.193948+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-
-**境界整合採用履歴：** rtbb2_core_r0_seed101_20261016T211544、R0 seed101、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出188は別計上。
-
-
-**履歴：前回監視時点の現在地：** 新境界整合B realtime_b_boundary_v2：13/15正式記録。R0 seed101 `rtbb2_core_r0_seed101_20261016T211544`は独立PASS・6ファイル同期・台帳一意確認済み。R1 seed101 `rtbb2_core_r1_seed101_20261016T231553`を2026-10-16T23:15:55.867923+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-
-**境界整合採用履歴：** rtbb2_core_r1_seed101_20261016T231553、R1 seed101、独立PASS・6ファイルrecord確認。Type4施設受入0/544、退出139は別計上。
-
-
-**履歴：最終セル実行中の現在地：** 新境界整合B realtime_b_boundary_v2：14/15正式記録。R1 seed101 `rtbb2_core_r1_seed101_20261016T231553`は独立PASS・6ファイル同期・台帳一意確認済み。R2 seed101 `rtbb2_core_r2_seed101_20261016T233034`を2026-10-16T23:30:36.636762+09:00に開始、RUNNING・PID生存を確認。入力/unit/実SUMO timing/3smoke・共通4実装SHAのpreflight READY後に1セルだけ開始。次は現runのcheck→終了後validate→record・6ファイル実在と台帳一意確認→status。旧8は分離保全、最大0.5秒先行を明示、全5seed前の方向解釈は行わない。15分監視jdrt-b-15 ACTIVE。主run中はscripts/入力を編集しない。外部送信・Drive編集なし。
-
-**境界整合最終採用履歴：** rtbb2_core_r2_seed101_20261016T233034、R2 seed101、独立PASS・record・全15件同期確認。
-
-**新系列の結果と次タスク：** `06_研究結果/jdrt/realtime_b_boundary_v2/全セル結果一覧.html`、`05_タスク管理/jdrt/JDRT-実時間B境界整合_完了後分析タスク.md`。
-
-
-**完了後分析（2026-10-17T00:25:44.596567+09:00）：** [副指標・観測監査報告](06_研究結果/jdrt/realtime_b_boundary_v2/postanalysis_20261017/副指標・観測監査報告.html)・[取得監査](06_研究結果/jdrt/realtime_b_boundary_v2/postanalysis_20261017/データ取得監査.md)。未取得実測値は不足のまま保持。追加感度/再割当/対象/主要指標変更は未採用。
-
-
-**最終ゴール自律継続（2026-10-17）：** ユーザーが /goal と、より現実的なシミュレーション・数式による考察を判断軸にした自律的な計画/調査/改善を明示。goal ACTIVE。[最終ゴール自律進行計画](05_タスク管理/jdrt/JDRT_最終ゴール自律進行計画.md)。G1の需要/供給/橋梁/施設根拠取得は継続、G2数理構造診断完了、G3受付・代替行動系列70セルを事前登録しG4技術準備中。READY後にスキル/15分監視で実験する。既存15セルと凍結系列は保全。外部送信禁止/Drive読取のみ継続。
-
-
-**goal成果物（2026-10-17T08:34:38.515000+09:00）：** [数理診断と現在の改善方針](06_研究結果/jdrt/goal_20261017/現実性・数理診断.html)・[自律進行計画](05_タスク管理/jdrt/JDRT_最終ゴール自律進行計画.md)・[G1取得監査](02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md)。
-
-**受付・代替行動系列：** [新PAP](03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md)・[詳細タスク](05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md)・[観測位相・統合検証の独立図v3](03_研究設計文書/図表・UML/JDRT_受付代替行動_観測位相・統合検証_v3.html)。
-
-**G4実SUMO・位置整合監査：** [技術試験と次の具体順](05_タスク管理/jdrt/JDRT-受付代替行動_実SUMO・位置整合監査.md)。位置/観測/距離の追補を開始前登録しregistered02を独立検証済み。次は正式run検証/統合反例/全設定/記録ゲート。
-
-
-**次の詳細手順と新図：** [JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md](05_タスク管理/jdrt/JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md)・[遷移/制動図v4](03_研究設計文書/図表・UML/JDRT_受付代替行動_遷移・制動・開始ゲート_v4.html)。
-
-**スキル・エージェント運用の統合（2026-10-20）：** 追加した開発支援5件、既存専用スキル2件、研究用エージェント2件、共通支援スキルとモデル・判断記録ルールを[スキル・エージェント運用](05_タスク管理/スキル・エージェント運用.md)へ集約。旧外部一覧は改名、旧モデル運用基準は案内のみとし、旧版履歴は統合文書で保全。個別SKILL/TOMLは手順・実行設定として維持する。研究の進捗・READY・実行中状態を今回再観測したものではない。
-
-**GitHub同期（2026-10-20）：** e48972bをmasterと作業ブランチへpush・readback確認。経過報告は現状把握Markdown先行→更新日別HTML反映。設定SHA変更後は旧preflightを流用しない。研究run・Cloudflare再配信なし。
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=facility_first_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=1/544、退出12は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102809_20261028T082947279559.json`。次の1件は専用CLI statusを参照。
 
 <!-- AGENT_CURRENT_END -->
 
