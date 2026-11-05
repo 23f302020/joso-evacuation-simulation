@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-28T01:51:29.515451+09:00",
+  "action": "seventh_source30_actual_completion_readback_eighth_scope_precheck",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "original_session": 6473,
+  "original_exit_code": 0,
+  "formal_recorded": 7,
+  "proof": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102807/nv26102807_record7_readback.json",
+  "proof_sha256": "0ec8a430606aca24e4d2cf712636afc4a60b3cbd2cef436fcb5d5bf40149c0d5",
+  "next_run_id": "nv26102808",
+  "next_sequence_id": "sq26102808",
+  "next_cell": {
+    "cell_id": "facility_first_r0_seed23423",
+    "destination_policy": "facility_first",
+    "demand_level": null,
+    "scenario": "R0",
+    "seed": 23423
+  },
+  "free_bytes": 252397715456,
+  "one_run_reserve_bytes": 193986012138,
+  "new_measurement_owner_session": 48129,
+  "new_measurement_actual_pid": 12964,
+  "goal_complete": false
+}

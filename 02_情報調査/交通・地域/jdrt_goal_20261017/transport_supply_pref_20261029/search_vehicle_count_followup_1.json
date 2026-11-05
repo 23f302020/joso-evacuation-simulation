@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.mlit.go.jp/report/press/content/001890696.pdf",
+        "title": "交通の動向 交通施策",
+        "description": "... 輸送を行っているが、1台当た. りの輸送量は限られることから、分担 ... Rapid Transit：バス高速輸送システム）導入利用促進事業、社会資本整備 ...",
+        "position": 1,
+        "source": "web"
+      },
+      {
+        "url": "https://www.mlit.go.jp/report/press/content/001749070.pdf",
+        "title": "「令和5年度交通の動向」及び「令和6年度交通施策」 （交通 ...",
+        "description": "... 輸送を行っているが、1台当た. りの輸送量は限られることから、分担 ... バスの輸送人員、経常収入の推移. 注1：各数値データは、乗合バスの保有 ...",
+        "position": 2,
+        "source": "web"
+      },
+      {
+        "url": "https://www.mlit.go.jp/common/001133577.pdf",
+        "title": "国土交通省生産性革命プロジェクト",
+        "description": "トラックやバスの担い手不足にも対応. 工事. 約 ... ○ 深刻なドライバー不足が進行するトラック輸送について、特車許可基準を緩和し、1台で大型トラック. 2台分の輸送 ...",
+        "position": 3,
+        "source": "web"
+      },
+      {
+        "url": "https://www.mlit.go.jp/sogoseisaku/transport/content/001486804.pdf",
+        "title": "交通政策白書",
+        "description": "... 輸送量とその背景及び交通事業等の動向. 30. 第1節 輸送量とその背景. 30. （1 ... バス事業. 69. （4）タクシー事業. 73. （5）トラック事業. 75. 第2節 鉄道交通. 77.",
+        "position": 4,
+        "source": "web"
+      },
+      {
+        "url": "https://www.mlit.go.jp/jidosha/anzen/03punishment/cgi-bin/list.cgi",
+        "title": "事業者の行政処分情報検索 ｜ 自動車総合安全情報",
+        "description": "当ホームページでは、一層の利用者利便を確保するとともに、事業の健全な発達及び輸送の安全確保を図るため、バス ... 常総物流サービス株式会社（法人番号 ...",
+        "position": 5,
+        "source": "web"
+      }
+    ],
+    "tools": []
+  },
+  "warning": "Some tool discovery results are unavailable.",
+  "id": "01a18779-f1a6-751b-9d4b-9738c969638c",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.mlit.go.jp/report/press/content/001890696.pdf\", #2 \"https://www.mlit.go.jp/report/press/content/001749070.pdf\", #3 \"https://www.mlit.go.jp/common/001133577.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

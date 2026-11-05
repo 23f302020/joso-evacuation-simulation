@@ -1,0 +1,10 @@
+{
+  "started_at_jst": "2026-10-28T23:58:05.255728+09:00",
+  "finished_at_jst": "2026-10-28T23:58:17.824640+09:00",
+  "wall_sec": 12.548118699924089,
+  "scope": "read-only full snapshot path with save_event/atomic_json/render_status replaced by no-op in this separate process; no daemon, notification or runtime state writer",
+  "target_count": 591,
+  "research_controls_called": false,
+  "concurrent_suite": "rt261028b; diagnostic read load must not be treated as normal timing baseline",
+  "profile": "observer_full_readonly_profile.txt"
+}

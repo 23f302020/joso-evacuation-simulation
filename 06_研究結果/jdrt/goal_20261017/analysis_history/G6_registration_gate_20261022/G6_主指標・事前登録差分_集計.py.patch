@@ -1,0 +1,28 @@
+--- before/G6_主指標・事前登録差分_集計.py
++++ current/G6_主指標・事前登録差分_集計.py
+@@ -83,6 +83,7 @@
+     require(len({x['cell_id'] for x in records}) == len(records), 'Duplicate accepted cell')
+     require({x['cell_id'] for x in records} == set(expected), 'Accepted and registered cell sets differ')
+     for row in records:
++        require(row.get('registration_id') == cfg['registration_id'], 'Foreign registration in record')
+         require(row['protocol'] == cfg['protocol'] and row['purpose'] == 'core'
+                 and row['validation_status'] == 'PASS', 'Foreign or unaccepted record')
+         cell = expected[row['cell_id']]
+@@ -113,6 +114,7 @@
+         mp = folder / 'manifest.json'
+         require(digest(mp) == row['manifest_sha256'], 'Accepted manifest changed')
+         m = json.loads(mp.read_text(encoding='utf-8'))
++        require(m.get('registration_id') == cfg['registration_id'], 'Foreign registration in manifest')
+         require(m['purpose'] == 'core' and m['status'] == 'COMPLETED' and m['protocol'] == cfg['protocol'], 'Not a completed core')
+         require(m['run_id'] == row['run_id'] and m['cell_id'] == row['cell_id'], 'Run identity differs')
+         require(all(m[k] == expected[row['cell_id']][k] for k in expected[row['cell_id']]),
+@@ -368,7 +370,8 @@
+         ('D別seed_u_提供需要仕事量.csv', workloads, None)]:
+         write_table(target / name, data, fields)
+     manifest = {'scope': 'preregistered_primary_analysis_component_not_final_report', 'status': 'COMPLETED',
+-                'protocol': cfg['protocol'], 'registered_cell_count': len(cfg['cells']), 'accepted_cell_count': len(verified),
++                'protocol': cfg['protocol'], 'registration_id': cfg['registration_id'],
++                'registered_cell_count': len(cfg['cells']), 'accepted_cell_count': len(verified),
+                 'config_sha256': digest(local(root, CONFIG)), 'analysis_source_sha256': analysis_sha,
+                 'request_analysis_source': REQUEST_SOURCE.name, 'request_analysis_source_sha256': request_sha,
+                 'secondary_analysis_source': SECONDARY_SOURCE.name, 'secondary_analysis_source_sha256': secondary_sha,

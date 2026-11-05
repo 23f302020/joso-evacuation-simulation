@@ -1,0 +1,13 @@
+{
+  "at_jst": "2026-10-22T14:35:02.509038+09:00",
+  "scope": "same_chat_full_auditor_source_reference_scan_and_scoped_archive_diff_review",
+  "status": "PASS_SCOPED_NOT_FULL_AUDIT",
+  "fix": "Remaining old cf26101711 archive probe now uses current suite child, simulated stale factory source SHA, valid archive control, then corrupted archive SHA. Missing mapping/control or wrong rejection fails closed. Current SHA probe and existing counterexample list preserved.",
+  "tests": "5 entry contracts PASS; target actual current fixture control+corrupt archive PASS and unchanged original. Actual reports retained in validation_reports.",
+  "no_fixed_old_run_literals_remaining": true,
+  "common5_and27_bound_fixture_manifests_unchanged": true,
+  "full_counterexample_audit_pending": true,
+  "auditor_sha256": "37f539d654f1c093b3e8ff7416e45a3a9862cd859daedbcd6e4797fe15bb0a5c",
+  "judgment_id": "JD-20261022-research-1432-05",
+  "limitations": "No complete54 rejection report yet; original failure logs and observation gap preserved, no real research acceptance."
+}

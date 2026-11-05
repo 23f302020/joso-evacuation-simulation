@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-24T23:16:18.048291+09:00",
+  "status": "CURRENT29_INDEPENDENT_PASS_NOT_READY",
+  "original_session": 29777,
+  "original_exit": 0,
+  "report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261024T231243.json",
+  "report_sha256": "ac02b0862a15651ac2a6238f15c64ccdc3553aa8477f06e2d6f726b1d033dd4e",
+  "native_fixture_components": 29,
+  "all_components_PASS": true,
+  "counterexamples_PASS": 61,
+  "primary_files_unchanged": 493,
+  "validator_sha256": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+  "auditor_sha256": "fd6d5edcefcb7e63d4aa20f28c4cfd49b5d3f8afa6ad1761630f3e6ffeca9a10",
+  "technical_ready": false,
+  "core_adoption_permitted": false,
+  "next_smoke_prefix": "ns261024e"
+}

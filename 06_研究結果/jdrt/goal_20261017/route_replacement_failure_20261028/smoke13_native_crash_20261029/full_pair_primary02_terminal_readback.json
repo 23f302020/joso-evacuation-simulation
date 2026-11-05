@@ -1,0 +1,30 @@
+{
+  "at_jst": "2026-10-29T16:08:03.338389+09:00",
+  "status": "ACTUAL_PRIMARY_PAIR_TERMINAL_READBACK_VERIFIED_PENDING_PACKAGES_AND_NATIVE_REGRESSION",
+  "original_session": 35631,
+  "original_exit_code": 0,
+  "actual_owner18036_absent_verified": true,
+  "verification": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\full_pair_primary02\\verification.json",
+    "sha256": "0281f3af0749ae99d042ee0cff704b23128c3090f9ce09ee277fb1cf96fc1ff4"
+  },
+  "bound_primary_files": 13004,
+  "source_files_per_role": 6228,
+  "between_role_native_delta": [
+    "src/microsim/transportables/MSPModel_Striping.cpp"
+  ],
+  "shared_stop_index_after_sha256": "eeb62ad14b9afd1984da4bd42f64b89288b67e62fc670a46811ede2cfd4e4fa1",
+  "metadata_pairs": 10,
+  "dependency_tools": 9,
+  "dependency_headers": 471,
+  "helper_sha_unchanged": true,
+  "both_provenance_roles_match_actual_terminal_states": true,
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "limits": [
+    "No package yet",
+    "No new full-build native behavior regression or study result",
+    "No core permission or selector switch",
+    "Failed pair01 and all original native states retained"
+  ]
+}

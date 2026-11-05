@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-29T10:00:57.585881+09:00",
+  "stage": "C_VALIDATION_COMPONENT_ATTRIBUTION_PENDING_IDLE_WINDOW",
+  "B": {
+    "status": "previous_v3_normal_cycle_coverage_evidence_reused",
+    "run_id": "nv26102808",
+    "registration_id": "choice_native_observation_v3_20261024",
+    "primary_hashes_match": {
+      "07_監視システム\\verification\\pipeline_coverage_nv26102808_20261028\\report.json": true,
+      "07_監視システム\\verification\\pipeline_coverage_nv26102808_20261028\\stage_definitions.json": true,
+      "07_監視システム\\verification\\pipeline_coverage_nv26102808_20261028\\0\\state.json": true,
+      "07_監視システム\\verification\\pipeline_coverage_nv26102808_20261028\\0\\samples.jsonl": true
+    },
+    "coverage_fractions": {
+      "execute": 0.9695804371485777,
+      "validate": 0.9692053925912016,
+      "record": 0.9571948895021476
+    },
+    "scope": "v3 baseline only; no claim current v4 has normal-core coverage"
+  },
+  "C": {
+    "priority": "Mandatory independent validation and record revalidation",
+    "prior_normal_cycle_share": 0.6661310317071655,
+    "component_measurement_reused": {
+      "hash_wall_sec": 0.5191693999804556,
+      "hash_cpu_sec": 0.453125,
+      "gzip_wall_sec": 5.895814500167035,
+      "gzip_cpu_sec": 5.796875,
+      "csv_wall_sec": 67.54954730009194,
+      "csv_cpu_sec": 66.109375
+    },
+    "next_targets": [
+      "audit_actor_stream: streaming actor observations",
+      "audit_movement_events: merged actor/transition streams",
+      "audit_road_snapshots: full road grid and actor regrouping",
+      "audit_candidates: shortest paths and candidate comparisons"
+    ],
+    "source_inspection_only": true,
+    "new_component_benchmark_launched": false,
+    "reason_no_heavy_probe": "Current v4 technical independent audit actual PID36548 remains active; low available RAM and high paging/disk activity observed. Additional full CSV probe would contaminate timing and compete for memory. Do not duplicate owner work.",
+    "safe_next_action": "After original audit terminates and resources recover, use saved immutable artifacts and isolated read-only component tests, binding relevant source/version, without editing or injecting profiler into frozen validator. Select change only after attribution."
+  },
+  "current_registration": "choice_route_control_v4_20261028",
+  "current_config_sha256": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8",
+  "current_validator_sha256": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+  "D": "NOT_DONE_NO_SPEEDUP_CLAIM",
+  "stop_condition_met": false,
+  "collector": {
+    "state_path": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\performance\\efficiency_20261028a\\state.json",
+    "observed_state_status": "RUNNING",
+    "observed_pid": 14744,
+    "pid_present_in_current_process_inventory": false,
+    "last_recorded_observation": "2026-10-28T11:14:34.529634+09:00",
+    "original_handle_exit_code": "unknown",
+    "action": "preserve original state and stderr; no restart because B baseline already exists and current priority is active technical validation, not another general sampler"
+  },
+  "evidence_sha256": {
+    "06_研究結果\\jdrt\\goal_20261017\\nv26102808_pipeline_coverage_readback_20261028.json": "52a98c94486168811932f351b513cfe26531835ae89d70f6137acd268ca36e04",
+    "06_研究結果\\jdrt\\goal_20261017\\nv26102808_saved_csv_layers_readback_20261028.json": "826962cdc5550f34beade74f1b55b22bda1c7d838e4dfc71544ff5e77c32e5e6"
+  },
+  "limits": [
+    "No subtraction of CSV layer time from total validator time: nested operations and cache/concurrent load differ.",
+    "v3 and v4 are not interchangeable efficiency comparisons.",
+    "Working set shrinkage and page input alone do not establish memory as the sole cause.",
+    "Existing event-cache helper improvement is owner-managed; isolated event parity does not prove end-to-end simulation speedup."
+  ]
+}

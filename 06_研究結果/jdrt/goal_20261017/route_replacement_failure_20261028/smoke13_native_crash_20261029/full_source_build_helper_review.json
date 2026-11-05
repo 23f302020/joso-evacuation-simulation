@@ -1,0 +1,49 @@
+{
+  "at_jst": "2026-10-29T11:38:09.851120+09:00",
+  "scope": "full-source candidate build helper + selected-pair saved readback; no adoption",
+  "reviewed": [
+    "Explicit control/patched source selection matched to its unique base configure command",
+    "Old source and native bundle remain unchanged; new source is copy with one exact reviewed native target delta",
+    "Combined sumo/netconvert targets and role-specific version headers; two jobs as existing build policy",
+    "Original base/prepared/pair files are copied and SHA-bound; unchanged proof required before and after build",
+    "Saved pair readback independently rehashes all bindings, parses raw walker plans and matches three dedicated reports; no new validate/start/record",
+    "Old proof/config mismatch stopped before attempt creation; no bypass",
+    "New native shared-patch/pair policy still requires explicit reviewed provenance before any package/selector change"
+  ],
+  "tests": {
+    "source_copy_and_role_contracts": 5,
+    "actual_pair_original_session": 30056,
+    "actual_pair_exit": 0,
+    "actual_reader_original_session": 61815,
+    "actual_reader_exit": 0,
+    "bound_files": 13682,
+    "strict_reports": 3,
+    "extra_native_loop_and_future_probes": "i/j passed; g topology failure preserved; h not started"
+  },
+  "current_build": {
+    "at_jst": "2026-10-29T11:38:09.851120+09:00",
+    "original_session": 49235,
+    "actual_owner": 18572,
+    "creation_ms": 1793240848487,
+    "actual_child": 32324,
+    "status": "RUNNING",
+    "phase": "diagnostic_sumo_build",
+    "source_files": 6228,
+    "source_changed_target": "src/microsim/MSBaseVehicle.cpp",
+    "reviewed_repair_source_sha256": "eeb62ad14b9afd1984da4bd42f64b89288b67e62fc670a46811ede2cfd4e4fa1",
+    "compile_progress_scope": "Last same-owner log at11:36 showed CMake sumo partial-object32/34%; not overall two-target/research progress",
+    "owner_and_child_verified_CIM_at_jst": "2026-10-29T11:36:27+09:00",
+    "original_session_last_poll": "running, no output due to file redirection",
+    "compiled_or_version_checked": false
+  },
+  "findings_requiring_fix_before_diagnostic_build": [],
+  "remaining": [
+    "Complete same owned control build and terminal proof",
+    "Build corresponding selected role under fresh owned invocation and active goal",
+    "Review new shared-native-patch policy/source pair/package proof without altering original policy",
+    "Current native regressions/failed-setting/full suite/audit/all14/new READY/G6 before research start"
+  ],
+  "backend": "Parent model kept; actual backend unverified",
+  "publication": false,
+  "research_ready": false
+}

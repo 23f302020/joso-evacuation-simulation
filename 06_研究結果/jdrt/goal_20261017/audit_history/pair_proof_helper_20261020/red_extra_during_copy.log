@@ -1,0 +1,15 @@
+test_packager_rejects_new_partner_source_file_during_copy (__main__.PairContracts.test_packager_rejects_new_partner_source_file_during_copy) ... FAIL
+
+======================================================================
+FAIL: test_packager_rejects_new_partner_source_file_during_copy (__main__.PairContracts.test_packager_rejects_new_partner_source_file_during_copy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_proof.py", line 323, in test_packager_rejects_new_partner_source_file_during_copy
+    with self.assertRaisesRegex(ValueError, 'changed'): io.package(*args)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 5.216s
+
+FAILED (failures=1)

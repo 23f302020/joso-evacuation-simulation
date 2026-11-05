@@ -1,0 +1,15 @@
+{"at_jst": "2026-10-17T18:02:29.943885+09:00", "action": "smoke_sequence_failed_preserved", "error_type": "PermissionError", "error": "[WinError 5] アクセスが拒否されました。: 'C:\\\\Users\\\\Ko_rr\\\\OneDrive - stu.teikyo-u.ac.jp\\\\研究室\\\\4年次本研究\\\\06_研究結果\\\\jdrt\\\\goal_20261017\\\\cs261017b_smoke_sequence.tmp' -> 'C:\\\\Users\\\\Ko_rr\\\\OneDrive - stu.teikyo-u.ac.jp\\\\研究室\\\\4年次本研究\\\\06_研究結果\\\\jdrt\\\\goal_20261017\\\\cs261017b_smoke_sequence.json'", "active": {"run_id": "cs261017b_01", "cell_id": "fixed_reference_r0_seed23423", "started_at_jst": "2026-10-17T18:02:29.941076+09:00"}}
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_最終14設定smoke逐次実行.py", line 98, in <module>
+    main(args.prefix, args.audit)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_最終14設定smoke逐次実行.py", line 57, in main
+    save()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_最終14設定smoke逐次実行.py", line 43, in save
+    temporary.replace(state_path)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 780, in replace
+    os.replace(self, target)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+PermissionError: [WinError 5] アクセスが拒否されました。: 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\cs261017b_smoke_sequence.tmp' -> 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\cs261017b_smoke_sequence.json'

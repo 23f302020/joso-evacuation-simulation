@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kensyouhoukoku.html",
+        "title": "常総市水害対策検証委員会による検証報告書について",
+        "description": "今回の平成27年9月関東・東北豪雨により、当市では激甚な被害が生じたことから、今後の安全・安心なまちづくりを実現するために、水害対策検証委員会を設置し、今回の水害 ...",
+        "position": 1
+      },
+      {
+        "url": "https://www.skr.mlit.go.jp/kochi/committee/gensaitaisaku/monobe_gensai/h280830-7.pdf",
+        "title": "[PDF] 平成27年常総市鬼怒川水害対応に関する検証報告書",
+        "description": "平成27年9月関東・東北豪雨により、常総市では激甚な被害が生じたことから、今後の安全・安. 心なまちづくりを実現するために、水害対策検証委員会を設置し、今回の ...",
+        "position": 2
+      },
+      {
+        "url": "https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf",
+        "title": "[PDF] 平成27年常総市鬼怒川水害対応に関する検証報告書",
+        "description": "災害復興に前向きに取り組むための振り返りとしての検証報告. 平成 27 年 9 月関東・東北豪雨により常総市では激甚な被害が生じました。本検証報告書 ...",
+        "position": 3
+      },
+      {
+        "url": "https://www.city.joso.lg.jp/data/doc/1676621480_doc_5_0.pdf",
+        "title": "[PDF] 平成27年9月 関東・東北豪雨|常総市災害記録",
+        "description": "# 復興へ市民を笑顔に\n## 平成27年9月関東・東北豪雨の足跡\n13日 ●予約型乗合交通ふれあい号を再開",
+        "position": 4
+      },
+      {
+        "url": "https://www.bousai.go.jp/kohou/kouhoubousai/r07/114/special_01.html",
+        "title": "特集 「平成27年9月関東・東北豪雨」から10年～激甚化 ... - 内閣府防災情報",
+        "description": "本記事では、この水害の概要とその後の対策を紹介することで、水害への備えについて考えていきます。 茨城県常総市で鬼怒川の堤防が決壊. 平成27年9月、台風18号から変わっ ...",
+        "position": 5
+      }
+    ],
+    "tools": []
+  },
+  "id": "01a15190-457b-70d8-8e52-1ecd282332e6",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kensyouhoukoku.html\", #2 \"https://www.skr.mlit.go.jp/kochi/committee/gensaitaisaku/monobe_gensai/h280830-7.pdf\", #3 \"https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-29T21:24:46.743780+09:00",
+  "status": "EXISTING_MONITOR_RELOADED_NEW_SCOPE_IDENTITY_AND_FRESHNESS_VERIFIED",
+  "actual_monitor": {
+    "state": "alive",
+    "created": 134377494421633632,
+    "pid": 2476
+  },
+  "old_monitor29900_absent_observed": "2026-10-29T21:10:08 JST",
+  "old_patterns": 18,
+  "new_patterns": 22,
+  "new_v5_targets_recognized": 37,
+  "source_unchanged": true,
+  "observed_at_utc": "2026-10-29T12:24:44.076689+00:00",
+  "observation_age_sec": 6.417264461517334,
+  "old_event_ids_retained": 340,
+  "current_event_count": 378,
+  "events_deleted": false,
+  "raw_state_snapshot_sha256": "a42495ab28ac28d8b7af47f485cfb114dda3a73d99b47180d92558bf2fa50648",
+  "CIM_timeouts": "Old daemon recorded repeated15sec timeouts; same console call succeeded; new daemon verified command binding. Cause unproven; not claimed permanently fixed.",
+  "monitoring_gap": "New v5 absent from old configured scope; new daemon first observation completed after the full30 fixture had ended. This is retrospective discovery, not continuous coverage. Parent handle/CIM checks and dedicated technical point checks are preserved separately.",
+  "research_processes_restarted": false,
+  "research_inputs_or_common5_changed": false,
+  "core_ready": false,
+  "watch_status_extraction_error": "Initial metadata reader treated status.targets count as iterable. Corrected by reading runtime state.targets mapping; no monitor state, research run or start replay."
+}

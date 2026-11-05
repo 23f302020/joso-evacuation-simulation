@@ -1,0 +1,21 @@
+{
+  "at_jst": "2026-10-29T15:26:17.710308+09:00",
+  "status": "INTEGRATION_CONTRACT_RED_AS_EXPECTED_GATE_UNCHANGED",
+  "test": "04_プログラム/tests/test_choice_shared_native_pair_proof.py",
+  "test_sha256": "9f09ff72fa24f2a0d68fa42f9363984c0412344efcb7de726f2035ab301d6ef5",
+  "original_session": 40846,
+  "exit_code": 1,
+  "red_log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_native_pair_integration_RED.log",
+  "red_log_sha256": "b9917156ac71123c68d40c796dac3277f2ce111826413e492a345001ead67711",
+  "red_reason": "Complete artificial new-policy pair rejected by existing strict reviewed-policy path check. Test modules collected, no compiler/native/research process launched.",
+  "test_results": {
+    "legacy_contracts_passed": 17,
+    "new_negative_contracts_passed": 2,
+    "new_positive_contract_error": 1
+  },
+  "collection_correction": "Initial imported test class also collected legacy17. Import changed to module-qualified fixture so the future new-file run covers exactly three new tests. Original20-test RED retained.",
+  "deferred": "After original97479 terminal only: minimal explicit policy branch integration, exact new/old schemas and full source/metadata/compiler/loader checks, then target GREEN plus necessary legacy regression. Never relax paths while build bound.",
+  "gate_connected": false,
+  "research_adoption_permitted": false,
+  "technical_ready": false
+}

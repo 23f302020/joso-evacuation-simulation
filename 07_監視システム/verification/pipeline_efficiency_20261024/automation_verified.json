@@ -1,0 +1,13 @@
+{
+  "id": "automation",
+  "kind": "heartbeat",
+  "name": "シミュレーション効率改善・段階判定と効果確認",
+  "status": "ACTIVE",
+  "rrule": "FREQ=DAILY;BYHOUR=6;BYMINUTE=0;BYSECOND=0",
+  "target_thread_id": "01a16cef-d214-7193-b957-35d039b63363",
+  "created_at": 1792830470926,
+  "updated_at": 1792830470926,
+  "verified_at": "2026-10-24T17:28:58.710894+09:00",
+  "future_execution_tested": false,
+  "self_pause_executed": false
+}

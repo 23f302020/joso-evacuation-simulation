@@ -1,0 +1,9 @@
+test_instrumentation_is_bound_to_the_exact_generator (tests.test_choice_native_trace_source.TraceSourceContracts.test_instrumentation_is_bound_to_the_exact_generator) ... ok
+test_pure_insertions_restore_exact_original_and_preserve_rng_calls (tests.test_choice_native_trace_source.TraceSourceContracts.test_pure_insertions_restore_exact_original_and_preserve_rng_calls) ... ok
+test_trace_fields_and_evaluation_sites_are_explicit (tests.test_choice_native_trace_source.TraceSourceContracts.test_trace_fields_and_evaluation_sites_are_explicit) ... ok
+test_unpatched_ambiguous_or_already_instrumented_source_is_rejected (tests.test_choice_native_trace_source.TraceSourceContracts.test_unpatched_ambiguous_or_already_instrumented_source_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.026s
+
+OK

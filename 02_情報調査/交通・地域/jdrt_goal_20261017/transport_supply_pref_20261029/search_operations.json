@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.bousai.go.jp/kohou/kouhoubousai/r07/114/special_01.html",
+        "title": "特集 「平成27年9月関東・東北豪雨」から10年～激甚化する ...",
+        "description": "また、常総市では、市民向けに洪水時避難の「ジブンゴト化」を促進する「避難行動促進ツール」を登録者が多いLINE上のアプリとして開発しています。チャットボットを使い、 ...",
+        "position": 1,
+        "source": "web"
+      },
+      {
+        "url": "https://weathernews.jp/news/202609/080431/",
+        "title": "鬼怒川決壊の教訓 水害が発生した時、あなたが取るべき避難 ...",
+        "description": "9月10日に発生した常総市での鬼怒川の堤防決壊や、各地で発生した土砂崩れなどによる住家の全・半壊は7171棟、床上・床下浸水が1万5782棟に達しました。",
+        "position": 2,
+        "source": "web"
+      },
+      {
+        "url": "https://www.jsnds.org/ssk/ssk_36_1_051.pdf",
+        "title": "2015年鬼怒川水害における被災 地初動応答の調査・分析",
+        "description": "浸水被害の約 8 割が鬼怒川下流域の茨城県常総市. に集中した。山本ら3）は今回の常総市の水害に関. し，「上流で降った豪雨が河川を流れ下り， ...",
+        "position": 3,
+        "source": "web"
+      },
+      {
+        "url": "https://www.city.joso.lg.jp/data/doc/1676621480_doc_5_0.pdf",
+        "title": "平成27年9月 関東・東北豪雨|常総市災害記録",
+        "description": "お寄せいただいた義援金・支援物資や、被災者への炊き出し・住宅の清掃・. 農地 ... 茨城県常総市水海道諏訪町3222番地3. 電話番号0297-23-2111（代表） http://www ...",
+        "position": 4,
+        "source": "web"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=f04LS6U6Baw",
+        "title": "常総大水害～被災地から110人の声",
+        "description": "#災害 #水害 #復興 常総大水害から9年。被災者110人の証言をもとに制作された手記「ぬくもりのバトン」にスポットをあて、街の復興を目指す地域と人々 ...",
+        "position": 5,
+        "source": "web"
+      }
+    ],
+    "tools": []
+  },
+  "id": "01a1869c-cadf-76de-82c3-7596ccad1f5a",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.bousai.go.jp/kohou/kouhoubousai/r07/114/special_01.html\", #2 \"https://weathernews.jp/news/202609/080431/\", #3 \"https://www.jsnds.org/ssk/ssk_36_1_051.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "status": "COMMITTED",
+  "run_id": "nc26102304",
+  "pid": 16808,
+  "files": [
+    {
+      "path": "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md",
+      "existed": true,
+      "backup": "0.before",
+      "sha256_before": "5923daf5bd813940a0e58d75bd17f78dff93e432b014633a1eec9f41b5259278",
+      "planned": "0.planned",
+      "sha256_planned": "5ff7383900a3dd119e2d20413ffde10beea2766b09a8e174e8c6aa714fbbdf60"
+    },
+    {
+      "path": "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+      "existed": true,
+      "backup": "1.before",
+      "sha256_before": "cf0cf271d345525be338bf865fa14621e2c51026665d0f9c564aa036b1cba52f",
+      "planned": "1.planned",
+      "sha256_planned": "ef9a76613db22d3847ae2fbc9c649438428b92338d3661ae35164cc3972b7bc2"
+    },
+    {
+      "path": "context.md",
+      "existed": true,
+      "backup": "2.before",
+      "sha256_before": "3b08a89d8c1b521e4fb39ae0fcde018c6ca1aa302f70dd9bdf7dae9f7359e627",
+      "planned": "2.planned",
+      "sha256_planned": "b9ef0cef50404b891e5f87306a4b0d8e76f3b13e886ef18f637739cac2411fd7"
+    },
+    {
+      "path": "00_全体整理/決定ログ.md",
+      "existed": true,
+      "backup": "3.before",
+      "sha256_before": "a7cf11346110b1d943204e5dfee13c0645296962c2bcefd32531d14aee632ace",
+      "planned": "3.planned",
+      "sha256_planned": "b314a8ff3bee781a2ba9fcebab7137ba0e5203ce0f1925d1b6302127ece10393"
+    },
+    {
+      "path": "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+      "existed": true,
+      "backup": "4.before",
+      "sha256_before": "e62bfdf56e6ee09f6906db10608955876c8886e1a8ed622d2227564fe246829c",
+      "planned": "4.planned",
+      "sha256_planned": "f8073ce91c1784326898469d262571ea14c20a14c7f1fc028d4871d9016a11b2"
+    },
+    {
+      "path": "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+      "existed": true,
+      "backup": "5.before",
+      "sha256_before": "a5a1770faccb2e93bab242ace6ceeb1f7df320684766f72cbc17d64f03c8749a",
+      "planned": "5.planned",
+      "sha256_planned": "038f94ee1aa3d384018f610266e5e32767bf63c07098372fc2718f77e74da53d"
+    },
+    {
+      "path": "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl",
+      "existed": true,
+      "backup": "6.before",
+      "sha256_before": "068f2b2ec3f6bebf8837d619e37d089f931cf5df8b35dd3bca7c1ef30549639d",
+      "planned": "6.planned",
+      "sha256_planned": "b1289ceaadef263a7a112b9776fe9af4c03943d495360dccde29447143d1ae90"
+    }
+  ],
+  "sha256_after": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md": "5ff7383900a3dd119e2d20413ffde10beea2766b09a8e174e8c6aa714fbbdf60",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": "ef9a76613db22d3847ae2fbc9c649438428b92338d3661ae35164cc3972b7bc2",
+    "context.md": "b9ef0cef50404b891e5f87306a4b0d8e76f3b13e886ef18f637739cac2411fd7",
+    "00_全体整理/決定ログ.md": "b314a8ff3bee781a2ba9fcebab7137ba0e5203ce0f1925d1b6302127ece10393",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": "f8073ce91c1784326898469d262571ea14c20a14c7f1fc028d4871d9016a11b2",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": "038f94ee1aa3d384018f610266e5e32767bf63c07098372fc2718f77e74da53d",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl": "b1289ceaadef263a7a112b9776fe9af4c03943d495360dccde29447143d1ae90"
+  }
+}

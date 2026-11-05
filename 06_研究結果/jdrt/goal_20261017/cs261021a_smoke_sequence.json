@@ -1,0 +1,204 @@
+{
+  "protocol": "realtime_choice_v1",
+  "purpose": "technical_smoke_sequence",
+  "pid": 30604,
+  "status": "COMPLETED",
+  "started_at_jst": "2026-10-21T14:42:02.659774+09:00",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "05ddf759f39cdcedb234f4c414198176c117dca02968b93e6d1c46830b2b3819",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "86510a58a1562c1bd9923d10c552c7f7159244161ecdd8f2a3495825309cc419",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "dcaa9fe4ca3854efca38b988f83b9b93d3995d2f3b04039795d1811e1dc88c7f"
+  },
+  "audit_path": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261021T091121.json",
+  "audit_sha256": "cdfd67bb1104dea5061b3d6cd8feb3a9946d27a5cc5d3317bfc55e0b09f63694",
+  "runner_sha256": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920",
+  "research_adoption_permitted": false,
+  "completed": [
+    {
+      "run_id": "cs261021a_01",
+      "cell": {
+        "cell_id": "fixed_reference_r0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "abd984bb73c40e4563301bbecf01cdb0c038456564fc708846ef2564eecf6f73",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_01_20261021T144320547613.json",
+      "finished_at_jst": "2026-10-21T14:43:20.757205+09:00"
+    },
+    {
+      "run_id": "cs261021a_02",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "01c1daefcf75c60097c49ec00f6165be6501bebc49af8b402da8c7dbabccf4d5",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_02_20261021T144439784004.json",
+      "finished_at_jst": "2026-10-21T14:44:39.963976+09:00"
+    },
+    {
+      "run_id": "cs261021a_03",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "090f7c8d3af9aa1525703cdbe5c9b527491c5d01c827f749528bcc9add96d295",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_03_20261021T144604205606.json",
+      "finished_at_jst": "2026-10-21T14:46:04.376218+09:00"
+    },
+    {
+      "run_id": "cs261021a_04",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "bb9022ac79fdd02783321f5f6972cc44e88b02e24f3a05bacedeefb33c9f439c",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_04_20261021T144733563247.json",
+      "finished_at_jst": "2026-10-21T14:47:33.777099+09:00"
+    },
+    {
+      "run_id": "cs261021a_05",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "3b748644f5d2ac76215d92fde7a0edd6e1af653c465e43a79dca1ff2a0b79058",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_05_20261021T144902620588.json",
+      "finished_at_jst": "2026-10-21T14:49:02.895336+09:00"
+    },
+    {
+      "run_id": "cs261021a_06",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "102dbdd64c3c2a9c165ad0a23daeaba00c9ef6a41263284640fc532bd0d4c140",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_06_20261021T145111947186.json",
+      "finished_at_jst": "2026-10-21T14:51:12.572280+09:00"
+    },
+    {
+      "run_id": "cs261021a_07",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "296d4b2dac53c21868649c682398a6ccf5ceb76eefb0ec7f003c82630adf710f",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_07_20261021T145246000210.json",
+      "finished_at_jst": "2026-10-21T14:52:46.265452+09:00"
+    },
+    {
+      "run_id": "cs261021a_08",
+      "cell": {
+        "cell_id": "facility_first_r0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "f0c69654a5be7682a18e6e4e906a1896673adfd3defc778c7d4db052add889c3",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_08_20261021T145412243083.json",
+      "finished_at_jst": "2026-10-21T14:54:12.483644+09:00"
+    },
+    {
+      "run_id": "cs261021a_09",
+      "cell": {
+        "cell_id": "facility_first_u05_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "9b594224be00c4724f0cf499624cbd5e471e6081291179e299a03acf8e41b0df",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_09_20261021T145546067450.json",
+      "finished_at_jst": "2026-10-21T14:55:46.447661+09:00"
+    },
+    {
+      "run_id": "cs261021a_10",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p900_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "f97ead763d936cefbb4ce2dd15f5fbdcb5721d53e12d7fd2afa3883ea1e4b5bd",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_10_20261021T145720181963.json",
+      "finished_at_jst": "2026-10-21T14:57:20.379606+09:00"
+    },
+    {
+      "run_id": "cs261021a_11",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "0d571ab88bc792bf6e78a7c71b4f2aec94f9999858ff590884fb78de845ab017",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_11_20261021T145852822650.json",
+      "finished_at_jst": "2026-10-21T14:58:53.145242+09:00"
+    },
+    {
+      "run_id": "cs261021a_12",
+      "cell": {
+        "cell_id": "facility_first_u50_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "ce6a730016d22361caa99f3dc1949c5884c2853c1efa7175719843d85bb882b5",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_12_20261021T150026382795.json",
+      "finished_at_jst": "2026-10-21T15:00:26.666478+09:00"
+    },
+    {
+      "run_id": "cs261021a_13",
+      "cell": {
+        "cell_id": "facility_first_u50_r2p900_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "0061d58b78049f61fefc85efe95014b777a55c4fed118e3f9b14454d1786c4fa",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_13_20261021T150159093256.json",
+      "finished_at_jst": "2026-10-21T15:01:59.489027+09:00"
+    },
+    {
+      "run_id": "cs261021a_14",
+      "cell": {
+        "cell_id": "facility_first_u50_r2p0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "20ffa2df6ec11a35af33f012151c39f4b795bd88652cca98f0255436dd467a26",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261021a_14_20261021T150328539054.json",
+      "finished_at_jst": "2026-10-21T15:03:28.743364+09:00"
+    }
+  ],
+  "active": null,
+  "finished_at_jst": "2026-10-21T15:03:28.748321+09:00"
+}

@@ -1,0 +1,29 @@
+{
+  "at_jst": "2026-10-21T21:42:11.922715+09:00",
+  "scope": "technical observation/identity/verifier revision; research control/metrics/data unchanged",
+  "old_version_preserved": "before.json and before/",
+  "extra_factory_before_sha256": "1cbfd394c1a75d7c2462418c400798097126b95dba9bad37fa5d1884cbfc17d5",
+  "current_common5_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "4142d61125d933544c13da13bd85c7d9c2ddc9f6e7bc7217c28c43682f1d802b",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "targeted_red_green": [
+    "runtime observation missing function→native-only scalar with strict failure",
+    "registration mismatch was recordable→rejected before writes",
+    "direct emergency frames missing→strict receipt",
+    "metadata integrator/owner were unchecked→source-bound strict command/config gate"
+  ],
+  "tests": "101 initial regression then102 after metadata counterexample; unit02 terminal handle83786 exit0",
+  "limitations": [
+    "No new real SUMO fixture/core run in this revision yet",
+    "Subscription support and actual CSV values need current full native suite",
+    "Generic classifier still requires complete source/clock/accounting gates; no physical-safety/unique-cause conclusion",
+    "Same-chat review only; actual parent backend not independently verified"
+  ],
+  "initial_command_failure": "First runtime RED launch used project-relative venv while workdir04; command did not run. Preserved as launcher error; runtime_red_actual contains intended unimplemented-contract failure.",
+  "new_ready": false,
+  "new_core_started": false
+}

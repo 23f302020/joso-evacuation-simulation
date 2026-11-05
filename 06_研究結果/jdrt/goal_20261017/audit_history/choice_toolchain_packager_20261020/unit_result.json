@@ -1,0 +1,10 @@
+{
+  "command": ".\\venv\\Scripts\\python.exe -m pytest tests/test_choice_package_toolchain.py tests/test_jdrt_choice_toolchain.py -q",
+  "cwd": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム",
+  "exit_code": 0,
+  "passed": 25,
+  "subtests_passed": 27,
+  "pytest_elapsed_seconds": 27.25,
+  "evidence": "Observed exec cell 61cb74 and session 93751 final output 063f76",
+  "fixtures": "Artificial PE, mock native proof and temporary Python packages; no native simulation"
+}

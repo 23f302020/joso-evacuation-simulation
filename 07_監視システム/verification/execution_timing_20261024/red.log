@@ -1,0 +1,77 @@
+FEEEEEEE
+======================================================================
+ERROR: test_manifest_times_are_normalized_and_saved_with_event (test_watch.ExecutionTiming.test_manifest_times_are_normalized_and_saved_with_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 135, in test_manifest_times_are_normalized_and_saved_with_event
+    timing = value['execution_timing']
+             ~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'execution_timing'
+
+======================================================================
+ERROR: test_missing_invalid_reversed_and_running_times_are_not_guessed (test_watch.ExecutionTiming.test_missing_invalid_reversed_and_running_times_are_not_guessed) (fields={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 164, in test_missing_invalid_reversed_and_running_times_are_not_guessed
+    timing = watch.execution_timing({'status': 'FAILED', **fields})
+             ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'watch' has no attribute 'execution_timing'
+
+======================================================================
+ERROR: test_missing_invalid_reversed_and_running_times_are_not_guessed (test_watch.ExecutionTiming.test_missing_invalid_reversed_and_running_times_are_not_guessed) (fields={'started_at_jst': 'bad', 'finished_at_jst': '2026-01-01T00:00:00Z'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 164, in test_missing_invalid_reversed_and_running_times_are_not_guessed
+    timing = watch.execution_timing({'status': 'FAILED', **fields})
+             ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'watch' has no attribute 'execution_timing'
+
+======================================================================
+ERROR: test_missing_invalid_reversed_and_running_times_are_not_guessed (test_watch.ExecutionTiming.test_missing_invalid_reversed_and_running_times_are_not_guessed) (fields={'started_at_jst': '2026-01-01T00:00:00', 'finished_at_jst': '2026-01-01T00:00:00Z'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 164, in test_missing_invalid_reversed_and_running_times_are_not_guessed
+    timing = watch.execution_timing({'status': 'FAILED', **fields})
+             ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'watch' has no attribute 'execution_timing'
+
+======================================================================
+ERROR: test_missing_invalid_reversed_and_running_times_are_not_guessed (test_watch.ExecutionTiming.test_missing_invalid_reversed_and_running_times_are_not_guessed) (fields={'started_at_jst': '2026-01-02T00:00:00Z', 'finished_at_jst': '2026-01-01T00:00:00Z'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 164, in test_missing_invalid_reversed_and_running_times_are_not_guessed
+    timing = watch.execution_timing({'status': 'FAILED', **fields})
+             ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'watch' has no attribute 'execution_timing'
+
+======================================================================
+ERROR: test_missing_invalid_reversed_and_running_times_are_not_guessed (test_watch.ExecutionTiming.test_missing_invalid_reversed_and_running_times_are_not_guessed) (fields={'started_at_utc': '2026-01-01T00:00:00Z', 'finished_at_utc': '2026-01-01T00:00:00Z'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 164, in test_missing_invalid_reversed_and_running_times_are_not_guessed
+    timing = watch.execution_timing({'status': 'FAILED', **fields})
+             ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'watch' has no attribute 'execution_timing'
+
+======================================================================
+ERROR: test_missing_invalid_reversed_and_running_times_are_not_guessed (test_watch.ExecutionTiming.test_missing_invalid_reversed_and_running_times_are_not_guessed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 167, in test_missing_invalid_reversed_and_running_times_are_not_guessed
+    timing = watch.execution_timing({'status': 'RUNNING',
+             ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'watch' has no attribute 'execution_timing'
+
+======================================================================
+FAIL: test_legacy_event_displays_unknown_without_changing_original (test_watch.ExecutionTiming.test_legacy_event_displays_unknown_without_changing_original)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 179, in test_legacy_event_displays_unknown_without_changing_original
+    self.assertIn('所要時間：不明', (root / 'status.html').read_text(encoding='utf-8'))
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '所要時間：不明' not found in '<!doctype html><html lang="ja"><meta charset="utf-8"><meta http-equiv="refresh" content="10"><title>シミュレーション監視</title><style>body{font:16px system-ui;max-width:960px;margin:32px auto;padding:0 20px;background:#f4f6f8;color:#172331}article{background:white;padding:20px;margin:16px 0;border:1px solid #ccd4dd;border-radius:8px}pre{white-space:pre-wrap;font:inherit}h2{font-size:20px}</style><h1>シミュレーション監視</h1><p id="fresh"></p><p>観測日時（UTC）：未観測 / 対象 0 / 実行中の状態 0 / イベント 1</p><p>これはローカル監視の受信箱です。完了は検証PASS・研究採用を意味しません。通知submittedはWindowsへの送信受付であり、閲覧確認ではありません。</p><article><h2>completed</h2><p>legacy</p><p>2026-10-23T23:23:49.737413+00:00 / pending / notification: pending</p><pre>診断待ち、または未処理。イベントの状態を確認してください。</pre><a href="file:///C:/Users/Ko_rr/AppData/Local/Temp/tmpo0_gga73/events/17ec2feedf8f2713f218e5bed37aa207.json">イベント原本</a></article><script>const age=Date.now()/1000-1;const e=document.getElementById("fresh");e.textContent=age>40?"観測の更新が止まっています。監視プロセスを確認してください。":"直近の観測あり（現在の生存はstatusで確認）";if(age>40)e.style.color="#b42318";</script></html>'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.166s
+
+FAILED (failures=1, errors=7)

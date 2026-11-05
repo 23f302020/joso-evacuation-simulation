@@ -1,0 +1,133 @@
+{
+  "at_jst": "2026-10-24T23:26:03.702122+09:00",
+  "scope": "actual-byte readback of all20 registered data artifacts, not just manifest declarations; no old outcome reuse",
+  "status": "PASS",
+  "old_registration": "choice_native_observation_v2_20261021",
+  "current_registration": "choice_native_observation_v3_20261024",
+  "old_manifest_sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+  "current_manifest_sha256": "95cc4913f2f9a2752781795c9ae276f1a5bb7b73070edb03c64797c25d7d58a9",
+  "checked": [
+    {
+      "file": "bounded.net.xml",
+      "old_actual_sha256": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+      "current_actual_sha256": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+      "manifest_sha256": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1"
+    },
+    {
+      "file": "cells.json",
+      "old_actual_sha256": "0e52212520e45170d2238a1bdb21160bce8872cf15e176f68ce4429086b894e2",
+      "current_actual_sha256": "0e52212520e45170d2238a1bdb21160bce8872cf15e176f68ce4429086b894e2",
+      "manifest_sha256": "0e52212520e45170d2238a1bdb21160bce8872cf15e176f68ce4429086b894e2"
+    },
+    {
+      "file": "common_realization_seed1.csv",
+      "old_actual_sha256": "b00296daa71a8ebfea5975a4a841f28490a7c7db050974328c984eee9da9b5e3",
+      "current_actual_sha256": "b00296daa71a8ebfea5975a4a841f28490a7c7db050974328c984eee9da9b5e3",
+      "manifest_sha256": "b00296daa71a8ebfea5975a4a841f28490a7c7db050974328c984eee9da9b5e3"
+    },
+    {
+      "file": "common_realization_seed101.csv",
+      "old_actual_sha256": "a67b1b809b882abefd8477bb470d2e463022b45319a559dd31a3223b5b34de70",
+      "current_actual_sha256": "a67b1b809b882abefd8477bb470d2e463022b45319a559dd31a3223b5b34de70",
+      "manifest_sha256": "a67b1b809b882abefd8477bb470d2e463022b45319a559dd31a3223b5b34de70"
+    },
+    {
+      "file": "common_realization_seed23423.csv",
+      "old_actual_sha256": "a88daef10103b2be3d6e8e0fb63d7429717b4087313a2c9ca29eda46223847df",
+      "current_actual_sha256": "a88daef10103b2be3d6e8e0fb63d7429717b4087313a2c9ca29eda46223847df",
+      "manifest_sha256": "a88daef10103b2be3d6e8e0fb63d7429717b4087313a2c9ca29eda46223847df"
+    },
+    {
+      "file": "common_realization_seed42.csv",
+      "old_actual_sha256": "69801697a19e831cb60d11f6eb2a1c814fb9327fac788244e6730a6b2948fa8c",
+      "current_actual_sha256": "69801697a19e831cb60d11f6eb2a1c814fb9327fac788244e6730a6b2948fa8c",
+      "manifest_sha256": "69801697a19e831cb60d11f6eb2a1c814fb9327fac788244e6730a6b2948fa8c"
+    },
+    {
+      "file": "common_realization_seed7.csv",
+      "old_actual_sha256": "5a61eb7d90de1353916ccc73933aedd32dd409b1a33fa6be3114f04cb4a33e86",
+      "current_actual_sha256": "5a61eb7d90de1353916ccc73933aedd32dd409b1a33fa6be3114f04cb4a33e86",
+      "manifest_sha256": "5a61eb7d90de1353916ccc73933aedd32dd409b1a33fa6be3114f04cb4a33e86"
+    },
+    {
+      "file": "destinations_facility_first.csv",
+      "old_actual_sha256": "13a38dc27bc5aa43b1dcdef6f01221dfd31714c943294301ef7f77b7a37153d4",
+      "current_actual_sha256": "13a38dc27bc5aa43b1dcdef6f01221dfd31714c943294301ef7f77b7a37153d4",
+      "manifest_sha256": "13a38dc27bc5aa43b1dcdef6f01221dfd31714c943294301ef7f77b7a37153d4"
+    },
+    {
+      "file": "destinations_fixed_reference.csv",
+      "old_actual_sha256": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec",
+      "current_actual_sha256": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec",
+      "manifest_sha256": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec"
+    },
+    {
+      "file": "excluded_people.csv",
+      "old_actual_sha256": "35f935dacc28e327ba1caa581e3d55d9b52eca1af924e091402f82cb990bd629",
+      "current_actual_sha256": "35f935dacc28e327ba1caa581e3d55d9b52eca1af924e091402f82cb990bd629",
+      "manifest_sha256": "35f935dacc28e327ba1caa581e3d55d9b52eca1af924e091402f82cb990bd629"
+    },
+    {
+      "file": "graphs.json",
+      "old_actual_sha256": "f559afebdf6639be0a0dce6f42a7ab3ee699dc962c1ce8badb1e8f1b4befdc1c",
+      "current_actual_sha256": "f559afebdf6639be0a0dce6f42a7ab3ee699dc962c1ce8badb1e8f1b4befdc1c",
+      "manifest_sha256": "f559afebdf6639be0a0dce6f42a7ab3ee699dc962c1ce8badb1e8f1b4befdc1c"
+    },
+    {
+      "file": "hazard.csv",
+      "old_actual_sha256": "d6817945fa46685a36ed24c94f816d987bbee8f06403a40f11f9fe65d762281a",
+      "current_actual_sha256": "d6817945fa46685a36ed24c94f816d987bbee8f06403a40f11f9fe65d762281a",
+      "manifest_sha256": "d6817945fa46685a36ed24c94f816d987bbee8f06403a40f11f9fe65d762281a"
+    },
+    {
+      "file": "keep_edges.txt",
+      "old_actual_sha256": "26a8d662e0a69896ffa0b4e0280cd4db276d62fe95ec7586867940c375c63a9b",
+      "current_actual_sha256": "26a8d662e0a69896ffa0b4e0280cd4db276d62fe95ec7586867940c375c63a9b",
+      "manifest_sha256": "26a8d662e0a69896ffa0b4e0280cd4db276d62fe95ec7586867940c375c63a9b"
+    },
+    {
+      "file": "netconvert.log",
+      "old_actual_sha256": "680bdf38226c76db648cf72232000e4e281bc93eaa51e4ca6f5afb72ed16131a",
+      "current_actual_sha256": "680bdf38226c76db648cf72232000e4e281bc93eaa51e4ca6f5afb72ed16131a",
+      "manifest_sha256": "680bdf38226c76db648cf72232000e4e281bc93eaa51e4ca6f5afb72ed16131a"
+    },
+    {
+      "file": "origins.csv",
+      "old_actual_sha256": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec",
+      "current_actual_sha256": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec",
+      "manifest_sha256": "ea02ebc80a0e55f8be43e515abf1c682c30d880b172f44497874ca7d01e296ec"
+    },
+    {
+      "file": "people.csv",
+      "old_actual_sha256": "0d40f8c4e7d3d1440377d83e0e89c7d180d75a52f72b2f897f484b1b2a1f57ef",
+      "current_actual_sha256": "0d40f8c4e7d3d1440377d83e0e89c7d180d75a52f72b2f897f484b1b2a1f57ef",
+      "manifest_sha256": "0d40f8c4e7d3d1440377d83e0e89c7d180d75a52f72b2f897f484b1b2a1f57ef"
+    },
+    {
+      "file": "place_positions.csv",
+      "old_actual_sha256": "fade1667bc7b26e9afcf0496cab3ecd8a0c76aeffab1d93f3c5da96fe5ef5d6b",
+      "current_actual_sha256": "fade1667bc7b26e9afcf0496cab3ecd8a0c76aeffab1d93f3c5da96fe5ef5d6b",
+      "manifest_sha256": "fade1667bc7b26e9afcf0496cab3ecd8a0c76aeffab1d93f3c5da96fe5ef5d6b"
+    },
+    {
+      "file": "quarantined_edges.csv",
+      "old_actual_sha256": "bc349a0ae914c3a4e717358129ff3491613ae885f59d49e19ef272bd90da7c62",
+      "current_actual_sha256": "bc349a0ae914c3a4e717358129ff3491613ae885f59d49e19ef272bd90da7c62",
+      "manifest_sha256": "bc349a0ae914c3a4e717358129ff3491613ae885f59d49e19ef272bd90da7c62"
+    },
+    {
+      "file": "road_samples.npz",
+      "old_actual_sha256": "8391e34fab6624a0abb179d14e4ecb8ca12aa4ff2d3178ee457ac020068aa754",
+      "current_actual_sha256": "8391e34fab6624a0abb179d14e4ecb8ca12aa4ff2d3178ee457ac020068aa754",
+      "manifest_sha256": "8391e34fab6624a0abb179d14e4ecb8ca12aa4ff2d3178ee457ac020068aa754"
+    },
+    {
+      "file": "terminals.csv",
+      "old_actual_sha256": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+      "current_actual_sha256": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+      "manifest_sha256": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657"
+    }
+  ],
+  "old_core_results_reused": false,
+  "core_adoption_permitted": false
+}

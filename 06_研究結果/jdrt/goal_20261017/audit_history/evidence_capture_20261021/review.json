@@ -1,0 +1,14 @@
+{
+  "at_jst": "2026-10-21T16:04:23.107489+09:00",
+  "change": "instruction paragraph only; same repeated acquisition/visual workflow, no new code, gates or runtime",
+  "before_sha256": "435d36315509c5351c61f123bc8f0dc8d1b45f57669904eaf4d28a5e4ee78ae4",
+  "after_sha256": "526280f3b51517b198a50bffa1bec4d9f4433e883014ca243e100b0f78bac43e",
+  "examples": [
+    "02_情報調査\\交通・地域\\jdrt_goal_20261017\\transport_supply_20261021",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/disaster_transport_20261019"
+  ],
+  "checks": "frontmatter retained; original archived; example paths exist; actual3PDF SHA/readback/5image review; no new executable behavior",
+  "pass": true,
+  "skill_quick_validate": "PASS",
+  "git_diff_check": "PASS scoped, no output"
+}

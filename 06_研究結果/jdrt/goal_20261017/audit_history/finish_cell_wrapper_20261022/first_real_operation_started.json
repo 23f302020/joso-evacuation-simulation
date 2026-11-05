@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-22T22:02:36.088282+09:00",
+  "status": "FIRST_REAL_FINISH_OPERATION_IN_PROGRESS",
+  "run_id": "nc26102202",
+  "session_id": 33664,
+  "helper_pid": 15752,
+  "helper_created_jst": "2026-10-22T21:58:48.105979+09:00",
+  "validation_child_pid": 21032,
+  "validation_child_created_jst": "2026-10-22T21:58:50.690263+09:00",
+  "OS_identity_last_observed_at_jst": "2026-10-22T22:00:41+09:00",
+  "phase_observed": "validate",
+  "operation_file": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102202.finish/operation.json",
+  "operation_sha256_at_observation": "401e71227cc835b6c9a9f8d3d0384b96a99d0205ab4e0b43c04bb2ac4a30b72d",
+  "commands_observed": [
+    {
+      "command": "check",
+      "status": "COMPLETED",
+      "run_id": "nc26102202",
+      "validation_report": null
+    }
+  ],
+  "formal_record_result": null,
+  "new_helper_complete_success_proved": false,
+  "model_backend_changed": false,
+  "independent_native_retest_claim": false
+}

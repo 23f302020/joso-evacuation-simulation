@@ -1,0 +1,58 @@
+EEEEE
+======================================================================
+ERROR: test_configure_replaces_only_source_and_build_operands (test_choice_native_trace_build.TraceBuildContracts.test_configure_replaces_only_source_and_build_operands)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_build.py", line 71, in test_configure_replaces_only_source_and_build_operands
+    actual = build.configure_command(prior, self.source, self.destination)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_build.py", line 5, in configure_command
+    raise NotImplementedError('Diagnostic configuration must preserve the prior options')
+NotImplementedError: Diagnostic configuration must preserve the prior options
+
+======================================================================
+ERROR: test_existing_destination_and_changed_original_fail_before_copy (test_choice_native_trace_build.TraceBuildContracts.test_existing_destination_and_changed_original_fail_before_copy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_build.py", line 38, in test_existing_destination_and_changed_original_fail_before_copy
+    build.prepare_source(self.source, self.destination, self.expected)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_build.py", line 9, in prepare_source
+    raise NotImplementedError('Diagnostic source must be a verified fresh copy')
+NotImplementedError: Diagnostic source must be a verified fresh copy
+
+======================================================================
+ERROR: test_fresh_copy_changes_only_generated_observation_source (test_choice_native_trace_build.TraceBuildContracts.test_fresh_copy_changes_only_generated_observation_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_build.py", line 27, in test_fresh_copy_changes_only_generated_observation_source
+    receipt = build.prepare_source(self.source, self.destination, self.expected)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_build.py", line 9, in prepare_source
+    raise NotImplementedError('Diagnostic source must be a verified fresh copy')
+NotImplementedError: Diagnostic source must be a verified fresh copy
+
+======================================================================
+ERROR: test_missing_extra_and_trace_body_changes_are_detected (test_choice_native_trace_build.TraceBuildContracts.test_missing_extra_and_trace_body_changes_are_detected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_build.py", line 46, in test_missing_extra_and_trace_body_changes_are_detected
+    build.prepare_source(self.source, self.destination, self.expected)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_build.py", line 9, in prepare_source
+    raise NotImplementedError('Diagnostic source must be a verified fresh copy')
+NotImplementedError: Diagnostic source must be a verified fresh copy
+
+======================================================================
+ERROR: test_original_mutation_after_copy_is_detected (test_choice_native_trace_build.TraceBuildContracts.test_original_mutation_after_copy_is_detected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_build.py", line 63, in test_original_mutation_after_copy_is_detected
+    build.prepare_source(self.source, self.destination, self.expected)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_build.py", line 9, in prepare_source
+    raise NotImplementedError('Diagnostic source must be a verified fresh copy')
+NotImplementedError: Diagnostic source must be a verified fresh copy
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.224s
+
+FAILED (errors=5)

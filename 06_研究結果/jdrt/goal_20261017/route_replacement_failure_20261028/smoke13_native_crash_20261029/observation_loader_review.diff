@@ -1,0 +1,48 @@
+--- before
++++ after
+@@ -46,6 +46,17 @@
+     return imports
+ 
+ 
++def loader_targets(state):
++    if state.get('role')=='OBSERVATION_ONLY_DIAGNOSTIC_NEVER_PRODUCTION':
++        if (len(state['binaries'])!=1 or Path(state['binaries'][0]['path']).stem!='sumo'
++                or state.get('technical_ready') is not False):
++            raise ValueError('Observation-only nonready single SUMO required')
++        return (('sumo','diagnostic_imports'),)
++    if len(state['binaries'])!=2:
++        raise ValueError('Nonobservation build still requires two targets')
++    return (('sumo','sumo_diagnostic_imports'),('netconvert','netconvert_diagnostic_imports'))
++
++
+ def run(root,state_path,output):
+     root,state_path,output=root.resolve(),state_path.resolve(),output.resolve()
+     staging=Path('C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019').resolve()
+@@ -55,9 +66,9 @@
+     state=read_json(state_path);state_sha=sha(state_path);build=Path(state['diagnostic_build']).resolve()
+     if (state.get('status')!='COMPILED_VERSION_CHECKED_NOT_SIMULATED' or state.get('child_pid') is not None
+             or state.get('simulation_allowed') is not False or state.get('research_cli_switch_allowed') is not False
+-            or state.get('research_adoption_permitted') is not False or not build.is_relative_to(staging)
+-            or len(state['binaries'])!=2):
+-        raise ValueError('Terminal nonadoptable two-target build required')
++            or state.get('research_adoption_permitted') is not False or not build.is_relative_to(staging)):
++        raise ValueError('Terminal nonadoptable build required')
++    targets=loader_targets(state)
+     output.mkdir(parents=True,exist_ok=False)
+     (output/'build_state.snapshot.bin').write_bytes(state_path.read_bytes())
+     result={'at_utc':datetime.now(timezone.utc).isoformat(),'state':str(state_path),'state_sha256':state_sha,
+@@ -73,12 +84,12 @@
+     kernel.FreeLibrary.argtypes=[wintypes.HMODULE]
+     kernel.SetErrorMode(0x0001|0x0002|0x8000)
+     try:
+-        for name in ('sumo','netconvert'):
++        for name,import_phase in targets:
+             binary=build/'src'/(name+'.exe')
+             entries=[x for x in state['binaries'] if Path(x['path']).resolve()==binary]
+             if len(entries)!=1 or sha(binary)!=entries[0]['sha256'] or binary.stat().st_size!=entries[0]['bytes']:
+                 raise ValueError('Actual executable does not match terminal build')
+-            commands=[x for x in state['commands'] if x['phase']==name+'_diagnostic_imports']
++            commands=[x for x in state['commands'] if x['phase']==import_phase]
+             if len(commands)!=1 or commands[0]['exit_code']!=0:raise ValueError('Native import command required')
+             command=commands[0];log=Path(command['log'])
+             if sha(log)!=command['log_sha256'] or log.stat().st_size!=command['log_bytes']:

@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kensyouhoukoku.html",
+        "title": "常総市水害対策検証委員会による検証報告書について",
+        "description": "... 関東・東北豪雨 ... 平成27年常総市鬼怒川水害対応に関する検証報告書 [PDF形式／2.42MB] · 平成27年常 ...",
+        "position": 1
+      },
+      {
+        "url": "https://www.bousai.go.jp/kaigirep/houkokusho/hukkousesaku/saigaitaiou/output_html_1/pdf/201503.pdf",
+        "title": "2015年（平成27年） 関東・東北豪雨による災害",
+        "description": "（出典）茨城県「茨城県関東・東北豪雨 ... 検証結果については「常総市役所」、「関係機関」、「情報処理と対応」の3章構成として整理した。 図 検証委員会の検証の ...",
+        "position": 2
+      },
+      {
+        "url": "https://www.ecesj.com/contents/guidance/report/2017_Kinugawa_Disaster_Report.pdf",
+        "title": "平成27年9月関東・東北豪雨 鬼怒川災害調査報告書",
+        "description": "5) 土木学会：平成 27 年 9 月関東・東北豪雨による関東地方災害調査報告書，p. ... 茨城県自然博物館研究報告，Vol.10，pp.101-134，2007. 28) 野副健司・ ...",
+        "position": 3
+      },
+      {
+        "url": "https://www.komeri-npo.org/record/downpour/joso/h27/03/index.html",
+        "title": "茨城県常総市 / 関東・東北豪雨災害（平成27年9月）",
+        "description": "茨城県常総市 / 関東・東北豪雨災害. 被害状況. 常総市内では、今般の ... 平成27年常総市鬼怒川水害対応に関する検証報告書 (平成28年6月13日常総 ...",
+        "position": 4
+      },
+      {
+        "url": "https://www.skr.mlit.go.jp/oozu/kawa/hijikawa_dk/gensai/3/3_shiryo_sonota2.pdf",
+        "title": "平成27年常総市鬼怒川水害対応に関する検証報告書",
+        "description": "本検証報告書では，検証報告を第Ⅲ部においてとりまとめているが，その ... • ヤマト運輸，茨城県トラック協会の支援を得て，各避難所へ物資配給 ...",
+        "position": 5
+      }
+    ],
+    "tools": []
+  },
+  "id": "01a15959-e202-727a-b6cb-6b553f370c8c",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kensyouhoukoku.html\", #2 \"https://www.bousai.go.jp/kaigirep/houkokusho/hukkousesaku/saigaitaiou/output_html_1/pdf/201503.pdf\", #3 \"https://www.ecesj.com/contents/guidance/report/2017_Kinugawa_Disaster_Report.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

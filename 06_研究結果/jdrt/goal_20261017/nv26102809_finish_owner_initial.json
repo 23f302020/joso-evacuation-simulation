@@ -1,0 +1,52 @@
+{
+  "at_jst": "2026-10-28T08:02:30.801725+09:00",
+  "action": "ninth_core_completed_original_nested_finish_validation_active",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102809",
+  "original_session": 55966,
+  "sequence_actual_pid": 33684,
+  "finish_actual_pid": 34484,
+  "finish_launcher_pid": 16916,
+  "validator_actual_pid": 18280,
+  "validator_launcher_pid": 24908,
+  "process_handle_identities": {
+    "33684": {
+      "state": "alive",
+      "created": 134376148225121415,
+      "pid": 33684
+    },
+    "34484": {
+      "state": "alive",
+      "created": 134376156909041274,
+      "pid": 34484
+    },
+    "18280": {
+      "state": "alive",
+      "created": 134376156934160871,
+      "pid": 18280
+    },
+    "28520": {
+      "state": "absent"
+    }
+  },
+  "phase": "validate",
+  "operation_status": "RUNNING",
+  "record_attempted": false,
+  "current_core": {
+    "run_id": "nv26102809",
+    "cell_id": "facility_first_u05_r1_seed23423",
+    "status": "COMPLETED",
+    "pid": 28520,
+    "started_at_jst": "2026-10-28T07:47:52.224529+09:00",
+    "finished_at_jst": "2026-10-28T08:00:53.157480+09:00"
+  },
+  "formal_recorded": 8,
+  "display_writers_deferred": true,
+  "all_sequence_source_pins_unchanged": true,
+  "no_duplicate_validate_record": true,
+  "goal_complete": false,
+  "performance_probe_original_session": 45034,
+  "performance_probe_actual_pid": 5368,
+  "next": "Follow original55966 and actual first validator18280; do not retry/adopt/start before original readback and fresh parent gates."
+}

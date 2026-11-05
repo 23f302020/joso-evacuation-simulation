@@ -1,0 +1,65 @@
+--- before
++++ after
+@@ -1052,6 +1052,41 @@
+         return False
+ 
+ 
++def native_walking_version_supported(manifest):
++    """Recognize the getter contract; build/patch correctness has separate gates."""
++    version = manifest.get('sumo_version', [])
++    if not (isinstance(version, list) and len(version) == 2 and isinstance(version[1], str)):
++        return False
++    if re.match(r'^SUMO 1\.26\.0(?:$|[ +])', version[1]):
++        return True
++    if (version[0] != 22
++            or not re.fullmatch(r'SUMO 1\.26\.0-jdrt-choice-[A-Za-z0-9._-]+', version[1])):
++        return False
++    try:
++        recorded = manifest['runtime_sha256']
++        # This recomputes the selected manifest, every bundle file and actual
++        # imported Python modules. A self-declared custom suffix is insufficient.
++        if runtime_fingerprint() != recorded:
++            return False
++        provenance = recorded['toolchain_provenance']
++        name = provenance['native_provenance']
++        if name not in recorded['toolchain_files_sha256']:
++            return False
++        path = Path(recorded['toolchain_manifest_path']).parent / name
++        if file_sha(path) != recorded['toolchain_files_sha256'][name]:
++            return False
++        proof = json.loads(path.read_text(encoding='utf-8'))
++        return (proof['schema'] == 'isolated_native_provenance_v1'
++                and proof['role'] == provenance['role'] in ('control', 'patched')
++                and proof['source_commit'] == provenance['source_commit']
++                and re.fullmatch('[0-9a-f]{40}', proof['source_commit']) is not None
++                and version[1] == 'SUMO ' + proof['custom_version']
++                and proof['state']['custom_version'] == proof['custom_version']
++                and proof['state']['status'] == 'COMPILED_VERSION_CHECKED_NOT_SIMULATED')
++    except (KeyError, TypeError, ValueError, OSError):
++        return False
++
++
+ def audit_movement_events(folder, manifest, cfg, events):
+     """Rebuild every external entry and walk-budget decision on the step grid.
+ 
+@@ -1082,9 +1117,8 @@
+         if len(examples[name]) < 10:
+             examples[name].append(detail)
+ 
+-    version = manifest.get('sumo_version', [])
+     if (any(e['event'] == 'walk_plan' for e in events)
+-            and not (len(version) == 2 and re.match(r'^SUMO 1\.26\.0(?:$|[ +])', version[1]))):
++            and not native_walking_version_supported(manifest)):
+         fail('walk_native_speed_contract', 'unsupported_native_getter_version')
+ 
+     routes = {vid: [source['depot_edge']] for vid, v in vehicles.items() if v['kind'] == 'drt'}
+@@ -1624,8 +1658,7 @@
+     # frame for each actor/edge/rounded-position key, and exactly the constructor
+     # count independently derived from both native stage replacement receipts.
+     expected_walk = defaultdict(list)
+-    version = manifest.get('sumo_version', [])
+-    if (len(version) == 2 and re.match(r'^SUMO 1\.26\.0(?:$|[ +])', version[1])
++    if (native_walking_version_supported(manifest)
+             and movement_report and movement_report['status'] == 'PASS'):
+         for item in movement_report['walk_constructor_warnings']:
+             key = item['actor'], item['edge'], format(item['constructor_depart_pos_m'], '.2f')

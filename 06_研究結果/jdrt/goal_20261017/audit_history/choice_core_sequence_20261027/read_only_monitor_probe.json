@@ -1,0 +1,32 @@
+{
+  "status": "PASS_READ_ONLY_DEPLOYED_OBSERVER_PROBE",
+  "scope": "Current same-daemon identity/source/freshness and existing completed core target only; no new core or sequence run",
+  "source_sha256": "60242f6427f030ccc802639a665218458e8affbe1f46b2e4b7a614ff16bc9671",
+  "observations": [
+    {
+      "runtime": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646",
+      "last_observed": "2026-10-27T09:36:17.178165+00:00",
+      "observation_age_sec": 6.3583824634552,
+      "monitor_process": {
+        "state": "alive",
+        "created": 134375371341239107,
+        "pid": 26988
+      },
+      "monitor_identity_matches": true
+    },
+    {
+      "runtime": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646",
+      "last_observed": "2026-10-27T09:36:17.178165+00:00",
+      "observation_age_sec": 7.216981887817383,
+      "monitor_process": {
+        "state": "alive",
+        "created": 134375371341239107,
+        "pid": 26988
+      },
+      "monitor_identity_matches": true
+    }
+  ],
+  "old_core_process_identity": {
+    "state": "absent"
+  }
+}

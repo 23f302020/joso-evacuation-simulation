@@ -1,0 +1,38 @@
+{
+  "at_jst": "2026-10-20T16:36:20.719536+09:00",
+  "status": "ARTIFACT_PAIR_VERIFIED_NATIVE_UNTESTED",
+  "reviewer": "current parent; no new subagent; actual backend unverified",
+  "tests": {
+    "pair_metadata_sources_and_integration": 40,
+    "packaging_unit": 13,
+    "total": 53
+  },
+  "primary_verification": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_primary_20261020T163105635134\\verification.json",
+    "sha256": "b495b27d9ea40e4f2c2d5f44bbe13358401a1146cfb370d0a2f14a5ad58a17b8"
+  },
+  "frozen_helper_sources_sha256": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_package_toolchain.py": "34b4ca747c7b2e402e3e9eea46712a96ca2b2b968a26b4fdea1135e9a7e3a2f0",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_pair_proof.py": "43a1fad4a81c8791da1a3698d7a87ca1796c88e9d5945e85f084c787e1256264",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_pair_sources.py": "1836f98cf48fd15ce2478168e6a23ee7c26be616fcc43f6bbe29ad766726ea80",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_pair_metadata.py": "0ebf6dab327b61508f5f30619ae4ae179e1849c3cf8c823219b3f8a57e15c5a9"
+  },
+  "findings_resolved": [
+    "P1 primary pair binding replaces control true-booleans/patch hash regex",
+    "Exact UCRT API contracts plus bound System32 export/clean version logs; unknown names rejected",
+    "Fresh copied bytes and source/header set/bytes rechecked across copy window",
+    "Source/build roots retain declared and resolved spellings for existing narrow canonicalizer"
+  ],
+  "unresolved_findings_within_artifact_packaging_scope": [],
+  "limits": [
+    "Primary build evidence is not a reproducible-build/signing attestation",
+    "System module/export observations are point observations on this Windows host",
+    "Seven classified source omissions remain disclosed",
+    "No native physical correctness, broad guards, full suite/audit/14smoke/preflight/G6 or READY"
+  ],
+  "producer_metadata_note": "verification.json packager_integrated=false is an obsolete producer field; it did not invoke packaging. Current module integration is proven by frozen code and unmocked end-to-end tests. Field is not a consumer gate.",
+  "technical_packaging_permitted": true,
+  "native_simulation_started": false,
+  "core_ready": false,
+  "formal_adoption_permitted": false
+}

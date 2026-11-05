@@ -11,7 +11,7 @@ description: セッション終了時の定型作業。CLAUDE.md更新 → タ�
 ### Step 1: 変更内容の把握
 
 ```bash
-cd "/mnt/c/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究"
+cd "$(git rev-parse --show-toplevel)"
 git diff --stat
 git status
 ```
@@ -35,7 +35,7 @@ git status
 ### Step 4: git commit & push
 
 ```bash
-cd "/mnt/c/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究"
+cd "$(git rev-parse --show-toplevel)"
 git add CLAUDE.md "05_タスク管理/実装タスク一覧.md"
 # 変更したスクリプトも追加
 git add 04_プログラム/scripts/

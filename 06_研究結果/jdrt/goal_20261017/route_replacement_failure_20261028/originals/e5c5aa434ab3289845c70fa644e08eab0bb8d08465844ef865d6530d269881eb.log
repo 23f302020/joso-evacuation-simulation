@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_core_sequence.py", line 402, in <module>
+    args.expected_recorded, args.max_cells, args.prior_readback).run()
+                                                                 ~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_core_sequence.py", line 370, in run
+    self.wait_core(run_id)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_core_sequence.py", line 319, in wait_core
+    result = self.command(BASE + 'choice_monitor.py', ['--run-id', run_id])
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_core_sequence.py", line 177, in command
+    require(code == 0, 'Command failed; inspect its original logs, never replay automatically')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_core_sequence.py", line 30, in require
+    raise RuntimeError(message)
+RuntimeError: Command failed; inspect its original logs, never replay automatically

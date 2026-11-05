@@ -1,0 +1,59 @@
+{
+  "at_jst": "2026-10-29T00:05:31.939265+09:00",
+  "new_actual_monitor": {
+    "state": "alive",
+    "created": 134376734283303123,
+    "pid": 36456
+  },
+  "state_monitor_pid": 36456,
+  "state_source_matches_disk": true,
+  "state_matches_current_identity": true,
+  "state_age_sec": 90.66171360015869,
+  "suite_target": {
+    "status": "RUNNING",
+    "target_id": "rt261028b",
+    "observed_at_utc": "2026-10-28T15:04:19.948154+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-28T14:42:43.138040+00:00",
+      "finished_at_utc": null,
+      "elapsed_sec": null,
+      "start_source": "started_at_jst",
+      "finish_source": null,
+      "status": "running"
+    },
+    "protocol": "realtime_choice_fixture_suite_v1",
+    "purpose": "technical_fixture_suite",
+    "state_sha256": "d80b40da99da373a8ab721c35424f3b2e346fc6939d212624402834c459a7524",
+    "flags": [],
+    "pid": 42508,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b\\manifest.json",
+    "sim_sec": null,
+    "progress_token": [
+      "RUNNING",
+      "completed_cases",
+      16
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134376721587991556,
+      "pid": 42508
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "rt261028b"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "rt261028b"
+    },
+    "last_progress": 1793199841.2789993,
+    "log_offsets": {},
+    "historical": false
+  },
+  "same_science_owner": {
+    "state": "alive",
+    "created": 134376721587991556,
+    "pid": 42508
+  },
+  "restart_not_repeated": true
+}

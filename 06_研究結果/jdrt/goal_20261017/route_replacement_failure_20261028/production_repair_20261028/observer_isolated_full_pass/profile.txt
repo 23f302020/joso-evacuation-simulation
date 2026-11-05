@@ -1,0 +1,38 @@
+         755147 function calls (612139 primitive calls) in 20.314 seconds
+
+   Ordered by: cumulative time
+   List reduced from 546 to 30 due to restriction <30>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.069    0.069   20.313   20.313 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:482(observe)
+      859    0.011    0.000   10.043    0.012 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:43(read_json)
+     2017    0.009    0.000    9.946    0.005 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:529(open)
+     2019    9.847    0.005    9.936    0.005 {built-in method _io.open}
+      859    0.014    0.000    9.930    0.012 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:539(read_text)
+      859    0.014    0.000    9.915    0.012 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:628(read_text)
+        1    0.005    0.005    9.243    9.243 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:96(render_status)
+        2    0.004    0.002    9.136    4.568 {built-in method builtins.sorted}
+      287    0.004    0.000    9.132    0.032 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:98(<genexpr>)
+      601    0.106    0.000    8.638    0.014 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:261(snapshot)
+        1    0.002    0.002    4.472    4.472 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:185(command_matches)
+        1    0.000    0.000    4.465    4.465 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:512(run)
+        1    0.000    0.000    4.393    4.393 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1178(communicate)
+        1    0.000    0.000    4.355    4.355 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1623(_communicate)
+        2    0.000    0.000    4.354    2.177 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:1059(join)
+        2    0.001    0.001    4.354    2.177 {method 'join' of '_thread._ThreadHandle' objects}
+      2/1    0.000    0.000    4.353    4.353 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:1001(_bootstrap)
+      2/1    0.003    0.002    4.353    4.353 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:1028(_bootstrap_inner)
+      2/1    0.000    0.000    4.350    4.350 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:984(run)
+      2/1    0.000    0.000    4.350    4.350 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1614(_readerthread)
+      6/5    0.000    0.000    4.350    0.870 {method 'close' of '_io.BufferedReader' objects}
+        1    0.000    0.000    1.504    1.504 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:475(discover)
+     2730    0.939    0.000    1.208    0.000 {built-in method nt.stat}
+     2710    0.008    0.000    1.201    0.000 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:510(stat)
+     2157    0.012    0.000    1.128    0.001 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:442(exists)
+      604    0.009    0.000    0.970    0.002 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:621(read_bytes)
+       18    0.002    0.000    0.839    0.047 {method 'update' of 'set' objects}
+      619    0.014    0.000    0.837    0.001 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:478(<genexpr>)
+      601    0.005    0.000    0.749    0.001 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:664(resolve)
+      601    0.016    0.000    0.720    0.001 <frozen ntpath>:661(realpath)
+
+

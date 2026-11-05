@@ -1,0 +1,10 @@
+version = 1
+id = "jdrt-b-15"
+kind = "heartbeat"
+name = "JDRT 実時間B 境界整合15分監視"
+prompt = "常総市08211の新境界整合系列realtime_b_boundary_v2を15分ごとに監視し、詳細をローカルへ記録する。ユーザーは2026-10-16に「提案1：移動前制御を登録し15セルを再実行（推奨）」を明示採用し、新PAP/Registry・別workspace・共通実装で全15セルの新規実行と15分監視を承認済み。rootは C:/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究。AGENTS.md、context.mdの単独終了マーカーまで、.agents/skills/joso-jdrt-runner/SKILL.md、references/realtime_b_boundary.md、05_タスク管理/jdrt/JDRT-実時間B境界整合_開始準備監査.mdを必要範囲で読む。project venv Pythonから新専用CLI .agents/skills/joso-jdrt-runner/scripts/realtime_b_boundary_cell.py --project-root . status/checkを使う。旧realtime_b_v1の8記録・失敗・旧HOLDは保全し、新台帳/主比較に混ぜず旧CLI/旧v2/REAL-R0を開始しない。新workspaceは04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2。開始は現行入力/unit/実SUMO timing/3条件smokeと共通実装SHAのpreflight READY後に限る。新系列の記録済み数と次セルだけを参照し、各seed内R0→R1→R2、seed23423,42,1,7,101の15セルを1セルずつ実行する。実行中はPID/manifest/時刻・sim秒・全人物会計/観測/候補/遷移/例外とSHAを確認し、workspace driver_logs/monitoring.jsonl、新準備監査、所定経過報告へ詳細記録する。閉鎖予定T・実呼出しmax(0,T−0.5)・観測上限T・phaseを区別し、先行量を隠さず独立監査する。終了後に一次成果物からvalidate、PASSだけrecordし、新実験記録/完了後タスク/context/決定ログ/経過報告/新JSONL台帳の6ファイルにrun ID同期・台帳一意を確認してからstatus→start-nextで次を1セル開始。開始/復旧/正式記録前はFact-Forcing Gateを説明する。失敗/INVALID/孤児PID/入力実装SHA/会計/時計不一致では保全して後続停止、原因を記録・通知する。全15採用セルの共通実装SHAを維持し、版混在ゲートを迂回しない。正常run中はscripts/入力設定を編集せず、step_bus・凍結済み系列・旧runを変更しない。重複起動、run再利用/上書き/削除は禁止。退出は施設受入と別計上、全5seed前に方向解釈しない。開始/終了時はcontext・現状把握md/html・詳細タスクを更新して履歴を保全する。Driveは読み取りのみ。先生/Dropbox/Gmail/問い合わせを含む外部送信と公開更新は禁止。変化なし/対応不要は静かにし、意味のある進行変化・完了・異常・必要なユーザー判断の時だけ通知する。全15セルの正式記録後は現在地と独立一覧/事前登録比較タスクを記録し、この監視をPAUSEDへ更新する。"
+status = "PAUSED"
+rrule = "FREQ=MINUTELY;INTERVAL=15"
+target_thread_id = "01a13e8c-3441-7eb0-b67a-3d6d1070af2b"
+created_at = 1792102354803
+updated_at = 1792162347381

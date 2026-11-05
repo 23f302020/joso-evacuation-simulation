@@ -1,0 +1,50 @@
+FFFFF
+======================================================================
+FAIL: test_later_failure_or_unfinished_command_blocks_packaging (test_choice_package_toolchain.PackagingContracts.test_later_failure_or_unfinished_command_blocks_packaging) (returncode=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_package_toolchain.py", line 256, in test_later_failure_or_unfinished_command_blocks_packaging
+    with self.assertRaisesRegex(ValueError, 'Every command'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_later_failure_or_unfinished_command_blocks_packaging (test_choice_package_toolchain.PackagingContracts.test_later_failure_or_unfinished_command_blocks_packaging) (returncode=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_package_toolchain.py", line 256, in test_later_failure_or_unfinished_command_blocks_packaging
+    with self.assertRaisesRegex(ValueError, 'Every command'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_later_failure_or_unfinished_command_blocks_packaging (test_choice_package_toolchain.PackagingContracts.test_later_failure_or_unfinished_command_blocks_packaging) (returncode=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_package_toolchain.py", line 256, in test_later_failure_or_unfinished_command_blocks_packaging
+    with self.assertRaisesRegex(ValueError, 'Every command'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_unhashed_or_same_size_changed_command_log_is_rejected (test_choice_package_toolchain.PackagingContracts.test_unhashed_or_same_size_changed_command_log_is_rejected) (mode='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_package_toolchain.py", line 276, in test_unhashed_or_same_size_changed_command_log_is_rejected
+    with self.assertRaisesRegex(ValueError, 'SHA'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_unhashed_or_same_size_changed_command_log_is_rejected (test_choice_package_toolchain.PackagingContracts.test_unhashed_or_same_size_changed_command_log_is_rejected) (mode='tampered')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_package_toolchain.py", line 276, in test_unhashed_or_same_size_changed_command_log_is_rejected
+    with self.assertRaisesRegex(ValueError, 'SHA'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 6.030s
+
+FAILED (failures=5)

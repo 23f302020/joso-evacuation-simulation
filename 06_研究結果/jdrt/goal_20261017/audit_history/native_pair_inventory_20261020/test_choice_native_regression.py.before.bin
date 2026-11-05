@@ -1,0 +1,420 @@
+"""Selected-pair consumer/orchestration contracts; no real native process."""
+import hashlib
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import unittest
+from unittest.mock import Mock, patch
+
+SCRIPTS = Path(__file__).resolve().parents[2] / '.agents/skills/joso-jdrt-runner/scripts'
+sys.path.insert(0, str(SCRIPTS))
+import choice_native_regression as target
+
+
+def sha_bytes(raw): return hashlib.sha256(raw).hexdigest()
+
+
+class ConsumerContracts(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.selections, self.proofs, self.states = [], {}, {}
+        self.pair_path, self.policy = self.root / 'primary/pair.json', self.root / 'primary/policy.json'
+        self.put(self.policy, b'{"approved":true}')
+        pair = {'source_commit': 'a' * 40, 'builds': {}}
+        for role in ('control', 'patched'):
+            binaries = [self.put(self.root / 'build' / role / (name + '.exe'), (role + name).encode())
+                        for name in ('sumo', 'netconvert')]
+            state = {'role': role, 'binaries': binaries}
+            ref = self.put(self.root / 'primary' / (role + '_state.json'), json.dumps(state).encode())
+            pair['builds'][role] = {'state': ref}
+            self.states[role] = state
+        self.put(self.pair_path, json.dumps(pair).encode())
+        for role in ('control', 'patched'):
+            root = self.root / 'bundles' / role
+            proof = {'role': role, 'source_commit': 'a' * 40, 'state': self.states[role],
+                     'binaries': self.states[role]['binaries'], 'pair_evidence': self.item(self.pair_path)}
+            self.proofs[role] = proof
+            files = {'tools/traci/__init__.py': b'same Python', 'tools/sumolib/__init__.py': b'same sumolib',
+                     'evidence/native_provenance.json': json.dumps(proof).encode(),
+                     'evidence/native_pair.json': self.pair_path.read_bytes(),
+                     'evidence/native_pair_policy.json': self.policy.read_bytes()}
+            for binary in self.states[role]['binaries']:
+                files['bin/' + Path(binary['path']).name] = Path(binary['path']).read_bytes()
+            for name, raw in files.items(): self.put(root / name, raw)
+            manifest = self.put(root / 'toolchain.json', ('manifest ' + role).encode())
+            self.selections.append({'root': root, 'manifest_path': Path(manifest['path']),
+                'manifest_sha256': manifest['sha256'], 'files': {n: sha_bytes(raw) for n, raw in files.items()},
+                'roles': {'sumo': 'bin/sumo.exe', 'netconvert': 'bin/netconvert.exe'},
+                'provenance': {'role': role, 'source_commit': 'a' * 40,
+                    'native_provenance': 'evidence/native_provenance.json',
+                    'native_pair': 'evidence/native_pair.json', 'native_pair_policy': 'evidence/native_pair_policy.json'}})
+
+    def item(self, p): return {'path': str(p), 'sha256': sha_bytes(p.read_bytes()), 'bytes': p.stat().st_size}
+    def put(self, p, raw):
+        p.parent.mkdir(parents=True, exist_ok=True); p.write_bytes(raw); return self.item(p)
+    def revise_proof(self, role):
+        s = self.selections[0 if role == 'control' else 1]
+        p = s['root'] / 'evidence/native_provenance.json'
+        self.put(p, json.dumps(self.proofs[role]).encode()); s['files']['evidence/native_provenance.json'] = self.item(p)['sha256']
+    def verify(self):
+        def primary(proof, root, track, *unused):
+            track(self.item(self.pair_path)); track(self.item(self.policy))
+            return {'pair_path': self.pair_path, 'policy_path': self.policy, 'tree_snapshots': {}}
+        with patch.object(target, 'load_selection', side_effect=self.selections), \
+                patch.object(target, 'verify_primary_pair', side_effect=primary, create=True) as native:
+            result = target.verify_pair(self.root, *(s['manifest_path'] for s in self.selections))
+        return result, native
+
+    def test_valid_roles_bind_copied_binaries_and_primary_proof(self):
+        (selected, bound, receipt), primary = self.verify()
+        self.assertEqual(selected, self.selections)
+        self.assertEqual(bound[str(self.pair_path)], self.item(self.pair_path)['sha256'])
+        self.assertEqual(primary.call_count, 1)
+
+    def test_roles_or_python_mismatch_rejected(self):
+        self.selections[0]['provenance']['role'] = 'patched'
+        with self.assertRaises(ValueError): self.verify()
+        self.selections[0]['provenance']['role'] = 'control'
+        self.selections[0]['files']['tools/traci/__init__.py'] = 'b' * 64
+        with self.assertRaises(ValueError): self.verify()
+
+    def test_bundle_executable_must_match_terminal_state_even_if_manifest_rehashed(self):
+        s = self.selections[0]; ref = self.put(s['root'] / 'bin/sumo.exe', b'foreign executable')
+        s['files']['bin/sumo.exe'] = ref['sha256']
+        with self.assertRaises(ValueError): self.verify()
+
+    def test_control_proof_state_cannot_be_forged(self):
+        self.proofs['control']['state'] = {'role': 'invented', 'binaries': self.states['control']['binaries']}
+        self.revise_proof('control')
+        with self.assertRaises(ValueError): self.verify()
+
+    def test_copied_pair_must_be_identical_to_original_reference(self):
+        s = self.selections[0]; ref = self.put(s['root'] / 'evidence/native_pair.json', b'{"different":true}')
+        s['files']['evidence/native_pair.json'] = ref['sha256']
+        with self.assertRaises(ValueError): self.verify()
+
+    def test_primary_evidence_missing_or_mixed_commit_rejected(self):
+        self.selections[0]['provenance']['source_commit'] = 'c' * 40
+        with self.assertRaises(ValueError): self.verify()
+
+    def test_input_config_cannot_change_while_preparing_pair(self):
+        cfg = self.root / target.PARAM
+        self.put(cfg, json.dumps({'workspace': 'workspace', 'execution': {'implementation_files': []}}).encode())
+        original_sha = target.sha
+        def changed(*unused):
+            self.put(cfg, json.dumps({'workspace': 'workspace', 'execution': {'implementation_files': []}, 'changed': True}).encode())
+            return [], {}, {'tree_snapshots': {}}
+        owner = {'ProcessId': os.getpid(), 'ParentProcessId': 1, 'CreationDate': 1700000000000,
+                 'CommandLine': 'fake owner', 'ExecutablePath': 'C:/fake/python.exe'}
+        with patch.object(target, 'verify_pair', side_effect=changed), \
+                patch.object(target, 'sha', side_effect=lambda p: original_sha(p) if Path(p) == cfg else 'a' * 64), \
+                patch.object(target, 'cim_process', return_value=owner):
+            with self.assertRaises(ValueError):
+                target.SelectedPair(self.root, self.root / 'control.json', self.root / 'patched.json', 'cnew', 'pnew')
+
+    def test_shared_runtime_sources_cannot_change_while_preparing_pair(self):
+        cfg = self.root / target.PARAM
+        self.put(cfg, json.dumps({'workspace': 'workspace', 'execution': {'implementation_files': []}}).encode())
+        original_sha = target.sha
+        owner = {'ProcessId': os.getpid(), 'ParentProcessId': 1, 'CreationDate': 1700000000000,
+                 'CommandLine': 'fake owner', 'ExecutablePath': 'C:/fake/python.exe'}
+        for name in ('smoke.py', 'full_run.py'):
+            source = self.root / '04_プログラム/scripts/jdrt' / name; self.put(source, b'original source')
+            def changed(*unused):
+                source.write_bytes(b'changed source'); return [], {}, {'tree_snapshots': {}}
+            with self.subTest(name=name), patch.object(target, 'verify_pair', side_effect=changed), \
+                    patch.object(target, 'sha', side_effect=lambda p: original_sha(p) if Path(p) in (cfg, source) else 'a' * 64), \
+                    patch.object(target, 'cim_process', return_value=owner):
+                with self.assertRaises(ValueError):
+                    target.SelectedPair(self.root, self.root / 'control.json', self.root / 'patched.json', 'cnew', 'pnew')
+
+
+def idle_status():
+    return {key: [] for key in ('running', 'unrecorded', 'partial_records', 'record_identity_mismatch',
+        'pending_record_journals', 'unresolved_failures', 'unresolved_launches', 'foreign_running_manifests',
+        'active_native_processes')}
+
+
+class OrchestrationContracts(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.pair = target.SelectedPair.__new__(target.SelectedPair)
+        p = self.pair
+        p.root = self.root; p.workspace = self.root / 'workspace'
+        p.ids = ['control_new', 'patched_new']; p.out = self.root / target.GOAL / 'control_new_native_pair'
+        p.state_path = p.out / 'state.json'; p.bound = {}; p.selections = []
+        p.state = {'status': 'PREPARED', 'active': None, 'completed': [], 'pending': list(target.PENDING),
+                   'native_regression_complete': False, 'research_adoption_permitted': False, 'technical_ready': False}
+        p.frozen = Mock(); p.inspect_suite = Mock(); p.compare_inputs = Mock(return_value=[])
+        self.controller = patch.object(target, 'ChoiceController', create=True)
+        self.c = self.controller.start(); self.addCleanup(self.controller.stop)
+        self.c.return_value.status.return_value = idle_status()
+        self.cim = patch.object(target, 'cim_process', return_value=None, create=True)
+        self.cim.start(); self.addCleanup(self.cim.stop)
+        def command(label, role, args):
+            code = 1 if role == 0 else 0
+            p.state['active'] = {'exit_code': code}; return code, p.out / (label + '.log')
+        p.command = Mock(side_effect=command)
+
+    def test_selected_pair_runs_in_order_and_keeps_broad_gates_false(self):
+        self.pair.run()
+        self.assertEqual([c.args[1] for c in self.pair.command.call_args_list], [0, 1])
+        self.assertEqual(self.pair.state['status'], 'SELECTED_PAIR_VERIFIED_PENDING_NATIVE_GUARDS')
+        self.assertFalse(self.pair.state['native_regression_complete'])
+        self.assertTrue(self.pair.state['pending'])
+        self.assertFalse((self.root / target.GOAL / 'choice_native_regression.lock').exists())
+
+    def test_unexpected_control_failure_stops_before_patched(self):
+        self.pair.inspect_suite.side_effect = ValueError('different failure')
+        with self.assertRaises(ValueError): self.pair.run()
+        self.assertEqual(self.pair.command.call_count, 1)
+        self.assertEqual(self.pair.state['status'], 'FAILED_PRESERVED')
+        self.assertTrue(self.pair.state_path.is_file())
+
+    def test_existing_technical_id_or_live_global_native_prevents_launch(self):
+        self.c.return_value.status.return_value['active_native_processes'] = [{'ProcessId': 123}]
+        with self.assertRaises(ValueError): self.pair.run()
+        self.pair.command.assert_not_called()
+        self.assertFalse(self.pair.out.exists())
+
+    def test_unrecorded_core_blocks_pair(self):
+        self.c.return_value.status.return_value['unrecorded'] = ['unfinished']
+        with self.assertRaises(ValueError): self.pair.run()
+        self.pair.command.assert_not_called()
+
+    def test_existing_technical_prefix_and_lock_are_preserved(self):
+        existing = self.pair.workspace / 'technical/control_new_c01'
+        existing.mkdir(parents=True)
+        with self.assertRaises(ValueError): self.pair.run()
+        self.assertTrue(existing.is_dir()); self.assertFalse(self.pair.out.exists())
+        self.pair.command.assert_not_called()
+
+    def test_interrupted_live_child_preserves_lock_without_retry_or_kill(self):
+        def interrupted(*unused):
+            self.pair.state['active'] = {'pid': 123, 'exit_code': None}
+            raise KeyboardInterrupt()
+        self.pair.command.side_effect = interrupted
+        with self.assertRaises(KeyboardInterrupt): self.pair.run()
+        self.assertTrue((self.root / target.GOAL / 'choice_native_regression.lock').exists())
+        self.assertEqual(self.pair.command.call_count, 1)
+
+
+class CommandIdentityContracts(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
+        self.p = target.SelectedPair.__new__(target.SelectedPair)
+        self.p.root = Path(self.temp.name); self.p.out = self.p.root / 'out'; self.p.out.mkdir()
+        self.p.state_path = self.p.out / 'state.json'; self.p.bound = {}; self.p.frozen = Mock()
+        self.p.state = {'active': None, 'native_regression_complete': False}
+        self.p.selections = [{'manifest_path': self.p.root / 'toolchain.json'}]
+        self.expected = {'ProcessId': 123, 'ParentProcessId': os.getpid(), 'CreationDate': 1700000000000,
+                         'CommandLine': 'fake', 'ExecutablePath': 'C:/fake/python.exe'}
+    def test_wait_timeout_observes_same_identity_without_restart(self):
+        child = Mock(pid=123); child.wait.side_effect = [subprocess.TimeoutExpired('fake', 15), 0]
+        with patch.object(target.subprocess, 'Popen', return_value=child) as popen, \
+                patch.object(target, 'cim_process', return_value=self.expected):
+            code, _ = self.p.command('fixture', 0, ['fake'])
+        self.assertEqual(code, 0); popen.assert_called_once()
+        self.assertEqual(self.p.state['active']['identity_observation']['identity'], 'matched')
+        child.kill.assert_not_called(); child.terminate.assert_not_called()
+    def test_reused_pid_preserves_unknown_active_child_without_kill(self):
+        child = Mock(pid=123); child.wait.side_effect = subprocess.TimeoutExpired('fake', 15)
+        changed = dict(self.expected, CreationDate=self.expected['CreationDate'] + 1)
+        with patch.object(target.subprocess, 'Popen', return_value=child) as popen, \
+                patch.object(target, 'cim_process', side_effect=[self.expected, changed]):
+            with self.assertRaises(ValueError): self.p.command('fixture', 0, ['fake'])
+        self.assertIsNone(self.p.state['active']['exit_code']); popen.assert_called_once()
+        self.assertEqual(self.p.state['active']['identity_observation']['identity'], 'reused')
+        child.kill.assert_not_called(); child.terminate.assert_not_called()
+    def test_fast_terminal_child_is_proved_by_handle_not_missing_cim(self):
+        child = Mock(pid=123); child.wait.return_value = 0
+        with patch.object(target.subprocess, 'Popen', return_value=child), \
+                patch.object(target, 'cim_process', return_value=None):
+            code, _ = self.p.command('validate', 0, ['fake'])
+        self.assertEqual(code, 0); self.assertIsNone(self.p.state['active']['process_identity'])
+        self.assertIn('handle wait', self.p.state['active']['return_code_evidence'])
+
+
+class SuiteInspectionContracts(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
+        self.p = target.SelectedPair.__new__(target.SelectedPair)
+        self.p.root = Path(self.temp.name); self.p.workspace = self.p.root / 'workspace'
+        self.p.ids = ['control', 'patched']; self.p.out = self.p.root / 'out'; self.p.out.mkdir()
+        self.p.state_path = self.p.out / 'state.json'; self.p.bound = {}
+        self.p.state = {'active': None, 'completed': [], 'pending': list(target.PENDING),
+                        'native_regression_complete': False}
+        self.p.frozen = Mock(); self.p.strict_validate = Mock()
+        self.p.selections = [{'manifest_sha256': role * 64, 'files': {'bin/sumo.exe': role * 64},
+                             'roles': {'sumo': 'bin/sumo.exe'}} for role in ('a', 'b')]
+        self.factory = "CASES = ('walk_short_calibration', 'walk_short_repeated')\n"
+        self.write(self.p.root / '04_プログラム/scripts/jdrt_choice_fixtures.py', self.factory)
+        self.suites = {}
+        for role, run_id in enumerate(self.p.ids):
+            root = self.p.workspace / 'technical' / run_id
+            self.write(root / 'factory.py', self.factory)
+            suite = {'run_id': run_id, 'research_adoption_permitted': False,
+                     'factory_sha256': target.sha(root / 'factory.py'), 'status': 'FAILED' if role == 0 else 'COMPLETED'}
+            self.save(root / 'manifest.json', suite); self.suites[role] = suite
+            for number in (1, 2):
+                child = run_id + '_c' + str(number).zfill(2)
+                folder = self.p.workspace / 'technical' / child; execution = folder / 'execution'
+                events = self.plans()
+                self.write(execution / 'events.jsonl', ''.join(json.dumps(e) + '\n' for e in events))
+                m = {'run_id': child, 'purpose': 'fixture', 'research_adoption_permitted': False,
+                    'runtime_sha256': {'toolchain_manifest_sha256': self.p.selections[role]['manifest_sha256'],
+                        'toolchain_files_sha256': self.p.selections[role]['files'], 'sumo_binary': self.p.selections[role]['files']['bin/sumo.exe']},
+                    'status': 'COMPLETED', 'output_sha256': {'events.jsonl': target.sha(execution / 'events.jsonl')}}
+                if role == 0 and number == 2:
+                    receipt = self.receipt('old_remaining', 8); receipt['after']['xy'] = [4, 5]; receipt['changed_keys'] = ['xy']
+                    m.update(status='FAILED', error_type='RuntimeError', error=target.ERROR_PREFIX + json.dumps(receipt))
+                self.save(execution / 'manifest.json', m)
+                self.save(folder / 'case_validation.json', {'status': 'PASS', 'child_run_id': child,
+                    'execution_manifest_sha256': target.sha(execution / 'manifest.json'), 'checks': {'synthetic_contract': True}})
+    def write(self, p, text):
+        p.parent.mkdir(parents=True, exist_ok=True); p.write_text(text, encoding='utf-8')
+    def save(self, p, data): self.write(p, json.dumps(data))
+    def receipt(self, purpose, length):
+        snapshot = {'edge_id': 'e', 'lane_position_m': 2, 'xy': [1, 1], 'stage_length_m': length}
+        return {'purpose': purpose, 'before': dict(snapshot), 'after': dict(snapshot)}
+    def plans(self):
+        return [{'event': 'walk_plan', 'person_id': 'p', 'stage': 'initial', 'time_sec': 0,
+                 'sumo_plan_length_m': 10, 'model_passed_m': 0},
+                {'event': 'walk_plan', 'person_id': 'p', 'stage': 'reroute', 'time_sec': 1,
+                 'sumo_plan_length_m': 6, 'model_passed_m': 2, 'old_remaining_m': 8,
+                 'previous_plan_m': 10, 'signed_progress_m': 2,
+                 'replacement_receipts': [self.receipt('old_remaining', 8), self.receipt('new_route', 6)]}]
+    def test_expected_control_failure_and_patched_pass_keep_native_guards_pending(self):
+        self.p.inspect_suite(0, 1); self.p.inspect_suite(1, 0)
+        self.assertEqual(len(self.p.state['completed']), 2)
+        self.assertEqual(self.p.strict_validate.call_count, 3)
+        self.assertFalse(self.p.state['native_regression_complete']); self.assertTrue(self.p.state['pending'])
+    def test_unexpected_control_success_or_other_failure_rejected(self):
+        with self.assertRaises(ValueError): self.p.inspect_suite(0, 0)
+        path = self.p.workspace / 'technical/control_c02/execution/manifest.json'
+        m = target.read_json(path); m['error'] = 'unrelated error'; self.save(path, m)
+        with self.assertRaises(ValueError): self.p.inspect_suite(0, 1)
+    def test_primary_event_bytes_cannot_change_even_if_case_pass_claims_true(self):
+        path = self.p.workspace / 'technical/patched_c01/execution/events.jsonl'
+        self.write(path, path.read_text() + '\n')
+        with self.assertRaises(ValueError): self.p.inspect_suite(1, 0)
+        self.p.strict_validate.assert_not_called()
+    def test_wrong_child_toolchain_rejected_before_validation(self):
+        path = self.p.workspace / 'technical/patched_c01/execution/manifest.json'
+        m = target.read_json(path); m['runtime_sha256']['sumo_binary'] = 'c' * 64; self.save(path, m)
+        with self.assertRaises(ValueError): self.p.inspect_suite(1, 0)
+        self.p.strict_validate.assert_not_called()
+    def test_signed_stage_budget_recomputed(self):
+        events = self.plans(); events[1]['model_passed_m'] = 3
+        p = self.p.root / 'bad_events.jsonl'; self.write(p, ''.join(json.dumps(e) + '\n' for e in events))
+        with self.assertRaises(ValueError): target.recompute_plans(p)
+    def test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget(self):
+        for kind in ('clock', 'boolean_distance'):
+            events = self.plans()
+            if kind == 'clock': events[1]['time_sec'] = float('nan')
+            else:
+                events[0]['model_passed_m'] = True
+                events[1]['model_passed_m'] = 3
+            p = self.p.root / ('bad_' + kind + '.jsonl')
+            self.write(p, ''.join(json.dumps(e) + '\n' for e in events))
+            with self.subTest(kind=kind), self.assertRaises(ValueError): target.recompute_plans(p)
+
+
+class PairedInputContracts(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
+        self.p = target.SelectedPair.__new__(target.SelectedPair)
+        self.p.root = Path(self.temp.name); self.p.workspace = self.p.root / 'workspace'
+        self.p.ids = ['control', 'patched']
+        factory = "CASES = ('walk_short_calibration', 'walk_short_repeated')\n"
+        current = self.p.root / '04_プログラム/scripts/jdrt_choice_fixtures.py'
+        current.parent.mkdir(parents=True); current.write_text(factory)
+        for role in self.p.ids:
+            group = self.p.workspace / 'technical' / role; group.mkdir(parents=True)
+            (group / 'factory.py').write_text(factory)
+            (group / 'manifest.json').write_text(json.dumps({'factory_sha256': target.sha(group / 'factory.py')}))
+            for index in (1, 2):
+                inputs = self.p.workspace / 'technical' / (role + '_c0' + str(index)) / 'fixture_inputs'
+                inputs.mkdir(parents=True)
+                names = ('nodes.xml', 'edges.xml', 'graphs.json', 'hazard.csv', 'origins.csv', 'people.csv',
+                         'place_positions.csv', 'terminals.csv', 'destinations_fixed_reference.csv',
+                         'common_realization_seed42.csv')
+                for name in names: (inputs / name).write_text('same artificial input')
+                (inputs / 'fixture_parameters.json').write_text(json.dumps({'seeds': [42], 'value': 1}))
+                (inputs / 'bounded.net.xml').write_text('<!-- ' + role + ' metadata --><net><lane width="3"/></net>')
+                (inputs / 'netconvert.log').write_text(role + ' output path metadata')
+                self.manifest(inputs)
+    def manifest(self, inputs):
+        data = {'artifacts': {p.name: target.sha(p) for p in inputs.iterdir() if p.name != 'manifest.json'}}
+        (inputs / 'manifest.json').write_text(json.dumps(data))
+    def patch_input(self, name, content):
+        inputs = self.p.workspace / 'technical/patched_c02/fixture_inputs'
+        (inputs / name).write_text(content); self.manifest(inputs)
+    def test_only_xml_comments_and_native_converter_log_metadata_may_differ(self):
+        rows = self.p.compare_inputs()
+        self.assertEqual(len(rows), 2)
+        self.assertTrue(all(row['same_semantic_inputs'] for row in rows))
+    def test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes(self):
+        for name, content in [('bounded.net.xml', '<net><lane width="4"/></net>'),
+                              ('hazard.csv', 'different closure'),
+                              ('fixture_parameters.json', '{"seeds":[42],"value":2}')]:
+            inputs = self.p.workspace / 'technical/patched_c02/fixture_inputs'; old = (inputs / name).read_text()
+            self.patch_input(name, content)
+            with self.subTest(name=name), self.assertRaises(ValueError): self.p.compare_inputs()
+            self.patch_input(name, old)
+    def test_missing_or_stale_input_manifest_cannot_pass(self):
+        p = self.p.workspace / 'technical/patched_c01/fixture_inputs/people.csv'; p.write_text('tampered')
+        with self.assertRaises(ValueError): self.p.compare_inputs()
+
+
+class ReceiptContracts(unittest.TestCase):
+    def receipt(self):
+        return {'purpose': 'old_remaining', 'changed_keys': ['xy'],
+            'before': {'edge_id': 'a', 'lane_position_m': 2, 'xy': [3, 4], 'stage_length_m': 7},
+            'after': {'edge_id': 'a', 'lane_position_m': 2, 'xy': [6, 8], 'stage_length_m': 7}}
+    def test_raw_control_mechanism_recomputed_without_observed_delta(self):
+        raw = self.receipt(); m = {'status': 'FAILED', 'error_type': 'RuntimeError',
+            'error': target.ERROR_PREFIX + json.dumps(raw)}
+        self.assertEqual(target.failure_receipt(m)['xy_displacement_m'], 5)
+        raw['after']['lane_position_m'] = 8; m['error'] = target.ERROR_PREFIX + json.dumps(raw)
+        with self.assertRaises(ValueError): target.failure_receipt(m)
+    def test_nonfinite_native_receipt_rejected(self):
+        r = self.receipt(); r['after']['xy'][0] = float('nan')
+        with self.assertRaises(ValueError): target.receipt_difference(r)
+
+
+class StrictValidationContracts(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(); self.addCleanup(self.temp.cleanup)
+        self.p = target.SelectedPair.__new__(target.SelectedPair)
+        self.p.root = Path(self.temp.name); self.p.workspace = self.p.root / 'workspace'; self.p.bound = {}
+        self.run_id = 'synthetic_fixture'
+        manifest = self.p.workspace / 'technical' / self.run_id / 'execution/manifest.json'
+        manifest.parent.mkdir(parents=True); manifest.write_text('{"synthetic":true}')
+        self.report = self.p.root / 'proof.json'; self.stdout = self.p.root / 'command.stdout'
+        self.data = {'validation_report': 'proof.json', 'status': 'PASS', 'run_id': self.run_id,
+                     'manifest_sha256': target.sha(manifest), 'core_adoption_permitted': False}
+        self.write(); self.p.command = Mock(return_value=(0, self.stdout))
+    def write(self):
+        self.report.write_text(json.dumps(self.data)); self.stdout.write_text(json.dumps(self.data))
+    def test_strict_fixture_purpose_and_current_manifest_receipt(self):
+        self.p.strict_validate(1, self.run_id)
+        args = self.p.command.call_args.args[2]
+        self.assertEqual(args[args.index('--purpose') + 1], 'fixture')
+        self.assertEqual(self.p.bound[str(self.report)], target.sha(self.report))
+    def test_core_permission_or_wrong_manifest_receipt_never_accepted(self):
+        for key, value in [('core_adoption_permitted', True), ('manifest_sha256', 'c' * 64)]:
+            old = self.data[key]; self.data[key] = value; self.write()
+            with self.subTest(key=key), self.assertRaises(ValueError): self.p.strict_validate(1, self.run_id)
+            self.data[key] = old
+    def test_printed_proof_must_equal_saved_primary_proof(self):
+        self.report.write_text(json.dumps(dict(self.data, status='INVALID')))
+        with self.assertRaises(ValueError): self.p.strict_validate(1, self.run_id)
+
+
+if __name__ == '__main__': unittest.main()

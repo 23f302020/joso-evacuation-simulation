@@ -1,0 +1,23 @@
+test_D_u_and_D_by_u_diagnostics_use_one_seed_and_explicit_cell_terms (__main__.PrimaryContracts.test_D_u_and_D_by_u_diagnostics_use_one_seed_and_explicit_cell_terms) ... ok
+test_R0_is_shared_and_percentage_points_have_correct_scale (__main__.PrimaryContracts.test_R0_is_shared_and_percentage_points_have_correct_scale) ... ok
+test_complete_record_metadata_requires_all_components_and_unchanged_manifest (__main__.PrimaryContracts.test_complete_record_metadata_requires_all_components_and_unchanged_manifest) ... ERROR
+test_exits_cannot_masquerade_as_admission_or_missing_person_disappear (__main__.PrimaryContracts.test_exits_cannot_masquerade_as_admission_or_missing_person_disappear) ... ok
+test_incomplete_set_fails_before_population_or_output_access (__main__.PrimaryContracts.test_incomplete_set_fails_before_population_or_output_access) ... ok
+test_zero_time_is_admitted_and_exit_retains_full_unadmitted_time (__main__.PrimaryContracts.test_zero_time_is_admitted_and_exit_retains_full_unadmitted_time) ... ok
+
+======================================================================
+ERROR: test_complete_record_metadata_requires_all_components_and_unchanged_manifest (__main__.PrimaryContracts.test_complete_record_metadata_requires_all_components_and_unchanged_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_主指標集計_契約テスト.py", line 137, in test_complete_record_metadata_requires_all_components_and_unchanged_manifest
+    self.assertEqual(len(analysis.complete_records(root, cfg)), 1)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_主指標・事前登録差分_集計.py", line 86, in complete_records
+    require(row.get('registration_id') == cfg['registration_id'], 'Foreign registration in record')
+                                          ~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'registration_id'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.067s
+
+FAILED (errors=1)

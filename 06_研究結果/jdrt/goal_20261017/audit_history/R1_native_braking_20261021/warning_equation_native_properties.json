@@ -1,0 +1,70 @@
+{
+  "at_jst": "2026-10-21T21:01:44.613165+09:00",
+  "status": "SOURCE_EQUATION_AND_ISOLATED_API_CONSISTENT_NOT_ADOPTABLE",
+  "source_cpp": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\MSVehicle.cpp",
+  "source_sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+  "compiled_config_proof": {
+    "evidence/paired_primary/018_config.h": {
+      "sha256": "eadd0ab2bf3e8ec54e9964036ed669e0deacf1b45e1de14e15194d11208fc0d7",
+      "NUMERICAL_EPS": 0.001
+    },
+    "evidence/paired_primary/030_config.h": {
+      "sha256": "eadd0ab2bf3e8ec54e9964036ed669e0deacf1b45e1de14e15194d11208fc0d7",
+      "NUMERICAL_EPS": 0.001
+    }
+  },
+  "api_property_evidence": "braking_probe_nb26102101_independent.json",
+  "api_property_evidence_sha256": "96df9547a39a3a168e64352ddd7f9ded042e7c950e919d5c003c0fa626a7bb02",
+  "observed_in_two_isolated_native_instances": [
+    {
+      "decel": 4.5,
+      "emergencyDecel": 9.0,
+      "accel": 2.6,
+      "minGap": 2.5
+    },
+    {
+      "decel": 4.5,
+      "emergencyDecel": 9.0,
+      "accel": 2.6,
+      "minGap": 2.5
+    }
+  ],
+  "original_core_getter_observed": false,
+  "original_core_raw_acceleration": -9.0,
+  "previous_raw_acceleration": 2.6000000000000014,
+  "source_equation": {
+    "decel_plus_before_epsilon_adjustment": 4.499,
+    "new_braking_maneuver_condition": true,
+    "source_severity_fraction": 1.0002222222222221,
+    "source_severity_to_2_decimal": "1.00",
+    "source_deceleration_to_2_decimal": "9.00",
+    "source_wished_to_2_decimal": "4.50"
+  },
+  "frozen_runtime_sha256": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+  "direct_vehicle_domain_calls_in_runtime": [
+    "add",
+    "getAllSubscriptionResults",
+    "getDecel",
+    "getDistance",
+    "getIDList",
+    "getLanePosition",
+    "getPosition",
+    "getRoadID",
+    "getRoute",
+    "getRouteIndex",
+    "getSpeed",
+    "getStopState",
+    "getStops",
+    "isStopped",
+    "replaceStop",
+    "resume",
+    "setRoute",
+    "setRouteID",
+    "setStop",
+    "subscribe"
+  ],
+  "scope": "Native properties were measured in the isolated pair using the same binary and car XML. Applying these properties to original-core warning is a source/config inference; not an original-core getter receipt. Current motion data and warning formula agree but do not prove benign or uniquely pedestrian-caused braking.",
+  "method_and_acceptance_changed": false,
+  "core_adoption_permitted": false,
+  "operational_HOLD": true
+}

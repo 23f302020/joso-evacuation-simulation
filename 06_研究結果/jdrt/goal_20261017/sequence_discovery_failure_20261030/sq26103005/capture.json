@@ -1,0 +1,35 @@
+{
+  "at_utc": "2026-10-30T13:15:41.690739+00:00",
+  "files": {
+    "observer_state": {
+      "source": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\state.json",
+      "sha256": "1742cbedb95205a8c977b17059811416c67586059e69a6694a8b6f0c59fd4d37",
+      "bytes": 1090063
+    },
+    "sequence_state": {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\driver_logs\\core_sequences\\sq26103005\\state.json",
+      "sha256": "9a06cd88a303fd3b3cfdf63fae0cf6c7f01665190d4d982ecbb16632181835a7",
+      "bytes": 4406
+    },
+    "core_manifest": {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103005\\manifest.json",
+      "sha256": "25fbd07a5ec3473d1ab9d209da3b9c533c62db51cf89078dd058a008a786f0a1",
+      "bytes": 35823
+    },
+    "core_progress": {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103005\\progress.json",
+      "sha256": "30bad8567ad982cba5401185dc87a0f35b20112a79143e6b8e7d958c71c1f718",
+      "bytes": 1182
+    }
+  },
+  "observer_target": {
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103005\\manifest.json",
+    "read_failures": 2,
+    "read_error_type": "TimeoutExpired",
+    "read_error": "Command '['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', '[Console]::OutputEncoding = [Text.UTF8Encoding]::new(); Get-CimInstance Win32_Process -Filter \"ProcessId = 12280\" | Select-Object -ExpandProperty CommandLine | ConvertTo-Json -Compress']' timed out after 15 seconds"
+  },
+  "scope": "read-only failure snapshot; science core not restarted/changed; failed sequence not resumed; no new adoption",
+  "original_sequence_session": 28593,
+  "original_sequence_exit_code": 1,
+  "last_dedicated_monitor": "06_研究結果/jdrt/goal_20261017/監視_sv26103005_20261030T221438851551.json"
+}

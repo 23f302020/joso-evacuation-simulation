@@ -1,0 +1,23 @@
+{
+  "at_jst": "2026-10-20T21:43:44.488770+09:00",
+  "action": "selected_native_pair_constructor_observation",
+  "status": "PREPARING_BEFORE_STATE",
+  "owner": {
+    "ProcessId": 13420,
+    "ParentProcessId": 28208,
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020c --patched-id np261020c",
+    "CreationDate": 1792500116994
+  },
+  "launcher": {
+    "ProcessId": 28208,
+    "ParentProcessId": 23628,
+    "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020c --patched-id np261020c",
+    "CreationDate": 1792500116969
+  },
+  "session": 34648,
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "coverage": "Point observation only; initial UTF-8 shell-decoding error did not establish process death or cause any restart"
+}

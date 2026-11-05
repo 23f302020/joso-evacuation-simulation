@@ -1,0 +1,18 @@
+test_instrumentation_is_bound_to_the_exact_generator (tests.test_choice_native_trace_source.TraceSourceContracts.test_instrumentation_is_bound_to_the_exact_generator) ... ok
+test_pure_insertions_restore_exact_original_and_preserve_rng_calls (tests.test_choice_native_trace_source.TraceSourceContracts.test_pure_insertions_restore_exact_original_and_preserve_rng_calls) ... ok
+test_trace_fields_and_evaluation_sites_are_explicit (tests.test_choice_native_trace_source.TraceSourceContracts.test_trace_fields_and_evaluation_sites_are_explicit) ... FAIL
+test_unpatched_ambiguous_or_already_instrumented_source_is_rejected (tests.test_choice_native_trace_source.TraceSourceContracts.test_unpatched_ambiguous_or_already_instrumented_source_is_rejected) ... ok
+
+======================================================================
+FAIL: test_trace_fields_and_evaluation_sites_are_explicit (tests.test_choice_native_trace_source.TraceSourceContracts.test_trace_fields_and_evaluation_sites_are_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_source.py", line 51, in test_trace_fields_and_evaluation_sites_are_explicit
+    self.assertNotIn(forbidden, block)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: b'myPosLat =' unexpectedly found in b'    static unsigned long long jdrtTraceSequence = 0;\n    std::ostringstream jdrtTraceStream;\n    jdrtTraceStream << std::setprecision(std::numeric_limits<double>::max_digits10)\n                    << \'<\' << "jdrtLatGuard";\n    const auto jdrtTraceField = [&](const char* key, const auto& value) {\n        jdrtTraceStream << \' \' << key << "=\\"" << value << \'"\';\n    };\n    jdrtTraceField("seq", ++jdrtTraceSequence);\n    jdrtTraceField("sim_step", SIMSTEP);\n    jdrtTraceField("person", StringUtils::escapeXML(person->getID()));\n    jdrtTraceField("current_edge", StringUtils::escapeXML(currentEdge->getID()));\n    jdrtTraceField("current_edge_normal", currentEdge->isNormal());\n    jdrtTraceField("new_lane", StringUtils::escapeXML(lane->getID()));\n    jdrtTraceField("new_pos", myEdgePos);\n    jdrtTraceField("new_dir", myDir);\n    jdrtTraceField("input_lat", myPosLat);\n    jdrtTraceField("input_unspecified", myPosLat == UNSPECIFIED_POS_LAT);\n    jdrtTraceField("input_random", myPosLat == RANDOM_POS_LAT);\n    jdrtTraceField("legacy", myLegacyPosLat);\n    jdrtTraceField("stages", person->getNumStages());\n    jdrtTraceField("remaining", person->getNumRemainingStages());\n    jdrtTraceField("new_departed", stage->getDeparted());\n'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.035s
+
+FAILED (failures=1)

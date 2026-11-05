@@ -1,0 +1,14 @@
+............F..............
+======================================================================
+FAIL: test_manifest_publication_does_not_mean_native_log_is_ready (test_choice_core_sequence.TransactionTests.test_manifest_publication_does_not_mean_native_log_is_ready)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 336, in test_manifest_publication_does_not_mean_native_log_is_ready
+    self.assertTrue(manifest.with_name('sumo_errors.log').exists())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.567s
+
+FAILED (failures=1)

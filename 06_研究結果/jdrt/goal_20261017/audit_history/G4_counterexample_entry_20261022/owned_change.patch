@@ -1,0 +1,44 @@
+--- before/G4_正式検証器_表会計候補試験.py
++++ current/G4_正式検証器_表会計候補試験.py
+@@ -10,6 +10,21 @@
+ ROOT = Path(__file__).resolve().parents[3]
+ sys.path.insert(0, str(ROOT / '04_プログラム'))
+ from scripts import jdrt_realtime_choice_validate as validator
++
++
++def current_implementation_sha_counterexample(run_id, source):
++    original_sha = validator.file_sha
++    source = source.resolve()
++    expected = original_sha(source)
++    changed = ('0' if expected[0] != '0' else '1') + expected[1:]
++    def altered_sha(path):
++        return changed if Path(path).resolve() == source else original_sha(path)
++    with patch.object(validator, 'file_sha', side_effect=altered_sha):
++        result = validator.audit_run_tables(run_id, 'fixture')
++    assert (result['status'] == 'INVALID'
++            and result['checks'].get('all_bound_bytes_before') is False), 'Current implementation SHA gate must reject'
++    assert original_sha(source) == expected, 'Original implementation bytes changed'
++    return result
+ 
+ 
+ def main(suite_id, historical=False):
+@@ -29,8 +44,8 @@
+                    {'run': r['run_id'], 'error': r.get('error'), 'failures': {
+                        k: v.get('examples', v.get('checks')) for k, v in r['components'].items() if v['status'] != 'PASS'}}
+                    for r in baseline if r['status'] != 'INCOMPLETE']
+-    current_rejection = validator.audit_run_tables('cf26101710_c01', 'fixture')
+-    assert current_rejection['status'] == 'INVALID' and not current_rejection['checks']['all_bound_bytes_before']
++    current_rejection = current_implementation_sha_counterexample(
++        suite['cases'][0]['child_run_id'], ROOT / cfg['execution']['implementation_files'][0])
+     original_rows, original_stream = validator.rows, validator.stream_rows
+     results = []
+ 
+@@ -263,7 +278,7 @@
+               'historical_diagnostic': historical,
+               'core_adoption_permitted': False, 'technical_ready': False,
+               'fixture_components': baseline, 'counterexamples': results,
+-              'current_SHA_gate_rejects_old_suite': current_rejection['status'] == 'INVALID',
++              'current_SHA_gate_rejects_changed_implementation': current_rejection['status'] == 'INVALID',
+               'primary_outputs_unchanged': unchanged, 'primary_files_rechecked': len(signatures),
+               'validator_sha256': validator.file_sha(Path(validator.__file__)),
+               'test_sha256': validator.file_sha(Path(__file__))}

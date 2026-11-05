@@ -1,0 +1,414 @@
+--- baseline/04_プログラム/scripts/jdrt_realtime_choice.py
++++ current/04_プログラム/scripts/jdrt_realtime_choice.py
+@@ -350,6 +350,59 @@
+     if not internal:return ('remove_current' if current in closed else 'reroute'),''
+     next_external=remaining[0]
+     return ('remove_junction' if next_external in closed else 'defer'),next_external
++
++def passenger_transition_links(native_net):
++    """Bind each passenger internal lane to its external source/target pairs."""
++    lanes = {lane.attrib['id']: (edge.attrib['id'], lane.attrib)
++             for edge in native_net.findall('edge') for lane in edge.findall('lane')}
++    outgoing = defaultdict(list)
++    connections = [dict(link.attrib) for link in native_net.findall('connection')]
++    for link in connections:
++        outgoing[link['from'] + '_' + link['fromLane']].append(link)
++
++    def permits(lane_id):
++        if lane_id not in lanes:
++            raise RuntimeError('Unknown transition connection lane: ' + lane_id)
++        attributes = lanes[lane_id][1]
++        allowed, denied = attributes.get('allow', '').split(), attributes.get('disallow', '').split()
++        return (not allowed or 'passenger' in allowed or 'all' in allowed) and not {'passenger', 'all'}.intersection(denied)
++
++    links = defaultdict(set)
++    for connection in connections:
++        source, target = connection['from'], connection['to']
++        if source.startswith(':') or target.startswith(':') or not connection.get('via'):
++            continue
++        if not (permits(source + '_' + connection['fromLane']) and permits(target + '_' + connection['toLane'])):
++            continue
++        pending, visited = [connection['via']], set()
++        while pending:
++            lane = pending.pop()
++            if lane in visited:
++                continue
++            visited.add(lane)
++            if lane not in lanes or not lanes[lane][0].startswith(':'):
++                raise RuntimeError('Unknown transition internal lane: ' + lane)
++            if not permits(lane):
++                continue
++            links[lane].add((source, target))
++            pending.extend(link['via'] for link in outgoing[lane]
++                           if link['to'] == target and link.get('via'))
++    return dict(links)
++
++
++def passenger_transition_source(path, edge, lane, index, links):
++    """An outgoing internal lane certifies its source route occurrence passed."""
++    if not 0 <= index < len(path):
++        raise RuntimeError('Transition route index outside controlled route')
++    if edge.startswith(':'):
++        if (lane.rsplit('_', 1)[0] != edge or index + 1 >= len(path)
++                or (path[index], path[index + 1]) not in links.get(lane, set())):
++            raise RuntimeError('Internal transition not bound to controlled route occurrence')
++        return path[index]
++    if path[index] != edge:
++        raise RuntimeError('External transition and controlled route index disagree')
++    return edge
++
+ 
+ def closure_timing(scheduled_sec,step_sec):
+     if not math.isfinite(scheduled_sec) or scheduled_sec<0 or step_sec<=0:
+@@ -615,6 +668,7 @@
+         import sumolib
+         net = sumolib.net.readNet(str(directory / 'bounded.net.xml'), withInternal=True)
+         walk_topology = pedestrian_endpoint_topology(net, original_nodes['pedestrian'])
++        transition_links = passenger_transition_links(ET.parse(directory / 'bounded.net.xml').getroot())
+         lane_info, lanes_by_edge = {}, defaultdict(list)
+         for edge in net.getEdges():
+             name = edge.getID()
+@@ -809,10 +863,13 @@
+                   source_lane_position=position, source_distance_m=distance, target_position_m=target_position,
+                   route_version=v['route_version'], source_route_index=source_index,
+                   reentry_expected=v['reentry_expected'])
+-        def observe_transition(actor, mode, edge, now, path):
++        def observe_transition(actor, mode, edge, now, path, observed_index=None):
+             prior = last.get(actor)
+-            index = (int(latest_v.get(actor, {}).get(tc.VAR_ROUTE_INDEX, len(path) - 1))
+-                     if mode == 'passenger' else path.index(edge))
++            if mode == 'passenger':
++                index = (observed_index if observed_index is not None else
++                         int(latest_v.get(actor, {}).get(tc.VAR_ROUTE_INDEX, len(path) - 1)))
++            else:
++                index = path.index(edge)
+             if mode == 'passenger' and actor in vehicles and vehicles[actor]['status'] == 'arrived':
+                 index = len(path) - 1
+             if prior and (prior[0] != edge or index > prior[2]):
+@@ -852,7 +909,8 @@
+                     if v['kind'] == 'drt' and v['status'] != 'stranded':
+                         raise RuntimeError('DRT vehicle left controlled service: ' + vid)
+                     if v['kind'] == 'car' and v['status'] not in ('stranded', 'arrived'):
+-                        observe_transition(vid, 'passenger', v['route'][-1], now, v['route'])
++                        observe_transition(vid, 'passenger', v['route'][-1], now, v['route'],
++                                           observed_index=len(v['route']) - 1)
+                         pending_arrivals.extend(v['members'])
+                         v['status'] = 'arrived'
+                         last.pop(vid, None)
+@@ -982,6 +1040,7 @@
+                               departPos=str(origin_position), arrivalPos=str(target_position))
+                 t.vehicle.subscribe(vid, vehicle_vars)
+                 v.update(route=path, status='pending')
++                last[vid] = (path[0], now, 0)
+                 for pid in v['members']:
+                     people[pid]['depart_sec'] = now
+                     person_state(pid, 'travelling_car', now)
+@@ -1312,9 +1371,16 @@
+                         if speed > maximum + 1e-6:
+                             raise RuntimeError('Pedestrian speed exceeds registered maximum: ' + actor)
+                         p['walk_speed_integral_m'] += speed * manifest['step_sec']
+-                    if not edge or edge.startswith(':'):
++                    if not edge:
+                         continue
+                     path = vehicles[actor]['route'] if mode == 'passenger' else walking_routes.get(actor, [])
++                    if mode == 'passenger':
++                        if observed_state == 'reentry_pending':
++                            continue
++                        edge = passenger_transition_source(path, edge, data[tc.VAR_LANE_ID],
++                                                           int(data[tc.VAR_ROUTE_INDEX]), transition_links)
++                    elif edge.startswith(':'):
++                        continue
+                     observe_transition(actor, mode, edge, upper, path)
+         for pid, p in people.items():
+             if p['status'] not in FINAL:
+--- baseline/04_プログラム/scripts/jdrt_realtime_choice_validate.py
++++ current/04_プログラム/scripts/jdrt_realtime_choice_validate.py
+@@ -33,7 +33,8 @@
+     'pickup_deadline_equal', 'pickup_before_deadline', 'pickup_internal_calibration',
+     'pickup_internal_timeout', 'pickup_internal_timeout_closed_next',
+     'car_lane_calibration', 'car_lane_alternative', 'car_lane_cut',
+-    'walk_short_calibration', 'walk_short_repeated')
++    'walk_short_calibration', 'walk_short_repeated',
++    'car_transition_calibration', 'car_transition_closure', 'car_transition_arrival')
+ RUN_COMPONENTS = {'person_tables', 'candidate_tables', 'road_snapshots', 'actor_stream',
+                   'movement_events', 'native_logs', 'native_fixture_boundaries'}
+ 
+@@ -751,6 +752,67 @@
+     return {key: bool(value) for key, value in checks.items()}
+ 
+ 
++def native_arrival_topology(native_net):
++    """Static passenger lanes, including explicit internal via-lane chains."""
++    lanes = {lane.attrib['id']: (edge.attrib['id'], float(lane.attrib['length']), set())
++             for edge in native_net.findall('edge') for lane in edge.findall('lane')
++             if lane_allowed(lane.attrib, 'passenger')}
++    for connection in native_net.findall('connection'):
++        a = connection.attrib
++        first = a['from'] + '_' + a['fromLane']
++        second = a.get('via') or a['to'] + '_' + a['toLane']
++        if first in lanes and second in lanes:
++            lanes[first][2].add(second)
++    return lanes, native_transition_backlinks(native_net)
++
++
++def arrival_tail_distance(lanes, reverse, path, last, trip):
++    """Prove a unique remaining lane distance; never infer it from routeLength."""
++    lane, target = last['lane_id'], trip['arrivalLane']
++    index = int(last['route_index'])
++    position, endpoint = float(last['lane_position_m']), float(trip['arrivalPos'])
++    if (lane not in lanes or target not in lanes or not 0 <= index < len(path)
++            or lanes[lane][0] != last['road_id'] or lanes[target][0] != path[-1]
++            or not math.isfinite(position) or not 0 <= position <= lanes[lane][1]
++            or not math.isfinite(endpoint) or not 0 <= endpoint <= lanes[target][1]):
++        raise ValueError('Unbound native arrival endpoints')
++    if last['road_id'].startswith(':'):
++        verified_internal_source(path, last, reverse)
++    elif last['road_id'] != path[index]:
++        raise ValueError('Arrival source route occurrence mismatch')
++    cache, active = {}, set()
++
++    def remaining(current, occurrence):
++        key = current, occurrence
++        if key in active:
++            raise ValueError('Cyclic native arrival tail is not provable')
++        if key in cache:
++            return cache[key]
++        if current == target and occurrence == len(path) - 1:
++            return endpoint, [current]
++        active.add(key)
++        possibilities = []
++        for successor in sorted(lanes[current][2]):
++            edge = lanes[successor][0]
++            following = occurrence if edge.startswith(':') else occurrence + 1
++            if following >= len(path) or (not edge.startswith(':') and edge != path[following]):
++                continue
++            suffix = remaining(successor, following)
++            if suffix is not None:
++                possibilities.append((lanes[current][1] + suffix[0], [current, *suffix[1]]))
++        active.remove(key)
++        if len({value for value, _ in possibilities}) > 1:
++            raise ValueError('Ambiguous native arrival tail lengths')
++        cache[key] = possibilities[0] if possibilities else None
++        return cache[key]
++
++    proof = remaining(lane, index)
++    if proof is None or proof[0] < position:
++        raise ValueError('No forward native arrival tail')
++    return {'distance_m': proof[0] - position, 'lane_path': proof[1],
++            'source_lane_position_m': position, 'arrival_lane': target, 'arrival_pos_m': endpoint}
++
++
+ def audit_actor_stream(folder, manifest, cfg, events):
+     """Single-pass actor cadence, membership, integral, route-index and VKT checks."""
+     inputs = ROOT / manifest['input_directory']
+@@ -936,7 +998,7 @@
+         if (not math.isclose(float(p['walk_speed_integral_m']), integral[pid], rel_tol=0, abs_tol=1e-7)
+                 or integral[pid] > cfg['population']['walk_limit_m'] + 1e-7):
+             fail('actor_walk_integral_and_speed', pid)
+-    vkt = {}
++    vkt, arrival_topology = {}, None
+     for vid, v in vehicles.items():
+         if (not math.isclose(float(v['observed_distance_m']), distance[vid], rel_tol=0, abs_tol=1e-7)
+                 or not math.isclose(float(v['observed_empty_distance_m']), empty[vid], rel_tol=0, abs_tol=1e-7)):
+@@ -950,18 +1012,28 @@
+             fail('backend_vkt', [vid, 'no_distance_observation'])
+             continue
+         tail = 0
++        tail_proof = None
+         if v['status'] == 'arrived':
+             path = routes[vid][int(last['route_version'])]
+             if last['road_id'] != path[-1] or int(last['route_index']) != len(path) - 1:
+-                fail('backend_vkt', [vid, 'arrival_tail_not_provable_on_final_edge'])
+-                continue
+-            tail = float(trip['arrivalPos']) - float(last['lane_position_m'])
++                if arrival_topology is None:
++                    arrival_topology = native_arrival_topology(ET.parse(inputs / 'bounded.net.xml').getroot())
++                try:
++                    tail_proof = arrival_tail_distance(*arrival_topology, path, last, trip)
++                    tail = tail_proof['distance_m']
++                except ValueError as error:
++                    fail('backend_vkt', [vid, 'arrival_tail_not_provable', str(error)])
++                    continue
++            else:
++                tail = float(trip['arrivalPos']) - float(last['lane_position_m'])
+             if tail < 0:
+                 fail('backend_vkt', [vid, 'negative_tail'])
+         quanta = [float(Decimal(1).scaleb(Decimal(trip[k]).as_tuple().exponent)) for k in ('arrivalPos', 'routeLength')]
+         tolerance = .5 * sum(quanta) + 1e-7
+         residual = float(trip['routeLength']) - distance[vid] - tail
+         vkt[vid] = {'arrival_tail_m': tail, 'residual_m': residual, 'rounding_bound_m': tolerance}
++        if tail_proof is not None:
++            vkt[vid]['arrival_tail_proof'] = tail_proof
+         if abs(residual) > tolerance or v['distance_m'] == '' or float(v['distance_m']) != float(trip['routeLength']):
+             fail('backend_vkt', [vid, residual])
+     if (states['departure_pending'] != manifest['summary']['counts']['departure_pending_frames']
+@@ -1128,6 +1200,53 @@
+         return False
+ 
+ 
++def native_transition_backlinks(native_net):
++    """Independent reverse via-lane proof, labelled by the next external edge."""
++    lanes = {lane.attrib['id']: (edge.attrib['id'], lane.attrib)
++             for edge in native_net.findall('edge') for lane in edge.findall('lane')}
++    predecessors = defaultdict(set)
++    for connection in native_net.findall('connection'):
++        a = connection.attrib
++        if a['to'].startswith(':') or not a.get('via'):
++            continue
++        source, target = a['from'] + '_' + a['fromLane'], a['to'] + '_' + a['toLane']
++        via = a['via']
++        if source not in lanes or target not in lanes or via not in lanes:
++            raise ValueError('Unknown native lane in transition topology')
++        if not lanes[via][0].startswith(':'):
++            raise ValueError('Native via is not internal')
++        if all(lane_allowed(lanes[lane][1], 'passenger') for lane in (source, target, via)):
++            predecessors[via, a['to']].add(source)
++    return dict(predecessors)
++
++
++def verified_internal_source(path, row, predecessors):
++    """Walk reverse native connections; do not call the producer's projection."""
++    index = int(row['route_index'])
++    lane, road = row['lane_id'], row['road_id']
++    if (not 0 <= index < len(path) - 1 or not road.startswith(':')
++            or lane.rsplit('_', 1)[0] != road):
++        raise ValueError('Invalid internal route occurrence')
++    target, pending, visited, sources = path[index + 1], [lane], set(), set()
++    while pending:
++        current = pending.pop()
++        if current in visited:
++            continue
++        visited.add(current)
++        parents = predecessors.get((current, target), set())
++        if not parents:
++            raise ValueError('Internal lane has no source-bound reverse connection')
++        for parent in parents:
++            source = parent.rsplit('_', 1)[0]
++            if source.startswith(':'):
++                pending.append(parent)
++            else:
++                sources.add(source)
++    if path[index] not in sources:
++        raise ValueError('Native internal source disagrees with route occurrence')
++    return path[index]
++
++
+ def audit_movement_events(folder, manifest, cfg, events):
+     """Rebuild every external entry and walk-budget decision on the step grid.
+ 
+@@ -1196,6 +1315,7 @@
+         return (not allowed or mode in allowed or 'all' in allowed) and mode not in denied and 'all' not in denied
+ 
+     lane_successors = defaultdict(set)
++    transition_backlinks = native_transition_backlinks(native_net)
+     for link in native_net.findall('connection'):
+         a = link.attrib
+         first, second = a['from'] + '_' + a['fromLane'], a['to'] + '_' + a['toLane']
+@@ -1240,13 +1360,21 @@
+             latest[actor] = row
+             if kind == 'walk':
+                 speed_integral[actor] += float(row['speed_mps']) * dt
+-            if edge and not edge.startswith(':') and row['observation_kind'] != 'departure_pending':
++            if edge and row['observation_kind'] not in ('departure_pending', 'reentry_pending'):
+                 mode = 'pedestrian' if kind == 'walk' else 'passenger'
+                 path = routes.get(actor, [])
++                if mode == 'pedestrian' and edge.startswith(':'):
++                    continue
+                 if mode == 'pedestrian' and (len(path) != len(set(path)) or edge not in path):
+                     fail('transition_route_reconstruction', [actor, now, 'ambiguous_walk_edge'])
+                 else:
+-                    index = path.index(edge) if mode == 'pedestrian' else int(row['route_index'])
++                    try:
++                        index = path.index(edge) if mode == 'pedestrian' else int(row['route_index'])
++                        if mode == 'passenger' and edge.startswith(':'):
++                            edge = verified_internal_source(path, row, transition_backlinks)
++                    except (ValueError, KeyError, IndexError) as error:
++                        fail('transition_route_reconstruction', [actor, now, str(error)])
++                        continue
+                     visit(actor, mode, edge, index, now, expected)
+         # Arrived actors no longer have a subscription row. Their final edge is
+         # reconstructed from the still-active route before current control edits.
+@@ -1403,6 +1531,7 @@
+                 budget_lead[pid] = e['remaining_budget_m']
+             elif event == 'private_departure_requested':
+                 routes[vid] = e['route']
++                anchors[vid] = e['route'][0], now, 0
+             elif event in ('private_reroute', 'drt_route', 'cancel_wait_route'):
+                 route, remaining = e['route'], e['requested_remaining_route']
+                 index = len(route) - len(remaining)
+@@ -1580,6 +1709,66 @@
+             'case': case, 'checks': checks, 'core_adoption_permitted': False}
+ 
+ 
++def audit_transition_fixture(folder, manifest, cfg, events, source):
++    """Certify skipped externals against raw native connections and arrival XML."""
++    inputs = ROOT / manifest['input_directory']
++    case = source['fixture_case']
++    departures = [e for e in events if e['event'] == 'private_departure_requested']
++    actors = list(stream_rows(folder / 'actor_observations.csv.gz'))
++    checks = {'one_explicit_initial_route_anchor': len(departures) == 1}
++    if len(departures) != 1:
++        return {'status': 'INVALID', 'checks': checks, 'applicable': True, 'core_adoption_permitted': False}
++    departure = departures[0]
++    actor = departure['vehicle_id']
++    frames = [r for r in actors if r['actor_id'] == actor]
++    entries = [r for r in stream_rows(folder / 'transitions.csv.gz') if r['actor_id'] == actor]
++    native = ET.parse(inputs / 'bounded.net.xml').getroot()
++    via = {c.attrib['via'] for c in native.findall('connection')
++           if c.attrib['from'] == 'e1' and c.attrib['to'] == 'e2' and c.attrib.get('via')}
++    outgoing = [r for r in frames if r['lane_id'] in via and int(r['route_index']) == 1]
++    short = [r for r in entries if r['to_edge'] == 'e1']
++    checks['source_bound_outgoing_internal_observed'] = bool(outgoing)
++    checks['short_external_frame_absent'] = bool(frames) and not any(r['road_id'] == 'e1' for r in frames)
++    checks['short_entry_upper_is_first_outgoing_frame'] = (bool(outgoing) and len(short) == 1
++        and float(short[0]['time_upper_sec']) == min(float(r['time_sec']) for r in outgoing)
++        and short[0]['from_edge'] == departure['route'][0]
++        and short[0]['ambiguous'] == 'False')
++    if case == 'car_transition_arrival':
++        trips = [e for e in ET.parse(folder / 'tripinfo.xml').getroot().findall('tripinfo') if e.attrib['id'] == actor]
++        final = [r for r in entries if r['to_edge'] == departure['route'][-1]]
++        checks['native_arrival_final_index_without_external_frame'] = (bool(frames) and len(trips) == len(final) == 1
++            and not any(r['road_id'] == departure['route'][-1] for r in frames)
++            and int(frames[-1]['route_index']) == len(departure['route']) - 2
++            and float(final[0]['time_upper_sec']) == float(trips[0].attrib['arrival']) + manifest['step_sec']
++            and final[0]['ambiguous'] == 'False')
++    if case == 'car_transition_closure':
++        timing = source['native_timing_reference']
++        reference = ROOT / cfg['workspace'] / 'technical' / timing['reference_run_id'] / 'execution'
++        rm = json.loads((reference / 'manifest.json').read_text(encoding='utf-8'))
++        paths = [reference / 'manifest.json', reference / 'actor_observations.csv.gz',
++                 ROOT / rm['input_directory'] / 'bounded.net.xml']
++        checks['reference_primary_bytes_and_role'] = (timing['source_sha256'] == {p.relative_to(ROOT).as_posix(): file_sha(p) for p in paths}
++            and rm['status'] == 'COMPLETED' and rm['fixture_case'] == 'car_transition_calibration'
++            and all(source['source_sha256'].get(p.relative_to(ROOT).as_posix()) == file_sha(p) for p in paths))
++        reference_frames = [r for r in stream_rows(reference / 'actor_observations.csv.gz') if r['actor_id'] == actor]
++        first = next((r for r in reference_frames if r['lane_id'] in via and int(r['route_index']) == 1), None)
++        later = [float(r['time_sec']) for r in reference_frames if r['road_id'] == 'e2']
++        closure = timing['closure_sec']
++        checks['closure_straddles_same_native_outgoing_window'] = (bool(outgoing) and first is not None and bool(later)
++            and timing['source_time_sec'] == float(first['time_sec']) == float(outgoing[0]['time_sec'])
++            and timing['source_lane_id'] == first['lane_id'] == outgoing[0]['lane_id']
++            and closure == math.ceil(float(first['time_sec']) + manifest['step_sec'])
++            and float(first['time_sec']) < closure < min(later))
++        closures = [e for e in events if e['event'] == 'closure_applied' and e['edge_id'] == 'e1' and e['mode'] == 'passenger']
++        checks['closed_short_edge_passed_before_actual_call'] = (bool(short) and len(closures) == 1
++            and closures[0]['scheduled_sec'] == closure
++            and closures[0]['control_call_sec'] == closure - manifest['step_sec']
++            and float(short[0]['time_upper_sec']) <= closures[0]['control_call_sec']
++            and short[0]['kind'] == 'transition')
++    return {'status': 'PASS' if all(checks.values()) else 'INVALID', 'checks': checks,
++            'case': case, 'applicable': True, 'core_adoption_permitted': False}
++
++
+ def audit_fixture_timing(folder, manifest, cfg, events):
+     """Independently check native-derived artificial boundary inputs and branches."""
+     if manifest['purpose'] != 'fixture':
+@@ -1587,6 +1776,8 @@
+     inputs = ROOT / manifest['input_directory']
+     source = json.loads((inputs / 'manifest.json').read_text(encoding='utf-8'))
+     case = source['fixture_case']
++    if case.startswith('car_transition_'):
++        return audit_transition_fixture(folder, manifest, cfg, events, source)
+     if case.startswith(('car_lane_', 'walk_short_')):
+         return audit_native_repair_boundaries(folder, manifest, cfg, events, source)
+     roles = {'pickup_deadline_equal', 'pickup_before_deadline', 'pickup_internal_calibration',

@@ -1,0 +1,198 @@
+{
+  "status": "COMPONENT_TIMING_ONLY",
+  "run_id": "nv26102808",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "scope": "read_only_component_timing_not_validation_or_adoption",
+  "started_at_jst": "2026-10-28T08:01:32.015279+09:00",
+  "helper_sha256": "d00a3aebce732c0f415fd3215acc0502719df4c7176d62d9826ac7f645015b5b",
+  "python_version": "3.13.12 (tags/v3.13.12:1cbe481, Feb  3 2026, 18:22:25) [MSC v.1944 64 bit (AMD64)]",
+  "manifest_sha256": "d885ef39f6424754e3f465845fc9bb7c8bf990a3fe229cebf039a7fc27d9c7ce",
+  "config_sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+  "ledger_snapshot_sha256": "2353958e8b92ea082f2a04b378c2c99c4efea2b92b8a0e1b543f5f180bb7a9d3",
+  "files": [
+    {
+      "name": "actor_observations.csv.gz",
+      "bytes": 252297056,
+      "sha256": "52a999f1813841063a05e39efc72456f0d1154668231394fb7e0a3de270336b7",
+      "hash_wall_sec": 0.34817380004096776,
+      "hash_cpu_sec": 0.34375,
+      "gzip_expanded_bytes": 862729179,
+      "gzip_wall_sec": 3.612702399957925,
+      "gzip_cpu_sec": 3.546875,
+      "csv_rows": 3518201,
+      "csv_wall_sec": 23.097897700034082,
+      "csv_cpu_sec": 21.9375
+    },
+    {
+      "name": "candidates.csv.gz",
+      "bytes": 274,
+      "sha256": "49bdaa1c559b29d7d91637610ab9beb9a8f2b650441779056d5ec8b630c5a5d9",
+      "hash_wall_sec": 0.00162240001372993,
+      "hash_cpu_sec": 0.0,
+      "gzip_expanded_bytes": 458,
+      "gzip_wall_sec": 0.0013843000633642077,
+      "gzip_cpu_sec": 0.0,
+      "csv_rows": 0,
+      "csv_wall_sec": 0.0011424999684095383,
+      "csv_cpu_sec": 0.0
+    },
+    {
+      "name": "common_realization.csv",
+      "bytes": 1482858,
+      "sha256": "2c93ff8f86dfc550cb5591a0206c4183fd00de34be8d8160747a7a827e1aa03b",
+      "hash_wall_sec": 0.00837239995598793,
+      "hash_cpu_sec": 0.0,
+      "csv_rows": 11965,
+      "csv_wall_sec": 0.043740499997511506,
+      "csv_cpu_sec": 0.046875
+    },
+    {
+      "name": "dispatch_cycles.csv.gz",
+      "bytes": 107,
+      "sha256": "8f292f74a03924ad9c46aea36f1e96762c61080eb3c806e6665e023306ec7656",
+      "hash_wall_sec": 0.0013398999581113458,
+      "hash_cpu_sec": 0.0,
+      "gzip_expanded_bytes": 72,
+      "gzip_wall_sec": 0.0004765000194311142,
+      "gzip_cpu_sec": 0.0,
+      "csv_rows": 0,
+      "csv_wall_sec": 0.0003226000117138028,
+      "csv_cpu_sec": 0.0
+    },
+    {
+      "name": "edge_observations.csv.gz",
+      "bytes": 66761252,
+      "sha256": "290790f930b0d84b2be0216b7576096a4d09e9ac51711e7fea8ea78c5a57b413",
+      "hash_wall_sec": 0.10280180000700057,
+      "hash_cpu_sec": 0.09375,
+      "gzip_expanded_bytes": 968369971,
+      "gzip_wall_sec": 2.203271200065501,
+      "gzip_cpu_sec": 2.171875,
+      "csv_rows": 19197258,
+      "csv_wall_sec": 43.55029739998281,
+      "csv_cpu_sec": 43.28125
+    },
+    {
+      "name": "events.jsonl",
+      "bytes": 11982577,
+      "sha256": "28959d7fb88c390ecd34ff8bbfbebb56a5e069274e14358cfe3d05edcdda8450",
+      "hash_wall_sec": 0.025357999955303967,
+      "hash_cpu_sec": 0.015625
+    },
+    {
+      "name": "facility_results.csv",
+      "bytes": 107,
+      "sha256": "226de772729c680ef9cd0675ff432fa0ffa4c6d72b3fc43d45eb1631b57bf22b",
+      "hash_wall_sec": 0.000897600082680583,
+      "hash_cpu_sec": 0.0,
+      "csv_rows": 4,
+      "csv_wall_sec": 0.00047230010386556387,
+      "csv_cpu_sec": 0.0
+    },
+    {
+      "name": "person_results.csv",
+      "bytes": 2314380,
+      "sha256": "8410852ad7443992e808d108ce2bec91c95a756cb366d11627795c2a95fb2883",
+      "hash_wall_sec": 0.007048600004054606,
+      "hash_cpu_sec": 0.0,
+      "csv_rows": 11965,
+      "csv_wall_sec": 0.055065999971702695,
+      "csv_cpu_sec": 0.0625
+    },
+    {
+      "name": "preflight_ready.json",
+      "bytes": 385959,
+      "sha256": "3dacaeafd27b3c2b2e8237d2e6a6315dff2b792f37e41fc00145cdd9bbcb37b2",
+      "hash_wall_sec": 0.0017372999573126435,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "progress.json",
+      "bytes": 908,
+      "sha256": "66b7f1ab1ea5521f417f6d9b67caae2f961c7d36967a9dc2db4c6be56ce8b3db",
+      "hash_wall_sec": 0.0010195999639108777,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "request_results.csv",
+      "bytes": 271,
+      "sha256": "6daf8f9f8f687d480bae8e5b3047366747ae1562114f2db4caa156434365c39d",
+      "hash_wall_sec": 0.0007683000294491649,
+      "hash_cpu_sec": 0.0,
+      "csv_rows": 0,
+      "csv_wall_sec": 0.00015239999629557133,
+      "csv_cpu_sec": 0.0
+    },
+    {
+      "name": "snapshot_actor_observations.csv.gz",
+      "bytes": 622929,
+      "sha256": "5ce0cea199d10a95af6899dd328b2c77f986de4cf0af9cb2fc959bed87c33ba7",
+      "hash_wall_sec": 0.002729399944655597,
+      "hash_cpu_sec": 0.0,
+      "gzip_expanded_bytes": 2982387,
+      "gzip_wall_sec": 0.009709700010716915,
+      "gzip_cpu_sec": 0.0,
+      "csv_rows": 29213,
+      "csv_wall_sec": 0.07883949996903539,
+      "csv_cpu_sec": 0.078125
+    },
+    {
+      "name": "sumo.log",
+      "bytes": 1042,
+      "sha256": "edd2e873bc00e47533f2d8888b4672b420cac1242f39410438b71693f239212c",
+      "hash_wall_sec": 0.0011435000924393535,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "sumo_errors.log",
+      "bytes": 518,
+      "sha256": "ca0d8c2a709eca599829350ddec85f64dd819d3b2f03ea947fbf7544ef633b6f",
+      "hash_wall_sec": 0.0010733000235632062,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "transitions.csv.gz",
+      "bytes": 3425816,
+      "sha256": "d06d633806a45834df4c1cbdd21ad02d6e3d0db432dc220fe931f65fd22c9a37",
+      "hash_wall_sec": 0.007247100002132356,
+      "hash_cpu_sec": 0.0,
+      "gzip_expanded_bytes": 23022734,
+      "gzip_wall_sec": 0.06827040005009621,
+      "gzip_cpu_sec": 0.078125,
+      "csv_rows": 281680,
+      "csv_wall_sec": 0.7145106000825763,
+      "csv_cpu_sec": 0.703125
+    },
+    {
+      "name": "tripinfo.xml",
+      "bytes": 1432866,
+      "sha256": "926e98fee775c37c2f0f781ced2bce4e6c427725dfff5d96036fa86176292da6",
+      "hash_wall_sec": 0.004913299926556647,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "types.rou.xml",
+      "bytes": 323,
+      "sha256": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+      "hash_wall_sec": 0.0008838999783620238,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "vehicle_results.csv",
+      "bytes": 280483,
+      "sha256": "7a8fb7810126993f644fd9eb2910836a7c673771a560c95ff33dc07d85edd0e9",
+      "hash_wall_sec": 0.0020392000442370772,
+      "hash_cpu_sec": 0.0,
+      "csv_rows": 4424,
+      "csv_wall_sec": 0.007105799973942339,
+      "csv_cpu_sec": 0.0
+    }
+  ],
+  "limits": [
+    "One sequential warm-cache probe; concurrent work may affect time.",
+    "CSV iteration excludes numeric conversion and research accounting.",
+    "These layers do not exactly partition validator time or prove speedup.",
+    "Ledger snapshot binds an accepted row, not live adoption permission."
+  ],
+  "finished_at_jst": "2026-10-28T08:02:46.492953+09:00"
+}

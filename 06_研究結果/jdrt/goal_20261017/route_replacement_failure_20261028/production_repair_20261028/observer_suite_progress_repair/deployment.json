@@ -1,0 +1,72 @@
+{
+  "at_jst": "2026-10-29T00:07:11.423043+09:00",
+  "action": "independent_monitor_suite_counter_repair_deployed",
+  "new_monitor": {
+    "state": "alive",
+    "created": 134376734283303123,
+    "pid": 36456
+  },
+  "source_sha256": "dacf80a9be1c832fbcad6e95b6ea7a0dec0a2f7117a394b36b346b5988f2e504",
+  "old39900_absent": true,
+  "same_native_suite_owner": {
+    "state": "alive",
+    "created": 134376721587991556,
+    "pid": 42508
+  },
+  "suite_progress": {
+    "at_jst": "2026-10-29T00:05:41.804738+09:00",
+    "completed_cases": 18,
+    "last_case": "pickup_before_deadline",
+    "last_status": "PASS",
+    "child_run_id": "rt261028b_c18"
+  },
+  "observer_suite_sample": {
+    "status": "RUNNING",
+    "target_id": "rt261028b",
+    "observed_at_utc": "2026-10-28T15:05:43.762989+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-28T14:42:43.138040+00:00",
+      "finished_at_utc": null,
+      "elapsed_sec": null,
+      "start_source": "started_at_jst",
+      "finish_source": null,
+      "status": "running"
+    },
+    "protocol": "realtime_choice_fixture_suite_v1",
+    "purpose": "technical_fixture_suite",
+    "state_sha256": "d80b40da99da373a8ab721c35424f3b2e346fc6939d212624402834c459a7524",
+    "flags": [],
+    "pid": 42508,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b\\manifest.json",
+    "sim_sec": null,
+    "progress_token": [
+      "RUNNING",
+      "completed_cases",
+      18
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134376721587991556,
+      "pid": 42508
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "rt261028b"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "rt261028b"
+    },
+    "last_progress": 1793199923.3093889,
+    "log_offsets": {},
+    "historical": false
+  },
+  "observer_age_start_sec": 108.11594128608704,
+  "observer_age_finished_sec": 42.45823097229004,
+  "tests": 38,
+  "scope": "4-line suite-only progress-token branch; no science source/input/config edits",
+  "known_old_stall_adjudication": "old parent token ignored completed_cases, false parent stall; original event preserved unchanged",
+  "latency_limit": "10sec configured discovery and1sec exit check remain nominal, actual scans longer; no proven speedup or restored cadence claimed",
+  "restart_gap": "monitor-only restart; exact stop/first-observation bounds retained, no continuous observation claimed",
+  "full_goal_complete": false
+}

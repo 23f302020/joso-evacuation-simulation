@@ -1,0 +1,10 @@
+--- test_choice_native_guard_plan.py.before
++++ test_choice_native_guard_plan.py
+@@ -21,6 +21,7 @@
+         for walk in ET.fromstring(cases['internal_walk']['routes_xml']).findall('person/walk'):
+             self.assertEqual(walk.get('edges'),'e0 e1 e2')
+             self.assertEqual(float(walk.get('arrivalPos')),20.)
++        self.assertEqual(cases['internal_walk']['replacement_endpoint_m'],20.)
+ 
+     def test_all_contract_groups_are_present_and_technical_only(self):
+         cases=plan.build(self.net(),{'type3':1.,'type4':.6},.5)

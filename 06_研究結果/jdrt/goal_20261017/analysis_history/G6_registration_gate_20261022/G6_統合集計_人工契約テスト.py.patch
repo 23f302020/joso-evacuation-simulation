@@ -1,0 +1,69 @@
+--- before/G6_統合集計_人工契約テスト.py
++++ current/G6_統合集計_人工契約テスト.py
+@@ -85,6 +85,7 @@
+     """Build independent artificial primary artifacts, retaining registered cell identities."""
+     registered = json.loads((analysis.ROOT / analysis.CONFIG).read_text(encoding='utf-8'))
+     cfg = {'cells': registered['cells'], 'seeds': registered['seeds'], 'protocol': 'synthetic_all70_contract',
++           'registration_id': 'synthetic_registration_current',
+            'workspace': 'ws', 'record_files': ['context.md', 'task.md', 'progress.md', 'a.md', 'b.md', 'ledger.jsonl'],
+            'execution': {'implementation_files': ['impl.py']}, 'simulation': {'duration_sec': 1000},
+            'analysis': registered['analysis'], 'demand_levels': registered['demand_levels'],
+@@ -151,6 +152,7 @@
+         archive.parent.mkdir(parents=True)
+         archive.write_bytes((root / 'impl.py').read_bytes())
+         manifest = {'run_id': run, **cell, 'purpose': 'core', 'protocol': cfg['protocol'],
++            'registration_id': cfg['registration_id'],
+             'status': 'COMPLETED', 'implementation_sha256': impl, 'parameter_sha256': config_sha,
+             'end_sec': 1000, 'input_directory': inputs, 'input_manifest_sha256': input_sha,
+             'output_sha256': outputs, 'preflight_ready_sha256': outputs['preflight_ready.json']}
+@@ -162,6 +164,7 @@
+         proof_name = 'proof/' + run + '.json'
+         proof_sha = save(root, proof_name, proof)
+         rows.append({**cell, 'run_id': run, 'protocol': cfg['protocol'], 'purpose': 'core',
++            'registration_id': cfg['registration_id'],
+             'validation_status': 'PASS', 'implementation_sha256': impl, 'manifest_sha256': manifest_sha,
+             'validation_report': proof_name, 'validation_report_sha256': proof_sha, 'input_manifest_sha256': input_sha})
+     markers = ''.join('<!-- choice_record:' + r['run_id'] + ' -->\n' for r in rows)
+@@ -172,6 +175,34 @@
+ 
+ 
+ class IntegratedContracts(unittest.TestCase):
++    def test_foreign_registration_record_refused_before_helpers_or_output(self):
++        with tempfile.TemporaryDirectory(prefix='g6_registration_record_') as temp:
++            root = Path(temp)
++            cfg, rows = all70_fixture(root)
++            rows[0]['registration_id'] = 'synthetic_registration_old'
++            (root / 'ledger.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows), encoding='utf-8')
++            with patch.object(analysis, 'load_request_component', side_effect=AssertionError('premature helper')):
++                with self.assertRaisesRegex(RuntimeError, 'registration'):
++                    analyze_fixture(root)
++            self.assertFalse((root / '06_研究結果').exists())
++
++    def test_foreign_registration_manifest_refused_with_other_hashes_consistent(self):
++        with tempfile.TemporaryDirectory(prefix='g6_registration_manifest_') as temp:
++            root = Path(temp)
++            cfg, rows = all70_fixture(root)
++            name = 'ws/runs/synthetic_0/manifest.json'
++            manifest = json.loads((root / name).read_text(encoding='utf-8'))
++            manifest['registration_id'] = 'synthetic_registration_old'
++            rows[0]['manifest_sha256'] = save(root, name, manifest)
++            proof_name = rows[0]['validation_report']
++            proof = json.loads((root / proof_name).read_text(encoding='utf-8'))
++            proof['manifest_sha256'] = rows[0]['manifest_sha256']
++            rows[0]['validation_report_sha256'] = save(root, proof_name, proof)
++            (root / 'ledger.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows), encoding='utf-8')
++            with self.assertRaisesRegex(RuntimeError, 'registration'):
++                analyze_fixture(root)
++            self.assertFalse((root / '06_研究結果').exists())
++
+     def test_all70_gate_precedes_helper_load_and_any_result_write(self):
+         with tempfile.TemporaryDirectory(prefix='g6_all70_incomplete_') as temp:
+             root = Path(temp)
+@@ -213,6 +244,7 @@
+             self.assertEqual(len(diagnostics), 5 * (1 + 3 * 5))
+             self.assertEqual(sum(r['scenario'] == 'R0' for r in diagnostics), 5)
+             manifest = json.loads((target / 'manifest.json').read_text(encoding='utf-8'))
++            self.assertEqual(manifest['registration_id'], cfg['registration_id'])
+             self.assertEqual(manifest['request_analysis_source_sha256'], analysis.digest(analysis.REQUEST_SOURCE))
+             self.assertEqual(len(manifest['remaining']), 3)
+             self.assertEqual(len(manifest['output_sha256']), 19)

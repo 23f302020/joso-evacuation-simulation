@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-24T23:40:16.214653+09:00",
+  "action": "one_fresh_v3_preflight_launch",
+  "prior_attempts": [],
+  "suite": "nt261024d",
+  "counterexamples": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261024T231243.json",
+  "smoke_prefix": "ns261024e",
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "technical_ready_before": false,
+  "display_sync_deferred_while_owner_active": true
+}

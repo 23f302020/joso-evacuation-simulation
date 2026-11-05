@@ -1,0 +1,122 @@
+{
+  "schema": "measurement_interval_coverage_v1",
+  "status": "OBSERVATION_COVERAGE_ONLY",
+  "at_jst": "2026-10-27T23:30:48.244159+09:00",
+  "run_id": "nv26102704",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "helper_sha256": "1c0f6e91a4034228c447533a5c6c6f4283a10d6e4e2cf946f7c9d9f7c4f8bc25",
+  "stage_definitions_sha256": "017063e4bdc9b4fcb0197108c94dd1faeecc101f13a99faeaf8759c5093535a2",
+  "stage_provenance_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102704/manifest.json": "4961244e642b44a164aefe3b24691f90eccb775d0665e442216765d6b1895fd4",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/nv26102704.finish/operation.json": "15f54e99051da658723737b347e757839cf04eab075757748f207616daa1ba08",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_record7_readback.json": "2c27621478b57317a6fcf276d96c0bc29d584167fcc4294fcc218c309b77de9a",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_finish_owner_initial.json": "9e8bba0fbd283fb2618d9bb58c601332ff26afd12dd5646d500ad4b3e7e77f93",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_record_phase_20261027T2304046685430.json": "82531cd0fd504aebeed88311e2a502eb2530d6935e114122d58e66d3fa4a3a43",
+    "06_研究結果/jdrt/goal_20261017/sq26102704_failure_preserved_core_followed.json": "736af4a513650ac74a83e4bb3cc82a9e1901b2ed07f5f7bdf5f36b2913aedd5e",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_pipeline_time_readback_20261027.json": "beeed216303c781b77acf467cc42f7172585296fb978e18a23855ff0d6bf1bdd"
+  },
+  "sources": [
+    {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\pipeline_efficiency_20261027_evening",
+      "snapshot_sha256": {
+        "state.json": "ce45abe4fbe4b366a779781651880ea7a81f6db62568423cbf5e59d6ba68dbe5",
+        "samples.jsonl": "b63c9d58240be17ffc2ca74b464bf55c08b240fde0c54bfdb51f18ccdb30beff"
+      },
+      "collector_source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+      "samples": 180,
+      "failed_samples": 0,
+      "collection_wall_seconds_p95_nearest_rank": 3.6102522000437602,
+      "state_sample_count_is_not_snapshot_consistency_proof": true
+    },
+    {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\pipeline_efficiency_20261027_validation",
+      "snapshot_sha256": {
+        "state.json": "0efb3399663a4f2e6ecfc9a7f1d0cb95c5cfcb8d62a08a6c3af8a6303e676c8a",
+        "samples.jsonl": "85272e925c0bfa2dd6b44d4a0b6650204d04a986a35f4f5a24c224318fc88294"
+      },
+      "collector_source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+      "samples": 48,
+      "failed_samples": 0,
+      "collection_wall_seconds_p95_nearest_rank": 4.309762799995951,
+      "state_sample_count_is_not_snapshot_consistency_proof": true
+    }
+  ],
+  "stages": [
+    {
+      "name": "execute",
+      "pid": 2860,
+      "created": "2026-10-27T10:33:36.916739+00:00",
+      "start": "2026-10-27T19:33:37.178060+09:00",
+      "end": "2026-10-27T19:45:23.219502+09:00",
+      "duration_seconds": 706.041442,
+      "covered_seconds": 660.079512,
+      "missing_seconds": 45.96192999999994,
+      "coverage_fraction": 0.9349019373851429,
+      "at_least_95pct": false,
+      "merged_intervals": [
+        [
+          "2026-10-27T19:33:42.741398+09:00",
+          "2026-10-27T19:44:42.820910+09:00"
+        ]
+      ],
+      "rejected_adjacent_pairs": {
+        "failed_sample": 0,
+        "clock_or_gap": 0,
+        "identity_or_cpu": 215
+      }
+    },
+    {
+      "name": "validate",
+      "pid": 31336,
+      "created": "2026-10-27T22:43:29.5217950+09:00",
+      "start": "2026-10-27T22:43:29.657365+09:00",
+      "end": "2026-10-27T22:59:58.370133+09:00",
+      "duration_seconds": 988.712768,
+      "covered_seconds": 960.009563,
+      "missing_seconds": 28.703205000000025,
+      "coverage_fraction": 0.9709691166848571,
+      "at_least_95pct": true,
+      "merged_intervals": [
+        [
+          "2026-10-27T22:43:53.079743+09:00",
+          "2026-10-27T22:59:53.089306+09:00"
+        ]
+      ],
+      "rejected_adjacent_pairs": {
+        "failed_sample": 0,
+        "clock_or_gap": 0,
+        "identity_or_cpu": 210
+      }
+    },
+    {
+      "name": "record",
+      "pid": 21952,
+      "created": "2026-10-27T23:00:01.1778020+09:00",
+      "start": "2026-10-27T23:00:01.534070+09:00",
+      "end": "2026-10-27T23:16:04.063614+09:00",
+      "duration_seconds": 962.529544,
+      "covered_seconds": 900.008546,
+      "missing_seconds": 62.52099799999996,
+      "coverage_fraction": 0.9350451127555208,
+      "at_least_95pct": false,
+      "merged_intervals": [
+        [
+          "2026-10-27T23:00:53.090077+09:00",
+          "2026-10-27T23:15:53.098623+09:00"
+        ]
+      ],
+      "rejected_adjacent_pairs": {
+        "failed_sample": 0,
+        "clock_or_gap": 0,
+        "identity_or_cpu": 211
+      }
+    }
+  ],
+  "limitations": [
+    "Sampling intervals use observed_at; CPU query occurs within collection_wall_sec",
+    "Only same PID+creation endpoints with finite nondecreasing CPU and <=120sec intervals count",
+    "Stage definitions and their semantic primary-evidence bindings require caller review",
+    "Coverage is not scientific acceptance, stage-B completion, causality, exact memory peak or efficiency improvement",
+    "Snapshots of live append-only sources are point observations; state and samples are not an atomic pair"
+  ]
+}

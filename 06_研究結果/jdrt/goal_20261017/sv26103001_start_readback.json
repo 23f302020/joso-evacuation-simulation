@@ -1,0 +1,97 @@
+{
+  "at_jst": "2026-10-30T09:42:34.627067+09:00",
+  "status": "FIRST_V5_CORE_STARTED_OWNERS_NATIVE_ENDPOINT_AND07_CONFIRMED",
+  "run_id": "sv26103001",
+  "cell_id": "fixed_reference_r0_seed23423",
+  "registration_id": "choice_shared_stopindex_v5_20261029",
+  "start_original_session": 39687,
+  "start_exit_code": 0,
+  "launcher": {
+    "ProcessId": 14460,
+    "ParentProcessId": 34144,
+    "CreationDate": "2026-10-30T09:39:24.0625+09:00",
+    "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" execute --run-id sv26103001 --cell-id fixed_reference_r0_seed23423"
+  },
+  "executor": {
+    "ProcessId": 27828,
+    "ParentProcessId": 14460,
+    "CreationDate": "2026-10-30T09:39:24.112339+09:00",
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" execute --run-id sv26103001 --cell-id fixed_reference_r0_seed23423"
+  },
+  "native": {
+    "ProcessId": 31792,
+    "ParentProcessId": 27828,
+    "CreationDate": "2026-10-30T09:39:47.761392+09:00",
+    "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_lat_si29a\\bin\\sumo.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_lat_si29a\\bin\\sumo.exe\" --net-file ..\\..\\inputs\\registered01\\bounded.net.xml --route-files types.rou.xml --step-length 0.5 --seed 23423 --begin 0 --end 21601 --time-to-teleport -1 --collision.action teleport --step-method.ballistic false --emergencydecel.warning-threshold 1.0 --no-step-log true --duration-log.disable true --error-log sumo_errors.log --log sumo.log --tripinfo-output tripinfo.xml --tripinfo-output.write-unfinished true --remote-port 55524"
+  },
+  "native_endpoint_owners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 55524,
+      "State": 5,
+      "OwningProcess": 31792
+    }
+  ],
+  "manifest_started_at": "2026-10-30T09:39:41.630470+09:00",
+  "current_check": {
+    "status": "RUNNING",
+    "run_id": "sv26103001",
+    "pid_alive": true,
+    "sim_sec": 1620.0,
+    "anomaly_flags": [],
+    "report": "06_研究結果/jdrt/goal_20261017/監視_sv26103001_20261030T094119200850.json"
+  },
+  "independent_monitor_pid": 2476,
+  "independent_monitor_observed": "2026-10-30T00:42:26.454589+00:00",
+  "independent_monitor_age_sec": 11.802271604537964,
+  "independent_target": {
+    "status": "RUNNING",
+    "target_id": "sv26103001",
+    "observed_at_utc": "2026-10-30T00:42:24.537401+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-30T00:39:41.630470+00:00",
+      "finished_at_utc": null,
+      "elapsed_sec": null,
+      "start_source": "started_at_jst",
+      "finish_source": null,
+      "status": "running"
+    },
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "c8e2a06c8081474040d669069e678a9b5c1ada98cb299ad7c5d49338fe67549f",
+    "flags": [],
+    "pid": 27828,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103001\\manifest.json",
+    "sim_sec": 2820.0,
+    "progress_token": [
+      "RUNNING",
+      2820.0
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134377943641123394,
+      "pid": 27828
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "sv26103001"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "sv26103001"
+    },
+    "last_progress": 1793320942.8363214,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103001\\sumo_errors.log": 0,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\driver_logs\\sv26103001.stderr.log": 260
+    },
+    "historical": false
+  },
+  "goal_status_before_launch": "active",
+  "formal_cells": 0,
+  "core_adoption_created": false,
+  "next": "Track same executor27828/native31792; after COMPLETED and original owner termination, exactly one finish(validate PASS->record7) then primary record readback/status before next registered cell"
+}

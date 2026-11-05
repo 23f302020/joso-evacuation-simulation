@@ -1,0 +1,42 @@
+{
+  "at_jst": "2026-10-20T22:20:25.613926+09:00",
+  "status": "SOURCE_ROUTE_CONFIRMED_NOT_NATIVE_EXECUTED",
+  "source_sha256": {
+    "microsim/MSFrame.cpp": "03d2a536a4bfd0103360ad095977528f64b4486ad82e4eb1747b14e1263c2d6b",
+    "microsim/MSRouteHandler.cpp": "6e7d8d1404a0ac6ca28105295e40c42327970f83a259b516dff8a6670d8abf65",
+    "microsim/transportables/MSPModel_Interacting.h": "b8af524f1b8340dfb1a390023651d292b098c4ea09e3a3f25d9421514d545e05",
+    "microsim/transportables/MSPModel_Striping.cpp": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "microsim/transportables/MSStageMoving.h": "12af2555e534320f38af43bc670a8e72a69c74da4e574ef455168108bf404476",
+    "libsumo/Person.cpp": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+    "utils/vehicle/SUMOVehicleParameter.cpp": "6b5ff42b7c11e8f49fe2311b22baa808834141e3a851212eb7858a4c89fe715f"
+  },
+  "facts": [
+    {
+      "source": "libsumo/Person.cpp:550",
+      "finding": "Person::add API accepts person/edge/longitudinal/depart/type only; it does not expose a lateral parameter. Do not invent a TraCI positional argument."
+    },
+    {
+      "source": "microsim/MSRouteHandler.cpp:1682",
+      "finding": "walk XML attribute departPosLat is parsed by interpretDepartPosLat and passed to MSStageWalking."
+    },
+    {
+      "source": "microsim/MSRouteHandler.cpp:1698",
+      "finding": "Absent walk departPosLat -> UNSPECIFIED; numeric -> GIVEN; random/free/random_free -> RANDOM sentinel; lane width and departLane are consulted for symbolic values."
+    },
+    {
+      "source": "microsim/transportables/MSPModel_Interacting.h:134",
+      "finding": "PState lateral input comes from stage->getDepartPosLat, not a guessed person attribute."
+    },
+    {
+      "source": "microsim/MSFrame.cpp:603",
+      "finding": "pedestrian.striping.legacy-departposlat is a Bool option default false; Striping reads that exact option."
+    }
+  ],
+  "test_preparation_implication": "Technical guard client needs route-XML walking stages for explicit/random lateral branches, not an unsupported person.add keyword. Verify actual effective options/trace in fresh nonadoptable runs.",
+  "not_claimed": [
+    "No new source/build/binary/run was generated",
+    "No native guard branch was exercised by source inspection",
+    "No current production or research acceptance change"
+  ],
+  "technical_ready": false
+}

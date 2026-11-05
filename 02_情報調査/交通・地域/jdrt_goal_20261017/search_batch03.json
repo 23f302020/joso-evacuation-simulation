@@ -1,0 +1,105 @@
+{
+  "at_utc": "2026-10-16T23:22:41.258Z",
+  "queries": [
+    "鬼怒川 点群データ オープンデータ 下館河川",
+    "常総市 航空レーザ 点群 LAZ ダウンロード"
+  ],
+  "results": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://front.geospatial.jp/\",\"title\":\"G空間情報センター\",\"description\":\"当センターでシェープファイル、GeoJSONファイルに変換した登記所備付地図データのダウンロードが可能です。 ※XMLデータのダウンロードにはユーザー登録（ユーザログイン） ...\",\"position\":1},{\"url\":\"https://www.ktr.mlit.go.jp/arage/arage01171.html\",\"title\":\"荒川下流GISオープンデータポータル - 関東地方整備局\",\"description\":\"荒川下流域の地形の起伏を表現したデータ（地形モデル）をダウンロードできます。 お手持ちのGISソフトウェアやゲームエンジン等のソフトウェアで読み込み、設計業務等 ...\",\"position\":2},{\"url\":\"https://note.com/yasstyle/n/n3b580b9ad6a4\",\"title\":\"自治体発 点群オープンデータまとめ｜Yass Matsuo - note\",\"description\":\"自治体発 点群オープンデータまとめ Yass Matsu … 北海道オープンデータ5000図郭道が航空レーザーで取得したデータが公開されています。 河川点群データ\",\"position\":3},{\"url\":\"https://experience.arcgis.com/experience/d88b12836c194e8dbaa73155a23d0400\",\"title\":\"Experience\",\"description\":\"\",\"position\":4}]},\"creditsUsed\":2,\"id\":\"01a14704-bb9c-767b-b25c-901d8f895672\",\"agent_hints\":[\"All 4 web results are excerpts only (#1 \\\"https://front.geospatial.jp/\\\", #2 \\\"https://www.ktr.mlit.go.jp/arage/arage01171.html\\\", #3 \\\"https://note.com/yasstyle/n/n3b580b9ad6a4\\\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://front.geospatial.jp/",
+                "title": "G空間情報センター",
+                "description": "当センターでシェープファイル、GeoJSONファイルに変換した登記所備付地図データのダウンロードが可能です。 ※XMLデータのダウンロードにはユーザー登録（ユーザログイン） ...",
+                "position": 1
+              },
+              {
+                "url": "https://www.ktr.mlit.go.jp/arage/arage01171.html",
+                "title": "荒川下流GISオープンデータポータル - 関東地方整備局",
+                "description": "荒川下流域の地形の起伏を表現したデータ（地形モデル）をダウンロードできます。 お手持ちのGISソフトウェアやゲームエンジン等のソフトウェアで読み込み、設計業務等 ...",
+                "position": 2
+              },
+              {
+                "url": "https://note.com/yasstyle/n/n3b580b9ad6a4",
+                "title": "自治体発 点群オープンデータまとめ｜Yass Matsuo - note",
+                "description": "自治体発 点群オープンデータまとめ Yass Matsu … 北海道オープンデータ5000図郭道が航空レーザーで取得したデータが公開されています。 河川点群データ",
+                "position": 3
+              },
+              {
+                "url": "https://experience.arcgis.com/experience/d88b12836c194e8dbaa73155a23d0400",
+                "title": "Experience",
+                "description": "",
+                "position": 4
+              }
+            ]
+          },
+          "id": "01a14704-bb9c-767b-b25c-901d8f895672",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 4 web results are excerpts only (#1 \"https://front.geospatial.jp/\", #2 \"https://www.ktr.mlit.go.jp/arage/arage01171.html\", #3 \"https://note.com/yasstyle/n/n3b580b9ad6a4\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.gsi.go.jp/gazochosa/tengun.html\",\"title\":\"点群データ - 国土地理院\",\"description\":\"データ形式はLAS 形式（Ver.1.2 Point Data Record Format 3）を圧縮したLAZ形式です。 データは3次メッシュのファイルを2次メッシュ単位で提供し ...\",\"position\":1},{\"url\":\"https://virtualshizuokaproject.my.canva.site/\",\"title\":\"VIRTUAL SHIZUOKA｜静岡県全域を3次元点群データでデジタル ...\",\"description\":\"小型航空機により上空2kmから地上に向けてレーザを照射して広域のデータを取得する「航空レーザ計測」。 ... また、LPデータはサイト上でデータを確認しながらダウンロード ...\",\"position\":2},{\"url\":\"https://search.ckan.jp/datasets/www.geospatial.jp__ckan__dataset:virtual-shizuoka-mw\",\"title\":\"VIRTUAL SHIZUOKA 静岡県 中・西部 点群データ\",\"description\":\"航空レーザ測量(LP) 各ダウンロードページより、図郭単位で、LAS形式をZIPまたは7z圧縮したファイルのダウンロードができます。 は、CC BY 4.0/ODbL のデュアルライセンス ...\",\"position\":3},{\"url\":\"https://catalog.data.metro.tokyo.lg.jp/ja/dataset/?res_format=Las\",\"title\":\"データセット - 東京都オープンデータカタログ - 全文検索\",\"description\":\"東京都デジタルツイン実現プロジェクト 区部点群データ … 各ダウンロードページより、1/500図郭単位で、LAS等の各種形式をZIP圧縮したファイルのダウンロードができます。\",\"position\":4}]},\"creditsUsed\":2,\"id\":\"01a14704-bb2c-709d-9721-15edaf0592c9\",\"agent_hints\":[\"All 4 web results are excerpts only (#1 \\\"https://www.gsi.go.jp/gazochosa/tengun.html\\\", #2 \\\"https://virtualshizuokaproject.my.canva.site/\\\", #3 \\\"https://search.ckan.jp/datasets/www.geospatial.jp__ckan__dataset:virtual-shizuoka-mw\\\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.gsi.go.jp/gazochosa/tengun.html",
+                "title": "点群データ - 国土地理院",
+                "description": "データ形式はLAS 形式（Ver.1.2 Point Data Record Format 3）を圧縮したLAZ形式です。 データは3次メッシュのファイルを2次メッシュ単位で提供し ...",
+                "position": 1
+              },
+              {
+                "url": "https://virtualshizuokaproject.my.canva.site/",
+                "title": "VIRTUAL SHIZUOKA｜静岡県全域を3次元点群データでデジタル ...",
+                "description": "小型航空機により上空2kmから地上に向けてレーザを照射して広域のデータを取得する「航空レーザ計測」。 ... また、LPデータはサイト上でデータを確認しながらダウンロード ...",
+                "position": 2
+              },
+              {
+                "url": "https://search.ckan.jp/datasets/www.geospatial.jp__ckan__dataset:virtual-shizuoka-mw",
+                "title": "VIRTUAL SHIZUOKA 静岡県 中・西部 点群データ",
+                "description": "航空レーザ測量(LP) 各ダウンロードページより、図郭単位で、LAS形式をZIPまたは7z圧縮したファイルのダウンロードができます。 は、CC BY 4.0/ODbL のデュアルライセンス ...",
+                "position": 3
+              },
+              {
+                "url": "https://catalog.data.metro.tokyo.lg.jp/ja/dataset/?res_format=Las",
+                "title": "データセット - 東京都オープンデータカタログ - 全文検索",
+                "description": "東京都デジタルツイン実現プロジェクト 区部点群データ … 各ダウンロードページより、1/500図郭単位で、LAS等の各種形式をZIP圧縮したファイルのダウンロードができます。",
+                "position": 4
+              }
+            ]
+          },
+          "id": "01a14704-bb2c-709d-9721-15edaf0592c9",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 4 web results are excerpts only (#1 \"https://www.gsi.go.jp/gazochosa/tengun.html\", #2 \"https://virtualshizuokaproject.my.canva.site/\", #3 \"https://search.ckan.jp/datasets/www.geospatial.jp__ckan__dataset:virtual-shizuoka-mw\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    }
+  ]
+}

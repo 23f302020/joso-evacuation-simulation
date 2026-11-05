@@ -1,0 +1,14 @@
+[
+  {
+    "ProcessId": 42812,
+    "ParentProcessId": 37880,
+    "CreationDate": "2026-10-29T21:58:37.897915+09:00",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_route_history_probe.py --project-root . --run-id rp261029b6 --variant stopped_cancel"
+  },
+  {
+    "ProcessId": 13644,
+    "ParentProcessId": 42812,
+    "CreationDate": "2026-10-29T21:58:37.930917+09:00",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_route_history_probe.py --project-root . --run-id rp261029b6 --variant stopped_cancel"
+  }
+]

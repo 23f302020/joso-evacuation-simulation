@@ -1,0 +1,61 @@
+{
+  "at_jst": "2026-10-27T22:49:01.7212801+09:00",
+  "processes": [
+    {
+      "pid": 23228,
+      "parent_pid": 15960,
+      "created_jst": "2026-10-27T22:42:52.8918100+09:00",
+      "command": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/python-performance-optimization/scripts/measure_pipeline.py --project-root . --output 07_監視システム/verification/pipeline_efficiency_20261027_validation --seconds 10800 --interval 60",
+      "cpu_sec": 0.140625
+    },
+    {
+      "pid": 20240,
+      "parent_pid": 32944,
+      "created_jst": "2026-10-27T22:43:27.2129020+09:00",
+      "command": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py --project-root . --run-id nv26102704",
+      "cpu_sec": 0.078125
+    },
+    {
+      "pid": 31336,
+      "parent_pid": 25020,
+      "created_jst": "2026-10-27T22:43:29.5217950+09:00",
+      "command": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" validate --run-id nv26102704 --purpose core",
+      "cpu_sec": 297.78125
+    }
+  ],
+  "action": "owned_fourth_finish_started",
+  "run_id": "nv26102704",
+  "phase_at_observation": "validate",
+  "original_session": 77682,
+  "owner_actual_pid": 20240,
+  "validator_actual_pid": 31336,
+  "validator_launcher_pid": 25020,
+  "owner_launcher_pid": 32944,
+  "process_handle_identities": {
+    "20240": {
+      "state": "alive",
+      "created": 134375822072129025,
+      "pid": 20240
+    },
+    "31336": {
+      "state": "alive",
+      "created": 134375822095217955,
+      "pid": 31336
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "record_attempted_at_point": false,
+  "formal_recorded": 3,
+  "measurement_session": 59505,
+  "measurement_actual_pid": 23228,
+  "measurement_launcher_pid": 15960,
+  "measurement_state": "07_監視システム/verification/pipeline_efficiency_20261027_validation/state.json",
+  "display_writers_deferred": true,
+  "failed_sequence_original_session": 14683,
+  "failed_sequence_not_replayed": true,
+  "goal_complete": false
+}

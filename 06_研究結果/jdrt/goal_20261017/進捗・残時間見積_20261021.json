@@ -1,0 +1,37 @@
+{
+  "at_jst": "2026-10-21T08:18:32.311672+09:00",
+  "kind": "subjective_work_estimate_not_research_acceptance",
+  "whole_goal_percent_estimate": 40,
+  "whole_goal_percent_range": [
+    35,
+    45
+  ],
+  "formal_core_accepted": 0,
+  "formal_core_registered": 70,
+  "formal_core_percent": 0,
+  "diagnostic_build": {
+    "status": "RUNNING",
+    "phase": "diagnostic_version",
+    "compiler_target_display_percent": null,
+    "point_time": "2026-10-21T08:18:32.311672+09:00",
+    "state": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build_state.json",
+    "note": "Compiler target progress only; source/version/import final checks and native guards are separate"
+  },
+  "reference_only_not_accepted_run": "ch261018_002 INVALID_PRESERVED",
+  "benchmark_loop_sec": 870.0978880999901,
+  "benchmark_validation_sec": 932.0958127999911,
+  "record_revalidation_source": ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py record invokes self.validate(run_id,core)",
+  "equal_speed_70_compute_hours": 53.16674054416613,
+  "remaining_wall_hours_provisional_range": [
+    60,
+    100
+  ],
+  "assumptions": [
+    "PC continuously operating, no sleep gaps",
+    "Reference old R0 timing is not measured current R1/R2 performance",
+    "70 cells run sequentially with validate then record-time revalidation",
+    "Remaining native guards/full suite/audit/smokes/preflight and analysis/equations/evidence gaps/final report included as planning allowance",
+    "Whole-goal percent is a rough effort estimate, not a formal completed-task ratio or empirical confidence interval"
+  ],
+  "reestimate_trigger": "Current accepted R0/R1/R2 execution/validation/record timings become available"
+}

@@ -1,0 +1,55 @@
+{
+  "at_jst": "2026-10-28T01:18:07.552407+09:00",
+  "action": "seventh_completed_repaired_sequence_same_nested_finish_active",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102807",
+  "original_session": 6473,
+  "sequence_actual_pid": 2152,
+  "finish_actual_pid": 17796,
+  "finish_launcher_pid": 18396,
+  "validator_actual_pid": 11132,
+  "validator_launcher_pid": 11156,
+  "process_handle_identities": {
+    "2152": {
+      "state": "alive",
+      "created": 134375905806470269,
+      "pid": 2152
+    },
+    "17796": {
+      "state": "alive",
+      "created": 134375913963172444,
+      "pid": 17796
+    },
+    "11132": {
+      "state": "alive",
+      "created": 134375913985656620,
+      "pid": 11132
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "phase": "validate",
+  "sequence_phase": "finish",
+  "operation_status": "RUNNING",
+  "record_attempted": false,
+  "current_core": {
+    "run_id": "nv26102807",
+    "cell_id": "fixed_reference_u50_r2p0_seed23423",
+    "status": "COMPLETED",
+    "pid": 22964,
+    "started_at_jst": "2026-10-28T01:03:48.954688+09:00",
+    "finished_at_jst": "2026-10-28T01:16:27.525039+09:00"
+  },
+  "formal_recorded": 6,
+  "display_writers_deferred": true,
+  "all_sequence_source_pins_unchanged": true,
+  "no_duplicate_validate_record": true,
+  "current_source_whole_operation_proven": false,
+  "goal_complete": false,
+  "automatic_readback_path": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102807/nv26102807_record7_readback.json",
+  "next": "Follow original sequence6473 and its nested finish17796/first validator11132. Do not invoke another validate/record/readback: this owner records and performs original record7 readback BEFORE display. On successful sequence terminal inspect its existing proof and clean status, then fresh goal API/READY/capacity/observer before next single cell. Preserve failures. Original measurement59505/actual23228 is bounded to3h; only after terminal/absence may a new unique30sec evidence capture be considered for missing B coverage."
+}

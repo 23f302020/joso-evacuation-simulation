@@ -1,0 +1,40 @@
+{
+  "protocol": "realtime_choice_v1",
+  "registered_cells": 70,
+  "recorded_cells": 7,
+  "running": [],
+  "unrecorded": [],
+  "partial_records": [],
+  "record_identity_mismatch": [],
+  "unresolved_failures": [],
+  "unresolved_launches": [],
+  "pending_record_journals": [],
+  "foreign_running_manifests": [],
+  "next_cell": {
+    "cell_id": "facility_first_r0_seed23423",
+    "destination_policy": "facility_first",
+    "demand_level": null,
+    "scenario": "R0",
+    "seed": 23423
+  },
+  "smoke_completed": [
+    "ns261024e_01",
+    "ns261024e_02",
+    "ns261024e_03",
+    "ns261024e_04",
+    "ns261024e_05",
+    "ns261024e_06",
+    "ns261024e_07",
+    "ns261024e_08",
+    "ns261024e_09",
+    "ns261024e_10",
+    "ns261024e_11",
+    "ns261024e_12",
+    "ns261024e_13",
+    "ns261024e_14"
+  ],
+  "failed": [],
+  "active_native_processes": [],
+  "core_ready": true,
+  "core_start_available": true
+}

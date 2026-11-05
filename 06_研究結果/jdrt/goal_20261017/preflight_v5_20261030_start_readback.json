@@ -1,0 +1,18 @@
+{
+  "at_jst": "2026-10-30T09:15:36.877294+09:00",
+  "action": "current_v5_preflight_same_original_started",
+  "classification": "PROGRESS",
+  "original_session": 8079,
+  "owner": {
+    "ProcessId": 8876,
+    "ParentProcessId": 33096,
+    "CreationDate": "2026-10-30T09:14:14.145888+09:00",
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py --project-root . preflight --suite-id sf261029a --counterexamples 06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T212545.json"
+  },
+  "attempt": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\preflight\\20261030T091421443729",
+  "G6_readback": "06_研究結果\\jdrt\\goal_20261017\\G6_現行v5_参照再照合_20261030.json",
+  "no_duplicate_validation": true,
+  "formal_cells": 0,
+  "core_ready": false
+}

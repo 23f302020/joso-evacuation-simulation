@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-22T21:27:28.996086+09:00",
+  "status": "SCOPED_REVIEW_PASS_PENDING_REAL_TERMINAL_CELL_USE",
+  "owner": "current parent chat; no subagent/model switch",
+  "files": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py": "e7545e936b68929aadf8247490407b3d0c64d6f1f2adde591862302e332c815f",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_finish_cell.py": "d4dac0d25c9c8936efb04de5695e5237c17817e2a8564317bce9759ee67c4ba4"
+  },
+  "authority": "User approved repeated operations skill consolidation and autonomous registered execution; no research-method change.",
+  "frozen_common5_unchanged": true,
+  "registered_input_sources_unchanged_by_candidate": true,
+  "changes": "One terminal core only. Dedicated check/validate/record/status. Large command JSON retained as files. No start/recover/kill/timeout/retry implementation.",
+  "tdd": {
+    "initial_red": "red13.stderr.log:13 intended failures, no import/collection failure",
+    "initial_green": "green.stderr.log:13 pass",
+    "review_red": "review_red.stderr.log:2 intended failures",
+    "flag_red": "flag_red.stderr.log:1 intended failure",
+    "transport_red": "transport_red.stderr.log:2 forbidden command subcases fail",
+    "final_green": "green16.stderr.log:16 tests pass"
+  },
+  "resolved_findings": [
+    "Original report purpose must be core as well as returned core PASS",
+    "Record attempt/unknown outcome retained after post-mutation response loss",
+    "Source/config rejection before record leaves record_attempted=false",
+    "Transport allowlist rejects start-next/recover before child spawn"
+  ],
+  "actual_readonly_check": "actual_owner_query.json detected current record owner true and unused-ID owner false; no research commands started by query",
+  "remaining": [
+    "Actual child transport will be exercised with the required post-record read-only status",
+    "End-to-end finish on a newly completed cell is not yet observed",
+    "CIM check conservatively matches basename and run ID across roots; it cannot atomically exclude manual CLI commands that ignore owner coordination",
+    "An interrupted parent may leave a live CLI child or PREPARED record: inspect pid log/canonical status, preserve and follow original owner; do not replay or remove operation directory",
+    "Source/CLI-native correctness remains the frozen canonical proofs and per-core independent validation; mocked wrapper tests are no SUMO evidence",
+    "No measured total cost or wall-time savings; parent backend unchanged/unverified"
+  ]
+}

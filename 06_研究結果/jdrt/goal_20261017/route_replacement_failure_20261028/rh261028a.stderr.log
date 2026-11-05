@@ -1,0 +1,4 @@
+C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_route_history_probe.py:99: UserWarning: API change now handles duration as floating point seconds
+  t.vehicle.setStop('v', 'c', pos=lanes['c'][1]-1, laneIndex=lanes['c'][0], duration=1000,
+Warning: Invalid route replacement for vehicle 'v'. No connection between edge 'a' and edge 'b'.
+Error: Answered with error to command 0xc4: Route replacement failed for vehicle 'v' (No connection between edge 'a' and edge 'b'.).

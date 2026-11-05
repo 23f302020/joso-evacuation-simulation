@@ -163,7 +163,8 @@ def prepare():
     sources = dict(prior['source_sha256'])
     for path in (PARAM, parent, Path(__file__), ROOT / params['pap'],
                  ROOT / params['registry_document'], ROOT / params['state_contract'],
-                 ROOT / params['alignment_addendum'], ROOT / params['preregistration_archive'],
+                 ROOT / params['alignment_addendum'], ROOT / params['native_observation_addendum'],
+                 ROOT / params['preregistration_archive'],
                  ROOT / params['previous_choice_input_manifest'],
                  ROOT / '04_プログラム/scripts/jdrt_choice_policy.py'):
         sources[path.relative_to(ROOT).as_posix()] = sha(path)
@@ -171,7 +172,9 @@ def prepare():
     if any(artifacts[name] != expected for name, expected in prior['artifacts'].items()):
         raise ValueError('Physical copy differs from parent')
     manifest = {
-        'protocol': params['protocol'], 'created_at_jst': datetime.now(timezone(timedelta(hours=9))).isoformat(),
+        'protocol': params['protocol'], 'registration_id': params['registration_id'],
+        'native_diagnostic_observation_contract': params['native_diagnostic_observation_contract'],
+        'created_at_jst': datetime.now(timezone(timedelta(hours=9))).isoformat(),
         'status': 'PREPARED_PENDING_INDEPENDENT_VALIDATION',
         'source_sha256': sources, 'artifacts': artifacts,
         'physical_artifacts_sha256': prior['artifacts'],

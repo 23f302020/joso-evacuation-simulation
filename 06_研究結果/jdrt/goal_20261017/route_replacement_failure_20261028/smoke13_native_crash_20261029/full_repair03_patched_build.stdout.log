@@ -1,0 +1,61 @@
+{"phase": "diagnostic_configure", "pid": 39276, "identity": {"ProcessId": 39276, "ParentProcessId": 36908, "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe", "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe -S C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair03_20261029/source -B C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair03_20261029/build -G \"MinGW Makefiles\" -DCMAKE_MAKE_PROGRAM=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe -DCMAKE_C_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe -DCMAKE_CXX_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe -DCMAKE_BUILD_TYPE=Release \"-DCMAKE_EXE_LINKER_FLAGS=-static -static-libgcc -static-libstdc++\" -DCMAKE_PREFIX_PATH=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static -DPython_EXECUTABLE=C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -DISOLATED_BUILD=ON -DCHECK_OPTIONAL_LIBS=OFF -DCMAKE_DISABLE_FIND_PACKAGE_FOX=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Proj=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Intl=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=FALSE -DZLIB_INCLUDE_DIR=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include -DFMI=OFF -DNETEDIT=OFF -DENABLE_PYTHON_BINDINGS=OFF -DENABLE_JAVA_BINDINGS=OFF -DENABLE_CS_BINDINGS=OFF -DPARQUET=OFF -DCCACHE_SUPPORT=OFF -DTCMALLOC=OFF -DCOMPILE_DEFINITIONS=XERCES_STATIC_LIBRARY;HAVE_VERSION_H -DZLIB_LIBRARY:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a -DZLIB_LIBRARY_RELEASE:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a", "CreationDate": 1793254658022}, "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\diagnostic_configure.log"}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "identity": {"ProcessId": 6976, "ParentProcessId": 36908, "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe", "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build --target sumo netconvert --parallel 2", "CreationDate": 1793254673238}, "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\diagnostic_sumo_build.log"}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 1782}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 2533}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 3203}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 3888}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 4305}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 5095}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 5808}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 6513}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 7113}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 8123}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 9092}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 9928}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 10926}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 12088}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 12934}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 13677}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 14520}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 15246}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 16198}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 17027}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 17998}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 18505}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 18864}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 19776}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 20613}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 21207}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 22187}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 23429}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 24654}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 25231}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 26215}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 26993}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 28851}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 30947}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 33659}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 35077}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 36052}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 38342}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 39588}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 41094}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 42051}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 42779}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 43409}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 43932}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 44292}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 45181}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 46325}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 47541}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 49236}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 51396}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 52694}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 54839}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 57306}
+{"phase": "diagnostic_sumo_build", "pid": 6976, "alive": true, "log_bytes": 59698}
+{"phase": "sumo_diagnostic_imports", "pid": 38176, "identity": {"ProcessId": 38176, "ParentProcessId": 36908, "ExecutablePath": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe", "CommandLine": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe -p C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build\\src\\sumo.exe", "CreationDate": 1793255763078}, "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\sumo_diagnostic_imports.log"}
+{"phase": "sumo_diagnostic_version", "pid": 42396, "identity": null, "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\sumo_diagnostic_version.log"}
+{"phase": "netconvert_diagnostic_imports", "pid": 29632, "identity": {"ProcessId": 29632, "ParentProcessId": 36908, "ExecutablePath": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe", "CommandLine": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe -p C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build\\src\\netconvert.exe", "CreationDate": 1793255766571}, "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\netconvert_diagnostic_imports.log"}
+{"phase": "netconvert_diagnostic_version", "pid": 12520, "identity": null, "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\netconvert_diagnostic_version.log"}
+{"status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED", "state": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build_state.json"}

@@ -1,0 +1,65 @@
+{
+  "verified_at": "2026-10-19T00:33:55.977431+00:00",
+  "source_integrity": [
+    {
+      "source": "city_verification",
+      "exists": true,
+      "pdf_magic": true,
+      "bytes_match": true,
+      "sha256_match": true
+    },
+    {
+      "source": "cabinet_rescue_stockyard",
+      "exists": true,
+      "pdf_magic": true,
+      "bytes_match": true,
+      "sha256_match": true
+    },
+    {
+      "source": "cabinet_disaster_overview",
+      "exists": true,
+      "pdf_magic": true,
+      "bytes_match": true,
+      "sha256_match": true
+    }
+  ],
+  "json_valid": [
+    "evidence.json",
+    "scrape1.json",
+    "scrape2.json",
+    "scrape3.json",
+    "scrape4.json",
+    "search1.json",
+    "search2.json",
+    "search3.json",
+    "search4.json",
+    "source_metadata.json",
+    "text_search_audit.json"
+  ],
+  "trailing_whitespace": [],
+  "visually_inspected_images": [
+    "city-054.png",
+    "city-055.png",
+    "city-056.png",
+    "city117.png",
+    "npo09.png",
+    "overview03.png",
+    "overview10.png"
+  ],
+  "image_sha256": {
+    "city-054.png": "e82af8dc826a6331b20d83de008e071bc78597268c0ce9cf8a73d823f54a7665",
+    "city-055.png": "897d97038e4d7b96b1eb5fd123494014ce4dfd170f04df9b17538894ad9af2e5",
+    "city-056.png": "efd8e4fc8e84eccc083f8bf00d724af044cdff5e2c8780c6aa5f24c62c957459",
+    "city117.png": "3d2b444b643957d9082bd08833b260312aca6950704a7409887874d927352f14",
+    "npo09.png": "10f4622f945787ce4a6da4c059c373cafb8d6304ed9f61c4eae004dabb20b718",
+    "overview03.png": "9b2a028ea4a820f5d5cbf08cd5fdb1e0a6a900271e6df25d892051fe0f27491c",
+    "overview10.png": "7552bc27110785e47c3b62f880a89dddef1fb81a2efb49164581e1d078b432a2"
+  },
+  "render_warnings": [
+    "Symbol display font missing",
+    "ArialUnicode display font missing"
+  ],
+  "visual_result": "Relevant Japanese text, numeric entries, headings, definitions and notes confirmed on source page images",
+  "git_diff_check": "exit_0_no_output_for_owned_path; untracked_text_also_checked_for_trailing_whitespace",
+  "pass": true
+}

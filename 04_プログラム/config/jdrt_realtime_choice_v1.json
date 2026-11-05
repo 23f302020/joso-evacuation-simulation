@@ -67,8 +67,8 @@
   "pap": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
   "registry_document": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md",
   "state_contract": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md",
-  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1",
-  "input_directory": "inputs/registered02",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5",
+  "input_directory": "inputs/registered01",
   "parent_input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2/inputs/registered01/manifest.json",
   "parent_registry": "04_プログラム/config/jdrt_realtime_b_boundary_v2.json",
   "destination_policies": [
@@ -161,13 +161,13 @@
     "interpretation": "gate_and_urgency_package_not_gate_only"
   },
   "record_files": [
-    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md",
     "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
     "context.md",
     "00_全体整理/決定ログ.md",
     "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
     "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
-    "05_タスク管理/jdrt/JDRT-受付代替行動_セル検証台帳.jsonl"
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl"
   ],
   "execution": {
     "timing_contract": "pre_step_end_v1",
@@ -763,6 +763,89 @@
       "authority": "latest user final-goal delegation and stated quality/realism/math axis",
       "core_runs_observed": 0,
       "registered_cell_set_changed": false
+    },
+    {
+      "at_jst": "2026-10-21T21:35:57.152451+09:00",
+      "kind": "native_diagnostic_observation_v2_technical_reregistration",
+      "authority": "user final-goal autonomy and technical implementation/validation authority; no PAP metric/comparison/exclusion change",
+      "previous_registered_config_sha256": "d32d5b5e11652f4ff66273d1a671573760a3665b182b0a68d674f2162d258f9e",
+      "old_accepted_cells_preserved": 1,
+      "new_accepted_cells": 0,
+      "cell_set_changed": false,
+      "physical_model_input_changed": false,
+      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY"
+    },
+    {
+      "at_jst": "2026-10-28T23:36:10.792944+09:00",
+      "kind": "remaining_route_api_technical_reregistration_v4",
+      "authority": "AGENTS technical repair + user final-goal autonomy; no scientific condition/metric/comparison/exclusion change",
+      "previous_registered_config_sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+      "old_accepted_cells_preserved": 9,
+      "failed_run_preserved": "nv26102810",
+      "new_accepted_cells": 0,
+      "cell_set_changed": false,
+      "physical_inputs_changed": false,
+      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY"
+    },
+    {
+      "at_jst": "2026-10-29T20:23:02.420106+09:00",
+      "kind": "shared_native_past_stop_index_technical_reregistration_v5",
+      "authority": "AGENTS technical repair and user autonomous final-goal direction; no scientific method/metric/comparison/exclusion change",
+      "previous_registered_config_sha256": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8",
+      "previous_registration": "choice_route_control_v4_20261028",
+      "previous_current_accepted_cells": 0,
+      "old_v3_adopted9_and_failure_preserved": true,
+      "cell_set_changed": false,
+      "scientific_conditions_changed": false,
+      "native_pair_primary_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/full_pair_primary02/verification.json",
+      "bundle_manifest_binding": {
+        "control": {
+          "manifest": "04_プログラム/output/sumo/toolchains/native_ctl_si29a/toolchain.json",
+          "manifest_sha256": "8fc615c82ca284c4f5ff94e808e39f2fa974cb0ef0d76933a2b79373f33cdf98",
+          "files": 237,
+          "all_file_sha256_verified": true,
+          "provenance_exact_copy": true,
+          "binary_sha256": {
+            "sumo": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+            "netconvert": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4"
+          },
+          "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/control_si29a_manifest_verification.json",
+          "fresh_import_report_sha256": "827a12be264e5ad21d3316f7f90739f7aae31b41901444a54a6d652f718aae70"
+        },
+        "patched": {
+          "manifest": "04_プログラム/output/sumo/toolchains/native_lat_si29a/toolchain.json",
+          "manifest_sha256": "9441822d02fe1a068ade0d24aade92ba4228e13d53a3c12edb229cdc80607669",
+          "files": 237,
+          "all_file_sha256_verified": true,
+          "provenance_exact_copy": true,
+          "binary_sha256": {
+            "sumo": "08019a104aaafd1de60ec43be3a06611575c06c7150f1ed7a92d8a587951c6cb",
+            "netconvert": "eeb3318a4e289fee098fa96fc07f0a16a84de8466ace28db260b30553a24239a"
+          },
+          "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/selected_si29a_manifest_verification.json",
+          "fresh_import_report_sha256": "7db7c5bc7ea97392d4fe389e202450e018676db3b3ac7081f0d6d4f5b0e95ab0"
+        }
+      },
+      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY",
+      "previous_technical_document": {
+        "path": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_経路制御_技術再登録_v4.md",
+        "sha256": "0ec58e0b2e63fc75d7822a5001f617fed7bc336cb09d6f7132ca51a359dc3b87"
+      },
+      "previous_v4_input_manifest": {
+        "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/inputs/registered01/manifest.json",
+        "sha256": "32716a1f5963e63a64a6a030292a3a351da301b506d3802eb04123064dad4252"
+      }
     }
-  ]
+  ],
+  "registration_id": "choice_shared_stopindex_v5_20261029",
+  "native_diagnostic_observation_contract": {
+    "raw_vehicle_emergency_deceleration_required": true,
+    "motion_integrator": "semi_implicit_euler_explicit_same_as_prior_native_default",
+    "emergency_warning_threshold": 1.0,
+    "generic_emergency_braking_classification": "same_actor_three_raw_frames_source_equation_within_observed_emergency_limit",
+    "unknown_or_missing_evidence": "INVALID_preserve_stop",
+    "native_emergency_stop": "not_newly_accepted",
+    "no_original_core_readoption": true
+  },
+  "native_observation_addendum": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md"
 }

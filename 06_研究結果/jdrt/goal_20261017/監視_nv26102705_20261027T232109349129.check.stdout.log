@@ -1,0 +1,51 @@
+{
+  "run_id": "nv26102705",
+  "status": "RUNNING",
+  "pid_alive": true,
+  "progress": {
+    "at_jst": "2026-10-27T23:21:06.859156+09:00",
+    "run_id": "nv26102705",
+    "time_sec": 1260.0,
+    "end_sec": 21600,
+    "wall_sec": 57.72633670002688,
+    "counts": {
+      "steps": 2520,
+      "controller_ticks": 1261,
+      "snapshots": 22,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 38420,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 649,
+      "dispatch_cycles": 22,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 23,
+      "departure_pending_frames": 70,
+      "snapshot_actor_rows": 2473
+    },
+    "people_states": {
+      "not_ready": 9917,
+      "admitted": 298,
+      "capacity_rejected": 37,
+      "travelling_walk": 62,
+      "waiting_origin": 101,
+      "travelling_car": 193,
+      "boarding": 3,
+      "no_route": 97,
+      "boundary_exit": 1049,
+      "walk_limit": 46,
+      "no_origin_connection": 109,
+      "initial_or_current_closed": 53
+    },
+    "request_states": {
+      "cancelled_timeout": 42,
+      "served": 4,
+      "boarding": 3,
+      "rejected_input": 7,
+      "pending": 101
+    }
+  },
+  "error": null
+}

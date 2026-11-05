@@ -1,0 +1,19 @@
+{
+  "at_jst": "2026-10-28T23:43:47.596742+09:00",
+  "previous_monitor": {
+    "state": "alive",
+    "created": 134375371341239107,
+    "pid": 26988
+  },
+  "previous_source_sha256": "080944f6f381ca278f214bc472a0185197c91da56ca06bef504d6c428206689c",
+  "old_config_sha256": "dc9c4a93a2d445a632c849d56edd2d6d408013af68b775173cc0bd87f4137ed7",
+  "new_config_sha256": "6596da63e1f069cd636dde72cd4289f69b99c4d0375e7f5c67e0e8c8c0ff25a0",
+  "added_patterns": [
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\runs\\*\\manifest.json",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\smoke\\*\\manifest.json",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\*\\manifest.json",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\*\\execution\\manifest.json"
+  ],
+  "research_process_unmodified": true,
+  "next": "stop exact existing monitor only, restart existing task, read back source/identity/new targets"
+}

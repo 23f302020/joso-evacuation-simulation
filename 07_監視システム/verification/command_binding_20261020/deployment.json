@@ -1,0 +1,31 @@
+{
+  "at_jst": "2026-10-20T22:40:47.560122+09:00",
+  "status": "OWNED_OBSERVER_RESTART_AND_LOADED_SOURCE_VERIFIED",
+  "old_monitor": {
+    "state": "alive",
+    "created": 134369572183506590,
+    "pid": 25168
+  },
+  "new_monitor": {
+    "state": "alive",
+    "created": 134369772064686617,
+    "pid": 29296
+  },
+  "monitor_identity_matches": true,
+  "source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+  "loaded_source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+  "observation_age_sec": 8.257442712783813,
+  "targets": 365,
+  "old_event_ids_retained": 24,
+  "old_delivery_not_reset": true,
+  "current_common_five_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "new_monitor_only_no_research_start": true,
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

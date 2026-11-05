@@ -1,0 +1,14 @@
+{
+  "scope": "documentation and entrypoint consolidation only",
+  "unchanged_installation_artifacts": {
+    ".agents\\tools\\ace\\ace_local.py": true,
+    ".agents\\tools\\ace\\ace.ps1": true,
+    ".agents\\tools\\ace\\requirements-core.lock": true,
+    ".agents\\tools\\ace\\installation.json": true,
+    ".agents\\tools\\ace\\state\\000001.json": true,
+    "06_研究結果\\判断支援\\ace_20261022\\final.stderr.log": true
+  },
+  "ledger_change": "Leading guide replaced. Existing case/history text retained by string slice; mixed line endings normalized by text I/O. Initial raw-byte preservation assertion detected this normalization, so raw historical byte identity is not claimed.",
+  "operating_entry": "05_タスク管理/スキル・エージェント運用.md §0.4",
+  "legacy_separate_section_removed": true
+}

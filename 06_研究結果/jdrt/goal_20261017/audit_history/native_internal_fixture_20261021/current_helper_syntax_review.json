@@ -1,0 +1,13 @@
+{
+  "status": "SCOPED_COMPILE_SYNTAX_AND_WHITESPACE_PASS",
+  "files": {
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_guard.py": "a91c5e13bc701502b13f6db48c4f7ab61fdc18edff3fb621a35f191e77b1888c",
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_guard_plan.py": "1285a7b301b0f38dbc8be87eb7bd7eb861af1143aef3d91551c08776f9662e31",
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_guard_audit.py": "afa28aff14a08e765ebeeef8690db883b3326984a2e6f3f033e86ea31e6b825a",
+    "04_プログラム\\tests\\test_choice_native_guard.py": "37ab27bda817d6a19adc136e65465448223255d1910c0e6da7f72800dd06aa42",
+    "04_プログラム\\tests\\test_choice_native_guard_plan.py": "a4c14013fb3b57aaa4150ea677625a4bb99a249b17ed87940e1f9c25c37710f1",
+    "04_プログラム\\tests\\test_choice_native_guard_audit.py": "4c673f0bca4dd3e20e11eaf1e8be3d42d6f5e6e564b6834f87075e1358e0de50"
+  },
+  "tests": "collector+plan22 PASS and audit4 PASS; no broad research readiness claim",
+  "technical_ready": false
+}

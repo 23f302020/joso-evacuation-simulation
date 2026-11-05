@@ -1,0 +1,110 @@
+{
+  "schema": "measurement_interval_coverage_v1",
+  "status": "OBSERVATION_COVERAGE_ONLY",
+  "at_jst": "2026-10-28T01:35:17.529837+09:00",
+  "run_id": "nv26102806",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "helper_sha256": "1c0f6e91a4034228c447533a5c6c6f4283a10d6e4e2cf946f7c9d9f7c4f8bc25",
+  "stage_definitions_sha256": "0d795893be9a22b007f49a65d45203ca302bca5158ecdb384b97dc721627ae3f",
+  "stage_provenance_sha256": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102806/manifest.json": "f6550c12fb4be464331961b2386cf167d4445ed0f6011caa2e2cef29282f509f",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/nv26102806.finish/operation.json": "c0ac7b16df7f400b6c6e28059800a70113ff976f1fc70df4ad4b15e7893554e4",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_record7_readback.json": "e4ddceea6f13f847c9d4b8a44e0aa78f1db41528f6b64b1a0558696dee86c98b",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_start_and_independent_monitor.json": "8b33a476a3ccef6e86708e17e5bc56224120d1c430518692b9142607c8625bc3",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_finish_owner_initial.json": "81ef49c39eaba092cd6192eec13eb116c0dfd0be82501cd6ec67a79b196821de",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_record_phase_20261028T004533774713.json": "1035077d35acabba7d799e0cee1bc670444628403384918f09cd241f0bd89543",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_pipeline_time_readback_20261028.json": "8a5f40209e9a70a68726c31756b33af6c6f375b16da3922e10dd5b7c765e9f44"
+  },
+  "sources": [
+    {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\pipeline_efficiency_20261027_validation",
+      "snapshot_sha256": {
+        "state.json": "1a508d99997e3762eb451e86f81d5c189e8b4d1a0e255a21170c0e2a9222620f",
+        "samples.jsonl": "b5a1baaf71179f1ca492db8df3d70f4cccdc6e668c540bb63f8bfb1b848dd283"
+      },
+      "collector_source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+      "samples": 173,
+      "failed_samples": 0,
+      "collection_wall_seconds_p95_nearest_rank": 3.847516799927689,
+      "state_sample_count_is_not_snapshot_consistency_proof": true
+    }
+  ],
+  "stages": [
+    {
+      "name": "execute",
+      "pid": 17452,
+      "created": "2026-10-27T15:09:28.620863+00:00",
+      "start": "2026-10-28T00:09:28.969654+09:00",
+      "end": "2026-10-28T00:22:27.036641+09:00",
+      "duration_seconds": 778.066987,
+      "covered_seconds": 720.007459,
+      "missing_seconds": 58.059528,
+      "coverage_fraction": 0.9253797822423225,
+      "at_least_95pct": false,
+      "merged_intervals": [
+        [
+          "2026-10-28T00:09:53.131441+09:00",
+          "2026-10-28T00:21:53.138900+09:00"
+        ]
+      ],
+      "rejected_adjacent_pairs": {
+        "failed_sample": 0,
+        "clock_or_gap": 0,
+        "identity_or_cpu": 160
+      }
+    },
+    {
+      "name": "validate",
+      "pid": 18128,
+      "created": "2026-10-27T15:28:22.129653+00:00",
+      "start": "2026-10-28T00:28:22.273979+09:00",
+      "end": "2026-10-28T00:44:17.824384+09:00",
+      "duration_seconds": 955.550405,
+      "covered_seconds": 900.00717,
+      "missing_seconds": 55.54323499999998,
+      "coverage_fraction": 0.941873045409886,
+      "at_least_95pct": false,
+      "merged_intervals": [
+        [
+          "2026-10-28T00:28:53.142182+09:00",
+          "2026-10-28T00:43:53.149352+09:00"
+        ]
+      ],
+      "rejected_adjacent_pairs": {
+        "failed_sample": 0,
+        "clock_or_gap": 0,
+        "identity_or_cpu": 157
+      }
+    },
+    {
+      "name": "record",
+      "pid": 35592,
+      "created": "2026-10-27T15:44:19.530896+00:00",
+      "start": "2026-10-28T00:44:19.849029+09:00",
+      "end": "2026-10-28T01:00:29.418136+09:00",
+      "duration_seconds": 969.569107,
+      "covered_seconds": 900.006141,
+      "missing_seconds": 69.56296600000007,
+      "coverage_fraction": 0.9282537309638105,
+      "at_least_95pct": false,
+      "merged_intervals": [
+        [
+          "2026-10-28T00:44:53.150228+09:00",
+          "2026-10-28T00:59:53.156369+09:00"
+        ]
+      ],
+      "rejected_adjacent_pairs": {
+        "failed_sample": 0,
+        "clock_or_gap": 0,
+        "identity_or_cpu": 157
+      }
+    }
+  ],
+  "limitations": [
+    "Sampling intervals use observed_at; CPU query occurs within collection_wall_sec",
+    "Only same PID+creation endpoints with finite nondecreasing CPU and <=120sec intervals count",
+    "Stage definitions and their semantic primary-evidence bindings require caller review",
+    "Coverage is not scientific acceptance, stage-B completion, causality, exact memory peak or efficiency improvement",
+    "Snapshots of live append-only sources are point observations; state and samples are not an atomic pair"
+  ]
+}

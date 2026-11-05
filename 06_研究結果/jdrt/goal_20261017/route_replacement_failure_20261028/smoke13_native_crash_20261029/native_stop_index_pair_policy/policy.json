@@ -1,0 +1,56 @@
+{
+  "schema": "approved_native_pair_stop_index_policy_v1",
+  "source_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "archive": {
+    "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\downloads\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3.zip",
+    "sha256": "f6f630cb9f3e31770c4a5238db7645845c527f6b440f722a7324be1902e592bd",
+    "bytes": 388181212
+  },
+  "preparation": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\native_stop_index_pair_policy\\preparation.json",
+    "sha256": "e8efad7372c636e770b07d0468ccf43bc700a0a10396abc2311b0e139fa290ad",
+    "bytes": 1582191
+  },
+  "proposal": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_native_proposal_20261019\\proposal_manifest.json",
+    "sha256": "abd750761f4cc99f457ef95d6ad4d223ad93a248b6b864a71995b9c90f11c4eb",
+    "bytes": 3614
+  },
+  "native_patch": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_native_proposal_20261019\\preserve_aborted_walk_raw_lateral.patch",
+    "sha256": "93d3ca0c2318e1bc2402c6449670f05546f4d600ad4b0cf3521486d9b6601771",
+    "bytes": 1591
+  },
+  "shared_patch": {
+    "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt07_20261020\\cmake_link.patch",
+    "sha256": "f817e7468024c6da9e3005ff52f519194e079278b841ed394e45d92d50fa0025",
+    "bytes": 565,
+    "before_sha256": "3ffa4033025efe6dd3fde0bb126fbc843de43ddb153016659c87cee5537aace8",
+    "after_sha256": "7588dbd582c5b8e60172b9d8bcb5c3b4630b2a46db67f5de99a6602580521cc7"
+  },
+  "allowed_missing": [
+    "build_config/debian/tests/control",
+    "build_config/debian/tests/parade",
+    "src/utils/tests/CMakeLists.txt",
+    "src/utils/tests/InternalTest.cpp",
+    "src/utils/tests/InternalTest.h",
+    "src/utils/tests/InternalTestStep.cpp",
+    "src/utils/tests/InternalTestStep.h"
+  ],
+  "scope": "Same scientific conditions and original source commit; unchanged compiler/static settings; original walk-lateral patch selected-only, original Winsock CMake repair both roles, reviewed stop-history index remap both roles. Seven original non-GUI omissions retained. No native behavior, package, selector, research adoption or READY claim.",
+  "previous_policy": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_policy_20261020\\policy.json",
+    "sha256": "7f82a2499bedd7c59874e7fe77f4ab6feea35a9bfaa2a4db3068e4dd416fc30e",
+    "bytes": 2464
+  },
+  "stop_index_proposal": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\native_stop_index_shared_proposal.json",
+    "sha256": "3a0c907a4a466b5c61d365e5b2f7507af8c9bdf9f7a7ef0ba68d0b8673884494",
+    "bytes": 2361
+  },
+  "stop_index_patch": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\rebase_retained_past_stop_indices.patch",
+    "sha256": "c6570afbcba31f9ae0a9fb38a4b244e50307955051b779a69a1965112dce849d",
+    "bytes": 1435
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "isolated_native_bundles_verified_v1",
+  "at_jst": "2026-10-20T16:50:46.428502+09:00",
+  "bundles": {
+    "control": {
+      "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_ctl_20261020a\\toolchain.json",
+      "manifest_sha256": "edeb508e5ed86793b9bbdffa038d0fb0bc2c4319020526764a0e37cf43071577",
+      "files": 243,
+      "bundle_bytes": 119346597,
+      "sumo_sha256": "1f092bada551395cbc632d29f0df3eb946a198cabd9330a3182c534157e05eff",
+      "netconvert_sha256": "a71ac2f7890cb211656c0a4cba6a78014f5978039f9130bb0e5ca322ee21b0a8",
+      "import_receipt": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\pair_proof_helper_20261020\\control_import_verify.json",
+      "import_receipt_sha256": "52989765d66ac288dd49e4c44eabf7075dd452781c11fc76d29b752c5fe7fecf",
+      "fingerprint_status": "IMPORTS_VERIFIED_NOT_SIMULATED"
+    },
+    "patched": {
+      "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_lat_20261020a\\toolchain.json",
+      "manifest_sha256": "a323faa16045614f9c31693981a3ffd84b62b34425e76a0007e628185a1bef5c",
+      "files": 243,
+      "bundle_bytes": 119341499,
+      "sumo_sha256": "ac1ea40529dd8cce6d583d66c01c33f28c900f1b6bb0a68d8be5980930da91f0",
+      "netconvert_sha256": "9ab32f3961ed61b3a08b67658497f2d76cd66deb17b968c5de45a8175543f624",
+      "import_receipt": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\pair_proof_helper_20261020\\patched_import_verify.json",
+      "import_receipt_sha256": "3d72b33f90d0d0324037d127ca76897e4622c33b77d905339e1c42f0203a3dcf",
+      "fingerprint_status": "IMPORTS_VERIFIED_NOT_SIMULATED"
+    }
+  },
+  "native_behavior_verified": false,
+  "native_regression_complete": false,
+  "simulation_started": false,
+  "formal_adoption_permitted": false,
+  "core_ready": false,
+  "scope": "Immutable technical control/patched bundles; fresh-process Python import and fingerprint checks only",
+  "next": "Complete/test/review selected-native-pair consumer and orchestration; then exact two-case native comparison with fresh IDs, before broad guards/full suite/audit/14smoke/preflight/G6.",
+  "pair_checks": {
+    "same_official_python_bytes": true,
+    "same_source_commit": true,
+    "same_primary_pair": true,
+    "same_approved_policy": true
+  }
+}

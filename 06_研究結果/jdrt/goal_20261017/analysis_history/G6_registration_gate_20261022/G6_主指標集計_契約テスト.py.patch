@@ -1,0 +1,26 @@
+--- before/G6_主指標集計_契約テスト.py
++++ current/G6_主指標集計_契約テスト.py
+@@ -111,6 +111,7 @@
+                 return analysis.digest(p)
+             cell = {'cell_id': 'c', 'scenario': 'R0', 'seed': 7, 'destination_policy': 'd', 'demand_level': None}
+             cfg = {'cells': [cell], 'protocol': 'synthetic_contract', 'workspace': 'ws',
++                   'registration_id': 'synthetic_metadata_registration',
+                    'record_files': ['context.md', 'ledger.jsonl'],
+                    'execution': {'implementation_files': ['impl.py']}, 'simulation': {'duration_sec': 10}}
+             (root / 'context.md').write_text('<!-- choice_record:r -->\n<!-- AGENT_CURRENT_END -->\n', encoding='utf-8')
+@@ -118,6 +119,7 @@
+             impl = {'impl.py': analysis.digest(root / 'impl.py')}
+             config_sha = save(analysis.CONFIG, cfg)
+             manifest = {'run_id': 'r', **cell, 'purpose': 'core', 'protocol': cfg['protocol'],
++                        'registration_id': cfg['registration_id'],
+                         'status': 'COMPLETED', 'implementation_sha256': impl,
+                         'parameter_sha256': config_sha, 'end_sec': 10}
+             manifest_sha = save('ws/runs/r/manifest.json', manifest)
+@@ -128,6 +130,7 @@
+                      'checks': {'integrity': True}, 'components': {k: {'status': 'PASS'} for k in names}}
+             proof_sha = save('proof.json', proof)
+             row = {**cell, 'run_id': 'r', 'protocol': cfg['protocol'], 'purpose': 'core',
++                   'registration_id': cfg['registration_id'],
+                    'validation_status': 'PASS', 'implementation_sha256': impl,
+                    'manifest_sha256': manifest_sha, 'validation_report': 'proof.json',
+                    'validation_report_sha256': proof_sha}

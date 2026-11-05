@@ -1,0 +1,33 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "757c2b36219fdd9082e88220093f8512",
+  "at_utc": "2026-10-20T23:20:10.237215+00:00",
+  "target": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build_state.json",
+  "kind": "completed",
+  "evidence": {
+    "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+    "target_id": "diag01_20261021",
+    "observed_at_utc": "2026-10-20T23:20:10.236233+00:00",
+    "protocol": null,
+    "purpose": null,
+    "state_sha256": "6e9201f13c45a37beb0bde695b22acc01813e46d4f11fa3424ccb448e19b175d",
+    "flags": [],
+    "pid": 34116,
+    "source": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build_state.json",
+    "sim_sec": null,
+    "progress_token": [
+      "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+      "completed",
+      "2026-10-21T08:20:09.406042+09:00"
+    ],
+    "last_progress": 1792538410.214044,
+    "log_offsets": {}
+  },
+  "delivery": "done",
+  "notification": "submitted",
+  "research_adoption": false,
+  "delivery_started_epoch": 1792539857.3691437,
+  "diagnostic_pid": 11540,
+  "exit_code": 0,
+  "delivery_finished_at_utc": "2026-10-20T23:44:23.774017+00:00"
+}

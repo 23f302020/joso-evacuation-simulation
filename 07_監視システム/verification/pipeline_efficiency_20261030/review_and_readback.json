@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-30T08:54:38.852042+09:00",
+  "status": "NO_MUST_FIX_FINDINGS_IN_SCOPED_EXPERIMENT",
+  "scope": "New isolated artifact CSV benchmark and parsing tests only; no frozen source import/edit, controller/validator operation or adoption",
+  "tests": "4 artificial contract tests PASS; earlier unimplemented scan raised NotImplementedError in all4 tests; not an import collection error",
+  "source_archive_and_current_match": true,
+  "original_handle": {
+    "session": 91956,
+    "exit_code": 0,
+    "actual_pid": 38820,
+    "created_jst": "2026-10-30T08:51:58.466335+09:00"
+  },
+  "row_count": 19197258,
+  "dictionary_wall_sec": 53.904832100030035,
+  "indexed_wall_sec": 23.397154600010253,
+  "aggregate_equality_scope": [
+    "complete row count",
+    "count sum",
+    "time sum in original order"
+  ],
+  "concurrent_load": {
+    "initial_research_python_or_sumo_absent": true,
+    "later_observed_python": {
+      "pid": 13524,
+      "created": "2026-10-30T08:52:17.524126+09:00"
+    },
+    "later_observed_sumo": {
+      "pid": 34984,
+      "created": "2026-10-30T08:52:30.531488+09:00"
+    },
+    "interpretation": "Another owner started work during the experiment. Retain overlap; sequential warm-cache-sensitive numbers cannot establish production speedup."
+  },
+  "candidate_decision": "Indexed parsing is a scoped experimental candidate only. Do not install it or bypass frozen validator. Need full row-access/error semantics and scientific consumer equivalence in isolated prototype before any deployment decision.",
+  "stage_C": "partial progress; candidate scoped and timed, not integrated",
+  "stage_D": "NOT_DONE",
+  "stop_condition_met": false,
+  "limitations": [
+    "Numeric totals do not prove full fieldwise or scientific equivalence.",
+    "One sequential trial per method, not randomized/repeated timing.",
+    "Historical v3 artifact is not current v5 adoption evidence.",
+    "No normal3-cycle total-time effect measurement."
+  ]
+}

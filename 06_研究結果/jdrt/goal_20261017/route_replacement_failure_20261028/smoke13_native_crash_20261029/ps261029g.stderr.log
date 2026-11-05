@@ -1,0 +1,23 @@
+Error: Answered with error to command 0xc4: Vehicle 'v' has no valid route. No connection between edge 'loop_back' and edge 'a'.
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_route_history_probe.py", line 340, in <module>
+    result = run(args.project_root, args.run_id, args.variant, args.diagnostic_receipt)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_route_history_probe.py", line 156, in run
+    t.vehicle.add('v', 'old', typeID='drt', depart='now', departPos='0')
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\_vehicle.py", line 1454, in add
+    self._setCmd(tc.ADD_FULL, vehID, "t" + (12 * "s") + "ii", 14,
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 routeID, typeID, depart, departLane, departPos, departSpeed,
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                 arrivalLane, arrivalPos, arrivalSpeed, fromTaz, toTaz, line, personCapacity, personNumber)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\domain.py", line 169, in _setCmd
+    self._connection._sendCmd(self._cmdSetID, varID, objectID, format, *values)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+           ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\connection.py", line 144, in _sendExact
+    raise TraCIException(err, prefix[1], _RESULTS[prefix[2]])
+traci.exceptions.TraCIException: Vehicle 'v' has no valid route. No connection between edge 'loop_back' and edge 'a'.

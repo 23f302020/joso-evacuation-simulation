@@ -1,0 +1,78 @@
+{
+  "at_jst": "2026-10-21T20:18:27.013337+09:00",
+  "run_id": "ch261021_002",
+  "manifest_status": "INVALID",
+  "validation_status": "INVALID",
+  "core_adoption_permitted": false,
+  "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261021_002_20261021T201454571376.json",
+  "validation_report_sha256": "fbb84201182cab0b6501b12d9b803039a6db97efb2ff7e4694de581842da7ba0",
+  "failed_component": "native_logs",
+  "failed_checks": {
+    "all_warnings_evidence_classified": false
+  },
+  "unknown": [
+    "Warning: Vehicle 'scen_c_origin_0381_0016' performs emergency braking on lane '9407#2_1' with decel=9.00, wished=4.50, severity=1.00, time=6112.50."
+  ],
+  "components": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "PASS",
+    "native_logs": "INVALID",
+    "native_fixture_boundaries": "PASS"
+  },
+  "primary_run_manifest_sha256": "7cbbb9fe5f5aed2a46ca73edac99105d3d3ae0b18c27050930b598a5f56671cf",
+  "native_log_sha256": "41bb6b47176887401a948e10f15840170db2f033c9d43e279e7576bd2d639d72",
+  "all_original_output_sha256": {
+    "actor_observations.csv.gz": "bb284f16b1e0f8bea8118372cd6fe46df24f6cf3a9191f1bb5ad2ac8a5e18302",
+    "candidates.csv.gz": "0624451b149247f306d5eee11d1a1a8075eb793653b7938853112f2506a39235",
+    "common_realization.csv": "d4f5fa3b8a471f616216feaee4d873fa322700c7fb8fbe94fb7fbefb1061e4d7",
+    "dispatch_cycles.csv.gz": "f3b10149f95495ff922810a9ac0f84a12e9066f90079ce9ccc63280fe4498b6a",
+    "edge_observations.csv.gz": "3adad22581417e794805c04f33066839911da06791b17049de06423a14184525",
+    "events.jsonl": "291e3d4b94ccd043ab0d28fac50e29b2d2857d31d1ffb13062d3cee15f4b2ed3",
+    "facility_results.csv": "6251a75cf7bd29f49e6001374c91afc23771b55addb6ecf46db4d7bfb371d05d",
+    "person_results.csv": "60c46b0cc88a5c3ce881f4747e689ff81c455d346c11574ef91b84397f4dd5ad",
+    "preflight_ready.json": "443c261e25a33e9ee7795de2dffae4c0db8dacc214a6554d186cf82b69c4a96b",
+    "progress.json": "9ea7ee26f1a0e30349ba62a9e8b97ba21ff5eabd0a8dcc76436e998b5ccea743",
+    "request_results.csv": "14dee2fe602b2c8733d7aae36bfbcf9dd431b8317a6cb7a00f95bdfdacc752d9",
+    "snapshot_actor_observations.csv.gz": "0de4acb33ff72fb7a6e1365b954e7d4336d61ec77b3a17c099fe8e1db4ad9bea",
+    "sumo.log": "38d4f46182423a32681379bad893c4235537f7bf70c900290b2b85766c9e0c05",
+    "sumo_errors.log": "41bb6b47176887401a948e10f15840170db2f033c9d43e279e7576bd2d639d72",
+    "transitions.csv.gz": "636960e1ee77fa6c1994db896d5e057381f8fba3e800b6a502424a207a9203f5",
+    "tripinfo.xml": "72e34ff325f979bb6e7300e2a1de898e583b3451d247cd073cbc4992f7517d42",
+    "types.rou.xml": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+    "vehicle_results.csv": "49e93d634b64cf4e4d3909d839c1cc38dac5260add3fdbf8b0ff03ec92f9008a"
+  },
+  "stops": [
+    "no record",
+    "no next start",
+    "no retry unchanged deterministic run to seek different warning",
+    "no whitelist/native log edit/no source-mixing gate bypass"
+  ],
+  "method_change_decided": false,
+  "diagnosis_complete": false,
+  "latest_at_jst": "2026-10-21T20:48:36.220642+09:00",
+  "primary_window": "window01/window.json",
+  "source_clock_proof": "source_clock_and_deceleration.json",
+  "math_proof": "braking_clock_math.json",
+  "observed_derived_acceleration_mps2": -9.0,
+  "native_warning_time_vs_actor_endpoint": {
+    "warning": 6112.5,
+    "actor_endpoint": 6113.0,
+    "meaning": "movement emits before native postMoveStep clock increment"
+  },
+  "diagnosis_state": "正式1/70・HOLDを維持。R1 ch261021_002の2交差点/全接続29edgeと75m補助範囲の16秒99行を原本から再抽出し、車1・徒歩2を確認。警告6112.5に対応する6113.0観測で徒歩者がcrossingへ進入し、vehicle linkのresponse/foes bitも同crossingを指す。公式ZIP＋凍結patchへ5sourceを照合し、歩行移動が車両計画より先であることを確認。歩行者応答仮説を支持するが内部leader/stopSpeed未記録のため原因確定・無害判定・採用はしない。次は隔離した横断あり/なしnative技術probeの設計・検証。現行common5/原本不変、record/後続開始禁止。",
+  "remaining": [
+    "Reduced nonadoptable crossing/no-crossing native probe with same frozen options/binary and raw identities/API receipts; original per-link decisions absent",
+    "Bind native configured emergencyDecel through actual getter if a probe is performed",
+    "Decide generic counterexample-based handling, not actor-specific whitelist",
+    "Any common-five revision after acceptedR0 requires preserved old records and version-consistent new registration/full comparison; no acceptance with substituted validator"
+  ],
+  "junction_context": "window03/window.json",
+  "junction_readback": "junction_context_readback.json",
+  "disposition": "INVALID_PRESERVED",
+  "original_completed_at_jst": "2026-10-21T16:40:45.369677+09:00",
+  "rejection_readback": "rejection_readback.json",
+  "diagnostic_probe_contract": "原因診断と次の技術検証.md"
+}

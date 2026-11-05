@@ -1,0 +1,23 @@
+{
+  "at_jst": "2026-10-21T09:00:03.126529+09:00",
+  "status": "SCOPED_REVIEW_NO_UNRESOLVED_IMPLEMENTATION_FINDING",
+  "red": "audit_red.log 4 explicit unimplemented assertions",
+  "green": "audit_green.log 4 PASS",
+  "scope": "read-only actor/receipt/direction/trace linkage helper plus native_actual audit; no research adoption or new thresholds",
+  "actual_native_report": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_internal_fixture_20261021\\actual_native_audit_v2.json",
+  "actual_native_report_sha256": "cf73216ab77c891e874452c6f464d8541359134011316a0df5d68c27a143698a",
+  "limitations": [
+    "Native pointer equality/null booleans are observations, not independent debugger memory-address reads",
+    "Observation window is finite; no complete evacuation or method-effect claim",
+    "Speed is native longitudinal getter, not Euclidean XY speed"
+  ],
+  "unexercised_native_groups": [
+    "position_time_mismatch"
+  ],
+  "source_code_sha256": {
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_guard_audit.py": "afa28aff14a08e765ebeeef8690db883b3326984a2e6f3f033e86ea31e6b825a",
+    "04_プログラム\\tests\\test_choice_native_guard_audit.py": "4c673f0bca4dd3e20e11eaf1e8be3d42d6f5e6e564b6834f87075e1358e0de50"
+  },
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

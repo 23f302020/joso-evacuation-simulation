@@ -1,0 +1,165 @@
+{
+  "at_utc": "2026-10-30T11:13:59.281392+00:00",
+  "status": "OPERATOR_SOURCE_SCOPE_CONNECTED_NOT_ALL70_RESULTS_OR_FINAL_REPORT",
+  "document_sha256": "e6b40df976a6ab2d3b9257ac69abeafc9937da2de527c21afbae09ab8b0ea885",
+  "before_sha256": "9fe023a799fe2e913a8f16e3e14af1c8256e38881bf35616c8607581f9568589",
+  "source_verification_sha256": "1ba83e893dc4db39cdc37ce084722b47c4d6bd697f7b59e84ca58efb99a865e1",
+  "source_files_rechecked": 8,
+  "visually_reviewed_physical_pages": [
+    1,
+    3,
+    9
+  ],
+  "local_links": [
+    {
+      "target": "../../../context.md",
+      "exists": true
+    },
+    {
+      "target": "../../../05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl",
+      "exists": true
+    },
+    {
+      "target": "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
+      "exists": true
+    },
+    {
+      "target": "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md",
+      "exists": true
+    },
+    {
+      "target": "G6_主指標・事前登録差分_集計.py",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/service_continuity_20261021/通常運休と災害時供給_位置づけ.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_pref_20261029/市災害記録・県入口_用途監査.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/operator_rail_2016_20261030/事業者原本_鉄道復旧と初動供給の用途監査.md",
+      "exists": true
+    },
+    {
+      "target": "route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/readback.json",
+      "exists": true
+    },
+    {
+      "target": "G6_現行v5_集計入口・数式前提_参照確認_20261029.json",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/transport_operations_20261030/初動避難と孤立解消後移送_用途監査.md",
+      "exists": true
+    },
+    {
+      "target": "ns261030a_all14_readback.json",
+      "exists": true
+    },
+    {
+      "target": "v5_preflight_terminal_readback_20261030.json",
+      "exists": true
+    },
+    {
+      "target": "G6_副指標・理論上限_実装証跡.json",
+      "exists": true
+    },
+    {
+      "target": "路面高不確実性_閉鎖時刻への伝播_20261020.md",
+      "exists": true
+    },
+    {
+      "target": "G7_未受入時間積分_解釈と打切り_20261023.md",
+      "exists": true
+    },
+    {
+      "target": "../../../04_プログラム/scripts/jdrt_realtime_choice.py",
+      "exists": true
+    },
+    {
+      "target": "G7_モデル時刻・壁時計_契約照合_20261024_v3.json",
+      "exists": true
+    },
+    {
+      "target": "analysis_history/G6_registration_gate_20261022/review.json",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/social_welfare_transport_20261022/災害フェーズ・移送支援_用途監査.md",
+      "exists": true
+    },
+    {
+      "target": "G7_技術証跡の適用範囲_20261022.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/施設開設・初期在所_時刻整合監査.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_realistic/sources_shelters/joso_plan_appendix_r8_202604.pdf",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_realistic/避難所根拠_20261015.md",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/capacity_provenance.json",
+      "exists": true
+    },
+    {
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md",
+      "exists": true
+    },
+    {
+      "target": "G7_代理集団と一般化_数式整理_20261024.md",
+      "exists": true
+    },
+    {
+      "target": "transition_time_candidate_20261024/full_suite_scope_review.json",
+      "exists": true
+    },
+    {
+      "target": "transition_time_candidate_20261024/native_tail_primary_diagnosis.json",
+      "exists": true
+    },
+    {
+      "target": "G7_モデル時刻・壁時計_契約照合_20261024_v3.json",
+      "exists": true
+    },
+    {
+      "target": "G7_未受入時間積分_意味照合_20261024_v3.json",
+      "exists": true
+    },
+    {
+      "target": "transition_time_candidate_20261024/v3_preflight_terminal_readback_20261027.json",
+      "exists": true
+    },
+    {
+      "target": "../../../07_監視システム/verification/monitor_reentry_20261027/deployment.json",
+      "exists": true
+    }
+  ],
+  "main_mathematical_section_unchanged": true,
+  "sequence_source_pins_checked": 13,
+  "scientific_parameters_modified": false,
+  "all70_analysis_complete": false,
+  "large_bus_followup_complete": false,
+  "goal_complete": false
+}

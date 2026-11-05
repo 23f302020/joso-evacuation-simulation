@@ -1,0 +1,31 @@
+{
+  "scope": "full_independent_audit_receipt_readback_not_READY",
+  "status": "PASS",
+  "report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261022T144514.json",
+  "report_sha256": "dfbd4bdf1e415ab8fcaa06be56f91092f2c0b4ecaea16ef70beccbbb0833834e",
+  "at_jst": "2026-10-22T14:45:13.925392+09:00",
+  "fixture_count": 26,
+  "counterexample_count": 54,
+  "primary_files_rechecked": 442,
+  "checks": {
+    "report_status": true,
+    "current_not_historical": true,
+    "technical_only": true,
+    "primary_unchanged": true,
+    "all_counterexamples": true,
+    "all_cases": true,
+    "current_implementation": true,
+    "auditor_current": true,
+    "validator_current": true,
+    "changed_implementation_rejected": true
+  },
+  "common5_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "next_smoke_prefix": "ns261022c",
+  "research_adoption_created": false
+}

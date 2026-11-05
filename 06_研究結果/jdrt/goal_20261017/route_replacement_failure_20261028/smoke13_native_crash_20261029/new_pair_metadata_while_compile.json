@@ -1,0 +1,61 @@
+{
+  "at_jst": "2026-10-29T15:26:46.697647+09:00",
+  "status": "PRELIMINARY_CONFIGURATION_COMPARISON_DURING_OWNED_COMPILE",
+  "comparison": {
+    "equal": true,
+    "different_files": [],
+    "effective_cache_difference_keys": [],
+    "equivalent_cache_representation_keys": [
+      "CMAKE_CACHEFILE_DIR",
+      "CMAKE_FIND_PACKAGE_REDIRECTS_DIR",
+      "CMAKE_HOME_DIRECTORY",
+      "SUMO_BINARY_DIR",
+      "SUMO_SOURCE_DIR"
+    ],
+    "compiler_files_and_executables_verified": false,
+    "native_behavior_verified": false
+  },
+  "states_at_point": {
+    "control": {
+      "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+      "phase": "completed",
+      "state_sha256": "710d65952e8b7790d8e026559ee78b618cc1dad123800b77e14b4243476e4ed9"
+    },
+    "patched": {
+      "status": "RUNNING",
+      "phase": "diagnostic_sumo_build",
+      "state_sha256": "795269d52882ec49815a9b4bac707247058f36d42c109a939c9eecc5736c7542"
+    }
+  },
+  "metadata_sha256_at_point": {
+    "control": {
+      "CMakeCache.txt": "734fd7a42affe9f8bbc94d14f41579f71bcdecea0247b2bbd76d342c99fd9713",
+      "src/config.h": "eadd0ab2bf3e8ec54e9964036ed669e0deacf1b45e1de14e15194d11208fc0d7",
+      "src/CMakeFiles/sumo.dir/flags.make": "c2c7800ee8381f4a8a4b129bb0286c6b6ae3a7732a3d749714b6e1921d76bc8c",
+      "src/CMakeFiles/sumo.dir/includes_CXX.rsp": "a6a675d60ef60b6fed8c917f016475441e45729280a531a2668d8ea387e0c500",
+      "src/CMakeFiles/sumo.dir/link.txt": "07ea8c04e982c804416dd527e1450db8bc73704d1eef60f60b23eb624e7889b1",
+      "src/CMakeFiles/sumo.dir/linkLibs.rsp": "ac03e8fcf299bc4733e60ad9c8bfc7f5a33c4cd700af61516e15e722d7c12d86",
+      "src/CMakeFiles/netconvert.dir/flags.make": "f9a8acf190e1ad055103d6dfbd7b6ce2131c136d9a817f0fee614b57aae40ec2",
+      "src/CMakeFiles/netconvert.dir/includes_CXX.rsp": "a6a675d60ef60b6fed8c917f016475441e45729280a531a2668d8ea387e0c500",
+      "src/CMakeFiles/netconvert.dir/link.txt": "3dbbe1a189abdc2c0f4763d23266f9ae11522b39160720c5136790914bd08af6",
+      "src/CMakeFiles/netconvert.dir/linkLibs.rsp": "7728be975d3d5ebe3a663acadcea49a525819a92574d7c3390f6877609c440b7"
+    },
+    "patched": {
+      "CMakeCache.txt": "30ae44d68bb4af805d0695760f14d7033cfd2a6ef82e92d6041ad95987a1bc77",
+      "src/config.h": "eadd0ab2bf3e8ec54e9964036ed669e0deacf1b45e1de14e15194d11208fc0d7",
+      "src/CMakeFiles/sumo.dir/flags.make": "c2c7800ee8381f4a8a4b129bb0286c6b6ae3a7732a3d749714b6e1921d76bc8c",
+      "src/CMakeFiles/sumo.dir/includes_CXX.rsp": "af593d4d3cee72ceb5ab7acdc08710eadfbfd27df4a1041d47fa4c486c51d46f",
+      "src/CMakeFiles/sumo.dir/link.txt": "07ea8c04e982c804416dd527e1450db8bc73704d1eef60f60b23eb624e7889b1",
+      "src/CMakeFiles/sumo.dir/linkLibs.rsp": "ac03e8fcf299bc4733e60ad9c8bfc7f5a33c4cd700af61516e15e722d7c12d86",
+      "src/CMakeFiles/netconvert.dir/flags.make": "f9a8acf190e1ad055103d6dfbd7b6ce2131c136d9a817f0fee614b57aae40ec2",
+      "src/CMakeFiles/netconvert.dir/includes_CXX.rsp": "af593d4d3cee72ceb5ab7acdc08710eadfbfd27df4a1041d47fa4c486c51d46f",
+      "src/CMakeFiles/netconvert.dir/link.txt": "3dbbe1a189abdc2c0f4763d23266f9ae11522b39160720c5136790914bd08af6",
+      "src/CMakeFiles/netconvert.dir/linkLibs.rsp": "7728be975d3d5ebe3a663acadcea49a525819a92574d7c3390f6877609c440b7"
+    }
+  },
+  "limits": [
+    "Patched original97479/owner36908 remains active; no completed binary/source/pair provenance established",
+    "Recompute whole strict pair after terminal; this preliminary check grants no gate/package/adoption permission"
+  ],
+  "technical_ready": false
+}

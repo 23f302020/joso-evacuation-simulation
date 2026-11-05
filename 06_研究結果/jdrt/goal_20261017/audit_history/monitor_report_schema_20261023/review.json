@@ -1,0 +1,13 @@
+{
+  "at_jst": "2026-10-23T17:16:00.454260+09:00",
+  "reason": "Prevent recurrence of full monitor JSON versus compact stdout extraction and dependent PowerShell commands after native failure",
+  "scope": "Routine reference documentation only",
+  "reference_before_sha256": "0753927fabb1fb585a25cdc315e341e78599d7c444ebf6de52d65b97b3c6082d",
+  "reference_after_sha256": "fb059611133eb5c46e3b775b3e53cd94479c7b97ac85756f4327edcf30eece37",
+  "actual_schema_repair": "06_研究結果/jdrt/goal_20261017/nc26102303_terminal_metadata_schema_repair.json",
+  "new_local_link_exists": true,
+  "common5_and_active_finish_source_unchanged": true,
+  "research_method_or_run_edit": false,
+  "native_or_unit_tests_rerun": false,
+  "reason_no_rerun": "No executable behavior changed; actual saved schema/repair plus link/diff/source SHA readback used"
+}

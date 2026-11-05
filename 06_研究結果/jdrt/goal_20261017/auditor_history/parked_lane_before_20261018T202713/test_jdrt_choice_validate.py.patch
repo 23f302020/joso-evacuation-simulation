@@ -1,0 +1,52 @@
+diff --git "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\tests\\test_jdrt_choice_validate.py" "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/tests/test_jdrt_choice_validate.py"
+index 79cff43..161f8e3 100644
+--- "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\tests\\test_jdrt_choice_validate.py"
++++ "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/tests/test_jdrt_choice_validate.py"
+@@ -270,6 +270,9 @@ class NativeWalkingContracts(unittest.TestCase):
+                 'speed_mps': '4', 'decel_mps2': '2', 'stop_state': '0'} for t in (.5, 1., 1.5)]
+             table(folder / 'actor_observations.csv.gz', actors)
+             feasibility = {'event': 'vehicle_route_feasibility', 'vehicle_id': 'car', 'time_sec': .5,
++                'source_kind': 'onroad_lane', 'source_reference_lane_id': 'a_1', 'native_parking_stop': None,
++                'native_source': {'road_id': 'a', 'lane_id': 'a_1', 'lane_position_m': 9., 'speed_mps': 4.,
++                    'decel_mps2': 2., 'stop_state': 0, 'route': ['a', 'b'], 'route_index': 0},
+                 'source_edge': 'a', 'source_lane_id': 'a_1', 'source_lane_position_m': 9., 'source_lane_length_m': 10.,
+                 'remaining_lane_m': 1., 'source_speed_mps': 4., 'source_decel_mps2': 2., 'step_sec': .5,
+                 'stopped': False, 'braking_room_m': 7., 'first_turn_constrained': True,
+@@ -302,6 +305,37 @@ class NativeWalkingContracts(unittest.TestCase):
+                 table(inputs / 'hazard.csv', [{'edge_id': 'c', 'mode': 'passenger', 'closure_sec': '1'}])
+                 self.assertFalse(validator.audit_movement_events(folder, manifest, cfg, events)['checks']['vehicle_first_turn_feasibility'])
+ 
++    def test_parked_source_recomputed_from_actor_stop_net_and_prior_stop_target(self):
++        actor = {'time_sec': '3', 'road_id': 'a', 'lane_id': '', 'lane_position_m': '9.95',
++                 'speed_mps': '0', 'decel_mps2': '4.5', 'stop_state': '3', 'route_index': '1',
++                 'observation_kind': 'parked', 'native_stop_lane_id': 'a_1',
++                 'native_stop_start_pos_m': '9.9', 'native_stop_end_pos_m': '10', 'native_stop_flags': '1'}
++        event = {'time_sec': 3., 'source_lane_id': '', 'source_kind': 'parked_stop',
++                 'source_reference_lane_id': 'a_1', 'native_source': {'road_id': 'a', 'lane_id': '',
++                     'lane_position_m': 9.95, 'speed_mps': 0., 'decel_mps2': 4.5,
++                     'stop_state': 3, 'route': ['old', 'a'], 'route_index': 1},
++                 'native_parking_stop': {'lane_id': 'a_1', 'start_pos_m': 9.9, 'end_pos_m': 10., 'flags': 1}}
++        lanes = {'a_1': ('a', {'length': '10', 'allow': 'passenger'})}
++        audit = lambda e=event, a=actor, pos=10.: validator.vehicle_source_contract(e, a, lanes, ['old', 'a'], pos)
++        self.assertTrue(audit())
++        for key, value in [('lane_id', 'a_1'), ('stop_state', '1'), ('speed_mps', '.1'),
++                           ('native_stop_lane_id', 'unknown'), ('native_stop_flags', '0'),
++                           ('native_stop_end_pos_m', '9.9'), ('lane_position_m', '10.1'),
++                           ('observation_kind', 'missing')]:
++            with self.subTest(key=key):
++                self.assertFalse(audit(a={**actor, key: value}))
++        self.assertFalse(audit(pos=9.))
++        self.assertFalse(audit(e={**event, 'native_parking_stop': None}))
++        self.assertFalse(audit(e={**event, 'source_reference_lane_id': 'unknown'}))
++        for key, value in [('stop_state', 1), ('speed_mps', .1), ('lane_position_m', 9.8)]:
++            changed = deepcopy(event)
++            changed['native_source'][key] = value
++            self.assertFalse(audit(changed, {**actor, key: str(value)}))
++        changed = deepcopy(event)
++        changed['native_parking_stop']['start_pos_m'] = 9.99
++        changed_actor = {**actor, 'native_stop_start_pos_m': '9.99'}
++        self.assertFalse(audit(changed, changed_actor))
++
+ 
+ class PreflightProvenance(unittest.TestCase):
+     def evidence(self, root):

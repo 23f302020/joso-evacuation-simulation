@@ -1,0 +1,101 @@
+"""Artificial pure contracts; no SUMO or research acceptance."""
+import unittest
+import xml.etree.ElementTree as ET
+
+from observer_candidate import Anchor, advance, arrived, passenger_links
+
+
+def frame(time, edge, index, lane=None, version=0, kind='onroad'):
+    return {'time_sec': time, 'phase': 'after_step_before_control', 'road_id': edge,
+            'lane_id': lane or edge + '_0', 'route_index': index,
+            'route_version': version, 'observation_kind': kind}
+
+
+class CandidateTests(unittest.TestCase):
+    def setUp(self):
+        self.route = ['a', 'short', 'b']
+        self.links = {':j_0_0': {('short', 'b')}}
+
+    def test_short_external_passed_before_closure_has_early_upper(self):
+        anchor, rows = advance(Anchor(0, 0, 0), frame(.5, ':j_0', 1),
+                               self.route, self.links, {'short': 1})
+        self.assertEqual([(r['to_edge'], r['time_upper_sec'], r['closed_entry']) for r in rows],
+                         [('short', .5, False)])
+        anchor, more = advance(anchor, frame(1.5, 'b', 2), self.route, self.links, {'short': 1})
+        self.assertEqual([r['to_edge'] for r in more], ['b'])
+
+    def test_actual_late_entry_and_exact_boundary_still_fail(self):
+        for upper in (1, 1.5):
+            with self.subTest(upper=upper):
+                _, rows = advance(Anchor(0, 0, 0), frame(upper, ':j_0', 1),
+                                  self.route, self.links, {'short': 1})
+                self.assertTrue(rows[0]['closed_entry'])
+
+    def test_internal_progress_narrows_next_entry_interval(self):
+        anchor = Anchor(.5, 1, 0)
+        anchor, rows = advance(anchor, frame(1, ':j_0', 1), self.route, self.links, {})
+        self.assertEqual(rows, [])
+        _, rows = advance(anchor, frame(1.5, 'b', 2), self.route, self.links, {})
+        self.assertEqual((rows[0]['time_lower_sec'], rows[0]['time_upper_sec']), (1, 1.5))
+
+    def test_occurrence_index_preserves_cycles(self):
+        _, rows = advance(Anchor(0, 1, 0), frame(.5, 'a', 2), ['a', 'b', 'a', 'c'], {}, {})
+        self.assertEqual([(r['to_edge'], r['route_index']) for r in rows], [('a', 2)])
+
+    def test_multiple_skipped_edges_are_all_retained(self):
+        _, rows = advance(Anchor(0, 0, 0), frame(.5, 'd', 3), ['a', 'b', 'c', 'd'], {}, {})
+        self.assertEqual([r['to_edge'] for r in rows], ['b', 'c', 'd'])
+
+    def test_unknown_internal_or_wrong_pair_rejected(self):
+        for links in ({}, {':j_0_0': {('a', 'b')}}):
+            with self.subTest(links=links), self.assertRaises(ValueError):
+                advance(Anchor(0, 0, 0), frame(.5, ':j_0', 1), self.route, links, {})
+
+    def test_external_index_mismatch_and_backward_time_rejected(self):
+        for observation in (frame(.5, 'a', 1), frame(-.5, 'short', 1)):
+            with self.subTest(observation=observation), self.assertRaises(ValueError):
+                advance(Anchor(0, 0, 0), observation, self.route, {}, {})
+
+    def test_version_change_needs_explicit_reset(self):
+        with self.assertRaises(ValueError):
+            advance(Anchor(0, 0, 0), frame(.5, 'short', 1, version=1), self.route, {}, {})
+        _, rows = advance(Anchor(.5, 0, 1), frame(1, 'short', 1, version=1), self.route, {}, {})
+        self.assertEqual(len(rows), 1)
+
+    def test_known_pending_does_not_create_entry_but_missing_fails(self):
+        anchor = Anchor(0, 0, 0)
+        for kind in ('departure_pending', 'reentry_pending'):
+            self.assertEqual(advance(anchor, frame(.5, '', -1, kind=kind), self.route, {}, {}), (anchor, []))
+        with self.assertRaises(ValueError):
+            advance(anchor, frame(.5, '', -1, kind='missing'), self.route, {}, {})
+
+    def test_unobserved_initial_skip_needs_creation_anchor(self):
+        with self.assertRaises(ValueError):
+            advance(None, frame(.5, 'short', 1), self.route, {}, {})
+
+    def test_native_arrival_keeps_skipped_final_edge_and_deadline(self):
+        _, rows = arrived(Anchor(.5, 1, 0), self.route, 1, 0, {'b': 1})
+        self.assertEqual([(r['to_edge'], r['closed_entry']) for r in rows], [('b', True)])
+
+    def test_multistage_internal_topology_is_propagated(self):
+        net = ET.fromstring('''<net>
+          <edge id="a"><lane id="a_0"/></edge><edge id="b"><lane id="b_0"/></edge>
+          <edge id=":j_0"><lane id=":j_0_0"/></edge><edge id=":j_1"><lane id=":j_1_0"/></edge>
+          <connection from="a" to="b" fromLane="0" toLane="0" via=":j_0_0"/>
+          <connection from=":j_0" to="b" fromLane="0" toLane="0" via=":j_1_0"/>
+          <connection from=":j_1" to="b" fromLane="0" toLane="0"/>
+        </net>''')
+        links = passenger_links(net)
+        self.assertEqual(links, {':j_0_0': {('a', 'b')}, ':j_1_0': {('a', 'b')}})
+
+    def test_pedestrian_only_source_not_a_passenger_connection(self):
+        net = ET.fromstring('''<net>
+          <edge id="a"><lane id="a_0" allow="pedestrian"/></edge><edge id="b"><lane id="b_0"/></edge>
+          <edge id=":j_0"><lane id=":j_0_0"/></edge>
+          <connection from="a" to="b" fromLane="0" toLane="0" via=":j_0_0"/>
+        </net>''')
+        self.assertEqual(passenger_links(net), {})
+
+
+if __name__ == '__main__':
+    unittest.main()

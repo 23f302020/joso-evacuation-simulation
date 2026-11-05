@@ -1,0 +1,90 @@
+{
+  "targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\command_binding_20261020\\daemon_fixture_probe\\technical\\suite\\manifest.json": {
+      "status": "RUNNING",
+      "target_id": "suite",
+      "observed_at_utc": "2026-10-20T13:38:26.060027+00:00",
+      "protocol": "realtime_choice_fixture_suite_v1",
+      "purpose": "technical_fixture_suite",
+      "state_sha256": "e47c503197a33ff44200aab38e08b3eb446da87d2bcb27a8edd04318f65c6fad",
+      "flags": [],
+      "pid": 19984,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\command_binding_20261020\\daemon_fixture_probe\\technical\\suite\\manifest.json",
+      "sim_sec": null,
+      "progress_token": [
+        "RUNNING",
+        null,
+        null
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134369771058680296,
+        "pid": 19984
+      },
+      "command_binding": {
+        "kind": "direct",
+        "command_target_id": "suite"
+      },
+      "command_verified_binding": {
+        "kind": "direct",
+        "command_target_id": "suite"
+      },
+      "last_progress": 1792503506.0578814,
+      "log_offsets": {},
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\command_binding_20261020\\daemon_fixture_probe\\technical\\suite_c01\\execution\\manifest.json": {
+      "status": "RUNNING",
+      "target_id": "suite_c01",
+      "observed_at_utc": "2026-10-20T13:38:27.018522+00:00",
+      "protocol": "realtime_choice_fixture_v1",
+      "purpose": "fixture",
+      "state_sha256": "42b12e44bec54c53f8d39f43d09491f0fdc99bcd2b6068517b9caf1e756f373d",
+      "flags": [],
+      "pid": 19984,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\command_binding_20261020\\daemon_fixture_probe\\technical\\suite_c01\\execution\\manifest.json",
+      "sim_sec": null,
+      "progress_token": [
+        "RUNNING",
+        null,
+        null
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134369771058680296,
+        "pid": 19984
+      },
+      "command_binding": {
+        "kind": "verified_fixture_suite",
+        "command_target_id": "suite",
+        "parent_manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\command_binding_20261020\\daemon_fixture_probe\\technical\\suite\\manifest.json",
+        "parent_sha256": "e47c503197a33ff44200aab38e08b3eb446da87d2bcb27a8edd04318f65c6fad",
+        "factory_sha256": "2f269161336427f2f982fdcdbbc8d7aad19d5a4a15eae4cf7d323c5c18312de7",
+        "input_sha256": "c2b25ed5c14b617fb859693d434ce13f01ae25c62cf3a19d23c9fd527ab07080",
+        "fixture_case": "first"
+      },
+      "command_verified_binding": {
+        "kind": "verified_fixture_suite",
+        "command_target_id": "suite",
+        "parent_manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\command_binding_20261020\\daemon_fixture_probe\\technical\\suite\\manifest.json",
+        "parent_sha256": "e47c503197a33ff44200aab38e08b3eb446da87d2bcb27a8edd04318f65c6fad",
+        "factory_sha256": "2f269161336427f2f982fdcdbbc8d7aad19d5a4a15eae4cf7d323c5c18312de7",
+        "input_sha256": "c2b25ed5c14b617fb859693d434ce13f01ae25c62cf3a19d23c9fd527ab07080",
+        "fixture_case": "first"
+      },
+      "last_progress": 1792503506.0578814,
+      "log_offsets": {},
+      "historical": false
+    }
+  },
+  "initialized": true,
+  "observed_at_utc": "2026-10-20T13:38:27.880146+00:00",
+  "observed_epoch": 1792503506.0578814,
+  "monitor_pid": 24080,
+  "monitor_identity": {
+    "state": "alive",
+    "created": 134369771059054745,
+    "pid": 24080
+  },
+  "monitor_source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d"
+}

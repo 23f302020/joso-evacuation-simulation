@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-23T10:11:55.656351+09:00",
+  "status": "DOCUMENTED_REENTRY_ROUTINE_SCOPED_PASS",
+  "scope": "reference only; no execution/acceptance changes",
+  "before_sha256": "c8ab103a43d914bfc593bc4c334640a9dd72b89bab615e907dc329d87ed390b0",
+  "after_sha256": "387637018dcbddc91c36ee89fb5749fec16d04399d54a6ee4812e97b68e51e12",
+  "checked_new_links": 2,
+  "source_evidence": [
+    "06_研究結果/jdrt/goal_20261017/nc26102301_finish_start_observation.json",
+    "06_研究結果/jdrt/goal_20261017/nc26102203_観測中断と同一処理再確認_20261023.json",
+    "06_研究結果/jdrt/goal_20261017/nc26102203_record7_readback.json"
+  ],
+  "common5_unchanged": true,
+  "finish_helper_unchanged": true,
+  "unit_or_native_retests": "not rerun; documentation only, same source evidence reused",
+  "actual_model_backend": "unverified; parent not switched"
+}

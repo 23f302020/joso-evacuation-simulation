@@ -1,0 +1,146 @@
+{
+  "at_jst": "2026-10-23T09:57:14.779118+09:00",
+  "purpose": "operational_progress_ETA_only_not_research_result",
+  "judgment_id": "JD-20261023-research-0957-02",
+  "previous_estimate": "進捗・所要時間_暫定見積_20261022T1502.json",
+  "formal": {
+    "accepted": 3,
+    "total": 70,
+    "percent": 4.285714285714286
+  },
+  "overall_percent": {
+    "central": 55,
+    "range": [
+      50,
+      60
+    ],
+    "kind": "subjective milestone estimate, retained approximately; not measured percentage of work hours or accepted cells"
+  },
+  "calibration": [
+    {
+      "run_id": "nc26102202",
+      "scenario": "R1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "seed": 23423,
+      "stages": {
+        "native_manifest": {
+          "start": "2026-10-22T21:40:58.618213+09:00",
+          "end": "2026-10-22T21:55:58.145840+09:00",
+          "wall_sec": 899.527627,
+          "overlap_reported_low_power_sec": 0,
+          "wall_sec_excluding_reported_low_power": 899.527627
+        },
+        "independent_launch_to_report": {
+          "start": "2026-10-22T21:58:50.660120+09:00",
+          "end": "2026-10-22T22:20:46.743799+09:00",
+          "wall_sec": 1316.083679,
+          "overlap_reported_low_power_sec": 0,
+          "wall_sec_excluding_reported_low_power": 1316.083679
+        },
+        "record_launch_to_record_timestamp": {
+          "start": "2026-10-22T22:20:48.408182+09:00",
+          "end": "2026-10-22T22:43:22.004413+09:00",
+          "wall_sec": 1353.596231,
+          "overlap_reported_low_power_sec": 0,
+          "wall_sec_excluding_reported_low_power": 1353.596231
+        }
+      },
+      "sum_stage_seconds_excluding_reported_power": 3569.2075370000002,
+      "sum_stage_minutes": 59.48679228333334,
+      "provenance": {
+        "manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/runs/nc26102202/manifest.json",
+        "manifest_sha256": "ddab99ab9a959b01e604e7c034d2857f8eb3c97a460b2e9ca1d30e02899c2586",
+        "finish_operation": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102202.finish/operation.json",
+        "finish_operation_sha256": "100eaa513acce00f5fcaf2033329641c2a8322577c74c08654fe5d8bd477c319",
+        "independent_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102202_20261022T222046743799.json",
+        "independent_report_sha256": "c7de17b84673e4e5ca1420abf8018f2f23805f5925eea86e0220a0b56c7e2e13",
+        "formal_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102202_20261022T224321901062.json",
+        "formal_report_sha256": "1fc670552378905d9e18d3bc04a60eeebe8113d79da191d4a047f72e03a6e93c"
+      }
+    },
+    {
+      "run_id": "nc26102203",
+      "scenario": "R2P900",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "seed": 23423,
+      "stages": {
+        "native_manifest": {
+          "start": "2026-10-22T22:50:45.853482+09:00",
+          "end": "2026-10-22T23:23:03.455050+09:00",
+          "wall_sec": 1937.601568,
+          "overlap_reported_low_power_sec": 0,
+          "wall_sec_excluding_reported_low_power": 1937.601568
+        },
+        "independent_launch_to_report": {
+          "start": "2026-10-22T23:25:50.000977+09:00",
+          "end": "2026-10-23T09:26:27.725568+09:00",
+          "wall_sec": 36037.724591,
+          "overlap_reported_low_power_sec": 32742.262287,
+          "wall_sec_excluding_reported_low_power": 3295.462303999997
+        },
+        "record_launch_to_record_timestamp": {
+          "start": "2026-10-23T09:26:29.427297+09:00",
+          "end": "2026-10-23T09:46:46.812523+09:00",
+          "wall_sec": 1217.385226,
+          "overlap_reported_low_power_sec": 0,
+          "wall_sec_excluding_reported_low_power": 1217.385226
+        }
+      },
+      "sum_stage_seconds_excluding_reported_power": 6450.449097999997,
+      "sum_stage_minutes": 107.50748496666662,
+      "provenance": {
+        "manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/runs/nc26102203/manifest.json",
+        "manifest_sha256": "1e69c8c543e00f3aecede745b202069fd2a03b7204bbb067d387dbeaa1e3f5b1",
+        "finish_operation": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102203.finish/operation.json",
+        "finish_operation_sha256": "a8dc21ed6ee56389d965f033d3c92bb089ca9ac763be045825dab3cdeced07e4",
+        "independent_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102203_20261023T092627725568.json",
+        "independent_report_sha256": "16596c20273494f360cd8b892acaf3977e26b92f8b17c820e5a4b471a2e2b68c",
+        "formal_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102203_20261023T094646729135.json",
+        "formal_report_sha256": "c7bd0795b82755ed26de474cb2b64045dd69e45d2bae03471cffd19f287b76ab"
+      }
+    }
+  ],
+  "remaining_cells_by_scenario": {
+    "R2P0": 20,
+    "R1": 19,
+    "R2P900": 19,
+    "R0": 9
+  },
+  "scenario_time_proxies": {
+    "R0": "R1",
+    "R1": "R1",
+    "R2P900": "R2P900",
+    "R2P0": "R2P900"
+  },
+  "weighted_proxy_core_hours_by_scenario": {
+    "R2P0": 35.835828322222206,
+    "R1": 18.837484223055558,
+    "R2P900": 34.044036906111096,
+    "R0": 8.923018842500001
+  },
+  "weighted_proxy_core_hours": 97.64036829388886,
+  "planning_final_goal_hours": {
+    "low": 110,
+    "high": 150,
+    "kind": "provisional planning judgment, not empirical confidence interval, guarantee, or lower/upper bound",
+    "includes": "remaining registered experiments, fresh validation and record, all70 aggregation/figure audits, numerical discussion, limitations/report/document reconciliation",
+    "conditions": "continuous awake operation; same-order workload in unmeasured settings; no new correctness/capacity stop",
+    "unmeasured": "R2P0/u50/facility_first/other seeds, actual all70 aggregation and integration runtime"
+  },
+  "limitations": [
+    "Only two complete recent helper cycles are calibrated at D0/u05/seed23423",
+    "R0 is proxied by R1; R2P0 by R2P900; actual future times may be outside planning range",
+    "Known low-power window is subtracted from stage timestamp intervals, not treated as total CPU time or proof of uninterrupted activity outside it",
+    "Current unaccepted running cell is counted as a full remaining cell; operator inter-stage pauses/startup/stop events are not part of calibrated stage sums",
+    "Initial and record validation timing differs although all seven result components match; no unmeasured causal speedup explanation",
+    "No direction interpretation or modification of research parameters, common5, analysis plan, exclusions or metrics"
+  ],
+  "source_bindings": {
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl": "05e239b2d0227ab3d2b782ce7426696fe5079b38d2c7d2925ca95c433e8e8663",
+    "06_研究結果/jdrt/goal_20261017/nc26102203_観測中断と同一処理再確認_20261023.json": "cbdbb46c8b95209963c2b28165cf3e0d589bbe6c0d26664a1b21340c2bc9ad15",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a"
+  }
+}

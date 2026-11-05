@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\R1_native_braking_20261021\extract_junction_window.py", line 94, in <module>
+    main(args.project_root, args.output)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\R1_native_braking_20261021\extract_junction_window.py", line 32, in main
+    raise ValueError('Ambiguous downstream edge: inspect the original route before expansion')
+ValueError: Ambiguous downstream edge: inspect the original route before expansion

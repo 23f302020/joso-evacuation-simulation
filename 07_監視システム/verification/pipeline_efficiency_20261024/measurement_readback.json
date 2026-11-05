@@ -1,0 +1,589 @@
+{
+  "observed_at": "2026-10-24T17:17:43.303420+09:00",
+  "state": {
+    "schema": "pipeline_measurement_v1",
+    "pid": 30896,
+    "status": "RUNNING",
+    "source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+    "started_at": "2026-10-24T17:14:22.028864+09:00",
+    "interval_sec": 60.0,
+    "planned_seconds": 86400.0,
+    "samples": 4,
+    "failures": 0,
+    "limitations": [
+      "CPU percent per process: 100=one logical CPU",
+      "Python/SUMO processes may belong to other work; phase is a command-name hint, not research ownership proof",
+      "Sampled memory maxima are lower bounds, not exact peaks",
+      "No temperature sensor or user responsiveness measurement",
+      "Missing/failed observations are not zero; long gaps may include sleep"
+    ],
+    "last_observed_at": "2026-10-24T17:17:22.032001+09:00"
+  },
+  "source_matches": true,
+  "phase_durations": {
+    "execute": {
+      "count": 8,
+      "median_minutes": 14.760595565833501,
+      "min_minutes": 12.111923368333374,
+      "max_minutes": 32.670624226666405,
+      "scope": "existing core run IDs only; conditions and interruptions differ; not a controlled speed comparison"
+    },
+    "validate": {
+      "count": 8,
+      "median_minutes": 19.624114100000103,
+      "min_minutes": 16.8051446216666,
+      "max_minutes": 600.7013636316667,
+      "scope": "existing core run IDs only; conditions and interruptions differ; not a controlled speed comparison"
+    },
+    "record": {
+      "count": 7,
+      "median_minutes": 20.29187651166673,
+      "min_minutes": 16.481707626666562,
+      "max_minutes": 22.809469861667214,
+      "scope": "existing core run IDs only; conditions and interruptions differ; not a controlled speed comparison"
+    }
+  },
+  "latest_samples": [
+    {
+      "observed_at": "2026-10-24T17:15:22.030997+09:00",
+      "query_cpu_sec": 0.578125,
+      "logical_processors": 16,
+      "cpu_percent": 21,
+      "available_mib": 560,
+      "pages_input_sec": 2030,
+      "pages_output_sec": 0,
+      "disk_bytes_sec": 293522,
+      "disk_queue": 0,
+      "processes": [
+        {
+          "pid": 11104,
+          "created": "2026-10-23T23:26:26.1562910Z",
+          "name": "pythonw.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.015625,
+          "working_bytes": 24576,
+          "private_bytes": 1105920,
+          "read_bytes": 381,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 16536,
+          "created": "2026-10-23T23:26:26.1793290Z",
+          "name": "pythonw.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 1399.359375,
+          "working_bytes": 14102528,
+          "private_bytes": 19312640,
+          "read_bytes": 4943403131,
+          "write_bytes": 335358680,
+          "cpu_percent_one_core": 28.0666521035761
+        },
+        {
+          "pid": 23268,
+          "created": "2026-10-24T08:04:12.1235800Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0,
+          "working_bytes": 4452352,
+          "private_bytes": 880640,
+          "read_bytes": 3148,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 35396,
+          "created": "2026-10-24T08:04:12.1452670Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.109375,
+          "working_bytes": 11251712,
+          "private_bytes": 10076160,
+          "read_bytes": 1431810,
+          "write_bytes": 3835,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 2124,
+          "created": "2026-10-24T08:04:12.3148240Z",
+          "name": "python.exe",
+          "phase": "record",
+          "run_id": "nc26102401",
+          "cpu_sec": 0.03125,
+          "working_bytes": 4464640,
+          "private_bytes": 884736,
+          "read_bytes": 381,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 516,
+          "created": "2026-10-24T08:04:12.3548190Z",
+          "name": "python.exe",
+          "phase": "record",
+          "run_id": "nc26102401",
+          "cpu_sec": 655.859375,
+          "working_bytes": 62791680,
+          "private_bytes": 1252741120,
+          "read_bytes": 2459265654,
+          "write_bytes": 462,
+          "cpu_percent_one_core": 99.7003354555755
+        },
+        {
+          "pid": 29244,
+          "created": "2026-10-24T08:14:21.4501960Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0,
+          "working_bytes": 4669440,
+          "private_bytes": 892928,
+          "read_bytes": 3148,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 30896,
+          "created": "2026-10-24T08:14:21.7153050Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.203125,
+          "working_bytes": 21917696,
+          "private_bytes": 12791808,
+          "read_bytes": 8929843,
+          "write_bytes": 19986,
+          "cpu_percent_one_core": 0.02963743622341721
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "nc26102201",
+          "status": "COMPLETED",
+          "pid": 27924,
+          "started_at_jst": "2026-10-22T15:43:12.508283+09:00",
+          "finished_at_jst": "2026-10-22T15:55:04.713705+09:00"
+        },
+        {
+          "run_id": "nc26102202",
+          "status": "COMPLETED",
+          "pid": 32248,
+          "started_at_jst": "2026-10-22T21:40:58.618213+09:00",
+          "finished_at_jst": "2026-10-22T21:55:58.145840+09:00"
+        },
+        {
+          "run_id": "nc26102203",
+          "status": "COMPLETED",
+          "pid": 2924,
+          "started_at_jst": "2026-10-22T22:50:45.853482+09:00",
+          "finished_at_jst": "2026-10-22T23:23:03.455050+09:00"
+        },
+        {
+          "run_id": "nc26102301",
+          "status": "COMPLETED",
+          "pid": 13348,
+          "started_at_jst": "2026-10-23T09:52:27.180665+09:00",
+          "finished_at_jst": "2026-10-23T10:08:05.929645+09:00"
+        },
+        {
+          "run_id": "nc26102302",
+          "status": "COMPLETED",
+          "pid": 33640,
+          "started_at_jst": "2026-10-23T10:50:48.863685+09:00",
+          "finished_at_jst": "2026-10-23T11:04:34.708208+09:00"
+        },
+        {
+          "run_id": "nc26102303",
+          "status": "COMPLETED",
+          "pid": 10432,
+          "started_at_jst": "2026-10-23T11:46:48.156237+09:00",
+          "finished_at_jst": "2026-10-23T12:00:28.975458+09:00"
+        },
+        {
+          "run_id": "nc26102304",
+          "status": "COMPLETED",
+          "pid": 12392,
+          "started_at_jst": "2026-10-23T18:03:08.128251+09:00",
+          "finished_at_jst": "2026-10-23T18:17:21.781293+09:00"
+        },
+        {
+          "run_id": "nc26102401",
+          "status": "COMPLETED",
+          "pid": 33444,
+          "started_at_jst": "2026-10-24T08:03:30.116684+09:00",
+          "finished_at_jst": "2026-10-24T08:18:07.338732+09:00"
+        }
+      ],
+      "collection_wall_sec": 1.8213965999893844,
+      "collector_python_cpu_sec": 0.03125
+    },
+    {
+      "observed_at": "2026-10-24T17:16:22.031416+09:00",
+      "query_cpu_sec": 0.59375,
+      "logical_processors": 16,
+      "cpu_percent": 18,
+      "available_mib": 570,
+      "pages_input_sec": 60,
+      "pages_output_sec": 0,
+      "disk_bytes_sec": 94030,
+      "disk_queue": 0,
+      "processes": [
+        {
+          "pid": 11104,
+          "created": "2026-10-23T23:26:26.1562910Z",
+          "name": "pythonw.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.015625,
+          "working_bytes": 28672,
+          "private_bytes": 1105920,
+          "read_bytes": 381,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 16536,
+          "created": "2026-10-23T23:26:26.1793290Z",
+          "name": "pythonw.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 1415.484375,
+          "working_bytes": 13651968,
+          "private_bytes": 18935808,
+          "read_bytes": 5016789743,
+          "write_bytes": 339379766,
+          "cpu_percent_one_core": 26.930975403984625
+        },
+        {
+          "pid": 23268,
+          "created": "2026-10-24T08:04:12.1235800Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0,
+          "working_bytes": 4452352,
+          "private_bytes": 880640,
+          "read_bytes": 3148,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 35396,
+          "created": "2026-10-24T08:04:12.1452670Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.109375,
+          "working_bytes": 11251712,
+          "private_bytes": 10076160,
+          "read_bytes": 1431810,
+          "write_bytes": 3835,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 2124,
+          "created": "2026-10-24T08:04:12.3148240Z",
+          "name": "python.exe",
+          "phase": "record",
+          "run_id": "nc26102401",
+          "cpu_sec": 0.03125,
+          "working_bytes": 4464640,
+          "private_bytes": 884736,
+          "read_bytes": 381,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 516,
+          "created": "2026-10-24T08:04:12.3548190Z",
+          "name": "python.exe",
+          "phase": "record",
+          "run_id": "nc26102401",
+          "cpu_sec": 715.234375,
+          "working_bytes": 61521920,
+          "private_bytes": 1253015552,
+          "read_bytes": 2478533238,
+          "write_bytes": 462,
+          "cpu_percent_one_core": 99.16444431699766
+        },
+        {
+          "pid": 29244,
+          "created": "2026-10-24T08:14:21.4501960Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0,
+          "working_bytes": 4669440,
+          "private_bytes": 892928,
+          "read_bytes": 3148,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 30896,
+          "created": "2026-10-24T08:14:21.7153050Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.234375,
+          "working_bytes": 21917696,
+          "private_bytes": 12791808,
+          "read_bytes": 9248407,
+          "write_bytes": 24650,
+          "cpu_percent_one_core": 0.05219181279841982
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "nc26102201",
+          "status": "COMPLETED",
+          "pid": 27924,
+          "started_at_jst": "2026-10-22T15:43:12.508283+09:00",
+          "finished_at_jst": "2026-10-22T15:55:04.713705+09:00"
+        },
+        {
+          "run_id": "nc26102202",
+          "status": "COMPLETED",
+          "pid": 32248,
+          "started_at_jst": "2026-10-22T21:40:58.618213+09:00",
+          "finished_at_jst": "2026-10-22T21:55:58.145840+09:00"
+        },
+        {
+          "run_id": "nc26102203",
+          "status": "COMPLETED",
+          "pid": 2924,
+          "started_at_jst": "2026-10-22T22:50:45.853482+09:00",
+          "finished_at_jst": "2026-10-22T23:23:03.455050+09:00"
+        },
+        {
+          "run_id": "nc26102301",
+          "status": "COMPLETED",
+          "pid": 13348,
+          "started_at_jst": "2026-10-23T09:52:27.180665+09:00",
+          "finished_at_jst": "2026-10-23T10:08:05.929645+09:00"
+        },
+        {
+          "run_id": "nc26102302",
+          "status": "COMPLETED",
+          "pid": 33640,
+          "started_at_jst": "2026-10-23T10:50:48.863685+09:00",
+          "finished_at_jst": "2026-10-23T11:04:34.708208+09:00"
+        },
+        {
+          "run_id": "nc26102303",
+          "status": "COMPLETED",
+          "pid": 10432,
+          "started_at_jst": "2026-10-23T11:46:48.156237+09:00",
+          "finished_at_jst": "2026-10-23T12:00:28.975458+09:00"
+        },
+        {
+          "run_id": "nc26102304",
+          "status": "COMPLETED",
+          "pid": 12392,
+          "started_at_jst": "2026-10-23T18:03:08.128251+09:00",
+          "finished_at_jst": "2026-10-23T18:17:21.781293+09:00"
+        },
+        {
+          "run_id": "nc26102401",
+          "status": "COMPLETED",
+          "pid": 33444,
+          "started_at_jst": "2026-10-24T08:03:30.116684+09:00",
+          "finished_at_jst": "2026-10-24T08:18:07.338732+09:00"
+        }
+      ],
+      "collection_wall_sec": 1.696260099997744,
+      "collector_python_cpu_sec": 0.03125
+    },
+    {
+      "observed_at": "2026-10-24T17:17:22.032001+09:00",
+      "query_cpu_sec": 0.75,
+      "logical_processors": 16,
+      "cpu_percent": 37,
+      "available_mib": 578,
+      "pages_input_sec": 1362,
+      "pages_output_sec": 0,
+      "disk_bytes_sec": 34601931,
+      "disk_queue": 0,
+      "processes": [
+        {
+          "pid": 11104,
+          "created": "2026-10-23T23:26:26.1562910Z",
+          "name": "pythonw.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.015625,
+          "working_bytes": 28672,
+          "private_bytes": 1105920,
+          "read_bytes": 381,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 16536,
+          "created": "2026-10-23T23:26:26.1793290Z",
+          "name": "pythonw.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 1430.921875,
+          "working_bytes": 13860864,
+          "private_bytes": 19152896,
+          "read_bytes": 5085521143,
+          "write_bytes": 344205074,
+          "cpu_percent_one_core": 25.675142230548104
+        },
+        {
+          "pid": 23268,
+          "created": "2026-10-24T08:04:12.1235800Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0,
+          "working_bytes": 4431872,
+          "private_bytes": 880640,
+          "read_bytes": 3148,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 35396,
+          "created": "2026-10-24T08:04:12.1452670Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.109375,
+          "working_bytes": 11190272,
+          "private_bytes": 10076160,
+          "read_bytes": 1431810,
+          "write_bytes": 3835,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 2124,
+          "created": "2026-10-24T08:04:12.3148240Z",
+          "name": "python.exe",
+          "phase": "record",
+          "run_id": "nc26102401",
+          "cpu_sec": 0.03125,
+          "working_bytes": 4435968,
+          "private_bytes": 884736,
+          "read_bytes": 381,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 516,
+          "created": "2026-10-24T08:04:12.3548190Z",
+          "name": "python.exe",
+          "phase": "record",
+          "run_id": "nc26102401",
+          "cpu_sec": 774.78125,
+          "working_bytes": 58204160,
+          "private_bytes": 1253289984,
+          "read_bytes": 2498325110,
+          "write_bytes": 462,
+          "cpu_percent_one_core": 99.03640388726602
+        },
+        {
+          "pid": 29244,
+          "created": "2026-10-24T08:14:21.4501960Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0,
+          "working_bytes": 4456448,
+          "private_bytes": 892928,
+          "read_bytes": 3148,
+          "write_bytes": 0,
+          "cpu_percent_one_core": 0.0
+        },
+        {
+          "pid": 30896,
+          "created": "2026-10-24T08:14:21.7153050Z",
+          "name": "python.exe",
+          "phase": "unattributed",
+          "run_id": null,
+          "cpu_sec": 0.265625,
+          "working_bytes": 17461248,
+          "private_bytes": 12791808,
+          "read_bytes": 9566967,
+          "write_bytes": 29312,
+          "cpu_percent_one_core": 0.0519739721266156
+        }
+      ],
+      "runs": [
+        {
+          "run_id": "nc26102201",
+          "status": "COMPLETED",
+          "pid": 27924,
+          "started_at_jst": "2026-10-22T15:43:12.508283+09:00",
+          "finished_at_jst": "2026-10-22T15:55:04.713705+09:00"
+        },
+        {
+          "run_id": "nc26102202",
+          "status": "COMPLETED",
+          "pid": 32248,
+          "started_at_jst": "2026-10-22T21:40:58.618213+09:00",
+          "finished_at_jst": "2026-10-22T21:55:58.145840+09:00"
+        },
+        {
+          "run_id": "nc26102203",
+          "status": "COMPLETED",
+          "pid": 2924,
+          "started_at_jst": "2026-10-22T22:50:45.853482+09:00",
+          "finished_at_jst": "2026-10-22T23:23:03.455050+09:00"
+        },
+        {
+          "run_id": "nc26102301",
+          "status": "COMPLETED",
+          "pid": 13348,
+          "started_at_jst": "2026-10-23T09:52:27.180665+09:00",
+          "finished_at_jst": "2026-10-23T10:08:05.929645+09:00"
+        },
+        {
+          "run_id": "nc26102302",
+          "status": "COMPLETED",
+          "pid": 33640,
+          "started_at_jst": "2026-10-23T10:50:48.863685+09:00",
+          "finished_at_jst": "2026-10-23T11:04:34.708208+09:00"
+        },
+        {
+          "run_id": "nc26102303",
+          "status": "COMPLETED",
+          "pid": 10432,
+          "started_at_jst": "2026-10-23T11:46:48.156237+09:00",
+          "finished_at_jst": "2026-10-23T12:00:28.975458+09:00"
+        },
+        {
+          "run_id": "nc26102304",
+          "status": "COMPLETED",
+          "pid": 12392,
+          "started_at_jst": "2026-10-23T18:03:08.128251+09:00",
+          "finished_at_jst": "2026-10-23T18:17:21.781293+09:00"
+        },
+        {
+          "run_id": "nc26102401",
+          "status": "COMPLETED",
+          "pid": 33444,
+          "started_at_jst": "2026-10-24T08:03:30.116684+09:00",
+          "finished_at_jst": "2026-10-24T08:18:07.338732+09:00"
+        }
+      ],
+      "collection_wall_sec": 1.8219288000254892,
+      "collector_python_cpu_sec": 0.015625
+    }
+  ],
+  "review": {
+    "scope": "New read-only collector, timing extraction and six artificial tests; no running research or monitor source modified",
+    "findings": [],
+    "limitations": [
+      "Initial collection 9.10s exceeded provisional 6s screen; following observed collections about 1.7-1.8s; retain initial sample, investigate sustained overhead before claims",
+      "Query and Python CPU exclude CIM provider service CPU; low overhead is not established by these counters alone",
+      "No full-cycle coverage yet; no speedup or parallel capacity claim",
+      "No actual core, record or recovery launched by this task"
+    ]
+  }
+}

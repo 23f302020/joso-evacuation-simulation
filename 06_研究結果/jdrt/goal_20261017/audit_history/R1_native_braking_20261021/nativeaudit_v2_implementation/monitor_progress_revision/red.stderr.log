@@ -1,0 +1,112 @@
+EEEEEEE.EEE...E...
+======================================================================
+ERROR: test_forged_progress_and_failed_receipt_fail_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_forged_progress_and_failed_receipt_fail_closed) (field='completed_cases', value=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 111, in test_forged_progress_and_failed_receipt_fail_closed
+    monitor.reported_children(self.parent, suite, {**progress, field: value}, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_forged_progress_and_failed_receipt_fail_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_forged_progress_and_failed_receipt_fail_closed) (field='completed_cases', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 111, in test_forged_progress_and_failed_receipt_fail_closed
+    monitor.reported_children(self.parent, suite, {**progress, field: value}, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_forged_progress_and_failed_receipt_fail_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_forged_progress_and_failed_receipt_fail_closed) (field='last_case', value='repeated')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 111, in test_forged_progress_and_failed_receipt_fail_closed
+    monitor.reported_children(self.parent, suite, {**progress, field: value}, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_forged_progress_and_failed_receipt_fail_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_forged_progress_and_failed_receipt_fail_closed) (field='child_run_id', value='suite_c02')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 111, in test_forged_progress_and_failed_receipt_fail_closed
+    monitor.reported_children(self.parent, suite, {**progress, field: value}, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_forged_progress_and_failed_receipt_fail_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_forged_progress_and_failed_receipt_fail_closed) (field='last_status', value='FAILED')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 111, in test_forged_progress_and_failed_receipt_fail_closed
+    monitor.reported_children(self.parent, suite, {**progress, field: value}, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_forged_progress_and_failed_receipt_fail_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_forged_progress_and_failed_receipt_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 117, in test_forged_progress_and_failed_receipt_fail_closed
+    monitor.reported_children(self.parent, suite, progress, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_live_completed_primary_receipt_counts_before_parent_flush (test_choice_technical_monitor.TechnicalMonitorTests.test_live_completed_primary_receipt_counts_before_parent_flush)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 68, in test_live_completed_primary_receipt_counts_before_parent_flush
+    reported = monitor.reported_children(self.parent, suite, progress, children)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_modified_manifest_or_output_fails_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_modified_manifest_or_output_fails_closed) (corrupt='manifest')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 100, in test_modified_manifest_or_output_fails_closed
+    monitor.reported_children(self.parent, suite, progress, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_modified_manifest_or_output_fails_closed (test_choice_technical_monitor.TechnicalMonitorTests.test_modified_manifest_or_output_fails_closed) (corrupt='output')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 87, in test_modified_manifest_or_output_fails_closed
+    suite, progress, children = self.live_evidence()
+                                ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 51, in live_evidence
+    first = self.child(1)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 26, in child
+    (path / 'execution').mkdir(parents=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 722, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileExistsError: [WinError 183] 既に存在するファイルを作成することはできません。: 'C:\\Users\\Ko_rr\\AppData\\Local\\Temp\\tmpd0s2wium\\suite_c01\\execution'
+
+======================================================================
+ERROR: test_multiple_unreported_children_remain_visible (test_choice_technical_monitor.TechnicalMonitorTests.test_multiple_unreported_children_remain_visible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 75, in test_multiple_unreported_children_remain_visible
+    reported = monitor.reported_children(self.parent, suite, progress, children)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+======================================================================
+ERROR: test_progress_cannot_supply_missing_primary_receipt (test_choice_technical_monitor.TechnicalMonitorTests.test_progress_cannot_supply_missing_primary_receipt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\tests\test_choice_technical_monitor.py", line 82, in test_progress_cannot_supply_missing_primary_receipt
+    monitor.reported_children(self.parent, suite, progress, children)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_technical_monitor' has no attribute 'reported_children'
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.243s
+
+FAILED (errors=11)

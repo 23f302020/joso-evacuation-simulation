@@ -1,0 +1,41 @@
+{
+  "at_jst": "2026-10-28T23:41:04.874748+09:00",
+  "scope": "new native controller boundary mutations only, not full suite/READY",
+  "counterexamples": [
+    {
+      "case": "past_route_prefix_restored",
+      "expected": "closed_history_excluded_from_new_route",
+      "pass": true,
+      "failed_checks": [
+        "closed_history_excluded_from_new_route"
+      ]
+    },
+    {
+      "case": "source_route_index_corrupted",
+      "expected": "closed_history_excluded_from_new_route",
+      "pass": true,
+      "failed_checks": [
+        "closed_history_excluded_from_new_route"
+      ]
+    },
+    {
+      "case": "reentry_distance_jump",
+      "expected": "next_native_step_preserves_source_and_distance",
+      "pass": true,
+      "failed_checks": [
+        "next_native_step_preserves_source_and_distance"
+      ]
+    },
+    {
+      "case": "reentry_source_corrupted",
+      "expected": "next_native_step_preserves_source_and_distance",
+      "pass": true,
+      "failed_checks": [
+        "next_native_step_preserves_source_and_distance"
+      ]
+    }
+  ],
+  "primary_bytes_unchanged": true,
+  "primary_files_rechecked": 39,
+  "auditor_sha256": "79a32c52304e3c9e499be2f754ed3296d6c186757a8da59374ebde725e1e3ded"
+}

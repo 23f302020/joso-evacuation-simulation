@@ -1,0 +1,93 @@
+{
+  "at_jst": "2026-10-29T11:25:23.353356+09:00",
+  "status": "SELECTED_PAIR_CONFIRMED_PENDING_NATIVE_GUARDS",
+  "state": "06_研究結果/jdrt/goal_20261017/nc261029r_native_pair/state.json",
+  "state_sha256": "ffc7a942b35d52f50ba70b43b47235c54e55860adebfbca24c58ffd1097b059b",
+  "bound_files_checked": 13682,
+  "bound_mismatches": 0,
+  "strict_reports": {
+    "nc261029r_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_nc261029r_c25_20261029T111319306787.json",
+      "validation_report_sha256": "3c7840190f1b07a4fbd8b10e028d35e5488e3ff338ec0bcd01505a6668859b98"
+    },
+    "np261029r_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_np261029r_c25_20261029T111744500543.json",
+      "validation_report_sha256": "9ab920e7ef9cc1d80b4f48a65ef5db9161b689eebed2552d60825912e3f8f923"
+    },
+    "np261029r_c26": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_np261029r_c26_20261029T111948249267.json",
+      "validation_report_sha256": "49825aefbfef25b23849f5a3f3f7572b86a32fbb05e125bc0809c2bc1247a976"
+    }
+  },
+  "paired_inputs_readback": [
+    {
+      "case": "walk_short_calibration",
+      "canonical_network_sha256": "3eb4e92be972077e59c306105d9f1ddbbd77befa1d22a2e010251633e24128db",
+      "same_nonmetadata_input_sha256": {
+        "hazard.csv": "b134adb4bc1e8e89fd5ffd50f93d929c12884aec67cfcd8a81aa1616fda3890b",
+        "terminals.csv": "6fd25f49d3b6234ea2151a5221b074e3ea4f58012b24ee97df47aded66047a76",
+        "nodes.xml": "1ccfc951f8f70e403e6e9f3ac9d5258d8efbeea63dc1b45c2b86c061e082da82",
+        "place_positions.csv": "3673142f25cac88c2d5c5b5ad6783d1e18c198276c83a5f846d9855d4cf38c7e",
+        "edges.xml": "1fa1c0c1cc8ce046e7b16d330be88f8cde420cf90767b73439be5f1e44d21380",
+        "fixture_parameters.json": "6878ff3b5dbb643f122340a999d8676a0c00b43732a15f6fc44a6a97e073451e",
+        "destinations_fixed_reference.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "graphs.json": "7d352dc83c1775ae579bae70a4cae1a2221de0aa0a7d7c07b59ee3412702c28d",
+        "people.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b",
+        "origins.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "common_realization_seed23423.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b"
+      }
+    },
+    {
+      "case": "walk_short_repeated",
+      "canonical_network_sha256": "3eb4e92be972077e59c306105d9f1ddbbd77befa1d22a2e010251633e24128db",
+      "same_nonmetadata_input_sha256": {
+        "hazard.csv": "53975ff801b9727c93fc241fec9c1318e07d7601e610aae43de2b4357ef2818e",
+        "terminals.csv": "6fd25f49d3b6234ea2151a5221b074e3ea4f58012b24ee97df47aded66047a76",
+        "nodes.xml": "1ccfc951f8f70e403e6e9f3ac9d5258d8efbeea63dc1b45c2b86c061e082da82",
+        "place_positions.csv": "3673142f25cac88c2d5c5b5ad6783d1e18c198276c83a5f846d9855d4cf38c7e",
+        "edges.xml": "1fa1c0c1cc8ce046e7b16d330be88f8cde420cf90767b73439be5f1e44d21380",
+        "fixture_parameters.json": "429dfddf46285e243f5cd29cfbca8bc3cd3153e1dddbe06ab9a7efd4dbe739ca",
+        "destinations_fixed_reference.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "graphs.json": "7d352dc83c1775ae579bae70a4cae1a2221de0aa0a7d7c07b59ee3412702c28d",
+        "people.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b",
+        "origins.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "common_realization_seed23423.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b"
+      }
+    }
+  ],
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "live_start_permission": false,
+  "reader_sha256": "e5b8b2ae3a79c057b2a3444776775bb6bd602cfa5c83c3c8ccc834ef62f55f5b",
+  "limitation": "Saved primary/readback only; caller checks original process exit. No broad native guards/full suite/smokes/READY or study conclusion."
+}

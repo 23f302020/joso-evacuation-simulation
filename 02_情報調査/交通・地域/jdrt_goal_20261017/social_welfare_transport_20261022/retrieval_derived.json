@@ -1,0 +1,94 @@
+{
+  "search_objective": "2015年常総市水害の初動旅客輸送fleet/driver/operational-window結合原本を探す",
+  "query": "常総市 社会福祉協議会 平成27年度 事業報告 移送 車両 水害",
+  "search": {
+    "success": true,
+    "data": {
+      "web": [
+        {
+          "url": "https://www.joso-shakyo.jp/page/page000059.html",
+          "title": "公開情報 | 常総市社会福祉協議会公式ホームページ",
+          "description": "公開情報 · 定款・規程・役員等 · 事業計画書・事業報告書・予算書・決算書・現況報告書 · 問い合わせ先 · アンケート.",
+          "position": 1
+        },
+        {
+          "url": "https://www.bousai.go.jp/taisaku/hisaisyagyousei/case/pdf/r7_ibaraki0127_3.pdf",
+          "title": "[PDF] 常総市社会福祉協議会における 被災世帯支援の取り組み",
+          "description": "荷物の移動. 床板はがし. ゴミ回収プロジェクト. 移送支援. 常総市水害対応. NPO連絡会議. ※特化した活動最大約80団体. 重機ボラ. 避難所支援. 物資配布.",
+          "position": 2
+        },
+        {
+          "url": "https://dil-opac.bosai.go.jp/publication/nied_natural_disaster/pdf/51/51-11.pdf",
+          "title": "[PDF] 常総市災害ボランティアセンターにおける本部機能の空間配置について",
+          "description": "... 常総市で. 甚大な被害が生じた．常総市社会福祉協議会が「常総市災害ボランティアセンター」を 9 月 13 日に開設. し，被災地でのボランティア活動の ...",
+          "position": 3
+        },
+        {
+          "url": "https://www.hannanshi-shakyo.jp/slug_info/slug_relief/363/",
+          "title": "常総市災害ボランティアセンター運営支援の報告 - 阪南市社会福祉協議会",
+          "description": "9月18日から23日までの約1週間、本会職員が鬼怒川の決壊で被災した常総市の災害ボランティアセンターの運営支援に行ってきました。 常総市は人口約6万 ...",
+          "position": 4
+        }
+      ],
+      "tools": []
+    },
+    "id": "01a1622a-c7c4-77b8-9e0d-80bd5e08fcef",
+    "creditsUsed": 2,
+    "agent_hints": [
+      "All 4 web results are excerpts only (#1 \"https://www.joso-shakyo.jp/page/page000059.html\", #2 \"https://www.bousai.go.jp/taisaku/hisaisyagyousei/case/pdf/r7_ibaraki0127_3.pdf\", #3 \"https://dil-opac.bosai.go.jp/publication/nied_natural_disaster/pdf/51/51-11.pdf\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+    ]
+  },
+  "preliminary_errors": [
+    {
+      "count": 2,
+      "error_code": "INVALID_ARGUMENT",
+      "reason": "objective required; corrected before successful search; no provider result used from errors"
+    }
+  ],
+  "feedback_sent": false,
+  "feedback_reason": "User prohibits external evaluation/feedback submission; no feedback, contact form or questionnaire sent",
+  "scrapes": [
+    {
+      "url": "https://www.joso-shakyo.jp/page/page000059.html",
+      "metadata": {
+        "keywords": "",
+        "language": "ja",
+        "viewport": "width=1100",
+        "title": "公開情報 | 常総市社会福祉協議会公式ホームページ",
+        "favicon": "https://www.joso-shakyo.jp/favicon.ico",
+        "scrapeId": "01a1622b-1521-716b-a8e6-c7083997d2f8",
+        "sourceURL": "https://www.joso-shakyo.jp/page/page000059.html",
+        "url": "https://www.joso-shakyo.jp/page/page000059.html",
+        "statusCode": 200,
+        "contentType": "text/html",
+        "timezone": "America/New_York",
+        "proxyUsed": "basic",
+        "cacheState": "miss",
+        "indexId": "067ab128-cb91-47ed-9bdc-a71c242aefbb",
+        "creditsUsed": 1,
+        "concurrencyLimited": false
+      },
+      "derived_markdown": "1. [ホーム](https://www.joso-shakyo.jp/) >\n2. [社協とは](https://www.joso-shakyo.jp/page/dir000002.html) >\n3. 公開情報\n\n## 社協とは\n\n# 公開情報\n\n## 定款・規程・役員等\n\n- [定款（R7.4.30施行）](https://www.joso-shakyo.jp/data/doc/1754350947_doc_11_0.pdf) \\[PDF形式／353.54KB\\]\n- [規程第26号　役員の報酬に関する規程（R5.6.21施行）](https://www.joso-shakyo.jp/data/doc/1719902361_doc_20_0.pdf) \\[PDF形式／129.29KB\\]\n- [評議員名簿](https://www.joso-shakyo.jp/data/doc/1754040496_doc_20_0.pdf) \\[PDF形式／165.86KB\\]\n\n## 事業計画書・事業報告書・予算書・決算書・現況報告書\n\n#### 令和6年度\n\n- [令和6年度予算書](https://www.joso-shakyo.jp/data/doc/1733731889_doc_11_0.pdf) \\[PDF形式／1.03MB\\]\n- [令和6年度事業計画](https://www.joso-shakyo.jp/data/doc/1733723388_doc_11_0.pdf) \\[PDF形式／580.2KB\\]\n- [令和6年度現況報告書](https://www.joso-shakyo.jp/data/doc/1733724580_doc_11_0.pdf) \\[PDF形式／1.63MB\\]\n- [令和6年度事業報告書](https://www.joso-shakyo.jp/data/doc/1754038490_doc_20_0.pdf) \\[PDF形式／1.03MB\\]\n- [令和6年度決算書](https://www.joso-shakyo.jp/data/doc/1754038077_doc_20_0.pdf) \\[PDF形式／11.48MB\\]\n- [令和6年度附属明細書](https://www.joso-shakyo.jp/data/doc/1754038744_doc_20_0.pdf) \\[PDF形式／7.07MB\\]\n\n#### 令和5年度\n\n- [令和5年度予算書](https://www.joso-shakyo.jp/data/doc/1689301045_doc_11_0.pdf) \\[PDF形式／7.86MB\\]\n- [令和5年度事業計画書](https://www.joso-shakyo.jp/data/doc/1689301041_doc_11_0.pdf) \\[PDF形式／628.45KB\\]\n- [令和5年度現況報告書](https://www.joso-shakyo.jp/data/doc/1689301037_doc_11_0.pdf) \\[PDF形式／713.53KB\\]\n- [令和5年度事業報告書](https://www.joso-shakyo.jp/data/doc/1725521215_doc_20_0.pdf) \\[PDF形式／6.17MB\\]\n- [令和5年度決算書](https://www.joso-shakyo.jp/data/doc/1725521224_doc_20_0.pdf) \\[PDF形式／13.67MB\\]\n- [令和5年度附属明細書](https://www.joso-shakyo.jp/data/doc/1725522910_doc_20_0.pdf) \\[PDF形式／10.46MB\\]\n\n#### 令和4年度\n\n- [令和4年度予算書](https://www.joso-shakyo.jp/data/doc/1662357451_doc_11_0.pdf) \\[PDF形式／7.94MB\\]\n- [令和4年度事業計画書](https://www.joso-shakyo.jp/data/doc/1662357148_doc_11_0.pdf) \\[PDF形式／4.94MB\\]\n- [令和4年度現況報告書](https://www.joso-shakyo.jp/data/doc/1662357153_doc_11_0.pdf) \\[PDF形式／659.37KB\\]\n- [令和4年度事業報告書](https://www.joso-shakyo.jp/data/doc/1689301028_doc_11_0.pdf) \\[PDF形式／639.32KB\\]\n- [令和4年度決算書](https://www.joso-shakyo.jp/data/doc/1689301023_doc_11_0.pdf) \\[PDF形式／13.17MB\\]\n- [令和4年度付属明細書](https://www.joso-shakyo.jp/data/doc/1689301033_doc_11_0.pdf) \\[PDF形式／9.2MB\\]\n\n#### 令和3年度\n\n- [令和3年度予算書](https://www.joso-shakyo.jp/data/doc/1630300481_doc_11_0.pdf) \\[PDF形式／864.14KB\\]\n- [令和3年度事業計画書](https://www.joso-shakyo.jp/data/doc/1630300375_doc_11_0.pdf) \\[PDF形式／3.39MB\\]\n- [令和3年度現況報告書](https://www.joso-shakyo.jp/data/doc/1630283497_doc_11_0.pdf) \\[PDF形式／1.61MB\\]\n- [令和3年度事業報告](https://www.joso-shakyo.jp/data/doc/1662357170_doc_11_0.pdf) \\[PDF形式／5.56MB\\]\n- [令和3年度決算書](https://www.joso-shakyo.jp/data/doc/1677027220_doc_11_0.pdf) \\[PDF形式／12.04MB\\]\n- [令和3年度附属明細書](https://www.joso-shakyo.jp/data/doc/1662357162_doc_11_0.pdf) \\[PDF形式／8.98MB\\]\n\n#### 令和2年度\n\n- [令和2年度予算書](https://www.joso-shakyo.jp/data/doc/1612405557_doc_5_0.pdf) \\[PDF形式／8.37MB\\]\n- [令和2年度事業計画書](https://www.joso-shakyo.jp/data/doc/1612405549_doc_5_0.pdf) \\[PDF形式／3.01MB\\]\n- [令和2年度現況報告書](https://www.joso-shakyo.jp/data/doc/1610612460_doc_1_0.pdf) \\[PDF形式／708.36KB\\]\n- [令和2年度事業報告書](https://www.joso-shakyo.jp/data/doc/1630282598_doc_11_0.pdf) \\[PDF形式／5.79MB\\]\n- [令和2年度決算書](https://www.joso-shakyo.jp/data/doc/1630283859_doc_11_0.pdf) \\[PDF形式／1.38MB\\]\n- [令和2年度付属明細書](https://www.joso-shakyo.jp/data/doc/1630283981_doc_11_0.pdf) \\[PDF形式／9.04MB\\]\n\n#### 令和元年度、平成31年度\n\n- [平成31年度予算書](https://www.joso-shakyo.jp/data/doc/1610612452_doc_1_0.pdf) \\[PDF形式／9.87MB\\]\n- [平成31年度事業計画書](https://www.joso-shakyo.jp/data/doc/1610612422_doc_1_0.pdf) \\[PDF形式／2.36MB\\]\n- [平成31年度現況報告書](https://www.joso-shakyo.jp/data/doc/1610612456_doc_1_0.pdf) \\[PDF形式／692.51KB\\]\n- [令和元年度事業報告書](https://www.joso-shakyo.jp/data/doc/1610612436_doc_1_0.pdf) \\[PDF形式／4.71KB\\]\n- [令和元年度決算書](https://www.joso-shakyo.jp/data/doc/1612405563_doc_5_0.pdf) \\[PDF形式／4.09M7MB\\]\n- [令和元年度付属明細書](https://www.joso-shakyo.jp/data/doc/1612405569_doc_5_0.pdf) \\[PDF形式／3.37MB\\]\n\n#### 平成30年度\n\n- [平成30年度予算書](https://www.joso-shakyo.jp/data/doc/1610612445_doc_1_0.pdf) \\[PDF形式／4.26MB\\]\n- [平成30年度事業計画書](https://www.joso-shakyo.jp/data/doc/1610612418_doc_1_0.pdf) \\[PDF形式／4.04MB\\]\n- [平成30年度事業報告書](https://www.joso-shakyo.jp/data/doc/1610612431_doc_1_0.pdf) \\[PDF形式／4.67MB\\]\n\n#### 平成29年度\n\n- [平成29年度予算書](https://www.joso-shakyo.jp/data/doc/1610612440_doc_1_0.pdf) \\[PDF形式／113.75KB\\]\n- [平成29年度事業計画書](https://www.joso-shakyo.jp/data/doc/1610612413_doc_1_0.pdf) \\[PDF形式／337.25KB\\]\n- [平成29年度事業報告書](https://www.joso-shakyo.jp/data/doc/1610612426_doc_1_0.pdf) \\[PDF形式／690.49KB\\]\n\n",
+      "contact_or_presenter_redacted": true
+    },
+    {
+      "url": "https://www.bousai.go.jp/taisaku/hisaisyagyousei/case/pdf/r7_ibaraki0127_3.pdf",
+      "metadata": {
+        "scrapeId": "01a1622b-14cb-7729-96d0-a5e2b42a72b0",
+        "sourceURL": "https://www.bousai.go.jp/taisaku/hisaisyagyousei/case/pdf/r7_ibaraki0127_3.pdf",
+        "url": "https://www.bousai.go.jp/taisaku/hisaisyagyousei/case/pdf/r7_ibaraki0127_3.pdf",
+        "statusCode": 200,
+        "numPages": 14,
+        "totalPages": 14,
+        "contentType": "application/pdf",
+        "proxyUsed": "basic",
+        "cacheState": "miss",
+        "indexId": "4304c307-7d27-4f29-9b2f-0ba3284a98ac",
+        "creditsUsed": 14,
+        "concurrencyLimited": false
+      },
+      "derived_markdown": "令和7年1月27日 災害ケースマネジメントに関する地方教協団体及び関係民間団体向け説明会\n\n# 常総市社会福祉協議会における被災世帯支援の取り組み\n\n3\n\n常総市社会福祉協議会マスコットキャラクター「ふくしさん」\n\n社会福祉法人 常総市社会福祉協議会\n\n事務局次長［公表氏名は原PDF参照］\n\n---\n\n## 災害フェーズに応じた被災者支援\n\nH27\n9/10 9/13 11/16 H28 4/1 H29 3/31\n発災災害ボランティアセンター地域支えあいセンター通常事業支援各種相談支援・事業緊急期復旧期生活再建・復興期\n$$\n\\textcircled{1}\n$$\n$$\n\\textcircled{2}\n$$\n$$\n\\textcircled{3}\n$$\n\n通常事業支援各種相談支援·事業\n\n9/13 **「災害ボランティアセンター」を開設。**\nボランティア、NPOなどの災害支援団体や地域住民・団体等と連協・協働しながら、ボランティア活動による被災者支援活動を開始。\n\n10/初 声をあげられない世帯や自宅２階での在宅避難世帯の実態の把握のために、「**アウトリーチ型の**\n**ニーズ調査」を開始。**\n\n11/16 被災者一人ひとりに寄り添った生活支援活動や地域コミュニティづくり支援のために**「地域支えあ**\n**いセンター」に名称変更**し活動を開始。\n\nH28.4 「**被災世帯生活支援業務」を受託**（～H29.3）\n\nH29.4～通常事業による相談支援、各種サービス提供\n\n###### ①災害ボランティア活動による支援\n\n延べ活動人数\n\n３６，３５９人\n\n延べ活動件数\n\n５，５６４件\n\n###### ②被災世帯訪問活動\n\n延べ訪問件数\n\n１０，０８２件\n\n###### ③地域交流の場づくり支援\n\n**（サロン立ち上げ、運営支援）**\n２６会場 ２０７回\n\n---\n\n## 被災世帯の動向\n\n一次避難所 公的住宅最大３９か所 見なし仮設住宅 １１４世帯約６２００人 公営住宅（主に市外） ３０９人二次避難所被災世帯親戚・友人宅ホテル・旅館など床上浸水以上住居・民間賃貸\n４７世帯 ９４人約５３００世帯生活再建在宅避難\n\n自宅での避難生活（自宅の２階など）多数 ※再建のタイミングは様々\n\n〇課題の傾向\n\n家屋の片付けや一時的な住まいの確保など応急的な課題\n\n住宅再建や地域からの孤立、健康・福祉・経済問題など恒久的な生活に向けての課題\n\n---\n\n## 被災者（世帯）からの様々な課題・ニーズ\n\n家屋の片付けゴミの処理\n\n心身の不調不安・孤独、生きがい喪失\n\n## 地域から ゴミの処理 不安・孤独、生きがい喪失\n\n再建手続き罹災証明、各種制度\n\n地域からの孤立\n\n経済状況の悪化\n\n支援制度の情報不足\n\n住居の確保一時的な住まい\n\n家族間や福祉・健康問題\n\n日常生活の困難お風呂・買い物・洗濯など\n\n衛生問題カビ・消毒\n\n## 仕事の問題 お風呂・買い物・洗濯など カビ・消毒\n\n仕事の問題個人事業・農業\n\n##### 被災世帯ごとに異なる課題\n\n被災状況、世帯構成、経済状況などで生活再建の進捗や悩み・訴えは様々\n\n##### 生活再建・課題解決のためには・・・\n\n被災者一人ひとりの悩みや課題を把握し、必要な関係者と連携しながら、継続的に支援をしていくことが必要\n\n**＝災害ケースマネジメントの必要性**\n\n---\n\n## 多様な支援団体などと連携した支援活動\n\n#### ボランティア、NPO、地域住民との連携\n\n床下泥だし家屋の片づけ\n\n漂流物の片づけ\n\n災害 荷物の移動\n\n常総市水害対応\n\nＮＰＯ連絡会議\n\n### ボランティア\n\n※特化した活動 最大約８０団体\n\n床板はがし\n\n### センター（社協）\n\nゴミ回収プロジェクト\n\n避難所支援\n\n※誰もができる活動\n\n地域交流・サロン\n\n重機ボラ\n\n**その他**\n\n**地元各種団体**\n\n物資配布\n\n**支部社協、自治会**\n\n**地元ボラ、企業**\n**などﾟ**\n\n移送支援\n\n---\n\n## その他の連携活動ボランティア、NPOなどとの連携活動例①\n\n## ボランティア、NPOなどとの連携活動例① その他の連携活動\n\n活動内容 たすけあいセンター ソフト系ボラ、ＮＰＯ\n\n| 区分 | 活動内容 |\n| --- | --- |\n| JUNTOS(ジュントス) ※地元NPOが運営する被災者支援活動団体 | ・情報提供、物資支援 ・災害ボランティア（各種） ・送迎サービス（通院、買物など） ・みなし仮設への引越 ・コミュニティづくり など |\n| 災害支援ボランティア、NPO | ・技術ボランティア活動（床下・壁など） ・各種アドバイス ・重機ボランティア活動 ・避難所 傾聴・足湯・マッサージ ・炊き出し ・被災世帯訪問 ・子どもの遊び相手、イベント |\n| 地元ボランティアグループ | ・センター運営支援 ・避難所炊き出し ・支援物資仕分け、配布 |\n| 社協支部、自治区など地元住民 | ・センター運営、道案内 ・サロン活動（コミュニティづくり） ・地区の助けあい活動（片付、物資配布、安否確認、炊き出しなど） |\n\n会場\n\n---\n\n## 連携活動の一例ボランティア、NPOなどとの連携活動例②\n\n## ボランティア、NPOなどとの連携活動例② 連携活動の一例\n\n**ゴミ回収ﾌﾟﾛｼﾞｪｸﾄ**\n\n**わら回収ﾌﾟﾛｼﾞｪｸﾄ**\n\nゴミ回收プ ヴィ エ外わら回收プ ヴィ エ外田んぼクリープ プ ヴィ エ外\n\n**田んぼｸﾘｰﾝﾌﾟﾛｼﾞｪｸﾄ**\n\n**重機ボランティア**\n\nTAKMAR\n\n**床下の泥だし**\n\n建物内の防虫対策\n\n---\n\n## 官民連携による支援体制\n\n##### H27.9～ 常総市災害支援情報共有会議（６者会議）\n\n・被災者支援に関する幅広い協議の場\n\n行政県・市\n\n社協県・市\n\n**民間**\n**地元・外部**\n\n##### H28.3 被災世帯の生活再建支援等に関する協定締結\n\n官民連携の三者協定（常総市・市社協・NPOコモンズ）\n・生活再建支援の取り組みの連携、被災者情報の共有\n\nH28.4 市から被災世帯生活再建支援業務を受託（～H29.3）\n・罹災証明書の被災者データに要支援者情報を加えた被災者情報を共有\n\nH28.5～ 被災世帯生活相談業務情報交換会（市・社協・NPOコモンズ）\n・被災者世帯の支援状況、地域コミュニティづくりを共有\n\n---\n\n## 官民連携による見守り体制\n\n##### 常総市\n\n##### NPOコモンズ\n\n##### 三者協定\n\n・被災世帯支援サロン・交流会開催など\n\n・被災者情報共有\n\n・支援の連携\n\n被災世帯生活再建支援業務\n（委託）H28.4～H29.3\n\n###### 社会福祉協議会（地域支えあいセンター）\n\n①被災世帯訪問調査\n\n②災害ボランティア活動支援\n\n③地域交流サロンの開催\n\n④被災世帯生活再建支援業務\n\n###### 被災世帯生活相談業務情報交換会\n\n訪問調査結果及びそれぞれの支援情報の共有\n\n支援の方向性確認・検討\n\n・被災世帯\n\n〇継続した見守りが必要な世帯 ・被災地域\n\n・被災地域\n\n###### 〇整理できた課題\n\n###### 課題に応じた関係機関、専門職、市各課へつなぎ対応\n\n**〇既存の制度やサービスでは対応できない課題**\n**対応策について、市各課・社協・NPO・ボランティアや**\n**民間支援団体などと検討し支援**\n[Image: Image1]\n\n〇既存の制度やサービスでは対応できない課題 それぞれの支援情報の共有\n\n**〇継続した見守りが必要な世帯**\n**定期訪問の継続、区長や民生委員などと情報共有し見守り**\n\n---\n\n## 被災世帯生活再建支援業務\n\n###### 業務内容\n\n①被災世帯の訪問調査\n\n②要配慮世帯への定期訪問及び生活相談支援\n\n③地域コミュニティでの交流事業\n\n**訪問調査・定期訪問\n（アウトリーチ）**\n\n**被災世帯生活相談**\n**業務情報交換会\n（市・社協・NPO）**\n\n・被災者へ寄り添い、被災・生活\n\nの困りごとを包括的に傾聴\n\n**支 援**\n**モニタリング・評価**\n\n↓\n\n###### 対象世帯\n\n①全壊世帯\n\n**終結\n（他機関へつなぎ）**\n\n###### ※被災世帯多数のため優先順位を設定\n\n②公的住宅入居世帯（みなし仮設住宅） 70件\n\n③ひとり暮らし高齢者世帯（大規模半壊） 474件\n\n④高齢者のみ世帯（大規模半壊） 513件\n\n53件\n\n⑤その他支援が必要な世帯 443件\n（支えあいセンター支援中の世帯）\n\n###### ・被災世帯の情報共有、支援の方向性の確認・検討\n\n訪問結果から**「住居の再建状況」**や**「生活の困りごと」**を共有生活再建に向けた課題と支援の必要性を確認\n\n〇対応可能な課題課題に応じた関係機関、専門職、市各課へつなぎ対応\n\n〇既存の制度やサービスでは対応できない課題市各課・社協・NPO・ボランティアや民間支援団体などと検討し支援\n（被災地域交流サロン活動含む）\n\n〇継続した見守りが必要な世帯定期訪問の継続、区長や民生委員などと情報を共有し見守り\n\n①自力での生活再建可能\n\n②市各部署、関係支援機関、社協などの通常事業での支援\n\n③地域住民の協力での見守り継続（社協）\n\n**安心して**\n**自立した生活**\n\n---\n\n## 被災世帯訪問調査\n\n実施期間 H28年4月～H29年3月\n\n## 相談員の活動 実施期間 H28年4月～H29年3月\n\n対象世帯 約1,500世帯\n※被災世帯多数のため優先順位を設置\n\n訪問回数 延べ4,099回\n\n訪問者 生活支援相談員6名（公募）\n\n訪問方法 ２人１組で訪問\n\n※訪問スキルや支援制度などの研修\n\n※訪問計画、支援方針、他機関との連携など社協職員がマネジメント\n\n###### 対象世帯\n\n| ①全壊世帯 | 53件 |\n| --- | --- |\n| ②公的住宅入居世帯（みなし仮設住宅） | 70件 |\n| ③ひとり暮らし高齢者世帯（大規模半壊） | 474件 |\n| ④高齢者のみ世帯（大規模半壊） | 513件 |\n| ⑤その他支援が必要な世帯（支えあいセンター支援中の世帯）※みなし仮設住宅は市外に設置そのほかは多くが在宅で生活している世帯 | 443件 |\n\n###### 相談員の活動\n\n###### 訪問調査・調査票記録\n\n被災・生活の困りごとを包括的に傾聴信頼関係を構築し、孤立感を安心感へ…\n\n・住まいの再建に向けた相談・状況確認\n\n・日常生活上の困りごとの相談\n\n・被災者支援制度や各種情報提供\n\n・ボランティア活動による支援の必要性\n\n・見守りや話し相手など孤独・孤立の防止\n\n・孤立予防のため、地域交流サロンの案内\n\n###### 課題整理、支援の方向性検討\n\n・住まいの再建に関わる支援\n\n・日常生活の困りごとに関わる支援\n\n・各種支援、定期訪問の必要性 など\n\n**※元の生活に戻りたいけれど、先が見えない不安の声**\n**経済的、心身、移動手段、家族問題、地域からの孤立**\n→ **定期的な訪問（寄り添い）の必要性が高い**\n\n**※必要な支援が明確な場合、直接関係機関などへつなぐ**\n\n被災世帯生活相談業務情報交換会\n\n---\n\n## 被災世帯の課題整理・支援方向性確認\n\n訪問で聞き取りをした「住まいの再建状況」及び「生活の困りごと」について、被災世帯ごとに課題を整理し、今後の支援の方向性を確認した。\n\n【生活再建状況区分】\n\n住居再建の進行状況\n\n住居再建 住居再建方向性・時期 方向性・時期決定 決定生活課題 生活課題支援必要 支援不要住居再建 住居再建未定 未定生活課題 生活課題支援必要 支援不要\n\n【定期訪問区分】\n\n| 区分 | 訪問頻度 | 內容 |\n| --- | --- | --- |\n| A | 週1回 | 様々な課題を抱えており、定期的な傾聴や情報提供により課題の整理と支援を継続する必要がある |\n| B | 月2回 | 課題解決のために、定期的な訪問と関係機関との連携による支援が必要である |\n| C | 月1回 | 未解決である課題があるため、定期的な訪問による見守りが必要である |\n| D | 2月に1回 | 課題解決の見込だが、解決につながったか確認が必要である |\n| 終結 | 不要 | 生活支援相談員による関わりは不要である |\n\n---\n\n## 被災世帯支援を振り返って\n\n## 【被災世帯支援に必要と思ったこと】\n\n**アウトリーチにより声なき**\n**被災者の発見・状況把握**\n[Image: Image1] [Image: Image1]\n\n**孤立させないため「つながり**\n**続ける」伴走型の相談支援**\n[Image: Image2] [Image: Image2]\n\n**被災者一人ひとり、生活再建**\n**フェーズにあわせた支援**\n[Image: Image3] [Image: Image3]\n\n**多様な主体が連携しそれぞれの**\n**特性を活かした支援の開発・提供**\n[Image: Image4] [Image: Image4]\n\n## 【災害に強い地域にするための平時から必要な取り組み】\n\n**支援者の**\n**つながりづくり**\n\n**平時から**\n**協力・連携**\n\n**地域住民の**\n**つながりづくり**\n\n**災害に強い**\n**地域づくり**\n\n###### ⇒ 日頃からそれぞれのできることを把握し、災害時に連携しやすい関係性を構築\n\n---\n\nご清聴ありがとうございました。",
+      "contact_or_presenter_redacted": true
+    }
+  ]
+}

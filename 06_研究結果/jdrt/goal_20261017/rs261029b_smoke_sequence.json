@@ -1,0 +1,186 @@
+{
+  "protocol": "realtime_choice_v1",
+  "purpose": "technical_smoke_sequence",
+  "pid": 36796,
+  "status": "FAILED",
+  "started_at_jst": "2026-10-29T10:10:00.995657+09:00",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "audit_path": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T100253.json",
+  "audit_sha256": "244b2f164e561e93ca237002283a93b1413e062b85e8f0d25f0a56b83d412a39",
+  "runner_sha256": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920",
+  "research_adoption_permitted": false,
+  "completed": [
+    {
+      "run_id": "rs261029b_01",
+      "cell": {
+        "cell_id": "fixed_reference_r0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "cfadac054688fdbe925b06f79031b9696dec6a56273d3517682c8cf793efea94",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_01_20261029T101142302783.json",
+      "finished_at_jst": "2026-10-29T10:11:42.750833+09:00"
+    },
+    {
+      "run_id": "rs261029b_02",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "94951299148c41b2d6d29a7785a3df3b0133a8582a135cee25661c84eaabe43a",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_02_20261029T101333036059.json",
+      "finished_at_jst": "2026-10-29T10:13:33.435406+09:00"
+    },
+    {
+      "run_id": "rs261029b_03",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "e086ccd5ee77f857cc92d060e1c324903bdf650e9b63aa5ac21240b2947a261f",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_03_20261029T101508653266.json",
+      "finished_at_jst": "2026-10-29T10:15:09.092124+09:00"
+    },
+    {
+      "run_id": "rs261029b_04",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "795e78b40c2336dd2e49a510a79ef20bf574433a979ce3d6896c9047e1f4d0b4",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_04_20261029T101631583241.json",
+      "finished_at_jst": "2026-10-29T10:16:31.899699+09:00"
+    },
+    {
+      "run_id": "rs261029b_05",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "bcf94ae36bbbce84509d4e3a982a5eb2591147d76ac20278323ade3cfe13e4bc",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_05_20261029T101757273366.json",
+      "finished_at_jst": "2026-10-29T10:17:57.794566+09:00"
+    },
+    {
+      "run_id": "rs261029b_06",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "9c72fe47c507ef7762efd6ae0047e6601d5da8cd5be44f011043bd631fda348c",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_06_20261029T101921824251.json",
+      "finished_at_jst": "2026-10-29T10:19:22.031005+09:00"
+    },
+    {
+      "run_id": "rs261029b_07",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "f04442f8751d2e4e88640095e59a1aef71e75bfb3d288b5477f86ad6b67ce4e7",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_07_20261029T102050379245.json",
+      "finished_at_jst": "2026-10-29T10:20:51.236571+09:00"
+    },
+    {
+      "run_id": "rs261029b_08",
+      "cell": {
+        "cell_id": "facility_first_r0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "b69f5f3b19fe9d2800773183fabda028c40060ddf53b899305277996a805d0f3",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_08_20261029T102217364471.json",
+      "finished_at_jst": "2026-10-29T10:22:17.764231+09:00"
+    },
+    {
+      "run_id": "rs261029b_09",
+      "cell": {
+        "cell_id": "facility_first_u05_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "30b0024df628637c026e1d0091655fdd0acc5c3c796460b4a8405c227d8bda7d",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_09_20261029T102334489151.json",
+      "finished_at_jst": "2026-10-29T10:23:34.868213+09:00"
+    },
+    {
+      "run_id": "rs261029b_10",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p900_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "00f9eb3f312f4885e845d28c071427f145beb79cf171d1eb9e93826d659b6b32",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_10_20261029T102456517732.json",
+      "finished_at_jst": "2026-10-29T10:24:56.872809+09:00"
+    },
+    {
+      "run_id": "rs261029b_11",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "cd20d82f3d2344b4203e5c1bf6dc21bc04544adbb441606c5c9cf5d8d06c92ba",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_11_20261029T102622773141.json",
+      "finished_at_jst": "2026-10-29T10:26:23.180546+09:00"
+    },
+    {
+      "run_id": "rs261029b_12",
+      "cell": {
+        "cell_id": "facility_first_u50_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "6b6239678b598a01f596ca63d78c805847de10186b4093d6cedb95ab119e5c17",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rs261029b_12_20261029T102801121884.json",
+      "finished_at_jst": "2026-10-29T10:28:01.511866+09:00"
+    }
+  ],
+  "active": {
+    "run_id": "rs261029b_13",
+    "cell_id": "facility_first_u50_r2p900_seed23423",
+    "started_at_jst": "2026-10-29T10:28:01.514904+09:00",
+    "command": "smoke",
+    "pid": 14504
+  },
+  "finished_at_jst": "2026-10-29T10:28:50.540181+09:00",
+  "error_type": "RuntimeError",
+  "error": "smoke failed: rs261029b_13"
+}

@@ -1,0 +1,73 @@
+{
+  "at_jst": "2026-10-28T08:31:34.994757+09:00",
+  "action": "ninth_formal_terminal_and_tenth_registered_scope_precheck",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "original_session": 55966,
+  "original_exit_code": 0,
+  "formal_recorded": 9,
+  "proof": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102809/nv26102809_record7_readback.json",
+  "proof_sha256": "3bfdf33436f5f727fa40a07b3b2a882cd50473fd2fdae9041287e5457acadfa8",
+  "next_run_id": "nv26102810",
+  "next_sequence_id": "sq26102810",
+  "next_cell": {
+    "cell_id": "facility_first_u05_r2p900_seed23423",
+    "destination_policy": "facility_first",
+    "demand_level": "u05",
+    "scenario": "R2P900",
+    "seed": 23423
+  },
+  "free_bytes": 249156952064,
+  "one_run_reserve_bytes": 193986012138,
+  "status": {
+    "protocol": "realtime_choice_v1",
+    "registered_cells": 70,
+    "recorded_cells": 9,
+    "running": [],
+    "unrecorded": [],
+    "partial_records": [],
+    "record_identity_mismatch": [],
+    "unresolved_failures": [],
+    "unresolved_launches": [],
+    "pending_record_journals": [],
+    "foreign_running_manifests": [],
+    "next_cell": {
+      "cell_id": "facility_first_u05_r2p900_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    "smoke_completed": [
+      "ns261024e_01",
+      "ns261024e_02",
+      "ns261024e_03",
+      "ns261024e_04",
+      "ns261024e_05",
+      "ns261024e_06",
+      "ns261024e_07",
+      "ns261024e_08",
+      "ns261024e_09",
+      "ns261024e_10",
+      "ns261024e_11",
+      "ns261024e_12",
+      "ns261024e_13",
+      "ns261024e_14"
+    ],
+    "failed": [],
+    "active_native_processes": [],
+    "core_ready": true,
+    "core_start_available": true
+  },
+  "watch": {
+    "monitor_process": {
+      "state": "alive",
+      "created": 134375371341239107,
+      "pid": 26988
+    },
+    "monitor_identity_matches": true,
+    "observation_age_sec": 4.874818325042725,
+    "last_observed": "2026-10-27T23:30:38.602272+00:00"
+  },
+  "goal_complete": false
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_正式検証器_表会計候補試験.py", line 303, in <module>
+    main(args.suite, args.historical)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_正式検証器_表会計候補試験.py", line 231, in main
+    'pass': rejected_archive['status'] == 'INVALID' and rejected_archive['checks']['all_bound_bytes_before'] is False,
+                                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'all_bound_bytes_before'

@@ -1,0 +1,41 @@
+{
+  "schema": "isolated_native_build_v1",
+  "attempt_id": "repair03_20261029",
+  "role": "ISOLATED_STOP_INDEX_REPAIR_CANDIDATE_NOT_ADOPTED",
+  "base_role": "patched",
+  "started_at_jst": "2026-10-29T15:15:50.274916+09:00",
+  "owner_pid": 36908,
+  "owner_process_identity": {
+    "ProcessId": 36908,
+    "ParentProcessId": 41456,
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id repair03_20261029 --stop-index-repair --build-role patched --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/base_state.json --source-preparation C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/source_preparation.json --pair-state 06_研究結果/jdrt/goal_20261017/nc261029r_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/current_pair_r_readback.json",
+    "CreationDate": 1793254480266
+  },
+  "child_pid": null,
+  "staging": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+  "commands": [],
+  "binaries": [],
+  "max_compile_jobs": 2,
+  "simulation_allowed": false,
+  "research_cli_switch_allowed": false,
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "status": "RUNNING",
+  "phase": "diagnostic_source_preparation",
+  "custom_version": "1.26.0-jdrt-choice-stopindex-patched-repair03_20261029",
+  "disk_free_before": 236116058112,
+  "diagnostic_source": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source",
+  "diagnostic_build": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build",
+  "snapshot_sha256": {
+    "base_state.json": "924d594073688cbb0e88dd479ebdcb3ff6091bba6671524ee2b09fe9ab52dff4",
+    "choice_native_stop_index_remap.py": "e5b81710c7f790c22c09bc31aecf794f77c425917755253af1f2cf607282a21e",
+    "choice_native_trace_build.py": "802d2fc5316a8bd19bac5760e1d3f7c08463a98176fbfe2e98425edc267a7dbe",
+    "choice_native_trace_source.py": "d20748ae0e24c9a77cc4729980d97f22291b808c56a4badac393f4067916df9d",
+    "native_build_support.py": "caedf58344665f7551e33a2b8353720c832d5bc9c64219feab317d1cd945394f",
+    "pair_proof.json": "1591b4c8dc574975101c50a54f135a129af8ef1e74bcd8c33bc60804c788a390",
+    "pair_state.json": "ffc7a942b35d52f50ba70b43b47235c54e55860adebfbca24c58ffd1097b059b",
+    "source_preparation.json": "3a01fbca6263a1450cb019fc7c3128ab1ba7ce4a8fb98ad7a67bb43bf2212ec6"
+  },
+  "updated_at_jst": "2026-10-29T15:15:52.278431+09:00"
+}

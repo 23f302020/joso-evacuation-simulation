@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 436, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 431, in main
+    result = pair.run() if args.command == 'run-selected-pair' else pair.state
+             ~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 406, in run
+    self.inspect_suite(role, code)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 328, in inspect_suite
+    self.strict_validate(role, child)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 288, in strict_validate
+    require(code == 0, 'Strict fixture validation command failed')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 34, in require
+    raise ValueError(message)
+ValueError: Strict fixture validation command failed

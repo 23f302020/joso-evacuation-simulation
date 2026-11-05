@@ -1,0 +1,16 @@
+{
+  "at_jst": "2026-10-29T00:26:51.231140+09:00",
+  "files": [
+    {
+      "source": "07_監視システム/watch.py",
+      "sha256": "dacf80a9be1c832fbcad6e95b6ea7a0dec0a2f7117a394b36b346b5988f2e504",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/observer_event_read_cache/dacf80a9be1c832fbcad6e95b6ea7a0dec0a2f7117a394b36b346b5988f2e504_watch.py"
+    },
+    {
+      "source": "07_監視システム/test_watch.py",
+      "sha256": "c7aa3dc4665a8a114fa7d988631cfda08257dbe1e563a33c8da18f26f8467088",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/observer_event_read_cache/c7aa3dc4665a8a114fa7d988631cfda08257dbe1e563a33c8da18f26f8467088_test_watch.py"
+    }
+  ],
+  "scope": "Dispatcher event read reuse only, scientific sources and observer snapshot/classification unchanged"
+}

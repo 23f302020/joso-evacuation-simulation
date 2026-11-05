@@ -1,0 +1,34 @@
+{
+  "at_jst": "2026-10-20T22:42:37.955366+09:00",
+  "action": "observer_binding_repaired_deployed_and_fresh_pair_e_started",
+  "previous_goal_turn": "progress",
+  "verification": "07_監視システム/verification/command_binding_20261020/review.json",
+  "deployment": "07_監視システム/verification/command_binding_20261020/deployment.json",
+  "fresh_pair": [
+    "nc261020e",
+    "np261020e"
+  ],
+  "session": 18767,
+  "owner_cim": [
+    {
+      "ProcessId": 30140,
+      "ParentProcessId": 14396,
+      "CreationDate": "2026-10-20T22:41:07.627719+09:00",
+      "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020e --patched-id np261020e",
+      "ReadTransferCount": 381
+    },
+    {
+      "ProcessId": 22048,
+      "ParentProcessId": 30140,
+      "CreationDate": "2026-10-20T22:41:07.642063+09:00",
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020e --patched-id np261020e",
+      "ReadTransferCount": 1255449568
+    }
+  ],
+  "monitor_pid": 29296,
+  "common_five_unchanged": true,
+  "technical_ready": false,
+  "formal_adoption_created": false
+}

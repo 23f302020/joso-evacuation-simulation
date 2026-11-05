@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>中間発表 スライド設計デザイン参考</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root{
+  --bg:#F3F1EC; --panel:#FFFFFF; --ink:#14213D; --ink2:#4A5568; --line:#D9D5CB;
+  --teal:#0F7C80; --amber:#B86E00; --red:#B5483A; --slate:#5B6B7F; --violet:#6F5A94; --mute:#B8BEC6;
+  --chip:#E8F1F1; --rvbg:#E4E1DA;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --bg:#12161C; --panel:#1B2129; --ink:#E8ECF1; --ink2:#A9B3C1; --line:#2E3742; --chip:#1F3032; --rvbg:#0B0E12; }
+}
+:root[data-theme="dark"]{ --bg:#12161C; --panel:#1B2129; --ink:#E8ECF1; --ink2:#A9B3C1; --line:#2E3742; --chip:#1F3032; --rvbg:#0B0E12; color-scheme:dark }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP',system-ui,sans-serif;line-height:1.7;font-size:16px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+header.top{padding:48px 0 24px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:13px;letter-spacing:.14em;color:var(--teal);font-weight:700}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.3;margin:6px 0 10px}
+h2.sec{font-size:24px;margin:56px 0 6px;padding-top:8px}
+h3{font-size:18px;margin:24px 0 8px}
+p.lead{color:var(--ink2);max-width:860px;margin:6px 0}
+nav.toc{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 0;overflow-x:auto;white-space:nowrap}
+nav.toc a{display:inline-block;margin-right:16px;color:var(--ink2);text-decoration:none;font-size:14px;font-weight:500}
+nav.toc a:hover{color:var(--teal)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.chip{font-size:13px;padding:2px 10px;border-radius:99px;background:var(--chip);color:var(--ink);border:1px solid var(--line)}
+.chip.warn{background:#FFF3DF;color:#7A4A00;border-color:#EBCB8F}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .chip.warn{background:#3A2C12;color:#F0C98A;border-color:#6B5120}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sw{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);font-size:13px}
+.sw i{display:block;height:48px}
+.sw b{display:block;padding:6px 8px 0}
+.sw span{display:block;padding:0 8px 8px;color:var(--ink2);font-family:'JetBrains Mono',monospace;font-size:12px}
+table.t{border-collapse:collapse;width:100%;font-size:14px;background:var(--panel)}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 10px;text-align:right;vertical-align:top}
+table.t th{background:var(--chip);text-align:center;font-weight:700}
+table.t td.l,table.t th.l{text-align:left}
+.scroll{overflow-x:auto}
+.mono{font-family:'JetBrains Mono',monospace}
+.ok{color:var(--teal);font-weight:700}.diff{color:var(--amber);font-weight:700}
+/* player */
+.player{position:sticky;top:41px;z-index:15;display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:16px 0}
+.player button{border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:8px;padding:4px 14px;font:inherit;cursor:pointer}
+.player input[type=range]{flex:1}
+.player output{font-family:'JetBrains Mono',monospace;font-size:13px;min-width:70px;text-align:right}
+/* slide card */
+.slide{margin:28px 0 8px}
+.slide .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.slide .meta b{font-size:17px}
+.slide .meta span{font-size:13px;color:var(--ink2)}
+.frame{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#FAF8F3}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:10px}
+.notes div{font-size:13.5px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.notes dt{font-weight:700;color:var(--teal);font-size:12px;letter-spacing:.08em}
+.notes dd{margin:2px 0 0}
+pre.code{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto;font-size:12.5px;line-height:1.55}
+img.ref{max-width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
+.refgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.refgrid figure{margin:0}.refgrid figcaption{font-size:12.5px;color:var(--ink2)}
+
+/* ---- review comments ---- */
+.cm{margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:12px 14px}
+.cm h4{margin:0 0 8px;font-size:14px;letter-spacing:.06em;color:var(--teal)}
+.cm ul{list-style:none;margin:0 0 10px;padding:0;display:flex;flex-direction:column;gap:8px}
+.cm li{border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:start}
+.cm li.done{opacity:.6}
+.cm li .txt{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14.5px;min-width:0}
+.cm li .meta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--ink2)}
+.cm .st{font-size:12px;padding:1px 8px;border-radius:99px;border:1px solid var(--line)}
+.cm .st.open{background:#FFF3DF;color:#7A4A00;border-color:#EBCB8F}
+.cm .st.done{background:var(--chip);color:var(--teal)}
+.cm .acts{display:flex;gap:6px;flex-wrap:wrap}
+.cm button{font:inherit;font-size:12.5px;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:6px;padding:2px 10px;cursor:pointer}
+.cm button.pri{background:var(--teal);color:#fff;border-color:var(--teal)}
+.cm button:focus-visible,.cm textarea:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.cm textarea{width:100%;min-height:64px;font:inherit;font-size:14.5px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);resize:vertical}
+.cm .row2{display:flex;gap:8px;align-items:center;margin-top:6px;flex-wrap:wrap}
+.cm .empty,.cm .note{font-size:13px;color:var(--ink2)}
+.cm .err{font-size:13px;color:var(--red)}
+#cmsum ul{margin:6px 0 0;padding-left:20px;font-size:14px}
+#cmsum a{color:var(--teal)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cm .st.open{background:#3A2C12;color:#F0C98A;border-color:#6B5120}}
+:root[data-theme="dark"] .cm .st.open{background:#3A2C12;color:#F0C98A;border-color:#6B5120}
+
+/* ---- review mode ---- */
+.rvbtn{font:inherit;font-size:13.5px;font-weight:700;border:1px solid var(--teal);background:var(--teal);color:#fff;border-radius:8px;padding:4px 14px;cursor:pointer}
+.rvbtn.sub{background:transparent;color:var(--teal);font-weight:500;font-size:12.5px;padding:1px 10px}
+#rv{position:fixed;inset:0;z-index:50;background:var(--rvbg);display:flex;flex-direction:column}
+#rv[hidden]{display:none!important}
+#rv .bar{display:flex;align-items:center;gap:12px;padding:8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px));padding-top:calc(8px + env(safe-area-inset-top, 0px));border-bottom:1px solid var(--line);background:var(--panel);font-size:14px;min-width:0}
+#rv .bar .ttl{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+#rv .bar .hint{color:var(--ink2);font-size:12px;white-space:nowrap}
+#rv .bar button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:6px;padding:3px 12px;cursor:pointer}
+#rv .bar button:disabled{opacity:.4;cursor:default}
+#rv .body{flex:1;display:flex;min-height:0}
+#rv .stagebox{flex:1;position:relative;min-width:0;overflow:hidden}
+#rv .stagefit{position:absolute;box-shadow:0 2px 18px rgba(0,0,0,.18);border-radius:4px;overflow:hidden}
+#rv .tab{position:absolute;right:0;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font:inherit;font-size:14px;font-weight:700;letter-spacing:.12em;padding:14px 7px;border:1px solid var(--teal);border-right:0;border-radius:10px 0 0 10px;background:var(--panel);color:var(--teal);cursor:pointer;opacity:.85}
+#rv .tab:hover,#rv .tab:focus-visible{opacity:1}
+#rv .tab b{display:inline-block;margin-top:6px;writing-mode:horizontal-tb;background:var(--teal);color:#fff;border-radius:99px;font-size:12px;min-width:20px;padding:0 6px;text-align:center}
+#rv .tab b.zero{background:var(--mute)}
+#rv .drawer{width:0;transition:width .22s ease;overflow:hidden;border-left:1px solid transparent;background:var(--panel)}
+#rv.open .drawer{width:340px;border-left-color:var(--line)}
+#rv.open .tab{display:none}
+#rv .drawer .in{width:340px;height:100%;overflow-y:auto;padding:12px 14px 16px;display:flex;flex-direction:column;gap:8px}
+#rv .drawer .dh{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#rv .drawer .dh b{font-size:13px;color:var(--ink2);font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#rv .drawer .x{font:inherit;font-size:12.5px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:6px;padding:1px 10px;cursor:pointer}
+#rv .drawer .cm{border:0;padding:0;margin:0;background:transparent;display:flex;flex-direction:column}
+#rv .drawer .cm textarea{min-height:110px;order:-1}
+#rv .drawer .cm .row2{order:-1;margin:0 0 6px}
+#rv .drawer .cm h4{order:-2;margin:0 0 4px}
+#rv .drawer .cm label{order:-2}
+#rv .drawer .cm ul{margin:4px 0 0}
+#rv .stagebox:focus{outline:none}
+#rv .drawer .x{white-space:nowrap;flex:none}
+#rv .drawer .cm li{grid-template-columns:1fr}
+#rv .drawer .kb{font-size:11.5px;color:var(--ink2)}
+/* ============ STAGE (1920x1080 fixed, slide palette is fixed light) ============ */
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;background:#FAF8F3;color:#14213D;font-family:'Noto Sans JP',sans-serif;overflow:hidden;line-height:1.5}
+.stage .bgband{position:absolute;left:0;top:0;width:24px;height:1080px;background:#0F7C80}
+.stage .kick{position:absolute;left:96px;top:56px;font-size:26px;font-weight:700;letter-spacing:.14em;color:#0F7C80}
+.stage h2{position:absolute;left:96px;top:96px;right:96px;margin:0;font-size:60px;line-height:1.25;font-weight:900;color:#14213D}
+.stage .content{position:absolute;left:96px;right:96px;top:284px;bottom:112px}
+.stage .foot{position:absolute;left:96px;right:96px;bottom:36px;font-size:22px;color:#4A5568;display:flex;justify-content:space-between;border-top:2px solid #D9D5CB;padding-top:12px}
+.stage .t24{font-size:30px}.stage .t28{font-size:34px}
+.stage .box{background:#fff;border:2px solid #D9D5CB;border-radius:16px;padding:24px 28px}
+.stage .box.teal{border-color:#0F7C80;background:#E8F1F1}
+.stage .box.amber{border-color:#B86E00;background:#FFF3DF}
+.stage .box.dash{border-style:dashed;background:transparent}
+.stage .big{font-size:96px;font-weight:900;line-height:1;letter-spacing:-.02em}
+.stage .lab{font-size:28px;color:#4A5568}
+.stage .tag{display:inline-block;font-size:24px;font-weight:700;padding:2px 16px;border-radius:99px;background:#E8F1F1;color:#0F5E61;border:2px solid #0F7C80}
+.stage .tag.amber{background:#FFF3DF;color:#7A4A00;border-color:#B86E00}
+.stage .tag.gray{background:#EEF0F3;color:#4A5568;border-color:#B8BEC6}
+.stage .row{display:flex;gap:28px}.stage .col{display:flex;flex-direction:column;gap:20px}
+.stage .flex1{flex:1}
+.stage svg text{font-family:'Noto Sans JP',sans-serif}
+.stage table.st{border-collapse:collapse;font-size:28px;width:100%}
+.stage table.st th,.stage table.st td{border-bottom:2px solid #D9D5CB;padding:8px 14px;text-align:right}
+.stage table.st th{color:#4A5568;font-weight:700}
+.stage table.st td:first-child,.stage table.st th:first-child{text-align:left}
+.g{transform-box:fill-box;transform-origin:left center}
+.p{transform-box:fill-box;transform-origin:center}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="eyebrow">2026-12-05 中間発表 ／ スライド生成前の設計リファレンス</div>
+  <h1>河川氾濫時におけるデマンド交通の避難支援への活用可能性<br><small style="font-size:.6em;font-weight:500;color:var(--ink2)">— 常総市を対象としたシミュレーション（仮題）</small></h1>
+  <p class="lead"><b>報告の軸：</b>これまでの研究（①〜③）から何を変え、これからの研究（予約型バスの配車）がどんな内容になるか。<b>これからの研究は設計の報告で、結果は本報告に含めない。</b>内容は <b>2026-10-28 時点で固定</b>し、以降のシミュレーション進行では更新しない。スライド上の名称は聞き手に分かる呼び名にし、内部の記号は§1の対応表にまとめた。<br>スライド本編12枚の見た目・図表・数値をここで固定してから PPTX を作るための参照ページ。各スライドは <b>hyperframes の composition 形式</b>（<span class="mono">data-composition-id / data-start / data-duration / data-track-index</span> ＋ 一時停止状態の GSAP タイムライン）で組んでおり、下のプレーヤーで全スライドの動きを同時にシークできる。数値は <span class="mono">06_研究結果/</span> の正本から転記し、再計算できるものは本ページ内で再計算して突き合わせた（§4）。</p>
+  <div class="chips">
+    <span class="chip">発表時間：未定</span><span class="chip">題名・氏名・所属：提出前に確認</span>
+    <span class="chip warn">内容は 2026-10-28 時点で固定（以降のシミュレーション進行は反映しない）</span><span class="chip warn">これからの研究の結果は本報告に含めない（設計のみ）</span>
+    <span class="chip warn">固定経路バスの比較の結論は「方向性のある差は検出できなかった」。有利・不利に言い換えない</span>
+  </div>
+</div></header>
+<div class="wrap"><div class="card" id="cmsum" style="margin:16px 0 0"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><span><b>先生のコメント</b> <span id="cmcount" style="color:var(--ink2);font-size:14px">読み込み中…</span></span><button type="button" class="rvbtn" id="rvOpen">レビューモードで開く（スライドを大きく表示・コメントは右端から）</button></div><div id="cmlinks"></div></div></div>
+<nav class="toc"><div class="wrap">
+  <a href="#design">1 デザインシステム</a><a href="#slides">2 スライド12枚</a><a href="#hf">3 hyperframes構造</a><a href="#calc">4 データと計算の突き合わせ</a><a href="#denom">5 分母の整理</a><a href="#refs">6 既存図版・参照元</a><a href="#todo">7 未確認事項</a>
+</div></nav>
+
+<main class="wrap">
+
+<h2 class="sec" id="design">1. デザインシステム</h2>
+<p class="lead">16:9（1920×1080）。余白の多い紙色の地に、濃紺の文字、青緑を1つの強調色にする。注意書きは琥珀色。<b>チャートの系列色は意味で固定</b>し、スライドをまたいで変えない。</p>
+<div class="swatches" id="swatches"></div>
+<div class="grid2" style="margin-top:16px">
+  <div class="card"><h3 style="margin-top:0">タイポグラフィ（スライド上のpx）</h3>
+    <table class="t"><tr><th class="l">用途</th><th>サイズ</th><th>太さ</th></tr>
+    <tr><td class="l">見出し（1行目で結論を言う）</td><td>60</td><td>900</td></tr>
+    <tr><td class="l">本文・図内ラベル</td><td>28〜34</td><td>500〜700</td></tr>
+    <tr><td class="l">巨大数字</td><td>96</td><td>900</td></tr>
+    <tr><td class="l">出典・脚注（最小）</td><td>22</td><td>400</td></tr></table>
+    <p style="font-size:13.5px;color:var(--ink2)">欧文数字はNoto Sans JPのまま。投影で22px未満は使わない。</p></div>
+  <div class="card"><h3 style="margin-top:0">図表の守るルール</h3>
+    <ul style="margin:0;padding-left:20px;font-size:14.5px">
+      <li>率の図には<b>分母・時点・系列名</b>を必ず添える</li>
+      <li>差の図には<b>ゼロ線</b>を引く。軸を途中で切らない</li>
+      <li>異なる段階（これまでの研究とこれからの研究）の率を<b>同じ軸に混ぜない</b></li>
+      <li>未完了者を分母から外さない。退出を施設受入に足さない</li>
+      <li>「模式図」は位置・大きさが実測でないことを図内に明記</li>
+      <li>方向を示す語（有利・改善・悪化）は結論文に使わない</li>
+    </ul></div>
+</div>
+
+<div class="card" style="margin-top:16px"><h3 style="margin-top:0">呼び名の対応表（スライドの名称 ⇄ 内部の記号）</h3>
+<p style="font-size:14px;margin:0 0 8px">スライドには左の呼び名だけを出し、記号（Phase・v1/v2・A/B・Type・seed など）は出さない。右は内部資料と照らすための対応。</p>
+<div class="scroll"><table class="t"><tr><th class="l">スライドの呼び名</th><th class="l">内部の記号・正式名</th></tr>
+<tr><td class="l">① 通れる道を調べる（静的分析）</td><td class="l mono">Phase 1</td></tr>
+<tr><td class="l">② 車の動きを再現する（動的計算）</td><td class="l mono">Phase 2（SUMO＋TraCI）</td></tr>
+<tr><td class="l">③ 固定経路バスを加えて比べる</td><td class="l mono">Phase 3（Scenario A＝バスなし／B＝固定経路バスあり）</td></tr>
+<tr><td class="l"><b>これまでの研究</b></td><td class="l mono">v1までの研究（Phase 1〜3）</td></tr>
+<tr><td class="l"><b>これからの研究（予約型バスの配車）</b></td><td class="l mono">JDRT v2（JDRT＝予約型の動的配車）</td></tr>
+<tr><td class="l">方式① 道路状況のみ</td><td class="l mono">B2（現在の旅行時間のみ）</td></tr>
+<tr><td class="l">方式② 待ち時間と要支援度</td><td class="l mono">B3（待ち時間＋支援必要度）</td></tr>
+<tr><td class="l">方式③ 完全な予測</td><td class="l mono">P1（予測誤差0秒）</td></tr>
+<tr><td class="l">方式④ 予測が15分遅れ</td><td class="l mono">P2-L15（予測＝実際＋900秒）</td></tr>
+<tr><td class="l">車を持たない高齢者</td><td class="l mono">Type4（主指標の分母 935人）</td></tr>
+<tr><td class="l">車を持たない非高齢者</td><td class="l mono">Type3（2,320人）</td></tr>
+<tr><td class="l">車を持たない人</td><td class="l mono">Type3＋Type4（3,255人）</td></tr>
+<tr><td class="l">ケース1〜5</td><td class="l mono">seed 23423／42／1／7／101（乱数の種）</td></tr>
+<tr><td class="l">試行</td><td class="l mono">run（1回のシミュレーション）</td></tr>
+<tr><td class="l">相乗りなし／異常な瞬間移動／95%点</td><td class="l mono">pooling なし／teleport／P95</td></tr></table></div></div>
+<div class="card" style="margin-top:16px"><h3 style="margin-top:0">呼び名：seed → 「ケース1〜5」</h3>
+<p style="font-size:14.5px;margin:0 0 8px">seed は乱数の種の識別番号。スライドでは番号を出さず「ケース」と呼ぶ。<b>同じ人口・需要・道路閉鎖で、乱数（出発の順番など）だけが違う5つの条件</b>で、方式を比べるときは同じケース同士を対にする。</p>
+<table class="t"><tr><th>スライドの呼び名</th><th>ケース1</th><th>ケース2</th><th>ケース3</th><th>ケース4</th><th>ケース5</th></tr><tr><td>seed（脚注・補足のみ）</td><td>23423</td><td>42</td><td>1</td><td>7</td><td>101</td></tr></table></div>
+<h2 class="sec" id="slides">2. スライド本編12枚（動くプレビュー）</h2>
+<p class="lead">各フレームは実寸1920×1080の composition を縮小表示。数値のあるスライド（5・7・8）は §4 の生データから描画している。</p>
+<div class="player" id="player">
+  <button id="btnPlay">▶ 再生</button>
+  <input id="scrub" type="range" min="0" max="6" step="0.01" value="6" aria-label="全スライドの時間位置">
+  <output id="tout">6.00 s</output>
+</div>
+<div id="slides"></div>
+
+<h2 class="sec" id="hf">3. hyperframes composition の構造</h2>
+<p class="lead">各スライドは「ルート要素＋時間付きクリップ＋一時停止の GSAP タイムライン」。レンダラはフレームごとにタイムラインをシークするので、アニメーションは <b>時計に依存させず</b>（<span class="mono">Date</span>・乱数・<span class="mono">requestAnimationFrame</span>を使わない）に書いている。</p>
+<pre class="code">&lt;div class="stage" data-composition-id="s07" data-start="0" data-width="1920" data-height="1080"&gt;
+  &lt;h2 class="clip" data-start="0" data-duration="6" data-track-index="1"&gt;…&lt;/h2&gt;
+  &lt;svg class="clip" data-start="0.6" data-duration="5.4" data-track-index="2"&gt;…&lt;/svg&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  const tl = gsap.timeline({ paused: true });
+  tl.from("#s07 .a", { opacity: 0, y: 24, stagger: .12 }, .2);
+  window.__timelines = window.__timelines || {};
+  window.__timelines.s07 = tl;     // composition id と同名で登録
+&lt;/script&gt;</pre>
+<p style="font-size:13.5px;color:var(--ink2)">本ページは12個の composition を1ページに並べたプレビュー用。実際に動画化・書き出しするときは、スライド1枚ずつを単独の composition HTML に分けて使う（ルートの <span class="mono">data-width/height</span> は1920×1080）。</p>
+
+<h2 class="sec" id="calc">4. データと計算の突き合わせ</h2>
+<p class="lead">正本の数値を転記し、再計算できる値はブラウザ上で再計算した。<span class="ok">一致</span>／<span class="diff">差あり</span> は自動判定。</p>
+<div id="calcroot"></div>
+
+<h2 class="sec" id="denom">5. 段階ごとの分母（スライド4の元データ）</h2>
+<div class="scroll"><table class="t" id="denomtbl"></table></div>
+<p style="font-size:13.5px;color:var(--ink2)">分母が異なるため、段階間で率を並べて比べない。</p>
+
+<h2 class="sec" id="refs">6. 既存図版・参照元</h2>
+<p class="lead">このHTMLと同じ場所基準の相対パスで既存の図を読み込む（フォルダ外へ移すと表示されない）。スライドへ貼る図の候補。</p>
+<div class="refgrid" id="refgrid"></div>
+<div class="scroll" style="margin-top:16px"><table class="t" id="srctbl"></table></div>
+
+<h2 class="sec" id="todo">7. 未確認事項（このページで決めていないこと）</h2>
+<div class="card"><ul style="margin:0;padding-left:20px;font-size:14.5px" id="todolist"></ul></div>
+<p style="color:var(--ink2);font-size:13px;margin:24px 0 64px">作成：2026-10-28。研究条件・正式記録・既存ファイルは変更していない。内容は 2026-10-28 時点で固定。以降のシミュレーションの進行は反映しない。</p>
+</main>
+
+<script>
+/* ===================== DATA（正本から転記） ===================== */
+const P1={meshTotal:40,pplTotal:2257,meshBlocked:17,pplBlocked:952};
+const P3={
+  A:[['A#1',23423,95.44],['A#2',42,75.87],['A#3',1,96.01]],
+  B:[['B#1',23423,92.93],['B#2',42,96.68],['B#3',1,96.16],['B#4',7,98.53],['B#5',101,98.84]],
+  doc:{medA:95.44,medB:96.68,medDiff:1.23,min:-3.09,max:22.97,pos:13,neg:2},
+  veh:{A:{priv:8164,rescue:1405,route:9569},B:{priv:8164,rescue:1351,route:9515},cut:54},
+  bus:[['B#1',23423,99,75],['B#2',42,141,125],['B#3',1,130,122],['B#4',7,133,125],['B#5',101,173,165]],
+  busOrigin:[['origin_0057',292,292],['origin_0084',82,50],['origin_0085',80,64],['origin_0089',142,126],['origin_0176',80,80]]
+};
+/* v2 設計値（PAP v1 第4〜11節／PAP v2 第3節）。結果値は持たない */
+const V2={N:{t4:935,t3:2320,all:3255},requests:1440,stdN:4,stdCap:8,welN:1,welCap:4,board:300,alight:300,end:21600,step:0.5,ctrl:1,shelters:9,seeds:[23423,42,1,7,101],methods:4};
+const SEEDN={23423:'ケース1',42:'ケース2',1:'ケース3',7:'ケース4',101:'ケース5'}; /* seed＝乱数の種。スライドでは「ケース1〜5」と呼ぶ */
+const sn=s=>SEEDN[s]||('seed '+s);
+/* ===================== 補助 ===================== */
+const median=a=>{const s=[...a].sort((x,y)=>x-y),n=s.length;return n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2};
+const f2=x=>(Math.round(x*100)/100).toFixed(2);
+const sgn=x=>(x>0?'+':x<0?'−':'')+Math.abs(x).toFixed(2);
+const COL={A:'#5B6B7F',B:'#0F7C80',amber:'#B86E00',red:'#B5483A',vio:'#6F5A94',mute:'#B8BEC6',ink:'#14213D',grid:'#D9D5CB'};
+const RTC={acc:'#0F7C80',full:'#B86E00',exit:'#5B6B7F',timeout:'#6F5A94',drt:'#B5483A',other:'#B8BEC6'};
+
+/* Phase3 15組差 */
+const pair=[];P3.A.forEach(a=>P3.B.forEach(b=>pair.push({a:a[0],b:b[0],d:b[2]-a[2]})));
+
+/* ===================== スライド部品 ===================== */
+let TRACK=0;
+const c=(cls,st=0.2,dur=5.8,tr)=>`class="clip ${cls}" data-start="${st}" data-duration="${dur}" data-track-index="${tr||++TRACK}"`;
+const head=(n,kick,title)=>`<div class="bgband"></div><div ${c('kick a',0,6)}>${kick}</div><h2 ${c('a',0.1,5.9)}>${title}</h2>`;
+const foot=(n,src)=>`<div class="foot"><span>${src}</span><span>${n>12?'補足A':n+' / 12'}</span></div>`;
+
+/* 汎用SVG: dot strip */
+function strip({w,h,min,max,rows,zero,ticks,unit='%'}){
+  const L=270,R=40,T=30,B=70,pw=w-L-R,x=v=>L+(v-min)/(max-min)*pw;
+  let s=`<svg viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">`;
+  ticks.forEach(t=>{s+=`<line x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${h-B}" stroke="${COL.grid}" stroke-width="2"/><text x="${x(t)}" y="${h-B+34}" font-size="26" text-anchor="middle" fill="#4A5568">${t}${unit}</text>`});
+  if(zero!=null)s+=`<line x1="${x(zero)}" x2="${x(zero)}" y1="${T}" y2="${h-B}" stroke="${COL.ink}" stroke-width="4"/>`;
+  const rh=(h-B-T)/rows.length;
+  rows.forEach((r,i)=>{const y=T+rh*(i+.5);
+    s+=`<text x="${L-18}" y="${y+10}" font-size="30" font-weight="700" text-anchor="end" fill="${r.color}">${r.label}</text>`;
+    r.pts.forEach((p,j)=>{s+=`<circle class="p dot" cx="${x(p.v)}" cy="${y}" r="15" fill="${r.color}" fill-opacity=".88" stroke="#fff" stroke-width="3"/>`});
+    if(r.med!=null)s+=`<line class="med" x1="${x(r.med)}" x2="${x(r.med)}" y1="${y-34}" y2="${y+34}" stroke="${COL.ink}" stroke-width="6"/>`;
+  });
+  return s+'</svg>';
+}
+
+/* ===================== 各スライド ===================== */
+const SL=[];
+
+/* 1 */
+SL.push({t:'表紙',say:'何の研究かを一文で。政策効果を先取りする副題は付けない。',data:'題目・常総市・2015年9月関東・東北豪雨の鬼怒川氾濫（事例）。所属・氏名・発表日は提出前に確認。',src:'構成案 §3 スライド1',caution:'「バス導入で改善」を連想させる語を入れない',
+render:()=>`<div class="bgband"></div>
+<div ${c('a',0.1)} style="position:absolute;left:96px;top:120px;font-size:30px;font-weight:700;letter-spacing:.14em;color:#0F7C80">2026年12月5日 ／ 中間発表</div>
+<div ${c('a',0.3)} style="position:absolute;left:96px;top:230px;width:1500px;font-size:96px;line-height:1.2;font-weight:900">河川氾濫時における<br>デマンド交通の<br>避難支援への活用可能性</div>
+<div ${c('a',0.7)} style="position:absolute;left:96px;top:700px;font-size:42px;color:#4A5568;font-weight:500">常総市を対象としたシミュレーション</div>
+<div ${c('a',0.9)} style="position:absolute;left:96px;bottom:90px;font-size:30px;color:#4A5568">帝京大学 理工学部 情報電子工学科 ／ 氏名（提出前に確認）</div>
+<svg ${c('wave',0.2,5.8)} viewBox="0 0 700 1080" style="position:absolute;right:0;top:0;width:700px;height:1080px"><path class="g" d="M700 0 H300 C220 180 380 300 300 460 C220 620 380 760 300 920 L300 1080 H700Z" fill="#0F7C80" fill-opacity=".14"/><path class="g" d="M700 0 H420 C360 160 480 300 420 460 C360 620 480 780 420 1080 H700Z" fill="#0F7C80" fill-opacity=".22"/></svg>`,
+anim:(tl,q)=>{tl.from(q('.wave .g'),{scaleX:0,duration:1.2,stagger:.25,ease:'power2.out'},0.2)}});
+
+/* 2 */
+SL.push({t:'背景：道路閉鎖と避難',say:'「避難所まで道が残っているか」だけでなく「実際に移動でき受け入れられるか」を確かめる必要がある。',data:'模式図（位置・距離は実測でない）。ふれあい号は地域交通資源の例として口頭で触れる。',src:'構成案 §3 スライド2',caution:'災害当日の運行実績の再現と、転用を仮定した実験を区別する',
+render:()=>{
+ const H=[[170,520],[170,700],[170,880]];
+ return head(2,'背景','洪水で道路が閉鎖されると、<br>車を使えない人の避難はどうなるか')+
+ `<div class="content"><div class="row" style="height:100%">
+ <svg ${c('map',0.3)} viewBox="0 0 1000 720" style="width:1000px;height:720px;flex:none">
+  <rect x="0" y="0" width="1000" height="720" rx="18" fill="#fff" stroke="#D9D5CB" stroke-width="3"/>
+  <rect class="g flood" x="0" y="300" width="1000" height="150" fill="#0F7C80" fill-opacity=".16"/>
+  <text x="30" y="352" font-size="26" fill="#0F5E61" font-weight="700">浸水域（模式）</text>
+  <path d="M110 120 H890 M110 120 V620 M500 120 V620 M890 120 V620 M110 620 H890" stroke="#8A93A0" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path class="close" d="M470 330 L530 420 M530 330 L470 420" stroke="#B5483A" stroke-width="14" stroke-linecap="round"/>
+  <text x="545" y="402" font-size="28" fill="#B5483A" font-weight="700">閉鎖</text>
+  <g fill="#14213D"><rect x="80" y="520" width="60" height="50" rx="6"/><rect x="80" y="440" width="60" height="50" rx="6"/><rect x="860" y="500" width="60" height="50" rx="6"/></g>
+  <text x="80" y="600" font-size="24" fill="#4A5568">住民</text>
+  <rect x="440" y="40" width="120" height="70" rx="10" fill="#0F7C80"/><text x="500" y="86" font-size="30" font-weight="700" fill="#fff" text-anchor="middle">避難所</text>
+  <path class="alt" d="M140 470 H500 V160" stroke="#B86E00" stroke-width="8" fill="none" stroke-dasharray="18 14"/>
+  <text x="170" y="430" font-size="26" fill="#B86E00" font-weight="700">迂回？ 渋滞？</text>
+ </svg>
+ <div class="col flex1" style="justify-content:center;gap:26px">
+  <div ${c('a box',0.6)}><div class="t28" style="font-weight:700">① 道が閉じる</div><div class="lab" style="font-size:28px">浸水深で通行できない道路が出る</div></div>
+  <div ${c('a box',0.8)}><div class="t28" style="font-weight:700">② 車を使いにくい人がいる</div><div class="lab" style="font-size:28px">自力で避難所へ行けるとは限らない</div></div>
+  <div ${c('a box teal',1.0)}><div class="t28" style="font-weight:700">③ 地域の交通資源を転用できるか</div><div class="lab" style="font-size:28px">デマンド交通を例に、シミュレーションで検討</div></div>
+ </div></div></div>`+foot(2,'模式図（位置・規模は実測でない）')},
+anim:(tl,q)=>{tl.from(q('.flood'),{scaleX:0,duration:1.2,ease:'power1.out'},0.4).from(q('.close'),{opacity:0,scale:.4,transformOrigin:'50% 50%',duration:.4},1.4).from(q('.alt'),{opacity:0,duration:.8},1.8)}});
+
+/* 3 */
+SL.push({t:'研究の流れ：これまでと、これから',say:'これまでの研究は①〜③（内部記号：Phase 1〜3）。これからの研究は予約型バスの配車（内部記号：JDRT v2）で、設計を報告する。',data:'①〜③は完了。これからの研究は予約型バスの配車。結果は本報告に含めない。',src:'構成案 §1／PAP v1・v2',caution:'v2の結果・実行状況に触れない。破線＝今後',
+render:()=>{
+ const st=(t,s,cl,delay,fl)=>`<div ${c('a box '+cl,delay)} style="flex:${fl||1};text-align:center;display:flex;flex-direction:column;justify-content:center"><div class="t28" style="font-weight:900">${t}</div><div class="lab" style="margin-top:8px;font-size:26px">${s}</div></div>`;
+ return head(3,'研究の流れ','これまでの研究を土台に、<br>予約型バスの配車へ進む')+
+ `<div ${c('a',0.3)} style="font-size:28px;font-weight:700;color:#4A5568;margin-bottom:8px;position:absolute;top:270px;left:96px">これまでの研究（完了）</div>
+ <div class="content" style="top:312px"><div class="row" style="align-items:stretch;height:210px">
+ ${st('① 通れる道を調べる','静的分析','',0.4)}${st('② 車の動きを再現する','動的計算','',0.7)}${st('③ 固定経路バスを加えて比べる','バスなし と バスあり','',1.0)}</div>
+ <div ${c('a',1.4)} style="font-size:28px;font-weight:700;color:#0F7C80;margin:22px 0 8px">これからの研究（設計を固定した段階）</div>
+ <div class="row" style="height:210px">${st('予約型バスの配車','要求に応じて走るバス。配車の方式4つを同じ条件で比較する設計','teal',1.8,2)}${st('大型バスの巡回輸送','<span class="tag gray">今後の課題</span>','dash',2.2,1)}</div></div>`+foot(3,'出典：中間発表_文書とスライドの内容構成案 §1')},
+anim:null});
+
+/* 4 */
+SL.push({t:'データの接続と分母',say:'浸水・道路・人口・施設の4種を接続。段階ごとに対象者（分母）が違う。',data:'下表と§5は同じ。v2は設計上の対象者。',src:'Phase3_A_B比較表／PAP v1 第4節',caution:'実被災人数・市全体人口と同一視しない',
+render:()=>{
+ const inp=['浸水想定（A31a）','道路網（OSM）','人口メッシュ','避難施設'];
+ return head(4,'データと計算範囲','4種類のデータを接続し、<br>段階ごとに対象者を定めて計算する')+
+ `<div class="content"><div class="row" style="height:100%">
+ <div class="col" style="width:520px;gap:16px">${inp.map((t,i)=>`<div ${c('a box',0.3+i*.2)} style="font-size:32px;font-weight:700">${t}</div>`).join('')}</div>
+ <div ${c('a',1.2)} style="align-self:center;font-size:90px;color:#0F7C80">→</div>
+ <div class="flex1" ${c('a',1.4)}><table class="st"><tr><th>段階</th><th>計算の分母</th><th>人数・台数</th></tr>
+  <tr><td>① 通れる道</td><td>出発地の区画数と人口</td><td>${P1.meshTotal}区画、${P1.pplTotal.toLocaleString()}人</td></tr>
+  <tr><td>③ 固定経路バス</td><td>走る車の台数（バスなし・あり）</td><td>${P3.veh.A.route.toLocaleString()}台、${P3.veh.B.route.toLocaleString()}台</td></tr>
+  <tr><td>これから</td><td>予約型バスの対象者（車を持たない人）</td><td>${V2.N.all.toLocaleString()}人</td></tr>
+  <tr><td>これから</td><td>主な指標の分母（車を持たない高齢者）</td><td>${V2.N.t4}人</td></tr></table>
+  <div style="margin-top:20px;font-size:26px;color:#7A4A00">※ 分母は別物。実際の被災人数ではない。</div></div></div></div>`+foot(4,'出典：固定経路バスの比較表、予約型バス配車の事前分析計画')},anim:null});
+
+/* 5 */
+SL.push({t:'① 通れる道を調べる',say:'道路閉鎖を除くと、出発地40メッシュのうち17メッシュ・952人が避難所へ到達できない。',data:'17/40＝42.5%、952/2,257＝42.2%（§4で再計算）。メッシュ図は模式。',src:'結論固定_20260721 §2.1',caution:'実災害の再現ではない。各時点の値。41市区町村展開は手法移転のデモ',
+render:()=>{
+ const pct1=P1.meshBlocked/P1.meshTotal*100,pct2=P1.pplBlocked/P1.pplTotal*100;
+ let cells='';for(let i=0;i<40;i++){const bl=[2,3,4,10,11,12,13,18,19,20,21,26,27,28,29,34,35].includes(i);const x=(i%8)*84,y=Math.floor(i/8)*84;cells+=`<rect class="p cell" x="${x+4}" y="${y+4}" width="76" height="76" rx="8" fill="${bl?COL.red:'#DDE3E8'}" ${bl?'':''}/>`}
+ return head(5,'① 通れる道を調べる（静的分析）','道路が閉じると、40区画中<br>17区画・952人が避難所へ行けない')+
+ `<div class="content"><div class="row" style="height:100%;align-items:center">
+ <div><svg ${c('grid',0.3)} viewBox="0 0 672 420" width="672" height="420">${cells}</svg><div style="font-size:24px;color:#4A5568;margin-top:6px"><span style="color:${COL.red};font-weight:700">■</span> 行けない 17区画　<span style="color:#9AA5B1;font-weight:700">■</span> 行ける 23区画　<b>模式図（実際の位置ではない）</b></div></div>
+ <div class="col flex1" style="gap:34px">
+  <div ${c('a',0.8)}><div class="big" style="color:${COL.red}">${f2(pct1)}<span style="font-size:48px">%</span></div><div class="lab">区画 ${P1.meshBlocked}／${P1.meshTotal}</div></div>
+  <div ${c('a',1.1)}><div class="big" style="color:${COL.red}">${f2(pct2)}<span style="font-size:48px">%</span></div><div class="lab">人口 ${P1.pplBlocked}人／${P1.pplTotal.toLocaleString()}人</div></div>
+  <div ${c('a',1.4)} style="font-size:26px;color:#4A5568">常総市の実データでの、静的な経路探索の結果。</div></div></div></div>`+foot(5,'出典：研究結果・結論固定_20260721 §2.1')},
+anim:(tl,q)=>{tl.from(q('.cell'),{scale:0,duration:.35,stagger:.025,ease:'back.out(2)'},0.4)}});
+
+/* 6 */
+SL.push({t:'② 車の動きを再現する',say:'静的な経路では捉えられない、渋滞・迂回・停止・未到着を時間の中で扱う。',data:'模式図。SUMO 1.26.0 ＋ TraCI。60秒ごとの渋滞ログ・主要道路評価を実装。',src:'結論固定_20260721 §2.2',caution:'旧常総市結果は teleport 300秒・単一run。「渋滞による逃げ遅れがない」の根拠にしない',
+render:()=>{
+ const ev=[['道路閉鎖','浸水に応じて時刻ごとに閉鎖'],['再経路探索','閉鎖を避けて迂回'],['渋滞・停止','車両相互作用で発生'],['未到着','時間内に着けない人']];
+ return head(6,'② 車の動きを再現する（動的計算）','道路閉鎖・迂回・渋滞を<br>時間とともに計算する')+
+ `<div class="content"><svg ${c('tl',0.3)} viewBox="0 0 1728 220" style="width:100%;height:220px"><line class="g" x1="40" x2="1688" y1="110" y2="110" stroke="#14213D" stroke-width="6"/>${ev.map((e,i)=>`<circle class="p" cx="${140+i*480}" cy="110" r="22" fill="${i==3?COL.red:'#0F7C80'}"/><text x="${140+i*480}" y="40" font-size="34" font-weight="900" text-anchor="middle">${e[0]}</text><text x="${140+i*480}" y="190" font-size="26" fill="#4A5568" text-anchor="middle">${e[1]}</text>`).join('')}<text x="1688" y="150" font-size="24" fill="#4A5568" text-anchor="end">時間 →（模式）</text></svg>
+ <div class="row" style="margin-top:26px">
+  <div class="box teal flex1" ${c('a',1.5)}><div class="t28" style="font-weight:700">記録する項目</div><div class="lab" style="font-size:28px;margin-top:8px">車ごとの記録、60秒ごとの渋滞、主要道路の評価</div></div>
+  <div class="box amber flex1" ${c('a',1.8)}><div class="t28" style="font-weight:700">旧設定の限界</div><div class="lab" style="font-size:28px;margin-top:8px">渋滞した車が300秒で瞬間移動する設定・1回だけの実行。一般化しない</div></div></div></div>`+foot(6,'出典：研究結果・結論固定_20260721 §2.2')},
+anim:(tl,q)=>{tl.from(q('.tl .g'),{scaleX:0,duration:1.2},0.3).from(q('.tl .p'),{scale:0,duration:.4,stagger:.25},0.6)}});
+
+/* 7 */
+SL.push({t:'③ 固定経路バスの比較',say:'中央値ではBがやや高いが、15組の差は負から正まで広がり、方向差は検出できなかった。',data:'A 3run／B 5run。左：run別完了率。右：15組差（B−A）とゼロ線。15組はrunを再利用しており独立ではない。',src:'Phase3_A_B比較表 §2〜3、fig4-7-1 / fig5-4-1',caution:'「効果がない」「同等」「バスが有利」に言い換えない。15組を15個の独立試行として扱わない',
+render:()=>{
+ const A=P3.A.map(a=>({v:a[2]})),B=P3.B.map(b=>({v:b[2]}));
+ const left=strip({w:880,h:420,min:70,max:100,zero:null,ticks:[70,80,90,100],rows:[{label:'バスなし（3）',color:COL.A,pts:A,med:median(P3.A.map(a=>a[2]))},{label:'バスあり（5）',color:COL.B,pts:B,med:median(P3.B.map(b=>b[2]))}]});
+ const right=strip({w:880,h:420,min:-5,max:25,zero:0,ticks:[-5,0,5,10,15,20,25],unit:'',rows:[{label:'差',color:'#14213D',pts:pair.map(p=>({v:p.d})),med:median(pair.map(p=>p.d))}]});
+ return head(7,'③ 固定経路バスの比較（車を持たない人の避難完了率）','固定経路バスの有無で、<br>方向性のある差は検出できなかった')+
+ `<div class="content"><div class="row">
+  <div class="flex1"><div style="font-size:28px;font-weight:700;margin-bottom:6px">試行ごとの避難完了率（%）　<span style="font-weight:400;color:#4A5568">縦線＝中央値</span></div><div ${c('chart',0.4)}>${left}</div></div>
+  <div class="flex1"><div style="font-size:28px;font-weight:700;margin-bottom:6px">全15通りの差（バスあり − バスなし、ポイント）　<span style="font-weight:400;color:#4A5568">太線＝0</span></div><div ${c('chart',0.8)}>${right}</div></div></div>
+  <div class="row" style="margin-top:20px;align-items:center">
+   <div ${c('a',1.6)} class="box" style="width:640px;font-size:26px;white-space:nowrap">中央値　バスなし ${f2(median(P3.A.map(a=>a[2])))}%、バスあり ${f2(median(P3.B.map(b=>b[2])))}%<br>差の向き：プラス ${pair.filter(p=>p.d>0).length}通り、マイナス ${pair.filter(p=>p.d<0).length}通り</div>
+   <div ${c('a box teal',2.0)} style="flex:1;font-size:29px;font-weight:700">本モデルの分解能では、方向性のある差を検出できなかった。<span style="font-weight:400">（効果なし・同等の証明ではない）</span></div></div></div>`+foot(7,'バスなし3試行・バスあり5試行。15通りの差は同じ試行を使い回しており、独立ではない')},
+anim:(tl,q)=>{tl.from(q('.dot'),{scale:0,duration:.35,stagger:.06,ease:'back.out(2)'},0.6).from(q('.med'),{opacity:0,duration:.4},1.8)}});
+
+/* 8 */
+SL.push({t:'固定経路バスの限界',say:'Phase 3では、バスに乗った人は記録できたが、乗れなかった人や待ち時間は記録に残らなかった。',data:'B側5runのバス輸送実績（乗車676人、避難所到着612人）。乗車記録人数・到着人数は§4。',src:'Phase3_バス運行サービス詳細表 §1・§3',caution:'輸送実績は記述であり、A/B判定には使わない。待ち時間は算出しない（予約時刻がない）',
+render:()=>{
+ const W=900,L=150,sc=(W-L-250)/173;
+ let svg=`<svg viewBox="0 0 ${W} 470" width="${W}" height="470">`;
+ P3.bus.forEach((b,i)=>{const y=20+i*88;
+  svg+=`<text x="${L-14}" y="${y+40}" font-size="30" font-weight="700" text-anchor="end">試行${i+1}</text><rect class="g bar" x="${L}" y="${y}" width="${b[2]*sc}" height="30" fill="${COL.mute}"/><rect class="g bar" x="${L}" y="${y+36}" width="${b[3]*sc}" height="30" fill="${COL.B}"/><text x="${L+b[2]*sc+10}" y="${y+24}" font-size="24" fill="#4A5568">乗車 ${b[2]}</text><text x="${L+b[3]*sc+10}" y="${y+60}" font-size="24" fill="#0F5E61" font-weight="700">避難所到着 ${b[3]}</text>`});
+ svg+='</svg>';
+ const lim=[['待ち時間が測れない','予約時刻の記録がなく、待った時間を算出できない'],['乗れなかった人が見えない','乗車記録のみ。停留所に残った人は含まれない'],['所要時間が到着者だけ','到着者に偏る。バス乗客も含まれない'],['道路の閉鎖予測を使った配車は未検証','バスは決まった経路を走るだけ']];
+ return head(8,'③ 固定経路バスの限界','バスに乗った人は記録できたが、<br>乗れなかった人と待ち時間は残らない')+
+ `<div class="content"><div class="row">
+  <div style="width:900px" ${c('chart',0.4)}><div style="font-size:28px;font-weight:700">バスあり5試行：乗った人と避難所に着いた人</div>${svg}<div style="font-size:24px;color:#4A5568">5試行の合計：乗車 ${P3.bus.reduce((a,b)=>a+b[2],0)}人、到着 ${P3.bus.reduce((a,b)=>a+b[3],0)}人</div></div>
+  <div class="col flex1" style="gap:14px">${lim.map((l,i)=>`<div ${c('a box amber',1.0+i*.3)}><div style="font-size:30px;font-weight:900">${l[0]}</div><div style="font-size:25px;color:#4A5568;margin-top:2px">${l[1]}</div></div>`).join('')}</div></div></div>`+foot(8,'出典：固定経路バスの運行実績表（バスあり5試行）')},
+anim:(tl,q)=>{tl.from(q('.bar'),{scaleX:0,duration:.7,stagger:.08,ease:'power2.out'},0.6)}});
+
+/* 9 */
+SL.push({t:'これまでの研究から何を変えるか',say:'バスの動かし方、迎えの車、比較のしかた、使う情報、取得するデータの5点を変える。',data:'Phase 3とv2の設計値の対比。数値は§4の「設計の計算」と同じ。',src:'Phase3_A_B比較表 §1／PAP v1 第4〜5節',caution:'v2の結果は載せない。完了率をPhase 3と並べて比べない',
+render:()=>{
+ const R=[['バスの動き','決まった経路を走る','予約に応じて迎えに行く（予約型）'],['迎えの車','家族などの迎えの車を残す（バスなし1,405台、バスあり1,351台）','迎えの車はなし。対象3,255人は予約型バスだけに頼る'],['比べるもの','バスなし と 固定経路バスあり','配車の方式4つを、同じ条件で'],['配車に使う情報','なし','待ち時間・要支援度・閉鎖の予測'],['取得するデータ','バスに乗った人の記録','一人ひとり・予約ごとの記録']];
+ return head(9,'これまで → これから','これまでの研究から、<br>変えるのは次の5点')+
+ `<div class="content"><table class="st" ${c('a',0.3)} style="font-size:29px;table-layout:fixed"><colgroup><col style="width:300px"><col style="width:620px"><col></colgroup><tr><th>項目</th><th style="text-align:left">これまでの研究（固定経路バス）</th><th style="text-align:left;color:#0F7C80">これからの研究（予約型バス）</th></tr>
+ ${R.map((r,i)=>`<tr ${c('a',0.6+i*.25)}><td><b>${r[0]}</b></td><td style="text-align:left">${r[1]}</td><td style="text-align:left;font-weight:700">${r[2]}</td></tr>`).join('')}</table>
+ <div ${c('a',2.0)} style="margin-top:20px;font-size:25px;color:#4A5568">問い・対象者・結果の読み方が変わるため、これまでと、これからの完了率を並べて比べない。</div></div>`+foot(9,'出典：固定経路バスの比較表、予約型バス配車の事前分析計画')},anim:null});
+
+/* 10 */
+SL.push({t:'これからの研究の実験設計',say:'4方式を同じ人口・同じ要求・同じ洪水で比べる。主比較は予測を使う方式と使わない方式。',data:'要求1,440件、車両5台、避難所9、21,600秒、5ケース。方式の定義は事前分析計画。',src:'PAP v1 第2〜8節／PAP v2 第2節',caution:'結果に触れない。「P1」は理論上限であり現実の政策効果ではない',
+render:()=>{
+ const M=[['① 道路状況のみ','今の道路の所要時間だけで決める','基準'],['② 待ち時間と要支援度','待ち時間と要支援度で決める','主な比較の相手'],['③ 完全な予測','道路の閉鎖時刻を正確に知っている','理論上の上限'],['④ 予測が15分遅れ','閉鎖時刻の予測が15分遅れる','主な比較']];
+ const D=[['対象者',`${V2.N.all.toLocaleString()}人（高齢者${V2.N.t4}人、非高齢者${V2.N.t3.toLocaleString()}人）`],['予約',`${V2.requests.toLocaleString()}件`],['バス',`${V2.stdN+V2.welN}台（${V2.stdCap}席×${V2.stdN}台、福祉用${V2.welCap}席×${V2.welN}台）`],['避難所',`${V2.shelters}か所`],['計算する時間',`6時間（${V2.end.toLocaleString()}秒）`],['ケース','5つ（乱数だけが違う）']];
+ return head(10,'これからの研究 ／ 実験設計','予約型バスの配車4方式を、同じ人口・<br>同じ予約・同じ洪水で比べる')+
+ `<div class="content"><div class="row">
+  <div class="col" style="width:900px;gap:12px">${M.map((m,i)=>`<div ${c('a box '+(i==1||i==3?'teal':''),0.3+i*.25)} style="display:flex;gap:18px;align-items:center"><div style="font-size:28px;font-weight:900;width:290px;color:#0F7C80;white-space:nowrap">${m[0]}</div><div style="flex:1;font-size:24px">${m[1]}</div><span class="tag ${m[2]=='理論上の上限'?'gray':''}" style="font-size:22px">${m[2]}</span></div>`).join('')}
+   <div ${c('a',1.5)} style="font-size:25px;color:#4A5568">主な比較：④と②を、同じケースの中で比べる。</div></div>
+  <table class="st flex1" ${c('a',1.0)} style="font-size:27px"><tr><th>設計</th><th></th></tr>${D.map(d=>`<tr><td>${d[0]}</td><td style="text-align:right">${d[1]}</td></tr>`).join('')}</table></div></div>`+foot(10,'出典：予約型バス配車の事前分析計画。①〜④の記号は§1の対応表')},anim:null});
+
+/* 11 */
+SL.push({t:'これからの研究で取得するデータ',say:'一人ひとりの結末、要求ごとの待ち時間、取り残された理由、車の走行などを取得する設計。',data:'取得項目は事前分析計画の副指標。右の計算は設計値だけから出した単純な上限。',src:'PAP v1 第9〜10節／Registry v1',caution:'結果は載せない。上限計算は移動時間をゼロとみなした設計上の目安で、結果の予測ではない',
+render:()=>{
+ const items=['避難できた人数（高齢者・非高齢者・全体）','避難できなかった人数とその理由','予約から乗車までの待ち時間','予約のうち乗車できた割合','避難にかかった時間（完了した人の遅い方5%）','バスの走行距離と、1台あたりの輸送人数','道路の平均速度・止まった車の数','同じ人を、方式ごとに対応づけた記録'];
+ const per=Math.floor(V2.end/(V2.board+V2.alight)),maxReq=per*(V2.stdN+V2.welN);
+ return head(11,'これからの研究 ／ 取得するデータ','一人ひとり・予約ごとの<br>データを取得する設計')+
+ `<div class="content"><div class="row">
+  <div class="col" style="width:900px;gap:10px">${items.map((t,i)=>`<div ${c('a box',0.3+i*.15)} style="font-size:28px;font-weight:700;padding:12px 24px">${t}</div>`).join('')}</div>
+  <div class="col flex1" style="gap:16px"><div ${c('a box amber',1.6)}><div style="font-size:26px;font-weight:900">設計の数字だけから出した上限</div>
+   <div style="font-size:25px;margin-top:8px;line-height:1.6">1件につき、乗る${V2.board}秒＋降りる${V2.alight}秒＝${V2.board+V2.alight}秒<br>1台が6時間でこなせる件数＝${V2.end.toLocaleString()}÷${V2.board+V2.alight}＝${per}件<br>5台で ${per}×${V2.stdN+V2.welN}＝<b>${maxReq}件</b>（予約${V2.requests.toLocaleString()}件の${f2(maxReq/V2.requests*100)}%）</div>
+   <div style="font-size:22px;color:#4A5568;margin-top:8px">移動時間ゼロ・相乗りなしの場合の上限。</div></div></div></div></div>`+foot(11,'出典：予約型バス配車の事前分析計画')},anim:null});
+
+/* 12 */
+SL.push({t:'まとめと次の課題',say:'v1までに構築した基盤、v2で変える点、これからの進め方を持ち帰ってもらう。',data:'内容は2026-10-28時点で固定。',src:'構成案 §3 スライド12',caution:'v2の結果・進捗を書かない。方向を示す語を使わない',
+render:()=>{
+ const it=[['1','これまで：通れる道の確認から、車の動きの再現、固定経路バスの比較までを、再現できる形で作った'],['2','固定経路バスの比較：方向性のある差は検出できなかった。乗れなかった人と待ち時間は記録できなかった'],['3','これから：予約型バスの配車4方式を、同じ条件で比べる設計を固定した'],['→','次：予約型バスの比較を進め、一人ひとり・予約ごとのデータで結果を整理する']];
+ return head(12,'まとめ','これまでの成果と限界、<br>そして、これから変えること')+
+ `<div class="content"><div class="col" style="gap:20px">${it.map((r,i)=>`<div ${c('a box '+(i==3?'amber':'teal'),0.3+i*.35)} style="display:flex;gap:28px;align-items:center"><div style="font-size:64px;font-weight:900;color:${i==3?COL.amber:COL.B};width:70px;text-align:center">${r[0]}</div><div style="font-size:32px;font-weight:700;line-height:1.4">${r[1]}</div></div>`).join('')}</div></div>`+foot(12,'2026-10-28 時点の内容')},anim:null});
+
+/* ===================== 組み立て ===================== */
+const slidesEl=document.getElementById('slides'),frames=[],TL=[];
+SL.forEach((s,i)=>{
+  const n=i+1,id='s'+String(n).padStart(2,'0');
+  TRACK=0;
+  const sec=document.createElement('section');sec.className='slide';
+  sec.innerHTML=`<div class="meta"><b>${n}. ${s.t}</b><span><button type="button" class="rvbtn sub rvat" data-i="${i}">このスライドからレビュー</button> ${id}</span></div><div class="frame"><div class="stage" id="${id}" data-composition-id="${id}" data-start="0" data-width="1920" data-height="1080">${s.render()}</div></div>
+  <dl class="notes"><div><dt>言うこと</dt><dd>${s.say}</dd></div><div><dt>載せるデータ</dt><dd>${s.data}</dd></div><div><dt>出典</dt><dd>${s.src}</dd></div><div><dt>注意（言ってはいけないこと）</dt><dd>${s.caution}</dd></div></dl>
+  <div class="cm" data-slide="${id}" data-title="${n}. ${s.t}"><h4>先生のコメント</h4><ul></ul><div class="empty">このスライドへのコメントはまだありません。</div>
+  <label class="note" for="cmin-${id}">コメントを入力（先生の口頭コメントを書き留める）</label><textarea id="cmin-${id}" placeholder="例：分母の説明をもう少し丁寧に"></textarea>
+  <div class="row2"><button class="pri add" type="button">追加</button><span class="msg note"></span></div></div>`;
+  sec.id='slide-'+id;
+  slidesEl.appendChild(sec);
+  const stage=sec.querySelector('.stage'),q=sel=>stage.querySelectorAll(sel);
+  const tl=(typeof gsap!=='undefined')?gsap.timeline({paused:true}):{_:0,from(){return this},to(){return this},time(){},duration(){return 6}}; /* GSAP未読込時は静止表示 */
+  tl.from(q('.a'),{opacity:0,y:26,duration:.6,stagger:.12,ease:'power2.out'},0.2);
+  if(s.anim)s.anim(tl,q);
+  tl.to({}, {duration:6-tl.duration()>0?6-tl.duration():0},tl.duration()); /* 全体6秒に揃える */
+  window.__timelines=window.__timelines||{};window.__timelines[id]=tl;TL.push(tl);frames.push(sec.querySelector('.frame'));
+});
+function fit(){frames.forEach(f=>{const st=f.firstElementChild;st.style.transform=`scale(${f.clientWidth/1920})`})}
+addEventListener('resize',fit);fit();
+
+/* プレーヤー */
+const scrub=document.getElementById('scrub'),tout=document.getElementById('tout'),btn=document.getElementById('btnPlay');
+let playing=false,tpos=6,last=0;
+function seek(t){tpos=Math.max(0,Math.min(6,t));TL.forEach(tl=>tl.time(tpos));scrub.value=tpos;tout.textContent=tpos.toFixed(2)+' s'}
+scrub.addEventListener('input',()=>{playing=false;btn.textContent='▶ 再生';seek(+scrub.value)});
+btn.addEventListener('click',()=>{playing=!playing;btn.textContent=playing?'❚❚ 停止':'▶ 再生';if(playing){if(tpos>=6)seek(0);last=performance.now();requestAnimationFrame(tick)}});
+function tick(now){if(!playing)return;const dt=(now-last)/1000;last=now;seek(tpos+dt);if(tpos>=6){playing=false;btn.textContent='▶ 再生';return}requestAnimationFrame(tick)}
+seek(6);
+
+/* ===================== スウォッチ ===================== */
+const SW=[['地','#FAF8F3','slide bg'],['文字','#14213D','ink'],['強調（B・主要）','#0F7C80','teal'],['A・基準','#5B6B7F','slate'],['注意・満員','#B86E00','amber'],['到達不可・不能','#B5483A','red'],['時間切れ','#6F5A94','violet'],['その他・中立','#B8BEC6','mute']];
+document.getElementById('swatches').innerHTML=SW.map(s=>`<div class="sw"><i style="background:${s[1]};${s[1]=='#FAF8F3'?'border-bottom:1px solid #D9D5CB':''}"></i><b>${s[0]}</b><span>${s[1]} · ${s[2]}</span></div>`).join('');
+
+/* ===================== 計算の突き合わせ ===================== */
+const chk=(label,calc,doc,tol)=>{const ok=Math.abs(calc-doc)<=tol;return `<tr><td class="l">${label}</td><td>${typeof calc=='number'?calc.toFixed(2):calc}</td><td>${doc}</td><td class="${ok?'ok':'diff'}">${ok?'一致':'差あり（丸め：正本は未丸め値）'}</td></tr>`};
+let h='';
+h+=`<h3>① 通れる道を調べる（Phase 1）：静的到達不可</h3><div class="scroll"><table class="t"><tr><th class="l">項目</th><th>再計算</th><th>正本記載</th><th>判定</th></tr>
+<tr><td class="l">メッシュ 17/40 (%)</td><td>${f2(P1.meshBlocked/P1.meshTotal*100)}</td><td>17／40（率の記載なし）</td><td>算出値</td></tr>
+<tr><td class="l">人口 952/2,257 (%)</td><td>${f2(P1.pplBlocked/P1.pplTotal*100)}</td><td>952／2,257人（率の記載なし）</td><td>算出値</td></tr></table></div>
+<p style="font-size:13px;color:var(--ink2)">スライド掲載時は「17/40メッシュ（42.5%）」のように分子分母を併記する。</p>`;
+const diffs=pair.map(p=>p.d),dmin=Math.min(...diffs),dmax=Math.max(...diffs);
+h+=`<h3>③ 固定経路バス（Phase 3）：試行別の完了率と15通りの差</h3>
+<div class="scroll"><table class="t"><tr><th class="l">試行（内部記号）</th><th>ケース（seed）</th><th>完了率（%）</th></tr>${P3.A.concat(P3.B).map(r=>`<tr><td class="l">${r[0]}</td><td>${sn(r[1])}（${r[1]}）</td><td>${f2(r[2])}</td></tr>`).join('')}</table></div>
+<div class="scroll" style="margin-top:12px"><table class="t"><tr><th class="l">項目</th><th>再計算（丸め値から）</th><th>正本記載</th><th>判定</th></tr>
+${chk('A 中央値',median(P3.A.map(a=>a[2])),P3.doc.medA,0.005)}
+${chk('B 中央値（raw）',median(P3.B.map(b=>b[2])),P3.doc.medB,0.005)}
+${chk('中央値差 B−A (pt)',median(P3.B.map(b=>b[2]))-median(P3.A.map(a=>a[2])),P3.doc.medDiff,0.005)}
+${chk('15組差 最小 (pt)',dmin,P3.doc.min,0.005)}
+${chk('15組差 最大 (pt)',dmax,P3.doc.max,0.005)}
+${chk('正の組数',diffs.filter(d=>d>0).length,P3.doc.pos,0)}
+${chk('負の組数',diffs.filter(d=>d<0).length,P3.doc.neg,0)}</table></div>
+<p style="font-size:13px;color:var(--ink2)">表示丸めの影響：丸め後の値から作った中央値差は 1.24、最小は −3.08。正本は未丸め値で +1.23／−3.09。スライドには<b>正本の値</b>（+1.23 pt、−3.09〜+22.97 pt）を使う。</p>
+<h3>③ 固定経路バス（Phase 3）：車両会計とバス輸送</h3><div class="scroll"><table class="t"><tr><th class="l">項目</th><th>再計算</th><th>正本記載</th><th>判定</th></tr>
+${chk('A: 自家用車＋救出走行',P3.veh.A.priv+P3.veh.A.rescue,P3.veh.A.route,0)}
+${chk('B: 自家用車＋救出走行',P3.veh.B.priv+P3.veh.B.rescue,P3.veh.B.route,0)}
+${chk('救出走行の削減（A−B）',P3.veh.A.rescue-P3.veh.B.rescue,P3.veh.cut,0)}
+${chk('出発地別 乗車人数の合計＝run別合計',P3.busOrigin.reduce((a,b)=>a+b[1],0),P3.bus.reduce((a,b)=>a+b[2],0),0)}
+${chk('出発地別 到着の合計＝run別合計',P3.busOrigin.reduce((a,b)=>a+b[2],0),P3.bus.reduce((a,b)=>a+b[3],0),0)}</table></div>
+<div class="scroll" style="margin-top:12px"><table class="t"><tr><th class="l">試行（内部記号）</th><th>ケース（seed）</th><th>乗車</th><th>避難所到着</th><th>到着/乗車 (%)</th></tr>${P3.bus.map(b=>`<tr><td class="l">${b[0]}</td><td>${sn(b[1])}（${b[1]}）</td><td>${b[2]}</td><td>${b[3]}</td><td>${f2(b[3]/b[2]*100)}</td></tr>`).join('')}
+<tr><td class="l"><b>5run合計</b></td><td></td><td>${P3.bus.reduce((a,b)=>a+b[2],0)}</td><td>${P3.bus.reduce((a,b)=>a+b[3],0)}</td><td>${f2(P3.bus.reduce((a,b)=>a+b[3],0)/P3.bus.reduce((a,b)=>a+b[2],0)*100)}</td></tr></table></div>
+<p style="font-size:13px;color:var(--ink2)">乗車記録は停留所に残った候補者全員を含まず、予約時刻がないため待ち時間は算出しない。到着/乗車は輸送実績の記述であり、A/B判定には使わない。</p>`;
+const per=Math.floor(V2.end/(V2.board+V2.alight)),seats=V2.stdN*V2.stdCap+V2.welN*V2.welCap;
+h+=`<h3>これからの研究（JDRT v2）：設計値からの計算（結果ではない）</h3><div class="scroll"><table class="t"><tr><th class="l">項目</th><th>再計算</th><th>設計記載</th><th>判定</th></tr>
+${chk('Type3＋Type4＝対象者',V2.N.t3+V2.N.t4,V2.N.all,0)}
+${chk('4方式×5ケース＝run数',V2.methods*V2.seeds.length,20,0)}
+${chk('controller実行回数 ＝ 21,600÷1',V2.end/V2.ctrl,21600,0)}
+${chk('技術観測回数 ＝ 21,600÷0.5',V2.end/V2.step,43200,0)}
+${chk('車両の座席数合計（4×8＋1×4）',seats,36,0)}
+<tr><td class="l">1要求あたり平均人数（3,255÷1,440）</td><td>${f2(V2.N.all/V2.requests)}</td><td>—（party size 1〜8人）</td><td>算出値</td></tr>
+<tr><td class="l">乗降300＋300秒×${per}件／台×5台 ＝ 上限要求数</td><td>${per*(V2.stdN+V2.welN)}</td><td>—</td><td>算出値</td></tr>
+<tr><td class="l">上限要求数÷1,440件 (%)</td><td>${f2(per*(V2.stdN+V2.welN)/V2.requests*100)}</td><td>—</td><td>算出値</td></tr></table></div>
+<p style="font-size:13px;color:var(--ink2)">上限は「移動時間ゼロ・poolingなし・1要求ずつ乗降300秒」とした設計値だけの目安。要求ごとの人数は異なるため、人数の上限ではない。実際の移動時間・待ち時間は含まない。</p>`;
+document.getElementById('calcroot').innerHTML=h;
+
+/* 分母表 */
+document.getElementById('denomtbl').innerHTML=`<tr><th class="l">段階</th><th class="l">対象</th><th>人数・台数</th><th class="l">注意</th></tr>
+<tr><td class="l">Phase 1</td><td class="l">常総市実データ版 出発地メッシュ</td><td>${P1.meshTotal}メッシュ／${P1.pplTotal.toLocaleString()}人</td><td class="l">メッシュ人口。各時点の静的探索</td></tr>
+<tr><td class="l">Phase 3</td><td class="l">route車両 A / B</td><td>${P3.veh.A.route.toLocaleString()} / ${P3.veh.B.route.toLocaleString()}台</td><td class="l">完了率の分母はType3/4（モデル人口）</td></tr>
+<tr><td class="l">v2（設計）</td><td class="l">配車の対象者（Type4 / Type3 / 計）</td><td>${V2.N.t4} / ${V2.N.t3.toLocaleString()} / ${V2.N.all.toLocaleString()}人</td><td class="l">主指標の分母はType4</td></tr>`;
+
+/* 参照図 */
+const base='../../../06_研究結果/';
+const figs=[['phase3/figures/fig4-7-1_pairwise_completion_rate_differences.png','fig4-7-1 15組差とゼロ線（スライド7）'],['phase3/figures/fig5-4-1_replicate_completion_rates.png','fig5-4-1 run別完了率（スライド7）'],['phase3/figures/fig4-9-1_origin_completion_diagnostic.png','fig4-9-1 出発地別診断（補足）'],['phase3/figures/fig5-5-1_type34_split_completion_rates.png','fig5-5-1 Type3/4分離（補足）']];
+document.getElementById('refgrid').innerHTML=figs.map(f=>`<figure><img class="ref" src="${base+f[0]}" alt="${f[1]}" onerror="this.outerHTML='<div class=&quot;card&quot; style=&quot;font-size:12.5px;color:var(--ink2)&quot;>画像を読み込めませんでした：${f[0]}</div>'"><figcaption>${f[1]}</figcaption></figure>`).join('');
+const SRC=[['1–4','題目・流れ・分母','構成案 §1〜3／各正本'],['5','Phase 1 数値','06_研究結果/研究結果・結論固定_20260721.md §2.1'],['6','Phase 2 実装内容','同 §2.2'],['7','run別完了率・15組差','phase3/Phase3_A_B比較表.md、figures/fig4-7-1・fig5-4-1'],['8','バス輸送・限界','phase3/Phase3_バス運行サービス詳細表.md'],['9','v1→v2の変更点','Phase3_A_B比較表 §1／03_研究設計文書/jdrt/常総市JDRT_PreAnalysisPlan_v1.md 第4〜5節'],['10','実験設計','同 PreAnalysisPlan_v1 第2〜8節、PreAnalysisPlan_v2 第2節'],['11','取得データ・上限計算','同 PreAnalysisPlan_v1 第9〜10節、ParameterRegistry'],['12','まとめ','結論固定 §5〜7']];
+document.getElementById('srctbl').innerHTML='<tr><th>スライド</th><th class="l">内容</th><th class="l">参照元（4年次本研究/ 以下）</th></tr>'+SRC.map(s=>`<tr><td>${s[0]}</td><td class="l">${s[1]}</td><td class="l mono" style="font-size:12.5px">${s[2]}</td></tr>`).join('');
+
+/* 未確認 */
+
+/* ===================== レビューモード ===================== */
+const RV=(function(){
+  const ids=SL.map((s,i)=>'s'+String(i+1).padStart(2,'0'));
+  const titles=SL.map((s,i)=>`${i+1}. ${s.t}`);
+  const rv=document.createElement('div');rv.id='rv';rv.hidden=true;
+  rv.setAttribute('role','dialog');rv.setAttribute('aria-label','レビューモード');
+  rv.innerHTML=`<div class="bar"><button type="button" data-k="exit">一覧に戻る</button><button type="button" data-k="prev" aria-label="前のスライド">← 前</button><button type="button" data-k="next" aria-label="次のスライド">次 →</button><span class="ttl"></span><span class="hint">← → 移動 ／ C コメント ／ Esc 閉じる</span></div>
+  <div class="body"><div class="stagebox"><div class="stagefit"></div><button type="button" class="tab" aria-label="コメント欄を開く">コメント<b class="zero">0</b></button></div>
+  <aside class="drawer" aria-label="先生のコメント"><div class="in"><div class="dh"><b class="dt"></b><button type="button" class="x">閉じる（Esc）</button></div>
+  <div class="cm" data-slide="${ids[0]}" data-title="${titles[0]}" data-rv="1"><h4>先生のコメント</h4><label class="note" for="cmin-rv">入力してCtrl+Enterで追加</label><textarea id="cmin-rv" placeholder="先生の口頭コメントを書き留める"></textarea>
+  <div class="row2"><button class="pri add" type="button">追加</button><span class="msg note"></span></div><ul></ul><div class="empty">このスライドへのコメントはまだありません。</div></div>
+  <div class="kb">入力中もAlt＋←→でスライドを移動できます。入力中の文字は、追加せずに移動しても残ります。</div></div></aside></div>`;
+  document.body.appendChild(rv);
+  const box=rv.querySelector('.stagebox'),fitEl=rv.querySelector('.stagefit'),tab=rv.querySelector('.tab'),tabN=tab.querySelector('b');
+  const panel=rv.querySelector('.cm'),ta=panel.querySelector('textarea'),dt=rv.querySelector('.dt'),ttl=rv.querySelector('.ttl');
+  const bPrev=rv.querySelector('[data-k=prev]'),bNext=rv.querySelector('[data-k=next]');
+  let cur=0,stage=null;const drafts={};
+  function fitRv(){if(!stage)return;const w=box.clientWidth-56,h=box.clientHeight-32;const k=Math.max(.05,Math.min(w/1920,h/1080));
+    fitEl.style.width=1920*k+'px';fitEl.style.height=1080*k+'px';fitEl.style.left=Math.max(8,(box.clientWidth-56-1920*k)/2+12)+'px';fitEl.style.top=Math.max(8,(box.clientHeight-1080*k)/2)+'px';stage.style.transform=`scale(${k})`}
+  function show(i){
+    drafts[ids[cur]]=ta.value;
+    cur=Math.max(0,Math.min(ids.length-1,i));TRACK=0;
+    fitEl.innerHTML=`<div class="stage">${SL[cur].render()}</div>`;stage=fitEl.firstElementChild;
+    panel.dataset.slide=ids[cur];panel.dataset.title=titles[cur];ta.value=drafts[ids[cur]]||'';
+    ttl.textContent=titles[cur];dt.textContent=titles[cur];bPrev.disabled=cur===0;bNext.disabled=cur===ids.length-1;
+    fitRv();if(window.__cmRender)window.__cmRender();else count(null);
+  }
+  function count(rows){const m=rows?rows.filter(r=>r.slide===ids[cur]):[];const o=m.filter(r=>r.status!=='done').length;
+    tabN.textContent=m.length;tabN.className=m.length?'':'zero';tab.setAttribute('aria-label',`コメント欄を開く（${m.length}件、未対応${o}件）`)}
+  function openP(){rv.classList.add('open');setTimeout(()=>ta.focus(),60)}
+  function closeP(){rv.classList.remove('open');ta.blur();box.focus()}
+  function enter(i){document.body.style.overflow='hidden';rv.hidden=false;show(i);box.tabIndex=-1;box.focus()}
+  function exit(){drafts[ids[cur]]=ta.value;rv.hidden=true;rv.classList.remove('open');document.body.style.overflow='';const s=document.getElementById('slide-'+ids[cur]);if(s)s.scrollIntoView({block:'start'})}
+  rv.querySelector('[data-k=exit]').onclick=exit;bPrev.onclick=()=>show(cur-1);bNext.onclick=()=>show(cur+1);
+  tab.onclick=openP;rv.querySelector('.x').onclick=closeP;
+  new ResizeObserver(fitRv).observe(box);
+  ta.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)&&!e.isComposing){e.preventDefault();panel.querySelector('button.add').click()}});
+  document.addEventListener('keydown',e=>{
+    if(rv.hidden||e.isComposing)return;
+    const typing=/^(TEXTAREA|INPUT|SELECT)$/.test((document.activeElement||{}).tagName||'');
+    if(e.key==='Escape'){e.preventDefault();if(rv.classList.contains('open'))closeP();else exit();return}
+    if(typing){if(e.altKey&&(e.key==='ArrowRight'||e.key==='ArrowLeft')){e.preventDefault();show(cur+(e.key==='ArrowRight'?1:-1))}return}
+    if(e.ctrlKey||e.metaKey||e.altKey)return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();show(cur+1)}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1)}
+    else if(e.key==='Home'){e.preventDefault();show(0)}else if(e.key==='End'){e.preventDefault();show(ids.length-1)}
+    else if(e.key==='c'||e.key==='C'){e.preventDefault();rv.classList.contains('open')?ta.focus():openP()}
+  });
+  ta.addEventListener('input',()=>{drafts[ids[cur]]=ta.value});
+  return {enter,count,clearDraft:()=>{drafts[ids[cur]]=''}};
+})();
+document.getElementById('rvOpen').onclick=()=>RV.enter(0);
+document.querySelectorAll('.rvat').forEach(b=>b.onclick=()=>RV.enter(+b.dataset.i));
+
+/* ===================== 先生のコメント（db） ===================== */
+(async function(){
+  const panels=[...document.querySelectorAll('.cm')];const listPanels=panels.filter(p=>!p.dataset.rv);
+  const cnt=document.getElementById('cmcount'),links=document.getElementById('cmlinks');
+  const setDisabled=v=>panels.forEach(p=>p.querySelectorAll('textarea,button').forEach(e=>e.disabled=v));
+  let db=null;
+  try{ db = window.claude && window.claude.use ? await window.claude.use('db') : null; }catch(e){ db=null; }
+  if(!db){
+    setDisabled(true);
+    cnt.textContent='このページをclaude.aiで開くと、コメントを書き込んで保存できます。';
+    panels.forEach(p=>{p.querySelector('.msg').textContent='（この画面では保存できません）'});
+    return;
+  }
+  const col=db.collection('reviewComments');
+  let rows=[];
+  const fmt=t=>{try{const d=new Date(t);return d.toLocaleString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}};
+  function render(){
+    panels.forEach(p=>{
+      const sid=p.dataset.slide, ul=p.querySelector('ul'), mine=rows.filter(r=>r.slide===sid);
+      ul.textContent='';
+      p.querySelector('.empty').hidden=mine.length>0;
+      mine.forEach(r=>{
+        const li=document.createElement('li'); if(r.status==='done') li.className='done';
+        const txt=document.createElement('div'); txt.className='txt'; txt.textContent=r.text;
+        const acts=document.createElement('div'); acts.className='acts';
+        const bDone=document.createElement('button'); bDone.type='button'; bDone.textContent=r.status==='done'?'未対応に戻す':'対応済みにする';
+        bDone.onclick=()=>write(()=>col.doc(r.id).update({status:r.status==='done'?'open':'done'}),p);
+        const bEdit=document.createElement('button'); bEdit.type='button'; bEdit.textContent='編集';
+        bEdit.onclick=()=>{ if(li.querySelector('textarea')) return;
+          const ta=document.createElement('textarea'); ta.value=r.text; ta.id='edit-'+r.id; ta.setAttribute('aria-label','コメントを編集');
+          const sv=document.createElement('button'); sv.type='button'; sv.className='pri'; sv.textContent='保存';
+          const cc=document.createElement('button'); cc.type='button'; cc.textContent='やめる';
+          const box=document.createElement('div'); box.style.gridColumn='1/-1'; const r2=document.createElement('div'); r2.className='row2'; r2.append(sv,cc); box.append(ta,r2);
+          txt.hidden=true; li.append(box); ta.focus();
+          cc.onclick=()=>{box.remove();txt.hidden=false};
+          sv.onclick=()=>{const v=ta.value.trim(); if(!v) return; write(()=>col.doc(r.id).update({text:v,editedAt:Date.now()}),p)};
+        };
+        const bDel=document.createElement('button'); bDel.type='button'; bDel.textContent='削除';
+        bDel.onclick=()=>{ if(bDel.dataset.arm){ write(()=>col.doc(r.id).delete(),p); } else { bDel.dataset.arm='1'; bDel.textContent='本当に削除'; setTimeout(()=>{bDel.dataset.arm='';bDel.textContent='削除'},4000);} };
+        acts.append(bDone,bEdit,bDel);
+        const meta=document.createElement('div'); meta.className='meta';
+        const st=document.createElement('span'); st.className='st '+(r.status==='done'?'done':'open'); st.textContent=r.status==='done'?'対応済み':'未対応';
+        const tm=document.createElement('span'); tm.textContent=fmt(r.createdAt)+(r.editedAt?'（編集済み）':'');
+        meta.append(st,tm);
+        li.append(txt,acts,meta); ul.append(li);
+      });
+    });
+    RV.count(rows);
+    const open=rows.filter(r=>r.status!=='done').length;
+    cnt.textContent=rows.length?`${rows.length}件（未対応 ${open}件）`:'まだありません。レビューモードの右端、または各スライドの下の欄から入力できます。';
+    links.textContent='';
+    if(rows.length){ const ul=document.createElement('ul');
+      listPanels.forEach(p=>{const m=rows.filter(r=>r.slide===p.dataset.slide); if(!m.length) return;
+        const li=document.createElement('li'); const a=document.createElement('a'); a.href='#slide-'+p.dataset.slide; a.textContent=p.dataset.title;
+        li.append(a,document.createTextNode(`：${m.length}件（未対応 ${m.filter(r=>r.status!=='done').length}件）`)); ul.append(li)});
+      links.append(ul);}
+  }
+  async function write(fn,p){ const msg=p.querySelector('.msg'); msg.className='msg note'; msg.textContent='保存中…';
+    try{ await fn(); msg.textContent='保存しました'; setTimeout(()=>{if(msg.textContent==='保存しました')msg.textContent=''},2500); }
+    catch(e){ msg.className='msg err'; msg.textContent= e&&e.code==='quota_exceeded'?'保存できません：保存容量の上限です。古いコメントを削除してください。':'保存できませんでした。通信を確認して、もう一度押してください。'; }
+  }
+  panels.forEach(p=>{
+    const ta=p.querySelector('textarea'), btn=p.querySelector('button.add');
+    btn.onclick=()=>{const v=ta.value.trim(); if(!v){ta.focus();return}
+      write(async()=>{await col.add({slide:p.dataset.slide,text:v,status:'open',createdAt:Date.now()}); ta.value=''; if(p.dataset.rv)RV.clearDraft();},p)};
+  });
+  window.__cmRender=render;
+  col.orderBy('createdAt','asc').onSnapshot(snap=>{rows=snap.docs.map(d=>Object.assign({id:d.id},d.data()));render();},
+    e=>{cnt.textContent='コメントを読み込めませんでした。ページを開き直してください。';});
+})();
+
+document.getElementById('todolist').innerHTML=[
+ '発表時間・質疑時間（確定後に枚数を増減。構成案 §3 の短縮／拡張案に従う）',
+ '正式題名・所属・氏名の表記（スライド1）',
+ '方式④の「予測が15分遅れ」の、現実の時間での意味（圧縮時計）の説明方法：計算上の900秒をどう口頭で補うか',
+ 'スライド2・4・5の地図：元ファイル・出典・時点・範囲の確認（本ページは模式図）',
+ 'スライド6：Phase 2 の実図（fig_phase2_congestion_timeseries.svg）を使うか模式図のままにするか',
+ '呼び名「これまで／これから」と、リポジトリ上の版番号（JDRT v1・v2。v2＝SUMOの刻みを0.5秒にした再実験）の対応を、質疑用に口頭で説明できるようにする',
+ 'hyperframes：本ページは公式の composition 形式（data-* ＋ paused GSAP）で記述。導入済みCLIのバージョンとの適合・書き出し手順は未検証'
+].map(t=>`<li>${t}</li>`).join('');
+</script>
+</body>
+</html>

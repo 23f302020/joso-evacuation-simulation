@@ -1,0 +1,58 @@
+{
+  "at_jst": "2026-10-27T23:35:30.607071+09:00",
+  "action": "same_one_cell_sequence_owned_progress_point",
+  "classification": "VERIFIED_WAIT",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102705",
+  "original_session": 46444,
+  "status": "RUNNING",
+  "phase": "finish",
+  "process_handle_identities": {
+    "15432": {
+      "state": "alive",
+      "created": 134375843366723456,
+      "pid": 15432
+    },
+    "11300": {
+      "state": "absent"
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "run_id": "nv26102705",
+  "core_manifest_status": "COMPLETED",
+  "manifest_elapsed_sec_at_point": 942.866974,
+  "progress": {
+    "at_jst": "2026-10-27T23:32:40.475740+09:00",
+    "time_sec": 21600.0,
+    "end_sec": 21600,
+    "wall_sec": 751.342117400025
+  },
+  "last_owned_monitor": {
+    "stdout": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102705/0035.stdout.log",
+    "sha256": "23c90b357275c3ab6781dd5ff19903a11cf7bd03624e7e0d01436fec6a4a5720",
+    "result": {
+      "status": "COMPLETED",
+      "run_id": "nv26102705",
+      "pid_alive": false,
+      "sim_sec": 21600.0,
+      "anomaly_flags": [],
+      "report": "06_研究結果/jdrt/goal_20261017/監視_nv26102705_20261027T233322907700.json"
+    }
+  },
+  "independent_target": {
+    "target_id": "nv26102705",
+    "status": "COMPLETED",
+    "pid": 11300,
+    "process": null,
+    "flags": [],
+    "observed_at_utc": "2026-10-27T14:35:18.991367+00:00",
+    "command_verified_binding": null
+  },
+  "performance_coverage_helper_review": "06_研究結果/jdrt/goal_20261017/audit_history/measurement_coverage_20261027/review.json",
+  "goal_complete": false,
+  "no_replay": true
+}

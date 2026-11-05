@@ -1,0 +1,119 @@
+test_complete_metadata_readback_is_read_only (test_choice_record_readback.ReadbackTests.test_complete_metadata_readback_is_read_only) ... FAIL
+test_context_marker_only_in_history_is_not_current (test_choice_record_readback.ReadbackTests.test_context_marker_only_in_history_is_not_current) ... FAIL
+test_current_implementation_changed (test_choice_record_readback.ReadbackTests.test_current_implementation_changed) ... FAIL
+test_dedicated_status_retains_hold (test_choice_record_readback.ReadbackTests.test_dedicated_status_retains_hold) ... FAIL
+test_duplicate_ledger_identity (test_choice_record_readback.ReadbackTests.test_duplicate_ledger_identity) ... FAIL
+test_duplicate_record_marker (test_choice_record_readback.ReadbackTests.test_duplicate_record_marker) ... FAIL
+test_foreign_registration (test_choice_record_readback.ReadbackTests.test_foreign_registration) ... FAIL
+test_independent_and_record_components_differ (test_choice_record_readback.ReadbackTests.test_independent_and_record_components_differ) ... FAIL
+test_not_committed_or_not_terminal (test_choice_record_readback.ReadbackTests.test_not_committed_or_not_terminal) ... 
+  test_not_committed_or_not_terminal (test_choice_record_readback.ReadbackTests.test_not_committed_or_not_terminal) (label='PREPARED') ... FAIL
+  test_not_committed_or_not_terminal (test_choice_record_readback.ReadbackTests.test_not_committed_or_not_terminal) (label='RUNNING') ... FAIL
+test_terminal_record_bytes_changed (test_choice_record_readback.ReadbackTests.test_terminal_record_bytes_changed) ... FAIL
+
+======================================================================
+FAIL: test_complete_metadata_readback_is_read_only (test_choice_record_readback.ReadbackTests.test_complete_metadata_readback_is_read_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 87, in test_complete_metadata_readback_is_read_only
+    self.assertEqual(result.get('status'), 'RECORD7_PRIMARY_READBACK_PASS')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'UNIMPLEMENTED' != 'RECORD7_PRIMARY_READBACK_PASS'
+- UNIMPLEMENTED
++ RECORD7_PRIMARY_READBACK_PASS
+
+
+======================================================================
+FAIL: test_context_marker_only_in_history_is_not_current (test_choice_record_readback.ReadbackTests.test_context_marker_only_in_history_is_not_current)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 98, in test_context_marker_only_in_history_is_not_current
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_current_implementation_changed (test_choice_record_readback.ReadbackTests.test_current_implementation_changed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 122, in test_current_implementation_changed
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_dedicated_status_retains_hold (test_choice_record_readback.ReadbackTests.test_dedicated_status_retains_hold)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 142, in test_dedicated_status_retains_hold
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_ledger_identity (test_choice_record_readback.ReadbackTests.test_duplicate_ledger_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 110, in test_duplicate_ledger_identity
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_record_marker (test_choice_record_readback.ReadbackTests.test_duplicate_record_marker)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 104, in test_duplicate_record_marker
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_foreign_registration (test_choice_record_readback.ReadbackTests.test_foreign_registration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 117, in test_foreign_registration
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_and_record_components_differ (test_choice_record_readback.ReadbackTests.test_independent_and_record_components_differ)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 152, in test_independent_and_record_components_differ
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_not_committed_or_not_terminal (test_choice_record_readback.ReadbackTests.test_not_committed_or_not_terminal) (label='PREPARED')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 136, in test_not_committed_or_not_terminal
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_not_committed_or_not_terminal (test_choice_record_readback.ReadbackTests.test_not_committed_or_not_terminal) (label='RUNNING')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 136, in test_not_committed_or_not_terminal
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_terminal_record_bytes_changed (test_choice_record_readback.ReadbackTests.test_terminal_record_bytes_changed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 92, in test_terminal_record_bytes_changed
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.795s
+
+FAILED (failures=11)

@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-10-21T14:49:24.198518+09:00",
+  "scope": "Current registered03 input source SHA and DRT serial-service contract; no accepted core tables read",
+  "manifest_path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\inputs\\registered03\\manifest.json",
+  "manifest_sha256": "d922a2e52e36183451b3ce25f29bed2e85f0a8834b92f833b401799a57d6a4ea",
+  "source_count": 29,
+  "mismatch_count": 0,
+  "proof": "06_研究結果\\jdrt\\goal_20261017\\G6_副指標・理論上限_実装証跡.json",
+  "proof_sha256": "517fb915baf021a5689be7b692019445d3c210dcceddeba0f4808e8a6d0166cb",
+  "old_proof_preserved": "06_研究結果\\jdrt\\goal_20261017\\analysis_history\\G6_source_refresh_20261021T144924187041\\G6_副指標・理論上限_実装証跡.json",
+  "review_decision": "Same serial-service assumptions remain satisfied; no metric/comparison/exclusion/method change",
+  "conditions": {
+    "all_available_at_zero": true,
+    "initially_empty": true,
+    "full_processing_times": true,
+    "no_vehicle_time_reset": true,
+    "serial_one_person": true
+  },
+  "limitations": [
+    "Source re-audit is not native behavior proof",
+    "Full70 actual outcome analysis remains gated",
+    "Three seats are not multiplied into the serial no-pooling service upper bound"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "c3fc3ddf0ab6b25c2ab855b7603a1ffa",
+  "at_utc": "2026-10-20T23:51:57.969498+00:00",
+  "target": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\ng261021f\\manifest.json",
+  "kind": "completed",
+  "evidence": {
+    "status": "COMPLETED",
+    "target_id": "ng261021f",
+    "observed_at_utc": "2026-10-20T23:51:57.940920+00:00",
+    "protocol": "realtime_choice_v1",
+    "purpose": "technical_native_guards",
+    "state_sha256": "2833a25a9f5a94a7c8dfe30e23eb9d39c37348abdcd6edf1fb3324fc0b3396fd",
+    "flags": [],
+    "pid": 34372,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\ng261021f\\manifest.json",
+    "sim_sec": 50.5,
+    "progress_token": [
+      "COMPLETED",
+      50.5
+    ],
+    "last_progress": 1792540317.9062023,
+    "log_offsets": {}
+  },
+  "delivery": "pending",
+  "notification": "pending",
+  "research_adoption": false
+}

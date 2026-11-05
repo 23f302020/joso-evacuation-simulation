@@ -1,0 +1,19 @@
+{
+  "at_jst": "2026-10-29T20:48:18.374909+09:00",
+  "status": "CURRENT_TERMINAL_SOURCE_BINDING_DRY_READBACK_ONLY",
+  "checks": {
+    "configured_source_matches_current_repaired_source": true,
+    "base_reference_path_same": true,
+    "base_reference_sha_same": true,
+    "base_reference_bytes_same": true,
+    "same_shared_native_source_sha": true
+  },
+  "base_state_sha256": "447f672c87afce14ff945423f224c53ecd2737e7007b1bcf5441daa76df03cbf",
+  "source_preparation_status": "TERMINAL_SHARED_REPAIR_SOURCE_SNAPSHOT_NOT_READY",
+  "source_files": 6228,
+  "source": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source",
+  "source_copied": false,
+  "build_started": false,
+  "helper_schema_fix_applied": false,
+  "technical_ready": false
+}

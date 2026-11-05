@@ -1,0 +1,37 @@
+{
+  "observed_at": "2026-10-21T14:51:08.727775+09:00",
+  "status": "PASS",
+  "scope": "existing artificial G6 analysis contracts after source-proof-only refresh; not70 research analysis",
+  "results": [
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_要求待ち集計_契約テスト.py",
+      "sha256": "8a508b3f3086661a3c9b5c95b646c1a38ec1aa9c4c497b8b7b2d2dbd906f1f3a",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "vent (__main__.RequestContracts.test_input_rejection_needs_its_actual_event) ... ok\r\ntest_missing_requests_and_boarding_plus_fallback_are_rejected (__main__.RequestContracts.test_missing_requests_and_boarding_plus_fallback_are_rejected) ... ok\r\ntest_served_request_is_not_automatically_person_admission (__main__.RequestContracts.test_served_request_is_not_automatically_person_admission) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 6 tests in 0.001s\r\n\r\nOK\r\n"
+    },
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_主指標集計_契約テスト.py",
+      "sha256": "9e58da6b40e2dd82bdaf1a7ccb96bb4a4ad5fc0f07f872e6138e2a89f05042f7",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "xits_cannot_masquerade_as_admission_or_missing_person_disappear) ... ok\r\ntest_incomplete_set_fails_before_population_or_output_access (__main__.PrimaryContracts.test_incomplete_set_fails_before_population_or_output_access) ... ok\r\ntest_zero_time_is_admitted_and_exit_retains_full_unadmitted_time (__main__.PrimaryContracts.test_zero_time_is_admitted_and_exit_retains_full_unadmitted_time) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 6 tests in 0.231s\r\n\r\nOK\r\n"
+    },
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_副指標上限_人工契約テスト.py",
+      "sha256": "a660b42f2a5076ad4a550a94ae5da2f9d5726f3acf2e554ec12e50a2111c8af7",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "_subset) ... ok\r\ntest_overlap_partial_horizon_short_processing_and_pooling_counterexamples_refuse (__main__.SecondaryContracts.test_overlap_partial_horizon_short_processing_and_pooling_counterexamples_refuse) ... ok\r\ntest_roads_preserve_zero_parked_raw_vs_traffic_and_closed_entry_counts (__main__.SecondaryContracts.test_roads_preserve_zero_parked_raw_vs_traffic_and_closed_entry_counts) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 7 tests in 0.002s\r\n\r\nOK\r\n"
+    },
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_統合集計_人工契約テスト.py",
+      "sha256": "70e012e0b191c7ea23bf3cb27185294e51f6dabd5118b462f88eb9301f51bcc0",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "ry_artifact_is_rejected_before_result_output) ... ok\r\ntest_complete_artificial_set_separates_wait_censoring_exit_and_zero_R0 (__main__.IntegratedContracts.test_complete_artificial_set_separates_wait_censoring_exit_and_zero_R0) ... ok\r\ntest_stale_frozen_service_source_proof_rejects_before_output (__main__.IntegratedContracts.test_stale_frozen_service_source_proof_rejects_before_output) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 5 tests in 65.083s\r\n\r\nOK\r\n"
+    }
+  ],
+  "proof_sha256": "517fb915baf021a5689be7b692019445d3c210dcceddeba0f4808e8a6d0166cb",
+  "research_adoption_permitted": false
+}

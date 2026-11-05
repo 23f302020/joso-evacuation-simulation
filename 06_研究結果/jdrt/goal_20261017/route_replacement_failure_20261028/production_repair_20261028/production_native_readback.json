@@ -1,0 +1,130 @@
+{
+  "at_jst": "2026-10-28T23:36:10.792944+09:00",
+  "scope": "production route API + isolated physical probes, NOT full controller READY",
+  "unit5": {
+    "count": 117,
+    "log_sha256": "b131c895d5d5c8dbefa1c73d8949e8f21db5a98785200a00bd98f93270f58f37",
+    "original_session": 34335,
+    "session_now": "missing; terminal log present; no rerun",
+    "exit_code": "not recovered from original handle"
+  },
+  "probes": [
+    {
+      "run_id": "rh261028g",
+      "variant": "production_route",
+      "checks": {
+        "terminal_manifest": true,
+        "raw_traversed_b": true,
+        "source_c": true,
+        "raw_clock": true,
+        "runtime_matches_current": true,
+        "control_clock_unchanged": true,
+        "explicit_invalid_retained": true,
+        "reentry_at_next_step": true,
+        "source_and_distance_retained": true,
+        "target_reached": true,
+        "no_native_errors": true
+      },
+      "sources": [
+        {
+          "source": ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_route_history_probe.py",
+          "sha256": "d8fd0fa6edc2f4797e209f9712b4a207bea1675c69b4adb79957ed7680f7527b",
+          "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/source_history/d8fd0fa6edc2f4797e209f9712b4a207bea1675c69b4adb79957ed7680f7527b_choice_route_history_probe.py"
+        },
+        {
+          "source": "04_プログラム\\scripts\\jdrt_realtime_choice.py",
+          "sha256": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+          "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/source_history/fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5_jdrt_realtime_choice.py"
+        }
+      ],
+      "files": {
+        "edges.xml": "5d91501fa6c20057e67d60a6dc8666c9bc651270a973d45760e0f75e182a57b0",
+        "fixture.net.xml": "6f1d00ade979b39a637226ce0a72148a63b74801f6e9d729da8062611ec9bd1b",
+        "frames.json": "330ab18183745a3ac7656f1dddd775374f5b1d0098a140e5c385fc79ff01d1f5",
+        "manifest.json": "8100d9c381aac8b4be5d7775421ec3cbda87e74c6e889d2e7bc66ea74686e972",
+        "netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "nodes.xml": "d67ecccc9e71c6f189121cae6531ce916675ff4800d53955b21b4b1164fd192f",
+        "sumo.log": "de245aae9219299f33bb8f71319e080dff33cd52a1fa1b10f6c4574e2b9241cd",
+        "sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tripinfo.xml": "6a074455d6fc78938eb17122e0b2d2da9891d4f3f3962236579788b8cc97b399",
+        "types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    },
+    {
+      "run_id": "rh261028h",
+      "variant": "stopped_cancel",
+      "checks": {
+        "terminal_manifest": true,
+        "raw_traversed_b": true,
+        "source_c": true,
+        "raw_clock": true,
+        "runtime_matches_current": true,
+        "parked_at_next_step": true,
+        "no_native_errors": true
+      },
+      "sources": [
+        {
+          "source": ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_route_history_probe.py",
+          "sha256": "5f8da6f027ac44db5d3367638d5108b70e365d25dfa79e47a407080ee22176d3",
+          "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/source_history/5f8da6f027ac44db5d3367638d5108b70e365d25dfa79e47a407080ee22176d3_choice_route_history_probe.py"
+        },
+        {
+          "source": "04_プログラム\\scripts\\jdrt_realtime_choice.py",
+          "sha256": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+          "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/source_history/fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5_jdrt_realtime_choice.py"
+        }
+      ],
+      "files": {
+        "edges.xml": "5d91501fa6c20057e67d60a6dc8666c9bc651270a973d45760e0f75e182a57b0",
+        "fixture.net.xml": "610c6fce4659e3b39e30c90b2380de0c8da49a106bd5bbd9ca3bc83ba7f0e8d7",
+        "frames.json": "b92ab2fd01c55ce31e2ba44f36535795fd67e70bdd2407760e763a6c3345039a",
+        "manifest.json": "b7ee934026d754b7718340eba932254183d7ce248b4271beee32a4cfa1a4a75f",
+        "netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "nodes.xml": "d67ecccc9e71c6f189121cae6531ce916675ff4800d53955b21b4b1164fd192f",
+        "sumo.log": "6bc0024e857f141f8912cf01261a41531872603540956df060d3ceae48a26702",
+        "sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tripinfo.xml": "be7781e3dc73ce3ee67fc610c4b393212b3ec511ea8fbeeea86eed97a0f54de1",
+        "types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    },
+    {
+      "run_id": "rh261028i",
+      "variant": "production_future_closed",
+      "checks": {
+        "terminal_manifest": true,
+        "raw_traversed_b": true,
+        "source_c": true,
+        "raw_clock": true,
+        "runtime_matches_current": true,
+        "actual_future_pair_error": true
+      },
+      "sources": [
+        {
+          "source": ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_route_history_probe.py",
+          "sha256": "5f8da6f027ac44db5d3367638d5108b70e365d25dfa79e47a407080ee22176d3",
+          "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/source_history/5f8da6f027ac44db5d3367638d5108b70e365d25dfa79e47a407080ee22176d3_choice_route_history_probe.py"
+        },
+        {
+          "source": "04_プログラム\\scripts\\jdrt_realtime_choice.py",
+          "sha256": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+          "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/source_history/fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5_jdrt_realtime_choice.py"
+        }
+      ],
+      "files": {
+        "edges.xml": "5d91501fa6c20057e67d60a6dc8666c9bc651270a973d45760e0f75e182a57b0",
+        "fixture.net.xml": "d2407b2dce084e5b9f772cd9b4c7f3185d9f610964a575f08edb9cd4dd4987ae",
+        "frames.json": "36d719ca2ccdcd3ac5cb7ca54309dac6e460125964f71af410139d0153228dae",
+        "manifest.json": "154259d7fa9c94150193339b9541c4ddae351a6ca3a44dabe7905eca7e6763c2",
+        "netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "nodes.xml": "d67ecccc9e71c6f189121cae6531ce916675ff4800d53955b21b4b1164fd192f",
+        "sumo.log": "226f64720a9ad879e08165fa365dc354c600ccd28d05377f063bb89a27adff9f",
+        "sumo_errors.log": "d580a959f9ceb4288a39f7fd7d7d7d3e034e5dcd459325f2234524ab5c177db2",
+        "tripinfo.xml": "9ff2414936bfa63efa27339b69fa1d67f5d46b929b1af5d1e7190638f0b3fa08",
+        "types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    }
+  ],
+  "test_launch_history": "First wrong relative Python path launched no tests. First RED had two contract failures plus Mock return error. Corrected mock then exact-contract RED:3 functional failures; targeted GREEN3/moduleGREEN39/full5GREEN117. Original logs preserved.",
+  "core_ready": false,
+  "next": "new same-science technical registration; integrated boarding/past-history regression, complete suite/audit/all14/new READY"
+}

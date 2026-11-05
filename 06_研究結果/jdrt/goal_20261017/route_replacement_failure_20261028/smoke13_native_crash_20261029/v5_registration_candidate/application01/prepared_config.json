@@ -1,0 +1,851 @@
+{
+  "municipality_code": "08211",
+  "seeds": [
+    23423,
+    42,
+    1,
+    7,
+    101
+  ],
+  "simulation": {
+    "start_jst": "2015-09-10T12:50:00+09:00",
+    "duration_sec": 21600,
+    "step_sec": 0.5,
+    "controller_sec": 1,
+    "dispatch_sec": 60,
+    "snapshot_sec": 60,
+    "stop_speed_mps": 0.1
+  },
+  "hazard": {
+    "sample_spacing_m": 5,
+    "vehicle_depth_m": 0.5,
+    "pedestrian_depth_m": 0.1,
+    "reopen": false,
+    "unverified_structure_policy": "exclude_edges_keep_people"
+  },
+  "operation": {
+    "fleet_count": 4,
+    "passenger_capacity": 3,
+    "boarding_sec": 300,
+    "alighting_sec": 300,
+    "margin_sec": 300,
+    "reference_depot_shelter": "shelter_3",
+    "pooling": false,
+    "vehicle_length_m": 4.5,
+    "min_gap_m": 2.5
+  },
+  "evaluation": {
+    "primary_type": "type4",
+    "primary_status": "admitted",
+    "boundary_exit_in_primary": false,
+    "finite_facility_capacity": true,
+    "same_tick_order": "person_id"
+  },
+  "dispatch_weights": {
+    "waiting": 1,
+    "vulnerability": 1,
+    "pickup": 1,
+    "flood": 1
+  },
+  "population": {
+    "ownership_reference": "non_car_15pct",
+    "ready_interval_sec": [
+      0,
+      7200
+    ],
+    "walk_mps": {
+      "type3": 1.0,
+      "type4": 0.58
+    },
+    "walk_limit_m": 3000,
+    "snap_limit_m": 300
+  },
+  "protocol": "realtime_choice_v1",
+  "registered_at_jst": "2026-10-17T08:43:44.101848+09:00",
+  "status": "DESIGN_REGISTERED_TECHNICAL_NOT_READY",
+  "authorization": "2026-10-17 user /goal; delegated within-goal design guided by more realistic simulations and mathematical reasoning; no external send; preserve old protocols",
+  "pap": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
+  "registry_document": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md",
+  "state_contract": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5",
+  "input_directory": "inputs/registered01",
+  "parent_input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2/inputs/registered01/manifest.json",
+  "parent_registry": "04_プログラム/config/jdrt_realtime_b_boundary_v2.json",
+  "destination_policies": [
+    "fixed_reference",
+    "facility_first"
+  ],
+  "demand_levels": {
+    "u05": {
+      "fraction": 0.05,
+      "basis": "hypothetical_low_load_one_order_below_registered_50_percent"
+    },
+    "u50": {
+      "fraction": 0.5,
+      "basis": "hypothetical_high_load_inherited_stress"
+    }
+  },
+  "scenarios": [
+    "R0",
+    "R1",
+    "R2P900",
+    "R2P0"
+  ],
+  "forecast": {
+    "R0": null,
+    "R1": null,
+    "R2P900": {
+      "scheduled_time_error_sec": 900
+    },
+    "R2P0": {
+      "scheduled_time_error_sec": 0,
+      "diagnostic_only": true
+    }
+  },
+  "request_policy": {
+    "intent_is_not_acceptance": true,
+    "max_unboarded_wait_sec": 900,
+    "deadline_anchor": "ready_sec",
+    "boarding_start_strictly_before_deadline": true,
+    "cancel_at_deadline_before_boarding": true,
+    "fallback": "walk_once_same_origin_same_terminal_current_graph",
+    "retry_requests": false,
+    "fallback_after_boarding_started": false,
+    "communication_delay_sec": 0,
+    "waiting_origin_hazard": "record_overlap_no_casualty_inference",
+    "pickup_estimate_before_deadline": true,
+    "completion_estimate_at_most_horizon": true,
+    "cancel_vehicle": "physical_wait_at_current_safe_external_no_reset"
+  },
+  "destination_selection": {
+    "fixed_reference": "byte_identical_parent_origin_terminal_id",
+    "facility_first_priority": [
+      [
+        "facility",
+        "passenger"
+      ],
+      [
+        "facility",
+        "pedestrian"
+      ],
+      [
+        "boundary_exit",
+        "passenger"
+      ],
+      [
+        "boundary_exit",
+        "pedestrian"
+      ]
+    ],
+    "information": "initial_current_closures_only",
+    "distance_weight": "length",
+    "tie_break": [
+      "terminal_id",
+      "lexicographic_edge_id_path"
+    ],
+    "fixed_for_all_scenarios_seeds_and_demands": true,
+    "dynamic_reassignment": false,
+    "use_future_or_capacity_in_selection": false,
+    "distance_arithmetic": "Decimal(str(length)); retain exact decimal and display float"
+  },
+  "forecast_gate": {
+    "required_components": [
+      "pickup_sec",
+      "boarding_sec",
+      "delivery_sec",
+      "alighting_sec",
+      "margin_sec"
+    ],
+    "strict_less_than_forecast_remaining": true,
+    "flood_priority_weight": 1,
+    "interpretation": "gate_and_urgency_package_not_gate_only"
+  },
+  "record_files": [
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+    "context.md",
+    "00_全体整理/決定ログ.md",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl"
+  ],
+  "execution": {
+    "timing_contract": "pre_step_end_v1",
+    "max_control_lead_sec": 0.5,
+    "initial_closure_call_sec": 0,
+    "strict_closed_entry_inclusive": true,
+    "common_implementation_required": true,
+    "excluded_comparison_protocols": [
+      "v1",
+      "v2",
+      "realistic_v1",
+      "realtime_b_v1",
+      "realtime_b_boundary_v2"
+    ],
+    "implementation_files": [
+      "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+      "04_プログラム/scripts/jdrt_choice_policy.py",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py"
+    ],
+    "legacy_cli_may_start": false
+  },
+  "acceptance_gates": {
+    "unhandled_errors": 0,
+    "teleports": 0,
+    "collisions": 0,
+    "accounting_difference": 0,
+    "missing_snapshots": 0,
+    "gridlocks": 0,
+    "closed_entry": 0,
+    "ambiguous_transition": 0,
+    "duplicate_active_mode": 0,
+    "invalid_state_transition": 0,
+    "request_orphan": 0,
+    "input_independent_validation": "PASS",
+    "all_14_setting_smoke": "PASS",
+    "actual_sumo_cancellation_timing": "PASS",
+    "one_common_implementation_sha_set": true
+  },
+  "cells": [
+    {
+      "cell_id": "fixed_reference_r0_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_r0_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed23423",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 23423
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed42",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_r0_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 42
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed42",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 42
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed1",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_r0_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 1
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed1",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 1
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed7",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_r0_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 7
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed7",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 7
+    },
+    {
+      "cell_id": "fixed_reference_r0_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u05_r1_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p900_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u05_r2p0_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u50_r1_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p900_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "fixed_reference_u50_r2p0_seed101",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_r0_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": null,
+      "scenario": "R0",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u05_r1_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u05_r2p900_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u05_r2p0_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u05",
+      "scenario": "R2P0",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u50_r1_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R1",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u50_r2p900_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 101
+    },
+    {
+      "cell_id": "facility_first_u50_r2p0_seed101",
+      "destination_policy": "facility_first",
+      "demand_level": "u50",
+      "scenario": "R2P0",
+      "seed": 101
+    }
+  ],
+  "baseline_reuse": "same_destination_and_seed_R0_shared_across_u05_u50_only_within_new_protocol",
+  "analysis": {
+    "no_direction_before_all_registered_cells": true,
+    "primary_contrasts": [
+      "R1-R0",
+      "R2P900-R1",
+      "R2P0-R1",
+      "R2P900-R2P0"
+    ],
+    "diagnostic_contrasts": [
+      "facility_first-fixed_reference",
+      "u50-u05",
+      "difference_in_differences"
+    ],
+    "summaries": [
+      "all_seed_values",
+      "mean",
+      "min",
+      "max"
+    ],
+    "population_inference": false,
+    "unadmitted_time_integral": "sum(min(admitted_sec,H); H if never admitted)/(H*N_type4)"
+  },
+  "input_revision": "alignment02",
+  "alignment_addendum": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_位置・観測整合_事前登録追補_v1.md",
+  "preregistration_archive": "06_研究結果/jdrt/goal_20261017/preregistration_before_alignment_20261017T093456/archive_manifest.json",
+  "previous_choice_input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered01/manifest.json",
+  "position_contract": {
+    "name": "reference_projection_shared_placement_v1",
+    "minimum_front_pos_m": 7.0,
+    "end_buffer_m": 1.0,
+    "car_lane": "first_passenger_permitted",
+    "pedestrian_lane": "unique_pedestrian_permitted",
+    "pedestrian_projection": "nearest_to_common_car_point",
+    "private_depart_lane": "best_equal_lane_lengths_required",
+    "virtual_origin_access": "reported_not_simulated_all_modes",
+    "boundary_exit": "downstream_control_L_minus_buffer",
+    "same_edge_backward_car": "forward_cycle_or_no_route",
+    "all_source_ids_and_edges_preserved": true
+  },
+  "traffic_observation_contract": {
+    "parking_bit": 2,
+    "preserve_raw_associated_observations": true,
+    "dispatch_uses_onroad_only": true,
+    "empty_onroad_uses_free_flow": true,
+    "unexplained_invalid_position": "missing_gate",
+    "per_step_actor_observations": true
+  },
+  "walking_distance_contract": {
+    "limit_field": "population.walk_limit_m",
+    "planned_length": "SUMO_stage_with_depart_and_arrival_positions",
+    "reroute_passed": "previous_plan_minus_same_path_remaining_at_current_position",
+    "budget_spent": "max_model_passed_and_speed_integral",
+    "conservative_pre_step_budget": true,
+    "personinfo_sum_is_not_travelled_distance": true
+  },
+  "amendments": [
+    {
+      "at_jst": "2026-10-17T09:41:17.006622+09:00",
+      "kind": "pre_core_position_traffic_distance_alignment",
+      "authority": "latest user final-goal delegation and stated quality/realism/math axis",
+      "core_runs_observed": 0,
+      "registered_cell_set_changed": false
+    },
+    {
+      "at_jst": "2026-10-21T21:35:57.152451+09:00",
+      "kind": "native_diagnostic_observation_v2_technical_reregistration",
+      "authority": "user final-goal autonomy and technical implementation/validation authority; no PAP metric/comparison/exclusion change",
+      "previous_registered_config_sha256": "d32d5b5e11652f4ff66273d1a671573760a3665b182b0a68d674f2162d258f9e",
+      "old_accepted_cells_preserved": 1,
+      "new_accepted_cells": 0,
+      "cell_set_changed": false,
+      "physical_model_input_changed": false,
+      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY"
+    },
+    {
+      "at_jst": "2026-10-28T23:36:10.792944+09:00",
+      "kind": "remaining_route_api_technical_reregistration_v4",
+      "authority": "AGENTS technical repair + user final-goal autonomy; no scientific condition/metric/comparison/exclusion change",
+      "previous_registered_config_sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+      "old_accepted_cells_preserved": 9,
+      "failed_run_preserved": "nv26102810",
+      "new_accepted_cells": 0,
+      "cell_set_changed": false,
+      "physical_inputs_changed": false,
+      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY"
+    },
+    {
+      "at_jst": "2026-10-29T20:23:02.420106+09:00",
+      "kind": "shared_native_past_stop_index_technical_reregistration_v5",
+      "authority": "AGENTS technical repair and user autonomous final-goal direction; no scientific method/metric/comparison/exclusion change",
+      "previous_registered_config_sha256": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8",
+      "previous_registration": "choice_route_control_v4_20261028",
+      "previous_current_accepted_cells": 0,
+      "old_v3_adopted9_and_failure_preserved": true,
+      "cell_set_changed": false,
+      "scientific_conditions_changed": false,
+      "native_pair_primary_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/full_pair_primary02/verification.json",
+      "bundle_manifest_binding": {
+        "control": {
+          "manifest": "04_プログラム/output/sumo/toolchains/native_ctl_si29a/toolchain.json",
+          "manifest_sha256": "8fc615c82ca284c4f5ff94e808e39f2fa974cb0ef0d76933a2b79373f33cdf98",
+          "files": 237,
+          "all_file_sha256_verified": true,
+          "provenance_exact_copy": true,
+          "binary_sha256": {
+            "sumo": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+            "netconvert": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4"
+          },
+          "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/control_si29a_manifest_verification.json",
+          "fresh_import_report_sha256": "827a12be264e5ad21d3316f7f90739f7aae31b41901444a54a6d652f718aae70"
+        },
+        "patched": {
+          "manifest": "04_プログラム/output/sumo/toolchains/native_lat_si29a/toolchain.json",
+          "manifest_sha256": "9441822d02fe1a068ade0d24aade92ba4228e13d53a3c12edb229cdc80607669",
+          "files": 237,
+          "all_file_sha256_verified": true,
+          "provenance_exact_copy": true,
+          "binary_sha256": {
+            "sumo": "08019a104aaafd1de60ec43be3a06611575c06c7150f1ed7a92d8a587951c6cb",
+            "netconvert": "eeb3318a4e289fee098fa96fc07f0a16a84de8466ace28db260b30553a24239a"
+          },
+          "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/selected_si29a_manifest_verification.json",
+          "fresh_import_report_sha256": "7db7c5bc7ea97392d4fe389e202450e018676db3b3ac7081f0d6d4f5b0e95ab0"
+        }
+      },
+      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY",
+      "previous_technical_document": {
+        "path": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_経路制御_技術再登録_v4.md",
+        "sha256": "0ec58e0b2e63fc75d7822a5001f617fed7bc336cb09d6f7132ca51a359dc3b87"
+      },
+      "previous_v4_input_manifest": {
+        "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/inputs/registered01/manifest.json",
+        "sha256": "32716a1f5963e63a64a6a030292a3a351da301b506d3802eb04123064dad4252"
+      }
+    }
+  ],
+  "registration_id": "choice_shared_stopindex_v5_20261029",
+  "native_diagnostic_observation_contract": {
+    "raw_vehicle_emergency_deceleration_required": true,
+    "motion_integrator": "semi_implicit_euler_explicit_same_as_prior_native_default",
+    "emergency_warning_threshold": 1.0,
+    "generic_emergency_braking_classification": "same_actor_three_raw_frames_source_equation_within_observed_emergency_limit",
+    "unknown_or_missing_evidence": "INVALID_preserve_stop",
+    "native_emergency_stop": "not_newly_accepted",
+    "no_original_core_readoption": true
+  },
+  "native_observation_addendum": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md"
+}

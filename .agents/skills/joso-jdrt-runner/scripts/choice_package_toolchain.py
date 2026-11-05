@@ -11,12 +11,20 @@ import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[4]
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+from choice_pair_proof import assert_pair_unchanged, verify_pair
 # This packager supports static non-OS dependencies only. No PATH/DLL search.
 OS_DLLS = {'advapi32.dll', 'bcrypt.dll', 'crypt32.dll', 'dnsapi.dll', 'gdi32.dll',
            'iphlpapi.dll', 'kernel32.dll', 'msvcrt.dll', 'ntdll.dll', 'ole32.dll',
            'oleaut32.dll', 'psapi.dll', 'secur32.dll', 'shell32.dll', 'shlwapi.dll',
            'ucrtbase.dll', 'user32.dll', 'userenv.dll', 'version.dll', 'winmm.dll',
            'winspool.drv', 'ws2_32.dll', 'wsock32.dll'}
+# Exact UCRT API contracts mapped to System32/ucrtbase.dll in paired loader proof.
+# No api-ms-win-* wildcard or application-local runtime DLL is permitted.
+OS_DLLS.update('api-ms-win-crt-' + name + '-l1-1-0.dll' for name in (
+    'convert', 'environment', 'filesystem', 'heap', 'locale', 'math', 'private',
+    'runtime', 'stdio', 'string', 'time', 'utility'))
 
 
 def sha(path):
@@ -129,20 +137,22 @@ def package(source_tools, sumo, netconvert, provenance, tools_inventory, destina
     if (state.get('schema') != 'isolated_native_build_v1'
             or state.get('status') != 'COMPILED_VERSION_CHECKED_NOT_SIMULATED'):
         raise ValueError('Native build must be terminal and version checked')
+    if (not isinstance(state.get('commands'), list) or not state['commands']
+            or any(not isinstance(command, dict) or type(command.get('exit_code')) is not int
+                   or command['exit_code'] != 0 for command in state['commands'])):
+        raise ValueError('Every command in the selected build attempt must have completed successfully')
     build_commands = [c for c in state.get('commands', []) if '--build' in c.get('command', [])
                       and '--target' in c['command'] and {'sumo', 'netconvert'} <= set(c['command'])]
     if not build_commands or build_commands[-1].get('exit_code') != 0:
         raise ValueError('Successful sumo/netconvert target build evidence required')
-    if proof['role'] == 'patched' and not re.fullmatch('[0-9a-f]{64}', state.get('patch_applied_sha256', '')):
-        raise ValueError('Patched build requires patch SHA')
-    if proof['role'] == 'control':
-        comparison = proof.get('patched_control_comparison', {})
-        if (not proof.get('source_comparison') or comparison.get('configure_equal_except_source_build_paths') is not True
-                or comparison.get('zlib_dependency_identical') is not True
-                or set(comparison.get('flags', {})) != {'sumo', 'netconvert'}
-                or not all(check.get('compiler_defines_and_flags_equal') is True
-                           and check.get('link_command_equal') is True for check in comparison['flags'].values())):
-            raise ValueError('Control source/flags/dependency comparison required')
+    pair = verify_pair(proof, project_root, track, read_json, sha, pe_imports)
+    shared_policy = read_json(pair['policy_path']).get('schema') == 'approved_native_pair_stop_index_policy_v1'
+    if shared_policy:
+        paired_entry = read_json(pair['pair_path'])['builds'][proof['role']]
+        dependency_files = [paired_entry['tools']['zlib_static'],
+                            *(ref for name, ref in paired_entry['headers'].items() if name.startswith('zlib/'))]
+    else:
+        dependency_files = state.get('zlib_dependency', {}).get('files', [])
     if (inventory.get('schema') != 'official_python_tools_inventory_v1'
             or inventory.get('all_official_bytes_match') is not True
             or not re.fullmatch('[0-9a-f]{40}', inventory.get('source_commit', ''))
@@ -197,9 +207,9 @@ def package(source_tools, sumo, netconvert, provenance, tools_inventory, destina
             if ((item.external_attr >> 16) & 0o170000) == 0o120000 or hashlib.sha256(archive.read(item)).hexdigest() != sha(sources[name]):
                 raise ValueError('Official ZIP member differs from source bytes')
     # These are independently checked references, not proof merely because JSON exists.
-    for item in proof.get('files', []) + state.get('zlib_dependency', {}).get('files', []):
+    for item in proof.get('files', []) + dependency_files:
         track(item)
-    if not proof.get('files') or not state.get('zlib_dependency', {}).get('files'):
+    if not proof.get('files') or not dependency_files:
         raise ValueError('Compiler/source/dependency file evidence required')
     binaries = proof.get('binaries', [])
     if len(binaries) != 2:
@@ -211,9 +221,18 @@ def package(source_tools, sumo, netconvert, provenance, tools_inventory, destina
             raise ValueError('Binary path differs from supplied provenance')
         item = matches[0]
         track(item)
-        if item.get('clean_path_version_exit_code') != 0:
-            raise ValueError('Clean-PATH version proof failed')
-        version = track({'path': item['version_log'], 'sha256': item['version_log_sha256']})
+        if shared_policy:
+            commands = [c for c in state['commands'] if c['command'] == [str(item['path']), '--version']]
+            if (len(commands) != 1 or commands[0]['phase'] != name + '_diagnostic_version'
+                    or type(commands[0]['exit_code']) is not int or commands[0]['exit_code'] != 0):
+                raise ValueError('Original repaired-target version command failed or differs')
+            version_ref = {'path': commands[0]['log'], 'sha256': commands[0]['log_sha256'],
+                           'bytes': commands[0]['log_bytes']}
+        else:
+            if item.get('clean_path_version_exit_code') != 0:
+                raise ValueError('Clean-PATH version proof failed')
+            version_ref = {'path': item['version_log'], 'sha256': item['version_log_sha256']}
+        version = track(version_ref)
         if proof['custom_version'] not in version.read_text(errors='strict'):
             raise ValueError('Version log does not identify the custom build')
         if pe_imports(supplied) != sorted(x.lower() for x in item.get('pe_imports', [])):
@@ -222,6 +241,11 @@ def package(source_tools, sumo, netconvert, provenance, tools_inventory, destina
         sources['evidence/' + name + '_version.log'] = version
     sources['evidence/native_provenance.json'] = regular(provenance)
     sources['evidence/official_python_tools_inventory.json'] = regular(tools_inventory)
+    sources['evidence/native_pair.json'] = pair['pair_path']
+    sources['evidence/native_pair_policy.json'] = pair['policy_path']
+    for index, path in enumerate(pair['evidence_files']):
+        if path not in sources.values():
+            sources[f'evidence/paired_primary/{index:03d}_{path.name}'] = path
     # Keep metadata/configuration/log evidence verbatim; do not duplicate the
     # compiler executables, static archives or full official source ZIP.
     for index, item in enumerate(proof['files']):
@@ -232,14 +256,15 @@ def package(source_tools, sumo, netconvert, provenance, tools_inventory, destina
         path = regular(path)
         sources[f'evidence/attachments/{index:03d}_{path.name}'] = path
     for index, command in enumerate(state['commands']):
-        log = regular(command['log'])
-        if log.stat().st_size != command['log_bytes']:
-            raise ValueError('Build log changed after observation')
+        if not re.fullmatch('[0-9a-f]{64}', command.get('log_sha256', '')):
+            raise ValueError('Command log SHA evidence required')
+        log = track({'path': command['log'], 'sha256': command['log_sha256'], 'bytes': command['log_bytes']})
         if log not in sources.values():
             sources[f'evidence/build_logs/{index:03d}_{log.name}'] = log
     hashes = {name: sha(path) for name, path in sources.items()}
     if any(sha(path) != expected for path, expected in validated.items()):
         raise ValueError('Validated source/proof changed before packaging')
+    assert_pair_unchanged(pair)
     # Validation precedes creation. Any subsequent failure leaves a non-adoptable FAILED bundle.
     destination.mkdir(parents=True, exist_ok=False)
     try:
@@ -255,11 +280,14 @@ def package(source_tools, sumo, netconvert, provenance, tools_inventory, destina
             raise ValueError('Bundle has missing or unlisted files')
         if any(sha(path) != expected for path, expected in validated.items()):
             raise ValueError('Validated source/proof changed during packaging')
+        assert_pair_unchanged(pair)
         manifest = {'schema_version': 1, 'files': hashes,
                     'roles': {'sumo': 'bin/sumo.exe', 'netconvert': 'bin/netconvert.exe',
                               'traci_init': 'tools/traci/__init__.py', 'sumolib_init': 'tools/sumolib/__init__.py'},
                     'provenance': {'native_provenance': 'evidence/native_provenance.json', 'role': proof['role'],
                                    'source_commit': inventory['source_commit'], 'non_os_runtime_dlls': 0,
+                                   'native_pair': 'evidence/native_pair.json',
+                                   'native_pair_policy': 'evidence/native_pair_policy.json',
                                    'official_python_tools_inventory': 'evidence/official_python_tools_inventory.json'}}
         manifest_path = destination / 'toolchain.json'
         with manifest_path.open('x', encoding='utf-8', newline='\n') as stream:

@@ -1,0 +1,236 @@
+{
+  "at_jst": "2026-10-24T23:38:57.477616+09:00",
+  "status": "ALL14_CURRENT_TECHNICAL_VERIFIED_NOT_READY",
+  "original_session": 80519,
+  "original_session_exit": 0,
+  "owner_terminated": true,
+  "registration_id": "choice_native_observation_v3_20261024",
+  "sequence_sha256": "0dd8dfcf8ede79df0f492c47b7696a66c82d7e5a3ade8e821b30b9fce02ed5d2",
+  "sequence_finished_at": "2026-10-24T23:37:35.311609+09:00",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "parameter_sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+  "input_manifest_sha256": "95cc4913f2f9a2752781795c9ae276f1a5bb7b73070edb03c64797c25d7d58a9",
+  "same_declared_runtime_all14": true,
+  "primary_output_files_verified": 238,
+  "smokes": [
+    {
+      "run_id": "ns261024e_01",
+      "cell": {
+        "cell_id": "fixed_reference_r0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "02e406b70e037fdbfc5481960eb9942ea5bb232895eebbbc163cdd63bcbd8da6",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_01_20261024T231815136632.json",
+      "validation_sha256": "dae1f8cc419ed58b41741f197cc68ed5904ff31288a494ef913382e1e8d2b9de",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_02",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "8dfd3aea11ad839e7839d58c87068db2714b1b8e3e8f0d42578d43abd5e07860",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_02_20261024T231943364575.json",
+      "validation_sha256": "d28a6554512eb11ba654cff0823d8330c3eb1b02559aabfd59706f4673029b64",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_03",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "c63ea9fcb3881b256c014fd593c21f2c54e530fc6ca3f19e7eb778632722d0f0",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_03_20261024T232123009040.json",
+      "validation_sha256": "ca68963895b3f3771d80519c908a10f20119bab2fd5376971459c0e912493724",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_04",
+      "cell": {
+        "cell_id": "fixed_reference_u05_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "dede56b6fa901d32ec8ae97f0dce3ef04efeecc8395428f22e3ae0bd321e6998",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_04_20261024T232254407640.json",
+      "validation_sha256": "f6f5ade46300f01e6c5bdaf63850dc0070a0d5c9770c93ff6abd8f5a1629060e",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_05",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r1_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "4306a96a1db7f723d240b581856a9cc3962b731b3dd3d23110bae55ce0f410fb",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_05_20261024T232420932232.json",
+      "validation_sha256": "d00b4af57139664060e20d8edaf00909ddc089e80326bc7392afa5d666ca1853",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_06",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p900_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "257be68e8e46c1d76d1799a85dcc26cabb23de01484d0cf0f7327cd9b36dfa1d",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_06_20261024T232549153842.json",
+      "validation_sha256": "5644a04f23cff2293399d0e05f0c99dcb59ae82d653670c83c22e58ce2df037b",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_07",
+      "cell": {
+        "cell_id": "fixed_reference_u50_r2p0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": "u50",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "c57c49a20b248045ee53c316d39cbf4730daa831e7f283d8e2ea40bf61485f8d",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_07_20261024T232718717247.json",
+      "validation_sha256": "a849280ca6cb49c2388a54e6656d0b409652bfffd3d6a9a87c4529b142e9d37a",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_08",
+      "cell": {
+        "cell_id": "facility_first_r0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "manifest_sha256": "c90c77c51ed8460c60aa2da2fcaf92db9c6a66b18304bc96598e1d5d52beec76",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_08_20261024T232842997632.json",
+      "validation_sha256": "299d1b879c9c727b0da01b81c123392065577b18a3bfe7f3a851eee8e7b397f5",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_09",
+      "cell": {
+        "cell_id": "facility_first_u05_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "ff6671ed9eba4696a8e424534c813715ca6dc9b6ca26b02f32db2ffb88c9e55b",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_09_20261024T233017229312.json",
+      "validation_sha256": "f29917d6a9a74d46172a1b16c0c86580e1377a151e4e58cc192bed766773fde7",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_10",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p900_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "8a05548ba3882a58c131f9736fe7dd29da3155f1b51258cdced8869309c0f84a",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_10_20261024T233148649639.json",
+      "validation_sha256": "83f0afd3a46391fd2efe0aa76b51370f75beb5a01535b0f6d5eaa4f61fd8e1b1",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_11",
+      "cell": {
+        "cell_id": "facility_first_u05_r2p0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u05",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "e8fada87c27476b253af05669eaab053b10df87f20c8f6e496c72ae366d6cd46",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_11_20261024T233317384792.json",
+      "validation_sha256": "1d9b16767914093a27e3e83b45117534bdde7772ec1a1e2fcc61e870dfe228f3",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_12",
+      "cell": {
+        "cell_id": "facility_first_u50_r1_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R1",
+        "seed": 23423
+      },
+      "manifest_sha256": "834f4032c41690f1be7e060ebb21b7e870dce52784e3b9c03ca3fb3798f148f6",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_12_20261024T233444696388.json",
+      "validation_sha256": "46067cab6d57fb3fad2a61b46aa0fa9010d7c1d4a111c0424645d2e32048d255",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_13",
+      "cell": {
+        "cell_id": "facility_first_u50_r2p900_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R2P900",
+        "seed": 23423
+      },
+      "manifest_sha256": "008385d03ff955555606cb906240998cc0f036150be59954b89c84c5c5b7c0a9",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_13_20261024T233609608035.json",
+      "validation_sha256": "3a3af3068835852914109cf3db4a85c974aaeac4f56988644302ba067a004ed6",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_14",
+      "cell": {
+        "cell_id": "facility_first_u50_r2p0_seed23423",
+        "destination_policy": "facility_first",
+        "demand_level": "u50",
+        "scenario": "R2P0",
+        "seed": 23423
+      },
+      "manifest_sha256": "869f27da13b2836894cda431a094934211b8e6ec65c246203f02d169c3885859",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_14_20261024T233735150103.json",
+      "validation_sha256": "cd43e85074b9b6f8340361de8e4aea83d3f73383e9c08c5e49a95256c09efdb8",
+      "status": "PASS",
+      "core_adoption_permitted": false
+    }
+  ],
+  "technical_ready": false,
+  "core_adoption_permitted": false,
+  "next": "one dedicated preflight for nt261024d and its current independent report"
+}

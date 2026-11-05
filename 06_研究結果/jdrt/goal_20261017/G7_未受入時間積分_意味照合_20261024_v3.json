@@ -1,0 +1,127 @@
+{
+  "at_jst": "2026-10-24T23:25:13.335352+09:00",
+  "judgment_id": "JD-20261024-research-clock-integral-15",
+  "scope": "CURRENT_V3_METRIC_SOURCE_REUSE_NOT_NEW_RESULT_ANALYSIS",
+  "sources": {
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b"
+  },
+  "source_excerpts": [
+    {
+      "path": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
+      "sha256": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+      "first_line": 74,
+      "last_line": 80,
+      "text": "seed [23423,42,1,7,101]。各seedでD0→D1、各DでR0→u05のR1/R2P900/R2P0→u50のR1/R2P900/R2P0の順。**14セル/seed、全70セル**。セル一覧は機械Registryへ70件を展開保存する。R0はDごとに1回。旧runを転用しない。coreとsmoke/fixtureは別扱い。\n\n主要分母は域内Type4全員、主指標はHまでの域内4施設の受入完了率。退出・満員・徒歩不能・未出発・時間切れ等を除かない。各D/u/seedでR1−R0、R2P900−R1、R2P0−R1、R2P900−R2P0を保存する。D1−D0、u50−u05、その差の差は条件付き機構診断として全件併記する。平均・最小最大・5seedの各値と人数差/%ptを報告し、現実の母集団信頼区間や有意差判定へ変換しない。主要結果を結果により選別しない。\n\n副指標：Type3/全人口受入、退出、終点到達、満員、理由別未完了、受付/配車受理/乗車開始/乗車完了/降車/代替、待ちの全要求分布と打切り、全Type4の未受入時間積分、origin閉鎖下の未乗車待ち、総/空車走行、候補理由、全道路の0件込み観測と閉鎖進入。完了者平均だけで全体の改善を判断しない。未受入時間積分は $\\sum_{i\\in I_4}\\min(A_i,H)$（未受入はH）をH|I4|で割る。退出者も受入していないのでHとし、域外の危険時間とは呼ばない。\n\n新終点表からType4施設固定数/接続による上限と $\\sum_j\\min(C_j,n_j)$ を再計算し、待ち期限・仕事量・実現数を照合する。上限と実現の差を一要因へ全て帰属しない。全70件採用前は方向解釈を行わない。結果の大小で需要・期限・施設規則・seedを足し引きしない。"
+    },
+    {
+      "path": "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py",
+      "sha256": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+      "first_line": 141,
+      "last_line": 169,
+      "text": "def person_metrics(people, source, terminals, horizon):\n    by_id = {p['person_id']: p for p in people}\n    require(len(by_id) == len(people) and set(by_id) == set(source), 'Population missing or duplicated')\n    facility_counts = Counter()\n    results, reasons = [], []\n    for p in people:\n        require(p['person_type'] == source[p['person_id']]['person_type'], 'Person type changed')\n        admitted = p['status'] == 'admitted'\n        require(admitted == (p['admitted_sec'] != ''), 'Admission status/time disagreement')\n        if admitted:\n            require(terminals[p['terminal_id']]['kind'] == 'facility', 'Exit counted as admission')\n            require(0 <= float(p['admitted_sec']) <= horizon, 'Admission outside horizon')\n            facility_counts[p['terminal_id']] += 1\n    for tid, count in facility_counts.items():\n        require(count <= int(terminals[tid]['capacity']), 'Shared facility capacity exceeded')\n    for group in sorted({p['person_type'] for p in people}) + ['all']:\n        selected = [p for p in people if group == 'all' or p['person_type'] == group]\n        n = len(selected)\n        admitted = sum(p['status'] == 'admitted' for p in selected)\n        # Numeric zero is a valid arrival time. Exits and all other nonadmissions use H.\n        integral = sum(min(float(p['admitted_sec']), horizon) if p['admitted_sec'] != '' else horizon for p in selected)\n        results.append({'group': group, 'denominator': n, 'admitted': admitted,\n                        'admitted_rate': admitted / n if n else None,\n                        'boundary_exit': sum(p['status'] == 'boundary_exit' for p in selected),\n                        'terminal_arrivals': sum(p['arrival_sec'] != '' for p in selected),\n                        'unadmitted_time_person_sec': integral,\n                        'normalized_unadmitted_time': integral / (horizon * n) if n else None})\n        reasons.extend({'group': group, 'status': status, 'count': count}\n                       for status, count in sorted(Counter(p['status'] for p in selected).items()))"
+    },
+    {
+      "path": "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+      "sha256": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+      "first_line": 611,
+      "last_line": 621,
+      "text": "    primary = [p for p in people.values() if p['person_type'] == cfg['evaluation']['primary_type']]\n    names = ('unique_tables', 'complete_population', 'common_realization_and_attributes', 'assigned_intent_mode_terminal',\n             'request_set', 'vehicle_set', 'event_clock', 'state_chains', 'person_fsm', 'request_fsm', 'request_lifecycle',\n             'shared_capacity_and_exit', 'closure_clocks', 'waiting_hazard_overlap', 'summary_accounting')\n    return {'status': 'PASS' if not errors else 'INVALID', 'checks': {k: not errors[k] for k in names},\n            'errors': dict(errors), 'examples': dict(examples), 'people': len(people), 'requests': len(requests),\n            'primary_denominator': len(primary), 'primary_admitted': sum(p['status'] == 'admitted' for p in primary),\n            'primary_boundary_exit_separate': sum(p['status'] == 'boundary_exit' for p in primary),\n            'primary_unaccepted_person_sec': sum(float(p['admitted_sec']) if p['status'] == 'admitted'\n                                                 else manifest['end_sec'] for p in primary),\n            'core_adoption_permitted': False}"
+    },
+    {
+      "path": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "sha256": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+      "first_line": 298,
+      "last_line": 306,
+      "text": "def allocate_arrivals(arrivals,people,terminals,occupancy,now):\n    \"\"\"One shared capacity account across all modes; deterministic same-tick ties.\"\"\"\n    for pid in sorted(set(arrivals)):\n        person=people[pid];terminal=terminals[person['terminal_id']]\n        person['arrival_sec']=now\n        if terminal['kind']=='boundary_exit':person['status']='boundary_exit'\n        elif occupancy[terminal['terminal_id']]<int(terminal['capacity']):\n            occupancy[terminal['terminal_id']]+=1;person['status']='admitted';person['admitted_sec']=now\n        else:person['status']='capacity_rejected'"
+    }
+  ],
+  "definitions": {
+    "N": "fixed positive Type4 denominator",
+    "H": "positive model horizon from t=0",
+    "A_i": "model facility admission time; no admission confirmed in horizon contributes H to truncation; not a physical claim after exit",
+    "U": "sum min(A_i,H)",
+    "Y": "number with A_i<=H divided by N",
+    "u": "U/(H*N)"
+  },
+  "proof_steps": [
+    "For each nonnegative A_i, integral_0^H 1(t<A_i) dt = min(A_i,H), with unconfirmed A_i using H by the registered estimand.",
+    "Finite sum commutes with integration. Split admitted/nonadmitted sets to obtain U=H*(N-N_admitted)+sum_admitted A_i.",
+    "Divide by H*N: u=1-Y+sum_admitted A_i/(H*N); 1-Y<=u<=1.",
+    "For N_admitted>0, u=1-Y+Y*mean_admission_time/H. For none admitted, mean is undefined and u=1."
+  ],
+  "artificial_verification": {
+    "N": [
+      1,
+      2,
+      3
+    ],
+    "H": 4,
+    "dt": "1/2",
+    "candidate_times": [
+      "0",
+      "1/2",
+      "1",
+      "3/2",
+      "2",
+      "3",
+      "4",
+      null
+    ],
+    "cases_checked": 584,
+    "all_exact_checks_pass": true,
+    "code": "H = F(4); dt = F(1, 2)\nvalues = [F(0), F(1, 2), F(1), F(3, 2), F(2), F(3), F(4), None]\nchecked = 0\nfor N in [1, 2, 3]:\n    for admissions in product(values, repeat=N):\n        count = sum(a is not None for a in admissions)\n        U = sum(a if a is not None else H for a in admissions)\n        integral = sum(dt * sum(a is None or a > t for a in admissions)\n                       for t in [j * dt for j in range(int(H / dt))])\n        decomposition = H * (N - count) + sum(a for a in admissions if a is not None)\n        y, u = F(count, N), U / (H * N)\n        assert U == integral == decomposition\n        assert 1 - y <= u <= 1\n        if count:\n            mean = sum(a for a in admissions if a is not None) / count\n            assert u == 1 - y + y * mean / H\n        else:\n            assert u == 1\n        checked += 1\n",
+    "imports": "from fractions import Fraction as F; from itertools import product",
+    "scope": "finite rational-grid check; general claim rests on algebra above, not enumeration"
+  },
+  "artificial_order_counterexample": {
+    "alpha": {
+      "N": 2,
+      "H": 10,
+      "admissions": [
+        "0",
+        "unconfirmed_within_horizon"
+      ],
+      "Y": "1/2",
+      "normalized_U": "1/2"
+    },
+    "beta": {
+      "N": 2,
+      "H": 10,
+      "admissions": [
+        "9",
+        "9"
+      ],
+      "Y": "1",
+      "normalized_U": "9/10"
+    },
+    "claim": "higher endpoint admission and higher cumulative unadmitted time can coexist; no single-order implication"
+  },
+  "not_inferred": [
+    "DRT request waiting",
+    "physical danger/casualty/exposure",
+    "post-boundary evacuation failure",
+    "actual method direction before all70",
+    "population confidence interval"
+  ],
+  "new_research_metric": false,
+  "production_or_input_edit": false,
+  "actual_core_results_aggregated": false,
+  "new_research_run": false,
+  "previous_proof": "06_研究結果/jdrt/goal_20261017/G7_未受入時間積分_解釈と打切り_20261023.json",
+  "previous_proof_sha256": "134298c16a7bd411038faac967b2b01d6b579650d9d4bffc6f219ea6fecc7a06",
+  "source_excerpts_identical": true,
+  "registered_data_equivalence": {
+    "all_registered_data_artifacts_identical": true,
+    "artifacts": 20,
+    "old_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/manifest.json",
+    "old_manifest_sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+    "current_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/inputs/registered01/manifest.json",
+    "current_manifest_sha256": "95cc4913f2f9a2752781795c9ae276f1a5bb7b73070edb03c64797c25d7d58a9",
+    "scope": "physical/common realization/cell data bytes identical; no permission to reuse old8 outcome records"
+  },
+  "reuse_scope": "Original algebra/artificial checks retained, not rerun; current metric fragments and fixed physical inputs unchanged; no all70 result analysis.",
+  "new_research_result": false
+}

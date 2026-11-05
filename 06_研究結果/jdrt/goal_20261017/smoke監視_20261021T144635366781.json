@@ -1,0 +1,24 @@
+{
+  "at_jst": "2026-10-21T14:46:34.994326+09:00",
+  "action": "smoke_sequence_reentry_point",
+  "state_path": "06_研究結果/jdrt/goal_20261017/cs261021a_smoke_sequence.json",
+  "state": "RUNNING",
+  "pid": 30604,
+  "active": {
+    "run_id": "cs261021a_04",
+    "cell_id": "fixed_reference_u05_r2p0_seed23423",
+    "started_at_jst": "2026-10-21T14:46:04.385772+09:00",
+    "command": "smoke",
+    "pid": 23960
+  },
+  "independently_passed": 3,
+  "handle": 47653,
+  "monitor_pid": 30168,
+  "monitor_identity_matches": true,
+  "monitor_observation_age_sec": 6.627943992614746,
+  "independent_sequence_targets": [],
+  "current_display_sync": "Applied successfully during smoke validation phase at14:46; no bypass of technical RUNNING refusal",
+  "global_checkpoint_label_limitation": "choice_sync_status marks generic evidence status strings historical under any HOLD. Current cf26102101 common5 and audit file remain independently verified; use detailed current_full_suite plus report SHA. Correct this classification helper after native smoke is terminal if necessary.",
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

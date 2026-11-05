@@ -1,0 +1,32 @@
+F.....F.........F...
+======================================================================
+FAIL: test_duplicate_evidence_in_one_item_is_rejected (test_ace_local.DeltaContract.test_duplicate_evidence_in_one_item_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 72, in test_duplicate_evidence_in_one_item_is_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_repeated_add_in_same_delta_is_rejected (test_ace_local.DeltaContract.test_repeated_add_in_same_delta_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 77, in test_repeated_add_in_same_delta_is_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_repeated_add_on_new_base_is_rejected (test_ace_local.InstalledUpstreamContract.test_repeated_add_on_new_base_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 140, in test_repeated_add_on_new_base_is_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.985s
+
+FAILED (failures=3)

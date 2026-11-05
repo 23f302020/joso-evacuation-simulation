@@ -1,0 +1,63 @@
+{
+  "at_jst": "2026-10-20T08:13:13.654823+09:00",
+  "json_parse": "PASS",
+  "files": [
+    {
+      "file": "scrape_0.json",
+      "bytes": 19580,
+      "sha256": "0be03711dc46cb40fd5018d07ab49bc8d0d41efdc9b36206b6a5151f033fce3c"
+    },
+    {
+      "file": "scrape_0_rate_limit.json",
+      "bytes": 784,
+      "sha256": "a03cf2a0fcb22de44584d78319fa32faf14f28b530f2a4b83f5f0d7c42ceea36"
+    },
+    {
+      "file": "scrape_1.json",
+      "bytes": 24416,
+      "sha256": "484e54dd4c44b2323332c050d8d266e75ff7482bd96e85430965a64d39b7e76a"
+    },
+    {
+      "file": "scrape_1_rate_limit.json",
+      "bytes": 560,
+      "sha256": "b3fdff0960e514e40162095cec867739a46ac668843d55b9cc01647c1429dff9"
+    },
+    {
+      "file": "search_1.json",
+      "bytes": 431,
+      "sha256": "c4cac7ce9a8bbcf9c89b0f0d988aef322921fc0ae55cb48b4bcdeb0b9deca8b0"
+    },
+    {
+      "file": "search_2.json",
+      "bytes": 450,
+      "sha256": "65587adf338637a34b28f6bdd09369839798b1e372ec1d5ff655ec0d7a07d3b8"
+    },
+    {
+      "file": "search_3.json",
+      "bytes": 444,
+      "sha256": "0696902cfa70c219193944f0de2c09a8eb68d33cc021680ddc4ff3912a627a33"
+    },
+    {
+      "file": "search_4.json",
+      "bytes": 3039,
+      "sha256": "65d715a7d24e7fd09af5a913fc7649013f70b4734c9e85d652f866d175a64211"
+    },
+    {
+      "file": "search_5.json",
+      "bytes": 3055,
+      "sha256": "7f9c27e68d117498f9cc7cc74458440ca0e86691f0627a111cedd94300b5ef88"
+    }
+  ],
+  "purpose": "collection_entry_only_not_road_height",
+  "deck_elevation_obtained": false,
+  "official_structure_identity_confirmed": false,
+  "input_or_method_changed": false,
+  "browser_observation": {
+    "layer": "常総市_橋梁箇所",
+    "query": "弁天橋",
+    "count_visible": 1,
+    "map_button_result": "same_page_no_new_map_tab",
+    "coordinates_or_deck_elevation_obtained": false
+  },
+  "external_feedback_sent": false
+}

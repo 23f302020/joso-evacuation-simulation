@@ -1,0 +1,13 @@
+{
+  "at_jst": "2026-10-22T09:09:37.891073+09:00",
+  "status": "DIAGNOSED_STOP_DOWNSTREAM",
+  "suite": "na26102201",
+  "independent_audit_session": 79761,
+  "exit_code": 1,
+  "all26_failed_before_components": true,
+  "confirmed_c01_only_failed_check": "native_command_and_direct_observation_contract",
+  "cause": "validator selects literal basename config.h, but immutable packager stores paired metadata as 018_config.h and030_config.h. Selected patched build metadata binds the exact header SHA; no literal basename exists. With correct selector native_walking_version_supported and runtime equality are true.",
+  "adhoc_observation_limit": "An initial read-only ad hoc command omitted selector and falsely returned walking_supported=false; correctly pinned process73404 independently returned true. No result adopted from the omitted-selector observation.",
+  "next": "TDD selected-role paired metadata header SHA resolution, keep native bundle immutable; refreeze common5 and rerun new unique suite after checks",
+  "no_research_adoption": true
+}

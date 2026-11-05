@@ -1,0 +1,18 @@
+{
+  "at": "2026-11-05T08:48:04.218968+09:00",
+  "registration": "choice_shared_stopindex_v5_20261029",
+  "sixth_run": {
+    "run_id": "sv26103006",
+    "status": "COMPLETED",
+    "pid": 39120,
+    "started_at_jst": "2026-10-30T23:07:59.798449+09:00",
+    "finished_at_jst": "2026-10-30T23:22:55.615692+09:00"
+  },
+  "manifest_sha256": "6801af696e41b124a64f087d8176f204c0028e2d9f68846d4e0a57215d7ab181",
+  "ledger_source_sha256": "f68fd3ff00b0b1ec790b975f34609843247d6cf19f78a4c8740e4c5f4adcd7b3",
+  "ledger_rows": 5,
+  "sixth_run_ledger_entries": 0,
+  "current_research_processes_seen": false,
+  "scope": "Read-only run/ledger observation, not validation, adoption or recovery",
+  "action": "Preserve run; original research operator must resume its normal validate/record workflow. This performance automation must not take over."
+}

@@ -1,0 +1,50 @@
+{
+  "at_jst": "2026-10-21T16:25:12.075809+09:00",
+  "run_id": "ch261021_001",
+  "cell_id": "fixed_reference_r0_seed23423",
+  "transaction": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/record_transactions/ch261021_001_20261021T162423257579",
+  "journal_status": "COMMITTED",
+  "files_verified": [
+    {
+      "path": "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md",
+      "run_marker_count": 1,
+      "sha256": "cfafa5cba4566dbe3474619b01b2a97d9c782ee74bb8e8c429f01fe0dd8d59be"
+    },
+    {
+      "path": "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+      "run_marker_count": 1,
+      "sha256": "572322e5ef525e0cfb8370a2b6a53fec3e06638f770751ddd2b17576aab81c2d"
+    },
+    {
+      "path": "context.md",
+      "run_marker_count": 1,
+      "sha256": "fbfa9c56994de87e532ecfc6543c17ce00e9684f31480ff9ca356b1ea750ba18"
+    },
+    {
+      "path": "00_全体整理/決定ログ.md",
+      "run_marker_count": 1,
+      "sha256": "88269e0f5ebc5026f05e4ad2c5e45209bbd44addbe4626e89ee3d66800c491b9"
+    },
+    {
+      "path": "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+      "run_marker_count": 1,
+      "sha256": "171d6b6c8a8946fee189df15e12c4578118555189cd66f8f60dc608afe2fee2b"
+    },
+    {
+      "path": "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+      "run_marker_count": 1,
+      "sha256": "bd036def9f5b61f9575219d4d6b24ac2ca567fb87c5974298f8b49248b8ee8f6"
+    },
+    {
+      "path": "05_タスク管理/jdrt/JDRT-受付代替行動_セル検証台帳.jsonl",
+      "unique_run": true,
+      "unique_cell": true,
+      "sha256": "5b3cb5aef20cbccbc3df45914dafa00928b3a5180d123af29e218c8be28fccc6"
+    }
+  ],
+  "ledger_cells": 1,
+  "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261021_001_20261021T162423107374.json",
+  "validation_report_sha256": "dd20c0ed70466c58810d56dd479e93d7366b6fbc69c56a6e5ba8e3a2abea69af",
+  "all_checks_pass": true,
+  "direction_interpretation": false
+}

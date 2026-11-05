@@ -1,0 +1,10 @@
+C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_route_history_probe.py:115: UserWarning: API change now handles duration as floating point seconds
+  t.vehicle.setStop('v', 'c', pos=lanes['c'][1]-1, laneIndex=lanes['c'][0], duration=1000,
+C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_route_history_probe.py:38: UserWarning: API change now handles duration as floating point seconds
+  t.vehicle.setStop(vehicle, path[-1], pos=length-1, laneIndex=lane, duration=duration,
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_route_history_probe.py", line 207, in <module>
+    result = run(args.project_root, args.run_id, args.variant)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_route_history_probe.py", line 178, in run
+    raise RuntimeError('Route-history diagnostic contract failed')
+RuntimeError: Route-history diagnostic contract failed

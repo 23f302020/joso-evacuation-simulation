@@ -1,0 +1,70 @@
+{
+  "at_jst": "2026-10-28T01:53:45.030851+09:00",
+  "action": "eighth_registered_facility_first_baseline_same_owner_and_observer_confirmed",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102808",
+  "original_session": 26668,
+  "sequence_actual_pid": 3276,
+  "status": "RUNNING",
+  "phase": "core",
+  "formal_recorded": 7,
+  "current_core": {
+    "run_id": "nv26102808",
+    "cell_id": "facility_first_r0_seed23423",
+    "status": "RUNNING",
+    "pid": 10308,
+    "started_at_jst": "2026-10-28T01:52:42.539456+09:00"
+  },
+  "progress": {
+    "at_jst": "2026-10-28T01:53:41.256023+09:00",
+    "time_sec": 720.0,
+    "end_sec": 21600,
+    "wall_sec": 40.41745990002528
+  },
+  "process_handle_identities": {
+    "3276": {
+      "state": "alive",
+      "created": 134375935115399218,
+      "pid": 3276
+    },
+    "10308": {
+      "state": "alive",
+      "created": 134375935445707603,
+      "pid": 10308
+    },
+    "12964": {
+      "state": "alive",
+      "created": 134375930650742666,
+      "pid": 12964
+    }
+  },
+  "independent_target": {
+    "target_id": "nv26102808",
+    "status": "RUNNING",
+    "pid": 10308,
+    "process": {
+      "state": "alive",
+      "created": 134375935445707603,
+      "pid": 10308
+    },
+    "flags": [],
+    "observed_at_utc": "2026-10-27T16:53:38.836844+00:00",
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102808"
+    }
+  },
+  "helper_source_sha256": "dff4798eea53f72948523f17072e01a32d9ea6f439378e0edeb05e114839a44b",
+  "prior_sequence_id": "sq26102807",
+  "prior_original_session": 6473,
+  "prior_original_exit_code": 0,
+  "prior_readback": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102807/nv26102807_record7_readback.json",
+  "automatic_readback_path": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102808/nv26102808_record7_readback.json",
+  "all_sequence_source_pins_unchanged": true,
+  "performance_measurement_original_session": 48129,
+  "performance_measurement_actual_pid": 12964,
+  "performance_interval_sec": 30,
+  "goal_complete": false,
+  "next": "Follow original26668 and sq26102808/state.json. This owner alone performs core -> finish -> original record7 readback BEFORE display -> status. Do not duplicate validate/record/readback. On successful terminal inspect existing proof and clean status, then fresh goal API/READY/capacity/observer before next single cell. Independent30sec measurement48129/12964 is a bounded3h capture, no overlap with terminal59505, no automatic remeasurement or new research run for performance."
+}

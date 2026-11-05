@@ -1,0 +1,28 @@
+{
+  "at_jst": "2026-10-27T19:30:39.787633+09:00",
+  "status": "PASS_READ_ONLY_DEPLOYED_OBSERVER_PROBE",
+  "source_sha256": "dae5a430d45af6de52fa9584fc421f791655758f0cd380c7f381f30527e4346d",
+  "observations": [
+    {
+      "last_observed": "2026-10-27T10:30:32.352093+00:00",
+      "observation_age_sec": 11.614404201507568,
+      "monitor_process": {
+        "state": "alive",
+        "created": 134375371341239107,
+        "pid": 26988
+      },
+      "monitor_identity_matches": true
+    },
+    {
+      "last_observed": "2026-10-27T10:30:32.352093+00:00",
+      "observation_age_sec": 11.952168941497803,
+      "monitor_process": {
+        "state": "alive",
+        "created": 134375371341239107,
+        "pid": 26988
+      },
+      "monitor_identity_matches": true
+    }
+  ],
+  "scope": "Existing completed target and same daemon only; not a new core outcome"
+}

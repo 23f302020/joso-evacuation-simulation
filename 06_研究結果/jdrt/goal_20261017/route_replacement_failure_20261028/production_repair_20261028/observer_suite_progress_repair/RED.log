@@ -1,0 +1,14 @@
+F...
+======================================================================
+FAIL: test_completed_cases_advance_parent_progress_without_inventing_sim_time (test_watch.FixtureSuiteProgress.test_completed_cases_advance_parent_progress_without_inventing_sim_time)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 141, in test_completed_cases_advance_parent_progress_without_inventing_sim_time
+    self.assertEqual(current['last_progress'], 71)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 10 != 71
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.464s
+
+FAILED (failures=1)

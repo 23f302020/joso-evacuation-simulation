@@ -1,0 +1,40 @@
+{
+  "at_jst": "2026-10-29T15:29:32.281070+09:00",
+  "status": "TECHNICAL_REGISTRATION_PLAN_NOT_APPLIED",
+  "basis": {
+    "v4_contract": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\03_研究設計文書\\jdrt\\常総市JDRT_受付代替行動_経路制御_技術再登録_v4.md",
+    "sha256": "0ec58e0b2e63fc75d7822a5001f617fed7bc336cb09d6f7132ca51a359dc3b87",
+    "relevant_verbatim": "native binary/patchは変更しない。",
+    "current_config_sha256": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8",
+    "current_registration": "choice_route_control_v4_20261028",
+    "formal_current": 0
+  },
+  "decision": "After complete repaired pair provenance/package proof, create a separate technical v5 registration and workspace before any new current-source suite/smoke/preflight/core. Do not silently alter the native invariant of v4.",
+  "proposed_registration_id": "choice_shared_stopindex_v5_20261029",
+  "proposed_workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5",
+  "authority": "AGENTS0/7 authorize technical fixes and independent validation; current user goal authorizes autonomous simulation improvement. No new scientific method, metric, comparison, exclusion or scientific parameter is adopted by this plan.",
+  "must_remain_equal": [
+    "All70 cells, ordering and five seeds",
+    "Scientific config values: population, demand, supply, facility/admission and separate exits, flood/closure timing, dispatch and cancellation, boarding/alighting, destination policies, primary/secondary metrics and exclusion rules",
+    "Common5 research runtime/input/validator/policy/CLI bytes unless separate justified actual defect",
+    "Physical/person/hazard/facility/common-realization input content with byte and independent semantic network checks where native generated metadata differs"
+  ],
+  "prerequisites": [
+    "Original97479 terminal exit and same owner/child termination, full patched source/log/loader readback; control reuse verified receipt",
+    "New strict shared-patch policy branch tests legacy17/new3, full source archive/delta/role inventories/metadata10/compiler/static/header/loader proofs",
+    "New distinct bundles with evidence; preserve old toolchain selectors/bundles and all attempts",
+    "Archive old config/registration/inputs/ledger; create unused v5 config metadata/workspace/record/ledger and bind native/Input SHA without scientific drift",
+    "All new native guards and current selected/control comparisons, full30 controller fixtures/independent audit/counterexamples, all14 smoke including originally failing13, dedicated preflight/G6/capacity/07 before core"
+  ],
+  "preserve": [
+    "v4 12 validated smokes and FAILED13; no research acceptance",
+    "v3 old9 adopted and FAILED10, older registered series and all native attempts"
+  ],
+  "not_executed": [
+    "No v5 registration/workspace/config/inputs/record/ledger created",
+    "No bundle packaged or selector switched",
+    "No core started or research result adopted"
+  ],
+  "technical_ready": false,
+  "goal_complete": false
+}

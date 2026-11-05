@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-20T22:56:49.667292+09:00",
+  "action": "stale_owned_pair_lock_preserved_and_released_after_terminal_identity_audit",
+  "old_pair_status": "FAILED_PRESERVED",
+  "original_exit_code": "UNKNOWN_NOT_RECONSTRUCTED",
+  "state_sha256": "ec7e3788f3e7bb52b35b1f1d02adee074819ee26405cc3fc13aa38ba9282ea14",
+  "lock_sha256": "8ecf14661bd3ef81098c52e1de79a02b0ec44b55f4da435b3a674f4ac17d209f",
+  "preserved_lock": "06_研究結果/jdrt/goal_20261017/audit_history/native_pair_wait_race_20261020/preserved_orphan_lock.json",
+  "current_cim": {
+    "22048": null,
+    "30140": null,
+    "30212": null,
+    "9368": null
+  },
+  "terminal_manifests": {
+    "np261020e": {
+      "manifest_sha256": "72aef940406910fd47d7929dbeacf1577e4eb77b3009ff77362e7b702510c0cd",
+      "status": "COMPLETED",
+      "finished_at_jst": "2026-10-20T22:48:15.832253+09:00"
+    },
+    "np261020e_c25": {
+      "manifest_sha256": "433214d86f2ebd9b96b622591126b02ff16bd39e45ca99af98d88ec945be195f",
+      "status": "COMPLETED",
+      "finished_at_jst": "2026-10-20T22:48:01.390182+09:00"
+    },
+    "np261020e_c26": {
+      "manifest_sha256": "be7bad1722c70861443a3abf747dcc7a437e6519cc5a247c080cd4f290577d53",
+      "status": "COMPLETED",
+      "finished_at_jst": "2026-10-20T22:48:15.341487+09:00"
+    }
+  },
+  "old_state_unchanged": true,
+  "no_kill_restart_or_run_reuse": true,
+  "technical_ready": false,
+  "formal_adoption_created": false
+}

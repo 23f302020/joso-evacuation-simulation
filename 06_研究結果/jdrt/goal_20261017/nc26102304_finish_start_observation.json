@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-23T18:19:59.675833+09:00",
+  "identity_observed_at_jst": "2026-10-23T18:19:15.673241+09:00",
+  "run_id": "nc26102304",
+  "original_session": 37931,
+  "finish_owner": {
+    "pid": 29964,
+    "created_jst": "2026-10-23T18:18:45.571132+09:00",
+    "launcher_pid": 29652,
+    "command_verified": "choice_finish_cell.py --project-root . --run-id nc26102304"
+  },
+  "validation_child": {
+    "pid": 13064,
+    "created_jst": "2026-10-23T18:18:47.875164+09:00",
+    "launcher_pid": 25784,
+    "command_verified": "same-project dedicated validate --run-id nc26102304 --purpose core"
+  },
+  "operation_file": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102304.finish/operation.json",
+  "operation_sha256_at_sample": "c74e80b1c4b3452225d875ce0c629e691b6f1386c6321cb136bbbe85c85fd30c",
+  "phase_observed": "validate",
+  "independent_PASS": false,
+  "formal_recorded": 6,
+  "record_attempted": false,
+  "same_original_handle_required": true
+}

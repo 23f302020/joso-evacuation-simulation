@@ -1,0 +1,42 @@
+{
+  "kind": "explicit_orphan_precommit_record_recovery_v1",
+  "run_id": "nc26102401",
+  "pid": 35396,
+  "status": "RECORDED_VERIFIED",
+  "phase": "status",
+  "started_at_jst": "2026-10-24T17:04:12.309509+09:00",
+  "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+  "source_sha256": "cf5d00ba1b54f285eb1bb5cf8ee57d35a530be172ddc229ed8522c1c4348386e",
+  "original_operation": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102401.finish/operation.json",
+  "original_operation_sha256": "d3dfd51e5dff85c49084f000465c46afcd0ed8c4753a9ad0e056eb08b5764654",
+  "diagnosis": "06_研究結果/jdrt/goal_20261017/audit_history/nc26102401_interrupted_record_20261024/diagnosis.json",
+  "diagnosis_sha256": "521dc48b1187b6223f2883b4dd72f18e0a222f0f0ad9778337c14ded0dcb3d14",
+  "validation_report_sha256": "5d525e0688469c5e25078341302ead3347a9957f96f647116fc7ee2cba3a3e50",
+  "record_attempted": true,
+  "formal_record_result": "RECORDED",
+  "next_start_performed": false,
+  "observed_at_jst": "2026-10-24T17:22:10.788184+09:00",
+  "child_launcher_pid": 14652,
+  "child_command": [
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+    "-B",
+    "-X",
+    "utf8",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py",
+    "--project-root",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究",
+    "status"
+  ],
+  "record_exit_code": 0,
+  "record_files_sha256": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md": "7b50efbb5ca62a80bdf2d97f1c909f4c3d9a5e44939866040b655dbc8c4e8c1e",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": "65d37f3702e2b7adbf92ada28b573e54483f6ed5ba207ab01b31bb9d8618d6a5",
+    "context.md": "b8410d42e3cf44f1a3fd37d839e0ba047aa2473e12fd1e8e6d84f1486ca90df8",
+    "00_全体整理/決定ログ.md": "33a64d30b13987d35b63992f2a75e79652d425a8bf568e85142499b473c04e0a",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": "cc5871f6389deed1a53ab8b1929abe86167123e3185959f213cf7f608ff8d9da",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": "da93e5293800b076c50ff3199ce6e06aef2589a6553dd8a40b045859579cb236",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl": "663348a8139d72b6bd8ff9091c9e7d8100af03f9b2028bb11ca7c8de8efcdc06"
+  },
+  "status_exit_code": 0,
+  "finished_at_jst": "2026-10-24T17:22:10.788060+09:00"
+}

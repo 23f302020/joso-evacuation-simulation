@@ -1,0 +1,53 @@
+--- before/.agents/skills/joso-jdrt-runner/scripts/choice_technical_monitor.py
++++ current/.agents/skills/joso-jdrt-runner/scripts/choice_technical_monitor.py
+@@ -53,6 +53,41 @@
+     identity = ('reused' if created > datetime.fromisoformat(started) else 'matched'
+                 if suite_id in (value['CommandLine'] or '') and 'choice_technical.py' in value['CommandLine'] else 'ambiguous')
+     return {'pid': pid, 'identity': identity, **value}
++
++
++def reported_children(parent, suite, progress, children):
++    reported = {c['child_run_id'] for c in suite['cases']}
++    if suite['status'] != 'RUNNING':
++        return reported
++    # The factory flushes parent cases only at termination; live receipts are separate.
++    count = progress['completed_cases']
++    if type(count) is not int or not 0 < count <= len(children):
++        raise ValueError('Invalid completed child count')
++    if file_sha(parent / 'factory.py') != suite['factory_sha256']:
++        raise ValueError('Changed completed child factory')
++    cases = next(ast.literal_eval(n.value) for n in ast.parse((parent / 'factory.py').read_text(encoding='utf-8')).body
++                 if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'CASES' for t in n.targets))
++    completed = set()
++    for child in children[:count]:
++        folder = child / 'execution'
++        manifest, receipt = read(folder / 'manifest.json'), read(child / 'case_validation.json')
++        index = int(child.name.rsplit('_c', 1)[1]) - 1
++        if (not 0 <= index < len(cases) or manifest['status'] != 'COMPLETED'
++                or manifest['pid'] != suite['pid'] or manifest['run_id'] != child.name
++                or manifest['purpose'] != 'fixture' or manifest['protocol'] != 'realtime_choice_fixture_v1'
++                or manifest['research_adoption_permitted'] is not False
++                or manifest['fixture_case'] != cases[index] or receipt['case'] != cases[index]
++                or receipt['child_run_id'] != child.name or receipt['status'] != 'PASS'
++                or not receipt['checks'] or not all(v is True for v in receipt['checks'].values())
++                or receipt['execution_manifest_sha256'] != file_sha(folder / 'manifest.json')
++                or not all(file_sha(folder / name) == sha for name, sha in manifest['output_sha256'].items())):
++            raise ValueError('Invalid completed child primary receipt')
++        completed.add(child.name)
++    if (progress['child_run_id'] != children[count - 1].name
++            or progress['last_case'] != receipt['case'] or progress['last_status'] != 'PASS'
++            or not reported <= completed):
++        raise ValueError('Progress and completed child receipts disagree')
++    return completed
+ 
+ 
+ def raw_accounting(inputs, folder):
+@@ -115,7 +150,7 @@
+             flags.append('orphan_or_ambiguous_RUNNING')
+         if suite['status'] == 'FAILED' or m['status'] == 'FAILED' or value['skill_check'].get('error'):
+             flags.append('terminal_failure_or_reported_error')
+-        reported = {c['child_run_id'] for c in suite['cases']}
++        reported = reported_children(parent, suite, value['suite_progress'], children)
+         if len([p for p in children if p.name not in reported]) > 1:
+             flags.append('multiple_unreported_children')
+         hashes = {'factory_archive': file_sha(parent / 'factory.py') == suite['factory_sha256'],

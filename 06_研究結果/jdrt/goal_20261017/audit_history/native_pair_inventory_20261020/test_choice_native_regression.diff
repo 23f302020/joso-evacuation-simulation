@@ -1,0 +1,68 @@
+--- before/04_プログラム/tests/test_choice_native_regression.py
++++ 04_プログラム/tests/test_choice_native_regression.py
+@@ -334,7 +334,36 @@
+         factory = "CASES = ('walk_short_calibration', 'walk_short_repeated')\n"
+         current = self.p.root / '04_プログラム/scripts/jdrt_choice_fixtures.py'
+         current.parent.mkdir(parents=True); current.write_text(factory)
++        for name in ('jdrt_choice_toolchain.py', 'jdrt/smoke.py', 'jdrt/full_run.py'):
++            path = current.parent / name
++            path.parent.mkdir(exist_ok=True)
++            path.write_text('synthetic shared source')
++        self.p.selections, self.runtime = [], []
+         for role in self.p.ids:
++            bundle = self.p.root / 'toolchains' / role
++            roles = {'sumo': 'bin/sumo.exe', 'netconvert': 'bin/netconvert.exe',
++                     'traci_init': 'tools/traci/__init__.py'}
++            names = list(roles.values()) + ['tools/traci/_vehicle.py']
++            for name in names:
++                path = bundle / name; path.parent.mkdir(parents=True, exist_ok=True)
++                path.write_text(role if name.startswith('bin/') else 'same Python tools')
++            manifest = bundle / 'toolchain.json'; manifest.write_text(json.dumps({'role': role}))
++            selection = {'root': bundle, 'roles': roles, 'files': {n: target.sha(bundle / n) for n in names},
++                         'manifest_path': manifest, 'manifest_sha256': target.sha(manifest),
++                         'sumo': bundle / roles['sumo'], 'netconvert': bundle / roles['netconvert'],
++                         'provenance': {'role': role}}
++            self.p.selections.append(selection)
++            self.runtime.append({'sumo_binary': target.sha(selection['sumo']),
++                'traci_init': target.sha(bundle / roles['traci_init']),
++                'traci_vehicle': target.sha(bundle / 'tools/traci/_vehicle.py'),
++                'shared_smoke': target.sha(current.parent / 'jdrt/smoke.py'),
++                'shared_log_parser': target.sha(current.parent / 'jdrt/full_run.py'),
++                'choice_toolchain_helper': target.sha(current.parent / 'jdrt_choice_toolchain.py'),
++                'toolchain_manifest_sha256': selection['manifest_sha256'],
++                'toolchain_manifest_path': str(manifest), 'toolchain_files_sha256': selection['files'],
++                'toolchain_roles': roles, 'toolchain_provenance': selection['provenance'],
++                'sumo_binary_path': str(selection['sumo']), 'netconvert_binary_path': str(selection['netconvert'])})
++        for role_index, role in enumerate(self.p.ids):
+             group = self.p.workspace / 'technical' / role; group.mkdir(parents=True)
+             (group / 'factory.py').write_text(factory)
+             (group / 'manifest.json').write_text(json.dumps({'factory_sha256': target.sha(group / 'factory.py')}))
+@@ -348,6 +377,7 @@
+                 (inputs / 'fixture_parameters.json').write_text(json.dumps({'seeds': [42], 'value': 1}))
+                 (inputs / 'bounded.net.xml').write_text('<!-- ' + role + ' metadata --><net><lane width="3"/></net>')
+                 (inputs / 'netconvert.log').write_text(role + ' output path metadata')
++                (inputs / 'toolchain_runtime.json').write_text(json.dumps(self.runtime[role_index]))
+                 self.manifest(inputs)
+     def manifest(self, inputs):
+         data = {'artifacts': {p.name: target.sha(p) for p in inputs.iterdir() if p.name != 'manifest.json'}}
+@@ -369,6 +399,20 @@
+             self.patch_input(name, old)
+     def test_missing_or_stale_input_manifest_cannot_pass(self):
+         p = self.p.workspace / 'technical/patched_c01/fixture_inputs/people.csv'; p.write_text('tampered')
++        with self.assertRaises(ValueError): self.p.compare_inputs()
++
++    def test_runtime_receipt_requires_own_bundle_even_with_updated_artifact_hash(self):
++        for key, value in [('sumo_binary', 'different'), ('toolchain_manifest_sha256', 'different'),
++                           ('toolchain_provenance', {'role': 'control'}), ('extra', 'unbound')]:
++            receipt = dict(self.runtime[1]); receipt[key] = value
++            self.patch_input('toolchain_runtime.json', json.dumps(receipt))
++            with self.subTest(key=key), self.assertRaises(ValueError): self.p.compare_inputs()
++        self.patch_input('toolchain_runtime.json', json.dumps(self.runtime[0]))
++        with self.assertRaises(ValueError): self.p.compare_inputs()
++
++    def test_missing_runtime_receipt_cannot_pass(self):
++        inputs = self.p.workspace / 'technical/patched_c02/fixture_inputs'
++        (inputs / 'toolchain_runtime.json').unlink(); self.manifest(inputs)
+         with self.assertRaises(ValueError): self.p.compare_inputs()
+ 
+ 

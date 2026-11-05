@@ -1,0 +1,1 @@
+CASES = ('first', 'second')

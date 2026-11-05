@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-29T15:35:23.011906+09:00",
+  "status": "PAIR_PRIMARY_EXTRACTION_PREPARED_INTEGRATION_TESTS_PENDING",
+  "sources_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_pair_primary.py": "e881545360e3af3f00f63395715160153c2bb168c2953bb92c9ad861d7cbfa94",
+    "04_プログラム/tests/test_choice_shared_native_pair_proof.py": "3742e87bdc3dbfd07ca30a1679f9dd29d37c3041e677eb5a61b3419a46b24bac"
+  },
+  "recipe_source": "06_研究結果/jdrt/goal_20261017/native_pair_primary_20261020.py",
+  "recipe_source_sha256": "b0a10de583f86ed202267ca465e6e4b17f5c6d2cbd9488266aa26c840a0a00a9",
+  "scope": "Explicit input role states/loaders/policy/inventory and unused goal-local output; capture full source/metadata/compiler/static/header/loader primary pair through existing strict verifier. Never writes policy/build/source or packages/simulates/switches selector.",
+  "tests": {
+    "initial_new3_RED_retained": "shared_native_pair_integration_RED.log",
+    "current_integration_contracts": 5,
+    "current_additions": "Reusable primary capture positive full verification and failed-command preservation; not run yet against unconnected new branch",
+    "syntax": "AST parsed two files only; not behavior validation"
+  },
+  "future_steps": [
+    "After original97479 terminal/readback: connect reviewed explicit shared policy branch",
+    "Run new integration5 and relevant legacy17 plus scoped6",
+    "Review before actual new policy/provenance capture and packaging"
+  ],
+  "gate_connected": false,
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

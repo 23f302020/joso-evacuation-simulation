@@ -1,0 +1,326 @@
+{
+  "at_jst": "2026-10-27T10:17:48.517585+09:00",
+  "status": "CURRENT_SOURCE_LINK_SCOPE_CHECKED_RUNNING_CORE_NOT_RESEARCH_RESULTS",
+  "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+  "document_sha256": "b6ac891aa44131a39e6c7ae591780fe1f3bdb9b9496a2b69628b5f7f4bce53f9",
+  "source_files": {
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v2.md": "9ae9c69b155a2bd2eb063634dc147f03ab2993f2b14f059beaa73a188513ca64",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md": "6bb8a28c0195c3b2b7a02e6e20ed68223a1948bfedeeae48c746911dd91a8446",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/service_continuity_20261021/通常運休と災害時供給_位置づけ.md": "ca1ab19c140dbff139745fc06cc7788bb3b6669049cf872a94d240628ff4a8aa",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md": "01af5c43e480f14cba02fb7e3b6d7e1488f0fde88f27c41e1e730d32159c702d",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md": "01ede55bc40bfe94914c8a95490116e6c9a062d01d8df1045c1f34f53c3542dd",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+    "06_研究結果/jdrt/goal_20261017/G6_副指標・理論上限_実装証跡.json": "1d6450893499eb62c573a6c60faba0b73cbd559f81dd9e7faada7448f161a3dd",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/social_welfare_transport_20261022/災害フェーズ・移送支援_用途監査.md": "4d77e5a5ebc9e5c9c21e0699a1475c8827dabc748184b587f501e87c78182fea",
+    "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md": "491535fb62f86ee134a2627e7e355d3870fe090d71931acaadcf1afae168bc81",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261022/市地形図_位置・標高用途監査.md": "2a7a7633523446140d2154f4462a82288b607452ce94f2d652f1781047ae9ae0",
+    "06_研究結果/jdrt/goal_20261017/路面高不確実性_閉鎖時刻への伝播_20261020.md": "a262c3e590b0cb277863028e8b448fdb729cc2af61c9ecda1c2fb6cc7283f712",
+    "06_研究結果/jdrt/goal_20261017/路面高不確実性_閉鎖時刻への伝播_20261020.json": "19c638d31c5e0aeba490c811432b38b7de9b802383a3e5620468d787500b3b59",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "06_研究結果/jdrt/goal_20261017/G7_モデル時刻・壁時計_契約照合_20261023.json": "e06a31bf5f4f950e35164b8a5e8b49a5673ca6e397387b406a8c3ab1141b3dea",
+    "06_研究結果/jdrt/goal_20261017/G7_未受入時間積分_解釈と打切り_20261023.md": "17b4111d323f5a25848958aae6dfa4b111274435207832ddddded91fc46bfcc4",
+    "06_研究結果/jdrt/goal_20261017/G7_未受入時間積分_解釈と打切り_20261023.json": "134298c16a7bd411038faac967b2b01d6b579650d9d4bffc6f219ea6fecc7a06",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/施設開設・初期在所_時刻整合監査.md": "706a7afd385da40890fd69ee3cb361b097e9fadb5aa1be4ad89f138dcfac704b",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/audit.json": "c3746455c84dbc449b215e4ea9a694122bb1a621182db23630cbb675459b1055",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/primary_binding.json": "8ccac4768dfdf5eadc5f5f3fecdd094a69414ce98b1e34dfa8da99189c07b641",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/disaster_transport_20261019/city_verification.pdf": "d33e2f3198d4e410ba33c1bfe7d495566ddc5939bac888c76e1b007622fc10b8",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/terminals.csv": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/joso_plan_appendix_r8_202604.pdf": "0fe21a56eb9f07acb26ddde14acbd1bd702f8e5492abea50c5281f2a0906ec84",
+    "02_情報調査/交通・地域/jdrt_realistic/避難所根拠_20261015.md": "15d497553a078620f025218a3d5ae90b33d5916b4e51c73c8eb2cf3e80287077",
+    "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/verify_page50.png": "ab20cb76c9715e795ab06015cd82faa52c32257848ec9650a17462e6df62bd5d",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/capacity_provenance.json": "799686366d92715b920fbf711fd1690bca36843f0b17e0dc18c118e3aae230eb",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/people.csv": "0d40f8c4e7d3d1440377d83e0e89c7d180d75a52f72b2f897f484b1b2a1f57ef",
+    "04_プログラム/scripts/scenario_c_car_walk.py": "58d200cc58cdf2d9ac73a28e8c3f8fcc79e8dca417c59397d1f6c9387a939f07",
+    "04_プログラム/data/population_mesh/5歳階級別人口250メッシュ_茨城/tblT001178Q08.txt": "b4fd718430da2ccedaa3ae63798f4aa5f3d0e733f949fdea061e558779a99183",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md": "61378ac17bb8a2fea00fdc812d97f432053329cf7c727e4302c379f9b86b51e9",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/T001178_definition.pdf": "53f918d1d41e09c5c51c8381965604f13df10fe8f0e9b325ed855e88c1a445ad",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/audit.json": "d6d436bc57ffbfff078157eca81a020792d7e248555425681edc3a069846a1e3",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md": "b1bebb969e662158b7b9b7c6dc6fb75ffb546f078be5db442f3dc43b05b9c35a",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/fetch_metadata.json": "cc80c9537272fca4c885628915e53276666ff2afeff032c735bee9aa6ca03b35",
+    "06_研究結果/jdrt/goal_20261017/G7_代理集団と一般化_数式整理_20261024.md": "ffbe7bfd0c459b072b5948b6516eecde14ca85c7fe3b74585258553f6b4ccf19",
+    "06_研究結果/jdrt/goal_20261017/G7_代理集団と一般化_人工検査_20261024.py": "70414b1f10cdddd0b1ea2e14fcbe307c7d5dea60f1a7f9e694c18950a586a46d",
+    "06_研究結果/jdrt/goal_20261017/G7_代理集団と一般化_人工検査_20261024.json": "9a04fcf0d7dcb9d246e6f3751d5ce2d558ced11e172c33ef16b1cb660029a62e",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v3.md": "3069633ee5ccc59d0ed79633113a8bb181a1e76085f08d5522fedf462c297550",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v3_セル検証台帳.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/full_suite_scope_review.json": "7807ecc67a81a1e0297128a14eaeec36237365746be97a46be415117f4673351",
+    "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/native_tail_primary_diagnosis.json": "7a9aeab4f72d503f9727c3dfa76702106c105f8cd31371468387e92c6fdf01a9",
+    "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/native_tail_primary_recalculation.json": "3a1fb0f75a1df6147053a159fd1b133195f10ec688812b685e201bba36103af2",
+    "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/native_tail_primary_mutations.json": "8c02b2f6beed27654b51b177c7ec751da59fa2a468ea0d62214dc13b748d3aaf",
+    "06_研究結果/jdrt/goal_20261017/G6_登録入力_理論値確認_20261024T225240315570.json": "4e572c529e432cc5b65370391747c972b37fd5539a11882c4b1e4f4d6134cbf1",
+    "06_研究結果/jdrt/goal_20261017/G7_モデル時刻・壁時計_契約照合_20261024_v3.json": "c6b9b7f9b4a9319ef0fe8a8e6b0e67461f624f246ff56e09eedcd17bac33c434",
+    "06_研究結果/jdrt/goal_20261017/G7_未受入時間積分_意味照合_20261024_v3.json": "52212603cf0254764e04b08118d8516eb7f258b0fbd14e59f0f603d2f35e0655",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/inputs/registered01/manifest.json": "95cc4913f2f9a2752781795c9ae276f1a5bb7b73070edb03c64797c25d7d58a9",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/inputs/registered01/people.csv": "0d40f8c4e7d3d1440377d83e0e89c7d180d75a52f72b2f897f484b1b2a1f57ef",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/inputs/registered01/terminals.csv": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+    "06_研究結果/jdrt/goal_20261017/G7_登録データ同一性_20261024_v3.json": "10c25d928a45f69bd4aa3c1c0633649515a96314d6b8e2fdf55326ac1a9682e8",
+    "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/v3_preflight_terminal_readback_20261027.json": "7d088e5d6ccb76f275a2c8b13eb92e89be4894ee5bb18c5d07fcda2e695f7a9b",
+    "07_監視システム/verification/monitor_reentry_20261027/deployment.json": "f63bfb9003a0a63b07008dd93f4b6144545295f7934ae82dbb31e41acb0bc236"
+  },
+  "local_links_checked": 29,
+  "research_results_generated": false,
+  "new_method_adopted": false,
+  "previous_document_sha256": "4c0a6a674c3e3da26b686c5bfe1bfbaeb5aa53a5b210ee10db6247df2993fb3d",
+  "nested_technical_index": {
+    "at_jst": "2026-10-22T22:14:00.134557+09:00",
+    "scope": "bounded_evidence_index_not_new_native_or_core_test",
+    "document_sha256": "58aa22fcde0b6e6ea20cb5cd0b01bdad6900487ad111a7da5aadd5397cad0c53",
+    "sources": {
+      "audit_history/native_internal_fixture_20261021/actual_native_audit_v2.json": "cf73216ab77c891e874452c6f464d8541359134011316a0df5d68c27a143698a",
+      "audit_history/native_internal_fixture_20261021/source_reachability_review.json": "c60c9ac8411b8bc448dec33e34e128dd33c8ae1456fcd3974cd7a5fc8684b071",
+      "audit_history/native_guard_fragment_20261021/contract01/report.json": "c8a3588918b04fc07c9eabb7d94292f7b05c13c9ec9789d29ea853d7d17fdd05",
+      "正式検証器_表会計候補_20261022T144514.json": "dfbd4bdf1e415ab8fcaa06be56f91092f2c0b4ecaea16ef70beccbbb0833834e",
+      "ns261022c_all14_readback.json": "d14e75e398b2f84e5c7f6991b61b76870584862722249217a83bcddba23a7830"
+    },
+    "links_checked": 5,
+    "new_native_tests_executed": false,
+    "research_adoption_created": false,
+    "native_false_guard_observed": false,
+    "review": "Current Python evidence is separated from preserved same-native regression and artificial C++ fragment. No universal coverage or physical safety claim."
+  },
+  "source_refresh": {
+    "registration": "choice_native_observation_v3_20261024",
+    "current_draft_accepted": 0,
+    "old_accepted_preserved": 8,
+    "basis": "identity-only config review, current runtime observation-scope AST review, all7 identical service excerpts, new independent input PASS28, integrated analysis artificial7 PASS; full29 native suite remains RUNNING",
+    "all70_research_analysis_completed": false
+  },
+  "document_history_sha256": {
+    "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md": "d8e4adffb60beaa86d061dbcfa956ab330ab2efb6984446fa53d1a5f0b18ee21",
+    "05_タスク管理/jdrt/JDRT_最終ゴール自律進行計画.md": "e83d88ef6b5970c6de1f1cc0fbe58a6c90dc56e0c4aea73dfbd19b5f31592254"
+  },
+  "changed_documents": [
+    "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+    "05_タスク管理/jdrt/JDRT_最終ゴール自律進行計画.md"
+  ],
+  "checked_links": [
+    {
+      "document": "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md",
+      "target": "fetch_metadata.json"
+    },
+    {
+      "document": "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md",
+      "target": "acquisition.json"
+    },
+    {
+      "document": "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md",
+      "target": "audit.json"
+    },
+    {
+      "document": "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md",
+      "target": "../../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_代理集団と一般化_数式整理_20261024.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_代理集団と一般化_数式整理_20261024.md",
+      "target": "G7_代理集団と一般化_人工検査_20261024.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md",
+      "target": "audit_history/native_internal_fixture_20261021/actual_native_audit_v2.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md",
+      "target": "audit_history/native_internal_fixture_20261021/source_reachability_review.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md",
+      "target": "audit_history/native_guard_fragment_20261021/contract01/report.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md",
+      "target": "正式検証器_表会計候補_20261022T144514.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md",
+      "target": "ns261022c_all14_readback.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md",
+      "target": "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v3.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../context.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../05_タスク管理/jdrt/JDRT-受付代替行動_native監査v3_セル検証台帳.jsonl"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v3.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G6_主指標・事前登録差分_集計.py"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/service_continuity_20261021/通常運休と災害時供給_位置づけ.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G6_副指標・理論上限_実装証跡.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "路面高不確実性_閉鎖時刻への伝播_20261020.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G7_未受入時間積分_解釈と打切り_20261023.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../04_プログラム/scripts/jdrt_realtime_choice.py"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G7_モデル時刻・壁時計_契約照合_20261024_v3.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "analysis_history/G6_registration_gate_20261022/review.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/social_welfare_transport_20261022/災害フェーズ・移送支援_用途監査.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G7_技術証跡の適用範囲_20261022.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/施設開設・初期在所_時刻整合監査.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_realistic/sources_shelters/joso_plan_appendix_r8_202604.pdf"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_realistic/避難所根拠_20261015.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/capacity_provenance.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "../../../02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G7_代理集団と一般化_数式整理_20261024.md"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "transition_time_candidate_20261024/full_suite_scope_review.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "transition_time_candidate_20261024/native_tail_primary_diagnosis.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G7_モデル時刻・壁時計_契約照合_20261024_v3.json"
+    },
+    {
+      "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+      "target": "G7_未受入時間積分_意味照合_20261024_v3.json"
+    }
+  ],
+  "judgment_id": "JD-20261027-research-doc-alignment-17",
+  "math_claim_audit": {
+    "P2": "Nested threshold sets; extended-real infimum; no continuity/monotonicity needed for containment",
+    "P3": "Continuity plus global lower slope and both inner crossings; not local slope alone",
+    "historical_status_references": "Original note/proof current-status and instruction SHAs are point-dated historical snapshots, not present-day status authority",
+    "artificial_confirmation": "Existing same-SHA rational enumeration reused; not rerun or generalized as empirical coverage",
+    "real_E_m": "unverified; no physical time band or safety claim",
+    "source_note_unchanged": true,
+    "new_research_results": false
+  },
+  "wording_review": "Made endpoint inequalities explicit; same original P3 sufficient assumptions, no change to theorem or research conditions",
+  "previous_mapping": "06_研究結果/jdrt/goal_20261017/G7_統合草稿_出典対応監査_20261024_v3_clocks.json",
+  "previous_mapping_sha256": "43e412dd9672b5f18906b0bb307bc64ff5c04e0f83cbb59179b492ac41476fd1",
+  "clock_scope_review": "06_研究結果/jdrt/goal_20261017/G7_モデル時刻・壁時計_契約照合_20261024_v3.json",
+  "clock_scope_review_sha256": "c6b9b7f9b4a9319ef0fe8a8e6b0e67461f624f246ff56e09eedcd17bac33c434",
+  "integral_scope_review": "06_研究結果/jdrt/goal_20261017/G7_未受入時間積分_意味照合_20261024_v3.json",
+  "integral_scope_review_sha256": "52212603cf0254764e04b08118d8516eb7f258b0fbd14e59f0f603d2f35e0655",
+  "transcription_correction": {
+    "cause": "Non-raw Python literal converted LaTeX backslash-f to formfeed in one fraction command",
+    "previous_note_sha256": "33ce9e8705b647023473f40fed14208e90155d5006c6b4404054e10793a1a8b6",
+    "previous_note_preserved": "06_研究結果/jdrt/goal_20261017/document_history/33ce9e8705b647023473f40fed14208e90155d5006c6b4404054e10793a1a8b6.md",
+    "fix": "Replace the one control character with a literal LaTeX backslash; no algebra/source/metric change",
+    "readback": "No non-whitespace control characters; one literal fraction command present"
+  },
+  "facility_scope_review": "02_情報調査\\交通・地域\\jdrt_goal_20261017\\facility_opening_20261024\\audit.json",
+  "facility_scope_review_sha256": "c3746455c84dbc449b215e4ea9a694122bb1a621182db23630cbb675459b1055",
+  "inherited_math_and_clock_audits": "Original proofs preserved; current v3 fragments/calls/data rechecked separately. No artificial/all70 rerun claimed.",
+  "metadata_correction": "Inherited preceding-scope changed_documents list replaced by actual facility-scope edits; first mapping bytes preserved",
+  "capacity_scope_review": "02_情報調査\\交通・地域\\jdrt_goal_20261017\\facility_opening_20261024\\capacity_provenance.json",
+  "capacity_scope_review_sha256": "799686366d92715b920fbf711fd1690bca36843f0b17e0dc18c118e3aae230eb",
+  "population_scope_review": "02_情報調査\\交通・地域\\jdrt_goal_20261017\\population_definition_20261024\\audit.json",
+  "population_scope_review_sha256": "d6d436bc57ffbfff078157eca81a020792d7e248555425681edc3a069846a1e3",
+  "technical_scope_update_sha256": "491535fb62f86ee134a2627e7e355d3870fe090d71931acaadcf1afae168bc81",
+  "registered_data_actual_byte_readback": "06_研究結果/jdrt/goal_20261017/G7_登録データ同一性_20261024_v3.json",
+  "registered_data_actual_byte_readback_sha256": "10c25d928a45f69bd4aa3c1c0633649515a96314d6b8e2fdf55326ac1a9682e8",
+  "current_document_links_checked": [
+    "../../../context.md",
+    "../../../05_タスク管理/jdrt/JDRT-受付代替行動_native監査v3_セル検証台帳.jsonl",
+    "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
+    "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v3.md",
+    "G6_主指標・事前登録差分_集計.py",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/service_continuity_20261021/通常運休と災害時供給_位置づけ.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md",
+    "G6_副指標・理論上限_実装証跡.json",
+    "路面高不確実性_閉鎖時刻への伝播_20261020.md",
+    "G7_未受入時間積分_解釈と打切り_20261023.md",
+    "../../../04_プログラム/scripts/jdrt_realtime_choice.py",
+    "G7_モデル時刻・壁時計_契約照合_20261024_v3.json",
+    "analysis_history/G6_registration_gate_20261022/review.json",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/social_welfare_transport_20261022/災害フェーズ・移送支援_用途監査.md",
+    "G7_技術証跡の適用範囲_20261022.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/施設開設・初期在所_時刻整合監査.md",
+    "../../../02_情報調査/交通・地域/jdrt_realistic/sources_shelters/joso_plan_appendix_r8_202604.pdf",
+    "../../../02_情報調査/交通・地域/jdrt_realistic/避難所根拠_20261015.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/facility_opening_20261024/capacity_provenance.json",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/人口定義・Type4_適用範囲監査.md",
+    "G7_代理集団と一般化_数式整理_20261024.md",
+    "transition_time_candidate_20261024/full_suite_scope_review.json",
+    "transition_time_candidate_20261024/native_tail_primary_diagnosis.json",
+    "G7_モデル時刻・壁時計_契約照合_20261024_v3.json",
+    "G7_未受入時間積分_意味照合_20261024_v3.json",
+    "transition_time_candidate_20261024/v3_preflight_terminal_readback_20261027.json",
+    "../../../07_監視システム/verification/monitor_reentry_20261027/deployment.json"
+  ],
+  "current_document_link_count": 29,
+  "current_task_previous_sha256": "e830d93a01b35dfe780c118d165c9c1f98e6f21eecc4b243ae981c31a6b51c15",
+  "current_ready_report": "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/v3_preflight_terminal_readback_20261027.json"
+}

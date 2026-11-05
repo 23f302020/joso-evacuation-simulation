@@ -1,0 +1,64 @@
+{
+  "at_jst": "2026-10-22T22:53:49.5282589+09:00",
+  "state_observed_at": "2026-10-22T22:53:40.137762+09:00",
+  "monitor_pid": 3348,
+  "monitor_identity": {
+    "state": "alive",
+    "created": 134371000493149926,
+    "pid": 3348
+  },
+  "monitor_source_sha256": "c38c1e859f34d462d301b70a235aa8164e8bab42d4f761a3db28208210b56085",
+  "monitor_os": [
+    {
+      "ProcessId": 3348,
+      "CreationDate": "2026-10-22T08:47:29.314992+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\pythonw.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\watch.py\" run"
+    }
+  ],
+  "core_os": [
+    {
+      "ProcessId": 2924,
+      "ParentProcessId": 35224,
+      "CreationDate": "2026-10-22T22:50:27.098597+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" execute --run-id nc26102203 --cell-id fixed_reference_u05_r2p900_seed23423"
+    }
+  ],
+  "targets": [
+    {
+      "status": "RUNNING",
+      "target_id": "nc26102203",
+      "observed_at_utc": "2026-10-22T22:53:38.970125+09:00",
+      "protocol": "realtime_choice_v1",
+      "purpose": "core",
+      "state_sha256": "eb050f00e2d1722365ecaac72a1edf957af66ef110408dbdb70c8ddcfc6ac692",
+      "flags": [],
+      "pid": 2924,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102203\\manifest.json",
+      "sim_sec": 2520.0,
+      "progress_token": [
+        "RUNNING",
+        2520.0
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134371506270985975,
+        "pid": 2924
+      },
+      "command_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102203"
+      },
+      "command_verified_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102203"
+      },
+      "last_progress": 1792677218.490582,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102203\\sumo_errors.log": 0,
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102203.stderr.log": 0
+      },
+      "historical": false
+    }
+  ],
+  "scope": "read-only monitor target and OS identities; not formal validation"
+}

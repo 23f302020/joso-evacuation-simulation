@@ -1,0 +1,18 @@
+{
+  "schema": "pipeline_measurement_v1",
+  "pid": 11424,
+  "status": "HISTORY_ONLY",
+  "source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+  "started_at": "2026-10-28T06:03:35.029031+09:00",
+  "interval_sec": 60,
+  "planned_seconds": 86400,
+  "samples": 0,
+  "failures": 0,
+  "limitations": [
+    "CPU percent per process: 100=one logical CPU",
+    "Python/SUMO processes may belong to other work; phase is a command-name hint, not research ownership proof",
+    "Sampled memory maxima are lower bounds, not exact peaks",
+    "No temperature sensor or user responsiveness measurement",
+    "Missing/failed observations are not zero; long gaps may include sleep"
+  ]
+}

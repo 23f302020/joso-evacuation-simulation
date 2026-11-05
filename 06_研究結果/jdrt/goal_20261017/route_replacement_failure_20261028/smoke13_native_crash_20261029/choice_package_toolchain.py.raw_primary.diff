@@ -1,0 +1,50 @@
+--- 34b4ca747c7b2e402e3e9eea46712a96ca2b2b968a26b4fdea1135e9a7e3a2f0_before_shared_raw_primary_package.py
++++ choice_package_toolchain.py
+@@ -146,6 +146,13 @@
+     if not build_commands or build_commands[-1].get('exit_code') != 0:
+         raise ValueError('Successful sumo/netconvert target build evidence required')
+     pair = verify_pair(proof, project_root, track, read_json, sha, pe_imports)
++    shared_policy = read_json(pair['policy_path']).get('schema') == 'approved_native_pair_stop_index_policy_v1'
++    if shared_policy:
++        paired_entry = read_json(pair['pair_path'])['builds'][proof['role']]
++        dependency_files = [paired_entry['tools']['zlib_static'],
++                            *(ref for name, ref in paired_entry['headers'].items() if name.startswith('zlib/'))]
++    else:
++        dependency_files = state.get('zlib_dependency', {}).get('files', [])
+     if (inventory.get('schema') != 'official_python_tools_inventory_v1'
+             or inventory.get('all_official_bytes_match') is not True
+             or not re.fullmatch('[0-9a-f]{40}', inventory.get('source_commit', ''))
+@@ -200,9 +207,9 @@
+             if ((item.external_attr >> 16) & 0o170000) == 0o120000 or hashlib.sha256(archive.read(item)).hexdigest() != sha(sources[name]):
+                 raise ValueError('Official ZIP member differs from source bytes')
+     # These are independently checked references, not proof merely because JSON exists.
+-    for item in proof.get('files', []) + state.get('zlib_dependency', {}).get('files', []):
++    for item in proof.get('files', []) + dependency_files:
+         track(item)
+-    if not proof.get('files') or not state.get('zlib_dependency', {}).get('files'):
++    if not proof.get('files') or not dependency_files:
+         raise ValueError('Compiler/source/dependency file evidence required')
+     binaries = proof.get('binaries', [])
+     if len(binaries) != 2:
+@@ -214,9 +221,18 @@
+             raise ValueError('Binary path differs from supplied provenance')
+         item = matches[0]
+         track(item)
+-        if item.get('clean_path_version_exit_code') != 0:
+-            raise ValueError('Clean-PATH version proof failed')
+-        version = track({'path': item['version_log'], 'sha256': item['version_log_sha256']})
++        if shared_policy:
++            commands = [c for c in state['commands'] if c['command'] == [str(item['path']), '--version']]
++            if (len(commands) != 1 or commands[0]['phase'] != name + '_diagnostic_version'
++                    or type(commands[0]['exit_code']) is not int or commands[0]['exit_code'] != 0):
++                raise ValueError('Original repaired-target version command failed or differs')
++            version_ref = {'path': commands[0]['log'], 'sha256': commands[0]['log_sha256'],
++                           'bytes': commands[0]['log_bytes']}
++        else:
++            if item.get('clean_path_version_exit_code') != 0:
++                raise ValueError('Clean-PATH version proof failed')
++            version_ref = {'path': item['version_log'], 'sha256': item['version_log_sha256']}
++        version = track(version_ref)
+         if proof['custom_version'] not in version.read_text(errors='strict'):
+             raise ValueError('Version log does not identify the custom build')
+         if pe_imports(supplied) != sorted(x.lower() for x in item.get('pe_imports', [])):

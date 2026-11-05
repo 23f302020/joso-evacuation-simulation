@@ -1,0 +1,707 @@
+{
+  "started_jst": "2026-10-21T19:59:46.043950+09:00",
+  "finished_jst": "2026-10-21T19:59:46.277279+09:00",
+  "current_hour_diagnostic_receipts": 3,
+  "pending_notifications": 11,
+  "pending_diagnostics": 14,
+  "events": [
+    {
+      "name": "0f8163db3c4d4c3aab150d46c9984d7e.json",
+      "sha256": "76a5cd5415ee2b596e563e559a58e8ec2d136e0bcad7915898324c15aeeb0e3d",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T12:52:50.782998+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "0f8178834e16055ac8bcb181f4037aea.json",
+      "sha256": "fcf01c0b58ed659a6d9d484c8225aa9b8cb3230036aea3544438bffef4145f10",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:20:18.630778+00:00",
+      "delivery_started_epoch": 1792504070.8354414
+    },
+    {
+      "name": "14bbf21473306c9067b7bafab0ab2e55.json",
+      "sha256": "08eae341c2dff0d4fa92648c6fc9b215e3684618562190aca996dd09c3cceb6c",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T08:36:32.395050+00:00",
+      "delivery_started_epoch": 1792485384.6643045
+    },
+    {
+      "name": "1655e2705b4f8babefcbaceb59bc71c5.json",
+      "sha256": "ba355a71bd822f713129621811a5b74c73492b63e02c2d10f0bcbffc47efb76b",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:56:39.816791+00:00",
+      "delivery_started_epoch": 1792564181.8191893
+    },
+    {
+      "name": "177e3e4381cf177aea7d1d90ecc4e55b.json",
+      "sha256": "c08044ce70e871a7500b1a8ba11c3b31821e004034239940448151554420d6d8",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T14:03:31.108047+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "196305c58be351a89a7576c56c06677a.json",
+      "sha256": "5b2c0e6333f1e27c138c6cda97612ecbc9d3a043e38d63a01ed815855fd62c2c",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:20:11.655989+00:00",
+      "delivery_started_epoch": 1792504091.7175844
+    },
+    {
+      "name": "1b291662d4fba3ef3cf5aba3cd92d1f4.json",
+      "sha256": "0f64e447d7f4958f5d2c8425987db15e86940595095382c3c7179f630b51ce4f",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T14:03:44.091465+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "1c6b8f76001d29d04286ef28db7eec2d.json",
+      "sha256": "b8bc508086fecccc9fbd312acaacc0c68d335a3f285c59495d2e84b0701506ea",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:44:09.255804+00:00",
+      "delivery_started_epoch": 1792564196.3837335
+    },
+    {
+      "name": "2129a211d60cccb24b0d4e9770c9a72c.json",
+      "sha256": "38cd572cb9b08097c3f663a8417579147ddfec83ab9dc9ddea24f573fd5422a4",
+      "delivery": "failed_preserved",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T00:05:27.060743+00:00",
+      "delivery_started_epoch": 1792543446.2730265
+    },
+    {
+      "name": "21b3735ee01125a5d836d5dc086a2a56.json",
+      "sha256": "c6bc1ab8fb97ca68c1c9b7765d7dd0aa39ecb0c1da560d89375adf8395b174ce",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:04:29.776160+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "24aaf38a40e791f17e2962d5cdb7a1c7.json",
+      "sha256": "bd5ea8bcc6c613e66962459d2575623fde6af24eab56c05d781a0eebf3747465",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:04:19.583340+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "29504a0f7a7d9312efd9a39df82daa48.json",
+      "sha256": "ea325a3e1be8e3ed39e588f4cc65aaa800ec8c81766ed6bd58c29746ea760ee5",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:53:37.268331+00:00",
+      "delivery_started_epoch": 1792564209.4572294
+    },
+    {
+      "name": "29d614b333c3efda3fd9453d2124b067.json",
+      "sha256": "be4de63407b561dac85d967e40ca47fd1f0e13a468dbb577cf10411e2a8356e2",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T23:59:44.857072+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "30230b03697d51c969476d6b655870f4.json",
+      "sha256": "d3013158e48ec4c447d0be0278738d6eac6585d56c4a2aec7eeeb96ba03f5b1d",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T23:30:33.471340+00:00",
+      "delivery_started_epoch": 1792539845.7128344
+    },
+    {
+      "name": "33a8d3c7369b5a23e2736a6e7ac05a2d.json",
+      "sha256": "95e0cdca0f6af03b2a3d4a705ed897bc31ea0f6e3dc675e7f0d48de67f617ff3",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T12:52:51.704350+00:00",
+      "delivery_started_epoch": 1792504148.3865497
+    },
+    {
+      "name": "3c7a1b09bd9b87cea975280be8e59b2a.json",
+      "sha256": "8a3e68018cc09bfe2c7355dfd57ee97eab0d15649d52a2c96e477d29a6e4561c",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:45:31.471915+00:00",
+      "delivery_started_epoch": 1792567782.2756617
+    },
+    {
+      "name": "3ded4511e19bbb1bebfa6ff123ecd13e.json",
+      "sha256": "e27696049b5ca9a6e03024bbfea02e7bec8493c5506976c117f70759787e6ed9",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T23:59:12.432901+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "3f9d4c95cbbfc2a0778a2f9043c2e2fa.json",
+      "sha256": "9be06cf9928f6caa2c5dfd04b4db8d7b69a15fa73a1d77022728664278694f17",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T06:45:07.155551+00:00",
+      "delivery_started_epoch": 1792567799.1319244
+    },
+    {
+      "name": "42675e5ba8f8a0ef104896e19be81ce4.json",
+      "sha256": "36cfacbf812178a2900323a50c8acdfe4af1b844705a45fba1b56753c4ccaeb9",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:02:24.384975+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "448dd49cdbee570dd1327c35c71cccb9.json",
+      "sha256": "c2119147b76c588b141933baeb261855996f7f3f79f826bfc97d087567fcd847",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:05:11.888217+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "44d6185f07386ac55a05d883e0037e60.json",
+      "sha256": "39eda7358c5ad5bd9eae3ff8f582911569b95122b6db98342a4c8f1305cf9b01",
+      "delivery": "failed_preserved",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:45:18.328096+00:00",
+      "delivery_started_epoch": 1792507670.8559918
+    },
+    {
+      "name": "46e99038cb8985bc81e24de751b92a55.json",
+      "sha256": "633df08d0b887a37a7c08136924771a7e1c4bb6f50a0d5e7fbc70765312f0e04",
+      "delivery": "failed_preserved",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T12:53:03.242824+00:00",
+      "delivery_started_epoch": 1792507691.9788818
+    },
+    {
+      "name": "49a19d0b633b34c13a447b6cd8c73ef6.json",
+      "sha256": "14ff23712d218ae27db2e0c482216f434638ae9d725a7a84c0ae48bd91090ebb",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T13:20:18.640407+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "4dcdc0bc91c87d0ff09f6f06695efb27.json",
+      "sha256": "c213356a6f02cfc3880ac6283cc7a0656f0cb5eda98a73d4a57e592252d3d4c4",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T13:48:06.424172+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "4dcfceaa71910d543d016ddda08e945d.json",
+      "sha256": "936e2411202ab611fbc74842bbf71b4e4098af454ce219a000f5574b97819595",
+      "delivery": "failed_preserved",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T23:54:48.764337+00:00",
+      "delivery_started_epoch": 1792543458.1806684
+    },
+    {
+      "name": "4ef96e72cbf4c743418171b2701346d4.json",
+      "sha256": "ea1b278ba8e370cf455a3a5daec6be1e13fc122bdda1b09962752c72bea24545",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T13:48:18.851129+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "5526be514f03b2ee059979519a086e4b.json",
+      "sha256": "088da9f985cb510790155fc0ded3ec6d23cc2a33de397533a28a9688d9aa16f7",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:03:26.614963+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "5689b2add80ba7a511cde75c956cb3c4.json",
+      "sha256": "7b111737582f8c0577924c7596fdb9aee9ee4b414485d4a01b964edb2849f07a",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:00:06.551419+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "5b053843b503cd52c86ea532285c808d.json",
+      "sha256": "6107777bf834105db9b51b7b5a3a3b07ecd3488e62978322b676dcb64dbf0cf5",
+      "delivery": "failed_preserved",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T23:48:44.334122+00:00",
+      "delivery_started_epoch": 1792543464.0675867
+    },
+    {
+      "name": "5e232e9bc24f1344d0d80a99f09fd55d.json",
+      "sha256": "37e4b05c3ea25b504d0093e9706d93b47ccea618e8a3b66429f2a2a2816a0172",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:46:55.873417+00:00",
+      "delivery_started_epoch": 1792567810.84813
+    },
+    {
+      "name": "633ad1f8319e995a583a3b1c03aaf1ae.json",
+      "sha256": "a2bbb5ee758bcf28ca018ab498e415e41df5bac552765bb91e86ae44e00dcacd",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T06:01:18.033395+00:00",
+      "delivery_started_epoch": 1792579973.0601256
+    },
+    {
+      "name": "640144cc675b0e3915e835e066c3ff71.json",
+      "sha256": "80cf6c16008854248dfa747dc1ad056a2a51553fbd3b97e63bc02bbb0bd71170",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:50:06.566527+00:00",
+      "delivery_started_epoch": 1792579996.5163386
+    },
+    {
+      "name": "719290942261eb6788e17864a394d3f4.json",
+      "sha256": "8b6da10ba26c9caffad65cc4bef60d46aec30a60df2a7c325729c69b73b7be83",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:02:02.895634+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "730729f1ad70cd379f4985cf3b3eb7fb.json",
+      "sha256": "dd39553ea67031bb45718461d5e9558282db841a66b33f72e7fba61bb04cfa76",
+      "delivery": "failed_preserved",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:17:01.418989+00:00",
+      "delivery_started_epoch": 1792507749.0571187
+    },
+    {
+      "name": "757c2b36219fdd9082e88220093f8512.json",
+      "sha256": "4505d7378ffa5d2f8cae7d469d376263ab48669fbf77eff8dda339dabcc94242",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T23:20:10.237215+00:00",
+      "delivery_started_epoch": 1792539857.3691437
+    },
+    {
+      "name": "791030690f7dff2a0b824a736c87d383.json",
+      "sha256": "56b3ad70d8058178a234b330057e5ad45f9ab4a6d6ef9f969572dc5b20683e83",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:17:15.322537+00:00",
+      "delivery_started_epoch": 1792536245.2287226
+    },
+    {
+      "name": "7dec119e77bc91725efab372c189302a.json",
+      "sha256": "64da960ee067b7896a37ff5b3301b6e3cacc15c982f4c755a48df16d23617426",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:17:12.956228+00:00",
+      "delivery_started_epoch": 1792536253.159693
+    },
+    {
+      "name": "805a06fe9c2e8ab1145f594e47009a76.json",
+      "sha256": "ad3925b8ed867244b88bf9c74217a8dd634b3cda50b075a51910b2e8afdf1e4a",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T23:59:25.575185+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "826b0b1f3ca6c06d7d3d4721b3d5d3bf.json",
+      "sha256": "117a014bf9df3630195adf788e7c945d433113c12431fee27ae807abe2869c7a",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T23:34:49.928501+00:00",
+      "delivery_started_epoch": 1792539863.759557
+    },
+    {
+      "name": "853ba7e841d548e1462e9bcb501bb166.json",
+      "sha256": "96d435fe222aee9838a106641684554f72e9f2b2e6cb7d2fa895e0bc3920dd56",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:02:13.713525+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "8691ded0cdbd803939a16d32d961cb3a.json",
+      "sha256": "f064d40dca0816971a38594333ce7a66ba5c4aa10e2c8c13fd7c218901dda203",
+      "delivery": "done",
+      "notification": "failed",
+      "at_utc": "2026-10-20T08:25:24.308652+00:00",
+      "delivery_started_epoch": 1792484719.0590806
+    },
+    {
+      "name": "8b7b878d9ce46b77c1e7276e8ae387a3.json",
+      "sha256": "4bce1c6bcd14c61e7eda49d82ce31bacb6267a47640792e882aaada94ddc469b",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:42:48.170533+00:00",
+      "delivery_started_epoch": 1792580003.6694188
+    },
+    {
+      "name": "8ebcbf0dd656b314c1b6f8f945e7e0cb.json",
+      "sha256": "2fc1207ea7b0029c88f9fb21bd7097fb03f3823f664536698e40f48c942ec281",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T12:53:02.092621+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "915e18a823d52cb6576aef77eac89246.json",
+      "sha256": "2dbbd2b724c25f4de237f30fdfbc8ab4ee5100111bdc2073d91724d34b7d719e",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:01:19.194651+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "91ee9d263b0a614adeaa923eda57a143.json",
+      "sha256": "8f7213a566de68fbdb989f2cf1c14c63868def5946fd9341f4bf12e3691c2c7b",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:04:50.435933+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "953c07e8a3490596524fc6f4a94a6c6a.json",
+      "sha256": "658920a400141147a164e6732bcb2ad1c030badd89fc15ef94e4ac724d536634",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:02:55.598460+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "9a04d904e8f2d288ccd16f6313c40e9b.json",
+      "sha256": "7cc6946e64c02a2a80f9e98b4c69d2a74e8ef46f6dd9cc7e81f524ab214adb31",
+      "delivery": "done",
+      "notification": "failed",
+      "at_utc": "2026-10-20T12:48:13.337641+00:00",
+      "delivery_started_epoch": 1792500491.2115922
+    },
+    {
+      "name": "9f900a0cc82d48c93c78c699a75cdefc.json",
+      "sha256": "5fccb5509331a0184ed4dc96ed3bc8e2eb1063bf89484bee9c02e941f95b6f87",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T08:36:16.381606+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "a6a6574cf4a74057f905fec8cc93d3ca.json",
+      "sha256": "ba76278f37134b006b329b000a32a7fa6c3b7e69a2fabf63627ee5ff0eed5f53",
+      "delivery": "pending",
+      "notification": "submitted",
+      "at_utc": "2026-10-21T05:59:48.543661+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "a74acb241651c89f0b08a48dc20772dd.json",
+      "sha256": "046c1ec8aefbda0fc221ba81e9f540e5755dcae17e938a6e73943ce382bc1080",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:03:15.785378+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "a9e271c1a00e58e74683524044e39563.json",
+      "sha256": "b53ef6f2c5489c0007ea12f90ecefbc02e0696f98511a160a7877d1a089b5027",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:48:18.820354+00:00",
+      "delivery_started_epoch": 1792536261.0152924
+    },
+    {
+      "name": "ac57cff5af0d731e5f19445cd20b7a85.json",
+      "sha256": "fcfed52bb727cdc15e8c5a4a0825e9d217eee7aaa22cdf89be162a36355b8a2a",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:01:40.818182+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "ac99ecd2f6c84b5b6fc4986b43a14c1d.json",
+      "sha256": "1e68ac21878d6818470f9fa6e7b2f11e5853a49b1cbeefe1a1a12155845f2dae",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:20:02.133378+00:00",
+      "delivery_started_epoch": 1792560578.3816895
+    },
+    {
+      "name": "ad85e0e656e75d8626f33308217c8385.json",
+      "sha256": "9fdcf7279bf0f3d24acc2d8624cd1a9e22bc05a92b7639a7a9d5c4a4f3474f3a",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-21T07:40:49.114955+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "aef606f4b6194ad322cf195cdaa76712.json",
+      "sha256": "c42600d46bdf7cf3747ede2511013d7ed324d5da96257567db3a8a67d9787a3b",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:05:00.419265+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "b28daebed08954afbb6f429b1e98275a.json",
+      "sha256": "6a1f96df1309343454234974cbb87798232cf02d4d1270dcdef3fa58a44b427e",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-21T05:48:24.299120+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "b2bcebb3d34897a9c370a691686ceedf.json",
+      "sha256": "b39a256c19207feb4cc57c975fc7957bda30d1d976f10ea2950562ec5b512393",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-21T06:02:50.313249+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "b4063e704d085c8ae03db41c9073f49a.json",
+      "sha256": "b6e4d287ec346d5400feab1a4315ff89a5c8366a4df8825fcdb0b0439b8a9694",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:05:27.072627+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "b97d3b5a20cdbd84f84153ebf79dacb4.json",
+      "sha256": "c0faeeca9c782a2a3673724e4bc4c9fa7c5ceba74da9bd8e8c37273fe8ba987c",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T23:38:51.815209+00:00",
+      "delivery_started_epoch": 1792560593.2650998
+    },
+    {
+      "name": "bbf2ab615d5c1b2444e62f4dccecb273.json",
+      "sha256": "e241dbdf03ef6d98e088fa8b7582f84d742753f8619384053b362e3ef9b52333",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T12:48:13.268193+00:00",
+      "delivery_started_epoch": 1792500547.9309456
+    },
+    {
+      "name": "c06ac879d9f580bcbbbf30477524e602.json",
+      "sha256": "18c9490cbf401681e424b720ed3d426651bc76f9be90ffc75257eb87125267de",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T13:20:10.847546+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "c0ae0c0d07d9f7040e908f1d38a3305f.json",
+      "sha256": "c64ce040490af2059db7df761de030a0c31f12cd74f8da1abb3c24b941fb23e5",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T23:32:41.607086+00:00",
+      "delivery_started_epoch": 1792560604.9982812
+    },
+    {
+      "name": "c23717811f7f1e1310e749643ab82118.json",
+      "sha256": "d85ef07ef037e420978a999a55d77447e49523597606558dd681aea4f228a9bb",
+      "delivery": "pending",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T13:17:15.238388+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "c3fc3ddf0ab6b25c2ab855b7603a1ffa.json",
+      "sha256": "919c8da4043fb98c4b9f6e700d96383a06cb4bf923dd1f905c45cd619d2d9ac1",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-20T23:51:57.969498+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "d292f480087c89c3459cfec4c91f38bd.json",
+      "sha256": "21575d5be838bf096aeac5260c75cb5d2cb46c4561be5fbb82fc500718d61cdd",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T13:45:07.356456+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "d57f9674f5456fd03137660eb689677f.json",
+      "sha256": "d85130734b9424dcab973f3642fe2252ced3c3ce5a9d48707f3540c5cbfc52ee",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-20T13:45:18.265592+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "d594af8eec09ac3439449e4de2cdc595.json",
+      "sha256": "00d6dcad837e97b0597e872a534696f057f40fbea7a91273a83275b910db0025",
+      "delivery": "pending",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T12:52:41.941786+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "da4ecf0e324c576ebe37de07f46bae07.json",
+      "sha256": "eaad0df35325d18d86b32abb6fc3a0e995f38b5316d61d7d8f47bca50ef012bc",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:03:47.868941+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "da9ce555a7e561d4491b6f01d26fc347.json",
+      "sha256": "904c7f1409fc8faabe94f0acc8e0337169a205cca8962f537c2db06d82e86c0d",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-21T05:58:13.786820+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "dad9f86f9513931158e667f8020bb66b.json",
+      "sha256": "46b96f9315da25bb0f4ca1ebbb8f9016493024ef590ff88e771f34e0856bdb03",
+      "delivery": "failed_preserved",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T08:36:32.334500+00:00",
+      "delivery_started_epoch": 1792488319.9673574
+    },
+    {
+      "name": "dc1ef9f41e3415641e7a489225314077.json",
+      "sha256": "c3c7243b628af939705bd253e8bdbaf3b6124ce7b79d3063bd37173ad8b635c9",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T12:48:03.033413+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "dede3da0b8b630e64b3c2403ee5eb2db.json",
+      "sha256": "492da56520d8cf1f2a5ac86335130815d5971ec19d58fa02ef76a653b15fd3a6",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:01:00.578222+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "e51309396aacb6104c7fb1de522a4032.json",
+      "sha256": "f0d36aeb0a768ca17e3cc42cf61c4d78a46e60af07eeea988ccf4f79dd0e253c",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:00:26.579056+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "e556b4c9e444c1a35c9a3f7af0399b4d.json",
+      "sha256": "2addeff96da48848f84a61b9aaf9d6cd0f8c6d5cba662b5611fe6e39e995af83",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-21T05:52:08.347196+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "e68c7dd104e473129e75352a05343c9d.json",
+      "sha256": "a33f6b3b2f3a3fdc3453725a15e879e858ac900edd13a7c93d52241e4db1753c",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-21T05:55:07.150624+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "e904dd3e35747a8df04471f849b49db9.json",
+      "sha256": "16f5cc09a909fdfdd258870424541707693ea4028f8087e13a18abf674b4bd08",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-20T14:03:44.068481+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "e936e04807498afd23421ea0bdf2113f.json",
+      "sha256": "df7e510d4bd4e165e67c88201383765c9a3341d22790258c02d324d21f7ffa11",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-20T14:00:24.830839+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "ef1c8cf15f359818d87e626611f5bae9.json",
+      "sha256": "2582a2d5cf906760da6b681d1ae2c51363d3be8d3e784ccc04c0bd32c2f050bf",
+      "delivery": "pending",
+      "notification": "pending",
+      "at_utc": "2026-10-20T14:00:33.612076+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "f04f787e6575eab1edf150ba11784926.json",
+      "sha256": "bb3c7907ac8a35c60546370f0287fde4659fb8fe6dd17c8e2f5dbf4d31feaa05",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:02:45.171254+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "f34cddbd124b2a04c33cb6be1f64a094.json",
+      "sha256": "ab2ccef95fe349cf5532df722d7d7257a8591f67b5ef6bed547bd564011bfed5",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:01:29.944379+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "f47318bb6742665b834621f5173de3a9.json",
+      "sha256": "e5f896a1b88797984b58a24ea6ea96ef27da193914fe3ef15c10ef7e5ee6ea5e",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T08:36:11.071320+00:00",
+      "delivery_started_epoch": 1792485363.0568054
+    },
+    {
+      "name": "f497c69977c1c2d7a7c374bf6c982d83.json",
+      "sha256": "bf41bcf37ed53f0ad5e81a20d4a5121b109d5b33e807a6a44a01c02402c234a7",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:04:08.824742+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "f659e30fbc7b2bae3f5cf59430a0557d.json",
+      "sha256": "a57161ee4e50b11033166c508cfb6f3c70066ff85ce39bd137612e861da8d0b5",
+      "delivery": "done",
+      "notification": "submitted",
+      "at_utc": "2026-10-20T12:47:57.494968+00:00",
+      "delivery_started_epoch": 1792500469.8374028
+    },
+    {
+      "name": "f723b64c7f321d7bd5b81cc357bddbda.json",
+      "sha256": "ab00d6313589286e24e3e1e5619e91faa2a8496f5ed15ef98d100987cc6c825a",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-21T00:00:37.731685+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "f7248a8abccd868ed70c32d412602027.json",
+      "sha256": "a13481ff544846cb6bc58a639082ee0e90505bdd1a11f21f3b781f5baf25c6bc",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T14:00:19.333287+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "fdc93405442b20f139715d5b3c21fa43.json",
+      "sha256": "18ba40cc1def1f6a8865ec14f85931bde2e07684fc7da334a5ce1a24bc59e136",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T23:59:54.581621+00:00",
+      "delivery_started_epoch": 0
+    },
+    {
+      "name": "feb5e8d7a3aa8bfdf97f6884e6b4a07f.json",
+      "sha256": "1d444ea4107adce7fe6d47f15807733d3e001a131a75766ec0e79c168f421a29",
+      "delivery": "not_required",
+      "notification": "not_required",
+      "at_utc": "2026-10-20T13:17:12.113141+00:00",
+      "delivery_started_epoch": 0
+    }
+  ],
+  "purpose": "source and mutable-event snapshots before notification-starvation repair; not cross-file atomic",
+  "config_sha256": "6a3ec5547b04a39cb73bae37ab856d3a71528d37414e55502dc5cc813074ea92"
+}

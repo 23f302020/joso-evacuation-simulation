@@ -1,0 +1,24 @@
+{
+  "recorded_at_jst": "2026-10-15T21:53:38.450627+09:00",
+  "scope": "reference dependency snapshot; no input/code changes adopted",
+  "sha256": {
+    "04_プログラム/scripts/jdrt/input_adapter.py": "edc4b770b6e2d7b60ea609b9984d4c0de04f1c17e040a2dfa94c665bfd5381b3",
+    "04_プログラム/scripts/jdrt/controller.py": "135f0f41fe5c170b33a977b970cd7594d99b1a004e8aec62d4fc737f50f842d1",
+    "04_プログラム/scripts/jdrt/dispatch.py": "ab8638e9963952bd435e4de2ec2c5b94124c0a4c6630eddc5c11f5963eb75a60",
+    "04_プログラム/scripts/jdrt/full_run.py": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842",
+    "04_プログラム/scripts/scenario_c_car_walk.py": "58d200cc58cdf2d9ac73a28e8c3f8fcc79e8dca417c59397d1f6c9387a939f07",
+    "04_プログラム/scripts/scenario_c_routes.py": "285c64b334ae285c2684e637b9d27aaea169bb7600de35555e7f2c84ba26f348",
+    "04_プログラム/scripts/scenario_c_integrated.py": "372712073c7281b8d2c50e514804b952a7401fdde78a0696a483962ec0f1c6a3",
+    "04_プログラム/scripts/jdrt_realistic_r0.py": "24aed86a707f939175d2087a27240b8c9acb5e329fd4303835d2c58362f3dec3",
+    ".agents/skills/joso-jdrt-runner/scripts/real_r0_cell.py": "77c84a4a4e4faa5f7b8728543b11e16dcebfd715a962922efd5ec77a55d20acc",
+    "04_プログラム/config/jdrt_parameters_v2.json": "c878760eeff72b47110784f17bd98856dc292dd2fcb98636a42c632f6507b411",
+    "04_プログラム/config/jdrt_realistic_parameters_v1.json": "605d83baf1065454449a255c18946ed50fa720d6d0b126c210d54d46982a3780",
+    "04_プログラム/output/sumo/regions/08211/derived/agent_types.csv": "1d38fefd691c83b44a6b148678cce2fa4f7595ae2991e9291a7fb10d605f1c72",
+    "04_プログラム/output/sumo/regions/08211/derived/rescue_od.csv": "493dbc46b7fad53b9ed65129bf5127dd3091a0a9a07ad6a82f4bba4ea3e2050b",
+    "04_プログラム/output/sumo/regions/08211/derived/shelters_sumo.csv": "4f325976efd23af4c3c4fa716710b17375491d7c4d2f120e1cf1b24b80ce08fa",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": "c3b703fc74a5072081a7d37e521893f133d95ac8a88ba3b7295b0d14c292ccb3",
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f",
+    "04_プログラム/output/sumo/regions/08211/derived/time_mapping_sumo.csv": "2316f275396c9bacd48056733e4c3e2c706a45b922111c76ee185b49046b54a5",
+    "04_プログラム/output/sumo/regions/08211/derived/closure_timeline_sumo.json": "04b35335f8acf495e5e9f5916ad31d36900d1b4e66f8dd50fe1b07cc62d68e1f"
+  }
+}

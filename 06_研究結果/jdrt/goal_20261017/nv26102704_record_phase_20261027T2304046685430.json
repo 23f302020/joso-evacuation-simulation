@@ -1,0 +1,47 @@
+{
+  "at_jst": "2026-10-27T23:04:04.3871991+09:00",
+  "action": "independent_PASS_same_finish_entered_record",
+  "run_id": "nv26102704",
+  "original_session": 77682,
+  "classification": "PROGRESS",
+  "phase": "record",
+  "operation_status": "RUNNING",
+  "record_attempted": true,
+  "formal_recorded": 3,
+  "first_validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102704_20261027T225958332715.json",
+  "first_validation_report_sha256": "29ab971be94a59ce4e7dc6e5348f7673e8e818aa1188d8365064ae455c08dca5",
+  "core_adoption_permitted_first_report": true,
+  "components_pass": 7,
+  "display_writers_deferred": true,
+  "no_replay": true,
+  "goal_complete": false,
+  "processes": [
+    {
+      "pid": 23228,
+      "parent_pid": 15960,
+      "created_jst": "2026-10-27T22:42:52.8918100+09:00",
+      "user_100ns": 1718750,
+      "kernel_100ns": 1562500,
+      "read_bytes": 8083479,
+      "written_bytes": 96645
+    },
+    {
+      "pid": 20240,
+      "parent_pid": 32944,
+      "created_jst": "2026-10-27T22:43:27.2129020+09:00",
+      "user_100ns": 625000,
+      "kernel_100ns": 1093750,
+      "read_bytes": 4039589,
+      "written_bytes": 8405
+    },
+    {
+      "pid": 21952,
+      "parent_pid": 4628,
+      "created_jst": "2026-10-27T23:00:01.1778020+09:00",
+      "user_100ns": 2162656250,
+      "kernel_100ns": 202031250,
+      "read_bytes": 2437718173,
+      "written_bytes": 464
+    }
+  ]
+}

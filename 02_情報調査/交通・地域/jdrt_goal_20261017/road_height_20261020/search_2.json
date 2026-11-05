@@ -1,0 +1,15 @@
+{
+  "query": "site:pref.ibaraki.jp 新八間堀川 桜橋 橋梁 縦断 橋面",
+  "result": {
+    "success": true,
+    "data": {
+      "web": [],
+      "tools": []
+    },
+    "id": "01a1566e-55df-70bb-8c4c-d59d6a7a44d0",
+    "creditsUsed": 0,
+    "agent_hints": [
+      "No web results were returned. If the task is still unresolved, use firecrawl_search again with {\"query\":\"<broader or alternative query>\",\"sources\":[\"web\"]}."
+    ]
+  }
+}

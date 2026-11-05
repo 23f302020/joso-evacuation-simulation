@@ -1,0 +1,53 @@
+{
+  "query": "\"常総\" \"2015\" \"バス\" \"避難\" site:kantetsu.co.jp",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.kantetsu.co.jp/cms/wp-content/themes/kr/pdf/safety/file-train-2025.pdf\",\"title\":\"[PDF] 2025 関東鉄道株式会社 安全報告書 地域のふれあいパートナー\",\"description\":\"異常気象や自然災害等の発生に備え、2015年度より気象観測システム（雨量・風速・. 地震計）を増設し、情報収集力を高め、より安全性の高い輸送体制としております。\",\"position\":1,\"source\":\"web\"}],\"tools\":[{\"provider\":\"mof-go-jp\",\"capability\":\"sanctions/search\",\"description\":\"Find whether a person or organization appears on the Japanese list by name. A match or its absence is not a compliance determination.\"},{\"provider\":\"auctions-yahoo-co-jp\",\"capability\":\"listings/item\",\"description\":\"Full detail for an auction id from search or a pasted auctions.yahoo.co.jp / page.auctions.yahoo.co.jp listing URL.\"},{\"provider\":\"mof-go-jp\",\"capability\":\"sanctions/records_list\",\"description\":\"Collect the whole list (default 100 rows per page, about 2,900 rows in the asset-freeze file) or one 区分 of it. For one row by 番号 use `records_get`; for a name use `search`.\"},{\"provider\":\"auctions-yahoo-co-jp\",\"capability\":\"listings/search\",\"description\":\"Start here to find auction ids (then call item) or to get sold-price history for a keyword. Provide at least one of query, category_id or seller_id.\"}]},\"creditsUsed\":2,\"id\":\"01a18a16-b9e9-75fa-8c87-7636d1b415b0\",\"agent_hints\":[\"All 1 web results are excerpts only (#1 \\\"https://www.kantetsu.co.jp/cms/wp-content/themes/kr/pdf/safety/file-train-2025.pdf\\\"). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "data": {
+        "web": [
+          {
+            "url": "https://www.kantetsu.co.jp/cms/wp-content/themes/kr/pdf/safety/file-train-2025.pdf",
+            "title": "[PDF] 2025 関東鉄道株式会社 安全報告書 地域のふれあいパートナー",
+            "description": "異常気象や自然災害等の発生に備え、2015年度より気象観測システム（雨量・風速・. 地震計）を増設し、情報収集力を高め、より安全性の高い輸送体制としております。",
+            "position": 1,
+            "source": "web"
+          }
+        ],
+        "tools": [
+          {
+            "provider": "mof-go-jp",
+            "capability": "sanctions/search",
+            "description": "Find whether a person or organization appears on the Japanese list by name. A match or its absence is not a compliance determination."
+          },
+          {
+            "provider": "auctions-yahoo-co-jp",
+            "capability": "listings/item",
+            "description": "Full detail for an auction id from search or a pasted auctions.yahoo.co.jp / page.auctions.yahoo.co.jp listing URL."
+          },
+          {
+            "provider": "mof-go-jp",
+            "capability": "sanctions/records_list",
+            "description": "Collect the whole list (default 100 rows per page, about 2,900 rows in the asset-freeze file) or one 区分 of it. For one row by 番号 use `records_get`; for a name use `search`."
+          },
+          {
+            "provider": "auctions-yahoo-co-jp",
+            "capability": "listings/search",
+            "description": "Start here to find auction ids (then call item) or to get sold-price history for a keyword. Provide at least one of query, category_id or seller_id."
+          }
+        ]
+      },
+      "id": "01a18a16-b9e9-75fa-8c87-7636d1b415b0",
+      "creditsUsed": 2,
+      "agent_hints": [
+        "All 1 web results are excerpts only (#1 \"https://www.kantetsu.co.jp/cms/wp-content/themes/kr/pdf/safety/file-train-2025.pdf\"). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+      ]
+    },
+    "isError": false
+  }
+}

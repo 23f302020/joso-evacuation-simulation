@@ -1,0 +1,33 @@
+{
+  "at_jst": "2026-10-20T22:39:20.970618+09:00",
+  "status": "REVIEWED_READY_FOR_OWNED_OBSERVER_RESTART",
+  "source_sha256": {
+    "watch.py": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+    "test_watch.py": "f3b1772227a5d44d2b1694cdc43194288f5395aaa8e7b72dd97db3a21c470a13"
+  },
+  "red": "red.log:5 failures; red_lookup_race.log:2 more original-source failures",
+  "green": "green_all.log:27 tests PASS",
+  "windows_integration": "daemon_fixture_probe/result.json:live bound suite/case,2 completion events,no mismatch,no AI/notifications",
+  "changed_scope": [
+    "Exact Windows argv match",
+    "Read-only fixture-parent/factory/case/input SHA binding",
+    "Successful command proof cache tied to same PID creation and identical binding",
+    "Post-CIM handle recheck preserves exit grace and rejects PID reuse"
+  ],
+  "review_findings_resolved": [
+    "Substrings no longer establish command identity",
+    "Missing/partial/forged parent/factory/input/case cannot inherit suite identity",
+    "Existing old process creation alone cannot bypass unsuccessful initial command check",
+    "No AST source execution, research process operations, run edits, input edits, adoption or public output",
+    "Original event/deployment/triage receipts preserved; durable hourly diagnostic limit unchanged"
+  ],
+  "remaining_limitations": [
+    "This local observer cannot monitor while PC unavailable",
+    "Historical events lack original command capture; no blanket retrospective false-positive or delivery rewrite",
+    "Observer success remains separate from detailed SHA/accounting/native validation",
+    "Real research fixture behavior will be observed on a new selected-pair workflow after owned restart"
+  ],
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "actual_backend": "No model switch or new agent; artificial probes disable AI"
+}

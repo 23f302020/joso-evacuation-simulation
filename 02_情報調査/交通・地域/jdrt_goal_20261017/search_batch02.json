@@ -1,0 +1,119 @@
+{
+  "at_utc": "2026-10-16T23:19:00.290Z",
+  "feedback": "disabled by external-send prohibition",
+  "queries": [
+    "常総市 3D都市モデル 道路 点群 標高 PLATEAU",
+    "茨城県 3次元 点群データ 公開 道路 河川 橋梁 オープンデータ"
+  ],
+  "results": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.mlit.go.jp/plateau/learning/tpc03-4/\",\"title\":\"TOPIC 3｜3D都市モデルデータの基本[4/4]｜CityGMLの座標・高さと ...\",\"description\":\"PLATEAUの3D都市モデルには、地形の起伏が接頭辞「dem」のデータとして提供されています。浮かないようにするには、こうしたデータで高さを補正します。\",\"position\":1},{\"url\":\"https://github.com/Project-PLATEAU/CityGMLtoRobotMap\",\"title\":\"FY2022 Project PLATEAU UC22-024「3D都市モデルとBIMを活用した ...\",\"description\":\"「CityGMLtoRobotMap」は、LiDAR SLAMを用いた自律飛行ドローンのために3D都市モデルとBIMモデルを統合した点群マップを提供するツール群です。 本業務では、屋外 ...\",\"position\":2,\"category\":\"github\"},{\"url\":\"https://front.geospatial.jp/plateau_portal_site/\",\"title\":\"3D都市モデル(Project PLATEAU) ポータルサイト - G空間情報センター\",\"description\":\"航空測量等に基づき取得したデータから建物等の地物を3次元で生成した3D都市モデルです。 商用利用も含め、どなたでも無償で自由にご利用いただけます。 Project PLATEAU ...\",\"position\":3},{\"url\":\"https://www.youtube.com/watch?v=9UZCWvWDwTU\",\"title\":\"PLATEAUデータの高さや位置合わせについて理解する ... - YouTube\",\"description\":\"... 3D都市モデルの特徴をおさらいしながら解説します。 ○概要テ ー マ：PLATEAUデータの高さや位置合わせについて理解する講 師：株式会社MIERUNE 西尾 ...\",\"position\":4},{\"url\":\"https://www.city.tamana.lg.jp/q/aview/118/25241.html\",\"title\":\"Project PLATEAU 3D都市モデルの整備・活用・オープン化 - 玉名市\",\"description\":\"道路、橋梁や公園など市内の全インフラを3D(立体)でデジタル化し、コンピューター上に街を再現するシステムです。効果を検証する実証実験から段階的に実装 ...\",\"position\":5}]},\"creditsUsed\":2,\"id\":\"01a14702-bddd-7798-a1a2-fcd0b395f87e\",\"agent_hints\":[\"All 5 web results are excerpts only (#1 \\\"https://www.mlit.go.jp/plateau/learning/tpc03-4/\\\", #2 \\\"https://github.com/Project-PLATEAU/CityGMLtoRobotMap\\\", #3 \\\"https://front.geospatial.jp/plateau_portal_site/\\\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.mlit.go.jp/plateau/learning/tpc03-4/",
+                "title": "TOPIC 3｜3D都市モデルデータの基本[4/4]｜CityGMLの座標・高さと ...",
+                "description": "PLATEAUの3D都市モデルには、地形の起伏が接頭辞「dem」のデータとして提供されています。浮かないようにするには、こうしたデータで高さを補正します。",
+                "position": 1
+              },
+              {
+                "url": "https://github.com/Project-PLATEAU/CityGMLtoRobotMap",
+                "title": "FY2022 Project PLATEAU UC22-024「3D都市モデルとBIMを活用した ...",
+                "description": "「CityGMLtoRobotMap」は、LiDAR SLAMを用いた自律飛行ドローンのために3D都市モデルとBIMモデルを統合した点群マップを提供するツール群です。 本業務では、屋外 ...",
+                "position": 2,
+                "category": "github"
+              },
+              {
+                "url": "https://front.geospatial.jp/plateau_portal_site/",
+                "title": "3D都市モデル(Project PLATEAU) ポータルサイト - G空間情報センター",
+                "description": "航空測量等に基づき取得したデータから建物等の地物を3次元で生成した3D都市モデルです。 商用利用も含め、どなたでも無償で自由にご利用いただけます。 Project PLATEAU ...",
+                "position": 3
+              },
+              {
+                "url": "https://www.youtube.com/watch?v=9UZCWvWDwTU",
+                "title": "PLATEAUデータの高さや位置合わせについて理解する ... - YouTube",
+                "description": "... 3D都市モデルの特徴をおさらいしながら解説します。 ○概要テ ー マ：PLATEAUデータの高さや位置合わせについて理解する講 師：株式会社MIERUNE 西尾 ...",
+                "position": 4
+              },
+              {
+                "url": "https://www.city.tamana.lg.jp/q/aview/118/25241.html",
+                "title": "Project PLATEAU 3D都市モデルの整備・活用・オープン化 - 玉名市",
+                "description": "道路、橋梁や公園など市内の全インフラを3D(立体)でデジタル化し、コンピューター上に街を再現するシステムです。効果を検証する実証実験から段階的に実装 ...",
+                "position": 5
+              }
+            ]
+          },
+          "id": "01a14702-bddd-7798-a1a2-fcd0b395f87e",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 5 web results are excerpts only (#1 \"https://www.mlit.go.jp/plateau/learning/tpc03-4/\", #2 \"https://github.com/Project-PLATEAU/CityGMLtoRobotMap\", #3 \"https://front.geospatial.jp/plateau_portal_site/\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.pref.yamanashi.jp/biz-brand/r7tengun.html\",\"title\":\"山梨県全域の3次元点群データの公開について\",\"description\":\"山梨県では、デジタル技術を活用し、社会課題の解決や新たなビジネスサービスの創出を図るため、県全域の3次元点群データをオープンデータ化しました。\",\"position\":1},{\"url\":\"https://virtualshizuokaproject.my.canva.site/\",\"title\":\"VIRTUAL SHIZUOKA｜静岡県全域を3次元点群データでデジタル ...\",\"description\":\"データは「CC–BY ４.０」でのオープンデータ化により、誰もが自由に使えるデータとして無償公開。\\n\\n測量技術により得られた「３次元点群データ」だからこそ、\\n\\n座標データの集まりである３次元点群データ。\\n\\n道も。\\n\\n測量技術により得られた「３次元点群データ」だからこそ、\\n\\n座標データの集まりである３次元点群データ。\\n\\n道路面、道路沿線\\n\\n道路面、道路沿線\\n\\n高密度、色付き３次元点群データ。\\n\\n１点１点に、平面直轄座標系に基づく緯度経度標高の３次元の位置情報を持っています。\\n\\n３次元点群データだからこそ分かる\\n\\n点群データを搭載。\\n\\n点群データによる\\n\\nオープンデータで\\n\\nオープンデータ\\n\\nReleased as opendata\\n\\n基づくオープンデータとして公開しています。\\n\\n多様なデータを公開。\\n\\n３次元点群データは取得時からノイズを取り除いた生データ（RAW DATA）のほか、計測時に取得したオルソ画像や点群データから作成した微地形表現図、等高線データ等も公開しています。\\n\\nWebサイト「G空間情報センター」にて公開しています。\",\"position\":2},{\"url\":\"https://www.gsi.go.jp/johofukyu/johofukyu60001_00016.html\",\"title\":\"「点群タイル閲覧サイト」を試験公開 - 国土地理院\",\"description\":\"ウェブ地図上で「点群タイル」をご覧いただくことができ、地表面に建物や植生等を加えた表層面の状況を臨場感のある立体的な表現で見ることができます。\",\"position\":3},{\"url\":\"https://www.pref.wakayama.lg.jp/prefg/012100/d00213012.html\",\"title\":\"地理情報システムによる3次元点群データの公開について - 和歌山県\",\"description\":\"県が保有する航空レーザ測量で得られた県域の約65％に及ぶ点群データ(経度、緯度、標高値を含むデータ)をオープンデータとして公開するとともに、点群データを利用した3D ...\",\"position\":4},{\"url\":\"https://front.geospatial.jp/\",\"title\":\"G空間情報センター\",\"description\":\"当センターでシェープファイル、GeoJSONファイルに変換した登記所備付地図データのダウンロードが可能です。 ※XMLデータのダウンロードにはユーザー登録（ユーザログイン） ...\",\"position\":5}]},\"creditsUsed\":2,\"id\":\"01a14702-bdda-769a-b75e-74369489b385\",\"agent_hints\":[\"All 5 web results are excerpts only (#1 \\\"https://www.pref.yamanashi.jp/biz-brand/r7tengun.html\\\", #2 \\\"https://virtualshizuokaproject.my.canva.site/\\\", #3 \\\"https://www.gsi.go.jp/johofukyu/johofukyu60001_00016.html\\\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.pref.yamanashi.jp/biz-brand/r7tengun.html",
+                "title": "山梨県全域の3次元点群データの公開について",
+                "description": "山梨県では、デジタル技術を活用し、社会課題の解決や新たなビジネスサービスの創出を図るため、県全域の3次元点群データをオープンデータ化しました。",
+                "position": 1
+              },
+              {
+                "url": "https://virtualshizuokaproject.my.canva.site/",
+                "title": "VIRTUAL SHIZUOKA｜静岡県全域を3次元点群データでデジタル ...",
+                "description": "データは「CC–BY ４.０」でのオープンデータ化により、誰もが自由に使えるデータとして無償公開。\n\n測量技術により得られた「３次元点群データ」だからこそ、\n\n座標データの集まりである３次元点群データ。\n\n道も。\n\n測量技術により得られた「３次元点群データ」だからこそ、\n\n座標データの集まりである３次元点群データ。\n\n道路面、道路沿線\n\n道路面、道路沿線\n\n高密度、色付き３次元点群データ。\n\n１点１点に、平面直轄座標系に基づく緯度経度標高の３次元の位置情報を持っています。\n\n３次元点群データだからこそ分かる\n\n点群データを搭載。\n\n点群データによる\n\nオープンデータで\n\nオープンデータ\n\nReleased as opendata\n\n基づくオープンデータとして公開しています。\n\n多様なデータを公開。\n\n３次元点群データは取得時からノイズを取り除いた生データ（RAW DATA）のほか、計測時に取得したオルソ画像や点群データから作成した微地形表現図、等高線データ等も公開しています。\n\nWebサイト「G空間情報センター」にて公開しています。",
+                "position": 2
+              },
+              {
+                "url": "https://www.gsi.go.jp/johofukyu/johofukyu60001_00016.html",
+                "title": "「点群タイル閲覧サイト」を試験公開 - 国土地理院",
+                "description": "ウェブ地図上で「点群タイル」をご覧いただくことができ、地表面に建物や植生等を加えた表層面の状況を臨場感のある立体的な表現で見ることができます。",
+                "position": 3
+              },
+              {
+                "url": "https://www.pref.wakayama.lg.jp/prefg/012100/d00213012.html",
+                "title": "地理情報システムによる3次元点群データの公開について - 和歌山県",
+                "description": "県が保有する航空レーザ測量で得られた県域の約65％に及ぶ点群データ(経度、緯度、標高値を含むデータ)をオープンデータとして公開するとともに、点群データを利用した3D ...",
+                "position": 4
+              },
+              {
+                "url": "https://front.geospatial.jp/",
+                "title": "G空間情報センター",
+                "description": "当センターでシェープファイル、GeoJSONファイルに変換した登記所備付地図データのダウンロードが可能です。 ※XMLデータのダウンロードにはユーザー登録（ユーザログイン） ...",
+                "position": 5
+              }
+            ]
+          },
+          "id": "01a14702-bdda-769a-b75e-74369489b385",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 5 web results are excerpts only (#1 \"https://www.pref.yamanashi.jp/biz-brand/r7tengun.html\", #2 \"https://virtualshizuokaproject.my.canva.site/\", #3 \"https://www.gsi.go.jp/johofukyu/johofukyu60001_00016.html\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    }
+  ]
+}

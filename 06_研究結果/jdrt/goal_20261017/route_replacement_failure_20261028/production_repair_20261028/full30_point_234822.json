@@ -1,0 +1,66 @@
+{
+  "at_jst": "2026-10-28T23:48:22.680391+09:00",
+  "action": "v4_full30_original_owner_point_observation",
+  "original_session": 41223,
+  "owner": {
+    "state": "alive",
+    "created": 134376721587991556,
+    "pid": 42508
+  },
+  "suite_status": "RUNNING",
+  "progress": {
+    "at_jst": "2026-10-28T23:47:28.180763+09:00",
+    "completed_cases": 4,
+    "last_case": "walk_reverse",
+    "last_status": "PASS",
+    "child_run_id": "rt261028b_c04"
+  },
+  "active_children": [
+    {
+      "run_id": "rt261028b_c05",
+      "pid": 42508,
+      "progress": {
+        "at_jst": "2026-10-28T23:48:22.295646+09:00",
+        "run_id": "rt261028b_c05",
+        "time_sec": 720.0,
+        "end_sec": 2000,
+        "wall_sec": 8.481039899983443,
+        "counts": {
+          "steps": 1440,
+          "controller_ticks": 721,
+          "snapshots": 13,
+          "teleports": 0,
+          "collisions": 0,
+          "transition_rows": 3,
+          "closed_entry_rows": 0,
+          "ambiguous_transitions": 0,
+          "candidate_rows": 1,
+          "dispatch_cycles": 13,
+          "missing_vehicle_subscriptions": 0,
+          "missing_person_subscriptions": 0,
+          "reentry_pending_frames": 0,
+          "departure_pending_frames": 0,
+          "snapshot_actor_rows": 4
+        },
+        "people_states": {
+          "admitted": 1
+        },
+        "request_states": {
+          "cancelled_vehicle_failure": 1
+        }
+      }
+    }
+  ],
+  "observer": {
+    "state": "alive",
+    "created": 134376722868969549,
+    "pid": 39900
+  },
+  "observer_identity_matches": true,
+  "observer_source_matches": true,
+  "observer_age_sec": 59.56279420852661,
+  "configured_and_discovered_v4": true,
+  "scope": "point observation; prior startup/reconfiguration freshness is not continuous monitoring",
+  "core_started": false,
+  "technical_ready": false
+}

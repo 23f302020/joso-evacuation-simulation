@@ -6,10 +6,158 @@ from unittest.mock import patch
 import json
 import argparse
 import sys
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / '04_プログラム'))
 from scripts import jdrt_realtime_choice_validate as validator
+
+
+def current_implementation_sha_counterexample(run_id, source):
+    original_sha = validator.file_sha
+    source = source.resolve()
+    expected = original_sha(source)
+    changed = ('0' if expected[0] != '0' else '1') + expected[1:]
+    def altered_sha(path):
+        return changed if Path(path).resolve() == source else original_sha(path)
+    with patch.object(validator, 'file_sha', side_effect=altered_sha):
+        result = validator.audit_run_tables(run_id, 'fixture')
+    assert (result['status'] == 'INVALID'
+            and result['checks'].get('all_bound_bytes_before') is False), 'Current implementation SHA gate must reject'
+    assert original_sha(source) == expected, 'Original implementation bytes changed'
+    return result
+
+
+def historical_factory_archive_counterexample(run_id, archive):
+    original_sha = validator.file_sha
+    name = '04_プログラム/scripts/jdrt_choice_fixtures.py'
+    source = (ROOT / name).resolve()
+    archive = archive.resolve()
+    before = {p: original_sha(p) for p in (source, archive)}
+    changed = ('0' if before[archive][0] != '0' else '1') + before[archive][1:]
+    def altered_sha(path):
+        return changed if Path(path).resolve() == source else original_sha(path)
+    with patch.object(validator, 'file_sha', side_effect=altered_sha):
+        control = validator.audit_run_tables(run_id, 'fixture', require_current=False)
+    assert (control['status'] == 'INCOMPLETE' and control['checks'] and all(control['checks'].values())
+            and control['components'] and all(v['status'] == 'PASS' for v in control['components'].values())
+            and control.get('historical_source_archives', {}).get(name) == archive.relative_to(ROOT).as_posix()), 'Historical archive control must pass'
+    def corrupted_archive_sha(path):
+        return changed if Path(path).resolve() in (source, archive) else original_sha(path)
+    with patch.object(validator, 'file_sha', side_effect=corrupted_archive_sha):
+        result = validator.audit_run_tables(run_id, 'fixture', require_current=False)
+    assert (result['status'] == 'INVALID'
+            and result['checks'].get('all_bound_bytes_before') is False), 'Historical archive SHA gate must reject'
+    assert all(original_sha(p) == expected for p, expected in before.items()), 'Original factory bytes changed'
+    return result
+
+
+def transition_counterexamples(technical, cases):
+    """Alter only in-memory native-fixture evidence; never rewrite primary CSVs."""
+    results = []
+    original_stream = validator.stream_rows
+    for case in cases:
+        if not case['case'].startswith('car_transition_'):
+            continue
+        folder = technical / case['child_run_id'] / 'execution'
+        manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
+        cfg = json.loads((ROOT / manifest['parameter_path']).read_text(encoding='utf-8'))
+        events = [json.loads(s) for s in (folder / 'events.jsonl').read_text(encoding='utf-8').splitlines()]
+        target = folder / 'transitions.csv.gz'
+        original = list(original_stream(target))
+        late = max(float(r['time_upper_sec']) for r in original)
+        altered = deepcopy(original)
+        short = next(r for r in altered if r['to_edge'] == 'e1')
+        assert late > float(short['time_upper_sec']), 'Native fixture needs a later external/arrival bound'
+        short['time_upper_sec'] = str(late)
+        variants = [('shared_external_only_timestamp', altered, 'short_entry_upper_is_first_outgoing_frame')]
+        if case['case'] == 'car_transition_arrival':
+            arrival = deepcopy(original)
+            final = next(r for r in arrival if r['to_edge'] == 'e2')
+            final['time_upper_sec'] = str(float(final['time_upper_sec']) - manifest['step_sec'])
+            variants.append(('arrival_start_used_as_step_end', arrival, 'native_arrival_final_index_without_external_frame'))
+        for name, changed, expected in variants:
+            def replaced(path):
+                return iter(deepcopy(changed)) if path == target else original_stream(path)
+            with patch.object(validator, 'stream_rows', side_effect=replaced):
+                boundary = validator.audit_fixture_timing(folder, manifest, cfg, events)
+                movement = validator.audit_movement_events(folder, manifest, cfg, events)
+            passed = (boundary['status'] == movement['status'] == 'INVALID'
+                      and boundary['checks'].get(expected) is False
+                      and movement['checks']['all_entries_primary_multiset'] is False)
+            results.append({'case': case['case'] + '_' + name, 'expected': expected,
+                            'pass': passed, 'movement_multiset_rejects': movement['status'] == 'INVALID',
+                            'failed_checks': [k for k, v in boundary['checks'].items() if not v]})
+        if case['case'] == 'car_transition_arrival':
+            actor_path = folder / 'actor_observations.csv.gz'
+            actor_rows = list(original_stream(actor_path))
+            control = validator.audit_actor_stream(folder, manifest, cfg, events)
+            assert control['status'] == 'PASS', 'Native arrival actor control must pass before mutation'
+            native = ET.parse(ROOT / manifest['input_directory'] / 'bounded.net.xml').getroot()
+            length = next(float(l.attrib['length']) for e in native.findall('edge') for l in e.findall('lane')
+                          if l.attrib['id'] == actor_rows[-1]['lane_id'])
+            position = float(actor_rows[-1]['lane_position_m'])
+            changed_position = (position + length) / 2
+            assert changed_position - position > control['vkt'][actor_rows[-1]['actor_id']]['rounding_bound_m']
+            for name, field, value in [('tail_position_corrupted', 'lane_position_m',
+                                        str(changed_position)),
+                                       ('tail_route_occurrence_corrupted', 'route_index', '-1'),
+                                       ('tail_lane_unbound', 'lane_id', 'unknown_lane')]:
+                changed = deepcopy(actor_rows)
+                changed[-1][field] = value
+                def replaced_actor(path):
+                    return iter(deepcopy(changed)) if path == actor_path else original_stream(path)
+                with patch.object(validator, 'stream_rows', side_effect=replaced_actor):
+                    result = validator.audit_actor_stream(folder, manifest, cfg, events)
+                results.append({'case': name, 'expected': 'backend_vkt',
+                                'pass': result['status'] == 'INVALID' and not result['checks']['backend_vkt'],
+                                'failed_checks': [k for k, v in result['checks'].items() if not v]})
+    return results
+
+
+def route_history_counterexamples(technical, cases):
+    """Mutate saved delivery proof in memory; never change the native originals."""
+    results = []
+    for case in cases:
+        if case['case'] != 'delivery_past_closure':
+            continue
+        folder = technical / case['child_run_id'] / 'execution'
+        manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
+        cfg = json.loads((ROOT / manifest['parameter_path']).read_text(encoding='utf-8'))
+        events = [json.loads(s) for s in (folder / 'events.jsonl').read_text(encoding='utf-8').splitlines()]
+        q = validator.rows(folder / 'request_results.csv')[0]
+        control = validator.audit_fixture_timing(folder, manifest, cfg, events)
+        assert control['status'] == 'PASS' and control['applicable'], 'Physical delivery control must pass'
+        delivery = next(i for i, e in enumerate(events)
+                        if e['event'] == 'drt_route' and e['time_sec'] == float(q['boarded_sec']))
+        for name, field, value in [('past_route_prefix_restored', 'route', ['g0', *events[delivery]['route']]),
+                                   ('source_route_index_corrupted', 'source_route_index', 1)]:
+            changed = deepcopy(events)
+            changed[delivery][field] = value
+            report = validator.audit_fixture_timing(folder, manifest, cfg, changed)
+            expected = 'closed_history_excluded_from_new_route'
+            results.append({'case': name, 'expected': expected,
+                            'pass': report['status'] == 'INVALID' and report['checks'][expected] is False,
+                            'failed_checks': [k for k, v in report['checks'].items() if not v]})
+        original_stream = validator.stream_rows
+        target = folder / 'actor_observations.csv.gz'
+        actors = list(original_stream(target))
+        first = min((i for i, row in enumerate(actors) if row['actor_id'] == q['vehicle_id']
+                     and float(row['time_sec']) > float(q['boarded_sec']) and row['road_id']),
+                    key=lambda i: float(actors[i]['time_sec']))
+        for name, field, value in [('reentry_distance_jump', 'distance_m', str(float(actors[first]['distance_m']) + 10)),
+                                   ('reentry_source_corrupted', 'road_id', 'g0')]:
+            changed = deepcopy(actors)
+            changed[first][field] = value
+            def replaced(path):
+                return iter(deepcopy(changed)) if path == target else original_stream(path)
+            with patch.object(validator, 'stream_rows', side_effect=replaced):
+                report = validator.audit_fixture_timing(folder, manifest, cfg, events)
+            expected = 'next_native_step_preserves_source_and_distance'
+            results.append({'case': name, 'expected': expected,
+                            'pass': report['status'] == 'INVALID' and report['checks'][expected] is False,
+                            'failed_checks': [k for k, v in report['checks'].items() if not v]})
+    return results
 
 
 def main(suite_id, historical=False):
@@ -29,8 +177,8 @@ def main(suite_id, historical=False):
                    {'run': r['run_id'], 'error': r.get('error'), 'failures': {
                        k: v.get('examples', v.get('checks')) for k, v in r['components'].items() if v['status'] != 'PASS'}}
                    for r in baseline if r['status'] != 'INCOMPLETE']
-    current_rejection = validator.audit_run_tables('cf26101710_c01', 'fixture')
-    assert current_rejection['status'] == 'INVALID' and not current_rejection['checks']['all_bound_bytes_before']
+    current_rejection = current_implementation_sha_counterexample(
+        suite['cases'][0]['child_run_id'], ROOT / cfg['execution']['implementation_files'][0])
     original_rows, original_stream = validator.rows, validator.stream_rows
     results = []
 
@@ -208,10 +356,8 @@ def main(suite_id, historical=False):
             results.append({'case': name, 'expected': expected,
                             'pass': result['status'] == 'INVALID' and result['checks'][expected] is False,
                             'failed_checks': [k for k, v in result['checks'].items() if not v]})
-    original_sha = validator.file_sha
-    archive = technical / 'cf26101711/factory.py'
-    with patch.object(validator, 'file_sha', side_effect=lambda p: '0' * 64 if p == archive else original_sha(p)):
-        rejected_archive = validator.audit_run_tables('cf26101711_c01', 'fixture', require_current=False)
+    rejected_archive = historical_factory_archive_counterexample(
+        suite['cases'][0]['child_run_id'], technical / suite_id / 'factory.py')
     results.append({'case': 'historical_factory_archive_hash_corrupted', 'expected': 'all_bound_bytes_before',
                     'pass': rejected_archive['status'] == 'INVALID' and rejected_archive['checks']['all_bound_bytes_before'] is False,
                     'failed_checks': [k for k, v in rejected_archive['checks'].items() if not v]})
@@ -256,6 +402,8 @@ def main(suite_id, historical=False):
         results.append({'case': name, 'expected': 'all_warnings_evidence_classified',
                         'pass': result['status'] == 'INVALID' and result['checks']['all_warnings_evidence_classified'] is False,
                         'failed_checks': [k for k, v in result['checks'].items() if not v]})
+    results.extend(transition_counterexamples(technical, suite['cases']))
+    results.extend(route_history_counterexamples(technical, suite['cases']))
     unchanged = all(validator.file_sha(path) == value for path, value in signatures.items())
     report = {'at_jst': datetime.now(timezone(timedelta(hours=9))).isoformat(),
               'status': 'PASS' if all(r['pass'] for r in results) and unchanged else 'FAIL',
@@ -263,7 +411,7 @@ def main(suite_id, historical=False):
               'historical_diagnostic': historical,
               'core_adoption_permitted': False, 'technical_ready': False,
               'fixture_components': baseline, 'counterexamples': results,
-              'current_SHA_gate_rejects_old_suite': current_rejection['status'] == 'INVALID',
+              'current_SHA_gate_rejects_changed_implementation': current_rejection['status'] == 'INVALID',
               'primary_outputs_unchanged': unchanged, 'primary_files_rechecked': len(signatures),
               'validator_sha256': validator.file_sha(Path(validator.__file__)),
               'test_sha256': validator.file_sha(Path(__file__))}

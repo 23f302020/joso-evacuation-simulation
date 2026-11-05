@@ -1,0 +1,38 @@
+{
+  "at_jst": "2026-10-29T20:42:46.488397+09:00",
+  "classification": "VERIFIED_WAIT",
+  "original_session": 88794,
+  "original_handle_repolled_running": true,
+  "owner": {
+    "pid": 7544,
+    "expected": {
+      "ProcessId": 7544,
+      "ParentProcessId": 19524,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_si29a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_si29a/toolchain.json --control-id sc261029a --patched-id sp261029a",
+      "CreationDate": 1793273192284
+    },
+    "identity": "matched",
+    "observed_cim": {
+      "ProcessId": 7544,
+      "ParentProcessId": 19524,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_si29a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_si29a/toolchain.json --control-id sc261029a --patched-id sp261029a",
+      "CreationDate": 1793273192284
+    }
+  },
+  "state_sha256": "a00f6010967e956990e8fae78604009a4908de95f8128bf65edf7677e1e4da0e",
+  "state_snapshot": "selected_pair_15min_state.snapshot.bin",
+  "status": "RUNNING",
+  "active": {
+    "label": "sp261029a_c25_validate",
+    "pid": 8100,
+    "exit_code": 0
+  },
+  "completed_roles": [
+    "control"
+  ],
+  "technical_ready": false,
+  "observation_gap": "Point observations only; no invented continuous or unperformed15min samples",
+  "next": "Follow same original88794. After actual terminal, independently rehash/raw recompute with existing choice_native_pair_readback.py. No next run or source edits to bound files."
+}

@@ -1,0 +1,173 @@
+{
+  "at_utc": "2026-10-16T23:16:28.357Z",
+  "method": "Firecrawl web search; excerpts only; feedback disabled by user external-send prohibition",
+  "queries": [
+    "site.city.joso.lg.jp 災害時 タクシー 避難 輸送 協定",
+    "常総市 橋梁 点検 長寿命化 三次元 点群 路面 標高 データ",
+    "site.city.joso.lg.jp 個別避難計画 要支援者 移動支援 交通 需要"
+  ],
+  "results": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/jigyousha/saigaijiouen/saigaijiouenkyoutei.html\",\"title\":\"災害時応援協定について | 常総市公式ホームページ\",\"description\":\"「災害時応援協定」を締結する事業所等を募集しています！大規模災害発生時、ライフラインや情報通信網の途絶、不安や恐怖による混乱の発生、庁舎や公共施設の損壊、 ...\",\"position\":1},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/bousai_koutsu/bousai/info/hinanjo/fukushihinanjo.html\",\"title\":\"災害時における福祉避難所 | 常総市公式ホームページ\",\"description\":\"時応援協定をみる 災害 ・ 電話番号:0297-23-2111 ・ 所在地 〒303-8501 茨城県 ・ 電話番号 0297-23-2111 開庁時間 8時30分から17時15分. CITY OF JOSO.\",\"position\":2},{\"url\":\"https://www.bousai.city.kyoto.lg.jp/cmsfiles/contents/0000000/204/kyoutei.pdf\",\"title\":\"[PDF] 「防災危機管理に関する協定」の締結状況 - 京都市防災ポータルサイト\",\"description\":\"避難所運営支援. 運営支援. 災害等緊急時におけるタクシーによる輸送の協力に関する協定書. 一般社団法人京都府タクシー協会. R02.08.28. 避難所運営支援. 施設利用協力.\",\"position\":3},{\"url\":\"https://www.cas.go.jp/jp/seisaku/kokudo_kyoujinka/minkan_torikumi/3_5/0558.pdf\",\"title\":\"[PDF] 災害時における輸送業務に関する協定\",\"description\":\"同協会と神戸市との協定により、車両確保が困難な場合でも応急対応を行う自治体職員をタクシー. で移送できるとともに、多少の瓦礫等が散乱している道路であっても、小回り ...\",\"position\":4},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/bousai_koutsu/bousai/info/hinanjo/saigaijihinanjo.html\",\"title\":\"災害時における避難所 | 常総市公式ホームページ\",\"description\":\"常総市は地域防災計画内において、地震や洪水など災害時の避難所として、次表の施設を明記しています。 地震が起こった際、また大雨等で市から避難指示が ...\",\"position\":5}]},\"creditsUsed\":2,\"id\":\"01a14700-8ae8-7218-8f14-03d5f6081907\",\"agent_hints\":[\"All 5 web results are excerpts only (#1 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/jigyousha/saigaijiouen/saigaijiouenkyoutei.html\\\", #2 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/bousai_koutsu/bousai/info/hinanjo/fukushihinanjo.html\\\", #3 \\\"https://www.bousai.city.kyoto.lg.jp/cmsfiles/contents/0000000/204/kyoutei.pdf\\\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/jigyousha/saigaijiouen/saigaijiouenkyoutei.html",
+                "title": "災害時応援協定について | 常総市公式ホームページ",
+                "description": "「災害時応援協定」を締結する事業所等を募集しています！大規模災害発生時、ライフラインや情報通信網の途絶、不安や恐怖による混乱の発生、庁舎や公共施設の損壊、 ...",
+                "position": 1
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/bousai_koutsu/bousai/info/hinanjo/fukushihinanjo.html",
+                "title": "災害時における福祉避難所 | 常総市公式ホームページ",
+                "description": "時応援協定をみる 災害 ・ 電話番号:0297-23-2111 ・ 所在地 〒303-8501 茨城県 ・ 電話番号 0297-23-2111 開庁時間 8時30分から17時15分. CITY OF JOSO.",
+                "position": 2
+              },
+              {
+                "url": "https://www.bousai.city.kyoto.lg.jp/cmsfiles/contents/0000000/204/kyoutei.pdf",
+                "title": "[PDF] 「防災危機管理に関する協定」の締結状況 - 京都市防災ポータルサイト",
+                "description": "避難所運営支援. 運営支援. 災害等緊急時におけるタクシーによる輸送の協力に関する協定書. 一般社団法人京都府タクシー協会. R02.08.28. 避難所運営支援. 施設利用協力.",
+                "position": 3
+              },
+              {
+                "url": "https://www.cas.go.jp/jp/seisaku/kokudo_kyoujinka/minkan_torikumi/3_5/0558.pdf",
+                "title": "[PDF] 災害時における輸送業務に関する協定",
+                "description": "同協会と神戸市との協定により、車両確保が困難な場合でも応急対応を行う自治体職員をタクシー. で移送できるとともに、多少の瓦礫等が散乱している道路であっても、小回り ...",
+                "position": 4
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/bousai_koutsu/bousai/info/hinanjo/saigaijihinanjo.html",
+                "title": "災害時における避難所 | 常総市公式ホームページ",
+                "description": "常総市は地域防災計画内において、地震や洪水など災害時の避難所として、次表の施設を明記しています。 地震が起こった際、また大雨等で市から避難指示が ...",
+                "position": 5
+              }
+            ]
+          },
+          "id": "01a14700-8ae8-7218-8f14-03d5f6081907",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 5 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/jigyousha/saigaijiouen/saigaijiouenkyoutei.html\", #2 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/bousai_koutsu/bousai/info/hinanjo/fukushihinanjo.html\", #3 \"https://www.bousai.city.kyoto.lg.jp/cmsfiles/contents/0000000/204/kyoutei.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kyouryou_kouhyou.html\",\"title\":\"常総市橋梁長寿命化修繕計画及び橋梁点検結果の公表について\",\"description\":\"橋梁点検結果 [PDF形式/143.43KB] 常総市橋梁長寿命化修繕計画 [PDF形式/170.59KB] 電話番号:0297-23-2111\",\"position\":1},{\"url\":\"https://www.pref.ibaraki.jp/soshiki/doboku/seibikeikaku/documents/09-jigo.pdf\",\"title\":\"[PDF] 社会資本総合整備計画 事後評価書 - 茨城県\",\"description\":\"橋梁等道路施設を長寿命化することにより公共施設の安全性が確保できる。 目標 橋梁の耐震化等や道路 ・ を行い、道路施設の長寿命化による安全で災害 ・ 橋梁の長寿命化 ...\",\"position\":2},{\"url\":\"https://www.city.omitama.lg.jp/0041/info-0000007697-0.html\",\"title\":\"橋梁長寿命化修繕計画 | 小美玉市公式ホームページ\",\"description\":\"... 市橋梁長寿命化修繕計画」を策定し、橋梁点検・診断を国の点検要領等に基づき、5年に一度の頻度で定期点検調査を実施しております。 今後、増大が ...\",\"position\":3},{\"url\":\"https://www.city.tsukuba.lg.jp/soshikikarasagasu/kensetsubudoroseibika/gyomuannai/1/1/27483.html\",\"title\":\"橋梁長寿命化修繕計画 - つくば市\",\"description\":\"市政情報 市政情報 ・ 市橋梁長寿命化修繕 定) (PDFファイル: 2.0MB) 電話:029-883-1111(代表) 道路 橋梁長 ・ 電話番号: 029-883-1111 窓口受付時間: 平 ...\",\"position\":4},{\"url\":\"https://www.city.hokota.lg.jp/page/page004690.html\",\"title\":\"橋梁長寿命化修繕計画の公表について | 鉾田市公式ホームページ\",\"description\":\"今後10年後には、供用年数が50年以上となる橋梁の割合が61%程度であり、20年後には約87%の橋梁が供用から50年以上となり、30年後には87%の橋梁が供用年数50年以上となり ...\",\"position\":5}]},\"creditsUsed\":2,\"id\":\"01a14700-8ae3-758c-b261-6f32326cc661\",\"agent_hints\":[\"All 5 web results are excerpts only (#1 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kyouryou_kouhyou.html\\\", #2 \\\"https://www.pref.ibaraki.jp/soshiki/doboku/seibikeikaku/documents/09-jigo.pdf\\\", #3 \\\"https://www.city.omitama.lg.jp/0041/info-0000007697-0.html\\\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kyouryou_kouhyou.html",
+                "title": "常総市橋梁長寿命化修繕計画及び橋梁点検結果の公表について",
+                "description": "橋梁点検結果 [PDF形式/143.43KB] 常総市橋梁長寿命化修繕計画 [PDF形式/170.59KB] 電話番号:0297-23-2111",
+                "position": 1
+              },
+              {
+                "url": "https://www.pref.ibaraki.jp/soshiki/doboku/seibikeikaku/documents/09-jigo.pdf",
+                "title": "[PDF] 社会資本総合整備計画 事後評価書 - 茨城県",
+                "description": "橋梁等道路施設を長寿命化することにより公共施設の安全性が確保できる。 目標 橋梁の耐震化等や道路 ・ を行い、道路施設の長寿命化による安全で災害 ・ 橋梁の長寿命化 ...",
+                "position": 2
+              },
+              {
+                "url": "https://www.city.omitama.lg.jp/0041/info-0000007697-0.html",
+                "title": "橋梁長寿命化修繕計画 | 小美玉市公式ホームページ",
+                "description": "... 市橋梁長寿命化修繕計画」を策定し、橋梁点検・診断を国の点検要領等に基づき、5年に一度の頻度で定期点検調査を実施しております。 今後、増大が ...",
+                "position": 3
+              },
+              {
+                "url": "https://www.city.tsukuba.lg.jp/soshikikarasagasu/kensetsubudoroseibika/gyomuannai/1/1/27483.html",
+                "title": "橋梁長寿命化修繕計画 - つくば市",
+                "description": "市政情報 市政情報 ・ 市橋梁長寿命化修繕 定) (PDFファイル: 2.0MB) 電話:029-883-1111(代表) 道路 橋梁長 ・ 電話番号: 029-883-1111 窓口受付時間: 平 ...",
+                "position": 4
+              },
+              {
+                "url": "https://www.city.hokota.lg.jp/page/page004690.html",
+                "title": "橋梁長寿命化修繕計画の公表について | 鉾田市公式ホームページ",
+                "description": "今後10年後には、供用年数が50年以上となる橋梁の割合が61%程度であり、20年後には約87%の橋梁が供用から50年以上となり、30年後には87%の橋梁が供用年数50年以上となり ...",
+                "position": 5
+              }
+            ]
+          },
+          "id": "01a14700-8ae3-758c-b261-6f32326cc661",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 5 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/bousaiplan/kyouryou_kouhyou.html\", #2 \"https://www.pref.ibaraki.jp/soshiki/doboku/seibikeikaku/documents/09-jigo.pdf\", #3 \"https://www.city.omitama.lg.jp/0041/info-0000007697-0.html\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/page004647.html\",\"title\":\"個別避難計画作成促進に向けた実証事業を実施 - 常総市\",\"description\":\"災害時に自ら避難することが困難な、避難行動要支援者の個別避難計画の作成促進を図るため、民間事業者による個別避難計画作成支援の有効性について ...\",\"position\":1},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/machidukuri/kouenkai/disaster_drill_lecture.html\",\"title\":\"避難行動要支援者対策講演会を開催しました - 常総市\",\"description\":\"災害対策基本法も改正され、個別避難計画も努力義務化されるなど、避難行動要支援者に対する支援活動も大きく変化しています。 そこで常総市では、12 ...\",\"position\":2},{\"url\":\"https://www.city.kudamatsu.lg.jp/chouju/fukushi/seisaku/youenngosya.html\",\"title\":\"山口県下松市／避難行動要支援者避難支援制度\",\"description\":\"高齢や障害などにより移動困難な人が災害などの発生に備えて避難する際にタクシー利用料金の一部を助成します。 ... (3) (1)・(2)の避難を直接支援する人 ※ ...\",\"position\":3},{\"url\":\"https://www.city.kumamoto.jp/bousai/kiji00358423/index.html\",\"title\":\"避難行動要支援者に関する取組について - 熊本市\",\"description\":\"「避難行動要支援者制度」は、地域への避難行動要支援者の情報共有や個別避難計画の作成を通じて、「自助」「共助」の体制づくりを目的としています。この ...\",\"position\":4},{\"url\":\"https://www.city.hashimoto.lg.jp/guide/kikikanri/sonae/1446704589009.html\",\"title\":\"橋本市避難行動要支援者登録制度について\",\"description\":\"この制度は、災害時や災害のおそれがある場合に、一人で避難することが困難な人を地域で支援するための制度ですが、必ず助けてもらえることを保証するもの ...\",\"position\":5}]},\"creditsUsed\":2,\"id\":\"01a14700-8a77-75a9-8501-570fc198180b\",\"agent_hints\":[\"All 5 web results are excerpts only (#1 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/page004647.html\\\", #2 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/machidukuri/kouenkai/disaster_drill_lecture.html\\\", #3 \\\"https://www.city.kudamatsu.lg.jp/chouju/fukushi/seisaku/youenngosya.html\\\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/page004647.html",
+                "title": "個別避難計画作成促進に向けた実証事業を実施 - 常総市",
+                "description": "災害時に自ら避難することが困難な、避難行動要支援者の個別避難計画の作成促進を図るため、民間事業者による個別避難計画作成支援の有効性について ...",
+                "position": 1
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/machidukuri/kouenkai/disaster_drill_lecture.html",
+                "title": "避難行動要支援者対策講演会を開催しました - 常総市",
+                "description": "災害対策基本法も改正され、個別避難計画も努力義務化されるなど、避難行動要支援者に対する支援活動も大きく変化しています。 そこで常総市では、12 ...",
+                "position": 2
+              },
+              {
+                "url": "https://www.city.kudamatsu.lg.jp/chouju/fukushi/seisaku/youenngosya.html",
+                "title": "山口県下松市／避難行動要支援者避難支援制度",
+                "description": "高齢や障害などにより移動困難な人が災害などの発生に備えて避難する際にタクシー利用料金の一部を助成します。 ... (3) (1)・(2)の避難を直接支援する人 ※ ...",
+                "position": 3
+              },
+              {
+                "url": "https://www.city.kumamoto.jp/bousai/kiji00358423/index.html",
+                "title": "避難行動要支援者に関する取組について - 熊本市",
+                "description": "「避難行動要支援者制度」は、地域への避難行動要支援者の情報共有や個別避難計画の作成を通じて、「自助」「共助」の体制づくりを目的としています。この ...",
+                "position": 4
+              },
+              {
+                "url": "https://www.city.hashimoto.lg.jp/guide/kikikanri/sonae/1446704589009.html",
+                "title": "橋本市避難行動要支援者登録制度について",
+                "description": "この制度は、災害時や災害のおそれがある場合に、一人で避難することが困難な人を地域で支援するための制度ですが、必ず助けてもらえることを保証するもの ...",
+                "position": 5
+              }
+            ]
+          },
+          "id": "01a14700-8a77-75a9-8501-570fc198180b",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 5 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/page004647.html\", #2 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/machidukuri/kouenkai/disaster_drill_lecture.html\", #3 \"https://www.city.kudamatsu.lg.jp/chouju/fukushi/seisaku/youenngosya.html\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    }
+  ]
+}

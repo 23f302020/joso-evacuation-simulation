@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIDE-PATTERN-before-after-two-col</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #E8E8E8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    }
+    .slide-label {
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+    .slide {
+      width: 960px;
+      height: 540px;
+      background: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    /* タイトルエリア */
+    .title-area {
+      padding: 14px 40px 12px;
+      border-bottom: 1px dashed #CCCCCC;
+      flex-shrink: 0;
+      background: #FAFAFA;
+    }
+    .area-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .title-placeholder {
+      font-size: 16px;
+      color: #CCCCCC;
+      margin-top: 4px;
+    }
+    /* コンテンツエリア */
+    .content-area {
+      display: flex;
+      padding: 24px 40px;
+      gap: 24px;
+      flex: 1;
+      align-items: stretch;
+    }
+    /* BEFOREカラム */
+    .col-before,
+    .col-after {
+      flex: 1;
+      border: 1px solid #CCCCCC;
+      display: flex;
+      flex-direction: column;
+    }
+    .col-header {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: bold;
+      color: #555;
+      letter-spacing: 0.06em;
+    }
+    .col-before .col-header {
+      background: #F0F0F0;
+    }
+    .col-after .col-header {
+      background: #E8E8E8;
+      border-bottom: 1px solid #CCCCCC;
+    }
+    .col-body {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .marker-x {
+      color: #888;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .marker-o {
+      color: #666;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .item-text {
+      color: #444;
+    }
+    /* 中央矢印 */
+    .center-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 32px;
+      color: #CCCCCC;
+      width: 48px;
+    }
+  </style>
+</head>
+<body>
+  <p class="slide-label">[before-after-two-col]</p>
+  <div class="slide">
+    <!-- タイトルエリア -->
+    <div class="title-area">
+      <div class="area-label">Title Area — SLIDE.md 参照</div>
+      <div class="title-placeholder">スライドタイトルが入ります</div>
+    </div>
+
+    <!-- コンテンツエリア -->
+    <div class="content-area">
+
+      <!-- BEFORE カラム -->
+      <div class="col-before">
+        <div class="col-header">BEFORE</div>
+        <div class="col-body">
+          <div class="list-item">
+            <span class="marker-x">×</span>
+            <span class="item-text">手作業によるデータ入力でミスが頻発している</span>
+          </div>
+          <div class="list-item">
+            <span class="marker-x">×</span>
+            <span class="item-text">情報共有が属人化しており引き継ぎが困難</span>
+          </div>
+          <div class="list-item">
+            <span class="marker-x">×</span>
+            <span class="item-text">承認フローが紙ベースで処理に数日かかる</span>
+          </div>
+          <div class="list-item">
+            <span class="marker-x">×</span>
+            <span class="item-text">各部門のデータが分散して全体把握が困難</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 中央矢印 -->
+      <div class="center-arrow">→</div>
+
+      <!-- AFTER カラム -->
+      <div class="col-after">
+        <div class="col-header">AFTER</div>
+        <div class="col-body">
+          <div class="list-item">
+            <span class="marker-o">○</span>
+            <span class="item-text">システム連携による自動入力でエラーをゼロに</span>
+          </div>
+          <div class="list-item">
+            <span class="marker-o">○</span>
+            <span class="item-text">クラウドで全員がリアルタイムに情報共有可能</span>
+          </div>
+          <div class="list-item">
+            <span class="marker-o">○</span>
+            <span class="item-text">電子承認システムで最短1日での処理を実現</span>
+          </div>
+          <div class="list-item">
+            <span class="marker-o">○</span>
+            <span class="item-text">統合ダッシュボードで全社データを一元管理</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

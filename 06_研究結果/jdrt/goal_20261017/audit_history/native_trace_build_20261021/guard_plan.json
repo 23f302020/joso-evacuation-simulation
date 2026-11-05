@@ -1,0 +1,301 @@
+{
+  "at_jst": "2026-10-21T08:17:16.491164+09:00",
+  "schema": "native_guard_plan_v1",
+  "status": "PREPARED_NOT_EXECUTED",
+  "sources": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\config\\jdrt_realtime_choice_v1.json": "d32d5b5e11652f4ff66273d1a671573760a3665b182b0a68d674f2162d258f9e",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020f_c25\\fixture_inputs\\bounded.net.xml": "200c167ff0546f001a7738b129de0fb60029b12faabfbc6fef13a81307445c84",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\transportables\\MSPModel.cpp": "4ff4c54c3ffc281ab4d85e8e6abc6eb10c78927e9713fc6e0d291061538ed6e6",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\transportables\\MSStage.h": "34b498b94f05fb1553765eba9c1dbf6af694009d5c52f922a1599e6eab31da1c",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_guard_plan.py": "db655564c4698c676980c01ed8169e93d86b5c4d6d22639eeefe2481ca0a26f7",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\tests\\test_choice_native_guard_plan.py": "6b23eafedd81c1f4eed1517f0782d9fa4a167d5dbf68ca7b1f934b82bf3eb9cb"
+  },
+  "constants": {
+    "unspecified": 1.7976931348623157e+308,
+    "random": -1.7976931348623157e+308,
+    "walking_type": 2
+  },
+  "cases": [
+    {
+      "id": "same_direction",
+      "group": "same_direction",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" /></person></routes>",
+      "operation": "same",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": true,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "forward_reverse",
+      "group": "forward_reverse",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" /></person></routes>",
+      "operation": "reverse",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 0.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": true,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "reverse_forward",
+      "group": "reverse_forward",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2503.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"0.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2498.26\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"0.0\" /></person></routes>",
+      "operation": "forward",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": true,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "multiple_forward_order",
+      "group": "multiple_people_order",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" /></person></routes>",
+      "operation": "same",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": true,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "multiple_reversed_order",
+      "group": "multiple_people_order",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" /></person></routes>",
+      "operation": "same",
+      "operation_order": [
+        "p4",
+        "p3"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": true,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "new_depart",
+      "group": "new_depart",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "explicit_lateral",
+      "group": "explicit_lateral",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" departPosLat=\"0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" departPosLat=\"0\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "random_lateral",
+      "group": "random_lateral",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" departPosLat=\"random\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" departPosLat=\"random\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "legacy",
+      "group": "legacy",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [
+        "--pedestrian.striping.legacy-departposlat",
+        "true"
+      ],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "natural_same_edge",
+      "group": "natural_walk_walk",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"2498.16\" /><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"2500.48\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "natural_different_edge",
+      "group": "natural_walk_walk",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"14.59\"><walk edges=\"e0\" speed=\"1.0\" arrivalPos=\"15.75\" /><walk edges=\"e1\" speed=\"1.0\" arrivalPos=\"1.16\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "natural_wait",
+      "group": "natural_walk_wait_walk",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"2498.16\" /><stop lane=\"long_0\" endPos=\"2498.16\" duration=\"1.0\" /><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"2500.48\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "non_target_edge",
+      "group": "non_target_lane_edge",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"14.59\"><walk edges=\"e0\" speed=\"1.0\" arrivalPos=\"15.75\" /><walk edges=\"e1\" speed=\"1.0\" arrivalPos=\"1.16\" /></person></routes>",
+      "operation": "observe",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "internal_walk",
+      "group": "internal_walkingarea",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"7.875\"><walk edges=\"e0 e1 e2\" speed=\"1.0\" arrivalPos=\"96.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"7.875\"><walk edges=\"e0 e1 e2\" speed=\"0.58\" arrivalPos=\"96.0\" /></person></routes>",
+      "operation": "internal_replace",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": false,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    },
+    {
+      "id": "position_mismatch",
+      "group": "position_time_mismatch",
+      "status": "PREPARED_NOT_EXECUTED",
+      "routes_xml": "<routes><vType id=\"type3\" vClass=\"pedestrian\" maxSpeed=\"1.0\" speedFactor=\"1\" speedDev=\"0\" /><vType id=\"type4\" vClass=\"pedestrian\" maxSpeed=\"0.58\" speedFactor=\"1\" speedDev=\"0\" /><person id=\"p3\" type=\"type3\" depart=\"0\" departPos=\"2497.0\"><walk edges=\"long\" speed=\"1.0\" arrivalPos=\"5000.0\" /></person><person id=\"p4\" type=\"type4\" depart=\"0\" departPos=\"2501.74\"><walk edges=\"long\" speed=\"0.58\" arrivalPos=\"5000.0\" /></person></routes>",
+      "operation": "position_shift",
+      "operation_order": [
+        "p3",
+        "p4"
+      ],
+      "step_sec": 0.5,
+      "horizon_sec": 50.14285714285714,
+      "replacement_endpoint_m": 5000.0,
+      "sumo_options": [],
+      "require_changed_raw_lateral": true,
+      "research_adoption_permitted": false,
+      "technical_ready": false
+    }
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "remaining": [
+    "Native technical runner/manifest/raw artifacts and binary/process binding not implemented",
+    "No prepared case has been executed",
+    "Internal API or individual failed-guard reachability must be observed or explicitly left unexercised",
+    "No moveTo/XY correction or acceptance tolerance permitted"
+  ]
+}

@@ -1,0 +1,14 @@
+F..............
+======================================================================
+FAIL: test_config_change_blocks_record (__main__.FinishContracts.test_config_change_blocks_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 153, in test_config_change_blocks_record
+    self.assertFalse(json.loads(operation.read_text(encoding='utf-8'))['record_attempted'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.423s
+
+FAILED (failures=1)

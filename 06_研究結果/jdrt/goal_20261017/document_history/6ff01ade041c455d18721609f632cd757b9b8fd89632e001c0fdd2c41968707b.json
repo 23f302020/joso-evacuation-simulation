@@ -1,0 +1,1098 @@
+{
+  "at_jst": "2026-10-22T15:48:34.794223+09:00",
+  "goal_status": "ACTIVE",
+  "progress_classification": "current_READY_first_registered_core_RUNNING_not_adopted",
+  "summary": "最終goal ACTIVE。受付・代替行動系列realtime_choice_v1：正式記録0/70セル。nc26102201（fixed_reference_r0_seed23423）RUNNING・PID生存True・sim 6540.0/21600秒（2026-10-22T15:49:40.260430+09:00）。登録上の次セルはfixed_reference_r0_seed23423（開始許可ではない。専用CLIの現行READY/開始gateに従う）。状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。",
+  "core_runs": 1,
+  "technical_ready": true,
+  "running": [
+    {
+      "run_id": "nc26102201",
+      "cell_id": "fixed_reference_r0_seed23423",
+      "pid": 27924,
+      "pid_alive": true,
+      "status": "RUNNING",
+      "progress": {
+        "at_jst": "2026-10-22T15:49:40.260430+09:00",
+        "run_id": "nc26102201",
+        "time_sec": 6540.0,
+        "end_sec": 21600,
+        "wall_sec": 374.8907657999662,
+        "counts": {
+          "steps": 13080,
+          "controller_ticks": 6541,
+          "snapshots": 110,
+          "teleports": 0,
+          "collisions": 0,
+          "transition_rows": 229185,
+          "closed_entry_rows": 0,
+          "ambiguous_transitions": 0,
+          "candidate_rows": 0,
+          "dispatch_cycles": 0,
+          "missing_vehicle_subscriptions": 0,
+          "missing_person_subscriptions": 0,
+          "reentry_pending_frames": 0,
+          "departure_pending_frames": 324,
+          "snapshot_actor_rows": 28122
+        },
+        "people_states": {
+          "capacity_rejected": 1224,
+          "not_ready": 1096,
+          "no_route": 716,
+          "no_origin_connection": 517,
+          "admitted": 460,
+          "travelling_walk": 205,
+          "travelling_car": 200,
+          "boundary_exit": 6653,
+          "walk_limit": 394,
+          "route_cut": 2,
+          "initial_or_current_closed": 498
+        },
+        "request_states": {}
+      }
+    }
+  ],
+  "registered_input_directory": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01",
+  "input_manifest_sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+  "input_validation_checks_pass": 28,
+  "unit_tests_pass": 102,
+  "skill_validation": "PASS",
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "integrated_suite": "na26102202",
+  "integrated_cases_pass": 26,
+  "suite_manifest_sha256": "6fd5da99e893e2890083a10b02c13e3936c7b2dbdb4ec1ec8bbf48b2c25df35c",
+  "independent_audit": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261022T144514.json",
+  "independent_audit_status": "PASS_CURRENT26_ALL54",
+  "independent_audit_sha256": "dfbd4bdf1e415ab8fcaa06be56f91092f2c0b4ecaea16ef70beccbbb0833834e",
+  "tamper_tests_pass": {
+    "candidate": 10,
+    "integration": 9
+  },
+  "old_preservation_checks": {
+    "sources": 249,
+    "implementation": 4,
+    "mismatch": []
+  },
+  "historical_smokes_current_implementation": false,
+  "new_diagram": "03_研究設計文書/図表・UML/JDRT_受付代替行動_READY・資料位置づけ_v7.html",
+  "next_source": "05_タスク管理/jdrt/JDRT-受付代替行動_専用CLI・開始ゲート実装手順.md",
+  "next": "同じnc26102201/実PID27924を専用check/choice_monitorと07で監視。終了後に一次独立validate PASS/core_adoption=true→専用record7→一意台帳/全7反映/status後だけ次1件。正常run中は実装/入力を編集しない。",
+  "current_suite_required": true,
+  "canonical_partial_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261018T095748.json",
+  "canonical_partial_report_sha256": "8d9e79804133ce2257c6e48e11894467a39b1a89a8706b6b4b41534c49a0507f",
+  "canonical_counterexamples_pass": 54,
+  "verifier_dependencies": {
+    "numpy": "2.4.4",
+    "scipy": "1.16.3",
+    "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+    "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+  },
+  "remaining_formal_gates": [
+    "dedicated record7 revalidation and transaction for ch261021_001",
+    "verify7runIDmarkers, unique ledger and status before next registered cell",
+    "remaining registered core cells one at a time with unchanged stack",
+    "all70 registered primary/secondary analysis and equations",
+    "source gaps/limits, final report and global document completion audit"
+  ],
+  "technical_api_run": "cf26101714_c08",
+  "technical_api_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cf26101714_c08_20261017T172744116533.json",
+  "lifecycle_implemented": true,
+  "primary_files_rechecked": 442,
+  "smoke_sequence_session": 47653,
+  "smoke_sequence_state": "06_研究結果/jdrt/goal_20261017/cs261021a_smoke_sequence.json",
+  "fixture_session": 67470,
+  "smoke_sequence_status": "RUNNING",
+  "smoke_setting_count": 14,
+  "preflight_session": 94282,
+  "preflight_state": "READY",
+  "launch_failure": "ch261018_001 FAILED_LAUNCH_PRESERVED no core manifest/SUMO",
+  "monitor_status": "existing JDRT-SimulationWatch restarted onto c38c1e85 notification scheduling fix; actualPID31344 source matches;11 pending toasts advanced,87 original event evidences unchanged; diagnostics capped3/h180s stillpending is not monitor failure",
+  "latest_monitor": {
+    "at_jst": "2026-10-18T10:28:26.473379+09:00",
+    "action": "detailed_same_core_monitor",
+    "run_id": "ch261018_002",
+    "cell_id": "fixed_reference_r0_seed23423",
+    "pid": 16372,
+    "skill_check": {
+      "run_id": "ch261018_002",
+      "status": "RUNNING",
+      "pid_alive": true,
+      "progress": {
+        "at_jst": "2026-10-18T10:28:22.833906+09:00",
+        "run_id": "ch261018_002",
+        "time_sec": 6540.0,
+        "end_sec": 21600,
+        "wall_sec": 451.57915330000105,
+        "counts": {
+          "steps": 13080,
+          "controller_ticks": 6541,
+          "snapshots": 110,
+          "teleports": 0,
+          "collisions": 0,
+          "transition_rows": 229204,
+          "closed_entry_rows": 0,
+          "ambiguous_transitions": 0,
+          "candidate_rows": 0,
+          "dispatch_cycles": 0,
+          "missing_vehicle_subscriptions": 0,
+          "missing_person_subscriptions": 0,
+          "reentry_pending_frames": 0,
+          "departure_pending_frames": 318,
+          "snapshot_actor_rows": 28129
+        },
+        "people_states": {
+          "capacity_rejected": 1224,
+          "not_ready": 1096,
+          "no_route": 716,
+          "no_origin_connection": 517,
+          "admitted": 460,
+          "travelling_walk": 205,
+          "travelling_car": 197,
+          "boundary_exit": 6658,
+          "walk_limit": 394,
+          "initial_or_current_closed": 498
+        },
+        "request_states": {}
+      },
+      "error": null
+    },
+    "input_population_rows": 11965,
+    "integrity": {
+      "input_manifest": true,
+      "archived_READY": true,
+      "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+      "04_プログラム/scripts/jdrt_choice_policy.py": true,
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+    },
+    "anomaly_flags": [],
+    "manifest_sha256_at_observation": "6fc91cf907db8c448f0da6da0bcfaa75ee58fe7f95102dcac27516cd54c271b4",
+    "current_run_bytes": 266466867,
+    "free_bytes": 259997876224,
+    "native_error_lines": 0,
+    "native_log_bytes": 0,
+    "driver_stderr_bytes": 856,
+    "monitor_source_sha256": "08d9796c97907404f8042b2e4a761798d5395635836b4e6d1446437d6cb41e34",
+    "formal_validation_or_adoption": false,
+    "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+  },
+  "primary_analysis_preparation": {
+    "source": "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py",
+    "source_sha256": "4ceaef07c440896c513055ab4c36aa7f6e6e67128315466124eb1dfcdf5f4015",
+    "contract_report": "06_研究結果/jdrt/goal_20261017/G6_主指標分析器_準備検証_20261018b.json",
+    "actual_all_registered_analysis_completed": false
+  },
+  "monitor_helper": "06_研究結果/jdrt/goal_20261017/G5_同一セル監視_記録.py",
+  "unrecorded_runs": [],
+  "observed_formally_recorded": 0,
+  "latest_status_sync": {
+    "at_jst": "2026-10-22T15:48:34.794223+09:00",
+    "action": "skill_current_display_sync",
+    "summary": "最終goal ACTIVE。受付・代替行動系列realtime_choice_v1：正式記録0/70セル。nc26102201（fixed_reference_r0_seed23423）RUNNING・PID生存True・sim 6540.0/21600秒（2026-10-22T15:49:40.260430+09:00）。登録上の次セルはfixed_reference_r0_seed23423（開始許可ではない。専用CLIの現行READY/開始gateに従う）。状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。",
+    "state": {
+      "protocol": "realtime_choice_v1",
+      "registered_cells": 70,
+      "recorded_cells": 0,
+      "running": [
+        "nc26102201"
+      ],
+      "unrecorded": [],
+      "partial_records": [],
+      "record_identity_mismatch": [],
+      "unresolved_failures": [],
+      "unresolved_launches": [],
+      "pending_record_journals": [],
+      "foreign_running_manifests": [],
+      "next_cell": {
+        "cell_id": "fixed_reference_r0_seed23423",
+        "destination_policy": "fixed_reference",
+        "demand_level": null,
+        "scenario": "R0",
+        "seed": 23423
+      },
+      "smoke_completed": [
+        "ns261022c_01",
+        "ns261022c_02",
+        "ns261022c_03",
+        "ns261022c_04",
+        "ns261022c_05",
+        "ns261022c_06",
+        "ns261022c_07",
+        "ns261022c_08",
+        "ns261022c_09",
+        "ns261022c_10",
+        "ns261022c_11",
+        "ns261022c_12",
+        "ns261022c_13",
+        "ns261022c_14"
+      ],
+      "failed": [],
+      "active_native_processes": [],
+      "core_ready": false,
+      "core_start_available": false
+    },
+    "observation": {
+      "run_id": "nc26102201",
+      "cell_id": "fixed_reference_r0_seed23423",
+      "pid": 27924,
+      "pid_alive": true,
+      "status": "RUNNING",
+      "progress": {
+        "at_jst": "2026-10-22T15:49:40.260430+09:00",
+        "run_id": "nc26102201",
+        "time_sec": 6540.0,
+        "end_sec": 21600,
+        "wall_sec": 374.8907657999662,
+        "counts": {
+          "steps": 13080,
+          "controller_ticks": 6541,
+          "snapshots": 110,
+          "teleports": 0,
+          "collisions": 0,
+          "transition_rows": 229185,
+          "closed_entry_rows": 0,
+          "ambiguous_transitions": 0,
+          "candidate_rows": 0,
+          "dispatch_cycles": 0,
+          "missing_vehicle_subscriptions": 0,
+          "missing_person_subscriptions": 0,
+          "reentry_pending_frames": 0,
+          "departure_pending_frames": 324,
+          "snapshot_actor_rows": 28122
+        },
+        "people_states": {
+          "capacity_rejected": 1224,
+          "not_ready": 1096,
+          "no_route": 716,
+          "no_origin_connection": 517,
+          "admitted": 460,
+          "travelling_walk": 205,
+          "travelling_car": 200,
+          "boundary_exit": 6653,
+          "walk_limit": 394,
+          "route_cut": 2,
+          "initial_or_current_closed": 498
+        },
+        "request_states": {}
+      }
+    },
+    "formal_adoption_created": false,
+    "skill_source_sha256": "1f154468d9ae96c564ce400c59c93d9dcfbfe4014614a288234c221562e05f56"
+  },
+  "goal_status_observation": "Parent-observed goal API readback at 2026-10-18T20:24:49 JST: ACTIVE; 15:30:34 ACTIVE remains historical, and earlier usageLimited is superseded.",
+  "current_hold": null,
+  "routine_model": {
+    "requested": "gpt-6-luna",
+    "reasoning_effort_requested": "low",
+    "actual_backend": "not independently verified"
+  },
+  "automation_current": {
+    "id": "jdrt-b-15",
+    "name": "JDRT 受付・代替行動70セル 15分監視",
+    "status": "ACTIVE",
+    "interval": "FREQ=MINUTELY;INTERVAL=15",
+    "target_thread_id": "01a13e8c-3441-7eb0-b67a-3d6d1070af2b",
+    "prompt_chars": 1125,
+    "prompt_sha256": "ea1abf1d789ec953c902627f8c8bbb4ed36857f78dbc726a2b2bf94055f240e0",
+    "toml_sha256": "c8472ca6200db160e91aab9f225b04c999e6941096940ef46e86b6c52761aeb0",
+    "history_archive": "06_研究結果/jdrt/goal_20261017/automation_history/8d123ebf1255f25c0ab705e6628d0b5e847bfded430774c926b5507be84e2a83.toml",
+    "same_identity_and_target": true
+  },
+  "current_gate_progress_reported": {
+    "at_jst": "2026-10-18T15:44:19+09:00",
+    "runtime_unit_cases": 19,
+    "validator_unit_cases": 13,
+    "orchestration_artificial_cases": 13,
+    "additional_vehicle_lane_cases_planned": 3,
+    "additional_native_walking_cases_planned": 2,
+    "planned_total_cases": 26,
+    "source": "parent/responsible-worker progress report; not independently rerun",
+    "implementation": "still editing",
+    "new_core_or_SUMO_started": false,
+    "legacy_52_unit_21_case": "historical old-READY only; not current PASS"
+  },
+  "revalidation_pipeline": {
+    "path": "06_研究結果/jdrt/goal_20261017/cf26101804_revalidate.json",
+    "status": "FAILED",
+    "parent_pid": 29180,
+    "parent_finished_at_jst": "2026-10-18T20:41:20.916659+09:00",
+    "owner_exec_session": 34712,
+    "fixture_pid": 12360,
+    "owner_alive": false,
+    "completed_cases": 24,
+    "failed_evaluation_case": "walk_short_calibration",
+    "monitor_report": "06_研究結果/jdrt/goal_20261017/技術再検証_停止監視_2026-10-18T204339.156865+0900.json",
+    "new_start_permitted": false,
+    "remaining_unexecuted_cases": 1
+  },
+  "latest_failed_revalidation_observation": "06_研究結果/jdrt/goal_20261017/技術再検証_停止再観測_20261018T200836887551.json",
+  "latest_recovery_observation": {
+    "at_jst": "2026-10-18T20:24:49+09:00",
+    "source": "parent current-series handoff observation",
+    "goal_status": "ACTIVE",
+    "revalidation_pipeline": "cf26101802 FAILED, case7 alighting_closure; original suite/prefix preserved",
+    "failed_case_evidence": "parked DRT empty lane ID passed to net.getLane; technical repair in progress, new version not READY",
+    "owned_processes": "none observed",
+    "formal_recorded_cells": "0/70",
+    "core_or_validator_start_permitted": false,
+    "next_gate": "finish lane evidence repair and unit check; then new-ID full 26-case suite, independent counterexample audit, 14-setting smoke, and preflight before any core"
+  },
+  "preliminary_high_reasoning_diagnosis": {
+    "status": "速報・独立再計算根拠/正式診断文書の完成待ち",
+    "source": "parent message from high-reasoning diagnostic owner",
+    "reported_findings": {
+      "d0_length_m": 22.52,
+      "type3_on_edge_interval_sec": [
+        34,
+        58.5
+      ],
+      "type4_on_edge_interval_sec": [
+        59,
+        102
+      ],
+      "overlap_sec": 0,
+      "shared_interior_frame_count": 0,
+      "invalid_depart_pos_warnings": 4,
+      "warning_source": "two reroutes × two receipts"
+    },
+    "interpretation": "fixture time placement issue is a candidate; runtime defect is not established",
+    "method_or_gate_change": false
+  },
+  "latest_diagnosis": "Prior e wait/CIM exit race preserved; f normal exit0 and13,682 primary bindings match; native live distance differs from cached installed plan as independently reconstructed",
+  "latest_g6_preparation": "G6_副指標上限_統合準備検証_20261018.md",
+  "registered_input_source_sha_audit": "G6_登録入力sourceSHA監査_20261018.json",
+  "g6_real_core_analysis_complete": false,
+  "pending": "Same handle97226/owner34116 final source and13,682 original bindings check; no duplicate launch. Native guard runner and actual traces not yet implemented/executed",
+  "historical_implementation_sha256_20261018": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "2cd6f74f8923e10d9ccdb87bf5a9c51c85db5a777381bb70e04cdabc1e77a04e",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "435a2c5ecf2ac62f47d0cbfdcabcdc44dea6b12a6ac46a3878c84625380c04b6",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "current_build_observation": {
+    "report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T145519078252.json",
+    "at_jst": "2026-10-20T14:55:19.078252+09:00",
+    "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+    "phase": "completed",
+    "attempt_id": "control02_20261020",
+    "owner": {
+      "pid": 22824,
+      "expected": {
+        "ProcessId": 22824,
+        "ParentProcessId": 20348,
+        "CreationDate": "/Date(1792474647923)/",
+        "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 06_研究結果/jdrt/goal_20261017/build_native_control_20261020.py --attempt-id control02_20261020 --previous-attempt control01_20261020 --patched-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/attempt08_20261020/build_state.json"
+      },
+      "identity": "absent",
+      "observed_cim": null
+    },
+    "child": null,
+    "state_snapshot_sha256": "052b1303c350967b89f9317318350c4279286cc9395889c2f7600f85c4e1ba2c",
+    "anomaly_flags": []
+  },
+  "integrated_suite_current_status": "PASS_CURRENT26_COMPONENTS_AND_FULL_COUNTEREXAMPLES",
+  "technical_evidence_classification": "CURRENT_READY_RECEIPT_BOUND_TO_NEW_REGISTRATION",
+  "historical_display_checkpoints": [
+    {
+      "sha256": "30ffcc5bed2430a0533b41bd740fbb97f99f59c022d16bb0140945d49eae11cd",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/30ffcc5bed2430a0533b41bd740fbb97f99f59c022d16bb0140945d49eae11cd.json"
+    },
+    {
+      "sha256": "3c559469ec0b63f725ffce51675dfa34fdd55ed137d5e43a05ab9a7ee3ce9c0b",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/3c559469ec0b63f725ffce51675dfa34fdd55ed137d5e43a05ab9a7ee3ce9c0b.json"
+    },
+    {
+      "sha256": "0157606a031d25cae6978cb28b6ce8cb8463fb42bc9fffb230f1fb6520325465",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/0157606a031d25cae6978cb28b6ce8cb8463fb42bc9fffb230f1fb6520325465.json"
+    },
+    {
+      "sha256": "03c8807306aaff9ddb21b6726e3900625a35a3559bb7dedea511bec593d51673",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/03c8807306aaff9ddb21b6726e3900625a35a3559bb7dedea511bec593d51673.json"
+    },
+    {
+      "sha256": "5b0ce532e6b5427e454e56dc305f679bf947b38bf5005675d6fc6714c49506a1",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/5b0ce532e6b5427e454e56dc305f679bf947b38bf5005675d6fc6714c49506a1.json"
+    },
+    {
+      "sha256": "c9bec33565784401858959e15c25624df99ae68d7eeedf1b24ec2026b45ffc29",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/c9bec33565784401858959e15c25624df99ae68d7eeedf1b24ec2026b45ffc29.json"
+    },
+    {
+      "sha256": "6e21f533a657895188d8e4d3fe2969fe326f670e54be3bb61477536946198bbc",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/6e21f533a657895188d8e4d3fe2969fe326f670e54be3bb61477536946198bbc.json"
+    },
+    {
+      "sha256": "ba6196e07be007853c615e55e4d0c0a0241f1178006855b79a8e20e968ed59ac",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/ba6196e07be007853c615e55e4d0c0a0241f1178006855b79a8e20e968ed59ac.json"
+    },
+    {
+      "sha256": "1f88f011e0e7854a4dac5d6ba49f922894b5c61abf116b5b2a22f4e82fb9ca62",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/1f88f011e0e7854a4dac5d6ba49f922894b5c61abf116b5b2a22f4e82fb9ca62.json"
+    },
+    {
+      "sha256": "53257c43c0965fa807562154a207fe4ac8380db682c1aedaf07434674b19d760",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/53257c43c0965fa807562154a207fe4ac8380db682c1aedaf07434674b19d760.json"
+    },
+    {
+      "sha256": "4040a8ab0f60add744eebf94e22940611eb9c9b9018f6f2ef1f42f1ca4c00a28",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/4040a8ab0f60add744eebf94e22940611eb9c9b9018f6f2ef1f42f1ca4c00a28.json"
+    },
+    {
+      "sha256": "9f16b370bcbe6a60ee2919f3d564779e918d697aa9b788496d6c8d7aa3e77c7d",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/9f16b370bcbe6a60ee2919f3d564779e918d697aa9b788496d6c8d7aa3e77c7d.json"
+    },
+    {
+      "sha256": "6055fd123d0f7f86ced9e5d5c1fcee0f1d36dea4c0f022cc5172390ab480232e",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/6055fd123d0f7f86ced9e5d5c1fcee0f1d36dea4c0f022cc5172390ab480232e.json"
+    },
+    {
+      "sha256": "d3b42766a8b5666c8194193e1d4dca4197250c51bbf7ca2f674bf5067431322e",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/d3b42766a8b5666c8194193e1d4dca4197250c51bbf7ca2f674bf5067431322e.json"
+    },
+    {
+      "sha256": "fa8d54d25a17e2b1b7985d5f771c58d2eeb6502a05d11f6cd5707563a5bca4b5",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/fa8d54d25a17e2b1b7985d5f771c58d2eeb6502a05d11f6cd5707563a5bca4b5.json"
+    },
+    {
+      "sha256": "305ecdf5de05e34891dc1f15c1addd15b189402fa63c48509d575896ca4ac636",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/305ecdf5de05e34891dc1f15c1addd15b189402fa63c48509d575896ca4ac636.json"
+    },
+    {
+      "sha256": "b1ea830a5b1451b337ee961afddc0357185ab4d881be74f91d9ed5de85afd3f4",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/b1ea830a5b1451b337ee961afddc0357185ab4d881be74f91d9ed5de85afd3f4.json"
+    },
+    {
+      "sha256": "a064d47703b2efafd83e66e2b900ddc39be8a16907209eae9b0351dcf07391c7",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/a064d47703b2efafd83e66e2b900ddc39be8a16907209eae9b0351dcf07391c7.json"
+    },
+    {
+      "sha256": "c5a2fad25561158b9cd36eb4fe03fc4be7b7db58a43e1b451a7e238178013fd0",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/c5a2fad25561158b9cd36eb4fe03fc4be7b7db58a43e1b451a7e238178013fd0.json"
+    },
+    {
+      "sha256": "c1d8a378107011f25d8ea22b1751b9def6f152d6e7af729ce657d27322f711d9",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/c1d8a378107011f25d8ea22b1751b9def6f152d6e7af729ce657d27322f711d9.json"
+    },
+    {
+      "sha256": "bab6ae75763675a9c87a8a6d95173f63f988477a2336987ee97428cebfddb3a2",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/bab6ae75763675a9c87a8a6d95173f63f988477a2336987ee97428cebfddb3a2.json"
+    },
+    {
+      "sha256": "7fe3c5bf993bcb17f4e1d5e497b8fe283bf41829f783aa3572336296c5916508",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/7fe3c5bf993bcb17f4e1d5e497b8fe283bf41829f783aa3572336296c5916508.json"
+    },
+    {
+      "sha256": "d6a6763a9ad64fa995c40108fe40914a1f3dc10b4d286cdfc674fa753fef2ee7",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/d6a6763a9ad64fa995c40108fe40914a1f3dc10b4d286cdfc674fa753fef2ee7.json"
+    },
+    {
+      "sha256": "0e9821d71036ec38076ab40a014f326443e908ce16d8d9936e9b4f8a6885e1d8",
+      "file": "06_研究結果\\jdrt\\goal_20261017\\document_history\\0e9821d71036ec38076ab40a014f326443e908ce16d8d9936e9b4f8a6885e1d8.json"
+    },
+    {
+      "sha256": "a1d764053ddf98a7b134e98e8569cb6e77002ca6d6ee1eb6f8a71f941a132879",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/a1d764053ddf98a7b134e98e8569cb6e77002ca6d6ee1eb6f8a71f941a132879.json"
+    },
+    {
+      "sha256": "e588d4ec8e2f5209de635ceb204dba6572da825b69cc5dc5a763b83a28c995f0",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/e588d4ec8e2f5209de635ceb204dba6572da825b69cc5dc5a763b83a28c995f0.json"
+    },
+    {
+      "sha256": "13284112f23d645b147bf7060be7ee5a5656870de1cf98fb6b71206835a616ae",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/13284112f23d645b147bf7060be7ee5a5656870de1cf98fb6b71206835a616ae.json"
+    },
+    {
+      "sha256": "49328742227c42a50ec3b8c7401f36183cfee14935051cea3c1092687206dba8",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/49328742227c42a50ec3b8c7401f36183cfee14935051cea3c1092687206dba8.json"
+    },
+    {
+      "sha256": "fc7e15234065b5e0610b598e12e96b9ae562e757f4b0e035d2cdb69da2d2d252",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/fc7e15234065b5e0610b598e12e96b9ae562e757f4b0e035d2cdb69da2d2d252.json"
+    },
+    {
+      "sha256": "9402857ed1ef26a586afb4c584f159dc9a50972fd97ce806d58a36463edfd2c4",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/9402857ed1ef26a586afb4c584f159dc9a50972fd97ce806d58a36463edfd2c4.json"
+    },
+    {
+      "sha256": "17237c32cd00ad71f41b515762dacffef3aa33abf56e3aab39118c3211e91def",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/17237c32cd00ad71f41b515762dacffef3aa33abf56e3aab39118c3211e91def.json"
+    },
+    {
+      "sha256": "87a7665478dd5d531620487ca1de8fc4a515cb44db608ffc9a3bbd5e32178c10",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/87a7665478dd5d531620487ca1de8fc4a515cb44db608ffc9a3bbd5e32178c10.json"
+    },
+    {
+      "sha256": "4fc153048a4cfad26ee39bccdf95e655c0debd1c8f7734fe1f68a08b354e73e8",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/4fc153048a4cfad26ee39bccdf95e655c0debd1c8f7734fe1f68a08b354e73e8.json"
+    },
+    {
+      "sha256": "4f8b4da5c99a9b7763d3fc509eec661de96a2e1b0e85b1a7d7b01a3c5a45f476",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/4f8b4da5c99a9b7763d3fc509eec661de96a2e1b0e85b1a7d7b01a3c5a45f476.json"
+    },
+    {
+      "sha256": "38ff7e40c7bf0a881c9e04e699df04a9fd3ac360015063c136bca00201068a44",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/38ff7e40c7bf0a881c9e04e699df04a9fd3ac360015063c136bca00201068a44.json"
+    },
+    {
+      "sha256": "d915b4243962aeb10d2c9c4186cb1aca3a7822c47235a740cf2ed47b782d8ce7",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/d915b4243962aeb10d2c9c4186cb1aca3a7822c47235a740cf2ed47b782d8ce7.json"
+    },
+    {
+      "sha256": "bae42cbb1f3d3deee97228ddac19f955b1ae2c603df98421170ed2f4cb9fc4ba",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/bae42cbb1f3d3deee97228ddac19f955b1ae2c603df98421170ed2f4cb9fc4ba.json"
+    },
+    {
+      "sha256": "8b9a42fc9490e869c85a43c9b6a558be3d7d013834f8503239e1da2582e9fbb4",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/8b9a42fc9490e869c85a43c9b6a558be3d7d013834f8503239e1da2582e9fbb4.json"
+    },
+    {
+      "sha256": "61efe6fbbf7436a5696da716b31ffc8c7245803081daf5b9e8571195279ffa4b",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/61efe6fbbf7436a5696da716b31ffc8c7245803081daf5b9e8571195279ffa4b.json"
+    },
+    {
+      "sha256": "58421cb3df11934340b20acadd8494a8e19809e10847c62839f326bc42f9a010",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/58421cb3df11934340b20acadd8494a8e19809e10847c62839f326bc42f9a010.json"
+    },
+    {
+      "sha256": "a707daf94b045f2466dfcc97bd579bec305fb7414817cc976082e5ac81a2c3e7",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/a707daf94b045f2466dfcc97bd579bec305fb7414817cc976082e5ac81a2c3e7.json"
+    },
+    {
+      "sha256": "564137072d0eddb34a217f3e2437846d4fd209c21afd47683ad4d0669deb492e",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/564137072d0eddb34a217f3e2437846d4fd209c21afd47683ad4d0669deb492e.json"
+    },
+    {
+      "sha256": "7d9656665f79c9e37418e391fad4c04ba812473ccd36e0ffed728c6f347f4d86",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/7d9656665f79c9e37418e391fad4c04ba812473ccd36e0ffed728c6f347f4d86.json"
+    },
+    {
+      "sha256": "f6c81139c22e808c2ebd282d7fe89a9f4dec219c3a71bff89eb27f684cb496bf",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/f6c81139c22e808c2ebd282d7fe89a9f4dec219c3a71bff89eb27f684cb496bf.json"
+    }
+  ],
+  "native_bundle_observation": {
+    "report": "06_研究結果\\jdrt\\goal_20261017\\native_bundles_verified_20261020.json",
+    "sha256": "4a4343ba1536f4b3d9a647187a5662cf04bc9046a1cd5b0d606c88c565c285dc",
+    "at_jst": "2026-10-20T16:50:46.428502+09:00",
+    "bundles": {
+      "control": {
+        "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_ctl_20261020a\\toolchain.json",
+        "manifest_sha256": "edeb508e5ed86793b9bbdffa038d0fb0bc2c4319020526764a0e37cf43071577",
+        "files": 243,
+        "bundle_bytes": 119346597,
+        "sumo_sha256": "1f092bada551395cbc632d29f0df3eb946a198cabd9330a3182c534157e05eff",
+        "netconvert_sha256": "a71ac2f7890cb211656c0a4cba6a78014f5978039f9130bb0e5ca322ee21b0a8",
+        "import_receipt": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\pair_proof_helper_20261020\\control_import_verify.json",
+        "import_receipt_sha256": "52989765d66ac288dd49e4c44eabf7075dd452781c11fc76d29b752c5fe7fecf",
+        "fingerprint_status": "IMPORTS_VERIFIED_NOT_SIMULATED"
+      },
+      "patched": {
+        "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_lat_20261020a\\toolchain.json",
+        "manifest_sha256": "a323faa16045614f9c31693981a3ffd84b62b34425e76a0007e628185a1bef5c",
+        "files": 243,
+        "bundle_bytes": 119341499,
+        "sumo_sha256": "ac1ea40529dd8cce6d583d66c01c33f28c900f1b6bb0a68d8be5980930da91f0",
+        "netconvert_sha256": "9ab32f3961ed61b3a08b67658497f2d76cd66deb17b968c5de45a8175543f624",
+        "import_receipt": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\pair_proof_helper_20261020\\patched_import_verify.json",
+        "import_receipt_sha256": "3d72b33f90d0d0324037d127ca76897e4622c33b77d905339e1c42f0203a3dcf",
+        "fingerprint_status": "IMPORTS_VERIFIED_NOT_SIMULATED"
+      }
+    }
+  },
+  "selected_pair": {
+    "ids": [
+      "nc261020f",
+      "np261020f"
+    ],
+    "status": "SELECTED_PAIR_VERIFIED_PENDING_NATIVE_GUARDS",
+    "handle": 53770,
+    "exit_code": 0,
+    "owner_executor_pid": 28840,
+    "active": null,
+    "completion_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/native_pair_f_completion_20261021/result.json",
+    "research_adoption_permitted": false
+  },
+  "input_refresh_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/input_refresh_registered03_20261020/result.json",
+  "native_version_repair_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/native_version_identity_20261020/result.json",
+  "independent_monitor_usage": "06_研究結果/jdrt/goal_20261017/audit_history/independent_monitor_usage_20261020/latest_usage.json",
+  "G1_source_recovery": "02_情報調査/交通・地域/jdrt_goal_20261017/pref_source_recovery_20261020/audit.json",
+  "selected_pair_diagnosis": "06_研究結果/jdrt/goal_20261017/audit_history/native_pair_c_receipt_diagnosis_20261020/diagnosis.json",
+  "live_length_repair_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/native_live_length_validator_20261020/review.json",
+  "native_guard_trace_contract": "06_研究結果/jdrt/goal_20261017/audit_history/native_guard_trace_contract_20261020/contract.json",
+  "native_guard_source_entrypoints": "06_研究結果/jdrt/goal_20261017/audit_history/native_guard_trace_contract_20261020/source_entrypoints.json",
+  "pair_inventory_repair_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/native_pair_inventory_20261020/review.json",
+  "independent_monitor_deployment": "07_監視システム/verification/notification_queue_20261021/deployment_observed.json",
+  "native_trace_source_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/native_trace_source_20261021/review.json",
+  "latest_independent_monitor": {
+    "at_jst": "2026-10-21T07:58:12.766443+09:00",
+    "status_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/current_f_trace_sync_20261021T075812/monitor_status.json",
+    "identity_matches": true,
+    "pid": 30168,
+    "observation_age_sec": 7.633349418640137,
+    "coverage_gap": "sleep interval preserved; no backfill",
+    "resume_evidence": "07_監視システム/verification/resume_observation_20261021/result.json"
+  },
+  "native_trace_build": {
+    "attempt_id": "diag01_20261021",
+    "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+    "state_path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build_state.json",
+    "handle": 97226,
+    "owner_pid": 34116,
+    "child_pid": 34144,
+    "point_observation": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261021T082438947858.json",
+    "independent_target": "06_研究結果/jdrt/goal_20261017/audit_history/native_trace_build_20261021/independent_target_build_live.json",
+    "technical_ready": false,
+    "post_compile_point": "06_研究結果/jdrt/goal_20261017/audit_history/native_trace_build_20261021/post_compile_point.json",
+    "handle_exit_code": 0,
+    "completion_review": "06_研究結果/jdrt/goal_20261017/audit_history/native_trace_build_20261021/completed_build_review.json"
+  },
+  "latest_trace_check_review": "06_研究結果/jdrt/goal_20261017/audit_history/native_trace_build_20261021/trace_check_review.json",
+  "native_guard_input_plan": {
+    "status": "RAW45_COLLECTED_12_GROUPS_OBSERVED_ONE_CONDITIONAL_SOURCE_REVIEW",
+    "cases": 15,
+    "groups": 13,
+    "tests_pass": 22,
+    "proof": "06_研究結果/jdrt/goal_20261017/audit_history/native_internal_fixture_20261021/review.json",
+    "runner_implemented": true,
+    "plan": "06_研究結果/jdrt/goal_20261017/audit_history/native_internal_fixture_20261021/guard_plan.json"
+  },
+  "progress_eta_estimate": "06_研究結果/jdrt/goal_20261017/進捗・残時間見積_20261021.json",
+  "native_guard_collection": {
+    "run_id": "ng261021g",
+    "handle": 11293,
+    "status": "COMPLETED",
+    "owner_pid": 26972,
+    "observed_completed_native_runs": 45,
+    "planned_native_runs": 45,
+    "at_jst": "2026-10-21T09:00:03.126529+09:00",
+    "independent_guard_review_complete": false,
+    "research_adoption_permitted": false,
+    "old_failed_run": "ng261021e",
+    "actual_internal_retest": "ng261021f",
+    "handle_exit_code": 0,
+    "actual_report": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_internal_fixture_20261021\\actual_native_audit_v2.json",
+    "actual_report_sha256": "cf73216ab77c891e874452c6f464d8541359134011316a0df5d68c27a143698a",
+    "groups_observed": 12,
+    "groups_requested": 13,
+    "unexercised_groups": [
+      "position_time_mismatch"
+    ],
+    "source_reachability_review": "06_研究結果/jdrt/goal_20261017/audit_history/native_internal_fixture_20261021/source_reachability_review.json"
+  },
+  "validator_diagonal_proxy_correction": {
+    "review": "06_研究結果/jdrt/goal_20261017/audit_history/native_diagonal_proxy_20261021/review.json",
+    "tests_pass": 22,
+    "meaning": "native longitudinal speed integral retained; instantaneous before/after positions exact; next-step XY norm is not native longitudinal cap",
+    "pap_runtime_inputs_changed": false,
+    "old_pair_full_current_code_validation": "STALE historical after validator SHA changed; immutable native evidence preserved"
+  },
+  "current_full_suite": {
+    "run_id": "cf26102101",
+    "handle": 74800,
+    "pid": 14364,
+    "status": "COMPLETED_ALL26_CASE_PASS",
+    "purpose": "fixture_nonadoptable",
+    "native_manifest": "04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json",
+    "at_jst": "2026-10-21T09:00:03.126529+09:00",
+    "finished_at_jst": "2026-10-21T09:05:26.630501+09:00",
+    "handle_exit_code": 0,
+    "manifest_sha256": "1d730dd0ea2a3906720b3e32dcdceb9b432d69dfbd31e981e96ca83ce325bacc",
+    "independent_audit_handle": 58964,
+    "independent_audit_status": "PASS_CURRENT26_COMPONENTS_54_COUNTEREXAMPLES",
+    "independent_audit_handle_exit_code": 0,
+    "independent_audit_report": "06_研究結果\\jdrt\\goal_20261017\\正式検証器_表会計候補_20261021T091121.json",
+    "independent_audit_report_sha256": "cdfd67bb1104dea5061b3d6cd8feb3a9946d27a5cc5d3317bfc55e0b09f63694"
+  },
+  "unit_tests_current_status": "PASS_CURRENT98",
+  "current_smoke_sequence": {
+    "state": "06_研究結果/jdrt/goal_20261017/ns261022c_smoke_sequence.json",
+    "status": "COMPLETED",
+    "completed": 14,
+    "session_id": 9617,
+    "owner_pid": 25072,
+    "readback": "06_研究結果/jdrt/goal_20261017/ns261022c_all14_readback.json"
+  },
+  "observation_gap_latest": {
+    "kind": "parent_chat_point_observation_gap",
+    "from_jst": "2026-10-21T16:39:38.709356+09:00",
+    "to_jst": "2026-10-21T19:54:50.003251+09:00",
+    "fact": "R1 terminal manifest completed16:40:45; independent observer saved completed event16:40:49. No parent check/validate/record claimed in gap; no physical sleep inference or continuous-coverage claim",
+    "independent_event": "C:/Users/Ko_rr/.jdrt-monitor/10afa40fb646/events/ad85e0e656e75d8626f33308217c8385.json"
+  },
+  "technical_math_note": "06_研究結果/jdrt/goal_20261017/歩行距離・位置連続性_数理整理_20261021.md",
+  "g6_source_contract_refresh": {
+    "at_jst": "2026-10-21T14:53:05.328611+09:00",
+    "status": "CURRENT_SOURCE_AND_INPUT_ONLY_THEORY_REVIEWED",
+    "review": "06_研究結果\\jdrt\\goal_20261017\\G6_現行登録入力source・サービス契約監査_20261021.json",
+    "review_sha256": "c68aa4477ba69f1ff8f88b7e3dca374a217444698e217ec9591df8ea0b6cecae",
+    "theory": "06_研究結果\\jdrt\\goal_20261017\\G6_登録入力_理論値確認_20261021T144925648554.json",
+    "theory_sha256": "a78b4dba843cbb735183df7ea6b31cdf0bcd2186730d30634f05adb9561fe917",
+    "artificial_contract_report": "06_研究結果\\jdrt\\goal_20261017\\analysis_history\\G6_source_contract_checks_20261021T145001292246\\result.json",
+    "artificial_contract_tests_pass": 24,
+    "scope": "No real70 results read; source re-audit and input-only mathematical quantities; not G6 complete or research READY"
+  },
+  "status_currentness_helper_review": "06_研究結果/jdrt/goal_20261017/audit_history/status_currentness_20261021/review.json",
+  "current_preflight": {
+    "status": "COMPLETED_READY",
+    "attempt": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/preflight/20261022T150843281652",
+    "session_id": 5394,
+    "executor_pid": 10464,
+    "executor_created_jst": "2026-10-22T15:08:38.880455+09:00",
+    "input_status": "PASS",
+    "unit_status": "PASS",
+    "unit_tests": 102,
+    "new_validation_reports_observed": 32,
+    "last_observed_at_jst": "2026-10-22T15:24:12.482921+09:00",
+    "same_executor_identity_last_verified_at_jst": "2026-10-22T15:23:33+09:00",
+    "monitor07_last_observed": "2026-10-22T15:23:32.836069+09:00",
+    "receipt": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/preflight/20261022T150843281652/receipt.json",
+    "receipt_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+    "command_duration_sec": 1757.948690499994
+  },
+  "native_patch_review": {
+    "status": "SCOPED_PATCH_SOURCE_AND_REGRESSION_REVIEW_PASS_PENDING_NEW_PREFLIGHT",
+    "report": "06_研究結果/jdrt/goal_20261017/native_patch_技術採用レビュー_20261021.json",
+    "sha256": "9ab2bfd1f83ee5c37d48ae83d52d051df37653bd1aa4766949a3f84192ffb13e",
+    "native_observed_groups": 12,
+    "native_false_guard_observed": false,
+    "compiled_exact_guard_artificial_cases_pass": 16,
+    "omitted_guard_mutants_rejected": 2,
+    "compiled_fragment_report": "06_研究結果/jdrt/goal_20261017/audit_history/native_guard_fragment_20261021/contract01/report.json",
+    "final_start_review": "06_研究結果/jdrt/goal_20261017/ch261021_001_開始ゲート最終照合.json",
+    "qualified_technical_adoption_review_complete": true
+  },
+  "current_core": {
+    "run_id": "nc26102201",
+    "cell_id": "fixed_reference_r0_seed23423",
+    "status": "RUNNING",
+    "executor_pid": 27924,
+    "executor_created_jst": "2026-10-22T15:42:59.210484+09:00",
+    "readback": "06_研究結果/jdrt/goal_20261017/nc26102201_launch_and_monitor_readback.json"
+  },
+  "storage_current": {
+    "one_run_reserve_bytes": 193337109755,
+    "preflight_free_bytes": 257035034624,
+    "all70_conservative_projection_bytes": 13533597682850,
+    "all70_projected_fit": false,
+    "policy": "rolling_one_run_reserve_rechecked_before_each_start_preserve_all_outputs",
+    "next": "Measure actual first core byte/time size; preserve observations/old runs, stop if next complete-run reserve fails. Only C filesystem available was observed."
+  },
+  "current_core_validation": {
+    "run_id": "ch261021_002",
+    "status": "INVALID",
+    "handle": 70685,
+    "pid": 22920,
+    "launcher_pid": 9092,
+    "observed_creation_jst": "2026-10-21T19:55:56.576595+09:00",
+    "stdout": "06_研究結果/jdrt/goal_20261017/ch261021_002_validate.stdout.log",
+    "stderr": "06_研究結果/jdrt/goal_20261017/ch261021_002_validate.stderr.log",
+    "rule": "same handle; no duplicate/retry on empty output or observation timeout",
+    "handle_exit_code": 1,
+    "core_adoption_permitted": false,
+    "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261021_002_20261021T201454571376.json",
+    "validation_report_sha256": "fbb84201182cab0b6501b12d9b803039a6db97efb2ff7e4694de581842da7ba0",
+    "failed_component": "native_logs",
+    "unknown": [
+      "Warning: Vehicle 'scen_c_origin_0381_0016' performs emergency braking on lane '9407#2_1' with decel=9.00, wished=4.50, severity=1.00, time=6112.50."
+    ]
+  },
+  "latest_g1_supply_evidence": {
+    "at_jst": "2026-10-21T16:05:15.875045+09:00",
+    "audit": "02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md",
+    "verification": "02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/verification.json",
+    "raw_pdfs": 3,
+    "visually_reviewed_pages": 5,
+    "inputs_adopted": false,
+    "scope": "2019 Sakai mobilization example vs2015 Joso unknown; service resource assumption only; no partial70 efficacy interpretation"
+  },
+  "current_core_record": {
+    "run_id": "ch261021_002",
+    "status": "FORBIDDEN_INVALID_PRESERVED"
+  },
+  "historical_remaining_formal_gates_before_current_READY": [
+    "complete current 26-case suite on a fresh authorized technical run after high-reasoning diagnosis",
+    "independent counterexample audit",
+    "all 14 setting smokes",
+    "new preflight and READY review"
+  ],
+  "previous_recorded_core": {
+    "run_id": "ch261021_001",
+    "cell_id": "fixed_reference_r0_seed23423",
+    "status": "COMPLETED",
+    "pid": 27792,
+    "launcher_pid": 18948,
+    "started_at_jst": "2026-10-21T15:32:04.876949+09:00",
+    "observed_at_jst": "2026-10-21T15:37:06.565108+09:00",
+    "progress": {
+      "at_jst": "2026-10-21T15:45:01.331213+09:00",
+      "run_id": "ch261021_001",
+      "time_sec": 21600.0,
+      "end_sec": 21600,
+      "wall_sec": 759.2171855999914,
+      "counts": {
+        "steps": 43200,
+        "controller_ticks": 21601,
+        "snapshots": 361,
+        "teleports": 0,
+        "collisions": 0,
+        "transition_rows": 261210,
+        "closed_entry_rows": 0,
+        "ambiguous_transitions": 0,
+        "candidate_rows": 0,
+        "dispatch_cycles": 0,
+        "missing_vehicle_subscriptions": 0,
+        "missing_person_subscriptions": 0,
+        "reentry_pending_frames": 0,
+        "departure_pending_frames": 349,
+        "snapshot_actor_rows": 36138
+      },
+      "people_states": {
+        "capacity_rejected": 1428,
+        "no_route": 787,
+        "no_origin_connection": 553,
+        "admitted": 471,
+        "boundary_exit": 7657,
+        "walk_limit": 465,
+        "route_cut": 2,
+        "initial_or_current_closed": 602
+      },
+      "request_states": {}
+    },
+    "formally_recorded": false,
+    "toolchain_manifest": "04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json",
+    "native_pid": 11972,
+    "native_parent_pid": 27792,
+    "native_created_jst": "2026-10-21T15:32:10.788697+09:00",
+    "native_identity_report": "06_研究結果/jdrt/goal_20261017/core_native監視_20261021T154248064560.json",
+    "latest_monitor": "06_研究結果/jdrt/goal_20261017/監視_ch261021_001_20261021T154244573632.json",
+    "finished_at_jst": "2026-10-21T15:45:02.817903+09:00",
+    "pid_alive": false,
+    "native_live": false,
+    "completion_storage_measurement": "06_研究結果\\jdrt\\goal_20261017\\ch261021_001_完了時刻・容量実測.json"
+  },
+  "last_goal_turn_classification": "progress: R1 INVALID preserved; raw17actor frames and lane/event/net/type context extracted; selected7 official source files byte-matched to pinned ZIP; source-clock/kinematic warning reconstruction -9m/s2; notification starvation fixed with30tests and actual11submissions",
+  "record7_postsync_audit": "06_研究結果/jdrt/goal_20261017/ch261021_001_record7同期後・次セル現在地確認.json",
+  "previous_core_validation": {
+    "run_id": "ch261021_001",
+    "handle": 25565,
+    "status": "PASS",
+    "stdout": "06_研究結果/jdrt/goal_20261017/ch261021_001_validate.stdout.log",
+    "stderr": "06_研究結果/jdrt/goal_20261017/ch261021_001_validate.stderr.log",
+    "rule": "same owned handle; no restart on observation timeout, no duplicate validate/record by another agent",
+    "pid": 35268,
+    "launcher_pid": 31368,
+    "observed_creation_jst": "2026-10-21T15:46:31.707944+09:00",
+    "observed_at_jst": "2026-10-21T15:52:28.472987+09:00",
+    "same_handle_confirmed_live": 25565,
+    "stdout_bytes_at_observation": 0,
+    "stderr_bytes_at_observation": 0,
+    "handle_exit_code": 0,
+    "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261021_001_20261021T160441604010.json",
+    "report_sha256": "5a93a7c43449b8025dbb35737d0af9117b3fd1be1e70e78bf4e11db79034e451",
+    "core_adoption_permitted": true,
+    "observed_finished_at_jst": "2026-10-21T16:08:12.495217+09:00"
+  },
+  "previous_core_record": {
+    "run_id": "ch261021_001",
+    "status": "COMMITTED_7FILES_VERIFIED",
+    "handle": 22687,
+    "pid": 24248,
+    "launcher_pid": 21048,
+    "observed_creation_jst": "2026-10-21T16:06:25.283953+09:00",
+    "observed_at_jst": "2026-10-21T16:14:21.189921+09:00",
+    "stdout": "06_研究結果/jdrt/goal_20261017/ch261021_001_record.stdout.log",
+    "stderr": "06_研究結果/jdrt/goal_20261017/ch261021_001_record.stderr.log",
+    "record_files": 7,
+    "rule": "same owned handle; preserve writer lock; no duplicate record/validate/start",
+    "monitor_report": "06_研究結果/jdrt/goal_20261017/record7監視_ch261021_001_20261021T161421520467.json",
+    "same_handle_confirmed_live": 22687,
+    "handle_exit_code": 0,
+    "transaction": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/record_transactions/ch261021_001_20261021T162423257579",
+    "sync_proof": "06_研究結果/jdrt/goal_20261017/ch261021_001_record7独立同期確認.json"
+  },
+  "observation_gaps": [
+    {
+      "kind": "parent_chat_point_observation_gap",
+      "from_jst": "2026-10-21T09:08:43+09:00",
+      "to_jst": "2026-10-21T14:40:40+09:00",
+      "fact": "Audit terminal report at09:11:21 was read back at14:40; no parent progress/actions or continuous observation is fabricated",
+      "independent_monitor": "Current alive identity confirmed at14:41; historical continuous coverage not inferred from current liveness"
+    },
+    {
+      "kind": "parent_chat_point_observation_gap",
+      "from_jst": "2026-10-21T16:39:38.709356+09:00",
+      "to_jst": "2026-10-21T19:54:50.003251+09:00",
+      "fact": "R1 terminal manifest completed16:40:45; independent observer saved completed event16:40:49. No parent check/validate/record claimed in gap; no physical sleep inference or continuous-coverage claim",
+      "independent_event": "C:/Users/Ko_rr/.jdrt-monitor/10afa40fb646/events/ad85e0e656e75d8626f33308217c8385.json"
+    }
+  ],
+  "previous_independent_monitor_deployment": "07_監視システム/verification/command_binding_20261020/deployment.json",
+  "current_invalid_diagnosis": "06_研究結果/jdrt/goal_20261017/audit_history/R1_native_braking_20261021/diagnosis.json",
+  "current_invalid_diagnosis_state": "source/raw kinematics agree with native warning; exact native junction/priority trigger not yet isolated; no classification or adoption rule changed",
+  "current_invalid_diagnosis_progress": {
+    "at_jst": "2026-10-21T20:43:54.980309+09:00",
+    "report": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\junction_context_readback.json",
+    "sha256": "da79f673026600e3d77aaf0dac6daf18b58fe9ad146c9343ccc3a41ac2c60377",
+    "diagnosis_complete": false,
+    "frozen_common5_unchanged": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+      "04_プログラム/scripts/jdrt_choice_policy.py": true,
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+    }
+  },
+  "current_core_before_rejection": {
+    "run_id": "ch261021_002",
+    "cell_id": "fixed_reference_u05_r1_seed23423",
+    "status": "COMPLETED",
+    "pid": 30440,
+    "launcher_pid": 26956,
+    "native_pid": 35308,
+    "native_parent_pid": 30440,
+    "native_created_jst": "2026-10-21T16:26:22.616012+09:00",
+    "started_at_jst": "2026-10-21T16:26:16.213597+09:00",
+    "latest_monitor": "06_研究結果/jdrt/goal_20261017/監視_ch261021_002_20261021T195513077272.json",
+    "native_identity_report": "06_研究結果/jdrt/goal_20261017/ch261021_002_開始PID同定.json",
+    "formally_recorded": false,
+    "toolchain_manifest": "04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json",
+    "latest_independent_monitor": "06_研究結果/jdrt/goal_20261017/ch261021_002_独立監視対象照合.json",
+    "latest_independent_sim_sec": 4380.0,
+    "latest_independent_observed_at_utc": "2026-10-21T07:31:57.691504+00:00",
+    "initial_monitor_failure": {
+      "type": "FileNotFoundError",
+      "path": "sumo_errors.log",
+      "observed_check": "06_研究結果\\jdrt\\goal_20261017\\監視_ch261021_002_20261021T162619719510.check.stdout.log",
+      "native_creation_jst": "2026-10-21T16:26:22.616012+09:00",
+      "monitor_report_attempt_started_jst": "2026-10-21T16:26:19.719510+09:00",
+      "resolved_observation": "same native/parent identity, log exists, monitor600 and observer4380 withflags[]",
+      "scope": "monitor initialization read, not a core restart/failure; defer helper edit during normalrun"
+    },
+    "finished_at_jst": "2026-10-21T16:40:45.369677+09:00",
+    "pid_alive": false,
+    "native_live": false,
+    "completion_storage_measurement": "06_研究結果/jdrt/goal_20261017/ch261021_002_完了時刻・容量実測.json"
+  },
+  "rejection_readback": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\rejection_readback.json",
+  "native_braking_probe": {
+    "run_id": "nb26102101",
+    "status": "COMPLETED_NOT_ADOPTABLE",
+    "handle": 21074,
+    "handle_exit_code": 0,
+    "native_children": 2,
+    "frames_per_child": 40,
+    "warning_reproduced": false,
+    "source_state_replay": false,
+    "readback": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\braking_probe_nb26102101_independent.json",
+    "warning_equation": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\warning_equation_native_properties.json"
+  },
+  "native_braking_diagnostic_contract": {
+    "status": "DIAGNOSTIC_MATCH_NOT_ADOPTABLE",
+    "raw_readback": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\diagnostic_contract_real01.json",
+    "artificial_tests": 8,
+    "real_frame_mutations_rejected": 7,
+    "original_core_emergency_property_observed": false
+  },
+  "native_observation_registration_candidate": {
+    "status": "ACTIVE_TECHNICAL_PREPARATION_NOT_READY",
+    "candidate": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\candidate_nativeaudit_v2_parameters.json",
+    "scope": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\candidate_nativeaudit_v2_scope.json",
+    "boundary_review": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\技術観測版の修正境界.md",
+    "research_sections_unchanged": true,
+    "new_workspace_created": true,
+    "activation": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\nativeaudit_v2_implementation\\registration_activation.json"
+  },
+  "previous_registration_preserved": {
+    "registration": "realtime_choice_v1_initial_native_stack",
+    "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1",
+    "accepted_cells": 1,
+    "accepted_run_id": "ch261021_001",
+    "rejected_run_id": "ch261021_002",
+    "old_current_implementation_sha256": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "05ddf759f39cdcedb234f4c414198176c117dca02968b93e6d1c46830b2b3819",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "86510a58a1562c1bd9923d10c552c7f7159244161ecdd8f2a3495825309cc419",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "dcaa9fe4ca3854efca38b988f83b9b93d3995d2f3b04039795d1811e1dc88c7f"
+    },
+    "old_input_manifest_sha256": "d922a2e52e36183451b3ce25f29bed2e85f0a8834b92f833b401799a57d6a4ea",
+    "evidence": "audit_history/R1_native_braking_20261021/nativeaudit_v2_implementation/before.json"
+  },
+  "active_registration_id": "choice_native_observation_v2_20261021",
+  "active_workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2",
+  "implementation_frozen_for_adopted_new_core": false,
+  "latest_technical_observation": "06_研究結果/jdrt/goal_20261017/技術監視_na26102201_20261022T090504235831.json",
+  "latest_monitor_migration": "06_研究結果/jdrt/goal_20261017/audit_history/R1_native_braking_20261021/nativeaudit_v2_implementation/monitor_migration_actual_20261022.json",
+  "monitor_observation_gap": "2026-10-21T21:45:09+09:00 to 2026-10-22 restart08:47; no backfilled observations",
+  "latest_g6_current_source_review": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_source_refresh_20261022T085659369995/review.json",
+  "latest_g6_contract_tests": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_source_contract_checks_20261022T085723984792/result.json",
+  "current_revalidation": {
+    "state": "06_研究結果/jdrt/goal_20261017/na26102202_revalidate.json",
+    "exec_session": 40084,
+    "owner_pid": 8016,
+    "fixture_owner_pid": 33320,
+    "progress_at_jst": "2026-10-22T09:13:21.496649+09:00",
+    "completed_cases": 26,
+    "active_stage": "independent",
+    "active_child_pid": null,
+    "last_observed": "2026-10-22T09:21:25.147787+09:00",
+    "status": "FAILED_PRESERVED",
+    "exec_session_terminal_exit": 1,
+    "finished_at_jst": "2026-10-22T09:28:02.205575+09:00"
+  },
+  "previous_suite_failure": {
+    "suite": "na26102201",
+    "audit_session": 79761,
+    "status": "INDEPENDENT_INVALID_PRESERVED",
+    "diagnosis": "06_研究結果/jdrt/goal_20261017/audit_history/R1_native_braking_20261021/nativeaudit_v2_implementation/native_header_binding_revision/diagnosis.json"
+  },
+  "latest_G7_draft": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+  "latest_G6_registration_review": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_registration_gate_20261022/review.json",
+  "latest_G7_source_mapping": "06_研究結果/jdrt/goal_20261017/G7_統合草稿_出典対応監査_20261022_reggate.json",
+  "current_independent_retry": {
+    "exec_session": 87790,
+    "pid": 4696,
+    "launcher_pid": 29668,
+    "process_created_at_jst": "2026-10-22T14:35:03.567085+09:00",
+    "suite": "na26102202",
+    "stdout": "06_研究結果/jdrt/goal_20261017/audit_history/G4_counterexample_entry_20261022/archive_case_revision/full_audit02.stdout.json",
+    "stderr": "06_研究結果/jdrt/goal_20261017/audit_history/G4_counterexample_entry_20261022/archive_case_revision/full_audit02.stderr.log",
+    "auditor_sha256": "37f539d654f1c093b3e8ff7416e45a3a9862cd859daedbcd6e4797fe15bb0a5c",
+    "status": "COMPLETED_PASS",
+    "exec_exit_code": 0,
+    "report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261022T144514.json",
+    "report_at_jst": "2026-10-22T14:45:13.925392+09:00"
+  },
+  "independent_retry_history": [
+    {
+      "exec_session": 30314,
+      "pid": 27888,
+      "launcher_pid": 2360,
+      "process_created_at_jst": "2026-10-22T09:30:48.587421+09:00",
+      "suite": "na26102202",
+      "stdout": "06_研究結果/jdrt/goal_20261017/audit_history/G4_counterexample_entry_20261022/full_audit01.stdout.json",
+      "stderr": "06_研究結果/jdrt/goal_20261017/audit_history/G4_counterexample_entry_20261022/full_audit01.stderr.log",
+      "auditor_sha256": "cc1f3dc419eb02a21bc4e990e34979f703ab9ce50c290075645b0e31d8dfe946",
+      "status": "FAILED_PRESERVED",
+      "observed_terminal_stderr": "2026-10-22T09:40:28.013146+09:00",
+      "error": "second legacy archive reference missing in new workspace"
+    }
+  ],
+  "latest_auditor_revision_review": "06_研究結果/jdrt/goal_20261017/audit_history/G4_counterexample_entry_20261022/archive_case_revision/review.json",
+  "latest_monitor_point": {
+    "at_jst": "2026-10-22T14:47:58.825723+09:00",
+    "pid": 3348,
+    "identity_matches": true,
+    "targets": 484
+  },
+  "current_smoke_sequence_status": "PASS_CURRENT14"
+}

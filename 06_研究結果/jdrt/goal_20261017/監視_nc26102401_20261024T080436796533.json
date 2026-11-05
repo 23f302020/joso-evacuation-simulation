@@ -1,0 +1,68 @@
+{
+  "at_jst": "2026-10-24T08:04:36.796533+09:00",
+  "action": "detailed_same_core_monitor",
+  "run_id": "nc26102401",
+  "cell_id": "facility_first_r0_seed23423",
+  "pid": 33444,
+  "skill_check": {
+    "run_id": "nc26102401",
+    "status": "RUNNING",
+    "pid_alive": true,
+    "progress": {
+      "at_jst": "2026-10-24T08:04:34.106003+09:00",
+      "run_id": "nc26102401",
+      "time_sec": 540.0,
+      "end_sec": 21600,
+      "wall_sec": 45.76069190003909,
+      "counts": {
+        "steps": 1080,
+        "controller_ticks": 541,
+        "snapshots": 10,
+        "teleports": 0,
+        "collisions": 0,
+        "transition_rows": 16156,
+        "closed_entry_rows": 0,
+        "ambiguous_transitions": 0,
+        "candidate_rows": 0,
+        "dispatch_cycles": 0,
+        "missing_vehicle_subscriptions": 0,
+        "missing_person_subscriptions": 0,
+        "reentry_pending_frames": 0,
+        "departure_pending_frames": 7,
+        "snapshot_actor_rows": 1168
+      },
+      "people_states": {
+        "not_ready": 11066,
+        "admitted": 276,
+        "travelling_car": 390,
+        "travelling_walk": 31,
+        "no_route": 118,
+        "no_origin_connection": 53,
+        "walk_limit": 3,
+        "initial_or_current_closed": 28
+      },
+      "request_states": {}
+    },
+    "error": null
+  },
+  "input_population_rows": 11965,
+  "integrity": {
+    "input_manifest": true,
+    "archived_READY": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "anomaly_flags": [],
+  "manifest_sha256_at_observation": "a6db4b4151331cb0b233f5f3e846a76d57981ac0463f9f99f31616e6439b4df7",
+  "current_run_bytes": 18190476,
+  "free_bytes": 255511621632,
+  "native_error_lines": 0,
+  "native_log_bytes": 0,
+  "driver_stderr_bytes": 0,
+  "monitor_source_sha256": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+  "formal_validation_or_adoption": false,
+  "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+}

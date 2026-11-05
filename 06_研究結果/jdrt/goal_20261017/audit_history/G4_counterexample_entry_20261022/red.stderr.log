@@ -1,0 +1,46 @@
+test_current_id_and_in_memory_hash_change_leave_primary_unchanged (__main__.EntryContracts.test_current_id_and_in_memory_hash_change_leave_primary_unchanged) ... ERROR
+test_missing_evidence_is_not_sha_rejection (__main__.EntryContracts.test_missing_evidence_is_not_sha_rejection) ... ERROR
+test_nonrejected_or_unrelated_failure_cannot_pass (__main__.EntryContracts.test_nonrejected_or_unrelated_failure_cannot_pass) ... 
+  test_nonrejected_or_unrelated_failure_cannot_pass (__main__.EntryContracts.test_nonrejected_or_unrelated_failure_cannot_pass) (result={'status': 'INCOMPLETE', 'checks': {'all_bound_bytes_before': False}}) ... ERROR
+  test_nonrejected_or_unrelated_failure_cannot_pass (__main__.EntryContracts.test_nonrejected_or_unrelated_failure_cannot_pass) (result={'status': 'INVALID', 'checks': {'all_bound_bytes_before': True}}) ... ERROR
+
+======================================================================
+ERROR: test_current_id_and_in_memory_hash_change_leave_primary_unchanged (__main__.EntryContracts.test_current_id_and_in_memory_hash_change_leave_primary_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_反証監査入口_契約テスト.py", line 31, in test_current_id_and_in_memory_hash_change_leave_primary_unchanged
+    result = audit.current_implementation_sha_counterexample('fresh_suite_c01', source)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_counterexample_entry' has no attribute 'current_implementation_sha_counterexample'
+
+======================================================================
+ERROR: test_missing_evidence_is_not_sha_rejection (__main__.EntryContracts.test_missing_evidence_is_not_sha_rejection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_反証監査入口_契約テスト.py", line 43, in test_missing_evidence_is_not_sha_rejection
+    audit.current_implementation_sha_counterexample('fresh_suite_c01', source)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_counterexample_entry' has no attribute 'current_implementation_sha_counterexample'
+
+======================================================================
+ERROR: test_nonrejected_or_unrelated_failure_cannot_pass (__main__.EntryContracts.test_nonrejected_or_unrelated_failure_cannot_pass) (result={'status': 'INCOMPLETE', 'checks': {'all_bound_bytes_before': False}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_反証監査入口_契約テスト.py", line 53, in test_nonrejected_or_unrelated_failure_cannot_pass
+    audit.current_implementation_sha_counterexample('fresh_suite_c01', source)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_counterexample_entry' has no attribute 'current_implementation_sha_counterexample'
+
+======================================================================
+ERROR: test_nonrejected_or_unrelated_failure_cannot_pass (__main__.EntryContracts.test_nonrejected_or_unrelated_failure_cannot_pass) (result={'status': 'INVALID', 'checks': {'all_bound_bytes_before': True}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_反証監査入口_契約テスト.py", line 53, in test_nonrejected_or_unrelated_failure_cannot_pass
+    audit.current_implementation_sha_counterexample('fresh_suite_c01', source)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_counterexample_entry' has no attribute 'current_implementation_sha_counterexample'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.118s
+
+FAILED (errors=4)

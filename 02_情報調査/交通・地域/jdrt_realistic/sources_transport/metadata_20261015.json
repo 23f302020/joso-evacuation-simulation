@@ -1,0 +1,226 @@
+{
+  "created_at_jst": "2026-10-15T18:58:09.217485+09:00",
+  "note": "Retrieval time is not publication date. HTTP 200 confirms retrievability only; applicability is assessed separately.",
+  "sources": [
+    {
+      "file": "current_service.html",
+      "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/public_transport_institution/noriai_hureaigou.html",
+      "retrieved_at_jst": "2026-10-15T18:58:08.730981+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/public_transport_institution/noriai_hureaigou.html",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": null,
+        "ETag": null,
+        "Content-Type": "text/html",
+        "Content-Length": "28756",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 28756,
+      "sha256": "1fc93fd307320416230b36aa239130a0958b70d1fa0479f6d910a80e92710b94"
+    },
+    {
+      "file": "r7_usage.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1788509614_doc_331_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:08.730981+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1788509614_doc_331_0.pdf",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": "Mon, 14 Sep 2026 01:58:31 GMT",
+        "ETag": "\"43849-65b67c5668f80\"",
+        "Content-Type": "application/pdf",
+        "Content-Length": "276553",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 276553,
+      "sha256": "aaf382f7b2c4997c222938945eff0f1dc811f53152bb44983f51728b5aa15fb6"
+    },
+    {
+      "file": "h27_usage.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1673857744_doc_5_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:08.730981+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1673857744_doc_5_0.pdf",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": "Mon, 14 Sep 2026 01:58:31 GMT",
+        "ETag": "\"1b10b-65b67c5616730\"",
+        "Content-Type": "application/pdf",
+        "Content-Length": "110859",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 110859,
+      "sha256": "6a84f607a6ea683c124f6b01e57ebd9560614283bec17bd1d39320f414738bcf"
+    },
+    {
+      "file": "r7_issues.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1751000418_doc_331_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:08.730981+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1751000418_doc_331_0.pdf",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": "Tue, 18 Aug 2026 02:12:52 GMT",
+        "ETag": "\"6888f-65948d2fac880\"",
+        "Content-Type": "application/pdf",
+        "Content-Length": "428175",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 428175,
+      "sha256": "d59992fbc083dd5b007b644852976673c755bc5be68e96a2af0a34d277488d67"
+    },
+    {
+      "file": "r8_council_index.html",
+      "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/public_transport_institution/kyougikai_doumeikai/kasseikakyogikai/meeting_hold/page004983.html",
+      "retrieved_at_jst": "2026-10-15T18:58:08.730981+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/public_transport_institution/kyougikai_doumeikai/kasseikakyogikai/meeting_hold/page004983.html",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": null,
+        "ETag": null,
+        "Content-Type": "text/html",
+        "Content-Length": "25234",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 25234,
+      "sha256": "898af702a06e9358d573045da8d05eafd4d63c80351c0e0b24132d0b73ac438b"
+    },
+    {
+      "file": "r8_1_meeting.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1782697474_doc_331_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:08.929854+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1782697474_doc_331_0.pdf",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": "Mon, 31 Aug 2026 02:56:29 GMT",
+        "ETag": "\"791d0-65a4ef2ee5ee8\"",
+        "Content-Type": "application/pdf",
+        "Content-Length": "496080",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 496080,
+      "sha256": "c2e6a30b83678b9855d58e6ddd5125262e402f6fa3a9a29323b9b363fe92a6ce"
+    },
+    {
+      "file": "r8_1_minutes.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1782697478_doc_331_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:08.930219+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1782697478_doc_331_0.pdf",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": "Mon, 31 Aug 2026 02:56:29 GMT",
+        "ETag": "\"38839-65a4ef2eeeb88\"",
+        "Content-Type": "application/pdf",
+        "Content-Length": "231481",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 231481,
+      "sha256": "b49ecc1b02849cd4435543407cf8a06ef69600e2851d77e0037e23acafd8d241"
+    },
+    {
+      "file": "r8_2_explanation.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1787882123_doc_331_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:08.947557+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1787882123_doc_331_0.pdf",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": "Mon, 31 Aug 2026 02:56:30 GMT",
+        "ETag": "\"1dae1-65a4ef2fa3240\"",
+        "Content-Type": "application/pdf",
+        "Content-Length": "121569",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 121569,
+      "sha256": "3802f10f2c0280f03fd4637ded1cc27238020d081643926e8484e61de4b24d5c"
+    },
+    {
+      "file": "r8_2_result.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1787882133_doc_331_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:08.988561+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1787882133_doc_331_0.pdf",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": "Mon, 31 Aug 2026 02:56:30 GMT",
+        "ETag": "\"1fafb-65a4ef2fabee0\"",
+        "Content-Type": "application/pdf",
+        "Content-Length": "129787",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 129787,
+      "sha256": "b4541ab1fe718d0a8560b385ef4e7505eded426c1dc7d55dbd756fdaa5a9b1d2"
+    },
+    {
+      "file": "h27_council_index.html",
+      "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/public_transport_institution/kyougikai_doumeikai/kasseikakyogikai/meeting_hold/h27_kyougikai_kaisaijoukyou.html",
+      "retrieved_at_jst": "2026-10-15T18:58:09.014774+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/public_transport_institution/kyougikai_doumeikai/kasseikakyogikai/meeting_hold/h27_kyougikai_kaisaijoukyou.html",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": null,
+        "ETag": null,
+        "Content-Type": "text/html",
+        "Content-Length": "23353",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 23353,
+      "sha256": "d248f8b1b63edd2bc32842f6174a153998517fca31a23972b92d28d73f942334"
+    },
+    {
+      "file": "disaster_agreements.html",
+      "url": "https://www.city.joso.lg.jp/kurashi_gyousei/jigyousha/saigaijiouen/saigaijiouenkyoutei.html",
+      "retrieved_at_jst": "2026-10-15T18:58:09.121877+09:00",
+      "method": "direct HTTPS GET urllib; no-cache requested",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/kurashi_gyousei/jigyousha/saigaijiouen/saigaijiouenkyoutei.html",
+      "headers": {
+        "Date": "Thu, 15 Oct 2026 09:58:09 GMT",
+        "Last-Modified": null,
+        "ETag": null,
+        "Content-Type": "text/html",
+        "Content-Length": "44257",
+        "Age": null,
+        "Cache-Control": null,
+        "Via": "JSTCDN"
+      },
+      "bytes": 44257,
+      "sha256": "cc833d6fc98fa27f38f46e2640a7567249853449b7122d81815ad886416fee63"
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "runs": [
+    {
+      "run_id": "nv26102701",
+      "cell_id": "fixed_reference_r0_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-27T10:09:07.258002+09:00",
+      "end": "2026-10-27T10:21:50.887421+09:00",
+      "compute_elapsed_sec": 763.629419,
+      "manifest_sha256": "e5c47f3343d30c5a71a4da2fda0b8410d193e5394a2b681eb5f5dafe5d65b96f"
+    },
+    {
+      "run_id": "nv26102702",
+      "cell_id": "fixed_reference_u05_r1_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-27T10:57:17.572000+09:00",
+      "end": "2026-10-27T11:10:58.371094+09:00",
+      "compute_elapsed_sec": 820.799094,
+      "manifest_sha256": "6f3e36e09851f48cd168d32effc96f28dbc21ddfad6b34d3a6e60a2fbbebab5c"
+    },
+    {
+      "run_id": "nv26102703",
+      "cell_id": "fixed_reference_u05_r2p900_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-27T15:36:38.529478+09:00",
+      "end": "2026-10-27T15:48:32.014585+09:00",
+      "compute_elapsed_sec": 713.485107,
+      "manifest_sha256": "ce3a1a6bb364ca889b941ef66871339d1f854f6ef939d892323c5fd09ebac435"
+    },
+    {
+      "run_id": "nv26102704",
+      "cell_id": "fixed_reference_u05_r2p0_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-27T19:33:52.701233+09:00",
+      "end": "2026-10-27T19:45:22.011824+09:00",
+      "compute_elapsed_sec": 689.310591,
+      "manifest_sha256": "4961244e642b44a164aefe3b24691f90eccb775d0665e442216765d6b1895fd4"
+    }
+  ],
+  "operations": [
+    {
+      "command": "validate",
+      "end": "2026-10-24T22:44:47.456326+09:00",
+      "duration_sec": 44.67798989999574,
+      "inferred_start": "2026-10-24T22:44:02.778336+09:00",
+      "run_id": "nt261024c_c29",
+      "status": "INVALID"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:18:15.142936+09:00",
+      "duration_sec": 46.058855000010226,
+      "inferred_start": "2026-10-24T23:17:29.084081+09:00",
+      "run_id": "ns261024e_01",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:19:43.367561+09:00",
+      "duration_sec": 40.87400319997687,
+      "inferred_start": "2026-10-24T23:19:02.493558+09:00",
+      "run_id": "ns261024e_02",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:21:23.016003+09:00",
+      "duration_sec": 40.14917799999239,
+      "inferred_start": "2026-10-24T23:20:42.866825+09:00",
+      "run_id": "ns261024e_03",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:22:54.410275+09:00",
+      "duration_sec": 38.93957180000143,
+      "inferred_start": "2026-10-24T23:22:15.470703+09:00",
+      "run_id": "ns261024e_04",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:24:20.935089+09:00",
+      "duration_sec": 37.03974489995744,
+      "inferred_start": "2026-10-24T23:23:43.895344+09:00",
+      "run_id": "ns261024e_05",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:25:49.156069+09:00",
+      "duration_sec": 38.648972299997695,
+      "inferred_start": "2026-10-24T23:25:10.507097+09:00",
+      "run_id": "ns261024e_06",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:27:18.719316+09:00",
+      "duration_sec": 39.14197260001674,
+      "inferred_start": "2026-10-24T23:26:39.577343+09:00",
+      "run_id": "ns261024e_07",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:28:43.000390+09:00",
+      "duration_sec": 38.09673359995941,
+      "inferred_start": "2026-10-24T23:28:04.903656+09:00",
+      "run_id": "ns261024e_08",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:30:17.232882+09:00",
+      "duration_sec": 39.84026609995635,
+      "inferred_start": "2026-10-24T23:29:37.392616+09:00",
+      "run_id": "ns261024e_09",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:31:48.653401+09:00",
+      "duration_sec": 38.747919900051784,
+      "inferred_start": "2026-10-24T23:31:09.905481+09:00",
+      "run_id": "ns261024e_10",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:33:17.387241+09:00",
+      "duration_sec": 38.97296600003028,
+      "inferred_start": "2026-10-24T23:32:38.414275+09:00",
+      "run_id": "ns261024e_11",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:34:44.698789+09:00",
+      "duration_sec": 37.76223699998809,
+      "inferred_start": "2026-10-24T23:34:06.936552+09:00",
+      "run_id": "ns261024e_12",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:36:09.610533+09:00",
+      "duration_sec": 37.33438820001902,
+      "inferred_start": "2026-10-24T23:35:32.276145+09:00",
+      "run_id": "ns261024e_13",
+      "status": "PASS"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-24T23:37:35.152311+09:00",
+      "duration_sec": 36.87604920001468,
+      "inferred_start": "2026-10-24T23:36:58.276262+09:00",
+      "run_id": "ns261024e_14",
+      "status": "PASS"
+    },
+    {
+      "command": "start-next",
+      "end": "2026-10-27T10:08:46.055384+09:00",
+      "duration_sec": 17.534551899996586,
+      "inferred_start": "2026-10-27T10:08:28.520832+09:00",
+      "run_id": "nv26102701",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-27T10:21:52.545512+09:00",
+      "duration_sec": 786.2354071999434,
+      "inferred_start": "2026-10-27T10:08:46.310105+09:00",
+      "run_id": "nv26102701",
+      "status": "COMPLETED"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-27T10:39:08.087584+09:00",
+      "duration_sec": 982.0104644999374,
+      "inferred_start": "2026-10-27T10:22:46.077120+09:00",
+      "run_id": "nv26102701",
+      "status": "PASS"
+    },
+    {
+      "command": "record",
+      "end": "2026-10-27T10:54:15.959771+09:00",
+      "duration_sec": 906.1569406000199,
+      "inferred_start": "2026-10-27T10:39:09.802830+09:00",
+      "run_id": "nv26102701",
+      "status": "RECORDED"
+    },
+    {
+      "command": "start-next",
+      "end": "2026-10-27T10:57:01.174903+09:00",
+      "duration_sec": 16.85749309998937,
+      "inferred_start": "2026-10-27T10:56:44.317410+09:00",
+      "run_id": "nv26102702",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-27T11:10:59.899305+09:00",
+      "duration_sec": 838.556449900032,
+      "inferred_start": "2026-10-27T10:57:01.342855+09:00",
+      "run_id": "nv26102702",
+      "status": "COMPLETED"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-27T11:28:26.509942+09:00",
+      "duration_sec": 951.9224355999613,
+      "inferred_start": "2026-10-27T11:12:34.587506+09:00",
+      "run_id": "nv26102702",
+      "status": "PASS"
+    },
+    {
+      "command": "record",
+      "end": "2026-10-27T11:42:36.929663+09:00",
+      "duration_sec": 848.5015362000559,
+      "inferred_start": "2026-10-27T11:28:28.428127+09:00",
+      "run_id": "nv26102702",
+      "status": "RECORDED"
+    },
+    {
+      "command": "start-next",
+      "end": "2026-10-27T15:36:21.632339+09:00",
+      "duration_sec": 16.34984119993169,
+      "inferred_start": "2026-10-27T15:36:05.282498+09:00",
+      "run_id": "nv26102703",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-27T15:48:33.140359+09:00",
+      "duration_sec": 731.2900733000133,
+      "inferred_start": "2026-10-27T15:36:21.850286+09:00",
+      "run_id": "nv26102703",
+      "status": "COMPLETED"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-27T18:17:15.657541+09:00",
+      "duration_sec": 1515.8406522000441,
+      "inferred_start": "2026-10-27T17:51:59.816889+09:00",
+      "run_id": "nv26102703",
+      "status": "PASS"
+    },
+    {
+      "command": "record",
+      "end": "2026-10-27T19:17:09.009258+09:00",
+      "duration_sec": 3585.9945847000927,
+      "inferred_start": "2026-10-27T18:17:23.014673+09:00",
+      "run_id": "nv26102703",
+      "status": "RECORDED"
+    },
+    {
+      "command": "start-next",
+      "end": "2026-10-27T19:33:36.885322+09:00",
+      "duration_sec": 14.101191900088452,
+      "inferred_start": "2026-10-27T19:33:22.784130+09:00",
+      "run_id": "nv26102704",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-27T19:45:23.219502+09:00",
+      "duration_sec": 706.0414424999617,
+      "inferred_start": "2026-10-27T19:33:37.178060+09:00",
+      "run_id": "nv26102704",
+      "status": "COMPLETED"
+    }
+  ],
+  "errors": [],
+  "note": "Elapsed includes sleep/interruptions; inferred starts use command-end minus duration. Missing times remain null."
+}

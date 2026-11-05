@@ -1,0 +1,75 @@
+{
+  "at_jst": "2026-10-28T07:49:18.255830+09:00",
+  "action": "detailed_same_core_monitor",
+  "run_id": "nv26102809",
+  "cell_id": "facility_first_u05_r1_seed23423",
+  "pid": 28520,
+  "skill_check": {
+    "run_id": "nv26102809",
+    "status": "RUNNING",
+    "pid_alive": true,
+    "progress": {
+      "at_jst": "2026-10-28T07:49:14.288991+09:00",
+      "run_id": "nv26102809",
+      "time_sec": 1020.0,
+      "end_sec": 21600,
+      "wall_sec": 63.468619400053285,
+      "counts": {
+        "steps": 2040,
+        "controller_ticks": 1021,
+        "snapshots": 18,
+        "teleports": 0,
+        "collisions": 0,
+        "transition_rows": 43004,
+        "closed_entry_rows": 0,
+        "ambiguous_transitions": 0,
+        "candidate_rows": 174,
+        "dispatch_cycles": 18,
+        "missing_vehicle_subscriptions": 0,
+        "missing_person_subscriptions": 0,
+        "reentry_pending_frames": 0,
+        "departure_pending_frames": 72,
+        "snapshot_actor_rows": 3152
+      },
+      "people_states": {
+        "not_ready": 10303,
+        "admitted": 684,
+        "travelling_car": 428,
+        "capacity_rejected": 157,
+        "travelling_walk": 48,
+        "no_route": 190,
+        "boarding": 3,
+        "waiting_origin": 1,
+        "no_origin_connection": 88,
+        "walk_limit": 9,
+        "initial_or_current_closed": 54
+      },
+      "request_states": {
+        "cancelled_timeout": 3,
+        "boarding": 3,
+        "pending": 1
+      }
+    },
+    "error": null
+  },
+  "input_population_rows": 11965,
+  "integrity": {
+    "input_manifest": true,
+    "archived_READY": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "anomaly_flags": [],
+  "manifest_sha256_at_observation": "ff17d012e9277455001f74c5d6a1873d3a0021719afc24b8ad9d801c4482fa04",
+  "current_run_bytes": 40769274,
+  "free_bytes": 248917278720,
+  "native_error_lines": 0,
+  "native_log_bytes": 0,
+  "driver_stderr_bytes": 0,
+  "monitor_source_sha256": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+  "formal_validation_or_adoption": false,
+  "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+}

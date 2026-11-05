@@ -1,0 +1,13 @@
+***Starting server on port 56775 ***
+Loading net-file from '..\..\inputs\registered01\bounded.net.xml' ... done (3615ms).
+Loading route-files incrementally from 'types.rou.xml'
+Loading done.
+Simulation version 1.26.0-jdrt-choice-latpreserve-93d3ca0c-ucrt12-static-zlib1213-a08 started with time: 0.00.
+Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type3_0005' walking from edge '4636#3'. Using edge end instead.
+Warning: Invalid departPos 33.03 given for person 'b_origin_0285_type3_0005' walking from edge '4636#3'. Using edge end instead.
+Warning: Invalid route replacement for vehicle 'choice_drt_0'. No connection between edge '152#2' and edge '152#3'.
+Error: Answered with error to command 0xc4: Route replacement failed for vehicle 'choice_drt_0' (No connection between edge '152#2' and edge '152#3'.).
+Simulation ended at time: 3814.00.
+Reason: TraCI requested termination.
+DijkstraRouter answered 11716 queries and explored 5.94 edges on average.
+DijkstraRouter spent 0.13s answering queries (0.01ms on average).

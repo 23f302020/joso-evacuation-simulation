@@ -1,0 +1,83 @@
+{
+  "at_jst": "2026-10-20T22:24:14.071748+09:00",
+  "action": "selected_native_pair_point_observation",
+  "state_snapshot": "06_研究結果/jdrt/goal_20261017/audit_history/native_guard_trace_contract_20261020/pair_d_state_20261020T222414071789.json",
+  "state_sha256": "71aa01159db2cd5290c6439f38068d23b3acb08f798af35e4ae9e147c03b9639",
+  "status": "RUNNING",
+  "active_label": "np261020d_c26_validate",
+  "active_popen_exit_code": 0,
+  "owner": {
+    "pid": 29460,
+    "expected": {
+      "ProcessId": 29460,
+      "ParentProcessId": 28704,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020d --patched-id np261020d",
+      "CreationDate": 1792501948039
+    },
+    "identity": "matched",
+    "observed_cim": {
+      "ProcessId": 29460,
+      "ParentProcessId": 28704,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020d --patched-id np261020d",
+      "CreationDate": 1792501948039
+    }
+  },
+  "validation_outputs": {
+    "nc261020d_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "core_adoption_permitted": false
+    },
+    "np261020d_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "core_adoption_permitted": false
+    },
+    "np261020d_c26": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "core_adoption_permitted": false
+    }
+  },
+  "independent_monitor": {
+    "last_observed": "2026-10-20T13:24:12.540610+00:00",
+    "observation_age_sec": 9.642954587936401,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134369572183506590,
+      "pid": 25168
+    },
+    "monitor_identity_matches": true
+  },
+  "native_guard_contract": "06_研究結果/jdrt/goal_20261017/audit_history/native_guard_trace_contract_20261020/contract.json",
+  "native_entrypoint_source_evidence": "06_研究結果/jdrt/goal_20261017/audit_history/native_guard_trace_contract_20261020/source_entrypoints.json",
+  "scope": "point observation, not continuous coverage or acceptance",
+  "technical_ready": false,
+  "formal_adoption_created": false
+}

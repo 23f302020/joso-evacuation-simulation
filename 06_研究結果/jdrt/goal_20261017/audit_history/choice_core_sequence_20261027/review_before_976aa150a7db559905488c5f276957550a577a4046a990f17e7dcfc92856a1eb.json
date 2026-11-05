@@ -1,0 +1,56 @@
+{
+  "at_jst": "2026-10-27T18:41:08.766589+09:00",
+  "status": "PASS_SCOPED_ORCHESTRATION_HELPER_PENDING_FIRST_REAL_CELL",
+  "reviewer": "current parent chat; actual model/backend not independently verified",
+  "scope": "Local existing registered cell orchestration only, no new scientific implementation or result",
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_core_sequence.py": "e77427368838f6ddb60b0fed8f230e85dc8b8b4610b8024bba0c7d43da708b0c",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_core_sequence.py": "20a58ebff24177df6c5206262065964ab429d72f7993a2a89c5aae30ae2beb48",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "ae60980c80a334bf46897191c384cd0a18e9b8ef7ba4c2e6d79211a5769b2ecb"
+  },
+  "old_reference_sha256": "dcce6fb82bde4ec488fd8a44356aedbfdf4bf306a5a6e7525a596eb97906c655",
+  "old_reference": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/routine_operations_before_dcce6fb82bde4ec488fd8a44356aedbfdf4bf306a5a6e7525a596eb97906c655.md",
+  "first_RED": {
+    "log": "choice_core_sequence_RED_20261027.log",
+    "tests": 7,
+    "failures": 21,
+    "cause": "missing reject gates and incorrect display-before-readback order; no collection/dependency failure"
+  },
+  "final_tests": {
+    "log": "choice_core_sequence_GREEN_goal_boundary_20261027.log",
+    "tests": 21,
+    "result": "PASS",
+    "contains_actual_isolated_python_child_exit_7": true,
+    "native_or_research_test": false
+  },
+  "read_only_observer_probe": "read_only_monitor_probe_final.json",
+  "review_findings_fixed": [
+    "Bind current daemon source/process identity as well as freshness and exact target command/creation",
+    "Completed manifest is not OS process exit; reuse existing Windows handle/FILETIME probe and stop on unknown/reused PID",
+    "Require exact started cell and unique current-registration ordered accepted prefix",
+    "Never run display writers before successful original terminal record7 readback; failure stops sequence without retry",
+    "Public invocation is exactly one cell; parent checks the real goal API before each next invocation"
+  ],
+  "common5_current": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "common5_changed": false,
+  "input_or_PAP_or_native_changed": false,
+  "first_actual_sequence_completed": false,
+  "limitations": [
+    "Artificial orchestration tests and one read-only existing-target probe do not prove future native outcomes or all70",
+    "Any failure preserves a possibly live child; no automatic replay/recovery",
+    "07 monitors cores; follow sequence owner through its original tool session/state",
+    "Every invocation is exactly one cell; fresh parent goal API check before the next. No background multi-cell continuation."
+  ],
+  "goal_boundary_RED": {
+    "log": "choice_core_sequence_RED_goal_boundary_20261027.log",
+    "tests": 21,
+    "failures": 1,
+    "cause": "multi-cell invocation was accepted without a fresh parent goal check"
+  }
+}

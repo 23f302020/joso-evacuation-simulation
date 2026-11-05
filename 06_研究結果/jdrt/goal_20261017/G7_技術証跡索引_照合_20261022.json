@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-22T15:11:39.261166+09:00",
+  "scope": "bounded_evidence_index_not_new_native_or_core_test",
+  "document_sha256": "7169ff0b62520e0a4700121394ca1345447a472111acff1c5565c1672afacce1",
+  "sources": {
+    "audit_history/native_internal_fixture_20261021/actual_native_audit_v2.json": "cf73216ab77c891e874452c6f464d8541359134011316a0df5d68c27a143698a",
+    "audit_history/native_internal_fixture_20261021/source_reachability_review.json": "c60c9ac8411b8bc448dec33e34e128dd33c8ae1456fcd3974cd7a5fc8684b071",
+    "audit_history/native_guard_fragment_20261021/contract01/report.json": "c8a3588918b04fc07c9eabb7d94292f7b05c13c9ec9789d29ea853d7d17fdd05",
+    "正式検証器_表会計候補_20261022T144514.json": "dfbd4bdf1e415ab8fcaa06be56f91092f2c0b4ecaea16ef70beccbbb0833834e",
+    "ns261022c_all14_readback.json": "d14e75e398b2f84e5c7f6991b61b76870584862722249217a83bcddba23a7830"
+  },
+  "links_checked": 5,
+  "new_native_tests_executed": false,
+  "research_adoption_created": false,
+  "native_false_guard_observed": false,
+  "review": "Current Python evidence is separated from preserved same-native regression and artificial C++ fragment. No universal coverage or physical safety claim."
+}

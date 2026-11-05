@@ -1,0 +1,37 @@
+{
+  "at_jst": "2026-10-27T23:30:47.944750+09:00",
+  "status": "PASS_SCOPED_OFFLINE_COVERAGE_HELPER",
+  "reviewer": "current parent chat; actual model/backend not independently verified",
+  "scope": "Observation interval math and byte-preserving new local evidence snapshots only. No scientific calculation or adoption behavior.",
+  "source_sha256": {
+    ".agents/skills/python-performance-optimization/scripts/measurement_coverage.py": "1c0f6e91a4034228c447533a5c6c6f4283a10d6e4e2cf946f7c9d9f7c4f8bc25",
+    ".agents/skills/python-performance-optimization/scripts/test_measurement_coverage.py": "db36780ca86abf4862bc93d18f3d07ad0e3bb847603cc938a4b7e33d8029719b",
+    ".agents/skills/python-performance-optimization/SKILL.md": "907c0346a8c92a648b35ced9b14222f3ef09ecb0f6dfdbdfb0afeb083aac8bce"
+  },
+  "old_skill": "06_研究結果/jdrt/goal_20261017/audit_history/measurement_coverage_20261027/SKILL_before_c933a76030ef04d9bad4662c5b1f8941be5119e677e983b815fe93ed00044200.md",
+  "red": {
+    "log": "06_研究結果/jdrt/goal_20261017/measurement_coverage_RED_20261027.log",
+    "tests": 11,
+    "failures": 7,
+    "cause": "functional contracts against new zero-coverage placeholder, not import/dependency failure"
+  },
+  "green": {
+    "log": "06_研究結果/jdrt/goal_20261017/measurement_coverage_GREEN_snapshot_20261027.log",
+    "tests": 22,
+    "new_contracts": 16,
+    "existing_collector_contracts": 6
+  },
+  "findings_requiring_fix": [],
+  "checked": [
+    "PID creation/timezones, failed samples and >120sec gaps never interpolated",
+    "CPU nonfinite/reset rejected and overlapping datasets unioned",
+    "Changed stage provenance refused; caller semantic binding remains explicit",
+    "New operational output only, input byte immutability, no overwrite or research mutation",
+    "Partial JSONL preserved without success report; live state/sample pair not claimed atomic"
+  ],
+  "limitations": [
+    "No full-stage-B verdict, scientific result, causality, speedup or exact memory peak",
+    "Caller supplies and reviews stage semantics; SHA identity alone is not semantic truth",
+    "No new research/native run; current sequence and collector stay with their original owners"
+  ]
+}

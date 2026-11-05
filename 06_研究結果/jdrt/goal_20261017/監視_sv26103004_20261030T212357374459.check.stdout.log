@@ -1,0 +1,54 @@
+{
+  "run_id": "sv26103004",
+  "status": "RUNNING",
+  "pid_alive": true,
+  "progress": {
+    "at_jst": "2026-10-30T21:23:57.161575+09:00",
+    "run_id": "sv26103004",
+    "time_sec": 2820.0,
+    "end_sec": 21600,
+    "wall_sec": 357.6415556999855,
+    "counts": {
+      "steps": 5640,
+      "controller_ticks": 2821,
+      "snapshots": 48,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 94240,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 313,
+      "dispatch_cycles": 48,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 5,
+      "departure_pending_frames": 151,
+      "snapshot_actor_rows": 9397
+    },
+    "people_states": {
+      "not_ready": 7374,
+      "capacity_rejected": 344,
+      "no_origin_connection": 220,
+      "admitted": 381,
+      "travelling_walk": 179,
+      "onboard": 1,
+      "travelling_car": 205,
+      "no_route": 273,
+      "waiting_origin": 14,
+      "boundary_exit": 2673,
+      "boarding": 1,
+      "walk_limit": 177,
+      "initial_or_current_closed": 122,
+      "alighting": 1
+    },
+    "request_states": {
+      "cancelled_timeout": 11,
+      "served": 6,
+      "alighting": 1,
+      "boarding": 1,
+      "pending": 14,
+      "onboard": 1
+    }
+  },
+  "error": null
+}

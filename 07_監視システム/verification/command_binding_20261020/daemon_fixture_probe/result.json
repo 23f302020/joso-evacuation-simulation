@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-20T22:38:29.117448+09:00",
+  "status": "ARTIFICIAL_WINDOWS_DAEMON_SUITE_CHILD_BINDING_VERIFIED",
+  "monitor_pid": 24080,
+  "artificial_child_pid": 19984,
+  "source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+  "live_binding": {
+    "kind": "verified_fixture_suite",
+    "command_target_id": "suite",
+    "parent_manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\command_binding_20261020\\daemon_fixture_probe\\technical\\suite\\manifest.json",
+    "parent_sha256": "e47c503197a33ff44200aab38e08b3eb446da87d2bcb27a8edd04318f65c6fad",
+    "factory_sha256": "2f269161336427f2f982fdcdbbc8d7aad19d5a4a15eae4cf7d323c5c18312de7",
+    "input_sha256": "c2b25ed5c14b617fb859693d434ce13f01ae25c62cf3a19d23c9fd527ab07080",
+    "fixture_case": "first"
+  },
+  "exit_event_count": 2,
+  "event_kinds": [
+    "completed",
+    "completed"
+  ],
+  "ai_or_notification_enabled": false,
+  "research_process_started": false,
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

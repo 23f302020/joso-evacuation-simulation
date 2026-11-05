@@ -1,0 +1,51 @@
+{
+  "at_jst": "2026-10-27T23:30:10.802921+09:00",
+  "run_id": "nv26102704",
+  "runs": [
+    {
+      "run_id": "nv26102704",
+      "cell_id": "fixed_reference_u05_r2p0_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-27T19:33:52.701233+09:00",
+      "end": "2026-10-27T19:45:22.011824+09:00",
+      "compute_elapsed_sec": 689.310591,
+      "manifest_sha256": "4961244e642b44a164aefe3b24691f90eccb775d0665e442216765d6b1895fd4"
+    }
+  ],
+  "operations": [
+    {
+      "command": "start-next",
+      "end": "2026-10-27T19:33:36.885322+09:00",
+      "duration_sec": 14.101191900088452,
+      "inferred_start": "2026-10-27T19:33:22.784130+09:00",
+      "run_id": "nv26102704",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-27T19:45:23.219502+09:00",
+      "duration_sec": 706.0414424999617,
+      "inferred_start": "2026-10-27T19:33:37.178060+09:00",
+      "run_id": "nv26102704",
+      "status": "COMPLETED"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-27T22:59:58.370133+09:00",
+      "duration_sec": 988.7127678999677,
+      "inferred_start": "2026-10-27T22:43:29.657365+09:00",
+      "run_id": "nv26102704",
+      "status": "PASS"
+    },
+    {
+      "command": "record",
+      "end": "2026-10-27T23:16:04.063614+09:00",
+      "duration_sec": 962.5295436999295,
+      "inferred_start": "2026-10-27T23:00:01.534070+09:00",
+      "run_id": "nv26102704",
+      "status": "RECORDED"
+    }
+  ],
+  "errors": [],
+  "scope": "Only completed current-v3 same normal cell; no old registration or research result comparison"
+}

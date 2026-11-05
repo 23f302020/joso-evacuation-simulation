@@ -1,0 +1,75 @@
+--- jdrt_realtime_choice_validate.py.before
++++ jdrt_realtime_choice_validate.py
+@@ -770,7 +770,7 @@
+             routes[vid][0] = [input_manifest['depot_edge']]
+     starts = {vid: 0. for vid, v in vehicles.items() if v['kind'] == 'drt'}
+     ends, removal_times = {}, set()
+-    reroute_times = set()
++    reroute_events = defaultdict(list)
+     for e in events:
+         if e['event'] == 'private_departure_requested':
+             starts[e['vehicle_id']] = e['time_sec']
+@@ -780,7 +780,7 @@
+             ends[e['actor_id']] = e['time_sec']
+             removal_times.add((e['actor_id'], e['time_sec']))
+         elif e['event'] == 'walk_plan' and e['stage'] == 'reroute':
+-            reroute_times.add((e['person_id'], e['time_sec']))
++            reroute_events[(e['person_id'], e['time_sec'])].append(e)
+     trips_list = [r.attrib for r in ET.parse(folder / 'tripinfo.xml').getroot().findall('tripinfo')]
+     trips = {r['id']: r for r in trips_list}
+     for vid, v in vehicles.items():
+@@ -868,10 +868,12 @@
+                     or not math.isfinite(speed) or not 0 <= speed <= maximum + 1e-6):
+                 fail('actor_walk_integral_and_speed', [now, actor])
+             integral[actor] += speed * manifest['step_sec']
+-            if previous and (actor, float(previous['time_sec'])) in reroute_times:
+-                displacement = math.dist((float(previous['x']), float(previous['y'])), (float(row['x']), float(row['y'])))
+-                if displacement > maximum * manifest['step_sec'] + 1e-7:
+-                    fail('reroute_position_continuity', [now, actor, displacement])
++            if previous and (actor, float(previous['time_sec'])) in reroute_events:
++                replans = reroute_events[(actor, float(previous['time_sec']))]
++                # Native striping reports longitudinal speed and moves laterally
++                # separately. The next-step XY norm is not that speed integral.
++                if len(replans) != 1 or not walk_position_receipts(replans[0], previous):
++                    fail('reroute_position_continuity', [now, actor, 'same-call native receipts'])
+         elif actor in vehicles and kind == vehicles[actor]['kind']:
+             if not math.isfinite(float(row['decel_mps2'])) or float(row['decel_mps2']) <= 0:
+                 fail('actor_observation_state', [now, actor, 'invalid_deceleration'])
+@@ -978,6 +980,28 @@
+             and math.isclose(getter, min(type_maximum, desired * factor), rel_tol=1e-12, abs_tol=1e-12))
+ 
+ 
++def walk_position_receipts(event, actor):
++    """Exact same-call continuity, anchored to the pre-control actor observation."""
++    receipts = event.get('replacement_receipts', [])
++    try:
++        if not actor or len(receipts) != 2 or float(actor['time_sec']) != event['time_sec']:
++            return False
++        for receipt in receipts:
++            before, after = receipt['before'], receipt['after']
++            if any(before[key] != after[key] for key in ('edge_id', 'lane_position_m', 'xy')):
++                return False
++            for snapshot in (before, after):
++                if (snapshot['edge_id'] != actor['road_id'] or len(snapshot['xy']) != 2
++                        or not math.isfinite(snapshot['lane_position_m'])
++                        or not math.isclose(snapshot['lane_position_m'], float(actor['lane_position_m']), rel_tol=0, abs_tol=1e-7)
++                        or any(not math.isfinite(value) or not math.isclose(value, float(actor[key]), rel_tol=0, abs_tol=1e-7)
++                               for value, key in zip(snapshot['xy'], ('x', 'y')))):
++                    return False
++        return receipts[0]['after'] == receipts[1]['before']
++    except (KeyError, TypeError, ValueError):
++        return False
++
++
+ def walk_replacement_contract(event, actor, old_route):
+     """Check native receipts; the caller audits the installed-plan recurrence.
+ 
+@@ -985,7 +1009,7 @@
+     junction estimates. Its live length is not the prior installed budget plan.
+     """
+     receipts = event.get('replacement_receipts', [])
+-    if not actor or len(receipts) != 2 or float(actor['time_sec']) != event['time_sec']:
++    if not walk_position_receipts(event, actor):
+         return False
+     current = actor['road_id']
+     if current not in old_route or not event['route'] or event['route'][0] != current:

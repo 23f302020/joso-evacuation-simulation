@@ -1,0 +1,60 @@
+{
+  "at_jst": "2026-10-29T20:26:03.103393+09:00",
+  "status": "REGISTERED_V5_INPUTS_INDEPENDENTLY_VALIDATED_NOT_READY",
+  "transaction": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/transaction.json",
+  "transaction_sha256": "08143d46519d4797a87bffa501290d335ef90bcab790676d874c2f153926ff5c",
+  "registration_id": "choice_shared_stopindex_v5_20261029",
+  "config_sha256": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "all70_cells_and_scientific_values_unchanged": true,
+  "input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/inputs/registered01/manifest.json",
+  "input_manifest_sha256": "2fadb08c11698d490926adc34e7a31c7578903c28d9ab9ca1d6b2daa349b7a20",
+  "all_input_artifacts_byte_identical_to_v4": true,
+  "input_artifacts": 20,
+  "source_sha256_current": true,
+  "independent_input_checks": 28,
+  "bundles": {
+    "control": {
+      "manifest": "04_プログラム/output/sumo/toolchains/native_ctl_si29a/toolchain.json",
+      "manifest_sha256": "8fc615c82ca284c4f5ff94e808e39f2fa974cb0ef0d76933a2b79373f33cdf98",
+      "files": 237,
+      "all_file_sha256_verified": true,
+      "provenance_exact_copy": true,
+      "binary_sha256": {
+        "sumo": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+        "netconvert": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4"
+      },
+      "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/control_si29a_manifest_verification.json",
+      "fresh_import_report_sha256": "827a12be264e5ad21d3316f7f90739f7aae31b41901444a54a6d652f718aae70"
+    },
+    "patched": {
+      "manifest": "04_プログラム/output/sumo/toolchains/native_lat_si29a/toolchain.json",
+      "manifest_sha256": "9441822d02fe1a068ade0d24aade92ba4228e13d53a3c12edb229cdc80607669",
+      "files": 237,
+      "all_file_sha256_verified": true,
+      "provenance_exact_copy": true,
+      "binary_sha256": {
+        "sumo": "08019a104aaafd1de60ec43be3a06611575c06c7150f1ed7a92d8a587951c6cb",
+        "netconvert": "eeb3318a4e289fee098fa96fc07f0a16a84de8466ace28db260b30553a24239a"
+      },
+      "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/selected_si29a_manifest_verification.json",
+      "fresh_import_report_sha256": "7db7c5bc7ea97392d4fe389e202450e018676db3b3ac7081f0d6d4f5b0e95ab0"
+    }
+  },
+  "formal_cells": 0,
+  "core_running": 0,
+  "technical_ready": false,
+  "original_package_session": 25180,
+  "original_package_exit_code": 0,
+  "original_import_verify_session": 69728,
+  "original_import_verify_exit_code": 0,
+  "observation_limit": "Completion handle and manifest observed at20:19; no continuous observation or invented finish time for16:39-20:19",
+  "input_validation_stdout_relocation": "Initial stdout was redirected to one named parent-directory file; moved into application01 after original1050 exit0. No input or validation result changed.",
+  "next": "New same-source native pair/stop-index guards, full controller suite/audit/all14/new preflight/G6/capacity/07 before core"
+}

@@ -1,0 +1,227 @@
+--- choice_record_readback.before.py
++++ .agents/skills/joso-jdrt-runner/scripts/choice_record_readback.py
+@@ -15,7 +15,7 @@
+               'movement_events', 'native_logs', 'native_fixture_boundaries'}
+ 
+ 
+-def audit(root, run_id):
++def audit(root, run_id, recovery_operation=None):
+     root = Path(root).resolve()
+     require(re.fullmatch(r'[A-Za-z0-9_-]{1,40}', run_id), 'Simple existing run ID required')
+     cfg = read(root / CONFIG)
+@@ -23,6 +23,37 @@
+     workspace = local(root, cfg['workspace'])
+     operation = workspace / 'driver_logs' / (run_id + '.finish')
+     state = read(operation / 'operation.json')
++    original_state = state
++    record_operation = operation
++    diagnosis = None
++    if recovery_operation is not None:
++        recovery_operation = Path(recovery_operation).resolve()
++        require(recovery_operation.is_relative_to(local(root, '06_研究結果/jdrt/goal_20261017')),
++                'Recovery evidence must be local goal metadata')
++        recovered = read(recovery_operation)
++        require(recovered.get('kind') == 'explicit_orphan_precommit_record_recovery_v1'
++                and recovered.get('status') == 'RECORDED_VERIFIED' and recovered.get('run_id') == run_id
++                and recovered.get('phase') == 'status' and recovered.get('record_exit_code') == 0
++                and recovered.get('status_exit_code') == 0, 'Recovery not terminal/recorded')
++        require(local(root, recovered['original_operation']) == operation / 'operation.json'
++                and digest(operation / 'operation.json') == recovered['original_operation_sha256'],
++                'Original interrupted operation changed')
++        commands = state.get('commands', [])
++        require(state['run_id'] == run_id and state['status'] == 'RUNNING' and state['phase'] == 'record'
++                and state['record_attempted'] is True and state['formal_record_result'] is None
++                and [c['command'] for c in commands] == ['check', 'validate']
++                and [c['status'] for c in commands] == ['COMPLETED', 'PASS']
++                and all(c['run_id'] == run_id for c in commands)
++                and state['config_sha256'] == recovered['config_sha256']
++                and state['validation_report_sha256'] == recovered['validation_report_sha256'],
++                'Not the preserved precommit record interruption')
++        diagnosis_path = local(root, recovered['diagnosis'])
++        require(digest(diagnosis_path) == recovered['diagnosis_sha256'], 'Recovery diagnosis changed')
++        diagnosis = read(diagnosis_path)
++        require(diagnosis['status'] == 'ORPHAN_PRECOMMIT_RECORD_CONFIRMED'
++                and diagnosis['run_id'] == run_id, 'Recovery diagnosis identity differs')
++        record_operation = recovery_operation.parent
++        state = recovered
+     auxiliary_failure = state['status'] == 'FAILED_PRESERVED'
+     if auxiliary_failure:
+         commands = state.get('commands', [])
+@@ -52,6 +83,21 @@
+             text = parts[0]
+         require(text.count(marker) == 1, 'One current record marker required: ' + str(path))
+     ledger = [json.loads(s) for s in records[-1].read_text(encoding='utf-8-sig').splitlines() if s.strip()]
++    if diagnosis is not None:
++        previous_ledger = None
++        for path in records:
++            name = path.relative_to(root).as_posix()
++            before_sha = diagnosis['preserved_sha256'][name]
++            before = diagnosis_path.parent / 'before02' / (before_sha + path.suffix)
++            require(before.is_file() and digest(before) == before_sha, 'Preserved precommit bytes differ')
++            text = before.read_text(encoding='utf-8-sig')
++            if path == records[-1]:
++                previous_ledger = [json.loads(s) for s in text.splitlines() if s.strip()]
++            else:
++                require(marker not in text, 'Record marker already existed before recovery')
++        require(diagnosis['formal_rows_before'] == len(previous_ledger) == len(ledger) - 1
++                and previous_ledger == ledger[:-1] and ledger[-1]['run_id'] == run_id,
++                'Recovery changed the prior ledger prefix')
+     require(all(row['protocol'] == cfg['protocol'] and row['registration_id'] == cfg['registration_id']
+                 for row in ledger), 'Foreign ledger registration')
+     require(len({row['run_id'] for row in ledger}) == len(ledger)
+@@ -91,7 +137,7 @@
+         require(set(report['components']) == COMPONENTS
+                 and all(v['status'] == 'PASS' for v in report['components'].values()), 'Seven PASS components required')
+     require(original['components'] == formal['components'], 'Independent and record components differ')
+-    recorded = read(operation / 'record.stdout.log')
++    recorded = read(record_operation / 'record.stdout.log')
+     require(recorded['run_id'] == run_id and recorded['status'] == state['formal_record_result'],
+             'Dedicated record result differs')
+     transactions = list((workspace / 'record_transactions').glob(run_id + '_*/journal.json'))
+@@ -101,7 +147,7 @@
+             and journal['sha256_after'] == hashes, 'Committed seven-file journal differs')
+     if 'transaction' in recorded:
+         require(local(root, recorded['transaction']) == transactions[0].parent, 'Dedicated transaction differs')
+-    status = read(operation / 'status.stdout.log')
++    status = read(record_operation / 'status.stdout.log')
+     require(status['recorded_cells'] == len(ledger) and not any(status[k] for k in HOLDS),
+             'Finish status retains a hold')
+     return {'at_jst': datetime.now().astimezone().isoformat(), 'status': 'RECORD7_PRIMARY_READBACK_PASS',
+@@ -114,8 +160,11 @@
+             'formal_report_sha256': digest(formal_path), 'original_and_record_validation_components_differ': [],
+             'transaction': transactions[0].relative_to(root).as_posix(), 'transaction_sha256': digest(transactions[0]),
+             'finish_operation': (operation / 'operation.json').relative_to(root).as_posix(),
+-            'finish_operation_status': state['status'],
++            'finish_operation_status': original_state['status'],
+             'finish_auxiliary_failure_preserved': auxiliary_failure,
++            'precommit_interruption_preserved': recovery_operation is not None,
++            'recovery_operation': recovery_operation.relative_to(root).as_posix() if recovery_operation else None,
++            'recovery_operation_sha256': digest(recovery_operation) if recovery_operation else None,
+             'finish_operation_sha256': digest(operation / 'operation.json'), 'source_common5_current': True,
+             'all_status_holds_clear_at_finish': True, 'next_cell': status['next_cell'], 'next_start_performed': False}
+ 
+@@ -124,13 +173,15 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--project-root', type=Path, default=ROOT)
+     parser.add_argument('--run-id', required=True)
++    parser.add_argument('--recovery-operation', type=Path,
++                        help='Explicit terminal precommit recovery evidence; original finish remains unchanged')
+     parser.add_argument('--output', type=Path, required=True, help='Fresh metadata report; existing paths refused')
+     args = parser.parse_args()
+     root = args.project_root.resolve()
+     output = args.output.resolve()
+     goal = local(root, '06_研究結果/jdrt/goal_20261017')
+     require(output.is_relative_to(goal), 'Write metadata only inside the goal evidence folder')
+-    result = audit(args.project_root, args.run_id)
++    result = audit(args.project_root, args.run_id, args.recovery_operation)
+     with output.open('x', encoding='utf-8') as stream:
+         json.dump(result, stream, ensure_ascii=False, indent=2)
+         stream.write('\n')
+--- test_choice_record_readback.before.py
++++ .agents/skills/joso-jdrt-runner/scripts/test_choice_record_readback.py
+@@ -1,5 +1,6 @@
+ """Artificial metadata contracts, not SUMO or scientific acceptance tests."""
+ import copy
++import hashlib
+ import json
+ from pathlib import Path
+ import subprocess
+@@ -93,6 +94,98 @@
+         self.assertEqual(result.get('status'), 'RECORD7_PRIMARY_READBACK_PASS')
+         self.assertEqual(before, {p.relative_to(self.root).as_posix(): digest(p) for p in self.root.rglob('*') if p.is_file()})
+ 
++    def recovered_precommit(self):
++        self.recovery = self.root / '06_研究結果/jdrt/goal_20261017/recovery/recovery_operation.json'
++        self.recovery.parent.mkdir(parents=True)
++        for name in ('record.stdout.log', 'status.stdout.log'):
++            (self.recovery.parent / name).write_bytes((self.operation / name).read_bytes())
++        original = copy.deepcopy(self.state)
++        original.update(status='RUNNING', phase='record', formal_record_result=None, commands=[
++            {'command': 'check', 'status': 'COMPLETED', 'run_id': self.run},
++            {'command': 'validate', 'status': 'PASS', 'run_id': self.run,
++             'validation_report': 'workspace/independent.json'}])
++        self.dump('workspace/driver_logs/' + self.run + '.finish/operation.json', original)
++        self.put('workspace/driver_logs/' + self.run + '.finish/record.stdout.log', '')
++        preserved = {}
++        archive = self.recovery.parent / 'before02'
++        archive.mkdir()
++        for name in self.cfg['record_files']:
++            raw = b'' if name == 'ledger.jsonl' else b'previous document\n'
++            sha = hashlib.sha256(raw).hexdigest()
++            (archive / (sha + Path(name).suffix)).write_bytes(raw)
++            preserved[name] = sha
++        self.diagnosis = {'status': 'ORPHAN_PRECOMMIT_RECORD_CONFIRMED', 'run_id': self.run,
++                          'formal_rows_before': 0, 'preserved_sha256': preserved}
++        self.dump(self.recovery.parent.relative_to(self.root).as_posix() + '/diagnosis.json', self.diagnosis)
++        self.recovered = {**self.state, 'kind': 'explicit_orphan_precommit_record_recovery_v1',
++                          'phase': 'status', 'record_exit_code': 0, 'status_exit_code': 0,
++                          'original_operation': (self.operation / 'operation.json').relative_to(self.root).as_posix(),
++                          'original_operation_sha256': digest(self.operation / 'operation.json'),
++                          'diagnosis': (self.recovery.parent / 'diagnosis.json').relative_to(self.root).as_posix(),
++                          'diagnosis_sha256': digest(self.recovery.parent / 'diagnosis.json')}
++        self.dump(self.recovery.relative_to(self.root).as_posix(), self.recovered)
++
++    def test_explicit_recovered_record_preserves_original_interruption(self):
++        self.recovered_precommit()
++        before = {p.relative_to(self.root).as_posix(): digest(p) for p in self.root.rglob('*') if p.is_file()}
++        result = subject.audit(self.root, self.run, recovery_operation=self.recovery)
++        self.assertEqual(result['status'], 'RECORD7_PRIMARY_READBACK_PASS')
++        self.assertTrue(result['precommit_interruption_preserved'])
++        self.assertEqual(result['finish_operation_status'], 'RUNNING')
++        self.assertEqual(before, {p.relative_to(self.root).as_posix(): digest(p) for p in self.root.rglob('*') if p.is_file()})
++
++    def test_recovered_record_rejects_original_operation_changes(self):
++        self.recovered_precommit()
++        self.put('workspace/driver_logs/' + self.run + '.finish/operation.json', '{}')
++        with self.assertRaisesRegex(RuntimeError, 'Original interrupted operation changed'):
++            subject.audit(self.root, self.run, recovery_operation=self.recovery)
++
++    def test_recovered_record_rejects_incomplete_or_foreign_recovery(self):
++        self.recovered_precommit()
++        for field, value in [('status', 'RUNNING'), ('record_exit_code', 1), ('run_id', 'foreign'),
++                             ('formal_record_result', None), ('kind', 'ordinary_record')]:
++            with self.subTest(field=field):
++                changed = {**self.recovered, field: value}
++                self.dump(self.recovery.relative_to(self.root).as_posix(), changed)
++                with self.assertRaises(RuntimeError):
++                    subject.audit(self.root, self.run, recovery_operation=self.recovery)
++
++    def test_recovered_record_requires_preserved_precommit_bytes(self):
++        self.recovered_precommit()
++        ledger_sha = self.diagnosis['preserved_sha256']['ledger.jsonl']
++        (self.recovery.parent / 'before02' / (ledger_sha + '.jsonl')).write_bytes(b'changed')
++        with self.assertRaises(RuntimeError):
++            subject.audit(self.root, self.run, recovery_operation=self.recovery)
++
++    def test_recovered_record_still_rejects_changed_terminal_record(self):
++        self.recovered_precommit()
++        self.put('task.md', self.marker + '\nchanged\n')
++        with self.assertRaisesRegex(RuntimeError, 'Record bytes changed'):
++            subject.audit(self.root, self.run, recovery_operation=self.recovery)
++
++    def test_unfinished_original_never_passes_without_explicit_recovery(self):
++        self.recovered_precommit()
++        with self.assertRaisesRegex(RuntimeError, 'Finish not terminal/recorded'):
++            subject.audit(self.root, self.run)
++
++    def test_recovered_record_rejects_changed_diagnosis(self):
++        self.recovered_precommit()
++        self.put(self.recovered['diagnosis'], '{}')
++        with self.assertRaisesRegex(RuntimeError, 'Recovery diagnosis changed'):
++            subject.audit(self.root, self.run, recovery_operation=self.recovery)
++
++    def test_recovered_record_rejects_previous_marker(self):
++        self.recovered_precommit()
++        raw = self.marker.encode('utf-8')
++        sha = hashlib.sha256(raw).hexdigest()
++        (self.recovery.parent / 'before02' / (sha + '.md')).write_bytes(raw)
++        self.diagnosis['preserved_sha256']['task.md'] = sha
++        self.dump(self.recovered['diagnosis'], self.diagnosis)
++        self.recovered['diagnosis_sha256'] = digest(self.root / self.recovered['diagnosis'])
++        self.dump(self.recovery.relative_to(self.root).as_posix(), self.recovered)
++        with self.assertRaisesRegex(RuntimeError, 'Record marker already existed'):
++            subject.audit(self.root, self.run, recovery_operation=self.recovery)
++
+     def failed_postcommit(self):
+         self.state.update(status='FAILED_PRESERVED', error_type='PermissionError', phase='status',
+                           formal_record_result='RECORDED', record_attempted=True,

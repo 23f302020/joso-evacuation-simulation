@@ -1,0 +1,17 @@
+F
+======================================================================
+FAIL: test_pinned_custom_version_uses_the_same_speed_and_warning_contract (tests.test_jdrt_choice_validate.PinnedNativeWalkingContracts.test_pinned_custom_version_uses_the_same_speed_and_warning_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_validate.py", line 365, in test_pinned_custom_version_uses_the_same_speed_and_warning_contract
+    self.assertEqual(movement['status'], 'PASS', movement)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INVALID' != 'PASS'
+- INVALID
++ PASS
+ : {'status': 'INVALID', 'checks': {'transition_route_reconstruction': True, 'all_entries_primary_multiset': True, 'route_change_source_continuity': True, 'vehicle_first_turn_feasibility': True, 'walk_native_speed_contract': False, 'walk_stage_budget_recurrence': True, 'walk_pre_step_budget_stop': True, 'no_closed_or_ambiguous_entries': True}, 'errors': {'walk_native_speed_contract': 1}, 'examples': {'walk_native_speed_contract': ['unsupported_native_getter_version']}, 'expected_transition_rows': 0, 'actual_transition_rows': 0, 'walkers': 1, 'walk_constructor_warnings': [{'actor': 'walker', 'edge': 'a', 'constructor_depart_pos_m': 20.0, 'time_sec': 0.5, 'evidence': {'purpose': 'old_remaining', 'stage_index': 0, 'requested_edges': ['a', 'b'], 'requested_depart_pos_m': 0.2, 'requested_arrival_pos_m': 20.0, 'before': {'edge_id': 'a', 'lane_position_m': 0.2, 'xy': [0.2, 0.0], 'stage_edges': ['a', 'b'], 'stage_arrival_pos_m': 20.0, 'stage_length_m': 9.0}, 'after': {'edge_id': 'a', 'lane_position_m': 0.2, 'xy': [0.2, 0.0], 'stage_edges': ['a', 'b'], 'stage_arrival_pos_m': 20.0, 'stage_length_m': 8.8}}}, {'actor': 'walker', 'edge': 'a', 'constructor_depart_pos_m': 20.0, 'time_sec': 0.5, 'evidence': {'purpose': 'new_route', 'stage_index': 0, 'requested_edges': ['a', 'b'], 'requested_depart_pos_m': 0.2, 'requested_arrival_pos_m': 20.0, 'before': {'edge_id': 'a', 'lane_position_m': 0.2, 'xy': [0.2, 0.0], 'stage_edges': ['a', 'b'], 'stage_arrival_pos_m': 20.0, 'stage_length_m': 8.8}, 'after': {'edge_id': 'a', 'lane_position_m': 0.2, 'xy': [0.2, 0.0], 'stage_edges': ['a', 'b'], 'stage_arrival_pos_m': 20.0, 'stage_length_m': 8.0}}}], 'core_adoption_permitted': False}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.274s
+
+FAILED (failures=1)

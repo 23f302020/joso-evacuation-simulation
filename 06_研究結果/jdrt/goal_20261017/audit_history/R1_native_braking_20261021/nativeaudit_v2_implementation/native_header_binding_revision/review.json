@@ -1,0 +1,15 @@
+{
+  "at_jst": "2026-10-22T09:13:26.154494+09:00",
+  "scope": "same_chat_selected_build_header_binding_diff_review",
+  "before_sha256": "4142d61125d933544c13da13bd85c7d9c2ddc9f6e7bc7217c28c43682f1d802b",
+  "after_sha256": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+  "finding_fixed": "Literal config.h basename did not match immutable packager numeric evidence names. Now SHA-bound native_pair selected-role src/config.h metadata selects header bytes. Pair schema/source commit/role and pair/header file SHA remain mandatory.",
+  "validation": {
+    "red": "red.stderr.log: assertIsNotNone failed with numeric-prefixed header",
+    "green": "final_units.stderr.log:102 tests PASS; ballistic/pid/foreign role/pair SHA/config bytes rejected",
+    "actual": "actual_selected_header.json: pinned immutable bundle NUMERICAL_EPS resolved, original run unchanged; diagnostic only"
+  },
+  "code_review": "Scoped diff correct; no native binary, motion/demand/supply/metrics/acceptance threshold modification. Prior suite evidence remains historical and cannot establish current five-SHA READY. New full revalidation required.",
+  "no_new_research_adoption": true,
+  "limitation": "Actual Popen arguments are owned-process metadata, not independent OS argv/physics/unique braking-cause proof."
+}

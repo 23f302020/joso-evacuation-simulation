@@ -1,0 +1,45 @@
+{
+  "active": {
+    "command": [
+      "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "-B",
+      "-c",
+      "import time; time.sleep(3)"
+    ],
+    "label": "owned_python_only",
+    "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_wait_race_20261020\\windows_handle_probe02\\artificial_toolchain.json",
+    "pid": 29052,
+    "pid_kind": "Popen launcher; fixture manifest separately identifies its executor",
+    "exit_code": 0,
+    "started_at_utc": "2026-10-20T13:55:19.647747+00:00",
+    "cim_at_capture": {
+      "ProcessId": 29052,
+      "ParentProcessId": 22904,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -B -c \"import time; time.sleep(3)\"",
+      "CreationDate": 1792504519650
+    },
+    "process_identity": {
+      "ProcessId": 29052,
+      "ParentProcessId": 22904,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -B -c \"import time; time.sleep(3)\"",
+      "CreationDate": 1792504519650
+    },
+    "observed_at_utc": "2026-10-20T13:55:20.572302+00:00",
+    "identity_observation": {
+      "pid": 29052,
+      "expected": {
+        "ProcessId": 29052,
+        "ParentProcessId": 22904,
+        "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -B -c \"import time; time.sleep(3)\"",
+        "CreationDate": 1792504519650
+      },
+      "identity": "absent",
+      "observed_cim": null
+    },
+    "return_code_evidence": "Popen process handle wait; not numeric PID inference"
+  },
+  "native_regression_complete": false
+}

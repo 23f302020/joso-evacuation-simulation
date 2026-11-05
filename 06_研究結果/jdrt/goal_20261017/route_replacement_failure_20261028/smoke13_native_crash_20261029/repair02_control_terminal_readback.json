@@ -1,0 +1,54 @@
+{
+  "at_jst": "2026-10-29T15:13:53.905135+09:00",
+  "status": "CONTROL_FULL_SOURCE_AND_LOADER_READBACK_VERIFIED_NOT_READY",
+  "attempt": "repair02_20261029",
+  "state": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build_state.json",
+  "state_sha256": "710d65952e8b7790d8e026559ee78b618cc1dad123800b77e14b4243476e4ed9",
+  "original_session": 49235,
+  "original_session_exit_code_observed_by_parent": 0,
+  "terminal_completed_at_jst": "2026-10-29T11:49:32.934177+09:00",
+  "commands_verified": 6,
+  "source_files": 6228,
+  "source_only_delta": "src/microsim/MSBaseVehicle.cpp",
+  "source_delta_sha256": "eeb62ad14b9afd1984da4bd42f64b89288b67e62fc670a46811ede2cfd4e4fa1",
+  "binaries": [
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\sumo.exe",
+      "sha256": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+      "bytes": 21982672
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\netconvert.exe",
+      "sha256": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4",
+      "bytes": 14311826
+    }
+  ],
+  "loader_report": "06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\repair02_loader2\\diagnosis.json",
+  "loader_sha256": "3929a2fdaa2844a3bf58192ff24a92aec3eb4300bca9d30f5157750871542330",
+  "loader_files_verified": 7,
+  "baseline_metadata_difference": {
+    "equal": false,
+    "different_files": [
+      "CMakeCache.txt"
+    ],
+    "effective_cache_difference_keys": [
+      "FIND_PACKAGE_MESSAGE_DETAILS_Git"
+    ],
+    "equivalent_cache_representation_keys": [
+      "CMAKE_CACHEFILE_DIR",
+      "CMAKE_FIND_PACKAGE_REDIRECTS_DIR",
+      "CMAKE_HOME_DIRECTORY",
+      "SUMO_BINARY_DIR",
+      "SUMO_SOURCE_DIR"
+    ],
+    "compiler_files_and_executables_verified": false,
+    "native_behavior_verified": false
+  },
+  "limits": [
+    "One old-to-new Git discovery cache value differs; comparator unchanged. New repaired pair must match all10 metadata.",
+    "No simulation, package, new pair policy or READY. Source/loader evidence does not establish physical behavior.",
+    "11:44 to14:56 parent observation gap is not filled; original build completed11:49 before later OS sleep."
+  ],
+  "research_adoption_permitted": false,
+  "technical_ready": false
+}

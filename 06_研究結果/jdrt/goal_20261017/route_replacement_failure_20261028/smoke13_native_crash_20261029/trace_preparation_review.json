@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-29T20:53:14.722422+09:00",
+  "status": "SCOPED_METADATA_GATE_REVIEW_AND_CONTRACTS_PASS_NOT_NATIVE_BUILD",
+  "before_sha256": "802d2fc5316a8bd19bac5760e1d3f7c08463a98176fbfe2e98425edc267a7dbe",
+  "after_sha256": "d2512cf3f66efb9073dee36b7f52f9af04d05b3e8a5b758b141e080dac6130e9",
+  "new_test_source_sha256": "eec72fceebafce92a8e0f039130a5d1dbe90c1cb59bb4861fb9b9bc4674e14cf",
+  "scope": "One explicit terminal source-snapshot status for observation-only build, after unchanged complete pair binding verification",
+  "diff": "trace_preparation_review.diff",
+  "RED": "trace_preparation_RED.log",
+  "new7_GREEN": "trace_preparation_persistent_GREEN.log",
+  "legacy5_GREEN": "trace_preparation_existing5_GREEN.log",
+  "actual_terminal_reference_validation": true,
+  "review": {
+    "correctness": "New status requires patched observation-only mode, no double remap, three false flags and same base state path/SHA/size; legacy mode unchanged. Existing actual tree/configure/source transform/copy-window checks remain.",
+    "minimum_diff": "One helper function and call; original blanket status restriction removed; no source/model/metric changes.",
+    "source_integrity": "Current pair terminal and independent13671 readback completed before adoption of this next-stage helper; target not captured by that pair. Original helper archived verbatim.",
+    "external_effects": "No new communication, selector persistence, automatic start/record or permission flag changes.",
+    "performance": "Only one already-bound base-state hash/size check added; no performance claim or waiver."
+  },
+  "formal_findings_requiring_repair": [],
+  "common5_config_input_unchanged": true,
+  "native_behavior_claimed": false,
+  "build_started": false,
+  "technical_ready": false,
+  "remaining": "Actual new-source observation-only build; clean loader/source-only delta; broad native guards and production stop-history cases; full30/audit/all14/preflight/G6/capacity/07 before core"
+}

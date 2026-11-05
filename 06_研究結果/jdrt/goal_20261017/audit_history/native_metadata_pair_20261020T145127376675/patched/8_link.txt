@@ -1,0 +1,3 @@
+C:\Users\Ko_rr\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\LocalCache\Local\JDRT-native-build\choice_v126_20261019\sources\cmake-3.31.9-windows-x86_64\bin\cmake.exe -E rm -f CMakeFiles\netconvert.dir/objects.a
+C:\Ruby31-x64\msys64\ucrt64\bin\ar.exe qc CMakeFiles\netconvert.dir/objects.a @CMakeFiles\netconvert.dir\objects1.rsp
+C:\Ruby31-x64\msys64\ucrt64\bin\g++.exe  -pthread -Wall -pedantic -Wextra --param=max-vartrack-size=5000000 -DWIN32 -D_WIN32_WINNT=0x0501 -O3 -DNDEBUG -static -static-libgcc -static-libstdc++ -Wl,--whole-archive CMakeFiles\netconvert.dir/objects.a -Wl,--no-whole-archive -o netconvert.exe -Wl,--out-implib,libnetconvert.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\netconvert.dir\linkLibs.rsp

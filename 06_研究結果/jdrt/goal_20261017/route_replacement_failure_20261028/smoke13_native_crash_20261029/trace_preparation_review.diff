@@ -1,0 +1,43 @@
+--- before
++++ after
+@@ -49,6 +49,24 @@
+             or Path(command[command.index('-S') + 1]).resolve() != source.resolve()):
+         raise ValueError('Base configured source differs from requested native role')
+     return source, prepared['source_sha256'][role], command
++
++
++def validate_preparation(prepared, base_path, role, stop_index_repair):
++    """A terminal shared-source snapshot can seed observation, never another repair."""
++    if prepared.get('status') == 'PREPARED_NOT_BUILT':
++        return
++    if (prepared.get('status') != 'TERMINAL_SHARED_REPAIR_SOURCE_SNAPSHOT_NOT_READY'
++            or stop_index_repair or role != 'patched'
++            or any(prepared.get(key) is not False for key in
++                   ('compiler_started', 'simulation_executed', 'core_ready'))):
++        raise ValueError('Nonadoptable source preparation for this mode required')
++    ref = prepared.get('terminal_builds', {}).get(role, {}).get('state', {})
++    if (not isinstance(ref.get('path'), str)
++            or Path(ref['path']).resolve() != Path(base_path).resolve()
++            or ref.get('sha256') != file_sha(base_path)
++            or type(ref.get('bytes')) is not int
++            or ref['bytes'] != Path(base_path).stat().st_size):
++        raise ValueError('Terminal source snapshot must bind this exact base build')
+ 
+ 
+ def prepare_source(source, destination, expected, stop_index_repair=False):
+@@ -122,7 +140,6 @@
+     proof = json.loads(options.pair_proof.read_bytes())
+     if (base['status'] != 'COMPILED_VERSION_CHECKED_NOT_SIMULATED'
+             or base['simulation_allowed'] is not False or base['research_cli_switch_allowed'] is not False
+-            or prepared['status'] != 'PREPARED_NOT_BUILT'
+             or pair['status'] != 'SELECTED_PAIR_VERIFIED_PENDING_NATIVE_GUARDS'
+             or pair['research_adoption_permitted'] is not False or pair['technical_ready'] is not False
+             or pair['active'] is not None or proof['bound_mismatches']
+@@ -137,6 +154,7 @@
+     for path in (options.base_state, options.source_preparation):
+         if file_sha(path) not in bindings.values():
+             raise ValueError('Build prerequisite not bound by the verified pair')
++    validate_preparation(prepared, options.base_state, options.build_role, options.stop_index_repair)
+     source, expected, original_configure = select_base_source(base, prepared, options.build_role)
+     # CMake/MinGW need the same short visible path convention as the base build.
+     # The observer discovers the corresponding physical package path separately.

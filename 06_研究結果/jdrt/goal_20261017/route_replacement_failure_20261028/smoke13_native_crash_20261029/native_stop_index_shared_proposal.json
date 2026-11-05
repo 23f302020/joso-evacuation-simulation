@@ -1,0 +1,35 @@
+{
+  "schema": "isolated_native_shared_patch_proposal_v1",
+  "at_jst": "2026-10-29T11:21:35.657010+09:00",
+  "source_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "target": "src/microsim/MSBaseVehicle.cpp",
+  "before_sha256": "9e46ef6907cd293b2b3a629f27709da042c35f61cd9d57a5081d966d9d4f22d3",
+  "after_sha256": "eeb62ad14b9afd1984da4bd42f64b89288b67e62fc670a46811ede2cfd4e4fa1",
+  "patch_path": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/rebase_retained_past_stop_indices.patch",
+  "patch_sha256": "c6570afbcba31f9ae0a9fb38a4b244e50307955051b779a69a1965112dce849d",
+  "roles": [
+    "control",
+    "patched"
+  ],
+  "official_archive_member_exact": true,
+  "physics_clock_route_permission_code_unchanged": true,
+  "methodological_change": false,
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "scope": "Plan same stop-history repair in both freshly built native roles so the between-role native difference remains the registered walk-lateral patch. Both source/build roots separate; exact old compiler/static settings and unique version headers. Still no research adoption/READY.",
+  "supporting_evidence": [
+    "candidate_native_readback.json",
+    "loop_future_native_readback.json"
+  ],
+  "required_next": [
+    "Current source/config selected-pair binding proof (original30056) before full build; old repair01 refused prestart",
+    "New full source copy, exact one-target delta from old selected source, combined sumo/netconvert build and unique version",
+    "Reviewed separate policy/source-pair/package proof retaining original policy path and exact old-branch behavior; do not waive existing verifier",
+    "Current native regressions, failed-setting confirmation, full suite/audit/all14/new READY/G6/capacity/observer before core"
+  ],
+  "supersedes_design_only": "native_stop_index_proposal.json retained; no old policy or native artifacts overwritten",
+  "rationale": "Separate the technical memory-safety correction from the walk-lateral comparison; avoid attributing two simultaneous native differences to one cause.",
+  "planned_pair_difference": "src/microsim/transportables/MSPModel_Striping.cpp only, subject to full source-pair verification",
+  "control_native_fix_built": false,
+  "patched_full_source_fix_built": false
+}

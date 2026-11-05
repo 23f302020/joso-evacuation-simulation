@@ -1,0 +1,43 @@
+{
+  "at_jst": "2026-10-22T15:02:29.5197776+09:00",
+  "purpose": "user_requested_progress_estimate",
+  "judgment_id": "JD-20261022-research-1502-08",
+  "ace": {
+    "criterion": "err-00001",
+    "evidence_case": "JD-20261022-root-01",
+    "display_observed_at_jst": "2026-10-22T15:00+09:00",
+    "application": "Timestamped smoke child completion was read independently of stale parent summary; technical completion is separate from formal adoption",
+    "effect": "uncertain_not_measured",
+    "state_updated": false
+  },
+  "overall_percent": {
+    "low": 50,
+    "high": 60,
+    "central": 55,
+    "kind": "subjective_milestone_estimate_not_measured_work_hours_or_accepted_cells"
+  },
+  "formal": {
+    "recorded": 0,
+    "total": 70,
+    "percent": 0
+  },
+  "technical": {
+    "smoke_independently_completed": 10,
+    "total": 14,
+    "state": "RUNNING",
+    "proof_cases_pass": 26,
+    "counterexamples_rejected": 54,
+    "ready": false
+  },
+  "eta_hours": {
+    "low": 60,
+    "high": 100,
+    "condition": "continuous sequential operation; no new correctness failure or storage stop",
+    "includes": "70 full runs plus independent validate and record, registered analysis and integration",
+    "basis": "Old-version R0 runtime 12m58s, independent validation about18m plus record revalidation about18m; not a current-version or all-condition benchmark",
+    "calibration": "Recalculate after first several accepted current-version core cells",
+    "smoke_remaining_minutes": 6,
+    "preflight_remaining_unmeasured": true
+  },
+  "scope": "No simulation restart, adoption, input modification or ACE state update"
+}

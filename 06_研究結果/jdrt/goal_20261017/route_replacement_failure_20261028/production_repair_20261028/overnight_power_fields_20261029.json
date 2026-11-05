@@ -1,0 +1,77 @@
+[
+  {
+    "RecordId": 572906,
+    "Created": "2026-10-29T09:54:31.3531655+09:00",
+    "Provider": "Microsoft-Windows-Power-Troubleshooter",
+    "Id": 1,
+    "Fields": {
+      "WakeTime": "2026-10-29T00:54:28.9809059Z",
+      "SleepDuration": "18760",
+      "TargetState": "5",
+      "WakeDuration": "2475",
+      "EffectiveState": "5",
+      "SleepTime": "2026-10-28T15:35:25.3065910Z"
+    }
+  },
+  {
+    "RecordId": 572903,
+    "Created": "2026-10-29T09:54:29.0217323+09:00",
+    "Provider": "Microsoft-Windows-Kernel-Power",
+    "Id": 507,
+    "Fields": {
+      "Reason": "25"
+    }
+  },
+  {
+    "RecordId": 572902,
+    "Created": "2026-10-29T09:54:28.5393561+09:00",
+    "Provider": "Microsoft-Windows-Kernel-Power",
+    "Id": 506,
+    "Fields": {
+      "Reason": "20"
+    }
+  },
+  {
+    "RecordId": 572881,
+    "Created": "2026-10-29T09:54:26.5006013+09:00",
+    "Provider": "Microsoft-Windows-Kernel-General",
+    "Id": 1,
+    "Fields": {
+      "NewTime": "2026-10-29T00:54:26.5000000Z",
+      "Reason": "2",
+      "OldTime": "2026-10-28T15:35:46.7737702Z"
+    }
+  },
+  {
+    "RecordId": 572880,
+    "Created": "2026-10-29T00:35:46.7735839+09:00",
+    "Provider": "Microsoft-Windows-Kernel-Power",
+    "Id": 107,
+    "Fields": {
+      "TargetState": "5",
+      "EffectiveState": "5"
+    }
+  },
+  {
+    "RecordId": 572875,
+    "Created": "2026-10-29T00:35:43.2211323+09:00",
+    "Provider": "Microsoft-Windows-Kernel-Power",
+    "Id": 42,
+    "Fields": {
+      "TargetState": "5",
+      "Reason": "2",
+      "EffectiveState": "5"
+    }
+  },
+  {
+    "RecordId": 572874,
+    "Created": "2026-10-29T00:35:42.6127326+09:00",
+    "Provider": "Microsoft-Windows-Kernel-General",
+    "Id": 1,
+    "Fields": {
+      "NewTime": "2026-10-28T15:35:39.0750915Z",
+      "Reason": "1",
+      "OldTime": "2026-10-28T15:35:39.0741429Z"
+    }
+  }
+]

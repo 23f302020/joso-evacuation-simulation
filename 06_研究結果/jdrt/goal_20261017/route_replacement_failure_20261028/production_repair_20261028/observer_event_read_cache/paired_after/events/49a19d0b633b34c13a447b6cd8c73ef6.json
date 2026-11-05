@@ -1,0 +1,30 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "49a19d0b633b34c13a447b6cd8c73ef6",
+  "at_utc": "2026-10-20T13:20:18.640407+00:00",
+  "target": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020d_c26\\execution\\manifest.json",
+  "kind": "completed",
+  "evidence": {
+    "status": "COMPLETED",
+    "target_id": "np261020d_c26",
+    "observed_at_utc": "2026-10-20T13:20:18.638367+00:00",
+    "protocol": "realtime_choice_fixture_v1",
+    "purpose": "fixture",
+    "state_sha256": "77188393b5671519ab5713c892bcd06de4599a1ae60afbf803f4afb799138bc9",
+    "flags": [],
+    "pid": 17968,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020d_c26\\execution\\manifest.json",
+    "sim_sec": 1500.0,
+    "progress_token": [
+      "COMPLETED",
+      1500.0
+    ],
+    "last_progress": 1792502418.6003404,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020d_c26\\execution\\sumo_errors.log": 944
+    }
+  },
+  "delivery": "not_required",
+  "notification": "not_required",
+  "research_adoption": false
+}

@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 1111, in run
+    bus_route(vid, path, now, target_position)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 854, in bus_route
+    actual_path = set_vehicle_route(t, vid, path, lane_info, end + 1, stop_pos=target_position)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 35, in set_vehicle_route
+    connection.vehicle.setRoute(vehicle_id, path)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\_vehicle.py", line 1218, in setRoute
+    self._setCmd(tc.VAR_ROUTE, vehID, "l", edgeList)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\domain.py", line 169, in _setCmd
+    self._connection._sendCmd(self._cmdSetID, varID, objectID, format, *values)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+           ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\connection.py", line 144, in _sendExact
+    raise TraCIException(err, prefix[1], _RESULTS[prefix[2]])
+traci.exceptions.TraCIException: Route replacement failed for vehicle 'choice_drt_0' (No connection between edge '152#2' and edge '152#3'.).

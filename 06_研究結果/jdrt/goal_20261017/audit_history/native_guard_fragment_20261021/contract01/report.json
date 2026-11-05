@@ -1,0 +1,117 @@
+{
+  "at_jst": "2026-10-21T15:13:54.587027+09:00",
+  "scope": "Verbatim production C++ guard in artificial polymorphic objects; not native SUMO execution",
+  "source": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\transportables\\MSPModel_Striping.cpp",
+  "source_sha256": "65f4824cf896f46fbfb9199bdfcced3711ce365e88c1a455ad15f3d746c47934",
+  "compiler": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+  "compiler_sha256": "5308f584a4a2ce18aa9da7df4df978b1703e22110f7c857a5d8401977152d5af",
+  "script_sha256": "b1a6ed8913d708aefccf4223da28617a3b723ac8e626d3d67888c52a2fedea54",
+  "commands": [
+    {
+      "kind": "compile",
+      "command": [
+        "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-DNDEBUG",
+        "-static",
+        "-static-libgcc",
+        "-static-libstdc++",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\omitted_time.cpp",
+        "-o",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\omitted_time.exe"
+      ],
+      "exit_code": 0,
+      "source_sha256": "da09f1f640969054ffcbbf1253c38f1af0ffdae327b493f53105e1a19379c0a1"
+    },
+    {
+      "kind": "artificial_cpp_contract",
+      "command": [
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\omitted_time.exe"
+      ],
+      "exit_code": 2,
+      "binary_sha256": "dce913446d07d2a415b7787a9b3b17c5827b754230e2d7432562d0f0465df465"
+    },
+    {
+      "kind": "compile",
+      "command": [
+        "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-DNDEBUG",
+        "-static",
+        "-static-libgcc",
+        "-static-libstdc++",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\omitted_position.cpp",
+        "-o",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\omitted_position.exe"
+      ],
+      "exit_code": 0,
+      "source_sha256": "53c15723dd276faaa4bd85d6173ca376f9d9c8963407f7f9ebe927494bde3f5d"
+    },
+    {
+      "kind": "artificial_cpp_contract",
+      "command": [
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\omitted_position.exe"
+      ],
+      "exit_code": 2,
+      "binary_sha256": "7ea2ccbc5741c39135c005e2fa9fd9222a846dacd7f2c81adc4a2686b0ace755"
+    },
+    {
+      "kind": "compile",
+      "command": [
+        "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+        "-std=c++17",
+        "-O2",
+        "-DNDEBUG",
+        "-static",
+        "-static-libgcc",
+        "-static-libstdc++",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\exact_source.cpp",
+        "-o",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\exact_source.exe"
+      ],
+      "exit_code": 0,
+      "source_sha256": "66998b253865b19bfc46f9adac64ea29f722bfd189f4c7c1c033af7c2df993f6"
+    },
+    {
+      "kind": "artificial_cpp_contract",
+      "command": [
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\exact_source.exe"
+      ],
+      "exit_code": 0,
+      "binary_sha256": "a879904f280e526b15c73c79d180f62bc8112323dc518a5e2c27eca602a5fbf4"
+    }
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "native_false_guard_observed": false,
+  "source_review_sha256": "239db24f31979474d6acf5e0f256aed1c45b14b61b0391b440037f5195625e1b",
+  "verbatim_guard_sha256": "61cf442fa014631629479248baa2afb182844231cbc9d868087066722ea5d3dd",
+  "constant_plan_sha256": "2e0353d027248f1e5e93585653f3472edea85db35ee91473605e370e39389c91",
+  "status": "COMPILED_VERBATIM_GUARD_16_ARTIFICIAL_CASES_PASS_AND_TWO_MUTANTS_REJECTED",
+  "native_branch_coverage_claim": "None: native12/13 observations remain separately reported",
+  "unproved": "Full native ABI/layout, every valid SUMO API path, actual false-guard reachability, transitive compiler reproducibility",
+  "finished_at_jst": "2026-10-21T15:14:03.535778+09:00",
+  "artifacts_sha256": {
+    "exact_source.compile.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_source.compile.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_source.cpp": "66998b253865b19bfc46f9adac64ea29f722bfd189f4c7c1c033af7c2df993f6",
+    "exact_source.exe": "a879904f280e526b15c73c79d180f62bc8112323dc518a5e2c27eca602a5fbf4",
+    "exact_source.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_source.stdout.log": "0540cf9c70b3f6e2dac3403edcc04d06f83de54b5ef683bbb1ea5bcefeec849d",
+    "omitted_position.compile.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "omitted_position.compile.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "omitted_position.cpp": "53c15723dd276faaa4bd85d6173ca376f9d9c8963407f7f9ebe927494bde3f5d",
+    "omitted_position.exe": "7ea2ccbc5741c39135c005e2fa9fd9222a846dacd7f2c81adc4a2686b0ace755",
+    "omitted_position.stderr.log": "77019e45f705928075fdd180d66b30b7d37a533448381ccddee47f42f8bccb33",
+    "omitted_position.stdout.log": "c0e64e18e8152226b34852673693d373b33fefebba9c5472a07a2532c7c8ded1",
+    "omitted_time.compile.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "omitted_time.compile.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "omitted_time.cpp": "da09f1f640969054ffcbbf1253c38f1af0ffdae327b493f53105e1a19379c0a1",
+    "omitted_time.exe": "dce913446d07d2a415b7787a9b3b17c5827b754230e2d7432562d0f0465df465",
+    "omitted_time.stderr.log": "0aea24d35d655050b9ad904e71070434296cf7d86c0ebe0959138b08af3dd94c",
+    "omitted_time.stdout.log": "4f1e2561e9653535dc5662865bb9ec8c0babda11fc5cbce37b46763680889d71",
+    "verbatim_guard.txt": "61cf442fa014631629479248baa2afb182844231cbc9d868087066722ea5d3dd"
+  }
+}

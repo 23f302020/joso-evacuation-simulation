@@ -1,0 +1,59 @@
+FFFFF
+======================================================================
+FAIL: test_actual_history_and_remaining_delivery_are_required (tests.test_jdrt_choice_route_history.RouteHistoryFixtureContracts.test_actual_history_and_remaining_delivery_are_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_route_history.py", line 57, in test_actual_history_and_remaining_delivery_are_required
+    self.assertTrue(result['applicable'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_closure_outside_boarding_is_rejected (tests.test_jdrt_choice_route_history.RouteHistoryFixtureContracts.test_closure_outside_boarding_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_route_history.py", line 62, in test_closure_outside_boarding_is_rejected
+    self.assertEqual(result['status'], 'INVALID')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'INVALID'
+- PASS
++ INVALID
+
+
+======================================================================
+FAIL: test_reentry_position_and_distance_jump_is_rejected (tests.test_jdrt_choice_route_history.RouteHistoryFixtureContracts.test_reentry_position_and_distance_jump_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_route_history.py", line 70, in test_reentry_position_and_distance_jump_is_rejected
+    self.assertEqual(result['status'], 'INVALID')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'INVALID'
+- PASS
++ INVALID
+
+
+======================================================================
+FAIL: test_registered_suite_requires_past_closure_delivery (tests.test_jdrt_choice_route_history.RouteHistoryFixtureContracts.test_registered_suite_requires_past_closure_delivery)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_route_history.py", line 53, in test_registered_suite_requires_past_closure_delivery
+    self.assertIn('delivery_past_closure', validator.REQUIRED_FIXTURE_CASES)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'delivery_past_closure' not found in ('walk_reroute', 'walk_reroute_limit', 'walk_budget', 'walk_reverse', 'pickup_closure', 'boarding_closure', 'alighting_closure', 'forecast_r1', 'forecast_p0', 'forecast_p900', 'forecast_reroute', 'shared_capacity', 'horizon_alighting', 'car_backward_cycle', 'car_backward_no_cycle', 'car_reroute', 'pickup_deadline_equal', 'pickup_before_deadline', 'pickup_internal_calibration', 'pickup_internal_timeout', 'pickup_internal_timeout_closed_next', 'car_lane_calibration', 'car_lane_alternative', 'car_lane_cut', 'walk_short_calibration', 'walk_short_repeated', 'car_transition_calibration', 'car_transition_closure', 'car_transition_arrival')
+
+======================================================================
+FAIL: test_retained_closed_prefix_is_rejected (tests.test_jdrt_choice_route_history.RouteHistoryFixtureContracts.test_retained_closed_prefix_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_route_history.py", line 66, in test_retained_closed_prefix_is_rejected
+    self.assertEqual(result['status'], 'INVALID')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'INVALID'
+- PASS
++ INVALID
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.084s
+
+FAILED (failures=5)

@@ -1,0 +1,46 @@
+{
+  "query": "新八間堀川 桜橋 橋梁 高さ",
+  "result": {
+    "success": true,
+    "data": {
+      "web": [
+        {
+          "url": "https://kinugawa-suigai.seesaa.net/article/442621848.html",
+          "title": "新八間堀川の御城橋より下流にある2つの排水樋管の設置高さ ...",
+          "description": "新八間堀川の御城橋より下流にある2つの排水樋管の設置高さについて ; 水面から樋管管底までの コンクリートブロックの段数 （水面は2016/10/5のある時間 ...",
+          "position": 1
+        },
+        {
+          "url": "https://committees.jsce.or.jp/report/system/files/08%E7%94%B0%E4%B8%AD.pdf",
+          "title": "河川堤防周辺被害: 落堀・破堤現象の解釈とその規模について",
+          "description": "背水影響を強く受け、破堤点で逆流の痕跡が確認された宮戸川・西仁連川. 鬼怒川の氾濫水が流入し、破堤した八間堀川は破堤幅は傾向としては小さい。",
+          "position": 2
+        },
+        {
+          "url": "https://csih.sakura.ne.jp/kaihou/K93_20240120_20240121.pdf",
+          "title": "Vol.93",
+          "description": "中部産遺研会報 第93号. 目次. 1．産業遺産紹介／石田正治. 1. 2．人造石の産業遺産を歩く(18)名古屋市内の運河、河川沿いの人造石遺産／天野武弘.",
+          "position": 3
+        },
+        {
+          "url": "https://www.highestbridges.com/wiki/index.php?title=Japan_Bridges_90_to_100_meters",
+          "title": "Japan Bridges 90 to 100 meters",
+          "description": "長年日本一高い橋だった内大臣橋（高さ88m）は、アーチ中間部を道路が通り抜けるという方式の美しい宙路アーチ橋です。この橋のトラスリブは上品に ...",
+          "position": 4
+        },
+        {
+          "url": "https://www.naturalright.org/kinugawa2015/%E5%85%AB%E9%96%93%E5%A0%80%E5%B7%9D%E5%95%8F%E9%A1%8C/%EF%BC%96-%E6%B0%B4%E6%B5%B7%E9%81%93%E5%B8%82%E8%A1%97%E5%9C%B0%E3%81%AE%E6%B0%B4%E5%AE%B3/",
+          "title": "6 水海道市街地の水害",
+          "description": "5mないし2mほどの高さの新八間堀川右岸堤防を乗り越え、新八間堀川に流れ込んだのです。 「水海道市街地水害八間堀川唯一原因説」ではこのような ...",
+          "position": 5
+        }
+      ],
+      "tools": []
+    },
+    "id": "01a1566e-8f57-73ac-958a-cea3aa840337",
+    "creditsUsed": 2,
+    "agent_hints": [
+      "All 5 web results are excerpts only (#1 \"https://kinugawa-suigai.seesaa.net/article/442621848.html\", #2 \"https://committees.jsce.or.jp/report/system/files/08%E7%94%B0%E4%B8%AD.pdf\", #3 \"https://csih.sakura.ne.jp/kaihou/K93_20240120_20240121.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+    ]
+  }
+}

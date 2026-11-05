@@ -1,0 +1,86 @@
+--- watch.py.before
++++ watch.py
+@@ -3,7 +3,7 @@
+ import ast
+ import ctypes
+ from ctypes import wintypes
+-from datetime import datetime, timezone
++from datetime import datetime, timezone, timedelta
+ import glob
+ import hashlib
+ from html import escape
+@@ -42,6 +42,55 @@
+ 
+ def read_json(path):
+     return json.loads(path.read_text(encoding='utf-8-sig'))
++
++
++def execution_timing(data):
++    """Wall-clock interval from explicit manifest timestamps, never detection time."""
++    result = {'started_at_utc': None, 'finished_at_utc': None, 'elapsed_sec': None,
++              'start_source': None, 'finish_source': None, 'status': 'missing'}
++    for side, prefix in (('start', 'started'), ('finish', 'finished')):
++        if side == 'finish' and data.get('status') not in SUCCESS | FAILURE:
++            continue
++        key = next((key for key in (prefix + '_at_jst', prefix + '_at_utc')
++                    if data.get(key) is not None), None)
++        if key is None:
++            continue
++        result[side + '_source'] = key
++        try:
++            value = datetime.fromisoformat(data[key].replace('Z', '+00:00'))
++            if value.utcoffset() is None:
++                raise ValueError('Timestamp requires timezone')
++            result[prefix + '_at_utc'] = value.astimezone(timezone.utc).isoformat()
++        except (ValueError, TypeError, AttributeError, OverflowError):
++            result['status'] = 'invalid'
++    if result['status'] == 'invalid':
++        return result
++    if data.get('status') in ACTIVE:
++        result['status'] = 'running' if result['started_at_utc'] else 'missing'
++    elif result['started_at_utc'] and result['finished_at_utc']:
++        elapsed = (datetime.fromisoformat(result['finished_at_utc'])
++                   - datetime.fromisoformat(result['started_at_utc'])).total_seconds()
++        result['status'] = 'complete' if elapsed >= 0 else 'reversed'
++        if elapsed >= 0:
++            result['elapsed_sec'] = elapsed
++    return result
++
++
++def timing_text(timing):
++    timing = timing or {}
++    def local_time(key):
++        value = timing.get(key)
++        return (datetime.fromisoformat(value).astimezone(timezone(timedelta(hours=9))).isoformat(sep=' ')
++                if value else '不明')
++    seconds = timing.get('elapsed_sec')
++    duration = '不明'
++    if seconds is not None:
++        hours, rest = divmod(seconds, 3600)
++        minutes, rest = divmod(rest, 60)
++        duration = f'{int(hours)}時間{int(minutes)}分{rest:.3f}秒'
++    status = timing.get('status', 'missing')
++    return (f"開始（JST）：{local_time('started_at_utc')} / 終了（JST）：{local_time('finished_at_utc')}"
++            f' / 所要時間：{duration}（実時間・状態：{status}）')
+ 
+ 
+ def render_status(runtime, state):
+@@ -57,7 +106,9 @@
+         rows.append('<article><h2>' + escape(event['kind']) + '</h2><p>'
+                     + escape(event['evidence'].get('target_id', event['target'])) + '</p><p>'
+                     + escape(event['at_utc']) + ' / ' + escape(event['delivery']) + ' / notification: '
+-                    + escape(event['notification']) + '</p><pre>' + escape(text)
++                    + escape(event['notification']) + '</p><p>'
++                    + escape(timing_text(event['evidence'].get('execution_timing')))
++                    + '</p><pre>' + escape(text)
+                     + '</pre><a href="' + escape(path.as_uri(), quote=True) + '">イベント原本</a></article>')
+     active = sum(v.get('status') in ACTIVE for v in state.get('targets', {}).values())
+     html = ('<!doctype html><html lang="ja"><meta charset="utf-8"><meta http-equiv="refresh" content="10">'
+@@ -213,6 +264,7 @@
+     status = data['status']
+     target_id = data.get('run_id') or data.get('attempt_id') or path.parent.name
+     result = {'status': status, 'target_id': target_id, 'observed_at_utc': stamp(),
++              'execution_timing': execution_timing(data),
+               'protocol': data.get('protocol'), 'purpose': data.get('purpose'),
+               'state_sha256': hashlib.sha256(raw).hexdigest(), 'flags': [],
+               'pid': data.get('pid') or data.get('owner_pid'), 'source': str(path)}

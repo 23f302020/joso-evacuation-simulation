@@ -1,0 +1,55 @@
+--- before/.agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py
++++ .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py
+@@ -127,6 +127,22 @@
+             os.environ.pop(SELECTOR, None)
+         else:
+             os.environ[SELECTOR] = old
++
++
++def selected_runtime_receipt(root, selected):
++    """Derive the fixture receipt from the already primary-verified bundle."""
++    roles, files = selected['roles'], selected['files']
++    traci_vehicle = str(Path(roles['traci_init']).parent / '_vehicle.py').replace('\\', '/')
++    return {'sumo_binary': files[roles['sumo']], 'traci_init': files[roles['traci_init']],
++            'traci_vehicle': files[traci_vehicle],
++            'shared_smoke': sha(root / '04_プログラム/scripts/jdrt/smoke.py'),
++            'shared_log_parser': sha(root / '04_プログラム/scripts/jdrt/full_run.py'),
++            'choice_toolchain_helper': sha(root / '04_プログラム/scripts/jdrt_choice_toolchain.py'),
++            'toolchain_manifest_sha256': selected['manifest_sha256'],
++            'toolchain_manifest_path': str(selected['manifest_path']),
++            'toolchain_files_sha256': dict(files), 'toolchain_roles': dict(roles),
++            'toolchain_provenance': dict(selected['provenance']),
++            'sumo_binary_path': str(selected['sumo']), 'netconvert_binary_path': str(selected['netconvert'])}
+ 
+ 
+ def verify_pair(root, control, patched):
+@@ -361,22 +377,26 @@
+                 params = read_json(directory / 'fixture_parameters.json')
+                 required = {'bounded.net.xml', 'nodes.xml', 'edges.xml', 'graphs.json', 'hazard.csv', 'people.csv',
+                             'origins.csv', 'place_positions.csv', 'terminals.csv', 'destinations_fixed_reference.csv',
+-                            'fixture_parameters.json', 'netconvert.log',
++                            'fixture_parameters.json', 'netconvert.log', 'toolchain_runtime.json',
+                             'common_realization_seed' + str(params['seeds'][0]) + '.csv'}
+                 table = manifest['artifacts']
+                 require(set(table) == required and all(Path(n).name == n and sha(directory / n) == h for n, h in table.items()),
+                         'Paired input inventory is incomplete or changed')
++                require(read_json(directory / 'toolchain_runtime.json') == selected_runtime_receipt(self.root, self.selections[role]),
++                        'Paired input runtime receipt differs from its selected bundle')
+                 artifacts.append(table)
+                 networks.append(ET.canonicalize(from_file=directory / 'bounded.net.xml', with_comments=False, strip_text=True))
+-            comparable = set(artifacts[0]) - {'netconvert.log', 'bounded.net.xml'}
++            comparable = set(artifacts[0]) - {'netconvert.log', 'bounded.net.xml', 'toolchain_runtime.json'}
+             require(set(artifacts[0]) == set(artifacts[1]) and networks[0] == networks[1]
+                     and all(artifacts[0][name] == artifacts[1][name] for name in comparable),
+                     'Control/patched geometry, closures, population or parameters differ')
+             rows.append({'case': case, 'same_semantic_inputs': True,
+                          'net_xml_semantic_sha256': hashlib.sha256(networks[0].encode()).hexdigest(),
+                          'control_input_sha256': artifacts[0], 'patched_input_sha256': artifacts[1],
++                         'runtime_receipts_bound_to_own_selected_bundle': True,
+                          'ignored_comparison_metadata': ['XML comments/formatting whitespace only; attributes retained',
+-                                                         'native converter log; still SHA checked']})
++                                                         'native converter log; still SHA checked',
++                                                         'toolchain receipt differs by role; exact selected-bundle equality checked']})
+         return rows
+ 
+     def run(self):

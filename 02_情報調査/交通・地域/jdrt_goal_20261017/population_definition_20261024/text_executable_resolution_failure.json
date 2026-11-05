@@ -1,0 +1,13 @@
+{
+  "at_jst": "2026-10-24T08:36:37.410049+09:00",
+  "error_type": "FileNotFoundError",
+  "winerror": 2,
+  "stage": "text extraction before rendering",
+  "cause": "assumed neighboring bundled pdftotext.exe was absent; actual system executable resolved with Get-Command",
+  "original_HTTP_PDF_SHA_unchanged": true,
+  "no_refetch_or_dependency_install": true,
+  "failed_empty_logs_preserved": [
+    "text.stdout.log",
+    "text.stderr.log"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-27T10:11:08.205568+09:00",
+  "action": "independent_core_target_recheck",
+  "observer": {
+    "last_observed": "2026-10-27T01:10:38.881636+00:00",
+    "observation_age_sec": 75.4358389377594,
+    "monitor_identity_matches": true,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134373224988859900,
+      "pid": 31176
+    }
+  },
+  "target": [
+    {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102701\\manifest.json",
+      "read_failures": 2,
+      "read_error_type": "TimeoutExpired",
+      "read_error": "Command '['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', '[Console]::OutputEncoding = [Text.UTF8Encoding]::new(); Get-CimInstance Win32_Process -Filter \"ProcessId = 13636\" | Select-Object -ExpandProperty CommandLine | ConvertTo-Json -Compress']' timed out after 15 seconds"
+    }
+  ],
+  "core_restarted": false,
+  "monitor_restarted": false,
+  "prior_failure_preserved": "initial targetCIM TimeoutExpired15sec/read_failures1; metadata readback assertion stopped, no research changes"
+}

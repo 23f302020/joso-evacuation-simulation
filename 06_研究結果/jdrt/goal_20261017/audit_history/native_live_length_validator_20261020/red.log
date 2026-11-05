@@ -1,0 +1,33 @@
+test_live_native_length_is_distinct_from_installed_budget_anchor (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_live_native_length_is_distinct_from_installed_budget_anchor) ... 
+  test_live_native_length_is_distinct_from_installed_budget_anchor (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_live_native_length_is_distinct_from_installed_budget_anchor) (ratio=0.5) ... FAIL
+  test_live_native_length_is_distinct_from_installed_budget_anchor (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_live_native_length_is_distinct_from_installed_budget_anchor) (ratio=1.5) ... FAIL
+test_live_length_nonfinite_or_negative_and_reanchored_budget_rejected (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_live_length_nonfinite_or_negative_and_reanchored_budget_rejected) ... ok
+
+======================================================================
+FAIL: test_live_native_length_is_distinct_from_installed_budget_anchor (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_live_native_length_is_distinct_from_installed_budget_anchor) (ratio=0.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_validate.py", line 237, in test_live_native_length_is_distinct_from_installed_budget_anchor
+    self.assertEqual(report['status'], 'PASS', report)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INVALID' != 'PASS'
+- INVALID
++ PASS
+ : {'status': 'INVALID', 'checks': {'transition_route_reconstruction': True, 'all_entries_primary_multiset': True, 'route_change_source_continuity': True, 'vehicle_first_turn_feasibility': True, 'walk_native_speed_contract': True, 'walk_stage_budget_recurrence': False, 'walk_pre_step_budget_stop': True, 'no_closed_or_ambiguous_entries': True}, 'errors': {'walk_stage_budget_recurrence': 1}, 'examples': {'walk_stage_budget_recurrence': [['walker', 0.5, 'replacement_receipts']]}, 'expected_transition_rows': 0, 'actual_transition_rows': 0, 'walkers': 1, 'walk_constructor_warnings': [], 'core_adoption_permitted': False}
+
+======================================================================
+FAIL: test_live_native_length_is_distinct_from_installed_budget_anchor (tests.test_jdrt_choice_validate.NativeWalkingContracts.test_live_native_length_is_distinct_from_installed_budget_anchor) (ratio=1.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_validate.py", line 237, in test_live_native_length_is_distinct_from_installed_budget_anchor
+    self.assertEqual(report['status'], 'PASS', report)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INVALID' != 'PASS'
+- INVALID
++ PASS
+ : {'status': 'INVALID', 'checks': {'transition_route_reconstruction': True, 'all_entries_primary_multiset': True, 'route_change_source_continuity': True, 'vehicle_first_turn_feasibility': True, 'walk_native_speed_contract': True, 'walk_stage_budget_recurrence': False, 'walk_pre_step_budget_stop': True, 'no_closed_or_ambiguous_entries': True}, 'errors': {'walk_stage_budget_recurrence': 1}, 'examples': {'walk_stage_budget_recurrence': [['walker', 0.5, 'replacement_receipts']]}, 'expected_transition_rows': 0, 'actual_transition_rows': 0, 'walkers': 1, 'walk_constructor_warnings': [], 'core_adoption_permitted': False}
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.280s
+
+FAILED (failures=2)

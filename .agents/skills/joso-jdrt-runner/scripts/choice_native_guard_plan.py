@@ -1,0 +1,104 @@
+"""Prepare synthetic native guard inputs; contains no launch or adoption action."""
+import math
+import re
+import sys
+from xml.etree import ElementTree as ET
+
+
+def source_constants(model_source, stage_source):
+    for name, expression in [('UNSPECIFIED_POS_LAT', b'std::numeric_limits<double>::max()'),
+                             ('RANDOM_POS_LAT', b'-std::numeric_limits<double>::max()')]:
+        prefix = ('MSPModel::' + name).encode()
+        if model_source.count(prefix) != 1 or prefix + b'(' + expression + b');' not in model_source:
+            raise ValueError('Native lateral sentinel definition differs')
+    enums = re.findall(rb'enum class MSStageType\s*\{([^}]+)\}', stage_source)
+    walking = re.findall(rb'\bWALKING\s*=\s*(\d+)\s*,', enums[0]) if len(enums) == 1 else []
+    if len(walking) != 1:
+        raise ValueError('Native walking enum is missing or ambiguous')
+    return {'unspecified': sys.float_info.max, 'random': -sys.float_info.max,
+            'walking_type': int(walking[0])}
+
+
+def build(net_raw, walk_speeds, step_sec):
+    speeds = {name: float(walk_speeds[name]) for name in ('type3', 'type4')}
+    if (not math.isfinite(step_sec) or step_sec <= 0
+            or not all(math.isfinite(v) and v > 0 for v in speeds.values())
+            or speeds['type3'] <= speeds['type4']):
+        raise ValueError('Positive registered clock and distinct ordered walking speeds required')
+    net = ET.fromstring(net_raw)
+    edges = {e.get('id'): e for e in net.findall('edge') if e.get('function') not in ('internal', 'walkingarea')}
+
+    def lane(edge):
+        candidates = [x for x in edges[edge].findall('lane') if 'pedestrian' in x.get('allow', '').split()]
+        if len(candidates) != 1:
+            raise ValueError('Expected one explicit pedestrian lane in this fixture')
+        length = float(candidates[0].get('length'))
+        if not math.isfinite(length) or length <= 0:
+            raise ValueError('Invalid native lane length')
+        return candidates[0].get('id'), length
+
+    try:
+        long_lane, length = lane('long')
+        _, first_length = lane('e0')
+        _, second_length = lane('e1')
+        _, final_length = lane('e2')
+        if (edges['e0'].get('to') != edges['e1'].get('from')
+                or edges['e1'].get('to') != edges['e2'].get('from')):
+            raise ValueError('Natural-stage fixture edges are disconnected')
+    except KeyError as error:
+        raise ValueError('Expected the SHA-bound selected fixture topology') from error
+    gap = 3 * (speeds['type3'] + speeds['type4'])
+    tiny = 4 * step_sec * min(speeds.values())
+    if length / 2 <= gap + 2 * tiny or min(first_length, second_length) <= 3 * tiny:
+        raise ValueError('Fixture too short; do not clamp native test positions')
+    horizon = 4 * gap / (speeds['type3'] - speeds['type4']) + 10 * step_sec
+    cases = []
+
+    def case(name, group, operation='observe', reverse=False, order=('p3', 'p4'),
+             lateral=None, legacy=False, natural=None, internal=False):
+        routes = ET.Element('routes')
+        for kind, speed in speeds.items():
+            ET.SubElement(routes, 'vType', id=kind, vClass='pedestrian', maxSpeed=str(speed),
+                          speedFactor='1', speedDev='0')
+        actors = ('p3',) if natural else ('p3', 'p4')
+        for pid in actors:
+            speed = speeds['type' + pid[-1]]
+            start = length / 2 + (1 if reverse else -1) * (1 if pid == 'p3' else -1) * 3 * speed
+            if natural == 'different': start = first_length - tiny
+            if internal: start = first_length / 2
+            person = ET.SubElement(routes, 'person', id=pid, type='type' + pid[-1], depart='0', departPos=str(start))
+            edge = 'e0' if natural == 'different' or internal else 'long'
+            arrival = first_length if natural == 'different' else start + tiny if natural else 0.0 if reverse else length
+            if internal: arrival = final_length
+            walk = ET.SubElement(person, 'walk', edges='e0 e1 e2' if internal else edge,
+                                 speed=str(speed), arrivalPos=str(arrival))
+            if lateral is not None: walk.set('departPosLat', lateral)
+            if natural:
+                if natural == 'wait':
+                    ET.SubElement(person, 'stop', lane=long_lane, endPos=str(arrival), duration=str(2 * step_sec))
+                ET.SubElement(person, 'walk', edges='e1' if natural == 'different' else 'long',
+                              speed=str(speed), arrivalPos=str(tiny if natural == 'different' else start + 3 * tiny))
+        cases.append({'id': name, 'group': group, 'status': 'PREPARED_NOT_EXECUTED',
+                      'routes_xml': ET.tostring(routes, encoding='unicode'), 'operation': operation,
+                      'operation_order': order, 'step_sec': step_sec, 'horizon_sec': horizon,
+                      'replacement_endpoint_m': final_length if internal else 0.0 if operation == 'reverse' else length,
+                      'sumo_options': ['--pedestrian.striping.legacy-departposlat', 'true'] if legacy else [],
+                      'require_changed_raw_lateral': operation in ('same', 'reverse', 'forward', 'position_shift'),
+                      'research_adoption_permitted': False, 'technical_ready': False})
+
+    case('same_direction', 'same_direction', 'same')
+    case('forward_reverse', 'forward_reverse', 'reverse')
+    case('reverse_forward', 'reverse_forward', 'forward', reverse=True)
+    case('multiple_forward_order', 'multiple_people_order', 'same')
+    case('multiple_reversed_order', 'multiple_people_order', 'same', order=('p4', 'p3'))
+    case('new_depart', 'new_depart')
+    case('explicit_lateral', 'explicit_lateral', lateral='0')
+    case('random_lateral', 'random_lateral', lateral='random')
+    case('legacy', 'legacy', legacy=True)
+    case('natural_same_edge', 'natural_walk_walk', natural='same')
+    case('natural_different_edge', 'natural_walk_walk', natural='different')
+    case('natural_wait', 'natural_walk_wait_walk', natural='wait')
+    case('non_target_edge', 'non_target_lane_edge', natural='different')
+    case('internal_walk', 'internal_walkingarea', 'internal_replace', internal=True)
+    case('position_mismatch', 'position_time_mismatch', 'position_shift')
+    return cases

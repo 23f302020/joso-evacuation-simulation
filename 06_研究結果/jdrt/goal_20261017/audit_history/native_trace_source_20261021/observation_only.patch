@@ -1,0 +1,108 @@
+--- base/MSPModel_Striping.cpp
++++ diagnostic/MSPModel_Striping.cpp
+@@ -19,6 +19,12 @@
+ // The pedestrian following model (prototype)
+ /****************************************************************************/
+ #include <config.h>
++// JDRT_TRACE_BEGIN includes
++#include <iomanip>
++#include <limits>
++#include <sstream>
++#include <utils/common/StringUtils.h>
++// JDRT_TRACE_END includes
+ 
+ #include <cmath>
+ #include <algorithm>
+@@ -1556,15 +1562,79 @@
+             myDir = !mayStartBackward ? FORWARD : BACKWARD;
+         }
+     }
++    // JDRT_TRACE_BEGIN start
++    static unsigned long long jdrtTraceSequence = 0;
++    std::ostringstream jdrtTraceStream;
++    jdrtTraceStream << std::setprecision(std::numeric_limits<double>::max_digits10)
++                    << '<' << "jdrtLatGuard";
++    const auto jdrtTraceField = [&](const char* key, const auto& value) {
++        jdrtTraceStream << ' ' << key << "=\"" << value << '"';
++    };
++    jdrtTraceField("seq", ++jdrtTraceSequence);
++    jdrtTraceField("sim_step", SIMSTEP);
++    jdrtTraceField("person", StringUtils::escapeXML(person->getID()));
++    jdrtTraceField("current_edge", StringUtils::escapeXML(currentEdge->getID()));
++    jdrtTraceField("current_edge_normal", currentEdge->isNormal());
++    jdrtTraceField("new_lane", StringUtils::escapeXML(lane->getID()));
++    jdrtTraceField("new_pos", myEdgePos);
++    jdrtTraceField("new_dir", myDir);
++    jdrtTraceField("input_lat", myPosLat);
++    jdrtTraceField("input_unspecified", myPosLat == UNSPECIFIED_POS_LAT);
++    jdrtTraceField("input_random", myPosLat == RANDOM_POS_LAT);
++    jdrtTraceField("legacy", myLegacyPosLat);
++    jdrtTraceField("stages", person->getNumStages());
++    jdrtTraceField("remaining", person->getNumRemainingStages());
++    jdrtTraceField("new_departed", stage->getDeparted());
++    // JDRT_TRACE_END start
+     const PState* previousState = nullptr;
+     if (myPosLat == UNSPECIFIED_POS_LAT && !myLegacyPosLat && currentEdge->isNormal()
+             && person->getNumStages() > person->getNumRemainingStages()) {
+         const MSStage* previousStage = person->getNextStage(-1);
++        // JDRT_TRACE_BEGIN prior
++        jdrtTraceField("prior_evaluated", 1);
++        jdrtTraceField("prior_type", static_cast<int>(previousStage->getStageType()));
++        if (previousStage->getStageType() == MSStageType::WALKING) {
++            const MSEdge* jdrtPriorEdge = previousStage->getEdge();
++            jdrtTraceField("prior_edge_null", jdrtPriorEdge == nullptr);
++            if (jdrtPriorEdge != nullptr) {
++                jdrtTraceField("prior_edge", StringUtils::escapeXML(jdrtPriorEdge->getID()));
++            }
++            jdrtTraceField("edge_same", jdrtPriorEdge == currentEdge);
++            if (jdrtPriorEdge == currentEdge) {
++                jdrtTraceField("prior_arrived", previousStage->getArrived());
++                jdrtTraceField("time_same", previousStage->getArrived() == stage->getDeparted());
++            }
++        }
++        // JDRT_TRACE_END prior
+         if (previousStage->getStageType() == MSStageType::WALKING
+                 && previousStage->getEdge() == currentEdge
+                 && previousStage->getArrived() == stage->getDeparted()) {
+             const MSStageMoving* previousWalk = static_cast<const MSStageMoving*>(previousStage);
+             const PState* state = dynamic_cast<const PState*>(previousWalk->getPState());
++            // JDRT_TRACE_BEGIN candidate
++            jdrtTraceField("state_evaluated", 1);
++            jdrtTraceField("state_null", state == nullptr);
++            if (state != nullptr) {
++                jdrtTraceField("person_same", state->getPerson() == person);
++                if (state->getPerson() == person) {
++                    jdrtTraceField("prior_person", StringUtils::escapeXML(state->getPerson()->getID()));
++                    const MSLane* jdrtOldLane = state->getLane();
++                    jdrtTraceField("old_lane_null", jdrtOldLane == nullptr);
++                    if (jdrtOldLane != nullptr) {
++                        jdrtTraceField("old_lane", StringUtils::escapeXML(jdrtOldLane->getID()));
++                    }
++                    jdrtTraceField("lane_same", jdrtOldLane == lane);
++                    if (jdrtOldLane == lane) {
++                        const double jdrtOldPos = state->getEdgePos(SIMSTEP);
++                        jdrtTraceField("old_pos", jdrtOldPos);
++                        jdrtTraceField("position_same", jdrtOldPos == myEdgePos);
++                        if (jdrtOldPos == myEdgePos) {
++                            jdrtTraceField("old_lat", state->getPosLat());
++                        }
++                    }
++                }
++            }
++            // JDRT_TRACE_END candidate
+             if (state != nullptr && state->getPerson() == person && state->getLane() == lane
+                     && state->getEdgePos(SIMSTEP) == myEdgePos) {
+                 previousState = state;
+@@ -1597,6 +1667,12 @@
+         std::cout << "  added new pedestrian " << myPerson->getID() << " on " << lane->getID() << " myEdgePos=" << myEdgePos << " myPosLat=" << myPosLat << " dir=" << myDir << " route=" << toString(myStage->getRoute()) << "\n";
+     }
+ 
++    // JDRT_TRACE_BEGIN finish
++    jdrtTraceField("inherited", previousState != nullptr);
++    jdrtTraceField("final_lat", myPosLat);
++    jdrtTraceField("final_dir", myDir);
++    std::cout << jdrtTraceStream.str() << "/>" << std::endl;
++    // JDRT_TRACE_END finish
+     myNLI = getNextLane(*this, lane, nullptr);
+ }
+ 

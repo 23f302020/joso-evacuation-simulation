@@ -1,0 +1,156 @@
+{
+  "scope": "read-only public source acquisition; no parameter adoption",
+  "sources": [
+    {
+      "id": "B01",
+      "file": "B01_cabinet_2016_survey.pdf",
+      "url": "https://www.bousai.go.jp/fusuigai/suigaiworking/pdf/dai3kai/siryo4.pdf",
+      "retrieved_at_jst": "2026-10-15T18:57:28+09:00",
+      "http_status": 200,
+      "final_url": "https://www.bousai.go.jp/fusuigai/suigaiworking/pdf/dai3kai/siryo4.pdf",
+      "content_type": "application/pdf",
+      "last_modified": "Thu, 01 Dec 2022 23:23:18 GMT",
+      "size_bytes": 1677203,
+      "sha256": "8852ca49e6dc4fe48be0dd4a574d179661f4020d86a06f0e2c19d4fa920526e7"
+    },
+    {
+      "id": "B02",
+      "file": "B02_river_2016_morooka.pdf",
+      "url": "https://www.jstage.jst.go.jp/article/river/22/0/22_345/_pdf/-char/ja",
+      "retrieved_at_jst": "2026-10-15T18:57:28+09:00",
+      "http_status": 200,
+      "final_url": "https://www.jstage.jst.go.jp/article/river/22/0/22_345/_pdf/-char/ja",
+      "content_type": "application/pdf;charset=UTF-8",
+      "last_modified": null,
+      "size_bytes": 893717,
+      "sha256": "6a34eb032808508c0fb7079f04ceb6228f06aee2a4ce214b85243178e5777e2d"
+    },
+    {
+      "id": "B03",
+      "file": "B03_river_2017_morooka.pdf",
+      "url": "https://www.jstage.jst.go.jp/article/river/23/0/23_127/_pdf/-char/ja",
+      "retrieved_at_jst": "2026-10-15T18:57:29+09:00",
+      "http_status": 200,
+      "final_url": "https://www.jstage.jst.go.jp/article/river/23/0/23_127/_pdf/-char/ja",
+      "content_type": "application/pdf;charset=UTF-8",
+      "last_modified": null,
+      "size_bytes": 1593992,
+      "sha256": "49dd89340b92bf15398f95628a751951449f4cba2e6c17c81433e2fc0123465a"
+    },
+    {
+      "id": "B04",
+      "file": "B04_cidir_2016.html",
+      "url": "https://cidir.iii.u-tokyo.ac.jp/report/nl34-04/",
+      "retrieved_at_jst": "2026-10-15T18:57:30+09:00",
+      "http_status": 200,
+      "final_url": "https://cidir.iii.u-tokyo.ac.jp/report/nl34-04/",
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "size_bytes": 56693,
+      "sha256": "c44bc0bbf291926713bed20c07a029433a76f39e7f001a3f63c605cf53fa7ad3"
+    },
+    {
+      "id": "B04",
+      "file": "B04_destination_type_6.png",
+      "url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/6.png",
+      "retrieved_at_jst": "2026-10-15T18:57:30+09:00",
+      "http_status": 200,
+      "final_url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/6.png",
+      "content_type": "image/png",
+      "last_modified": "Tue, 23 Feb 2021 11:33:42 GMT",
+      "size_bytes": 10152,
+      "sha256": "b74dc40a24df960f01d9a33ed77301b840dd9fe6f3b2ffd44fa1010276c1ba7e"
+    },
+    {
+      "id": "B04",
+      "file": "B04_destination_area_5.png",
+      "url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/5.png",
+      "retrieved_at_jst": "2026-10-15T18:57:30+09:00",
+      "http_status": 200,
+      "final_url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/5.png",
+      "content_type": "image/png",
+      "last_modified": "Tue, 23 Feb 2021 11:33:22 GMT",
+      "size_bytes": 9470,
+      "sha256": "e75ee07b36444f8af601a1b160b013a330a67292d974a31a30b026137fbdf4c6"
+    },
+    {
+      "id": "B04",
+      "file": "B04_timing_table.png",
+      "url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/10.png",
+      "retrieved_at_jst": "2026-10-15T18:57:30+09:00",
+      "http_status": 200,
+      "final_url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/10.png",
+      "content_type": "image/png",
+      "last_modified": "Tue, 23 Feb 2021 11:32:24 GMT",
+      "size_bytes": 107294,
+      "sha256": "71acc36f78eec0583606d873d658a2c64e61945e35e4b3f278a0f39f01df8df7"
+    },
+    {
+      "id": "B04",
+      "file": "B04_fig_8_1.png",
+      "url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/8-1.png",
+      "retrieved_at_jst": "2026-10-15T18:58:25+09:00",
+      "http_status": 200,
+      "final_url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/8-1.png",
+      "content_type": "image/png",
+      "last_modified": "Tue, 23 Feb 2021 11:32:57 GMT",
+      "size_bytes": 9144,
+      "sha256": "817decf51027da83dd1c05e90b307096ee19cc033281ba08bd44a015066cdb6c"
+    },
+    {
+      "id": "B04",
+      "file": "B04_fig_9.png",
+      "url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/9.png",
+      "retrieved_at_jst": "2026-10-15T18:58:25+09:00",
+      "http_status": 200,
+      "final_url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/9.png",
+      "content_type": "image/png",
+      "last_modified": "Tue, 23 Feb 2021 11:33:08 GMT",
+      "size_bytes": 11153,
+      "sha256": "e01890d78a74187af519b6e6b355b87d7a2493fb30810d3331c04198ddd75433"
+    },
+    {
+      "id": "B04",
+      "file": "B04_fig_7.png",
+      "url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/7.png",
+      "retrieved_at_jst": "2026-10-15T18:58:25+09:00",
+      "http_status": 200,
+      "final_url": "https://cidir.iii.u-tokyo.ac.jp/wp/wp-content/uploads/2021/02/7.png",
+      "content_type": "image/png",
+      "last_modified": "Tue, 23 Feb 2021 11:33:56 GMT",
+      "size_bytes": 7476,
+      "sha256": "ee3adf1bb75e69dc7c62a44448a6a93daaef4438da8ad854652de2585d15f741"
+    },
+    {
+      "id": "B05",
+      "file": "B05_joso_plan_revised_202512.pdf",
+      "url": "https://www.city.joso.lg.jp/data/doc/1767833619_doc_331_0.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:25+09:00",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1767833619_doc_331_0.pdf",
+      "content_type": "application/pdf",
+      "last_modified": "Tue, 31 Mar 2026 05:03:00 GMT",
+      "size_bytes": 16420279,
+      "sha256": "c5783231f3f509ea994bef1b9cb8699bf4a224c76b0c0493e2cbf26d19acbc94"
+    },
+    {
+      "id": "B05",
+      "file": "B05_joso_plan_landing.html",
+      "url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/public_transport_plan/page002682.html",
+      "retrieved_at_jst": "2026-10-15T18:58:27+09:00",
+      "http_status": 200,
+      "final_url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/public_transport_plan/page002682.html",
+      "content_type": "text/html",
+      "last_modified": null,
+      "size_bytes": 16759,
+      "sha256": "6d2e667f44175baae600a0f5c3a50e91f4aa2a4c32214b62d856100bfc58952a"
+    },
+    {
+      "id": "B06",
+      "file": "B06_tokyo_pt_manual.pdf",
+      "url": "https://www.tokyo-pt.jp/static/ptdata/file/manual.pdf",
+      "retrieved_at_jst": "2026-10-15T18:58:27+09:00",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)>"
+    }
+  ]
+}

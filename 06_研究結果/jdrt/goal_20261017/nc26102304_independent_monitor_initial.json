@@ -1,0 +1,49 @@
+{
+  "at_jst": "2026-10-23T18:04:40.626339+09:00",
+  "run_id": "nc26102304",
+  "monitor_observed_at_utc": "2026-10-23T09:04:39.221849+00:00",
+  "monitor_identity": {
+    "state": "alive",
+    "created": 134371000493149926,
+    "pid": 3348
+  },
+  "monitor_source_sha256": "c38c1e859f34d462d301b70a235aa8164e8bab42d4f761a3db28208210b56085",
+  "targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102304\\manifest.json": {
+      "status": "RUNNING",
+      "target_id": "nc26102304",
+      "observed_at_utc": "2026-10-23T09:04:37.904589+00:00",
+      "protocol": "realtime_choice_v1",
+      "purpose": "core",
+      "state_sha256": "22818dfeadaa69d033ea110c74855727aa0f347aad24979d9ab3ee48d7c26725",
+      "flags": [],
+      "pid": 12392,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102304\\manifest.json",
+      "sim_sec": 1260.0,
+      "progress_token": [
+        "RUNNING",
+        1260.0
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134372197674936983,
+        "pid": 12392
+      },
+      "command_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102304"
+      },
+      "command_verified_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102304"
+      },
+      "last_progress": 1792746277.062083,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102304\\sumo_errors.log": 0,
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102304.stderr.log": 0
+      },
+      "historical": false
+    }
+  },
+  "scope": "Current observer/target identity point observation; not past continuity or scientific adoption"
+}

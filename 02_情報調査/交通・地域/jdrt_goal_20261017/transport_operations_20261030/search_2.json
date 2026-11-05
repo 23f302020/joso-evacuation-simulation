@@ -1,0 +1,74 @@
+{
+  "query": "\"常総\" \"平成27年\" \"スクールバス\" \"避難\"",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.jstage.jst.go.jp/article/jscejsp/72/2/72_I_47/_pdf/-char/ja\",\"title\":\"2015年関東・東北豪雨による常総市内での 学校・保育所等の浸水被害と ...\",\"description\":\"表-2には常総市で発表・発令された気象警報，避難情報，. 図-1 調査対象学校園 ... 7)常総市：平成27年常総市鬼怒川水害対応に関する検証報告書，. 92p.，2016. 8 ...\",\"position\":1,\"source\":\"web\"},{\"url\":\"https://www.city.kamisu.ibaraki.jp/_res/projects/default_project/_page_/001/003/634/kyoutei_20260925.pdf\",\"title\":\"[PDF] 神栖市災害協定等一覧\",\"description\":\"平成27年 4月30日. 72. 津波発生時における緊急避難場所としての使用 ... スクールバス緊急避難場所の使用に関する協定. 茨城県立鹿島特別支援学校.\",\"position\":2,\"source\":\"web\"},{\"url\":\"https://www.city.joso.lg.jp/data/doc/1770258146_doc_167_0.pdf\",\"title\":\"[PDF] 常総市立小中学校適正配置におけるアンケート結果 【大生小・五箇小】\",\"description\":\"・距離が遠くなくても、子供が少なく通学班で帰れない場合は、スクールバスを利用出来るようにして欲しい。 ... ため避難するよう指示があるも，11時頃から⻤怒川の ...\",\"position\":3,\"source\":\"web\"},{\"url\":\"https://www.mlit.go.jp/river/suigai/pdf/19_kaisaigaiyou.pdf\",\"title\":\"[PDF] 水害サミット実行委員会事務局 はじめに\",\"description\":\"平成27年9月関東・東北豪雨では、台風第18号から変わった低気. 圧に ... 常総市における避難は. 広域避難しかない地形。この教訓から、鬼怒川緊急 ...\",\"position\":4,\"source\":\"web\"}],\"tools\":[{\"provider\":\"mof-go-jp\",\"capability\":\"sanctions/records_list\",\"description\":\"Collect the whole list (default 100 rows per page, about 2,900 rows in the asset-freeze file) or one 区分 of it. For one row by 番号 use `records_get`; for a name use `search`.\"},{\"provider\":\"mof-go-jp\",\"capability\":\"sanctions/search\",\"description\":\"Find whether a person or organization appears on the Japanese list by name. A match or its absence is not a compliance determination.\"},{\"provider\":\"mof-go-jp\",\"capability\":\"sanctions/source_status\",\"description\":\"Before a full `records_list` sweep, or to decide whether a stored snapshot is stale: compare `publication_id` and `content_hash`.\"},{\"provider\":\"fema-gov\",\"capability\":\"us-disaster-assistance/nri_hazards\",\"description\":\"To expand `<PREFIX>_EVNTS`, `_AFREQ`, `_EXPT`, `_HLRB`, `_EALT`, `_EALS`, `_EALR`, `_RISKV`, `_RISKS`, `_RISKR` column names into hazards.\"}]},\"creditsUsed\":2,\"id\":\"01a18a16-ba20-767e-ab2b-1d152a8f8071\",\"agent_hints\":[\"All 4 web results are excerpts only (#1 \\\"https://www.jstage.jst.go.jp/article/jscejsp/72/2/72_I_47/_pdf/-char/ja\\\", #2 \\\"https://www.city.kamisu.ibaraki.jp/_res/projects/default_project/_page_/001/003/634/kyoutei_20260925.pdf\\\", #3 \\\"https://www.city.joso.lg.jp/data/doc/1770258146_doc_167_0.pdf\\\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "data": {
+        "web": [
+          {
+            "url": "https://www.jstage.jst.go.jp/article/jscejsp/72/2/72_I_47/_pdf/-char/ja",
+            "title": "2015年関東・東北豪雨による常総市内での 学校・保育所等の浸水被害と ...",
+            "description": "表-2には常総市で発表・発令された気象警報，避難情報，. 図-1 調査対象学校園 ... 7)常総市：平成27年常総市鬼怒川水害対応に関する検証報告書，. 92p.，2016. 8 ...",
+            "position": 1,
+            "source": "web"
+          },
+          {
+            "url": "https://www.city.kamisu.ibaraki.jp/_res/projects/default_project/_page_/001/003/634/kyoutei_20260925.pdf",
+            "title": "[PDF] 神栖市災害協定等一覧",
+            "description": "平成27年 4月30日. 72. 津波発生時における緊急避難場所としての使用 ... スクールバス緊急避難場所の使用に関する協定. 茨城県立鹿島特別支援学校.",
+            "position": 2,
+            "source": "web"
+          },
+          {
+            "url": "https://www.city.joso.lg.jp/data/doc/1770258146_doc_167_0.pdf",
+            "title": "[PDF] 常総市立小中学校適正配置におけるアンケート結果 【大生小・五箇小】",
+            "description": "・距離が遠くなくても、子供が少なく通学班で帰れない場合は、スクールバスを利用出来るようにして欲しい。 ... ため避難するよう指示があるも，11時頃から⻤怒川の ...",
+            "position": 3,
+            "source": "web"
+          },
+          {
+            "url": "https://www.mlit.go.jp/river/suigai/pdf/19_kaisaigaiyou.pdf",
+            "title": "[PDF] 水害サミット実行委員会事務局 はじめに",
+            "description": "平成27年9月関東・東北豪雨では、台風第18号から変わった低気. 圧に ... 常総市における避難は. 広域避難しかない地形。この教訓から、鬼怒川緊急 ...",
+            "position": 4,
+            "source": "web"
+          }
+        ],
+        "tools": [
+          {
+            "provider": "mof-go-jp",
+            "capability": "sanctions/records_list",
+            "description": "Collect the whole list (default 100 rows per page, about 2,900 rows in the asset-freeze file) or one 区分 of it. For one row by 番号 use `records_get`; for a name use `search`."
+          },
+          {
+            "provider": "mof-go-jp",
+            "capability": "sanctions/search",
+            "description": "Find whether a person or organization appears on the Japanese list by name. A match or its absence is not a compliance determination."
+          },
+          {
+            "provider": "mof-go-jp",
+            "capability": "sanctions/source_status",
+            "description": "Before a full `records_list` sweep, or to decide whether a stored snapshot is stale: compare `publication_id` and `content_hash`."
+          },
+          {
+            "provider": "fema-gov",
+            "capability": "us-disaster-assistance/nri_hazards",
+            "description": "To expand `<PREFIX>_EVNTS`, `_AFREQ`, `_EXPT`, `_HLRB`, `_EALT`, `_EALS`, `_EALR`, `_RISKV`, `_RISKS`, `_RISKR` column names into hazards."
+          }
+        ]
+      },
+      "id": "01a18a16-ba20-767e-ab2b-1d152a8f8071",
+      "creditsUsed": 2,
+      "agent_hints": [
+        "All 4 web results are excerpts only (#1 \"https://www.jstage.jst.go.jp/article/jscejsp/72/2/72_I_47/_pdf/-char/ja\", #2 \"https://www.city.kamisu.ibaraki.jp/_res/projects/default_project/_page_/001/003/634/kyoutei_20260925.pdf\", #3 \"https://www.city.joso.lg.jp/data/doc/1770258146_doc_167_0.pdf\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+      ]
+    },
+    "isError": false
+  }
+}

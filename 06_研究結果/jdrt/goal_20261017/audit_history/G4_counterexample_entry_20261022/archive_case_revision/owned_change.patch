@@ -1,0 +1,46 @@
+--- before/G4_正式検証器_表会計候補試験.py
++++ current/G4_正式検証器_表会計候補試験.py
+@@ -24,6 +24,30 @@
+     assert (result['status'] == 'INVALID'
+             and result['checks'].get('all_bound_bytes_before') is False), 'Current implementation SHA gate must reject'
+     assert original_sha(source) == expected, 'Original implementation bytes changed'
++    return result
++
++
++def historical_factory_archive_counterexample(run_id, archive):
++    original_sha = validator.file_sha
++    name = '04_プログラム/scripts/jdrt_choice_fixtures.py'
++    source = (ROOT / name).resolve()
++    archive = archive.resolve()
++    before = {p: original_sha(p) for p in (source, archive)}
++    changed = ('0' if before[archive][0] != '0' else '1') + before[archive][1:]
++    def altered_sha(path):
++        return changed if Path(path).resolve() == source else original_sha(path)
++    with patch.object(validator, 'file_sha', side_effect=altered_sha):
++        control = validator.audit_run_tables(run_id, 'fixture', require_current=False)
++    assert (control['status'] == 'INCOMPLETE' and control['checks'] and all(control['checks'].values())
++            and control['components'] and all(v['status'] == 'PASS' for v in control['components'].values())
++            and control.get('historical_source_archives', {}).get(name) == archive.relative_to(ROOT).as_posix()), 'Historical archive control must pass'
++    def corrupted_archive_sha(path):
++        return changed if Path(path).resolve() in (source, archive) else original_sha(path)
++    with patch.object(validator, 'file_sha', side_effect=corrupted_archive_sha):
++        result = validator.audit_run_tables(run_id, 'fixture', require_current=False)
++    assert (result['status'] == 'INVALID'
++            and result['checks'].get('all_bound_bytes_before') is False), 'Historical archive SHA gate must reject'
++    assert all(original_sha(p) == expected for p, expected in before.items()), 'Original factory bytes changed'
+     return result
+ 
+ 
+@@ -223,10 +247,8 @@
+             results.append({'case': name, 'expected': expected,
+                             'pass': result['status'] == 'INVALID' and result['checks'][expected] is False,
+                             'failed_checks': [k for k, v in result['checks'].items() if not v]})
+-    original_sha = validator.file_sha
+-    archive = technical / 'cf26101711/factory.py'
+-    with patch.object(validator, 'file_sha', side_effect=lambda p: '0' * 64 if p == archive else original_sha(p)):
+-        rejected_archive = validator.audit_run_tables('cf26101711_c01', 'fixture', require_current=False)
++    rejected_archive = historical_factory_archive_counterexample(
++        suite['cases'][0]['child_run_id'], technical / suite_id / 'factory.py')
+     results.append({'case': 'historical_factory_archive_hash_corrupted', 'expected': 'all_bound_bytes_before',
+                     'pass': rejected_archive['status'] == 'INVALID' and rejected_archive['checks']['all_bound_bytes_before'] is False,
+                     'failed_checks': [k for k, v in rejected_archive['checks'].items() if not v]})

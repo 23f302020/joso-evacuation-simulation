@@ -1,0 +1,11 @@
+--- choice_native_guard_plan.py.before
++++ choice_native_guard_plan.py
+@@ -81,7 +81,7 @@
+         cases.append({'id': name, 'group': group, 'status': 'PREPARED_NOT_EXECUTED',
+                       'routes_xml': ET.tostring(routes, encoding='unicode'), 'operation': operation,
+                       'operation_order': order, 'step_sec': step_sec, 'horizon_sec': horizon,
+-                      'replacement_endpoint_m': 0.0 if operation == 'reverse' else length,
++                      'replacement_endpoint_m': final_length if internal else 0.0 if operation == 'reverse' else length,
+                       'sumo_options': ['--pedestrian.striping.legacy-departposlat', 'true'] if legacy else [],
+                       'require_changed_raw_lateral': operation in ('same', 'reverse', 'forward', 'position_shift'),
+                       'research_adoption_permitted': False, 'technical_ready': False})

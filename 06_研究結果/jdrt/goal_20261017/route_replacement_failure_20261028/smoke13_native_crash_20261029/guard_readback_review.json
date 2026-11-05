@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-29T21:55:58.408987+09:00",
+  "scope": "New read-only parameterized migration of preserved audit_actual.py; unchanged pure guards/trace checks",
+  "predecessor": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_internal_fixture_20261021\\audit_actual.py",
+  "reason": "Second current-native45 audit; prior orchestrator pins old workspace/binaries/config",
+  "code_sha256": "4590bc75b54d9055ee0cf3613c2dae082ee8f79ccaf7bcfe795b7d4b2f2f730d",
+  "test_sha256": "a770c9baaf854016ff1912d7bc1bb4815a19babd86d8d5ecb12769ccbf10245f",
+  "RED": "guard_readback_RED.log (3 intentional unimplemented-contract failures)",
+  "candidate_GREEN": "guard_readback_candidate_GREEN.log (3 tests, including missing/duplicate/foreign cases, changed/extra files and partial/adoptable scope rejection)",
+  "review": [
+    "No launch, PID kill, network or record path",
+    "Current plan/source/config/bundles and complete case-role product required",
+    "Existing actor accounting/position/direction/trace checks reused unchanged",
+    "Native clock and version extracted from current source, no fixed observed count/pass values",
+    "Unexercised false-position/time native path remains unexercised",
+    "Exclusive new report only; original current and old run bytes untouched"
+  ],
+  "ACE": [
+    "sai-00005: preserve scope of native non-coverage",
+    "err-00004: native step units are source-bound; frame/operation clocks must link"
+  ],
+  "research_method_change": false,
+  "core_ready": false,
+  "actual_native_readback": "PENDING"
+}

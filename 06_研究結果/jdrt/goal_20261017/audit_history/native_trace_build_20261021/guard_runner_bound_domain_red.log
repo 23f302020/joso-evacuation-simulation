@@ -1,0 +1,29 @@
+......F....
+======================================================================
+FAIL: test_pinned_transport_traces_bound_connection_domains_without_global_switch (test_choice_native_guard.GuardCollectionContracts.test_pinned_transport_traces_bound_connection_domains_without_global_switch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 156, in test_pinned_transport_traces_bound_connection_domains_without_global_switch
+    self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 16, in <module>
+    assert connection.simulation.getTime()==12.5
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\step.py", line 120, in tracingWrapper
+    return method(*args, **kwargs)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\_simulation.py", line 257, in getTime
+    return self._getUniversal(tc.VAR_TIME)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\domain.py", line 152, in _getUniversal
+    return _parse(self._retValFunc, varID, self._getCmd(varID, objectID, format, *values))
+                                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\domain.py", line 156, in _getCmd
+    raise FatalTraCIError("Not connected.")
+traci.exceptions.FatalTraCIError: Not connected.
+
+
+----------------------------------------------------------------------
+Ran 11 tests in 2.861s
+
+FAILED (failures=1)

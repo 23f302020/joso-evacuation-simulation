@@ -1,0 +1,101 @@
+EEEEEEEEE
+======================================================================
+ERROR: test_all_contract_groups_are_present_and_technical_only (test_choice_native_guard_plan.NativeGuardPlanContracts.test_all_contract_groups_are_present_and_technical_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 19, in test_all_contract_groups_are_present_and_technical_only
+    cases=plan.build(self.net(),{'type3':1.,'type4':.6},.5)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+======================================================================
+ERROR: test_explicit_random_legacy_have_real_native_input_paths (test_choice_native_guard_plan.NativeGuardPlanContracts.test_explicit_random_legacy_have_real_native_input_paths)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 41, in test_explicit_random_legacy_have_real_native_input_paths
+    cases={c['id']:c for c in plan.build(self.net(),{'type3':1.,'type4':.6},.5)}
+                              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+======================================================================
+ERROR: test_invalid_geometry_or_clock_is_not_silently_adjusted (test_choice_native_guard_plan.NativeGuardPlanContracts.test_invalid_geometry_or_clock_is_not_silently_adjusted) (step=0.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 61, in test_invalid_geometry_or_clock_is_not_silently_adjusted
+    with self.subTest(step=step),self.assertRaises(ValueError):plan.build(net,speeds,step)
+                                                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+======================================================================
+ERROR: test_invalid_geometry_or_clock_is_not_silently_adjusted (test_choice_native_guard_plan.NativeGuardPlanContracts.test_invalid_geometry_or_clock_is_not_silently_adjusted) (step=0.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 61, in test_invalid_geometry_or_clock_is_not_silently_adjusted
+    with self.subTest(step=step),self.assertRaises(ValueError):plan.build(net,speeds,step)
+                                                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+======================================================================
+ERROR: test_invalid_geometry_or_clock_is_not_silently_adjusted (test_choice_native_guard_plan.NativeGuardPlanContracts.test_invalid_geometry_or_clock_is_not_silently_adjusted) (step=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 61, in test_invalid_geometry_or_clock_is_not_silently_adjusted
+    with self.subTest(step=step),self.assertRaises(ValueError):plan.build(net,speeds,step)
+                                                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+======================================================================
+ERROR: test_invalid_geometry_or_clock_is_not_silently_adjusted (test_choice_native_guard_plan.NativeGuardPlanContracts.test_invalid_geometry_or_clock_is_not_silently_adjusted) (step=0.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 61, in test_invalid_geometry_or_clock_is_not_silently_adjusted
+    with self.subTest(step=step),self.assertRaises(ValueError):plan.build(net,speeds,step)
+                                                               ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+======================================================================
+ERROR: test_native_enum_and_double_sentinels_are_source_derived (test_choice_native_guard_plan.NativeGuardPlanContracts.test_native_enum_and_double_sentinels_are_source_derived)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 66, in test_native_enum_and_double_sentinels_are_source_derived
+    c=plan.source_constants(model,stage)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 5, in source_constants
+    raise NotImplementedError('Constants must be extracted from the pinned native source')
+NotImplementedError: Constants must be extracted from the pinned native source
+
+======================================================================
+ERROR: test_natural_stage_variants_preserve_legal_order_and_no_forced_replacement (test_choice_native_guard_plan.NativeGuardPlanContracts.test_natural_stage_variants_preserve_legal_order_and_no_forced_replacement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 49, in test_natural_stage_variants_preserve_legal_order_and_no_forced_replacement
+    cases=plan.build(self.net(),{'type3':1.,'type4':.6},.5)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+======================================================================
+ERROR: test_reverse_routes_use_native_endpoints_and_the_original_speeds (test_choice_native_guard_plan.NativeGuardPlanContracts.test_reverse_routes_use_native_endpoints_and_the_original_speeds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 30, in test_reverse_routes_use_native_endpoints_and_the_original_speeds
+    cases={c['id']:c for c in plan.build(self.net(240.),{'type3':1.2,'type4':.4},.25)}
+                              ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_plan.py", line 9, in build
+    raise NotImplementedError('Native guard cases must use actual fixture lane geometry')
+NotImplementedError: Native guard cases must use actual fixture lane geometry
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.012s
+
+FAILED (errors=9)

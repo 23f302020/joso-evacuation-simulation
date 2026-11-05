@@ -1,0 +1,56 @@
+test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (__main__.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) ... 
+  test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (__main__.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) (name='bounded.net.xml') ... FAIL
+  test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (__main__.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) (name='hazard.csv') ... FAIL
+  test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (__main__.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) (name='fixture_parameters.json') ... FAIL
+test_missing_or_stale_input_manifest_cannot_pass (__main__.PairedInputContracts.test_missing_or_stale_input_manifest_cannot_pass) ... FAIL
+test_only_xml_comments_and_native_converter_log_metadata_may_differ (__main__.PairedInputContracts.test_only_xml_comments_and_native_converter_log_metadata_may_differ) ... FAIL
+
+======================================================================
+FAIL: test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (__main__.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) (name='bounded.net.xml')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 323, in test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes
+    with self.subTest(name=name), self.assertRaises(ValueError): self.p.compare_inputs()
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (__main__.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) (name='hazard.csv')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 323, in test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes
+    with self.subTest(name=name), self.assertRaises(ValueError): self.p.compare_inputs()
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (__main__.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) (name='fixture_parameters.json')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 323, in test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes
+    with self.subTest(name=name), self.assertRaises(ValueError): self.p.compare_inputs()
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_stale_input_manifest_cannot_pass (__main__.PairedInputContracts.test_missing_or_stale_input_manifest_cannot_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 327, in test_missing_or_stale_input_manifest_cannot_pass
+    with self.assertRaises(ValueError): self.p.compare_inputs()
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_only_xml_comments_and_native_converter_log_metadata_may_differ (__main__.PairedInputContracts.test_only_xml_comments_and_native_converter_log_metadata_may_differ)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 315, in test_only_xml_comments_and_native_converter_log_metadata_may_differ
+    self.assertEqual(len(rows), 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.731s
+
+FAILED (failures=5)

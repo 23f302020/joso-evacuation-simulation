@@ -1,0 +1,31 @@
+# 対照版・修正版の一次ビルド証拠を結ぶ検査
+
+2026-10-20。既存JDRTスキルのpackagerに`choice_pair_proof.py`を接続した。旧P1の「control比較booleanがtrue」「patched側に64桁SHAがある」という間接条件を、両roleの実ファイル照合へ置換した。研究条件・入力・共通5実装・旧runは変更していない。nativeの物理合格や研究READYを意味しない。
+
+## 一次証拠と試験
+
+[最終一次照合](audit_history/native_pair_primary_20261020T163105635134/verification.json)は13,003件を確認。両版各6,228 source、10 metadata pair、CMake/compiler driver/make/ar/ld/ranlib/Xerces/zlibの9役割、Xerces/zlibの471 includeファイルを対象とした。両terminal stateと全command exit/log SHA、configured source/build/cache/tool paths、generated version header、両EXEのSHAと版表示command、System32限定ロード・export照合の生ログを結び付けた。公式ZIPと登録native diff・共有CMake diffの厳密適用、7欠損の対象外根拠も再計算している。
+
+[差分レビュー](audit_history/pair_proof_helper_20261020/review.json)・[最終source SHA](audit_history/pair_proof_helper_20261020/final_sources.json)・同directoryの試験ログを参照。最終53試験はpair本体/実packager統合17、source12、metadata11、packaging unit13。低層packaging unitではpair検査を明示mockで隔離し、別の統合試験ではpair検査・コピー・失敗保全をmockせず実行した。人工PE/loader原本であり、native物理実証ではない。
+
+相手EXE差替え、異なるcompiler/static library、別buildのmetadata、configure/flags/link差、後続command失敗、版表示commandの取り違え、System32外のmodule、欠落export・raw log・symbol coverage、原本SHAの変化、登録roleと矛盾するbuild source申告を拒否する。コピー中に相手sourceの既存ファイルが変更された場合と、新規ファイルが追加された場合も拒否し、FAILED.jsonとpartial bundleを残す。後者はREDを確認後、source/headerの集合と全byteをコピー前後で再照合するよう修正した。
+
+## 実成果物から判明した修正
+
+- 最初の実照合はUCRT API contract名を旧PE allowlistが拒否。Microsoftの[UCRT配備仕様](https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170)と[API set仕様](https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-apisets)を確認し、既存の実System32限定ロード証拠と突合した。12個の具体的な`api-ms-win-crt-…-l1-1-0.dll`だけを追加。未知の接尾辞・版・任意の`api-ms-win-*`は許さず、全import名と全symbolを生objdump・ロード結果へ拘束する。新DLLの配布やglobal PATH変更はない。
+- 初期patched loader reportにはbuild_directory欄がなかった。両EXEの元path、終端state SHA、snapshot原本からbuild rootを導出する方式を人工試験で確認し、存在しない欄を想定値で補わない。新旧reportとも実EXEと一致する必要がある。
+- `.resolve()`でMSIXの物理pathだけを渡すと、metadata中の短いconfigured pathが既存canonicalizerで置換されず、実照合を拒否した。configureに記録された元source/build rootsと解決後の実体の両方を既存の限定正規化へ渡すよう修正。非pathの差は引き続き拒否する。失敗directoryとログは保全した。
+- 一次照合producerの`packager_integrated=false`は旧ラベルが残った観測metadataで、packagingを呼び出していないことを示そうとしたもの。現行packager接続は凍結code SHAとmockしない統合試験を正本とする。この欄を採用ゲートとして読むconsumerはなく、原本は変更していない。
+
+## 適用範囲と次のゲート
+
+確認したのは、このhost上の指定ビルド成果物・指定ツール/依存物・現在sourceとの整合である。署名付きbuild attestation、hermeticな全compiler内部/OS依存の封鎖、bit再現buildを証明したものではない。System32 exportと版表示はその時点の観測であり、任意のWindows版への可搬性を保証しない。
+
+この検査とレビューで技術回帰用の新規bundle作成へ進める。対照版`native_ctl_20261020a`と修正版`native_lat_20261020a`を別directoryへ作成し、既存bundleやrunを再利用しない。作成結果・fresh-process import/fingerprintは別の実施記録へ残す。SUMO/LICENSE/NOTICE/AUTHORSに加え、Xerces、zlib、GCC runtimeのライセンスも保全する。
+
+selected-pair実行helperはまだ無効化された草案。新bundleの解決・role/SHA/proof照合、orchestration試験・レビュー後にのみ技術fixtureを始める。selected pairが通ってもnative guardの実証、全現行fixture/独立audit/14設定smoke/new preflight/G6が必要。正式0/70・READY=false、全70前の方向解釈なし、最終goal ACTIVEを維持する。外部送信・公開更新なし。
+
+
+## 実bundle作成・接続確認（16:50完了）
+
+[実施記録](native_bundles_verified_20261020.json)で、control/patchedとも各243ファイル・約119MBを新規作成し、別processで実traci/sumolibのimport、2回の解決とfingerprint一致、未列挙/pycなしを確認した。両bundleで公式Python bytes、source commit、一次pair JSON、承認policyが一致する。EXEは各roleの元build state SHAに一致。現行研究への採用やnative物理成立を意味せず、selected pair helperは起動無効化を維持する。

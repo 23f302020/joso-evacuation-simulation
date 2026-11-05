@@ -1,0 +1,14 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "6fecd05b1902c45c642a84d378012db1",
+  "at_utc": "2026-10-28T15:05:23.343486+00:00",
+  "target": "monitor-gap:1793199841.2789993",
+  "kind": "monitoring_gap",
+  "evidence": {
+    "gap_sec": 82.03038954734802,
+    "previous_observation_utc": "2026-10-28T15:04:47.840924+00:00"
+  },
+  "delivery": "pending",
+  "notification": "failed",
+  "research_adoption": false
+}

@@ -1,0 +1,19 @@
+{
+  "at_jst": "2026-10-27T19:18:56.456583+09:00",
+  "action": "read_only_pipeline_measurement_started",
+  "measurement_session": 92975,
+  "actual_pid": 16236,
+  "actual_created_jst": "2026-10-27T19:16:42.406753+09:00",
+  "launcher_pid": 5852,
+  "state": "07_監視システム/verification/pipeline_efficiency_20261027_evening/state.json",
+  "source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+  "planned_seconds": 10800,
+  "interval_sec": 60,
+  "first_available_mib": 766,
+  "first_pages_input_sec": 2907,
+  "current_record_original_session": 24562,
+  "current_record_actual_pid": 24852,
+  "B_full_cycle_coverage_achieved": false,
+  "causal_bottleneck_proven": false,
+  "scope": "Read-only current record tail and subsequent already-authorized normal cell. No extra research run, source edit, restart, validation replay, profile injection or automatic measurement restart."
+}

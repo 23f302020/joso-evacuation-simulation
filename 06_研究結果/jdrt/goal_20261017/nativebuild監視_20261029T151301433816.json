@@ -1,0 +1,328 @@
+{
+  "action": "isolated_native_build_monitor",
+  "at_utc": "2026-10-29T06:13:01.433816+00:00",
+  "at_jst": "2026-10-29T15:13:01.433816+09:00",
+  "state_path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build_state.json",
+  "anomaly_flags": [],
+  "downstream_start_permitted": false,
+  "simulation_allowed": false,
+  "research_cli_switch_allowed": false,
+  "core_ready": false,
+  "formal_validation_or_adoption": false,
+  "native_regression_verified": false,
+  "research_core_manifest": "not_applicable: isolated build; no research run is started",
+  "independent_observation_interval_sec": 900,
+  "orchestrator_state_update_is_independent_observation": false,
+  "monitor_source_sha256": "557faf3834d0295e3301cfaa00f7bd089cac330c6cac2c9cd27d00c7261e7eba",
+  "state_snapshot_sha256": "710d65952e8b7790d8e026559ee78b618cc1dad123800b77e14b4243476e4ed9",
+  "state_snapshot_bytes": 15767,
+  "state_snapshot": {
+    "schema": "isolated_native_build_v1",
+    "attempt_id": "repair02_20261029",
+    "role": "ISOLATED_STOP_INDEX_REPAIR_CANDIDATE_NOT_ADOPTED",
+    "base_role": "control",
+    "started_at_jst": "2026-10-29T11:27:39.070530+09:00",
+    "owner_pid": 18572,
+    "owner_process_identity": {
+      "ProcessId": 18572,
+      "ParentProcessId": 13932,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id repair02_20261029 --stop-index-repair --build-role control --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/control02_20261020/build_state.json --source-preparation C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/source_preparation.json --pair-state 06_研究結果/jdrt/goal_20261017/nc261029r_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/current_pair_r_readback.json",
+      "CreationDate": 1793240848487
+    },
+    "child_pid": null,
+    "staging": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+    "commands": [
+      {
+        "phase": "diagnostic_configure",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "-S",
+          "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair02_20261029/source",
+          "-B",
+          "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair02_20261029/build",
+          "-G",
+          "MinGW Makefiles",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe",
+          "-DCMAKE_C_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe",
+          "-DCMAKE_CXX_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_EXE_LINKER_FLAGS=-static -static-libgcc -static-libstdc++",
+          "-DCMAKE_PREFIX_PATH=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static",
+          "-DPython_EXECUTABLE=C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "-DISOLATED_BUILD=ON",
+          "-DCHECK_OPTIONAL_LIBS=OFF",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_FOX=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_Proj=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_Intl=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=FALSE",
+          "-DZLIB_INCLUDE_DIR=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include",
+          "-DFMI=OFF",
+          "-DNETEDIT=OFF",
+          "-DENABLE_PYTHON_BINDINGS=OFF",
+          "-DENABLE_JAVA_BINDINGS=OFF",
+          "-DENABLE_CS_BINDINGS=OFF",
+          "-DPARQUET=OFF",
+          "-DCCACHE_SUPPORT=OFF",
+          "-DTCMALLOC=OFF",
+          "-DCOMPILE_DEFINITIONS=XERCES_STATIC_LIBRARY;HAVE_VERSION_H",
+          "-DZLIB_LIBRARY:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a",
+          "-DZLIB_LIBRARY_RELEASE:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\diagnostic_configure.log",
+        "started_at_jst": "2026-10-29T11:29:33.371521+09:00",
+        "pid": 9928,
+        "process_identity": {
+          "ProcessId": 9928,
+          "ParentProcessId": 18572,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe -S C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair02_20261029/source -B C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair02_20261029/build -G \"MinGW Makefiles\" -DCMAKE_MAKE_PROGRAM=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe -DCMAKE_C_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe -DCMAKE_CXX_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe -DCMAKE_BUILD_TYPE=Release \"-DCMAKE_EXE_LINKER_FLAGS=-static -static-libgcc -static-libstdc++\" -DCMAKE_PREFIX_PATH=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static -DPython_EXECUTABLE=C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -DISOLATED_BUILD=ON -DCHECK_OPTIONAL_LIBS=OFF -DCMAKE_DISABLE_FIND_PACKAGE_FOX=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Proj=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Intl=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=FALSE -DZLIB_INCLUDE_DIR=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include -DFMI=OFF -DNETEDIT=OFF -DENABLE_PYTHON_BINDINGS=OFF -DENABLE_JAVA_BINDINGS=OFF -DENABLE_CS_BINDINGS=OFF -DPARQUET=OFF -DCCACHE_SUPPORT=OFF -DTCMALLOC=OFF -DCOMPILE_DEFINITIONS=XERCES_STATIC_LIBRARY;HAVE_VERSION_H -DZLIB_LIBRARY:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a -DZLIB_LIBRARY_RELEASE:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a",
+          "CreationDate": 1793240973381
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-29T11:29:48.079539+09:00",
+        "log_bytes": 3403,
+        "log_sha256": "b4e6a69d186fc988f1162bd884789372014ebaacb1c4c8dd508f44b55e05dc67"
+      },
+      {
+        "phase": "diagnostic_sumo_build",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build",
+          "--target",
+          "sumo",
+          "netconvert",
+          "--parallel",
+          "2"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\diagnostic_sumo_build.log",
+        "started_at_jst": "2026-10-29T11:29:48.140954+09:00",
+        "pid": 32324,
+        "process_identity": {
+          "ProcessId": 32324,
+          "ParentProcessId": 18572,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build --target sumo netconvert --parallel 2",
+          "CreationDate": 1793240988146
+        },
+        "log_bytes": 59975,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-29T11:47:45.159080+09:00",
+        "log_sha256": "fff8a903d6ddf0b15cee7291e4116b2ae0f0872b2fd0ffd8bb624f4dfe174343"
+      },
+      {
+        "phase": "sumo_diagnostic_imports",
+        "command": [
+          "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "-p",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\sumo.exe"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\sumo_diagnostic_imports.log",
+        "started_at_jst": "2026-10-29T11:47:45.182340+09:00",
+        "pid": 26836,
+        "process_identity": {
+          "ProcessId": 26836,
+          "ParentProcessId": 18572,
+          "ExecutablePath": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "CommandLine": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe -p C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\sumo.exe",
+          "CreationDate": 1793242065449
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-29T11:47:47.945630+09:00",
+        "log_bytes": 11614059,
+        "log_sha256": "b41bb78945b309f177f0b53f08be4928a25d0deda454f2803bc0a058011a4e2a"
+      },
+      {
+        "phase": "sumo_diagnostic_version",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\sumo.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\sumo_diagnostic_version.log",
+        "started_at_jst": "2026-10-29T11:47:47.968736+09:00",
+        "pid": 42488,
+        "process_identity": null,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-29T11:47:48.668592+09:00",
+        "log_bytes": 908,
+        "log_sha256": "988d1ba587ff0bc8d7720267bffce7fde09f2b3a53b273537d0660fe4cb180df"
+      },
+      {
+        "phase": "netconvert_diagnostic_imports",
+        "command": [
+          "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "-p",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\netconvert.exe"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\netconvert_diagnostic_imports.log",
+        "started_at_jst": "2026-10-29T11:47:48.712584+09:00",
+        "pid": 28304,
+        "process_identity": {
+          "ProcessId": 28304,
+          "ParentProcessId": 18572,
+          "ExecutablePath": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "CommandLine": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe -p C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\netconvert.exe",
+          "CreationDate": 1793242068713
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-29T11:47:50.315162+09:00",
+        "log_bytes": 7755429,
+        "log_sha256": "2b6f91c7fc307e8510fc45762f8dd2315ddda091d04dc35337d90512b26cda69"
+      },
+      {
+        "phase": "netconvert_diagnostic_version",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\netconvert.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\netconvert_diagnostic_version.log",
+        "started_at_jst": "2026-10-29T11:47:50.345293+09:00",
+        "pid": 9240,
+        "process_identity": null,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-29T11:47:52.037839+09:00",
+        "log_bytes": 920,
+        "log_sha256": "573ec2b071e031a8eb544cb4bc75b941ddc5d3457fb8041803e66c540fffcef4"
+      }
+    ],
+    "binaries": [
+      {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\sumo.exe",
+        "sha256": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+        "bytes": 21982672
+      },
+      {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\netconvert.exe",
+        "sha256": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4",
+        "bytes": 14311826
+      }
+    ],
+    "max_compile_jobs": 2,
+    "simulation_allowed": false,
+    "research_cli_switch_allowed": false,
+    "technical_ready": false,
+    "research_adoption_permitted": false,
+    "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+    "phase": "completed",
+    "custom_version": "1.26.0-jdrt-choice-stopindex-control-repair02_20261029",
+    "disk_free_before": 248234602496,
+    "diagnostic_source": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\source",
+    "diagnostic_build": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build",
+    "snapshot_sha256": {
+      "base_state.json": "052b1303c350967b89f9317318350c4279286cc9395889c2f7600f85c4e1ba2c",
+      "choice_native_stop_index_remap.py": "e5b81710c7f790c22c09bc31aecf794f77c425917755253af1f2cf607282a21e",
+      "choice_native_trace_build.py": "802d2fc5316a8bd19bac5760e1d3f7c08463a98176fbfe2e98425edc267a7dbe",
+      "choice_native_trace_source.py": "d20748ae0e24c9a77cc4729980d97f22291b808c56a4badac393f4067916df9d",
+      "native_build_support.py": "caedf58344665f7551e33a2b8353720c832d5bc9c64219feab317d1cd945394f",
+      "pair_proof.json": "1591b4c8dc574975101c50a54f135a129af8ef1e74bcd8c33bc60804c788a390",
+      "pair_state.json": "ffc7a942b35d52f50ba70b43b47235c54e55860adebfbca24c58ffd1097b059b",
+      "source_preparation.json": "3a01fbca6263a1450cb019fc7c3128ab1ba7ce4a8fb98ad7a67bb43bf2212ec6"
+    },
+    "updated_at_jst": "2026-10-29T11:49:32.934177+09:00",
+    "source_receipt": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\diagnostic_source_receipt.json",
+      "sha256": "65b9cafd6c1f9169d05407a5f68965a3f68309cf644a7b7e0b864c0781f114bb"
+    },
+    "control_native_source_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "source_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+    "source_scope": "Reviewed shared stop-history repair only, relative to selected original role; no trace output",
+    "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\netconvert_diagnostic_version.log",
+    "custom_version_header": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\version.h",
+      "sha256": "859106d9cf083b65e790296ba2e9d6b4b8d66dd3425d99d16e13f2847bbe08b3"
+    }
+  },
+  "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+  "phase": "completed",
+  "attempt_id": "repair02_20261029",
+  "started_at_jst": "2026-10-29T11:27:39.070530+09:00",
+  "state_updated_at_jst": "2026-10-29T11:49:32.934177+09:00",
+  "seconds_from_build_start_to_this_observation": 13522.363286,
+  "state_update_age_sec": 12208.499639,
+  "owner": {
+    "pid": 18572,
+    "expected": {
+      "ProcessId": 18572,
+      "ParentProcessId": 13932,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id repair02_20261029 --stop-index-repair --build-role control --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/control02_20261020/build_state.json --source-preparation C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/source_preparation.json --pair-state 06_研究結果/jdrt/goal_20261017/nc261029r_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/current_pair_r_readback.json",
+      "CreationDate": 1793240848487
+    },
+    "identity": "absent",
+    "observed_cim": null
+  },
+  "logs": [
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\diagnostic_configure.log",
+      "bytes": 3403,
+      "tail_max_bytes": 8192,
+      "tail": "-- The CXX compiler identification is GNU 12.2.0\n-- The C compiler identification is GNU 12.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: C:/Ruby31-x64/msys64/ucrt64/bin/g++.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: C:/Ruby31-x64/msys64/ucrt64/bin/gcc.exe - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- CMAKE_BINARY_DIR: C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair02_20261029/build\n-- CMAKE_SOURCE_DIR: C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair02_20261029/source\n-- \n-- Platform: \n--     Host: Windows-10.0.26300 AMD64\n--     Target: Windows-10.0.26300 AMD64\n--     CMake: 3.31.9\n--     CMake generator: MinGW Makefiles\n--     CMake build tool: C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe\n--     Compiler: GNU 12.2.0\n-- \n-- Found Python: C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe (found version \"3.13.12\") found components: Interpreter Development.Module\n-- Python build, hatchling or pip are missing (sumo packages will not be installable via cmake).\n-- Could NOT find GTest (missing: GTEST_LIBRARY GTEST_INCLUDE_DIR GTEST_MAIN_LIBRARY) \n-- Found XercesC: C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/lib/libxerces-c.a (found version \"3.3.0\")\n-- Could NOT find Freetype (missing: FREETYPE_LIBRARY FREETYPE_INCLUDE_DIRS) \nCMake Warning at CMakeLists.txt:428 (message):\n  FreeType cannot be found.  If you are using SUMO libraries, update\n  SUMO_LIBRARIES folder with git pull.  Otherwise, specify manually FreeType\n  include folder and libs.\n\n\n-- Found ZLIB: C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a (found version \"1.2.13\")\n-- Could NOT find SWIG (missing: SWIG_EXECUTABLE SWIG_DIR) (Required is at least version \"3.0.12\")\nCMake Warning at CMakeLists.txt:515 (find_package):\n  By not providing \"FindEigen3.cmake\" in CMAKE_MODULE_PATH this project has\n  asked CMake to find a package configuration file provided by \"Eigen3\", but\n  CMake did not find one.\n\n  Could not find a package configuration file provided by \"Eigen3\" (requested\n  version 3.2) with any of the following names:\n\n    Eigen3Config.cmake\n    eigen3-config.cmake\n\n  Add the installation prefix of \"Eigen3\" to CMAKE_PREFIX_PATH or set\n  \"Eigen3_DIR\" to a directory containing one of the above files.  If \"Eigen3\"\n  provides a separate development package or SDK, be sure it has been\n  installed.\n\n\n-- Found Gettext: C:/Ruby31-x64/msys64/ucrt64/bin/msgmerge.exe (found version \"0.21.1\")\n-- Could NOT find Java (missing: Java_JAVA_EXECUTABLE Java_JAVAC_EXECUTABLE Java_JAR_EXECUTABLE Java_JAVADOC_EXECUTABLE Java_JAVAH_EXECUTABLE Development) \n-- Found Git: C:/Program Files/Git/cmd/git.exe (found version \"2.56.0.windows.3\")\n-- Enabled features: Windows-10.0.26300 AMD64 GNU 12.2.0 Release\n-- Configuring done (10.6s)\n-- Generating done (3.8s)\n-- Build files have been written to: C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair02_20261029/build\n",
+      "sha256": "b4e6a69d186fc988f1162bd884789372014ebaacb1c4c8dd508f44b55e05dc67",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\diagnostic_sumo_build.log",
+      "bytes": 59975,
+      "tail_max_bytes": 8192,
+      "tail": "rt/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Fensterdefinition.cpp.obj\r\n[ 40%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Gefahrwarnungsdefinition.cpp.obj\r\n[ 40%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Gelbverhaltendefinition.cpp.obj\r\n[ 40%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Geschwindigkeitsverteilungsdefinition.cpp.obj\r\n[ 40%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Haltestellendefinition.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Kantensperrung.cpp.obj\r\n[ 43%] Building CXX object src/netwrite/CMakeFiles/netwrite.dir/NWWriter_DlrNavteq.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Kennungszeile.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Knotendefinition.cpp.obj\r\n[ 43%] Building CXX object src/netwrite/CMakeFiles/netwrite.dir/NWWriter_SUMO.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_LSAKopplungsdefinition.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Laengenverteilungsdefinition.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Langsamfahrbereichdefinition.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Lichtsignalanlagendefinition.cpp.obj\r\n[ 43%] Building CXX object src/netwrite/CMakeFiles/netwrite.dir/NWWriter_XML.cpp.obj\r\n[ 43%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Liniendefinition.cpp.obj\r\n[ 46%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Linksverkehr.cpp.obj\r\n[ 50%] Linking CXX static library libnetwrite.a\r\n[ 50%] Built target netwrite\r\n[ 50%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Messungsdefinition.cpp.obj\r\n[ 53%] Built target utils_distribution\r\n[ 53%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Netzobjektdefinition.cpp.obj\r\n[ 56%] Built target utils_geom\r\n[ 56%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Parkplatzdefinition.cpp.obj\r\n[ 59%] Built target utils_handlers\r\n[ 59%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Querschnittsmessungsdefinition.cpp.obj\r\n[ 62%] Built target utils_importio\r\n[ 62%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Querverkehrsstoerungsdefinition.cpp.obj\r\n[ 65%] Built target utils_iodevices\r\n[ 65%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Rautedefinition.cpp.obj\r\n[ 68%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Reisezeitmessungsdefinition.cpp.obj\r\n[ 71%] Built target utils_options\r\n[ 71%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Richtungsentscheidungsdefinition.cpp.obj\r\n[ 71%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Richtungspfeildefinition.cpp.obj\r\n[ 75%] Built target utils_shapes\r\n[ 81%] Built target utils_common\r\n[ 81%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Routenentscheidungsdefinition.cpp.obj\r\n[ 87%] Built target utils_xml\r\n[ 87%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Signalgeberdefinition.cpp.obj\r\n[ 87%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Signalgruppendefinition.cpp.obj\r\n[ 87%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_SimRate.cpp.obj\r\n[ 90%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Simdauer.cpp.obj\r\n[ 90%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Startuhrzeit.cpp.obj\r\n[ 90%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Startzufallszahl.cpp.obj\r\n[ 90%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Stauparameterdefinition.cpp.obj\r\n[ 90%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Stauzaehlerdefinition.cpp.obj\r\n[ 90%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Stopschilddefinition.cpp.obj\r\n[ 90%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Streckendefinition.cpp.obj\r\n[ 93%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Streckentypdefinition.cpp.obj\r\n[ 93%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_TEAPACDefinition.cpp.obj\r\n[ 93%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_VWunschentscheidungsdefinition.cpp.obj\r\n[ 93%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Verbindungsdefinition.cpp.obj\r\n[ 93%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Verkehrszusammensetzungsdefinition.cpp.obj\r\n[ 93%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Verlustzeitmessungsdefinition.cpp.obj\r\n[ 93%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Zeitenverteilungsdefinition.cpp.obj\r\n[ 96%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Zeitschrittfaktor.cpp.obj\r\n[ 96%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Zuflussdefinition.cpp.obj\r\n[ 96%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser_Zusammensetzungsdefinition.cpp.obj\r\n[ 96%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser__XKurvedefinition.cpp.obj\r\n[ 96%] Building CXX object src/netimport/vissim/typeloader/CMakeFiles/netimport_vissim_typeloader.dir/NIVissimSingleTypeParser__XVerteilungsdefinition.cpp.obj\r\n[ 96%] Linking CXX static library libnetimport_vissim_typeloader.a\r\n[ 96%] Built target netimport_vissim_typeloader\r\n[100%] Building CXX object src/CMakeFiles/netconvert.dir/netconvert_main.cpp.obj\r\n[100%] Linking CXX executable netconvert.exe\r\n[100%] Built target netconvert\r\n",
+      "sha256": "fff8a903d6ddf0b15cee7291e4116b2ae0f0872b2fd0ffd8bb624f4dfe174343",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\netconvert_diagnostic_imports.log",
+      "bytes": 7755429,
+      "tail_max_bytes": 8192,
+      "tail": "DIR64\r\n\treloc  132 offset  7e0 [8107e0] DIR64\r\n\treloc  133 offset  7e8 [8107e8] DIR64\r\n\treloc  134 offset  7f0 [8107f0] DIR64\r\n\treloc  135 offset  7f8 [8107f8] DIR64\r\n\treloc  136 offset  800 [810800] DIR64\r\n\treloc  137 offset  818 [810818] DIR64\r\n\treloc  138 offset  820 [810820] DIR64\r\n\treloc  139 offset  828 [810828] DIR64\r\n\treloc  140 offset  830 [810830] DIR64\r\n\treloc  141 offset  838 [810838] DIR64\r\n\treloc  142 offset  840 [810840] DIR64\r\n\treloc  143 offset  858 [810858] DIR64\r\n\treloc  144 offset  860 [810860] DIR64\r\n\treloc  145 offset  868 [810868] DIR64\r\n\treloc  146 offset  870 [810870] DIR64\r\n\treloc  147 offset  878 [810878] DIR64\r\n\treloc  148 offset  880 [810880] DIR64\r\n\treloc  149 offset  898 [810898] DIR64\r\n\treloc  150 offset  8a0 [8108a0] DIR64\r\n\treloc  151 offset  8a8 [8108a8] DIR64\r\n\treloc  152 offset  8b0 [8108b0] DIR64\r\n\treloc  153 offset  8b8 [8108b8] DIR64\r\n\treloc  154 offset  8c0 [8108c0] DIR64\r\n\treloc  155 offset  8c8 [8108c8] DIR64\r\n\treloc  156 offset  8d0 [8108d0] DIR64\r\n\treloc  157 offset  8d8 [8108d8] DIR64\r\n\treloc  158 offset  8e0 [8108e0] DIR64\r\n\treloc  159 offset  8e8 [8108e8] DIR64\r\n\treloc  160 offset  8f0 [8108f0] DIR64\r\n\treloc  161 offset  8f8 [8108f8] DIR64\r\n\treloc  162 offset  900 [810900] DIR64\r\n\treloc  163 offset  918 [810918] DIR64\r\n\treloc  164 offset  920 [810920] DIR64\r\n\treloc  165 offset  928 [810928] DIR64\r\n\treloc  166 offset  930 [810930] DIR64\r\n\treloc  167 offset  938 [810938] DIR64\r\n\treloc  168 offset  940 [810940] DIR64\r\n\treloc  169 offset  948 [810948] DIR64\r\n\treloc  170 offset  950 [810950] DIR64\r\n\treloc  171 offset  958 [810958] DIR64\r\n\treloc  172 offset  960 [810960] DIR64\r\n\treloc  173 offset  968 [810968] DIR64\r\n\treloc  174 offset  970 [810970] DIR64\r\n\treloc  175 offset  978 [810978] DIR64\r\n\treloc  176 offset  980 [810980] DIR64\r\n\treloc  177 offset  998 [810998] DIR64\r\n\treloc  178 offset  9a0 [8109a0] DIR64\r\n\treloc  179 offset  9a8 [8109a8] DIR64\r\n\treloc  180 offset  9b0 [8109b0] DIR64\r\n\treloc  181 offset  9b8 [8109b8] DIR64\r\n\treloc  182 offset  9c0 [8109c0] DIR64\r\n\treloc  183 offset  9c8 [8109c8] DIR64\r\n\treloc  184 offset  9d0 [8109d0] DIR64\r\n\treloc  185 offset  9d8 [8109d8] DIR64\r\n\treloc  186 offset  9e0 [8109e0] DIR64\r\n\treloc  187 offset  9e8 [8109e8] DIR64\r\n\treloc  188 offset  9f8 [8109f8] DIR64\r\n\treloc  189 offset  a00 [810a00] DIR64\r\n\treloc  190 offset  a08 [810a08] DIR64\r\n\treloc  191 offset  a10 [810a10] DIR64\r\n\treloc  192 offset  a18 [810a18] DIR64\r\n\treloc  193 offset  a20 [810a20] DIR64\r\n\treloc  194 offset  a28 [810a28] DIR64\r\n\treloc  195 offset  a30 [810a30] DIR64\r\n\treloc  196 offset  a38 [810a38] DIR64\r\n\treloc  197 offset  a40 [810a40] DIR64\r\n\treloc  198 offset  a48 [810a48] DIR64\r\n\treloc  199 offset  a58 [810a58] DIR64\r\n\treloc  200 offset  a60 [810a60] DIR64\r\n\treloc  201 offset  a68 [810a68] DIR64\r\n\treloc  202 offset  a70 [810a70] DIR64\r\n\treloc  203 offset  a88 [810a88] DIR64\r\n\treloc  204 offset  a90 [810a90] DIR64\r\n\treloc  205 offset  a98 [810a98] DIR64\r\n\treloc  206 offset  aa8 [810aa8] DIR64\r\n\treloc  207 offset  ab0 [810ab0] DIR64\r\n\treloc  208 offset  ab8 [810ab8] DIR64\r\n\treloc  209 offset  ac0 [810ac0] DIR64\r\n\treloc  210 offset  ac8 [810ac8] DIR64\r\n\treloc  211 offset  ad0 [810ad0] DIR64\r\n\treloc  212 offset  ae8 [810ae8] DIR64\r\n\treloc  213 offset  af0 [810af0] DIR64\r\n\treloc  214 offset  af8 [810af8] DIR64\r\n\treloc  215 offset  b00 [810b00] DIR64\r\n\treloc  216 offset  b08 [810b08] DIR64\r\n\treloc  217 offset  b10 [810b10] DIR64\r\n\treloc  218 offset  b28 [810b28] DIR64\r\n\treloc  219 offset  b30 [810b30] DIR64\r\n\treloc  220 offset  b38 [810b38] DIR64\r\n\treloc  221 offset  b40 [810b40] DIR64\r\n\treloc  222 offset  b48 [810b48] DIR64\r\n\treloc  223 offset  b50 [810b50] DIR64\r\n\treloc  224 offset  b58 [810b58] DIR64\r\n\treloc  225 offset  b60 [810b60] DIR64\r\n\treloc  226 offset  b78 [810b78] DIR64\r\n\treloc  227 offset  b80 [810b80] DIR64\r\n\treloc  228 offset  b88 [810b88] DIR64\r\n\treloc  229 offset  b90 [810b90] DIR64\r\n\treloc  230 offset  b98 [810b98] DIR64\r\n\treloc  231 offset  ba0 [810ba0] DIR64\r\n\treloc  232 offset  ba8 [810ba8] DIR64\r\n\treloc  233 offset  bb0 [810bb0] DIR64\r\n\treloc  234 offset  bc8 [810bc8] DIR64\r\n\treloc  235 offset  bd0 [810bd0] DIR64\r\n\treloc  236 offset  bd8 [810bd8] DIR64\r\n\treloc  237 offset  be0 [810be0] DIR64\r\n\treloc  238 offset  be8 [810be8] DIR64\r\n\treloc  239 offset  bf0 [810bf0] DIR64\r\n\treloc  240 offset  bf8 [810bf8] DIR64\r\n\treloc  241 offset  c00 [810c00] DIR64\r\n\treloc  242 offset  c08 [810c08] DIR64\r\n\treloc  243 offset  c18 [810c18] DIR64\r\n\treloc  244 offset  c20 [810c20] DIR64\r\n\treloc  245 offset  c28 [810c28] DIR64\r\n\treloc  246 offset  c30 [810c30] DIR64\r\n\treloc  247 offset  c38 [810c38] DIR64\r\n\treloc  248 offset  c40 [810c40] DIR64\r\n\treloc  249 offset  c48 [810c48] DIR64\r\n\treloc  250 offset  c50 [810c50] DIR64\r\n\treloc  251 offset  c58 [810c58] DIR64\r\n\treloc  252 offset  c68 [810c68] DIR64\r\n\treloc  253 offset  c70 [810c70] DIR64\r\n\treloc  254 offset  c78 [810c78] DIR64\r\n\treloc  255 offset  c80 [810c80] DIR64\r\n\treloc  256 offset  c98 [810c98] DIR64\r\n\treloc  257 offset  ca0 [810ca0] DIR64\r\n\treloc  258 offset  ca8 [810ca8] DIR64\r\n\treloc  259 offset  cb0 [810cb0] DIR64\r\n\treloc  260 offset  cc8 [810cc8] DIR64\r\n\treloc  261 offset  cd0 [810cd0] DIR64\r\n\treloc  262 offset  cd8 [810cd8] DIR64\r\n\treloc  263 offset  ce0 [810ce0] DIR64\r\n\treloc  264 offset  cf8 [810cf8] DIR64\r\n\treloc  265 offset  d00 [810d00] DIR64\r\n\treloc  266 offset  d08 [810d08] DIR64\r\n\treloc  267 offset  d18 [810d18] DIR64\r\n\treloc  268 offset  d20 [810d20] DIR64\r\n\treloc  269 offset  d28 [810d28] DIR64\r\n\treloc  270 offset  d38 [810d38] DIR64\r\n\treloc  271 offset  d40 [810d40] DIR64\r\n\treloc  272 offset  d48 [810d48] DIR64\r\n\treloc  273 offset  d50 [810d50] DIR64\r\n\treloc  274 offset  d68 [810d68] DIR64\r\n\treloc  275 offset  d70 [810d70] DIR64\r\n\treloc  276 offset  d78 [810d78] DIR64\r\n\treloc  277 offset  d80 [810d80] DIR64\r\n\treloc  278 offset  d88 [810d88] DIR64\r\n\treloc  279 offset  d98 [810d98] DIR64\r\n\treloc  280 offset  da0 [810da0] DIR64\r\n\treloc  281 offset  da8 [810da8] DIR64\r\n\treloc  282 offset  db0 [810db0] DIR64\r\n\treloc  283 offset  db8 [810db8] DIR64\r\n\treloc  284 offset  dc8 [810dc8] DIR64\r\n\treloc  285 offset  dd0 [810dd0] DIR64\r\n\treloc  286 offset  dd8 [810dd8] DIR64\r\n\treloc  287 offset  de0 [810de0] DIR64\r\n\treloc  288 offset  de8 [810de8] DIR64\r\n\treloc  289 offset  df8 [810df8] DIR64\r\n\treloc  290 offset  e00 [810e00] DIR64\r\n\treloc  291 offset  e08 [810e08] DIR64\r\n\treloc  292 offset  e10 [810e10] DIR64\r\n\treloc  293 offset  e18 [810e18] DIR64\r\n\treloc  294 offset  e28 [810e28] DIR64\r\n\treloc  295 offset  e30 [810e30] DIR64\r\n\treloc  296 offset  e38 [810e38] DIR64\r\n\treloc  297 offset  e40 [810e40] DIR64\r\n\treloc  298 offset  e48 [810e48] DIR64\r\n\treloc  299 offset  e50 [810e50] DIR64\r\n\treloc  300 offset  e58 [810e58] DIR64\r\n\treloc  301 offset  ea0 [810ea0] DIR64\r\n\treloc  302 offset  eb0 [810eb0] DIR64\r\n\treloc  303 offset  ec0 [810ec0] DIR64\r\n\treloc  304 offset  ed0 [810ed0] DIR64\r\n\treloc  305 offset  ee0 [810ee0] DIR64\r\n\treloc  306 offset  ef0 [810ef0] DIR64\r\n\treloc  307 offset  f00 [810f00] DIR64\r\n\treloc  308 offset  f10 [810f10] DIR64\r\n\treloc  309 offset  f20 [810f20] DIR64\r\n\treloc  310 offset  f30 [810f30] DIR64\r\n\treloc  311 offset  f40 [810f40] DIR64\r\n\treloc  312 offset  f50 [810f50] DIR64\r\n\treloc  313 offset  f60 [810f60] DIR64\r\n\treloc  314 offset  f70 [810f70] DIR64\r\n\treloc  315 offset  f80 [810f80] DIR64\r\n\r\nVirtual Address: 008d7000 Chunk size 20 (0x14) Number of fixups 6\r\n\treloc    0 offset    8 [8d7008] DIR64\r\n\treloc    1 offset   20 [8d7020] DIR64\r\n\treloc    2 offset   38 [8d7038] DIR64\r\n\treloc    3 offset   40 [8d7040] DIR64\r\n\treloc    4 offset   48 [8d7048] DIR64\r\n\treloc    5 offset    0 [8d7000] ABSOLUTE\r\n\r\nThe .rsrc Resource Directory section:\r\n000  Type Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n010   Entry: ID: 0x000018, Value: 0x80000018\r\n018    Name Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n028     Entry: ID: 0x000001, Value: 0x80000030\r\n030      Language Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n040       Entry: ID: 00000000, Value: 0x000048\r\n048        Leaf: Addr: 0x8d9058, Size: 0x00048f, Codepage: 0\r\n Resources start at offset: 0x58\r\n\r\n",
+      "sha256": "2b6f91c7fc307e8510fc45762f8dd2315ddda091d04dc35337d90512b26cda69",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\netconvert_diagnostic_version.log",
+      "bytes": 920,
+      "tail_max_bytes": 8192,
+      "tail": "Eclipse SUMO netconvert 1.26.0-jdrt-choice-stopindex-control-repair02_20261029\r\n Build features: Windows-10.0.26300 AMD64 GNU 12.2.0 Release\r\n Copyright (C) 2001-2026 German Aerospace Center (DLR) and others; https://sumo.dlr.de\r\n\r\nEclipse SUMO netconvert 1.26.0-jdrt-choice-stopindex-control-repair02_20261029 is part of SUMO.\r\nThis program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v2.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v20.html\r\nThis program may also be made available under the following Secondary\r\nLicenses when the conditions for such availability set forth in the Eclipse\r\nPublic License 2.0 are satisfied: GNU General Public License, version 2\r\nor later which is available at\r\nhttps://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html\r\nSPDX-License-Identifier: EPL-2.0 OR GPL-2.0-or-later\r\n",
+      "sha256": "573ec2b071e031a8eb544cb4bc75b941ddc5d3457fb8041803e66c540fffcef4",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\sumo_diagnostic_imports.log",
+      "bytes": 11614059,
+      "tail_max_bytes": 8192,
+      "tail": "86960] DIR64\r\n\treloc  192 offset  968 [d86968] DIR64\r\n\treloc  193 offset  970 [d86970] DIR64\r\n\treloc  194 offset  988 [d86988] DIR64\r\n\treloc  195 offset  990 [d86990] DIR64\r\n\treloc  196 offset  998 [d86998] DIR64\r\n\treloc  197 offset  9a0 [d869a0] DIR64\r\n\treloc  198 offset  9a8 [d869a8] DIR64\r\n\treloc  199 offset  9b0 [d869b0] DIR64\r\n\treloc  200 offset  9c8 [d869c8] DIR64\r\n\treloc  201 offset  9d0 [d869d0] DIR64\r\n\treloc  202 offset  9d8 [d869d8] DIR64\r\n\treloc  203 offset  9e0 [d869e0] DIR64\r\n\treloc  204 offset  9e8 [d869e8] DIR64\r\n\treloc  205 offset  9f0 [d869f0] DIR64\r\n\treloc  206 offset  a08 [d86a08] DIR64\r\n\treloc  207 offset  a10 [d86a10] DIR64\r\n\treloc  208 offset  a18 [d86a18] DIR64\r\n\treloc  209 offset  a20 [d86a20] DIR64\r\n\treloc  210 offset  a28 [d86a28] DIR64\r\n\treloc  211 offset  a30 [d86a30] DIR64\r\n\treloc  212 offset  a38 [d86a38] DIR64\r\n\treloc  213 offset  a40 [d86a40] DIR64\r\n\treloc  214 offset  a48 [d86a48] DIR64\r\n\treloc  215 offset  a50 [d86a50] DIR64\r\n\treloc  216 offset  a58 [d86a58] DIR64\r\n\treloc  217 offset  a60 [d86a60] DIR64\r\n\treloc  218 offset  a68 [d86a68] DIR64\r\n\treloc  219 offset  a70 [d86a70] DIR64\r\n\treloc  220 offset  a88 [d86a88] DIR64\r\n\treloc  221 offset  a90 [d86a90] DIR64\r\n\treloc  222 offset  a98 [d86a98] DIR64\r\n\treloc  223 offset  aa0 [d86aa0] DIR64\r\n\treloc  224 offset  aa8 [d86aa8] DIR64\r\n\treloc  225 offset  ab0 [d86ab0] DIR64\r\n\treloc  226 offset  ab8 [d86ab8] DIR64\r\n\treloc  227 offset  ac0 [d86ac0] DIR64\r\n\treloc  228 offset  ac8 [d86ac8] DIR64\r\n\treloc  229 offset  ad0 [d86ad0] DIR64\r\n\treloc  230 offset  ad8 [d86ad8] DIR64\r\n\treloc  231 offset  ae0 [d86ae0] DIR64\r\n\treloc  232 offset  ae8 [d86ae8] DIR64\r\n\treloc  233 offset  af0 [d86af0] DIR64\r\n\treloc  234 offset  b08 [d86b08] DIR64\r\n\treloc  235 offset  b10 [d86b10] DIR64\r\n\treloc  236 offset  b18 [d86b18] DIR64\r\n\treloc  237 offset  b20 [d86b20] DIR64\r\n\treloc  238 offset  b28 [d86b28] DIR64\r\n\treloc  239 offset  b30 [d86b30] DIR64\r\n\treloc  240 offset  b38 [d86b38] DIR64\r\n\treloc  241 offset  b40 [d86b40] DIR64\r\n\treloc  242 offset  b48 [d86b48] DIR64\r\n\treloc  243 offset  b50 [d86b50] DIR64\r\n\treloc  244 offset  b58 [d86b58] DIR64\r\n\treloc  245 offset  b68 [d86b68] DIR64\r\n\treloc  246 offset  b70 [d86b70] DIR64\r\n\treloc  247 offset  b78 [d86b78] DIR64\r\n\treloc  248 offset  b80 [d86b80] DIR64\r\n\treloc  249 offset  b88 [d86b88] DIR64\r\n\treloc  250 offset  b90 [d86b90] DIR64\r\n\treloc  251 offset  b98 [d86b98] DIR64\r\n\treloc  252 offset  ba0 [d86ba0] DIR64\r\n\treloc  253 offset  ba8 [d86ba8] DIR64\r\n\treloc  254 offset  bb0 [d86bb0] DIR64\r\n\treloc  255 offset  bb8 [d86bb8] DIR64\r\n\treloc  256 offset  bc8 [d86bc8] DIR64\r\n\treloc  257 offset  bd0 [d86bd0] DIR64\r\n\treloc  258 offset  bd8 [d86bd8] DIR64\r\n\treloc  259 offset  be0 [d86be0] DIR64\r\n\treloc  260 offset  bf8 [d86bf8] DIR64\r\n\treloc  261 offset  c00 [d86c00] DIR64\r\n\treloc  262 offset  c08 [d86c08] DIR64\r\n\treloc  263 offset  c18 [d86c18] DIR64\r\n\treloc  264 offset  c20 [d86c20] DIR64\r\n\treloc  265 offset  c28 [d86c28] DIR64\r\n\treloc  266 offset  c30 [d86c30] DIR64\r\n\treloc  267 offset  c38 [d86c38] DIR64\r\n\treloc  268 offset  c40 [d86c40] DIR64\r\n\treloc  269 offset  c58 [d86c58] DIR64\r\n\treloc  270 offset  c60 [d86c60] DIR64\r\n\treloc  271 offset  c68 [d86c68] DIR64\r\n\treloc  272 offset  c70 [d86c70] DIR64\r\n\treloc  273 offset  c78 [d86c78] DIR64\r\n\treloc  274 offset  c80 [d86c80] DIR64\r\n\treloc  275 offset  c98 [d86c98] DIR64\r\n\treloc  276 offset  ca0 [d86ca0] DIR64\r\n\treloc  277 offset  ca8 [d86ca8] DIR64\r\n\treloc  278 offset  cb0 [d86cb0] DIR64\r\n\treloc  279 offset  cb8 [d86cb8] DIR64\r\n\treloc  280 offset  cc0 [d86cc0] DIR64\r\n\treloc  281 offset  cc8 [d86cc8] DIR64\r\n\treloc  282 offset  cd0 [d86cd0] DIR64\r\n\treloc  283 offset  ce8 [d86ce8] DIR64\r\n\treloc  284 offset  cf0 [d86cf0] DIR64\r\n\treloc  285 offset  cf8 [d86cf8] DIR64\r\n\treloc  286 offset  d00 [d86d00] DIR64\r\n\treloc  287 offset  d08 [d86d08] DIR64\r\n\treloc  288 offset  d10 [d86d10] DIR64\r\n\treloc  289 offset  d18 [d86d18] DIR64\r\n\treloc  290 offset  d20 [d86d20] DIR64\r\n\treloc  291 offset  d38 [d86d38] DIR64\r\n\treloc  292 offset  d40 [d86d40] DIR64\r\n\treloc  293 offset  d48 [d86d48] DIR64\r\n\treloc  294 offset  d50 [d86d50] DIR64\r\n\treloc  295 offset  d58 [d86d58] DIR64\r\n\treloc  296 offset  d60 [d86d60] DIR64\r\n\treloc  297 offset  d68 [d86d68] DIR64\r\n\treloc  298 offset  d70 [d86d70] DIR64\r\n\treloc  299 offset  d78 [d86d78] DIR64\r\n\treloc  300 offset  d88 [d86d88] DIR64\r\n\treloc  301 offset  d90 [d86d90] DIR64\r\n\treloc  302 offset  d98 [d86d98] DIR64\r\n\treloc  303 offset  da0 [d86da0] DIR64\r\n\treloc  304 offset  da8 [d86da8] DIR64\r\n\treloc  305 offset  db0 [d86db0] DIR64\r\n\treloc  306 offset  db8 [d86db8] DIR64\r\n\treloc  307 offset  dc0 [d86dc0] DIR64\r\n\treloc  308 offset  dc8 [d86dc8] DIR64\r\n\treloc  309 offset  dd8 [d86dd8] DIR64\r\n\treloc  310 offset  de0 [d86de0] DIR64\r\n\treloc  311 offset  de8 [d86de8] DIR64\r\n\treloc  312 offset  df0 [d86df0] DIR64\r\n\treloc  313 offset  e08 [d86e08] DIR64\r\n\treloc  314 offset  e10 [d86e10] DIR64\r\n\treloc  315 offset  e18 [d86e18] DIR64\r\n\treloc  316 offset  e20 [d86e20] DIR64\r\n\treloc  317 offset  e38 [d86e38] DIR64\r\n\treloc  318 offset  e40 [d86e40] DIR64\r\n\treloc  319 offset  e48 [d86e48] DIR64\r\n\treloc  320 offset  e50 [d86e50] DIR64\r\n\treloc  321 offset  e68 [d86e68] DIR64\r\n\treloc  322 offset  e70 [d86e70] DIR64\r\n\treloc  323 offset  e78 [d86e78] DIR64\r\n\treloc  324 offset  e88 [d86e88] DIR64\r\n\treloc  325 offset  e90 [d86e90] DIR64\r\n\treloc  326 offset  e98 [d86e98] DIR64\r\n\treloc  327 offset  ea8 [d86ea8] DIR64\r\n\treloc  328 offset  eb0 [d86eb0] DIR64\r\n\treloc  329 offset  eb8 [d86eb8] DIR64\r\n\treloc  330 offset  ec0 [d86ec0] DIR64\r\n\treloc  331 offset  ed8 [d86ed8] DIR64\r\n\treloc  332 offset  ee0 [d86ee0] DIR64\r\n\treloc  333 offset  ee8 [d86ee8] DIR64\r\n\treloc  334 offset  ef0 [d86ef0] DIR64\r\n\treloc  335 offset  ef8 [d86ef8] DIR64\r\n\treloc  336 offset  f08 [d86f08] DIR64\r\n\treloc  337 offset  f10 [d86f10] DIR64\r\n\treloc  338 offset  f18 [d86f18] DIR64\r\n\treloc  339 offset  f20 [d86f20] DIR64\r\n\treloc  340 offset  f28 [d86f28] DIR64\r\n\treloc  341 offset  f38 [d86f38] DIR64\r\n\treloc  342 offset  f40 [d86f40] DIR64\r\n\treloc  343 offset  f48 [d86f48] DIR64\r\n\treloc  344 offset  f50 [d86f50] DIR64\r\n\treloc  345 offset  f58 [d86f58] DIR64\r\n\treloc  346 offset  f68 [d86f68] DIR64\r\n\treloc  347 offset  f70 [d86f70] DIR64\r\n\treloc  348 offset  f78 [d86f78] DIR64\r\n\treloc  349 offset  f80 [d86f80] DIR64\r\n\treloc  350 offset  f88 [d86f88] DIR64\r\n\treloc  351 offset  f98 [d86f98] DIR64\r\n\treloc  352 offset  fa0 [d86fa0] DIR64\r\n\treloc  353 offset  fa8 [d86fa8] DIR64\r\n\treloc  354 offset  fb0 [d86fb0] DIR64\r\n\treloc  355 offset  fb8 [d86fb8] DIR64\r\n\treloc  356 offset  fc0 [d86fc0] DIR64\r\n\treloc  357 offset  fc8 [d86fc8] DIR64\r\n\r\nVirtual Address: 00d87000 Chunk size 40 (0x28) Number of fixups 16\r\n\treloc    0 offset   20 [d87020] DIR64\r\n\treloc    1 offset   30 [d87030] DIR64\r\n\treloc    2 offset   40 [d87040] DIR64\r\n\treloc    3 offset   50 [d87050] DIR64\r\n\treloc    4 offset   60 [d87060] DIR64\r\n\treloc    5 offset   70 [d87070] DIR64\r\n\treloc    6 offset   80 [d87080] DIR64\r\n\treloc    7 offset   90 [d87090] DIR64\r\n\treloc    8 offset   a0 [d870a0] DIR64\r\n\treloc    9 offset   b0 [d870b0] DIR64\r\n\treloc   10 offset   c0 [d870c0] DIR64\r\n\treloc   11 offset   d0 [d870d0] DIR64\r\n\treloc   12 offset   e0 [d870e0] DIR64\r\n\treloc   13 offset   f0 [d870f0] DIR64\r\n\treloc   14 offset  100 [d87100] DIR64\r\n\treloc   15 offset    0 [d87000] ABSOLUTE\r\n\r\nVirtual Address: 00eba000 Chunk size 20 (0x14) Number of fixups 6\r\n\treloc    0 offset    8 [eba008] DIR64\r\n\treloc    1 offset   20 [eba020] DIR64\r\n\treloc    2 offset   38 [eba038] DIR64\r\n\treloc    3 offset   40 [eba040] DIR64\r\n\treloc    4 offset   48 [eba048] DIR64\r\n\treloc    5 offset    0 [eba000] ABSOLUTE\r\n\r\nThe .rsrc Resource Directory section:\r\n000  Type Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n010   Entry: ID: 0x000018, Value: 0x80000018\r\n018    Name Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n028     Entry: ID: 0x000001, Value: 0x80000030\r\n030      Language Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n040       Entry: ID: 00000000, Value: 0x000048\r\n048        Leaf: Addr: 0xebc058, Size: 0x00048f, Codepage: 0\r\n Resources start at offset: 0x58\r\n\r\n",
+      "sha256": "b41bb78945b309f177f0b53f08be4928a25d0deda454f2803bc0a058011a4e2a",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\sumo_diagnostic_version.log",
+      "bytes": 908,
+      "tail_max_bytes": 8192,
+      "tail": "Eclipse SUMO sumo 1.26.0-jdrt-choice-stopindex-control-repair02_20261029\r\n Build features: Windows-10.0.26300 AMD64 GNU 12.2.0 Release\r\n Copyright (C) 2001-2026 German Aerospace Center (DLR) and others; https://sumo.dlr.de\r\n\r\nEclipse SUMO sumo 1.26.0-jdrt-choice-stopindex-control-repair02_20261029 is part of SUMO.\r\nThis program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v2.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v20.html\r\nThis program may also be made available under the following Secondary\r\nLicenses when the conditions for such availability set forth in the Eclipse\r\nPublic License 2.0 are satisfied: GNU General Public License, version 2\r\nor later which is available at\r\nhttps://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html\r\nSPDX-License-Identifier: EPL-2.0 OR GPL-2.0-or-later\r\n",
+      "sha256": "988d1ba587ff0bc8d7720267bffce7fde09f2b3a53b273537d0660fe4cb180df",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    }
+  ],
+  "disk": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029": {
+      "free_bytes": 236118933504,
+      "total_bytes": 496515411968
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019": {
+      "free_bytes": 236118933504,
+      "total_bytes": 496515411968
+    }
+  },
+  "state_bytes_unchanged_during_observation": true,
+  "state_concurrency_note": "A live orchestrator can legitimately update its state/logs while this reader observes.",
+  "previous_independent_observation_at_utc": "2026-10-29T02:30:46.005450+00:00",
+  "unobserved_interval_sec": 13335.428366,
+  "observation_coverage": "Point observation only; no continuous monitoring is inferred between observations.",
+  "report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261029T151301433816.json",
+  "state_snapshot_file": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261029T151301433816.state.snapshot.bin"
+}

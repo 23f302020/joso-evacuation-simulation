@@ -127,6 +127,8 @@ def record_six_files(root, parameters, entry, text, already_locked=False):
     if (entry.get('purpose') != 'core' or entry.get('validation_status') != 'PASS'
             or entry.get('protocol') != parameters['protocol']):
         raise ValueError('Only validated core entries may be recorded')
+    if parameters.get('registration_id') and entry.get('registration_id') != parameters['registration_id']:
+        raise ValueError('Record registration identity mismatch')
     run_id = entry['run_id']
     if not re.fullmatch(r'[a-zA-Z0-9_-]{1,100}', run_id):
         raise ValueError('Invalid record run ID')
@@ -151,7 +153,7 @@ def record_six_files(root, parameters, entry, text, already_locked=False):
             raise RuntimeError('Duplicate or foreign research ledger entry')
         prior = next((r for r in ledger if r['run_id'] == run_id), None)
         if prior is not None and any(prior.get(k) != entry.get(k) for k in
-                ('protocol', 'cell_id', 'implementation_sha256', 'input_manifest_sha256', 'manifest_sha256')):
+                ('protocol', 'registration_id', 'cell_id', 'implementation_sha256', 'input_manifest_sha256', 'manifest_sha256')):
             raise RuntimeError('Existing recorded identity differs from validation')
         if any(r['cell_id'] == entry['cell_id'] and r['run_id'] != run_id for r in ledger):
             raise RuntimeError('Registered cell already has another accepted run')
@@ -296,7 +298,9 @@ class ChoiceController:
         cells = {c['cell_id'] for c in self.parameters['cells']}
         if (len({r['run_id'] for r in rows}) != len(rows) or len({r['cell_id'] for r in rows}) != len(rows)
                 or any(r['protocol'] != self.parameters['protocol'] or r['purpose'] != 'core'
-                       or r['validation_status'] != 'PASS' or r['cell_id'] not in cells for r in rows)):
+                       or r['validation_status'] != 'PASS' or r['cell_id'] not in cells
+                       or (self.parameters.get('registration_id') and r.get('registration_id') != self.parameters['registration_id'])
+                       for r in rows)):
             raise RuntimeError('Duplicate, unvalidated or foreign research ledger entry')
         return rows
 
@@ -685,7 +689,9 @@ class ChoiceController:
             if m['implementation_sha256'] != self.implementation() or file_sha(path) != v['manifest_sha256']:
                 raise RuntimeError('Source identity changed before record')
             proof = self.root / v['validation_report']
-            entry = {'protocol': self.parameters['protocol'], 'purpose': 'core', 'run_id': run_id,
+            entry = {'protocol': self.parameters['protocol'],
+                     **({'registration_id': m['registration_id']} if self.parameters.get('registration_id') else {}),
+                     'purpose': 'core', 'run_id': run_id,
                      'cell_id': m['cell_id'], 'scenario': m['scenario'], 'seed': m['seed'],
                      'destination_policy': m['destination_policy'], 'demand_level': m['demand_level'],
                      'validation_status': 'PASS', 'validation_report': v['validation_report'],
@@ -694,7 +700,7 @@ class ChoiceController:
                      'recorded_at_jst': stamp(), 'primary': v['components']['person_tables']}
             p = entry['primary']
             text = (f"### {run_id}（{entry['recorded_at_jst']}正式記録）\n\n"
-                    f"protocol={entry['protocol']}、cell={entry['cell_id']}、{entry['scenario']}、seed={entry['seed']}。"
+                    f"protocol={entry['protocol']}、registration={entry.get('registration_id', 'legacy')}、cell={entry['cell_id']}、{entry['scenario']}、seed={entry['seed']}。"
                     f"独立検証PASS・研究採用可。人物{p['people']}、要求{p['requests']}。"
                     f"主指標の施設受入={p['primary_admitted']}/{p['primary_denominator']}、"
                     f"退出{p['primary_boundary_exit_separate']}は別計上。全登録セル完了前に方向解釈しない。\n"

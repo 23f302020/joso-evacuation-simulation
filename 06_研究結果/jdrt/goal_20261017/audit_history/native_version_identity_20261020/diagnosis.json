@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-20T17:41:59.222555+09:00",
+  "status": "DIAGNOSED_UNSUPPORTED_CUSTOM_VERSION",
+  "version": [
+    22,
+    "SUMO 1.26.0-jdrt-choice-unpatched-control-ucrt12-static-zlib1213-c01"
+  ],
+  "component_checks": {
+    "movement_events": {
+      "transition_route_reconstruction": true,
+      "all_entries_primary_multiset": true,
+      "route_change_source_continuity": true,
+      "vehicle_first_turn_feasibility": true,
+      "walk_native_speed_contract": false,
+      "walk_stage_budget_recurrence": true,
+      "walk_pre_step_budget_stop": true,
+      "no_closed_or_ambiguous_entries": true
+    },
+    "native_logs": {
+      "no_native_errors": true,
+      "all_warnings_evidence_classified": false,
+      "walk_constructor_warning_multiset": false,
+      "no_teleports_or_collisions": true,
+      "no_subscription_missing": true,
+      "native_summary_recomputed": true
+    }
+  },
+  "physical_stage_recurrence": true,
+  "movement_examples": {
+    "walk_native_speed_contract": [
+      "unsupported_native_getter_version"
+    ]
+  },
+  "research_adoption_permitted": false,
+  "next": "TDD pinned custom version identity; never permit arbitrary suffix or unknown warning"
+}

@@ -1,0 +1,34 @@
+{
+  "at_jst": "2026-10-29T10:15:16.236024+09:00",
+  "action": "current_all14_smoke_original_owner_observation",
+  "original_session": 36247,
+  "prefix": "rs261029b",
+  "sequence_path": "06_研究結果/jdrt/goal_20261017/rs261029b_smoke_sequence.json",
+  "sequence_status": "RUNNING",
+  "sequence_owner": {
+    "state": "alive",
+    "created": 134377098008043234,
+    "pid": 36796
+  },
+  "completed_independently": 3,
+  "active": {
+    "run_id": "rs261029b_04",
+    "cell_id": "fixed_reference_u05_r2p0_seed23423",
+    "started_at_jst": "2026-10-29T10:15:09.099056+09:00",
+    "command": "smoke",
+    "pid": 35996
+  },
+  "audit_original_session": 65595,
+  "audit_original_exit": 0,
+  "audit_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T100253.json",
+  "audit_report_sha256": "244b2f164e561e93ca237002283a93b1413e062b85e8f0d25f0a56b83d412a39",
+  "fixture_cases": 30,
+  "counterexamples_pass": 65,
+  "primary_files_unchanged": 510,
+  "technical_ready": false,
+  "formal_core_recorded": 0,
+  "old_v3_formal_preserved": 9,
+  "next": "Follow same36247/sequence owner and current active child; no duplicate smoke/validate. All14 PASS/readback then fresh dedicated preflight once. Keep frozen common5/input/PAP. Core remains stopped until new READY/G6/status/capacity/observer freshness and actual active goal.",
+  "retired_prefix": "rs261029a failed before CLI start; source-status assumption corrected without audit rerun",
+  "gap_evidence": "overnight_gap_evidence.json; OS sleep/wake0:35..9:54, never fill observations"
+}

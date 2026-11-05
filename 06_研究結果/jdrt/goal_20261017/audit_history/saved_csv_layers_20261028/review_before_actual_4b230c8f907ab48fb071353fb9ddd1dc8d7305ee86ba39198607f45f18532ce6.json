@@ -1,0 +1,40 @@
+{
+  "at_jst": "2026-10-28T08:01:24.179354+09:00",
+  "status": "PASS_SCOPED_READ_ONLY_COMPONENT_TIMING_HELPER",
+  "scope": "Auxiliary performance helper outside frozen common5; no research acceptance or live validator instrumentation",
+  "reason": "Repeated SHA/gzip/CSV timing now has one deterministic procedure instead of ad hoc commands.",
+  "reviewer": "Current parent chat; no subagent or claimed backend switch",
+  "tests": {
+    "initial": 9,
+    "functional_red": 1,
+    "reason": "CSV rows not implemented; quoted newline contract expected2 got0",
+    "review_added_tests": 17,
+    "final_pass": 17,
+    "intermediate_failure_preserved": "Adding CSV prerequisite made escape test fail before receipt creation; changed test artifact to ../outside.csv to target its intended path guard, no production guard weakened."
+  },
+  "reviewed_contracts": [
+    "current unique accepted ledger and immutable completed manifest",
+    "project-local input paths and new diagnostic output scope",
+    "run/record/validator not called; no source/config/primary writes",
+    "bounded buffers and streaming CSV rows",
+    "full artifact SHA before/after, unchanged manifest/config",
+    "CRC/read/post-read mutation failure preserved",
+    "no overwrite/retry and no scientific/performance improvement claim"
+  ],
+  "source_sha256": {
+    ".agents/skills/python-performance-optimization/scripts/measure_saved_csv_layers.py": "d00a3aebce732c0f415fd3215acc0502719df4c7176d62d9826ac7f645015b5b",
+    ".agents/skills/python-performance-optimization/scripts/test_measure_saved_csv_layers.py": "661a3f872d03d6d74354c3fe1e6f74a06e788692e73368d492e32d51316695e0",
+    ".agents/skills/python-performance-optimization/SKILL.md": "e681e062dc130d2a561189f45be445dffb63a1a6667fb05ce2d591bd66a107c4",
+    "06_研究結果/jdrt/goal_20261017/saved_csv_layers_RED_20261028.log": "870eef59eb131e26bbe61ebda09825c2350ebbec4f63f62cd801bece4827c867",
+    "06_研究結果/jdrt/goal_20261017/saved_csv_layers_GREEN_20261028.log": "c3504d827a0e320ffca721e9fe4d4b25e922c123b1166891d0efe063f4d3adcb",
+    "06_研究結果/jdrt/goal_20261017/saved_csv_layers_GREEN_review_fix_20261028.log": "bf0e589aea97c423cdff58f191701a7582962f60c9dca8972900d72cc575289d",
+    "06_研究結果/jdrt/goal_20261017/saved_csv_layers_GREEN_final_20261028.log": "3415941f8170fe692d4fe37d20061d2b6c0af2a947ffd1695ddc5b2e890009cf"
+  },
+  "current_sequence_pins_unchanged": true,
+  "skill_structure_validation": "quick_validate PASS",
+  "actual_primary_application": "PENDING",
+  "limits": [
+    "Finite artificial fixtures do not prove every filesystem race or resource limit.",
+    "Current acceptance gates and original sequence owner remain authoritative."
+  ]
+}

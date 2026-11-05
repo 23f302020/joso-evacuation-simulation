@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_readback.py", line 223, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_readback.py", line 214, in main
+    report = audit_run(args.project_root.resolve(), args.run_dir.resolve(),
+                       {'control': args.control_manifest.resolve(), 'patched': args.patched_manifest.resolve()})
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_readback.py", line 84, in audit_run
+    require(len(units) == len(versions) == 1, 'Ambiguous native clock or API version')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard_readback.py", line 26, in require
+    raise ValueError(message)
+ValueError: Ambiguous native clock or API version

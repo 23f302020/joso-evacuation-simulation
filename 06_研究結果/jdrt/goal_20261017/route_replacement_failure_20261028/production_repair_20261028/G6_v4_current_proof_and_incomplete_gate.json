@@ -1,0 +1,13 @@
+{
+  "at_jst": "2026-10-28T23:52:07.243049+09:00",
+  "secondary_source_and_current_runtime_policy_proof_loads": true,
+  "current_empty_v4_analysis_rejected_before_output": true,
+  "reason": "Not ready: complete registered set required",
+  "analysis_sha256": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+  "secondary_sha256": "8b030aa56f9f977aabf16833ab01496546b7fe5ae227adede81a21501ee57d2e",
+  "service_proof_sha256": "06578175877d36efd5f7f867bb4bf43d2e5fdd5fbba6af39f096890d141c1056",
+  "actual_all70_analysis": false,
+  "real_result_tables_read": false,
+  "first_harness_exit": 1,
+  "first_harness_issue": "Expected rejection was RuntimeError, not ValueError caught by the one-off probe. Original tool traceback preserved; analysis code unmodified. This corrected wrapper catches the actual declared RuntimeError and verifies the exact gate reason."
+}

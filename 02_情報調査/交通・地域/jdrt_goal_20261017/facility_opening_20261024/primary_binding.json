@@ -1,0 +1,83 @@
+{
+  "at_jst": "2026-10-24T08:16:09.302482+09:00",
+  "source_original": "02_情報調査\\交通・地域\\jdrt_goal_20261017\\disaster_transport_20261019\\city_verification.pdf",
+  "source_metadata": {
+    "id": "city_verification",
+    "requested_url": "https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf",
+    "final_url": "https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "last_modified": "Mon, 30 Jun 2025 08:28:10 GMT",
+    "retrieved_at": "2026-10-19T09:30:59.361922+09:00",
+    "bytes": 2541900,
+    "sha256": "d33e2f3198d4e410ba33c1bfe7d495566ddc5939bac888c76e1b007622fc10b8"
+  },
+  "cache_reuse_not_new_HTTP_GET": true,
+  "source_sha256_rechecked": true,
+  "pages": [
+    {
+      "physical_page": 41,
+      "printed_page": "35",
+      "text_sha256": "29fcec9212d1fa1acd0c9875f16bf1d96402372929f35d38ce46926156be4cea",
+      "image_sha256": "fa07333bd8985a72b8381f344562373ca1181e61bbd69471e824494e5b01b5b8",
+      "command": [
+        "C:\\Users\\Ko_rr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+        "-f",
+        "41",
+        "-l",
+        "41",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\disaster_transport_20261019\\city_verification.pdf",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\facility_opening_20261024\\page41"
+      ],
+      "exit_code": 0
+    },
+    {
+      "physical_page": 52,
+      "printed_page": "46",
+      "text_sha256": "e9121e55934b01558e8a40affae2d98f64f42a026473b5b480b01a5c9ee46eae",
+      "image_sha256": "8e2e72aee37198d750f6964fe0a85b6e5896ac14140218cef705eacc20c5cb3f",
+      "command": [
+        "C:\\Users\\Ko_rr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+        "-f",
+        "52",
+        "-l",
+        "52",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\disaster_transport_20261019\\city_verification.pdf",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\facility_opening_20261024\\page52"
+      ],
+      "exit_code": 0
+    },
+    {
+      "physical_page": 110,
+      "printed_page": "appendix 4/11",
+      "text_sha256": "e010c244d4c59909798aaa79a0af53a47db918da1668a217a0b8e3860244a0a8",
+      "image_sha256": "f7987ca3a93f09382fb3ff3da1fe937d41152c9394f8edd52c452d48d1028a5e",
+      "command": [
+        "C:\\Users\\Ko_rr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+        "-f",
+        "110",
+        "-l",
+        "110",
+        "-r",
+        "150",
+        "-singlefile",
+        "-png",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\disaster_transport_20261019\\city_verification.pdf",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\facility_opening_20261024\\page110"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "renderer_sha256": "7ca29857be967e4a8c57309e65ef2c3fc62c7993e2ea8da64aaff94749a0cd35",
+  "current_terminals_sha256": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+  "source_scope": "2015 facility opening/operation; not transport fleet or actual capacity calibration",
+  "input_changes": false
+}

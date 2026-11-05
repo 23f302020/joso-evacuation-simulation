@@ -1,0 +1,10 @@
+{
+  "at_jst": "2026-10-28T23:44:50.576449+09:00",
+  "old_monitor": 26988,
+  "old_monitor_absent_confirmed": true,
+  "task_restarted": true,
+  "stop_process_called": false,
+  "intermediate_guard": "CIM timestamp comparison rejected prior snapshot after task stop; raw numeric values were not saved. No PID reuse established. Subsequent CIM found absent; normal restart after absence only.",
+  "research_run_restarted": false,
+  "monitoring_gap_claim": "reconfiguration gap, exact duration not yet determined; no continuous monitoring claim"
+}

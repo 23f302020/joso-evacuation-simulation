@@ -1,0 +1,18 @@
+......E.
+======================================================================
+{"status": "PRIMARY_PAIR_VERIFIED_NOT_READY", "verified_primary_files": 89, "source_files_per_role": 5, "metadata_pairs": 10, "core_ready": false}
+{"status": "PRIMARY_PAIR_VERIFIED_NOT_READY", "verified_primary_files": 101, "source_files_per_role": 11, "metadata_pairs": 10, "core_ready": false}
+{"status": "PRIMARY_PAIR_VERIFIED_NOT_READY", "verified_primary_files": 101, "source_files_per_role": 11, "metadata_pairs": 10, "core_ready": false}
+ERROR: test_package_uses_verified_raw_versions_and_paired_dependencies (test_choice_shared_native_pair_proof.SharedNativePairContracts.test_package_uses_verified_raw_versions_and_paired_dependencies)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 129, in test_package_uses_verified_raw_versions_and_paired_dependencies
+    manifest=pair_contracts.io.package(*args)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_package_toolchain.py", line 206, in package
+    raise ValueError('Compiler/source/dependency file evidence required')
+ValueError: Compiler/source/dependency file evidence required
+
+----------------------------------------------------------------------
+Ran 8 tests in 20.396s
+
+FAILED (errors=1)

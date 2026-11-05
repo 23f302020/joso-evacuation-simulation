@@ -1,0 +1,34 @@
+{
+  "at_jst": "2026-10-21T08:17:16.491164+09:00",
+  "status": "REVIEWED_SYNTHETIC_INPUT_PLAN_ONLY",
+  "test_evidence": [
+    "guard_plan_red.log:6 tests/9 unimplemented behavior errors",
+    "guard_plan_green01.log:6 PASS",
+    "guard_plan_arrival_red.log:1 genuine last-edge arrival mismatch",
+    "guard_plan_green02.log:7 PASS"
+  ],
+  "source_sha256": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\config\\jdrt_realtime_choice_v1.json": "d32d5b5e11652f4ff66273d1a671573760a3665b182b0a68d674f2162d258f9e",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020f_c25\\fixture_inputs\\bounded.net.xml": "200c167ff0546f001a7738b129de0fb60029b12faabfbc6fef13a81307445c84",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\transportables\\MSPModel.cpp": "4ff4c54c3ffc281ab4d85e8e6abc6eb10c78927e9713fc6e0d291061538ed6e6",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\transportables\\MSStage.h": "34b498b94f05fb1553765eba9c1dbf6af694009d5c52f922a1599e6eab31da1c",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_guard_plan.py": "db655564c4698c676980c01ed8169e93d86b5c4d6d22639eeefe2481ca0a26f7",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\tests\\test_choice_native_guard_plan.py": "6b23eafedd81c1f4eed1517f0782d9fa4a167d5dbf68ca7b1f934b82bf3eb9cb"
+  },
+  "actual_prepared_cases": 15,
+  "contract_groups": 13,
+  "resolved_findings": [
+    "Internal route final arrival now derives from e2 length, not unrelated long-edge length",
+    "Forward/reverse endpoints and starts derive from current immutable fixture lane geometry",
+    "Natural same/different/wait stage order retained; explicit/random use native XML walk attributes; legacy uses existing native flag",
+    "Native constants source-bound; artificial enum value change is correctly parsed",
+    "Too short or disconnected fixture/invalid clock/speeds fail rather than clamping"
+  ],
+  "limits": [
+    "Native technical runner/manifest/raw artifacts and binary/process binding not implemented",
+    "No prepared case has been executed",
+    "Internal API or individual failed-guard reachability must be observed or explicitly left unexercised",
+    "No moveTo/XY correction or acceptance tolerance permitted"
+  ],
+  "native_guard_pass": false
+}

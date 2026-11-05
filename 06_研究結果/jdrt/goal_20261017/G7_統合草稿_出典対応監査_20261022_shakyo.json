@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-22T15:04:32.939965+09:00",
+  "status": "DRAFT_SOURCE_MAPPING_ONLY_NOT_RESEARCH_RESULT",
+  "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+  "document_sha256": "362d8345cee01e7189015a8f05bce175438091942b74ef72cdc86f461a1a2ced",
+  "source_files": {
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v2.md": "9ae9c69b155a2bd2eb063634dc147f03ab2993f2b14f059beaa73a188513ca64",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md": "6bb8a28c0195c3b2b7a02e6e20ed68223a1948bfedeeae48c746911dd91a8446",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/service_continuity_20261021/通常運休と災害時供給_位置づけ.md": "ca1ab19c140dbff139745fc06cc7788bb3b6669049cf872a94d240628ff4a8aa",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md": "01af5c43e480f14cba02fb7e3b6d7e1488f0fde88f27c41e1e730d32159c702d",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md": "3ee9312cb293791dda28b59350f85189ed57c1594b9e3efc43e00c2be344fb87",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+    "06_研究結果/jdrt/goal_20261017/G6_副指標・理論上限_実装証跡.json": "eb9047749655e214dfbab0b8f0a4d09fce71267994d7784f4a80422d7f46cd50",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/social_welfare_transport_20261022/災害フェーズ・移送支援_用途監査.md": "4d77e5a5ebc9e5c9c21e0699a1475c8827dabc748184b587f501e87c78182fea"
+  },
+  "local_links_checked": 10,
+  "previous_documents": {
+    "02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md": "6d294dc514f33413abd635647d80d8fa27b8960d0ed28a9aa1b5b23b60dd7cf1",
+    "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md": "b5300c2b9583145195130cee8f85c05ff1d81e6f4939eead17cabb03cbe8f853"
+  },
+  "research_results_generated": false,
+  "new_method_adopted": false,
+  "source_incorporation": "Qualitative disaster-phase and transport-purpose limitation only; originals checked separately in source audit"
+}

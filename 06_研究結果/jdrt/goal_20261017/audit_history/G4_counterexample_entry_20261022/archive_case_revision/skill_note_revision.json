@@ -1,0 +1,10 @@
+{
+  "at_jst": "2026-10-22T14:37:22.567585+09:00",
+  "action": "routine_skill_auditor_migration_guidance_updated",
+  "before": "06_研究結果/jdrt/goal_20261017/document_history/04436b144ed2abf43b70af439507e35d18c624ada7651fb6243edff6da4754fb.md",
+  "after_sha256": "c5eac3f4f9cf80eea71bdd25ebf2d0bbebc106e8df95e836426371e202553bab",
+  "scope": "document-only reusable conditions after repeated fixed-old-run migration failures; no stack/acceptance/source change",
+  "reason": "first narrow fix missed a later same-kind archive assumption; full-source scan and valid-control-before-expensive-full-audit required by experience",
+  "verification": "existing canonical helper/report/history paths checked; input source dependency excluded; no new software behavior",
+  "judgment_id": "JD-20261022-research-1432-05"
+}

@@ -1,0 +1,14 @@
+{
+  "written_at_jst": "2026-10-27T18:42:04.827164+09:00",
+  "action": "bounded_2015_transport_source_locator_recheck",
+  "queries": [
+    "site.city.joso.lg.jp 平成27 水害 避難 バス 車両 運転手",
+    "site.kantetsu.co.jp 2015 水害 避難 輸送 バス",
+    "site.pref.ibaraki.jp 常総 平成27 要配慮者 搬送 バス"
+  ],
+  "existing_source_rediscovered": "https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf",
+  "existing_local_primary": "02_情報調査/交通・地域/jdrt_goal_20261017/disaster_transport_20261019/city_verification.pdf",
+  "new_vehicle_driver_trip_joined_primary_acquired": false,
+  "scope": "Locator search only. Existing128-page primary recognized and reused; no new numeric adoption. Tool text search non-detection is not document-wide absence. Exact raw search response is in tool history, not a new local primary receipt.",
+  "research_inputs_changed": false
+}

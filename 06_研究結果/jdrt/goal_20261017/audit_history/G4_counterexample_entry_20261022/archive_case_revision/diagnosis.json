@@ -1,0 +1,11 @@
+{
+  "at_jst": "2026-10-22T14:32:18.765981+09:00",
+  "previous_audit_session": 30314,
+  "process27888_absent": true,
+  "stderr_last_write_jst": "2026-10-22T09:40:28.013146+09:00",
+  "error": "second fixed legacy archive cf26101711/factory.py and cf26101711_c01 missing in new workspace at line231",
+  "scope_review": "Full303-line source read; remaining fixed run literals occur only in this archive check. Array indices refer current archived factory case order, not old workspace directories.",
+  "observation_gap": "No chat observation between last09:40 point and14:30 reentry. No backfilled polling.07 current PID3348 same creation/source identity and latest14:31 observed age12s; not independent proof of uninterrupted whole gap.",
+  "next": "Replace archived-factory rejection with current primary fixture and simulated stale factory hash plus control/corrupt archive pair. No common5/input/run change.",
+  "current_suite_and_baseline": "Same na26102202; all26 baseline tables were INCOMPLETE with all checks/components PASS before later audit harness error."
+}

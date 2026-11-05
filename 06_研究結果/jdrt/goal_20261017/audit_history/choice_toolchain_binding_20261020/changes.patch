@@ -1,0 +1,570 @@
+--- before/04_プログラム/scripts/jdrt_realtime_choice.py
++++ after/04_プログラム/scripts/jdrt_realtime_choice.py
+@@ -77,7 +77,7 @@
+ import traceback
+ import xml.etree.ElementTree as ET
+ import networkx as nx
+-from scripts.jdrt.smoke import resolve_sumo_binary, load_traci
++from scripts.jdrt_choice_toolchain import resolve_choice_toolchain, load_choice_traci, choice_runtime_fingerprint
+ from scripts.jdrt.full_run import summarize_sumo_error_log
+ from scripts.jdrt_realtime_choice_inputs import read_csv, sha
+ from scripts.jdrt_choice_policy import candidate_checks, request_transition, unboarded_expired
+@@ -432,6 +432,7 @@
+                 or receipt['parameter_sha256'] != sha(PARAM)
+                 or receipt['input_manifest_sha256'] != sha(directory / 'manifest.json')):
+             raise RuntimeError('Current registered preflight READY receipt required')
++        resolve_choice_toolchain(require_manifest=True)
+         from scripts.jdrt_realtime_choice_validate import verify_preflight_receipt
+         if not all(verify_preflight_receipt(receipt, parameters).values()):
+             raise RuntimeError('Preflight primary evidence or verifier dependencies changed')
+@@ -550,13 +551,11 @@
+             vehicles[f'choice_drt_{i}'] = {'kind': 'drt', 'members': [], 'origin_id': '', 'terminal_id': '',
+                 'ready_sec': 0, 'status': 'pending_idle', 'route': [input_manifest['depot_edge']],
+                 'distance_m': 0., 'empty_distance_m': 0., 'route_version': 0, 'active_person': '', 'reentry_expected': False}
+-        binary = resolve_sumo_binary()
+-        traci = load_traci(binary)
++        toolchain = resolve_choice_toolchain()
++        binary = toolchain['sumo']
++        traci = load_choice_traci(toolchain)
+         tc = traci.constants
+-        manifest['runtime_sha256'] = {'sumo_binary': sha(binary), 'traci_init': sha(Path(traci.__file__)),
+-            'traci_vehicle': sha(Path(traci.__file__).parent / '_vehicle.py'),
+-            'shared_smoke': sha(ROOT / '04_プログラム/scripts/jdrt/smoke.py'),
+-            'shared_log_parser': sha(ROOT / '04_プログラム/scripts/jdrt/full_run.py')}
++        manifest['runtime_sha256'] = choice_runtime_fingerprint(toolchain, traci)
+         if purpose == 'core' and receipt['runtime_sha256'] != manifest['runtime_sha256']:
+             raise RuntimeError('Runtime dependencies differ from preflight')
+         atomic_json(run_dir / 'manifest.json', manifest)
+--- before/04_プログラム/scripts/jdrt_realtime_choice_validate.py
++++ after/04_プログラム/scripts/jdrt_realtime_choice_validate.py
+@@ -630,13 +630,8 @@
+ 
+ 
+ def runtime_fingerprint():
+-    from scripts.jdrt.smoke import resolve_sumo_binary, load_traci
+-    binary = resolve_sumo_binary()
+-    traci = load_traci(binary)
+-    return {'sumo_binary': file_sha(binary), 'traci_init': file_sha(Path(traci.__file__)),
+-            'traci_vehicle': file_sha(Path(traci.__file__).parent / '_vehicle.py'),
+-            'shared_smoke': file_sha(ROOT / '04_プログラム/scripts/jdrt/smoke.py'),
+-            'shared_log_parser': file_sha(ROOT / '04_プログラム/scripts/jdrt/full_run.py')}
++    from scripts.jdrt_choice_toolchain import choice_runtime_fingerprint
++    return choice_runtime_fingerprint()
+ 
+ 
+ def verify_preflight_receipt(receipt, cfg):
+@@ -651,6 +646,7 @@
+         implementation = {name: file_sha(ROOT / name) for name in cfg['execution']['implementation_files']}
+         inputs = ROOT / cfg['workspace'] / cfg['input_directory']
+         checks['current_metadata'] = (receipt['parameter_sha256'] == file_sha(PARAM)
++            and bool(receipt['runtime_sha256'].get('toolchain_manifest_sha256'))
+             and receipt['input_manifest_sha256'] == file_sha(inputs / 'manifest.json')
+             and receipt['implementation_sha256'] == implementation
+             and receipt['runtime_sha256'] == runtime_fingerprint()
+--- before/04_プログラム/scripts/jdrt_choice_fixtures.py
++++ after/04_プログラム/scripts/jdrt_choice_fixtures.py
+@@ -14,7 +14,7 @@
+ 
+ import networkx as nx
+ 
+-from scripts.jdrt.smoke import load_traci, resolve_sumo_binary
++from scripts.jdrt_choice_toolchain import resolve_choice_toolchain, load_choice_traci, choice_runtime_fingerprint
+ from scripts.jdrt_realtime_choice import ROOT, PARAM, atomic_json, run, sha, stamp, write_csv
+ 
+ CASES = ('walk_reroute', 'walk_reroute_limit', 'walk_budget', 'walk_reverse',
+@@ -143,8 +143,9 @@
+ def prepare(case, run_id, params):
+     directory = ROOT / params['workspace'] / 'technical' / run_id / 'fixture_inputs'
+     directory.mkdir(parents=True, exist_ok=False)
+-    binary = resolve_sumo_binary()
+-    load_traci(binary)
++    toolchain = resolve_choice_toolchain()
++    load_choice_traci(toolchain)
++    runtime_fingerprint = choice_runtime_fingerprint(toolchain)
+     import sumolib
+     nodes, edges = ET.Element('nodes'), ET.Element('edges')
+     coordinates = [('G', -100, 0), ('A', 0, 0), ('B', 100, 0), ('C', 200, 0),
+@@ -195,12 +196,13 @@
+                           'fromLane': str(source), 'toLane': str(target)})
+         ET.ElementTree(connections).write(directory / 'connections.xml', encoding='utf-8', xml_declaration=True)
+         connection_arguments = ['--connection-files', 'connections.xml']
+-    result = subprocess.run([str(binary.parent / 'netconvert.exe'), '--node-files', 'nodes.xml',
++    result = subprocess.run([str(toolchain['netconvert']), '--node-files', 'nodes.xml',
+         '--edge-files', 'edges.xml', '--output-file', 'bounded.net.xml', '--no-turnarounds', 'true',
+         '--walkingareas', 'true', '--crossings.guess', 'true'] + connection_arguments,
+         cwd=directory, capture_output=True, text=True)
+     (directory / 'netconvert.log').write_text(result.stdout + result.stderr, encoding='utf-8')
+     result.check_returncode()
++    (directory / 'toolchain_runtime.json').write_text(json.dumps(runtime_fingerprint, indent=2) + '\n', encoding='utf-8')
+     net = sumolib.net.readNet(str(directory / 'bounded.net.xml'), withInternal=True)
+     if case.startswith('car_lane_'):
+         validate_car_lane_topology(net)
+--- before/04_プログラム/scripts/jdrt_realtime_choice_inputs.py
++++ after/04_プログラム/scripts/jdrt_realtime_choice_inputs.py
+@@ -38,8 +38,8 @@
+ 
+ def place_positions(directory, sources, contract):
+     """Project source references; preserve the registered edge and every place ID."""
+-    from scripts.jdrt.smoke import load_traci, resolve_sumo_binary
+-    load_traci(resolve_sumo_binary())
++    from scripts.jdrt_choice_toolchain import resolve_choice_toolchain, load_choice_traci
++    load_choice_traci(resolve_choice_toolchain())
+     import sumolib
+     net = sumolib.net.readNet(str(directory / 'bounded.net.xml'), withInternal=True)
+     references = {}
+--- before/04_プログラム/scripts/jdrt_choice_sumo_probe.py
++++ after/04_プログラム/scripts/jdrt_choice_sumo_probe.py
+@@ -10,7 +10,7 @@
+ import traceback
+ import xml.etree.ElementTree as ET
+ 
+-from scripts.jdrt.smoke import load_traci, resolve_sumo_binary
++from scripts.jdrt_choice_toolchain import resolve_choice_toolchain, load_choice_traci, choice_runtime_fingerprint
+ from scripts.jdrt.full_run import summarize_sumo_error_log
+ from scripts.jdrt_choice_policy import request_transition, unboarded_expired
+ from scripts.jdrt_realtime_choice import cancel_vehicle_to_wait, set_vehicle_route, traffic_observation_state
+@@ -53,8 +53,10 @@
+             archived.write_bytes((ROOT / name).read_bytes())
+             if sha(archived) != expected:
+                 raise ValueError('Probe source changed during archival')
+-        binary = resolve_sumo_binary()
+-        traci = load_traci(binary)
++        toolchain = resolve_choice_toolchain()
++        binary = toolchain['sumo']
++        traci = load_choice_traci(toolchain)
++        manifest['runtime_sha256'] = choice_runtime_fingerprint(toolchain, traci)
+         manifest['sumo_version'] = subprocess.run([str(binary), '--version'], capture_output=True,
+                                                   text=True, check=True).stdout.splitlines()[0]
+         nodes = ET.Element('nodes')
+@@ -66,7 +68,7 @@
+                           speed='5', numLanes='1', allow='passenger', sidewalkWidth='2')
+         ET.ElementTree(nodes).write(directory / 'nodes.xml', encoding='utf-8', xml_declaration=True)
+         ET.ElementTree(edges).write(directory / 'edges.xml', encoding='utf-8', xml_declaration=True)
+-        command = [str(binary.parent / 'netconvert.exe'), '--node-files', 'nodes.xml',
++        command = [str(toolchain['netconvert']), '--node-files', 'nodes.xml',
+                    '--edge-files', 'edges.xml', '--output-file', 'fixture.net.xml', '--no-turnarounds', 'true']
+         network = subprocess.run(command, cwd=directory, capture_output=True, text=True)
+         (directory / 'netconvert.log').write_text(network.stdout + network.stderr, encoding='utf-8')
+--- before/.agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py
++++ after/.agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py
+@@ -440,6 +440,8 @@
+     def preflight(self, suite_id, counterexample_report):
+         """Recompute prerequisite proofs; never fabricate technical PASS receipts."""
+         from scripts import jdrt_realtime_choice_validate as verifier
++        from scripts.jdrt_choice_toolchain import resolve_choice_toolchain
++        resolve_choice_toolchain(require_manifest=True)
+         with single_writer(self.workspace):
+             self.assert_idle()
+             attempt = self.workspace / 'preflight' / datetime.now().strftime('%Y%m%dT%H%M%S%f')
+@@ -447,7 +449,7 @@
+             input_proof = verifier.validate_inputs()
+             input_path = attempt / 'input.json'
+             save_json(input_path, input_proof)
+-            modules = ['tests.test_jdrt_choice_' + name for name in ('skill', 'validate', 'runtime', 'policy')]
++            modules = ['tests.test_jdrt_choice_' + name for name in ('skill', 'validate', 'runtime', 'policy', 'toolchain')]
+             unit_path = attempt / 'unit.json'
+             program = (
+                 'import json,sys,unittest\n'
+--- before/04_プログラム/tests/test_jdrt_choice_validate.py
++++ after/04_プログラム/tests/test_jdrt_choice_validate.py
+@@ -381,7 +381,7 @@
+             mp = save(directory + '/manifest.json', m)
+             proof = {'status': 'PASS', 'purpose': purpose, 'run_id': run_id, 'core_adoption_permitted': False,
+                      'historical_diagnostic': False, 'implementation_sha256': implementation,
+-                     'runtime_sha256': {'owned': 'runtime'}, 'verifier_dependencies': {'owned': 'dependency'},
++                     'runtime_sha256': {'owned': 'runtime', 'toolchain_manifest_sha256': 'synthetic-pinned-proof'}, 'verifier_dependencies': {'owned': 'dependency'},
+                      'manifest_sha256': validator.file_sha(root / mp), 'parameter_sha256': validator.file_sha(param),
+                      'input_manifest_sha256': inputs_sha, 'checks': {'owned': True},
+                      'components': {k: {'status': 'PASS'} for k in validator.RUN_COMPONENTS}}
+@@ -399,7 +399,7 @@
+         receipt = {'status': 'READY', 'protocol': cfg['protocol'], 'checks': {k: True for k in
+             ('accounting', 'unit_tests', 'six_file_record_transaction', 'storage_and_single_writer')},
+             'implementation_sha256': implementation, 'parameter_sha256': validator.file_sha(param),
+-            'input_manifest_sha256': inputs_sha, 'runtime_sha256': {'owned': 'runtime'},
++            'input_manifest_sha256': inputs_sha, 'runtime_sha256': {'owned': 'runtime', 'toolchain_manifest_sha256': 'synthetic-pinned-proof'},
+             'verifier_dependencies': {'owned': 'dependency'}, 'evidence': evidence,
+             'evidence_sha256': {p.relative_to(root).as_posix(): validator.file_sha(p) for p in root.rglob('*') if p.is_file()}}
+         return cfg, param, receipt
+@@ -413,6 +413,10 @@
+                     validator, 'verifier_dependencies', return_value=receipt['verifier_dependencies']):
+                 checks = validator.verify_preflight_receipt(receipt, cfg)
+                 self.assertTrue(all(checks.values()), checks)
++                modified = deepcopy(receipt)
++                modified['runtime_sha256'].pop('toolchain_manifest_sha256')
++                with patch.object(validator, 'runtime_fingerprint', return_value=modified['runtime_sha256']):
++                    self.assertFalse(validator.verify_preflight_receipt(modified, cfg)['current_metadata'])
+                 for key in ('unit', 'counterexamples', 'fixture_manifest'):
+                     modified = deepcopy(receipt)
+                     modified['evidence_sha256'].pop(modified['evidence'][key])
+--- before/.agents/skills/joso-jdrt-runner/references/realtime_choice.md
++++ after/.agents/skills/joso-jdrt-runner/references/realtime_choice.md
+@@ -8,6 +8,8 @@
+ .\04_プログラム\venv\Scripts\python.exe .agents/skills/joso-jdrt-runner/scripts/choice_technical.py --project-root . status
+ .\04_プログラム\venv\Scripts\python.exe .agents/skills/joso-jdrt-runner/scripts/choice_technical.py --project-root . probe --run-id <new-unique-id>
+ ```
++
++Choice toolchain pin (2026-10-20): set `JDRT_CHOICE_TOOLCHAIN_MANIFEST` in the calling process to the selected isolated control/patched bundle manifest. Core and READY require an explicit valid manifest; an absent selector retains installed-SUMO discovery only for technical compatibility. An explicit empty, missing, invalid or changed manifest never falls back. The choice-only resolver binds all bundle files (including controlled DLLs and Python sources), roles, provenance, manifest and its own source SHA, and rejects foreign loaded `traci`/`sumolib` modules. It does not change global environment settings or shared/old-series resolvers. Preserve source/fingerprint history: changed common-five or resolver/bundle bytes invalidate old suite, counterexample, smoke and READY evidence. This binding alone does not prove native-patch correctness or actual OS/external DLL load paths; verify the build/import/dependency proof before adopting a bundle. Schema, limits, source archives and artificial-file tests: [toolchain binding report](../../../../06_研究結果/jdrt/goal_20261017/choice_toolchain_binding_20261020.md). No real bundle was adopted by this revision.
+ 
+ For controller integration cases, use `choice_technical.py --project-root . fixture --run-id <new-id>`.
+ This creates artificial diamond/long-edge roads and case-specific inputs under unique `technical/` IDs,
+--- before/04_プログラム/scripts/jdrt_choice_toolchain.py
++++ after/04_プログラム/scripts/jdrt_choice_toolchain.py
+@@ -0,0 +1,148 @@
++"""Process-local, fail-closed runtime selection for choice technical/core runs."""
++import hashlib
++import importlib
++import json
++import os
++from pathlib import Path, PurePosixPath
++import re
++import sys
++
++from scripts.jdrt.smoke import load_traci, resolve_sumo_binary
++
++ROOT = Path(__file__).resolve().parents[2]
++MANIFEST_ENV = 'JDRT_CHOICE_TOOLCHAIN_MANIFEST'
++ROLES = {'sumo', 'netconvert', 'traci_init', 'sumolib_init'}
++
++
++def sha(path):
++    digest = hashlib.sha256()
++    with path.open('rb') as stream:
++        for block in iter(lambda: stream.read(8 * 1024 * 1024), b''):
++            digest.update(block)
++    return digest.hexdigest()
++
++
++def _relative_file(root, name):
++    relative = PurePosixPath(name)
++    if (not name or '\\' in name or ':' in name or relative.is_absolute()
++            or any(part in ('', '.', '..') for part in name.split('/'))):
++        raise ValueError('Toolchain paths must be canonical bundle-relative POSIX paths')
++    path = root.joinpath(*relative.parts)
++    if any(parent.is_symlink() for parent in (path, *path.parents) if parent != root.parent):
++        raise ValueError('Toolchain symlinks are forbidden')
++    if not path.resolve().is_relative_to(root) or not path.is_file():
++        raise ValueError('Toolchain file is missing or outside its bundle')
++    return path.resolve()
++
++
++def _unique_object(pairs):
++    result = {}
++    for key, value in pairs:
++        if key in result:
++            raise ValueError('Duplicate toolchain manifest key')
++        result[key] = value
++    return result
++
++
++def resolve_choice_toolchain(*, require_manifest=False):
++    """Only absence of the selector permits legacy installed-toolchain discovery."""
++    if MANIFEST_ENV not in os.environ:
++        if require_manifest:
++            raise ValueError('Choice core/READY requires an explicit pinned toolchain manifest')
++        binary = resolve_sumo_binary()
++        return {'sumo': binary, 'netconvert': binary.parent / 'netconvert.exe'}
++    selected = os.environ[MANIFEST_ENV]
++    if not selected.strip():
++        raise ValueError('Explicit choice toolchain manifest is empty')
++    if Path(selected).is_symlink():
++        raise ValueError('Toolchain manifest symlinks are forbidden')
++    manifest_path = Path(selected).resolve(strict=True)
++    raw = manifest_path.read_bytes()
++    manifest = json.loads(raw, object_pairs_hook=_unique_object)
++    if (not isinstance(manifest, dict) or set(manifest) != {'schema_version', 'files', 'roles', 'provenance'}
++            or type(manifest['schema_version']) is not int or manifest['schema_version'] != 1
++            or not isinstance(manifest['files'], dict)
++            or not manifest['files'] or not isinstance(manifest['roles'], dict)
++            or set(manifest['roles']) != ROLES or not isinstance(manifest['provenance'], dict)
++            or not manifest['provenance']):
++        raise ValueError('Invalid choice toolchain manifest schema')
++    root = manifest_path.parent
++    paths = {}
++    for name, expected in manifest['files'].items():
++        if not isinstance(name, str) or not isinstance(expected, str) or not re.fullmatch('[0-9a-f]{64}', expected):
++            raise ValueError('Invalid toolchain file hash')
++        path = _relative_file(root, name)
++        if path == manifest_path or path.suffix.lower() in ('.pyc', '.pyo'):
++            raise ValueError('Manifest and Python bytecode cannot be controlled runtime files')
++        if sha(path) != expected:
++            raise ValueError(f'Toolchain SHA mismatch: {name}')
++        paths[name] = path
++    actual = set()
++    for path in root.rglob('*'):
++        if path.is_symlink():
++            raise ValueError('Toolchain symlinks are forbidden')
++        if path.is_file() and path != manifest_path:
++            actual.add(path.relative_to(root).as_posix())
++    if actual != set(paths):
++        raise ValueError('Toolchain bundle contains missing or unlisted files')
++    if not all(isinstance(name, str) and name in paths for name in manifest['roles'].values()):
++        raise ValueError('Toolchain role is not bound to a controlled file')
++    roles = {role: paths[name] for role, name in manifest['roles'].items()}
++    for package in ('traci', 'sumolib'):
++        if roles[package + '_init'].name != '__init__.py' or roles[package + '_init'].parent.name != package:
++            raise ValueError('Toolchain Python roles must name package __init__.py files')
++    if roles['traci_init'].parent.parent != roles['sumolib_init'].parent.parent:
++        raise ValueError('Toolchain Python packages must share one tools directory')
++    return {**roles, 'manifest_path': manifest_path, 'manifest_sha256': hashlib.sha256(raw).hexdigest(),
++            'files': manifest['files'], 'roles': manifest['roles'], 'provenance': manifest['provenance'], 'root': root}
++
++
++def _check_loaded_modules(selection):
++    for name, module in list(sys.modules.items()):
++        if name.split('.')[0] in ('traci', 'sumolib'):
++            path = Path(getattr(module, '__file__', '')).resolve()
++            if (not path.is_relative_to(selection['root'])
++                    or path.relative_to(selection['root']).as_posix() not in selection['files']
++                    or sha(path) != selection['files'][path.relative_to(selection['root']).as_posix()]):
++                raise ValueError(f'Loaded Python module is outside pinned toolchain: {name}')
++    for package in ('traci', 'sumolib'):
++        if package in sys.modules and Path(sys.modules[package].__file__).resolve() != selection[package + '_init']:
++            raise ValueError(f'Loaded Python package differs from selected role: {package}')
++
++
++def load_choice_traci(selection):
++    if 'manifest_path' not in selection:
++        return load_traci(selection['sumo'])
++    _check_loaded_modules(selection)
++    tools = str(selection['traci_init'].parent.parent)
++    sys.path.insert(0, tools)
++    try:
++        # Later lazy imports must also leave the immutable bundle byte-for-byte intact.
++        sys.dont_write_bytecode = True
++        traci = importlib.import_module('traci')
++        importlib.import_module('sumolib')
++    finally:
++        sys.path.remove(tools)
++    _check_loaded_modules(selection)
++    return traci
++
++
++def choice_runtime_fingerprint(selection=None, traci=None):
++    selection = resolve_choice_toolchain() if selection is None else selection
++    traci = load_choice_traci(selection) if traci is None else traci
++    result = {'sumo_binary': sha(selection['sumo']), 'traci_init': sha(Path(traci.__file__)),
++              'traci_vehicle': sha(Path(traci.__file__).parent / '_vehicle.py'),
++              'shared_smoke': sha(ROOT / '04_プログラム/scripts/jdrt/smoke.py'),
++              'shared_log_parser': sha(ROOT / '04_プログラム/scripts/jdrt/full_run.py'),
++              'choice_toolchain_helper': sha(Path(__file__))}
++    if 'manifest_path' in selection:
++        current = resolve_choice_toolchain()
++        if current != selection:
++            raise ValueError('Choice toolchain selection changed after resolution')
++        _check_loaded_modules(selection)
++        result.update(toolchain_manifest_sha256=selection['manifest_sha256'],
++                      toolchain_manifest_path=str(selection['manifest_path']),
++                      toolchain_files_sha256=dict(selection['files']), toolchain_roles=dict(selection['roles']),
++                      toolchain_provenance=dict(selection['provenance']),
++                      sumo_binary_path=str(selection['sumo']), netconvert_binary_path=str(selection['netconvert']))
++    return result
+--- before/04_プログラム/tests/test_jdrt_choice_toolchain.py
++++ after/04_プログラム/tests/test_jdrt_choice_toolchain.py
+@@ -0,0 +1,207 @@
++"""Pinned toolchain tests use artificial files/modules; no native process starts."""
++import hashlib
++import importlib.util
++import json
++import os
++from pathlib import Path
++import sys
++import tempfile
++import types
++import unittest
++from unittest.mock import Mock, patch
++
++from scripts import jdrt_choice_toolchain as toolchain
++
++
++class ToolchainContracts(unittest.TestCase):
++    def setUp(self):
++        self.temporary = tempfile.TemporaryDirectory()
++        self.addCleanup(self.temporary.cleanup)
++        self.root = Path(self.temporary.name)
++        self.manifest = self.root / 'toolchain.json'
++        self.files = {'bin/sumo.exe': b'sumo-control', 'builder/netconvert.exe': b'netconvert',
++                      'bin/dependency.dll': b'controlled dependency',
++                      'tools/traci/__init__.py': b'from . import _vehicle\n',
++                      'tools/traci/_vehicle.py': b'version = "synthetic"\n',
++                      'tools/traci/lazy.py': b'value = 1\n',
++                      'tools/sumolib/__init__.py': b'version = "synthetic"\n',
++                      'source_build_provenance.txt': b'synthetic source/build evidence'}
++        for name, data in self.files.items():
++            path = self.root / name
++            path.parent.mkdir(parents=True, exist_ok=True)
++            path.write_bytes(data)
++        self.document = {'schema_version': 1,
++                         'files': {name: hashlib.sha256(data).hexdigest() for name, data in self.files.items()},
++                         'roles': {'sumo': 'bin/sumo.exe', 'netconvert': 'builder/netconvert.exe',
++                                   'traci_init': 'tools/traci/__init__.py', 'sumolib_init': 'tools/sumolib/__init__.py'},
++                         'provenance': {'source_build': 'synthetic fixture, never a usable toolchain'}}
++        self.write_manifest()
++        self.environment = patch.dict(os.environ, {toolchain.MANIFEST_ENV: str(self.manifest)})
++        self.environment.start()
++        self.addCleanup(self.environment.stop)
++        self.previous_bytecode = sys.dont_write_bytecode
++        self.addCleanup(setattr, sys, 'dont_write_bytecode', self.previous_bytecode)
++
++    def write_manifest(self):
++        self.manifest.write_text(json.dumps(self.document), encoding='utf-8')
++
++    def clean_modules(self):
++        previous = {name: value for name, value in sys.modules.items()
++                    if name.split('.')[0] in ('traci', 'sumolib')}
++        for name in previous:
++            del sys.modules[name]
++        def restore():
++            for name in list(sys.modules):
++                if name.split('.')[0] in ('traci', 'sumolib'):
++                    del sys.modules[name]
++            sys.modules.update(previous)
++        self.addCleanup(restore)
++
++    def test_exact_roles_ignore_legacy_discovery(self):
++        with patch.object(toolchain, 'resolve_sumo_binary', side_effect=AssertionError('legacy fallback')):
++            selected = toolchain.resolve_choice_toolchain()
++        self.assertEqual(selected['sumo'], (self.root / self.document['roles']['sumo']).resolve())
++        self.assertEqual(selected['netconvert'], (self.root / self.document['roles']['netconvert']).resolve())
++
++    def test_absent_selection_retains_legacy_discovery(self):
++        with patch.dict(os.environ):
++            del os.environ[toolchain.MANIFEST_ENV]
++            binary = self.root / 'installed/sumo.exe'
++            with patch.object(toolchain, 'resolve_sumo_binary', return_value=binary) as resolver:
++                selected = toolchain.resolve_choice_toolchain()
++            resolver.assert_called_once_with()
++            self.assertEqual(selected, {'sumo': binary, 'netconvert': binary.parent / 'netconvert.exe'})
++            with patch.object(toolchain, 'resolve_sumo_binary', side_effect=AssertionError('legacy fallback')):
++                with self.assertRaisesRegex(ValueError, 'core/READY requires'):
++                    toolchain.resolve_choice_toolchain(require_manifest=True)
++
++    def test_explicit_empty_missing_and_invalid_manifest_never_fall_back(self):
++        for value in ('', str(self.root / 'missing.json'), str(self.root / 'bin/sumo.exe')):
++            with self.subTest(value=value), patch.dict(os.environ, {toolchain.MANIFEST_ENV: value}), patch.object(
++                    toolchain, 'resolve_sumo_binary', side_effect=AssertionError('legacy fallback')):
++                with self.assertRaises((ValueError, FileNotFoundError)):
++                    toolchain.resolve_choice_toolchain()
++
++    def test_duplicate_manifest_keys_are_rejected(self):
++        self.manifest.write_text('{"schema_version":1,"schema_version":1}', encoding='utf-8')
++        with self.assertRaisesRegex(ValueError, 'Duplicate'):
++            toolchain.resolve_choice_toolchain()
++
++    def test_schema_version_requires_the_registered_integer(self):
++        for value in (True, '1', 2):
++            with self.subTest(version=value):
++                self.document['schema_version'] = value
++                self.write_manifest()
++                with self.assertRaisesRegex(ValueError, 'schema'):
++                    toolchain.resolve_choice_toolchain()
++
++    def test_preflight_refuses_unpinned_toolchain_before_creating_evidence(self):
++        path = toolchain.ROOT / '.agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py'
++        spec = importlib.util.spec_from_file_location('toolchain_preflight_guard_test', path)
++        skill = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(skill)
++        with patch.dict(os.environ):
++            del os.environ[toolchain.MANIFEST_ENV]
++            with self.assertRaisesRegex(ValueError, 'core/READY requires'):
++                skill.ChoiceController.preflight(None, 'unused-suite', 'unused-report')
++
++    def test_path_traversal_absolute_and_noncanonical_paths_are_rejected(self):
++        for name in ('../outside.dll', '/outside.dll', 'C:/outside.dll', 'bin\\sumo.exe', 'bin/../bin/sumo.exe', './bin/sumo.exe'):
++            with self.subTest(name=name):
++                self.document['files'] = {name: hashlib.sha256(b'x').hexdigest()}
++                self.write_manifest()
++                with self.assertRaises(ValueError):
++                    toolchain.resolve_choice_toolchain()
++
++    def test_changed_binary_dependency_and_source_proof_are_rejected(self):
++        for name in ('bin/sumo.exe', 'builder/netconvert.exe', 'bin/dependency.dll', 'source_build_provenance.txt', 'tools/traci/_vehicle.py'):
++            with self.subTest(name=name):
++                path = self.root / name
++                path.write_bytes(self.files[name] + b'changed')
++                with self.assertRaisesRegex(ValueError, 'SHA mismatch'):
++                    toolchain.resolve_choice_toolchain()
++                path.write_bytes(self.files[name])
++
++    def test_unlisted_dependency_and_bytecode_are_rejected(self):
++        path = self.root / 'bin/unlisted.dll'
++        path.write_bytes(b'additional runtime')
++        with self.assertRaisesRegex(ValueError, 'unlisted'):
++            toolchain.resolve_choice_toolchain()
++        path.unlink()
++        name = 'tools/traci/__pycache__/__init__.pyc'
++        path = self.root / name
++        path.parent.mkdir()
++        path.write_bytes(b'bytecode')
++        self.document['files'][name] = toolchain.sha(path)
++        self.write_manifest()
++        with self.assertRaisesRegex(ValueError, 'bytecode'):
++            toolchain.resolve_choice_toolchain()
++
++    def test_real_imports_match_roles_and_never_write_bundle_bytecode(self):
++        self.clean_modules()
++        selected = toolchain.resolve_choice_toolchain()
++        traci = toolchain.load_choice_traci(selected)
++        before = toolchain.choice_runtime_fingerprint(selected, traci)
++        # Lazy imports after the initial loader must also preserve the bundle.
++        __import__('traci.lazy')
++        after = toolchain.choice_runtime_fingerprint()
++        self.assertEqual(before, after)
++        self.assertEqual(Path(traci.__file__).resolve(), selected['traci_init'])
++        self.assertFalse(list(self.root.rglob('*.pyc')))
++        self.assertEqual(before['toolchain_files_sha256'], self.document['files'])
++        self.assertEqual(before['toolchain_manifest_sha256'], toolchain.sha(self.manifest))
++        self.assertEqual(before['choice_toolchain_helper'], toolchain.sha(Path(toolchain.__file__)))
++
++    def test_cached_foreign_package_or_submodule_is_rejected(self):
++        self.clean_modules()
++        for name in ('traci', 'sumolib', 'traci._vehicle'):
++            with self.subTest(name=name), patch.dict(sys.modules, {name: types.SimpleNamespace(__file__=__file__)}):
++                with self.assertRaisesRegex(ValueError, 'outside pinned'):
++                    toolchain.load_choice_traci(toolchain.resolve_choice_toolchain())
++
++    def test_selected_package_role_cannot_be_replaced_by_another_bound_file(self):
++        self.clean_modules()
++        selected = toolchain.resolve_choice_toolchain()
++        with patch.dict(sys.modules, {'traci': types.SimpleNamespace(__file__=str(self.root / 'tools/traci/_vehicle.py'))}):
++            with self.assertRaisesRegex(ValueError, 'differs from selected role'):
++                toolchain.load_choice_traci(selected)
++
++    def test_manifest_provenance_or_role_mutation_invalidates_selection_and_fingerprint(self):
++        self.clean_modules()
++        selected = toolchain.resolve_choice_toolchain()
++        traci = toolchain.load_choice_traci(selected)
++        original = toolchain.choice_runtime_fingerprint(selected, traci)
++        self.document['provenance']['source_build'] += ' changed'
++        self.write_manifest()
++        with self.assertRaisesRegex(ValueError, 'selection changed'):
++            toolchain.choice_runtime_fingerprint(selected, traci)
++        self.assertNotEqual(original, toolchain.choice_runtime_fingerprint())
++        self.document['roles']['sumo'] = 'builder/netconvert.exe'
++        self.write_manifest()
++        self.assertNotEqual(original, toolchain.choice_runtime_fingerprint())
++
++    def test_helper_source_is_part_of_runtime_gate(self):
++        self.clean_modules()
++        original = toolchain.choice_runtime_fingerprint()
++        path = self.root.parent / (self.root.name + '_helper.py')
++        self.addCleanup(path.unlink, missing_ok=True)
++        path.write_text('changed resolver bytes\n', encoding='utf-8')
++        with patch.object(toolchain, '__file__', str(path)):
++            changed = toolchain.choice_runtime_fingerprint()
++        self.assertNotEqual(original['choice_toolchain_helper'], changed['choice_toolchain_helper'])
++
++    def test_fixture_netconvert_uses_exact_role_without_starting_native_process(self):
++        from scripts import jdrt_choice_fixtures as fixtures
++        selected = toolchain.resolve_choice_toolchain()
++        result = Mock(stdout='', stderr='')
++        result.check_returncode.side_effect = RuntimeError('stop before reading generated network')
++        with patch.object(fixtures, 'ROOT', self.root), patch.object(fixtures, 'resolve_choice_toolchain', return_value=selected), patch.object(
++                fixtures, 'load_choice_traci'), patch.object(fixtures, 'choice_runtime_fingerprint', return_value={}), patch.dict(
++                sys.modules, {'sumolib': types.ModuleType('sumolib')}), patch.object(fixtures.subprocess, 'run', return_value=result) as process:
++            with self.assertRaisesRegex(RuntimeError, 'stop before'):
++                fixtures.prepare('walk_reroute', 'unique-id', {'workspace': 'isolated'})
++        self.assertEqual(process.call_args.args[0][0], str(selected['netconvert']))
++
++
++if __name__ == '__main__':
++    unittest.main()

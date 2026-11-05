@@ -1,0 +1,507 @@
+{
+  "at_jst": "2026-10-28T00:24:49.352760+09:00",
+  "status": "AUXILIARY_FAILURE_PRESERVED_CORE_COMPLETED_UNRECORDED",
+  "original_session": 7780,
+  "original_exit_code": 1,
+  "sequence_id": "sq26102806",
+  "run_id": "nv26102806",
+  "process_handle_identities": {
+    "19900": {
+      "state": "absent"
+    },
+    "17452": {
+      "state": "absent"
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "source_pins_all_unchanged": true,
+  "artifacts": [
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0001.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0001.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113736947261100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0001.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0001.stdout.log",
+      "sha256": "bd3d58c93cd6ec6aa118e5a6b1dc1ebdf8d82c169a589ce254a1de6a84f33ca4",
+      "source_mtime_ns_at_capture": 1793113752163285800
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0002.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0002.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113752321173800
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0002.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0002.stdout.log",
+      "sha256": "a3ddee7383d0e9d8836783881521743ca3aabf0571135800d31bb1a4985a7b73",
+      "source_mtime_ns_at_capture": 1793113752665663500
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0003.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0003.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113752712839300
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0003.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0003.stdout.log",
+      "sha256": "901ecfbb530d016d3fa51a9d80ddd5cc21a18e5c91da13d1d23ea37507f255bf",
+      "source_mtime_ns_at_capture": 1793113768581546900
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0004.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0004.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113799540090000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0004.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0004.stdout.log",
+      "sha256": "de6087bff5f4ad3ced42ec362b85f10dca03f2e0e52f7868fe734c46067ca3ca",
+      "source_mtime_ns_at_capture": 1793113800808974900
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0005.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0005.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113800856472000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0005.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0005.stdout.log",
+      "sha256": "3f2888ec7c08e56e238c811a8a6f16bc1e973a08c294382a0c4e0b3746736ea6",
+      "source_mtime_ns_at_capture": 1793113801066766600
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0006.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0006.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113801096221800
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0006.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0006.stdout.log",
+      "sha256": "99704ac1c49035897e2ee33038b8803463d69c733b911bb4bec068ef14ccd9ec",
+      "source_mtime_ns_at_capture": 1793113801389777500
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0007.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0007.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113801422106300
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0007.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0007.stdout.log",
+      "sha256": "8e516201b0f40645aa2146d7b9623f83929742b0167f5141e602032ced98db3c",
+      "source_mtime_ns_at_capture": 1793113802065804900
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0008.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0008.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113802111300200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0008.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0008.stdout.log",
+      "sha256": "ca129590966d6c735064e468c67fae3fed48e13c7860e1d26286165e290087db",
+      "source_mtime_ns_at_capture": 1793113802615846100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0009.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0009.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113807686433000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0009.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0009.stdout.log",
+      "sha256": "c883f456834ed42affe85ec66da4bf1e73aff77180dc84718cde4f9359992e47",
+      "source_mtime_ns_at_capture": 1793113808162389200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0010.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0010.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113813222767200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0010.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0010.stdout.log",
+      "sha256": "08e7f9e6b38ca132fde6964a63f70fae755f3dc9dd0820dc22048182e943a76c",
+      "source_mtime_ns_at_capture": 1793113813695387300
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0011.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0011.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113873774082100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0011.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0011.stdout.log",
+      "sha256": "ffd0a568a2b0c5ae3ff1a2d4a5b35f43e43ad745005c9d0d23a437085d2f8b31",
+      "source_mtime_ns_at_capture": 1793113874369021400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0012.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0012.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113874416568300
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0012.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0012.stdout.log",
+      "sha256": "79108c433b2d6a78499880fcc6200702addb8775a3a920f6763ed6bde6e70010",
+      "source_mtime_ns_at_capture": 1793113874738849400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0013.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0013.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113934826474400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0013.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0013.stdout.log",
+      "sha256": "4b87f244543968c66559fe78342c01bab3153ef29980f252ae48fbbf98743c54",
+      "source_mtime_ns_at_capture": 1793113935485850200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0014.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0014.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113935540114100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0014.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0014.stdout.log",
+      "sha256": "2b927046967c93d3ea75020b7f1bc60872b8a4dd197e7e33dbe0da795917024f",
+      "source_mtime_ns_at_capture": 1793113936014476200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0015.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0015.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113996141936200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0015.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0015.stdout.log",
+      "sha256": "3240efafc7aa6b62d1cf9f7a84f8b6c2d28678bc315f3e71ce7e70fbac2be9bb",
+      "source_mtime_ns_at_capture": 1793113996978057400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0016.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0016.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793113997029424900
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0016.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0016.stdout.log",
+      "sha256": "0f7824a02195cec8094418a3f03df9ca6e335119a73bf268493dab85bec96f07",
+      "source_mtime_ns_at_capture": 1793113997480146000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0017.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0017.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114057593340400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0017.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0017.stdout.log",
+      "sha256": "a5cad17418ad89fe25ec8289e0db39d41189357da521f6f5e6de42464950ffa1",
+      "source_mtime_ns_at_capture": 1793114058136799600
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0018.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0018.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114058175749500
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0018.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0018.stdout.log",
+      "sha256": "4c3b2e3ea7ff89f7e602cd70b45b2f9cec859f7112e6e1f40271d330d28c0dde",
+      "source_mtime_ns_at_capture": 1793114058537784100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0019.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0019.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114118624541000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0019.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0019.stdout.log",
+      "sha256": "9b12bb3df01b7aa03f57f6635b1e53145b43fbf0c451d8d19a9cc347e635ea61",
+      "source_mtime_ns_at_capture": 1793114119146528200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0020.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0020.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114119188740400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0020.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0020.stdout.log",
+      "sha256": "e3e380a596deab381d34a535eebb261d46ad271dd405ebfd5d5117740450bd19",
+      "source_mtime_ns_at_capture": 1793114119510350600
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0021.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0021.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114179608773000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0021.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0021.stdout.log",
+      "sha256": "94647edb8e37c696169e602efb980d679654d86ebd7ce4d290595e5f43063416",
+      "source_mtime_ns_at_capture": 1793114180131504000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0022.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0022.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114180187500100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0022.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0022.stdout.log",
+      "sha256": "401bfd9fdefdbca15c0c403f5a29b6b3fcc2fb956fcd6a20d87b870d95104adf",
+      "source_mtime_ns_at_capture": 1793114180553941100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0023.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0023.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114240627505800
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0023.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0023.stdout.log",
+      "sha256": "c81b1c016e74629fd8bed9dde859790213872eccd666096aa8409ac2c14b4786",
+      "source_mtime_ns_at_capture": 1793114241169276300
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0024.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0024.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114241206572300
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0024.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0024.stdout.log",
+      "sha256": "af1122ead992b2aa283516471c17423635f3c33f274837ae431d51ae96aefcdb",
+      "source_mtime_ns_at_capture": 1793114241545790200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0025.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0025.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114301617027600
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0025.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0025.stdout.log",
+      "sha256": "ecd5f76beb49cafe775488bce2369f681cd54cbdebe09a9e27b7390731df27f9",
+      "source_mtime_ns_at_capture": 1793114302122979000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0026.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0026.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114302181009000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0026.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0026.stdout.log",
+      "sha256": "5a923423e9f00aec7d549e19617ceebc13ce92b61bd5a258b09b13e70c589d94",
+      "source_mtime_ns_at_capture": 1793114302519952500
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0027.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0027.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114362595014900
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0027.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0027.stdout.log",
+      "sha256": "d297ab529686007d7bdb16456f17bcba6b3046d6bd072fd6ee21bebe3c5a338c",
+      "source_mtime_ns_at_capture": 1793114363101420500
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0028.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0028.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114363128201000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0028.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0028.stdout.log",
+      "sha256": "5306c82c49b13a2cfa7706a5d21eb89637af59a160bafb5b0cbe6537f9e3ff3c",
+      "source_mtime_ns_at_capture": 1793114363444466900
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0029.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0029.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114423503793600
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0029.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0029.stdout.log",
+      "sha256": "c3a57eb7a64c6435496f83b42cfdbd19a30c8bdcfc483ea404f73f539a10d0e0",
+      "source_mtime_ns_at_capture": 1793114424007700400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0030.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0030.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114424044953200
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0030.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0030.stdout.log",
+      "sha256": "e33ecec321cafb21e2a9787f0061c57addbf4cead3dec3d13e033db727fd8bec",
+      "source_mtime_ns_at_capture": 1793114424384807500
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0031.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0031.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114484447367100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0031.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0031.stdout.log",
+      "sha256": "353ad67d8b1a9a0e9876ec692b5e8e82d47126c2599835af47e795d77658497e",
+      "source_mtime_ns_at_capture": 1793114484955465800
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0032.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0032.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114485021690100
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0032.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0032.stdout.log",
+      "sha256": "e8a043512f2115b523ef3fe8728326c93cb2f6686dcbb118d3f40f2f0ba2c5dd",
+      "source_mtime_ns_at_capture": 1793114485321562000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0033.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0033.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114545393169000
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0033.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0033.stdout.log",
+      "sha256": "1f16a6322a0ae6f1da1425f1489d599ec405f108fa27f2138fa1352496d96f2a",
+      "source_mtime_ns_at_capture": 1793114545993207300
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0034.stderr.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0034.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_mtime_ns_at_capture": 1793114546037756600
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/0034.stdout.log",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/0034.stdout.log",
+      "sha256": "099ae850ee82b9b14d9036919ffb7292121258f7fd8e5e6e7cfb169444ac884d",
+      "source_mtime_ns_at_capture": 1793114546416581400
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102806/state.json",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/operation/state.json",
+      "sha256": "388ec24aa7e12e887e92af01731fafee8443a98333bf0c2989d783dadb5810e0",
+      "source_mtime_ns_at_capture": 1793114546495698700
+    },
+    {
+      "source": ".agents/skills/joso-jdrt-runner/scripts/choice_core_sequence.py",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/before_choice_core_sequence.py",
+      "sha256": "84cac0861bf617e952ba64b7ac134e08bce1178ee6a460f34d450d70d9f468b4"
+    },
+    {
+      "source": ".agents/skills/joso-jdrt-runner/scripts/test_choice_core_sequence.py",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/before_test_choice_core_sequence.py",
+      "sha256": "fa5fc0ed58153d4f4069045739bb075ba0d8c62978c7cdcd8a29569f0b803603"
+    },
+    {
+      "source": ".agents/skills/joso-jdrt-runner/references/routine_operations.md",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/before_routine_operations.md",
+      "sha256": "11bee4326722e17a80a9e0a91f17c43c3ae1650c6314199057ddfbbcb162434b"
+    },
+    {
+      "source": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/review.json",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/before_review.json",
+      "sha256": "614e9f689fd80424277f4fd89b3d0033cd39fac066c4f90c50db1a68f3786471"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102806/manifest.json",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/manifest.json",
+      "sha256": "f6550c12fb4be464331961b2386cf167d4445ed0f6011caa2e2cef29282f509f"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102806/progress.json",
+      "copy": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/progress.json",
+      "sha256": "d7e82ee421a6f606bec4e1ffe56f7fc501c926e09d36cf2d144df1875267dde8"
+    }
+  ],
+  "independent_terminal_target_now": {
+    "status": "COMPLETED",
+    "target_id": "nv26102806",
+    "observed_at_utc": "2026-10-27T15:24:41.837390+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-27T15:09:53.315333+00:00",
+      "finished_at_utc": "2026-10-27T15:22:25.429860+00:00",
+      "elapsed_sec": 752.114527,
+      "start_source": "started_at_jst",
+      "finish_source": "finished_at_jst",
+      "status": "complete"
+    },
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "f6550c12fb4be464331961b2386cf167d4445ed0f6011caa2e2cef29282f509f",
+    "flags": [],
+    "pid": 17452,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102806\\manifest.json",
+    "sim_sec": 21600.0,
+    "progress_token": [
+      "COMPLETED",
+      21600.0
+    ],
+    "last_progress": 1793114550.520885,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\driver_logs\\nv26102806.stderr.log": 518,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102806\\sumo_errors.log": 518
+    },
+    "historical": false
+  },
+  "observed_failure": "Independent target discovery remains unproven",
+  "code_fact": "wait_core discovery deadline is reset after previous observer success, then normal sleep60 and monitor/status work are charged to the next discovery attempt. Any new False after that sleep can fail immediately without a new60sec discovery window.",
+  "historical_scope": "0033 check saw RUNNING with sim21600 just before terminal manifest, 0034 observer CLI itself succeeded/fresh. Exact old daemon target bytes at the False branch were not captured; missing-target versus hash mismatch is not reconstructed. Current terminal target is matched and clear.",
+  "next": "Isolated fake-clock reproduction, minimal auxiliary-only deadline reset, bounded-timeout/identity regression tests and scoped review. No replay of failed sequence or core. Only then follow the completed core via a new normal finish owner and record7 gates.",
+  "research_restarted": false,
+  "validation_or_record_started_by_failed_sequence": false,
+  "formal_recorded": 5,
+  "future_starts_stopped": true,
+  "goal_complete": false
+}

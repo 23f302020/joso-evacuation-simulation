@@ -1,0 +1,13 @@
+{
+  "at_jst": "2026-10-29T00:19:58.665968+09:00",
+  "scope": "read-only OS memory point, no application/process stopped",
+  "os_total_visible_kib": 8082012,
+  "os_free_physical_kib": 23536,
+  "os_total_virtual_kib": 33247836,
+  "os_free_virtual_kib": 6996188,
+  "memory_compression_working_set_bytes": 3264667648,
+  "native_suite_private_bytes": 597610496,
+  "native_suite_pid": 42508,
+  "causal_claim": "Severe current memory pressure observed; contribution to latency plausible but not isolated/quantified. No speedup or simulation-time change claimed.",
+  "next": "recheck memory/observer after same full30 suite terminal, before starting any core; preserve observations and avoid killing unrelated tasks"
+}

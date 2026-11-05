@@ -1,0 +1,60 @@
+{
+  "at_jst": "2026-10-24T17:20:18.216272+09:00",
+  "kind": "explicit_record_recovery_monitor",
+  "classification": "VERIFIED_WAIT",
+  "run_id": "nc26102401",
+  "session_id": 84801,
+  "elapsed_from_recovery_start_sec": 965.906763,
+  "operation_status": "RUNNING",
+  "phase": "record",
+  "processes": [
+    {
+      "ProcessId": 35396,
+      "CreationDate": "/Date(1792829052145)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 06_研究結果/jdrt/goal_20261017/audit_history/nc26102401_interrupted_record_20261024/record_once.py",
+      "UserModeTime": 625000,
+      "KernelModeTime": 468750
+    },
+    {
+      "ProcessId": 516,
+      "CreationDate": "/Date(1792829052354)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" record --run-id nc26102401",
+      "UserModeTime": 9167500000,
+      "KernelModeTime": 294843750
+    }
+  ],
+  "same_identity_as_progress_current": true,
+  "metadata_failure": "first inspection expected ISO CreationDate from WindowsPowerShell5 ConvertTo-Json; observed raw /Date(...)/ schema. Corrected by exact raw creation/command comparison to same API baseline. No research operation repeated.",
+  "core_status": "COMPLETED",
+  "model_horizon_sec": 21600,
+  "model_time_scope": "completed horizon; record recalculation uses wall-clock, not new simtime",
+  "common5_current": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "observer": {
+    "last_observed": "2026-10-24T08:20:15.551914+00:00",
+    "observation_age_sec": 4.19382905960083,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134372715861793293,
+      "pid": 16536
+    },
+    "monitor_identity_matches": true
+  },
+  "logs": {
+    "record.stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "record.stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "disk_free_bytes": 257880395776,
+  "formal_rows": 7
+}

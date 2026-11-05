@@ -1,0 +1,68 @@
+FF.F.F.FF..F
+======================================================================
+FAIL: test_bad_compiler_types_and_relative_paths_are_rejected (test_choice_pair_metadata.MetadataContracts.test_bad_compiler_types_and_relative_paths_are_rejected) (bad='CMAKE_C_COMPILER:BOOL=c:/tools/gcc.exe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_metadata.py", line 88, in test_bad_compiler_types_and_relative_paths_are_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_bad_compiler_types_and_relative_paths_are_rejected (test_choice_pair_metadata.MetadataContracts.test_bad_compiler_types_and_relative_paths_are_rejected) (bad='CMAKE_C_COMPILER:STRING=tools/gcc.exe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_metadata.py", line 88, in test_bad_compiler_types_and_relative_paths_are_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_cache_entry_is_rejected (test_choice_pair_metadata.MetadataContracts.test_duplicate_cache_entry_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_metadata.py", line 80, in test_duplicate_cache_entry_is_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_equivalent_compiler_paths_and_documented_empty_diagnostic (test_choice_pair_metadata.MetadataContracts.test_equivalent_compiler_paths_and_documented_empty_diagnostic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_metadata.py", line 28, in test_equivalent_compiler_paths_and_documented_empty_diagnostic
+    self.assertTrue(self.compare()['equal'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_incomplete_metadata_rejected_even_if_both_missing (test_choice_pair_metadata.MetadataContracts.test_incomplete_metadata_rejected_even_if_both_missing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_metadata.py", line 75, in test_incomplete_metadata_rejected_even_if_both_missing
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_matching_roots_and_line_endings_are_normalized (test_choice_pair_metadata.MetadataContracts.test_matching_roots_and_line_endings_are_normalized)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_metadata.py", line 63, in test_matching_roots_and_line_endings_are_normalized
+    self.assertTrue(self.compare()['equal'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_sibling_path_prefix_is_not_a_declared_root (test_choice_pair_metadata.MetadataContracts.test_sibling_path_prefix_is_not_a_declared_root)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_metadata.py", line 70, in test_sibling_path_prefix_is_not_a_declared_root
+    self.assertIn('src/config.h', self.compare()['different_files'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'src/config.h' not found in ['CMakeCache.txt']
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.011s
+
+FAILED (failures=7)

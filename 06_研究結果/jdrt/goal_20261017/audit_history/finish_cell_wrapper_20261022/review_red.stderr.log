@@ -1,0 +1,23 @@
+.......F..F....
+======================================================================
+FAIL: test_lost_record_response_preserves_possible_commit (__main__.FinishContracts.test_lost_record_response_preserves_possible_commit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 174, in test_lost_record_response_preserves_possible_commit
+    self.assertTrue(state.get('record_attempted', False))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_original_report_purpose_must_be_core (__main__.FinishContracts.test_original_report_purpose_must_be_core)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 164, in test_original_report_purpose_must_be_core
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.445s
+
+FAILED (failures=2)

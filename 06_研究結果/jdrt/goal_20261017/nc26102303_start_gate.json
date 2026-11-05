@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-23T11:46:07.068434+09:00",
+  "judgment_id": "JD-20261023-research-1146-06",
+  "status": "SINGLE_NEXT_CELL_START_GATE_PASS",
+  "run_id": "nc26102303",
+  "cell": {
+    "cell_id": "fixed_reference_u50_r2p900_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u50",
+    "scenario": "R2P900",
+    "seed": 23423
+  },
+  "registration_id": "choice_native_observation_v2_20261021",
+  "fresh_status": "nc26102303_prestart_status.json",
+  "fresh_status_sha256": "307e44059ac803a6c138608c826e05e2de621cb36a38826272788c2391a6b589",
+  "previous_record7": "nc26102302_record7_readback.json",
+  "free_bytes": 258350927872,
+  "one_run_reserve_bytes": 193692970309,
+  "reserve_policy_changed": false,
+  "all70_storage_guaranteed": false,
+  "new_id_unused": true,
+  "started": false,
+  "goal_status_observed": "active during same prestart group",
+  "preflight_ready_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+  "storage_proof_sha256": "9d0d64d2ba7c2ad45d763f1251ddc293a8ee99a946df724691df170fc3f9bdf0"
+}

@@ -1,0 +1,15 @@
+{
+  "query": "site:city.joso.lg.jp 弁天橋 東橋 橋梁 台帳 標高",
+  "result": {
+    "success": true,
+    "data": {
+      "web": [],
+      "tools": []
+    },
+    "id": "01a1566e-5388-720f-9e5c-63800a28178e",
+    "creditsUsed": 0,
+    "agent_hints": [
+      "No web results were returned. If the task is still unresolved, use firecrawl_search again with {\"query\":\"<broader or alternative query>\",\"sources\":[\"web\"]}."
+    ]
+  }
+}

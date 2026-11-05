@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": [
+    "execution_timing",
+    "timing_text",
+    "snapshot timing evidence",
+    "inbox timing paragraph"
+  ],
+  "contract": "Explicit timezone-aware manifest start/finish only; real wall time, no detection-time inference; old events immutable.",
+  "checks": [
+    "UTC normalization across offsets, fractional seconds",
+    "missing/malformed/naive/reversed/zero interval",
+    "running status cannot finalize",
+    "manifest bytes unchanged",
+    "event save/readback and dedup unchanged",
+    "legacy rendering without event mutation",
+    "34 tests including actual Windows daemon restart/dedup"
+  ],
+  "limits": [
+    "pre-existing events retain unknown timing",
+    "timestamps depend on original wall clock; not CPU or monotonic runtime",
+    "builds without explicit finish timestamp remain unknown"
+  ],
+  "findings": [],
+  "research_code_input_changes": false,
+  "source_sha256": "080944f6f381ca278f214bc472a0185197c91da56ca06bef504d6c428206689c",
+  "deployment_verified": true,
+  "old_events_preserved": 167,
+  "independent_actual_manifest_timing_verified": true,
+  "documentation_progress_sync": "PASS"
+}

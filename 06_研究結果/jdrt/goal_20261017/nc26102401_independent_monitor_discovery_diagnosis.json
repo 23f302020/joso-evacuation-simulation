@@ -1,0 +1,41 @@
+{
+  "at_jst": "2026-10-24T08:06:34.581773+09:00",
+  "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\manifest.json",
+  "old_state": {
+    "read_failures": 3
+  },
+  "direct_snapshot": {
+    "status": "RUNNING",
+    "target_id": "nc26102401",
+    "observed_at_utc": "2026-10-23T23:06:34.583878+00:00",
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "a6db4b4151331cb0b233f5f3e846a76d57981ac0463f9f99f31616e6439b4df7",
+    "flags": [],
+    "pid": 33444,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\manifest.json",
+    "sim_sec": 2160.0,
+    "progress_token": [
+      "RUNNING",
+      2160.0
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134372701928286449,
+      "pid": 33444
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "nc26102401"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nc26102401"
+    },
+    "last_progress": 1792796794.5828767,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\sumo_errors.log": 0,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102401.stderr.log": 0
+    }
+  }
+}

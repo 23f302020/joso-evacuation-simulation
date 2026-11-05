@@ -1,0 +1,31 @@
+{
+  "at_jst": "2026-10-21T16:31:44.456157+09:00",
+  "recorded_cells": 1,
+  "document_markers_after_current_sync": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md": 1,
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": 1,
+    "context.md": 1,
+    "00_全体整理/決定ログ.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": 1
+  },
+  "ledger_unique": true,
+  "progress_html_check": "PASS at16:30:38, earlier one WinError5 atomic replace preserved then later apply/check success; helper not modified",
+  "current_core": "ch261021_002",
+  "current_python_pid": 30440,
+  "current_native_pid": 35308,
+  "independent_monitor": {
+    "monitor_identity_matches": true,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134369798989157015,
+      "pid": 30168
+    },
+    "last_observed": "2026-10-21T07:31:40.499651+00:00",
+    "observation_age_sec": 8.224072933197021
+  },
+  "direction_interpretation": false,
+  "current_snapshot_is_not_core_validation": true,
+  "all70_not_complete": true,
+  "oldruns_preserved": true
+}

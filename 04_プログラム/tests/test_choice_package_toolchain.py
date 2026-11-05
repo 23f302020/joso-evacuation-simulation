@@ -36,6 +36,11 @@ class PackagingContracts(unittest.TestCase):
         spec = importlib.util.spec_from_file_location('choice_packager_test', SCRIPT)
         self.packager = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(self.packager)
+        # Isolate byte-packaging contracts here. Full unmocked pair integration
+        # and primary-file substitutions are in test_choice_pair_proof.py.
+        self.pair_stub = patch.object(self.packager, 'verify_pair')
+        self.paired = self.pair_stub.start()
+        self.addCleanup(self.pair_stub.stop)
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
@@ -79,7 +84,8 @@ class PackagingContracts(unittest.TestCase):
                 'status': 'COMPILED_VERSION_CHECKED_NOT_SIMULATED', 'patch_applied_sha256': 'b' * 64,
                 'zlib_dependency': {'files': [self.item(build_log)]},
                 'commands': [{'command': ['cmake', '--build', 'mock', '--target', 'sumo', 'netconvert'],
-                              'exit_code': 0, 'log': str(build_log), 'log_bytes': build_log.stat().st_size}]}}
+                              'exit_code': 0, 'log': str(build_log), 'log_bytes': build_log.stat().st_size,
+                              'log_sha256': self.digest(build_log.read_bytes())}]}}
         for name in ('cmake.exe', 'gcc.exe', 'g++.exe', 'libxerces-c.a', 'CMakeCache.txt',
                      'config.h', 'version.h', 'sumo-' + 'a' * 40 + '.zip'):
             path = self.root / name
@@ -91,6 +97,8 @@ class PackagingContracts(unittest.TestCase):
                 path.write_bytes(b'artificial proof artifact: ' + name.encode())
             self.document['files'].append(self.item(path))
         self.write_proof()
+        self.paired.return_value = {'pair_path': self.proof, 'policy_path': self.inventory,
+                                   'evidence_files': [], 'tree_snapshots': {}}
         self.destination = self.project / '04_プログラム/output/sumo/toolchains/new'
 
     def digest(self, data):
@@ -203,10 +211,23 @@ class PackagingContracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Non-OS DLL'):
             self.packager.pe_imports(self.sumo)
 
-    def test_control_requires_matching_source_flags_and_dependencies(self):
+    def test_exact_windows_ucrt_contract_names_and_lookalikes(self):
+        for name in ('api-ms-win-crt-convert-l1-1-0.dll', 'api-ms-win-crt-private-l1-1-0.dll',
+                     'api-ms-win-crt-unregistered-l1-1-0.dll', 'api-ms-win-crt-convert-l9-9-9.dll'):
+            with self.subTest(name=name):
+                data = bytearray(fake_pe())
+                data[576:589] = name.encode() + b'\0'
+                self.sumo.write_bytes(data)
+                if 'unregistered' in name or 'l9-9-9' in name:
+                    with self.assertRaises(ValueError): self.packager.pe_imports(self.sumo)
+                else:
+                    self.assertEqual(self.packager.pe_imports(self.sumo), [name])
+
+    def test_control_booleans_cannot_replace_primary_pair_proof(self):
+        self.pair_stub.stop()
         self.document['role'] = 'control'
         self.write_proof()
-        with self.assertRaisesRegex(ValueError, 'Control source/flags/dependency'):
+        with self.assertRaisesRegex(ValueError, 'Paired primary'):
             self.package()
         self.document['source_comparison'] = {'mock_unpatched_source': True}
         self.document['patched_control_comparison'] = {
@@ -214,8 +235,9 @@ class PackagingContracts(unittest.TestCase):
             'flags': {name: {'compiler_defines_and_flags_equal': True, 'link_command_equal': True}
                       for name in ('sumo', 'netconvert')}}
         self.write_proof()
-        manifest = self.package()
-        self.assertEqual(json.loads(manifest.read_text())['provenance']['role'], 'control')
+        with self.assertRaisesRegex(ValueError, 'Paired primary'):
+            self.package()
+        self.assertFalse(self.destination.exists())
 
     def test_proof_mutation_during_copy_is_preserved_as_failure(self):
         original = self.packager.shutil.copyfile
@@ -243,6 +265,38 @@ class PackagingContracts(unittest.TestCase):
         self.write_proof()
         with self.assertRaisesRegex(ValueError, 'ZIP member differs'):
             self.package()
+
+    def test_later_failure_or_unfinished_command_blocks_packaging(self):
+        original = dict(self.document['state']['commands'][0])
+        for index, returncode in enumerate((1, None, False)):
+            with self.subTest(returncode=returncode):
+                self.destination = self.destination.parent / ('failed_command_' + str(index))
+                self.document['state']['commands'] = [original, {
+                    **original, 'command': ['sumo', '--version'], 'exit_code': returncode}]
+                self.write_proof()
+                with self.assertRaisesRegex(ValueError, 'Every command'):
+                    self.package()
+                self.assertFalse(self.destination.exists())
+
+    def test_unhashed_or_same_size_changed_command_log_is_rejected(self):
+        command = self.document['state']['commands'][0]
+        log = self.root / 'isolated_command.log'
+        log.write_bytes(b'original terminal command')
+        command.update(log=str(log), log_bytes=log.stat().st_size)
+        expected = self.digest(log.read_bytes())
+        for mode in ('missing', 'tampered'):
+            with self.subTest(mode=mode):
+                self.destination = self.destination.parent / ('command_log_' + mode)
+                if mode == 'missing':
+                    command.pop('log_sha256', None)
+                else:
+                    command['log_sha256'] = expected
+                    log.write_bytes(b'changed! terminal command')
+                    self.assertEqual(log.stat().st_size, command['log_bytes'])
+                self.write_proof()
+                with self.assertRaisesRegex(ValueError, 'SHA'):
+                    self.package()
+                self.assertFalse(self.destination.exists())
 
 
 if __name__ == '__main__':

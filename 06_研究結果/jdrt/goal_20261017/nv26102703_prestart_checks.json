@@ -1,0 +1,29 @@
+{
+  "at_jst": "2026-10-27T15:36:05.094124+09:00",
+  "action": "next_registered_prestart",
+  "new_run_id": "nv26102703",
+  "cell": {
+    "cell_id": "fixed_reference_u05_r2p900_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u05",
+    "scenario": "R2P900",
+    "seed": 23423
+  },
+  "formal_recorded": 2,
+  "prior_record7": "06_研究結果/jdrt/goal_20261017/nv26102702_record7_readback.json",
+  "prior_record7_sha256": "cb79583e918b179c0819cb33ab951180a13bcb15e6a35ce60878df3d14b8b4f4",
+  "status_evidence": "06_研究結果/jdrt/goal_20261017/nv26102702_recorded_status.json",
+  "ready_sha256": "3dacaeafd27b3c2b2e8237d2e6a6315dff2b792f37e41fc00145cdd9bbcb37b2",
+  "free_bytes_now": 254070820864,
+  "one_run_reserve_bytes": 193986012138,
+  "all_remaining_projected_fit": false,
+  "watch_identity": {
+    "state": "alive",
+    "created": 134375371341239107,
+    "pid": 26988
+  },
+  "watch_observation_age_at_capture_sec": 10.184403657913208,
+  "current_observed_at_age_sec": 8.355562,
+  "implementation_or_input_changed": false,
+  "next_started_at_point": false
+}

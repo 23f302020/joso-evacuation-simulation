@@ -1,0 +1,35 @@
+{
+  "at": "2026-11-05T08:50:25.529635+09:00",
+  "status": "C_PROPOSAL_READY_AWAITING_FROZEN_VERSION_DECISION",
+  "full_row_result": {
+    "rows": 19197258,
+    "all_field_values_and_key_order_equal": true
+  },
+  "equivalence_wall_sec": 179.6242941999808,
+  "equivalence_cpu_sec": 169.6875,
+  "archived_registration": "choice_native_observation_v3_20261024",
+  "tests": "6 PASS including duplicate/ragged/blank/multiline and negative field/missing-tail cases; initial unimplemented generator failed the new contracts",
+  "scoped_review": "No must-fix findings in offline generator/whole-row comparison/CLI output preservation scope",
+  "current_frozen_validator_unchanged": true,
+  "proposal_applied": false,
+  "scientific_components_executed": false,
+  "D_effect_validation": "NOT_DONE",
+  "performance_goal_achieved": false,
+  "pause_reason": "Installing any replacement into pinned frozen validator is outside this automation scope; another research operator must also resume completed-unrecorded sixth run. All currently safe proposal preparation is saved.",
+  "automation": {
+    "id": "automation",
+    "status": "PAUSED",
+    "target_thread_id": "01a16cef-d214-7193-b957-35d039b63363",
+    "view_succeeded": true,
+    "restart_requires_user": true
+  },
+  "actual_measurement_handle": {
+    "session": 86357,
+    "exit_code": 0
+  },
+  "limitations": [
+    "One historical road artifact, not full current scientific validation.",
+    "No speed measurement for the new dictionary-producing generator; prior indexed two-column timing must not be transferred to it.",
+    "No normal3-cycle end-to-end improvement confirmed."
+  ]
+}

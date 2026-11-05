@@ -1,0 +1,48 @@
+--- before/04_プログラム/tests/test_jdrt_choice_validate.py
++++ 04_プログラム/tests/test_jdrt_choice_validate.py
+@@ -221,6 +221,45 @@
+                 mutate(altered[2])
+                 with patch.object(validator, 'ROOT', root):
+                     self.assertFalse(validator.audit_movement_events(folder, manifest, cfg, altered)['checks']['walk_stage_budget_recurrence'])
++
++    def test_live_native_length_is_distinct_from_installed_budget_anchor(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root)
++            for ratio in (.5, 1.5):
++                altered = deepcopy(events)
++                altered[2]['replacement_receipts'][0]['before']['stage_length_m'] *= ratio
++                # Native walkDistance switches from all endpoint estimates to
++                # completed internal paths. The registered budget anchor stays
++                # the length installed at the preceding plan event.
++                with self.subTest(ratio=ratio), patch.object(validator, 'ROOT', root):
++                    report = validator.audit_movement_events(folder, manifest, cfg, altered)
++                    self.assertEqual(report['status'], 'PASS', report)
++                    self.assertTrue(report['checks']['walk_stage_budget_recurrence'])
++                    native = validator.audit_native_logs(folder, manifest, altered,
++                                                        {'removal_observations': {}}, report)
++                    self.assertEqual(native['status'], 'PASS', native)
++
++    def test_live_length_nonfinite_or_negative_and_reanchored_budget_rejected(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root)
++            for value in (math.nan, math.inf, -math.inf, -1.):
++                altered = deepcopy(events)
++                altered[2]['replacement_receipts'][0]['before']['stage_length_m'] = value
++                with self.subTest(value=value), patch.object(validator, 'ROOT', root):
++                    report = validator.audit_movement_events(folder, manifest, cfg, altered)
++                    self.assertFalse(report['checks']['walk_stage_budget_recurrence'])
++            altered = deepcopy(events)
++            reroute = altered[2]
++            live = reroute['previous_plan_m'] / 2
++            reroute['replacement_receipts'][0]['before']['stage_length_m'] = live
++            reroute['previous_plan_m'] = live
++            reroute['signed_progress_m'] = live - reroute['old_remaining_m']
++            reroute['model_passed_m'] = max(0, reroute['signed_progress_m'])
++            with patch.object(validator, 'ROOT', root):
++                report = validator.audit_movement_events(folder, manifest, cfg, altered)
++                self.assertFalse(report['checks']['walk_stage_budget_recurrence'])
+ 
+     def test_warning_requires_exact_receipts_native_version_and_count(self):
+         with tempfile.TemporaryDirectory() as directory:

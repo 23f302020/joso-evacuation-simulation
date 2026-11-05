@@ -1,0 +1,22 @@
+{
+  "at_jst": "2026-10-23T00:03:34.9227279+09:00",
+  "action": "same_finish_operation_wait",
+  "run_id": "nc26102203",
+  "session": 48163,
+  "status": "RUNNING",
+  "phase": "validate",
+  "owner_pid": 17520,
+  "owner_created": "2026-10-22T23:25:42.2651380+09:00",
+  "owner_command_matches": true,
+  "children": [
+    {
+      "ProcessId": 32176,
+      "CreationDate": "2026-10-22T23:25:50.095562+09:00",
+      "UserModeTime": 20637031250,
+      "KernelModeTime": 1031250000
+    }
+  ],
+  "record_attempted": false,
+  "record_result": null,
+  "restart_performed": false
+}

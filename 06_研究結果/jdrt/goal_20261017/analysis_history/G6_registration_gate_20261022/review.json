@@ -1,0 +1,46 @@
+{
+  "at_jst": "2026-10-22T09:26:15.741006+09:00",
+  "status": "PASS_SCOPED_ANALYSIS_CONTRACT_NOT_RESEARCH_RESULT",
+  "judgment_id": "JD-20261022-research-0924-03",
+  "scope": "same_chat_diff_and_analysis_contract_review",
+  "changes": "Require record and run registration_id to equal canonical config before loading analysis helpers/primary tables. Include ID in output manifest. Existing pair formula, denominators, full70 gate and source/output SHA checks unchanged.",
+  "fresh_tests": {
+    "integrated": 7,
+    "primary": 6,
+    "integrated_seconds": 60.282,
+    "red_seconds": 18.654
+  },
+  "first_regression_issue": "An older one-cell synthetic metadata fixture lacked registration_id. Preserved KeyError log; aligned that artificial config/record/manifest with existing current schema. No real record was edited.",
+  "reused_unchanged_tests": "Request6 and secondary7 had passed earlier today with identical component/test bytes; not rerun. This is source-bound reuse, not new execution proof.",
+  "pipeline_and_common5_unchanged": true,
+  "real_core_read_or_generated": false,
+  "before": [
+    {
+      "file": "G6_主指標・事前登録差分_集計.py",
+      "sha256": "381a76c7b4e5704c3264161629bf68cddf87369ded48395e2b7326a1674d89d2"
+    },
+    {
+      "file": "G6_統合集計_人工契約テスト.py",
+      "sha256": "70e012e0b191c7ea23bf3cb27185294e51f6dabd5118b462f88eb9301f51bcc0"
+    },
+    {
+      "file": "G6_主指標集計_契約テスト.py",
+      "sha256": "9e58da6b40e2dd82bdaf1a7ccb96bb4a4ad5fc0f07f872e6138e2a89f05042f7"
+    }
+  ],
+  "current": [
+    {
+      "file": "G6_主指標・事前登録差分_集計.py",
+      "sha256": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a"
+    },
+    {
+      "file": "G6_統合集計_人工契約テスト.py",
+      "sha256": "9630ebbd8110d961de8dc00b0c779ae48d9fb7ed3961a45df910a298dd966285"
+    },
+    {
+      "file": "G6_主指標集計_契約テスト.py",
+      "sha256": "437d61419fedb59aaf68161398c2ab0dbbe0d1f5a2a802044429069999d7a413"
+    }
+  ],
+  "limitations": "Artificial PASS metadata is not an independent native/core validation. No real all70 accepted set exists, so end-to-end real analysis and performance remain unverified."
+}

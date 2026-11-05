@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-23T17:13:31.382360+09:00",
+  "run_id": "nc26102303",
+  "status": "CHAT_OBSERVATION_GAP_PRESERVED",
+  "last_recorded_chat_sample_jst": "2026-10-23T12:02:58.220118+09:00",
+  "first_reentry_os_sample_jst": "2026-10-23T17:11:07.572193+09:00",
+  "recorded_sample_interval_sec": 18489.352075,
+  "scientific_state_last_and_now": "COMPLETED_UNRECORDED",
+  "finish_operation_exists_now": false,
+  "current_formal_accepted": 5,
+  "reentry_status": "nc26102303_reentry_status_20261023T1711.json",
+  "manifest_sha256_now": "d1350e51fc339beb011f3ce4cc5a0d394456eaee2625d3e54bcc5403627d6642",
+  "original_native_completed_at_jst": "2026-10-23T12:00:28.975458+09:00",
+  "observer_now": {
+    "pid": 3348,
+    "created_FILETIME": 134371000493149926,
+    "identity_matches": true,
+    "alive": true
+  },
+  "historical_observer_continuity": "unproven; current state does not prove interval monitoring",
+  "bounded_power_query": "No rows returned; suppressed error details not retained, so no determination of sleep/cause",
+  "gap_backfilled": false,
+  "run_or_record_replayed": false,
+  "goal_status_now": "active"
+}

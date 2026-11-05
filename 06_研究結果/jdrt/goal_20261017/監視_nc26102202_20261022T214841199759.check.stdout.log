@@ -1,0 +1,54 @@
+{
+  "run_id": "nc26102202",
+  "status": "RUNNING",
+  "pid_alive": true,
+  "progress": {
+    "at_jst": "2026-10-22T21:48:38.042158+09:00",
+    "run_id": "nc26102202",
+    "time_sec": 6300.0,
+    "end_sec": 21600,
+    "wall_sec": 441.8965446999646,
+    "counts": {
+      "steps": 12600,
+      "controller_ticks": 6301,
+      "snapshots": 106,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 223196,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 1281,
+      "dispatch_cycles": 106,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 28,
+      "departure_pending_frames": 323,
+      "snapshot_actor_rows": 26855
+    },
+    "people_states": {
+      "capacity_rejected": 1185,
+      "not_ready": 1505,
+      "no_route": 686,
+      "no_origin_connection": 505,
+      "admitted": 456,
+      "travelling_walk": 203,
+      "travelling_car": 163,
+      "boarding": 1,
+      "waiting_origin": 9,
+      "onboard": 1,
+      "boundary_exit": 6425,
+      "walk_limit": 374,
+      "initial_or_current_closed": 450,
+      "route_cut": 2
+    },
+    "request_states": {
+      "cancelled_timeout": 49,
+      "served": 17,
+      "rejected_input": 1,
+      "onboard": 1,
+      "boarding": 1,
+      "pending": 9
+    }
+  },
+  "error": null
+}

@@ -1,0 +1,55 @@
+--- before/04_プログラム/scripts/jdrt_realtime_choice.py
++++ after/04_プログラム/scripts/jdrt_realtime_choice.py
+@@ -225,9 +225,11 @@
+                'requested_arrival_pos_m': stage.arrivalPos, 'before': snapshot()}
+     connection.person.replaceStage(person_id, index, stage)
+     receipt['after'] = snapshot()
+-    for key in ('edge_id', 'lane_position_m', 'xy'):
+-        if receipt['before'][key] != receipt['after'][key]:
+-            raise RuntimeError('Walking stage replacement moved the person')
++    changed_keys = [key for key in ('edge_id', 'lane_position_m', 'xy')
++                    if receipt['before'][key] != receipt['after'][key]]
++    if changed_keys:
++        receipt['changed_keys'] = changed_keys
++        raise RuntimeError('Walking stage replacement moved the person: ' + json.dumps(receipt, sort_keys=True))
+     return receipt
+ 
+ 
+--- before/04_プログラム/tests/test_jdrt_choice_runtime.py
++++ after/04_プログラム/tests/test_jdrt_choice_runtime.py
+@@ -201,14 +201,27 @@
+         connection.person.replaceStage.assert_called_once_with('p', 0, requested)
+ 
+     def test_walk_replacement_receipt_rejects_native_position_change(self):
+-        connection = Mock()
+-        stage = types.SimpleNamespace(edges=['a'], departPos=8, arrivalPos=30, length=10)
+-        connection.person.getStage.return_value = stage
+-        connection.person.getRoadID.return_value = 'a'
+-        connection.person.getLanePosition.side_effect = [8, 0]
+-        connection.person.getPosition.return_value = (4, 5)
+-        with self.assertRaisesRegex(RuntimeError, 'moved the person'):
+-            runtime.replace_walk_stage_receipt(connection, 'p', 0, stage, 'new_route')
++        for key, method, before, after in (
++                ('edge_id', 'getRoadID', 'a', 'b'),
++                ('lane_position_m', 'getLanePosition', 8, 0),
++                ('xy', 'getPosition', (4, 5), (4.1, 5))):
++            with self.subTest(key=key):
++                connection = Mock()
++                stage = types.SimpleNamespace(edges=['a'], departPos=8, arrivalPos=30, length=10)
++                connection.person.getStage.return_value = stage
++                connection.person.getRoadID.return_value = 'a'
++                connection.person.getLanePosition.return_value = 8
++                connection.person.getPosition.return_value = (4, 5)
++                getattr(connection.person, method).side_effect = [before, after]
++                with self.assertRaisesRegex(RuntimeError, 'moved the person') as raised:
++                    runtime.replace_walk_stage_receipt(connection, 'p', 0, stage, 'new_route')
++                receipt = json.loads(str(raised.exception).split(': ', 1)[1])
++                self.assertEqual(receipt['changed_keys'], [key])
++                self.assertEqual(receipt['before'][key], list(before) if key == 'xy' else before)
++                self.assertEqual(receipt['after'][key], list(after) if key == 'xy' else after)
++                self.assertEqual(receipt['purpose'], 'new_route')
++                self.assertEqual(receipt['stage_index'], 0)
++                self.assertEqual(receipt['requested_edges'], ['a'])
+ 
+     def test_walk_calibration_uses_shared_native_interior_frame_and_rejects_sha_change(self):
+         from scripts import jdrt_choice_fixtures as fixtures

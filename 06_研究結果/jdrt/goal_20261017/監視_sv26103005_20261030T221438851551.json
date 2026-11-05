@@ -1,0 +1,80 @@
+{
+  "at_jst": "2026-10-30T22:14:38.851551+09:00",
+  "action": "detailed_same_core_monitor",
+  "run_id": "sv26103005",
+  "cell_id": "fixed_reference_u50_r1_seed23423",
+  "pid": 12280,
+  "skill_check": {
+    "run_id": "sv26103005",
+    "status": "RUNNING",
+    "pid_alive": true,
+    "progress": {
+      "at_jst": "2026-10-30T22:14:37.942511+09:00",
+      "run_id": "sv26103005",
+      "time_sec": 1800.0,
+      "end_sec": 21600,
+      "wall_sec": 116.78354770003352,
+      "counts": {
+        "steps": 3600,
+        "controller_ticks": 1801,
+        "snapshots": 31,
+        "teleports": 0,
+        "collisions": 0,
+        "transition_rows": 57562,
+        "closed_entry_rows": 0,
+        "ambiguous_transitions": 0,
+        "candidate_rows": 1973,
+        "dispatch_cycles": 31,
+        "missing_vehicle_subscriptions": 0,
+        "missing_person_subscriptions": 0,
+        "reentry_pending_frames": 23,
+        "departure_pending_frames": 75,
+        "snapshot_actor_rows": 4089
+      },
+      "people_states": {
+        "not_ready": 9053,
+        "travelling_car": 199,
+        "no_origin_connection": 137,
+        "admitted": 349,
+        "capacity_rejected": 149,
+        "travelling_walk": 106,
+        "waiting_origin": 101,
+        "alighting": 1,
+        "no_route": 148,
+        "assigned_origin": 2,
+        "boundary_exit": 1549,
+        "walk_limit": 91,
+        "initial_or_current_closed": 80
+      },
+      "request_states": {
+        "cancelled_timeout": 104,
+        "served": 6,
+        "rejected_input": 9,
+        "alighting": 1,
+        "pending": 101,
+        "accepted": 2
+      }
+    },
+    "error": null
+  },
+  "input_population_rows": 11965,
+  "integrity": {
+    "input_manifest": true,
+    "archived_READY": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "anomaly_flags": [],
+  "manifest_sha256_at_observation": "25fbd07a5ec3473d1ab9d209da3b9c533c62db51cf89078dd058a008a786f0a1",
+  "current_run_bytes": 50656884,
+  "free_bytes": 233518403584,
+  "native_error_lines": 0,
+  "native_log_bytes": 0,
+  "driver_stderr_bytes": 0,
+  "monitor_source_sha256": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+  "formal_validation_or_adoption": false,
+  "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+}

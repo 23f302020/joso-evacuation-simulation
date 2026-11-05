@@ -1,0 +1,41 @@
+{
+  "run_id": "nc26102401",
+  "pid": 16668,
+  "status": "RUNNING",
+  "commands": [
+    {
+      "command": "check",
+      "status": "COMPLETED",
+      "run_id": "nc26102401",
+      "validation_report": null
+    },
+    {
+      "command": "validate",
+      "status": "PASS",
+      "run_id": "nc26102401",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102401_20261024T084113334087.json"
+    }
+  ],
+  "helper_sha256": "b2c709c4c46e5d09b38347b0d5316326ac1a1699fc60f065fb48f0ead8fe7075",
+  "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+  "formal_record_result": null,
+  "record_attempted": true,
+  "next_start_performed": false,
+  "observed_at_jst": "2026-10-24T08:41:15.810063+09:00",
+  "phase": "record",
+  "validation_report_sha256": "5d525e0688469c5e25078341302ead3347a9957f96f647116fc7ee2cba3a3e50",
+  "fact_forcing_gate": {
+    "1": "Dedicated CLI record reads the same core and independent validator; no source edits.",
+    "2": "Existing record API only; no start/recover operation.",
+    "3": [
+      "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md",
+      "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+      "context.md",
+      "00_全体整理/決定ログ.md",
+      "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+      "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+      "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl"
+    ],
+    "4": "2回以上重複する作業はスキル化し、記録は思考が少ないため、モデルを下げるか試行量を下げるようにしたい。"
+  }
+}

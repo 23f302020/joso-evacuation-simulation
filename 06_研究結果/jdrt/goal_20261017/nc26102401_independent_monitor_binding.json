@@ -1,0 +1,64 @@
+{
+  "at_jst": "2026-10-24T08:11:27.304786+09:00",
+  "status": "INDEPENDENT_OBSERVER_BOUND_TO_SAME_RUNNING_CORE",
+  "watch_status": {
+    "runtime": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646",
+    "last_observed": "2026-10-23T23:11:03.912251+00:00",
+    "observation_age_sec": 31.107083320617676,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134372705944548904,
+      "pid": 24000
+    },
+    "monitor_identity_matches": true,
+    "targets": 505,
+    "inbox": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\status.html"
+  },
+  "monitor_source_sha256": "655e67fc92db8fe6481a0ebdce73cddc2c4eb51017cc97b4a49a0c5f6af7013b",
+  "targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\manifest.json": {
+      "status": "RUNNING",
+      "target_id": "nc26102401",
+      "observed_at_utc": "2026-10-23T23:10:58.004464+00:00",
+      "protocol": "realtime_choice_v1",
+      "purpose": "core",
+      "state_sha256": "a6db4b4151331cb0b233f5f3e846a76d57981ac0463f9f99f31616e6439b4df7",
+      "flags": [],
+      "pid": 33444,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\manifest.json",
+      "sim_sec": 5760.0,
+      "progress_token": [
+        "RUNNING",
+        5760.0
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134372701928286449,
+        "pid": 33444
+      },
+      "command_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102401"
+      },
+      "command_verified_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102401"
+      },
+      "last_progress": 1792797056.0610685,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\sumo_errors.log": 0,
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102401.stderr.log": 518
+      },
+      "historical": false
+    }
+  },
+  "previous_monitor_pid": 3348,
+  "previous_monitor_stop_verified_before_new_start": true,
+  "new_actual_monitor_pid": 24000,
+  "same_core_executor_unchanged": 33444,
+  "old_read_error_cause": "UNDETERMINED_original_exception_not_recorded",
+  "read_diagnostics_added_only": true,
+  "historical_events_not_reset": true,
+  "optional_ai_executable_old_path_missing": true,
+  "optional_ai_events_not_retried": true
+}

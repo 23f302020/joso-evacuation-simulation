@@ -1,0 +1,136 @@
+{
+  "at_jst": "2026-10-29T22:00:05.008633+09:00",
+  "original_session": 60531,
+  "original_exit_code": 0,
+  "source_sha256": "9174963148f274e50966792c8bb032ec6251548dbbb37cc7d72b9e4151ff98a4",
+  "runs": [
+    {
+      "run_id": "rp261029b1",
+      "variant": "production_past_stop_index",
+      "frames": 1377,
+      "before_route_index": 66,
+      "max_distance_step_upper_bound_residual_m": 9.094947017729282e-13,
+      "artifacts": {
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\before_control.json": "c25e6d859a4d9cda6b2228dcd02470d6a60b4d9efcaf1f31224ef68052367ee1",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\edges.xml": "a9318c251cde61ed7f048753112540f00456df7bda9969ac7514a0bb5e40f574",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\fixture.net.xml": "72415dbf5594ad6efdf98a66d46bac223a17ac5debcfe0ecc933a92219422270",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\frames.json": "5542958e32808e3f6244747b1f8b972b7a1a9547903aa4e9530b4692398d8f79",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\manifest.json": "61e2d36d7a4cd2205bf1350ad110eb06bab8f07682f4dbf964f1552b75332c3e",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\nodes.xml": "b529965a675aa79bfdf00b3338e814d27e1eff0e23cb944c285a71ffb8e33a24",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\sumo.log": "e7f6304b38c0f86b61473d23e210f798495a8855ec7c0968b07416bea3ceb80d",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\tripinfo.xml": "2693a23af6af73ef7d1536dc11dc49f78e882b6e409592478b494871a22d1638",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b1\\types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    },
+    {
+      "run_id": "rp261029b2",
+      "variant": "production_past_stop_moving",
+      "frames": 1376,
+      "before_route_index": 66,
+      "max_distance_step_upper_bound_residual_m": 9.094947017729282e-13,
+      "artifacts": {
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\before_control.json": "c7a00bea7ee65c364769647185953796a9b6916048a17c853229083e20ccf2b6",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\edges.xml": "a9318c251cde61ed7f048753112540f00456df7bda9969ac7514a0bb5e40f574",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\fixture.net.xml": "3a18b7b1cb11d3f4055b524c736494c967d5b09e6b395cb274814d2066af067d",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\frames.json": "f9fb30b8ce97af6ad2e421061e9756f57957ae6e52aa35d9f0e0e8467612ea2c",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\manifest.json": "3ac0e4605ea7bfa958f3851427025e414478d130eca7faf3042c0ea29b5d8de9",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\nodes.xml": "b529965a675aa79bfdf00b3338e814d27e1eff0e23cb944c285a71ffb8e33a24",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\sumo.log": "f85ff0cf632b8cbb00bbc5c3ab2967206dd01daaa1c55ecf3ca019da0c778b8b",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\tripinfo.xml": "2891950ecf4b2c4f9440330a2d5782ce3b5ae27c497ee0e8019283cb0661fd76",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b2\\types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    },
+    {
+      "run_id": "rp261029b3",
+      "variant": "production_past_stop_loop",
+      "frames": 1553,
+      "before_route_index": 72,
+      "max_distance_step_upper_bound_residual_m": 9.094947017729282e-13,
+      "artifacts": {
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\before_control.json": "52180e1c950f979fb4dc0adef32c1ed61bf86644990961720fad46ba39ee36a4",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\edges.xml": "0b1b8c0be3e477d9a27ab83a272e4976eb10d28279d1f69bc4b47480062826bc",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\fixture.net.xml": "c9a6da557f7d3ae22bb95b7e3c204dc5eacabb9b35eafacc6b1d7af274f2e73e",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\frames.json": "77df607b6414e8d75368f02ffbbb2e5c2d6c584eeb9f1b94677d1ef334fe17da",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\manifest.json": "30ca8a11e9ab8005af052d5c9e4617f6ae0f02ca35927850a161fbc527279984",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\nodes.xml": "d3a249e07408de9c2173e285a4cd22341ef8888521c61a7576871ad5bc91e54c",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\sumo.log": "273a0554de5cf1742b0ca96e12fc57a0a2af680dfcb5a408e9a0183819cf16f1",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\tripinfo.xml": "844a41f9ba05ad5a67395e08542a4aa6b89b5c303d04dcfb52493265cf368488",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b3\\types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    },
+    {
+      "run_id": "rp261029b4",
+      "variant": "native_past_stop_future",
+      "frames": 1376,
+      "before_route_index": 66,
+      "max_distance_step_upper_bound_residual_m": 9.094947017729282e-13,
+      "artifacts": {
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\before_control.json": "a80617388e12e6d07fe443a7391ad85aed9793dc95ef14b1d89b0234dbd5367f",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\edges.xml": "a9318c251cde61ed7f048753112540f00456df7bda9969ac7514a0bb5e40f574",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\fixture.net.xml": "60a37e3d87fe8cc7ec7d99c9848047e72cf2ef3255ac2e007ea8c3914717ec5b",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\frames.json": "95f2ead41d7417d654bf4f835d32b7034fd1449ecc3c122a9ed823fe74552591",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\manifest.json": "80fe87877703658107e281a86c890d378559e1d1375fbc6a60102cc435097739",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\nodes.xml": "b529965a675aa79bfdf00b3338e814d27e1eff0e23cb944c285a71ffb8e33a24",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\sumo.log": "cb16d0f3006563897d45e03f7115f092d658675dcb54c5df983bb9d9cf45a912",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\tripinfo.xml": "1e7988f025a5ad69172fe028f5382e4ebee2464c0cdd618360f8ec6533c8f2ec",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b4\\types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    },
+    {
+      "run_id": "rp261029b5",
+      "variant": "production_future_closed",
+      "frames": 67,
+      "before_route_index": 2,
+      "max_distance_step_upper_bound_residual_m": 3.552713678800501e-15,
+      "artifacts": {
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\before_control.json": "d5b9ba447a5771d4000624deb3cff4b95eea383d31138ca0b09caa1e2acc6f23",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\edges.xml": "5d91501fa6c20057e67d60a6dc8666c9bc651270a973d45760e0f75e182a57b0",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\fixture.net.xml": "7bbded854d542cb649433d412c9bbd0c48a93f8146a9cc78053eee9d1c21ee43",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\frames.json": "36d719ca2ccdcd3ac5cb7ca54309dac6e460125964f71af410139d0153228dae",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\manifest.json": "024b566e2fc98575bc7a0c86c44ab896a11a92e59fdfa527104411d9466df05b",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\nodes.xml": "d67ecccc9e71c6f189121cae6531ce916675ff4800d53955b21b4b1164fd192f",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\sumo.log": "5c28ff31aebd76e1e63b4c4097c66a9b7389d0d9d69912049f7e43cf62d9a243",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\sumo_errors.log": "d580a959f9ceb4288a39f7fd7d7d7d3e034e5dcd459325f2234524ab5c177db2",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\tripinfo.xml": "99b35536efeb1fb02a33e0a8346188548397366936085e1ff7c6fa3aa9196d08",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b5\\types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    },
+    {
+      "run_id": "rp261029b6",
+      "variant": "stopped_cancel",
+      "frames": 68,
+      "before_route_index": 2,
+      "max_distance_step_upper_bound_residual_m": 3.552713678800501e-15,
+      "artifacts": {
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\before_control.json": "d5b9ba447a5771d4000624deb3cff4b95eea383d31138ca0b09caa1e2acc6f23",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\edges.xml": "5d91501fa6c20057e67d60a6dc8666c9bc651270a973d45760e0f75e182a57b0",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\fixture.net.xml": "f5511d577d19a60bcdbbd78af851308b057b5cdc7b605348c74c9f054f0e6455",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\frames.json": "b92ab2fd01c55ce31e2ba44f36535795fd67e70bdd2407760e763a6c3345039a",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\manifest.json": "e7d6d847de6e37f5ae6ab817f2be9f6ea7a92b6656d693c6fc8847d91e153c3f",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\netconvert.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\nodes.xml": "d67ecccc9e71c6f189121cae6531ce916675ff4800d53955b21b4b1164fd192f",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\sumo.log": "fce9b8e4c06bd9eeb874b2b1d19bd7cd3b182649ff91ad32df28abede0becde0",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\tripinfo.xml": "82a98b36835ec8222345e0015bbc74f9de9d3029b093b4dcc6bf07789c4a0f77",
+        "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\rp261029b6\\types.xml": "85788e86684b5f6165eacb820157201d85cf66d77c9425cd33775731eaeb3512"
+      }
+    }
+  ],
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "scope": "Six artificial current-production route-history probes, not full registered settings",
+  "limitations": [
+    "No debugger memory-address trace of private stop-index vector",
+    "Raw collision/teleport getters were enforced by collector; no independent missing native getter reconstruction"
+  ],
+  "status": "SIX_CURRENT_PRODUCTION_RAW_READBACK_CHECKED_NOT_READY"
+}

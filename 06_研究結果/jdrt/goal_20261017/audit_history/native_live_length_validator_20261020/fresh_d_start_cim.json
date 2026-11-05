@@ -1,0 +1,20 @@
+[
+  {
+    "ProcessId": 28704,
+    "ParentProcessId": 29176,
+    "CreationDate": "2026-10-20T22:12:28.010321+09:00",
+    "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020d --patched-id np261020d",
+    "ReadTransferCount": 2640,
+    "WriteTransferCount": 0
+  },
+  {
+    "ProcessId": 29460,
+    "ParentProcessId": 28704,
+    "CreationDate": "2026-10-20T22:12:28.039698+09:00",
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020d --patched-id np261020d",
+    "ReadTransferCount": 1717400178,
+    "WriteTransferCount": 0
+  }
+]

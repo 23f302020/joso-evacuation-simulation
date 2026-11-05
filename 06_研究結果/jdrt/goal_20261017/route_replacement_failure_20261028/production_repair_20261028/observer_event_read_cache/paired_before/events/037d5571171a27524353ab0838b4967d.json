@@ -1,0 +1,16 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "037d5571171a27524353ab0838b4967d",
+  "at_utc": "2026-10-23T23:06:09.099163+00:00",
+  "target": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\manifest.json",
+  "kind": "unreadable_state",
+  "evidence": {
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\manifest.json",
+    "read_failures": 3
+  },
+  "delivery": "failed_preserved",
+  "notification": "failed",
+  "research_adoption": false,
+  "delivery_started_epoch": 1792796752.215398,
+  "error_type": "FileNotFoundError"
+}

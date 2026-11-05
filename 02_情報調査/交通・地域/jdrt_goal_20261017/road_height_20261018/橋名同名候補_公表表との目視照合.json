@@ -1,0 +1,74 @@
+{
+  "at_jst": "2026-10-18T10:01:45.025137+09:00",
+  "scope": "same_name_candidates_not_confirmed_structure_identity",
+  "method": "visually read two previously rendered official inspection pages; no OCR string alone used",
+  "source_pdf": {
+    "path": "02_情報調査/交通・地域/jdrt_goal_20261017/bridge_inspection.pdf",
+    "sha256": "eb82270e58bebfe641c0b8f928951b0ee997e8f7336443cad6e2196d3811256b",
+    "url": "https://www.city.joso.lg.jp/data/doc/1673521600_doc_5_0.pdf"
+  },
+  "candidates": [
+    {
+      "osm_label": "弁天橋",
+      "source_generated_way_ids": [
+        "3175",
+        "6506"
+      ],
+      "official_same_name_candidate": {
+        "rendered_page": 1,
+        "route": "市道2062号線",
+        "length_m": 26.2,
+        "width_m": 2.2,
+        "construction_year": 1963,
+        "inspection_year_label": "H28"
+      }
+    },
+    {
+      "osm_label": "明橋",
+      "source_generated_way_ids": [
+        "11538",
+        "6206"
+      ],
+      "official_same_name_candidate": {
+        "rendered_page": 2,
+        "route": "市道1-0111号線",
+        "length_m": 33.1,
+        "width_m": 7.0,
+        "construction_year": 1983,
+        "inspection_year_label": "H29"
+      }
+    },
+    {
+      "osm_label": "東橋",
+      "source_generated_way_ids": [
+        "153",
+        "7026"
+      ],
+      "official_same_name_candidate": {
+        "rendered_page": 2,
+        "route": "市道560号線",
+        "length_m": 27.5,
+        "width_m": 8.8,
+        "construction_year": 1998,
+        "inspection_year_label": "H29"
+      }
+    },
+    {
+      "osm_label": "桜橋",
+      "source_generated_way_ids": [
+        "6198",
+        "9171"
+      ],
+      "official_same_name_candidate": null,
+      "limitation": "same name not identified in the two inspected pages; not evidence of no such bridge"
+    }
+  ],
+  "missing": [
+    "official stable structure ID",
+    "coordinate/route identity verification",
+    "actual deck elevation",
+    "vertical datum and survey year",
+    "flood closure/operational safety"
+  ],
+  "adopted_to_current_model": false
+}

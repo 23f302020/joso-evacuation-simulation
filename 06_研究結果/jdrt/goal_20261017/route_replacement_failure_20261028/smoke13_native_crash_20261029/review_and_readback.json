@@ -1,0 +1,56 @@
+{
+  "at_jst": "2026-10-29T10:46:02.799861+09:00",
+  "scope": "diagnostic helper/source review and original bytes readback, not scientific adoption",
+  "original_session_exit_codes": {
+    "36247": 1,
+    "64765": 0,
+    "99478": 0
+  },
+  "input_and_common5_unchanged": true,
+  "preserved_failure_files": 23,
+  "original_native_build_inputs_unchanged": true,
+  "trace_observation": [
+    {
+      "time": "674.50",
+      "veh": "v",
+      "route_size": 2,
+      "current_index": 0,
+      "stop_index": 1,
+      "active_prior": 0,
+      "past_count": 1,
+      "past_index": 66,
+      "past_edge": "c"
+    }
+  ],
+  "synthetic_native_crash_reproduced": false,
+  "real_smoke_crash_cause_completely_proven": false,
+  "diagnostic_source_insert_only": true,
+  "native_trace_contracts": 3,
+  "probe_contracts": 6,
+  "readback_tests_scope": "instrumentation bytes/anchor, original and actual exe binding, old probe controls; real native trace separately",
+  "findings": "No remaining finding for observation-only helper use. No physical repair implemented or reviewed.",
+  "remaining_native_fix_questions": [
+    "Preserve correct past-stop occurrence across repeated edges and shortened routes, rather than merely clamp the index.",
+    "Validate both parked and moving replacement, same-edge target, active future stops, closed future rejection and distance/clock preservation.",
+    "Explicitly preserve original native and finish all required current native/fixture/smoke/READY/G6 prerequisites before core."
+  ],
+  "documentation_sync": {
+    "choice_sync_apply_exit_code": 0,
+    "progress_apply_exit_code": 0,
+    "progress_check_exit_code": 0,
+    "public_deploy": false
+  },
+  "helper_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_stop_index_trace.py": "f4096fee16318166cf1335fb9a7a6b1115d7b56e8ef6f6576ad936c51ad30100",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_native_stop_index_trace.py": "2866a9b90c3f0142598e4878e84fc3150b8d3a0731007c9df44599eac6f11539",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_route_history_probe.py": "b7436de26882488701b345396c33e01cf3eda32a188fab8ccb09c6fd13d75a63",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_route_history_probe.py": "5b76c18bbec7b49ab60039d51e985835f50aee45305bb1c4c219ce8b746542d0",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "353960b9b6ba5dfa572c52772f5ef592dc51f89a48e7f15a9a47cb3348a4ea56"
+  },
+  "receipt": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-diagnostics\\stopindex261029b\\receipt.json",
+  "receipt_sha256": "1ebbd08dc122892d2782d1064be475a379ab59618b8d9e04cd56a95ecf519d0a",
+  "research_ready": false,
+  "formal_core_count": 0,
+  "ACE": "sai-00005: a successful narrow probe does not disprove a crash under unreproduced conditions; err-00004: distinguish last periodic1140 from last actual controller event1172",
+  "goal_turn_classification": "progress: preserved native failure, source/disassembly and actual diagnostic observation changed next action to native stop-history repair"
+}

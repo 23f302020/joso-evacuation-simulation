@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-30T10:12:08.425337+09:00",
+  "action": "postcompute_rolling_capacity_observation",
+  "run_id": "sv26103001",
+  "manifest_sha256": "8a2a99a934b9585c25535dabd74ed57fc32a8c3aa3eacbaf1a5aaf9a750a8dc9",
+  "status": "ONE_RUN_RESERVE_HEADROOM_PRESENT_NO_NEXT_START_PERMISSION",
+  "volume_total_bytes": 496515411968,
+  "free_bytes": 234321911808,
+  "one_run_reserve_bytes": 194036393865,
+  "headroom_above_reserve_bytes": 40285517943,
+  "terminal_run_file_count": 24,
+  "terminal_run_bytes": 384894728,
+  "preflight_storage_report": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\preflight\\20261030T091421443729\\storage.json",
+  "preflight_storage_sha256": "8a175717f87447e0c9ba62d8721c309766a7daddf4d90150dc767df75915c6f1",
+  "all70_fit_claim": false,
+  "limitations": "One completed R0 file size is not a demand/forecast workload proxy. Recheck dedicated rolling capacity after formal recording before each next start. No deletion, observation reduction, reserve change or input/source changes."
+}

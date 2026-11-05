@@ -1,0 +1,33 @@
+{
+  "at_jst": "2026-10-24T08:13:32.190319+09:00",
+  "observed_executable": "C:\\Users\\Ko_rr\\AppData\\Local\\OpenAI\\Codex\\bin\\6257d9e8f63c0f2b\\codex.exe",
+  "executable_sha256": "00c0f1e4099246fddcd67ec620ca8ed50827c7d70e113b7224f7a2933cf2d67c",
+  "old_executable": "C:\\Users\\Ko_rr\\AppData\\Local\\OpenAI\\Codex\\bin\\896a0166b774037a\\codex.exe",
+  "old_executable_exists": false,
+  "commands_local_help_only": {
+    "version": {
+      "exit_code": 0,
+      "stdout_sha256": "c41b402b94119edd2b488da919d8077cc390d4c8ed82b185fe659db2684c07f4"
+    },
+    "root_help": {
+      "exit_code": 0,
+      "stdout_sha256": "708da408d3457d10a3a2ecbab8ed92af3b4695c6589101f3cd84a173f09e3d64"
+    },
+    "exec_help": {
+      "exit_code": 0,
+      "stdout_sha256": "ff5a00d7f3926a45d9b58ec703a45d6972b1664c0fa465156c48577bb4ceeaf4"
+    }
+  },
+  "required_existing_flags": {
+    "--ephemeral": true,
+    "--sandbox": true,
+    "--ignore-user-config": true,
+    "--disable": true,
+    "--skip-git-repo-check": true,
+    "--json": true,
+    "--color": true
+  },
+  "model_change": false,
+  "AI_request_performed": false,
+  "old_events_retried": false
+}

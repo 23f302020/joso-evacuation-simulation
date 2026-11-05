@@ -1,0 +1,43 @@
+{
+  "schema": "pipeline_stage_definitions_v1",
+  "run_id": "nv26102806",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "stages": [
+    {
+      "name": "execute",
+      "pid": 17452,
+      "created": "2026-10-27T15:09:28.620863+00:00",
+      "start": "2026-10-28T00:09:28.969654+09:00",
+      "end": "2026-10-28T00:22:27.036641+09:00",
+      "clock_basis": "dedicated CLI end minus duration; inferred; excludes separate auxiliary diagnosis wait"
+    },
+    {
+      "name": "validate",
+      "pid": 18128,
+      "created": "2026-10-27T15:28:22.129653+00:00",
+      "start": "2026-10-28T00:28:22.273979+09:00",
+      "end": "2026-10-28T00:44:17.824384+09:00",
+      "clock_basis": "dedicated CLI end minus duration; inferred; excludes separate auxiliary diagnosis wait"
+    },
+    {
+      "name": "record",
+      "pid": 35592,
+      "created": "2026-10-27T15:44:19.530896+00:00",
+      "start": "2026-10-28T00:44:19.849029+09:00",
+      "end": "2026-10-28T01:00:29.418136+09:00",
+      "clock_basis": "dedicated CLI end minus duration; inferred; excludes separate auxiliary diagnosis wait"
+    }
+  ],
+  "evidence": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102806/manifest.json": "f6550c12fb4be464331961b2386cf167d4445ed0f6011caa2e2cef29282f509f",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/nv26102806.finish/operation.json": "c0ac7b16df7f400b6c6e28059800a70113ff976f1fc70df4ad4b15e7893554e4",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_record7_readback.json": "e4ddceea6f13f847c9d4b8a44e0aa78f1db41528f6b64b1a0558696dee86c98b",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_start_and_independent_monitor.json": "8b33a476a3ccef6e86708e17e5bc56224120d1c430518692b9142607c8625bc3",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_finish_owner_initial.json": "81ef49c39eaba092cd6192eec13eb116c0dfd0be82501cd6ec67a79b196821de",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_record_phase_20261028T004533774713.json": "1035077d35acabba7d799e0cee1bc670444628403384918f09cd241f0bd89543",
+    "06_研究結果/jdrt/goal_20261017/nv26102806_pipeline_time_readback_20261028.json": "8a5f40209e9a70a68726c31756b33af6c6f375b16da3922e10dd5b7c765e9f44"
+  },
+  "semantic_binding_review": "Same accepted core, exact observed process creation identities, first direct finish after failed auxiliary and terminal record7 proof. Scientific primary remains unchanged. All stage starts inferred; auxiliary/manual wait outside these stages remains separate.",
+  "normal_automation_cycle": false,
+  "manifest_compute_seconds": 752.114527
+}

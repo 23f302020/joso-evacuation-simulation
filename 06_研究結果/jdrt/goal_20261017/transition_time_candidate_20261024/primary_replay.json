@@ -1,0 +1,51 @@
+{
+  "at_jst": "2026-10-24T17:51:12.732361+09:00",
+  "status": "CANDIDATE_TARGETED_REPLAY_PASS_NOT_ADOPTABLE",
+  "run_id": "nc26102402",
+  "actor_id": "scen_c_origin_0176_0008",
+  "entry_rows": [
+    {
+      "time_lower_sec": 3298.5,
+      "time_upper_sec": 3299.0,
+      "from_edge": "2013#0",
+      "to_edge": "2013#1",
+      "route_index": 57,
+      "closed_entry": false
+    },
+    {
+      "time_lower_sec": 3300.0,
+      "time_upper_sec": 3300.5,
+      "from_edge": "2013#1",
+      "to_edge": "2018#0",
+      "route_index": 58,
+      "closed_entry": false
+    }
+  ],
+  "outgoing_internal_lane_pairs": [
+    [
+      "2013#1",
+      "2018#0"
+    ]
+  ],
+  "source_common5_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "bindings": {
+    "06_研究結果/jdrt/goal_20261017/nc26102402_閉鎖進入_個体時刻抽出_20261024.json": "ec4d9d6e5d69bb4431bfbc4639be50504faab8aca714e4df9f56d1e7b75355cc",
+    "06_研究結果/jdrt/goal_20261017/nc26102402_短道路・交差点_閉鎖進入診断_20261024.json": "907f70947c5a1088e672c564351e5127545929ca1493e81171cf6e60cca86a18",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/bounded.net.xml": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+    "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/replay_primary.py": "17ca06eb409cb6f2f5bc74adc62745fce3db811fd808fe2def63f0fdd883752c",
+    "06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/observer_candidate.py": "0ad3abc50eca0e76ce9d659d168fed5377f12ed4425124a470badaf10f2a57c3"
+  },
+  "formal_adoption_permitted": false,
+  "research_artifact_edits": false,
+  "limits": [
+    "one preserved actor/time window only; not the full core audit",
+    "native integration/factory counterexamples and full version-consistent revalidation remain",
+    "original frozen validator result must be retained and cannot be replaced by this replay"
+  ]
+}

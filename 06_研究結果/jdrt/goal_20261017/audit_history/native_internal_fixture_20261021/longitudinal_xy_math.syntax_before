@@ -1,0 +1,51 @@
+"""Recompute synthetic straight-lane diagnostics only; no research effect estimate."""
+from pathlib import Path
+from datetime import datetime
+import hashlib,json,math
+root=Path(__file__).resolve().parents[5]
+base=root/'04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/ng261021g'
+audit=json.loads(Path(__file__).with_name('actual_native_audit_v2.json').read_bytes())
+assert audit['run_id']=='ng261021g' and audit['native_runs']==45
+results=[]
+for case in ('same_direction','forward_reverse','reverse_forward','new_depart'):
+ path=base/case/'patched/actors.jsonl';rows=[json.loads(s) for s in path.read_text().splitlines()]
+ assert len({r['time_sec'] for r in rows})==len(rows)
+ for person in ('p3','p4'):
+  integral=xy_length=longitudinal_from_positions=0.;ratios=[];residuals=[];zero=0
+  for before,after in zip(rows,rows[1:]):
+   a,b=before['actors'][person],after['actors'][person]
+   dt=after['time_sec']-before['time_sec'];assert dt>0 and a['lane_id']==b['lane_id']=='long_0'
+   ds=abs(b['lane_position_m']-a['lane_position_m']);dl=math.dist(a['xy'],b['xy']);v=b['speed_mps']
+   assert all(math.isfinite(x) for x in (dt,ds,dl,v)) and v>=0
+   integral+=v*dt;xy_length+=dl;longitudinal_from_positions+=ds;residuals.append(abs(ds-v*dt))
+   if v>0:ratios.append(dl/dt/v)
+   elif dl>0:zero+=1
+  results.append({'case':case,'person':person,'intervals':len(rows)-1,'window_start_sec':rows[0]['time_sec'],'window_end_sec':rows[-1]['time_sec'],'native_longitudinal_integral_m':integral,'absolute_longitudinal_position_differences_m':longitudinal_from_positions,'observed_xy_polyline_m':xy_length,'xy_excess_m':xy_length-integral,'max_abs_step_longitudinal_residual_m':max(residuals),'max_xy_rate_over_positive_native_speed':max(ratios),'zero_native_speed_with_xy_movement_intervals':zero,'source':str(path.relative_to(root)),'source_sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+report={'at_jst':datetime.now().astimezone().isoformat(),'purpose':'technical_fixture_source_diagnosis_not_registered_effect_analysis','cases':results,'unit':'m; seconds; dimensionless rate ratio','population':'2 synthetic people per4 technical variants; not8 independent subjects','join_key':['case','person','time_sec'],'observed_window':'first recorded frame to last recorded frame; no unseen start/end reconstruction','censoring':'No shelter/exit/evacuation outcome analysis; finite artificial straight-lane window','method_claims_prohibited':True,'core_adoption_permitted':False,'technical_ready':False,'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+with Path(__file__).with_name('longitudinal_xy_math.json').open('x',encoding='utf-8') as f:json.dump(report,f,ensure_ascii=False,indent=2,allow_nan=False)
+r=next(x for x in results if x['case']=='same_direction' and x['person']=='p3')
+text=r"""# 歩行距離と位置連続性の数理整理（技術診断）
+
+対象は新guard ng261021gの人工直線道路・2人物・4技術variantであり、4variantの人物を8人の独立標本として扱わない。避難支援効果、施設受入率、方式優劣は集計しない。全70正式セルが揃う前の方向解釈には使用しない。
+
+native getterを $v_k$、道路上の縦位置を $s_k$、座標を $\mathbf{x}_k=(x_k,y_k)$、観測間隔を $\Delta t_k$ とすると、登録されたSUMO内部の歩行予算に対応する量は
+
+$$L_{\parallel}=\sum_k v_k\Delta t_k.$$
+
+同じlane上の縦位置から独立に照合する量は $\sum_k|s_k-s_{k-1}|$、観測座標の折線長は
+
+$$P_{XY}=\sum_k\|\mathbf{x}_k-\mathbf{x}_{k-1}\|_2.$$
+
+直線の縦移動と横移動では $\|\Delta\mathbf{x}\|_2=\sqrt{(\Delta s)^2+(\Delta\ell)^2}$ であるため、横移動があると $\|\Delta\mathbf{x}\|_2/\Delta t$ がnative縦速度getterを上回り得る。従って、$v_k\le v_{\max}$ は $\|\Delta\mathbf{x}\|_2/\Delta t\le v_{\max}$ の証明ではない。座標折線長を実際の曲線移動距離そのもの、native予算を現実の等方的な身体移動距離と同一視しない。
+
+一方、制御による同一時刻の置換には $\mathbf{x}(t^+)=\mathbf{x}(t^-)$ と $s(t^+)=s(t^-)$ を要求する。これを通常の次stepの横移動と分け、前後receiptをexactに照合する。歩行予算/速度のしきい値を緩和せず、誤った次stepのXY上限代理を除き、微小な同一呼出しの位置ずれを検出する契約へ修正した。
+
+"""
+text+=f"例としてsame_direction/p3の観測窓は{r['window_start_sec']}〜{r['window_end_sec']}秒・{r['intervals']}区間。native縦速度積分は{r['native_longitudinal_integral_m']:.9g} m、XY観測折線長は{r['observed_xy_polyline_m']:.9g} m、差は{r['xy_excess_m']:.9g} m。1stepの縦位置差と速度積分の最大絶対残差は{r['max_abs_step_longitudinal_residual_m']:.4g} mだった。これは人工入力の検証値で、研究の期待効果・一般的な誤差率・3000m時の補正率には外挿しない。
+
+"
+text+='全8ケース人物行、原本SHA、式、窓、結合粒度はaudit_history/native_internal_fixture_20261021/longitudinal_xy_math.json、再計算手順は同longitudinal_xy_math.py。一次ファイルから速度積分と位置差を別々に計算し、欠損/重複/路線変更/非有限値を検査した。元run/PAP/入力/主要指標/除外規則は変更していない。
+'
+p=root/'06_研究結果/jdrt/goal_20261017/歩行距離・位置連続性_数理整理_20261021.md'
+with p.open('x',encoding='utf-8') as f:f.write(text)
+print(json.dumps({'status':'TECHNICAL_MATH_DIAGNOSIS_RECORDED','rows':len(results),'research_effect_analysis':False,'report':str(p)},ensure_ascii=False))

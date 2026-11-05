@@ -1,0 +1,36 @@
+{
+  "written_at_jst": "2026-10-27T18:44:17.451982+09:00",
+  "action": "same_original_record_observation_points_preserved",
+  "run_id": "nv26102703",
+  "original_session": 24562,
+  "owner_actual_pid": 16332,
+  "record_actual_pid": 24852,
+  "record_created_jst": "2026-10-27T18:17:21.9812084+09:00",
+  "points": [
+    {
+      "at_jst": "2026-10-27T18:29:39.8577826+09:00",
+      "record_cpu_sec": 699.953125
+    },
+    {
+      "at_jst": "2026-10-27T18:32:22.4095948+09:00",
+      "record_cpu_sec": 856.859375
+    },
+    {
+      "at_jst": "2026-10-27T18:35:35.7420863+09:00",
+      "record_cpu_sec": 1042.546875
+    },
+    {
+      "at_jst": "2026-10-27T18:40:17.5667533+09:00",
+      "record_cpu_sec": 1316.0
+    },
+    {
+      "at_jst": "2026-10-27T18:43:23.6172404+09:00",
+      "record_cpu_sec": 1495.046875
+    }
+  ],
+  "last_observed_phase": "record",
+  "formal_recorded_at_last_point": 2,
+  "source": "Actual dated Get-Process / original operation tool outputs, copied after observations; no invented interval samples",
+  "new_validation_or_record_started": false,
+  "scope": "Observed points only, no claim of continuous coverage or acceptance from elapsed time"
+}

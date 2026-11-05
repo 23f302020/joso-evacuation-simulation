@@ -1,0 +1,35 @@
+test_packager_uses_pair_verifier_and_preserves_primary_receipts (__main__.PairContracts.test_packager_uses_pair_verifier_and_preserves_primary_receipts) ... FAIL
+test_packager_rejects_partner_metadata_change_before_destination (__main__.PairContracts.test_packager_rejects_partner_metadata_change_before_destination) ... FAIL
+test_packager_preserves_failure_when_partner_source_changes_during_copy (__main__.PairContracts.test_packager_preserves_failure_when_partner_source_changes_during_copy) ... FAIL
+
+======================================================================
+FAIL: test_packager_uses_pair_verifier_and_preserves_primary_receipts (__main__.PairContracts.test_packager_uses_pair_verifier_and_preserves_primary_receipts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_proof.py", line 293, in test_packager_uses_pair_verifier_and_preserves_primary_receipts
+    self.assertTrue((manifest.parent / 'evidence/native_pair.json').is_file())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_packager_rejects_partner_metadata_change_before_destination (__main__.PairContracts.test_packager_rejects_partner_metadata_change_before_destination)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_proof.py", line 300, in test_packager_rejects_partner_metadata_change_before_destination
+    with self.assertRaises(ValueError): io.package(*args)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_packager_preserves_failure_when_partner_source_changes_during_copy (__main__.PairContracts.test_packager_preserves_failure_when_partner_source_changes_during_copy)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_proof.py", line 311, in test_packager_preserves_failure_when_partner_source_changes_during_copy
+    with self.assertRaisesRegex(ValueError, 'changed'): io.package(*args)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.955s
+
+FAILED (failures=3)

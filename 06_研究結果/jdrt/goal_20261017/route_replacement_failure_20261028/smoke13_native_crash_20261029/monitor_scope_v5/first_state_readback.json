@@ -1,0 +1,21 @@
+{
+  "at_jst": "2026-10-29T21:12:06.144549+09:00",
+  "monitor_pid": 29900,
+  "observed_at_utc": "2026-10-29T12:08:44.037288+00:00",
+  "age_sec": 288.71606612205505,
+  "source_sha256": "908cff58920c2ae6fd140f7077d9b8fb2c21b3e0bfb78eccfc321f8397ee3d00",
+  "targets": [
+    {
+      "source": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\diag02_20261029\\build_state.json",
+      "status": null,
+      "pid": null,
+      "process": null,
+      "flags": null,
+      "read_failures": 10,
+      "read_error_type": "TimeoutExpired",
+      "command_binding": null,
+      "command_verified_binding": null,
+      "observed_at_utc": null
+    }
+  ]
+}

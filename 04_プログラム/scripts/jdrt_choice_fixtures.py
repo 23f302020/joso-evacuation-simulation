@@ -24,7 +24,9 @@ CASES = ('walk_reroute', 'walk_reroute_limit', 'walk_budget', 'walk_reverse',
          'pickup_deadline_equal', 'pickup_before_deadline', 'pickup_internal_calibration',
          'pickup_internal_timeout', 'pickup_internal_timeout_closed_next',
          'car_lane_calibration', 'car_lane_alternative', 'car_lane_cut',
-         'walk_short_calibration', 'walk_short_repeated')
+         'walk_short_calibration', 'walk_short_repeated',
+         'car_transition_calibration', 'car_transition_closure', 'car_transition_arrival',
+         'delivery_past_closure')
 
 
 def car_lane_connections():
@@ -140,6 +142,35 @@ def native_pickup_reference(folder, controller_sec, step_sec):
             'source_sha256': {p.relative_to(ROOT).as_posix(): sha(p) for p in paths}}
 
 
+def native_transition_reference(folder, step_sec):
+    """Derive a closure inside an outgoing junction after a skipped short edge."""
+    manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
+    actors = folder / 'actor_observations.csv.gz'
+    native_net = folder.parent / 'fixture_inputs/bounded.net.xml'
+    if (manifest['status'] != 'COMPLETED' or manifest['purpose'] != 'fixture'
+            or sha(actors) != manifest['output_sha256'][actors.name]):
+        raise ValueError('Completed SHA-bound transition calibration is required')
+    via = {c.attrib['via'] for c in ET.parse(native_net).getroot().findall('connection')
+           if c.attrib['from'] == 'e1' and c.attrib['to'] == 'e2' and c.attrib.get('via')}
+    with gzip.open(actors, 'rt', encoding='utf-8-sig', newline='') as stream:
+        frames = [r for r in csv.DictReader(stream) if r['actor_id'] == 'fixture_car']
+    if any(r['road_id'] == 'e1' for r in frames):
+        raise ValueError('Short transition fixture did not skip the short external frame')
+    first = next((r for r in frames if r['lane_id'] in via and int(r['route_index']) == 1), None)
+    if first is None:
+        raise ValueError('No source-bound outgoing internal frame')
+    now = float(first['time_sec'])
+    next_external = next((r for r in frames if float(r['time_sec']) > now and r['road_id'] == 'e2'), None)
+    closure = math.ceil(now + step_sec)
+    if not next_external or not now < closure < float(next_external['time_sec']):
+        raise ValueError('Outgoing internal does not straddle an integer closure boundary')
+    return {'reference_run_id': manifest['run_id'], 'source_time_sec': now,
+            'source_lane_id': first['lane_id'], 'closure_sec': closure,
+            'next_external_sec': float(next_external['time_sec']),
+            'source_sha256': {p.relative_to(ROOT).as_posix(): sha(p)
+                              for p in (folder / 'manifest.json', actors, native_net)}}
+
+
 def prepare(case, run_id, params):
     directory = ROOT / params['workspace'] / 'technical' / run_id / 'fixture_inputs'
     directory.mkdir(parents=True, exist_ok=False)
@@ -160,10 +191,15 @@ def prepare(case, run_id, params):
         coordinates = [(name, 30 if name in ('B', 'D') else x, 30 if name == 'D' else y)
                        for name, x, y in coordinates]
         coordinates.append(('W', -100, 150))
+    if case.startswith('car_transition_'):
+        coordinates = [(name, 130 if name in ('C', 'F') else x,
+                        100 if name == 'F' else y) for name, x, y in coordinates]
     for name, x, y in coordinates:
         attrs = {'id': name, 'x': str(x), 'y': str(y), 'type': 'priority'}
         if case.startswith('pickup_internal') and name == 'B':
             attrs['radius'] = '15'  # Artificial long turn exposes integer-controller internal frames.
+        if case.startswith('car_transition_') and name == 'C':
+            attrs['radius'] = '15'
         ET.SubElement(nodes, 'node', **attrs)
     links = [('g0', 'G', 'A'), ('e0', 'A', 'B'), ('e1', 'B', 'C'), ('e2', 'C', 'F'),
              ('d0', 'B', 'D'), ('d1', 'D', 'E'), ('d2', 'E', 'C'), ('long', 'L0', 'L1')]
@@ -183,6 +219,10 @@ def prepare(case, run_id, params):
             if name == 's0':
                 # Keep the native-lane detour longer than the adjacent-lane turn.
                 attrs['shape'] = '35,0 140,0 140,-300 100,-300 100,-100'
+        if case.startswith('car_transition_'):
+            attrs['speed'] = '15'
+            if name == 'e1' or (name == 'e2' and case == 'car_transition_arrival'):
+                attrs['length'] = '0.1'  # Artificial short native lane, not a research input.
         if name == 'd1' and case == 'walk_reroute_limit':
             attrs['shape'] = '100,100 100,2100 200,2100 200,100'
         ET.SubElement(edges, 'edge', **attrs)
@@ -223,7 +263,8 @@ def prepare(case, run_id, params):
         data[mode] = {'directed': graph.is_directed(), 'nodes': dict(graph.nodes(data=True)),
                       'edges': list(graph.edges(data=True))}
     drt = case in ('pickup_closure', 'boarding_closure', 'alighting_closure',
-                   'forecast_r1', 'forecast_p0', 'forecast_p900', 'forecast_reroute', 'horizon_alighting') or case.startswith('pickup_')
+                   'forecast_r1', 'forecast_p0', 'forecast_p900', 'forecast_reroute', 'horizon_alighting',
+                   'delivery_past_closure') or case.startswith('pickup_')
     scenario = 'R2P0' if case in ('forecast_p0', 'forecast_reroute') else 'R2P900' if case == 'forecast_p900' else 'R1' if drt else 'R0'
     parameters = deepcopy(params)
     parameters['protocol'] = 'realtime_choice_fixture_v1'
@@ -236,6 +277,11 @@ def prepare(case, run_id, params):
     parameters['cells'] = [{'cell_id': 'fixture_' + case, 'destination_policy': 'fixed_reference',
                              'demand_level': 'u50', 'scenario': scenario, 'seed': params['seeds'][0]}]
     timing = None
+    if case == 'car_transition_closure':
+        prefix = run_id.rsplit('_c', 1)[0]
+        reference_id = prefix + '_c' + str(CASES.index('car_transition_calibration') + 1).zfill(2)
+        timing = native_transition_reference(ROOT / params['workspace'] / 'technical' / reference_id / 'execution',
+                                             params['simulation']['step_sec'])
     if case == 'walk_short_repeated':
         prefix = run_id.rsplit('_c', 1)[0]
         reference_id = prefix + '_c' + str(CASES.index('walk_short_calibration') + 1).zfill(2)
@@ -284,10 +330,15 @@ def prepare(case, run_id, params):
         changes['e0', 'passenger'] = 65
     if case == 'boarding_closure':
         changes['e0', 'passenger'] = 120
+    if case == 'delivery_past_closure':
+        # The depot access is behind the parked pickup; close it during boarding.
+        changes['g0', 'passenger'] = 120
     if case == 'alighting_closure':
         changes['e2', 'passenger'] = 450
     if case == 'car_reroute':
         changes['e1', 'passenger'] = 10
+    if case == 'car_transition_closure':
+        changes['e1', 'passenger'] = timing['closure_sec']
     if case in ('car_lane_alternative', 'car_lane_cut'):
         changes['e1', 'passenger'] = timing['closure_sec']
     if case == 'car_lane_cut':
@@ -308,6 +359,8 @@ def prepare(case, run_id, params):
     terminal_edge = 'long' if case == 'walk_budget' else 'e0' if backward else 'e2'
     start_pos = 80 if backward else 20
     end_pos = 3020 if case == 'walk_budget' else 20 if backward else 50
+    if case == 'car_transition_arrival':
+        end_pos = data['passenger']['nodes']['e2']['length'] / 2
     if case.startswith('walk_short_'):
         start_pos = data['pedestrian']['nodes']['e0']['length'] / 2
         if not all(end_pos > data['pedestrian']['nodes'][edge]['length'] for edge in ('e0', 'd0')):
@@ -351,7 +404,9 @@ def prepare(case, run_id, params):
     write_csv(directory / f'common_realization_seed{params["seeds"][0]}.csv', people)
     write_csv(directory / 'place_positions.csv', positions)
     atomic_json(directory / 'fixture_parameters.json', parameters)
-    manifest = {'protocol': parameters['protocol'], 'fixture_case': case, 'research_adoption_permitted': False,
+    manifest = {'protocol': parameters['protocol'], 'registration_id': parameters['registration_id'],
+                'native_diagnostic_observation_contract': parameters['native_diagnostic_observation_contract'],
+                'fixture_case': case, 'research_adoption_permitted': False,
                 'depot_edge': 'g0', 'people': len(people), 'created_at_jst': stamp(),
                 'base_parameter_sha256': sha(PARAM), 'synthetic_conditions': True,
                 'source_sha256': {p.relative_to(ROOT).as_posix(): sha(p) for p in (Path(__file__), PARAM)},
@@ -435,6 +490,17 @@ def evaluate(case, directory, result):
         checks['failure_during_registered_service_phase'] = requests[0][field] != '' and requests[0]['status'] == 'failed_after_boarding'
         checks['no_origin_return_after_boarding'] = not any(e['event'] == 'fallback_attempt' for e in events)
         checks['stranded_account'] = outcomes == Counter(stranded_drt=1)
+    elif case == 'delivery_past_closure':
+        q = requests[0]
+        checks['boarding_then_delivery_after_past_closure'] = (q['status'] == 'served'
+            and float(q['boarding_started_sec']) < 120 < float(q['boarded_sec']))
+        delivery = [e for e in events if e['event'] == 'drt_route'
+                    and e['time_sec'] == float(q['boarded_sec'])]
+        checks['remaining_route_excludes_closed_history'] = (len(delivery) == 1
+            and delivery[0]['source_edge'] == 'e0' and 'g0' not in delivery[0]['route']
+            and delivery[0]['route'] == delivery[0]['requested_remaining_route'])
+        checks['admitted_without_fallback'] = (outcomes == Counter(admitted=1)
+            and not any(e['event'] == 'fallback_attempt' for e in events))
     elif case.startswith('forecast_'):
         with gzip.open(directory / 'candidates.csv.gz', 'rt', encoding='utf-8') as stream:
             candidates = list(csv.DictReader(stream))
@@ -472,6 +538,21 @@ def evaluate(case, directory, result):
         changes = [e for e in events if e['event'] == 'private_reroute']
         checks['private_detour_with_explicit_route_version'] = outcomes == Counter(admitted=1) and bool(changes) and all(
             e['route_version'] > 0 and 'e1' not in e['requested_remaining_route'] for e in changes)
+    elif case.startswith('car_transition_'):
+        checks['private_car_completes_without_reroute'] = (outcomes == Counter(admitted=1)
+            and not any(e['event'] == 'private_reroute' for e in events))
+        if case != 'car_transition_arrival':
+            reference = native_transition_reference(directory, result['step_sec'])
+            checks['short_external_skipped_before_outgoing_internal'] = bool(reference['source_lane_id'])
+            if case == 'car_transition_closure':
+                timing = json.loads((directory.parent / 'fixture_inputs/manifest.json').read_text(encoding='utf-8'))['native_timing_reference']
+                checks['same_native_preclosure_window'] = all(reference[k] == timing[k]
+                    for k in ('source_time_sec', 'source_lane_id', 'closure_sec', 'next_external_sec'))
+        else:
+            with gzip.open(directory / 'actor_observations.csv.gz', 'rt', encoding='utf-8-sig', newline='') as stream:
+                frames = [r for r in csv.DictReader(stream) if r['actor_id'] == 'fixture_car']
+            checks['arrival_skips_final_external_frame'] = (bool(frames)
+                and not any(r['road_id'] == 'e2' for r in frames) and int(frames[-1]['route_index']) == 1)
     elif case.startswith('walk_short_'):
         with gzip.open(directory / 'actor_observations.csv.gz', 'rt', encoding='utf-8-sig', newline='') as stream:
             frames = {(row['actor_id'], float(row['time_sec'])): row for row in csv.DictReader(stream)}
@@ -558,8 +639,9 @@ def run_suite(run_id, selected_case=None):
     archived.write_bytes(Path(__file__).read_bytes())
     atomic_json(parent / 'manifest.json', manifest)
     try:
-        selected = (('walk_short_calibration', 'walk_short_repeated')
-                    if selected_case == 'walk_short_repeated' else (selected_case,) if selected_case else CASES)
+        selected = (('walk_short_calibration', 'walk_short_repeated') if selected_case == 'walk_short_repeated'
+                    else ('car_transition_calibration', 'car_transition_closure') if selected_case == 'car_transition_closure'
+                    else (selected_case,) if selected_case else CASES)
         for case in selected:
             if case not in CASES:
                 raise ValueError('Unknown fixture case')

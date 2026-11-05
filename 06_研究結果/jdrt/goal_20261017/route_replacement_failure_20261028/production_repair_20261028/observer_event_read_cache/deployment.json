@@ -1,0 +1,33 @@
+{
+  "at_jst": "2026-10-29T09:57:18.549726+09:00",
+  "action": "observer_event_read_reuse_deployed",
+  "previous_goal_turn_classification": "PROGRESS: full30 completion, independent audit start, observer suite-counter repair; current turn saved-event equivalence and observer read optimization; same audit verified live",
+  "monitor_identity": {
+    "state": "alive",
+    "created": 134376751074865224,
+    "pid": 29900
+  },
+  "monitor_source_sha256": "908cff58920c2ae6fd140f7077d9b8fb2c21b3e0bfb78eccfc321f8397ee3d00",
+  "old_monitor36456_absent": true,
+  "audit_original_session": 65595,
+  "audit_identity": {
+    "state": "alive",
+    "created": 134376745024089125,
+    "pid": 36548
+  },
+  "all_scientific_common5_unchanged": true,
+  "tests": 41,
+  "saved_event_pair": {
+    "event_count": 302,
+    "json_reads_before": 2416,
+    "json_reads_after": 302,
+    "final_bytes_identical": true
+  },
+  "observed_age_begin_sec": 33788.9327545166,
+  "observed_age_finish_sec": 33737.12389111519,
+  "live_cadence_restored": false,
+  "memory_limit": "8GB host severe pressure remains. Instrumented traced peaks include Mock history, not production RSS evidence. No unrelated process terminated.",
+  "core_started": false,
+  "technical_ready": false,
+  "next": "same65595 audit terminal/report, then only full PASS starts fresh all14 setting smokes; dedicated new preflight/actual goal/status/capacity/observer freshness before a core"
+}

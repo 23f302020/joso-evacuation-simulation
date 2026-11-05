@@ -1,0 +1,12 @@
+{
+  "at_jst": "2026-10-21T15:08:02.316003+09:00",
+  "status": "SCOPED_REVIEW_AND_THREE_TEMPORARY_ROOT_TESTS_PASS",
+  "scope": "Display metadata only; valid current-source technical results retain classification under HOLD; source drift/build-point staleness remains; HOLD always forces technical_ready=false",
+  "source_sha256": "b8fde24f0eacdbfa802d020499182cf6d41a08f532bfc8065c76cc23c4606d54",
+  "old_source_sha256": "4535a2d96bef94d57ace957eebffa112d38255c849b31ec55430bb343c363ac4",
+  "red": "red.log genuine current PASS wrongly marked historical",
+  "green": "green.log 3 PASS, no real runtime/native/core start",
+  "research_implementation_changed": false,
+  "registered_input_sources_changed": false,
+  "no_adoption_api_changed": true
+}

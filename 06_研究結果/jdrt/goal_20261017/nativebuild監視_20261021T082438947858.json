@@ -1,0 +1,262 @@
+{
+  "action": "isolated_native_build_monitor",
+  "at_utc": "2026-10-20T23:24:38.947858+00:00",
+  "at_jst": "2026-10-21T08:24:38.947858+09:00",
+  "state_path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build_state.json",
+  "anomaly_flags": [],
+  "downstream_start_permitted": false,
+  "simulation_allowed": false,
+  "research_cli_switch_allowed": false,
+  "core_ready": false,
+  "formal_validation_or_adoption": false,
+  "native_regression_verified": false,
+  "research_core_manifest": "not_applicable: isolated build; no research run is started",
+  "independent_observation_interval_sec": 900,
+  "orchestrator_state_update_is_independent_observation": false,
+  "monitor_source_sha256": "557faf3834d0295e3301cfaa00f7bd089cac330c6cac2c9cd27d00c7261e7eba",
+  "state_snapshot_sha256": "6e9201f13c45a37beb0bde695b22acc01813e46d4f11fa3424ccb448e19b175d",
+  "state_snapshot_bytes": 12739,
+  "state_snapshot": {
+    "schema": "isolated_native_build_v1",
+    "attempt_id": "diag01_20261021",
+    "role": "OBSERVATION_ONLY_DIAGNOSTIC_NEVER_PRODUCTION",
+    "started_at_jst": "2026-10-21T08:02:47.108781+09:00",
+    "owner_pid": 34116,
+    "owner_process_identity": {
+      "ProcessId": 34116,
+      "ParentProcessId": 33896,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id diag01_20261021 --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/attempt08_20261020/build_state.json --source-preparation C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/control_source_preparation_20261020.json --pair-state 06_研究結果/jdrt/goal_20261017/nc261020f_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/audit_history/native_pair_f_completion_20261021/result.json",
+      "CreationDate": 1792537303195
+    },
+    "child_pid": null,
+    "staging": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+    "commands": [
+      {
+        "phase": "diagnostic_configure",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "-S",
+          "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/source",
+          "-B",
+          "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/build",
+          "-G",
+          "MinGW Makefiles",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe",
+          "-DCMAKE_C_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe",
+          "-DCMAKE_CXX_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_EXE_LINKER_FLAGS=-static -static-libgcc -static-libstdc++",
+          "-DCMAKE_PREFIX_PATH=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static",
+          "-DPython_EXECUTABLE=C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "-DISOLATED_BUILD=ON",
+          "-DCHECK_OPTIONAL_LIBS=OFF",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_FOX=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_Proj=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_Intl=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=FALSE",
+          "-DZLIB_INCLUDE_DIR=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include",
+          "-DFMI=OFF",
+          "-DNETEDIT=OFF",
+          "-DENABLE_PYTHON_BINDINGS=OFF",
+          "-DENABLE_JAVA_BINDINGS=OFF",
+          "-DENABLE_CS_BINDINGS=OFF",
+          "-DPARQUET=OFF",
+          "-DCCACHE_SUPPORT=OFF",
+          "-DTCMALLOC=OFF",
+          "-DCOMPILE_DEFINITIONS=XERCES_STATIC_LIBRARY;HAVE_VERSION_H",
+          "-DZLIB_LIBRARY:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a",
+          "-DZLIB_LIBRARY_RELEASE:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_configure.log",
+        "started_at_jst": "2026-10-21T08:05:11.574338+09:00",
+        "pid": 22888,
+        "process_identity": {
+          "ProcessId": 22888,
+          "ParentProcessId": 34116,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe -S C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/source -B C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/build -G \"MinGW Makefiles\" -DCMAKE_MAKE_PROGRAM=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe -DCMAKE_C_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe -DCMAKE_CXX_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe -DCMAKE_BUILD_TYPE=Release \"-DCMAKE_EXE_LINKER_FLAGS=-static -static-libgcc -static-libstdc++\" -DCMAKE_PREFIX_PATH=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static -DPython_EXECUTABLE=C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -DISOLATED_BUILD=ON -DCHECK_OPTIONAL_LIBS=OFF -DCMAKE_DISABLE_FIND_PACKAGE_FOX=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Proj=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Intl=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=FALSE -DZLIB_INCLUDE_DIR=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include -DFMI=OFF -DNETEDIT=OFF -DENABLE_PYTHON_BINDINGS=OFF -DENABLE_JAVA_BINDINGS=OFF -DENABLE_CS_BINDINGS=OFF -DPARQUET=OFF -DCCACHE_SUPPORT=OFF -DTCMALLOC=OFF -DCOMPILE_DEFINITIONS=XERCES_STATIC_LIBRARY;HAVE_VERSION_H -DZLIB_LIBRARY:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a -DZLIB_LIBRARY_RELEASE:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a",
+          "CreationDate": 1792537511579
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-21T08:05:22.718110+09:00",
+        "log_bytes": 3396,
+        "log_sha256": "06cccedc661e3611ad0dbf6097584e68fd2d4c834857c1e9626cfdc366a861e5"
+      },
+      {
+        "phase": "diagnostic_sumo_build",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "--build",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build",
+          "--target",
+          "sumo",
+          "--parallel",
+          "2"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_sumo_build.log",
+        "started_at_jst": "2026-10-21T08:05:22.773050+09:00",
+        "pid": 34144,
+        "process_identity": {
+          "ProcessId": 34144,
+          "ParentProcessId": 34116,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build --target sumo --parallel 2",
+          "CreationDate": 1792537522774
+        },
+        "log_bytes": 41508,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-21T08:18:07.058944+09:00",
+        "log_sha256": "be053efc63cb0770716e09b80719cb0ce7ea4209fd28c7251d662bbf57e30567"
+      },
+      {
+        "phase": "diagnostic_imports",
+        "command": [
+          "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "-p",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build\\src\\sumo.exe"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_imports.log",
+        "started_at_jst": "2026-10-21T08:18:07.094262+09:00",
+        "pid": 21928,
+        "process_identity": {
+          "ProcessId": 21928,
+          "ParentProcessId": 34116,
+          "ExecutablePath": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "CommandLine": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe -p C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build\\src\\sumo.exe",
+          "CreationDate": 1792538287325
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-21T08:18:10.031400+09:00",
+        "log_bytes": 11616002,
+        "log_sha256": "f10754ffa14885288f9464fc10ffdf4ec42a2180230971bba5b805e9544798d4"
+      },
+      {
+        "phase": "diagnostic_version",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build\\src\\sumo.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_version.log",
+        "started_at_jst": "2026-10-21T08:18:10.080870+09:00",
+        "pid": 18008,
+        "process_identity": null,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-21T08:18:10.839681+09:00",
+        "log_bytes": 880,
+        "log_sha256": "9b582c2a536413f0c3540d26370c2fde5fde780606728e1dc49bad715ed46058"
+      }
+    ],
+    "binaries": [
+      {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build\\src\\sumo.exe",
+        "sha256": "dc0370d4a82257349e7f4e8c7d9d819a253aa44fee50bb9d7a6933ec58f1b906",
+        "bytes": 21989974
+      }
+    ],
+    "max_compile_jobs": 2,
+    "simulation_allowed": false,
+    "research_cli_switch_allowed": false,
+    "technical_ready": false,
+    "research_adoption_permitted": false,
+    "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+    "phase": "completed",
+    "custom_version": "1.26.0-jdrt-choice-trace-diag01_20261021",
+    "disk_free_before": 261225185280,
+    "diagnostic_source": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\source",
+    "diagnostic_build": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build",
+    "snapshot_sha256": {
+      "base_state.json": "924d594073688cbb0e88dd479ebdcb3ff6091bba6671524ee2b09fe9ab52dff4",
+      "choice_native_trace_build.py": "90bad909f37bdc13fbe45fb471a757f159782c6789bdee48f6f73db472bb8d3d",
+      "choice_native_trace_source.py": "d20748ae0e24c9a77cc4729980d97f22291b808c56a4badac393f4067916df9d",
+      "native_build_support.py": "caedf58344665f7551e33a2b8353720c832d5bc9c64219feab317d1cd945394f",
+      "pair_proof.json": "ddc69bc0416f8a850a877a7bf1d4155e14a868aa2c0183196b0619e6e5c5fbbd",
+      "pair_state.json": "ca349b4005331f01368d655afd92738bc3de2d8a2fba9535904490267fcedc02",
+      "source_preparation.json": "3a01fbca6263a1450cb019fc7c3128ab1ba7ce4a8fb98ad7a67bb43bf2212ec6"
+    },
+    "updated_at_jst": "2026-10-21T08:20:09.406042+09:00",
+    "source_receipt": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_source_receipt.json",
+      "sha256": "b455d9a76a0e7ac751ef2c2122b7c786eb45b7bfaeb2f51795fc0c0710f0353f"
+    },
+    "log": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_version.log",
+    "custom_version_header": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build\\src\\version.h",
+      "sha256": "ed0443fe664630aaec760a57f7c7bc115a4e3f2f94518038ca4f230850d79c76"
+    }
+  },
+  "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+  "phase": "completed",
+  "attempt_id": "diag01_20261021",
+  "started_at_jst": "2026-10-21T08:02:47.108781+09:00",
+  "state_updated_at_jst": "2026-10-21T08:20:09.406042+09:00",
+  "seconds_from_build_start_to_this_observation": 1311.839077,
+  "state_update_age_sec": 269.541816,
+  "owner": {
+    "pid": 34116,
+    "expected": {
+      "ProcessId": 34116,
+      "ParentProcessId": 33896,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id diag01_20261021 --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/attempt08_20261020/build_state.json --source-preparation C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/control_source_preparation_20261020.json --pair-state 06_研究結果/jdrt/goal_20261017/nc261020f_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/audit_history/native_pair_f_completion_20261021/result.json",
+      "CreationDate": 1792537303195
+    },
+    "identity": "absent",
+    "observed_cim": null
+  },
+  "logs": [
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_configure.log",
+      "bytes": 3396,
+      "tail_max_bytes": 8192,
+      "tail": "-- The CXX compiler identification is GNU 12.2.0\n-- The C compiler identification is GNU 12.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: C:/Ruby31-x64/msys64/ucrt64/bin/g++.exe - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Detecting C compiler ABI info\n-- Detecting C compiler ABI info - done\n-- Check for working C compiler: C:/Ruby31-x64/msys64/ucrt64/bin/gcc.exe - skipped\n-- Detecting C compile features\n-- Detecting C compile features - done\n-- CMAKE_BINARY_DIR: C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/build\n-- CMAKE_SOURCE_DIR: C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/source\n-- \n-- Platform: \n--     Host: Windows-10.0.26300 AMD64\n--     Target: Windows-10.0.26300 AMD64\n--     CMake: 3.31.9\n--     CMake generator: MinGW Makefiles\n--     CMake build tool: C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe\n--     Compiler: GNU 12.2.0\n-- \n-- Found Python: C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe (found version \"3.13.12\") found components: Interpreter Development.Module\n-- Python build, hatchling or pip are missing (sumo packages will not be installable via cmake).\n-- Could NOT find GTest (missing: GTEST_LIBRARY GTEST_INCLUDE_DIR GTEST_MAIN_LIBRARY) \n-- Found XercesC: C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/lib/libxerces-c.a (found version \"3.3.0\")\n-- Could NOT find Freetype (missing: FREETYPE_LIBRARY FREETYPE_INCLUDE_DIRS) \nCMake Warning at CMakeLists.txt:428 (message):\n  FreeType cannot be found.  If you are using SUMO libraries, update\n  SUMO_LIBRARIES folder with git pull.  Otherwise, specify manually FreeType\n  include folder and libs.\n\n\n-- Found ZLIB: C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a (found version \"1.2.13\")\n-- Could NOT find SWIG (missing: SWIG_EXECUTABLE SWIG_DIR) (Required is at least version \"3.0.12\")\nCMake Warning at CMakeLists.txt:515 (find_package):\n  By not providing \"FindEigen3.cmake\" in CMAKE_MODULE_PATH this project has\n  asked CMake to find a package configuration file provided by \"Eigen3\", but\n  CMake did not find one.\n\n  Could not find a package configuration file provided by \"Eigen3\" (requested\n  version 3.2) with any of the following names:\n\n    Eigen3Config.cmake\n    eigen3-config.cmake\n\n  Add the installation prefix of \"Eigen3\" to CMAKE_PREFIX_PATH or set\n  \"Eigen3_DIR\" to a directory containing one of the above files.  If \"Eigen3\"\n  provides a separate development package or SDK, be sure it has been\n  installed.\n\n\n-- Found Gettext: C:/Ruby31-x64/msys64/ucrt64/bin/msgmerge.exe (found version \"0.21.1\")\n-- Could NOT find Java (missing: Java_JAVA_EXECUTABLE Java_JAVAC_EXECUTABLE Java_JAR_EXECUTABLE Java_JAVADOC_EXECUTABLE Java_JAVAH_EXECUTABLE Development) \n-- Found Git: C:/Program Files/Git/cmd/git.exe (found version \"2.45.0.windows.1\")\n-- Enabled features: Windows-10.0.26300 AMD64 GNU 12.2.0 Release\n-- Configuring done (8.8s)\n-- Generating done (2.1s)\n-- Build files have been written to: C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag01_20261021/build\n",
+      "sha256": "06cccedc661e3611ad0dbf6097584e68fd2d4c834857c1e9626cfdc366a861e5",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_imports.log",
+      "bytes": 11616002,
+      "tail_max_bytes": 8192,
+      "tail": "7ae0] DIR64\r\n\treloc  228 offset  ae8 [d87ae8] DIR64\r\n\treloc  229 offset  af0 [d87af0] DIR64\r\n\treloc  230 offset  b08 [d87b08] DIR64\r\n\treloc  231 offset  b10 [d87b10] DIR64\r\n\treloc  232 offset  b18 [d87b18] DIR64\r\n\treloc  233 offset  b20 [d87b20] DIR64\r\n\treloc  234 offset  b28 [d87b28] DIR64\r\n\treloc  235 offset  b30 [d87b30] DIR64\r\n\treloc  236 offset  b48 [d87b48] DIR64\r\n\treloc  237 offset  b50 [d87b50] DIR64\r\n\treloc  238 offset  b58 [d87b58] DIR64\r\n\treloc  239 offset  b60 [d87b60] DIR64\r\n\treloc  240 offset  b68 [d87b68] DIR64\r\n\treloc  241 offset  b70 [d87b70] DIR64\r\n\treloc  242 offset  b88 [d87b88] DIR64\r\n\treloc  243 offset  b90 [d87b90] DIR64\r\n\treloc  244 offset  b98 [d87b98] DIR64\r\n\treloc  245 offset  ba0 [d87ba0] DIR64\r\n\treloc  246 offset  ba8 [d87ba8] DIR64\r\n\treloc  247 offset  bb0 [d87bb0] DIR64\r\n\treloc  248 offset  bb8 [d87bb8] DIR64\r\n\treloc  249 offset  bc0 [d87bc0] DIR64\r\n\treloc  250 offset  bc8 [d87bc8] DIR64\r\n\treloc  251 offset  bd0 [d87bd0] DIR64\r\n\treloc  252 offset  bd8 [d87bd8] DIR64\r\n\treloc  253 offset  be0 [d87be0] DIR64\r\n\treloc  254 offset  be8 [d87be8] DIR64\r\n\treloc  255 offset  bf0 [d87bf0] DIR64\r\n\treloc  256 offset  c08 [d87c08] DIR64\r\n\treloc  257 offset  c10 [d87c10] DIR64\r\n\treloc  258 offset  c18 [d87c18] DIR64\r\n\treloc  259 offset  c20 [d87c20] DIR64\r\n\treloc  260 offset  c28 [d87c28] DIR64\r\n\treloc  261 offset  c30 [d87c30] DIR64\r\n\treloc  262 offset  c38 [d87c38] DIR64\r\n\treloc  263 offset  c40 [d87c40] DIR64\r\n\treloc  264 offset  c48 [d87c48] DIR64\r\n\treloc  265 offset  c50 [d87c50] DIR64\r\n\treloc  266 offset  c58 [d87c58] DIR64\r\n\treloc  267 offset  c60 [d87c60] DIR64\r\n\treloc  268 offset  c68 [d87c68] DIR64\r\n\treloc  269 offset  c70 [d87c70] DIR64\r\n\treloc  270 offset  c88 [d87c88] DIR64\r\n\treloc  271 offset  c90 [d87c90] DIR64\r\n\treloc  272 offset  c98 [d87c98] DIR64\r\n\treloc  273 offset  ca0 [d87ca0] DIR64\r\n\treloc  274 offset  ca8 [d87ca8] DIR64\r\n\treloc  275 offset  cb0 [d87cb0] DIR64\r\n\treloc  276 offset  cb8 [d87cb8] DIR64\r\n\treloc  277 offset  cc0 [d87cc0] DIR64\r\n\treloc  278 offset  cc8 [d87cc8] DIR64\r\n\treloc  279 offset  cd0 [d87cd0] DIR64\r\n\treloc  280 offset  cd8 [d87cd8] DIR64\r\n\treloc  281 offset  ce8 [d87ce8] DIR64\r\n\treloc  282 offset  cf0 [d87cf0] DIR64\r\n\treloc  283 offset  cf8 [d87cf8] DIR64\r\n\treloc  284 offset  d00 [d87d00] DIR64\r\n\treloc  285 offset  d08 [d87d08] DIR64\r\n\treloc  286 offset  d10 [d87d10] DIR64\r\n\treloc  287 offset  d18 [d87d18] DIR64\r\n\treloc  288 offset  d20 [d87d20] DIR64\r\n\treloc  289 offset  d28 [d87d28] DIR64\r\n\treloc  290 offset  d30 [d87d30] DIR64\r\n\treloc  291 offset  d38 [d87d38] DIR64\r\n\treloc  292 offset  d48 [d87d48] DIR64\r\n\treloc  293 offset  d50 [d87d50] DIR64\r\n\treloc  294 offset  d58 [d87d58] DIR64\r\n\treloc  295 offset  d60 [d87d60] DIR64\r\n\treloc  296 offset  d78 [d87d78] DIR64\r\n\treloc  297 offset  d80 [d87d80] DIR64\r\n\treloc  298 offset  d88 [d87d88] DIR64\r\n\treloc  299 offset  d98 [d87d98] DIR64\r\n\treloc  300 offset  da0 [d87da0] DIR64\r\n\treloc  301 offset  da8 [d87da8] DIR64\r\n\treloc  302 offset  db0 [d87db0] DIR64\r\n\treloc  303 offset  db8 [d87db8] DIR64\r\n\treloc  304 offset  dc0 [d87dc0] DIR64\r\n\treloc  305 offset  dd8 [d87dd8] DIR64\r\n\treloc  306 offset  de0 [d87de0] DIR64\r\n\treloc  307 offset  de8 [d87de8] DIR64\r\n\treloc  308 offset  df0 [d87df0] DIR64\r\n\treloc  309 offset  df8 [d87df8] DIR64\r\n\treloc  310 offset  e00 [d87e00] DIR64\r\n\treloc  311 offset  e18 [d87e18] DIR64\r\n\treloc  312 offset  e20 [d87e20] DIR64\r\n\treloc  313 offset  e28 [d87e28] DIR64\r\n\treloc  314 offset  e30 [d87e30] DIR64\r\n\treloc  315 offset  e38 [d87e38] DIR64\r\n\treloc  316 offset  e40 [d87e40] DIR64\r\n\treloc  317 offset  e48 [d87e48] DIR64\r\n\treloc  318 offset  e50 [d87e50] DIR64\r\n\treloc  319 offset  e68 [d87e68] DIR64\r\n\treloc  320 offset  e70 [d87e70] DIR64\r\n\treloc  321 offset  e78 [d87e78] DIR64\r\n\treloc  322 offset  e80 [d87e80] DIR64\r\n\treloc  323 offset  e88 [d87e88] DIR64\r\n\treloc  324 offset  e90 [d87e90] DIR64\r\n\treloc  325 offset  e98 [d87e98] DIR64\r\n\treloc  326 offset  ea0 [d87ea0] DIR64\r\n\treloc  327 offset  eb8 [d87eb8] DIR64\r\n\treloc  328 offset  ec0 [d87ec0] DIR64\r\n\treloc  329 offset  ec8 [d87ec8] DIR64\r\n\treloc  330 offset  ed0 [d87ed0] DIR64\r\n\treloc  331 offset  ed8 [d87ed8] DIR64\r\n\treloc  332 offset  ee0 [d87ee0] DIR64\r\n\treloc  333 offset  ee8 [d87ee8] DIR64\r\n\treloc  334 offset  ef0 [d87ef0] DIR64\r\n\treloc  335 offset  ef8 [d87ef8] DIR64\r\n\treloc  336 offset  f08 [d87f08] DIR64\r\n\treloc  337 offset  f10 [d87f10] DIR64\r\n\treloc  338 offset  f18 [d87f18] DIR64\r\n\treloc  339 offset  f20 [d87f20] DIR64\r\n\treloc  340 offset  f28 [d87f28] DIR64\r\n\treloc  341 offset  f30 [d87f30] DIR64\r\n\treloc  342 offset  f38 [d87f38] DIR64\r\n\treloc  343 offset  f40 [d87f40] DIR64\r\n\treloc  344 offset  f48 [d87f48] DIR64\r\n\treloc  345 offset  f58 [d87f58] DIR64\r\n\treloc  346 offset  f60 [d87f60] DIR64\r\n\treloc  347 offset  f68 [d87f68] DIR64\r\n\treloc  348 offset  f70 [d87f70] DIR64\r\n\treloc  349 offset  f88 [d87f88] DIR64\r\n\treloc  350 offset  f90 [d87f90] DIR64\r\n\treloc  351 offset  f98 [d87f98] DIR64\r\n\treloc  352 offset  fa0 [d87fa0] DIR64\r\n\treloc  353 offset  fb8 [d87fb8] DIR64\r\n\treloc  354 offset  fc0 [d87fc0] DIR64\r\n\treloc  355 offset  fc8 [d87fc8] DIR64\r\n\treloc  356 offset  fd0 [d87fd0] DIR64\r\n\treloc  357 offset  fe8 [d87fe8] DIR64\r\n\treloc  358 offset  ff0 [d87ff0] DIR64\r\n\treloc  359 offset  ff8 [d87ff8] DIR64\r\n\r\nVirtual Address: 00d88000 Chunk size 108 (0x6c) Number of fixups 50\r\n\treloc    0 offset    8 [d88008] DIR64\r\n\treloc    1 offset   10 [d88010] DIR64\r\n\treloc    2 offset   18 [d88018] DIR64\r\n\treloc    3 offset   28 [d88028] DIR64\r\n\treloc    4 offset   30 [d88030] DIR64\r\n\treloc    5 offset   38 [d88038] DIR64\r\n\treloc    6 offset   40 [d88040] DIR64\r\n\treloc    7 offset   58 [d88058] DIR64\r\n\treloc    8 offset   60 [d88060] DIR64\r\n\treloc    9 offset   68 [d88068] DIR64\r\n\treloc   10 offset   70 [d88070] DIR64\r\n\treloc   11 offset   78 [d88078] DIR64\r\n\treloc   12 offset   88 [d88088] DIR64\r\n\treloc   13 offset   90 [d88090] DIR64\r\n\treloc   14 offset   98 [d88098] DIR64\r\n\treloc   15 offset   a0 [d880a0] DIR64\r\n\treloc   16 offset   a8 [d880a8] DIR64\r\n\treloc   17 offset   b8 [d880b8] DIR64\r\n\treloc   18 offset   c0 [d880c0] DIR64\r\n\treloc   19 offset   c8 [d880c8] DIR64\r\n\treloc   20 offset   d0 [d880d0] DIR64\r\n\treloc   21 offset   d8 [d880d8] DIR64\r\n\treloc   22 offset   e8 [d880e8] DIR64\r\n\treloc   23 offset   f0 [d880f0] DIR64\r\n\treloc   24 offset   f8 [d880f8] DIR64\r\n\treloc   25 offset  100 [d88100] DIR64\r\n\treloc   26 offset  108 [d88108] DIR64\r\n\treloc   27 offset  118 [d88118] DIR64\r\n\treloc   28 offset  120 [d88120] DIR64\r\n\treloc   29 offset  128 [d88128] DIR64\r\n\treloc   30 offset  130 [d88130] DIR64\r\n\treloc   31 offset  138 [d88138] DIR64\r\n\treloc   32 offset  140 [d88140] DIR64\r\n\treloc   33 offset  148 [d88148] DIR64\r\n\treloc   34 offset  1a0 [d881a0] DIR64\r\n\treloc   35 offset  1b0 [d881b0] DIR64\r\n\treloc   36 offset  1c0 [d881c0] DIR64\r\n\treloc   37 offset  1d0 [d881d0] DIR64\r\n\treloc   38 offset  1e0 [d881e0] DIR64\r\n\treloc   39 offset  1f0 [d881f0] DIR64\r\n\treloc   40 offset  200 [d88200] DIR64\r\n\treloc   41 offset  210 [d88210] DIR64\r\n\treloc   42 offset  220 [d88220] DIR64\r\n\treloc   43 offset  230 [d88230] DIR64\r\n\treloc   44 offset  240 [d88240] DIR64\r\n\treloc   45 offset  250 [d88250] DIR64\r\n\treloc   46 offset  260 [d88260] DIR64\r\n\treloc   47 offset  270 [d88270] DIR64\r\n\treloc   48 offset  280 [d88280] DIR64\r\n\treloc   49 offset    0 [d88000] ABSOLUTE\r\n\r\nVirtual Address: 00ebc000 Chunk size 20 (0x14) Number of fixups 6\r\n\treloc    0 offset    8 [ebc008] DIR64\r\n\treloc    1 offset   20 [ebc020] DIR64\r\n\treloc    2 offset   38 [ebc038] DIR64\r\n\treloc    3 offset   40 [ebc040] DIR64\r\n\treloc    4 offset   48 [ebc048] DIR64\r\n\treloc    5 offset    0 [ebc000] ABSOLUTE\r\n\r\nThe .rsrc Resource Directory section:\r\n000  Type Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n010   Entry: ID: 0x000018, Value: 0x80000018\r\n018    Name Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n028     Entry: ID: 0x000001, Value: 0x80000030\r\n030      Language Table: Char: 0, Time: 00000000, Ver: 0/0, Num Names: 0, IDs: 1\r\n040       Entry: ID: 00000000, Value: 0x000048\r\n048        Leaf: Addr: 0xebe058, Size: 0x00048f, Codepage: 0\r\n Resources start at offset: 0x58\r\n\r\n",
+      "sha256": "f10754ffa14885288f9464fc10ffdf4ec42a2180230971bba5b805e9544798d4",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_sumo_build.log",
+      "bytes": 41508,
+      "tail_max_bytes": 8192,
+      "tail": "p.obj\r\n[ 80%] Building CXX object src/traci-server/CMakeFiles/traciserver.dir/TraCIServerAPI_Vehicle.cpp.obj\r\n[ 80%] Building CXX object src/utils/distribution/CMakeFiles/utils_distribution.dir/DistributionCont.cpp.obj\r\n[ 80%] Linking CXX static library libutils_distribution.a\r\n[ 80%] Built target utils_distribution\r\n[ 80%] Building CXX object src/traci-server/CMakeFiles/traciserver.dir/TraCIServerAPI_VehicleType.cpp.obj\r\n[ 80%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/CharacteristicMap.cpp.obj\r\n[ 80%] Linking CXX static library libtraciserver.a\r\n[ 80%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/EnergyParams.cpp.obj\r\n[ 80%] Built target traciserver\r\n[ 80%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersEnergy.cpp.obj\r\n[ 80%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/Boundary.cpp.obj\r\n[ 80%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersHarmonoise.cpp.obj\r\n[ 80%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/Bresenham.cpp.obj\r\n[ 80%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/GeomConvHelper.cpp.obj\r\n[ 81%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersHBEFA.cpp.obj\r\n[ 81%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/GeoConvHelper.cpp.obj\r\n[ 81%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersHBEFA3.cpp.obj\r\n[ 81%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersHBEFA4.cpp.obj\r\n[ 83%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/GeomHelper.cpp.obj\r\n[ 83%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/Position.cpp.obj\r\n[ 83%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/PositionVector.cpp.obj\r\n[ 83%] Building CXX object src/utils/geom/CMakeFiles/utils_geom.dir/Triangle.cpp.obj\r\n[ 83%] Linking CXX static library libutils_geom.a\r\n[ 83%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersMMPEVEM.cpp.obj\r\n[ 83%] Built target utils_geom\r\n[ 83%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersPHEMlight.cpp.obj\r\n[ 83%] Building CXX object src/utils/handlers/CMakeFiles/utils_handlers.dir/AdditionalHandler.cpp.obj\r\n[ 83%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/HelpersPHEMlight5.cpp.obj\r\n[ 83%] Building CXX object src/utils/handlers/CMakeFiles/utils_handlers.dir/CommonHandler.cpp.obj\r\n[ 83%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/PHEMCEP.cpp.obj\r\n[ 85%] Building CXX object src/utils/handlers/CMakeFiles/utils_handlers.dir/DataHandler.cpp.obj\r\n[ 87%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/PHEMCEPHandler.cpp.obj\r\n[ 87%] Building CXX object src/utils/handlers/CMakeFiles/utils_handlers.dir/GeneralHandler.cpp.obj\r\n[ 87%] Building CXX object src/utils/emissions/CMakeFiles/utils_emissions.dir/PollutantsInterface.cpp.obj\r\n[ 87%] Building CXX object src/utils/handlers/CMakeFiles/utils_handlers.dir/RouteHandler.cpp.obj\r\n[ 87%] Linking CXX static library libutils_emissions.a\r\n[ 87%] Built target utils_emissions\r\n[ 87%] Building CXX object src/utils/handlers/CMakeFiles/utils_handlers.dir/MeanDataHandler.cpp.obj\r\n[ 87%] Building CXX object src/utils/handlers/CMakeFiles/utils_handlers.dir/TemplateHandler.cpp.obj\r\n[ 87%] Building CXX object src/utils/importio/CMakeFiles/utils_importio.dir/LineReader.cpp.obj\r\n[ 89%] Building CXX object src/utils/importio/CMakeFiles/utils_importio.dir/NamedColumnsParser.cpp.obj\r\n[ 89%] Linking CXX static library libutils_importio.a\r\n[ 89%] Linking CXX static library libutils_handlers.a\r\n[ 89%] Built target utils_importio\r\n[ 89%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/CSVFormatter.cpp.obj\r\n[ 89%] Built target utils_handlers\r\n[ 89%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/OutputDevice.cpp.obj\r\nC:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\source\\src\\utils\\iodevices\\OutputDevice.cpp:30: warning: \"NOMINMAX\" redefined\n   30 | #define NOMINMAX\n      | \nIn file included from C:/Ruby31-x64/msys64/ucrt64/include/c++/12.2.0/x86_64-w64-mingw32/bits/c++config.h:655,\n                 from C:/Ruby31-x64/msys64/ucrt64/include/c++/12.2.0/bits/stl_algobase.h:59,\n                 from C:/Ruby31-x64/msys64/ucrt64/include/c++/12.2.0/bits/stl_tree.h:63,\n                 from C:/Ruby31-x64/msys64/ucrt64/include/c++/12.2.0/map:60,\n                 from C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\source\\src\\utils\\iodevices\\OutputDevice.cpp:24:\nC:/Ruby31-x64/msys64/ucrt64/include/c++/12.2.0/x86_64-w64-mingw32/bits/os_defines.h:45: note: this is the location of the previous definition\n   45 | #define NOMINMAX 1\n      | \n[ 89%] Building CXX object src/utils/options/CMakeFiles/utils_options.dir/Option.cpp.obj\r\n[ 89%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/OutputDevice_CERR.cpp.obj\r\n[ 89%] Building CXX object src/utils/options/CMakeFiles/utils_options.dir/OptionsCont.cpp.obj\r\n[ 89%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/OutputDevice_COUT.cpp.obj\r\n[ 89%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/OutputDevice_File.cpp.obj\r\n[ 89%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/OutputDevice_Network.cpp.obj\r\n[ 89%] Building CXX object src/utils/options/CMakeFiles/utils_options.dir/OptionsIO.cpp.obj\r\n[ 90%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/OutputDevice_String.cpp.obj\r\n[ 90%] Building CXX object src/utils/options/CMakeFiles/utils_options.dir/OptionsLoader.cpp.obj\r\n[ 90%] Building CXX object src/utils/iodevices/CMakeFiles/utils_iodevices.dir/PlainXMLFormatter.cpp.obj\r\n[ 90%] Linking CXX static library libutils_iodevices.a\r\n[ 92%] Building CXX object src/utils/options/CMakeFiles/utils_options.dir/OptionsParser.cpp.obj\r\n[ 92%] Built target utils_iodevices\r\n[ 92%] Building CXX object src/utils/shapes/CMakeFiles/utils_shapes.dir/PointOfInterest.cpp.obj\r\n[ 92%] Linking CXX static library libutils_options.a\r\n[ 92%] Built target utils_options\r\n[ 92%] Building CXX object src/utils/shapes/CMakeFiles/utils_shapes.dir/Shape.cpp.obj\r\n[ 92%] Building CXX object src/utils/traction_wire/CMakeFiles/utils_traction_wire.dir/Circuit.cpp.obj\r\n[ 92%] Building CXX object src/utils/shapes/CMakeFiles/utils_shapes.dir/SUMOPolygon.cpp.obj\r\n[ 92%] Building CXX object src/utils/traction_wire/CMakeFiles/utils_traction_wire.dir/Element.cpp.obj\r\n[ 92%] Building CXX object src/utils/shapes/CMakeFiles/utils_shapes.dir/PolygonDynamics.cpp.obj\r\n[ 92%] Building CXX object src/utils/traction_wire/CMakeFiles/utils_traction_wire.dir/Node.cpp.obj\r\n[ 94%] Linking CXX static library libutils_traction_wire.a\r\n[ 94%] Building CXX object src/utils/shapes/CMakeFiles/utils_shapes.dir/ShapeHandler.cpp.obj\r\n[ 94%] Built target utils_traction_wire\r\n[ 96%] Building CXX object src/utils/shapes/CMakeFiles/utils_shapes.dir/ShapeContainer.cpp.obj\r\n[ 96%] Building CXX object src/utils/vehicle/CMakeFiles/utils_vehicle.dir/SUMORouteHandler.cpp.obj\r\n[ 96%] Linking CXX static library libutils_shapes.a\r\n[ 96%] Built target utils_shapes\r\n[ 96%] Building CXX object src/utils/vehicle/CMakeFiles/utils_vehicle.dir/SUMORouteLoader.cpp.obj\r\n[ 96%] Building CXX object src/utils/vehicle/CMakeFiles/utils_vehicle.dir/SUMORouteLoaderControl.cpp.obj\r\n[ 96%] Building CXX object src/utils/vehicle/CMakeFiles/utils_vehicle.dir/SUMOTrafficObject.cpp.obj\r\n[ 96%] Building CXX object src/utils/vehicle/CMakeFiles/utils_vehicle.dir/SUMOVehicleParameter.cpp.obj\r\n[ 96%] Building CXX object src/utils/vehicle/CMakeFiles/utils_vehicle.dir/SUMOVehicleParserHelper.cpp.obj\r\n[ 98%] Building CXX object src/utils/vehicle/CMakeFiles/utils_vehicle.dir/SUMOVTypeParameter.cpp.obj\r\n[ 98%] Linking CXX static library libutils_vehicle.a\r\n[ 98%] Built target utils_vehicle\r\n[ 98%] Building CXX object src/CMakeFiles/sumo.dir/sumo_main.cpp.obj\r\n[100%] Linking CXX executable sumo.exe\r\n[100%] Built target sumo\r\n",
+      "sha256": "be053efc63cb0770716e09b80719cb0ce7ea4209fd28c7251d662bbf57e30567",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\diagnostic_version.log",
+      "bytes": 880,
+      "tail_max_bytes": 8192,
+      "tail": "Eclipse SUMO sumo 1.26.0-jdrt-choice-trace-diag01_20261021\r\n Build features: Windows-10.0.26300 AMD64 GNU 12.2.0 Release\r\n Copyright (C) 2001-2026 German Aerospace Center (DLR) and others; https://sumo.dlr.de\r\n\r\nEclipse SUMO sumo 1.26.0-jdrt-choice-trace-diag01_20261021 is part of SUMO.\r\nThis program and the accompanying materials\r\nare made available under the terms of the Eclipse Public License v2.0\r\nwhich accompanies this distribution, and is available at\r\nhttp://www.eclipse.org/legal/epl-v20.html\r\nThis program may also be made available under the following Secondary\r\nLicenses when the conditions for such availability set forth in the Eclipse\r\nPublic License 2.0 are satisfied: GNU General Public License, version 2\r\nor later which is available at\r\nhttps://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html\r\nSPDX-License-Identifier: EPL-2.0 OR GPL-2.0-or-later\r\n",
+      "sha256": "9b582c2a536413f0c3540d26370c2fde5fde780606728e1dc49bad715ed46058",
+      "sha256_policy": "terminal_only; live logs may grow during observation"
+    }
+  ],
+  "disk": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019": {
+      "free_bytes": 260894457856,
+      "total_bytes": 496515411968
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021": {
+      "free_bytes": 260894457856,
+      "total_bytes": 496515411968
+    }
+  },
+  "state_bytes_unchanged_during_observation": true,
+  "state_concurrency_note": "A live orchestrator can legitimately update its state/logs while this reader observes.",
+  "previous_independent_observation_at_utc": "2026-10-20T23:06:03.661100+00:00",
+  "unobserved_interval_sec": 1115.286758,
+  "observation_coverage": "Point observation only; no continuous monitoring is inferred between observations.",
+  "report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261021T082438947858.json",
+  "state_snapshot_file": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261021T082438947858.state.snapshot.bin"
+}

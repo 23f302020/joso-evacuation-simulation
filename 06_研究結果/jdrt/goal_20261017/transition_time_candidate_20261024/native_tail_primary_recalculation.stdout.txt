@@ -1,0 +1,46 @@
+{
+  "scope": "recalculation of preserved native fixture actor component only; original dedicated INVALID and primary bytes retained; not whole run current-source validation or adoption",
+  "status": "PASS",
+  "validator_sha256": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+  "manifest_sha256": "061809b5ec983780bbc99d80b4f9c32722255d7c569b8eedb81360f418e25de2",
+  "actor_component": {
+    "status": "PASS",
+    "checks": {
+      "actor_grid_completeness": true,
+      "actor_arrival_clock": true,
+      "actor_phase_unique_membership": true,
+      "actor_observation_state": true,
+      "actor_walk_integral_and_speed": true,
+      "actor_vehicle_distances": true,
+      "actor_route_index": true,
+      "actor_closed_external_edge": true,
+      "reroute_position_continuity": true,
+      "backend_vkt": true
+    },
+    "errors": {},
+    "examples": {},
+    "actor_rows": 27,
+    "actor_count": 1,
+    "vkt": {
+      "fixture_car": {
+        "arrival_tail_m": 0.40101355180982523,
+        "residual_m": 2.842170943040401e-14,
+        "rounding_bound_m": 0.0100001,
+        "arrival_tail_proof": {
+          "distance_m": 0.40101355180982523,
+          "lane_path": [
+            ":C_2_0",
+            "e2_1"
+          ],
+          "source_lane_position_m": 9.978986448190176,
+          "arrival_lane": "e2_1",
+          "arrival_pos_m": 0.05
+        }
+      }
+    },
+    "removal_observations": {},
+    "native_braking_observations": {},
+    "core_adoption_permitted": false
+  },
+  "primary_outputs_unchanged": true
+}

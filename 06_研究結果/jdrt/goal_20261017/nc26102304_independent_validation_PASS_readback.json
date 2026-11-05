@@ -1,0 +1,24 @@
+{
+  "at_jst": "2026-10-23T18:41:45.662063+09:00",
+  "run_id": "nc26102304",
+  "status": "PASS",
+  "core_adoption_permitted": true,
+  "original_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102304_20261023T183733826135.json",
+  "original_report_sha256": "9789456b04a2234d5e1cc2e9ce219c13302fe94fae526107d95ea5965d02c2c1",
+  "source_common5_current": true,
+  "component_statuses": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "PASS",
+    "native_logs": "PASS",
+    "native_fixture_boundaries": "PASS"
+  },
+  "finish_session": 37931,
+  "finish_owner": 29964,
+  "record_in_progress": true,
+  "record_child_pid": 16808,
+  "record_child_created_jst": "2026-10-23T18:37:35.364532+09:00",
+  "formal_adoption_complete": false
+}

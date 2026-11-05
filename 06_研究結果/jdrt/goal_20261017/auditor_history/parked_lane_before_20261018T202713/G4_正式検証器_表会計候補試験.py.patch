@@ -1,0 +1,32 @@
+diff --git "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\G4_\346\255\243\345\274\217\346\244\234\350\250\274\345\231\250_\350\241\250\344\274\232\350\250\210\345\200\231\350\243\234\350\251\246\351\250\223.py" "b/06_\347\240\224\347\251\266\347\265\220\346\236\234/jdrt/goal_20261017/G4_\346\255\243\345\274\217\346\244\234\350\250\274\345\231\250_\350\241\250\344\274\232\350\250\210\345\200\231\350\243\234\350\251\246\351\250\223.py"
+index e25a13f..d2e4628 100644
+--- "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\G4_\346\255\243\345\274\217\346\244\234\350\250\274\345\231\250_\350\241\250\344\274\232\350\250\210\345\200\231\350\243\234\350\251\246\351\250\223.py"
++++ "b/06_\347\240\224\347\251\266\347\265\220\346\236\234/jdrt/goal_20261017/G4_\346\255\243\345\274\217\346\244\234\350\250\274\345\231\250_\350\241\250\344\274\232\350\250\210\345\200\231\350\243\234\350\251\246\351\250\223.py"
+@@ -119,6 +119,27 @@ def main(suite_id, historical=False):
+          lambda r: r.__setitem__(slice(None), [e for e in r if e['event'] != 'vehicle_route_feasibility']),
+          'vehicle_first_turn_feasibility'),
+     ])
++    parked_index = next(i + 1 for i, c in enumerate(suite['cases']) if c['case'] == 'alighting_closure')
++    parked_folder = technical / suite['cases'][parked_index - 1]['child_run_id'] / 'execution'
++    parked_decisions = [json.loads(s) for s in (parked_folder / 'events.jsonl').read_text(encoding='utf-8').splitlines()
++                       if json.loads(s)['event'] == 'vehicle_route_feasibility' and json.loads(s).get('source_kind') == 'parked_stop']
++    assert parked_decisions, 'Missing native parked empty-lane route evidence'
++    parked_times = {(e['vehicle_id'], e['time_sec']) for e in parked_decisions}
++    parked = lambda e: e['event'] == 'vehicle_route_feasibility' and e.get('source_kind') == 'parked_stop'
++    cases.extend([
++        ('parked_reference_lane_invented', parked_index, 'events.jsonl', 'movement',
++         lambda r: mutate_first(r, 'source_reference_lane_id', 'unknown_lane', parked), 'vehicle_first_turn_feasibility'),
++        ('parked_native_stop_missing', parked_index, 'events.jsonl', 'movement',
++         lambda r: mutate_first(r, 'native_parking_stop', None, parked), 'vehicle_first_turn_feasibility'),
++        ('parked_native_stop_position_corrupted', parked_index, 'events.jsonl', 'movement',
++         lambda r: mutate_first(r, 'native_parking_stop', lambda v: {**v, 'end_pos_m': v['end_pos_m'] + 1}, parked),
++         'vehicle_first_turn_feasibility'),
++        ('parked_raw_state_not_stopped', parked_index, 'events.jsonl', 'movement',
++         lambda r: mutate_first(r, 'native_source', lambda v: {**v, 'stop_state': 0}, parked), 'vehicle_first_turn_feasibility'),
++        ('parked_actor_stop_lane_corrupted', parked_index, 'actor_observations.csv.gz', 'movement',
++         lambda r: mutate_first(r, 'native_stop_lane_id', 'unknown_lane',
++             lambda p: (p['actor_id'], float(p['time_sec'])) in parked_times), 'vehicle_first_turn_feasibility'),
++    ])
+     if len(suite['cases']) >= 21:
+         cases.extend([
+             ('before_deadline_boarding_moved_to_equality', 18, 'request_results.csv', 'boundary',

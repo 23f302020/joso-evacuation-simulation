@@ -1,0 +1,86 @@
+"""Read PE imports and query system exports; --version only, never simulation."""
+import argparse
+import ctypes
+from ctypes import wintypes
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+
+ROOT = Path(__file__).resolve().parents[3]
+ST = Path('C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019')
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--build-dir', type=Path, default=ST / 'b05')
+args = parser.parse_args()
+if not args.build_dir.resolve().is_relative_to(ST.resolve()):
+    raise ValueError('Only the authorized isolated build staging may be queried')
+OUT = Path(__file__).parent / 'audit_history' / ('native_loader_' + datetime.now().strftime('%Y%m%dT%H%M%S%f'))
+OUT.mkdir()
+kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+kernel.LoadLibraryExW.argtypes = [wintypes.LPCWSTR, wintypes.HANDLE, wintypes.DWORD]
+kernel.LoadLibraryExW.restype = wintypes.HMODULE
+kernel.GetProcAddress.argtypes = [wintypes.HMODULE, ctypes.c_char_p]
+kernel.GetProcAddress.restype = ctypes.c_void_p
+kernel.GetModuleFileNameW.argtypes = [wintypes.HMODULE, wintypes.LPWSTR, wintypes.DWORD]
+kernel.GetModuleFileNameW.restype = wintypes.DWORD
+kernel.FreeLibrary.argtypes = [wintypes.HMODULE]
+kernel.SetErrorMode(0x0001 | 0x0002 | 0x8000)
+
+
+def sha(path):
+    with Path(path).open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+result = {'at_utc': datetime.now(timezone.utc).isoformat(), 'simulation_executed': False,
+          'global_environment_modified': False, 'source_sha256': sha(__file__),
+          'build_directory': str(args.build_dir), 'binaries': []}
+state = ST / 'build_state.json'
+(OUT / 'build_state.snapshot.bin').write_bytes(state.read_bytes())
+result['state_sha256'] = sha(state)
+for name in ('sumo', 'netconvert'):
+    binary = args.build_dir / 'src' / (name + '.exe')
+    dump = subprocess.run(['C:/Ruby31-x64/msys64/ucrt64/bin/objdump.exe', '-p', str(binary)],
+                          capture_output=True, check=True)
+    (OUT / (name + '_objdump.log')).write_bytes(dump.stdout)
+    imports = []
+    current = None
+    for line in dump.stdout.decode().splitlines():
+        match = re.search(r'DLL Name:\s*(\S+)', line)
+        if match:
+            current = {'name': match[1], 'symbols': []}
+            imports.append(current)
+        elif current is not None:
+            match = re.fullmatch(r'\s*[0-9a-f]+\s+\d+\s+(\S+)\s*', line)
+            if match:
+                current['symbols'].append(match[1])
+    for item in imports:
+        handle = kernel.LoadLibraryExW(item['name'], None, 0x00000800)
+        item['system_only_load_error'] = ctypes.get_last_error() if not handle else 0
+        if handle:
+            buffer = ctypes.create_unicode_buffer(32768)
+            size = kernel.GetModuleFileNameW(handle, buffer, len(buffer))
+            item['loaded_module_path'] = buffer.value if size else None
+            item['missing_symbols'] = [symbol for symbol in item['symbols']
+                                       if not kernel.GetProcAddress(handle, symbol.encode('ascii'))]
+            kernel.FreeLibrary(handle)
+    env = os.environ.copy()
+    env['PATH'] = str(Path(os.environ['SystemRoot']) / 'System32') + os.pathsep + os.environ['SystemRoot']
+    version = subprocess.run([str(binary), '--version'], capture_output=True, env=env,
+                             cwd=str(OUT), timeout=20)
+    (OUT / (name + '_clean_version.stdout')).write_bytes(version.stdout)
+    (OUT / (name + '_clean_version.stderr')).write_bytes(version.stderr)
+    result['binaries'].append({'path': str(binary), 'sha256': sha(binary), 'bytes': binary.stat().st_size,
+                              'imports': imports, 'clean_version_returncode': version.returncode,
+                              'clean_version_hex': hex(version.returncode & 0xffffffff)})
+result['files_sha256'] = {p.name: sha(p) for p in OUT.iterdir() if p.is_file()}
+(OUT / 'diagnosis.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+print(json.dumps({'report': str(OUT / 'diagnosis.json'), 'binaries': [
+    {'name': Path(item['path']).name, 'returncode': item['clean_version_returncode'],
+     'missing': [{'dll': dep['name'], 'symbols': dep.get('missing_symbols'),
+                  'load_error': dep['system_only_load_error']}
+                 for dep in item['imports'] if dep['system_only_load_error'] or dep.get('missing_symbols')]}
+    for item in result['binaries']]}, ensure_ascii=False))

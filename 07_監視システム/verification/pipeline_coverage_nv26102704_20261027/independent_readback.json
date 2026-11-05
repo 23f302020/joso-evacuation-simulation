@@ -1,0 +1,37 @@
+{
+  "at_jst": "2026-10-27T23:31:35.630392+09:00",
+  "status": "CURRENT_CONTIGUOUS_DATA_INDEPENDENT_BOUNDARY_READBACK_PASS",
+  "report_sha256": "d6a4e9e9defa747fdb5d3d1977a07986f03551ab73395f4a7eabeda64b835a9d",
+  "stages": [
+    {
+      "name": "execute",
+      "same_creation_points": 12,
+      "first": "2026-10-27T19:33:42.741398+09:00",
+      "last": "2026-10-27T19:44:42.820910+09:00",
+      "independent_covered_seconds": 660.079512,
+      "missing_seconds": 45.96192999999994,
+      "fraction": 0.9349019373851429
+    },
+    {
+      "name": "validate",
+      "same_creation_points": 17,
+      "first": "2026-10-27T22:43:53.079743+09:00",
+      "last": "2026-10-27T22:59:53.089306+09:00",
+      "independent_covered_seconds": 960.009563,
+      "missing_seconds": 28.703205000000025,
+      "fraction": 0.9709691166848571
+    },
+    {
+      "name": "record",
+      "same_creation_points": 16,
+      "first": "2026-10-27T23:00:53.090077+09:00",
+      "last": "2026-10-27T23:15:53.098623+09:00",
+      "independent_covered_seconds": 900.008546,
+      "missing_seconds": 62.52099799999996,
+      "fraction": 0.9350451127555208
+    }
+  ],
+  "stage_B_complete": false,
+  "reason": "execute and record below95%; no missing endpoints or unobserved CPU interval filled",
+  "scope": "Current same-creation contiguous samples independently checked; general invalid/gap/overlap contracts are tested separately. No speedup or cause claim."
+}

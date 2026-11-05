@@ -1,0 +1,41 @@
+{
+  "at_jst": "2026-10-27T10:46:53.170480+09:00",
+  "status": "CURRENT_ANALYSIS_ENTRY_REFERENCE_CHECKED_NOT_ACTUAL_ANALYSIS",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "config_source": "04_プログラム/config/jdrt_realtime_choice_v1.json",
+  "config_sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+  "workspace_selected": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3",
+  "ledger_selected": "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v3_セル検証台帳.jsonl",
+  "registered_cells": 70,
+  "record_documents_selected": 6,
+  "source_files": {
+    "G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+    "G6_要求待ち・打切り_集計.py": "66978b52c8d8a96080e2544f19a17a0b758c2fbd28c4d97a99ff0c0c479854b7",
+    "G6_副指標・理論上限_集計.py": "8b030aa56f9f977aabf16833ab01496546b7fe5ae227adede81a21501ee57d2e",
+    "G6_副指標・理論上限_実装証跡.json": "1d6450893499eb62c573a6c60faba0b73cbd559f81dd9e7faada7448f161a3dd"
+  },
+  "primary_and_two_test_sources_match_20261022_review": true,
+  "current_contract_review": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_registration_gate_20261022/review.json",
+  "current_contract_review_sha256": "8c9596d305e783d86797de3b7ab7adca36a65f09c049ecb2f76cc65199edb9ac",
+  "reused_contract_test_scope": {
+    "integrated": 7,
+    "primary": 6,
+    "integrated_seconds": 60.282,
+    "red_seconds": 18.654
+  },
+  "tests_rerun": false,
+  "stale_checkpoint_preparation_preserved": {
+    "source": "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py",
+    "source_sha256": "4ceaef07c440896c513055ab4c36aa7f6e6e67128315466124eb1dfcdf5f4015",
+    "contract_report": "06_研究結果/jdrt/goal_20261017/G6_主指標分析器_準備検証_20261018b.json",
+    "actual_all_registered_analysis_completed": false
+  },
+  "stale_metadata_resolution": "Initial readback assertion found Oct18 source memo4cea stale. Current7edf exactly matches Oct22 registration-gate review and both current test sources. No unlogged runtime change inferred; old checkpoint/history preserved.",
+  "secondary_runtime_policy_proof_current": true,
+  "review_scope": "Read complete_records/load_secondary_component and dynamic CONFIG: requires full registered set, unique IDs, same registration/protocol/core/PASS, all6 document markers, no PREPARED/RUNNING, current common5/config/primary validation. New v3 selected by config, not old ledger.",
+  "review_limit": "Static reference/source identity review reuses unchanged recorded13-contract scope. No real population/results aggregated, no all70 analysis or new test execution. Full independently accepted set and registered output audit remain mandatory.",
+  "research_code_or_input_changed": false,
+  "actual_all70_analysis": false,
+  "research_direction_interpreted": false,
+  "next": "After all70 records run existing all-cell-gated entry, independently audit outputs/registered differences/secondary metrics before report."
+}

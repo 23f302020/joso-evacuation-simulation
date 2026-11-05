@@ -17,6 +17,8 @@ Choose the helper that matches the registered series:
 
 ## Progress reporting (user policy, 2026-10-20)
 
+Follow [現状把握の文章・記録ルール](../../../00_全体整理/現状把握_文章・記録ルール.md) for reader-facing prose. Use ordinary Japanese, state what changed and what remains unknown, and keep technical IDs in supporting evidence. `choice_sync_status.py` separates the reader summary from the operational summary and translates only the frozen recorder's exact progress-line format. After formal recording, use its read-only preview and ordinary display-sync workflow when updating the current display; never edit the frozen common-five recorder for presentation. Preserve all formal markers and use `status_progress.py --check` to confirm dated-record agreement. Earlier detailed status prose is preserved in the linked 2026-10-22 technical history.
+
 Write concise dated bullets first to `00_全体整理/現状把握_静的・動的シミュレーション整理.md` inside `PROGRESS_LOG_BEGIN/END`. Reflect that region to the status HTML with `scripts/status_progress.py --apply`; `--check` verifies agreement. Use one `### YYYY-MM-DD` heading per date and short `- ` bullets. HTML renders dates as collapsible details, newest first and only the newest open. Do not generate the whole HTML or run gen_index.py.
 
 Put detailed changes, reasons, checks and limitations in the commit-message body when pushing to GitHub. Use `01_経過報告/` only for PPTX presentation work; preserve existing Markdown without daily updates. Current choice recording updates six documents (Markdown before derived HTML) and one ledger in a single rollback/recovery scope. Completed legacy helpers and their old record contracts remain historical; do not rerun their writers against the old progress Markdown. Commit, push and deployment each follow the user's authorized scope.
@@ -32,6 +34,14 @@ Put detailed changes, reasons, checks and limitations in the commit-message body
 Model selection follows the [official task-based model guidance](https://developers.openai.com/api/docs/guides/model-selection). Research acceptance remains determined by the fixed protocol and independent validation.
 
 ## Required loop
+
+### Re-entry after interruption or handoff
+
+Read current context and the assigned series sources before acting; previous commentary and a progress note are not current process or adoption evidence. Run the series' read-only status/check, reconcile run ID, manifest, PID identity and last observed time, and inspect existing registered records before any retry. A stale observation does not prove a process is alive or dead. If a run is active, continue checking that run; if completed but unrecorded, independently validate and finish the existing record transaction before considering a new start. On missing/partial evidence or identity mismatch, preserve it and diagnose; use the existing authorized recovery path only after its prerequisites are established. Do not recreate a run, replay a start, or rerun a completed series to recover context.
+
+Check whether the last PASS belongs to the current implementation/input SHA and required scope. Reuse valid unchanged evidence; identify stale or missing checks without inventing coverage. Leave the next concrete action, evidence paths/SHA, last observation time and unresolved gate in existing canonical records. This is a project-specific re-entry procedure, informed by quickstart session orientation, not an imported autonomous runtime, new feature list, automatic server startup, commit, simulation or acceptance rule.
+
+### One-cell transaction
 
 1. Read the repository `AGENTS.md` and current `context.md` as needed; reuse unchanged context. Apply the Fact-Forcing Gate at the scope defined in `AGENTS.md`, including run start, recovery, and formal recording. Read-only status/check/validation calls do not require repeating the four-item Gate.
 2. Run `status`. If it reports a completed but unrecorded cell, run `record` before starting anything else.
@@ -77,3 +87,8 @@ After every registered v2 core cell is completed and recorded, run `scripts/jdrt
 - Never hardcode observed research results. Read them from immutable run artifacts.
 - Do not make direction claims until the relevant protocol's complete registered core set is validated and recorded; for choice this is all70, as its reference and PAP specify.
 - The helper does not automate research-policy changes, sensitivity design, final interpretation, or WEB3.
+
+
+## Independent event monitoring (2026-10-20)
+
+The user authorized a chat-independent Windows observer in `07_監視システム/`. Before creating another heartbeat, read its [operations](../../../07_監視システム/README.md) and run its `watch.py status`; do not duplicate an existing monitor. It checks process exits every second and discovers state/progress/log changes every ten seconds without LLM calls. Events alone trigger notification and read-only Codex triage. This replaces routine fifteen-minute **AI** wakeups for configured targets, not the registered `check → validate → record → status` gates. No automatic research start, kill, recovery or adoption is exposed. Existing detailed helpers remain available for evidence audits. Read [routine operations](references/routine_operations.md) for the integration record and boundaries.

@@ -1,0 +1,47 @@
+{
+  "at_jst": "2026-10-30T22:15:40.653726+09:00",
+  "run_id": "sv26103005",
+  "time_sec": 2700.0,
+  "end_sec": 21600,
+  "wall_sec": 179.4944237000309,
+  "counts": {
+    "steps": 5400,
+    "controller_ticks": 2701,
+    "snapshots": 46,
+    "teleports": 0,
+    "collisions": 0,
+    "transition_rows": 88409,
+    "closed_entry_rows": 0,
+    "ambiguous_transitions": 0,
+    "candidate_rows": 4504,
+    "dispatch_cycles": 46,
+    "missing_vehicle_subscriptions": 0,
+    "missing_person_subscriptions": 0,
+    "reentry_pending_frames": 30,
+    "departure_pending_frames": 119,
+    "snapshot_actor_rows": 7468
+  },
+  "people_states": {
+    "not_ready": 7551,
+    "capacity_rejected": 325,
+    "no_origin_connection": 212,
+    "admitted": 381,
+    "travelling_car": 219,
+    "travelling_walk": 159,
+    "waiting_origin": 114,
+    "no_route": 238,
+    "boarding": 1,
+    "assigned_origin": 2,
+    "boundary_exit": 2505,
+    "walk_limit": 148,
+    "initial_or_current_closed": 110
+  },
+  "request_states": {
+    "cancelled_timeout": 203,
+    "served": 10,
+    "rejected_input": 23,
+    "boarding": 1,
+    "pending": 114,
+    "accepted": 2
+  }
+}

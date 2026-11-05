@@ -1,4 +1,20 @@
 """Physical vehicle controls for realtime_choice_v1. Core runner is not ready yet."""
+from itertools import count
+
+_remaining_route_ids = count()
+
+def observed_emergency_deceleration(subscription, constants):
+    """Require the native emergency limit; never derive it from wished braking."""
+    import math
+    try:
+        emergency = float(subscription[constants.VAR_EMERGENCY_DECEL])
+        wished = float(subscription[constants.VAR_DECEL])
+    except (KeyError, TypeError, ValueError) as error:
+        raise RuntimeError('Missing native emergency deceleration observation') from error
+    if not (math.isfinite(emergency) and math.isfinite(wished) and emergency >= wished > 0):
+        raise RuntimeError('Invalid native emergency deceleration observation')
+    return emergency
+
 
 def clear_vehicle_stops(connection, vehicle_id):
     """Release an active stop and remove all scheduled stops without teleporting."""
@@ -19,7 +35,11 @@ def set_vehicle_route(connection, vehicle_id, path, lane_info, duration, stop_po
     if not 0 <= stop_pos <= length:
         raise ValueError('Stop position outside target lane')
     clear_vehicle_stops(connection, vehicle_id)
-    connection.vehicle.setRoute(vehicle_id, path)
+    # setRoute prepends traveled edges and rechecks their current permissions.
+    # A named remaining route keeps closed history out of this future-path check.
+    route_id = 'jdrt_choice_remaining_' + str(next(_remaining_route_ids))
+    connection.route.add(route_id, path)
+    connection.vehicle.setRouteID(vehicle_id, route_id)
     connection.vehicle.setStop(vehicle_id, target, pos=stop_pos,
                                laneIndex=lane, duration=duration,
                                flags=STOP_PARKING)
@@ -338,6 +358,59 @@ def vehicle_closure_action(path,current,route_index,closed):
     next_external=remaining[0]
     return ('remove_junction' if next_external in closed else 'defer'),next_external
 
+def passenger_transition_links(native_net):
+    """Bind each passenger internal lane to its external source/target pairs."""
+    lanes = {lane.attrib['id']: (edge.attrib['id'], lane.attrib)
+             for edge in native_net.findall('edge') for lane in edge.findall('lane')}
+    outgoing = defaultdict(list)
+    connections = [dict(link.attrib) for link in native_net.findall('connection')]
+    for link in connections:
+        outgoing[link['from'] + '_' + link['fromLane']].append(link)
+
+    def permits(lane_id):
+        if lane_id not in lanes:
+            raise RuntimeError('Unknown transition connection lane: ' + lane_id)
+        attributes = lanes[lane_id][1]
+        allowed, denied = attributes.get('allow', '').split(), attributes.get('disallow', '').split()
+        return (not allowed or 'passenger' in allowed or 'all' in allowed) and not {'passenger', 'all'}.intersection(denied)
+
+    links = defaultdict(set)
+    for connection in connections:
+        source, target = connection['from'], connection['to']
+        if source.startswith(':') or target.startswith(':') or not connection.get('via'):
+            continue
+        if not (permits(source + '_' + connection['fromLane']) and permits(target + '_' + connection['toLane'])):
+            continue
+        pending, visited = [connection['via']], set()
+        while pending:
+            lane = pending.pop()
+            if lane in visited:
+                continue
+            visited.add(lane)
+            if lane not in lanes or not lanes[lane][0].startswith(':'):
+                raise RuntimeError('Unknown transition internal lane: ' + lane)
+            if not permits(lane):
+                continue
+            links[lane].add((source, target))
+            pending.extend(link['via'] for link in outgoing[lane]
+                           if link['to'] == target and link.get('via'))
+    return dict(links)
+
+
+def passenger_transition_source(path, edge, lane, index, links):
+    """An outgoing internal lane certifies its source route occurrence passed."""
+    if not 0 <= index < len(path):
+        raise RuntimeError('Transition route index outside controlled route')
+    if edge.startswith(':'):
+        if (lane.rsplit('_', 1)[0] != edge or index + 1 >= len(path)
+                or (path[index], path[index + 1]) not in links.get(lane, set())):
+            raise RuntimeError('Internal transition not bound to controlled route occurrence')
+        return path[index]
+    if path[index] != edge:
+        raise RuntimeError('External transition and controlled route index disagree')
+    return edge
+
+
 def closure_timing(scheduled_sec,step_sec):
     if not math.isfinite(scheduled_sec) or scheduled_sec<0 or step_sec<=0:
         raise ValueError('Invalid closure clock')
@@ -400,7 +473,9 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
         fixture_parameters = json.loads(parameter_path.read_text(encoding='utf-8'))
         if (fixture_parameters['protocol'] != 'realtime_choice_fixture_v1'
                 or fixture_parameters['workspace'] != parameters['workspace']
-                or fixture_parameters['execution'] != parameters['execution']):
+                or fixture_parameters['execution'] != parameters['execution']
+                or fixture_parameters['registration_id'] != parameters['registration_id']
+                or fixture_parameters['native_diagnostic_observation_contract'] != parameters['native_diagnostic_observation_contract']):
             raise ValueError('Invalid technical fixture protocol/workspace/implementation set')
         parameters = fixture_parameters
         input_manifest = json.loads((directory / 'manifest.json').read_text(encoding='utf-8'))
@@ -439,9 +514,16 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
     run_dir = (workspace / 'technical' / run_id / 'execution' if purpose == 'fixture'
                else workspace / ('runs' if purpose == 'core' else 'smoke') / run_id)
     run_dir.mkdir(parents=True, exist_ok=False)
+    native_contract = parameters['native_diagnostic_observation_contract']
+    if (native_contract['raw_vehicle_emergency_deceleration_required'] is not True
+            or native_contract['motion_integrator'] != 'semi_implicit_euler_explicit_same_as_prior_native_default'
+            or native_contract['emergency_warning_threshold'] != 1.):
+        raise ValueError('Unsupported native diagnostic observation contract')
     scenario, seed = cell['scenario'], cell['seed']
     end = parameters['simulation']['duration_sec'] if purpose in ('core', 'fixture') else smoke_end
-    manifest = {'protocol': parameters['protocol'], 'run_id': run_id, **cell, 'purpose': purpose,
+    manifest = {'protocol': parameters['protocol'], 'registration_id': parameters['registration_id'],
+                'native_diagnostic_observation_contract': parameters['native_diagnostic_observation_contract'],
+                'run_id': run_id, **cell, 'purpose': purpose,
                 'pid': os.getpid(), 'status': 'RUNNING', 'started_at_jst': stamp(),
                 'parameter_sha256': sha(parameter_path),
                 'parameter_path': parameter_path.relative_to(ROOT).as_posix(),
@@ -575,6 +657,8 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
         command = [str(binary), '--net-file', os.path.relpath(directory / 'bounded.net.xml', run_dir),
             '--route-files', 'types.rou.xml', '--step-length', str(manifest['step_sec']), '--seed', str(seed),
             '--begin', '0', '--end', str(end + 1), '--time-to-teleport', '-1', '--collision.action', 'teleport',
+            '--step-method.ballistic', 'false', '--emergencydecel.warning-threshold',
+            str(parameters['native_diagnostic_observation_contract']['emergency_warning_threshold']),
             '--no-step-log', 'true', '--duration-log.disable', 'true', '--error-log', 'sumo_errors.log',
             '--log', 'sumo.log', '--tripinfo-output', 'tripinfo.xml', '--tripinfo-output.write-unfinished', 'true']
         previous_directory = Path.cwd()
@@ -585,10 +669,13 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
         finally:
             os.chdir(previous_directory)
         t = connection
+        manifest['owned_native_process'] = {'pid': t._process.pid, 'popen_args': list(t._process.args)}
         manifest['sumo_version'] = list(t.getVersion())
+        atomic_json(run_dir / 'manifest.json', manifest)
         import sumolib
         net = sumolib.net.readNet(str(directory / 'bounded.net.xml'), withInternal=True)
         walk_topology = pedestrian_endpoint_topology(net, original_nodes['pedestrian'])
+        transition_links = passenger_transition_links(ET.parse(directory / 'bounded.net.xml').getroot())
         lane_info, lanes_by_edge = {}, defaultdict(list)
         for edge in net.getEdges():
             name = edge.getID()
@@ -601,7 +688,7 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
             if name not in original_nodes['passenger'] and name not in original_nodes['pedestrian']:
                 for lane in lanes_by_edge[name]:
                     t.lane.setDisallowed(lane, sorted(set(t.lane.getDisallowed(lane)) | {'passenger'}))
-        vehicle_vars = [tc.VAR_ROAD_ID, tc.VAR_LANE_ID, tc.VAR_SPEED, tc.VAR_DECEL, tc.VAR_DISTANCE, tc.VAR_ROUTE_INDEX,
+        vehicle_vars = [tc.VAR_ROAD_ID, tc.VAR_LANE_ID, tc.VAR_SPEED, tc.VAR_DECEL, tc.VAR_EMERGENCY_DECEL, tc.VAR_DISTANCE, tc.VAR_ROUTE_INDEX,
                         tc.VAR_POSITION, tc.VAR_LANEPOSITION, tc.VAR_STOPSTATE]
         person_vars = [tc.VAR_ROAD_ID, tc.VAR_SPEED, tc.VAR_POSITION, tc.VAR_LANEPOSITION]
         for vid, vehicle in vehicles.items():
@@ -623,7 +710,7 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
             'traffic_halting_count', 'parked_count', 'reentry_pending_count', 'unplaced_reentry_count',
             'closed', 'observation_status'])
         actors = gz_writer('actor_observations.csv.gz', ['time_sec', 'phase', 'actor_id', 'kind', 'road_id', 'lane_id',
-            'lane_position_m', 'x', 'y', 'speed_mps', 'decel_mps2', 'distance_m', 'route_index', 'route_version', 'stop_state', 'status',
+            'lane_position_m', 'x', 'y', 'speed_mps', 'decel_mps2', 'emergency_decel_mps2', 'distance_m', 'route_index', 'route_version', 'stop_state', 'status',
             'active_person', 'members', 'observation_kind', 'reentry_source_edge',
             'native_stop_lane_id', 'native_stop_start_pos_m', 'native_stop_end_pos_m', 'native_stop_flags'])
         snapshot_actors = gz_writer('snapshot_actor_observations.csv.gz', ['time_sec', 'phase', 'actor_id',
@@ -783,10 +870,13 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
                   source_lane_position=position, source_distance_m=distance, target_position_m=target_position,
                   route_version=v['route_version'], source_route_index=source_index,
                   reentry_expected=v['reentry_expected'])
-        def observe_transition(actor, mode, edge, now, path):
+        def observe_transition(actor, mode, edge, now, path, observed_index=None):
             prior = last.get(actor)
-            index = (int(latest_v.get(actor, {}).get(tc.VAR_ROUTE_INDEX, len(path) - 1))
-                     if mode == 'passenger' else path.index(edge))
+            if mode == 'passenger':
+                index = (observed_index if observed_index is not None else
+                         int(latest_v.get(actor, {}).get(tc.VAR_ROUTE_INDEX, len(path) - 1)))
+            else:
+                index = path.index(edge)
             if mode == 'passenger' and actor in vehicles and vehicles[actor]['status'] == 'arrived':
                 index = len(path) - 1
             if prior and (prior[0] != edge or index > prior[2]):
@@ -826,7 +916,8 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
                     if v['kind'] == 'drt' and v['status'] != 'stranded':
                         raise RuntimeError('DRT vehicle left controlled service: ' + vid)
                     if v['kind'] == 'car' and v['status'] not in ('stranded', 'arrived'):
-                        observe_transition(vid, 'passenger', v['route'][-1], now, v['route'])
+                        observe_transition(vid, 'passenger', v['route'][-1], now, v['route'],
+                                           observed_index=len(v['route']) - 1)
                         pending_arrivals.extend(v['members'])
                         v['status'] = 'arrived'
                         last.pop(vid, None)
@@ -956,6 +1047,7 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
                               departPos=str(origin_position), arrivalPos=str(target_position))
                 t.vehicle.subscribe(vid, vehicle_vars)
                 v.update(route=path, status='pending')
+                last[vid] = (path[0], now, 0)
                 for pid in v['members']:
                     people[pid]['depart_sec'] = now
                     person_state(pid, 'travelling_car', now)
@@ -1246,6 +1338,7 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
                             'lane_id': data[tc.VAR_LANE_ID],
                             'lane_position_m': data[tc.VAR_LANEPOSITION], 'x': xy[0], 'y': xy[1], 'speed_mps': speed,
                             'decel_mps2': data[tc.VAR_DECEL],
+                            'emergency_decel_mps2': observed_emergency_deceleration(data, tc),
                             'distance_m': data[tc.VAR_DISTANCE], 'stop_state': data[tc.VAR_STOPSTATE],
                             'route_index': data[tc.VAR_ROUTE_INDEX], 'route_version': v['route_version'],
                             'status': v['status'], 'active_person': v['active_person'], 'members': json.dumps(v['members']),
@@ -1285,9 +1378,16 @@ def run(cell_id, run_id, purpose='core', smoke_end=1800, fixture_directory=None)
                         if speed > maximum + 1e-6:
                             raise RuntimeError('Pedestrian speed exceeds registered maximum: ' + actor)
                         p['walk_speed_integral_m'] += speed * manifest['step_sec']
-                    if not edge or edge.startswith(':'):
+                    if not edge:
                         continue
                     path = vehicles[actor]['route'] if mode == 'passenger' else walking_routes.get(actor, [])
+                    if mode == 'passenger':
+                        if observed_state == 'reentry_pending':
+                            continue
+                        edge = passenger_transition_source(path, edge, data[tc.VAR_LANE_ID],
+                                                           int(data[tc.VAR_ROUTE_INDEX]), transition_links)
+                    elif edge.startswith(':'):
+                        continue
                     observe_transition(actor, mode, edge, upper, path)
         for pid, p in people.items():
             if p['status'] not in FINAL:

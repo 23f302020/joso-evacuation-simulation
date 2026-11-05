@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-27T19:29:07.518743+09:00",
+  "status": "PASS_ACTUAL_WINDOWS_STARTUP_PROCESS_PROBE",
+  "scope": "One temporary Python-only process, no SUMO/research/native or real run manifest",
+  "source_sha256": "dae5a430d45af6de52fa9584fc421f791655758f0cd380c7f381f30527e4346d",
+  "launcher_pid": 33580,
+  "actual_manifest_pid": 904,
+  "observed_startup_processes": [
+    {
+      "state": "alive",
+      "created": 134375705442930058,
+      "pid": 33580
+    },
+    {
+      "state": "alive",
+      "created": 134375705443336090,
+      "pid": 904
+    }
+  ],
+  "verified_command_pids": [
+    904,
+    33580
+  ],
+  "events": [],
+  "original_child_exit_code": 0
+}

@@ -1,0 +1,229 @@
+{
+  "at_jst": "2026-10-22T22:22:47.525733+09:00",
+  "scope": "file-stat and elapsed manifest intervals only; no result metrics or acceptance",
+  "runs": [
+    {
+      "run_id": "nc26102201",
+      "scenario": "R0",
+      "manifest_sha256": "612db7210855e24405210a83ad8535ffa0a29857bfafb0862aca7276d31b165b",
+      "native_manifest_wall_interval_sec": 712.205422,
+      "run_directory_files": 24,
+      "run_directory_bytes": 384989139,
+      "files": [
+        {
+          "path": "actor_observations.csv.gz",
+          "bytes": 293725254
+        },
+        {
+          "path": "candidates.csv.gz",
+          "bytes": 274
+        },
+        {
+          "path": "common_realization.csv",
+          "bytes": 1539282
+        },
+        {
+          "path": "dispatch_cycles.csv.gz",
+          "bytes": 107
+        },
+        {
+          "path": "edge_observations.csv.gz",
+          "bytes": 66894501
+        },
+        {
+          "path": "events.jsonl",
+          "bytes": 13247965
+        },
+        {
+          "path": "facility_results.csv",
+          "bytes": 105
+        },
+        {
+          "path": "manifest.json",
+          "bytes": 39518
+        },
+        {
+          "path": "person_results.csv",
+          "bytes": 2406472
+        },
+        {
+          "path": "preflight_ready.json",
+          "bytes": 359656
+        },
+        {
+          "path": "progress.json",
+          "bytes": 908
+        },
+        {
+          "path": "request_results.csv",
+          "bytes": 271
+        },
+        {
+          "path": "snapshot_actor_observations.csv.gz",
+          "bytes": 764264
+        },
+        {
+          "path": "sumo.log",
+          "bytes": 1042
+        },
+        {
+          "path": "sumo_errors.log",
+          "bytes": 518
+        },
+        {
+          "path": "transitions.csv.gz",
+          "bytes": 3336986
+        },
+        {
+          "path": "tripinfo.xml",
+          "bytes": 2033855
+        },
+        {
+          "path": "types.rou.xml",
+          "bytes": 323
+        },
+        {
+          "path": "vehicle_results.csv",
+          "bytes": 298944
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_choice_policy.py",
+          "bytes": 7128
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_realtime_choice.py",
+          "bytes": 92681
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+          "bytes": 11434
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+          "bytes": 174769
+        },
+        {
+          "path": "implementation/.agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py",
+          "bytes": 52882
+        }
+      ]
+    },
+    {
+      "run_id": "nc26102202",
+      "scenario": "R1",
+      "manifest_sha256": "ddab99ab9a959b01e604e7c034d2857f8eb3c97a460b2e9ca1d30e02899c2586",
+      "native_manifest_wall_interval_sec": 899.527627,
+      "run_directory_files": 24,
+      "run_directory_bytes": 388983104,
+      "files": [
+        {
+          "path": "actor_observations.csv.gz",
+          "bytes": 296979809
+        },
+        {
+          "path": "candidates.csv.gz",
+          "bytes": 123952
+        },
+        {
+          "path": "common_realization.csv",
+          "bytes": 1539192
+        },
+        {
+          "path": "dispatch_cycles.csv.gz",
+          "bytes": 2364
+        },
+        {
+          "path": "edge_observations.csv.gz",
+          "bytes": 66915533
+        },
+        {
+          "path": "events.jsonl",
+          "bytes": 13790994
+        },
+        {
+          "path": "facility_results.csv",
+          "bytes": 105
+        },
+        {
+          "path": "manifest.json",
+          "bytes": 39615
+        },
+        {
+          "path": "person_results.csv",
+          "bytes": 2409253
+        },
+        {
+          "path": "preflight_ready.json",
+          "bytes": 359656
+        },
+        {
+          "path": "progress.json",
+          "bytes": 992
+        },
+        {
+          "path": "request_results.csv",
+          "bytes": 14755
+        },
+        {
+          "path": "snapshot_actor_observations.csv.gz",
+          "bytes": 768072
+        },
+        {
+          "path": "sumo.log",
+          "bytes": 1451
+        },
+        {
+          "path": "sumo_errors.log",
+          "bytes": 927
+        },
+        {
+          "path": "transitions.csv.gz",
+          "bytes": 3368952
+        },
+        {
+          "path": "tripinfo.xml",
+          "bytes": 2029059
+        },
+        {
+          "path": "types.rou.xml",
+          "bytes": 323
+        },
+        {
+          "path": "vehicle_results.csv",
+          "bytes": 299206
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_choice_policy.py",
+          "bytes": 7128
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_realtime_choice.py",
+          "bytes": 92681
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+          "bytes": 11434
+        },
+        {
+          "path": "implementation/04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+          "bytes": 174769
+        },
+        {
+          "path": "implementation/.agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py",
+          "bytes": 52882
+        }
+      ]
+    }
+  ],
+  "registration_id": "choice_native_observation_v2_20261021",
+  "free_bytes": 260716937216,
+  "registered_one_run_reserve_bytes": 193692970309,
+  "one_run_reserve_currently_available": true,
+  "policy_changed": false,
+  "limitations": [
+    "Two completed first-seed settings are not all-condition runtime/storage benchmarks",
+    "Directory stats do not rehash outputs or prove formal adoption; R1 formal record still in progress",
+    "Do not replace existing rolling reserve, reduce observations, or delete historical runs based on these stats",
+    "Record revalidation/analysis/report time and future correctness or capacity stops remain separate"
+  ]
+}

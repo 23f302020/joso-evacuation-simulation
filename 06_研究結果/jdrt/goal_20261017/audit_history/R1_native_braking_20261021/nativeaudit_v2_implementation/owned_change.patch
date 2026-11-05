@@ -1,0 +1,598 @@
+--- 04_プログラム/scripts/jdrt_realtime_choice.py.before
++++ 04_プログラム/scripts/jdrt_realtime_choice.py
+@@ -1,4 +1,17 @@
+ """Physical vehicle controls for realtime_choice_v1. Core runner is not ready yet."""
++
++def observed_emergency_deceleration(subscription, constants):
++    """Require the native emergency limit; never derive it from wished braking."""
++    import math
++    try:
++        emergency = float(subscription[constants.VAR_EMERGENCY_DECEL])
++        wished = float(subscription[constants.VAR_DECEL])
++    except (KeyError, TypeError, ValueError) as error:
++        raise RuntimeError('Missing native emergency deceleration observation') from error
++    if not (math.isfinite(emergency) and math.isfinite(wished) and emergency >= wished > 0):
++        raise RuntimeError('Invalid native emergency deceleration observation')
++    return emergency
++
+ 
+ def clear_vehicle_stops(connection, vehicle_id):
+     """Release an active stop and remove all scheduled stops without teleporting."""
+@@ -400,7 +413,9 @@
+         fixture_parameters = json.loads(parameter_path.read_text(encoding='utf-8'))
+         if (fixture_parameters['protocol'] != 'realtime_choice_fixture_v1'
+                 or fixture_parameters['workspace'] != parameters['workspace']
+-                or fixture_parameters['execution'] != parameters['execution']):
++                or fixture_parameters['execution'] != parameters['execution']
++                or fixture_parameters['registration_id'] != parameters['registration_id']
++                or fixture_parameters['native_diagnostic_observation_contract'] != parameters['native_diagnostic_observation_contract']):
+             raise ValueError('Invalid technical fixture protocol/workspace/implementation set')
+         parameters = fixture_parameters
+         input_manifest = json.loads((directory / 'manifest.json').read_text(encoding='utf-8'))
+@@ -439,9 +454,16 @@
+     run_dir = (workspace / 'technical' / run_id / 'execution' if purpose == 'fixture'
+                else workspace / ('runs' if purpose == 'core' else 'smoke') / run_id)
+     run_dir.mkdir(parents=True, exist_ok=False)
++    native_contract = parameters['native_diagnostic_observation_contract']
++    if (native_contract['raw_vehicle_emergency_deceleration_required'] is not True
++            or native_contract['motion_integrator'] != 'semi_implicit_euler_explicit_same_as_prior_native_default'
++            or native_contract['emergency_warning_threshold'] != 1.):
++        raise ValueError('Unsupported native diagnostic observation contract')
+     scenario, seed = cell['scenario'], cell['seed']
+     end = parameters['simulation']['duration_sec'] if purpose in ('core', 'fixture') else smoke_end
+-    manifest = {'protocol': parameters['protocol'], 'run_id': run_id, **cell, 'purpose': purpose,
++    manifest = {'protocol': parameters['protocol'], 'registration_id': parameters['registration_id'],
++                'native_diagnostic_observation_contract': parameters['native_diagnostic_observation_contract'],
++                'run_id': run_id, **cell, 'purpose': purpose,
+                 'pid': os.getpid(), 'status': 'RUNNING', 'started_at_jst': stamp(),
+                 'parameter_sha256': sha(parameter_path),
+                 'parameter_path': parameter_path.relative_to(ROOT).as_posix(),
+@@ -575,6 +597,8 @@
+         command = [str(binary), '--net-file', os.path.relpath(directory / 'bounded.net.xml', run_dir),
+             '--route-files', 'types.rou.xml', '--step-length', str(manifest['step_sec']), '--seed', str(seed),
+             '--begin', '0', '--end', str(end + 1), '--time-to-teleport', '-1', '--collision.action', 'teleport',
++            '--step-method.ballistic', 'false', '--emergencydecel.warning-threshold',
++            str(parameters['native_diagnostic_observation_contract']['emergency_warning_threshold']),
+             '--no-step-log', 'true', '--duration-log.disable', 'true', '--error-log', 'sumo_errors.log',
+             '--log', 'sumo.log', '--tripinfo-output', 'tripinfo.xml', '--tripinfo-output.write-unfinished', 'true']
+         previous_directory = Path.cwd()
+@@ -585,7 +609,9 @@
+         finally:
+             os.chdir(previous_directory)
+         t = connection
++        manifest['owned_native_process'] = {'pid': t._process.pid, 'popen_args': list(t._process.args)}
+         manifest['sumo_version'] = list(t.getVersion())
++        atomic_json(run_dir / 'manifest.json', manifest)
+         import sumolib
+         net = sumolib.net.readNet(str(directory / 'bounded.net.xml'), withInternal=True)
+         walk_topology = pedestrian_endpoint_topology(net, original_nodes['pedestrian'])
+@@ -601,7 +627,7 @@
+             if name not in original_nodes['passenger'] and name not in original_nodes['pedestrian']:
+                 for lane in lanes_by_edge[name]:
+                     t.lane.setDisallowed(lane, sorted(set(t.lane.getDisallowed(lane)) | {'passenger'}))
+-        vehicle_vars = [tc.VAR_ROAD_ID, tc.VAR_LANE_ID, tc.VAR_SPEED, tc.VAR_DECEL, tc.VAR_DISTANCE, tc.VAR_ROUTE_INDEX,
++        vehicle_vars = [tc.VAR_ROAD_ID, tc.VAR_LANE_ID, tc.VAR_SPEED, tc.VAR_DECEL, tc.VAR_EMERGENCY_DECEL, tc.VAR_DISTANCE, tc.VAR_ROUTE_INDEX,
+                         tc.VAR_POSITION, tc.VAR_LANEPOSITION, tc.VAR_STOPSTATE]
+         person_vars = [tc.VAR_ROAD_ID, tc.VAR_SPEED, tc.VAR_POSITION, tc.VAR_LANEPOSITION]
+         for vid, vehicle in vehicles.items():
+@@ -623,7 +649,7 @@
+             'traffic_halting_count', 'parked_count', 'reentry_pending_count', 'unplaced_reentry_count',
+             'closed', 'observation_status'])
+         actors = gz_writer('actor_observations.csv.gz', ['time_sec', 'phase', 'actor_id', 'kind', 'road_id', 'lane_id',
+-            'lane_position_m', 'x', 'y', 'speed_mps', 'decel_mps2', 'distance_m', 'route_index', 'route_version', 'stop_state', 'status',
++            'lane_position_m', 'x', 'y', 'speed_mps', 'decel_mps2', 'emergency_decel_mps2', 'distance_m', 'route_index', 'route_version', 'stop_state', 'status',
+             'active_person', 'members', 'observation_kind', 'reentry_source_edge',
+             'native_stop_lane_id', 'native_stop_start_pos_m', 'native_stop_end_pos_m', 'native_stop_flags'])
+         snapshot_actors = gz_writer('snapshot_actor_observations.csv.gz', ['time_sec', 'phase', 'actor_id',
+@@ -1246,6 +1272,7 @@
+                             'lane_id': data[tc.VAR_LANE_ID],
+                             'lane_position_m': data[tc.VAR_LANEPOSITION], 'x': xy[0], 'y': xy[1], 'speed_mps': speed,
+                             'decel_mps2': data[tc.VAR_DECEL],
++                            'emergency_decel_mps2': observed_emergency_deceleration(data, tc),
+                             'distance_m': data[tc.VAR_DISTANCE], 'stop_state': data[tc.VAR_STOPSTATE],
+                             'route_index': data[tc.VAR_ROUTE_INDEX], 'route_version': v['route_version'],
+                             'status': v['status'], 'active_person': v['active_person'], 'members': json.dumps(v['members']),
+--- 04_プログラム/scripts/jdrt_realtime_choice_inputs.py.before
++++ 04_プログラム/scripts/jdrt_realtime_choice_inputs.py
+@@ -163,7 +163,8 @@
+     sources = dict(prior['source_sha256'])
+     for path in (PARAM, parent, Path(__file__), ROOT / params['pap'],
+                  ROOT / params['registry_document'], ROOT / params['state_contract'],
+-                 ROOT / params['alignment_addendum'], ROOT / params['preregistration_archive'],
++                 ROOT / params['alignment_addendum'], ROOT / params['native_observation_addendum'],
++                 ROOT / params['preregistration_archive'],
+                  ROOT / params['previous_choice_input_manifest'],
+                  ROOT / '04_プログラム/scripts/jdrt_choice_policy.py'):
+         sources[path.relative_to(ROOT).as_posix()] = sha(path)
+@@ -171,7 +172,9 @@
+     if any(artifacts[name] != expected for name, expected in prior['artifacts'].items()):
+         raise ValueError('Physical copy differs from parent')
+     manifest = {
+-        'protocol': params['protocol'], 'created_at_jst': datetime.now(timezone(timedelta(hours=9))).isoformat(),
++        'protocol': params['protocol'], 'registration_id': params['registration_id'],
++        'native_diagnostic_observation_contract': params['native_diagnostic_observation_contract'],
++        'created_at_jst': datetime.now(timezone(timedelta(hours=9))).isoformat(),
+         'status': 'PREPARED_PENDING_INDEPENDENT_VALIDATION',
+         'source_sha256': sources, 'artifacts': artifacts,
+         'physical_artifacts_sha256': prior['artifacts'],
+--- 04_プログラム/scripts/jdrt_realtime_choice_validate.py.before
++++ 04_プログラム/scripts/jdrt_realtime_choice_validate.py
+@@ -808,6 +808,12 @@
+     hazard = {(r['edge_id'], r['mode']): float(r['closure_sec']) for r in rows(inputs / 'hazard.csv') if r['closure_sec'] != ''}
+     person_states = {pid: 'not_ready' for pid in people}
+     last_actor, last_vehicle, removal_observations = {}, {}, {}
++    braking_targets, braking_observations = defaultdict(set), defaultdict(list)
++    for line in (folder / 'sumo_errors.log').read_text(encoding='utf-8').splitlines():
++        match = re.fullmatch(NATIVE_BRAKING_PATTERN, line)
++        if match:
++            at = float(match[6])
++            braking_targets[match[1]].update((at-manifest['step_sec'], at, at+manifest['step_sec']))
+     counts, states = Counter(), Counter()
+     integral, distance, empty = defaultdict(float), defaultdict(float), defaultdict(float)
+     ever_valid = set()
+@@ -815,6 +821,8 @@
+     for row in stream_rows(folder / 'actor_observations.csv.gz'):
+         actor_rows += 1
+         now, actor, kind = float(row['time_sec']), row['actor_id'], row['kind']
++        if now in braking_targets.get(actor, ()):
++            braking_observations[actor].append(dict(row))
+         if not math.isfinite(now) or now <= 0 or now > manifest['end_sec'] or now % manifest['step_sec']:
+             raise ValueError('Actor row outside step grid')
+         if now < last_time:
+@@ -877,6 +885,9 @@
+         elif actor in vehicles and kind == vehicles[actor]['kind']:
+             if not math.isfinite(float(row['decel_mps2'])) or float(row['decel_mps2']) <= 0:
+                 fail('actor_observation_state', [now, actor, 'invalid_deceleration'])
++            emergency = float(row.get('emergency_decel_mps2', 'nan'))
++            if not math.isfinite(emergency) or emergency < float(row['decel_mps2']):
++                fail('actor_observation_state', [now, actor, 'invalid_or_missing_emergency_deceleration'])
+             if set(members) != expected_members[actor] or row['active_person'] != active_person[actor]:
+                 fail('actor_phase_unique_membership', [now, actor, 'control_membership'])
+             version = int(row['route_version'])
+@@ -962,6 +973,7 @@
+     return {'status': 'PASS' if not errors else 'INVALID', 'checks': {k: not errors[k] for k in names},
+             'errors': dict(errors), 'examples': dict(examples), 'actor_rows': actor_rows,
+             'actor_count': len(counts), 'vkt': vkt, 'removal_observations': removal_observations,
++            'native_braking_observations': dict(braking_observations),
+             'core_adoption_permitted': False}
+ 
+ 
+@@ -1675,6 +1687,154 @@
+             'case': case, 'checks': checks, 'core_adoption_permitted': False}
+ 
+ 
++NATIVE_BRAKING_PATTERN = (r"Warning: Vehicle '([^']+)' performs emergency braking on lane '([^']+)' "
++           r"with decel=([0-9]+\.[0-9]{2}), wished=([0-9]+\.[0-9]{2}), "
++           r"severity=([0-9]+\.[0-9]{2}), time=([0-9]+(?:\.[0-9]+)?)\.")
++
++
++def native_braking_consistency(line, frames, step_sec, properties, numerical_eps, warning_threshold):
++    """Check a warning against three consecutive raw frames and supplied properties.
++
++    The caller must separately bind source/binary/options/type/property provenance.
++    Numeric matches prove consistency, not a unique trigger, safety or adoption.
++    """
++    checks = {}
++    result = dict(status='INCONSISTENT', checks=checks, core_adoption_permitted=False,
++                  scope='Diagnostic kinematics only; source/property binding remains a caller obligation')
++    match = re.fullmatch(NATIVE_BRAKING_PATTERN, line)
++    checks['exact_message_shape'] = match is not None
++    if match is None:
++        return result
++    checks['three_frames'] = len(frames) == 3
++    if len(frames) != 3:
++        return result
++    try:
++        at = float(match[6])
++        decel, emergency = float(properties['decel']), float(properties['emergencyDecel'])
++        speeds = [float(row['speed_mps']) for row in frames]
++        distances = [float(row['distance_m']) for row in frames]
++        times = [float(row['time_sec']) for row in frames]
++        raw_decels = [float(row['decel_mps2']) for row in frames]
++        numbers = [at, step_sec, decel, emergency, numerical_eps, warning_threshold,
++                   *speeds, *distances, *times, *raw_decels,
++                   *[float(match[i]) for i in (3, 4, 5)]]
++        checks['finite_numeric_evidence'] = all(math.isfinite(n) for n in numbers)
++        checks['positive_settings'] = step_sec > 0 and emergency >= decel > 0 and numerical_eps > 0 and warning_threshold > 0
++        checks['nonnegative_motion'] = min(speeds) >= 0 and min(distances) >= 0
++        checks['actor_and_phase'] = all(row['actor_id'] == match[1] and row['kind'] in ('car', 'drt')
++                                       and row['phase'] == 'after_step_before_control' for row in frames)
++        checks['warning_pre_move_lane'] = frames[1]['lane_id'] == match[2]
++        checks['consecutive_native_step_clock'] = times == [at-step_sec, at, at+step_sec]
++        checks['wished_property_matches_frames'] = all(value == decel for value in raw_decels)
++        if not all(checks.values()):
++            return result
++        acceleration = (speeds[2] - speeds[1]) / step_sec
++        previous_acceleration = (speeds[1] - speeds[0]) / step_sec
++        checks['finite_derived_acceleration'] = math.isfinite(acceleration) and math.isfinite(previous_acceleration)
++        if not checks['finite_derived_acceleration']:
++            return result
++        # Floating arithmetic allowances are derived from the recorded doubles,
++        # not a physical braking tolerance or the observed research result.
++        accel_roundoff = 16 * max(math.ulp(speeds[1]), math.ulp(speeds[2])) / step_sec
++        euler = speeds[2] * step_sec
++        residual = distances[2] - distances[1] - euler
++        distance_roundoff = 32 * max(math.ulp(distances[1]), math.ulp(distances[2]), math.ulp(euler))
++        checks['within_supplied_emergency_bound'] = -acceleration <= emergency + accel_roundoff
++        checks['new_braking_manoeuvre'] = acceleration + numerical_eps < previous_acceleration
++        checks['beyond_wished_deceleration'] = -acceleration - decel - numerical_eps > 0
++        severity = (-acceleration - decel + numerical_eps) / max(numerical_eps, emergency-decel)
++        checks['source_warning_threshold'] = severity >= warning_threshold
++        # Native diagnostics print two decimal places. Strict rounding cells
++        # reject boundary/tie ambiguity rather than inventing extra precision.
++        checks['printed_deceleration'] = abs(-acceleration - float(match[3])) < .5 * 10**-2
++        checks['printed_wished'] = abs(decel - float(match[4])) < .5 * 10**-2
++        checks['printed_severity'] = abs(severity - float(match[5])) < .5 * 10**-2
++        checks['native_euler_distance'] = abs(residual) <= distance_roundoff
++        result.update(derived_acceleration_mps2=acceleration,
++                      previous_acceleration_mps2=previous_acceleration,
++                      source_severity=severity, distance_residual_m=residual,
++                      acceleration_roundoff_allowance=accel_roundoff,
++                      distance_roundoff_allowance_m=distance_roundoff)
++    except (KeyError, TypeError, ValueError, OverflowError) as error:
++        checks['complete_numeric_frame_schema'] = False
++        result['error_type'] = type(error).__name__
++    if checks and all(checks.values()):
++        result['status'] = 'DIAGNOSTIC_MATCH'
++    return result
++
++
++
++def native_braking_settings(manifest):
++    """Bind native warning semantics to the supported source and compiled bundle."""
++    try:
++        if not native_walking_version_supported(manifest):
++            return None
++        runtime = manifest['runtime_sha256']
++        if runtime['toolchain_provenance']['source_commit'] != 'fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3':
++            return None
++        command = manifest['owned_native_process']['popen_args']
++        if (not isinstance(command, list) or len(command) % 2 != 1
++                or command[0] != runtime['sumo_binary_path']
++                or type(manifest['owned_native_process']['pid']) is not int
++                or manifest['owned_native_process']['pid'] <= 0
++                or any(not isinstance(item, str) for item in command)):
++            return None
++        pairs = list(zip(command[1::2], command[2::2]))
++        expected = {'--net-file', '--route-files', '--step-length', '--seed', '--begin', '--end',
++                    '--time-to-teleport', '--collision.action', '--step-method.ballistic',
++                    '--emergencydecel.warning-threshold', '--no-step-log', '--duration-log.disable',
++                    '--error-log', '--log', '--tripinfo-output', '--tripinfo-output.write-unfinished', '--remote-port'}
++        if len(pairs) != len(expected) or {k for k, v in pairs} != expected:
++            return None
++        options = dict(pairs)
++        contract = manifest['native_diagnostic_observation_contract']
++        if (options['--step-method.ballistic'] != 'false'
++                or float(options['--step-length']) != manifest['step_sec']
++                or float(options['--emergencydecel.warning-threshold']) != 1.
++                or contract['emergency_warning_threshold'] != 1.
++                or contract['raw_vehicle_emergency_deceleration_required'] is not True
++                or contract['motion_integrator'] != 'semi_implicit_euler_explicit_same_as_prior_native_default'
++                or not 0 < int(options['--remote-port']) < 65536):
++            return None
++        root = Path(runtime['toolchain_manifest_path']).parent
++        configs = [name for name in runtime['toolchain_files_sha256'] if Path(name).name == 'config.h']
++        epsilons = []
++        for name in configs:
++            path = root / name
++            if file_sha(path) != runtime['toolchain_files_sha256'][name]:
++                return None
++            match = re.search(r'^#define NUMERICAL_EPS ([0-9.]+)$', path.read_text(encoding='utf-8'), re.M)
++            epsilons.append(float(match[1]))
++        if not epsilons or len(set(epsilons)) != 1 or not math.isfinite(epsilons[0]) or epsilons[0] <= 0:
++            return None
++        return {'numerical_eps': epsilons[0], 'warning_threshold': 1.,
++                'source_commit': runtime['toolchain_provenance']['source_commit']}
++    except (KeyError, TypeError, ValueError, OSError):
++        return None
++
++
++def native_braking_receipt(line, frames, step_sec, settings):
++    """Require direct native limits and onroad observations, never infer from log."""
++    if settings is None or len(frames) != 3:
++        return None
++    try:
++        emergency = [float(row['emergency_decel_mps2']) for row in frames]
++        wished = [float(row['decel_mps2']) for row in frames]
++        if (len(set(emergency)) != 1 or len(set(wished)) != 1
++                or not all(math.isfinite(v) and v > 0 for v in emergency + wished)
++                or len({row['kind'] for row in frames}) != 1
++                or any(row['observation_kind'] != 'onroad' for row in frames)):
++            return None
++        result = native_braking_consistency(line, frames, step_sec,
++            {'decel': wished[0], 'emergencyDecel': emergency[0]},
++            settings['numerical_eps'], settings['warning_threshold'])
++        return {'classification': 'native_emergency_braking_with_observed_limit',
++                'evidence': frames, 'source_settings': settings, 'consistency': result,
++                'safety_or_unique_cause_proved': False} if result['status'] == 'DIAGNOSTIC_MATCH' else None
++    except (KeyError, TypeError, ValueError):
++        return None
++
++
+ def audit_native_logs(folder, manifest, events, actor_report, movement_report=None):
+     """Classify raw native diagnostics by closure/removal evidence, not fixture name."""
+     inputs = ROOT / manifest['input_directory']
+@@ -1699,11 +1859,25 @@
+         if match:
+             observed_walk[match[2], match[3], match[1]] += 1
+     used = set()
++    braking_settings = native_braking_settings(manifest) if re.search(NATIVE_BRAKING_PATTERN, text) else None
++    braking_counts = Counter(text.splitlines())
+     for line in text.splitlines():
+         if line.startswith('Error:'):
+             errors.append(line)
+         elif line.startswith('Warning:'):
+             warnings.append(line)
++            braking = re.fullmatch(NATIVE_BRAKING_PATTERN, line)
++            if braking:
++                at = float(braking[6])
++                frames = [r for r in actor_report.get('native_braking_observations', {}).get(braking[1], [])
++                          if float(r['time_sec']) in (at-manifest['step_sec'], at, at+manifest['step_sec'])]
++                receipt = (native_braking_receipt(line, frames, manifest['step_sec'], braking_settings)
++                           if actor_report.get('status') == 'PASS' and braking_counts[line] == 1 else None)
++                if receipt is not None:
++                    classified.append({'raw': line, **receipt})
++                else:
++                    unclassified.append(line)
++                continue
+             walk = re.fullmatch(walk_pattern, line)
+             if walk:
+                 key = walk[2], walk[3], walk[1]
+@@ -1897,6 +2071,7 @@
+         report.update(manifest_sha256=fingerprints[manifest_path], parameter_sha256=manifest['parameter_sha256'],
+                       input_manifest_sha256=manifest['input_manifest_sha256'],
+                       implementation_sha256=manifest['implementation_sha256'], runtime_sha256=manifest.get('runtime_sha256'))
++        checks['native_command_and_direct_observation_contract'] = native_braking_settings(manifest) is not None
+         parameter = ROOT / manifest['parameter_path']
+         cfg = json.loads(parameter.read_text(encoding='utf-8'))
+         inputs = ROOT / manifest['input_directory']
+@@ -1908,6 +2083,9 @@
+             and 'error' not in manifest and 'connection_close_error' not in manifest)
+         checks['protocol_config_input_identity'] = (
+             cfg['protocol'] == source['protocol'] == manifest['protocol']
++            and cfg['registration_id'] == source['registration_id'] == manifest['registration_id'] == canonical['registration_id']
++            and cfg['native_diagnostic_observation_contract'] == source['native_diagnostic_observation_contract']
++                == manifest['native_diagnostic_observation_contract'] == canonical['native_diagnostic_observation_contract']
+             and cfg['workspace'] == canonical['workspace']
+             and manifest['execution_contract'] == cfg['execution'] == canonical['execution'])
+         if purpose == 'fixture':
+@@ -2375,7 +2553,8 @@
+         and all(file_sha(archive_path.parent / p if p in archive['archived_sha256'] else ROOT / p) == value
+                 for p, value in old['source_sha256'].items()))
+     checks['contracts_bound_to_registry'] = all(manifest[key] == params[key] for key in
+-        ('input_revision', 'position_contract', 'traffic_observation_contract', 'walking_distance_contract'))
++        ('input_revision', 'position_contract', 'traffic_observation_contract', 'walking_distance_contract',
++         'registration_id', 'native_diagnostic_observation_contract'))
+     report = {'status': 'PASS' if all(checks.values()) else 'FAIL', 'technical_ready': False,
+               'scope': 'independent_position_geometry_and_old_choice_invariants',
+               'at_jst': datetime.now(timezone(timedelta(hours=9))).isoformat(), 'checks': checks,
+--- .agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py.before
++++ .agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py
+@@ -127,6 +127,8 @@
+     if (entry.get('purpose') != 'core' or entry.get('validation_status') != 'PASS'
+             or entry.get('protocol') != parameters['protocol']):
+         raise ValueError('Only validated core entries may be recorded')
++    if parameters.get('registration_id') and entry.get('registration_id') != parameters['registration_id']:
++        raise ValueError('Record registration identity mismatch')
+     run_id = entry['run_id']
+     if not re.fullmatch(r'[a-zA-Z0-9_-]{1,100}', run_id):
+         raise ValueError('Invalid record run ID')
+@@ -151,7 +153,7 @@
+             raise RuntimeError('Duplicate or foreign research ledger entry')
+         prior = next((r for r in ledger if r['run_id'] == run_id), None)
+         if prior is not None and any(prior.get(k) != entry.get(k) for k in
+-                ('protocol', 'cell_id', 'implementation_sha256', 'input_manifest_sha256', 'manifest_sha256')):
++                ('protocol', 'registration_id', 'cell_id', 'implementation_sha256', 'input_manifest_sha256', 'manifest_sha256')):
+             raise RuntimeError('Existing recorded identity differs from validation')
+         if any(r['cell_id'] == entry['cell_id'] and r['run_id'] != run_id for r in ledger):
+             raise RuntimeError('Registered cell already has another accepted run')
+@@ -296,7 +298,9 @@
+         cells = {c['cell_id'] for c in self.parameters['cells']}
+         if (len({r['run_id'] for r in rows}) != len(rows) or len({r['cell_id'] for r in rows}) != len(rows)
+                 or any(r['protocol'] != self.parameters['protocol'] or r['purpose'] != 'core'
+-                       or r['validation_status'] != 'PASS' or r['cell_id'] not in cells for r in rows)):
++                       or r['validation_status'] != 'PASS' or r['cell_id'] not in cells
++                       or (self.parameters.get('registration_id') and r.get('registration_id') != self.parameters['registration_id'])
++                       for r in rows)):
+             raise RuntimeError('Duplicate, unvalidated or foreign research ledger entry')
+         return rows
+ 
+@@ -685,7 +689,9 @@
+             if m['implementation_sha256'] != self.implementation() or file_sha(path) != v['manifest_sha256']:
+                 raise RuntimeError('Source identity changed before record')
+             proof = self.root / v['validation_report']
+-            entry = {'protocol': self.parameters['protocol'], 'purpose': 'core', 'run_id': run_id,
++            entry = {'protocol': self.parameters['protocol'],
++                     **({'registration_id': m['registration_id']} if self.parameters.get('registration_id') else {}),
++                     'purpose': 'core', 'run_id': run_id,
+                      'cell_id': m['cell_id'], 'scenario': m['scenario'], 'seed': m['seed'],
+                      'destination_policy': m['destination_policy'], 'demand_level': m['demand_level'],
+                      'validation_status': 'PASS', 'validation_report': v['validation_report'],
+@@ -694,7 +700,7 @@
+                      'recorded_at_jst': stamp(), 'primary': v['components']['person_tables']}
+             p = entry['primary']
+             text = (f"### {run_id}（{entry['recorded_at_jst']}正式記録）\n\n"
+-                    f"protocol={entry['protocol']}、cell={entry['cell_id']}、{entry['scenario']}、seed={entry['seed']}。"
++                    f"protocol={entry['protocol']}、registration={entry.get('registration_id', 'legacy')}、cell={entry['cell_id']}、{entry['scenario']}、seed={entry['seed']}。"
+                     f"独立検証PASS・研究採用可。人物{p['people']}、要求{p['requests']}。"
+                     f"主指標の施設受入={p['primary_admitted']}/{p['primary_denominator']}、"
+                     f"退出{p['primary_boundary_exit_separate']}は別計上。全登録セル完了前に方向解釈しない。\n"
+--- 04_プログラム/scripts/jdrt_choice_fixtures.py.before
++++ 04_プログラム/scripts/jdrt_choice_fixtures.py
+@@ -351,7 +351,9 @@
+     write_csv(directory / f'common_realization_seed{params["seeds"][0]}.csv', people)
+     write_csv(directory / 'place_positions.csv', positions)
+     atomic_json(directory / 'fixture_parameters.json', parameters)
+-    manifest = {'protocol': parameters['protocol'], 'fixture_case': case, 'research_adoption_permitted': False,
++    manifest = {'protocol': parameters['protocol'], 'registration_id': parameters['registration_id'],
++                'native_diagnostic_observation_contract': parameters['native_diagnostic_observation_contract'],
++                'fixture_case': case, 'research_adoption_permitted': False,
+                 'depot_edge': 'g0', 'people': len(people), 'created_at_jst': stamp(),
+                 'base_parameter_sha256': sha(PARAM), 'synthetic_conditions': True,
+                 'source_sha256': {p.relative_to(ROOT).as_posix(): sha(p) for p in (Path(__file__), PARAM)},
+--- 04_プログラム/tests/test_jdrt_choice_runtime.py.before
++++ 04_プログラム/tests/test_jdrt_choice_runtime.py
+@@ -15,6 +15,13 @@
+ 
+ 
+ class RuntimeContracts(unittest.TestCase):
++    def test_emergency_deceleration_is_native_observation_not_wished_fallback(self):
++        constants = types.SimpleNamespace(VAR_DECEL=1, VAR_EMERGENCY_DECEL=2)
++        self.assertEqual(runtime.observed_emergency_deceleration({1: 3., 2: 7.}, constants), 7.)
++        for data in ({1: 3.}, {1: 3., 2: math.nan}, {1: 3., 2: 0.}, {1: 3., 2: 2.}):
++            with self.subTest(data=data), self.assertRaises(RuntimeError):
++                runtime.observed_emergency_deceleration(data, constants)
++
+     def test_smoke_shortening_preserves_whole_vehicle_readiness(self):
+         people = [{'person_id': 'driver', 'vehicle_id': 'car'},
+                   {'person_id': 'walker', 'vehicle_id': ''},
+--- 04_プログラム/tests/test_jdrt_choice_validate.py.before
++++ 04_プログラム/tests/test_jdrt_choice_validate.py
+@@ -6,6 +6,7 @@
+ import tempfile
+ import csv
+ import gzip
++import hashlib
+ from pathlib import Path
+ from copy import deepcopy
+ from unittest.mock import patch
+@@ -17,6 +18,57 @@
+ 
+ 
+ class SparseVerifierContracts(unittest.TestCase):
++    def test_braking_settings_require_motion_identity_and_bound_config(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            config = root / 'config.h'
++            config.write_text('#define NUMERICAL_EPS 0.001\n', encoding='utf-8')
++            names = ['--net-file', '--route-files', '--step-length', '--seed', '--begin', '--end',
++                     '--time-to-teleport', '--collision.action', '--step-method.ballistic',
++                     '--emergencydecel.warning-threshold', '--no-step-log', '--duration-log.disable',
++                     '--error-log', '--log', '--tripinfo-output', '--tripinfo-output.write-unfinished', '--remote-port']
++            values = ['net.xml', 'types.xml', '.25', '1', '0', '11', '-1', 'teleport', 'false',
++                      '1', 'true', 'true', 'errors.log', 'sumo.log', 'trip.xml', 'true', '12345']
++            manifest = {'step_sec': .25, 'owned_native_process': {'pid': 123, 'popen_args':
++                        ['sumo', *[part for pair in zip(names, values) for part in pair]]},
++                        'native_diagnostic_observation_contract': {'raw_vehicle_emergency_deceleration_required': True,
++                            'motion_integrator': 'semi_implicit_euler_explicit_same_as_prior_native_default',
++                            'emergency_warning_threshold': 1.},
++                        'runtime_sha256': {'sumo_binary_path': 'sumo', 'toolchain_manifest_path': str(root / 'toolchain.json'),
++                            'toolchain_files_sha256': {'config.h': hashlib.sha256(config.read_bytes()).hexdigest()},
++                            'toolchain_provenance': {'source_commit': 'fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3'}}}
++            with patch.object(validator, 'native_walking_version_supported', return_value=True):
++                self.assertIsNotNone(validator.native_braking_settings(manifest))
++                changed = deepcopy(manifest)
++                changed['native_diagnostic_observation_contract']['motion_integrator'] = 'ballistic'
++                self.assertIsNone(validator.native_braking_settings(changed))
++                changed = deepcopy(manifest)
++                changed['owned_native_process']['pid'] = 0
++                self.assertIsNone(validator.native_braking_settings(changed))
++                config.write_text('#define NUMERICAL_EPS 0.002\n', encoding='utf-8')
++                self.assertIsNone(validator.native_braking_settings(manifest))
++
++    def test_braking_receipt_requires_direct_native_emergency_frames(self):
++        line = ("Warning: Vehicle 'synthetic' performs emergency braking on lane 'a_1' "
++                "with decel=7.00, wished=3.00, severity=1.00, time=4.00.")
++        frames = [dict(time_sec=3.75, speed_mps=4.5, distance_m=98.75),
++                  dict(time_sec=4., speed_mps=5., distance_m=100.),
++                  dict(time_sec=4.25, speed_mps=3.25, distance_m=100.8125)]
++        for row in frames:
++            row.update(actor_id='synthetic', lane_id='a_1', kind='car',
++                       phase='after_step_before_control', decel_mps2=3.,
++                       emergency_decel_mps2=7., observation_kind='onroad')
++        settings = {'numerical_eps': .001, 'warning_threshold': 1.}
++        self.assertIsNotNone(validator.native_braking_receipt(line, frames, .25, settings))
++        for field, value in [('emergency_decel_mps2', ''), ('emergency_decel_mps2', 6.),
++                             ('emergency_decel_mps2', math.inf), ('lane_id', 'b_1'),
++                             ('observation_kind', 'reentry_pending'), ('kind', 'walk')]:
++            altered = deepcopy(frames)
++            altered[1][field] = value
++            with self.subTest(field=field, value=value):
++                self.assertIsNone(validator.native_braking_receipt(line, altered, .25, settings))
++        self.assertIsNone(validator.native_braking_receipt(line, frames, .25, None))
++
+     def test_partial_edges_backward_cycle_closed_and_unreachable(self):
+         graph = {'nodes': {'a': {'length': 100, 'free_sec': 10},
+                            'b': {'length': 200, 'free_sec': 20},
+--- 04_プログラム/tests/test_jdrt_choice_skill.py.before
++++ 04_プログラム/tests/test_jdrt_choice_skill.py
+@@ -17,6 +17,20 @@
+ 
+ 
+ class ReadOnlyLiveness(unittest.TestCase):
++    def test_record_rejects_a_different_registration_before_writing(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            names = ['a.md', 'b.md', 'context.md', 'decision.md', 'progress.md', 'ledger.jsonl']
++            for name in names[:-1]:
++                (root / name).write_text('\n<!-- AGENT_CURRENT_END -->\n' if name == 'context.md' else '', encoding='utf-8')
++            parameters = {'protocol': 'synthetic', 'registration_id': 'new',
++                          'workspace': 'work', 'record_files': names}
++            entry = {'protocol': 'synthetic', 'registration_id': 'old', 'purpose': 'core',
++                     'validation_status': 'PASS', 'run_id': 'example', 'cell_id': 'one'}
++            with self.assertRaisesRegex(ValueError, 'registration'):
++                skill.record_six_files(root, parameters, entry, 'synthetic record')
++            self.assertFalse((root / 'ledger.jsonl').exists())
++
+     def test_real_venv_launcher_and_executor_identity_are_both_live_and_related(self):
+         with tempfile.TemporaryDirectory() as directory:
+             receipt = Path(directory) / 'owned_child.json'
+--- 04_プログラム/config/jdrt_realtime_choice_v1.json.before
++++ 04_プログラム/config/jdrt_realtime_choice_v1.json
+@@ -67,8 +67,8 @@
+   "pap": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
+   "registry_document": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md",
+   "state_contract": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md",
+-  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1",
+-  "input_directory": "inputs/registered03",
++  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2",
++  "input_directory": "inputs/registered01",
+   "parent_input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2/inputs/registered01/manifest.json",
+   "parent_registry": "04_プログラム/config/jdrt_realtime_b_boundary_v2.json",
+   "destination_policies": [
+@@ -161,13 +161,13 @@
+     "interpretation": "gate_and_urgency_package_not_gate_only"
+   },
+   "record_files": [
+-    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md",
++    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md",
+     "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+     "context.md",
+     "00_全体整理/決定ログ.md",
+     "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+     "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+-    "05_タスク管理/jdrt/JDRT-受付代替行動_セル検証台帳.jsonl"
++    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl"
+   ],
+   "execution": {
+     "timing_contract": "pre_step_end_v1",
+@@ -763,6 +763,28 @@
+       "authority": "latest user final-goal delegation and stated quality/realism/math axis",
+       "core_runs_observed": 0,
+       "registered_cell_set_changed": false
++    },
++    {
++      "at_jst": "2026-10-21T21:35:57.152451+09:00",
++      "kind": "native_diagnostic_observation_v2_technical_reregistration",
++      "authority": "user final-goal autonomy and technical implementation/validation authority; no PAP metric/comparison/exclusion change",
++      "previous_registered_config_sha256": "d32d5b5e11652f4ff66273d1a671573760a3665b182b0a68d674f2162d258f9e",
++      "old_accepted_cells_preserved": 1,
++      "new_accepted_cells": 0,
++      "cell_set_changed": false,
++      "physical_model_input_changed": false,
++      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY"
+     }
+-  ]
++  ],
++  "registration_id": "choice_native_observation_v2_20261021",
++  "native_diagnostic_observation_contract": {
++    "raw_vehicle_emergency_deceleration_required": true,
++    "motion_integrator": "semi_implicit_euler_explicit_same_as_prior_native_default",
++    "emergency_warning_threshold": 1.0,
++    "generic_emergency_braking_classification": "same_actor_three_raw_frames_source_equation_within_observed_emergency_limit",
++    "unknown_or_missing_evidence": "INVALID_preserve_stop",
++    "native_emergency_stop": "not_newly_accepted",
++    "no_original_core_readoption": true
++  },
++  "native_observation_addendum": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v2.md"
+ }

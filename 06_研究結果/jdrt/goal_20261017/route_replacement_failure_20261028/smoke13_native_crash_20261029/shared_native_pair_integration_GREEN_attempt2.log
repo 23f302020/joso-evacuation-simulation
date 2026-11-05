@@ -1,0 +1,42 @@
+EE...
+======================================================================
+ERROR: test_capture_generates_primary_files_and_uses_full_verifier (test_choice_shared_native_pair_proof.SharedNativePairContracts.test_capture_generates_primary_files_and_uses_full_verifier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 86, in test_capture_generates_primary_files_and_uses_full_verifier
+    output=self.capture();result=json.loads((output/'verification.json').read_bytes())
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 80, in capture
+    primary.capture(c.root,self.policy_path,
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['state']['path']) for r in c.states},
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['loader']['path']) for r in c.states},inventory,output)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_pair_primary.py", line 68, in capture
+    'source_scope':policy['scope']}
+                   ~~~~~~^^^^^^^^^
+KeyError: 'scope'
+
+======================================================================
+ERROR: test_capture_preserves_failed_command_evidence_without_verification (test_choice_shared_native_pair_proof.SharedNativePairContracts.test_capture_preserves_failed_command_evidence_without_verification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 95, in test_capture_preserves_failed_command_evidence_without_verification
+    with self.assertRaises(ValueError):self.capture()
+                                       ~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 80, in capture
+    primary.capture(c.root,self.policy_path,
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['state']['path']) for r in c.states},
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['loader']['path']) for r in c.states},inventory,output)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_pair_primary.py", line 68, in capture
+    'source_scope':policy['scope']}
+                   ~~~~~~^^^^^^^^^
+KeyError: 'scope'
+
+----------------------------------------------------------------------
+Ran 5 tests in 7.234s
+
+FAILED (errors=2)

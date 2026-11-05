@@ -1,0 +1,45 @@
+{
+  "at_jst": "2026-11-05T08:52:45.577521+09:00",
+  "action": "user_requested_goal_clarification_proposal",
+  "proposal": "05_タスク管理\\jdrt\\JDRT_ゴール具体化案_20261105.md",
+  "proposal_sha256": "7efdc478c4e7386717cb4ba7e8ec392f608b3887f90e5d3ea028ba5d83aff871",
+  "source_sha256": {
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+    "05_タスク管理/jdrt/JDRT_最終ゴール自律進行計画.md": "3a3d69edcbdbcbf96a2cd7f1452399ed1892b5f979f64903362fa48744f1da00",
+    "05_タスク管理/jdrt/大型バス巡回輸送_後続実験計画.md": "a95b4b778ca5ab7ddffe3ba1a5d77ecdb56026d8937b8f69104b3709ab43dd7a"
+  },
+  "registered_cells": 70,
+  "seeds": [
+    23423,
+    42,
+    1,
+    7,
+    101
+  ],
+  "scenario_counts": {
+    "R0": 10,
+    "R1": 20,
+    "R2P900": 20,
+    "R2P0": 20
+  },
+  "goal_objective_api_modified": false,
+  "pap_parameters_metrics_comparison_or_exclusions_changed": false,
+  "run_started": false,
+  "other_thread_messaged": false,
+  "scope_keeps_large_bus_followup": true,
+  "document_check": {
+    "local_links": 6,
+    "all_reference_paths_exist": true,
+    "source_bytes_unchanged": true,
+    "cells_per_seed": {
+      "23423": 14,
+      "42": 14,
+      "1": 14,
+      "7": 14,
+      "101": 14
+    },
+    "short_goal_characters": 457,
+    "proposal_not_formal_method_change": true
+  }
+}

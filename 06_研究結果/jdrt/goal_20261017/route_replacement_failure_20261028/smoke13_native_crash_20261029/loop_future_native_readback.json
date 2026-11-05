@@ -1,0 +1,89 @@
+{
+  "at_jst": "2026-10-29T11:10:15.133517+09:00",
+  "purpose": "ISOLATED_NATIVE_LOOP_FUTURE_STOP_REVIEW_NOT_READY",
+  "original_session": 98346,
+  "exit_code": 0,
+  "additional_native_probes": [
+    {
+      "run_id": "ps261029i",
+      "manifest_sha256": "1519fa97cc287fa6c263d70724b076e5200c3de96f1d11b7d39eb46dc76d0474",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "control_did_not_advance_clock": true,
+        "requested_remaining_excludes_b": true,
+        "two_actual_native_c_occurrences": true,
+        "candidate_assignment_succeeded": true,
+        "requested_route_exact": true,
+        "immediate_source_valid_or_explicit_native_reentry_pending": true,
+        "cumulative_distance_unchanged": true,
+        "new_route_index_zero": true,
+        "reentry_and_motion_distance_continuous": true,
+        "reached_new_stop": true,
+        "first_reentry_source_edge_retained": true,
+        "first_reentry_position_and_distance_bounded": true
+      },
+      "raw_post_motion_source_clock_distance_PASS": true,
+      "two_native_c_indices_before_replacement": [
+        66,
+        72
+      ],
+      "native_trace": {
+        "time": "762.50",
+        "veh": "v",
+        "route_size": "2",
+        "current_index": "0",
+        "stop_index": "1",
+        "active_prior": "0",
+        "past_count": "1",
+        "past_index": "0",
+        "past_edge": "c"
+      }
+    },
+    {
+      "run_id": "ps261029j",
+      "manifest_sha256": "266f9d33e33e39ee6c9fe12609ee5f5c1aa39f151eeed9463ae30cf371334a72",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "control_did_not_advance_clock": true,
+        "requested_remaining_excludes_b": true,
+        "active_future_stop_preserved": true,
+        "candidate_assignment_succeeded": true,
+        "requested_route_exact": true,
+        "immediate_source_valid_or_explicit_native_reentry_pending": true,
+        "cumulative_distance_unchanged": true,
+        "new_route_index_zero": true,
+        "reentry_and_motion_distance_continuous": true,
+        "reached_new_stop": true,
+        "first_reentry_source_edge_retained": true,
+        "first_reentry_position_and_distance_bounded": true
+      },
+      "raw_post_motion_source_clock_distance_PASS": true,
+      "raw_scheduled_d_stop_before_and_final_parked_d": true,
+      "immediate_after_stop_list_not_independently_archived": true,
+      "native_trace": {
+        "time": "670.00",
+        "veh": "v",
+        "route_size": "2",
+        "current_index": "0",
+        "stop_index": "1",
+        "active_prior": "0",
+        "past_count": "1",
+        "past_index": "0",
+        "past_edge": "c"
+      }
+    }
+  ],
+  "first_topology_failure_preserved": {
+    "run_id": "ps261029g",
+    "manifest_sha256": "fbeb659fee94d3e99c33deaab71b1b529139bbb91fd3d7f0e43d24106dfc2f0c",
+    "reason": "Synthetic diagonal return created forbidden U-turn; fixed artificial rectangular turn, not native behavior."
+  },
+  "reserved_ps261029h_not_started": true,
+  "parent_readback_correction": "First attempt counted route-index0 after replacement together with two earlier route occurrences. Restrict old-route occurrences to time<=before-control. No native/simulation rerun or original-data edit.",
+  "full_build_repair01_prestart_refusal": "current source/config differs from Oct21 pair proof; no attempt directory created, no waiver",
+  "next": "Follow original30056/current selected-pair revalidation, independently verify new bound proof; only then new full repair build ID. Research core/READY remain prohibited.",
+  "technical_ready": false,
+  "core_adoption_permitted": false
+}

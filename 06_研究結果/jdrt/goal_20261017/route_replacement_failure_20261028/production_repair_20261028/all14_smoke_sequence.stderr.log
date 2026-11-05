@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_smoke_sequence.py", line 108, in <module>
+    main(args.prefix, args.audit)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_smoke_sequence.py", line 80, in main
+    raise RuntimeError(command + ' failed: ' + run_id)
+RuntimeError: smoke failed: rs261029b_13

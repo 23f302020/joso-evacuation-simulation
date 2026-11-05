@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_loader_check.py", line 119, in <module>
+    a=p.parse_args();run(a.project_root,a.state,a.output)
+                     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_loader_check.py", line 80, in run
+    imports=parse_imports(log.read_text(encoding='utf-8'))
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_loader_check.py", line 38, in parse_imports
+    raise ValueError('Complete unambiguous allowed-system imports required')
+ValueError: Complete unambiguous allowed-system imports required

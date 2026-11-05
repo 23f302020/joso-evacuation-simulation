@@ -1,0 +1,23 @@
+.....E...........F....
+======================================================================
+ERROR: test_internal_requests_follow_actual_next_edge_and_keep_final_destination (test_choice_native_guard.GuardCollectionContracts.test_internal_requests_follow_actual_next_edge_and_keep_final_destination)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 73, in test_internal_requests_follow_actual_next_edge_and_keep_final_destination
+    requests=guard.replacement_requests(self.connection,'p3',row,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_native_guard' has no attribute 'replacement_requests'
+
+======================================================================
+FAIL: test_internal_route_arrival_uses_its_own_final_edge_length (test_choice_native_guard_plan.NativeGuardPlanContracts.test_internal_route_arrival_uses_its_own_final_edge_length)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_plan.py", line 24, in test_internal_route_arrival_uses_its_own_final_edge_length
+    self.assertEqual(cases['internal_walk']['replacement_endpoint_m'],20.)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 240.0 != 20.0
+
+----------------------------------------------------------------------
+Ran 22 tests in 3.353s
+
+FAILED (failures=1, errors=1)

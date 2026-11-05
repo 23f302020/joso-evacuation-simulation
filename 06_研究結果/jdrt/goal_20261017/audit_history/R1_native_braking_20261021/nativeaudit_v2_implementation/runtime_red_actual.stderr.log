@@ -1,0 +1,14 @@
+E
+======================================================================
+ERROR: test_emergency_deceleration_is_native_observation_not_wished_fallback (tests.test_jdrt_choice_runtime.RuntimeContracts.test_emergency_deceleration_is_native_observation_not_wished_fallback)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_runtime.py", line 20, in test_emergency_deceleration_is_native_observation_not_wished_fallback
+    self.assertEqual(runtime.observed_emergency_deceleration({1: 3., 2: 7.}, constants), 7.)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'observed_emergency_deceleration'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (errors=1)

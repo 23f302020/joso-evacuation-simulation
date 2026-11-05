@@ -1,0 +1,52 @@
+{
+  "observed_at": "2026-10-28T06:03:35.224679+09:00",
+  "stage": "B_INCOMPLETE_MEASUREMENT_RESTARTED",
+  "reason": "8 current-registration normal runs occurred since previous daily check, outside the collector observation window. Waiting for an active process exactly at 06:00 misses such work.",
+  "history_source_sha256": "3d6ef08e6d9bcbcea9e8f58bddebf96c3188566c201ba2f94639df9c47c38f6a",
+  "current_run_count": 8,
+  "phase_durations": {
+    "execute": {
+      "count": 8,
+      "median_minutes": 12.950397686667081
+    },
+    "validate": {
+      "count": 8,
+      "median_minutes": 16.084427691666257
+    },
+    "record": {
+      "count": 8,
+      "median_minutes": 15.544937609999518
+    }
+  },
+  "collector_state": {
+    "schema": "pipeline_measurement_v1",
+    "pid": 14744,
+    "status": "RUNNING",
+    "source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+    "started_at": "2026-10-28T06:02:43.877629+09:00",
+    "interval_sec": 60.0,
+    "planned_seconds": 86400.0,
+    "samples": 1,
+    "failures": 0,
+    "limitations": [
+      "CPU percent per process: 100=one logical CPU",
+      "Python/SUMO processes may belong to other work; phase is a command-name hint, not research ownership proof",
+      "Sampled memory maxima are lower bounds, not exact peaks",
+      "No temperature sensor or user responsiveness measurement",
+      "Missing/failed observations are not zero; long gaps may include sleep"
+    ],
+    "last_observed_at": "2026-10-28T06:02:43.880762+09:00"
+  },
+  "collector_source_matches": true,
+  "automation_status": "ACTIVE",
+  "automation_prompt_sha256": "739a8b0d21075093fbf55f064115b85a7fc7466032723f2a342efa1c2bcb885d",
+  "missing_observation_fabricated": false,
+  "research_operations_launched": false,
+  "effect_validated": false,
+  "stop_condition_met": false,
+  "limitations": [
+    "Timing history is from current registration only and is not an improvement comparison.",
+    "Historical completed runs do not have resource measurements; formal acceptance is not independently revalidated by this performance audit.",
+    "New collector is a bounded future observation window, not a research execution trigger."
+  ]
+}

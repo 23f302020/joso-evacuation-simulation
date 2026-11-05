@@ -1,0 +1,66 @@
+{
+  "at_jst": "2026-10-27T10:14:35.850964+09:00",
+  "status": "SAME_CORE_BOUND_AFTER_MONITOR_ONLY_RESTART",
+  "old_actual_pid": 31176,
+  "new_actual_pid": 26988,
+  "new_launcher_pid": 22640,
+  "new_monitor_created_FILETIME": 134375371341239107,
+  "source_sha256": "080944f6f381ca278f214bc472a0185197c91da56ca06bef504d6c428206689c",
+  "observer_at": "2026-10-27T01:14:31.891780+00:00",
+  "target": {
+    "status": "RUNNING",
+    "target_id": "nv26102701",
+    "observed_at_utc": "2026-10-27T01:14:27.241207+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-27T01:09:07.258002+00:00",
+      "finished_at_utc": null,
+      "elapsed_sec": null,
+      "start_source": "started_at_jst",
+      "finish_source": null,
+      "status": "running"
+    },
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "515463d6e625e16b782ef8f99aa189136982784bcd45d395490ee98dd2c49243",
+    "flags": [],
+    "pid": 13636,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102701\\manifest.json",
+    "sim_sec": 4920.0,
+    "progress_token": [
+      "RUNNING",
+      4920.0
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134375369260913759,
+      "pid": 13636
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102701"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102701"
+    },
+    "last_progress": 1793063665.4840405,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102701\\sumo_errors.log": 0,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\driver_logs\\nv26102701.stderr.log": 518
+    },
+    "historical": false
+  },
+  "core_actual_pid": 13636,
+  "core_created_FILETIME": 134375369260913759,
+  "core_restarted": false,
+  "source_or_config_changed": false,
+  "old_event_files_missing": [],
+  "old_event_files_changed_sha": [
+    "fa205e85865f4c974e40e33384273189.json"
+  ],
+  "changed_event_primary_contents_not_compared": true,
+  "initial_CIM_timeout_cause": "unknown; identical parent snapshot passed1.27sec, daemon recovered after monitored restart",
+  "historical_deliveries_not_retried": true,
+  "scientific_adoption_created": false,
+  "known_native_constructor_warning_scope": "Retained verbatim. Classification and physical correspondence must pass final independent validator; no warning exemption added."
+}

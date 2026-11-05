@@ -1,0 +1,50 @@
+{
+  "scope": "current native arrival primary component mutations only; not READY or all-suite proof",
+  "results": [
+    {
+      "case": "car_transition_arrival_shared_external_only_timestamp",
+      "expected": "short_entry_upper_is_first_outgoing_frame",
+      "pass": true,
+      "movement_multiset_rejects": true,
+      "failed_checks": [
+        "short_entry_upper_is_first_outgoing_frame"
+      ]
+    },
+    {
+      "case": "car_transition_arrival_arrival_start_used_as_step_end",
+      "expected": "native_arrival_final_index_without_external_frame",
+      "pass": true,
+      "movement_multiset_rejects": true,
+      "failed_checks": [
+        "native_arrival_final_index_without_external_frame"
+      ]
+    },
+    {
+      "case": "tail_position_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "tail_route_occurrence_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "actor_route_index",
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "tail_lane_unbound",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    }
+  ],
+  "status": "PASS",
+  "primary_outputs_modified": false
+}

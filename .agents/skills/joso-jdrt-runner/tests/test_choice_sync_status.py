@@ -1,7 +1,7 @@
 """Only temporary documents and archived synthetic observations are mutated."""
 from copy import deepcopy
 from hashlib import sha256
-from html import unescape
+from html import escape, unescape
 import importlib.util
 import json
 from pathlib import Path
@@ -118,11 +118,13 @@ class CurrentDisplayContracts(unittest.TestCase):
         self.run_sync(build_report=self.report, apply=True)
         html = self.html.read_bytes().decode('utf-8-sig')
         top = re.search(r'<!-- CHOICE_CURRENT_HTML_TOP_BEGIN -->.*?<p>(.*?)</p>', html, re.S).group(1)
-        self.assertEqual(unescape(top), result['summary'])
+        self.assertIn('予定した70回のうち0回', unescape(top))
+        self.assertIn('開始できません', unescape(top))
+        self.assertIn(escape(result['summary']), html)
         self.assertNotIn('<script>', top)
-        self.assertIn('&lt;script&gt;', top)
+        self.assertIn('&lt;script&gt;', html)
         self.assertNotIn('**', top)
-        self.assertIn('2001-02-04：', html)
+        self.assertIn('2001年02月04日', html)
         self.assertIn('2001-02-04更新', html)
 
     def test_apply_preserves_bom_eol_unmanaged_bytes_and_acceptance_markers(self):

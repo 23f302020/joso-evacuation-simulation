@@ -1,0 +1,19 @@
+E......
+======================================================================
+ERROR: test_bound_terminal_shared_snapshot_reaches_observation_source (__main__.PreparedSourceGate.test_bound_terminal_shared_snapshot_reaches_observation_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\route_replacement_failure_20261028\smoke13_native_crash_20261029\test_trace_preparation_candidate.py", line 51, in test_bound_terminal_shared_snapshot_reaches_observation_source
+    with self.assertRaises(ReachedBoundSource):self.invoke()
+                                               ~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\route_replacement_failure_20261028\smoke13_native_crash_20261029\test_trace_preparation_candidate.py", line 45, in invoke
+    build.main()
+    ~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_build.py", line 130, in main
+    raise ValueError('Need completed, bound, nonadoptable native evidence')
+ValueError: Need completed, bound, nonadoptable native evidence
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.671s
+
+FAILED (errors=1)

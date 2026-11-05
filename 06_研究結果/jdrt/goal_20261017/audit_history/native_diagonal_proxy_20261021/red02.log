@@ -1,0 +1,22 @@
+....E..F..............
+======================================================================
+ERROR: test_native_lateral_step_is_not_an_instantaneous_replacement_jump (test_jdrt_choice_validate.NativeWalkingContracts.test_native_lateral_step_is_not_an_instantaneous_replacement_jump)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_validate.py", line 141, in test_native_lateral_step_is_not_an_instantaneous_replacement_jump
+    person = next(validator.rows(folder / 'person_results.csv'))
+TypeError: 'list' object is not an iterator
+
+======================================================================
+FAIL: test_single_ulp_instantaneous_receipt_jump_is_rejected (test_jdrt_choice_validate.NativeWalkingContracts.test_single_ulp_instantaneous_receipt_jump_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_validate.py", line 177, in test_single_ulp_instantaneous_receipt_jump_is_rejected
+    self.assertFalse(result['checks']['walk_stage_budget_recurrence'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 22 tests in 8.629s
+
+FAILED (failures=1, errors=1)

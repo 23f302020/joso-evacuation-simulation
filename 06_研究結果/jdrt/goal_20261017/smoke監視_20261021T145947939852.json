@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-21T14:59:47.939168+09:00",
+  "action": "current_smokes_independent_monitor_point",
+  "run_prefix": "cs261021a",
+  "status": "RUNNING",
+  "pid": 30604,
+  "active": {
+    "run_id": "cs261021a_12",
+    "cell_id": "facility_first_u50_r1_seed23423",
+    "started_at_jst": "2026-10-21T14:58:53.173326+09:00",
+    "command": "validate",
+    "pid": 26568
+  },
+  "independently_passed": 11,
+  "handle": 47653,
+  "monitor": {
+    "state": "alive",
+    "created": 134369798989157015,
+    "pid": 30168
+  },
+  "monitor_identity_matches": true,
+  "observation_age_sec": 17.313368558883667,
+  "sequence_targets": [],
+  "formal_adoption": false,
+  "ready": false,
+  "display_sync_deferred": "Active smoke owns writer.lock; no lock recovery/removal, no parallel display writer. Sync with canonical helpers after sequence terminal."
+}

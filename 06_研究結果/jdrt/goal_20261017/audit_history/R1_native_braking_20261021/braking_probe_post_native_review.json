@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-21T21:03:18.109917+09:00",
+  "type": "same_chat_scoped_post_native_review",
+  "new_files": [
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_braking_probe.py",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_native_braking_probe.py"
+  ],
+  "existing_skill_reference_updated": ".agents\\skills\\joso-jdrt-runner\\references\\routine_operations.md",
+  "previous_reference_sha256": "f65ed7ad8692277792458c66a6ac9beab36b99829077f6c54011b5ba1708cec8",
+  "new_reference_sha256": "b4f31ba19cf18f5b9a9741e74550f03f251b1295ec624fa37e5948fcd29ae6bc",
+  "reason": "A fixed diagnostic pair repeats process/observation/source checks; reuse existing skill utilities and provide one bounded CLI rather than repeated ad hoc native launches.",
+  "unit_scope": "4 pure source/route contracts; real process/transport/property observations supplied separately by2 actual children",
+  "actual_evidence": "braking_probe_nb26102101_independent.json",
+  "actual_evidence_sha256": "96df9547a39a3a168e64352ddd7f9ded042e7c950e919d5c003c0fa626a7bb02",
+  "not_claimed": [
+    "No warning reproduced",
+    "No exact original-core state/RNG replay",
+    "No original-core native emergencyDecel getter",
+    "No acceptance/PAP/common5 change",
+    "No separate reviewer/backend certification",
+    "No injected process-close/TCP failure regression in this revision"
+  ],
+  "frozen_method_changed": false,
+  "core_adoption_permitted": false
+}

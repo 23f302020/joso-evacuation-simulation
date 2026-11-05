@@ -1,0 +1,24 @@
+{
+  "at_jst": "2026-10-28T01:36:32.887749+09:00",
+  "action": "sixth_accepted_core_diagnostic_coverage_readback",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "run_id": "nv26102806",
+  "normal_automation_cycle": false,
+  "auxiliary_failure_preserved": "sq26102806",
+  "report": "07_監視システム/verification/pipeline_coverage_nv26102806_20261028/report.json",
+  "report_sha256": "bc5fea8177ec719780929aa0e21a90745ae4708fa858328f1363c0ba47b68fda",
+  "snapshots_all_hashes_match": true,
+  "coverage": {
+    "execute": 0.9253797822423225,
+    "validate": 0.941873045409886,
+    "record": 0.9282537309638105
+  },
+  "stage_B_complete": false,
+  "execute_end_to_validate_inferred_start_sec": 355.237338,
+  "wait_includes_diagnosis_and_authorized_repair_not_all_idle": true,
+  "no_causal_savings_or_speedup_claim": true,
+  "measurement_59505_still_owned_no_restart": true,
+  "current_scientific_owner_session": 6473,
+  "goal_complete": false
+}

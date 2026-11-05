@@ -1,0 +1,211 @@
+EEEEEEEEEEEEEEE
+======================================================================
+ERROR: test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass (test_choice_native_trace_check.TraceCheckContracts.test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass) (branch='default')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 49, in test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass
+    with self.subTest(branch=branch): self.assertEqual(self.derive(row)['branch'], branch)
+                                                       ~~~~~~~~~~~^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass (test_choice_native_trace_check.TraceCheckContracts.test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass) (branch='explicit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 49, in test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass
+    with self.subTest(branch=branch): self.assertEqual(self.derive(row)['branch'], branch)
+                                                       ~~~~~~~~~~~^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass (test_choice_native_trace_check.TraceCheckContracts.test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass) (branch='random')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 49, in test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass
+    with self.subTest(branch=branch): self.assertEqual(self.derive(row)['branch'], branch)
+                                                       ~~~~~~~~~~~^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass (test_choice_native_trace_check.TraceCheckContracts.test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass) (branch='legacy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 49, in test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass
+    with self.subTest(branch=branch): self.assertEqual(self.derive(row)['branch'], branch)
+                                                       ~~~~~~~~~~~^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass (test_choice_native_trace_check.TraceCheckContracts.test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 50, in test_default_explicit_random_legacy_are_distinguished_without_synthetic_native_pass
+    with self.assertRaises(ValueError): self.derive(self.initial(input_unspecified='0'))
+                                        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_inheritance_is_derived_and_raw_lateral_and_new_direction_preserved (test_choice_native_trace_check.TraceCheckContracts.test_inheritance_is_derived_and_raw_lateral_and_new_direction_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 29, in test_inheritance_is_derived_and_raw_lateral_and_new_direction_preserved
+    self.assertEqual(self.derive(row)['branch'], 'inherit')
+                     ~~~~~~~~~~~^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_missing_nonfinite_nonboolean_and_extra_fields_fail (test_choice_native_trace_check.TraceCheckContracts.test_missing_nonfinite_nonboolean_and_extra_fields_fail) (field='old_lat')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 68, in test_missing_nonfinite_nonboolean_and_extra_fields_fail
+    with self.subTest(field=field), self.assertRaises(ValueError): self.derive(other)
+                                                                   ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_missing_nonfinite_nonboolean_and_extra_fields_fail (test_choice_native_trace_check.TraceCheckContracts.test_missing_nonfinite_nonboolean_and_extra_fields_fail) (field='new_pos')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 68, in test_missing_nonfinite_nonboolean_and_extra_fields_fail
+    with self.subTest(field=field), self.assertRaises(ValueError): self.derive(other)
+                                                                   ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_missing_nonfinite_nonboolean_and_extra_fields_fail (test_choice_native_trace_check.TraceCheckContracts.test_missing_nonfinite_nonboolean_and_extra_fields_fail) (field='legacy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 68, in test_missing_nonfinite_nonboolean_and_extra_fields_fail
+    with self.subTest(field=field), self.assertRaises(ValueError): self.derive(other)
+                                                                   ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_missing_nonfinite_nonboolean_and_extra_fields_fail (test_choice_native_trace_check.TraceCheckContracts.test_missing_nonfinite_nonboolean_and_extra_fields_fail) (field='seq')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 68, in test_missing_nonfinite_nonboolean_and_extra_fields_fail
+    with self.subTest(field=field), self.assertRaises(ValueError): self.derive(other)
+                                                                   ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_missing_nonfinite_nonboolean_and_extra_fields_fail (test_choice_native_trace_check.TraceCheckContracts.test_missing_nonfinite_nonboolean_and_extra_fields_fail) (field='remaining')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 68, in test_missing_nonfinite_nonboolean_and_extra_fields_fail
+    with self.subTest(field=field), self.assertRaises(ValueError): self.derive(other)
+                                                                   ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_missing_nonfinite_nonboolean_and_extra_fields_fail (test_choice_native_trace_check.TraceCheckContracts.test_missing_nonfinite_nonboolean_and_extra_fields_fail) (field='new_departed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 68, in test_missing_nonfinite_nonboolean_and_extra_fields_fail
+    with self.subTest(field=field), self.assertRaises(ValueError): self.derive(other)
+                                                                   ~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_missing_nonfinite_nonboolean_and_extra_fields_fail (test_choice_native_trace_check.TraceCheckContracts.test_missing_nonfinite_nonboolean_and_extra_fields_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 69, in test_missing_nonfinite_nonboolean_and_extra_fields_fail
+    with self.assertRaises(ValueError): self.derive({**row, 'unexpected':'1'})
+                                        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+======================================================================
+ERROR: test_raw_rows_preserve_xml_entities_and_require_full_sequence (test_choice_native_trace_check.TraceCheckContracts.test_raw_rows_preserve_xml_entities_and_require_full_sequence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 73, in test_raw_rows_preserve_xml_entities_and_require_full_sequence
+    rows=check.parse(raw)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 5, in parse
+    raise NotImplementedError('Complete raw trace rows must be parsed strictly')
+NotImplementedError: Complete raw trace rows must be parsed strictly
+
+======================================================================
+ERROR: test_skipped_guards_cannot_supply_fabricated_values (test_choice_native_trace_check.TraceCheckContracts.test_skipped_guards_cannot_supply_fabricated_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 53, in test_skipped_guards_cannot_supply_fabricated_values
+    with self.assertRaises(ValueError): self.derive({**self.initial(), 'prior_type':'3'})
+                                        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_check.py", line 25, in derive
+    return check.derive(row, unspecified=-9000., random=-8000., walking_type=3)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_check.py", line 9, in derive
+    raise NotImplementedError('Guard decisions must be recalculated from raw fields')
+NotImplementedError: Guard decisions must be recalculated from raw fields
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.007s
+
+FAILED (errors=15)

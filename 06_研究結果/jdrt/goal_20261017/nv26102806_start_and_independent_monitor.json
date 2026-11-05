@@ -1,0 +1,66 @@
+{
+  "at_jst": "2026-10-28T00:11:05.426573+09:00",
+  "action": "sixth_registered_core_same_owner_and_independent_target_confirmed",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102806",
+  "original_session": 7780,
+  "sequence_actual_pid": 19900,
+  "status": "RUNNING",
+  "phase": "core",
+  "formal_recorded": 5,
+  "current_core": {
+    "run_id": "nv26102806",
+    "cell_id": "fixed_reference_u50_r2p900_seed23423",
+    "status": "RUNNING",
+    "pid": 17452,
+    "started_at_jst": "2026-10-28T00:09:53.315333+09:00"
+  },
+  "progress": {
+    "at_jst": "2026-10-28T00:11:03.304562+09:00",
+    "time_sec": 1020.0,
+    "end_sec": 21600,
+    "wall_sec": 50.06023569998797
+  },
+  "process_handle_identities": {
+    "19900": {
+      "state": "alive",
+      "created": 134375873367944327,
+      "pid": 19900
+    },
+    "17452": {
+      "state": "alive",
+      "created": 134375873686208632,
+      "pid": 17452
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "independent_target": {
+    "target_id": "nv26102806",
+    "status": "RUNNING",
+    "pid": 17452,
+    "process": {
+      "state": "alive",
+      "created": 134375873686208632,
+      "pid": 17452
+    },
+    "flags": [],
+    "observed_at_utc": "2026-10-27T15:10:58.543777+00:00",
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102806"
+    }
+  },
+  "prior_sequence_id": "sq26102705",
+  "prior_original_session": 46444,
+  "prior_original_exit_code": 0,
+  "prior_readback": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102705/nv26102705_record7_readback.json",
+  "automatic_readback_path": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102806/nv26102806_record7_readback.json",
+  "all_sequence_source_pins_unchanged": true,
+  "goal_complete": false,
+  "next": "Follow original7780 and sq26102806/state.json. This owner alone follows core -> finish -> original record7 readback BEFORE display -> clean status. Do not duplicate validate/record/readback. After successful one-cell terminal inspect existing proof and fresh goal API/READY/capacity/observer before any next cell; preserve failures and stop on anomalies."
+}

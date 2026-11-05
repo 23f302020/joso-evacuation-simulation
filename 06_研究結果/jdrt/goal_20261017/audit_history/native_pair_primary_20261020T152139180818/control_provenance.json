@@ -1,0 +1,542 @@
+{
+  "schema": "isolated_native_provenance_v1",
+  "role": "control",
+  "source_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "custom_version": "1.26.0-jdrt-choice-unpatched-control-ucrt12-static-zlib1213-c01",
+  "state": {
+    "schema": "isolated_native_build_v1",
+    "attempt_id": "control02_20261020",
+    "started_at_jst": "2026-10-20T14:37:29.406056+09:00",
+    "owner_pid": 22824,
+    "owner_process_identity": {
+      "ProcessId": 22824,
+      "ParentProcessId": 20348,
+      "CreationDate": "/Date(1792474647923)/",
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 06_研究結果/jdrt/goal_20261017/build_native_control_20261020.py --attempt-id control02_20261020 --previous-attempt control01_20261020 --patched-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/attempt08_20261020/build_state.json"
+    },
+    "staging": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+    "max_compile_jobs": 2,
+    "simulation_allowed": false,
+    "research_cli_switch_allowed": false,
+    "custom_version": "1.26.0-jdrt-choice-unpatched-control-ucrt12-static-zlib1213-c01",
+    "status": "COMPILED_VERSION_CHECKED_NOT_SIMULATED",
+    "phase": "completed",
+    "commands": [
+      {
+        "phase": "control_source_before_build",
+        "command": [
+          "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\verify_native_control_sources_20261020.py",
+          "--snapshot",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\source_preparation.json",
+          "--source-root",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\control_source_before_build.log",
+        "started_at_jst": "2026-10-20T14:37:30.028706+09:00",
+        "pid": 27540,
+        "process_identity": {
+          "ProcessId": 27540,
+          "ParentProcessId": 22824,
+          "CreationDate": "/Date(1792474650030)/",
+          "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\verify_native_control_sources_20261020.py\" --snapshot C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\source_preparation.json --source-root C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020"
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:37:31.621636+09:00",
+        "log_bytes": 189,
+        "log_sha256": "13b117a0753272ba6c10eab74ec011fc9ba4c54d62ed30d8675a2ae74527e0f6"
+      },
+      {
+        "phase": "control_configure",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "-S",
+          "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/sources/control126_20261020",
+          "-B",
+          "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/bc01",
+          "-G",
+          "MinGW Makefiles",
+          "-DCMAKE_MAKE_PROGRAM=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe",
+          "-DCMAKE_C_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe",
+          "-DCMAKE_CXX_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DCMAKE_EXE_LINKER_FLAGS=-static -static-libgcc -static-libstdc++",
+          "-DCMAKE_PREFIX_PATH=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static",
+          "-DPython_EXECUTABLE=C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "-DISOLATED_BUILD=ON",
+          "-DCHECK_OPTIONAL_LIBS=OFF",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_FOX=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_Proj=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_Intl=TRUE",
+          "-DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=FALSE",
+          "-DZLIB_INCLUDE_DIR=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include",
+          "-DFMI=OFF",
+          "-DNETEDIT=OFF",
+          "-DENABLE_PYTHON_BINDINGS=OFF",
+          "-DENABLE_JAVA_BINDINGS=OFF",
+          "-DENABLE_CS_BINDINGS=OFF",
+          "-DPARQUET=OFF",
+          "-DCCACHE_SUPPORT=OFF",
+          "-DTCMALLOC=OFF",
+          "-DCOMPILE_DEFINITIONS=XERCES_STATIC_LIBRARY;HAVE_VERSION_H",
+          "-DZLIB_LIBRARY:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a",
+          "-DZLIB_LIBRARY_RELEASE:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\control_configure.log",
+        "started_at_jst": "2026-10-20T14:37:31.643151+09:00",
+        "pid": 28340,
+        "process_identity": {
+          "ProcessId": 28340,
+          "ParentProcessId": 22824,
+          "CreationDate": "/Date(1792474651644)/",
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe -S C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/sources/control126_20261020 -B C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/bc01 -G \"MinGW Makefiles\" -DCMAKE_MAKE_PROGRAM=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe -DCMAKE_C_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe -DCMAKE_CXX_COMPILER=C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe -DCMAKE_BUILD_TYPE=Release \"-DCMAKE_EXE_LINKER_FLAGS=-static -static-libgcc -static-libstdc++\" -DCMAKE_PREFIX_PATH=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static -DPython_EXECUTABLE=C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -DISOLATED_BUILD=ON -DCHECK_OPTIONAL_LIBS=OFF -DCMAKE_DISABLE_FIND_PACKAGE_FOX=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Proj=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_Intl=TRUE -DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=FALSE -DZLIB_INCLUDE_DIR=C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include -DFMI=OFF -DNETEDIT=OFF -DENABLE_PYTHON_BINDINGS=OFF -DENABLE_JAVA_BINDINGS=OFF -DENABLE_CS_BINDINGS=OFF -DPARQUET=OFF -DCCACHE_SUPPORT=OFF -DTCMALLOC=OFF -DCOMPILE_DEFINITIONS=XERCES_STATIC_LIBRARY;HAVE_VERSION_H -DZLIB_LIBRARY:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a -DZLIB_LIBRARY_RELEASE:FILEPATH=C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:37:41.506444+09:00",
+        "log_bytes": 3367,
+        "log_sha256": "41891ff7ad16e00bf75b61fc2f7ea83c25a7bd0d1c222fd8375da67c3a1bfe66"
+      },
+      {
+        "phase": "control_sumo_netconvert_build",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "--build",
+          "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/bc01",
+          "--target",
+          "sumo",
+          "netconvert",
+          "--parallel",
+          "2"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\control_sumo_netconvert_build.log",
+        "started_at_jst": "2026-10-20T14:37:41.553106+09:00",
+        "pid": 27296,
+        "process_identity": {
+          "ProcessId": 27296,
+          "ParentProcessId": 22824,
+          "CreationDate": "/Date(1792474661554)/",
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+          "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe --build C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/bc01 --target sumo netconvert --parallel 2"
+        },
+        "log_bytes": 60005,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:53:59.780986+09:00",
+        "log_sha256": "cb1cdfab05710c6ef80cb50dc8927f56fb9cc7c96877402dd5a206b9ce70647a"
+      },
+      {
+        "phase": "sumo_imports",
+        "command": [
+          "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "-p",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\sumo.exe"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\sumo_imports.log",
+        "started_at_jst": "2026-10-20T14:53:59.810661+09:00",
+        "pid": 18348,
+        "process_identity": {
+          "ProcessId": 18348,
+          "ParentProcessId": 22824,
+          "CreationDate": "/Date(1792475640004)/",
+          "ExecutablePath": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "CommandLine": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe -p C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\sumo.exe"
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:54:02.773523+09:00",
+        "log_bytes": 11613929,
+        "log_sha256": "9b6c4bbb215880f10e98414600e4e02e6325d4338678aa266888c1fb61b2d38f"
+      },
+      {
+        "phase": "sumo_version",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\sumo.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\sumo_version.log",
+        "started_at_jst": "2026-10-20T14:54:02.812365+09:00",
+        "pid": 23888,
+        "process_identity": null,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:54:03.435697+09:00",
+        "log_bytes": 926,
+        "log_sha256": "853c9225111df30d4e234530b4a73173025e0ddaf125e42e18d2c8babc0f98c5"
+      },
+      {
+        "phase": "netconvert_imports",
+        "command": [
+          "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "-p",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\netconvert.exe"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\netconvert_imports.log",
+        "started_at_jst": "2026-10-20T14:54:03.477822+09:00",
+        "pid": 14048,
+        "process_identity": {
+          "ProcessId": 14048,
+          "ParentProcessId": 22824,
+          "CreationDate": "/Date(1792475643479)/",
+          "ExecutablePath": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe",
+          "CommandLine": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\objdump.exe -p C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\netconvert.exe"
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:54:05.369432+09:00",
+        "log_bytes": 7755565,
+        "log_sha256": "bd41ad1d16ee40b0ad2dce1b83dafb041cb2a4bd490b8bd3cbf9b100d125617c"
+      },
+      {
+        "phase": "netconvert_version",
+        "command": [
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\netconvert.exe",
+          "--version"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\netconvert_version.log",
+        "started_at_jst": "2026-10-20T14:54:05.433076+09:00",
+        "pid": 22924,
+        "process_identity": null,
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:54:06.949942+09:00",
+        "log_bytes": 938,
+        "log_sha256": "cd9d4bbab47f3365376d68d4125c6d326eeb0f15b7ea854ffa37f186c1013002"
+      },
+      {
+        "phase": "control_source_after_build",
+        "command": [
+          "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\verify_native_control_sources_20261020.py",
+          "--snapshot",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\source_preparation.json",
+          "--source-root",
+          "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020"
+        ],
+        "cwd": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019",
+        "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\control_source_after_build.log",
+        "started_at_jst": "2026-10-20T14:54:06.975648+09:00",
+        "pid": 24188,
+        "process_identity": {
+          "ProcessId": 24188,
+          "ParentProcessId": 22824,
+          "CreationDate": "/Date(1792475646976)/",
+          "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\verify_native_control_sources_20261020.py\" --snapshot C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\source_preparation.json --source-root C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020"
+        },
+        "exit_code": 0,
+        "ended_at_jst": "2026-10-20T14:54:10.544761+09:00",
+        "log_bytes": 189,
+        "log_sha256": "13b117a0753272ba6c10eab74ec011fc9ba4c54d62ed30d8675a2ae74527e0f6"
+      }
+    ],
+    "previous_state": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\previous_build_state.json",
+      "sha256": "fa24569578734d1712dacb45285a23f8224d8127a0d555c020d48ab768307526"
+    },
+    "repair": "Enable explicit existing UCRT static zlib; no additional physical source patch.",
+    "updated_at_jst": "2026-10-20T14:54:10.564519+09:00",
+    "patch_applied_sha256": null,
+    "zlib_dependency": {
+      "version": "1.2.13",
+      "package": "mingw-w64-ucrt-x86_64-zlib-1.2.13-3",
+      "linkage": "static",
+      "files": [
+        {
+          "source": "C:\\Ruby31-x64\\msys64\\ucrt64\\include\\zlib.h",
+          "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include\\zlib.h",
+          "sha256": "a980a0d104198a53cc220c51ab5856e5be901bec8a2d02e0ee79a8754219dfed",
+          "bytes": 97323
+        },
+        {
+          "source": "C:\\Ruby31-x64\\msys64\\ucrt64\\include\\zconf.h",
+          "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\include\\zconf.h",
+          "sha256": "35f1c0dc32269ac5c9e18847bfd6f991a00988d683b94693ef7e6e651e62dfaa",
+          "bytes": 16643
+        },
+        {
+          "source": "C:\\Ruby31-x64\\msys64\\ucrt64\\lib\\libz.a",
+          "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\lib\\libz.a",
+          "sha256": "42379bda5b0cd264c207682e11d18b192b54c4e64be691cdad100670d50898ce",
+          "bytes": 108228
+        }
+      ]
+    },
+    "log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\control_source_after_build.log",
+    "child_pid": null,
+    "custom_version_header": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\version.h",
+      "sha256": "d4bbd14972dc2ef36b196bc30a88bbf64ba3fc1a9644a1c978b82255bb8888f0"
+    },
+    "role": "UNPATCHED_CONTROL_SAME_BUILD_SETTINGS",
+    "output_locator_repair": "MinGW ISOLATED_BUILD outputs are in b03/src; no physical source or compiler flags changed.",
+    "normalized_zlib_path": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a",
+    "visible_staging": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019",
+    "binaries": [
+      {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\sumo.exe",
+        "sha256": "1f092bada551395cbc632d29f0df3eb946a198cabd9330a3182c534157e05eff",
+        "bytes": 21983184,
+        "clean_path_version_exit_code": 0,
+        "version_log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\sumo_version.log",
+        "version_log_sha256": "853c9225111df30d4e234530b4a73173025e0ddaf125e42e18d2c8babc0f98c5"
+      },
+      {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\netconvert.exe",
+        "sha256": "a71ac2f7890cb211656c0a4cba6a78014f5978039f9130bb0e5ca322ee21b0a8",
+        "bytes": 14311826,
+        "clean_path_version_exit_code": 0,
+        "version_log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\netconvert_version.log",
+        "version_log_sha256": "cd9d4bbab47f3365376d68d4125c6d326eeb0f15b7ea854ffa37f186c1013002"
+      }
+    ],
+    "short_path_checks": {
+      "cache_source_path_short": true,
+      "cache_build_path_short": true,
+      "generated_compiler_include_path_short": true,
+      "generated_compiler_include_no_msix_physical_prefix": true
+    },
+    "cmake_link_repair": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\CMakeLists.txt",
+      "before_sha256": "3ffa4033025efe6dd3fde0bb126fbc843de43ddb153016659c87cee5537aace8",
+      "after_sha256": "7588dbd582c5b8e60172b9d8bcb5c3b4630b2a46db67f5de99a6602580521cc7",
+      "patch_sha256": "f817e7468024c6da9e3005ff52f519194e079278b841ed394e45d92d50fa0025"
+    },
+    "link_boundary_verified": true,
+    "version_define_repair": {
+      "before": "XERCES_STATIC_LIBRARY",
+      "after": "XERCES_STATIC_LIBRARY;HAVE_VERSION_H"
+    },
+    "control_native_source_sha256": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "paired_patched_state": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\patched_build_state.json",
+      "sha256": "924d594073688cbb0e88dd479ebdcb3ff6091bba6671524ee2b09fe9ab52dff4"
+    },
+    "source_preparation": {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\source_preparation.json",
+      "sha256": "3a01fbca6263a1450cb019fc7c3128ab1ba7ce4a8fb98ad7a67bb43bf2212ec6"
+    }
+  },
+  "files": [
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_policy_20261020\\policy.json",
+      "sha256": "7f82a2499bedd7c59874e7fe77f4ab6feea35a9bfaa2a4db3068e4dd416fc30e",
+      "bytes": 2464
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_primary_20261020T152139180818\\pair.json",
+      "sha256": "bd78125dd85ea0902345df9b6fcc1eb369bed5f2b20212df656c0a9b13c8ce3a",
+      "bytes": 395600
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control_source_preparation_20261020.json",
+      "sha256": "3a01fbca6263a1450cb019fc7c3128ab1ba7ce4a8fb98ad7a67bb43bf2212ec6",
+      "bytes": 1578045
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_native_proposal_20261019\\proposal_manifest.json",
+      "sha256": "abd750761f4cc99f457ef95d6ad4d223ad93a248b6b864a71995b9c90f11c4eb",
+      "bytes": 3614
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\downloads\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3.zip",
+      "sha256": "f6f630cb9f3e31770c4a5238db7645845c527f6b440f722a7324be1902e592bd",
+      "bytes": 388181212
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt04_20261020\\official_python_tools_inventory.json",
+      "sha256": "0eef067887f53ed2843760f2981af768cb2492ed4342331c925d11251c3e3b67",
+      "bytes": 49853
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_native_proposal_20261019\\preserve_aborted_walk_raw_lateral.patch",
+      "sha256": "93d3ca0c2318e1bc2402c6449670f05546f4d600ad4b0cf3521486d9b6601771",
+      "bytes": 1591
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt07_20261020\\cmake_link.patch",
+      "sha256": "f817e7468024c6da9e3005ff52f519194e079278b841ed394e45d92d50fa0025",
+      "bytes": 565,
+      "before_sha256": "3ffa4033025efe6dd3fde0bb126fbc843de43ddb153016659c87cee5537aace8",
+      "after_sha256": "7588dbd582c5b8e60172b9d8bcb5c3b4630b2a46db67f5de99a6602580521cc7"
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\build_state.json",
+      "sha256": "052b1303c350967b89f9317318350c4279286cc9395889c2f7600f85c4e1ba2c",
+      "bytes": 22910
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\version.h",
+      "sha256": "d4bbd14972dc2ef36b196bc30a88bbf64ba3fc1a9644a1c978b82255bb8888f0",
+      "bytes": 90
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\CMakeFiles\\TargetDirectories.txt",
+      "sha256": "d0bfad0eda1e5bc9047f4706229a634a98c292a8aab5bcb658d4c0c7906bfc98",
+      "bytes": 58504
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\CMakeCache.txt",
+      "sha256": "af46294d7b1d5415245d9c55d563d259a85c297fc50f690376f6bfabf1733523",
+      "bytes": 32444
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\config.h",
+      "sha256": "eadd0ab2bf3e8ec54e9964036ed669e0deacf1b45e1de14e15194d11208fc0d7",
+      "bytes": 7269
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\sumo.dir\\flags.make",
+      "sha256": "c2c7800ee8381f4a8a4b129bb0286c6b6ae3a7732a3d749714b6e1921d76bc8c",
+      "bytes": 417
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\sumo.dir\\includes_CXX.rsp",
+      "sha256": "8e51f69e2c9a8e4dd2ad90d1e2f389a23855d936c78edd191f0b206a9685f2f5",
+      "bytes": 511
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\sumo.dir\\link.txt",
+      "sha256": "07ea8c04e982c804416dd527e1450db8bc73704d1eef60f60b23eb624e7889b1",
+      "bytes": 713
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\sumo.dir\\linkLibs.rsp",
+      "sha256": "ac03e8fcf299bc4733e60ad9c8bfc7f5a33c4cd700af61516e15e722d7c12d86",
+      "bytes": 1513
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\netconvert.dir\\flags.make",
+      "sha256": "f9a8acf190e1ad055103d6dfbd7b6ce2131c136d9a817f0fee614b57aae40ec2",
+      "bytes": 423
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\netconvert.dir\\includes_CXX.rsp",
+      "sha256": "8e51f69e2c9a8e4dd2ad90d1e2f389a23855d936c78edd191f0b206a9685f2f5",
+      "bytes": 511
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\netconvert.dir\\link.txt",
+      "sha256": "3dbbe1a189abdc2c0f4763d23266f9ae11522b39160720c5136790914bd08af6",
+      "bytes": 755
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\CMakeFiles\\netconvert.dir\\linkLibs.rsp",
+      "sha256": "7728be975d3d5ebe3a663acadcea49a525819a92574d7c3390f6877609c440b7",
+      "bytes": 1083
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\cmake-3.31.9-windows-x86_64\\bin\\cmake.exe",
+      "sha256": "b0de3b79369c3ae2fd339956991f3353efee7993eedc8cd687b26078e1749379",
+      "bytes": 12112456
+    },
+    {
+      "path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe",
+      "sha256": "5c25285b4ee7fdd75af34b6e85786828f1002f753c11d25c06280e4a63a1e4c6",
+      "bytes": 2352749
+    },
+    {
+      "path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+      "sha256": "5308f584a4a2ce18aa9da7df4df978b1703e22110f7c857a5d8401977152d5af",
+      "bytes": 2355821
+    },
+    {
+      "path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe",
+      "sha256": "f37068248b71ed71906c15a1572f8c3f816f49979b19a1e7b8788ef1de2ffd59",
+      "bytes": 284532
+    },
+    {
+      "path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\ar.exe",
+      "sha256": "3b70941c8c493338495f61deda35d74b72f29f19450fbf1cc4fe56b3c838c975",
+      "bytes": 2413664
+    },
+    {
+      "path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\ld.exe",
+      "sha256": "e0599d3498344a32be539b34d9730f1af9fedde46dd7832196ab119133e4a3e3",
+      "bytes": 3008455
+    },
+    {
+      "path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\ranlib.exe",
+      "sha256": "c04a655df8b6fa996f7f4f94f8503defc4131b4447548256c2b6872893198ea0",
+      "bytes": 2413664
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static\\lib\\libxerces-c.a",
+      "sha256": "526b4e570a1e6e7d2a13260a6e79afd6db349cd30e5ad2bb0ad7d71c341e8f3b",
+      "bytes": 12554572
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt03_20261020\\zlib-static\\lib\\libz.a",
+      "sha256": "42379bda5b0cd264c207682e11d18b192b54c4e64be691cdad100670d50898ce",
+      "bytes": 108228
+    }
+  ],
+  "binaries": [
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\sumo.exe",
+      "sha256": "1f092bada551395cbc632d29f0df3eb946a198cabd9330a3182c534157e05eff",
+      "bytes": 21983184,
+      "clean_path_version_exit_code": 0,
+      "version_log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\sumo_version.log",
+      "version_log_sha256": "853c9225111df30d4e234530b4a73173025e0ddaf125e42e18d2c8babc0f98c5",
+      "pe_imports": [
+        "advapi32.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-environment-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-private-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-utility-l1-1-0.dll",
+        "kernel32.dll",
+        "ws2_32.dll"
+      ]
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\bc01\\src\\netconvert.exe",
+      "sha256": "a71ac2f7890cb211656c0a4cba6a78014f5978039f9130bb0e5ca322ee21b0a8",
+      "bytes": 14311826,
+      "clean_path_version_exit_code": 0,
+      "version_log": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control02_20261020\\netconvert_version.log",
+      "version_log_sha256": "cd9d4bbab47f3365376d68d4125c6d326eeb0f15b7ea854ffa37f186c1013002",
+      "pe_imports": [
+        "advapi32.dll",
+        "api-ms-win-crt-convert-l1-1-0.dll",
+        "api-ms-win-crt-environment-l1-1-0.dll",
+        "api-ms-win-crt-filesystem-l1-1-0.dll",
+        "api-ms-win-crt-heap-l1-1-0.dll",
+        "api-ms-win-crt-locale-l1-1-0.dll",
+        "api-ms-win-crt-math-l1-1-0.dll",
+        "api-ms-win-crt-private-l1-1-0.dll",
+        "api-ms-win-crt-runtime-l1-1-0.dll",
+        "api-ms-win-crt-stdio-l1-1-0.dll",
+        "api-ms-win-crt-string-l1-1-0.dll",
+        "api-ms-win-crt-time-l1-1-0.dll",
+        "api-ms-win-crt-utility-l1-1-0.dll",
+        "kernel32.dll",
+        "ws2_32.dll"
+      ]
+    }
+  ],
+  "pair_evidence": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_primary_20261020T152139180818\\pair.json",
+    "sha256": "bd78125dd85ea0902345df9b6fcc1eb369bed5f2b20212df656c0a9b13c8ce3a",
+    "bytes": 395600
+  },
+  "simulation_executed": false,
+  "research_cli_switched": false,
+  "source_scope": "Same compiler/static dependencies/settings; registered native diff and shared Winsock CMake link repair only. Seven disclosed GUI/Debian-test omissions. No native correctness or READY claim."
+}

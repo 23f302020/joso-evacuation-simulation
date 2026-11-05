@@ -1,0 +1,44 @@
+{
+  "at_jst": "2026-10-22T14:44:09.463934+09:00",
+  "scope": "isolated ACE local playbook adapter, no external LLM loop",
+  "upstream_revision": "82709de050e1db6e6ef2f07bcb0393560b94992a",
+  "security_scan_id": "914ec917-15b4-4249-b0af-27e6119baaaf",
+  "upstream_security_findings": {
+    "medium": 1
+  },
+  "upstream_security_coverage": "partial",
+  "dependency_advisory_match": {
+    "installed_packages": 22,
+    "known_vulnerabilities": 0,
+    "source_audit": false
+  },
+  "tests": {
+    "initial_red": 9,
+    "initial_green": 9,
+    "review_duplicate_red": 3,
+    "final_passed": 20
+  },
+  "initial_playbook_bullets": 5,
+  "initial_counters_zero": true,
+  "source_unmodified": true,
+  "code_review": {
+    "performed_by": "current chat",
+    "blocking_findings_remaining": [],
+    "resolved": "Duplicate ADD and duplicate evidence checks added with failing then passing tests. Data/LLM text is not evaluated. Writes confined by CLI to helper state path; evidence validity is structural, semantics remain current chat responsibility."
+  },
+  "limitations": [
+    "Upstream FiNER flaw remains in original source; evaluator not imported/invoked by adapter.",
+    "Python audit hook is process-local, not OS sandbox.",
+    "No API key/external LLM call; automatic Generator/Reflector/Curator not tested.",
+    "Large dataset/AppWorld/dependency source not exhaustively audited.",
+    "No improvement-rate measurement."
+  ],
+  "artifacts": {
+    ".agents\\tools\\ace\\ace_local.py": "709d0f61a34764c7138f8693f2b6bc3a13fc3f58011ce5dce61908d890f2352c",
+    ".agents\\tools\\ace\\ace.ps1": "495fad1f4f2f298a1a4c5bc51c25b142c6686b960034974ebc019aeb1575e88a",
+    ".agents\\tools\\ace\\requirements-core.lock": "9b2d0b22d84ca20c5846529e4deab01b1fcfb4b5eae3ed88e0570280567eaa3a",
+    ".agents\\tools\\ace\\installation.json": "90fe105422eb874cfef479506dba839c61e9796acf283cb27fc8e765821201b2",
+    ".agents\\tools\\ace\\state\\000001.json": "ecd9acdcc709a2d7fa5f373eb78e1e0ac0ed91382242acb05587570b736ff451",
+    "06_研究結果\\判断支援\\ace_20261022\\final.stderr.log": "42797bb441239ffae043693bfb3b7a14c25e59424221367aaa1dd4c8d7760b90"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "at_jst": "2026-10-29T00:24:21.516083+09:00",
+  "action": "v4_full30_independent_audit_original_owner",
+  "original_session": 65595,
+  "command": "canonical G4 auditor --suite rt261028b",
+  "actual_owner": {
+    "state": "alive",
+    "created": 134376745024089125,
+    "pid": 36548
+  },
+  "launcher_and_executor": [
+    {
+      "ProcessId": 37924,
+      "ParentProcessId": 41068,
+      "CreationDate": "2026-10-29T00:21:42.283338+09:00"
+    },
+    {
+      "ProcessId": 36548,
+      "ParentProcessId": 37924,
+      "CreationDate": "2026-10-29T00:21:42.408912+09:00"
+    }
+  ],
+  "controller_original_session": 41223,
+  "controller_exit_code": 0,
+  "controller30_completed": true,
+  "independent_full_audit": "RUNNING_NOT_YET_PASS",
+  "stdout": "full30_independent_audit.stdout.json",
+  "stderr": "full30_independent_audit.stderr.log",
+  "observer": {
+    "state": "alive",
+    "created": 134376734283303123,
+    "pid": 36456
+  },
+  "observer_identity_matches": true,
+  "observer_source_matches": true,
+  "observer_age_start_sec": 84.77189755439758,
+  "observer_age_finished_sec": 19.308361530303955,
+  "os_memory_after_controller": {
+    "TotalVisibleMemorySize": 8082012,
+    "FreePhysicalMemory": 133904,
+    "FreeVirtualMemory": 6416924
+  },
+  "technical_ready": false,
+  "formal_core_count": 0,
+  "next": "Follow same65595/exact owner until terminal, no second audit. Inspect new canonical report binding30/current source/all65 counterexamples (derive actual count). Only full PASS allows fresh all14 smoke prefix; fresh dedicated preflight and monitor freshness before core."
+}

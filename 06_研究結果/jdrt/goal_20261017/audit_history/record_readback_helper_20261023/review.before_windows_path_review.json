@@ -1,0 +1,50 @@
+{
+  "at_jst": "2026-10-23T11:30:48.822055+09:00",
+  "judgment_id": "JD-20261023-research-record-readback-05",
+  "reason": "Four completed cells required repeated parent metadata/7-file readback; consolidate without rerunning physical validation.",
+  "scope": "New read-only metadata helper/test and existing routine reference only; no owner/source/input changes",
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_record_readback.py": "0508f0b41319de71ccd6dec70e595ad6074323919389b56117ad7b9d1d66a879",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_record_readback.py": "ba5f2606978a0c6eed41122a6c190073dfdb3ed949edffa09d3a8bd8124719c4",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "7f55251a20874489f9f2892bba2243a15f282a8da44cd029d7dd35db954440f5"
+  },
+  "original_reference_sha256": "387637018dcbddc91c36ee89fb5749fec16d04399d54a6ee4812e97b68e51e12",
+  "review_findings": [
+    {
+      "finding": "CLI initially allowed a fresh output inside a research run",
+      "reproduction": "red_output_scope.log",
+      "fix": "Require resolved goal-evidence output plus exclusive creation"
+    },
+    {
+      "finding": "Five mutually consistent but unregistered implementation paths could pass metadata comparison",
+      "reproduction": "red_registered_sources.log",
+      "fix": "Require exact configured implementation file set"
+    },
+    {
+      "finding": "Artificial subprocess diagnostic decoding raised a reader-thread UnicodeDecodeError despite test status OK",
+      "reproduction": "green_with_transport_exception.log",
+      "fix": "Use explicit child -X utf8 and UTF-8 capture; assert intended negative reason"
+    }
+  ],
+  "verification": {
+    "initial_RED": "red.log: 10 tests / 11 assertion failures, not collection failures",
+    "final_GREEN": "green_reviewed.log: 14 artificial tests PASS, no transport exception",
+    "actual_old_display_control": "actual_old_display_rejection.json",
+    "first_actual_terminal_readback": "PENDING_nc26102302_original_finish",
+    "scientific_implementation_SHA_unchanged": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+    },
+    "original_finish_helper_unchanged": true
+  },
+  "limitations": [
+    "Metadata/marker/hash contracts only, no new native/physics proof",
+    "No adoption/start/recovery calls",
+    "Actual current terminal positive not yet exercised",
+    "No measured model/time/cost improvement"
+  ],
+  "review_conclusion": "No unresolved correctness issue in this scoped review; real terminal transport still pending"
+}

@@ -1,0 +1,15 @@
+test_input_config_cannot_change_while_preparing_pair (__main__.ConsumerContracts.test_input_config_cannot_change_while_preparing_pair) ... FAIL
+
+======================================================================
+FAIL: test_input_config_cannot_change_while_preparing_pair (__main__.ConsumerContracts.test_input_config_cannot_change_while_preparing_pair)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 116, in test_input_config_cannot_change_while_preparing_pair
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.294s
+
+FAILED (failures=1)

@@ -1,0 +1,5 @@
+観測イベントは `completed` です。対象は `verification\smoke02\artificial\manifest.json`、状態は `COMPLETED` と記録されています。これは完了の観測であり、検証PASSや研究セルの採用を示しません。
+
+証拠は提示されたイベントJSONに限られ、現在の実行状態、成果物の整合性、通知の到達は確認できません。`notification: submitted` も通知成功の証拠ではありません。
+
+次の手動操作は、既存JDRTゲートに従い、該当する実行かを確認したうえで `check → validate` の順に進めることです。PASSを確認するまでは採用・記録しないでください。

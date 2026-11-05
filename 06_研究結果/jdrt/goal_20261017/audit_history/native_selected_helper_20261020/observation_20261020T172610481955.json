@@ -1,0 +1,63 @@
+{
+  "action": "selected_native_pair_point_observation",
+  "at_jst": "2026-10-20T17:26:09.367750+09:00",
+  "state_path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\nc261020a_native_pair\\state.json",
+  "state_sha256": "f2c5004df5f09f7bc236d44b281fdeaeceeb38f352a2026fe3a449ff41bcd03f",
+  "status": "FAILED_PRESERVED",
+  "owner": {
+    "pid": 29636,
+    "expected": {
+      "ProcessId": 29636,
+      "ParentProcessId": 20492,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020a --patched-id np261020a",
+      "CreationDate": 1792484575170
+    },
+    "identity": "absent",
+    "observed_cim": null
+  },
+  "child": null,
+  "active": {
+    "command": [
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical.py",
+      "--project-root",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究",
+      "fixture",
+      "--case",
+      "walk_short_repeated",
+      "--run-id",
+      "nc261020a"
+    ],
+    "label": "nc261020a_fixture",
+    "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_ctl_20261020a\\toolchain.json",
+    "pid": 27260,
+    "pid_kind": "Popen launcher; fixture manifest separately identifies its executor",
+    "exit_code": 1,
+    "started_at_utc": "2026-10-20T08:25:10.355681+00:00",
+    "cim_at_capture": {
+      "ProcessId": 27260,
+      "ParentProcessId": 29636,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" fixture --case walk_short_repeated --run-id nc261020a",
+      "CreationDate": 1792484710391
+    },
+    "process_identity": {
+      "ProcessId": 27260,
+      "ParentProcessId": 29636,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" fixture --case walk_short_repeated --run-id nc261020a",
+      "CreationDate": 1792484710391
+    },
+    "return_code_evidence": "Popen process handle wait; not numeric PID inference"
+  },
+  "completed_roles": [],
+  "native_regression_complete": false,
+  "core_ready": false,
+  "formal_adoption_permitted": false,
+  "continuous_monitoring_claimed": false,
+  "orchestrator_15sec_updates_are_independent_monitoring": false
+}

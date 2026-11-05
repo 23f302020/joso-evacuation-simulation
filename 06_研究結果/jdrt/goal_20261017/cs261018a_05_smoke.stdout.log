@@ -1,0 +1,196 @@
+{
+  "protocol": "realtime_choice_v1",
+  "run_id": "cs261018a_05",
+  "cell_id": "fixed_reference_u50_r1_seed23423",
+  "destination_policy": "fixed_reference",
+  "demand_level": "u50",
+  "scenario": "R1",
+  "seed": 23423,
+  "purpose": "smoke",
+  "pid": 26292,
+  "status": "COMPLETED",
+  "started_at_jst": "2026-10-18T10:02:43.237480+09:00",
+  "parameter_sha256": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6",
+  "parameter_path": "04_プログラム/config/jdrt_realtime_choice_v1.json",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "input_directory": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "execution_contract": {
+    "timing_contract": "pre_step_end_v1",
+    "max_control_lead_sec": 0.5,
+    "initial_closure_call_sec": 0,
+    "strict_closed_entry_inclusive": true,
+    "common_implementation_required": true,
+    "excluded_comparison_protocols": [
+      "v1",
+      "v2",
+      "realistic_v1",
+      "realtime_b_v1",
+      "realtime_b_boundary_v2"
+    ],
+    "implementation_files": [
+      "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+      "04_プログラム/scripts/jdrt_choice_policy.py",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py"
+    ],
+    "legacy_cli_may_start": false
+  },
+  "end_sec": 1800,
+  "step_sec": 0.5,
+  "snapshot_sec": 60,
+  "implementation_archive_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "27d30780164733dc465d2874473755500cefe803c4dc068cef6051b9b61f2c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "4841f1caf0399ac3e0190a2d11f9923363a84b863088891807980a1cc08c2846"
+  },
+  "smoke_fixture": {
+    "basis": "complete_private_crews_short_walks_and_future_closure_requests",
+    "future_closure_cases": [
+      {
+        "person_type": "type3",
+        "intent_column": "intent_u05",
+        "available": 35,
+        "selected": [
+          [
+            3600,
+            "b_origin_0244_type3_0007"
+          ],
+          [
+            3600,
+            "b_origin_0258_type3_0002"
+          ]
+        ]
+      },
+      {
+        "person_type": "type3",
+        "intent_column": "intent_u50",
+        "available": 302,
+        "selected": [
+          [
+            3600,
+            "b_origin_0227_type3_0001"
+          ],
+          [
+            3600,
+            "b_origin_0228_type3_0001"
+          ]
+        ]
+      },
+      {
+        "person_type": "type4",
+        "intent_column": "intent_u05",
+        "available": 15,
+        "selected": [
+          [
+            6600,
+            "b_origin_0285_type4_0003"
+          ],
+          [
+            6600,
+            "b_origin_0285_type4_0004"
+          ]
+        ]
+      },
+      {
+        "person_type": "type4",
+        "intent_column": "intent_u50",
+        "available": 125,
+        "selected": [
+          [
+            3600,
+            "b_origin_0229_type4_0001"
+          ],
+          [
+            3600,
+            "b_origin_0229_type4_0002"
+          ]
+        ]
+      }
+    ],
+    "people": 31,
+    "readiness_override": "first_group_index_mod_10_shared_private_crew_technical_only",
+    "core_adoption_permitted": false
+  },
+  "runtime_sha256": {
+    "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+    "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+    "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+    "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+    "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+  },
+  "finished_at_jst": "2026-10-18T10:03:28.160602+09:00",
+  "summary": {
+    "people": 31,
+    "states": {
+      "admitted": 12,
+      "time_limit": 7,
+      "boundary_exit": 7,
+      "walk_limit": 5
+    },
+    "request_states": {
+      "cancelled_timeout": 14,
+      "served": 5
+    },
+    "type_counts": {
+      "type1": 8,
+      "type3": 11,
+      "type4": 12
+    },
+    "counts": {
+      "steps": 3600,
+      "controller_ticks": 1801,
+      "snapshots": 31,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 914,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 246,
+      "dispatch_cycles": 31,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 35,
+      "departure_pending_frames": 32,
+      "snapshot_actor_rows": 260,
+      "closures_applied": 6783
+    },
+    "sumo_errors": {
+      "bytes": 0,
+      "warning_count": 0,
+      "error_count": 0,
+      "handled_route_rejection_count": 0,
+      "unhandled_error_count": 0,
+      "collision_teleport_count": 0,
+      "gridlock_teleport_count": 0
+    }
+  },
+  "output_sha256": {
+    "actor_observations.csv.gz": "9436caa45913e5ca1745d1ee1f65ba4d48504c6170c5f5a0c92bc4e0bf08fb4a",
+    "candidates.csv.gz": "e3b2b75c33bcc332d243915084217b5b95530ceb56774c6a2ca5bc5cebe3f599",
+    "common_realization.csv": "5d130c568af2064da86ffa7df68bd15007e61f22171403d5c39d5b5c933a650e",
+    "dispatch_cycles.csv.gz": "5afbd67a6dd2e87515c2734648b1d79066f128efa3a17fe365c3f60319f8cc34",
+    "edge_observations.csv.gz": "807374e600680afdef3a429ed3101d87a0258da87a81beffa914da7a166a8316",
+    "events.jsonl": "e8d5f3760260fd202e12669a598a6e2749f94e47402f20f5cbc620cdf1222894",
+    "facility_results.csv": "185af46e5693a2df3dd62a11e73c6c2cff2c115ab7225c647e55b6518d27eea9",
+    "person_results.csv": "ac172f0a968c97b5613bc22d72158636f716b4ed0d011382229d3eab87bce33d",
+    "progress.json": "26ff5b232221f4e5492a7ed62871e95905010447601b07d4d6457c79f9e2b20a",
+    "request_results.csv": "c5bc15af9269600c04ce10182e172a56ae48c03abc1363b1a76b66c2b8edddd9",
+    "snapshot_actor_observations.csv.gz": "5be7e7ca7f214f3e5a2bfa168bd07d72a78ce4005cb2f8e736869015915b3b56",
+    "sumo.log": "29b5986845fa8725fbe81f17982663b44cccfa5a20116950e2ee9bc0ecac8395",
+    "sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transitions.csv.gz": "794b285918689aa806147db8920f8d3cdd6ad919f226966fe80aa9ff94264053",
+    "tripinfo.xml": "b7093537de585c8084b1442d24d82a2d9389eb3fa25ae951b655c7781e311fa4",
+    "types.rou.xml": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+    "vehicle_results.csv": "afccfa9480986f4f166203c2bb4b66578c994e65cf202233a561893725715c62"
+  }
+}

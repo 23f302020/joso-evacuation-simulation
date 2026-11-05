@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-22T21:37:05.484222+09:00",
+  "status": "REAL_READONLY_TRANSPORT_PASS",
+  "recorded_cells": 1,
+  "next_cell": {
+    "cell_id": "fixed_reference_u05_r1_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u05",
+    "scenario": "R1",
+    "seed": 23423
+  },
+  "core_ready": true,
+  "core_start_available": true,
+  "new_finish_helper_record_executed": false,
+  "formal_record_via_prior_canonical_record": true,
+  "source_sha256": "e7545e936b68929aadf8247490407b3d0c64d6f1f2adde591862302e332c815f"
+}

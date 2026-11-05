@@ -1,0 +1,76 @@
+{
+  "at_jst": "2026-10-24T22:38:44.544898+09:00",
+  "suite": "nt261024a",
+  "status": "FAILED_PRESERVED_NATIVE_CASE_NOT_REPRODUCED",
+  "actual_native_child_status": "COMPLETED",
+  "cause": "1m short external remained visible in one .5s frame; desired skip counterexample not exercised",
+  "observed_e1_frame": {
+    "time_sec": 9.5,
+    "position_m": 0.9262266839142441,
+    "speed_mps": 14.076126415442396
+  },
+  "next_hypothesis": "fixture-only .1m short external; no runtime/control changes; new unique suite ID",
+  "technical_ready": false,
+  "factory_before_next_geometry_sha256": "967f7fbfc160bc11e5fea7f6bb3c4dd6be391c0a8a94585ec3d98618d4e25366",
+  "monitor_pid": 31176,
+  "monitor_source_matches": true,
+  "monitor_targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\nt261024a\\manifest.json": {
+      "status": "FAILED",
+      "target_id": "nt261024a",
+      "observed_at_utc": "2026-10-24T13:38:33.534860+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-24T13:36:11.786266+00:00",
+        "finished_at_utc": "2026-10-24T13:37:10.195998+00:00",
+        "elapsed_sec": 58.409732,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_fixture_suite_v1",
+      "purpose": "technical_fixture_suite",
+      "state_sha256": "d8598a0ba4e6c3369536b8f2060a90dd5eb2bc4006fcfde08ad9c1a49d4adc66",
+      "flags": [],
+      "pid": 23276,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\nt261024a\\manifest.json",
+      "sim_sec": null,
+      "progress_token": [
+        "FAILED",
+        null,
+        null
+      ],
+      "last_progress": 1792849030.8776824,
+      "log_offsets": {},
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\nt261024a_c27\\execution\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "nt261024a_c27",
+      "observed_at_utc": "2026-10-24T13:38:33.536851+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-24T13:36:36.480534+00:00",
+        "finished_at_utc": "2026-10-24T13:37:09.516457+00:00",
+        "elapsed_sec": 33.035923,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_fixture_v1",
+      "purpose": "fixture",
+      "state_sha256": "c8dcfcb4fab29c37d43ded46851abc0ab80ea332a7d1584399b5e37a81aca12d",
+      "flags": [],
+      "pid": 23276,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\nt261024a_c27\\execution\\manifest.json",
+      "sim_sec": 1500.0,
+      "progress_token": [
+        "COMPLETED",
+        1500.0
+      ],
+      "last_progress": 1792849030.8776824,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\nt261024a_c27\\execution\\sumo_errors.log": 0
+      },
+      "historical": false
+    }
+  }
+}

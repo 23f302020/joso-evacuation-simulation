@@ -1,0 +1,42 @@
+{
+  "at_jst": "2026-10-20T17:22:00.323513+09:00",
+  "status": "READY_FOR_SELECTED_TECHNICAL_PAIR_ONLY",
+  "tests_passed": 31,
+  "test_log": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_selected_helper_20261020\\final_unit04.log",
+  "source_sha256": {
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_regression.py": "e6d6dfc4dde426eb108f7eaa962aff89dc9aae1a3f519315361847e2f649e0c3",
+    "04_プログラム\\tests\\test_choice_native_regression.py": "db6914bc2644dadb80204fafccc6bb4e160de7b6bd06df2da5994c1f63a7d08f"
+  },
+  "reviewer": "current parent; actual backend unverified; no model switch",
+  "primary_plan": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_selected_helper_20261020\\plan01.json",
+    "sha256": "d994c26118a1c015a2577ccdea1f9b403c5d58778639f08c78d9903932a52b89",
+    "scope": "Read-only actual paired-bundle/primary source identity; later revision only adds shared runtime source freeze guards; run constructor rechecks current guards"
+  },
+  "real_process_probe": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_selected_helper_20261020\\process_probe_20261020T171240526024\\state.json",
+    "scope": "Real Python launcher/CIM/handle timeout only, not native simulation; command method AST unchanged in final code"
+  },
+  "resolved_findings": [
+    "Original/embedded pair/policy/role and copied EXE binding",
+    "Prepare-time config/source changes rejected, including shared runtime helpers",
+    "Unrecorded/active core/native/journal/locks stop before launch",
+    "Expected raw control XY failure only; other failures stop second role",
+    "Exact stage recurrence with finite clock/distance; strict technical validator receipt, no core permission",
+    "Both paired physical input sets equal; XML comments/formatting and converter-log metadata only ignored for comparison, all original file hashes retained",
+    "Numeric PID reuse distinguished; no restart/kill on timeout; interrupted active lock retained"
+  ],
+  "unresolved_findings_in_selected_helper_scope": [],
+  "run_ids": {
+    "control": "nc261020a",
+    "patched": "np261020a"
+  },
+  "native_regression_complete": false,
+  "core_ready": false,
+  "pending": [
+    "Actual selected pair",
+    "Broad native guards and native guard trace",
+    "Full current26/audit/all14smokes/input-unit/preflight/G6",
+    "All70 formal cells and full-goal analysis/report/gaps"
+  ]
+}

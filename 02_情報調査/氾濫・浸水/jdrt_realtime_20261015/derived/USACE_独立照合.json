@@ -1,0 +1,33 @@
+{
+  "checked_at_jst": "2026-10-16T00:00:32.184819+09:00",
+  "technical_result": "PASS",
+  "checks": {
+    "zip_sha": true,
+    "zip_crc": true,
+    "all_extracted_equal_zip": true,
+    "entire_wse_equal_original": true,
+    "seconds_from_dates_equal_native": true,
+    "time_days_agree": true,
+    "all_csv_times_equal_original": true,
+    "boundary_partition": true,
+    "all_polygon_vertices_equal_original": true,
+    "all_polygons_valid": true,
+    "proposed_six_hours_native_coverage": true,
+    "candidate_artifact_sha": true,
+    "road_keys_unique_external": true,
+    "no_invented_closure_or_deck": true,
+    "old_dependencies_unchanged": true
+  },
+  "zip_files_verified": 21,
+  "candidate_wse_shape": [
+    865,
+    8174
+  ],
+  "proposed_window_native_count": 73,
+  "initial_cells_wse_above_minimum": 5018,
+  "initial_wet_role": "cell-minimum diagnostic, not road closure or independent physical truth",
+  "simulation_ready": false,
+  "simulation_started": false,
+  "source_sha256": "2ec5a05ed1180277c4841b51226dfc7f60c4a1eb1b032f04dc9dbc0e56dd8179",
+  "candidate_audit_sha256": "cb3b6dc1d888c9d1008b6554fb2443e7aa48dc2166fa7e38be87dfad1e6f6f4d"
+}

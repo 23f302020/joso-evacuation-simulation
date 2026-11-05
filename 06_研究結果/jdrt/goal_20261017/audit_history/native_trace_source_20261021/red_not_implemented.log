@@ -1,0 +1,50 @@
+test_instrumentation_is_bound_to_the_exact_generator (tests.test_choice_native_trace_source.TraceSourceContracts.test_instrumentation_is_bound_to_the_exact_generator) ... ERROR
+test_pure_insertions_restore_exact_original_and_preserve_rng_calls (tests.test_choice_native_trace_source.TraceSourceContracts.test_pure_insertions_restore_exact_original_and_preserve_rng_calls) ... ERROR
+test_trace_fields_and_evaluation_sites_are_explicit (tests.test_choice_native_trace_source.TraceSourceContracts.test_trace_fields_and_evaluation_sites_are_explicit) ... ERROR
+test_unpatched_ambiguous_or_already_instrumented_source_is_rejected (tests.test_choice_native_trace_source.TraceSourceContracts.test_unpatched_ambiguous_or_already_instrumented_source_is_rejected) ... ERROR
+
+======================================================================
+ERROR: test_instrumentation_is_bound_to_the_exact_generator (tests.test_choice_native_trace_source.TraceSourceContracts.test_instrumentation_is_bound_to_the_exact_generator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_source.py", line 27, in test_instrumentation_is_bound_to_the_exact_generator
+    instrumented = trace.instrument(self.original)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_source.py", line 5, in instrument
+    raise NotImplementedError('Native guard observation insertions are not implemented')
+NotImplementedError: Native guard observation insertions are not implemented
+
+======================================================================
+ERROR: test_pure_insertions_restore_exact_original_and_preserve_rng_calls (tests.test_choice_native_trace_source.TraceSourceContracts.test_pure_insertions_restore_exact_original_and_preserve_rng_calls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_source.py", line 19, in test_pure_insertions_restore_exact_original_and_preserve_rng_calls
+    instrumented = trace.instrument(self.original)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_source.py", line 5, in instrument
+    raise NotImplementedError('Native guard observation insertions are not implemented')
+NotImplementedError: Native guard observation insertions are not implemented
+
+======================================================================
+ERROR: test_trace_fields_and_evaluation_sites_are_explicit (tests.test_choice_native_trace_source.TraceSourceContracts.test_trace_fields_and_evaluation_sites_are_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_source.py", line 42, in test_trace_fields_and_evaluation_sites_are_explicit
+    data = trace.instrument(self.original)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_source.py", line 5, in instrument
+    raise NotImplementedError('Native guard observation insertions are not implemented')
+NotImplementedError: Native guard observation insertions are not implemented
+
+======================================================================
+ERROR: test_unpatched_ambiguous_or_already_instrumented_source_is_rejected (tests.test_choice_native_trace_source.TraceSourceContracts.test_unpatched_ambiguous_or_already_instrumented_source_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_trace_source.py", line 37, in test_unpatched_ambiguous_or_already_instrumented_source_is_rejected
+    self.original + b'\0', trace.instrument(self.original)]:
+                           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_trace_source.py", line 5, in instrument
+    raise NotImplementedError('Native guard observation insertions are not implemented')
+NotImplementedError: Native guard observation insertions are not implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.015s
+
+FAILED (errors=4)

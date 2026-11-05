@@ -1,0 +1,20 @@
+{
+  "at_jst": "2026-10-24T17:44:32.238648+09:00",
+  "classification": "PROGRESS",
+  "run_id": "nc26102402",
+  "status": "COMPLETED_WITH_OBSERVATION_TIMING_HOLD",
+  "formal_recorded": 8,
+  "targeted_diagnosis": "06_研究結果/jdrt/goal_20261017/nc26102402_短道路・交差点_閉鎖進入診断_20261024.json",
+  "original_validation_session": 13369,
+  "original_validation_actual_process": {
+    "ProcessId": 19672,
+    "CreationDate": "/Date(1792831260109)/",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py --project-root . validate --run-id nc26102402 --purpose core",
+    "UserModeTime": 1840468750,
+    "KernelModeTime": 241250000
+  },
+  "validation_stdout": "06_研究結果/jdrt/goal_20261017/audit_history/nc26102402_transition_falsepositive_20261024/original_validate.stdout.json",
+  "later_start_or_record_permitted": false,
+  "new_simulation_or_method_change": false,
+  "next_action": "follow same validator; preserve INVALID; no common5 edits before its terminal; then independent timing reconstruction repair and version-consistent technical registration/whole prerequisites"
+}

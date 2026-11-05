@@ -1,0 +1,35 @@
+{
+  "at_jst": "2026-10-29T16:17:37.039105+09:00",
+  "action": "same_control_package_prevalidation_live_point",
+  "classification": "VERIFIED_WAIT",
+  "previous_goal_turn_classification": "PROGRESS: repaired builds/loader completed, strict primary13k and schema/packaging contracts verified; current control packaging owned",
+  "package": {
+    "status": "RUNNING_NOT_YET_COMPLETE",
+    "role": "control",
+    "original_session": 49717,
+    "actual_owner": 29700,
+    "creation_ms": 1793257713763,
+    "launcher": 32344,
+    "destination": "04_プログラム/output/sumo/toolchains/native_ctl_si29a",
+    "stdout": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/package_control_si29a.stdout.log",
+    "stderr": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/package_control_si29a.stderr.log",
+    "next": "Follow same49717/owner29700 birth1793257713763; no second packager or helper/source edits. Require exit0, manifest/file SHA and validate_frozen_toolchain readback. Then fresh selected native_lat_si29a package, never reuse existing destination. Both packages before separate scientific-identical v5/native regressions/full suite/audit/all14/new READY/G6/capacity/07/core.",
+    "latest_verified_point": {
+      "at_jst": "2026-10-29T16:16:11.150556+09:00",
+      "actual_owner": 29700,
+      "creation_ms": 1793257713763,
+      "original_session": 49717,
+      "handle_live": true,
+      "kernel_100ns": 3630156250,
+      "user_100ns": 483437500,
+      "read_bytes": 3274001351,
+      "write_bytes": 0,
+      "manifest_exists": false,
+      "meaning": "CIM identity and original session live; primary-validation I/O ongoing. No bundle completion inferred. No duplicate process or helper edits."
+    }
+  },
+  "formal_recorded_current": 0,
+  "technical_ready": false,
+  "goal_complete": false,
+  "source_helpers_frozen_during_owned_package": true
+}

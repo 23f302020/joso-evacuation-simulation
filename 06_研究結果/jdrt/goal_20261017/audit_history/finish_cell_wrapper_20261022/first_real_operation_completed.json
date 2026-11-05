@@ -1,0 +1,24 @@
+{
+  "at_jst": "2026-10-22T22:47:52.714832+09:00",
+  "status": "FIRST_REAL_TERMINAL_CELL_WORKFLOW_VERIFIED",
+  "helper_sha256": "e7545e936b68929aadf8247490407b3d0c64d6f1f2adde591862302e332c815f",
+  "run_id": "nc26102202",
+  "operation": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102202.finish/operation.json",
+  "operation_sha256": "100eaa513acce00f5fcaf2033329641c2a8322577c74c08654fe5d8bd477c319",
+  "record7_primary_readback": "06_研究結果/jdrt/goal_20261017/nc26102202_record7_readback.json",
+  "readback_sha256": "f74666d04d070c2bb4aab3dfe1323201394ab4bcb81c7e00afaa9e959fa911be",
+  "original_session": 33664,
+  "original_session_exit_code": 0,
+  "original_owner_pid": 15752,
+  "formal_record_result": "RECORDED",
+  "same_registration_accepted_rows": 2,
+  "all7_original_readback_verified": true,
+  "holds_clear_and_READY_at_terminal": true,
+  "next_start_performed_by_helper": false,
+  "limitations": [
+    "One real completed cell does not prove future all70 operation or improve scientific conclusions",
+    "Six document bytes may subsequently change through ordinary display sync; preserve terminal hashes and formal markers",
+    "No measured model/token saving or backend switch claimed"
+  ],
+  "prior_evidence": "16 temporary-evidence unit contracts and real status transport; unchanged helper source, no rerun needed"
+}

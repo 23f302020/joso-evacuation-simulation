@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-21T21:03:18.109917+09:00",
+  "operation": "fixed_native_braking_pair_independent_readback",
+  "classification_previous_goal_turn": "progress",
+  "classification_this_goal_turn": "progress",
+  "run_id": "nb26102101",
+  "handle": 21074,
+  "handle_exit_code": 0,
+  "child_pids": [
+    13792,
+    27964
+  ],
+  "status": "COMPLETED_NOT_ADOPTABLE",
+  "warning_reproduced": false,
+  "car_trajectories_identical": true,
+  "native_properties_observed_in_probe_only": {
+    "decel": 4.5,
+    "emergencyDecel": 9.0
+  },
+  "source_warning_severity_recomputed": 1.0002222222222221,
+  "formal_recorded_cells": 1,
+  "operational_HOLD": true,
+  "no_next_core_start": true,
+  "no_external_send": true,
+  "next": "同一native版/車種/時計/速度差/警告式を拘束する汎用診断契約と改変反証を準備し、受入条件の技術修正か研究方法変更かを整理する。警告が出るまで入力探索、whitelist、旧R0と新validatorの版混在は行わない。"
+}

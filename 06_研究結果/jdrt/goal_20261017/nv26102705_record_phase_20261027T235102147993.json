@@ -1,0 +1,51 @@
+{
+  "at_jst": "2026-10-27T23:51:02.147803+09:00",
+  "action": "fifth_independent_PASS_same_owner_record_started",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102705",
+  "original_session": 46444,
+  "sequence_actual_pid": 15432,
+  "finish_actual_pid": 23476,
+  "record_actual_pid": 15148,
+  "record_created_jst": "2026-10-27T23:49:42.8597430+09:00",
+  "process_handle_identities": {
+    "15432": {
+      "state": "alive",
+      "created": 134375843366723456,
+      "pid": 15432
+    },
+    "23476": {
+      "state": "alive",
+      "created": 134375852036299937,
+      "pid": 23476
+    },
+    "15148": {
+      "state": "alive",
+      "created": 134375861828597435,
+      "pid": 15148
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102705_20261027T234941038750.json",
+  "validation_report_sha256": "a8ffe1888831fd5eb194007943eda0d9cefc5fe6c77dced05e9cd9479719e56f",
+  "validation_components": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "PASS",
+    "native_logs": "PASS",
+    "native_fixture_boundaries": "PASS"
+  },
+  "core_adoption_permitted_first_report": true,
+  "formal_recorded": 4,
+  "display_writers_deferred": true,
+  "all_sequence_source_pins_unchanged": true,
+  "no_duplicate_validate_record": true,
+  "goal_complete": false
+}

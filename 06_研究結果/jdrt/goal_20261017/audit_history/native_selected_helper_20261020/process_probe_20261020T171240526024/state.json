@@ -1,0 +1,56 @@
+{
+  "scope": "Real project-Python launcher/CIM/handle probe only; artifact freeze intentionally isolated",
+  "simulation_started": false,
+  "native_behavior_verified": false,
+  "technical_ready": false,
+  "status": "PROCESS_IDENTITY_PROBE_PASS_NOT_SIMULATED",
+  "helper_sha256": "a9f32858f1adb3fa31fb1046dd8d124e3fbb589eaf8c36516d0da39d4a0bb959",
+  "active": {
+    "command": [
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import time; time.sleep(22)"
+    ],
+    "label": "python_identity",
+    "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_ctl_20261020a\\toolchain.json",
+    "pid": 19552,
+    "pid_kind": "Popen launcher; fixture manifest separately identifies its executor",
+    "exit_code": 0,
+    "started_at_utc": "2026-10-20T08:12:40.527426+00:00",
+    "cim_at_capture": {
+      "ProcessId": 19552,
+      "ParentProcessId": 23564,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -c \"import time; time.sleep(22)\"",
+      "CreationDate": 1792483960529
+    },
+    "process_identity": {
+      "ProcessId": 19552,
+      "ParentProcessId": 23564,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -c \"import time; time.sleep(22)\"",
+      "CreationDate": 1792483960529
+    },
+    "observed_at_utc": "2026-10-20T08:12:56.507247+00:00",
+    "identity_observation": {
+      "pid": 19552,
+      "expected": {
+        "ProcessId": 19552,
+        "ParentProcessId": 23564,
+        "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+        "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -c \"import time; time.sleep(22)\"",
+        "CreationDate": 1792483960529
+      },
+      "identity": "matched",
+      "observed_cim": {
+        "ProcessId": 19552,
+        "ParentProcessId": 23564,
+        "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+        "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -c \"import time; time.sleep(22)\"",
+        "CreationDate": 1792483960529
+      }
+    },
+    "return_code_evidence": "Popen process handle wait; not numeric PID inference"
+  }
+}

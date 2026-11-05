@@ -1,0 +1,40 @@
+{
+  "protocol": "realtime_choice_v1",
+  "registered_cells": 70,
+  "recorded_cells": 0,
+  "running": [],
+  "unrecorded": [],
+  "partial_records": [],
+  "record_identity_mismatch": [],
+  "unresolved_failures": [],
+  "unresolved_launches": [],
+  "pending_record_journals": [],
+  "foreign_running_manifests": [],
+  "next_cell": {
+    "cell_id": "fixed_reference_r0_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": null,
+    "scenario": "R0",
+    "seed": 23423
+  },
+  "smoke_completed": [
+    "rs261029b_01",
+    "rs261029b_02",
+    "rs261029b_03",
+    "rs261029b_04",
+    "rs261029b_05",
+    "rs261029b_06",
+    "rs261029b_07",
+    "rs261029b_08",
+    "rs261029b_09",
+    "rs261029b_10",
+    "rs261029b_11",
+    "rs261029b_12"
+  ],
+  "failed": [
+    "rs261029b_13"
+  ],
+  "active_native_processes": [],
+  "core_ready": false,
+  "core_start_available": false
+}

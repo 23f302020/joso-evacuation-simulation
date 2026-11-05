@@ -1,0 +1,25 @@
+{
+  "status": "DEPLOYED",
+  "at_utc": "2026-10-23T23:26:44.481364+00:00",
+  "new_monitor": {
+    "state": "alive",
+    "created": 134372715861793293,
+    "pid": 16536
+  },
+  "source_sha256": "080944f6f381ca278f214bc472a0185197c91da56ca06bef504d6c428206689c",
+  "old_events_unchanged": 167,
+  "timed_targets": 505,
+  "actual_run_timing": {
+    "started_at_utc": "2026-10-23T23:03:30.116684+00:00",
+    "finished_at_utc": "2026-10-23T23:18:07.338732+00:00",
+    "elapsed_sec": 877.222048,
+    "start_source": "started_at_jst",
+    "finish_source": "finished_at_jst",
+    "status": "complete"
+  },
+  "actual_run_source_sha256": "c4a20ec580eb1168b35eb516f387f53caf3897a97d7130659ee400828f929e0c",
+  "independently_recomputed_elapsed_sec": 877.222048,
+  "research_processes_modified": false,
+  "old_events_replayed": false,
+  "deployment_attempt": "Stop task exited old monitor between Get-Process and CIM lookup; auxiliary null lookup failed. Confirmed old PID absent, enabled existing task and started it once. No research action."
+}

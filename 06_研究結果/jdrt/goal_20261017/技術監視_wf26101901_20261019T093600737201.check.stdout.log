@@ -1,0 +1,34 @@
+{
+  "run_id": "wf26101901_c26",
+  "status": "FAILED",
+  "pid_alive": false,
+  "progress": {
+    "at_jst": "2026-10-19T09:31:40.546387+09:00",
+    "run_id": "wf26101901_c26",
+    "time_sec": 0.0,
+    "end_sec": 1500,
+    "wall_sec": 0.004622600000061539,
+    "counts": {
+      "steps": 0,
+      "controller_ticks": 1,
+      "snapshots": 1,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 0,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 0,
+      "dispatch_cycles": 0,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 0,
+      "departure_pending_frames": 0,
+      "snapshot_actor_rows": 0
+    },
+    "people_states": {
+      "travelling_walk": 2
+    },
+    "request_states": {}
+  },
+  "error": "Walking stage replacement moved the person: {\"after\": {\"edge_id\": \"d0\", \"lane_position_m\": 12.592627737109952, \"stage_arrival_pos_m\": 50.0, \"stage_edges\": [\"d0\", \"d1\", \"d2\", \"e2\"], \"stage_length_m\": 332.71955362190477, \"xy\": [134.79999999999998, 116.59262773710995]}, \"before\": {\"edge_id\": \"d0\", \"lane_position_m\": 12.592627737109952, \"stage_arrival_pos_m\": 50.0, \"stage_edges\": [\"e0\", \"d0\", \"d1\", \"d2\", \"e2\"], \"stage_length_m\": 361.39079020725706, \"xy\": [134.16, 116.59262773710995]}, \"changed_keys\": [\"xy\"], \"purpose\": \"old_remaining\", \"requested_arrival_pos_m\": 50.0, \"requested_depart_pos_m\": 12.592627737109952, \"requested_edges\": [\"d0\", \"d1\", \"d2\", \"e2\"], \"stage_index\": 0}"
+}

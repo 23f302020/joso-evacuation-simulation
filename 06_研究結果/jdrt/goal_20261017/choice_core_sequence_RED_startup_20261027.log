@@ -1,0 +1,14 @@
+..................F...
+======================================================================
+FAIL: test_reserved_live_start_waits_for_its_first_manifest (test_choice_core_sequence.TransactionTests.test_reserved_live_start_waits_for_its_first_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 319, in test_reserved_live_start_waits_for_its_first_manifest
+    self.assertTrue(manifest.exists())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.319s
+
+FAILED (failures=1)

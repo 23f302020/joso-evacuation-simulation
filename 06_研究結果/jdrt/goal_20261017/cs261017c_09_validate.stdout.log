@@ -1,0 +1,221 @@
+{
+  "run_id": "cs261017c_09",
+  "purpose": "smoke",
+  "scope": "current_technical_run_integrity_only",
+  "at_jst": "2026-10-17T18:10:42.298025+09:00",
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "historical_diagnostic": false,
+  "validator_sha256": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+  "verifier_dependencies": {
+    "numpy": "2.4.4",
+    "scipy": "1.16.3",
+    "scipy_shortest_path_binary_sha256": "42b0e197c97219337e9fa6bd8fd15d7bf51f03602f1e5e43645dc83d1eb1129e",
+    "numpy_multiarray_binary_sha256": "4341f3ad7cfd58450ea46ea874dfe0842aa085ba363ed3aa699db7ac1bc57eac"
+  },
+  "pending": [
+    "formal_core_adoption_and_preflight_transaction",
+    "final_current_suite_and_all14_smokes"
+  ],
+  "manifest_sha256": "f068cf1e55cad19bc506b832fa3074b2eebcf2008bdfff8e5cd059501ecdb780",
+  "parameter_sha256": "151229dc7476accd4d37e462b34fc5e41f5a4908112728114386b7e9715cdcd6",
+  "input_manifest_sha256": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe",
+  "implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "ca7a5ceb7f07753100b7234e62f31c078ef92e82d13b6b30c748c334178f1c68",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "4256cecd124bd83d35ef9c0f587edabbbe0e69e5a5d40ac23fe5bfe40ab2d05f",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "9f01a5ed79446a278fed8bd9be889d8286d3b5726463257e63030af8a22de034",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "b1b2831a4b79afe2fb3733498af387eb3b5a145ab5bfe32d5bf44672aad2120b"
+  },
+  "runtime_sha256": {
+    "sumo_binary": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+    "traci_init": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+    "traci_vehicle": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+    "shared_smoke": "11fa0f86643595dccc5ddb12c51b170f8f077076bb73fb551229780da6fe3548",
+    "shared_log_parser": "e269988275e078d1247b7013648b7a55e3701b5cbe7e7a52fb48d191489c3842"
+  },
+  "status": "PASS",
+  "checks": {
+    "terminal_completed_identity": true,
+    "protocol_config_input_identity": true,
+    "registered_config_and_input": true,
+    "registered_cell": true,
+    "registered_clocks": true,
+    "complete_output_file_set": true,
+    "common_implementation_set": true,
+    "implementation_archives_match_manifest": true,
+    "all_bound_bytes_before": true,
+    "current_runtime_bytes": true,
+    "all_bound_bytes_after": true
+  },
+  "components": {
+    "person_tables": {
+      "status": "PASS",
+      "checks": {
+        "unique_tables": true,
+        "complete_population": true,
+        "common_realization_and_attributes": true,
+        "assigned_intent_mode_terminal": true,
+        "request_set": true,
+        "vehicle_set": true,
+        "event_clock": true,
+        "state_chains": true,
+        "person_fsm": true,
+        "request_fsm": true,
+        "request_lifecycle": true,
+        "shared_capacity_and_exit": true,
+        "closure_clocks": true,
+        "waiting_hazard_overlap": true,
+        "summary_accounting": true
+      },
+      "errors": {},
+      "examples": {},
+      "people": 29,
+      "requests": 10,
+      "primary_denominator": 10,
+      "primary_admitted": 3,
+      "primary_boundary_exit_separate": 0,
+      "primary_unaccepted_person_sec": 15138.0,
+      "core_adoption_permitted": false
+    },
+    "candidate_tables": {
+      "status": "PASS",
+      "checks": {
+        "dispatch_grid": true,
+        "cycle_availability": true,
+        "candidate_matrix": true,
+        "candidate_free_stages": true,
+        "candidate_source": true,
+        "candidate_positions": true,
+        "candidate_shortest_paths": true,
+        "candidate_gates": true,
+        "candidate_score_components": true,
+        "candidate_score": true,
+        "candidate_selection": true,
+        "cycle_counts": true
+      },
+      "errors": {},
+      "examples": {},
+      "candidate_rows": 106,
+      "cycles": 31,
+      "method": "scipy_CSR_forward_pickup_reverse_delivery_node_cost",
+      "numeric_time_tolerance_sec": 1e-07,
+      "required_sum_tolerance_sec": 1e-09,
+      "strict_gate_predicates_checked_separately": true,
+      "core_adoption_permitted": false
+    },
+    "road_snapshots": {
+      "status": "PASS",
+      "checks": {
+        "snapshot_actor_identity_phase": true,
+        "snapshot_actor_states": true,
+        "native_edge_membership": true,
+        "full_road_grid": true,
+        "snapshot_primary_reaggregation": true
+      },
+      "errors": {},
+      "examples": {},
+      "snapshot_actor_rows": 323,
+      "road_rows": 1648518,
+      "grid_bytes": 1648518,
+      "sparse_occupied_keys": 189,
+      "core_adoption_permitted": false
+    },
+    "actor_stream": {
+      "status": "PASS",
+      "checks": {
+        "actor_grid_completeness": true,
+        "actor_arrival_clock": true,
+        "actor_phase_unique_membership": true,
+        "actor_observation_state": true,
+        "actor_walk_integral_and_speed": true,
+        "actor_vehicle_distances": true,
+        "actor_route_index": true,
+        "actor_closed_external_edge": true,
+        "reroute_position_continuity": true,
+        "backend_vkt": true
+      },
+      "errors": {},
+      "examples": {},
+      "actor_rows": 39651,
+      "actor_count": 20,
+      "vkt": {
+        "choice_drt_0": {
+          "arrival_tail_m": 0,
+          "residual_m": 0.003086356716721639,
+          "rounding_bound_m": 0.0100001
+        },
+        "choice_drt_1": {
+          "arrival_tail_m": 0,
+          "residual_m": 0.0018099498424817284,
+          "rounding_bound_m": 0.0100001
+        },
+        "choice_drt_2": {
+          "arrival_tail_m": 0,
+          "residual_m": 0.0016433525911452307,
+          "rounding_bound_m": 0.0100001
+        },
+        "choice_drt_3": {
+          "arrival_tail_m": 0,
+          "residual_m": 0.0007700588503212202,
+          "rounding_bound_m": 0.0100001
+        },
+        "scen_c_origin_0010_0001": {
+          "arrival_tail_m": 5.8014891682160155,
+          "residual_m": 1.7976731214730535e-12,
+          "rounding_bound_m": 0.0100001
+        },
+        "scen_c_origin_0010_0002": {
+          "arrival_tail_m": 8.670572454230765,
+          "residual_m": 1.8047785488306545e-12,
+          "rounding_bound_m": 0.0100001
+        },
+        "scen_c_origin_0010_0003": {
+          "arrival_tail_m": 7.365087874814037,
+          "residual_m": 1.7621459846850485e-12,
+          "rounding_bound_m": 0.0100001
+        }
+      },
+      "removal_observations": {},
+      "core_adoption_permitted": false
+    },
+    "movement_events": {
+      "status": "PASS",
+      "checks": {
+        "transition_route_reconstruction": true,
+        "all_entries_primary_multiset": true,
+        "route_change_source_continuity": true,
+        "walk_stage_budget_recurrence": true,
+        "walk_pre_step_budget_stop": true,
+        "no_closed_or_ambiguous_entries": true
+      },
+      "errors": {},
+      "examples": {},
+      "expected_transition_rows": 1315,
+      "actual_transition_rows": 1315,
+      "walkers": 13,
+      "core_adoption_permitted": false
+    },
+    "native_logs": {
+      "status": "PASS",
+      "checks": {
+        "no_native_errors": true,
+        "all_warnings_evidence_classified": true,
+        "no_teleports_or_collisions": true,
+        "no_subscription_missing": true,
+        "native_summary_recomputed": true
+      },
+      "classified_warnings": [],
+      "unknown": [],
+      "errors": [],
+      "core_adoption_permitted": false
+    },
+    "native_fixture_boundaries": {
+      "status": "PASS",
+      "applicable": false,
+      "core_adoption_permitted": false
+    }
+  },
+  "bound_files": 76,
+  "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_cs261017c_09_20261017T181056427399.json"
+}

@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-29T10:10:00.705986+09:00",
+  "action": "v4_full_independent_audit_terminal_readback",
+  "original_session": 65595,
+  "original_exit_code": 0,
+  "actual_owner36548_absent": true,
+  "report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T100253.json",
+  "report_sha256": "244b2f164e561e93ca237002283a93b1413e062b85e8f0d25f0a56b83d412a39",
+  "full_current_cases": 30,
+  "all_components_per_case": 7,
+  "raw_status_contract": "INCOMPLETE + exact7 PASS components/all checks true; canonical G4 PASS, not research adoption",
+  "counterexamples_pass": 65,
+  "primary_files_unchanged": 510,
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "smoke_prefix_reserved_next": "rs261029b",
+  "retired_prestart_prefix": "rs261029a",
+  "core_started": false,
+  "technical_ready": false,
+  "goal_api_status_before_smokes": "active from actual API current turn",
+  "sleep_gap_evidence": "overnight_gap_evidence.json; OS sleep/wake interval, no continuity claim or audit restart"
+}

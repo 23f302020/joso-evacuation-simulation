@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-29T16:34:46.950855+09:00",
+  "status": "DRAFT_V5_ANALYSIS_ENTRY_REFUSAL_VERIFIED_NOT_ANALYSIS",
+  "candidate_sha256": "ac5da5ad017014aa043a58b1c62c748bb503de05ee9045ad684517950b84eb9b",
+  "analysis_source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\G6_主指標・事前登録差分_集計.py",
+  "analysis_source_sha256": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+  "unchanged_since_v4_proof": {
+    "G6_主指標・事前登録差分_集計.py": true,
+    "G6_要求待ち・打切り_集計.py": true,
+    "G6_副指標・理論上限_集計.py": true,
+    "G6_副指標・理論上限_実装証跡.json": true
+  },
+  "previous_13_contracts_reused_from_unchanged_sources": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_registration_gate_20261022/review.json",
+  "actual_refusal": "Not ready: no formally recorded core ledger",
+  "ledger_selection": "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl",
+  "workspace_selection": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5",
+  "candidate_selected_for_research": false,
+  "population_or_result_analysis_executed": false,
+  "research_workspace_or_ledger_created": false,
+  "remaining": [
+    "After actual v5 registration, rebind G6 service/source premises to new selected native/input/common5",
+    "Only complete formally recorded70 can enter actual aggregation; no partial-set direction or old-result mixing",
+    "Current limited refusal does not prove complete scientific analysis or technical READY"
+  ],
+  "technical_ready": false,
+  "goal_complete": false
+}

@@ -1,0 +1,19 @@
+{
+  "at_jst": "2026-10-22T16:00:19.339434+09:00",
+  "status": "COMPLETED_PASS",
+  "purpose": "independent_core_validation_not_adoption",
+  "run_id": "nc26102201",
+  "session_id": 81200,
+  "pid": 25048,
+  "executor_created_jst": "2026-10-22T15:57:56.362930+09:00",
+  "launcher_pid": 23300,
+  "last_OS_identity_verified_at_jst": "2026-10-22T15:58:37+09:00",
+  "command": "realtime_choice_cell.py --project-root . validate --run-id nc26102201 --purpose core",
+  "formal_adoption_created": false,
+  "retry_policy": "Follow same handle/process. Observation timeout is not failure and never triggers duplicate validation.",
+  "result_observed_at_jst": "2026-10-22T21:11:49.534719+09:00",
+  "actual_cli_finished_at_jst": "2026-10-22T16:14:44.815706+09:00",
+  "duration_sec": 1008.3086772999959,
+  "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102201_20261022T161444780030.json",
+  "core_adoption_permitted": true
+}

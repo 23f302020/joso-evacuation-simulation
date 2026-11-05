@@ -1,0 +1,101 @@
+{
+  "at_jst": "2026-10-28T08:33:31.531462+09:00",
+  "action": "tenth_registered_low_demand_facility_first_R2P900_same_owner_and_observer_confirmed",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102810",
+  "original_session": 67031,
+  "sequence_actual_pid": 14356,
+  "status": "RUNNING",
+  "phase": "core",
+  "formal_recorded": 9,
+  "current_core": {
+    "run_id": "nv26102810",
+    "cell_id": "facility_first_u05_r2p900_seed23423",
+    "status": "RUNNING",
+    "pid": 26556,
+    "started_at_jst": "2026-10-28T08:32:30.114251+09:00"
+  },
+  "progress": {
+    "at_jst": "2026-10-28T08:33:28.213525+09:00",
+    "run_id": "nv26102810",
+    "time_sec": 540.0,
+    "end_sec": 21600,
+    "wall_sec": 37.6499023999786,
+    "counts": {
+      "steps": 1080,
+      "controller_ticks": 541,
+      "snapshots": 10,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 16254,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 112,
+      "dispatch_cycles": 10,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 0,
+      "departure_pending_frames": 38,
+      "snapshot_actor_rows": 1204
+    },
+    "people_states": {
+      "not_ready": 11066,
+      "admitted": 274,
+      "travelling_car": 392,
+      "travelling_walk": 31,
+      "no_route": 114,
+      "assigned_origin": 1,
+      "waiting_origin": 3,
+      "no_origin_connection": 53,
+      "walk_limit": 3,
+      "initial_or_current_closed": 28
+    },
+    "request_states": {
+      "pending": 3,
+      "accepted": 1
+    }
+  },
+  "process_handle_identities": {
+    "14356": {
+      "state": "alive",
+      "created": 134376175000802207,
+      "pid": 14356
+    },
+    "26556": {
+      "state": "alive",
+      "created": 134376175337735428,
+      "pid": 26556
+    },
+    "26988": {
+      "state": "alive",
+      "created": 134375371341239107,
+      "pid": 26988
+    }
+  },
+  "independent_target": {
+    "target_id": "nv26102810",
+    "status": "RUNNING",
+    "pid": 26556,
+    "process": {
+      "state": "alive",
+      "created": 134376175337735428,
+      "pid": 26556
+    },
+    "flags": [],
+    "observed_at_utc": "2026-10-27T23:33:16.812909+00:00",
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102810"
+    }
+  },
+  "helper_source_sha256": "dff4798eea53f72948523f17072e01a32d9ea6f439378e0edeb05e114839a44b",
+  "all_sequence_source_pins_unchanged": true,
+  "prior_sequence_id": "sq26102809",
+  "prior_original_session": 55966,
+  "prior_original_exit_code": 0,
+  "prior_readback": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102809/nv26102809_record7_readback.json",
+  "automatic_readback_path": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102810/nv26102810_record7_readback.json",
+  "goal_complete": false,
+  "next": "Follow same original67031, sequence14356 and core26556; finish/record owns its original readback before display. No new cell before terminal proof and fresh parent gates."
+}

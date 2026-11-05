@@ -1,0 +1,28 @@
+{
+  "at_jst": "2026-10-21T20:56:12.798353+09:00",
+  "review_scope": "new nonadoptable fixed native pair collector; no change to common5/input/PAP",
+  "reviewer": "same working chat; no separate agent",
+  "red": "4 discovered contracts, failures5/errors1 from unimplemented pure behavior; no import/dependency failure",
+  "green": "4 tests PASS after implementation and after owner/source-binding review corrections",
+  "plan_sha256": "2cf59dc050ba3c44f86928a2a2e052ddfc2d43b076a87da301b2f6514730df6f",
+  "collector_sha256": "da4a49be2e3c312cc37086a0f42a3661ffcdd66f27e9263e2d9f788caab37bb6",
+  "findings_addressed": [
+    "Reject changed/outside-project source and bind rejected manifest",
+    "Preserve car XML and pair identity apart from person node",
+    "Source core step/seed and exact native binary binding",
+    "Use same child after observation waits; preserve connection-close errors",
+    "Global writer/idleness checks prevent concurrent research mutation; unique technical ID"
+  ],
+  "required_real_checks": [
+    "Actual pinned TraCI/API/version/process/TCP owner",
+    "Both native children terminal success with unchanged plan/source/core bytes",
+    "Native decel/emergencyDecel getters and per-step trajectories; warning may or may not recur"
+  ],
+  "limits": [
+    "Artificial reduced initialization is not original-state replay",
+    "No warnings are classified for research adoption by this helper",
+    "Native options are matched for core motion settings; input population, absolute clock/end and source RNG history differ",
+    "Review is local, not an independent-model endorsement"
+  ],
+  "core_start_permitted": false
+}

@@ -1,0 +1,78 @@
+{
+  "analysis_id": "JDRT-V2-POST-20261015",
+  "observed_at_utc": "2026-10-15 07:56:06 UTC",
+  "timezone": "Asia/Tokyo",
+  "access": "read-only",
+  "folder_url": "https://drive.google.com/drive/folders/138DVygRbgjvfEmDjRd_5LWSLbk0Ta8oa",
+  "folder_contents": "直下3件、データ収集システム直下3件を列挙。文書5件を読取。",
+  "sources": [
+    {
+      "title": "ai_data_analysis_methodology_2026-09-08.md",
+      "url": "https://drive.google.com/file/d/1CndM_1Tjkud6s1uJnGMmC9syUMBBqoyc/view",
+      "id": "1CndM_1Tjkud6s1uJnGMmC9syUMBBqoyc",
+      "modified_time": "2026-09-08T07:41:36.926Z",
+      "created_time": "2026-09-08T07:41:36.926Z",
+      "read_status": "connector text obtained",
+      "text_length": 7601,
+      "note": "抽出本文を確認。Google原本のバイト列SHAではない。"
+    },
+    {
+      "title": "WindowsからMacへのシミュレーション開発データ移行ガイド",
+      "url": "https://docs.google.com/document/d/10hTH9NSOeccEcidoY_89coMAIKusMepJir4c4SvpHrk/edit",
+      "id": "10hTH9NSOeccEcidoY_89coMAIKusMepJir4c4SvpHrk",
+      "modified_time": "2026-09-24T00:46:38.921Z",
+      "created_time": "2026-09-24T00:29:55.724Z",
+      "read_status": "connector text obtained",
+      "text_length": 9064,
+      "note": "抽出本文を確認。Google原本のバイト列SHAではない。"
+    },
+    {
+      "title": "データ収集システム_ツール比較・調査記録",
+      "url": "https://docs.google.com/document/d/15d99slHiO5Wg4R9zsT5fM_PZfwpi-g3SZ-9_c_Lxef8/edit",
+      "id": "15d99slHiO5Wg4R9zsT5fM_PZfwpi-g3SZ-9_c_Lxef8",
+      "modified_time": "2026-10-13T11:24:20.723Z",
+      "created_time": "2026-10-13T00:47:23.298Z",
+      "read_status": "connector text obtained",
+      "text_length": 4681,
+      "note": "抽出本文を確認。Google原本のバイト列SHAではない。"
+    },
+    {
+      "title": "データ収集システム_用途別選定・自動判別設計",
+      "url": "https://docs.google.com/document/d/12FUR-Ux7Y1sbDoPS6tD8RM504m5Gth7Q34YCVhkZvlc/edit",
+      "id": "12FUR-Ux7Y1sbDoPS6tD8RM504m5Gth7Q34YCVhkZvlc",
+      "modified_time": "2026-10-13T11:24:15.786Z",
+      "created_time": "2026-10-13T00:47:21.792Z",
+      "read_status": "connector text obtained",
+      "text_length": 12137,
+      "note": "抽出本文を確認。Google原本のバイト列SHAではない。"
+    },
+    {
+      "title": "データ収集システム_取得先・運用台帳",
+      "url": "https://docs.google.com/spreadsheets/d/146pu2397yb6vsW6ZbcXOx6yKifif3DGwkRk5Nu1WAsM/edit",
+      "id": "146pu2397yb6vsW6ZbcXOx6yKifif3DGwkRk5Nu1WAsM",
+      "modified_time": "2026-10-13T11:24:31.656Z",
+      "created_time": "2026-10-13T00:52:14.047Z",
+      "read_status": "connector text obtained",
+      "text_length": 23848,
+      "note": "抽出本文を確認。Google原本のバイト列SHAではない。"
+    }
+  ],
+  "sheet_metadata": {
+    "tabs": [
+      "取得先",
+      "実行履歴",
+      "記入ガイド",
+      "データ明細"
+    ],
+    "bounded_reads": [
+      "記入ガイド!A1:B39",
+      "取得先!A1:Z16"
+    ],
+    "finding": "運用台帳は別用途の初回手動調査。JDRT取得台帳とは扱わない。"
+  },
+  "limitations": [
+    "コネクタ取得完了時点でありGoogle配信元HTTP時刻/内部キャッシュ年齢は不明",
+    "原本への編集・移動・追加・コメントなし",
+    "フォルダ外のDrive全体を監査したものではない"
+  ]
+}

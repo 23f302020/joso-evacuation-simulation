@@ -1,0 +1,63 @@
+
+C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/b05/src/sumo.exe:     file format pei-x86-64
+
+
+Disassembly of section .text:
+
+00000001403f0350 <MSBaseVehicle::setSkips(MSStop&, int)+0x30>:
+   1403f0350:	7f 48                	jg     1403f039a <MSBaseVehicle::setSkips(MSStop&, int)+0x7a>
+   1403f0352:	39 81 d0 00 00 00    	cmp    %eax,0xd0(%rcx)
+   1403f0358:	75 14                	jne    1403f036e <MSBaseVehicle::setSkips(MSStop&, int)+0x4e>
+   1403f035a:	48 83 c4 28          	add    $0x28,%rsp
+   1403f035e:	5b                   	pop    %rbx
+   1403f035f:	5e                   	pop    %rsi
+   1403f0360:	5f                   	pop    %rdi
+   1403f0361:	5d                   	pop    %rbp
+   1403f0362:	c3                   	ret
+   1403f0363:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+   1403f0368:	ff d0                	call   *%rax
+   1403f036a:	84 c0                	test   %al,%al
+   1403f036c:	74 ec                	je     1403f035a <MSBaseVehicle::setSkips(MSStop&, int)+0x3a>
+   1403f036e:	48 8b 4b 30          	mov    0x30(%rbx),%rcx
+   1403f0372:	e8 e9 ee 0d 00       	call   1404cf260 <MSRoute::begin() const>
+   1403f0377:	4c 8b 0f             	mov    (%rdi),%r9
+   1403f037a:	49 39 c1             	cmp    %rax,%r9
+   1403f037d:	76 db                	jbe    1403f035a <MSBaseVehicle::setSkips(MSStop&, int)+0x3a>
+   1403f037f:	85 f6                	test   %esi,%esi
+   1403f0381:	0f 8e 89 00 00 00    	jle    1403f0410 <MSBaseVehicle::setSkips(MSStop&, int)+0xf0>
+   1403f0387:	48 8b 53 58          	mov    0x58(%rbx),%rdx
+   1403f038b:	83 fe 01             	cmp    $0x1,%esi
+   1403f038e:	74 11                	je     1403f03a1 <MSBaseVehicle::setSkips(MSStop&, int)+0x81>
+   1403f0390:	8d 46 fe             	lea    -0x2(%rsi),%eax
+   1403f0393:	48 98                	cltq
+   1403f0395:	0f 1f 00             	nopl   (%rax)
+   1403f0398:	48 8b 12             	mov    (%rdx),%rdx
+   1403f039b:	48 83 e8 01          	sub    $0x1,%rax
+   1403f039f:	73 f7                	jae    1403f0398 <MSBaseVehicle::setSkips(MSStop&, int)+0x78>
+   1403f03a1:	48 8b 42 10          	mov    0x10(%rdx),%rax
+   1403f03a5:	f2 0f 10 82 70 01 00 	movsd  0x170(%rdx),%xmm0
+   1403f03ac:	00 
+   1403f03ad:	4d 8b 01             	mov    (%r9),%r8
+   1403f03b0:	4c 39 00             	cmp    %r8,(%rax)
+   1403f03b3:	0f 84 af 00 00 00    	je     1403f0468 <MSBaseVehicle::setSkips(MSStop&, int)+0x148>
+   1403f03b9:	4c 39 c8             	cmp    %r9,%rax
+   1403f03bc:	0f 83 be 00 00 00    	jae    1403f0480 <MSBaseVehicle::setSkips(MSStop&, int)+0x160>
+   1403f03c2:	31 d2                	xor    %edx,%edx
+   1403f03c4:	0f 1f 40 00          	nopl   0x0(%rax)
+   1403f03c8:	31 c9                	xor    %ecx,%ecx
+   1403f03ca:	4c 3b 00             	cmp    (%rax),%r8
+   1403f03cd:	0f 94 c1             	sete   %cl
+   1403f03d0:	48 83 c0 08          	add    $0x8,%rax
+   1403f03d4:	01 ca                	add    %ecx,%edx
+   1403f03d6:	4c 39 c8             	cmp    %r9,%rax
+   1403f03d9:	72 ed                	jb     1403f03c8 <MSBaseVehicle::setSkips(MSStop&, int)+0xa8>
+   1403f03db:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+   1403f03e0:	85 d2                	test   %edx,%edx
+   1403f03e2:	74 16                	je     1403f03fa <MSBaseVehicle::setSkips(MSStop&, int)+0xda>
+   1403f03e4:	48 8b 43 78          	mov    0x78(%rbx),%rax
+   1403f03e8:	48 2b 43 70          	sub    0x70(%rbx),%rax
+   1403f03ec:	48 c1 f8 03          	sar    $0x3,%rax
+   1403f03f0:	69 c0 9f 5b e2 d4    	imul   $0xd4e25b9f,%eax,%eax
+   1403f03f6:	01 f0                	add    %esi,%eax
+   1403f03f8:	01 d0                	add    %edx,%eax
+   1403f03fa:	89 87 28 03 00 00    	mov    %eax,0x328(%rdi)

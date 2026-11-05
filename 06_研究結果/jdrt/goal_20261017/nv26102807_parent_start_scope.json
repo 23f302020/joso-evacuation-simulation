@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-28T01:02:47.897987+09:00",
+  "action": "sixth_direct_finish_primary_readback_and_seventh_scope_precheck",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "run_id": "nv26102806",
+  "original_session": 64850,
+  "original_exit_code": 0,
+  "formal_recorded": 6,
+  "proof": "06_研究結果/jdrt/goal_20261017/nv26102806_record7_readback.json",
+  "proof_sha256": "e4ddceea6f13f847c9d4b8a44e0aa78f1db41528f6b64b1a0558696dee86c98b",
+  "next_run_id": "nv26102807",
+  "next_sequence_id": "sq26102807",
+  "next_cell": {
+    "cell_id": "fixed_reference_u50_r2p0_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u50",
+    "scenario": "R2P0",
+    "seed": 23423
+  },
+  "free_bytes": 253341851648,
+  "one_run_reserve_bytes": 193986012138,
+  "current_helper_30_contracts_review_current": true,
+  "failed_sequence_replayed": false,
+  "goal_complete": false
+}

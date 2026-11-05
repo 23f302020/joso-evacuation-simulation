@@ -1,0 +1,54 @@
+{
+  "overview_max_dimension": 1600,
+  "pdf_text_characters": 0,
+  "crops": [
+    {
+      "id": "legend_top.png",
+      "source_physical_page": 1,
+      "source_box_pdf_top_left_pt": [
+        3120,
+        630,
+        3300,
+        1000
+      ],
+      "render_scale": 4,
+      "pixels": [
+        720,
+        1480
+      ],
+      "sha256": "9e78015326cf7e8591b59fc1741145a0a10495b383160acbed514b856284e9c1"
+    },
+    {
+      "id": "footer_left.png",
+      "source_physical_page": 1,
+      "source_box_pdf_top_left_pt": [
+        180,
+        2380,
+        1450,
+        2505
+      ],
+      "render_scale": 1.5,
+      "pixels": [
+        1905,
+        188
+      ],
+      "sha256": "f5736f21cc1fead9aea5fac533bf455cd8681d9cc029828025450f0e00d640c6"
+    },
+    {
+      "id": "footer_right.png",
+      "source_physical_page": 1,
+      "source_box_pdf_top_left_pt": [
+        2520,
+        2380,
+        3320,
+        2505
+      ],
+      "render_scale": 2,
+      "pixels": [
+        1600,
+        250
+      ],
+      "sha256": "d4c1258d491afcb761b2e2758c72a659e2f2975fc8ad07b7c0a23eb2cdcc1173"
+    }
+  ]
+}

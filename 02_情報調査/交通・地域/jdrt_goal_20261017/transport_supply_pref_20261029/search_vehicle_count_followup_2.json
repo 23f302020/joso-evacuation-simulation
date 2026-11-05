@@ -1,0 +1,74 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.carsensor.net/usedcar/spF/ibaraki/index2.html",
+        "title": "福祉車両(茨城県)の中古車を探す(2ページ目)【 ...",
+        "description": "茨城県 福祉車両 の中古車一覧. 一覧から探す; 地図から探す. 104台; 絞り込み; 並べ替え; 更新 ...",
+        "position": 1,
+        "source": "web"
+      },
+      {
+        "url": "https://kakaku.com/kuruma/used/spec/Prefecture=15/Location=429/",
+        "title": "茨城県常総市の中古車一覧",
+        "description": "... 福祉車両 8人乗り 助手席リフトアップ. 日産 セレナ 2.0 B 送迎タイプ オート ... 2015年; 10.1万km; 茨城県; グリーンブラックツートン; 2000cc; フロア6AT; 2WD; 車検 ...",
+        "position": 2,
+        "source": "web"
+      },
+      {
+        "url": "https://kuruma-ex.jp/usedcar/search/result/pref/30/options/assistive_vehicle",
+        "title": "茨城県 福祉車両の中古車",
+        "description": "あなたの理想のカーライフを叶える、ぴったりの一台がきっと見つかります。まずは ... 2015年. 走行. 5.3万km. 車検. 車検整備付. 茨城県つくば市. 他の情報を開く. 他の ...",
+        "position": 3,
+        "source": "web"
+      },
+      {
+        "url": "https://www.goo-net.com/usedcar/option-welfare/index-44.html",
+        "title": "福祉車両の中古車（44ページ目） - グーネット",
+        "description": "福祉車両から探す～44ページ目～｜福祉車両の中古車・中古車情報を2912台掲載！ ... 2015年; 走行 1.8万km; 車検 2027年11月; 排気 1800cc; 整備 法定整備付; 修復 なし ...",
+        "position": 4,
+        "source": "web"
+      },
+      {
+        "url": "https://autoc-one.jp/used/searchv2/pr8/ci434/",
+        "title": "茨城県 常総市 中古車情報",
+        "description": "茨城県 常総市 中古車情報 · 188台の物件のうち 1 - 40 件を表示 · 茨城県のおすすめ中古車販売店 · カーリースで月々お得にカーライフ！ おすすめMOTAのカーリース · 各項目 ...",
+        "position": 5,
+        "source": "web"
+      }
+    ],
+    "tools": [
+      {
+        "provider": "nhtsa-gov",
+        "capability": "recalls/search_vehicles",
+        "description": "Find the NHTSA vehicle_id for a year/make/model when you do not have a VIN, or list every trim/series variant."
+      },
+      {
+        "provider": "nhtsa-gov",
+        "capability": "recalls/vehicle_complaints",
+        "description": "Review owner-reported problems for a year/make/model; pass next_offset to continue."
+      },
+      {
+        "provider": "nhtsa-gov",
+        "capability": "recalls/safety_ratings",
+        "description": "Crash-test ratings for a year/make/model, or for the ncap_id returned by search_vehicles or decode_vin."
+      },
+      {
+        "provider": "nhtsa-gov",
+        "capability": "recalls/vehicle_recalls",
+        "description": "Dealer service or compliance lookups of recall campaigns for a year/make/model or a vehicle_id from decode_vin or search_vehicles."
+      },
+      {
+        "provider": "hertzcarsales-com",
+        "capability": "vehicles/get_vehicle",
+        "description": "After search_inventory or suggest_inventory, or when the user pastes a hertzcarsales.com/used/... or /rent2buy/... URL or a VIN."
+      }
+    ]
+  },
+  "id": "01a1877a-2a70-70ce-b7c5-399f1f839ff5",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.carsensor.net/usedcar/spF/ibaraki/index2.html\", #2 \"https://kakaku.com/kuruma/used/spec/Prefecture=15/Location=429/\", #3 \"https://kuruma-ex.jp/usedcar/search/result/pref/30/options/assistive_vehicle\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

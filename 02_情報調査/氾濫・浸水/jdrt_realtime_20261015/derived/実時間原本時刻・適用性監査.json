@@ -1,0 +1,200 @@
+{
+  "generated_at_jst": "2026-10-15T22:21:35.639713+09:00",
+  "scope": "uncompressed source chronology; reference geometry only, not simulation input",
+  "reference_epoch_jst": "2015-09-10T12:50:00+09:00",
+  "reference_epoch_role": "legacy reference for audit; new evaluation-window choice not adopted",
+  "source_zip_equals_preserved_legacy_zip": true,
+  "source_chronology": [
+    {
+      "source_filename_timestamp": "2015-09-10T18:00:00+09:00",
+      "elapsed_from_reference_sec": 18600,
+      "legacy_index_assigned_timestamp": "2015-09-10T18:00:00",
+      "timestamp_matches_legacy_index": true,
+      "line_count": 15,
+      "contains_polygon": false,
+      "member_sha256": "42ad35de04bd1f8b3552eece973a322e2073c7ddfcf9b4b07a2a18b4fa6d3b9c"
+    },
+    {
+      "source_filename_timestamp": "2015-09-11T10:00:00+09:00",
+      "elapsed_from_reference_sec": 76200,
+      "legacy_index_assigned_timestamp": "2015-09-11T06:00:00",
+      "timestamp_matches_legacy_index": false,
+      "line_count": 7,
+      "contains_polygon": false,
+      "member_sha256": "0e8fb74218eb8488b46de190168b18d827c505b570f16be4d39a0c05543e6604"
+    },
+    {
+      "source_filename_timestamp": "2015-09-11T13:00:00+09:00",
+      "elapsed_from_reference_sec": 87000,
+      "legacy_index_assigned_timestamp": "2015-09-11T18:00:00",
+      "timestamp_matches_legacy_index": false,
+      "line_count": 10,
+      "contains_polygon": false,
+      "member_sha256": "773b6e4ee9286c5f80c306f13d2a2f8f36509e64a1a2174fd03f6d40ad9da9c3"
+    },
+    {
+      "source_filename_timestamp": "2015-09-12T15:30:00+09:00",
+      "elapsed_from_reference_sec": 182400,
+      "legacy_index_assigned_timestamp": "2015-09-12T06:00:00",
+      "timestamp_matches_legacy_index": false,
+      "line_count": 8,
+      "contains_polygon": false,
+      "member_sha256": "f7176e24f853e96681e64afd17142414f5bba2d82aaad9edb9fcfd6acae4be13"
+    },
+    {
+      "source_filename_timestamp": "2015-09-13T10:40:00+09:00",
+      "elapsed_from_reference_sec": 251400,
+      "legacy_index_assigned_timestamp": "2015-09-12T18:00:00",
+      "timestamp_matches_legacy_index": false,
+      "line_count": 16,
+      "contains_polygon": false,
+      "member_sha256": "f754c08c0b20628dd2fddf1db125184be5c35e38799d21ae51ad5d8da18f5f38"
+    },
+    {
+      "source_filename_timestamp": "2015-09-14T09:30:00+09:00",
+      "elapsed_from_reference_sec": 333600,
+      "legacy_index_assigned_timestamp": "2015-09-13T06:00:00",
+      "timestamp_matches_legacy_index": false,
+      "line_count": 15,
+      "contains_polygon": false,
+      "member_sha256": "607c5c617124ab1d563af9c12933d54196a6d9ee1b1f9406a9e4500c8c8bd6c9"
+    },
+    {
+      "source_filename_timestamp": "2015-09-15T10:30:00+09:00",
+      "elapsed_from_reference_sec": 423600,
+      "legacy_index_assigned_timestamp": "2015-09-13T18:00:00",
+      "timestamp_matches_legacy_index": false,
+      "line_count": 22,
+      "contains_polygon": false,
+      "member_sha256": "ee625b3caf62b77f7a0477952783f2dd2d19e9f38b1ef606453a4e6f58b10c29"
+    },
+    {
+      "source_filename_timestamp": "2015-09-16T10:20:00+09:00",
+      "elapsed_from_reference_sec": 509400,
+      "legacy_index_assigned_timestamp": "2015-09-16T10:20:00",
+      "timestamp_matches_legacy_index": true,
+      "line_count": 28,
+      "contains_polygon": false,
+      "member_sha256": "100b234d0149f5b2a53f39a09d96ec7dcb823dd77d277f8191655811de4504b2"
+    }
+  ],
+  "legacy_mapping": [
+    {
+      "time_id": "t0",
+      "source_timestamp": "2015-09-10T18:00:00",
+      "elapsed_sec_real": "18600",
+      "sim_time_sec": "789",
+      "compression_ratio": "0.04241935483870968",
+      "notes": "linear_compression_to_6h"
+    },
+    {
+      "time_id": "t1",
+      "source_timestamp": "2015-09-11T06:00:00",
+      "elapsed_sec_real": "61800",
+      "sim_time_sec": "2620",
+      "compression_ratio": "0.042394822006472495",
+      "notes": "linear_compression_to_6h"
+    },
+    {
+      "time_id": "t2",
+      "source_timestamp": "2015-09-11T18:00:00",
+      "elapsed_sec_real": "105000",
+      "sim_time_sec": "4452",
+      "compression_ratio": "0.0424",
+      "notes": "linear_compression_to_6h"
+    },
+    {
+      "time_id": "t3",
+      "source_timestamp": "2015-09-12T06:00:00",
+      "elapsed_sec_real": "148200",
+      "sim_time_sec": "6284",
+      "compression_ratio": "0.042402159244264506",
+      "notes": "linear_compression_to_6h"
+    },
+    {
+      "time_id": "t4",
+      "source_timestamp": "2015-09-12T18:00:00",
+      "elapsed_sec_real": "191400",
+      "sim_time_sec": "8116",
+      "compression_ratio": "0.042403343782654125",
+      "notes": "linear_compression_to_6h"
+    },
+    {
+      "time_id": "t5",
+      "source_timestamp": "2015-09-13T06:00:00",
+      "elapsed_sec_real": "234600",
+      "sim_time_sec": "9948",
+      "compression_ratio": "0.042404092071611256",
+      "notes": "linear_compression_to_6h"
+    },
+    {
+      "time_id": "t6",
+      "source_timestamp": "2015-09-13T18:00:00",
+      "elapsed_sec_real": "277800",
+      "sim_time_sec": "11780",
+      "compression_ratio": "0.042404607631389486",
+      "notes": "linear_compression_to_6h"
+    },
+    {
+      "time_id": "t7",
+      "source_timestamp": "2015-09-16T10:20:00",
+      "elapsed_sec_real": "509400",
+      "sim_time_sec": "21600",
+      "compression_ratio": "0.04240282685512368",
+      "notes": "linear_compression_to_6h"
+    }
+  ],
+  "source_line_features": 121,
+  "source_timestamps_within_six_hours_after_reference": 1,
+  "old_index_timestamp_mismatch_count": 6,
+  "api_hypothetical_breakpoint": {
+    "BPName": "BP030",
+    "BPLocation": "19.50Km左岸時系列",
+    "BPLat": 36.0885071,
+    "BPLon": 139.963255,
+    "EntryRiverName": "鬼怒川",
+    "RiverCode": "8303030203",
+    "SubRiverCode": "_",
+    "CSVScale": 0,
+    "OfficeCode": "21261"
+  },
+  "api_raw_info_minutes": {
+    "StartTime": 210.0,
+    "Depth_Max": 2.248,
+    "ShinSuiTime_Max": 672.0,
+    "Time_0_01": 3378.0,
+    "Time_0_05": 3282.0,
+    "Time_0_3": 2640.0,
+    "Time_0_5": 1956.0,
+    "Time_0_5_Continue": 2376.0
+  },
+  "api_rising_threshold_intervals": [
+    {
+      "threshold_m": 0.5,
+      "time_lower_open_sec": 14400.0,
+      "time_upper_closed_sec": 18000.0,
+      "uncertainty_interval_sec": 3600.0,
+      "interpolated_time_sec": null
+    }
+  ],
+  "temporal_error_to_evaluate_sec": 900,
+  "source_sha256": {
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/gsi_2015_joso_source.zip": "3e08761ea6e5863dcda20187a35062ec3e9469ec72d276cdc2aaf7375b58da59",
+    "04_プログラム/data/flood_kml/D1-No917_joso.zip": "3e08761ea6e5863dcda20187a35062ec3e9469ec72d276cdc2aaf7375b58da59",
+    "04_プログラム/scripts/config.py": "55d65efd6fca176775eedff283c655a398e83091d22eabfa2bfa90899d950fb3",
+    "04_プログラム/output/sumo/regions/08211/derived/time_mapping_sumo.csv": "2316f275396c9bacd48056733e4c3e2c706a45b922111c76ee185b49046b54a5",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/hydrograph_BP030_probe.json": "72ead20a54f7307ddc5f3911734b3d26e95a3b4d37aba0b05884d62271c5081a",
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/suiboumap_api_manual_schannel.pdf": "a3f036a00a095293ce9437217317149e564b5361c84f56c8d0ed32a74a32a469",
+    "04_プログラム/scripts/city_scenario.py": "48994702a718a1a5b463c88727e733c6f45cc10d4f78caf98e8b5095bcad4219",
+    "04_プログラム/scripts/p2_region_pipeline.py": "fdbbf05a76d4fbd8aab477efce8d696c8dd448b523504e29f20f61d1b8c20e38",
+    "04_プログラム/scripts/e1_load_flood_data.py": "2026e3d70b1d79365fe1dc2c03e7391cc78a124ff886553b85ab7a29ea8659d6"
+  },
+  "reconstruction_status": "NOT_READY_FOR_ROAD_CLOSURE_INPUT",
+  "missing": [
+    "2015 reproduction depth grid with native uncompressed times and georeferencing",
+    "pre-window overflow/inundation initial state",
+    "road/bridge/elevation/class mapping and closure threshold adoption",
+    "forecast generation specification separating timing error from input uncertainty"
+  ],
+  "no_interpolation_or_dry_state_imputation": true
+}

@@ -1,0 +1,43 @@
+{
+  "at_jst": "2026-10-28T00:29:36.669915+09:00",
+  "action": "same_completed_sixth_first_normal_finish_after_auxiliary_repair",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "run_id": "nv26102806",
+  "original_session": 64850,
+  "owner_actual_pid": 26564,
+  "owner_launcher_pid": 35792,
+  "validator_actual_pid": 18128,
+  "validator_launcher_pid": 19008,
+  "process_handle_identities": {
+    "26564": {
+      "state": "alive",
+      "created": 134375884996733809,
+      "pid": 26564
+    },
+    "18128": {
+      "state": "alive",
+      "created": 134375885021296539,
+      "pid": 18128
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "phase": "validate",
+  "operation_status": "RUNNING",
+  "record_attempted": false,
+  "formal_recorded": 5,
+  "failed_sequence_id": "sq26102806",
+  "failed_sequence_original_session": 7780,
+  "failed_sequence_exit_code": 1,
+  "failed_operation_replayed": false,
+  "failed_operation_preserved": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/diagnosis.json",
+  "repair_review": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/repair_review.json",
+  "research_common5_unchanged": true,
+  "display_writers_deferred": true,
+  "goal_complete": false,
+  "next": "Follow original direct finish64850 (actual26564/first validator18128) for completed nv26102806. No duplicate validate/record or old sequence7780 replay. On terminal RECORDED_VERIFIED run choice_record_readback to NEW goal/nv26102806_record7_readback.json BEFORE any seven-document/current display edit. Then fresh status/READY/capacity/07 and real goal state before future new single-cell helper. Current repaired sequence source has30 artificial contracts, no new full actual use yet; preserve all failures."
+}

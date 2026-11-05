@@ -1,0 +1,74 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.pref.ibaraki.jp/seikatsukankyo/bousaikiki/kiki/suigaikennsyou.html",
+        "title": "平成27年9月関東・東北豪雨災害対応の検証結果について",
+        "description": "平成27年9月に発生した関東・東北豪雨災害において、茨城県が行った災害対応の全般について、対応状況及びその際に発生した課題等を点検するとともに、今後の対応方針の ...",
+        "position": 1,
+        "source": "web"
+      },
+      {
+        "url": "https://www.bousai.go.jp/kohou/kouhoubousai/r07/114/special_01.html",
+        "title": "特集 「平成27年9月関東・東北豪雨」から10年～激甚化する ...",
+        "description": "堤防が決壊した茨城県常総市では、市の面積の約1/3が浸水、逃げ遅れた多くの人が孤立したほか、災害対応の拠点となる市役所も1階部分が冠水する等甚大な被害に見舞われまし ...",
+        "position": 2,
+        "source": "web"
+      },
+      {
+        "url": "https://www.skr.mlit.go.jp/kochi/committee/gensaitaisaku/monobe_gensai/h280830-7.pdf",
+        "title": "平成27年常総市鬼怒川水害対応に関する検証報告書",
+        "description": "平成27年9月関東・東北豪雨により、常総市では激甚な被害が生じたことから、今後の安全・安. 心なまちづくりを実現するために、水害対策検証委員会を設置し、今回の ...",
+        "position": 3,
+        "source": "web"
+      },
+      {
+        "url": "https://www.pref.ibaraki.jp/doboku/kasen/keikaku/kinu_suishin.html",
+        "title": "平成27年9月関東・東北豪雨に関する情報 - 茨城県",
+        "description": "平成27年9月関東・東北豪雨に関連する情報を掲載しています。 鬼怒川緊急対策プロジェクト. 鬼怒川緊急対策プロジェクトについて（外部サイトへリンク） ...",
+        "position": 4,
+        "source": "web"
+      },
+      {
+        "url": "https://www.pref.yamanashi.jp/documents/92779/h27_2_12.pdf",
+        "title": "平成 27 年9月関東・東北豪雨による被害への対応について",
+        "description": "平成27年9月関東・東北豪雨により、茨城県及び栃木県において. は6名の方が犠牲になったほか、両県において住家被害が13,000棟. を超えるなど、甚大な被害が発生した ...",
+        "position": 5,
+        "source": "web"
+      }
+    ],
+    "tools": [
+      {
+        "provider": "auctions-yahoo-co-jp",
+        "capability": "listings/item",
+        "description": "Full detail for an auction id from search or a pasted auctions.yahoo.co.jp / page.auctions.yahoo.co.jp listing URL."
+      },
+      {
+        "provider": "mof-go-jp",
+        "capability": "sanctions/search",
+        "description": "Find whether a person or organization appears on the Japanese list by name. A match or its absence is not a compliance determination."
+      },
+      {
+        "provider": "mof-go-jp",
+        "capability": "sanctions/records_get",
+        "description": "Re-read one row returned by `records_list` or `search`."
+      },
+      {
+        "provider": "mof-go-jp",
+        "capability": "sanctions/records_list",
+        "description": "Collect the whole list (default 100 rows per page, about 2,900 rows in the asset-freeze file) or one 区分 of it. For one row by 番号 use `records_get`; for a name use `search`."
+      },
+      {
+        "provider": "auctions-yahoo-co-jp",
+        "capability": "listings/seller",
+        "description": "After search or item returned a seller user_id and you need the seller's rating or profile."
+      }
+    ]
+  },
+  "id": "01a1869c-ca9f-75d4-8850-d3c558c76637",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.pref.ibaraki.jp/seikatsukankyo/bousaikiki/kiki/suigaikennsyou.html\", #2 \"https://www.bousai.go.jp/kohou/kouhoubousai/r07/114/special_01.html\", #3 \"https://www.skr.mlit.go.jp/kochi/committee/gensaitaisaku/monobe_gensai/h280830-7.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

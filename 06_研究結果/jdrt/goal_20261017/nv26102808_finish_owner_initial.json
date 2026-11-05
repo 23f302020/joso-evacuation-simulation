@@ -1,0 +1,57 @@
+{
+  "at_jst": "2026-10-28T02:06:59.758216+09:00",
+  "action": "eighth_facility_first_baseline_completed_same_nested_finish_active",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102808",
+  "original_session": 26668,
+  "sequence_actual_pid": 3276,
+  "finish_actual_pid": 14260,
+  "finish_launcher_pid": 13824,
+  "validator_actual_pid": 29280,
+  "validator_launcher_pid": 18428,
+  "process_handle_identities": {
+    "3276": {
+      "state": "alive",
+      "created": 134375935115399218,
+      "pid": 3276
+    },
+    "14260": {
+      "state": "alive",
+      "created": 134375943207087963,
+      "pid": 14260
+    },
+    "29280": {
+      "state": "alive",
+      "created": 134375943233294159,
+      "pid": 29280
+    },
+    "12964": {
+      "state": "alive",
+      "created": 134375930650742666,
+      "pid": 12964
+    }
+  },
+  "phase": "validate",
+  "sequence_phase": "finish",
+  "operation_status": "RUNNING",
+  "record_attempted": false,
+  "current_core": {
+    "run_id": "nv26102808",
+    "cell_id": "facility_first_r0_seed23423",
+    "status": "COMPLETED",
+    "pid": 10308,
+    "started_at_jst": "2026-10-28T01:52:42.539456+09:00",
+    "finished_at_jst": "2026-10-28T02:04:46.221042+09:00"
+  },
+  "formal_recorded": 7,
+  "display_writers_deferred": true,
+  "all_sequence_source_pins_unchanged": true,
+  "no_duplicate_validate_record": true,
+  "performance_measurement_original_session": 48129,
+  "performance_measurement_actual_pid": 12964,
+  "performance_interval_sec": 30,
+  "goal_complete": false,
+  "automatic_readback_path": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102808/nv26102808_record7_readback.json",
+  "next": "Follow original sequence26668 and nested finish14260/first validator29280 for nv26102808. No duplicate validate/record/readback: this sequence performs its own original record7 readback BEFORE display. After successful terminal inspect existing proof/ledger and new status, then fresh goal API/READY/capacity/observer before next one cell. Independent30sec measurement48129/12964 is bounded3h through04:44 if uninterrupted; preserve missing/collection-overhead evidence and do not create research runs for measurement."
+}

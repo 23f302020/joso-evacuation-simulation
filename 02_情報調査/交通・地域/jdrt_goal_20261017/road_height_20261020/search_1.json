@@ -1,0 +1,15 @@
+{
+  "query": "site:city.joso.lg.jp 明橋 \"1-0111\" 橋梁",
+  "result": {
+    "success": true,
+    "data": {
+      "web": [],
+      "tools": []
+    },
+    "id": "01a1566e-53b6-74c6-bb46-5f5b968f89a3",
+    "creditsUsed": 0,
+    "agent_hints": [
+      "No web results were returned. If the task is still unresolved, use firecrawl_search again with {\"query\":\"<broader or alternative query>\",\"sources\":[\"web\"]}."
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "at_jst": "2026-10-21T15:42:44.573632+09:00",
+  "action": "detailed_same_core_monitor",
+  "run_id": "ch261021_001",
+  "cell_id": "fixed_reference_r0_seed23423",
+  "pid": 27792,
+  "skill_check": {
+    "run_id": "ch261021_001",
+    "status": "RUNNING",
+    "pid_alive": true,
+    "progress": {
+      "at_jst": "2026-10-21T15:42:44.090560+09:00",
+      "run_id": "ch261021_001",
+      "time_sec": 14100.0,
+      "end_sec": 21600,
+      "wall_sec": 621.9765436000016,
+      "counts": {
+        "steps": 28200,
+        "controller_ticks": 14101,
+        "snapshots": 236,
+        "teleports": 0,
+        "collisions": 0,
+        "transition_rows": 261210,
+        "closed_entry_rows": 0,
+        "ambiguous_transitions": 0,
+        "candidate_rows": 0,
+        "dispatch_cycles": 0,
+        "missing_vehicle_subscriptions": 0,
+        "missing_person_subscriptions": 0,
+        "reentry_pending_frames": 0,
+        "departure_pending_frames": 349,
+        "snapshot_actor_rows": 36138
+      },
+      "people_states": {
+        "capacity_rejected": 1428,
+        "no_route": 787,
+        "no_origin_connection": 553,
+        "admitted": 471,
+        "boundary_exit": 7657,
+        "walk_limit": 465,
+        "route_cut": 2,
+        "initial_or_current_closed": 602
+      },
+      "request_states": {}
+    },
+    "error": null
+  },
+  "input_population_rows": 11965,
+  "integrity": {
+    "input_manifest": true,
+    "archived_READY": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "anomaly_flags": [],
+  "manifest_sha256_at_observation": "4f21d066da0ecbd38a72883ea66d513722ac0894c9a01b2395687d529b3c2778",
+  "current_run_bytes": 357652851,
+  "free_bytes": 256501358592,
+  "native_error_lines": 0,
+  "native_log_bytes": 0,
+  "driver_stderr_bytes": 518,
+  "monitor_source_sha256": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+  "formal_validation_or_adoption": false,
+  "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+}

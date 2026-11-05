@@ -1,0 +1,56 @@
+{
+  "run_id": "nv26102810",
+  "status": "FAILED",
+  "pid_alive": false,
+  "progress": {
+    "at_jst": "2026-10-28T08:37:24.482583+09:00",
+    "run_id": "nv26102810",
+    "time_sec": 3780.0,
+    "end_sec": 21600,
+    "wall_sec": 273.91718160000164,
+    "counts": {
+      "steps": 7560,
+      "controller_ticks": 3781,
+      "snapshots": 64,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 182204,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 294,
+      "dispatch_cycles": 64,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 31,
+      "departure_pending_frames": 526,
+      "snapshot_actor_rows": 15284
+    },
+    "people_states": {
+      "not_ready": 5728,
+      "capacity_rejected": 3235,
+      "no_origin_connection": 306,
+      "admitted": 1007,
+      "travelling_walk": 120,
+      "no_route": 1048,
+      "travelling_car": 109,
+      "waiting_origin": 11,
+      "alighting": 1,
+      "route_cut": 205,
+      "onboard": 1,
+      "boarding": 2,
+      "initial_or_current_closed": 163,
+      "boundary_exit": 4,
+      "walk_limit": 25
+    },
+    "request_states": {
+      "cancelled_timeout": 23,
+      "served": 10,
+      "onboard": 1,
+      "boarding": 2,
+      "pending": 11,
+      "alighting": 1,
+      "rejected_input": 1
+    }
+  },
+  "error": "Route replacement failed for vehicle 'choice_drt_0' (No connection between edge '152#2' and edge '152#3'.)."
+}

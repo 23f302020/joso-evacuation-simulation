@@ -1,0 +1,41 @@
+{
+  "schema": "approved_native_pair_policy_v1",
+  "source_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "archive": {
+    "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\downloads\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3.zip",
+    "sha256": "f6f630cb9f3e31770c4a5238db7645845c527f6b440f722a7324be1902e592bd",
+    "bytes": 388181212
+  },
+  "preparation": {
+    "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\control_source_preparation_20261020.json",
+    "sha256": "3a01fbca6263a1450cb019fc7c3128ab1ba7ce4a8fb98ad7a67bb43bf2212ec6",
+    "bytes": 1578045
+  },
+  "proposal": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_native_proposal_20261019\\proposal_manifest.json",
+    "sha256": "abd750761f4cc99f457ef95d6ad4d223ad93a248b6b864a71995b9c90f11c4eb",
+    "bytes": 3614
+  },
+  "native_patch": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\walk_native_proposal_20261019\\preserve_aborted_walk_raw_lateral.patch",
+    "sha256": "93d3ca0c2318e1bc2402c6449670f05546f4d600ad4b0cf3521486d9b6601771",
+    "bytes": 1591
+  },
+  "shared_patch": {
+    "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt07_20261020\\cmake_link.patch",
+    "sha256": "f817e7468024c6da9e3005ff52f519194e079278b841ed394e45d92d50fa0025",
+    "bytes": 565,
+    "before_sha256": "3ffa4033025efe6dd3fde0bb126fbc843de43ddb153016659c87cee5537aace8",
+    "after_sha256": "7588dbd582c5b8e60172b9d8bcb5c3b4630b2a46db67f5de99a6602580521cc7"
+  },
+  "allowed_missing": [
+    "build_config/debian/tests/control",
+    "build_config/debian/tests/parade",
+    "src/utils/tests/CMakeLists.txt",
+    "src/utils/tests/InternalTest.cpp",
+    "src/utils/tests/InternalTest.h",
+    "src/utils/tests/InternalTestStep.cpp",
+    "src/utils/tests/InternalTestStep.h"
+  ],
+  "scope": "Same compiler/static dependencies/settings; registered native diff and shared Winsock CMake link repair only. Seven disclosed GUI/Debian-test omissions. No native correctness or READY claim."
+}

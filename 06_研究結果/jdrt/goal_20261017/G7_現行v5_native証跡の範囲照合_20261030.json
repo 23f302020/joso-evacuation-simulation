@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-30T09:04:55.983428+09:00",
+  "status": "EXACT_SOURCE_AND_EXISTING_ARTIFICIAL_GUARD_PROOF_REUSED_NOT_NATIVE_FALSE_BRANCH_PASS",
+  "current_native_source": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source\\src\\microsim\\transportables\\MSPModel_Striping.cpp",
+  "source_sha256": "65f4824cf896f46fbfb9199bdfcced3711ce365e88c1a455ad15f3d746c47934",
+  "historical_fragment_report": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_guard_fragment_20261021\\contract01\\report.json",
+  "historical_report_sha256": "c8a3588918b04fc07c9eabb7d94292f7b05c13c9ec9789d29ea853d7d17fdd05",
+  "artifacts_checked": 19,
+  "current_native45_report": "06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\ng261029a_independent02.json",
+  "current_native45_report_sha256": "0e6db899693a9265b50c7274d54eb736798013d379b35d71b0d996efa7c8c30d",
+  "native_false_guard_observed": false,
+  "unproved": "Full native ABI/layout, every valid SUMO API path, actual false-guard reachability, transitive compiler reproducibility",
+  "current_readback_source_archive": "06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\reader_versions\\06f2216761e43a3e8253b0c2251857be0dc1c08373cc993e09904c97c1987ff8.py",
+  "current_readback_source_sha256": "06f2216761e43a3e8253b0c2251857be0dc1c08373cc993e09904c97c1987ff8",
+  "technical_ready": false,
+  "core_adoption_permitted": false
+}

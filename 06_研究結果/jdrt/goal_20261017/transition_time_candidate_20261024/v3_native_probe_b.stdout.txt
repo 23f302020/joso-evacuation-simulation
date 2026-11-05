@@ -1,0 +1,81 @@
+{
+  "protocol": "realtime_choice_fixture_suite_v1",
+  "purpose": "technical_fixture_suite",
+  "run_id": "nt261024b",
+  "pid": 21572,
+  "status": "COMPLETED",
+  "started_at_jst": "2026-10-24T22:38:50.583492+09:00",
+  "research_adoption_permitted": false,
+  "factory_sha256": "5ed0e5f1b49340218079dbfb8e2896a82faa4c2a74fef44bf4a26798f9ac8691",
+  "cases": [
+    {
+      "case": "car_transition_calibration",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "private_car_completes_without_reroute": true,
+        "short_external_skipped_before_outgoing_internal": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "5b25595f696dcba0f24fe1a9e0175cdb85cdc88efd778444907c91305731f474",
+      "child_run_id": "nt261024b_c27"
+    },
+    {
+      "case": "car_transition_closure",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "private_car_completes_without_reroute": true,
+        "short_external_skipped_before_outgoing_internal": true,
+        "same_native_preclosure_window": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "closure_applied": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "18fee2a8eed3d83fca659a2a3ef645068ab5a9f85d266360a75c57c23bc62f18",
+      "child_run_id": "nt261024b_c28"
+    }
+  ],
+  "finished_at_jst": "2026-10-24T22:40:32.456440+09:00"
+}

@@ -1,0 +1,493 @@
+{
+  "at_jst": "2026-10-21T07:46:57.099930+09:00",
+  "status": "SELECTED_PAIR_CONFIRMED_PENDING_NATIVE_GUARDS",
+  "bound_files_checked": 13682,
+  "bound_mismatches": 0,
+  "strict_reports": {
+    "nc261020f_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_nc261020f_c25_20261020T230122927891.json"
+    },
+    "np261020f_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_np261020f_c25_20261020T230435562702.json"
+    },
+    "np261020f_c26": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_np261020f_c26_20261020T230528232477.json"
+    }
+  },
+  "paired_input_cases": 2,
+  "control_failure_changed_keys": [
+    "xy"
+  ],
+  "patched_repeated_reroutes": 4,
+  "patched_exact_receipts": 8,
+  "primary_plan_records": [
+    {
+      "person_id": "fixture_person_0",
+      "time_sec": 0.5,
+      "signed_progress_m": 0.0,
+      "receipts": [
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "old_remaining",
+            "stage_index": 0,
+            "requested_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "requested_depart_pos_m": 3.9375,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "e0",
+              "lane_position_m": 3.9375,
+              "xy": [
+                114.1875,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "e1",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 239.8125
+            },
+            "after": {
+              "edge_id": "e0",
+              "lane_position_m": 3.9375,
+              "xy": [
+                114.1875,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "e1",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 239.8125
+            }
+          },
+          "xy_displacement_m": 0.0
+        },
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "new_route",
+            "stage_index": 0,
+            "requested_edges": [
+              "e0",
+              "d0",
+              "d1",
+              "d2",
+              "e2"
+            ],
+            "requested_depart_pos_m": 3.9375,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "e0",
+              "lane_position_m": 3.9375,
+              "xy": [
+                114.1875,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "e1",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 239.8125
+            },
+            "after": {
+              "edge_id": "e0",
+              "lane_position_m": 3.9375,
+              "xy": [
+                114.1875,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 368.7212325704741
+            }
+          },
+          "xy_displacement_m": 0.0
+        }
+      ]
+    },
+    {
+      "person_id": "fixture_person_1",
+      "time_sec": 0.5,
+      "signed_progress_m": 0.0,
+      "receipts": [
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "old_remaining",
+            "stage_index": 0,
+            "requested_edges": [
+              "e0",
+              "e1",
+              "e2"
+            ],
+            "requested_depart_pos_m": 11.8125,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "e0",
+              "lane_position_m": 11.8125,
+              "xy": [
+                122.0625,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "e1",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 231.9375
+            },
+            "after": {
+              "edge_id": "e0",
+              "lane_position_m": 11.8125,
+              "xy": [
+                122.0625,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "e1",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 231.9375
+            }
+          },
+          "xy_displacement_m": 0.0
+        },
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "new_route",
+            "stage_index": 0,
+            "requested_edges": [
+              "e0",
+              "d0",
+              "d1",
+              "d2",
+              "e2"
+            ],
+            "requested_depart_pos_m": 11.8125,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "e0",
+              "lane_position_m": 11.8125,
+              "xy": [
+                122.0625,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "e1",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 231.9375
+            },
+            "after": {
+              "edge_id": "e0",
+              "lane_position_m": 11.8125,
+              "xy": [
+                122.0625,
+                95.2
+              ],
+              "stage_edges": [
+                "e0",
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 360.8462325704741
+            }
+          },
+          "xy_displacement_m": 0.0
+        }
+      ]
+    },
+    {
+      "person_id": "fixture_person_0",
+      "time_sec": 52.5,
+      "signed_progress_m": 36.00167894856935,
+      "receipts": [
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "old_remaining",
+            "stage_index": 0,
+            "requested_edges": [
+              "d0",
+              "d1",
+              "d2",
+              "e2"
+            ],
+            "requested_depart_pos_m": 12.592627737109952,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "d0",
+              "lane_position_m": 12.592627737109952,
+              "xy": [
+                134.16,
+                116.59262773710995
+              ],
+              "stage_edges": [
+                "e0",
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 361.39079020725706
+            },
+            "after": {
+              "edge_id": "d0",
+              "lane_position_m": 12.592627737109952,
+              "xy": [
+                134.16,
+                116.59262773710995
+              ],
+              "stage_edges": [
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 332.71955362190477
+            }
+          },
+          "xy_displacement_m": 0.0
+        },
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "new_route",
+            "stage_index": 0,
+            "requested_edges": [
+              "d0",
+              "e0",
+              "w0",
+              "w1",
+              "d2",
+              "e2"
+            ],
+            "requested_depart_pos_m": 12.592627737109952,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "d0",
+              "lane_position_m": 12.592627737109952,
+              "xy": [
+                134.16,
+                116.59262773710995
+              ],
+              "stage_edges": [
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 332.71955362190477
+            },
+            "after": {
+              "edge_id": "d0",
+              "lane_position_m": 12.592627737109952,
+              "xy": [
+                134.16,
+                116.59262773710995
+              ],
+              "stage_edges": [
+                "d0",
+                "e0",
+                "w0",
+                "w1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 658.9084473328161
+            }
+          },
+          "xy_displacement_m": 0.0
+        }
+      ]
+    },
+    {
+      "person_id": "fixture_person_1",
+      "time_sec": 52.5,
+      "signed_progress_m": 16.584426327568224,
+      "receipts": [
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "old_remaining",
+            "stage_index": 0,
+            "requested_edges": [
+              "d0",
+              "d1",
+              "d2",
+              "e2"
+            ],
+            "requested_depart_pos_m": 1.0503751161088488,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "d0",
+              "lane_position_m": 1.0503751161088488,
+              "xy": [
+                134.79999999999998,
+                105.05037511610885
+              ],
+              "stage_edges": [
+                "e0",
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 353.51579020725706
+            },
+            "after": {
+              "edge_id": "d0",
+              "lane_position_m": 1.0503751161088488,
+              "xy": [
+                134.79999999999998,
+                105.05037511610885
+              ],
+              "stage_edges": [
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 344.2618062429059
+            }
+          },
+          "xy_displacement_m": 0.0
+        },
+        {
+          "changed_keys": [],
+          "raw_receipt": {
+            "purpose": "new_route",
+            "stage_index": 0,
+            "requested_edges": [
+              "d0",
+              "e0",
+              "w0",
+              "w1",
+              "d2",
+              "e2"
+            ],
+            "requested_depart_pos_m": 1.0503751161088488,
+            "requested_arrival_pos_m": 50.0,
+            "before": {
+              "edge_id": "d0",
+              "lane_position_m": 1.0503751161088488,
+              "xy": [
+                134.79999999999998,
+                105.05037511610885
+              ],
+              "stage_edges": [
+                "d0",
+                "d1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 344.2618062429059
+            },
+            "after": {
+              "edge_id": "d0",
+              "lane_position_m": 1.0503751161088488,
+              "xy": [
+                134.79999999999998,
+                105.05037511610885
+              ],
+              "stage_edges": [
+                "d0",
+                "e0",
+                "w0",
+                "w1",
+                "d2",
+                "e2"
+              ],
+              "stage_arrival_pos_m": 50.0,
+              "stage_length_m": 647.366194711815
+            }
+          },
+          "xy_displacement_m": 0.0
+        }
+      ]
+    }
+  ],
+  "state_sha256": "ca349b4005331f01368d655afd92738bc3de2d8a2fba9535904490267fcedc02",
+  "old_failure_runs_unchanged_by_audit": true,
+  "no_run_started_or_validation_rerun": true,
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "native_regression_complete": false,
+  "pending": [
+    "same_direction_remaining_route",
+    "forward_reverse_and_reverse_forward",
+    "multiple_people_stripes_and_operation_order",
+    "new_depart_explicit_random_legacy",
+    "natural_walk_walk_and_walk_wait_walk",
+    "non_target_native_lane_guards",
+    "native_debugger_or_separate_sha_diagnostic_guard_trace",
+    "full_current_suite",
+    "independent_counterexample_audit",
+    "all_setting_smokes",
+    "unit_input_checks_new_preflight_and_G6_source_reaudit"
+  ],
+  "limitation": "Selected pair only; no study conclusion, broad guard trace/full suite/smokes/READY"
+}

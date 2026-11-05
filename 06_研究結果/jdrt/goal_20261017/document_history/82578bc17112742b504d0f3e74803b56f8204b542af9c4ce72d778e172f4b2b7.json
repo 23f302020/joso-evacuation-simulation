@@ -1,0 +1,68 @@
+{
+  "at_jst": "2026-10-21T15:17:56.034632+09:00",
+  "status": "SCOPED_PATCH_SOURCE_AND_REGRESSION_REVIEW_PASS_PENDING_NEW_PREFLIGHT",
+  "author": "current parent agent; same-chat code/evidence review, no new subagent",
+  "model_setting_scope": "User role policy references6.1Sol/high for judgment. Parent selection unchanged; actual backend not independently verified.",
+  "question": "Does the frozen isolated lateral-preservation patch preserve existing semantics outside aborted same-physical-state walks, and does its use change registered study conditions?",
+  "decision": "Technical defect repair is consistent with the current PAP/input/metric/exclusion contract. Only select immutable patched bundle after an independently verified new READY receipt and final source/runtime/storage/start checks. No core start is performed by this review.",
+  "requirements": {
+    "production_source_and_binary": "Frozen paired compile/provenance/packaging proof plus immutable manifest and actual14 shared runtime fingerprint",
+    "physical_position_direction_and_scope": "Actual45 three-role runs,315 artifact hashes;12 planned groups observed; exact same-call position, multi-person isolation, new-route direction, default/random/legacy/natural/internal controls checked",
+    "unreachable_native_false_guards": "Position/time false predicates remain unobserved in the tested valid API path. No native13/13 or universal unreachability claim. Conditional source API reasoning and separately compiled verbatim fragment16 artificial states plus2 omitted-predicate mutants provide logical defensive-guard evidence",
+    "whole_controller": "Current full26 integration and independent442 primary files/54 altered-artifact checks PASS",
+    "registered_settings": "All14 first-seed settings individually independently PASS; exact order/common5/config/runtime identities matched",
+    "pending": "New dedicated preflight input98+other unit/40 primary validations/storage/READY checks are still in progress at review time"
+  },
+  "risks_and_limits": [
+    "Artificial fragment uses stub object layouts and does not establish SUMO ABI/lifetime or real false-guard reachability; exact guard text/source/compiler/binary/exits are bound",
+    "Native pointer lifetime/type reasoning and actual successful repeated replacements are separate evidence, not independent debugger memory addresses",
+    "Compiler/OS closure is not a hermetic reproducible-build claim; packaging disclosed source/build omissions remain",
+    "Finite synthetic regression and1800sec setting smokes do not prove every full-population/horizon trajectory; each core still needs independent full-primary validation",
+    "Native walking speed/budget is longitudinal and not an isotropic Euclidean path-length guarantee; mathematical note discloses this",
+    "Real fleet/driver/assistance/bridge-surface/datum/facility opening evidence gaps remain; no observed real disaster capacity or safety guarantee"
+  ],
+  "method_change": false,
+  "main_metric_or_comparison_or_exclusion_change": false,
+  "native_false_guard_observed": false,
+  "native_observed_guard_groups": 12,
+  "planned_guard_groups": 13,
+  "compiled_fragment_artificial_cases_pass": 16,
+  "omitted_guard_mutants_rejected": 2,
+  "references": {
+    "native_guard_raw_review": {
+      "file": "06_研究結果/jdrt/goal_20261017/audit_history/native_internal_fixture_20261021/actual_native_audit_v2.json",
+      "sha256": "cf73216ab77c891e874452c6f464d8541359134011316a0df5d68c27a143698a"
+    },
+    "source_reachability": {
+      "file": "06_研究結果/jdrt/goal_20261017/audit_history/native_internal_fixture_20261021/source_reachability_review.json",
+      "sha256": "c60c9ac8411b8bc448dec33e34e128dd33c8ae1456fcd3974cd7a5fc8684b071"
+    },
+    "compiled_fragment": {
+      "file": "06_研究結果/jdrt/goal_20261017/audit_history/native_guard_fragment_20261021/contract01/report.json",
+      "sha256": "c8a3588918b04fc07c9eabb7d94292f7b05c13c9ec9789d29ea853d7d17fdd05"
+    },
+    "current_full26_counterexamples": {
+      "file": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261021T091121.json",
+      "sha256": "cdfd67bb1104dea5061b3d6cd8feb3a9946d27a5cc5d3317bfc55e0b09f63694"
+    },
+    "all14_smokes_metadata": {
+      "file": "06_研究結果/jdrt/goal_20261017/cs261021a_全14独立検証・現行版照合.json",
+      "sha256": "f8a1af2a06b554f0b045b7e86ac76db38b6b1e896c38d5f60e6712057bb493d0"
+    },
+    "g6_current_source_contract": {
+      "file": "06_研究結果/jdrt/goal_20261017/G6_現行登録入力source・サービス契約監査_20261021.json",
+      "sha256": "c68aa4477ba69f1ff8f88b7e3dca374a217444698e217ec9591df8ea0b6cecae"
+    },
+    "same_direction_diagonal_diagnosis": {
+      "file": "06_研究結果/jdrt/goal_20261017/audit_history/native_diagonal_proxy_20261021/review.json",
+      "sha256": "964f06f2c6fd354d0d1085b62cb766d68c7ad59046915de86fdec15f755eb1ec"
+    },
+    "paired_native_primary_proof": {
+      "file": "06_研究結果/jdrt/goal_20261017/audit_history/native_pair_f_completion_20261021/result.json",
+      "sha256": "ddc69bc0416f8a850a877a7bf1d4155e14a868aa2c0183196b0619e6e5c5fbbd"
+    }
+  },
+  "technical_ready": false,
+  "core_start_performed": false,
+  "research_adoption_permitted": false
+}

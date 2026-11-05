@@ -1,0 +1,70 @@
+{
+  "at_jst": "2026-10-24T07:51:52.412541+09:00",
+  "reason": "Preserve post-commit finish PermissionError before any diagnosis repair or display edits",
+  "original_session": 37931,
+  "original_exit_code": 1,
+  "records": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md": {
+      "sha256": "5ff7383900a3dd119e2d20413ffde10beea2766b09a8e174e8c6aa714fbbdf60",
+      "copy": "record_0.md"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": {
+      "sha256": "ef9a76613db22d3847ae2fbc9c649438428b92338d3661ae35164cc3972b7bc2",
+      "copy": "record_1.md"
+    },
+    "context.md": {
+      "sha256": "b9ef0cef50404b891e5f87306a4b0d8e76f3b13e886ef18f637739cac2411fd7",
+      "copy": "record_2.md"
+    },
+    "00_全体整理/決定ログ.md": {
+      "sha256": "b314a8ff3bee781a2ba9fcebab7137ba0e5203ce0f1925d1b6302127ece10393",
+      "copy": "record_3.md"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": {
+      "sha256": "f8073ce91c1784326898469d262571ea14c20a14c7f1fc028d4871d9016a11b2",
+      "copy": "record_4.md"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": {
+      "sha256": "038f94ee1aa3d384018f610266e5e32767bf63c07098372fc2718f77e74da53d",
+      "copy": "record_5.html"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl": {
+      "sha256": "b1289ceaadef263a7a112b9776fe9af4c03943d495360dccde29447143d1ae90",
+      "copy": "record_6.jsonl"
+    }
+  },
+  "formal_ledger_count": 7,
+  "finish_status": "FAILED_PRESERVED",
+  "formal_record_result": "RECORDED",
+  "copied_files": {
+    "check.pid.json": "1eaf14d47cb842f34bd9b5d65c070e3e68c046ee82cec65df3bea28c54913dd9",
+    "check.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "check.stdout.log": "3b29ce2d337ee8e9425af20816500983e7fa07ff7994e21606c9b22f57d1457f",
+    "choice_finish_cell.py": "e7545e936b68929aadf8247490407b3d0c64d6f1f2adde591862302e332c815f",
+    "choice_record_readback.py": "bd0bc8e017862e7556dce8b851ced486d6628b80b436cd6d955ab99383befc2b",
+    "formal.json": "c24256bcb523fd56eb7b672fd20b7ef568b00e03b35f7b6806072cde15dd7057",
+    "independent.json": "9789456b04a2234d5e1cc2e9ce219c13302fe94fae526107d95ea5965d02c2c1",
+    "journal_0.json": "f29edefb1910694a48c49ec5fac101a8d6d7632194ddaddf2a4264a5c3164b96",
+    "native_manifest.json": "6214eddab4fa7af8f253ba4cb79392e5eef417ae582c6bf581c61e2a7ab68615",
+    "operation.json": "b9d86b4a73d3f2f6cedea9136f4944140a765465d10c38a2e41563df061ed37e",
+    "record.pid.json": "659ce3e6ea0ba1640cd6908af25384980b32885515de672d734620bdd4c6bb0c",
+    "record.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "record.stdout.log": "2f4d5e0eebbfd3bc560efaf57cd37f75faf78d0ae05574dc73c331a29e035b83",
+    "record_0.md": "5ff7383900a3dd119e2d20413ffde10beea2766b09a8e174e8c6aa714fbbdf60",
+    "record_1.md": "ef9a76613db22d3847ae2fbc9c649438428b92338d3661ae35164cc3972b7bc2",
+    "record_2.md": "b9ef0cef50404b891e5f87306a4b0d8e76f3b13e886ef18f637739cac2411fd7",
+    "record_3.md": "b314a8ff3bee781a2ba9fcebab7137ba0e5203ce0f1925d1b6302127ece10393",
+    "record_4.md": "f8073ce91c1784326898469d262571ea14c20a14c7f1fc028d4871d9016a11b2",
+    "record_5.html": "038f94ee1aa3d384018f610266e5e32767bf63c07098372fc2718f77e74da53d",
+    "record_6.jsonl": "b1289ceaadef263a7a112b9776fe9af4c03943d495360dccde29447143d1ae90",
+    "status.pid.json": "68f9bad270d46987b7cb36a3c1b64021aa98a75016ebb6d336356d5ebbcbdba1",
+    "status.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status.stdout.log": "ee8978840469759cbe359890b1f788086b30dd987cf2cb836747b3f9c77c05f9",
+    "test_choice_finish_cell.py": "d4dac0d25c9c8936efb04de5695e5237c17817e2a8564317bce9759ee67c4ba4",
+    "test_choice_record_readback.py": "66dc12f020e00058f52464663b4606b6c9401f5087457cc1805398ce3fd0511a",
+    "validate.pid.json": "ad4e227d5fb0c92a95a5058834a299202857399f339d71a2724584230cdd56cb",
+    "validate.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "validate.stdout.log": "9789456b04a2234d5e1cc2e9ce219c13302fe94fae526107d95ea5965d02c2c1"
+  },
+  "scientific_files_changed": false
+}

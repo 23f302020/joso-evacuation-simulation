@@ -1,0 +1,29 @@
+{
+  "at_jst": "2026-10-27T10:56:14.317451+09:00",
+  "action": "next_registered_core_prestart",
+  "new_run_id": "nv26102702",
+  "next_cell": {
+    "cell_id": "fixed_reference_u05_r1_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u05",
+    "scenario": "R1",
+    "seed": 23423
+  },
+  "recorded_cells": 1,
+  "prior_record7": "06_研究結果/jdrt/goal_20261017/nv26102701_record7_readback.json",
+  "prior_record7_sha256": "de77b8e292ae18322dc3ccf3280392b55686c4ebf5b436aec1c5c9d5c73da9e3",
+  "status_evidence": "06_研究結果/jdrt/goal_20261017/nv26102701_recorded_status.json",
+  "core_ready": true,
+  "core_start_available": true,
+  "one_run_reserve_bytes": 193986012138,
+  "free_bytes_now": 257341128704,
+  "all_remaining_projected_fit": false,
+  "watch_identity": {
+    "state": "alive",
+    "created": 134375371341239107,
+    "pid": 26988
+  },
+  "watch_observation_age_sec": 4.901048421859741,
+  "scientific_implementation_or_input_changed": false,
+  "next_started_at_point": false
+}

@@ -1,0 +1,37 @@
+E.E...
+======================================================================
+ERROR: test_capture_generates_primary_files_and_uses_full_verifier (test_choice_shared_native_pair_proof.SharedNativePairContracts.test_capture_generates_primary_files_and_uses_full_verifier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 110, in test_capture_generates_primary_files_and_uses_full_verifier
+    output=self.capture();result=json.loads((output/'verification.json').read_bytes())
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 104, in capture
+    primary.capture(c.root,self.policy_path,
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['state']['path']) for r in c.states},
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['loader']['path']) for r in c.states},inventory,output)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_pair_primary.py", line 75, in capture
+    result=verify_pair(proofs['patched'],root,track,read_json,sha,pe_imports)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_pair_proof.py", line 134, in verify_pair
+    raise ValueError('Native version invocation failed')
+ValueError: Native version invocation failed
+
+======================================================================
+ERROR: test_complete_new_pair_keeps_existing_metadata_source_loader_gates (test_choice_shared_native_pair_proof.SharedNativePairContracts.test_complete_new_pair_keeps_existing_metadata_source_loader_gates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 73, in test_complete_new_pair_keeps_existing_metadata_source_loader_gates
+    result=self.case.verify()
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_proof.py", line 163, in verify
+    return target.verify_pair(proof, self.root, track, io.read_json, io.sha, lambda p: ['kernel32.dll'])
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_pair_proof.py", line 134, in verify_pair
+    raise ValueError('Native version invocation failed')
+ValueError: Native version invocation failed
+
+----------------------------------------------------------------------
+Ran 6 tests in 7.369s
+
+FAILED (errors=2)

@@ -1,0 +1,20 @@
+...........E.
+======================================================================
+ERROR: test_transient_windows_replace_retries_same_bytes_without_restarting_a_child (test_choice_native_guard.GuardCollectionContracts.test_transient_windows_replace_retries_same_bytes_without_restarting_a_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 170, in test_transient_windows_replace_retries_same_bytes_without_restarting_a_child
+    guard.write_json(target,{'time_sec':1.})
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard.py", line 25, in write_json
+    temporary.replace(path)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 167, in busy_once
+    error=PermissionError('sharing');error.winerror=5;raise error
+                                                      ^^^^^^^^^^^
+PermissionError: sharing
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.698s
+
+FAILED (errors=1)

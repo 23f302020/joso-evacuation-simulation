@@ -1,0 +1,71 @@
+{
+  "at_jst": "2026-10-28T23:45:43.172789+09:00",
+  "monitor": {
+    "state": "alive",
+    "created": 134376722868969549,
+    "pid": 39900
+  },
+  "identity_matches": true,
+  "observation_age_sec": 51.08253359794617,
+  "new_targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028a\\manifest.json": {
+      "target_id": "rt261028a",
+      "status": "COMPLETED",
+      "pid": 18692,
+      "identity": null,
+      "last_time_sec": null,
+      "command_matches": null,
+      "anomalies": null
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028a_c30\\execution\\manifest.json": {
+      "target_id": "rt261028a_c30",
+      "status": "COMPLETED",
+      "pid": 18692,
+      "identity": null,
+      "last_time_sec": null,
+      "command_matches": null,
+      "anomalies": null
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b\\manifest.json": {
+      "target_id": "rt261028b",
+      "status": "RUNNING",
+      "pid": 42508,
+      "identity": null,
+      "last_time_sec": null,
+      "command_matches": null,
+      "anomalies": null
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b_c01\\execution\\manifest.json": {
+      "target_id": "rt261028b_c01",
+      "status": "COMPLETED",
+      "pid": 42508,
+      "identity": null,
+      "last_time_sec": null,
+      "command_matches": null,
+      "anomalies": null
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b_c02\\execution\\manifest.json": {
+      "target_id": "rt261028b_c02",
+      "status": "COMPLETED",
+      "pid": 42508,
+      "identity": null,
+      "last_time_sec": null,
+      "command_matches": null,
+      "anomalies": null
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b_c03\\execution\\manifest.json": {
+      "target_id": "rt261028b_c03",
+      "status": "RUNNING",
+      "pid": 42508,
+      "identity": null,
+      "last_time_sec": null,
+      "command_matches": null,
+      "anomalies": null
+    }
+  },
+  "monitor_source_matches": true,
+  "state_keys": [
+    "monitor_source_sha256"
+  ],
+  "target_count": 582
+}

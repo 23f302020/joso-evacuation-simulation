@@ -1,0 +1,31 @@
+{
+  "at_jst": "2026-10-24T17:55:55.590190+09:00",
+  "status": "PROTOTYPE_REVIEWED_NOT_ADOPTABLE",
+  "scope": "read-only topological passenger interval candidate outside common5; no runtime import/integration",
+  "red": "frozen AST-extracted observe_transition and actual external-only caller reproduce1false closed entry; intentional assertion failure",
+  "artificial_tests": 13,
+  "primary_replay": "one preserved actor/time window;2entries reconstructed; one false late entry corrected",
+  "primary_replay_sha256": "1ebe97fb9fb8403abc73c807742cc11d5e785ab7a4451c9b592cc11b95aa06b3",
+  "findings": [],
+  "checked": [
+    "all entered route occurrences retained; index not path.index for cycles",
+    "internal lane must bind source/target pair to native route occurrence",
+    "pending states do not fabricate movement; unexplained missing fails",
+    "version change requires explicit provenance-bound reset",
+    "exact deadline and later entry remain closed; no one-row exclusion",
+    "current research source/config/outputs/accepted8 untouched"
+  ],
+  "limitations": [
+    "not integrated into producer or independent validator",
+    "arrival/reset/initial-anchor receipt integration needs runtime-specific verification",
+    "full real-SUMO counterexamples/suite/smokes/new technical registration not performed",
+    "old version remains nonadoptable for the preserved anomalousrun"
+  ],
+  "source_sha256": {
+    "observer_candidate.py": "0ad3abc50eca0e76ce9d659d168fed5377f12ed4425124a470badaf10f2a57c3",
+    "replay_primary.py": "17ca06eb409cb6f2f5bc74adc62745fce3db811fd808fe2def63f0fdd883752c",
+    "reproduce_frozen.py": "19ce8a6ad71bf6d9a7625ea7fe4874a4bf608c7bf1298bb2fa92f826974708e6",
+    "test_observer_candidate.py": "b1aabe14a4e5ae650ad8eeff67bce39c31ea35de2ad5941b6cafbca77719d79d"
+  },
+  "review_followup": "Added explicit parked-no-entry assertion to the existing pending/missing contract;13tests still PASS. Original test/review bytes preserved by SHA .before files."
+}

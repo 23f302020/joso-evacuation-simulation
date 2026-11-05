@@ -1,0 +1,31 @@
+{
+  "at_utc": "2026-10-30T13:19:08.932676+00:00",
+  "status": "CURRENT_SAME_CORE_OBSERVER_BINDING_CONFIRMED_SEQUENCE_FAILURE_PRESERVED",
+  "failed_sequence": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/driver_logs/core_sequences/sq26103005/state.json",
+  "sequence_sha256": "9a06cd88a303fd3b3cfdf63fae0cf6c7f01665190d4d982ecbb16632181835a7",
+  "original_sequence_session": 28593,
+  "original_sequence_exit_code": 1,
+  "observer_snapshot_sha256": "75991bb930ff54a68c505ff16ca1e1157d1476e4b16175e6c51a7529db4d3669",
+  "observer_identity": {
+    "state": "alive",
+    "created": 134377494421633632,
+    "pid": 2476
+  },
+  "core_identity": {
+    "state": "alive",
+    "created": 134378394859035137,
+    "pid": 12280
+  },
+  "target_observed_at_utc": "2026-10-30T13:18:53.931715+00:00",
+  "target_age_sec": 15.000961,
+  "scan_age_sec": 30.08659553527832,
+  "manifest_sha256": "25fbd07a5ec3473d1ab9d209da3b9c533c62db51cf89078dd058a008a786f0a1",
+  "command_verified_binding": {
+    "kind": "direct",
+    "command_target_id": "sv26103005"
+  },
+  "source_pins_checked": 13,
+  "observer_or_core_restarted": false,
+  "coverage_limit": "Initial CIM TimeoutExpired observations could not establish independent target binding; this current point does not reconstruct earlier continuous coverage. Underlying cause of CIM latency remains unknown.",
+  "next": "Follow same core with existing dedicated monitor and07. Only after COMPLETED and actual core exit use a first normal dedicated finish, original record7 readback, display sync and clean status. Do not replay failed sequence or start next core now."
+}

@@ -1,0 +1,53 @@
+{
+  "at_jst": "2026-10-28T01:35:17.202150+09:00",
+  "run_id": "nv26102806",
+  "runs": [
+    {
+      "run_id": "nv26102806",
+      "cell_id": "fixed_reference_u50_r2p900_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-28T00:09:53.315333+09:00",
+      "end": "2026-10-28T00:22:25.429860+09:00",
+      "compute_elapsed_sec": 752.114527,
+      "manifest_sha256": "f6550c12fb4be464331961b2386cf167d4445ed0f6011caa2e2cef29282f509f"
+    }
+  ],
+  "operations": [
+    {
+      "command": "start-next",
+      "end": "2026-10-28T00:09:28.580731+09:00",
+      "duration_sec": 15.695961700053886,
+      "inferred_start": "2026-10-28T00:09:12.884769+09:00",
+      "run_id": "nv26102806",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-28T00:22:27.036641+09:00",
+      "duration_sec": 778.0669871000573,
+      "inferred_start": "2026-10-28T00:09:28.969654+09:00",
+      "run_id": "nv26102806",
+      "status": "COMPLETED"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-28T00:44:17.824384+09:00",
+      "duration_sec": 955.5504053999903,
+      "inferred_start": "2026-10-28T00:28:22.273979+09:00",
+      "run_id": "nv26102806",
+      "status": "PASS"
+    },
+    {
+      "command": "record",
+      "end": "2026-10-28T01:00:29.418136+09:00",
+      "duration_sec": 969.5691065000137,
+      "inferred_start": "2026-10-28T00:44:19.849029+09:00",
+      "run_id": "nv26102806",
+      "status": "RECORDED"
+    }
+  ],
+  "errors": [],
+  "normal_automation_cycle": false,
+  "auxiliary_failure_preserved": "sq26102806",
+  "scope": "Adopted scientific core with preserved auxiliary stop/manual finish. Timing diagnosis only, never relabelled an uninterrupted automation success."
+}

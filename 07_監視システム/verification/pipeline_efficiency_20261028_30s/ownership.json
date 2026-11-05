@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-28T01:45:51.293340+09:00",
+  "schema": "bounded_pipeline_measurement_owner_v1",
+  "original_session": 48129,
+  "actual_pid": 12964,
+  "handle_identity": {
+    "state": "alive",
+    "created": 134375930650742666,
+    "pid": 12964
+  },
+  "state": "07_監視システム/verification/pipeline_efficiency_20261028_30s/state.json",
+  "source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+  "interval_sec": 30,
+  "planned_seconds": 10800,
+  "started_at": "2026-10-28T01:44:25.357577+09:00",
+  "previous_original_session": 59505,
+  "previous_exit_code": 0,
+  "previous_terminal_receipt": "06_研究結果/jdrt/goal_20261017/pipeline_measurement_validation_terminal_20261028.json",
+  "no_measurement_overlap": true,
+  "new_research_run_created": false,
+  "scientific_original_session": 6473,
+  "scientific_run_id": "nv26102807",
+  "autoresume": false,
+  "limits": "Bounded3h then terminal. Missing/partial stages and collection overhead remain explicit; no B/C/D/speedup/adoption claim."
+}

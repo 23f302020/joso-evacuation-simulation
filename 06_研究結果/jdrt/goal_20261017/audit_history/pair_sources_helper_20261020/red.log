@@ -1,0 +1,120 @@
+test_duplicate_or_traversal_archive_members_rejected (test_choice_pair_sources.SourceContracts.test_duplicate_or_traversal_archive_members_rejected) ... C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\zipfile\__init__.py:1655: UserWarning: Duplicate name: 'sumo-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/src/other.h'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+  test_duplicate_or_traversal_archive_members_rejected (test_choice_pair_sources.SourceContracts.test_duplicate_or_traversal_archive_members_rejected) (name='src/other.h') ... FAIL
+  test_duplicate_or_traversal_archive_members_rejected (test_choice_pair_sources.SourceContracts.test_duplicate_or_traversal_archive_members_rejected) (name='../escape.h') ... FAIL
+test_missing_or_extra_source_rejected (test_choice_pair_sources.SourceContracts.test_missing_or_extra_source_rejected) ... 
+  test_missing_or_extra_source_rejected (test_choice_pair_sources.SourceContracts.test_missing_or_extra_source_rejected) (operation='missing') ... FAIL
+  test_missing_or_extra_source_rejected (test_choice_pair_sources.SourceContracts.test_missing_or_extra_source_rejected) (operation='extra') ... FAIL
+test_missing_required_build_source_in_both_inventories_rejected (test_choice_pair_sources.SourceContracts.test_missing_required_build_source_in_both_inventories_rejected) ... FAIL
+test_patch_must_apply_to_exact_base_and_match_declared_target (test_choice_pair_sources.SourceContracts.test_patch_must_apply_to_exact_base_and_match_declared_target) ... FAIL
+test_patch_tamper_and_forged_after_digest_rejected (test_choice_pair_sources.SourceContracts.test_patch_tamper_and_forged_after_digest_rejected) ... FAIL
+test_same_source_root_and_invalid_role_rejected (test_choice_pair_sources.SourceContracts.test_same_source_root_and_invalid_role_rejected) ... FAIL
+test_shared_unregistered_change_even_with_updated_inventories_rejected (test_choice_pair_sources.SourceContracts.test_shared_unregistered_change_even_with_updated_inventories_rejected) ... FAIL
+test_stale_inventory_rejected (test_choice_pair_sources.SourceContracts.test_stale_inventory_rejected) ... FAIL
+test_unapplied_patch_rejected_even_with_updated_inventory (test_choice_pair_sources.SourceContracts.test_unapplied_patch_rejected_even_with_updated_inventory) ... FAIL
+test_valid_pair_recomputed_from_current_bytes (test_choice_pair_sources.SourceContracts.test_valid_pair_recomputed_from_current_bytes) ... ok
+
+======================================================================
+FAIL: test_duplicate_or_traversal_archive_members_rejected (test_choice_pair_sources.SourceContracts.test_duplicate_or_traversal_archive_members_rejected) (name='src/other.h')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 143, in test_duplicate_or_traversal_archive_members_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_or_traversal_archive_members_rejected (test_choice_pair_sources.SourceContracts.test_duplicate_or_traversal_archive_members_rejected) (name='../escape.h')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 143, in test_duplicate_or_traversal_archive_members_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_extra_source_rejected (test_choice_pair_sources.SourceContracts.test_missing_or_extra_source_rejected) (operation='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 97, in test_missing_or_extra_source_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_extra_source_rejected (test_choice_pair_sources.SourceContracts.test_missing_or_extra_source_rejected) (operation='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 97, in test_missing_or_extra_source_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_required_build_source_in_both_inventories_rejected (test_choice_pair_sources.SourceContracts.test_missing_required_build_source_in_both_inventories_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 108, in test_missing_required_build_source_in_both_inventories_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_patch_must_apply_to_exact_base_and_match_declared_target (test_choice_pair_sources.SourceContracts.test_patch_must_apply_to_exact_base_and_match_declared_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 132, in test_patch_must_apply_to_exact_base_and_match_declared_target
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_patch_tamper_and_forged_after_digest_rejected (test_choice_pair_sources.SourceContracts.test_patch_tamper_and_forged_after_digest_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 122, in test_patch_tamper_and_forged_after_digest_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_same_source_root_and_invalid_role_rejected (test_choice_pair_sources.SourceContracts.test_same_source_root_and_invalid_role_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 148, in test_same_source_root_and_invalid_role_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_shared_unregistered_change_even_with_updated_inventories_rejected (test_choice_pair_sources.SourceContracts.test_shared_unregistered_change_even_with_updated_inventories_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 79, in test_shared_unregistered_change_even_with_updated_inventories_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_stale_inventory_rejected (test_choice_pair_sources.SourceContracts.test_stale_inventory_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 84, in test_stale_inventory_rejected
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_unapplied_patch_rejected_even_with_updated_inventory (test_choice_pair_sources.SourceContracts.test_unapplied_patch_rejected_even_with_updated_inventory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_sources.py", line 116, in test_unapplied_patch_rejected_even_with_updated_inventory
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.259s
+
+FAILED (failures=11)

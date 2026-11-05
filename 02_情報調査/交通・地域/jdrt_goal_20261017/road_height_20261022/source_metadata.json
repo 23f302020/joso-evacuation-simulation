@@ -1,0 +1,47 @@
+[
+  {
+    "requested_url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/city_plan/cityplanningmap/page003557.html",
+    "final_url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/city_plan/cityplanningmap/page003557.html",
+    "status": 200,
+    "content_type": "text/html",
+    "last_modified": null,
+    "retrieved_at_utc": "2026-10-22T06:30:17.066559+00:00",
+    "bytes": 21353,
+    "sha256": "5bc554c03643af31b532970e48222662be95bd9d851d86728e56b55397103368",
+    "coverage_index_url": "https://www.city.joso.lg.jp/data/img/1724205600_280.png?1724205638327",
+    "pdf_links": [
+      "https://www.city.joso.lg.jp/data/doc/1724204786_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724204149_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724206138_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724206395_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724206480_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724206892_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724207093_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724207188_doc_280_0.pdf",
+      "https://www.city.joso.lg.jp/data/doc/1724207301_doc_280_0.pdf"
+    ],
+    "id": "topographic_map_index.html"
+  },
+  {
+    "id": "coverage_index.png",
+    "requested_url": "https://www.city.joso.lg.jp/data/img/1724205600_280.png?1724205638327",
+    "final_url": "https://www.city.joso.lg.jp/data/img/1724205600_280.png?1724205638327",
+    "status": 200,
+    "content_type": "image/png",
+    "retrieved_at_utc": "2026-10-22T06:30:56.987375+00:00",
+    "bytes": 152291,
+    "sha256": "7fd0aed798b79043c228a50ef9fded67a5f78fec6d9c3f81223ed01997dbad29"
+  },
+  {
+    "id": "topographic_10000_3.pdf",
+    "requested_url": "https://www.city.joso.lg.jp/data/doc/1724206480_doc_280_0.pdf",
+    "final_url": "https://www.city.joso.lg.jp/data/doc/1724206480_doc_280_0.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "last_modified": "Tue, 31 Mar 2026 05:03:03 GMT",
+    "retrieved_at_utc": "2026-10-22T06:31:38.206822+00:00",
+    "bytes": 19696858,
+    "sha256": "db69e73dacae8ae8cb43a5736beb5b2545a6bd56a945ce8826f80af7e955f82a",
+    "selection": "Coverage index sheet3 is southern Joso containing Mitsukaido area. This is a map-scope choice, not a bridge identity or height match."
+  }
+]

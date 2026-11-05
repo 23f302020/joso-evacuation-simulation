@@ -1,0 +1,95 @@
+diff --git "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\scripts\\jdrt_realtime_choice_validate.py" "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/scripts/jdrt_realtime_choice_validate.py"
+index f369231..f0167bf 100644
+--- "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\scripts\\jdrt_realtime_choice_validate.py"
++++ "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/scripts/jdrt_realtime_choice_validate.py"
+@@ -1016,6 +1016,46 @@ def walk_replacement_contract(event, actor, old_route):
+             and receipts[0]['after'] == receipts[1]['before'])
+ 
+ 
++def lane_allowed(attributes, mode):
++    allowed, denied = attributes.get('allow', '').split(), attributes.get('disallow', '').split()
++    return (not allowed or mode in allowed or 'all' in allowed) and mode not in denied and 'all' not in denied
++
++
++def vehicle_source_contract(event, actor, lanes, route, stop_position, route_index=None):
++    """Derive source identity from raw actor/stop getters and the native net."""
++    raw, stop = event.get('native_source', {}), event.get('native_parking_stop')
++    reference = event.get('source_reference_lane_id')
++    if not actor or reference not in lanes or not raw:
++        return False
++    edge, attributes = lanes[reference]
++    expected_index = int(actor['route_index']) if route_index is None else route_index
++    if (float(actor['time_sec']) != event['time_sec'] or raw.get('route') != route
++            or raw.get('route_index') != expected_index
++            or not 0 <= raw['route_index'] < len(route) or route[raw['route_index']] != edge
++            or event['source_lane_id'] != actor['lane_id']
++            or raw.get('lane_id') != actor['lane_id'] or raw.get('road_id') != actor['road_id']
++            or raw.get('stop_state') != int(actor['stop_state']) or edge != actor['road_id']
++            or not lane_allowed(attributes, 'passenger')):
++        return False
++    for key in ('lane_position_m', 'speed_mps', 'decel_mps2'):
++        if key not in raw or not math.isfinite(raw[key]) or not math.isclose(raw[key], float(actor[key]), rel_tol=0, abs_tol=1e-7):
++            return False
++    if actor['lane_id']:
++        return event.get('source_kind') == 'onroad_lane' and reference == actor['lane_id'] and stop is None
++    if (event.get('source_kind') != 'parked_stop' or not stop or int(actor['stop_state']) & 3 != 3
++            or actor['observation_kind'] != 'parked' or float(actor['speed_mps']) != 0
++            or route[-1] != edge or stop_position is None):
++        return False
++    try:
++        return (stop['lane_id'] == actor['native_stop_lane_id'] == reference
++            and stop['flags'] == int(actor['native_stop_flags']) and bool(stop['flags'] & 1)
++            and stop['start_pos_m'] == float(actor['native_stop_start_pos_m'])
++            and stop['end_pos_m'] == float(actor['native_stop_end_pos_m']) == stop_position
++            and 0 <= stop['start_pos_m'] <= float(actor['lane_position_m']) <= stop['end_pos_m'] <= float(attributes['length']))
++    except (KeyError, TypeError, ValueError):
++        return False
++
++
+ def audit_movement_events(folder, manifest, cfg, events):
+     """Rebuild every external entry and walk-budget decision on the step grid.
+ 
+@@ -1052,6 +1092,8 @@ def audit_movement_events(folder, manifest, cfg, events):
+         fail('walk_native_speed_contract', 'unsupported_native_getter_version')
+ 
+     routes = {vid: [source['depot_edge']] for vid, v in vehicles.items() if v['kind'] == 'drt'}
++    stop_positions = {vid: next(float(a['length']) - 1 for edge, a in lanes.values()
++                      if edge == source['depot_edge'] and lane_allowed(a, 'passenger')) for vid in routes}
+     arrivals = defaultdict(list)
+     crews = defaultdict(list)
+     for pid, p in people.items():
+@@ -1166,7 +1208,10 @@ def audit_movement_events(folder, manifest, cfg, events):
+             event, pid, vid = e['event'], e.get('person_id'), e.get('vehicle_id')
+             if event == 'vehicle_route_feasibility':
+                 row = latest.get(vid)
+-                lane = e['source_lane_id']
++                lane = e.get('source_reference_lane_id')
++                if lane not in lanes:
++                    fail('vehicle_first_turn_feasibility', [vid, now, 'unknown_source_lane'])
++                    continue
+                 edge, attributes = lanes[lane]
+                 length, position = float(attributes['length']), e['source_lane_position_m']
+                 speed, decel = e['source_speed_mps'], e['source_decel_mps2']
+@@ -1181,7 +1226,9 @@ def audit_movement_events(folder, manifest, cfg, events):
+                 target_kind, target_id = ('origin', person['origin_id']) if pickup else ('terminal', person['terminal_id'])
+                 target_edge = origins[target_id] if pickup else terminals[target_id]
+                 target_position = float(places[target_kind, target_id]['car_pos_m'])
+-                valid = (row and float(row['time_sec']) == now and row['lane_id'] == lane
++                valid = (vehicle_source_contract(e, row, lanes, routes.get(vid, []), stop_positions.get(vid),
++                        anchors.get(vid, (None, None, None))[2])
++                    and row and float(row['time_sec']) == now
+                     and row['road_id'] == edge == e['source_edge'] and stopped == e['stopped']
+                     and decel > 0 and all(math.isfinite(x) for x in (speed, decel, position))
+                     and 0 <= position <= length and speed >= 0 and e['step_sec'] == dt
+@@ -1301,6 +1348,11 @@ def audit_movement_events(folder, manifest, cfg, events):
+                     if decision:
+                         decision['used'] = True
+                 routes[vid] = route
++                if event == 'drt_route':
++                    stop_positions[vid] = e['target_position_m']
++                elif event == 'cancel_wait_route' and not int(row['stop_state']) & 1:
++                    stop_positions[vid] = next(float(a['length']) - 1 for edge, a in lanes.values()
++                        if edge == route[-1] and lane_allowed(a, 'passenger'))
+                 anchors[vid] = remaining[0], now, index
+             elif event == 'actor_removed':
+                 actor = e['actor_id']

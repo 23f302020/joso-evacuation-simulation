@@ -1,0 +1,313 @@
+"""Selected native pair only; no full-suite, READY, core, recovery or retry command."""
+import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+
+SCRIPTS = Path('.agents/skills/joso-jdrt-runner/scripts')
+GOAL = Path('06_研究結果/jdrt/goal_20261017')
+PARAM = Path('04_プログラム/config/jdrt_realtime_choice_v1.json')
+SELECTOR = 'JDRT_CHOICE_TOOLCHAIN_MANIFEST'
+ERROR_PREFIX = 'Walking stage replacement moved the person: '
+PENDING = ['same_direction_remaining_route', 'forward_reverse_and_reverse_forward',
+           'multiple_people_stripes_and_operation_order', 'new_depart_explicit_random_legacy',
+           'natural_walk_walk_and_walk_wait_walk', 'non_target_native_lane_guards',
+           'native_debugger_or_separate_sha_diagnostic_guard_trace',
+           'full_current_suite', 'independent_counterexample_audit', 'all_setting_smokes',
+           'unit_input_checks_new_preflight_and_G6_source_reaudit']
+
+
+def require(value, message):
+    if not value:
+        raise ValueError(message)
+
+
+def sha(path):
+    digest = hashlib.sha256()
+    with Path(path).open('rb') as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def read_json(path):
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            require(key not in result, 'Duplicate JSON key')
+            result[key] = value
+        return result
+    value = json.loads(Path(path).read_text(encoding='utf-8-sig'), object_pairs_hook=unique,
+                       parse_constant=lambda value: require(False, 'Nonfinite JSON: ' + value))
+    require(isinstance(value, dict), 'Expected JSON object')
+    return value
+
+
+def finite(value):
+    return type(value) in (int, float) and math.isfinite(value)
+
+
+def receipt_difference(receipt):
+    """Exact values, without displacement thresholds or native-guard inference."""
+    for name in ('before', 'after'):
+        snapshot = receipt[name]
+        require(isinstance(snapshot['edge_id'], str) and snapshot['edge_id'], 'Missing native edge')
+        require(finite(snapshot['lane_position_m']), 'Invalid native longitudinal position')
+        require(isinstance(snapshot['xy'], list) and len(snapshot['xy']) == 2
+                and all(finite(v) for v in snapshot['xy']), 'Invalid native XY')
+        require(finite(snapshot['stage_length_m']) and snapshot['stage_length_m'] >= 0,
+                'Invalid native stage length')
+    before, after = receipt['before'], receipt['after']
+    changed = [key for key in ('edge_id', 'lane_position_m', 'xy') if before[key] != after[key]]
+    return {'changed_keys': changed, 'raw_receipt': receipt,
+            'xy_displacement_m': math.dist(before['xy'], after['xy'])}
+
+
+def failure_receipt(manifest):
+    require(manifest['status'] == 'FAILED' and manifest['error_type'] == 'RuntimeError'
+            and manifest['error'].startswith(ERROR_PREFIX), 'Control lacks raw position failure')
+    raw = json.loads(manifest['error'][len(ERROR_PREFIX):])
+    result = receipt_difference(raw)
+    require(raw['purpose'] == 'old_remaining' and result['changed_keys'] == ['xy']
+            and raw.get('changed_keys') == result['changed_keys'], 'Unexpected control failure mechanism')
+    return result
+
+
+def recompute_plans(path):
+    previous, records = {}, []
+    for line in path.read_text(encoding='utf-8').splitlines():
+        event = json.loads(line)
+        if event.get('event') != 'walk_plan':
+            continue
+        person, length = event['person_id'], event['sumo_plan_length_m']
+        require(finite(length) and length >= 0, 'Invalid planned length')
+        if event['stage'] == 'reroute':
+            require(person in previous, 'Missing initial walk plan')
+            receipts = event['replacement_receipts']
+            require([r['purpose'] for r in receipts] == ['old_remaining', 'new_route'], 'Missing receipt pair')
+            differences = [receipt_difference(r) for r in receipts]
+            require(all(not r['changed_keys'] for r in differences), 'Patched exact position changed')
+            old_length, old_model = previous[person]
+            progress = old_length - event['old_remaining_m']
+            require(event['previous_plan_m'] == old_length and event['signed_progress_m'] == progress
+                    and event['model_passed_m'] == old_model + max(0, progress), 'Stage budget recurrence mismatch')
+            require(receipts[0]['after']['stage_length_m'] == event['old_remaining_m']
+                    and receipts[1]['after']['stage_length_m'] == length, 'Native stage length receipt mismatch')
+            records.append({'person_id': person, 'time_sec': event['time_sec'],
+                            'signed_progress_m': progress, 'receipts': differences})
+        previous[person] = length, event['model_passed_m']
+    require(records, 'No reroute receipts')
+    return records
+
+
+def load_selection(root, manifest):
+    sys.path.insert(0, str(root / '04_プログラム'))
+    from scripts.jdrt_choice_toolchain import resolve_choice_toolchain
+    old = os.environ.get(SELECTOR)
+    try:
+        os.environ[SELECTOR] = str(manifest)
+        return resolve_choice_toolchain(require_manifest=True)
+    finally:
+        if old is None:
+            os.environ.pop(SELECTOR, None)
+        else:
+            os.environ[SELECTOR] = old
+
+
+def verify_pair(root, control, patched):
+    """Fail closed until the build owner's objective paired proof is available."""
+    selections = [load_selection(root, Path(p).resolve(strict=True)) for p in (control, patched)]
+    require(selections[0]['manifest_path'] != selections[1]['manifest_path'], 'Distinct manifests required')
+    for role, selected in zip(('control', 'patched'), selections):
+        require(selected['provenance'].get('role') == role, 'Incorrect native role')
+    tools = [{n: h for n, h in s['files'].items() if n.startswith('tools/')} for s in selections]
+    require(tools[0] and tools[0] == tools[1], 'Python tool files differ')
+    # Concrete schema is supplied by the build owner, never inferred from boolean assertions.
+    raise ValueError('Objective paired build proof integration pending; simulation launch disabled')
+
+
+class SelectedPair:
+    def __init__(self, root, control, patched, control_id, patched_id):
+        self.root = Path(root).resolve()
+        self.ids = [control_id, patched_id]
+        require(all(re.fullmatch(r'[A-Za-z0-9_-]{1,54}', value) for value in self.ids)
+                and control_id != patched_id, 'Two distinct fresh simple IDs required (max 54 characters)')
+        self.params = read_json(self.root / PARAM)
+        self.workspace = (self.root / self.params['workspace']).resolve()
+        require(self.workspace.is_relative_to(self.root), 'Workspace outside project')
+        self.selections = verify_pair(self.root, control, patched)
+        sources = [PARAM, SCRIPTS / 'choice_native_regression.py', SCRIPTS / 'choice_technical.py',
+                   SCRIPTS / 'realtime_choice_cell.py', Path('04_プログラム/scripts/jdrt_choice_fixtures.py'),
+                   Path('04_プログラム/scripts/jdrt_choice_toolchain.py')]
+        sources += [Path(p) for p in self.params['execution']['implementation_files']]
+        self.bound = {str(self.root / p): sha(self.root / p) for p in sources}
+        for selection in self.selections:
+            self.bound[str(selection['manifest_path'])] = selection['manifest_sha256']
+            self.bound.update({str(selection['root'] / p): h for p, h in selection['files'].items()})
+        self.out = self.root / GOAL / (control_id + '_native_pair')
+        self.state_path = self.out / 'state.json'
+        self.state = {'schema': 'selected_native_pair_v1', 'status': 'PREPARED', 'ids': self.ids,
+                      'research_adoption_permitted': False, 'technical_ready': False,
+                      'native_regression_complete': False, 'pending': PENDING, 'completed': [], 'active': None,
+                      'source_and_artifact_sha256': self.bound, 'requested_model': 'gpt-6.1-sol',
+                      'requested_reasoning': 'high', 'actual_backend': 'unverified'}
+
+    def save(self):
+        tmp = self.state_path.with_suffix('.tmp')
+        tmp.write_text(json.dumps(self.state, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+        tmp.replace(self.state_path)
+
+    def frozen(self):
+        require(all(sha(Path(p)) == h for p, h in self.bound.items()), 'Bound source/artifact changed')
+        for selection in self.selections:
+            require(load_selection(self.root, selection['manifest_path']) == selection, 'Selected bundle changed')
+
+    def bind_tree(self, folder):
+        for path in folder.rglob('*'):
+            require(not path.is_symlink(), 'Symlink in evidence')
+            if path.is_file():
+                self.bound[str(path)] = sha(path)
+
+    def command(self, label, role, args):
+        self.frozen()
+        stdout, stderr = self.out / (label + '.stdout.log'), self.out / (label + '.stderr.log')
+        env = os.environ.copy()
+        env[SELECTOR] = str(self.selections[role]['manifest_path'])
+        env['PYTHONDONTWRITEBYTECODE'] = '1'
+        active = {'command': args, 'label': label, 'manifest': env[SELECTOR], 'pid': None,
+                  'exit_code': None, 'started_at_utc': datetime.now(timezone.utc).isoformat()}
+        self.state['active'] = active
+        self.save()
+        with stdout.open('xb') as out, stderr.open('xb') as err:
+            child = subprocess.Popen(args, cwd=self.root, env=env, stdin=subprocess.DEVNULL, stdout=out, stderr=err,
+                                     creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+            active['pid'] = child.pid
+            self.save()
+            while True:
+                try:
+                    active['exit_code'] = child.wait(timeout=15)
+                    break
+                except subprocess.TimeoutExpired:
+                    active['observed_at_utc'] = datetime.now(timezone.utc).isoformat()
+                    self.save()
+        self.bound[str(stdout)], self.bound[str(stderr)] = sha(stdout), sha(stderr)
+        self.save()
+        self.frozen()
+        return active['exit_code'], stdout
+
+    def strict_validate(self, role, run_id):
+        args = [sys.executable, '-B', '-X', 'utf8', str(self.root / SCRIPTS / 'realtime_choice_cell.py'),
+                '--project-root', str(self.root), 'validate', '--purpose', 'fixture', '--run-id', run_id]
+        code, stdout = self.command(run_id + '_validate', role, args)
+        require(code == 0, 'Strict fixture validation command failed')
+        printed = read_json(stdout)
+        path = (self.root / printed['validation_report']).resolve()
+        require(path.is_relative_to(self.root), 'Validation report outside project')
+        proof = read_json(path)
+        manifest = self.workspace / 'technical' / run_id / 'execution/manifest.json'
+        require(printed == proof and proof['status'] == 'PASS' and proof['run_id'] == run_id
+                and proof['manifest_sha256'] == sha(manifest)
+                and proof['core_adoption_permitted'] is False, 'Strict validation receipt mismatch')
+        self.bound[str(path)] = sha(path)
+
+    def inspect_suite(self, role, code):
+        run_id = self.ids[role]
+        suite = read_json(self.workspace / 'technical' / run_id / 'manifest.json')
+        require(suite['run_id'] == run_id and suite['research_adoption_permitted'] is False,
+                'Unexpected suite identity/adoption')
+        # Existing factory fixes these selected IDs through its archived CASES order.
+        factory = (self.workspace / 'technical' / run_id / 'factory.py').read_text(encoding='utf-8')
+        import ast
+        tree = ast.parse(factory)
+        cases = next(ast.literal_eval(n.value) for n in tree.body if isinstance(n, ast.Assign)
+                     and any(isinstance(t, ast.Name) and t.id == 'CASES' for t in n.targets))
+        require(sha(self.workspace / 'technical' / run_id / 'factory.py') == suite['factory_sha256']
+                == sha(self.root / '04_プログラム/scripts/jdrt_choice_fixtures.py'), 'Factory SHA mismatch')
+        results = []
+        for case in ('walk_short_calibration', 'walk_short_repeated'):
+            child = run_id + '_c' + str(cases.index(case) + 1).zfill(2)
+            folder = self.workspace / 'technical' / child
+            execution = folder / 'execution'
+            manifest = read_json(execution / 'manifest.json')
+            require(manifest['run_id'] == child and manifest['purpose'] == 'fixture'
+                    and manifest['research_adoption_permitted'] is False, 'Unexpected child identity')
+            fingerprint, selected = manifest['runtime_sha256'], self.selections[role]
+            require(fingerprint['toolchain_manifest_sha256'] == selected['manifest_sha256']
+                    and fingerprint['toolchain_files_sha256'] == selected['files']
+                    and fingerprint['sumo_binary'] == selected['files'][selected['roles']['sumo']],
+                    'Child used a different toolchain')
+            if role == 0 and case == 'walk_short_repeated':
+                require(code != 0 and suite['status'] == 'FAILED', 'Control did not fail as a preserved suite')
+                results.append({'case': case, 'child': child, 'raw_failure': failure_receipt(manifest)})
+            else:
+                proof = read_json(folder / 'case_validation.json')
+                require(manifest['status'] == 'COMPLETED' and proof['status'] == 'PASS'
+                        and proof['child_run_id'] == child and proof['execution_manifest_sha256'] == sha(execution / 'manifest.json')
+                        and proof['checks'] and all(v is True for v in proof['checks'].values()), 'Fixture case did not PASS')
+                require(all(sha(execution / name) == h for name, h in manifest['output_sha256'].items()),
+                        'Primary output SHA mismatch')
+                self.strict_validate(role, child)
+                results.append({'case': case, 'child': child, 'primary_plans': recompute_plans(execution / 'events.jsonl')})
+            self.bind_tree(folder)
+        require(role == 0 or code == 0 and suite['status'] == 'COMPLETED', 'Patched suite command failed')
+        self.bind_tree(self.workspace / 'technical' / run_id)
+        self.frozen()
+        self.state['completed'].append({'role': ('control', 'patched')[role], 'suite_id': run_id, 'cases': results})
+        self.state['active'] = None
+        self.save()
+
+    def run(self):
+        require(not self.out.exists(), 'Pair ID already reserved')
+        for run_id in self.ids:
+            require(not any((self.workspace / 'technical').glob(run_id + '*')), 'Technical ID/prefix already exists')
+        for category in ('technical', 'runs', 'smoke'):
+            for path in (self.workspace / category).glob('*/manifest.json'):
+                require(read_json(path).get('status') != 'RUNNING', 'Resolve existing RUNNING workflow first')
+        locks = [self.root / GOAL / 'choice_revalidate.lock', self.root / GOAL / 'choice_native_regression.lock']
+        require(not any(p.exists() for p in locks), 'Another workflow lock exists')
+        self.out.mkdir(parents=True, exist_ok=False)
+        lock = locks[1]
+        with lock.open('x', encoding='utf-8') as stream:
+            json.dump({'pid': os.getpid(), 'state': str(self.state_path)}, stream)
+        try:
+            self.state['status'] = 'RUNNING'
+            self.save()
+            for role, run_id in enumerate(self.ids):
+                args = [sys.executable, '-B', '-X', 'utf8', str(self.root / SCRIPTS / 'choice_technical.py'),
+                        '--project-root', str(self.root), 'fixture', '--case', 'walk_short_repeated', '--run-id', run_id]
+                code, _ = self.command(run_id + '_fixture', role, args)
+                self.inspect_suite(role, code)
+            self.state['status'] = 'SELECTED_PAIR_VERIFIED_PENDING_NATIVE_GUARDS'
+        except BaseException as error:
+            self.state.update(status='FAILED_PRESERVED', error_type=type(error).__name__, error=str(error))
+            raise
+        finally:
+            self.save()
+            active = self.state['active']
+            if active is None or active['exit_code'] is not None:
+                lock.unlink()
+        return self.state_path
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('command', choices=('plan', 'run-selected-pair'))
+    parser.add_argument('--project-root', type=Path, required=True)
+    parser.add_argument('--control-manifest', type=Path, required=True)
+    parser.add_argument('--patched-manifest', type=Path, required=True)
+    parser.add_argument('--control-id', required=True)
+    parser.add_argument('--patched-id', required=True)
+    args = parser.parse_args()
+    pair = SelectedPair(args.project_root, args.control_manifest, args.patched_manifest, args.control_id, args.patched_id)
+    result = pair.run() if args.command == 'run-selected-pair' else pair.state
+    print(json.dumps(str(result) if isinstance(result, Path) else result, ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    main()

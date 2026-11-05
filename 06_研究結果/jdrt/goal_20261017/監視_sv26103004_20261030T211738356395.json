@@ -1,0 +1,34 @@
+{
+  "at_jst": "2026-10-30T21:17:38.356395+09:00",
+  "action": "detailed_same_core_monitor",
+  "run_id": "sv26103004",
+  "cell_id": "fixed_reference_u05_r2p0_seed23423",
+  "pid": 39240,
+  "skill_check": {
+    "run_id": "sv26103004",
+    "status": "RUNNING",
+    "pid_alive": true,
+    "progress": null,
+    "error": null
+  },
+  "input_population_rows": 11965,
+  "integrity": {
+    "input_manifest": true,
+    "archived_READY": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "anomaly_flags": [],
+  "manifest_sha256_at_observation": "c76df7438c0ba135471e55e7922d8f0e7f329a32142f5ceee6cf6c6b3c02ee64",
+  "current_run_bytes": 2322348,
+  "free_bytes": 234218446848,
+  "native_error_lines": 0,
+  "native_log_bytes": 0,
+  "driver_stderr_bytes": 0,
+  "monitor_source_sha256": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+  "formal_validation_or_adoption": false,
+  "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+}

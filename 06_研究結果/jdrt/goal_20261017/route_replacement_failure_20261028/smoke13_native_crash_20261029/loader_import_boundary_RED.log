@@ -1,0 +1,36 @@
+FE.E
+======================================================================
+ERROR: test_function_table_and_preheader_rows_are_not_imports (__main__.ImportCoverage.test_function_table_and_preheader_rows_are_not_imports)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_loader_check.py", line 16, in test_function_table_and_preheader_rows_are_not_imports
+    self.assertEqual(parse_imports(text),[{'name':'KERNEL32.dll','symbols':['CreateFileW']}])
+                     ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_loader_check.py", line 38, in parse_imports
+    raise ValueError('Complete unambiguous allowed-system imports required')
+ValueError: Complete unambiguous allowed-system imports required
+
+======================================================================
+ERROR: test_repeated_import_thunks_are_preserved (__main__.ImportCoverage.test_repeated_import_thunks_are_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_loader_check.py", line 12, in test_repeated_import_thunks_are_preserved
+    self.assertEqual(parse_imports(text)[0]['symbols'],['fflush','fflush'])
+                     ~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_loader_check.py", line 38, in parse_imports
+    raise ValueError('Complete unambiguous allowed-system imports required')
+ValueError: Complete unambiguous allowed-system imports required
+
+======================================================================
+FAIL: test_empty_missing_header_missing_symbols_duplicate_dll_and_non_system_are_refused (__main__.ImportCoverage.test_empty_missing_header_missing_symbols_duplicate_dll_and_non_system_are_refused) (text='DLL Name: KERNEL32.dll\n 1000 1 x\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_loader_check.py", line 23, in test_empty_missing_header_missing_symbols_duplicate_dll_and_non_system_are_refused
+    with self.subTest(text=text),self.assertRaises(ValueError):parse_imports(text)
+                                 ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.008s
+
+FAILED (failures=1, errors=2)

@@ -1,0 +1,100 @@
+{
+  "at_jst": "2026-10-28T23:56:56.614699+09:00",
+  "purpose": "bounded read-only watch.snapshot sampling, no observe/state/event writer or simulation controls",
+  "discovered": 590,
+  "discovery_sec": 0.7258218000642955,
+  "samples": [
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261018_002\\manifest.json",
+      "seconds": 0.012775599956512451,
+      "status": "INVALID",
+      "flags": [],
+      "bytes": 6879
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261021_001\\manifest.json",
+      "seconds": 0.006829600082710385,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 37895
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261021_002\\manifest.json",
+      "seconds": 0.006453800015151501,
+      "status": "INVALID",
+      "flags": [],
+      "bytes": 38142
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102201\\manifest.json",
+      "seconds": 0.007805799948982894,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 39518
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102202\\manifest.json",
+      "seconds": 0.005667999968864024,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 39615
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102203\\manifest.json",
+      "seconds": 0.006809200043790042,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 39600
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102701\\manifest.json",
+      "seconds": 0.00690600008238107,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 39518
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102702\\manifest.json",
+      "seconds": 0.007067799917422235,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 39614
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102703\\manifest.json",
+      "seconds": 0.006132300011813641,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 39600
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028a\\manifest.json",
+      "seconds": 0.002022799919359386,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 1893
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028a_c30\\execution\\manifest.json",
+      "seconds": 0.004189500003121793,
+      "status": "COMPLETED",
+      "flags": [],
+      "bytes": 39245
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b\\manifest.json",
+      "seconds": 0.004955000011250377,
+      "status": "RUNNING",
+      "flags": [],
+      "bytes": 367
+    }
+  ],
+  "all_old_targets_terminal_in_saved_state": true,
+  "current_suite_progress": {
+    "at_jst": "2026-10-28T23:55:43.791491+09:00",
+    "completed_cases": 10,
+    "last_case": "forecast_p900",
+    "last_status": "PASS",
+    "child_run_id": "rt261028b_c10"
+  }
+}

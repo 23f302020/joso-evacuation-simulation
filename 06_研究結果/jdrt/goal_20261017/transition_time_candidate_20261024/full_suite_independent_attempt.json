@@ -1,0 +1,38 @@
+{
+  "at_jst": "2026-10-24T23:02:22.411568+09:00",
+  "stage": "full_current29_independent_audit",
+  "suite": "nt261024d",
+  "suite_finished_at": "2026-10-24T23:01:18.123116+09:00",
+  "suite_sha256": "f1a952f19e9b1c1ce13c0be8eb754429bafef2d4719ec27fb5b7f07eb54357ef",
+  "factory_sha256": "5ed0e5f1b49340218079dbfb8e2896a82faa4c2a74fef44bf4a26798f9ac8691",
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "current_auditor_sha256": "fd6d5edcefcb7e63d4aa20f28c4cfd49b5d3f8afa6ad1761630f3e6ffeca9a10",
+  "cases_exact": 29,
+  "prior_goal_audit_reports": [
+    "正式検証器_表会計候補_20261017T164808.json",
+    "正式検証器_表会計候補_20261017T165043.json",
+    "正式検証器_表会計候補_20261017T165147.json",
+    "正式検証器_表会計候補_20261017T170202.json",
+    "正式検証器_表会計候補_20261017T170318.json",
+    "正式検証器_表会計候補_20261017T170440.json",
+    "正式検証器_表会計候補_20261017T171619.json",
+    "正式検証器_表会計候補_20261017T172409.json",
+    "正式検証器_表会計候補_20261017T172510.json",
+    "正式検証器_表会計候補_20261017T172905.json",
+    "正式検証器_表会計候補_20261017T175640.json",
+    "正式検証器_表会計候補_20261017T180218.json",
+    "正式検証器_表会計候補_20261018T095748.json",
+    "正式検証器_表会計候補_20261021T091121.json",
+    "正式検証器_表会計候補_20261022T144514.json",
+    "正式検証器_表会計候補_初回試験.json",
+    "正式検証器_表会計候補_統合試験.json"
+  ],
+  "technical_ready": false,
+  "core_adoption_permitted": false
+}

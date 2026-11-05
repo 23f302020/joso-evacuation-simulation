@@ -1,0 +1,57 @@
+EEEEE
+======================================================================
+ERROR: test_command_has_explicit_binary_and_outputs_without_move_or_restart (test_choice_native_guard.GuardCollectionContracts.test_command_has_explicit_binary_and_outputs_without_move_or_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 58, in test_command_has_explicit_binary_and_outputs_without_move_or_restart
+    args=guard.command('diagnostic.exe','net.xml','routes.xml',Path('out'),.5,30.,12345,42,['--some-native-option','true'])
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard.py", line 17, in command
+    raise NotImplementedError('Explicit child binary, local port and complete raw outputs required')
+NotImplementedError: Explicit child binary, local port and complete raw outputs required
+
+======================================================================
+ERROR: test_geometry_uses_signed_normal_and_rejects_non_straight_lane (test_choice_native_guard.GuardCollectionContracts.test_geometry_uses_signed_normal_and_rejects_non_straight_lane)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 53, in test_geometry_uses_signed_normal_and_rejects_non_straight_lane
+    self.assertEqual(guard.signed_side((2.,3.),[(0.,0.),(10.,0.)]),3.)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard.py", line 13, in signed_side
+    raise NotImplementedError('Select native lateral changes from actual lane geometry')
+NotImplementedError: Select native lateral changes from actual lane geometry
+
+======================================================================
+ERROR: test_movement_or_api_rejection_is_saved_without_position_correction (test_choice_native_guard.GuardCollectionContracts.test_movement_or_api_rejection_is_saved_without_position_correction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 45, in test_movement_or_api_rejection_is_saved_without_position_correction
+    row=guard.replacement(self.connection,'p3','new_route',['long'],4.,0.,.5)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard.py", line 9, in replacement
+    raise NotImplementedError('Capture all actors before and after unchanged replaceStage')
+NotImplementedError: Capture all actors before and after unchanged replaceStage
+
+======================================================================
+ERROR: test_replacement_preserves_raw_before_after_and_non_target (test_choice_native_guard.GuardCollectionContracts.test_replacement_preserves_raw_before_after_and_non_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 36, in test_replacement_preserves_raw_before_after_and_non_target
+    row=guard.replacement(self.connection,'p3','new_route',['long'],4.,0.,.5)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard.py", line 9, in replacement
+    raise NotImplementedError('Capture all actors before and after unchanged replaceStage')
+NotImplementedError: Capture all actors before and after unchanged replaceStage
+
+======================================================================
+ERROR: test_snapshot_contains_native_stage_and_position_without_mutation (test_choice_native_guard.GuardCollectionContracts.test_snapshot_contains_native_stage_and_position_without_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard.py", line 32, in test_snapshot_contains_native_stage_and_position_without_mutation
+    before=deepcopy(self.people.positions);row=guard.snapshot(self.connection,'p3')
+                                               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_guard.py", line 5, in snapshot
+    raise NotImplementedError('Raw native getter observations required')
+NotImplementedError: Raw native getter observations required
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+FAILED (errors=5)

@@ -34,3 +34,7 @@ stage budgetは`previous_plan_m - old_remaining_m`からの再帰、model_passed
 ## 全体の完了条件
 
 最小native試験に合格した場合だけsource/binaryをfreezeする。全26ケースを新IDで通し、独立counterexample audit、全14設定smoke、unit/input検査、新preflightの順に進む。変更されたruntime SHAでG6 source proofも再監査する。70正式セルはすべて同じ最終toolchainを用いる。技術PASSのみでcoreを開始したり、旧invalid runを再採用したりしない。
+
+## 2026-10-20T22:18:07.230726+09:00 — 次工程のtrace統合契約（未実装・未実行）
+
+`audit_history/native_guard_trace_contract_20261020/contract.json`に13群の操作、native guardの生値、評価不能/nullの区別、同一person/lane/時刻・新経路方向・コピー前後rawlatの独立検算を具体化した。別SHAの観測専用buildと正式bundleを混ぜない。APIで到達しない反例は未実証として残し、mockをnative実証へ昇格しない。selected d比較の終了前はnative/実行器を編集せず、診断build開始は次Gateで行う。これ自体は回帰PASS/READYではない。

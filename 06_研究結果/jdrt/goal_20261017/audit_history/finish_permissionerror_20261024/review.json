@@ -1,0 +1,41 @@
+{
+  "at_jst": "2026-10-24T08:01:00.975139+09:00",
+  "judgment_id": "JD-20261024-research-finish-save-01",
+  "status": "SCOPED_REVIEW_PASS",
+  "scope": "unfrozen_auxiliary_metadata_only",
+  "tests_pass": 39,
+  "red_log": "red.log",
+  "green_log": "green_reviewed.log",
+  "actual_windows_lock_test_passed": true,
+  "historical_external_lock_owner": "UNOBSERVED",
+  "review_findings": [],
+  "review_scope": [
+    "bounded 5 attempts only metadata replace PermissionError",
+    "no CLI retry/start/recover transport added",
+    "strict original7, COMMITTED, both PASS, identical components, clean status unchanged",
+    "failed auxiliary state retained",
+    "artificial tests isolated; no physics acceptance replacement"
+  ],
+  "scientific_common5_current": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+  "input_manifest_sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+  "preflight_ready_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+  "actual_postcommit_readback": "06_研究結果\\jdrt\\goal_20261017\\nc26102304_record7_readback.json",
+  "actual_postcommit_readback_sha256": "21064a403fc43d376eeeec5c8b07896060f56da436eefcdd1ddc4e213dfa93ac",
+  "original_failed_operation_sha256": "b9d86b4a73d3f2f6cedea9136f4944140a765465d10c38a2e41563df061ed37e",
+  "original_failure_not_rewritten": true,
+  "validate_record_finish_replayed": false,
+  "fresh_status_ready": true,
+  "current_sources": {
+    "choice_finish_cell.py": "b2c709c4c46e5d09b38347b0d5316326ac1a1699fc60f065fb48f0ead8fe7075",
+    "choice_record_readback.py": "5f1eeaf990e49f2d2be18084f345b6bd5a5abee9d42d2b6929252855307726aa",
+    "test_choice_finish_cell.py": "2786cc6b92b259f5d1d29a005432c6004480b4758be4727d506719b15ed6cff2",
+    "test_choice_record_readback.py": "935f4e19c3a2f2345c4bf509ea43f41baa0db2eb517682807152f0519739df4c"
+  }
+}

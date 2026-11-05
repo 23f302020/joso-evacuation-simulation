@@ -1,0 +1,49 @@
+{
+  "at_jst": "2026-10-28T00:45:33.774499+09:00",
+  "action": "sixth_independent_PASS_same_first_direct_finish_record_started",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "run_id": "nv26102806",
+  "original_session": 64850,
+  "owner_actual_pid": 26564,
+  "record_actual_pid": 35592,
+  "record_created_jst": "2026-10-28T00:44:19.5308960+09:00",
+  "process_handle_identities": {
+    "26564": {
+      "state": "alive",
+      "created": 134375884996733809,
+      "pid": 26564
+    },
+    "35592": {
+      "state": "alive",
+      "created": 134375894595308966,
+      "pid": 35592
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "phase": "record",
+  "operation_status": "RUNNING",
+  "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102806_20261028T004417789712.json",
+  "validation_report_sha256": "60e158b4675e8a416af9dcd114ee3c911128c99fbe8e7710f13d054bc4e0b490",
+  "validation_components": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "PASS",
+    "native_logs": "PASS",
+    "native_fixture_boundaries": "PASS"
+  },
+  "core_adoption_permitted_first_report": true,
+  "formal_recorded": 5,
+  "display_writers_deferred": true,
+  "failed_sequence_preserved": "sq26102806",
+  "failed_sequence_session": 7780,
+  "core_reexecuted": false,
+  "goal_complete": false,
+  "next": "Follow same direct finish64850; on RECORDED_VERIFIED and exit0 run original record7 readback to NEW nv26102806_record7_readback.json BEFORE display edits. No duplicate validate/record; never replay failed sequence7780. Current sequence helper source30 tests remains pending future natural one-cell use."
+}

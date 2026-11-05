@@ -1,0 +1,32 @@
+{
+  "at_jst": "2026-10-22T22:22:15.360970+09:00",
+  "status": "PASS_ORIGINAL_READBACK_NOT_FORMAL_RECORD",
+  "run_id": "nc26102202",
+  "cell_id": "fixed_reference_u05_r1_seed23423",
+  "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102202_20261022T222046743799.json",
+  "report_sha256": "c7de17b84673e4e5ca1420abf8018f2f23805f5925eea86e0220a0b56c7e2e13",
+  "checks": {
+    "native_command_and_direct_observation_contract": true,
+    "terminal_completed_identity": true,
+    "protocol_config_input_identity": true,
+    "registered_config_and_input": true,
+    "registered_cell": true,
+    "registered_clocks": true,
+    "core_preflight_provenance": true,
+    "complete_output_file_set": true,
+    "common_implementation_set": true,
+    "implementation_archives_match_manifest": true,
+    "all_bound_bytes_before": true,
+    "current_runtime_bytes": true,
+    "all_bound_bytes_after": true
+  },
+  "current_common5_unchanged": true,
+  "original_finish_owner_pid": 15752,
+  "original_finish_session": 33664,
+  "phase": "record",
+  "actual_record_executor_pid": 33460,
+  "actual_record_executor_created_jst": "2026-10-22T22:20:48.438042+09:00",
+  "formal_record_result_observed": null,
+  "separate_record_invoked": false,
+  "next_start_performed": false
+}

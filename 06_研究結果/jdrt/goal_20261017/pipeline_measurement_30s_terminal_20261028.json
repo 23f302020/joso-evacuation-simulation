@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-28T07:46:56.866455+09:00",
+  "action": "thirty_second_collector_original_terminal",
+  "original_session": 48129,
+  "exit_code": 0,
+  "actual_pid": 12964,
+  "status": "COMPLETED",
+  "samples": 360,
+  "failures": 0,
+  "source_files_sha256": {
+    "07_監視システム/verification/pipeline_efficiency_20261028_30s/state.json": "62705f892fbe880d2cdad81da3c68c37418c2e54817df5ab2730f7a8191a219c",
+    "07_監視システム/verification/pipeline_efficiency_20261028_30s/samples.jsonl": "d517d2af05a1e4f7555c816e372205595e4b082b83f2a1589ada8bc1eb733702",
+    "07_監視システム/verification/pipeline_efficiency_20261028_30s/history.json": "4cb2268de307d92000695377dc0e41ccf3ce6309510abd1236606b604b7a5c7b"
+  },
+  "original_process_observed_absent_at_reentry": true,
+  "new_0602_collector_observed": {
+    "actual_pid": 14744,
+    "launcher_pid": 33508,
+    "created_jst": "2026-10-28T06:02:43+09:00",
+    "path": "C:/Users/Ko_rr/.jdrt-monitor/10afa40fb646/performance/efficiency_20261028a",
+    "independent_automation_owner": true,
+    "root_did_not_start_or_modify": true
+  },
+  "continuous_chat_monitoring_proven": false
+}

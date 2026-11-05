@@ -1,0 +1,21 @@
+--- test_choice_native_guard.py.before
++++ test_choice_native_guard.py
+@@ -66,6 +66,18 @@
+         self.assertIn('--some-native-option',args)
+         self.assertIn('--tripinfo-output.write-unfinished',args)
+ 
++    def test_internal_requests_follow_actual_next_edge_and_keep_final_destination(self):
++        self.people.getNextEdge=lambda p:'e1'
++        row={'edge_id':':B_w1','stage_edges':['e0','e1','e2'],
++             'lane_position_m':.25,'stage_arrival_pos_m':19.}
++        requests=guard.replacement_requests(self.connection,'p3',row,
++                    {'operation':'internal_replace','replacement_endpoint_m':19.})
++        self.assertEqual(requests,[('old_remaining',[':B_w1','e1','e2'],.25,19.),
++                                   ('new_route',[':B_w1','e1','e2'],.25,19.)])
++        self.people.getNextEdge=lambda p:'missing'
++        with self.assertRaises(ValueError):
++            guard.replacement_requests(self.connection,'p3',row,{'operation':'internal_replace'})
++
+     def test_reused_output_is_never_written_and_exclusive_writer_is_preserved(self):
+         with tempfile.TemporaryDirectory() as folder:
+             root=Path(folder);(root/'technical').mkdir();(root/'driver_logs').mkdir()

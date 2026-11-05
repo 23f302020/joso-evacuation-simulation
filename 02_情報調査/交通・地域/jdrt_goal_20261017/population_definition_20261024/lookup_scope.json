@@ -1,0 +1,11 @@
+{
+  "queries": [
+    "site.e-stat.go.jp T001178 5歳階級別人口 国勢調査",
+    "\"T001178\" 地域メッシュ",
+    "\"T001178Q08\"",
+    "地域メッシュ T001178 with official domain filter"
+  ],
+  "unhelpful_results_not_adopted": true,
+  "direct_official_definition": "https://www.e-stat.go.jp/help/data-definition-information/downloaddata/T001178.pdf",
+  "date_and_age_columns_read_from_actual_PDF_not_filename": true
+}

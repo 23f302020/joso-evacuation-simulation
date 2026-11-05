@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_pair_primary.py", line 95, in <module>
+    capture(a.project_root,a.policy,{'control':a.control_state,'patched':a.patched_state},
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            {'control':a.control_loader,'patched':a.patched_loader},a.tools_inventory,a.output)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_pair_primary.py", line 75, in capture
+    result=verify_pair(proofs['patched'],root,track,read_json,sha,pe_imports)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_pair_proof.py", line 134, in verify_pair
+    raise ValueError('Native version invocation failed')
+ValueError: Native version invocation failed

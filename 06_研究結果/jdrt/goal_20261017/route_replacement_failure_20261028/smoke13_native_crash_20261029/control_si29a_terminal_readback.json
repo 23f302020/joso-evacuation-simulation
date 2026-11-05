@@ -1,0 +1,29 @@
+{
+  "at_jst": "2026-10-29T16:37:42.894550+09:00",
+  "status": "CONTROL_NEW_BUNDLE_TERMINAL_AND_IMPORT_READBACK_VERIFIED_NOT_RESEARCH_READY",
+  "original_package_session": 49717,
+  "package_exit_code": 0,
+  "actual_package_owner29700_absent_verified": true,
+  "independent_verify_session": 72949,
+  "independent_verify_exit_code": 0,
+  "manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_ctl_si29a\\toolchain.json",
+  "manifest_sha256": "8fc615c82ca284c4f5ff94e808e39f2fa974cb0ef0d76933a2b79373f33cdf98",
+  "bundle_files": 237,
+  "role": "control",
+  "primary_provenance_exact_copy": true,
+  "binary_sha256": {
+    "sumo": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+    "netconvert": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4"
+  },
+  "runtime_verify_report": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\control_si29a_manifest_verification.json",
+  "runtime_verify_report_sha256": "827a12be264e5ad21d3316f7f90739f7aae31b41901444a54a6d652f718aae70",
+  "all_bundle_file_sha_verified": true,
+  "common5_and_actual_config_unchanged": true,
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "remaining": [
+    "Selected new bundle package/readback",
+    "Scientific-identical v5 metadata/document/input registration",
+    "Current native regressions, full controller suite/independent audit/all14/new preflight/G6/capacity/07 before first core"
+  ]
+}

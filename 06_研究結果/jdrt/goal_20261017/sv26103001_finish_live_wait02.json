@@ -1,0 +1,32 @@
+{
+  "at_jst": "2026-10-30T10:04:00.8640958+09:00",
+  "action": "same_owned_finish_verified_wait",
+  "prior_goal_turn_classification": "progress",
+  "current_goal_turn_classification": "progress_and_verified_wait",
+  "run_id": "sv26103001",
+  "original_session": 49495,
+  "status": "RUNNING",
+  "phase": "validate",
+  "actual_processes": [
+    {
+      "ProcessId": 33124,
+      "ParentProcessId": 10584,
+      "CreationDate": "2026-10-30T09:52:12.721688+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py --project-root . --run-id sv26103001",
+      "KernelModeTime": 625000,
+      "UserModeTime": 312500
+    },
+    {
+      "ProcessId": 31128,
+      "ParentProcessId": 21836,
+      "CreationDate": "2026-10-30T09:52:14.862884+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" validate --run-id sv26103001 --purpose core",
+      "KernelModeTime": 227343750,
+      "UserModeTime": 6698906250
+    }
+  ],
+  "record_attempted": false,
+  "g7_report": "06_研究結果/jdrt/goal_20261017/G7_現行v5_READY証跡の適用範囲照合_20261030.json",
+  "display_sync_deferred_until_record7_readback": true,
+  "retry_performed": false
+}

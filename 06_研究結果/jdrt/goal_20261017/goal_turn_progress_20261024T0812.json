@@ -1,0 +1,22 @@
+{
+  "at_jst": "2026-10-24T08:12:17.936207+09:00",
+  "action": "goal_turn_progress_auxiliary_repair_and_eighth_core_start",
+  "classification": "PROGRESS",
+  "previous_turn_classification": "NO_PROGRESS_requested_status_reply_only",
+  "formal_records": 7,
+  "registered_cells": 70,
+  "current_run": "nc26102401",
+  "current_executor_pid": 33444,
+  "last_dedicated_display_sim_sec": 6540,
+  "repair_tests_pass": 39,
+  "observer_tests_pass": 31,
+  "formal_markers_preserved": true,
+  "scientific_common5_unchanged": true,
+  "dated_MD_HTML_agree": true,
+  "scoped_git_diff_check_exit": 0,
+  "goal_complete": false,
+  "next": "same running core; after completion original validate/record; monitor optional missing Codex executable path separately, no replay old events",
+  "external_publication_or_send": false,
+  "new_subagents_spawned": false,
+  "parent_model_changed": false
+}

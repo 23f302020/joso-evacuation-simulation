@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-29T10:01:18.824225+09:00",
+  "action": "overnight_gap_primary_OS_evidence",
+  "last_chat_observation_before_gap": "2026-10-29T00:35:45+09:00",
+  "first_after_gap": "2026-10-29T09:57:18+09:00",
+  "power_record": {
+    "RecordId": 572906,
+    "Created": "2026-10-29T09:54:31.3531655+09:00",
+    "Provider": "Microsoft-Windows-Power-Troubleshooter",
+    "Id": 1,
+    "Fields": {
+      "WakeTime": "2026-10-29T00:54:28.9809059Z",
+      "SleepDuration": "18760",
+      "TargetState": "5",
+      "WakeDuration": "2475",
+      "EffectiveState": "5",
+      "SleepTime": "2026-10-28T15:35:25.3065910Z"
+    }
+  },
+  "recorded_sleep_to_wake_sec": 33543.674314,
+  "duration_semantics": "derive interval from SleepTime/WakeTime, not SleepDuration/WakeDuration transition fields",
+  "continuous_monitoring_during_gap": false,
+  "current_monitor_state_age_sec": 69.85383939743042,
+  "same_audit_retained": true,
+  "simulation_restarted": false,
+  "cause_scope": "OS records sleep/wake and clock correction; no invented15min observations or normal-runtime projection over that gap"
+}

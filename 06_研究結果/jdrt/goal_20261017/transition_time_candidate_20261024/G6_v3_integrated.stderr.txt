@@ -1,0 +1,12 @@
+test_all70_gate_precedes_helper_load_and_any_result_write (__main__.IntegratedContracts.test_all70_gate_precedes_helper_load_and_any_result_write) ... ok
+test_changed_helper_bytes_during_analysis_are_rejected (__main__.IntegratedContracts.test_changed_helper_bytes_during_analysis_are_rejected) ... ok
+test_changed_primary_artifact_is_rejected_before_result_output (__main__.IntegratedContracts.test_changed_primary_artifact_is_rejected_before_result_output) ... ok
+test_complete_artificial_set_separates_wait_censoring_exit_and_zero_R0 (__main__.IntegratedContracts.test_complete_artificial_set_separates_wait_censoring_exit_and_zero_R0) ... ok
+test_foreign_registration_manifest_refused_with_other_hashes_consistent (__main__.IntegratedContracts.test_foreign_registration_manifest_refused_with_other_hashes_consistent) ... ok
+test_foreign_registration_record_refused_before_helpers_or_output (__main__.IntegratedContracts.test_foreign_registration_record_refused_before_helpers_or_output) ... ok
+test_stale_frozen_service_source_proof_rejects_before_output (__main__.IntegratedContracts.test_stale_frozen_service_source_proof_rejects_before_output) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 47.988s
+
+OK

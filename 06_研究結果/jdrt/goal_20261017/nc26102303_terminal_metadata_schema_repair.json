@@ -1,0 +1,11 @@
+{
+  "at_jst": "2026-10-23T12:02:58.220118+09:00",
+  "status": "METADATA_READER_SCHEMA_CORRECTED",
+  "error": "KeyError: status in ad hoc terminal metadata reader",
+  "cause": "Full choice_monitor report nests check status/pid_alive under skill_check; compact stdout has them at top level",
+  "original_research_run_changed": false,
+  "original_research_command_replayed": false,
+  "first_python_step_wrote_no_metadata_before_error": true,
+  "following_display_helper": "Already applied actual COMPLETED state independently; not scientific adoption",
+  "fix": "Read actual skill_check fields; explicitly stop PowerShell after native Python failure before dependent commands"
+}

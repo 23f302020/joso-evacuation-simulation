@@ -1,0 +1,171 @@
+{
+  "at_jst": "2026-10-28T07:57:36.292278+09:00",
+  "started_at_jst": "2026-10-28T07:57:30.545681+09:00",
+  "scope": "read_only_primary_component_timing_not_validator_or_adoption",
+  "run_id": "nv26102808",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "manifest_sha256": "d885ef39f6424754e3f465845fc9bb7c8bf990a3fe229cebf039a7fc27d9c7ce",
+  "manifest_unchanged": true,
+  "current_core": "nv26102809",
+  "current_core_not_touched": true,
+  "concurrent_research_execution": true,
+  "pid": 24544,
+  "hash_chunk_bytes": 1048576,
+  "files": [
+    {
+      "name": "actor_observations.csv.gz",
+      "compressed_or_raw_bytes": 252297056,
+      "sha256": "52a999f1813841063a05e39efc72456f0d1154668231394fb7e0a3de270336b7",
+      "hash_wall_sec": 0.30134110001381487,
+      "hash_cpu_sec": 0.28125,
+      "gzip_expanded_bytes": 862729179,
+      "gzip_wall_sec": 3.080171799985692,
+      "gzip_cpu_sec": 3.0625
+    },
+    {
+      "name": "candidates.csv.gz",
+      "compressed_or_raw_bytes": 274,
+      "sha256": "49bdaa1c559b29d7d91637610ab9beb9a8f2b650441779056d5ec8b630c5a5d9",
+      "hash_wall_sec": 0.012704199994914234,
+      "hash_cpu_sec": 0.0,
+      "gzip_expanded_bytes": 458,
+      "gzip_wall_sec": 0.0003920000744983554,
+      "gzip_cpu_sec": 0.0
+    },
+    {
+      "name": "common_realization.csv",
+      "compressed_or_raw_bytes": 1482858,
+      "sha256": "2c93ff8f86dfc550cb5591a0206c4183fd00de34be8d8160747a7a827e1aa03b",
+      "hash_wall_sec": 0.012561299954541028,
+      "hash_cpu_sec": 0.015625
+    },
+    {
+      "name": "dispatch_cycles.csv.gz",
+      "compressed_or_raw_bytes": 107,
+      "sha256": "8f292f74a03924ad9c46aea36f1e96762c61080eb3c806e6665e023306ec7656",
+      "hash_wall_sec": 0.01144519995432347,
+      "hash_cpu_sec": 0.0,
+      "gzip_expanded_bytes": 72,
+      "gzip_wall_sec": 0.00031849998049438,
+      "gzip_cpu_sec": 0.0
+    },
+    {
+      "name": "edge_observations.csv.gz",
+      "compressed_or_raw_bytes": 66761252,
+      "sha256": "290790f930b0d84b2be0216b7576096a4d09e9ac51711e7fea8ea78c5a57b413",
+      "hash_wall_sec": 0.0914721000008285,
+      "hash_cpu_sec": 0.078125,
+      "gzip_expanded_bytes": 968369971,
+      "gzip_wall_sec": 1.8048256000038236,
+      "gzip_cpu_sec": 1.796875
+    },
+    {
+      "name": "events.jsonl",
+      "compressed_or_raw_bytes": 11982577,
+      "sha256": "28959d7fb88c390ecd34ff8bbfbebb56a5e069274e14358cfe3d05edcdda8450",
+      "hash_wall_sec": 0.0478444000473246,
+      "hash_cpu_sec": 0.015625
+    },
+    {
+      "name": "facility_results.csv",
+      "compressed_or_raw_bytes": 107,
+      "sha256": "226de772729c680ef9cd0675ff432fa0ffa4c6d72b3fc43d45eb1631b57bf22b",
+      "hash_wall_sec": 0.009018199983984232,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "person_results.csv",
+      "compressed_or_raw_bytes": 2314380,
+      "sha256": "8410852ad7443992e808d108ce2bec91c95a756cb366d11627795c2a95fb2883",
+      "hash_wall_sec": 0.01792020001448691,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "preflight_ready.json",
+      "compressed_or_raw_bytes": 385959,
+      "sha256": "3dacaeafd27b3c2b2e8237d2e6a6315dff2b792f37e41fc00145cdd9bbcb37b2",
+      "hash_wall_sec": 0.01605019997805357,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "progress.json",
+      "compressed_or_raw_bytes": 908,
+      "sha256": "66b7f1ab1ea5521f417f6d9b67caae2f961c7d36967a9dc2db4c6be56ce8b3db",
+      "hash_wall_sec": 0.0012823999859392643,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "request_results.csv",
+      "compressed_or_raw_bytes": 271,
+      "sha256": "6daf8f9f8f687d480bae8e5b3047366747ae1562114f2db4caa156434365c39d",
+      "hash_wall_sec": 0.002829300006851554,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "snapshot_actor_observations.csv.gz",
+      "compressed_or_raw_bytes": 622929,
+      "sha256": "5ce0cea199d10a95af6899dd328b2c77f986de4cf0af9cb2fc959bed87c33ba7",
+      "hash_wall_sec": 0.014181900070980191,
+      "hash_cpu_sec": 0.0,
+      "gzip_expanded_bytes": 2982387,
+      "gzip_wall_sec": 0.009039600030519068,
+      "gzip_cpu_sec": 0.015625
+    },
+    {
+      "name": "sumo.log",
+      "compressed_or_raw_bytes": 1042,
+      "sha256": "edd2e873bc00e47533f2d8888b4672b420cac1242f39410438b71693f239212c",
+      "hash_wall_sec": 0.016003399970941246,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "sumo_errors.log",
+      "compressed_or_raw_bytes": 518,
+      "sha256": "ca0d8c2a709eca599829350ddec85f64dd819d3b2f03ea947fbf7544ef633b6f",
+      "hash_wall_sec": 0.000750300008803606,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "transitions.csv.gz",
+      "compressed_or_raw_bytes": 3425816,
+      "sha256": "d06d633806a45834df4c1cbdd21ad02d6e3d0db432dc220fe931f65fd22c9a37",
+      "hash_wall_sec": 0.018883600016124547,
+      "hash_cpu_sec": 0.015625,
+      "gzip_expanded_bytes": 23022734,
+      "gzip_wall_sec": 0.060063199955038726,
+      "gzip_cpu_sec": 0.046875
+    },
+    {
+      "name": "tripinfo.xml",
+      "compressed_or_raw_bytes": 1432866,
+      "sha256": "926e98fee775c37c2f0f781ced2bce4e6c427725dfff5d96036fa86176292da6",
+      "hash_wall_sec": 0.11193030001595616,
+      "hash_cpu_sec": 0.015625
+    },
+    {
+      "name": "types.rou.xml",
+      "compressed_or_raw_bytes": 323,
+      "sha256": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+      "hash_wall_sec": 0.0041056000627577305,
+      "hash_cpu_sec": 0.0
+    },
+    {
+      "name": "vehicle_results.csv",
+      "compressed_or_raw_bytes": 280483,
+      "sha256": "7a8fb7810126993f644fd9eb2910836a7c673771a560c95ff33dc07d85edd0e9",
+      "hash_wall_sec": 0.0538542999420315,
+      "hash_cpu_sec": 0.0
+    }
+  ],
+  "total_wall_sec": 5.746476300060749,
+  "total_cpu_sec": 5.34375,
+  "sum_hash_wall_sec": 0.7441780000226572,
+  "sum_gzip_wall_sec": 4.954810700030066,
+  "limits": [
+    "One sequential warm-cache component probe, concurrent core and observer may affect timing.",
+    "Full gzip decompression validates stream CRC only; no CSV parsing or scientific-accounting validation performed.",
+    "Multiple validator scans, dependency/READY/input hashing and in-memory recalculation are not timed here.",
+    "Component totals do not add to or exactly partition independent-validator time; no speedup or safety-gate removal inferred.",
+    "All writes are new diagnostic evidence outside immutable research runs."
+  ]
+}

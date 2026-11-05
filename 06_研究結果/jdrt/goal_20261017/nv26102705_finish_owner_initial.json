@@ -1,0 +1,54 @@
+{
+  "at_jst": "2026-10-27T23:36:42.177851+09:00",
+  "action": "fifth_completed_same_sequence_owns_nested_finish",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102705",
+  "original_session": 46444,
+  "sequence_actual_pid": 15432,
+  "finish_actual_pid": 23476,
+  "finish_launcher_pid": 11596,
+  "validator_actual_pid": 16312,
+  "validator_launcher_pid": 25892,
+  "process_handle_identities": {
+    "15432": {
+      "state": "alive",
+      "created": 134375843366723456,
+      "pid": 15432
+    },
+    "23476": {
+      "state": "alive",
+      "created": 134375852036299937,
+      "pid": 23476
+    },
+    "16312": {
+      "state": "alive",
+      "created": 134375852062449677,
+      "pid": 16312
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "phase": "validate",
+  "sequence_phase": "finish",
+  "operation_status": "RUNNING",
+  "record_attempted": false,
+  "current_core": {
+    "run_id": "nv26102705",
+    "cell_id": "fixed_reference_u50_r1_seed23423",
+    "status": "COMPLETED",
+    "pid": 11300,
+    "started_at_jst": "2026-10-27T23:19:47.740097+09:00",
+    "finished_at_jst": "2026-10-27T23:32:41.898750+09:00"
+  },
+  "formal_recorded": 4,
+  "display_writers_deferred": true,
+  "all_sequence_source_pins_unchanged": true,
+  "no_duplicate_validate_record": true,
+  "goal_complete": false,
+  "automatic_readback_path": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102705/nv26102705_record7_readback.json",
+  "next": "Follow original sequence46444/state sq26102705 and nested finish for nv26102705. Do not invoke another validate/record/readback: this owner performs original record7 readback BEFORE display. After successful sequence terminal inspect its existing proof and final status, then real goal API/current READY/capacity/observer before any next single cell. Preserve and stop on failure."
+}

@@ -1,0 +1,85 @@
+........E..........EEEEEEEE.
+======================================================================
+ERROR: test_explicit_recovered_record_preserves_original_interruption (test_choice_record_readback.ReadbackTests.test_explicit_recovered_record_preserves_original_interruption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 131, in test_explicit_recovered_record_preserves_original_interruption
+    result = subject.audit(self.root, self.run, recovery_operation=self.recovery)
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_rejects_incomplete_or_foreign_recovery (test_choice_record_readback.ReadbackTests.test_recovered_record_rejects_incomplete_or_foreign_recovery) (field='status')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 151, in test_recovered_record_rejects_incomplete_or_foreign_recovery
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_rejects_incomplete_or_foreign_recovery (test_choice_record_readback.ReadbackTests.test_recovered_record_rejects_incomplete_or_foreign_recovery) (field='record_exit_code')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 151, in test_recovered_record_rejects_incomplete_or_foreign_recovery
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_rejects_incomplete_or_foreign_recovery (test_choice_record_readback.ReadbackTests.test_recovered_record_rejects_incomplete_or_foreign_recovery) (field='run_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 151, in test_recovered_record_rejects_incomplete_or_foreign_recovery
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_rejects_incomplete_or_foreign_recovery (test_choice_record_readback.ReadbackTests.test_recovered_record_rejects_incomplete_or_foreign_recovery) (field='formal_record_result')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 151, in test_recovered_record_rejects_incomplete_or_foreign_recovery
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_rejects_incomplete_or_foreign_recovery (test_choice_record_readback.ReadbackTests.test_recovered_record_rejects_incomplete_or_foreign_recovery) (field='kind')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 151, in test_recovered_record_rejects_incomplete_or_foreign_recovery
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_rejects_original_operation_changes (test_choice_record_readback.ReadbackTests.test_recovered_record_rejects_original_operation_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 141, in test_recovered_record_rejects_original_operation_changes
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_requires_preserved_precommit_bytes (test_choice_record_readback.ReadbackTests.test_recovered_record_requires_preserved_precommit_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 158, in test_recovered_record_requires_preserved_precommit_bytes
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+======================================================================
+ERROR: test_recovered_record_still_rejects_changed_terminal_record (test_choice_record_readback.ReadbackTests.test_recovered_record_still_rejects_changed_terminal_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 164, in test_recovered_record_still_rejects_changed_terminal_record
+    subject.audit(self.root, self.run, recovery_operation=self.recovery)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: audit() got an unexpected keyword argument 'recovery_operation'
+
+----------------------------------------------------------------------
+Ran 24 tests in 3.971s
+
+FAILED (errors=9)

@@ -1,0 +1,118 @@
+{
+  "at_jst": "2026-10-24T17:59:24.888125+09:00",
+  "status": "REPAIR_BASELINE_PRESERVED_NO_SOURCE_EDIT",
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+  "input_manifest_sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+  "ready_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+  "registration": "choice_native_observation_v2_20261021",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2",
+  "accepted_rows": 8,
+  "preserved": {
+    "04_プログラム/config/jdrt_realtime_b_v1.json": {
+      "sha256": "08c2922aa1379a80ac86d1bb118215a033ba069779abb7905825fc3d295de5dc",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/08c2922aa1379a80ac86d1bb118215a033ba069779abb7905825fc3d295de5dc.json"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v2.md": {
+      "sha256": "9ae9c69b155a2bd2eb063634dc147f03ab2993f2b14f059beaa73a188513ca64",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/9ae9c69b155a2bd2eb063634dc147f03ab2993f2b14f059beaa73a188513ca64.md"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered01/manifest.json": {
+      "sha256": "0e63c29ae965a24388e46de7f3232426534797b82b9f7cc0bd9e698186968cf8",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/0e63c29ae965a24388e46de7f3232426534797b82b9f7cc0bd9e698186968cf8.json"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md": {
+      "sha256": "55fe4ac4b1ad7456f9b586801fa2527b6bfef67a130ab34a3d3200c8892dde81",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/55fe4ac4b1ad7456f9b586801fa2527b6bfef67a130ab34a3d3200c8892dde81.md"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/preflight_ready.json": {
+      "sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228.json"
+    },
+    "04_プログラム/scripts/jdrt_choice_policy.py": {
+      "sha256": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7.py"
+    },
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": {
+      "sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc.json"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/runs/nc26102402/manifest.json": {
+      "sha256": "90d35516c2b3037527bd716affa36608634257d33b05e63a3047498b62f6bfbc",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/90d35516c2b3037527bd716affa36608634257d33b05e63a3047498b62f6bfbc.json"
+    },
+    "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py": {
+      "sha256": "0a95170b70fc90a26c22ee67201ef9ee641e0ab78ce61cab930b9bf555768b32",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/0a95170b70fc90a26c22ee67201ef9ee641e0ab78ce61cab930b9bf555768b32.py"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": {
+      "sha256": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182.py"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_位置・観測整合_事前登録追補_v1.md": {
+      "sha256": "edcc11835d3fe8ee4a108854b136e267870af771eb86d8a08781db6fe2882756",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/edcc11835d3fe8ee4a108854b136e267870af771eb86d8a08781db6fe2882756.md"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_実時間B_PreAnalysisPlan_v1.md": {
+      "sha256": "69119e5017e9a7120ba203a1dd05998cdcd9f17ed501544cd332e07a90730d7c",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/69119e5017e9a7120ba203a1dd05998cdcd9f17ed501544cd332e07a90730d7c.md"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "sha256": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96.py"
+    },
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": {
+      "sha256": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495.py"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": {
+      "sha256": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852.md"
+    },
+    "04_プログラム/scripts/jdrt_realtime_b_inputs.py": {
+      "sha256": "b6dbfa666a4af94ec1bf82f6626e048b83450a4d5f99db583d94853d27529fc9",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/b6dbfa666a4af94ec1bf82f6626e048b83450a4d5f99db583d94853d27529fc9.py"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/manifest.json": {
+      "sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed.json"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md": {
+      "sha256": "61378ac17bb8a2fea00fdc812d97f432053329cf7c727e4302c379f9b86b51e9",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/61378ac17bb8a2fea00fdc812d97f432053329cf7c727e4302c379f9b86b51e9.md"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b/inputs/build02/manifest.json": {
+      "sha256": "403af2f1d754c88d8ba9e8ccf2938d4c96de283dac4dc647a805694a27b70460",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/403af2f1d754c88d8ba9e8ccf2938d4c96de283dac4dc647a805694a27b70460.json"
+    },
+    "04_プログラム/config/jdrt_realtime_b_boundary_v2.json": {
+      "sha256": "1b5e84ad82e0f8db015997c7815dba199e95e67d04c3de1a595090440a348457",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/1b5e84ad82e0f8db015997c7815dba199e95e67d04c3de1a595090440a348457.json"
+    },
+    "06_研究結果/jdrt/goal_20261017/preregistration_before_alignment_20261017T093456/archive_manifest.json": {
+      "sha256": "3039064c933b5589c9f518bc44dc3d13ffc432b1c8c7df0a8193d18ba99f8a62",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/3039064c933b5589c9f518bc44dc3d13ffc432b1c8c7df0a8193d18ba99f8a62.json"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_実時間B_境界整合_PreAnalysisPlan_v2.md": {
+      "sha256": "e6e3389f6f5f07cd59995eb1a0d9a3da35c9f79e1c67cb6bce95eb22ecbffded",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/e6e3389f6f5f07cd59995eb1a0d9a3da35c9f79e1c67cb6bce95eb22ecbffded.md"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "sha256": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f.py"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2/inputs/registered01/manifest.json": {
+      "sha256": "e7d68ddd1f934619df3d283bc79bbebae53ef14f2f15e708cab6d7426ca1b598",
+      "archive": "06_研究結果/jdrt/goal_20261017/document_history/e7d68ddd1f934619df3d283bc79bbebae53ef14f2f15e708cab6d7426ca1b598.json"
+    }
+  },
+  "datasets_and_all_runs": "existing immutable files retained at original paths; no copy/reuse/delete or observational reduction",
+  "original_validation_session": 13369,
+  "native_controller_or_validator_changed": false
+}

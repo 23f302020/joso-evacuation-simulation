@@ -1,0 +1,16 @@
+{
+  "at_jst": "2026-10-30T09:52:57.318102+09:00",
+  "action": "first_v5_core_terminal_and_owned_finish",
+  "run_id": "sv26103001",
+  "manifest_status": "COMPLETED",
+  "started_at_jst": "2026-10-30T09:39:41.630470+09:00",
+  "finished_at_jst": "2026-10-30T09:51:49.736587+09:00",
+  "finish_original_session": 49495,
+  "finish_actual_owner": 33124,
+  "finish_phase": "validate",
+  "finish_status": "RUNNING",
+  "formal_adoption_pending": true,
+  "no_retry": true,
+  "prior_goal_turn_classification": "verified_wait",
+  "current_goal_turn_classification": "progress"
+}

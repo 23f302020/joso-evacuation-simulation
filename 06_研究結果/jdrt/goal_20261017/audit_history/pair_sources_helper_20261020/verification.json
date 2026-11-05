@@ -1,0 +1,51 @@
+{
+  "reason": "Replace archived-snapshot-only audit with current full extracted source/official ZIP/exact patch recomputation; P1 build and EXE binding still incomplete.",
+  "initial_red": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\pair_sources_helper_20261020\\red.log",
+    "tests": 10,
+    "failed_subcases": 11
+  },
+  "transport_reproduction": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\pair_sources_helper_20261020\\red_crlf.log",
+    "tests": 12,
+    "errors": 1,
+    "cause": "Approved shared CMake patch is uniformly CRLF; source and reconstructed output remain LF byte exact."
+  },
+  "green": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\pair_sources_helper_20261020\\green02.log",
+    "tests": 12,
+    "passed": true
+  },
+  "actual_report": "06_研究結果\\jdrt\\goal_20261017\\native_pair_sources_20261020T150645971959.json",
+  "helper_files_sha256": {
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_pair_sources.py": "1836f98cf48fd15ce2478168e6a23ee7c26be616fcc43f6bbe29ad766726ea80",
+    "04_プログラム\\tests\\test_choice_pair_sources.py": "8c743771582161d1c18e2c9fbf92ef83cae8058973c299ed36f3547e18a14d30",
+    "06_研究結果\\jdrt\\goal_20261017\\native_pair_sources_verify_20261020.py": "65f6076235dec58fdb849d3c0f73e556a898f4b1f8cc5d690dbfc10b6cf8bb68"
+  },
+  "history_files_sha256": {
+    "actual02.log": "ea8a1bc5613aad998a739ae55867098a06b36f62a0c14ceccb7f6d9014c3d36f",
+    "before_crlf_fix.bin": "fe0825387d293626eb7798bb6ccefd8cf6048d52aa3a02f30bd14bb49452a64b",
+    "green01.log": "299052fd87f5ef78e941def41350531647acdd1389e343ceabab5093082d1946",
+    "green02.log": "423a4dab2eba7cb43ed3a7c3f35b4fe461ceb6c5a06a3914d5f5014ebdd2e615",
+    "red.log": "2bea4b2395c8cc2c92b7a36f40b8959f7ae920ec1d347cfbc0dbf8e2ce497dfd",
+    "red_crlf.log": "d67ea6e405d23c71695f7ecc0e1d1b16a6248316e3207d9c602d36f767fc8602"
+  },
+  "simulation_executed": false,
+  "packager_P1_completed": false,
+  "core_ready": false,
+  "review": {
+    "reviewer": "current parent; no new agent",
+    "scope": [
+      "Exact ZIP member/base bytes",
+      "Full current source set/SHA including extended Windows paths",
+      "Exact registered native diff and shared CMake diff reconstruction",
+      "Fail closed for stale inventories, missing/extra/shared unregistered modifications",
+      "No writes to source, compiler or research run; no process creation"
+    ],
+    "limitations": [
+      "Caller must SHA-bind approved policies/archive/refs",
+      "Native source equality is not compiler/dependency/EXE provenance or physical correctness",
+      "7 classified files remain absent; not complete archive extraction"
+    ]
+  }
+}

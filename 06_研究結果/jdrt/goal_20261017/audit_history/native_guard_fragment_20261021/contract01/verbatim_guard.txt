@@ -1,0 +1,15 @@
+    const PState* previousState = nullptr;
+    if (myPosLat == UNSPECIFIED_POS_LAT && !myLegacyPosLat && currentEdge->isNormal()
+            && person->getNumStages() > person->getNumRemainingStages()) {
+        const MSStage* previousStage = person->getNextStage(-1);
+        if (previousStage->getStageType() == MSStageType::WALKING
+                && previousStage->getEdge() == currentEdge
+                && previousStage->getArrived() == stage->getDeparted()) {
+            const MSStageMoving* previousWalk = static_cast<const MSStageMoving*>(previousStage);
+            const PState* state = dynamic_cast<const PState*>(previousWalk->getPState());
+            if (state != nullptr && state->getPerson() == person && state->getLane() == lane
+                    && state->getEdgePos(SIMSTEP) == myEdgePos) {
+                previousState = state;
+            }
+        }
+    }

@@ -1,0 +1,33 @@
+{
+  "at_jst": "2026-10-21T20:29:04.708986+09:00",
+  "status": "DIAGNOSTIC_SOURCE_AND_RAW_MATCH_NOT_ADOPTABLE",
+  "run_id": "ch261021_002",
+  "native_warning_time_sec": 6112.5,
+  "before_actor_time_sec": 6112.5,
+  "after_actor_time_sec": 6113.0,
+  "step_sec": 0.5,
+  "previous_speed_mps": 7.170748086597406,
+  "before_speed_mps": 8.470748086597407,
+  "after_speed_mps": 3.970748086597407,
+  "derived_acceleration_mps2": -9.0,
+  "prior_derived_acceleration_mps2": 2.6000000000000014,
+  "observed_wished_decel_mps2": 4.5,
+  "before_lane": "9407#2_1",
+  "after_lane": ":9000000027563_1_0",
+  "delta_distance_m": 1.9853740432986342,
+  "euler_delta_m": 1.9853740432987035,
+  "delta_residual_m": -6.927791673660977e-14,
+  "native_binary_sha256": "ac1ea40529dd8cce6d583d66c01c33f28c900f1b6bb0a68d8be5980930da91f0",
+  "matches_frozen_runtime": true,
+  "primary_hash_checks": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261021_002\\actor_observations.csv.gz": true,
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261021_002\\events.jsonl": true,
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261021_002\\types.rou.xml": true
+  },
+  "source_interpretation": "MSVehicle logs acceleration during movement before MSNet.postMoveStep increments myStep; Simulation.getTime returns incremented SIMTIME. For this warning the corresponding after_step actor endpoint is warning time plus step. Do not shift other message phases automatically.",
+  "source_default_interpretation": "car type omits emergencyDecel; pinned default-option/default-vClass source selects9, while decel subscription4.5 is wished braking. This source derivation is not a recorded native emergencyDecel API observation.",
+  "observed_control_context": "route_version0 and only private_departure_requested event for target; target/current-adjacent external roads have no closure in hazard table. Partial neighboring window does not prove absence of all junction conflicts.",
+  "hypothesis": "native turning/priority or look-ahead interaction near short successor edge; exact triggering cause still to isolate",
+  "unchanged_formal_result": "INVALID; no record or next start",
+  "required_next": "bind complete junction surroundings and supported native configuration; design generic evidence-based handling and version-consistent review; do not whitelist actor/message or mutate old accepted/common5 stack"
+}

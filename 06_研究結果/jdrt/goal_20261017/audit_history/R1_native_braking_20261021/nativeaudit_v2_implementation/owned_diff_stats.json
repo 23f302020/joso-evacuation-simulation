@@ -1,0 +1,52 @@
+{
+  "04_プログラム/scripts/jdrt_realtime_choice.py": {
+    "added": 31,
+    "removed": 4,
+    "new_sha256": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96"
+  },
+  "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": {
+    "added": 5,
+    "removed": 2,
+    "new_sha256": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182"
+  },
+  "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+    "added": 180,
+    "removed": 1,
+    "new_sha256": "4142d61125d933544c13da13bd85c7d9c2ddc9f6e7bc7217c28c43682f1d802b"
+  },
+  "04_プログラム/scripts/jdrt_choice_policy.py": {
+    "added": 0,
+    "removed": 0,
+    "new_sha256": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7"
+  },
+  ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": {
+    "added": 10,
+    "removed": 4,
+    "new_sha256": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "04_プログラム/scripts/jdrt_choice_fixtures.py": {
+    "added": 3,
+    "removed": 1,
+    "new_sha256": "b3a130bfbee05683c70ff9d751a64c22572e42cbe7a1c522f2a80730b5c621ff"
+  },
+  "04_プログラム/tests/test_jdrt_choice_runtime.py": {
+    "added": 7,
+    "removed": 0,
+    "new_sha256": "0884c70b7b065ce14188072656d6a2765159f04a0f6496b72bbf0a0fcc37750f"
+  },
+  "04_プログラム/tests/test_jdrt_choice_validate.py": {
+    "added": 52,
+    "removed": 0,
+    "new_sha256": "95b98d3927bc11d8b0ee367dbc546855b6249346300745db056cbd304df0bef6"
+  },
+  "04_プログラム/tests/test_jdrt_choice_skill.py": {
+    "added": 14,
+    "removed": 0,
+    "new_sha256": "ca57ee37b24db57251dd12de6348d0ccd1a08c37b39cbc5e7b9d147de65d84b7"
+  },
+  "04_プログラム/config/jdrt_realtime_choice_v1.json": {
+    "added": 27,
+    "removed": 5,
+    "new_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc"
+  }
+}

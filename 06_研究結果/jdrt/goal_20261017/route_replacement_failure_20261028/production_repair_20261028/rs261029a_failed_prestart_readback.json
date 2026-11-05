@@ -1,0 +1,18 @@
+{
+  "at_jst": "2026-10-29T10:09:40.096743+09:00",
+  "action": "parent_readback_prestart_assertion_failed_no_simulation",
+  "planned_prefix": "rs261029a",
+  "prefix_retired_without_run": true,
+  "prefix_state_exists": false,
+  "cause": "One-off parent required raw audit_run_tables.status PASS. Existing function returns INCOMPLETE with all checks and7 components PASS; validate_run separately wraps technical proof. Canonical G4 explicitly requires raw INCOMPLETE.",
+  "evidence": "jdrt_realtime_choice_validate.audit_run_tables / validate_run; canonical G4 baseline assertion",
+  "actual_raw_statuses": [
+    "INCOMPLETE"
+  ],
+  "raw_all_checks_true": true,
+  "all_component_statuses_pass": true,
+  "canonical_report_status": "PASS",
+  "no_cli_or_acceptance_change": true,
+  "no_audit_or_simulation_rerun": true,
+  "next_prefix": "rs261029b"
+}

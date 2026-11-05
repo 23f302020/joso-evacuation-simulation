@@ -1,0 +1,21 @@
+{
+  "at_utc": "2026-10-30T13:28:53.493574+00:00",
+  "status": "SAME_CORE_TERMINAL_OBSERVER_BINDING_CONFIRMED_NOT_ADOPTION",
+  "run_id": "sv26103005",
+  "manifest_sha256": "b6d94b860a64dc851b23bcbe21b6af00f49f41875c388245e5d371c5cf62f860",
+  "finished_at_jst": "2026-10-30T22:26:23.034990+09:00",
+  "core_identity": {
+    "state": "absent"
+  },
+  "observer_identity": {
+    "state": "alive",
+    "created": 134377494421633632,
+    "pid": 2476
+  },
+  "target_observed_at_utc": "2026-10-30T13:28:28.092612+00:00",
+  "target_age_sec": 25.400962,
+  "observer_snapshot_sha256": "3264aeac8c08c10bad03410895d5b8a97c9e401bc3acc541d3cb327832812ecf",
+  "failed_sequence_preserved": true,
+  "historical_gap_not_reconstructed": true,
+  "next": "one first normal existing finish; independent PASS/record7/readback/status required"
+}

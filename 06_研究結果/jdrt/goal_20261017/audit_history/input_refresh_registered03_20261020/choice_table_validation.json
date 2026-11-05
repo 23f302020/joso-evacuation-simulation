@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "scope": "derived_choice_tables_and_physical_byte_lineage_only",
+  "technical_ready": false,
+  "pending": [
+    "raw_hdf_terrain_physical_recomputation",
+    "core_executor_and_validator",
+    "actual_sumo_cancellation_timing",
+    "all_14_setting_smoke",
+    "skill_cli_and_record"
+  ],
+  "at_jst": "2026-10-20T17:32:49.487114+09:00",
+  "checks": {
+    "all_sources_current": true,
+    "all_artifacts_current": true,
+    "physical_copy_exact": true,
+    "lineage": true,
+    "d0_byte_identical": true,
+    "d1_origins_exact": true,
+    "d1_priority_distance_and_paths": true,
+    "population_unique": true,
+    "common_realization_independent": true,
+    "cell_set_unique_and_exact": true
+  },
+  "d1_mismatched_origins": [],
+  "realization_counts": {
+    "23423": {
+      "u05": 90,
+      "u50": 900
+    },
+    "42": {
+      "u05": 90,
+      "u50": 900
+    },
+    "1": {
+      "u05": 90,
+      "u50": 900
+    },
+    "7": {
+      "u05": 90,
+      "u50": 900
+    },
+    "101": {
+      "u05": 90,
+      "u50": 900
+    }
+  },
+  "registered_cells": 70,
+  "d1_terminal_counts_origins": {
+    "shelter_4": 28,
+    "": 15,
+    "shelter_3": 38,
+    "shelter_2": 64,
+    "exit_1429740319": 1,
+    "shelter_8": 21
+  },
+  "input_manifest_sha256": "d922a2e52e36183451b3ce25f29bed2e85f0a8834b92f833b401799a57d6a4ea",
+  "validator_sha256": "64f194824c879f16e5987d339d9932a6377f55d5f503b332a3661589c7977287"
+}

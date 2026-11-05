@@ -1,0 +1,124 @@
+{
+  "at_jst": "2026-10-24T17:33:44.446505+09:00",
+  "status": "RUNNING_ANOMALY_PRESERVED_NOT_FORMAL_VALIDATION",
+  "run_id": "nc26102402",
+  "manifest_status": "RUNNING",
+  "manifest_sha256_at_point": "7c8905a677bfe46c8dbafc3386cb270e72e6e5f8e8f29d81d321ed41c7a0f26b",
+  "progress": {
+    "at_jst": "2026-10-24T17:33:36.714841+09:00",
+    "run_id": "nc26102402",
+    "time_sec": 6960.0,
+    "end_sec": 21600,
+    "wall_sec": 530.3757706999895,
+    "counts": {
+      "steps": 13920,
+      "controller_ticks": 6961,
+      "snapshots": 117,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 271744,
+      "closed_entry_rows": 1,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 457,
+      "dispatch_cycles": 117,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 38,
+      "departure_pending_frames": 823,
+      "snapshot_actor_rows": 25175
+    },
+    "people_states": {
+      "capacity_rejected": 5493,
+      "travelling_car": 123,
+      "no_route": 3447,
+      "not_ready": 405,
+      "no_origin_connection": 535,
+      "assigned_origin": 2,
+      "admitted": 1007,
+      "travelling_walk": 129,
+      "boarding": 1,
+      "alighting": 1,
+      "route_cut": 204,
+      "waiting_origin": 6,
+      "boundary_exit": 20,
+      "walk_limit": 25,
+      "initial_or_current_closed": 567
+    },
+    "request_states": {
+      "cancelled_timeout": 50,
+      "served": 24,
+      "rejected_input": 1,
+      "pending": 6,
+      "accepted": 2,
+      "alighting": 1,
+      "boarding": 1
+    }
+  },
+  "observer": {
+    "status": "RUNNING",
+    "target_id": "nc26102402",
+    "observed_at_utc": "2026-10-24T08:33:37.477128+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-24T08:24:28.003631+00:00",
+      "finished_at_utc": null,
+      "elapsed_sec": null,
+      "start_source": "started_at_jst",
+      "finish_source": null,
+      "status": "running"
+    },
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "7c8905a677bfe46c8dbafc3386cb270e72e6e5f8e8f29d81d321ed41c7a0f26b",
+    "flags": [
+      "nonzero_closed_entry_rows"
+    ],
+    "pid": 22452,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102402\\manifest.json",
+    "sim_sec": 6960.0,
+    "progress_token": [
+      "RUNNING",
+      6960.0
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134373038470480821,
+      "pid": 22452
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "nc26102402"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nc26102402"
+    },
+    "last_progress": 1792830816.895116,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102402.stderr.log": 1076,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102402\\sumo_errors.log": 0
+    },
+    "historical": false
+  },
+  "transition_file_metadata_bytes": 3437263,
+  "transition_header_hex": "1f8b08084e6bdc6a04ff7472616e736974696f6e732e63737600acbd5bae2cc7",
+  "transition_rows_read": 272910,
+  "closed_entry_rows_observed": [
+    {
+      "time_lower_sec": "3298.5",
+      "time_upper_sec": "3300.5",
+      "actor_id": "scen_c_origin_0176_0008",
+      "mode": "passenger",
+      "from_edge": "2013#0",
+      "to_edge": "2013#1",
+      "kind": "closed_entry",
+      "closure_sec": "3300",
+      "ambiguous": "False"
+    }
+  ],
+  "stream_end": "EOFError: Compressed file ended before the end-of-stream marker was reached",
+  "partial_stream_scope": "running stream may be incomplete; absence or EOF is not final proof",
+  "downstream_start_permitted": false,
+  "formal_record_permitted": false,
+  "source_or_input_edits": false,
+  "run_restarted_or_killed": false
+}

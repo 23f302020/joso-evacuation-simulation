@@ -1,0 +1,28 @@
+{
+  "status": "COMPONENT_EXPERIMENT_COMPLETED",
+  "scope": "CSV_ROW_EQUIVALENCE_ONLY",
+  "started_at": "2026-11-05T08:46:06.790111+09:00",
+  "run_id": "nv26102808",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "manifest_sha256": "d885ef39f6424754e3f465845fc9bb7c8bf990a3fe229cebf039a7fc27d9c7ce",
+  "artifact_sha256": "290790f930b0d84b2be0216b7576096a4d09e9ac51711e7fea8ea78c5a57b413",
+  "script_sha256": "575b947a4b95e8196806e67d858c00357e8c0b29457cb1da1a395201f386abdb",
+  "trials": [],
+  "production_code_changed": false,
+  "core_adoption_permitted": false,
+  "full_row_equivalence_requested": true,
+  "limits": [
+    "Full dictionary values and key order compared for this archived file only.",
+    "No scientific consumer execution, production integration, or speed comparison.",
+    "New row-generator candidate differs from the earlier two-column indexed experiment."
+  ],
+  "full_row_equivalence": {
+    "rows": 19197258,
+    "all_field_values_and_key_order_equal": true
+  },
+  "equivalence_wall_sec": 179.6242941999808,
+  "equivalence_cpu_sec": 169.6875,
+  "source_unchanged": true,
+  "aggregate_equality": null,
+  "finished_at": "2026-11-05T08:49:06.544168+09:00"
+}

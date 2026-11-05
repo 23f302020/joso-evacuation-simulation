@@ -1,0 +1,54 @@
+diff --git "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\lane_calibration_before_20261018T203725\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\scripts\\jdrt_choice_fixtures.py" "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/scripts/jdrt_choice_fixtures.py"
+index bf28e8f..cb940b3 100644
+--- "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\lane_calibration_before_20261018T203725\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\scripts\\jdrt_choice_fixtures.py"
++++ "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/scripts/jdrt_choice_fixtures.py"
+@@ -27,6 +27,28 @@ CASES = ('walk_reroute', 'walk_reroute_limit', 'walk_budget', 'walk_reverse',
+          'walk_short_calibration', 'walk_short_repeated')
+ 
+ 
++def car_lane_connections():
++    # sidewalkWidth inserts pedestrian lane 0; passenger lanes start at 1.
++    return [('g0', 'e0', 1, 1), ('g0', 'e0', 2, 2),
++            ('e0', 'e1', 1, 1), ('e0', 'd0', 2, 1), ('e0', 's0', 1, 1),
++            ('e1', 'e2', 1, 1), ('d0', 'd1', 1, 1), ('d1', 'd2', 1, 1),
++            ('d2', 'e2', 1, 1), ('s0', 's1', 1, 1), ('s1', 'e2', 1, 1)]
++
++
++def validate_car_lane_topology(net):
++    """Require the artificial passenger turns in the actual converted net."""
++    for first, second, source, target in car_lane_connections():
++        lane, other = net.getLane(f'{first}_{source}'), net.getLane(f'{second}_{target}')
++        if (not lane.allows('passenger') or not other.allows('passenger')
++                or not any(link.getToLane().getID() == other.getID() for link in lane.getOutgoing())):
++            raise ValueError('Converted car-lane fixture lacks a declared passenger connection')
++    first = net.getLane('e0_1')
++    successors = {link.getToLane().getEdge().getID() for link in first.getOutgoing()
++                  if link.getToLane().allows('passenger')}
++    if successors != {'e1', 's0'}:
++        raise ValueError('Converted car-lane fixture changed its short-lane counterexample')
++
++
+ def native_walk_reference(folder, step_sec):
+     """Find a shared native frame on a second short edge for a later reverse reroute."""
+     manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
+@@ -168,10 +190,7 @@ def prepare(case, run_id, params):
+     connection_arguments = []
+     if case.startswith('car_lane_'):
+         connections = ET.Element('connections')
+-        for a, b, source, target in [('g0', 'e0', 0, 0), ('g0', 'e0', 1, 1),
+-                ('e0', 'e1', 0, 0), ('e0', 'd0', 1, 0), ('e0', 's0', 0, 0),
+-                ('e1', 'e2', 0, 0), ('d0', 'd1', 0, 0), ('d1', 'd2', 0, 0),
+-                ('d2', 'e2', 0, 0), ('s0', 's1', 0, 0), ('s1', 'e2', 0, 0)]:
++        for a, b, source, target in car_lane_connections():
+             ET.SubElement(connections, 'connection', attrib={'from': a, 'to': b,
+                           'fromLane': str(source), 'toLane': str(target)})
+         ET.ElementTree(connections).write(directory / 'connections.xml', encoding='utf-8', xml_declaration=True)
+@@ -183,6 +202,8 @@ def prepare(case, run_id, params):
+     (directory / 'netconvert.log').write_text(result.stdout + result.stderr, encoding='utf-8')
+     result.check_returncode()
+     net = sumolib.net.readNet(str(directory / 'bounded.net.xml'), withInternal=True)
++    if case.startswith('car_lane_'):
++        validate_car_lane_topology(net)
+     data = {}
+     for mode in ('passenger', 'pedestrian'):
+         graph = nx.DiGraph() if mode == 'passenger' else nx.Graph()

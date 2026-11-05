@@ -1,0 +1,44 @@
+{
+  "schema": "simulation_watch_installation_audit_v1",
+  "at_utc": "2026-10-20T08:08:42.760424+00:00",
+  "monitor_pid": 25168,
+  "identity_matches": true,
+  "loaded_source_matches": true,
+  "monitor_source_sha256": "3cab760b9dd8be48297690dfe73755f879e6a3c7c0e9f6efc07fa3fb7ba6d8d8",
+  "targets": 349,
+  "active_targets": 0,
+  "events": 0,
+  "tests": 19,
+  "artificial_notification": "submitted_not_viewed_confirmation",
+  "artificial_codex": "done_no_tool_calls",
+  "scheduled_rescue_interval": "PT1M",
+  "multiple_instances": "IgnoreNew",
+  "scheduled_recovery_verified": true,
+  "canonical_outside_insertions_unchanged": {
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": true,
+    "context.md": true,
+    "00_全体整理/INDEX.md": true,
+    "05_タスク管理/jdrt/JDRT_実装タスク管理.md": true,
+    "00_全体整理/決定ログ.md": true,
+    ".agents/skills/joso-jdrt-runner/SKILL.md": true,
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": true,
+    "05_タスク管理/スキル・エージェント運用.md": true
+  },
+  "source_sha256": {
+    "configure.py": "348321bd8961b6859c26bb2922a848116b04618dcd11dbdf2525fcfcc2e222e3",
+    "smoke.py": "caa8b514f1fbd1a2bf4ea01a5475f02e67c8f3f75779c4b3c397ae38cbb93170",
+    "test_watch.py": "5049ad994d1d07a19ecbdc2cce4c0a57192f4edf9feeffc3a653536467e7e7eb",
+    "watch.py": "3cab760b9dd8be48297690dfe73755f879e6a3c7c0e9f6efc07fa3fb7ba6d8d8",
+    "install.ps1": "e27c7ac3cdc0b346519ae473b5141fd99c8edac02ba9c8eb6ddd8bf08cbbfe2d",
+    "README.md": "c21fa6854161e483f91c17244e6f334d6b0710f53f3abb723639abb7902299e8"
+  },
+  "research_run_started_by_installation": false,
+  "formal_acceptance": false,
+  "limitations": [
+    "no new research core run",
+    "no native-child/full-accounting acceptance audit",
+    "no desktop-chat posting",
+    "no external dead-host monitor",
+    "HTML not visually inspected"
+  ]
+}

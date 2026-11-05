@@ -1,0 +1,93 @@
+{
+  "at_jst": "2026-10-29T20:51:31.051581+09:00",
+  "status": "SELECTED_PAIR_CONFIRMED_PENDING_NATIVE_GUARDS",
+  "state": "06_研究結果/jdrt/goal_20261017/sc261029a_native_pair/state.json",
+  "state_sha256": "f623e66d91e8df6abf9c5bb63940fe545030282d80f8db204d9e194bfdfde942",
+  "bound_files_checked": 13671,
+  "bound_mismatches": 0,
+  "strict_reports": {
+    "sc261029a_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sc261029a_c25_20261029T203448300751.json",
+      "validation_report_sha256": "19b59202378844ee4be4fff09142f3307c9083c58139ea17d95249eefe72002d"
+    },
+    "sp261029a_c25": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sp261029a_c25_20261029T204113009850.json",
+      "validation_report_sha256": "fd6964e8ea970f79d60876e2d3e6923cf281fb47231be6481a93abc9e5fb2421"
+    },
+    "sp261029a_c26": {
+      "status": "PASS",
+      "components": {
+        "person_tables": "PASS",
+        "candidate_tables": "PASS",
+        "road_snapshots": "PASS",
+        "actor_stream": "PASS",
+        "movement_events": "PASS",
+        "native_logs": "PASS",
+        "native_fixture_boundaries": "PASS"
+      },
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sp261029a_c26_20261029T204508217768.json",
+      "validation_report_sha256": "21581fbd68c060df62049acbc5745613aebde46d70e3c041f14b25afc359d1d9"
+    }
+  },
+  "paired_inputs_readback": [
+    {
+      "case": "walk_short_calibration",
+      "canonical_network_sha256": "3eb4e92be972077e59c306105d9f1ddbbd77befa1d22a2e010251633e24128db",
+      "same_nonmetadata_input_sha256": {
+        "edges.xml": "1fa1c0c1cc8ce046e7b16d330be88f8cde420cf90767b73439be5f1e44d21380",
+        "common_realization_seed23423.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b",
+        "terminals.csv": "6fd25f49d3b6234ea2151a5221b074e3ea4f58012b24ee97df47aded66047a76",
+        "destinations_fixed_reference.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "graphs.json": "7d352dc83c1775ae579bae70a4cae1a2221de0aa0a7d7c07b59ee3412702c28d",
+        "people.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b",
+        "fixture_parameters.json": "bb06ee988be3b0444e713f61119c85bb09ce9a64dabdd99189309ded3e212b5c",
+        "place_positions.csv": "3673142f25cac88c2d5c5b5ad6783d1e18c198276c83a5f846d9855d4cf38c7e",
+        "nodes.xml": "1ccfc951f8f70e403e6e9f3ac9d5258d8efbeea63dc1b45c2b86c061e082da82",
+        "origins.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "hazard.csv": "b134adb4bc1e8e89fd5ffd50f93d929c12884aec67cfcd8a81aa1616fda3890b"
+      }
+    },
+    {
+      "case": "walk_short_repeated",
+      "canonical_network_sha256": "3eb4e92be972077e59c306105d9f1ddbbd77befa1d22a2e010251633e24128db",
+      "same_nonmetadata_input_sha256": {
+        "edges.xml": "1fa1c0c1cc8ce046e7b16d330be88f8cde420cf90767b73439be5f1e44d21380",
+        "common_realization_seed23423.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b",
+        "terminals.csv": "6fd25f49d3b6234ea2151a5221b074e3ea4f58012b24ee97df47aded66047a76",
+        "destinations_fixed_reference.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "graphs.json": "7d352dc83c1775ae579bae70a4cae1a2221de0aa0a7d7c07b59ee3412702c28d",
+        "people.csv": "00045acb9baf2ffa34a559c88508d05e68d2ea7b850a9023fce904aa4b47ff1b",
+        "fixture_parameters.json": "f862d41dd4eaeaef0f1ddb57e94a73400a7aec9671ad3d5b4effcca8a0af0e36",
+        "place_positions.csv": "3673142f25cac88c2d5c5b5ad6783d1e18c198276c83a5f846d9855d4cf38c7e",
+        "nodes.xml": "1ccfc951f8f70e403e6e9f3ac9d5258d8efbeea63dc1b45c2b86c061e082da82",
+        "origins.csv": "475d7432db10a63ee7ddacbbbe2eacffafb230fb9a2767e7d4e8e356b599cf27",
+        "hazard.csv": "53975ff801b9727c93fc241fec9c1318e07d7601e610aae43de2b4357ef2818e"
+      }
+    }
+  ],
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "live_start_permission": false,
+  "reader_sha256": "e5b8b2ae3a79c057b2a3444776775bb6bd602cfa5c83c3c8ccc834ef62f55f5b",
+  "limitation": "Saved primary/readback only; caller checks original process exit. No broad native guards/full suite/smokes/READY or study conclusion."
+}

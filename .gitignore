@@ -107,3 +107,9 @@ outputs/**/node_modules
 .codex/*_path.txt
 00_全体整理/公開用_cloudflare/deployment_history/
 06_研究結果/jdrt/goal_20261017/dependencies/
+
+# 外部取得の原本・展開データは再配布せず、調査記録を管理する
+02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/
+02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_original/
+02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate*/
+02_情報調査/**/*.pdf

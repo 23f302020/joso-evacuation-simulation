@@ -1,0 +1,8 @@
+{
+  "at_jst": "2026-10-30T09:12:47.985452+09:00",
+  "change": "Removed own unused sys import only after all native/smoke runs terminal; audited previous reader preserved in reader_versions and G7 current native source proof",
+  "current_source_sha256": "cd5bfef2bcf81e4d24ffa5b1f238e760b18e7da546e4061f4b5c0eb1570f1ac6",
+  "behavior_changed": false,
+  "review": "Import was unused; actor/trace/pair/file/scope checks unchanged; AST parsed",
+  "acceptance_or_scientific_stack_changed": false
+}

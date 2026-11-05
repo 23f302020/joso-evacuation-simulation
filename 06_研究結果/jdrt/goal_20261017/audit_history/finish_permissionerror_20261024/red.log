@@ -1,0 +1,137 @@
+test_config_change_blocks_record (test_choice_finish_cell.FinishContracts.test_config_change_blocks_record) ... ok
+test_context_marker_after_boundary_is_not_success (test_choice_finish_cell.FinishContracts.test_context_marker_after_boundary_is_not_success) ... ok
+test_duplicate_ledger_is_not_success (test_choice_finish_cell.FinishContracts.test_duplicate_ledger_is_not_success) ... ok
+test_existing_ledger_row_blocks_revalidation (test_choice_finish_cell.FinishContracts.test_existing_ledger_row_blocks_revalidation) ... ok
+test_existing_operation_is_not_overwritten (test_choice_finish_cell.FinishContracts.test_existing_operation_is_not_overwritten) ... ok
+test_foreign_registration_blocks_commands (test_choice_finish_cell.FinishContracts.test_foreign_registration_blocks_commands) ... ok
+test_invalid_does_not_record (test_choice_finish_cell.FinishContracts.test_invalid_does_not_record) ... ok
+test_lost_record_response_preserves_possible_commit (test_choice_finish_cell.FinishContracts.test_lost_record_response_preserves_possible_commit) ... ok
+test_missing_marker_is_not_success (test_choice_finish_cell.FinishContracts.test_missing_marker_is_not_success) ... ok
+test_order_and_all_seven_recorded (test_choice_finish_cell.FinishContracts.test_order_and_all_seven_recorded) ... ok
+test_original_report_purpose_must_be_core (test_choice_finish_cell.FinishContracts.test_original_report_purpose_must_be_core) ... ok
+test_other_terminal_replace_error_is_not_retried (test_choice_finish_cell.FinishContracts.test_other_terminal_replace_error_is_not_retried) ... ok
+test_other_validation_owner_blocks_commands (test_choice_finish_cell.FinishContracts.test_other_validation_owner_blocks_commands) ... ok
+test_owned_windows_sharing_lock_is_released_before_retry (test_choice_finish_cell.FinishContracts.test_owned_windows_sharing_lock_is_released_before_retry) ... ERROR
+test_path_traversal_id_blocks_commands (test_choice_finish_cell.FinishContracts.test_path_traversal_id_blocks_commands) ... ok
+test_pending_journal_is_not_success (test_choice_finish_cell.FinishContracts.test_pending_journal_is_not_success) ... ok
+test_persistent_terminal_replace_is_bounded_and_preserved (test_choice_finish_cell.FinishContracts.test_persistent_terminal_replace_is_bounded_and_preserved) ... FAIL
+test_running_manifest_blocks_commands (test_choice_finish_cell.FinishContracts.test_running_manifest_blocks_commands) ... ok
+test_transient_terminal_replace_never_replays_cli (test_choice_finish_cell.FinishContracts.test_transient_terminal_replace_never_replays_cli) ... ERROR
+test_transport_cannot_start_or_recover (test_choice_finish_cell.FinishContracts.test_transport_cannot_start_or_recover) ... ok
+test_cli_never_adds_a_file_to_research_workspace (test_choice_record_readback.ReadbackTests.test_cli_never_adds_a_file_to_research_workspace) ... ok
+test_cli_writes_fresh_goal_report_and_never_overwrites (test_choice_record_readback.ReadbackTests.test_cli_writes_fresh_goal_report_and_never_overwrites) ... ok
+test_complete_metadata_readback_is_read_only (test_choice_record_readback.ReadbackTests.test_complete_metadata_readback_is_read_only) ... ok
+test_context_marker_only_in_history_is_not_current (test_choice_record_readback.ReadbackTests.test_context_marker_only_in_history_is_not_current) ... ok
+test_current_implementation_changed (test_choice_record_readback.ReadbackTests.test_current_implementation_changed) ... ok
+test_dedicated_status_retains_hold (test_choice_record_readback.ReadbackTests.test_dedicated_status_retains_hold) ... ok
+test_duplicate_ledger_identity (test_choice_record_readback.ReadbackTests.test_duplicate_ledger_identity) ... ok
+test_duplicate_record_marker (test_choice_record_readback.ReadbackTests.test_duplicate_record_marker) ... ok
+test_failed_postcommit_requires_exact_terminal_history (test_choice_record_readback.ReadbackTests.test_failed_postcommit_requires_exact_terminal_history) ... ok
+test_failed_postcommit_still_rejects_changed_record_bytes (test_choice_record_readback.ReadbackTests.test_failed_postcommit_still_rejects_changed_record_bytes) ... FAIL
+test_failed_postcommit_still_rejects_pending_journal (test_choice_record_readback.ReadbackTests.test_failed_postcommit_still_rejects_pending_journal) ... FAIL
+test_five_matching_but_unregistered_sources (test_choice_record_readback.ReadbackTests.test_five_matching_but_unregistered_sources) ... ok
+test_foreign_registration (test_choice_record_readback.ReadbackTests.test_foreign_registration) ... ok
+test_independent_and_record_components_differ (test_choice_record_readback.ReadbackTests.test_independent_and_record_components_differ) ... ok
+test_native_windows_finish_paths_match_posix_journal_paths (test_choice_record_readback.ReadbackTests.test_native_windows_finish_paths_match_posix_journal_paths) ... ok
+test_nonadoptable_or_invalid_formal_report (test_choice_record_readback.ReadbackTests.test_nonadoptable_or_invalid_formal_report) ... ok
+test_not_committed_or_not_terminal (test_choice_record_readback.ReadbackTests.test_not_committed_or_not_terminal) ... ok
+test_postcommit_auxiliary_failure_readback_preserves_original_failure (test_choice_record_readback.ReadbackTests.test_postcommit_auxiliary_failure_readback_preserves_original_failure) ... ERROR
+test_terminal_record_bytes_changed (test_choice_record_readback.ReadbackTests.test_terminal_record_bytes_changed) ... ok
+
+======================================================================
+ERROR: test_owned_windows_sharing_lock_is_released_before_retry (test_choice_finish_cell.FinishContracts.test_owned_windows_sharing_lock_is_released_before_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 174, in test_owned_windows_sharing_lock_is_released_before_retry
+    result = self.invoke()
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 83, in invoke
+    return helper.finish(self.root, self.run_id)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_finish_cell.py", line 177, in finish
+    save()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_finish_cell.py", line 103, in save
+    temporary.replace(operation / 'operation.json')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 165, in replace
+    return original(path, target)
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 780, in replace
+    os.replace(self, target)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+PermissionError: [WinError 5] アクセスが拒否されました。: 'C:\\Users\\Ko_rr\\AppData\\Local\\Temp\\tmp33wdhwvg\\workspace\\driver_logs\\artificial01.finish\\operation.tmp' -> 'C:\\Users\\Ko_rr\\AppData\\Local\\Temp\\tmp33wdhwvg\\workspace\\driver_logs\\artificial01.finish\\operation.json'
+
+======================================================================
+ERROR: test_transient_terminal_replace_never_replays_cli (test_choice_finish_cell.FinishContracts.test_transient_terminal_replace_never_replays_cli)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 103, in test_transient_terminal_replace_never_replays_cli
+    result = self.invoke()
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 83, in invoke
+    return helper.finish(self.root, self.run_id)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_finish_cell.py", line 177, in finish
+    save()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_finish_cell.py", line 103, in save
+    temporary.replace(operation / 'operation.json')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 99, in replace
+    raise PermissionError('Artificial transient sharing conflict')
+PermissionError: Artificial transient sharing conflict
+
+======================================================================
+ERROR: test_postcommit_auxiliary_failure_readback_preserves_original_failure (test_choice_record_readback.ReadbackTests.test_postcommit_auxiliary_failure_readback_preserves_original_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 108, in test_postcommit_auxiliary_failure_readback_preserves_original_failure
+    result = subject.audit(self.root, self.run)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_record_readback.py", line 26, in audit
+    require(state['run_id'] == run_id and state['status'] == 'RECORDED_VERIFIED'
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            and state['record_attempted'] is True and not state['next_start_performed']
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            and state['formal_record_result'] in ('RECORDED', 'ALREADY_RECORDED'), 'Finish not terminal/recorded')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_finish_cell.py", line 27, in require
+    raise RuntimeError(message)
+RuntimeError: Finish not terminal/recorded
+
+======================================================================
+FAIL: test_persistent_terminal_replace_is_bounded_and_preserved (test_choice_finish_cell.FinishContracts.test_persistent_terminal_replace_is_bounded_and_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 120, in test_persistent_terminal_replace_is_bounded_and_preserved
+    self.assertEqual(len(attempts), 5)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 5
+
+======================================================================
+FAIL: test_failed_postcommit_still_rejects_changed_record_bytes (test_choice_record_readback.ReadbackTests.test_failed_postcommit_still_rejects_changed_record_bytes)
+----------------------------------------------------------------------
+RuntimeError: Finish not terminal/recorded
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 128, in test_failed_postcommit_still_rejects_changed_record_bytes
+    with self.assertRaisesRegex(RuntimeError, 'Record bytes changed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Record bytes changed" does not match "Finish not terminal/recorded"
+
+======================================================================
+FAIL: test_failed_postcommit_still_rejects_pending_journal (test_choice_record_readback.ReadbackTests.test_failed_postcommit_still_rejects_pending_journal)
+----------------------------------------------------------------------
+RuntimeError: Finish not terminal/recorded
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_record_readback.py", line 135, in test_failed_postcommit_still_rejects_pending_journal
+    with self.assertRaisesRegex(RuntimeError, 'Finish status retains a hold'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "Finish status retains a hold" does not match "Finish not terminal/recorded"
+
+----------------------------------------------------------------------
+Ran 39 tests in 3.386s
+
+FAILED (failures=3, errors=3)

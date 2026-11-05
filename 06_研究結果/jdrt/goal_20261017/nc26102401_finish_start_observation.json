@@ -1,0 +1,38 @@
+{
+  "at_jst": "2026-10-24T08:21:24.210348+09:00",
+  "run_id": "nc26102401",
+  "session_id": 88018,
+  "status": "ORIGINAL_FINISH_OWNER_RUNNING",
+  "operation": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102401.finish\\operation.json",
+  "operation_sha256": "99737da6451804165a9303e983d299e6b85796bfac5361af405a5fd5914aae2c",
+  "operation_pid": 16668,
+  "phase": "validate",
+  "processes": [
+    {
+      "ProcessId": 25540,
+      "ParentProcessId": 16528,
+      "CreatedJst": "2026-10-24T08:20:42.0553130+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py --project-root . --run-id nc26102401"
+    },
+    {
+      "ProcessId": 16668,
+      "ParentProcessId": 25540,
+      "CreatedJst": "2026-10-24T08:20:42.0829490+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py --project-root . --run-id nc26102401"
+    },
+    {
+      "ProcessId": 17436,
+      "ParentProcessId": 16668,
+      "CreatedJst": "2026-10-24T08:20:44.1634190+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" validate --run-id nc26102401 --purpose core"
+    },
+    {
+      "ProcessId": 26216,
+      "ParentProcessId": 17436,
+      "CreatedJst": "2026-10-24T08:20:44.1995050+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" validate --run-id nc26102401 --purpose core"
+    }
+  ],
+  "research_record_success_not_yet_proved": true,
+  "no_second_validate_record_finish": true
+}

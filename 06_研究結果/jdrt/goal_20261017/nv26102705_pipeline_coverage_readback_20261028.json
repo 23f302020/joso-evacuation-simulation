@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-28T00:15:00.759977+09:00",
+  "action": "same_normal_fifth_cell_measurement_coverage_readback",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "run_id": "nv26102705",
+  "report": "07_監視システム/verification/pipeline_coverage_nv26102705_20261028/report.json",
+  "report_sha256": "9a66f7f15bcd2ad27daff0c603359547291649089b7f47e2d8d7d25624643485",
+  "snapshots_all_hashes_match": true,
+  "coverage": {
+    "execute": 0.9047835575897901,
+    "validate": 0.9234824326819008,
+    "record": 0.9708837630624284
+  },
+  "stage_B_complete": false,
+  "execute_end_to_validate_inferred_start_sec": 43.121508,
+  "gap_is_not_causal_savings_estimate": true,
+  "current_original_sequence": {
+    "id": "sq26102806",
+    "session": 7780
+  },
+  "measurement_original_session": 59505,
+  "no_duplicate_or_research_reexecution": true,
+  "goal_complete": false
+}

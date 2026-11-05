@@ -1,0 +1,32 @@
+{
+  "at_jst": "2026-10-27T19:22:59.528992+09:00",
+  "action": "next_one_cell_helper_prestart",
+  "run_id": "nv26102704",
+  "cell": {
+    "cell_id": "fixed_reference_u05_r2p0_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u05",
+    "scenario": "R2P0",
+    "seed": 23423
+  },
+  "formal_recorded": 3,
+  "prior_record7": "06_研究結果/jdrt/goal_20261017/nv26102703_record7_readback.json",
+  "ready_sha256": "3dacaeafd27b3c2b2e8237d2e6a6315dff2b792f37e41fc00145cdd9bbcb37b2",
+  "free_bytes": 253121675264,
+  "one_run_reserve_bytes": 193986012138,
+  "observer": {
+    "monitor_process": {
+      "state": "alive",
+      "created": 134375371341239107,
+      "pid": 26988
+    },
+    "monitor_identity_matches": true,
+    "observation_age_sec": 8.725783348083496,
+    "last_observed": "2026-10-27T10:22:53.393359+00:00"
+  },
+  "review": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/review.json",
+  "helper_sha256": "e77427368838f6ddb60b0fed8f230e85dc8b8b4610b8024bba0c7d43da708b0c",
+  "maximum_new_cells": 1,
+  "first_real_operation": true,
+  "new_core_started_at_point": false
+}

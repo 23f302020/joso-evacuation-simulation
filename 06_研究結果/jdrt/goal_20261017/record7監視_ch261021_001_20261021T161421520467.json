@@ -1,0 +1,26 @@
+{
+  "at_jst": "2026-10-21T16:14:21.189921+09:00",
+  "action": "verified_wait_record7_same_owned_handle",
+  "previous_goal_turn_classification": "verified_wait_same_validator25565_live_then_terminal_PASS",
+  "current_goal_turn_classification": "progress_first_core_PASS_record7_started_G1_primary_audit_and_final_completion_matrix",
+  "run_id": "ch261021_001",
+  "handle": 22687,
+  "actual_pid": 24248,
+  "launcher_pid": 21048,
+  "creation_jst": "2026-10-21T16:06:25.283953+09:00",
+  "observed_cpu_sec": 439.921875,
+  "stdout_bytes": 0,
+  "stderr_bytes": 0,
+  "independent_monitor": {
+    "last_observed": "2026-10-21T07:14:11.631160+00:00",
+    "observation_age_sec": 11.812211036682129,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134369798989157015,
+      "pid": 30168
+    },
+    "monitor_identity_matches": true
+  },
+  "formal_count_pending": 0,
+  "no_new_run_or_duplicate_record": true
+}

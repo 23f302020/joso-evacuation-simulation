@@ -1,0 +1,45 @@
+{
+  "at_jst": "2026-10-27T22:55:00.3276259+09:00",
+  "action": "same_original_finish_verified_wait",
+  "run_id": "nv26102704",
+  "original_session": 77682,
+  "operation_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/nv26102704.finish/operation.json",
+  "processes": [
+    {
+      "pid": 23228,
+      "parent_pid": 15960,
+      "created_jst": "2026-10-27T22:42:52.8918100+09:00",
+      "user_100ns": 1406250,
+      "kernel_100ns": 625000,
+      "read_bytes": 6640983,
+      "written_bytes": 60614,
+      "working_set_bytes": 14684160
+    },
+    {
+      "pid": 20240,
+      "parent_pid": 32944,
+      "created_jst": "2026-10-27T22:43:27.2129020+09:00",
+      "user_100ns": 156250,
+      "kernel_100ns": 625000,
+      "read_bytes": 1409054,
+      "written_bytes": 3226,
+      "working_set_bytes": 3440640
+    },
+    {
+      "pid": 31336,
+      "parent_pid": 25020,
+      "created_jst": "2026-10-27T22:43:29.5217950+09:00",
+      "user_100ns": 6310781250,
+      "kernel_100ns": 219687500,
+      "read_bytes": 2596198225,
+      "written_bytes": 404,
+      "working_set_bytes": 47882240
+    }
+  ],
+  "classification": "VERIFIED_WAIT",
+  "previous_goal_turn_classification": "VERIFIED_WAIT",
+  "formal_recorded": 3,
+  "display_writers_deferred": true,
+  "no_replay": true,
+  "goal_complete": false
+}

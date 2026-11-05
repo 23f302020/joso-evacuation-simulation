@@ -1,0 +1,93 @@
+{
+  "at_jst": "2026-10-28T23:21:05.755668+09:00",
+  "action": "route_history_production_repair_baseline_preserved",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "current_registration": "choice_native_observation_v3_20261024",
+  "old_formal_recorded": 9,
+  "old_failed_run": "nv26102810",
+  "source_unchanged_before_edit": true,
+  "scope": "Same-science technical API repair; no core start/mixed adoption",
+  "last_prior_monitor_observation_jst": "2026-10-28T10:43:23+09:00",
+  "first_current_clock_jst": "2026-10-28T23:17:20+09:00",
+  "unobserved_gap_cause": "unknown",
+  "continuous_chat_monitoring_proven": false,
+  "files": [
+    {
+      "source": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "sha256": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b.py"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+      "sha256": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182.py"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+      "sha256": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36.py"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_choice_policy.py",
+      "sha256": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7.py"
+    },
+    {
+      "source": ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py",
+      "sha256": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495.py"
+    },
+    {
+      "source": "04_プログラム/config/jdrt_realtime_choice_v1.json",
+      "sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131.json"
+    },
+    {
+      "source": "04_プログラム/tests/test_jdrt_choice_runtime.py",
+      "sha256": "27177a1dc91d5e2f4bd43e82462393833f02be3af7fb152631db87caf4cf9af7",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/27177a1dc91d5e2f4bd43e82462393833f02be3af7fb152631db87caf4cf9af7.py"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/preflight_ready.json",
+      "sha256": "3dacaeafd27b3c2b2e8237d2e6a6315dff2b792f37e41fc00145cdd9bbcb37b2",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/3dacaeafd27b3c2b2e8237d2e6a6315dff2b792f37e41fc00145cdd9bbcb37b2.json"
+    },
+    {
+      "source": "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v3_full実験記録.md",
+      "sha256": "ab25b7a741bfdd39a3776046b3e03facc96e4db25fdb3d8114b4fa179597c37f",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/ab25b7a741bfdd39a3776046b3e03facc96e4db25fdb3d8114b4fa179597c37f.md"
+    },
+    {
+      "source": "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+      "sha256": "349eabc181165250d6e387ff1245c265102e6fdaa9fa65ea16a2d4dc480aa978",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/349eabc181165250d6e387ff1245c265102e6fdaa9fa65ea16a2d4dc480aa978.md"
+    },
+    {
+      "source": "context.md",
+      "sha256": "6ffb8e8f71aaf2b881a46c9ca61edf2258164624307deafd8f9c42509ef2fd32",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/6ffb8e8f71aaf2b881a46c9ca61edf2258164624307deafd8f9c42509ef2fd32.md"
+    },
+    {
+      "source": "00_全体整理/決定ログ.md",
+      "sha256": "1b078c8dbaa18c7ef400696f2f113b64d7f835a76f728cb8964836fdb3b384ae",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/1b078c8dbaa18c7ef400696f2f113b64d7f835a76f728cb8964836fdb3b384ae.md"
+    },
+    {
+      "source": "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+      "sha256": "6f3eb7189732221fc2ae24176672ce76943fd82137d81b70d80b5e839df83530",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/6f3eb7189732221fc2ae24176672ce76943fd82137d81b70d80b5e839df83530.md"
+    },
+    {
+      "source": "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+      "sha256": "5deac0f224bfecfe8bb40ede22b3b5b0557789afe123570b7eb51144ca63a44d",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/5deac0f224bfecfe8bb40ede22b3b5b0557789afe123570b7eb51144ca63a44d.html"
+    },
+    {
+      "source": "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v3_セル検証台帳.jsonl",
+      "sha256": "51f273499a5be9282dc9edf17d2fbeb2978faa6a6628f11cef8fe4ea30513ba9",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/51f273499a5be9282dc9edf17d2fbeb2978faa6a6628f11cef8fe4ea30513ba9.jsonl"
+    }
+  ],
+  "goal_complete": false
+}

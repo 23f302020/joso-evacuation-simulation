@@ -1,0 +1,23 @@
+E............
+======================================================================
+ERROR: test_artifact_escape_refused (__main__.Contracts.test_artifact_escape_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measure_saved_csv_layers.py", line 97, in test_artifact_escape_refused
+    self.assertEqual(json.loads(self.output.read_text())['status'], 'FAILED_PRESERVED')
+                                ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 546, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py", line 537, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Ko_rr\\AppData\\Local\\Temp\\tmppnvyx_53\\06_研究結果\\jdrt\\goal_20261017\\probe.json'
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.851s
+
+FAILED (errors=1)

@@ -1,0 +1,16 @@
+{
+  "run_id": "sv26103005",
+  "original_exec_session": 72111,
+  "operation_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/driver_logs/sv26103005.finish/operation.json",
+  "owner_identity": {
+    "state": "alive",
+    "created": 134378406009757601,
+    "pid": 22080
+  },
+  "phase": "validate",
+  "observed_at_jst": "2026-10-30T22:31:54.144042+09:00",
+  "origin": "FIRST_NORMAL_FINISH_AFTER_AUXILIARY_SEQUENCE_FAILURE",
+  "failed_sequence_preserved": "sq26103005",
+  "record7_readback_required_before_display": true,
+  "planned_fresh_readback": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26103005_manual_finish/sv26103005_record7_readback.json"
+}

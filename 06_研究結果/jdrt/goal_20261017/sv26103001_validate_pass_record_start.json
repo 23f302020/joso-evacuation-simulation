@@ -1,0 +1,18 @@
+{
+  "at_jst": "2026-10-30T10:10:13.847008+09:00",
+  "action": "independent_core_PASS_and_same_finish_record_started",
+  "run_id": "sv26103001",
+  "original_session": 49495,
+  "actual_finish_owner": 33124,
+  "actual_record_child": 16548,
+  "record_child_created": "2026-10-30T10:08:50.895642+09:00",
+  "phase": "record",
+  "status": "RUNNING",
+  "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103001_20261030T100848824299.json",
+  "validation_report_sha256": "fd2d0d01a67e69eb24e802453e95b2643106a5b5bf720dad4f611ec133b13435",
+  "independent_validation_status": "PASS",
+  "core_adoption_permitted": true,
+  "formal_record_not_yet_complete": true,
+  "core_validation_replayed": false,
+  "next": "Follow same original session49495. After RECORDED_VERIFIED and exit0, run choice_record_readback for the seven terminal files before any display edits. Start no next core until record7/status/goal/observer/capacity gates."
+}

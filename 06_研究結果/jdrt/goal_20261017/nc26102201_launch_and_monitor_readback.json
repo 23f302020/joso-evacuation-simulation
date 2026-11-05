@@ -1,0 +1,65 @@
+{
+  "at_jst": "2026-10-22T15:48:34.794223+09:00",
+  "status": "RUNNING_START_CONFIRMED_NOT_ADOPTED",
+  "run_id": "nc26102201",
+  "cell_id": "fixed_reference_r0_seed23423",
+  "registration_id": "choice_native_observation_v2_20261021",
+  "manifest_sha256_at_observation": "667f59856c510ac02a8e087a34fca2c3688cb45016d8366b06bfbb0f0cb040cc",
+  "executor_pid": 27924,
+  "executor_created_jst": "2026-10-22T15:42:59.210484+09:00",
+  "launcher_pid": 31448,
+  "same_ready_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+  "dedicated_start_operation": {
+    "at_jst": "2026-10-22T15:42:59.185504+09:00",
+    "command": "start-next",
+    "result": {
+      "duration_sec": 14.18291659996612,
+      "result": {
+        "status": "STARTED",
+        "run_id": "nc26102201",
+        "cell_id": "fixed_reference_r0_seed23423",
+        "pid": 31448,
+        "state_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102201.state.json"
+      }
+    }
+  },
+  "first_monitor_report": "06_研究結果/jdrt/goal_20261017/監視_nc26102201_20261022T154404432469.json",
+  "independent07_observation": {
+    "status": "RUNNING",
+    "target_id": "nc26102201",
+    "observed_at_utc": "2026-10-22T06:48:23.734977+00:00",
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "667f59856c510ac02a8e087a34fca2c3688cb45016d8366b06bfbb0f0cb040cc",
+    "flags": [],
+    "pid": 27924,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102201\\manifest.json",
+    "sim_sec": 5160.0,
+    "progress_token": [
+      "RUNNING",
+      5160.0
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134371249792104849,
+      "pid": 27924
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "nc26102201"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nc26102201"
+    },
+    "last_progress": 1792651703.2341485,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102201\\sumo_errors.log": 0,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102201.stderr.log": 518
+    },
+    "historical": false
+  },
+  "monitor_state_observed_at_utc": "2026-10-22T06:48:25.774635+00:00",
+  "formal_adoption_created": false,
+  "observation_handle_note": "Start stdout projection omitted exec session metadata; recovered read-only from canonical STARTED operation, new manifest and OS creation identity. No retry/relaunch. Parent PID25072 reused after old smoke owner ended; different process."
+}

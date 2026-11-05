@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.bousai.go.jp/kaigirep/kentokai/hinanzyokakuho/wg_situ/pdf/dai5kaisiryo1.pdf",
+        "title": "[PDF] 平成27年9月関東・東北豪雨",
+        "description": "常総市における避難所運営の課題. 市町村. 全体を俯瞰⇒適切な指示・方針 ... 防災計画にも位置づけられていない）. • 外部から看護・保健師専門チームが派遣された ...",
+        "position": 1
+      },
+      {
+        "url": "https://www.bousai.go.jp/fusuigai/suigaiworking/pdf/dai1kai/siryo1.pdf",
+        "title": "[PDF] 平成27年9月関東・東北豪雨災害の概要",
+        "description": "報道発表資料より常総市関連を抜粋. ：避難場所（常総市）. ：市外避難場所（下妻市、つくば市、つくばみらい市）. ：市外避難場所（坂東市、守谷市）※. ※常総市民が自主 ...",
+        "position": 2
+      },
+      {
+        "url": "https://www.bousai.go.jp/kaigirep/hakusho/h28/honbun/1b_2s_03_00.html",
+        "title": "平成28年版 防災白書｜第1部 第2章 第3節 水害対策 - 内閣府防災情報",
+        "description": "平成27年9月関東・東北豪雨（以下「関東・東北豪雨」という。）による災害では鬼怒川の堤防の決壊等により、茨城県常総市で死者2名が発生したことに加え、氾濫流は ...",
+        "position": 3
+      },
+      {
+        "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/bousai_koutsu/bousai/effort/bousaidx/page002480.html",
+        "title": "防災先進都市を目指す常総市の取り組み",
+        "description": "「被災した常総市」から「災害に強い常総市」へ、平成27年9月の関東東北豪雨からこれまでさまざまな取り組みを行ってきました。このページでは、主な先進的取り組み ...",
+        "position": 4
+      },
+      {
+        "url": "https://www.bousai.go.jp/taisaku/chihogyoumukeizoku/pdf/suigaitebiki_r605.pdf",
+        "title": "[PDF] 市町村のための 水害対応の手引き - 内閣府防災情報",
+        "description": "平成27年台風第21号（与那国町）. ： 5日間で100％復旧. 平成27年9月関東・東北豪雨（常総市）. ： 5日間で100％復旧. 平成26年8月豪雨（広島市）. ： 7日間で約99 ...",
+        "position": 5
+      }
+    ],
+    "tools": []
+  },
+  "id": "01a15190-e82e-759e-aa1c-e94ad9be0b47",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.bousai.go.jp/kaigirep/kentokai/hinanzyokakuho/wg_situ/pdf/dai5kaisiryo1.pdf\", #2 \"https://www.bousai.go.jp/fusuigai/suigaiworking/pdf/dai1kai/siryo1.pdf\", #3 \"https://www.bousai.go.jp/kaigirep/hakusho/h28/honbun/1b_2s_03_00.html\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

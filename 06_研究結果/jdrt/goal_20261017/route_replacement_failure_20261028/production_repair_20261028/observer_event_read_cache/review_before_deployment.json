@@ -1,0 +1,29 @@
+{
+  "at_jst": "2026-10-29T00:31:38.569293+09:00",
+  "scope": "monitor Dispatcher event read reuse only",
+  "findings_requiring_fix": [],
+  "checks": [
+    "No manifest/progress/acceptance caching",
+    "Exclusive-owned event JSON keyed by current stat(mtime_ns,size); directory rescanned for new events",
+    "Changed event corruption still raises; modified and new pending notification observed",
+    "Pending claim/Popen/timeout/retry/hour-limit/notification order unchanged; actual full41 tests pass",
+    "Paired saved-event4-tick outputs all302 final bytes identical, no diagnostic/notification sent",
+    "Current scientific common5 and active audit unchanged"
+  ],
+  "performance_claim": "Reduced instrumented JSON parse counts2416 to302 on saved events; no live-loop speedup/cadence claim",
+  "instrumentation_limit": "tracemalloc includes Mock call-history retained by the measurement, so reported traced peaks are not evidence that production RSS decreased. Single ordered pair and memory pressure remain limitations.",
+  "old_monitor": {
+    "state": "alive",
+    "created": 134376734283303123,
+    "pid": 36456
+  },
+  "old_source_sha256": "dacf80a9be1c832fbcad6e95b6ea7a0dec0a2f7117a394b36b346b5988f2e504",
+  "new_source_sha256": "908cff58920c2ae6fd140f7077d9b8fb2c21b3e0bfb78eccfc321f8397ee3d00",
+  "audit_owner": {
+    "state": "alive",
+    "created": 134376745024089125,
+    "pid": 36548
+  },
+  "next": "restart only verified36456 monitor after absence, then verify loaded source/new identity/same audit",
+  "core_started": false
+}

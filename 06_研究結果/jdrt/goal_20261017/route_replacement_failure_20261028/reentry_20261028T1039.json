@@ -1,0 +1,19 @@
+{
+  "at_jst": "2026-10-28T10:43:01.498851+09:00",
+  "action": "same_failed_core_and_unadopted_candidate_reentry_after_unobserved_interval",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "last_confirmed_written_diagnostic_clock_jst": "2026-10-28T08:59:36.789322+09:00",
+  "intervening_metadata_read_output_unavailable": true,
+  "first_actual_clock_reentry_utc": "2026-10-28T01:39:35+00:00",
+  "observation_gap_cause": "unknown",
+  "continuous_chat_monitoring_proven": false,
+  "current_registration": "choice_native_observation_v3_20261024",
+  "current_formal_recorded": 9,
+  "failed_core": "nv26102810",
+  "common5_unchanged": true,
+  "candidate_adopted": false,
+  "only_python_processes_at_reentry": "existing performance collector33508/14744; no scientific/diagnostic Python child observed",
+  "next": "Integrate and verify API candidate under coherent new technical version; no old9 mixed adoption and no core start before full gates.",
+  "goal_complete": false
+}

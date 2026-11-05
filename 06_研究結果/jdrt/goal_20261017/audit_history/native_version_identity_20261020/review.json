@@ -1,0 +1,35 @@
+{
+  "at_jst": "2026-10-20T21:41:39.925933+09:00",
+  "status": "REVIEWED_UNIT_AND_ACTUAL_HISTORICAL_RECOMPUTATION_COMPLETE",
+  "scope": "version label identity only, not native getter/build correctness",
+  "changed_functions": [
+    "audit_movement_events",
+    "audit_native_logs"
+  ],
+  "added_functions": [
+    "native_walking_version_supported"
+  ],
+  "red": "red.log: unsupported_native_getter_version on synthetic pinned custom version",
+  "green": "green02.log:18 tests, no duplicated inherited test cases",
+  "source_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "47a34499541790bd90c4672319591d5edec72fdfc9aad02c8116d1c1edf71d2f",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "8f1dee97415c3851baf84386a672456962e1ebdf0c180769ae13e5ec7222a7e8"
+  },
+  "findings_resolved": [
+    "Two previous native-version checks now share one identity predicate",
+    "Custom suffix alone cannot pass; complete current runtime fingerprint equality required",
+    "Native provenance file must belong to the recomputed bundle inventory and match its SHA",
+    "Observed TraCI version, proof and terminal build version, role and source commit must agree",
+    "Unknown/missing/stale provenance and different native family rejected; exact warning receipts/counts unchanged"
+  ],
+  "limitations": [
+    "Legacy official1.26 label path unchanged",
+    "Custom identity recognition consumes already primary-verified bundle; it does not independently certify compiler/patch/native semantics or grant READY",
+    "Current suite/14smoke/native guards still required after validator common-SHA change"
+  ],
+  "actual_backend": "unverified; parent unchanged; no new agent",
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "actual_evidence": "historical_raw_recompute.json: all7 components PASS, INCOMPLETE/historical only; core_adoption=false; raw files unchanged",
+  "next": "Fresh nc261020c / np261020c current implementation selected-pair run"
+}

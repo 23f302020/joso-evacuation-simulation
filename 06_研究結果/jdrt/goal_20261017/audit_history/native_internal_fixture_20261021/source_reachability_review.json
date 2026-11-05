@@ -1,0 +1,89 @@
+{
+  "at_jst": "2026-10-21T08:58:48.724877+09:00",
+  "classification": "CONDITIONAL_SOURCE_REACHABILITY_REVIEW_NOT_NATIVE_FALSE_BRANCH_PASS",
+  "actual_report": "actual_native_audit_v2.json",
+  "native_observed_groups": 12,
+  "native_unexercised_groups": [
+    "position_time_mismatch"
+  ],
+  "source_evidence": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\libsumo\\Person.cpp": {
+      "sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+      "excerpts": [
+        {
+          "entry": "case STAGE_WALKING:",
+          "start_line": 652,
+          "source": "        case STAGE_WALKING: {\n            MSTransportable* p = getPerson(personID);\n            ConstMSEdgeVector edges;\n            try {\n                MSEdge::parseEdgesList(stage.edges, edges, \"<unknown>\");\n            } catch (ProcessError& e) {\n                throw TraCIException(e.what());\n            }\n            if (edges.empty()) {\n                throw TraCIException(\"Empty edge list for walking stage of person '\" + personID + \"'.\");\n            }\n            double arrivalPos = stage.arrivalPos;\n            if (fabs(arrivalPos) > edges.back()->getLength()) {\n                throw TraCIException(\"Invalid arrivalPos for walking stage of person '\" + personID + \"'.\");\n            }\n            if (arrivalPos < 0) {\n                arrivalPos += edges.back()->getLength();\n            }\n            return new MSStageWalking(p->getID(), edges, bs, -1, -1, p->getArrivalPos(), arrivalPos, MSPModel::UNSPECIFIED_POS_LAT);\n        }\n\n        case STAGE_WAITING: {\n            MSTransportable* p = getPerson(personID);\n            if (stage.travelTime < 0) {\n                throw TraCIException(\"Duration for person: '\" + personID + \"' must not be negative\");\n            }\n            return new MSStageWaiting(p->getArrivalEdge(), nullptr, TIME2STEPS(stage.travelTime), 0, p->getArrivalPos(), stage.description, false);\n        }\n        case STAGE_TRIP: {\n            MSTransportable* p = getPerson(personID);\n            ConstMSEdgeVector edges;\n            try {\n                MSEdge::parseEdgesList(stage.edges, edges, \"<unknown>\");\n            } catch (ProcessError& e) {\n                throw TraCIException(e.what());\n            }\n            if ((edges.size() == 0 && bs == nullptr) || edges.size() > 1) {\n                throw TraCIException(\"A trip should be defined with a destination edge or a destination stop for person '\" + personID + \"'.\");"
+        },
+        {
+          "entry": "Person::replaceStage(",
+          "start_line": 751,
+          "source": "Person::replaceStage(const std::string& personID, const int stageIndex, const TraCIStage& stage) {\n    MSTransportable* p = getPerson(personID);\n    if (stageIndex >= p->getNumRemainingStages()) {\n        throw TraCIException(\"Specified stage index:  is not valid for person \" + personID);\n    }\n    MSStage* personStage = convertTraCIStage(stage, personID);\n    // removing the current stage triggers abort+proceed so the replacement\n    // stage must be ready beforehand\n    p->appendStage(personStage, stageIndex + 1);\n    p->removeStage(stageIndex);\n}\n\n\nvoid\nPerson::appendDrivingStage(const std::string& personID, const std::string& toEdge, const std::string& lines, const std::string& stopID) {\n    MSTransportable* p = getPerson(personID);\n    const MSEdge* edge = MSEdge::dictionary(toEdge);\n    if (!edge) {\n        throw TraCIException(\"Invalid edge '\" + toEdge + \"' for person: '\" + personID + \"'\");\n    }\n    if (lines.size() == 0) {\n        throw TraCIException(\"Empty lines parameter for person: '\" + personID + \"'\");\n    }\n    MSStoppingPlace* bs = nullptr;\n    if (stopID != \"\") {\n        bs = MSNet::getInstance()->getStoppingPlace(stopID);\n        if (bs == nullptr) {\n            throw TraCIException(\"Invalid stopping place id '\" + stopID + \"' for person: '\" + personID + \"'\");\n        }\n    }\n    p->appendStage(new MSStageDriving(nullptr, edge, bs, edge->getLength() - NUMERICAL_EPS, 0.0, StringTokenizer(lines).getVector()));\n}\n\n\nvoid\nPerson::appendWaitingStage(const std::string& personID, double duration, const std::string& description, const std::string& stopID) {\n    MSTransportable* p = getPerson(personID);\n    if (duration < 0) {"
+        }
+      ]
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSTransportable.cpp": {
+      "sha256": "d717c0c2eb4623d96803aa6d0f299b29c1691065847695e5cabdc4cbe26a4eb8",
+      "excerpts": [
+        {
+          "entry": "MSTransportable::proceed(",
+          "start_line": 102,
+          "source": "MSTransportable::proceed(MSNet* net, SUMOTime time, const bool vehicleArrived) {\n    MSStage* const prior = *myStep;\n    const std::string& error = prior->setArrived(net, this, time, vehicleArrived);\n    // must be done before increasing myStep to avoid invalid state for rendering\n    prior->getEdge()->removeTransportable(this);\n    myStep++;\n    if (error != \"\") {\n        throw ProcessError(error);\n    }\n    /* We need to check whether an access stage is needed (or maybe even two).\n       The general scheme is: If the prior stage ended at a stop and the next stage\n       starts at an edge which is not the one the stop is at, but the stop has an access to it\n       we need an access stage. The same is true if prior ends at an edge, the next stage\n       is allowed to start at any stop the edge has access to.\n       If we start at a stop or end at a stop no access is needed.\n    */\n    bool accessToStop = false;\n    if (prior->getStageType() == MSStageType::WALKING || prior->getStageType() == MSStageType::DRIVING) {\n        accessToStop = checkAccess(prior);\n    } else if (prior->getStageType() == MSStageType::WAITING_FOR_DEPART) {\n        for (MSTransportableDevice* const dev : myDevices) {\n            dev->notifyEnter(*this, MSMoveReminder::NOTIFICATION_DEPARTED, nullptr);\n        }\n    }\n    if (!accessToStop && (myStep == myPlan->end()\n                          || ((*myStep)->getStageType() != MSStageType::DRIVING\n                              && (*myStep)->getStageType() != MSStageType::TRIP))) {\n        MSStoppingPlace* priorStop = prior->getStageType() == MSStageType::TRIP ? prior->getOriginStop() : prior->getDestinationStop();\n        // a trip might resolve to DRIVING so we would have to stay at the stop\n        // if a trip resolves to something else, this step will do stop removal\n        if (priorStop != nullptr) {\n            priorStop->removeTransportable(this);\n        }\n    }\n    if (myStep != myPlan->end()) {\n        if ((*myStep)->getStageType() == MSStageType::WALKING && (prior->getStageType() != MSStageType::ACCESS || prior->getDestination() != (*myStep)->getFromEdge())) {\n            checkAccess(prior, false);\n        } else if ((*myStep)->getStageType() == MSStageType::WAITING && prior->getStageType() == MSStageType::WAITING && prior->getDestination() != (*myStep)->getFromEdge()) {"
+        },
+        {
+          "entry": "MSTransportable::removeStage(",
+          "start_line": 331,
+          "source": "MSTransportable::removeStage(int next, bool stayInSim) {\n    assert(myStep + next < myPlan->end());\n    assert(next >= 0);\n    if (next > 0) {\n        // myStep is invalidated upon modifying myPlan\n        int stepIndex = (int)(myStep - myPlan->begin());\n        delete *(myStep + next);\n        myPlan->erase(myStep + next);\n        myStep = myPlan->begin() + stepIndex;\n    } else {\n        if (myStep + 1 == myPlan->end() && stayInSim) {\n            // stay in the simulation until the start of simStep to allow appending new stages (at the correct position)\n            appendStage(new MSStageWaiting(getEdge(), nullptr, 0, 0, getEdgePos(), \"last stage removed\", false));\n        } else if (myStep + 1 != myPlan->end()) {\n            (*(myStep + 1))->setOrigin(getEdge(), getEdge() == getFromEdge() ? (*myStep)->getOriginStop() : nullptr, getEdgePos());\n        }\n        (*myStep)->abort(this);\n        if (!proceed(MSNet::getInstance(), SIMSTEP)) {\n            MSNet::getInstance()->getPersonControl().erase(this);\n        } else if (myPlan->front()->getDeparted() < 0) {\n            myPlan->front()->setDeparted(SIMSTEP);\n        }\n    }\n}\n\n\nvoid\nMSTransportable::setSpeed(double speed) {\n    for (MSTransportablePlan::const_iterator i = myStep; i != myPlan->end(); ++i) {\n        (*i)->setSpeed(speed);\n    }\n    getSingularType().setMaxSpeed(speed);\n}\n\n\nbool\nMSTransportable::replaceRoute(ConstMSRoutePtr newRoute, const std::string& /* info */, bool /* onInit */, int /* offset */, bool /* addRouteStops */, bool /* removeStops */, std::string* /* msgReturn */) {\n    if (isPerson()) {"
+        }
+      ]
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSStage.cpp": {
+      "sha256": "7284c708bc2aa3886bcefc452a0777a25dfb0d60c56b31e858304af2bf86c016",
+      "excerpts": [
+        {
+          "entry": "MSStage::setArrived(",
+          "start_line": 160,
+          "source": "MSStage::setArrived(MSNet* /* net */, MSTransportable* /* transportable */, SUMOTime now, const bool /* vehicleArrived */) {\n    myArrived = now;\n    return \"\";\n}\n\nbool\nMSStage::isWaitingFor(const SUMOVehicle* /*vehicle*/) const {\n    return false;\n}\n\nPosition\nMSStage::getEdgePosition(const MSEdge* e, double at, double offset) const {\n    return getLanePosition(e->getLanes()[0], at, offset);\n}\n\nPosition\nMSStage::getLanePosition(const MSLane* lane, double at, double offset) const {\n    return lane->getShape().positionAtOffset(lane->interpolateLanePosToGeometryPos(at), offset);\n}\n\n\ndouble\nMSStage::getEdgeAngle(const MSEdge* e, double at) const {\n    return e->getLanes()[0]->getShape().rotationAtOffset(at);\n}\n\n\nvoid\nMSStage::setDestination(const MSEdge* newDestination, MSStoppingPlace* newDestStop) {\n    myDestination = newDestination;\n    myDestinationStop = newDestStop;\n    if (newDestStop != nullptr) {\n        myArrivalPos = (newDestStop->getBeginLanePosition() + newDestStop->getEndLanePosition()) / 2;\n    }\n}\n\nbool\nMSStage::unspecifiedArrivalPos() const {"
+        }
+      ]
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSStageWalking.cpp": {
+      "sha256": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+      "excerpts": [
+        {
+          "entry": "MSStageWalking::proceed(",
+          "start_line": 114,
+          "source": "MSStageWalking::proceed(MSNet* net, MSTransportable* person, SUMOTime now, MSStage* previous) {\n    myDeparted = now;\n    myRouteStep = myRoute.begin();\n    myLastEdgeEntryTime = now;\n    if (myWalkingTime == 0) {\n        if (!person->proceed(net, now)) {\n            MSNet::getInstance()->getPersonControl().erase(person);\n        }\n        return;\n    }\n    const OptionsCont& oc = OptionsCont::getOptions();\n    if (previous->getEdgePos(now) >= 0 && previous->getEdge() == *myRouteStep) {\n        // we need to adapt to the arrival position of the vehicle unless we have an explicit access\n        myDepartPos = previous->getEdgePos(now);\n        if (oc.getString(\"pedestrian.model\") == \"jupedsim\") {\n            myDepartPosLat = previous->getEdgePosLat(now);\n        }\n        if (myWalkingTime > 0) {\n            mySpeed = computeAverageSpeed();\n        }\n    }\n    MSTransportableControl& pControl = net->getPersonControl();\n    myPState = pControl.getMovementModel()->add(person, this, now);\n    if (myPState == nullptr) {\n        pControl.erase(person);\n        return;\n    }\n    if (previous->getStageType() != MSStageType::WALKING || previous->getEdge() != getEdge()) {\n        // we only need new move reminders if we are walking a different edge (else it is probably a rerouting)\n        activateEntryReminders(person, true);\n    }\n    if (oc.getBool(\"vehroute-output.exit-times\")) {\n        myExitTimes = new std::vector<SUMOTime>();\n    }\n    (*myRouteStep)->addTransportable(person);\n}\n\n"
+        },
+        {
+          "entry": "MSStageWalking::abort(",
+          "start_line": 153,
+          "source": "MSStageWalking::abort(MSTransportable*) {\n    MSNet::getInstance()->getPersonControl().getMovementModel()->remove(myPState);\n}\n\n\nvoid\nMSStageWalking::setSpeed(double speed) {\n    mySpeed = speed;\n}\n\n\ndouble\nMSStageWalking::computeAverageSpeed() const {\n    return walkDistance() / STEPS2TIME(myWalkingTime + 1); // avoid systematic rounding errors\n}\n\n\nbool\nMSPerson::isJammed() const {\n    MSStageWalking* stage = dynamic_cast<MSStageWalking*>(getCurrentStage());\n    if (stage != nullptr) {\n        return stage->getPState()->isJammed();\n    }\n    return false;\n}\n\n\ndouble\nMSStageWalking::walkDistance(bool partial) const {\n    double length = 0;\n    auto endIt = partial && myArrived < 0 ? myRouteStep + 1 : myRoute.end();\n    for (ConstMSEdgeVector::const_iterator i = myRoute.begin(); i != endIt; ++i) {\n        length += (*i)->getLength();\n    }\n    if (myRoute.size() > 1 && MSNet::getInstance()->getPersonControl().getMovementModel()->usingInternalLanes()) {\n        if (myInternalDistance > 0) {\n            length += myInternalDistance;\n        } else {"
+        }
+      ]
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSPModel_Interacting.h": {
+      "sha256": "b8af524f1b8340dfb1a390023651d292b098c4ea09e3a3f25d9421514d545e05",
+      "excerpts": [
+        {
+          "entry": "MSPModel_InteractingState(MSPerson*",
+          "start_line": 129,
+          "source": "    MSPModel_InteractingState(MSPerson* person, MSStageMoving* stage, const MSLane* lane) :\n        myPerson(person),\n        myStage(stage),\n        myLane(lane),\n        myEdgePos(stage != nullptr ? stage->getDepartPos() : 0.),\n        myPosLat(stage != nullptr ? stage->getDepartPosLat() : 0.),\n        myDir(MSPModel::UNDEFINED_DIRECTION),\n        myWaitingToEnter(person != nullptr) {}\n\n    ~MSPModel_InteractingState() {};\n\n    /// @brief abstract methods inherited from MSTransportableStateAdapter\n    /// @{\n    /// @brief return the offset from the start of the current edge measured in its natural direction\n    inline double getEdgePos(SUMOTime /* now */) const {\n        return myEdgePos;\n    }\n\n    /// @brief return the walking direction (FORWARD, BACKWARD, UNDEFINED_DIRECTION)\n    inline int getDirection() const {\n        return myDir;\n    }\n\n    /// @brief return the time the transportable spent standing\n    inline SUMOTime getWaitingTime() const {\n        return myWaitingTime;\n    }\n\n    virtual SUMOTime getTotalWaitingTime() const {\n        return myTotalWaitingTime;\n    }\n\n    /// @brief return the current speed of the transportable\n    inline double getSpeed(const MSStageMoving& /* stage */) const {\n        return mySpeed;\n    }\n\n    /// @brief whether the transportable is jammed"
+        }
+      ]
+    }
+  },
+  "reasoning": [
+    "TraCI convertTraCIStage walking constructor uses person.getArrivalPos and does not read requested Stage.departPos",
+    "replaceStage appends then removes current stage; removeStage aborts and calls proceed with the same SIMSTEP",
+    "MSTransportable.proceed passes the same time to prior.setArrived and next.proceed; MSStageWalking.proceed sets new myDeparted to this time",
+    "For a same current external edge and nonnegative prior position, MSStageWalking.proceed assigns myDepartPos=previous.getEdgePos(now); InteractingState copies stage.getDepartPos into new myEdgePos",
+    "Therefore in this active-walk same-person/same-edge replaceStage path, requesting a different Stage.departPos cannot produce position_same=false; prior_arrived and new_departed remain equal",
+    "Actual position_mismatch trace observes inherited branch, not false position/time branch; no synthetic trace or hacked native state introduced",
+    "No universal unreachability claim for every SUMO API/model/memory state. Pure trace-reader counterexamples verify rejection semantics separately, never count as native execution"
+  ],
+  "internal_warning_reason": "Walking convert constructs stage using old final getArrivalPos, warning emitted by constructor bounds before same-edge proceed restores prior native position. All3 binaries emit same two warnings, no API error, same trajectories. This is classified only for this artificial internal replacement, not a new core whitelist.",
+  "native_regression_complete": false,
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

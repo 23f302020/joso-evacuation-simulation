@@ -1,0 +1,46 @@
+{
+  "query": "常総市 道路台帳図 閲覧 橋梁",
+  "result": {
+    "success": true,
+    "data": {
+      "web": [
+        {
+          "url": "https://www2.wagmap.jp/ibaraki/PositionSelect?mid=30",
+          "title": "指定道路 - いばらきデジタルまっぷ",
+          "description": "ゆれやすさマップ（常総市）; ゆれやすさマップ（日立市）; ハザードマップ（一部 ... 2項道路_常総市. 2項道路_常総市. 5号道路_常総市. 5号道路_常総市. 2項道路 ...",
+          "position": 1
+        },
+        {
+          "url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/shisetsuannai/gis_map.html",
+          "title": "GIS（いばらきデジタルまっぷ）を利用した地図 - 常総市",
+          "description": "地図にピンを刺すような手軽な感覚で、スタイリッシュな地図を作成できるツールです。インターネット環境があれば、どなたでもご利用いただけます。 自由 ...",
+          "position": 2
+        },
+        {
+          "url": "https://open-map.jp/ibaraki-joso/index.html",
+          "title": "常総市都市計画オープンデータ｜同意ページ",
+          "description": "・「常総市都市計画オープンデータ」（以下、「本サイト」と言う。）は、利用者がコンピュータ端末上で地図に関する情報を閲覧することができるシステムです。 ・常総市 ...",
+          "position": 3
+        },
+        {
+          "url": "https://www2.wagmap.jp/ibaraki/PositionSelect?mid=35",
+          "title": "水戸市笠原町 - いばらきデジタルまっぷ",
+          "description": "ゆれやすさマップ（常総市）; ゆれやすさマップ（日立市）; ハザードマップ ... 常総市_橋梁箇所. 常総市_橋梁箇所. 常総市_橋梁注記. 常総市_橋梁注記. 常総市_橋梁 ...",
+          "position": 4
+        },
+        {
+          "url": "https://www.city.tsukuba.lg.jp/soshikikarasagasu/kensetsubudorokanrika/gyomuannai/2/1/1001022.html",
+          "title": "道路台帳図の閲覧／つくば市公式ウェブサイト",
+          "description": "つくば市が管理する市道の「道路台帳図」および「道路番号」につきましては、「つくミル」内の「認定道路マップ」からご確認いただけます。",
+          "position": 5
+        }
+      ],
+      "tools": []
+    },
+    "id": "01a1566e-8f2f-731f-abf5-6fb303ef341e",
+    "creditsUsed": 2,
+    "agent_hints": [
+      "All 5 web results are excerpts only (#1 \"https://www2.wagmap.jp/ibaraki/PositionSelect?mid=30\", #2 \"https://www.city.joso.lg.jp/kurashi_gyousei/shisei/shisetsuannai/gis_map.html\", #3 \"https://open-map.jp/ibaraki-joso/index.html\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+    ]
+  }
+}

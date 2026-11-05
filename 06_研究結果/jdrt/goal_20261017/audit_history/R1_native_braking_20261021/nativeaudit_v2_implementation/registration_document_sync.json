@@ -1,0 +1,14 @@
+{
+  "at_jst": "2026-10-21T21:42:11.922715+09:00",
+  "operation": "native_observation_v2_registration_and_current_units",
+  "classification_previous_goal_turn": "progress",
+  "classification_this_goal_turn": "progress",
+  "registration_id": "choice_native_observation_v2_20261021",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2",
+  "old_accepted_preserved": 1,
+  "new_accepted": 0,
+  "unit_pass": 102,
+  "ready": false,
+  "core_started": false,
+  "next": "新workspace inputs/registered01を一度だけprepareし、同じ成果物を独立validate_inputsで監査する。次に既存07監視へ新対象を追加してから現行全26技術suite/独立反証/全14smokeを新IDで実行する。旧READYや旧セルを転用しない。"
+}

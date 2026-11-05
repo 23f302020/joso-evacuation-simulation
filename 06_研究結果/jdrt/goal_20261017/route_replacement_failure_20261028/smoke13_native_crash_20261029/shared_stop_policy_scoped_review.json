@@ -1,0 +1,37 @@
+{
+  "at_jst": "2026-10-29T15:22:25.421025+09:00",
+  "status": "SCOPED_EXTENSION_CONTRACTS_PASSED_NOT_CONNECTED",
+  "source": ".agents/skills/joso-jdrt-runner/scripts/choice_shared_stop_policy.py",
+  "source_sha256": "859f58a35202af1fd5a0dd3ec647fff4d7731a172e6f60e45e4160b78f20baa5",
+  "test_sha256": "e618661468efe43f50594cdc4baea5e595871146a8d49c22b640db9fac3c9600",
+  "red": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_stop_policy_RED.log",
+    "sha256": "ebadf18efeb4471eb4fd68800b6b40f6912ff30b361a3bd04e4bf2cb4c225ec0",
+    "reason": "Valid new two-role extension refused by explicit unimplemented guard; all test modules collected. One error."
+  },
+  "green": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_stop_policy_GREEN.log",
+    "sha256": "43466322342cc1568988ccf96ee23a4f1314021eb504c926570eddaabb468282",
+    "tests": 6
+  },
+  "ace_basis": [
+    "sai-00005: isolated contracts do not establish full native behavior",
+    "err-00004: preserve build/monitor phase distinctions",
+    "err-00002: readback derived docs before completion"
+  ],
+  "review": [
+    "Only additive unbound module/tests; current build-bound verifier unchanged",
+    "Old policy references and missing-file scope must be identical",
+    "Fixed reviewed proposal/patch paths, target, both roles and actual SHA",
+    "No simulation/write/packaging/adoption API in module",
+    "Caller must still verify official source archive, all source sets, metadata10, compiler/static/header files, native binaries and loaders"
+  ],
+  "remaining": [
+    "Connect only after original repair03 terminal",
+    "Both legacy and explicit-new-policy integration tests",
+    "Actual full pair proof and new bundle before native regressions/READY"
+  ],
+  "gate_connected": false,
+  "research_adoption_permitted": false,
+  "technical_ready": false
+}

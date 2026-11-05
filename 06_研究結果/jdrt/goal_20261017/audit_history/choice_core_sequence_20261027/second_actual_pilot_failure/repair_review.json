@@ -1,0 +1,39 @@
+{
+  "at_jst": "2026-10-28T00:26:39.121599+09:00",
+  "status": "PASS_SCOPED_DISCOVERY_EPOCH_FIX_PENDING_FUTURE_ONE_CELL_USE",
+  "cause": "Each observer discovery budget incorrectly included the preceding normal60sec poll sleep and monitor work. Fresh wait epoch now begins immediately before that observer loop.",
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_core_sequence.py": "dff4798eea53f72948523f17072e01a32d9ea6f439378e0edeb05e114839a44b",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_core_sequence.py": "cb9ae8125fee8a20b1ccee71780be626f8bfcd3fc75ba55b14ec1e9988bd2a0e"
+  },
+  "original_failed_source_sha256": "84cac0861bf617e952ba64b7ac134e08bce1178ee6a460f34d450d70d9f468b4",
+  "diagnosis": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/diagnosis.json",
+  "original_failed_files_all_preserved": true,
+  "only_changed_sequence_pin": [
+    ".agents/skills/joso-jdrt-runner/scripts/choice_core_sequence.py"
+  ],
+  "red": {
+    "log": "06_研究結果/jdrt/goal_20261017/choice_core_sequence_RED_discovery_epoch_20261028.log",
+    "tests": 30,
+    "failures": 1,
+    "cause": "fresh publication grace was charged the preceding normal poll sleep; functional assertion, no dependency error"
+  },
+  "green": {
+    "log": "06_研究結果/jdrt/goal_20261017/choice_core_sequence_GREEN_discovery_epoch_20261028.log",
+    "tests": 30,
+    "failures": 0
+  },
+  "checked": [
+    "deadline re-anchored each iteration after monitor; normal polling remains60sec",
+    "actual observer anomalies still throw immediately, no retry",
+    "persistent False still refuses at own60sec boundary",
+    "source/creation/freshness checks and actual exit unchanged",
+    "no changed scientific common5/input/native or old run; no failed-operation reuse"
+  ],
+  "limitations": [
+    "Exact old target bytes at False unavailable; missing versus SHA mismatch not reconstructed",
+    "No new SUMO or research run used to test helper",
+    "Revised source has no new end-to-end actual use yet; old sq26102705 succeeded under prior source and remains scoped historical evidence",
+    "Current6 core must still be independently validated and recorded by a single separate owner before any next start"
+  ]
+}

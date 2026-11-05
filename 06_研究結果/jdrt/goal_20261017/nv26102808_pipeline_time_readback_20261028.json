@@ -1,0 +1,50 @@
+{
+  "runs": [
+    {
+      "run_id": "nv26102808",
+      "cell_id": "facility_first_r0_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-28T01:52:42.539456+09:00",
+      "end": "2026-10-28T02:04:46.221042+09:00",
+      "compute_elapsed_sec": 723.681586,
+      "manifest_sha256": "d885ef39f6424754e3f465845fc9bb7c8bf990a3fe229cebf039a7fc27d9c7ce"
+    }
+  ],
+  "operations": [
+    {
+      "command": "start-next",
+      "end": "2026-10-28T01:52:24.541286+09:00",
+      "duration_sec": 15.852985000004992,
+      "inferred_start": "2026-10-28T01:52:08.688301+09:00",
+      "run_id": "nv26102808",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-28T02:04:47.509644+09:00",
+      "duration_sec": 742.6022555999225,
+      "inferred_start": "2026-10-28T01:52:24.907388+09:00",
+      "run_id": "nv26102808",
+      "status": "COMPLETED"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-28T02:18:48.281115+09:00",
+      "duration_sec": 804.7952903000405,
+      "inferred_start": "2026-10-28T02:05:23.485825+09:00",
+      "run_id": "nv26102808",
+      "status": "PASS"
+    },
+    {
+      "command": "record",
+      "end": "2026-10-28T02:31:22.291542+09:00",
+      "duration_sec": 752.208827800001,
+      "inferred_start": "2026-10-28T02:18:50.082714+09:00",
+      "run_id": "nv26102808",
+      "status": "RECORDED"
+    }
+  ],
+  "errors": [],
+  "note": "Elapsed includes sleep/interruptions; inferred starts use command-end minus duration. Missing times remain null.",
+  "at_jst": "2026-10-28T07:48:29.007008+09:00"
+}

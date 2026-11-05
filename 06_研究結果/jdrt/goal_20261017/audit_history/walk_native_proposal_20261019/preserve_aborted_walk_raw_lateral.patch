@@ -1,0 +1,30 @@
+--- a/src/microsim/transportables/MSPModel_Striping.cpp
++++ b/src/microsim/transportables/MSPModel_Striping.cpp
+@@ -1556,7 +1556,26 @@
+             myDir = !mayStartBackward ? FORWARD : BACKWARD;
+         }
+     }
+-    if (myPosLat == UNSPECIFIED_POS_LAT || myLegacyPosLat) {
++    const PState* previousState = nullptr;
++    if (myPosLat == UNSPECIFIED_POS_LAT && !myLegacyPosLat && currentEdge->isNormal()
++            && person->getNumStages() > person->getNumRemainingStages()) {
++        const MSStage* previousStage = person->getNextStage(-1);
++        if (previousStage->getStageType() == MSStageType::WALKING
++                && previousStage->getEdge() == currentEdge
++                && previousStage->getArrived() == stage->getDeparted()) {
++            const MSStageMoving* previousWalk = static_cast<const MSStageMoving*>(previousStage);
++            const PState* state = dynamic_cast<const PState*>(previousWalk->getPState());
++            if (state != nullptr && state->getPerson() == person && state->getLane() == lane
++                    && state->getEdgePos(SIMSTEP) == myEdgePos) {
++                previousState = state;
++            }
++        }
++    }
++    if (previousState != nullptr) {
++        // An aborted walk retains its state; a naturally completed walk has no lane.
++        // Preserve the raw stripe coordinate while the new route determines direction.
++        myPosLat = previousState->getPosLat();
++    } else if (myPosLat == UNSPECIFIED_POS_LAT || myLegacyPosLat) {
+         if (myPosLat == UNSPECIFIED_POS_LAT) {
+             myPosLat = 0;
+         }

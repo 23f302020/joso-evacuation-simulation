@@ -1,0 +1,16 @@
+{
+  "at_utc": "2026-10-29T06:05:30.462989+00:00",
+  "state": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build_state.json",
+  "state_sha256": "710d65952e8b7790d8e026559ee78b618cc1dad123800b77e14b4243476e4ed9",
+  "build_directory": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build",
+  "simulation_executed": false,
+  "global_environment_modified": false,
+  "source_sha256": "fe9966cd70076f988f3482bfc3ca27be9b0dca0dc650bb657ff949551a48e5d9",
+  "binaries": [],
+  "status": "FAILED_PRESERVED",
+  "error": "ValueError('Complete unambiguous allowed-system imports required')",
+  "files_sha256": {
+    "build_state.snapshot.bin": "710d65952e8b7790d8e026559ee78b618cc1dad123800b77e14b4243476e4ed9",
+    "sumo_objdump.log": "b41bb78945b309f177f0b53f08be4928a25d0deda454f2803bc0a058011a4e2a"
+  }
+}

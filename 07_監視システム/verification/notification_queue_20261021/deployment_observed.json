@@ -1,0 +1,101 @@
+{
+  "at_jst": "2026-10-21T20:05:23.669398+09:00",
+  "monitor_status": {
+    "monitor_identity_matches": true,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134370542901770662,
+      "pid": 31344
+    },
+    "last_observed": "2026-10-21T11:05:14.887875+00:00",
+    "observation_age_sec": 9.971359014511108
+  },
+  "loaded_source_sha256": "c38c1e859f34d462d301b70a235aa8164e8bab42d4f761a3db28208210b56085",
+  "actual_notifications_advanced": [
+    {
+      "id": "ad85e0e656e75d8626f33308217c8385",
+      "kind": "completed",
+      "target_id": "ch261021_002",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "b28daebed08954afbb6f429b1e98275a",
+      "kind": "completed",
+      "target_id": "cs261021a_05",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "b2bcebb3d34897a9c370a691686ceedf",
+      "kind": "completed",
+      "target_id": "cs261021a_14",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "c3fc3ddf0ab6b25c2ab855b7603a1ffa",
+      "kind": "completed",
+      "target_id": "ng261021f",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "d57f9674f5456fd03137660eb689677f",
+      "kind": "failed",
+      "target_id": "nc261020e",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "da9ce555a7e561d4491b6f01d26fc347",
+      "kind": "completed",
+      "target_id": "cs261021a_11",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "e556b4c9e444c1a35c9a3f7af0399b4d",
+      "kind": "completed",
+      "target_id": "cs261021a_07",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "e68c7dd104e473129e75352a05343c9d",
+      "kind": "completed",
+      "target_id": "cs261021a_09",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "e904dd3e35747a8df04471f849b49db9",
+      "kind": "completed",
+      "target_id": "np261020f",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "e936e04807498afd23421ea0bdf2113f",
+      "kind": "failed",
+      "target_id": "nc261020f",
+      "before": "pending",
+      "after": "submitted"
+    },
+    {
+      "id": "ef1c8cf15f359818d87e626611f5bae9",
+      "kind": "failed",
+      "target_id": "nc261020f_c26",
+      "before": "pending",
+      "after": "submitted"
+    }
+  ],
+  "old_event_evidence_unchanged": 87,
+  "remaining_notification_pending": 0,
+  "r1_notification": "submitted",
+  "r1_diagnostic_delivery": "pending",
+  "submission_not_user_read": true,
+  "research_actions_from_monitor": false,
+  "real_research_validation_handle": 70685,
+  "real_research_validation_pid": 22920
+}

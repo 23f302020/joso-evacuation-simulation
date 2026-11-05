@@ -1,0 +1,87 @@
+{
+  "at_jst": "2026-10-28T07:54:59.563368+09:00",
+  "action": "ninth_same_original_session_verified_wait",
+  "classification": "VERIFIED_WAIT",
+  "original_session": 55966,
+  "sequence_id": "sq26102809",
+  "sequence_status": "RUNNING",
+  "phase": "core",
+  "run_id": "nv26102809",
+  "manifest_status": "RUNNING",
+  "process_handle_identities": {
+    "33684": {
+      "state": "alive",
+      "created": 134376148225121415,
+      "pid": 33684
+    },
+    "28520": {
+      "state": "alive",
+      "created": 134376148554159780,
+      "pid": 28520
+    }
+  },
+  "progress": {
+    "at_jst": "2026-10-28T07:54:57.253584+09:00",
+    "run_id": "nv26102809",
+    "time_sec": 6540.0,
+    "end_sec": 21600,
+    "wall_sec": 406.43022860004567,
+    "counts": {
+      "steps": 13080,
+      "controller_ticks": 6541,
+      "snapshots": 110,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 259771,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 438,
+      "dispatch_cycles": 110,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 33,
+      "departure_pending_frames": 818,
+      "snapshot_actor_rows": 23907
+    },
+    "people_states": {
+      "capacity_rejected": 5216,
+      "not_ready": 1096,
+      "no_route": 3132,
+      "no_origin_connection": 517,
+      "admitted": 1007,
+      "travelling_walk": 125,
+      "travelling_car": 114,
+      "alighting": 3,
+      "assigned_origin": 1,
+      "route_cut": 204,
+      "waiting_origin": 5,
+      "boundary_exit": 14,
+      "walk_limit": 25,
+      "initial_or_current_closed": 506
+    },
+    "request_states": {
+      "cancelled_timeout": 49,
+      "served": 21,
+      "rejected_input": 1,
+      "alighting": 3,
+      "pending": 5,
+      "accepted": 1
+    }
+  },
+  "independent_target": {
+    "observed_at_utc": "2026-10-27T22:54:52.867667+00:00",
+    "flags": [],
+    "process": {
+      "state": "alive",
+      "created": 134376148554159780,
+      "pid": 28520
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102809"
+    }
+  },
+  "formal_recorded": 8,
+  "next": "Follow same original55966; do not replay. Sequence owns its first validate/record and original readback-before-display.",
+  "goal_complete": false
+}

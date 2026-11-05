@@ -1,0 +1,24 @@
+{
+  "at_jst": "2026-10-24T22:17:08.766204+09:00",
+  "status": "PRODUCTION_OBSERVATION_FIX_UNIT_STAGE_NOT_READY",
+  "common5_changed": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": false,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": false,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": false
+  },
+  "config_unchanged": true,
+  "last_explicit_OS_time_before_gap": "2026-10-24T18:07:53.2150439+09:00",
+  "first_explicit_OS_time_after_gap": "2026-10-24T22:15:02.0691076+09:00",
+  "observation_gap_scope": "no continuous chat observation claimed; cause not inferred; original core/validation were already terminal; existing test session20567 returned original result, not restarted",
+  "test_results_so_far": {
+    "transition": 9,
+    "runtime": 24,
+    "validator": 24
+  },
+  "runtime_observer": "forward external-pair links",
+  "independent_validator": "reverse source proof; no producer helper import",
+  "new_core_permitted": false,
+  "old8_and_invalid9_preserved": true
+}

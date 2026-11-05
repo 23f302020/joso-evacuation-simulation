@@ -1,0 +1,66 @@
+{
+  "at_jst": "2026-10-20T21:50:19.683488+09:00",
+  "status": "TARGET_PREFECTURAL_REPORT_NOT_ACQUIRED",
+  "claim_scope": "3 bounded searches; cached scrape plus current direct GET; one secondary cabinet reconstruction case scrape inspected solely as locator",
+  "original_target": "平成27年9月関東・東北豪雨災害対応の検証結果について",
+  "direct_request": {
+    "requested_at_jst": "2026-10-20T21:48:16.810921+09:00",
+    "requested_url": "https://www.pref.ibaraki.jp/seikatsukankyo/bousaikiki/kiki/suigaikennsyou.html",
+    "final_url": "https://www.pref.ibaraki.jp/",
+    "status": 200,
+    "headers": {
+      "Date": "Tue, 20 Oct 2026 12:48:17 GMT",
+      "Last-Modified": "Fri, 16 Oct 2026 06:20:46 GMT",
+      "Content-Type": "text/html",
+      "Cache-Control": null,
+      "Age": "61"
+    },
+    "bytes": 111149,
+    "sha256": "bc54b886cab6908bc3add341198d847ac4cbd972f60df6926493f1fcd10a408e",
+    "is_requested_verification_report": false
+  },
+  "firecrawl_cache": {
+    "sourceURL": "https://www.pref.ibaraki.jp/seikatsukankyo/bousaikiki/kiki/suigaikennsyou.html",
+    "url": "https://www.pref.ibaraki.jp/",
+    "statusCode": 200,
+    "cacheState": "hit",
+    "cachedAt": "2026-10-19T00:29:59.903Z"
+  },
+  "secondary_source": {
+    "url": "https://www.bousai.go.jp/kaigirep/houkokusho/hukkousesaku/saigaitaiou/output_html_1/pdf/201503.pdf",
+    "retrieval_status": 200,
+    "scraped_pages": 18,
+    "role": "secondary compilation, not an independent field observation of transport; original PDF bytes not downloaded/verified",
+    "transport_search_tokens": {
+      "バス": 0,
+      "輸送": 0,
+      "搬送": 0,
+      "送迎": 0
+    },
+    "numeric_adoption": false
+  },
+  "search_ids": [
+    "01a15959-b3a7-774d-bdec-3c4c742bdda7",
+    "01a15959-e202-727a-b6cb-6b553f370c8c",
+    "01a1595b-86d7-744f-b7c8-fdbfa8430c85"
+  ],
+  "research_input_adoption": false,
+  "outstanding": [
+    "passenger fleet simultaneous availability",
+    "driver and assistant roster",
+    "request/demand denominator",
+    "trip-level OD, persons and departure/arrival times"
+  ],
+  "no_evidence_of_absence_claim": true,
+  "feedback_not_sent": "User explicitly prohibits evaluation/feedback sending",
+  "requested_role": "judgment/research gpt-6.1-sol/high policy; parent not switched; actual backend unverified",
+  "source_files_sha256": {
+    "cabinet_reference_scrape.json": "9ba41554113bfc63081fa600d7fafede2f3429156c8fe25bddbfd4483b103070",
+    "pref_direct_metadata.json": "a0549a0baf386091ccae0839cfbdc628a3cffbcf6d634a7dec62113dcc738bc7",
+    "pref_direct_response.html": "bc54b886cab6908bc3add341198d847ac4cbd972f60df6926493f1fcd10a408e",
+    "pref_scrape_cached.json": "d2f1fb2dc1bb14bfb5b00c6cc10341e6efdf8ce0b4157421c621ac5fcd728926",
+    "search1.json": "0dd602e0bc5c0cd675e9b48c6c31a6ed5eac96e9d8d5973dae0a10b656cfba25",
+    "search2.json": "19ec7647495be53674b1c006fb8a7b2f4701c1a8de2f80156ef1c9503510567d",
+    "search3.json": "08d72c9cc3d852e6ebf853e34333a6c6acb23ba85a855be153fab5cb919b87ef"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "at_jst": "2026-10-23T17:51:27.368923+09:00",
+  "action": "same_original_finish_wait",
+  "run_id": "nc26102303",
+  "session_id": 78558,
+  "operation_snapshot": {
+    "run_id": "nc26102303",
+    "pid": 12952,
+    "status": "RUNNING",
+    "commands": [
+      {
+        "command": "check",
+        "status": "COMPLETED",
+        "run_id": "nc26102303",
+        "validation_report": null
+      },
+      {
+        "command": "validate",
+        "status": "PASS",
+        "run_id": "nc26102303",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102303_20261023T173535159894.json"
+      }
+    ],
+    "helper_sha256": "e7545e936b68929aadf8247490407b3d0c64d6f1f2adde591862302e332c815f",
+    "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "formal_record_result": null,
+    "record_attempted": true,
+    "next_start_performed": false,
+    "observed_at_jst": "2026-10-23T17:35:37.090471+09:00",
+    "phase": "record",
+    "validation_report_sha256": "39da149e4f10067d84211a5079cb8f2ab881e047cf3092e2288b3d7a6fc32135"
+  },
+  "process_identity_sample_jst": "2026-10-23T17:50:58.876032+09:00",
+  "record_child": {
+    "pid": 20516,
+    "created_jst": "2026-10-23T17:35:37.139702+09:00",
+    "parent_launcher_pid": 30796,
+    "command_verified": "same-project dedicated record --run-id nc26102303",
+    "kernel_mode_time_raw": "318593750",
+    "user_mode_time_raw": "8670781250"
+  },
+  "native_status": "COMPLETED",
+  "native_sim_sec": 21600,
+  "stage_log_bytes": {
+    "record.stderr.log": 0,
+    "record.stdout.log": 0
+  },
+  "free_bytes": 256568348672,
+  "formal_accepted": 5,
+  "independent_PASS_readback": "nc26102303_independent_validation_PASS_readback.json",
+  "record_replayed": false,
+  "canonical_display_updates_deferred": true
+}

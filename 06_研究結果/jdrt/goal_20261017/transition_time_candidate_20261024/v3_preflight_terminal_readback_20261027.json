@@ -1,0 +1,301 @@
+{
+  "at_jst": "2026-10-27T10:06:51.467903+09:00",
+  "status": "CURRENT_READY_TERMINAL_READBACK_PASS_NOT_ADOPTION",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "original_session": 39727,
+  "original_session_exit_code_observed": 0,
+  "original_owner_pid": 31216,
+  "original_owner_absent_observed": true,
+  "receipt": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/preflight/20261024T234021266214/receipt.json",
+  "receipt_sha256": "3dacaeafd27b3c2b2e8237d2e6a6315dff2b792f37e41fc00145cdd9bbcb37b2",
+  "ready_created_at_jst": "2026-10-24T23:55:56.013727+09:00",
+  "bound_files_rehashed": 1527,
+  "mismatch": [],
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "input_checks_PASS": 28,
+  "unit_tests_PASS": 115,
+  "current_fixture_count": 29,
+  "current_smoke_count": 14,
+  "primary_validations": [
+    {
+      "run_id": "nt261024d_c01",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c01_20261024T234135790130.json",
+      "sha256": "fb18b98948e5c41858f76424546dcc6304a0fee8fafc77296f78f3dded1d0d79"
+    },
+    {
+      "run_id": "nt261024d_c02",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c02_20261024T234154032088.json",
+      "sha256": "426abfb3503d971048a7dde1340e219e43197fe9c4d5d6c50ce6629efbadab06"
+    },
+    {
+      "run_id": "nt261024d_c03",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c03_20261024T234211108934.json",
+      "sha256": "8065d4717a9c4dfe18bd93b1c6ca927c89e38b3a999c8f96dfb92cc30650fe46"
+    },
+    {
+      "run_id": "nt261024d_c04",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c04_20261024T234227226360.json",
+      "sha256": "83d56f43afd4234b554a709c83378f1985fe70481d4bcd6118892007c23a39d4"
+    },
+    {
+      "run_id": "nt261024d_c05",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c05_20261024T234244852915.json",
+      "sha256": "538d49613250ef8fb7cbd04c83c266a57ab47f4a5b4519f81b2d8a413492a2d6"
+    },
+    {
+      "run_id": "nt261024d_c06",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c06_20261024T234257745004.json",
+      "sha256": "1e1c8cb04d098c24e665b2e22fc56afcce7657ca95f4ed944b3f0e4d9494b865"
+    },
+    {
+      "run_id": "nt261024d_c07",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c07_20261024T234311332406.json",
+      "sha256": "4fb6199a580beb95eff132b0f77103420b0e690a58657a18f5e6140f3a9a1fac"
+    },
+    {
+      "run_id": "nt261024d_c08",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c08_20261024T234323734869.json",
+      "sha256": "482502abf29cea9f1febe52335f5567ad0a23dc44675095eecd4fba4208dc8b0"
+    },
+    {
+      "run_id": "nt261024d_c09",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c09_20261024T234340318662.json",
+      "sha256": "2685d90fb7fb21b79083fbe8c330f7e44894c9796a4e0141debc697c62e9d2f7"
+    },
+    {
+      "run_id": "nt261024d_c10",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c10_20261024T234353302745.json",
+      "sha256": "76c57c8bbe38476237a3daed429ef1546795126c9c276e0bab0812ef0d25b5e6"
+    },
+    {
+      "run_id": "nt261024d_c11",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c11_20261024T234406083934.json",
+      "sha256": "7ea3eeea119d22be36298ea7a9483efd5c0673a4021782a7d033b1f5576b6509"
+    },
+    {
+      "run_id": "nt261024d_c12",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c12_20261024T234422189792.json",
+      "sha256": "8d76793aa20f63c0f9abc9c6507279fe8d6b4df71062d763317f8ddd56be6203"
+    },
+    {
+      "run_id": "nt261024d_c13",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c13_20261024T234434509754.json",
+      "sha256": "d61d509a4b4d142df592a2c340053ace8a189d8c66315bed1040c98b5a9b4a4a"
+    },
+    {
+      "run_id": "nt261024d_c14",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c14_20261024T234446699057.json",
+      "sha256": "9bc1b0cd763becc21cfd7ceb1bb58a62ab695b04fa789c4850ba24779ced5015"
+    },
+    {
+      "run_id": "nt261024d_c15",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c15_20261024T234459296586.json",
+      "sha256": "9f8473a875360ab36213356cfbcb1fc1de8763a9eec8c9a5ab9b34bf1d11aeb6"
+    },
+    {
+      "run_id": "nt261024d_c16",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c16_20261024T234511675110.json",
+      "sha256": "0783349e0541b80bcc08ded815ffea5db41a367be0c6142614a3f4788937c7d0"
+    },
+    {
+      "run_id": "nt261024d_c17",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c17_20261024T234527973067.json",
+      "sha256": "9c2b873441927008c40e98f871e3bba64bae440c112fb9260329c25422e42f28"
+    },
+    {
+      "run_id": "nt261024d_c18",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c18_20261024T234540794199.json",
+      "sha256": "6fd20311e9f98891570ac0b193d717cb40d2ddca9ad38f40e56838d6b8ddc6ab"
+    },
+    {
+      "run_id": "nt261024d_c19",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c19_20261024T234553247710.json",
+      "sha256": "c4b3f4d8549d56fd147698a1440ecf4422a4f1c07989bd8bfdfd8d390676382b"
+    },
+    {
+      "run_id": "nt261024d_c20",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c20_20261024T234609741506.json",
+      "sha256": "30d769d251d98a1b6fcd0a7e92794de4db0fd6d3c4ab8b8d0caa5d626d7bb303"
+    },
+    {
+      "run_id": "nt261024d_c21",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c21_20261024T234625477841.json",
+      "sha256": "c118a468128a92ec728b47aaadba82152d08d4abf2fc5c7a99afbb6f5ab63537"
+    },
+    {
+      "run_id": "nt261024d_c22",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c22_20261024T234637529643.json",
+      "sha256": "e63a0eba6f6f98b83ae3407f79182cdcb3f58d890d22ccc2b8c5980c0a3052eb"
+    },
+    {
+      "run_id": "nt261024d_c23",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c23_20261024T234649820105.json",
+      "sha256": "76ffba23790000e23a81c32fa17f054680f6bfdf0e0084e0b08547755daea442"
+    },
+    {
+      "run_id": "nt261024d_c24",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c24_20261024T234702563034.json",
+      "sha256": "d0f4c96656facae6b77a2a9eb67a7ec87bc066b44b30db9a7028d0c623bc97f3"
+    },
+    {
+      "run_id": "nt261024d_c25",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c25_20261024T234718410688.json",
+      "sha256": "b8bb54ca1586c9a0f66ac95e2a7534966b5f6192ad41fca5923500d049c469dd"
+    },
+    {
+      "run_id": "nt261024d_c26",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c26_20261024T234734296441.json",
+      "sha256": "5b5216dfe0224085a69af8cce637941cfe80a38690461d6d119f77372819155f"
+    },
+    {
+      "run_id": "nt261024d_c27",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c27_20261024T234746436365.json",
+      "sha256": "b9280ee47ed5c296bfdfaa9b8d02d7004fe54fc410ad94226a1d8302bda85070"
+    },
+    {
+      "run_id": "nt261024d_c28",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c28_20261024T234758814550.json",
+      "sha256": "f478e54b9368c4d055a857cb816cd70d84e59e152336f4cadb59f61978675b67"
+    },
+    {
+      "run_id": "nt261024d_c29",
+      "purpose": "fixture",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nt261024d_c29_20261024T234811434183.json",
+      "sha256": "3797b17262ab5741605ac7ab77bd7a572fe29688ca0bda14b5586809e3b1e62e"
+    },
+    {
+      "run_id": "ns261024e_01",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_01_20261024T234843316549.json",
+      "sha256": "f42a068b1871333afccd2cb8f870f76ee173a288bbb2c6c29482e3107236e805"
+    },
+    {
+      "run_id": "ns261024e_02",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_02_20261024T234914130903.json",
+      "sha256": "b8c92b236f547b78dfc2b068948a69245a426990a51c6968ce05a945dcab7f5c"
+    },
+    {
+      "run_id": "ns261024e_03",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_03_20261024T234944097937.json",
+      "sha256": "f150c31f7a7f423b74c46511d4403b8f88b339f12e2a67b74417f8007d2a2464"
+    },
+    {
+      "run_id": "ns261024e_04",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_04_20261024T235015430025.json",
+      "sha256": "a4bb6e5587623ac8884a8bdb77abade858d7bb99097189f15687a5e8f15da81a"
+    },
+    {
+      "run_id": "ns261024e_05",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_05_20261024T235046658243.json",
+      "sha256": "d602dde17db03934a244e66adb85bb4b64b4bcf2d009365b896779c809b229c6"
+    },
+    {
+      "run_id": "ns261024e_06",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_06_20261024T235118777810.json",
+      "sha256": "d42e19e57a3a143d8dbd8ca9ba4a0a9bac018ff6f3c70c4e6e4f912f78e83dfe"
+    },
+    {
+      "run_id": "ns261024e_07",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_07_20261024T235148371942.json",
+      "sha256": "bd8d81b97630f9872e2918c9ea50dc9c103ecbab3c3b301f4b8e84270bf2b83b"
+    },
+    {
+      "run_id": "ns261024e_08",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_08_20261024T235218656280.json",
+      "sha256": "06f6df1a13424eff164d88762e80cca4f47bc0f5e1080e2eed14e1fef2b6e01c"
+    },
+    {
+      "run_id": "ns261024e_09",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_09_20261024T235248268532.json",
+      "sha256": "9727984d0c6e5284ecdd1a73d605b00ff3960eba3ceeb6410c8207fbfd6a003c"
+    },
+    {
+      "run_id": "ns261024e_10",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_10_20261024T235319155271.json",
+      "sha256": "b3756c93082f7a7bd8f6521deaac89391ac8a5cfc035b7e76dc4906ff68c19ad"
+    },
+    {
+      "run_id": "ns261024e_11",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_11_20261024T235351844918.json",
+      "sha256": "04de64223fd33627cac83b7c5ae3922ddb0a6cab0918c84a0a4608a228738f65"
+    },
+    {
+      "run_id": "ns261024e_12",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_12_20261024T235432047429.json",
+      "sha256": "b92cecb3c856cbca145f873f219cf9e1379b6ee0cefbf1b35568d55551d4c0d1"
+    },
+    {
+      "run_id": "ns261024e_13",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_13_20261024T235511968798.json",
+      "sha256": "1fe65b99164695bbcc1d90f2ca3cb54d9257638657a74327a34eb6ece910c9ff"
+    },
+    {
+      "run_id": "ns261024e_14",
+      "purpose": "smoke",
+      "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_14_20261024T235545973448.json",
+      "sha256": "eb0f55de1567298bfe2450197d361774153e1ccd29a01ef7f51c35b9041545e4"
+    }
+  ],
+  "G6_source_excerpts_rechecked": 7,
+  "G6_proof_sha256": "1d6450893499eb62c573a6c60faba0b73cbd559f81dd9e7faada7448f161a3dd",
+  "one_run_reserve_bytes": 193986012138,
+  "free_bytes_now": 255502737408,
+  "all_remaining_projected_fit": false,
+  "storage_policy": "rolling_one_run_reserve_rechecked_before_each_start_preserve_all_outputs",
+  "last_actual_chat_sample_jst": "2026-10-24T23:55:26.953547+09:00",
+  "first_reentry_OS_sample_jst": "2026-10-27T10:04:08.1125961+09:00",
+  "observation_gap_cause": "not established; no backfill or inference of sleep from wall interval",
+  "monitor_stale_at_reentry": true,
+  "monitor_same_identity_resumed_at_jst": "2026-10-27T10:05:10.205873+09:00",
+  "monitor_restarted": false,
+  "formal_adoption_created": false,
+  "core_started": false,
+  "readback_initial_metadata_failure": "KeyError checks on nonapplicable native_fixture_boundaries; actual schema examined, no research/artifact writes before failure; now require explicit applicable=false for that exact component only",
+  "next": "Fresh dedicated status and live07 observation; one new core only, rolling storage and original record gates."
+}

@@ -1,0 +1,44 @@
+{
+  "at_jst": "2026-10-27T18:19:56.8764316+09:00",
+  "action": "third_core_independent_PASS_record_revalidation",
+  "run_id": "nv26102703",
+  "original_session": 24562,
+  "processes": [
+    {
+      "pid": 16332,
+      "parent_pid": 21200,
+      "created_jst": "2026-10-27T17:51:57.3427790+09:00",
+      "command": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py --project-root . --run-id nv26102703",
+      "cpu_sec": 0.34375
+    },
+    {
+      "pid": 24852,
+      "parent_pid": 23484,
+      "created_jst": "2026-10-27T18:17:21.9812080+09:00",
+      "command": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" record --run-id nv26102703",
+      "cpu_sec": 140.40625
+    }
+  ],
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "VERIFIED_WAIT",
+  "phase": "record",
+  "formal_recorded": 2,
+  "record_attempted": true,
+  "independent_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102703_20261027T181715498112.json",
+  "independent_report_sha256": "22c619a12b0f384548cc869559e39bcef55138e6fe8575235ae61d217a437e7d",
+  "independent_components": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "PASS",
+    "native_logs": "PASS",
+    "native_fixture_boundaries": "PASS"
+  },
+  "core_adoption_permitted": true,
+  "formal_adoption_created": false,
+  "display_writers_deferred": true,
+  "research_restart_or_validation_retry": false,
+  "goal_complete": false,
+  "next": "Follow original finish24562, owner16332, actual dedicated record24852. After terminal result, seven-file readback before display edits, fresh status/READY/capacity/live07 and only one next registered cell."
+}

@@ -1,0 +1,32 @@
+test_baseline_restart_and_new_terminal (test_watch.Contracts.test_baseline_restart_and_new_terminal) ... ok
+test_dashboard_escapes_untrusted_text (test_watch.Contracts.test_dashboard_escapes_untrusted_text) ... ok
+test_diagnostic_output_is_absolute_and_context_is_isolated (test_watch.Contracts.test_diagnostic_output_is_absolute_and_context_is_isolated) ... ok
+test_error_and_orphan (test_watch.Contracts.test_error_and_orphan) ... ok
+test_failed_dispatch_is_preserved_and_not_retried (test_watch.Contracts.test_failed_dispatch_is_preserved_and_not_retried) ... ok
+test_fixture_success_is_archived_without_ai_but_failure_is_actionable (test_watch.Contracts.test_fixture_success_is_archived_without_ai_but_failure_is_actionable) ... ok
+test_heartbeat_cannot_hide_frozen_simulation_time (test_watch.Contracts.test_heartbeat_cannot_hide_frozen_simulation_time) ... ok
+test_historical_path_reuse_is_observed (test_watch.Contracts.test_historical_path_reuse_is_observed) ... ok
+test_hourly_limit_preserves_pending_events (test_watch.Contracts.test_hourly_limit_preserves_pending_events) ... ok
+test_observation_gap_during_active_run_is_preserved (test_watch.Contracts.test_observation_gap_during_active_run_is_preserved) ... ok
+test_partial_json_grace_and_recovery (test_watch.Contracts.test_partial_json_grace_and_recovery) ... ok
+test_partial_log_and_counter_alarm (test_watch.Contracts.test_partial_log_and_counter_alarm) ... ok
+test_pid_reuse_and_exit_grace (test_watch.Contracts.test_pid_reuse_and_exit_grace) ... ok
+test_real_daemon_exit_event_and_restart_deduplication (test_watch.Contracts.test_real_daemon_exit_event_and_restart_deduplication) ... ok
+test_real_windows_process_exit_and_lock (test_watch.Contracts.test_real_windows_process_exit_and_lock) ... ok
+test_repeated_event_retains_delivery_state (test_watch.Contracts.test_repeated_event_retains_delivery_state) ... ok
+test_stall_and_progress_reset (test_watch.Contracts.test_stall_and_progress_reset) ... ok
+test_terminal_requires_validation (test_watch.Contracts.test_terminal_requires_validation) ... ok
+test_unknown_status_never_completed (test_watch.Contracts.test_unknown_status_never_completed) ... ok
+test_command_match_uses_exact_windows_arguments (test_watch.FixtureCommandBinding.test_command_match_uses_exact_windows_arguments) ... ok
+test_created_pid_without_successful_command_proof_is_rechecked (test_watch.FixtureCommandBinding.test_created_pid_without_successful_command_proof_is_rechecked) ... ok
+test_exit_during_command_lookup_keeps_grace_without_false_mismatch (test_watch.FixtureCommandBinding.test_exit_during_command_lookup_keeps_grace_without_false_mismatch) ... ok
+test_pid_reused_during_command_lookup_cannot_gain_command_proof (test_watch.FixtureCommandBinding.test_pid_reused_during_command_lookup_cannot_gain_command_proof) ... ok
+test_real_windows_suite_command_and_child_manifest (test_watch.FixtureCommandBinding.test_real_windows_suite_command_and_child_manifest) ... ok
+test_same_pid_cannot_cache_a_changed_parent_binding (test_watch.FixtureCommandBinding.test_same_pid_cannot_cache_a_changed_parent_binding) ... ok
+test_verified_suite_command_is_bound_to_child_without_source_writes (test_watch.FixtureCommandBinding.test_verified_suite_command_is_bound_to_child_without_source_writes) ... ok
+test_wrong_parent_factory_input_or_case_does_not_gain_suite_identity (test_watch.FixtureCommandBinding.test_wrong_parent_factory_input_or_case_does_not_gain_suite_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 7.847s
+
+OK

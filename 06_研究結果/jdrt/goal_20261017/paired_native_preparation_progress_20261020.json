@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-20T14:44:18.850376+09:00",
+  "action": "paired_native_preparation_progress",
+  "goal_turn_classification": "progress",
+  "patched_attempt": "attempt08_20261020",
+  "patched_version_checks": "both_exit_0_custom_tag",
+  "patched_system_exports_missing": [],
+  "control_attempt": "control02_20261020",
+  "control_exec_session": 57474,
+  "point_observation_report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T143907674044.json",
+  "paired_source_files": 6228,
+  "pair_differences": [
+    "src/microsim/transportables/MSPModel_Striping.cpp"
+  ],
+  "source_scope_archive_files": 2861,
+  "source_scope_present_files": 2854,
+  "source_scope_missing_classification": "7 non-selected-target FOX/Debian tests; incomplete source archive retained",
+  "metadata_pair_count": 10,
+  "raw_metadata_unequal": [
+    "CMakeCache.txt"
+  ],
+  "effective_cache_difference_keys": [],
+  "packager_P1": "UNFINISHED_BLOCKS_PACKAGING",
+  "regression_helper": "UNFINISHED_NOT_RUN",
+  "core_ready": false,
+  "simulation_executed": false,
+  "formal_adoption_created": false,
+  "evidence_sha256": {
+    "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T143907674044.json": "5c16926ac064e7ee49d2567b39342937bced64db05f78f5757aa33ff60b6a290",
+    "06_研究結果/jdrt/goal_20261017/native_source_snapshot_audit_20261020T143408483807.json": "e12ad9b32d9e6ea8ab5726d8806fde9fe1625b644bb2cefe91f1cb527194f2d3",
+    "06_研究結果/jdrt/goal_20261017/native_source_missing_files_classification_20261020.json": "2e5c20f3713e6897a0c3cb48894e52c22a76227bfba9f12d5f99c27cccaa022a",
+    "06_研究結果/jdrt/goal_20261017/audit_history/native_metadata_pair_20261020T144203911938/comparison.json": "4c486783b1570659df521da5dc1e884eeb3e8f34df23d47011180fef2364216a",
+    "06_研究結果/jdrt/goal_20261017/audit_history/native_metadata_pair_20261020T144203911938/cache_semantic_comparison_v2.json": "a96a3b20dbade4039595021c264b17d1140e7ae3524d72cb12acd8899d021234",
+    "06_研究結果/jdrt/goal_20261017/paired_native_proof_準備_20261020.md": "6e765e5e17bf4e520cd508032fa36eeb32075cb31d430c61816eabec521d03db"
+  }
+}

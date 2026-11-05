@@ -1,0 +1,15 @@
+test_native_outgoing_frame_rejects_shared_external_only_timestamp (tests.test_choice_transition_timing.NativeTransitionFixtureTests.test_native_outgoing_frame_rejects_shared_external_only_timestamp) ... ok
+test_actual_late_and_exact_boundary_are_still_closed (tests.test_choice_transition_timing.TransitionTimingTests.test_actual_late_and_exact_boundary_are_still_closed) ... ok
+test_actual_producer_gives_short_edge_early_upper (tests.test_choice_transition_timing.TransitionTimingTests.test_actual_producer_gives_short_edge_early_upper) ... ok
+test_allow_all_is_passenger_but_pedestrian_only_is_not (tests.test_choice_transition_timing.TransitionTimingTests.test_allow_all_is_passenger_but_pedestrian_only_is_not) ... ok
+test_external_only_mutant_violates_independent_topological_bound (tests.test_choice_transition_timing.TransitionTimingTests.test_external_only_mutant_violates_independent_topological_bound) ... ok
+test_forward_and_reverse_internal_proofs_cover_each_chain_lane (tests.test_choice_transition_timing.TransitionTimingTests.test_forward_and_reverse_internal_proofs_cover_each_chain_lane) ... ok
+test_internal_before_short_edge_does_not_claim_it_passed (tests.test_choice_transition_timing.TransitionTimingTests.test_internal_before_short_edge_does_not_claim_it_passed) ... ok
+test_native_arrival_explicit_final_index_is_not_previous_subscription (tests.test_choice_transition_timing.TransitionTimingTests.test_native_arrival_explicit_final_index_is_not_previous_subscription) ... ok
+test_occurrence_index_not_first_occurrence_of_repeated_edge (tests.test_choice_transition_timing.TransitionTimingTests.test_occurrence_index_not_first_occurrence_of_repeated_edge) ... ok
+test_unknown_or_incompatible_internal_proof_fails_closed (tests.test_choice_transition_timing.TransitionTimingTests.test_unknown_or_incompatible_internal_proof_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.620s
+
+OK

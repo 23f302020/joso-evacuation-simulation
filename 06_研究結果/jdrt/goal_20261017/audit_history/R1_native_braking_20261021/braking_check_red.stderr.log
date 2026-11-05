@@ -1,0 +1,149 @@
+EEEEEEEEEEEEEEEE
+======================================================================
+ERROR: test_actor_identity_is_generic_not_whitelisted (test_choice_native_braking_check.NativeBrakingConsistency.test_actor_identity_is_generic_not_whitelisted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 34, in test_actor_identity_is_generic_not_whitelisted
+    self.assertEqual(self.check(self.line.replace('artificial', 'another_actor'), frames)['status'],
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_distance_change_is_checked_independently (test_choice_native_braking_check.NativeBrakingConsistency.test_distance_change_is_checked_independently)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 60, in test_distance_change_is_checked_independently
+    self.assertEqual(self.check(frames=frames)['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_emergency_bound_is_not_inferred_from_warning (test_choice_native_braking_check.NativeBrakingConsistency.test_emergency_bound_is_not_inferred_from_warning)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 55, in test_emergency_bound_is_not_inferred_from_warning
+    self.assertEqual(self.check(properties=dict(decel=3., emergencyDecel=6.))['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_missing_or_duplicate_clock_is_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_missing_or_duplicate_clock_is_rejected) (frames=[{'time_sec': 4.0, 'speed_mps': 5.0, 'distance_m': 100.0, 'actor_id': 'artificial', 'lane_id': 'a_1', 'kind': 'car', 'phase': 'after_step_before_control', 'decel_mps2': 3.0}, {'time_sec': 4.25, 'speed_mps': 3.25, 'distance_m': 100.8125, 'actor_id': 'artificial', 'lane_id': 'a_1', 'kind': 'car', 'phase': 'after_step_before_control', 'decel_mps2': 3.0}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 47, in test_missing_or_duplicate_clock_is_rejected
+    self.assertEqual(self.check(frames=frames)['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_missing_or_duplicate_clock_is_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_missing_or_duplicate_clock_is_rejected) (frames=[{'time_sec': 3.75, 'speed_mps': 4.5, 'distance_m': 98.75, 'actor_id': 'artificial', 'lane_id': 'a_1', 'kind': 'car', 'phase': 'after_step_before_control', 'decel_mps2': 3.0}, {'time_sec': 4.0, 'speed_mps': 5.0, 'distance_m': 100.0, 'actor_id': 'artificial', 'lane_id': 'a_1', 'kind': 'car', 'phase': 'after_step_before_control', 'decel_mps2': 3.0}, {'time_sec': 4.0, 'speed_mps': 5.0, 'distance_m': 100.0, 'actor_id': 'artificial', 'lane_id': 'a_1', 'kind': 'car', 'phase': 'after_step_before_control', 'decel_mps2': 3.0}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 47, in test_missing_or_duplicate_clock_is_rejected
+    self.assertEqual(self.check(frames=frames)['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_new_manoeuvre_condition_is_required (test_choice_native_braking_check.NativeBrakingConsistency.test_new_manoeuvre_condition_is_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 52, in test_new_manoeuvre_condition_is_required
+    self.assertEqual(self.check(frames=frames)['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_nonfinite_and_wrong_phase_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_nonfinite_and_wrong_phase_are_rejected) (key='speed_mps')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 67, in test_nonfinite_and_wrong_phase_are_rejected
+    self.assertEqual(self.check(frames=frames)['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_nonfinite_and_wrong_phase_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_nonfinite_and_wrong_phase_are_rejected) (key='distance_m')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 67, in test_nonfinite_and_wrong_phase_are_rejected
+    self.assertEqual(self.check(frames=frames)['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_nonfinite_and_wrong_phase_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_nonfinite_and_wrong_phase_are_rejected) (key='phase')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 67, in test_nonfinite_and_wrong_phase_are_rejected
+    self.assertEqual(self.check(frames=frames)['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_source_consistent_match_is_never_adoptable (test_choice_native_braking_check.NativeBrakingConsistency.test_source_consistent_match_is_never_adoptable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 26, in test_source_consistent_match_is_never_adoptable
+    self.assertEqual(result['status'], 'DIAGNOSTIC_MATCH')
+                     ~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_warning_mutations_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_warning_mutations_are_rejected) (old='artificial')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 42, in test_warning_mutations_are_rejected
+    self.assertEqual(self.check(self.line.replace(old, new))['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_warning_mutations_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_warning_mutations_are_rejected) (old='a_1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 42, in test_warning_mutations_are_rejected
+    self.assertEqual(self.check(self.line.replace(old, new))['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_warning_mutations_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_warning_mutations_are_rejected) (old='7.00')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 42, in test_warning_mutations_are_rejected
+    self.assertEqual(self.check(self.line.replace(old, new))['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_warning_mutations_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_warning_mutations_are_rejected) (old='wished=3.00')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 42, in test_warning_mutations_are_rejected
+    self.assertEqual(self.check(self.line.replace(old, new))['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_warning_mutations_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_warning_mutations_are_rejected) (old='severity=1.00')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 42, in test_warning_mutations_are_rejected
+    self.assertEqual(self.check(self.line.replace(old, new))['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_warning_mutations_are_rejected (test_choice_native_braking_check.NativeBrakingConsistency.test_warning_mutations_are_rejected) (old='time=4.00')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_check.py", line 42, in test_warning_mutations_are_rejected
+    self.assertEqual(self.check(self.line.replace(old, new))['status'], 'INCONSISTENT')
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.005s
+
+FAILED (errors=16)

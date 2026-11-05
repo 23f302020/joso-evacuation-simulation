@@ -1,0 +1,176 @@
+{
+  "at_jst": "2026-10-24T17:39:59.423735+09:00",
+  "status": "TARGETED_FALSE_LATE_ENTRY_TIMESTAMP_CONFIRMED_NOT_ADOPTION",
+  "run_id": "nc26102402",
+  "actor_id": "scen_c_origin_0176_0008",
+  "raw_transition": {
+    "from": "2013#0",
+    "to": "2013#1",
+    "upper": 3300.5,
+    "scheduled": 3300,
+    "kind": "closed_entry"
+  },
+  "source_frame_before": {
+    "time_sec": "3298.5",
+    "phase": "after_step_before_control",
+    "actor_id": "scen_c_origin_0176_0008",
+    "kind": "car",
+    "road_id": "2013#0",
+    "lane_id": "2013#0_1",
+    "lane_position_m": "9.103596179999933",
+    "x": "7851.931794698358",
+    "y": "12467.823414917166",
+    "speed_mps": "11.980090844947826",
+    "decel_mps2": "4.5",
+    "emergency_decel_mps2": "9.0",
+    "distance_m": "5014.636945339726",
+    "route_index": "56",
+    "route_version": "0",
+    "stop_state": "0",
+    "status": "travelling",
+    "active_person": "",
+    "members": "[\"b_origin_0176_type1_0022\", \"b_origin_0176_type1_0023\", \"b_origin_0176_type1_0024\"]",
+    "observation_kind": "onroad",
+    "reentry_source_edge": "",
+    "native_stop_lane_id": "",
+    "native_stop_start_pos_m": "",
+    "native_stop_end_pos_m": "",
+    "native_stop_flags": ""
+  },
+  "source_frame_after": {
+    "time_sec": "3299.0",
+    "phase": "after_step_before_control",
+    "actor_id": "scen_c_origin_0176_0008",
+    "kind": "car",
+    "road_id": ":1429510282_1",
+    "lane_id": ":1429510282_1_0",
+    "lane_position_m": "1.5433941944642457",
+    "x": "7848.3634637437735",
+    "y": "12473.30480438434",
+    "speed_mps": "13.099596028928627",
+    "decel_mps2": "4.5",
+    "emergency_decel_mps2": "9.0",
+    "distance_m": "5021.18674335419",
+    "route_index": "57",
+    "route_version": "0",
+    "stop_state": "0",
+    "status": "travelling",
+    "active_person": "",
+    "members": "[\"b_origin_0176_type1_0022\", \"b_origin_0176_type1_0023\", \"b_origin_0176_type1_0024\"]",
+    "observation_kind": "onroad",
+    "reentry_source_edge": "",
+    "native_stop_lane_id": "",
+    "native_stop_start_pos_m": "",
+    "native_stop_end_pos_m": "",
+    "native_stop_flags": ""
+  },
+  "entry_interval_discrete": {
+    "lower_exclusive_sec": 3298.5,
+    "upper_inclusive_sec": 3299.0
+  },
+  "closure_event": {
+    "time_sec": 3299.5,
+    "event": "closure_applied",
+    "edge_id": "2013#1",
+    "mode": "passenger",
+    "scheduled_sec": 3300,
+    "control_call_sec": 3299.5,
+    "observation_upper_sec": 3300,
+    "control_lead_sec": 0.5,
+    "phase": "before_step_ending_at_closure"
+  },
+  "topology_connections": [
+    {
+      "from": "2013#0",
+      "to": "2013#1",
+      "fromLane": "1",
+      "toLane": "1",
+      "via": ":9000000008090_0_0",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "2013#1",
+      "to": "2020",
+      "fromLane": "1",
+      "toLane": "0",
+      "via": ":1429510282_0_0",
+      "dir": "r",
+      "state": "M"
+    },
+    {
+      "from": "2013#1",
+      "to": "2018#0",
+      "fromLane": "1",
+      "toLane": "1",
+      "via": ":1429510282_1_0",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "2013#1",
+      "to": "2019#0",
+      "fromLane": "1",
+      "toLane": "1",
+      "via": ":1429510282_2_0",
+      "dir": "t",
+      "state": "m"
+    },
+    {
+      "from": ":1429510282_1",
+      "to": "2018#0",
+      "fromLane": "0",
+      "toLane": "1",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": ":9000000008090_0",
+      "to": "2013#1",
+      "fromLane": "0",
+      "toLane": "1",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "2013#0",
+      "to": ":9000000008090_w0",
+      "fromLane": "0",
+      "toLane": "0",
+      "dir": "s",
+      "state": "M"
+    }
+  ],
+  "distance_parts_m": {
+    "previous_external_remaining_m": 0.276403820000068,
+    "incoming_internal_length_m": 0.39,
+    "short_external_length_m": 4.34,
+    "outgoing_internal_position_m": 1.5433941944642457
+  },
+  "sum_path_displacement_m": 6.549798014464313,
+  "native_euler_displacement_m": 6.549798014464313,
+  "distance_residual_m": 0.0,
+  "continuous_entry_time_estimated": false,
+  "input_net_sha256": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+  "registered_input_manifest_sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+  "source_common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "physical_scope": "this actor/edge/time interval only; outgoing internal proves short external already passed before closing",
+  "recording_fault": "producer waits for next external observation and assigns all skipped externals the late shared upper time; independent validator uses matching reconstruction",
+  "formal_adoption_permitted": false,
+  "later_starts_permitted": false,
+  "full_validation_status": "pending terminal core and one dedicated independent validate",
+  "implementation_or_input_changed": false,
+  "version_gate": "all70 accepted cells must retain one common5 set; any observation/validator repair requires version-consistent technical revalidation/registration, no old-new mixing",
+  "next_steps": [
+    "preserve full current core on completion",
+    "dedicated independent validate once, retain any INVALID",
+    "bounded true/false/boundary/loop/arrival native cases and independent reconstruction diagnosis",
+    "only after no normal run is live, repair technical observation with no timing/physics/PAP change; preserve old8 and oldrun; enforce full common-version gate"
+  ]
+}

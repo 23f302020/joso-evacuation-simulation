@@ -1,0 +1,14 @@
+..E.
+======================================================================
+ERROR: test_native_clock_and_const_declaration_are_source_derived (__main__.ReadbackContracts.test_native_clock_and_const_declaration_are_source_derived)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_guard_readback.py", line 64, in test_native_clock_and_const_declaration_are_source_derived
+    self.assertEqual(reader.native_contract(clock, version), (100., 7))
+                     ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_native_guard_readback' has no attribute 'native_contract'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.013s
+
+FAILED (errors=1)

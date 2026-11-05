@@ -1,0 +1,66 @@
+{
+  "at_jst": "2026-10-28T08:18:03.144332+09:00",
+  "action": "ninth_first_independent_PASS_and_original_record_revalidation_active",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "original_session": 55966,
+  "sequence_id": "sq26102809",
+  "sequence_actual_pid": 33684,
+  "finish_actual_pid": 34484,
+  "record_launcher_pid": 35372,
+  "record_actual_pid": 15292,
+  "process_handle_identities": {
+    "33684": {
+      "state": "alive",
+      "created": 134376148225121415,
+      "pid": 33684
+    },
+    "34484": {
+      "state": "alive",
+      "created": 134376156909041274,
+      "pid": 34484
+    },
+    "15292": {
+      "state": "alive",
+      "created": 134376165507108808,
+      "pid": 15292
+    },
+    "18280": {
+      "state": "absent"
+    }
+  },
+  "phase": "record",
+  "operation_status": "RUNNING",
+  "first_validation_status": "PASS",
+  "first_core_adoption_permitted": true,
+  "first_validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102809_20261028T081549070868.json",
+  "first_validation_report_sha256": "31de622d693487efa499b96f7dd0f97bea886e226a71e4759962ae2df4f5af4a",
+  "first_validation_components": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "PASS",
+    "native_logs": "PASS",
+    "native_fixture_boundaries": "PASS"
+  },
+  "record_attempted": true,
+  "formal_recorded": 8,
+  "old_launcher_pid_reused_by_record": {
+    "old_identity": {
+      "state": "alive",
+      "created": 134376148553591421,
+      "pid": 15292
+    },
+    "new_identity": {
+      "state": "alive",
+      "created": 134376165507108808,
+      "pid": 15292
+    },
+    "same_process": false
+  },
+  "display_writers_deferred": true,
+  "all_sequence_source_pins_unchanged": true,
+  "goal_complete": false,
+  "next": "Follow original55966 and same new record15292 creation. Never replay first validator or record; require saved original record7 proof before parent new start."
+}

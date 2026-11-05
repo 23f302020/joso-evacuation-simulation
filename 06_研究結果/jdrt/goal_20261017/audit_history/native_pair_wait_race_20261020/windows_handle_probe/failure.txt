@@ -1,0 +1,1 @@
+Probe-only mock intercepted CIM subprocess.Popen too, causing missing context-manager protocol. Owned artificial child was terminated by its actual Popen in finally. No research run. Corrected probe02 limits its wrapper to the artificial Python command.

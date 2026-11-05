@@ -1,0 +1,3038 @@
+{
+  "at_jst": "2026-10-21T08:58:10.240988+09:00",
+  "run_id": "ng261021g",
+  "manifest_sha256": "f2f79581b1a09b382007c90c5f2338ec79063cff3f474fdd7ab880477b312f79",
+  "native_units_per_second": 1000.0,
+  "native_time_source": {
+    "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\utils\\common\\SUMOTime.h",
+    "sha256": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b"
+  },
+  "cases": [
+    {
+      "id": "same_direction",
+      "group": "same_direction",
+      "branches": {
+        "default": 2,
+        "inherit": 4
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "3",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "4",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "5",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "6",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 3,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 4,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 5,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 6,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "next_nonzero_directions": {
+        "p3": 1,
+        "p4": 1
+      },
+      "observed_group_contract": true
+    },
+    {
+      "id": "forward_reverse",
+      "group": "forward_reverse",
+      "branches": {
+        "default": 2,
+        "inherit": 4
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "3",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "4",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "-1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "-1"
+        },
+        {
+          "seq": "5",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "6",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "-1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "-1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 3,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 4,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": -1
+        },
+        {
+          "sequence": 5,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 6,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": -1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "next_nonzero_directions": {
+        "p3": -1,
+        "p4": -1
+      },
+      "observed_group_contract": true
+    },
+    {
+      "id": "reverse_forward",
+      "group": "reverse_forward",
+      "branches": {
+        "default": 2,
+        "inherit": 4
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2503",
+          "new_dir": "-1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "0",
+          "final_dir": "-1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2498.2600000000002",
+          "new_dir": "-1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "0",
+          "final_dir": "-1"
+        },
+        {
+          "seq": "3",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2493.4704962092201",
+          "new_dir": "-1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2493.4704962092201",
+          "position_same": "1",
+          "old_lat": "0.20000000000000001",
+          "inherited": "1",
+          "final_lat": "0.20000000000000001",
+          "final_dir": "-1"
+        },
+        {
+          "seq": "4",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2493.4704962092201",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2493.4704962092201",
+          "position_same": "1",
+          "old_lat": "0.20000000000000001",
+          "inherited": "1",
+          "final_lat": "0.20000000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "5",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2492.7464743269516",
+          "new_dir": "-1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2492.7464743269516",
+          "position_same": "1",
+          "old_lat": "0",
+          "inherited": "1",
+          "final_lat": "0",
+          "final_dir": "-1"
+        },
+        {
+          "seq": "6",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2492.7464743269516",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2492.7464743269516",
+          "position_same": "1",
+          "old_lat": "0",
+          "inherited": "1",
+          "final_lat": "0",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 0.0,
+          "new_route_direction": -1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 0.0,
+          "new_route_direction": -1
+        },
+        {
+          "sequence": 3,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 0.2,
+          "new_route_direction": -1
+        },
+        {
+          "sequence": 4,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 0.2,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 5,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 0.0,
+          "new_route_direction": -1
+        },
+        {
+          "sequence": 6,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 0.0,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "next_nonzero_directions": {
+        "p3": 1,
+        "p4": 1
+      },
+      "observed_group_contract": true
+    },
+    {
+      "id": "multiple_forward_order",
+      "group": "multiple_people_order",
+      "branches": {
+        "default": 2,
+        "inherit": 4
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "3",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "4",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "5",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "6",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 3,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 4,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 5,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 6,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "next_nonzero_directions": {
+        "p3": 1,
+        "p4": 1
+      },
+      "observed_group_contract": true
+    },
+    {
+      "id": "multiple_reversed_order",
+      "group": "multiple_people_order",
+      "branches": {
+        "default": 2,
+        "inherit": 4
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "3",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "4",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "5",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "6",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 3,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 4,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 5,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 6,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "next_nonzero_directions": {
+        "p4": 1,
+        "p3": 1
+      },
+      "observed_group_contract": true
+    },
+    {
+      "id": "new_depart",
+      "group": "new_depart",
+      "branches": {
+        "default": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "explicit_lateral",
+      "group": "explicit_lateral",
+      "branches": {
+        "explicit": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "0",
+          "input_unspecified": "0",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "inherited": "0",
+          "final_lat": "0.67999999999999994",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "0",
+          "input_unspecified": "0",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "inherited": "0",
+          "final_lat": "0.67999999999999994",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "explicit",
+          "inherited": false,
+          "final_raw_lateral": 0.6799999999999999,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "explicit",
+          "inherited": false,
+          "final_raw_lateral": 0.6799999999999999,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "random_lateral",
+      "group": "random_lateral",
+      "branches": {
+        "random": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "-1.7976931348623157e+308",
+          "input_unspecified": "0",
+          "input_random": "1",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "inherited": "0",
+          "final_lat": "1.1404911559820174",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "-1.7976931348623157e+308",
+          "input_unspecified": "0",
+          "input_random": "1",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "inherited": "0",
+          "final_lat": "0.91199150592088696",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "random",
+          "inherited": false,
+          "final_raw_lateral": 1.1404911559820174,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "random",
+          "inherited": false,
+          "final_raw_lateral": 0.911991505920887,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "legacy",
+      "group": "legacy",
+      "branches": {
+        "legacy": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "1",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "1",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "legacy",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "legacy",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "natural_same_edge",
+      "group": "natural_walk_walk",
+      "branches": {
+        "default": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "2",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "1500",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2498.1599999999999",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "1500",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "1500",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "1",
+          "lane_same": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 1500,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 9,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "patched": {
+          "steps": 9,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "trace": {
+          "steps": 9,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "natural_different_edge",
+      "group": "natural_walk_walk",
+      "branches": {
+        "default": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "e0",
+          "current_edge_normal": "1",
+          "new_lane": "e0_0",
+          "new_pos": "14.59",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "2",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "1500",
+          "person": "p3",
+          "current_edge": "e1",
+          "current_edge_normal": "1",
+          "new_lane": "e1_0",
+          "new_pos": "0",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "1500",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "e0",
+          "edge_same": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 1500,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 6,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "patched": {
+          "steps": 6,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "trace": {
+          "steps": 6,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "natural_wait",
+      "group": "natural_walk_wait_walk",
+      "branches": {
+        "default": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "3",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "2500",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2498.1599999999999",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "2500",
+          "prior_evaluated": "1",
+          "prior_type": "1",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 2500,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 11,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "patched": {
+          "steps": 11,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "trace": {
+          "steps": 11,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "non_target_edge",
+      "group": "non_target_lane_edge",
+      "branches": {
+        "default": 2
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "e0",
+          "current_edge_normal": "1",
+          "new_lane": "e0_0",
+          "new_pos": "14.59",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "2",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "1500",
+          "person": "p3",
+          "current_edge": "e1",
+          "current_edge_normal": "1",
+          "new_lane": "e1_0",
+          "new_pos": "0",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "1500",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "e0",
+          "edge_same": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 1500,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 6,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "patched": {
+          "steps": 6,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        },
+        "trace": {
+          "steps": 6,
+          "departed": [
+            "p3"
+          ],
+          "arrived": [
+            "p3"
+          ],
+          "active_final": []
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "internal_walk",
+      "group": "internal_walkingarea",
+      "branches": {
+        "default": 4
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "e0",
+          "current_edge_normal": "1",
+          "new_lane": "e0_0",
+          "new_pos": "7.875",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "e0",
+          "current_edge_normal": "1",
+          "new_lane": "e0_0",
+          "new_pos": "7.875",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "3",
+          "sim_step": "9500",
+          "person": "p3",
+          "current_edge": ":B_w1",
+          "current_edge_normal": "0",
+          "new_lane": ":B_w1_0",
+          "new_pos": "0.25365790284704559",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "9500",
+          "inherited": "0",
+          "final_lat": "3.2000000000000002",
+          "final_dir": "1"
+        },
+        {
+          "seq": "4",
+          "sim_step": "9500",
+          "person": "p3",
+          "current_edge": ":B_w1",
+          "current_edge_normal": "0",
+          "new_lane": ":B_w1_0",
+          "new_pos": "0.25365790284704559",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "9500",
+          "inherited": "0",
+          "final_lat": "3.2000000000000002",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 3,
+          "native_sim_step": 9500,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 3.2,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 4,
+          "native_sim_step": 9500,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 3.2,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [
+          "Warning: Invalid departPos 96.00 given for person 'p3' walking from edge ':B_w1'. Using edge end instead.",
+          "Warning: Invalid departPos 96.00 given for person 'p3' walking from edge ':B_w1'. Using edge end instead."
+        ],
+        "patched": [
+          "Warning: Invalid departPos 96.00 given for person 'p3' walking from edge ':B_w1'. Using edge end instead.",
+          "Warning: Invalid departPos 96.00 given for person 'p3' walking from edge ':B_w1'. Using edge end instead."
+        ],
+        "trace": [
+          "Warning: Invalid departPos 96.00 given for person 'p3' walking from edge ':B_w1'. Using edge end instead.",
+          "Warning: Invalid departPos 96.00 given for person 'p3' walking from edge ':B_w1'. Using edge end instead."
+        ]
+      },
+      "control_patched_all_actor_rows_equal": true,
+      "observed_group_contract": true
+    },
+    {
+      "id": "position_mismatch",
+      "group": "position_time_mismatch",
+      "branches": {
+        "default": 2,
+        "inherit": 4
+      },
+      "raw_trace_rows": [
+        {
+          "seq": "1",
+          "sim_step": "0",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2497",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "2",
+          "sim_step": "0",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2501.7399999999998",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "2",
+          "remaining": "1",
+          "new_departed": "0",
+          "prior_evaluated": "1",
+          "prior_type": "0",
+          "inherited": "0",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "3",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "4",
+          "sim_step": "11000",
+          "person": "p3",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2506.5295037907799",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p3",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2506.5295037907799",
+          "position_same": "1",
+          "old_lat": "1.0800000000000001",
+          "inherited": "1",
+          "final_lat": "1.0800000000000001",
+          "final_dir": "1"
+        },
+        {
+          "seq": "5",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "3",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        },
+        {
+          "seq": "6",
+          "sim_step": "11000",
+          "person": "p4",
+          "current_edge": "long",
+          "current_edge_normal": "1",
+          "new_lane": "long_0",
+          "new_pos": "2507.2535256730484",
+          "new_dir": "1",
+          "input_lat": "1.7976931348623157e+308",
+          "input_unspecified": "1",
+          "input_random": "0",
+          "legacy": "0",
+          "stages": "4",
+          "remaining": "1",
+          "new_departed": "11000",
+          "prior_evaluated": "1",
+          "prior_type": "2",
+          "prior_edge_null": "0",
+          "prior_edge": "long",
+          "edge_same": "1",
+          "prior_arrived": "11000",
+          "time_same": "1",
+          "state_evaluated": "1",
+          "state_null": "0",
+          "person_same": "1",
+          "prior_person": "p4",
+          "old_lane_null": "0",
+          "old_lane": "long_0",
+          "lane_same": "1",
+          "old_pos": "2507.2535256730484",
+          "position_same": "1",
+          "old_lat": "1.28",
+          "inherited": "1",
+          "final_lat": "1.28",
+          "final_dir": "1"
+        }
+      ],
+      "derived_trace": [
+        {
+          "sequence": 1,
+          "native_sim_step": 0,
+          "person": "p3",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 2,
+          "native_sim_step": 0,
+          "person": "p4",
+          "branch": "default",
+          "inherited": false,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 3,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 4,
+          "native_sim_step": 11000,
+          "person": "p3",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.08,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 5,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        },
+        {
+          "sequence": 6,
+          "native_sim_step": 11000,
+          "person": "p4",
+          "branch": "inherit",
+          "inherited": true,
+          "final_raw_lateral": 1.28,
+          "new_route_direction": 1
+        }
+      ],
+      "patched_trace_all_actor_rows_equal": true,
+      "patched_trace_all_receipts_equal": true,
+      "accounting": {
+        "control": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "patched": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        },
+        "trace": {
+          "steps": 101,
+          "departed": [
+            "p3",
+            "p4"
+          ],
+          "arrived": [],
+          "active_final": [
+            "p3",
+            "p4"
+          ]
+        }
+      },
+      "warnings": {
+        "control": [],
+        "patched": [],
+        "trace": []
+      },
+      "observed_group_contract": false,
+      "classification": "UNEXERCISED_FALSE_POSITION_OR_TIME_GUARD; API-requested departPos does not become constructor position"
+    }
+  ],
+  "primary_artifacts_rehashed": 315,
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "native_regression_complete": false,
+  "audit_source_sha256": "8a0f170e1d31409e30493c2ea94ea37d89328de9367ae168b30ff03f94a463af",
+  "audit_helpers_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_guard_audit.py": "afa28aff14a08e765ebeeef8690db883b3326984a2e6f3f033e86ea31e6b825a",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_trace_check.py": "a441c0b4b2645eab98f1fd4f18e8217b58916d4929868441b9bd870d2cdfa52c"
+  },
+  "limitations": [
+    "Native pointer equality/null booleans are observations, not independent debugger memory-address reads",
+    "Observation window is finite; no complete evacuation or method-effect claim",
+    "Speed is native longitudinal getter, not Euclidean XY speed"
+  ],
+  "status": "OBSERVED_CONTRACTS_PASS_WITH_ONE_UNEXERCISED_GROUP",
+  "native_runs": 45,
+  "groups_requested": [
+    "explicit_lateral",
+    "forward_reverse",
+    "internal_walkingarea",
+    "legacy",
+    "multiple_people_order",
+    "natural_walk_wait_walk",
+    "natural_walk_walk",
+    "new_depart",
+    "non_target_lane_edge",
+    "position_time_mismatch",
+    "random_lateral",
+    "reverse_forward",
+    "same_direction"
+  ],
+  "groups_observed": [
+    "explicit_lateral",
+    "forward_reverse",
+    "internal_walkingarea",
+    "legacy",
+    "multiple_people_order",
+    "natural_walk_wait_walk",
+    "natural_walk_walk",
+    "new_depart",
+    "non_target_lane_edge",
+    "random_lateral",
+    "reverse_forward",
+    "same_direction"
+  ],
+  "groups_unexercised": [
+    "position_time_mismatch"
+  ],
+  "warning_classification": "Internal technical replacement: convertTraCIStage constructs with p->getArrivalPos (old final position), then MSStageWalking constructor warns before proceed restores actual previous current-edge position. Same in all3 binaries; finite window/accounting/trace checked. No core warning whitelist changed.",
+  "native_api_source_sha256": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\libsumo\\Person.cpp": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSStageWalking.cpp": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386"
+  }
+}

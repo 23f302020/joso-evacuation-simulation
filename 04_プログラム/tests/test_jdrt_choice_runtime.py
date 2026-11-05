@@ -12,9 +12,18 @@ import gzip
 import networkx as nx
 
 from scripts import jdrt_realtime_choice as runtime
+# The preflight loads this module explicitly; include the observation contracts.
+from tests.test_choice_transition_timing import TransitionTimingTests, NativeTransitionFixtureTests, NativeArrivalTailTests
 
 
 class RuntimeContracts(unittest.TestCase):
+    def test_emergency_deceleration_is_native_observation_not_wished_fallback(self):
+        constants = types.SimpleNamespace(VAR_DECEL=1, VAR_EMERGENCY_DECEL=2)
+        self.assertEqual(runtime.observed_emergency_deceleration({1: 3., 2: 7.}, constants), 7.)
+        for data in ({1: 3.}, {1: 3., 2: math.nan}, {1: 3., 2: 0.}, {1: 3., 2: 2.}):
+            with self.subTest(data=data), self.assertRaises(RuntimeError):
+                runtime.observed_emergency_deceleration(data, constants)
+
     def test_smoke_shortening_preserves_whole_vehicle_readiness(self):
         people = [{'person_id': 'driver', 'vehicle_id': 'car'},
                   {'person_id': 'walker', 'vehicle_id': ''},
@@ -322,7 +331,7 @@ class RuntimeContracts(unittest.TestCase):
         self.assertEqual(runtime.traffic_observation_state(0, False, False, True), 'departure_pending')
         self.assertEqual(runtime.traffic_observation_state(0, True, False, True), 'onroad')
 
-    def test_sumo_retained_route_prefix_is_returned_to_the_controller(self):
+    def test_backend_route_is_returned_after_remaining_route_id_assignment(self):
         connection = Mock()
         connection.vehicle.getRoadID.return_value = 'b'
         connection.vehicle.isStopped.return_value = False
@@ -333,7 +342,41 @@ class RuntimeContracts(unittest.TestCase):
         with patch.dict(sys.modules, {'traci.constants': constants}):
             actual = runtime.set_vehicle_route(connection, 'v', ['b', 'c'], {'c': (0, 100)}, 50)
         self.assertEqual(actual, ['a', 'b', 'c'])
-        connection.vehicle.setRoute.assert_called_once_with('v', ['b', 'c'])
+        connection.route.add.assert_called_once()
+        route_id, remaining = connection.route.add.call_args.args
+        self.assertEqual(remaining, ['b', 'c'])
+        connection.vehicle.setRouteID.assert_called_once_with('v', route_id)
+        connection.vehicle.setRoute.assert_not_called()
+
+    def test_remaining_route_ids_are_unique_for_repeated_changes(self):
+        connection = Mock()
+        connection.vehicle.getRoadID.return_value = 'b'
+        connection.vehicle.isStopped.return_value = False
+        connection.vehicle.getStops.return_value = ()
+        connection.vehicle.getRoute.return_value = ('b', 'c')
+        constants = types.ModuleType('traci.constants')
+        constants.STOP_PARKING = 1
+        with patch.dict(sys.modules, {'traci.constants': constants}):
+            for _ in range(2):
+                runtime.set_vehicle_route(connection, 'v', ['b', 'c'], {'c': (0, 100)}, 50)
+        ids = [call.args[0] for call in connection.route.add.call_args_list]
+        self.assertEqual(len(ids), 2)
+        self.assertNotEqual(ids[0], ids[1])
+
+    def test_remaining_route_native_rejection_is_not_suppressed(self):
+        connection = Mock()
+        connection.vehicle.getRoadID.return_value = 'b'
+        connection.vehicle.isStopped.return_value = False
+        connection.vehicle.getStops.return_value = ()
+        connection.vehicle.getRoute.return_value = ('b', 'c')
+        connection.vehicle.setRouteID.side_effect = RuntimeError('future edge closed')
+        constants = types.ModuleType('traci.constants')
+        constants.STOP_PARKING = 1
+        with patch.dict(sys.modules, {'traci.constants': constants}):
+            with self.assertRaisesRegex(RuntimeError, 'future edge closed'):
+                runtime.set_vehicle_route(connection, 'v', ['b', 'c'], {'c': (0, 100)}, 50)
+        connection.vehicle.setRouteID.assert_called_once()
+        connection.vehicle.setStop.assert_not_called()
 
     def test_no_forecast_modes_do_not_even_iterate_future_table(self):
         class FutureTable:

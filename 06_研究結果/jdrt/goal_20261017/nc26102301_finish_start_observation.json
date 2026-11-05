@@ -1,0 +1,43 @@
+{
+  "at_jst": "2026-10-23T10:11:54.4173068+09:00",
+  "session_id": 63586,
+  "operation": {
+    "run_id": "nc26102301",
+    "pid": 6092,
+    "status": "RUNNING",
+    "commands": [
+      {
+        "command": "check",
+        "status": "COMPLETED",
+        "run_id": "nc26102301",
+        "validation_report": null
+      }
+    ],
+    "helper_sha256": "e7545e936b68929aadf8247490407b3d0c64d6f1f2adde591862302e332c815f",
+    "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "formal_record_result": null,
+    "record_attempted": false,
+    "next_start_performed": false,
+    "observed_at_jst": "2026-10-23T10:09:41.559536+09:00",
+    "phase": "validate"
+  },
+  "owner": [
+    {
+      "ProcessId": 6092,
+      "ParentProcessId": 32356,
+      "CreationDate": "2026-10-23T10:09:39.503947+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py --project-root . --run-id nc26102301"
+    }
+  ],
+  "child": [
+    {
+      "ProcessId": 25124,
+      "ParentProcessId": 12012,
+      "CreationDate": "2026-10-23T10:09:41.610666+09:00",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" validate --run-id nc26102301 --purpose core",
+      "UserModeTime": 1081406250,
+      "KernelModeTime": 208906250
+    }
+  ],
+  "native_run_restarted": false
+}

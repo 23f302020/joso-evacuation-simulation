@@ -1,0 +1,78 @@
+{
+  "at_jst": "2026-10-28T01:09:23.034789+09:00",
+  "action": "detailed_same_core_monitor",
+  "run_id": "nv26102807",
+  "cell_id": "fixed_reference_u50_r2p0_seed23423",
+  "pid": 22964,
+  "skill_check": {
+    "run_id": "nv26102807",
+    "status": "RUNNING",
+    "pid_alive": true,
+    "progress": {
+      "at_jst": "2026-10-28T01:09:21.959381+09:00",
+      "run_id": "nv26102807",
+      "time_sec": 5280.0,
+      "end_sec": 21600,
+      "wall_sec": 306.69108220003545,
+      "counts": {
+        "steps": 10560,
+        "controller_ticks": 5281,
+        "snapshots": 89,
+        "teleports": 0,
+        "collisions": 0,
+        "transition_rows": 183995,
+        "closed_entry_rows": 0,
+        "ambiguous_transitions": 0,
+        "candidate_rows": 10971,
+        "dispatch_cycles": 89,
+        "missing_vehicle_subscriptions": 0,
+        "missing_person_subscriptions": 0,
+        "reentry_pending_frames": 41,
+        "departure_pending_frames": 258,
+        "snapshot_actor_rows": 20066
+      },
+      "people_states": {
+        "capacity_rejected": 932,
+        "not_ready": 3138,
+        "no_origin_connection": 436,
+        "admitted": 439,
+        "travelling_car": 241,
+        "travelling_walk": 219,
+        "no_route": 555,
+        "waiting_origin": 108,
+        "boarding": 3,
+        "boundary_exit": 5312,
+        "walk_limit": 286,
+        "initial_or_current_closed": 296
+      },
+      "request_states": {
+        "cancelled_timeout": 490,
+        "served": 19,
+        "rejected_input": 48,
+        "boarding": 3,
+        "pending": 108
+      }
+    },
+    "error": null
+  },
+  "input_population_rows": 11965,
+  "integrity": {
+    "input_manifest": true,
+    "archived_READY": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "anomaly_flags": [],
+  "manifest_sha256_at_observation": "f031ef20b8f73b74f318303530b70b7c00b563c31810f5a997eff0aee0fa8764",
+  "current_run_bytes": 205182694,
+  "free_bytes": 253097861120,
+  "native_error_lines": 0,
+  "native_log_bytes": 0,
+  "driver_stderr_bytes": 518,
+  "monitor_source_sha256": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+  "formal_validation_or_adoption": false,
+  "limitations": "Observed progress snapshot and error prefixes only; formal validate required after completion"
+}

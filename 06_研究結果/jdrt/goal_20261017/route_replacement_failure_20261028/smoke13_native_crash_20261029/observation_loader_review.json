@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-29T21:35:53.108478+09:00",
+  "status": "SINGLE_OBSERVATIONAL_TARGET_GATE_REVIEW9_CONTRACTS_PASS_PENDING_ACTUAL_LOADER",
+  "before_sha256": "23a303dfc6754aa290a0e8172f2d5c9f4b5fc31dedd63dbbb5d016a37c6b906e",
+  "after_sha256": "89e6edb90700a872a615f10d806f73f1fd0ec3d384f7fb626f1595dde93b4999",
+  "tests_sha256": "cd7514ed19b0b21a7184beab647dc043e7e304229059f2cbb5e4c906d5ba15d6",
+  "actual_RED": "diag02_loader01.stderr.log",
+  "RED_output_directory_not_created": true,
+  "GREEN": "observation_loader_unit_GREEN.log",
+  "unit_tests": 9,
+  "unchanged_parser_contracts": 4,
+  "new_target_contracts": 5,
+  "review": {
+    "correctness": "Only explicit observation-only role with exactly one sumo and technical_ready false chooses unprefixed original import phase. Other builds still require two targets. Original actual path/SHA/size, raw import log/PE set, system DLL exports and clean-path version checks remain.",
+    "research_separation": "No flags or selected bundle/source/conditions changed; observed trace binary cannot be packaged/adopted by the strict paired production proof.",
+    "minimality": "One target-selection function, one call, loop tuple and phase lookup. No parser normalization or permission bypass.",
+    "source_history": "Original loader archived verbatim. Legacy ImportCoverage class retained; only new target tests/import added. Target helper was not captured by current native pair.",
+    "effects": "No network, global PATH or production writes. Actual loader verification uses a fresh output; preserves failed attempt01 logs."
+  },
+  "findings_requiring_fix": [],
+  "current_common5_config_inputs_unchanged": true,
+  "actual_loader_completed": false,
+  "native_behavior_verified": false,
+  "technical_ready": false
+}

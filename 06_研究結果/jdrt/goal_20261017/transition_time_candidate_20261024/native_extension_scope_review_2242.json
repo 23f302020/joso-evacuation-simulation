@@ -1,0 +1,45 @@
+{
+  "at_jst": "2026-10-24T22:41:39.236806+09:00",
+  "status": "SCOPED_STATIC_REVIEW_NOT_READY",
+  "functions": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "old_sha256": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+      "new_sha256": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+      "changed": [
+        "run"
+      ],
+      "added": [
+        "passenger_transition_links",
+        "passenger_transition_source"
+      ],
+      "removed": [],
+      "native_callsite_ASTs_unchanged": true,
+      "nested_helpers_changed": [
+        "observe_transition"
+      ]
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "old_sha256": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+      "new_sha256": "3e475e4045ecbcaa87cd25025e2653b308664b1c22e1169f97b09e24e21b8c22",
+      "changed": [
+        "audit_movement_events",
+        "audit_fixture_timing"
+      ],
+      "added": [
+        "native_transition_backlinks",
+        "verified_internal_source",
+        "audit_transition_fixture"
+      ],
+      "removed": []
+    }
+  },
+  "findings_fixed": [
+    "native transition table filename corrected to actual transitions.csv.gz before native start",
+    "additional contracts explicitly imported by preflight runtime test module"
+  ],
+  "remaining_findings": [
+    "new fixture arrival check must respect already registered native-start/controller-end .5s clock offset; TDD RED pending terminal"
+  ],
+  "scope": "static callsite/AST/control isolation only, no full trajectory or acceptance proof",
+  "new_core_permitted": false
+}

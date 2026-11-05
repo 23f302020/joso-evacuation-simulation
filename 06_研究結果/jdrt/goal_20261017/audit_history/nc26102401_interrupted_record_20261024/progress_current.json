@@ -1,0 +1,35 @@
+{
+  "at_jst": "2026-10-24T17:10:53.959710+09:00",
+  "classification": "PROGRESS_AND_VERIFIED_WAIT",
+  "work": [
+    "confirmed orphan precommit owner absence and preserved21originals",
+    "dedicated recover-writer archived original lock",
+    "same record-only owner/session running mandatory independent recalculation",
+    "read-only recovery audit extension27testsPASS",
+    "G7population mapping36sources26links verified; proxy generalization math exact artificial checks and latest39sources29links"
+  ],
+  "session_id": 84801,
+  "processes": [
+    {
+      "ProcessId": 35396,
+      "CreationDate": "/Date(1792829052145)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 06_研究結果/jdrt/goal_20261017/audit_history/nc26102401_interrupted_record_20261024/record_once.py",
+      "UserModeTime": 625000,
+      "KernelModeTime": 468750
+    },
+    {
+      "ProcessId": 516,
+      "CreationDate": "/Date(1792829052354)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" record --run-id nc26102401",
+      "UserModeTime": 3645781250,
+      "KernelModeTime": 263750000
+    }
+  ],
+  "run_id": "nc26102401",
+  "formal_recorded": 7,
+  "record_status": "RUNNING",
+  "phase": "record",
+  "next_action": "follow session84801/owner35396/record516; afterterminal RECORDED_VERIFIED run reader with --recovery-operation then fresh status, archive/sync MD→HTML and nextsinglecell gate",
+  "no_new_core_started": true,
+  "no_external_send_or_publish": true
+}

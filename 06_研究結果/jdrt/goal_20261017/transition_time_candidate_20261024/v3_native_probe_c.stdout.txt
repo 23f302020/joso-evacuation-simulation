@@ -1,0 +1,46 @@
+{
+  "protocol": "realtime_choice_fixture_suite_v1",
+  "purpose": "technical_fixture_suite",
+  "run_id": "nt261024c",
+  "pid": 34044,
+  "status": "COMPLETED",
+  "started_at_jst": "2026-10-24T22:42:36.452403+09:00",
+  "research_adoption_permitted": false,
+  "factory_sha256": "5ed0e5f1b49340218079dbfb8e2896a82faa4c2a74fef44bf4a26798f9ac8691",
+  "cases": [
+    {
+      "case": "car_transition_arrival",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "private_car_completes_without_reroute": true,
+        "arrival_skips_final_external_frame": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "061809b5ec983780bbc99d80b4f9c32722255d7c569b8eedb81360f418e25de2",
+      "child_run_id": "nt261024c_c29"
+    }
+  ],
+  "finished_at_jst": "2026-10-24T22:43:26.388795+09:00"
+}

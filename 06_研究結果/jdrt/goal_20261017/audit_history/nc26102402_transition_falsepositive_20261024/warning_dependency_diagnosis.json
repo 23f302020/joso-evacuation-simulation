@@ -1,0 +1,70 @@
+{
+  "at_jst": "2026-10-24T18:01:43.550320+09:00",
+  "status": "WARNING_FAILURE_CASCADE_DIAGNOSED_NOT_FORMAL_PASS",
+  "native_walking_version_supported": true,
+  "receipt_keys": [
+    {
+      "key": [
+        "b_origin_0285_type3_0005",
+        "4636#3",
+        "33.03"
+      ],
+      "expected": 2,
+      "observed": 2,
+      "times": [
+        2706.5
+      ],
+      "purposes": [
+        "old_remaining",
+        "new_route"
+      ],
+      "matches_unmodified_classifier_conditions": true
+    },
+    {
+      "key": [
+        "b_origin_0285_type4_0004",
+        "11340#1",
+        "33.03"
+      ],
+      "expected": 2,
+      "observed": 2,
+      "times": [
+        3617.5
+      ],
+      "purposes": [
+        "old_remaining",
+        "new_route"
+      ],
+      "matches_unmodified_classifier_conditions": true
+    },
+    {
+      "key": [
+        "b_origin_0285_type4_0004",
+        "3081",
+        "33.03"
+      ],
+      "expected": 2,
+      "observed": 2,
+      "times": [
+        4506.5
+      ],
+      "purposes": [
+        "old_remaining",
+        "new_route"
+      ],
+      "matches_unmodified_classifier_conditions": true
+    }
+  ],
+  "observed_matches_expected_multiset": true,
+  "unknown_only_these_constructor_warnings": true,
+  "cause": "audit_native_logs populates expected_walk only when movement_report.status==PASS; the single movement timing failure leaves this dictionary empty",
+  "scope": "conditional dependency diagnosis; original movement/native INVALID retained; no status forced to PASS and no new formal validation",
+  "original_validate_exit_code": 1,
+  "original_status": "INVALID",
+  "original_report": "06_研究結果/jdrt/goal_20261017/audit_history/nc26102402_transition_falsepositive_20261024/original_validate.stdout.json",
+  "original_report_sha256": "6d101ceea4c18da131fe088b55a7333ebac7a69be5ed9d14481060677454d481",
+  "formal_report_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102402_20261024T175938614301.json",
+  "source_validator_sha256": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+  "minimal_repair_scope": "producer/independent transition timestamp reconstruction; keep native-warning gate unchanged",
+  "formal_adoption_permitted": false
+}

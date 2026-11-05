@@ -1,0 +1,53 @@
+{
+  "at_jst": "2026-10-21T15:49:51.455449+09:00",
+  "run_id": "ch261021_001",
+  "status_at_measurement": "COMPLETED",
+  "manifest_sha256_at_completion": "c42db7cf7c240447dfd050de7402838dcec4ba6704ee18ce314e6527c6f6e0f7",
+  "manifest_started_at_jst": "2026-10-21T15:32:04.876949+09:00",
+  "manifest_finished_at_jst": "2026-10-21T15:45:02.817903+09:00",
+  "launch_reservation_at_jst": "2026-10-21T15:31:45.318183+09:00",
+  "simulation_horizon_sec": 21600,
+  "observed_final_sim_sec": 21600.0,
+  "loop_wall_sec": 759.2171855999914,
+  "directory_total_bytes": 384295393,
+  "largest_files": [
+    {
+      "path": "actor_observations.csv.gz",
+      "bytes": 293065331
+    },
+    {
+      "path": "edge_observations.csv.gz",
+      "bytes": 66894501
+    },
+    {
+      "path": "events.jsonl",
+      "bytes": 13247965
+    },
+    {
+      "path": "transitions.csv.gz",
+      "bytes": 3336986
+    },
+    {
+      "path": "person_results.csv",
+      "bytes": 2406472
+    },
+    {
+      "path": "tripinfo.xml",
+      "bytes": 2033750
+    },
+    {
+      "path": "common_realization.csv",
+      "bytes": 1539282
+    },
+    {
+      "path": "snapshot_actor_observations.csv.gz",
+      "bytes": 764264
+    }
+  ],
+  "population_from_registered_realization": 11965,
+  "progress_state_sum": 11965,
+  "scope": "Operational first full R0 timing/storage only, not formal adoption or other-scenario/all70 size guarantee",
+  "native_and_python_end": "CLI manifestCOMPLETED and previous display pid_aliveFalse; historical PIDs27792/11972 are not treated as live",
+  "validation_handle": 25565,
+  "formal_adoption": false
+}

@@ -1,0 +1,114 @@
+{
+  "at_jst": "2026-10-21T20:29:03.840936+09:00",
+  "source_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "official_source_zip": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\downloads\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3.zip",
+  "archive_sha256": "f6f630cb9f3e31770c4a5238db7645845c527f6b440f722a7324be1902e592bd",
+  "files": [
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\MSVehicle.cpp",
+      "zip_member": "sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.cpp",
+      "source_sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+      "matches_official_zip": true
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\MSNet.cpp",
+      "zip_member": "sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSNet.cpp",
+      "source_sha256": "fdf62a7626e2d1b31edaf695198e27f4690c2a86a1925e0142852a80449cd6f8",
+      "matches_official_zip": true
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\libsumo\\Simulation.cpp",
+      "zip_member": "sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/libsumo/Simulation.cpp",
+      "source_sha256": "bb71f78d7dee905a56fcf1bd4a463dfa7faf799fa5fb2b9fc2133746c12ff916",
+      "matches_official_zip": true
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\utils\\common\\SUMOTime.h",
+      "zip_member": "sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/utils/common/SUMOTime.h",
+      "source_sha256": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+      "matches_official_zip": true
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\utils\\vehicle\\SUMOVTypeParameter.cpp",
+      "zip_member": "sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/utils/vehicle/SUMOVTypeParameter.cpp",
+      "source_sha256": "60d962ad48895211e4d2889897ecafd710011d4a89d0f308b736179825dde1b1",
+      "matches_official_zip": true
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\MSVehicleType.cpp",
+      "zip_member": "sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicleType.cpp",
+      "source_sha256": "3ed0ac68e71f1c97984735fe640ae695e2ed2552a5af6b77f5bfad8f23a2c46b",
+      "matches_official_zip": true
+    },
+    {
+      "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\microsim\\MSFrame.cpp",
+      "zip_member": "sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSFrame.cpp",
+      "source_sha256": "03d2a536a4bfd0103360ad095977528f64b4486ad82e4eb1747b14e1263c2d6b",
+      "matches_official_zip": true
+    }
+  ],
+  "excerpts": [
+    {
+      "source": "src/microsim/MSVehicle.cpp",
+      "first_line": 4895,
+      "last_line": 4935,
+      "text": "MSVehicle::updateState(double vNext, bool parking) {\n    // update position and speed\n    double deltaPos; // positional change\n    if (MSGlobals::gSemiImplicitEulerUpdate) {\n        // euler\n        deltaPos = SPEED2DIST(vNext);\n    } else {\n        // ballistic\n        deltaPos = getDeltaPos(SPEED2ACCEL(vNext - myState.mySpeed));\n    }\n\n    // the *mean* acceleration during the next step (probably most appropriate for emission calculation)\n    // NOTE: for the ballistic update vNext may be negative, indicating a stop.\n    myAcceleration = SPEED2ACCEL(MAX2(vNext, 0.) - myState.mySpeed);\n\n#ifdef DEBUG_EXEC_MOVE\n    if (DEBUG_COND) {\n        std::cout << SIMTIME << \" updateState() for veh '\" << getID() << \"': deltaPos=\" << deltaPos\n                  << \" pos=\" << myState.myPos << \" newPos=\" << myState.myPos + deltaPos << std::endl;\n    }\n#endif\n    double decelPlus = -myAcceleration - getCarFollowModel().getMaxDecel() - NUMERICAL_EPS;\n    if (decelPlus > 0) {\n        const double previousAcceleration = SPEED2ACCEL(myState.mySpeed - myState.myPreviousSpeed);\n        if (myAcceleration + NUMERICAL_EPS < previousAcceleration) {\n            // vehicle brakes beyond wished maximum deceleration (only warn at the start of the braking manoeuvre)\n            decelPlus += 2 * NUMERICAL_EPS;\n            const double emergencyFraction = decelPlus / MAX2(NUMERICAL_EPS, getCarFollowModel().getEmergencyDecel() - getCarFollowModel().getMaxDecel());\n            if (emergencyFraction >= MSGlobals::gEmergencyDecelWarningThreshold) {\n                WRITE_WARNINGF(TL(\"Vehicle '%' performs emergency braking on lane '%' with decel=%, wished=%, severity=%, time=%.\"),\n                               //+ \" decelPlus=\" + toString(decelPlus)\n                               //+ \" prevAccel=\" + toString(previousAcceleration)\n                               //+ \" reserve=\" + toString(MAX2(NUMERICAL_EPS, getCarFollowModel().getEmergencyDecel() - getCarFollowModel().getMaxDecel()))\n                               getID(), myLane->getID(), -myAcceleration, getCarFollowModel().getMaxDecel(), emergencyFraction, time2string(SIMSTEP));\n                MSNet::getInstance()->getVehicleControl().registerEmergencyBraking();\n            }\n        }\n    }\n\n    myState.myPreviousSpeed = myState.mySpeed;\n    myState.mySpeed = MAX2(vNext, 0.);"
+    },
+    {
+      "source": "src/microsim/MSNet.cpp",
+      "first_line": 778,
+      "last_line": 786,
+      "text": "MSNet::simulationStep(const bool onlyMove) {\n    if (myStepCompletionMissing) {\n        postMoveStep();\n        myStepCompletionMissing = false;\n        return;\n    }\n#ifdef DEBUG_SIMSTEP\n    std::cout << SIMTIME << \": MSNet::simulationStep() called\"\n              << \", myStep = \" << myStep"
+    },
+    {
+      "source": "src/microsim/MSNet.cpp",
+      "first_line": 850,
+      "last_line": 912,
+      "text": "\n        // compute safe velocities for all vehicles for the next few lanes\n        // also register ApproachingVehicleInformation for all links\n        myEdges->planMovements(myStep);\n\n        // register junction approaches based on planned velocities as basis for right-of-way decision\n        myEdges->setJunctionApproaches();\n\n        // decide right-of-way and execute movements\n        myEdges->executeMovements(myStep);\n        if (MSGlobals::gCheck4Accidents) {\n            myEdges->detectCollisions(myStep, STAGE_MOVEMENTS);\n        }\n\n        // vehicles may change lanes\n        myEdges->changeLanes(myStep);\n\n        if (MSGlobals::gCheck4Accidents) {\n            myEdges->detectCollisions(myStep, STAGE_LANECHANGE);\n        }\n    }\n    // flush arrived meso vehicles and micro vehicles that were removed due to collision\n    myVehicleControl->removePending();\n    loadRoutes();\n\n    // persons\n    if (myPersonControl != nullptr && myPersonControl->hasTransportables()) {\n        myPersonControl->checkWaiting(this, myStep);\n    }\n    // containers\n    if (myContainerControl != nullptr && myContainerControl->hasTransportables()) {\n        myContainerControl->checkWaiting(this, myStep);\n    }\n    if (MSRailSignalControl::hasInstance()) {\n        MSRailSignalControl::getInstance().resetWaitRelations();\n        // preserve waitRelation from insertion for the next step\n    }\n    // insert vehicles\n    myInserter->determineCandidates(myStep);\n    myInsertionEvents->execute(myStep);\n#ifdef HAVE_FOX\n    MSRoutingEngine::waitForAll();\n#endif\n    myInserter->emitVehicles(myStep);\n    if (MSGlobals::gCheck4Accidents && !MSGlobals::gUseMesoSim) {\n        //myEdges->patchActiveLanes(); // @note required to detect collisions on lanes that were empty before insertion. wasteful?\n        myEdges->detectCollisions(myStep, STAGE_INSERTIONS);\n    }\n    MSVehicleTransfer::getInstance()->checkInsertions(myStep);\n\n    // execute endOfTimestepEvents\n    myEndOfTimestepEvents->execute(myStep);\n\n    if (myLogExecutionTime) {\n        myTraCIStepDuration -= SysUtils::getCurrentMillis();\n    }\n    if (onlyMove) {\n        myStepCompletionMissing = true;\n        return;\n    }\n    if (t != nullptr && lastTraCICmd == libsumo::CMD_EXECUTEMOVE) {\n        t->processCommands(myStep, true);\n    }"
+    },
+    {
+      "source": "src/microsim/MSNet.cpp",
+      "first_line": 916,
+      "last_line": 944,
+      "text": "\nvoid\nMSNet::postMoveStep() {\n    const int numControlled = libsumo::Helper::postProcessRemoteControl();\n    if (numControlled > 0 && MSGlobals::gCheck4Accidents) {\n        myEdges->detectCollisions(myStep, STAGE_REMOTECONTROL);\n    }\n    if (myLogExecutionTime) {\n        myTraCIStepDuration += SysUtils::getCurrentMillis();\n        myTraCIMillis += myTraCIStepDuration;\n    }\n    if (MSGlobals::gCheck4Accidents && !MSGlobals::gUseMesoSim) {\n        // collisions from the previous step were kept to avoid duplicate\n        // warnings. we must remove them now to ensure correct output.\n        removeOutdatedCollisions();\n    }\n    // update and write (if needed) detector values\n    mySimStepDuration = SysUtils::getCurrentMillis() - mySimStepDuration;\n    writeOutput();\n\n    if (myLogExecutionTime) {\n        myVehiclesMoved += myVehicleControl->getRunningVehicleNo();\n        if (myPersonControl != nullptr) {\n            myPersonsMoved += myPersonControl->getRunningNumber();\n        }\n    }\n    myStep += DELTA_T;\n}\n"
+    },
+    {
+      "source": "src/libsumo/Simulation.cpp",
+      "first_line": 240,
+      "last_line": 250,
+      "text": "int\nSimulation::getCurrentTime() {\n    return (int)MSNet::getInstance()->getCurrentTimeStep();\n}\n\n\ndouble\nSimulation::getTime() {\n    return SIMTIME;\n}\n"
+    },
+    {
+      "source": "src/utils/common/SUMOTime.h",
+      "first_line": 55,
+      "last_line": 64,
+      "text": "#define STEPS2TIME(x) (static_cast<double>(x)/1000.)\n// static cast to long long int truncates so we must pad away from 0 for correct rounding\n#define TIME2STEPS(x) (static_cast<SUMOTime>((x) * 1000. + ((x) >= 0 ? 0.5 : -0.5)))\n#define STEPFLOOR(x) (static_cast<SUMOTime>((x)/DELTA_T)*DELTA_T)\n#define STEPS2MS(x) (x)\n\n#define SIMSTEP MSNet::getInstance()->getCurrentTimeStep()\n#define SIMTIME STEPS2TIME(MSNet::getInstance()->getCurrentTimeStep())\n\n// ==========================================================================="
+    },
+    {
+      "source": "src/utils/vehicle/SUMOVTypeParameter.cpp",
+      "first_line": 979,
+      "last_line": 1025,
+      "text": "SUMOVTypeParameter::getDefaultEmergencyDecel(const SUMOVehicleClass vc, double decel, double defaultOption) {\n    if (defaultOption == VTYPEPARS_DEFAULT_EMERGENCYDECEL_DEFAULT) {\n        double vcDecel;\n        switch (vc) {\n            case SVC_PEDESTRIAN:\n            case SVC_WHEELCHAIR:\n                vcDecel = 5.;\n                break;\n            case SVC_BICYCLE:\n            case SVC_SCOOTER:\n                vcDecel = 7.;\n                break;\n            case SVC_MOPED:\n            case SVC_MOTORCYCLE:\n                vcDecel = 10.;\n                break;\n            case SVC_TRUCK:\n            case SVC_TRAILER:\n            case SVC_BUS:\n            case SVC_COACH:\n            case SVC_TRAM:\n            case SVC_RAIL_URBAN:\n                vcDecel = 7.;\n                break;\n            case SVC_RAIL:\n            case SVC_RAIL_ELECTRIC:\n            case SVC_RAIL_FAST:\n                vcDecel = 5.;\n                break;\n            case SVC_SHIP:\n                vcDecel = 1.;\n                break;\n            default:\n                vcDecel = 9.;\n        }\n        return MAX2(decel, vcDecel);\n    } else if (defaultOption == VTYPEPARS_DEFAULT_EMERGENCYDECEL_DECEL) {\n        return decel;\n    } else {\n        // value already checked in MSFrame::checkOptions\n        return MAX2(decel, defaultOption);\n    }\n}\n\n\n\ndouble"
+    },
+    {
+      "source": "src/microsim/MSVehicleType.cpp",
+      "first_line": 338,
+      "last_line": 351,
+      "text": "            WRITE_WARNINGF(TL(\"The vType '%' has a 'vehicleMass' parameter, which is deprecated. Please use the 'mass' attribute (for the empty mass) and the 'loading' parameter, if needed.\"), from.id);\n            from.mass = from.getDouble(\"vehicleMass\", from.mass);\n            from.parametersSet |= VTYPEPARS_MASS_SET;\n        }\n    }\n    MSVehicleType* vtype = new MSVehicleType(from);\n    const double decel = from.getCFParam(SUMO_ATTR_DECEL, SUMOVTypeParameter::getDefaultDecel(from.vehicleClass));\n    const double emergencyDecel = from.getCFParam(SUMO_ATTR_EMERGENCYDECEL, SUMOVTypeParameter::getDefaultEmergencyDecel(from.vehicleClass, decel, MSGlobals::gDefaultEmergencyDecel));\n    // by default decel and apparentDecel are identical\n    const double apparentDecel = from.getCFParam(SUMO_ATTR_APPARENTDECEL, decel);\n\n    if (emergencyDecel < decel) {\n        WRITE_WARNINGF(TL(\"Value of 'emergencyDecel' (%) should be higher than 'decel' (%) for vType '%'.\"), toString(emergencyDecel), toString(decel), from.id);\n    }"
+    },
+    {
+      "source": "src/microsim/MSFrame.cpp",
+      "first_line": 540,
+      "last_line": 547,
+      "text": "\n    oc.doRegister(\"default.speeddev\", new Option_Float(-1));\n    oc.addDescription(\"default.speeddev\", \"Processing\", TL(\"Select default speed deviation. A negative value implies vClass specific defaults (0.1 for the default passenger class)\"));\n\n    oc.doRegister(\"default.emergencydecel\", new Option_String(\"default\"));\n    oc.addDescription(\"default.emergencydecel\", \"Processing\", TL(\"Select default emergencyDecel value among ('decel', 'default', FLOAT) which sets the value either to the same as the deceleration value, a vClass-class specific default or the given FLOAT in m/s^2\"));\n\n    oc.doRegister(\"overhead-wire.solver\", new Option_Bool(true));"
+    },
+    {
+      "source": "src/microsim/MSFrame.cpp",
+      "first_line": 1193,
+      "last_line": 1210,
+      "text": "    double givenDefaultActionStepLength = oc.getFloat(\"default.action-step-length\");\n    MSGlobals::gActionStepLength = SUMOVehicleParserHelper::processActionStepLength(givenDefaultActionStepLength);\n\n    const std::string defaultEmergencyDecelOption = OptionsCont::getOptions().getString(\"default.emergencydecel\");\n    if (defaultEmergencyDecelOption == \"default\") {\n        MSGlobals::gDefaultEmergencyDecel = VTYPEPARS_DEFAULT_EMERGENCYDECEL_DEFAULT;\n    } else if (defaultEmergencyDecelOption == \"decel\") {\n        MSGlobals::gDefaultEmergencyDecel = VTYPEPARS_DEFAULT_EMERGENCYDECEL_DECEL;\n    } else {\n        // value already checked in checkOptions()\n        MSGlobals::gDefaultEmergencyDecel = StringUtils::toDouble(defaultEmergencyDecelOption);\n    }\n    MSGlobals::gNumSimThreads = oc.getInt(\"threads\");\n    MSGlobals::gNumThreads = MAX2(MSGlobals::gNumSimThreads, oc.getInt(\"device.rerouting.threads\"));\n\n    MSGlobals::gEmergencyDecelWarningThreshold = oc.getFloat(\"emergencydecel.warning-threshold\");\n    MSGlobals::gMinorPenalty = oc.getFloat(\"weights.minor-penalty\");\n    MSGlobals::gTLSPenalty = oc.getFloat(\"weights.tls-penalty\");"
+    }
+  ],
+  "scope": "selected unmodified vehicle/clock/default-source bytes; full native build provenance remains the separately frozen bundle proof",
+  "no_runtime_change": true
+}

@@ -1,0 +1,34 @@
+{
+  "run_id": "sp261029a_c26",
+  "status": "COMPLETED",
+  "pid_alive": false,
+  "progress": {
+    "at_jst": "2026-10-29T20:37:50.951615+09:00",
+    "run_id": "sp261029a_c26",
+    "time_sec": 1500.0,
+    "end_sec": 1500,
+    "wall_sec": 4.493127099936828,
+    "counts": {
+      "steps": 3000,
+      "controller_ticks": 1501,
+      "snapshots": 26,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 12,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 0,
+      "dispatch_cycles": 0,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 0,
+      "departure_pending_frames": 0,
+      "snapshot_actor_rows": 35
+    },
+    "people_states": {
+      "admitted": 2
+    },
+    "request_states": {}
+  },
+  "error": null
+}

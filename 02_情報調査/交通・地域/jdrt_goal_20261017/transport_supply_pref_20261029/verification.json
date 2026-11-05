@@ -1,0 +1,49 @@
+{
+  "at_jst": "2026-10-29T20:33:12.640107+09:00",
+  "status": "PUBLIC_SOURCE_QUALITATIVE_AUDIT_NOT_INPUT_ADOPTION",
+  "files_sha256": {
+    "city_disaster_record.pdf": "293e6988d475c0f8dfa6f0ab1fd5608969e4ff0dda0d6ff0a904484348fde831",
+    "city_disaster_record_http.json": "06b80f737a452a2c241b3e40a939b77f6f2012086c4d2bd94639e55177b7c217",
+    "city_disaster_record_keyword_hits.json": "1a72916ae6afa0e419a639de1877c300e8b71cda625adfeb666e96495cf22301",
+    "city_disaster_record_pages.json": "3a8141a2451a361ead8e4b03d077633e85cf059aa4e9ef7910c789cad99f51a9",
+    "contact_1.png": "baaa7e744bd9281d5b1599521aa27c05e90bb7f6be9e5e1df221b0307e9a6b6b",
+    "contact_2.png": "b18a2becf3d4e8ff6c4eb1160640c86421a42cdc1bf5461e09b9c43299beb4d2",
+    "contact_3.png": "8e45467e30eac4156f5d8c7321977e071557708a1126eae0f937d5ddd8780a1a",
+    "contact_4.png": "11cd6db2fea196da402f99219f0cc5e517922a2b531fd2bcc40e245b62986adb",
+    "physical_page_32.png": "bdc5375f76ddcc8dd76aa1fb7659b6e4724ef7d411470885973db3334b3340c1",
+    "physical_page_33.png": "89fcbc3ea7fd2f073241e0fce8d583979430020ba2ae70620c608b9db87392e9",
+    "physical_page_36.png": "c2f3a0f9db1206c258117e5961b345826673b7465d3c0f8232f6d7bd4d96ce28",
+    "pref_entry.json": "344aacc810f09e0e67ed1ee653a449ad7723b5150605fc3baab2d48e795dcb99",
+    "search_operations.json": "4cf1eed46f7c26fefcebf365fb8fcfc12a6fef0fafd4a9c42d78b55f9e3307e7",
+    "search_pref.json": "45580fe4115cce0fe459e32a58793f4075f20e05c13faf1dc9d1c3d5b780c0b5",
+    "市災害記録・県入口_用途監査.md": "33f115bbf8b5f768727f53f91622f95db82600a446683132286b7ff030823d3c"
+  },
+  "publication_date": "2016-03",
+  "publication_date_source": "physical36 colophon, manually viewed image",
+  "pdf_physical_pages": 36,
+  "text_extracted_pages": [
+    1,
+    2,
+    3,
+    35,
+    36
+  ],
+  "machine_text_characters": 2155,
+  "non_text_pages": 31,
+  "keyword_absence_not_treated_as_content_absence": true,
+  "visual_review": {
+    "all36": "thumbnail headings/layout only, not exhaustive caption transcription",
+    "physical32_print30": "full image timeline; road regulation restoration context",
+    "physical33_print31": "full image timeline; 2015-10-13 normal reservation shared transport reopened",
+    "physical36": "full image colophon"
+  },
+  "interpretation": "Normal service restoration is not initial evacuation vehicle/driver/available-hour or passenger-trip inventory",
+  "pref_entry_status": 404,
+  "pref_report_pdf_obtained": false,
+  "no_existence_claim_from_unavailable_entry": true,
+  "independence": "municipal retrospective; no new independent operating-count confirmation",
+  "new_parameter_adoption": false,
+  "current_config_common5_input_manifest_unchanged": true,
+  "external_contact_or_public_update": false,
+  "next": "Public initial-operation inventories/day-log appendices with vehicle/driver/time/OD/passenger linkage; no contact, no implicit calibration"
+}

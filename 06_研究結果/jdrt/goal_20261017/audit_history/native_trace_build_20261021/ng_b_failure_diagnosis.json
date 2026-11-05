@@ -1,0 +1,34 @@
+{
+  "at_jst": "2026-10-21T08:34:32.358055+09:00",
+  "status": "NG_B_FILESYSTEM_REPLACE_FAILURE_PRESERVED",
+  "files_sha256": {
+    "bounded.net.xml": "200c167ff0546f001a7738b129de0fb60029b12faabfbc6fef13a81307445c84",
+    "collection_source.py": "48661bac02ea471baa0749514c86ebe99936e57d01f2aadd3780adaa806cc69a",
+    "manifest.json": "bd53c2ac7036be92aa10c3bfb3a6197fd36e955030eee10737e0ddc91e6988b4",
+    "plan.json": "235c4d1741732d9f1dcb611031b8ddfa2e75fdd21849bf604bfa56a75037306b",
+    "progress.json": "c7deba2c14e10a1cd2bf65146c2b3ad60ee2aec59d9e3930590a5133fa08fc08",
+    "trace_build.json": "6e9201f13c45a37beb0bde695b22acc01813e46d4f11fa3424ccb448e19b175d",
+    "same_direction\\routes.xml": "41bf72d21a2510a0089dd19f1c2c9ff1b19c24044b1cfacc0d1f8ffb5370ae4a",
+    "same_direction\\control\\actors.jsonl": "b1c5a5c3f1db2c7c52f77c8581a4d5a9e986d96e3b9e63ec132ffdbc4c677417",
+    "same_direction\\control\\child.json": "3faab5facc35115708496aee4e6ba21c34ff93999340faac88b128a65fbd1f0b",
+    "same_direction\\control\\native.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "same_direction\\control\\native.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "same_direction\\control\\operations.jsonl": "93a2c667315a3a3ced0bcd958d53691fa9d3bb263b495c191a38198da503dd26",
+    "same_direction\\control\\traci_calls.py": "6280c6dde54993f05191e61b284605dd48c1da1917eb986dd930a5205cf64b53",
+    "same_direction\\control\\tripinfo.xml": "d41a3a5bbeff4a7465e5c781a8869d5ddcce85f3050dffec69553c693a5abbcb"
+  },
+  "child_exit_code": 0,
+  "processes_now": {
+    "9012": null,
+    "17100": null
+  },
+  "observations_preserved": 30,
+  "native_stderr_bytes": 0,
+  "cause": "WinError5 on atomic progress.tmp replace; failure handler later wrote successfully. Exact external locking process/cause unproved; do not assign it to OneDrive/monitor without evidence.",
+  "repair": "Same prepared file bytes/target: at most4 PermissionError5/32/33 replacements with50/100/200ms waits; other errors immediate. Coalesce only current-display JSON to1second; actor JSONL still every simulation step. Original child/physics/source/input unchanged.",
+  "tests": "guard_runner_green07.log:14 PASS; transient replace RED retained, persistent failure retains original+temp, full step observations preserved, real pinned transport/fake socket closure test",
+  "collector_source_sha256": "ce4d25816329d1e378c047392474f60a0d1af0bf5ade6c1b20e2eda8350e2ac0",
+  "next": "new ng261021c same_direction only",
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

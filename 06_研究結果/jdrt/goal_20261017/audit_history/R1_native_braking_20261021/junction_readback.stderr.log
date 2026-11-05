@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\R1_native_braking_20261021\readback_junction.py", line 108, in <module>
+    main(parser.parse_args().project_root)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\R1_native_braking_20261021\readback_junction.py", line 41, in main
+    raise ValueError('Selected diagnostic source differs from pinned official ZIP')
+ValueError: Selected diagnostic source differs from pinned official ZIP

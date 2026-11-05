@@ -1,0 +1,15 @@
+test_read_failure_records_exception_without_losing_previous_identity (test_watch.Contracts.test_read_failure_records_exception_without_losing_previous_identity) ... ERROR
+
+======================================================================
+ERROR: test_read_failure_records_exception_without_losing_previous_identity (test_watch.Contracts.test_read_failure_records_exception_without_losing_previous_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 141, in test_read_failure_records_exception_without_losing_previous_identity
+    self.assertEqual(recorded['read_error_type'], 'FileNotFoundError')
+                     ~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'read_error_type'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.094s
+
+FAILED (errors=1)

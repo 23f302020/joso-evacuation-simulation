@@ -3,7 +3,7 @@
 真実源=phase3r_e1_replicate_metrics.csv（run→artifact_dir・完了率）。決定108準拠・非方向設計。"""
 import csv, os, sys
 
-BASE = "/mnt/c/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究"
+BASE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 EVAL = os.path.join(BASE, "04_プログラム/output/sumo/regions/08211/evaluation")
 RESULTS = os.path.join(BASE, "04_プログラム/output/sumo/regions/08211/results")
 OUT = os.path.join(BASE, "06_研究結果/phase3/figures/fig4-8-1_completion_time_ecdf.svg")

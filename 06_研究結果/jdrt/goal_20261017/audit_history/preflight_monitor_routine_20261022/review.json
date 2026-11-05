@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-22T15:19:57.304956+09:00",
+  "file": ".agents/skills/joso-jdrt-runner/references/routine_operations.md",
+  "previous_sha256": "c5eac3f4f9cf80eea71bdd25ebf2d0bbebc106e8df95e836426371e202553bab",
+  "current_sha256": "73fc6979eec451e85bbf138f2745f12236e058a844cd3447a28c3ff0cdc22713",
+  "reason": "Repeated same-handle preflight observation and safe deferral under live writer collected in existing reference instead of reconstructing retry logic.",
+  "verification": {
+    "old_bytes_preserved_as_prefix": true,
+    "not_registered_input_source": true,
+    "canonical_preflight_source_reviewed": true,
+    "no_script_or_frontmatter_change": true,
+    "no_retry_or_adoption_authority_added": true
+  },
+  "coverage": "Documentation-only source review; current live attempt outcome still pending. No new behavioral tests required.",
+  "ace_criterion": "err-00001",
+  "ace_effect": "uncertain_not_measured"
+}

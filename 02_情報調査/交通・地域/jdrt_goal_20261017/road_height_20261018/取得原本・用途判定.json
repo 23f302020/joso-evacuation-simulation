@@ -1,0 +1,61 @@
+{
+  "at_jst": "2026-10-18T09:58:13.650471+09:00",
+  "files": [
+    {
+      "file": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/GSI_点群ファイル仕様書_v1.1_20250731.pdf",
+      "url": "https://www.gsi.go.jp/common/000265747.pdf",
+      "http_status": 200,
+      "bytes": 499026,
+      "sha256": "33691531b864d3c5e5b40f77aa7ff81937b567082415597f4f320504d714b385",
+      "position": "reference_specification_or_national_metadata_not_Joso_road_height",
+      "acquisition": "native curl.exe with normal certificate verification; no insecure TLS option"
+    },
+    {
+      "file": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/GSI_点群全国メタデータ_20250731.zip",
+      "url": "https://www.gsi.go.jp/common/000265748.zip",
+      "http_status": 200,
+      "bytes": 1609,
+      "sha256": "e68caa6a893fc766caa4292dd276a78755adad60fad99fcd2f7db679f91a7dec",
+      "position": "reference_specification_or_national_metadata_not_Joso_road_height",
+      "acquisition": "native curl.exe with normal certificate verification; no insecure TLS option",
+      "zip_integrity": "PASS",
+      "members": [
+        "3dpcd.xml"
+      ],
+      "xml": [
+        {
+          "member": "3dpcd.xml",
+          "root_tag": "{http://zgate.gsi.go.jp/ch/jmp/}MD_Metadata",
+          "sha256": "d39549baf2c25e6a9a71ff078a75070ee93d46abdf9af0c21f1501d2c960529a"
+        }
+      ]
+    }
+  ],
+  "initial_attempt_failure": "urllib default TLS rejected legacy renegotiation before any file write; native curl HTTPS succeeded with certificate checking unchanged",
+  "binary_pointcloud_acquired": false,
+  "current_research_input_changed": false,
+  "purchase_application_inquiry_or_external_send": false,
+  "queries": [
+    "茨城県 3次元 点群 オープンデータ 常総市",
+    "国土交通省 3次元点群 鬼怒川 常総市 橋梁 路面高 オープンデータ",
+    "site.gsi.go.jp 常総 点群",
+    "site.ktr.mlit.go.jp 常総 点群 データ"
+  ],
+  "primary_pages": [
+    {
+      "url": "https://www.gsi.go.jp/gazochosa/tengun.html",
+      "checked_at_jst": "2026-10-18T09:58:13.650471+09:00",
+      "role": "availability/precision/access; updated2026-09-30"
+    },
+    {
+      "url": "https://www.mlit.go.jp/plateau/open-data/",
+      "checked_at_jst": "2026-10-18T09:58:13.650471+09:00",
+      "role": "published location index only; Joso absent from checked Ibaraki section"
+    },
+    {
+      "url": "https://road-structures-map.mlit.go.jp/Index.aspx?ReturnUrl=%2FFacilityList.aspx",
+      "checked_at_jst": "2026-10-18T09:58:13.650471+09:00",
+      "role": "terms and data-scope entry only; individual road-height fields not verified"
+    }
+  ]
+}

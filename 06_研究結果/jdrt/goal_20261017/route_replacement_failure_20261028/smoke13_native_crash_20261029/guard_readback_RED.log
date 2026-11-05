@@ -1,0 +1,32 @@
+FFF
+======================================================================
+FAIL: test_complete_unique_case_role_product (__main__.ReadbackContracts.test_complete_unique_case_role_product)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\route_replacement_failure_20261028\smoke13_native_crash_20261029\test_guard_readback_contracts.py", line 19, in setUp
+    self.assertIsNotNone(reader, 'Reusable current-series native readback is unimplemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Reusable current-series native readback is unimplemented
+
+======================================================================
+FAIL: test_exact_file_set_and_bytes (__main__.ReadbackContracts.test_exact_file_set_and_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\route_replacement_failure_20261028\smoke13_native_crash_20261029\test_guard_readback_contracts.py", line 19, in setUp
+    self.assertIsNotNone(reader, 'Reusable current-series native readback is unimplemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Reusable current-series native readback is unimplemented
+
+======================================================================
+FAIL: test_partial_or_adoptable_collection_is_rejected (__main__.ReadbackContracts.test_partial_or_adoptable_collection_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\route_replacement_failure_20261028\smoke13_native_crash_20261029\test_guard_readback_contracts.py", line 19, in setUp
+    self.assertIsNotNone(reader, 'Reusable current-series native readback is unimplemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : Reusable current-series native readback is unimplemented
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (failures=3)

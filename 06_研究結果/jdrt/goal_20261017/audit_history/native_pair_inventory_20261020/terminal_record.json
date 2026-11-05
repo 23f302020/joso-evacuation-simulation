@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-20T22:30:44.499288+09:00",
+  "action": "selected_pair_d_inventory_failure_diagnosed_and_helper_repaired",
+  "previous_goal_turn": "progress",
+  "scope": "technical only, no formal adoption",
+  "state": "06_研究結果/jdrt/goal_20261017/nc261020d_native_pair/state.json",
+  "state_status": "FAILED_PRESERVED",
+  "owner_pids_absent": [
+    29460,
+    28704
+  ],
+  "evidence": "06_研究結果/jdrt/goal_20261017/audit_history/native_pair_inventory_20261020/review.json",
+  "actual_input_comparison": "06_研究結果/jdrt/goal_20261017/audit_history/native_pair_inventory_20261020/actual_input_comparison.json",
+  "monitor": {
+    "last_observed": "2026-10-20T13:30:44.646607+00:00",
+    "observation_age_sec": 0.8199143409729004,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134369572183506590,
+      "pid": 25168
+    },
+    "monitor_identity_matches": true
+  },
+  "technical_ready": false,
+  "formal_adoption_created": false,
+  "simulation_interval": "Selected workflow22:12:28 to terminal before22:25:25; point observations22:21:37/22:24:14; no fabricated periodic interval"
+}

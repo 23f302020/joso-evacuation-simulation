@@ -1,0 +1,123 @@
+{
+  "at_jst": "2026-10-27T22:41:07.427419+09:00",
+  "status": "PASS_SCOPED_DISCOVERY_EPOCH_FIX_PENDING_FUTURE_ONE_CELL_USE",
+  "reviewer": "current parent chat; actual model/backend not independently verified",
+  "scope": "Local existing registered cell orchestration only, no new scientific implementation or result",
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_core_sequence.py": "dff4798eea53f72948523f17072e01a32d9ea6f439378e0edeb05e114839a44b",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_core_sequence.py": "cb9ae8125fee8a20b1ccee71780be626f8bfcd3fc75ba55b14ec1e9988bd2a0e",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "51a9fa2f2510f6c70d7b3e5c473f873e5006eab21d84f2ed1bc40c911420a796"
+  },
+  "old_reference_sha256": "dcce6fb82bde4ec488fd8a44356aedbfdf4bf306a5a6e7525a596eb97906c655",
+  "old_reference": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/routine_operations_before_dcce6fb82bde4ec488fd8a44356aedbfdf4bf306a5a6e7525a596eb97906c655.md",
+  "first_RED": {
+    "log": "choice_core_sequence_RED_20261027.log",
+    "tests": 7,
+    "failures": 21,
+    "cause": "missing reject gates and incorrect display-before-readback order; no collection/dependency failure"
+  },
+  "final_tests": {
+    "log": "06_研究結果/jdrt/goal_20261017/choice_core_sequence_GREEN_discovery_epoch_20261028.log",
+    "tests": 30,
+    "failures": 0
+  },
+  "read_only_observer_probe": "read_only_monitor_probe_after_native_log_fix.json",
+  "review_findings_fixed": [
+    "Bind current daemon source/process identity as well as freshness and exact target command/creation",
+    "Completed manifest is not OS process exit; reuse existing Windows handle/FILETIME probe and stop on unknown/reused PID",
+    "Require exact started cell and unique current-registration ordered accepted prefix",
+    "Never run display writers before successful original terminal record7 readback; failure stops sequence without retry",
+    "Public invocation is exactly one cell; parent checks the real goal API before each next invocation",
+    "Wait same reserved launcher/executor creation and command for initial manifest; observation timeout only reobserves that same process, never restarts core",
+    "Wait for native error-log publication as well as initial manifest before any monitor call; no real anomaly counters are suppressed"
+  ],
+  "common5_current": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "common5_changed": false,
+  "input_or_PAP_or_native_changed": false,
+  "first_actual_sequence_completed": false,
+  "limitations": [
+    "Artificial orchestration tests and one read-only existing-target probe do not prove future native outcomes or all70",
+    "Any failure preserves a possibly live child; no automatic replay/recovery",
+    "07 monitors cores; follow sequence owner through its original tool session/state",
+    "Every invocation is exactly one cell; fresh parent goal API check before the next. No background multi-cell continuation."
+  ],
+  "goal_boundary_RED": {
+    "log": "choice_core_sequence_RED_goal_boundary_20261027.log",
+    "tests": 21,
+    "failures": 1,
+    "cause": "multi-cell invocation was accepted without a fresh parent goal check"
+  },
+  "startup_RED": {
+    "log": "choice_core_sequence_RED_startup_20261027.log",
+    "tests": 22,
+    "failures": 1,
+    "cause": "Reserved child can be live before the initial manifest exists; old candidate returned instead of waiting"
+  },
+  "startup_actual_process_probe": "startup_process_probe.json",
+  "native_log_readiness_RED": {
+    "log": "choice_core_sequence_RED_native_log_readiness_20261027.log",
+    "tests": 27,
+    "failures": 1,
+    "cause": "First manifest can predate native error-log creation"
+  },
+  "first_actual_pilot": {
+    "sequence_id": "sq26102704",
+    "status": "FAILED_PRESERVED",
+    "original_source_sha256": "dae5a430d45af6de52fa9584fc421f791655758f0cd380c7f381f30527e4346d",
+    "diagnosis": "first_actual_pilot_failure/diagnosis.json",
+    "core_run_id": "nv26102704",
+    "core_continued_without_restart": true,
+    "completed_pipeline_proven": false
+  },
+  "revised_actual_sequence_completed": true,
+  "revised_actual_pilot": {
+    "sequence_id": "sq26102705",
+    "run_id": "nv26102705",
+    "original_session": 46444,
+    "original_exit_code": 0,
+    "status": "COMPLETED_REGISTERED_SCOPE_PENDING_ANALYSIS",
+    "readback": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102705/nv26102705_record7_readback.json",
+    "readback_sha256": "283fcd663e602e7d74d7c31362c81a45f8b768bdcbf391c232c567fdbf78608d",
+    "formal_recorded_after": 5,
+    "order": "finish -> original record7 readback -> display sync -> clean status",
+    "old_sq26102704_preserved_failed": true,
+    "all70_or_efficiency_improvement_proven": false,
+    "source_sha256": "84cac0861bf617e952ba64b7ac134e08bce1178ee6a460f34d450d70d9f468b4"
+  },
+  "actual_completion_reference_update_previous_sha256": "7811e837316bbba5d8b70e5d1c4ad07aba2073e6da7694fe361b360f50b9769a",
+  "actual_completion_reference_update_at_jst": "2026-10-28T00:11:49.499535+09:00",
+  "latest_repair_review": "06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/repair_review.json",
+  "latest_actual_failure": {
+    "sequence_id": "sq26102806",
+    "run_id": "nv26102806",
+    "original_session": 7780,
+    "original_exit_code": 1,
+    "status": "FAILED_PRESERVED",
+    "core_completed_without_restart": true,
+    "same_core_followup": {
+      "direct_finish_original_session": 64850,
+      "original_exit_code": 0,
+      "status": "RECORDED_VERIFIED",
+      "record7_readback": "06_研究結果/jdrt/goal_20261017/nv26102806_record7_readback.json",
+      "readback_sha256": "e4ddceea6f13f847c9d4b8a44e0aa78f1db41528f6b64b1a0558696dee86c98b",
+      "formal_recorded_after": 6,
+      "core_reexecuted": false
+    }
+  },
+  "current_source_actual_sequence_completed": false,
+  "latest_documented_repair_at_jst": "2026-10-28T00:28:08.997487+09:00",
+  "current_source_first_actual_sequence": {
+    "sequence_id": "sq26102807",
+    "run_id": "nv26102807",
+    "original_session": 6473,
+    "status_at_point": "RUNNING",
+    "source_sha256": "dff4798eea53f72948523f17072e01a32d9ea6f439378e0edeb05e114839a44b",
+    "whole_operation_proven": false
+  }
+}

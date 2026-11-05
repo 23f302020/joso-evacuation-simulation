@@ -1,0 +1,42 @@
+{
+  "schema": "pipeline_stage_definitions_v1",
+  "run_id": "nv26102704",
+  "registration_id": "choice_native_observation_v3_20261024",
+  "stages": [
+    {
+      "name": "execute",
+      "pid": 2860,
+      "created": "2026-10-27T10:33:36.916739+00:00",
+      "start": "2026-10-27T19:33:37.178060+09:00",
+      "end": "2026-10-27T19:45:23.219502+09:00",
+      "clock_basis": "dedicated command end minus recorded duration; inferred, not direct process-start clock"
+    },
+    {
+      "name": "validate",
+      "pid": 31336,
+      "created": "2026-10-27T22:43:29.5217950+09:00",
+      "start": "2026-10-27T22:43:29.657365+09:00",
+      "end": "2026-10-27T22:59:58.370133+09:00",
+      "clock_basis": "dedicated command end minus recorded duration; inferred, not direct process-start clock"
+    },
+    {
+      "name": "record",
+      "pid": 21952,
+      "created": "2026-10-27T23:00:01.1778020+09:00",
+      "start": "2026-10-27T23:00:01.534070+09:00",
+      "end": "2026-10-27T23:16:04.063614+09:00",
+      "clock_basis": "dedicated command end minus recorded duration; inferred, not direct process-start clock"
+    }
+  ],
+  "evidence": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102704/manifest.json": "4961244e642b44a164aefe3b24691f90eccb775d0665e442216765d6b1895fd4",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/nv26102704.finish/operation.json": "15f54e99051da658723737b347e757839cf04eab075757748f207616daa1ba08",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_record7_readback.json": "2c27621478b57317a6fcf276d96c0bc29d584167fcc4294fcc218c309b77de9a",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_finish_owner_initial.json": "9e8bba0fbd283fb2618d9bb58c601332ff26afd12dd5646d500ad4b3e7e77f93",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_record_phase_20261027T2304046685430.json": "82531cd0fd504aebeed88311e2a502eb2530d6935e114122d58e66d3fa4a3a43",
+    "06_研究結果/jdrt/goal_20261017/sq26102704_failure_preserved_core_followed.json": "736af4a513650ac74a83e4bb3cc82a9e1901b2ed07f5f7bdf5f36b2913aedd5e",
+    "06_研究結果/jdrt/goal_20261017/nv26102704_pipeline_time_readback_20261027.json": "beeed216303c781b77acf467cc42f7172585296fb978e18a23855ff0d6bf1bdd"
+  },
+  "semantic_binding_review": "Current parent matched actual executor2860, first validator31336 and record21952 with captured creation identities and original operation/terminal record7. The core FILETIME is converted to CIM/Python microsecond precision. Command spans use inferred starts; native/model clock remains separate.",
+  "manifest_compute_seconds": 689.310591
+}

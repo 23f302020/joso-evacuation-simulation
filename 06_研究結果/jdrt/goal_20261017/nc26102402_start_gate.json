@@ -1,0 +1,23 @@
+{
+  "at_jst": "2026-10-24T17:23:27.133333+09:00",
+  "status": "NEXT_ONE_CELL_GATE_PASS",
+  "run_id": "nc26102402",
+  "next_cell": {
+    "cell_id": "facility_first_u05_r1_seed23423",
+    "destination_policy": "facility_first",
+    "demand_level": "u05",
+    "scenario": "R1",
+    "seed": 23423
+  },
+  "formal_recorded": 8,
+  "record7_readback": "06_研究結果/jdrt/goal_20261017/nc26102401_recovered_record7_readback.json",
+  "record7_readback_sha256": "6c9f1b6228943d414eb04b84fbc9c90da31a5335b887d76d93213daf042ad5e0",
+  "fresh_status_sha256": "61131fdbaeadc1193ddf809a27a8282d627b175169d41c8ee3220e43cadba89e",
+  "ready_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+  "free_bytes": 257901404160,
+  "one_run_reserve_bytes": 193692970309,
+  "all_remaining_fit_claimed": false,
+  "unused_run_id": true,
+  "registration_id": "choice_native_observation_v2_20261021",
+  "scope": "start exactly one registered cell through dedicated CLI; old failure/finish preserved"
+}

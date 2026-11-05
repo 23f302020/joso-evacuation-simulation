@@ -1,0 +1,71 @@
+{
+  "at_jst": "2026-10-21T08:45:58.143310+09:00",
+  "status": "REVIEWED_TECHNICAL_PROXY_CORRECTION_NATIVE_SOURCES_UNCHANGED",
+  "changes": {
+    "04_プログラム\\scripts\\jdrt_realtime_choice_validate.py": {
+      "before_sha256": "bda7dcb6d3dcfcdfa1ae977a05d1518bfbfcae0ec090ee4b92f315be43844f8d",
+      "after_sha256": "86510a58a1562c1bd9923d10c552c7f7159244161ecdd8f2a3495825309cc419",
+      "before_crlf": 2417,
+      "after_crlf": 2441
+    },
+    "04_プログラム\\tests\\test_jdrt_choice_validate.py": {
+      "before_sha256": "711ddecffb090db23983234d7588d6e14f3d1b5dd816dea529103f50a22b40ac",
+      "after_sha256": "605b31719f78b2c7841e13bfbc00f68e9edab8987b882513ff33fc39f3bd9c89",
+      "before_crlf": 0,
+      "after_crlf": 0
+    }
+  },
+  "red": "red03.log:2 intended assertion failures; red01 import setup and red02 list-iterator test issue kept separately",
+  "green": "green01.log:22 tests PASS",
+  "real_primary_receipt_recheck": {
+    "ng261021c/control": [
+      {
+        "person": "p3",
+        "exact_receipts": false
+      },
+      {
+        "person": "p4",
+        "exact_receipts": true
+      }
+    ],
+    "ng261021c/patched": [
+      {
+        "person": "p3",
+        "exact_receipts": true
+      },
+      {
+        "person": "p4",
+        "exact_receipts": true
+      }
+    ],
+    "ng261021c/trace": [
+      {
+        "person": "p3",
+        "exact_receipts": true
+      },
+      {
+        "person": "p4",
+        "exact_receipts": true
+      }
+    ],
+    "ng261021d/control": [],
+    "ng261021d/patched": [],
+    "ng261021d/trace": []
+  },
+  "independent_source_and_data_diagnosis": "diagnosis.json",
+  "contract_basis": "PAP positional supplement §4 specifies per-step SUMO walking speed integral and model-internal distance. It does not equate this longitudinal getter to2D XY norm. Same-call replan positions remain exact; next-step native lateral motion must not be labeled instant relocation.",
+  "scope": [
+    "Removed invalid next-step Euclidean proxy; now exact two receipts at pre-control actor time, duplicate replan rejection",
+    "Added exact edge/lane-position/XY before-after equality and same-call chaining; one-ULP jump now rejected",
+    "Native speed upper bound, speed integral, budget recurrence, routes, clocks, warning/error classification and all core adoption gates retained",
+    "No native physics, speed parameter, budget threshold, main metric, denominator, cell set or PAP/exclusion rule modified",
+    "An isotropic2D speed cap or altered walking-budget definition would require separate method judgment; neither is adopted"
+  ],
+  "limits": [
+    "Core0/70; common validator SHA change invalidates old current-suite/preflight/G6 evidence",
+    "Full native13-group/current suite/audit/14smoke/input-unit/preflight/G6 still required",
+    "Report SUMO speed integral as longitudinal model distance; preserve XY movement as a separate observed quantity"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

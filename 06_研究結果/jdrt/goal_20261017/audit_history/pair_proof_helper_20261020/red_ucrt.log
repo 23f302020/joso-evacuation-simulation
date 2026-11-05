@@ -1,0 +1,42 @@
+test_binary_sha_imports_and_success_evidence_are_required (test_choice_package_toolchain.PackagingContracts.test_binary_sha_imports_and_success_evidence_are_required) ... ok
+test_complete_inventory_and_original_proof_bytes (test_choice_package_toolchain.PackagingContracts.test_complete_inventory_and_original_proof_bytes) ... ok
+test_control_requires_matching_source_flags_and_dependencies (test_choice_package_toolchain.PackagingContracts.test_control_requires_matching_source_flags_and_dependencies) ... ok
+test_destination_is_never_reused_or_research_run (test_choice_package_toolchain.PackagingContracts.test_destination_is_never_reused_or_research_run) ... ok
+test_exact_windows_ucrt_contract_names_and_lookalikes (test_choice_package_toolchain.PackagingContracts.test_exact_windows_ucrt_contract_names_and_lookalikes) ... 
+  test_exact_windows_ucrt_contract_names_and_lookalikes (test_choice_package_toolchain.PackagingContracts.test_exact_windows_ucrt_contract_names_and_lookalikes) (name='api-ms-win-crt-convert-l1-1-0.dll') ... ERROR
+  test_exact_windows_ucrt_contract_names_and_lookalikes (test_choice_package_toolchain.PackagingContracts.test_exact_windows_ucrt_contract_names_and_lookalikes) (name='api-ms-win-crt-private-l1-1-0.dll') ... ERROR
+test_inventory_cannot_hide_modified_official_zip_member (test_choice_package_toolchain.PackagingContracts.test_inventory_cannot_hide_modified_official_zip_member) ... ok
+test_later_failure_or_unfinished_command_blocks_packaging (test_choice_package_toolchain.PackagingContracts.test_later_failure_or_unfinished_command_blocks_packaging) ... ok
+test_modified_missing_and_extra_source_are_rejected (test_choice_package_toolchain.PackagingContracts.test_modified_missing_and_extra_source_are_rejected) ... ok
+test_non_os_import_is_rejected_from_actual_pe_bytes (test_choice_package_toolchain.PackagingContracts.test_non_os_import_is_rejected_from_actual_pe_bytes) ... ok
+test_partial_failure_is_preserved_without_success_manifest (test_choice_package_toolchain.PackagingContracts.test_partial_failure_is_preserved_without_success_manifest) ... ok
+test_proof_mutation_during_copy_is_preserved_as_failure (test_choice_package_toolchain.PackagingContracts.test_proof_mutation_during_copy_is_preserved_as_failure) ... ok
+test_real_imports_twice_and_runtime_mutation_or_unlisted_file_rejected (test_choice_package_toolchain.PackagingContracts.test_real_imports_twice_and_runtime_mutation_or_unlisted_file_rejected) ... ok
+test_unhashed_or_same_size_changed_command_log_is_rejected (test_choice_package_toolchain.PackagingContracts.test_unhashed_or_same_size_changed_command_log_is_rejected) ... ok
+
+======================================================================
+ERROR: test_exact_windows_ucrt_contract_names_and_lookalikes (test_choice_package_toolchain.PackagingContracts.test_exact_windows_ucrt_contract_names_and_lookalikes) (name='api-ms-win-crt-convert-l1-1-0.dll')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_package_toolchain.py", line 217, in test_exact_windows_ucrt_contract_names_and_lookalikes
+    self.assertEqual(self.packager.pe_imports(self.sumo), [name])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_package_toolchain.py", line 95, in pe_imports
+    raise ValueError(f'Non-OS DLL dependency is unsupported: {name}')
+ValueError: Non-OS DLL dependency is unsupported: api-ms-win-crt-convert-l1-1-0.dll
+
+======================================================================
+ERROR: test_exact_windows_ucrt_contract_names_and_lookalikes (test_choice_package_toolchain.PackagingContracts.test_exact_windows_ucrt_contract_names_and_lookalikes) (name='api-ms-win-crt-private-l1-1-0.dll')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_package_toolchain.py", line 217, in test_exact_windows_ucrt_contract_names_and_lookalikes
+    self.assertEqual(self.packager.pe_imports(self.sumo), [name])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_package_toolchain.py", line 95, in pe_imports
+    raise ValueError(f'Non-OS DLL dependency is unsupported: {name}')
+ValueError: Non-OS DLL dependency is unsupported: api-ms-win-crt-private-l1-1-0.dll
+
+----------------------------------------------------------------------
+Ran 13 tests in 6.749s
+
+FAILED (errors=2)

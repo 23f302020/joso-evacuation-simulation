@@ -1,0 +1,213 @@
+--- choice_finish_cell.py.before
++++ choice_finish_cell.py
+@@ -13,6 +13,7 @@
+ import shutil
+ import subprocess
+ import sys
++import time
+ 
+ ROOT = Path(__file__).resolve().parents[4]
+ CONFIG = '04_プログラム/config/jdrt_realtime_choice_v1.json'
+@@ -100,7 +101,14 @@
+         state['observed_at_jst'] = datetime.now().astimezone().isoformat()
+         temporary = operation / 'operation.tmp'
+         temporary.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+-        temporary.replace(operation / 'operation.json')
++        for attempt in range(5):
++            try:
++                temporary.replace(operation / 'operation.json')
++                break
++            except PermissionError:
++                if attempt == 4:
++                    raise
++                time.sleep(0.2)
+ 
+     save()
+     try:
+--- choice_record_readback.py.before
++++ choice_record_readback.py
+@@ -23,7 +23,16 @@
+     workspace = local(root, cfg['workspace'])
+     operation = workspace / 'driver_logs' / (run_id + '.finish')
+     state = read(operation / 'operation.json')
+-    require(state['run_id'] == run_id and state['status'] == 'RECORDED_VERIFIED'
++    auxiliary_failure = state['status'] == 'FAILED_PRESERVED'
++    if auxiliary_failure:
++        commands = state.get('commands', [])
++        require(state.get('error_type') == 'PermissionError' and state.get('phase') == 'status'
++                and [c['command'] for c in commands] == ['check', 'validate', 'record', 'status']
++                and [c.get('status') for c in commands] == ['COMPLETED', 'PASS', 'RECORDED', None]
++                and all(c.get('run_id') == run_id for c in commands[:3])
++                and state['formal_record_result'] == 'RECORDED',
++                'Failed auxiliary is not a completed postcommit metadata-save failure')
++    require(state['run_id'] == run_id and (state['status'] == 'RECORDED_VERIFIED' or auxiliary_failure)
+             and state['record_attempted'] is True and not state['next_start_performed']
+             and state['formal_record_result'] in ('RECORDED', 'ALREADY_RECORDED'), 'Finish not terminal/recorded')
+     require(state['config_sha256'] == digest(root / CONFIG), 'Configuration changed since finish')
+@@ -105,6 +114,8 @@
+             'formal_report_sha256': digest(formal_path), 'original_and_record_validation_components_differ': [],
+             'transaction': transactions[0].relative_to(root).as_posix(), 'transaction_sha256': digest(transactions[0]),
+             'finish_operation': (operation / 'operation.json').relative_to(root).as_posix(),
++            'finish_operation_status': state['status'],
++            'finish_auxiliary_failure_preserved': auxiliary_failure,
+             'finish_operation_sha256': digest(operation / 'operation.json'), 'source_common5_current': True,
+             'all_status_holds_clear_at_finish': True, 'next_cell': status['next_cell'], 'next_start_performed': False}
+ 
+--- test_choice_finish_cell.py.before
++++ test_choice_finish_cell.py
+@@ -1,5 +1,6 @@
+ """Artificial orchestration/file contracts, never native or research adoption."""
+ import json
++import os
+ from pathlib import Path
+ import tempfile
+ import unittest
+@@ -86,6 +87,96 @@
+         self.assertEqual(result['status'], 'RECORDED_VERIFIED')
+         self.assertEqual(self.calls, ['check', 'validate', 'record', 'status'])
+ 
++    def test_transient_terminal_replace_never_replays_cli(self):
++        original = Path.replace
++        attempts = []
++
++        def replace(path, target):
++            state = json.loads(path.read_text(encoding='utf-8'))
++            if state['status'] == 'RECORDED_VERIFIED':
++                attempts.append(state['status'])
++                if len(attempts) == 1:
++                    raise PermissionError('Artificial transient sharing conflict')
++            return original(path, target)
++
++        with patch.object(Path, 'replace', replace):
++            result = self.invoke()
++        self.assertEqual(result['status'], 'RECORDED_VERIFIED')
++        self.assertEqual(len(attempts), 2)
++        self.assertEqual(self.calls, ['check', 'validate', 'record', 'status'])
++
++    def test_persistent_terminal_replace_is_bounded_and_preserved(self):
++        original = Path.replace
++        attempts = []
++
++        def replace(path, target):
++            if json.loads(path.read_text(encoding='utf-8'))['status'] == 'RECORDED_VERIFIED':
++                attempts.append(True)
++                raise PermissionError('Artificial persistent sharing conflict')
++            return original(path, target)
++
++        with patch.object(Path, 'replace', replace), self.assertRaises(PermissionError):
++            self.invoke()
++        self.assertEqual(len(attempts), 5)
++        state = json.loads((self.workspace / 'driver_logs' / (self.run_id + '.finish') /
++                            'operation.json').read_text(encoding='utf-8'))
++        self.assertEqual(state['status'], 'FAILED_PRESERVED')
++        self.assertEqual(state['formal_record_result'], 'RECORDED')
++        self.assertTrue(state['record_attempted'])
++        self.assertEqual(len(state['record_files_sha256']), 7)
++        self.assertEqual(self.calls, ['check', 'validate', 'record', 'status'])
++        self.assertTrue(all((self.root / name).is_file() for name in self.records))
++
++    def test_other_terminal_replace_error_is_not_retried(self):
++        original = Path.replace
++        attempts = []
++
++        def replace(path, target):
++            if json.loads(path.read_text(encoding='utf-8'))['status'] == 'RECORDED_VERIFIED':
++                attempts.append(True)
++                raise OSError('Artificial non-sharing I/O failure')
++            return original(path, target)
++
++        with patch.object(Path, 'replace', replace), self.assertRaises(OSError):
++            self.invoke()
++        self.assertEqual(len(attempts), 1)
++        self.assertEqual(self.calls, ['check', 'validate', 'record', 'status'])
++
++    @unittest.skipUnless(os.name == 'nt', 'Actual Windows sharing semantics')
++    def test_owned_windows_sharing_lock_is_released_before_retry(self):
++        import ctypes
++        from ctypes import wintypes
++        kernel = ctypes.WinDLL('kernel32', use_last_error=True)
++        kernel.CreateFileW.argtypes = [wintypes.LPCWSTR, wintypes.DWORD, wintypes.DWORD,
++                                      wintypes.LPVOID, wintypes.DWORD, wintypes.DWORD, wintypes.HANDLE]
++        kernel.CreateFileW.restype = wintypes.HANDLE
++        kernel.CloseHandle.argtypes = [wintypes.HANDLE]
++        kernel.CloseHandle.restype = wintypes.BOOL
++        original = Path.replace
++        sharing_errors = []
++
++        def replace(path, target):
++            if (json.loads(path.read_text(encoding='utf-8'))['status'] == 'RECORDED_VERIFIED'
++                    and not sharing_errors):
++                # This test owns both files. Excluding FILE_SHARE_DELETE blocks replacement.
++                handle = kernel.CreateFileW(str(target), 0x80000000, 0x1 | 0x2, None, 3, 0x80, None)
++                self.assertNotEqual(handle, wintypes.HANDLE(-1).value)
++                try:
++                    return original(path, target)
++                except PermissionError as error:
++                    sharing_errors.append(error.winerror)
++                    raise
++                finally:
++                    self.assertTrue(kernel.CloseHandle(handle))
++            return original(path, target)
++
++        with patch.object(Path, 'replace', replace):
++            result = self.invoke()
++        self.assertEqual(result['status'], 'RECORDED_VERIFIED')
++        self.assertEqual(len(sharing_errors), 1)
++        self.assertIn(sharing_errors[0], (5, 32))
++        self.assertEqual(self.calls, ['check', 'validate', 'record', 'status'])
++
+     def test_invalid_does_not_record(self):
+         self.validation.update(status='INVALID', core_adoption_permitted=False)
+         with self.assertRaises(RuntimeError):
+--- test_choice_record_readback.py.before
++++ test_choice_record_readback.py
+@@ -93,6 +93,49 @@
+         self.assertEqual(result.get('status'), 'RECORD7_PRIMARY_READBACK_PASS')
+         self.assertEqual(before, {p.relative_to(self.root).as_posix(): digest(p) for p in self.root.rglob('*') if p.is_file()})
+ 
++    def failed_postcommit(self):
++        self.state.update(status='FAILED_PRESERVED', error_type='PermissionError', phase='status',
++                          formal_record_result='RECORDED', record_attempted=True,
++                          error='Artificial terminal metadata replace failure', commands=[
++                              {'command': 'check', 'status': 'COMPLETED', 'run_id': self.run},
++                              {'command': 'validate', 'status': 'PASS', 'run_id': self.run},
++                              {'command': 'record', 'status': 'RECORDED', 'run_id': self.run},
++                              {'command': 'status', 'status': None, 'run_id': None}])
++        self.dump('workspace/driver_logs/' + self.run + '.finish/operation.json', self.state)
++
++    def test_postcommit_auxiliary_failure_readback_preserves_original_failure(self):
++        self.failed_postcommit()
++        before = {p.relative_to(self.root).as_posix(): digest(p) for p in self.root.rglob('*') if p.is_file()}
++        result = subject.audit(self.root, self.run)
++        self.assertEqual(result['status'], 'RECORD7_PRIMARY_READBACK_PASS')
++        self.assertEqual(result['finish_operation_status'], 'FAILED_PRESERVED')
++        self.assertTrue(result['finish_auxiliary_failure_preserved'])
++        self.assertFalse(result['next_start_performed'])
++        self.assertEqual(before, {p.relative_to(self.root).as_posix(): digest(p) for p in self.root.rglob('*') if p.is_file()})
++
++    def test_failed_postcommit_requires_exact_terminal_history(self):
++        for field, value in [('phase', 'record'), ('error_type', 'OSError'), ('commands', []),
++                             ('formal_record_result', None), ('record_attempted', False)]:
++            with self.subTest(field=field):
++                self.failed_postcommit()
++                self.state[field] = value
++                self.dump('workspace/driver_logs/' + self.run + '.finish/operation.json', self.state)
++                with self.assertRaises(RuntimeError):
++                    subject.audit(self.root, self.run)
++
++    def test_failed_postcommit_still_rejects_changed_record_bytes(self):
++        self.failed_postcommit()
++        self.put('progress.md', self.marker + '\nchanged\n')
++        with self.assertRaisesRegex(RuntimeError, 'Record bytes changed'):
++            subject.audit(self.root, self.run)
++
++    def test_failed_postcommit_still_rejects_pending_journal(self):
++        self.failed_postcommit()
++        self.status['pending_record_journals'] = ['unfinished']
++        self.dump('workspace/driver_logs/' + self.run + '.finish/status.stdout.log', self.status)
++        with self.assertRaisesRegex(RuntimeError, 'Finish status retains a hold'):
++            subject.audit(self.root, self.run)
++
+     def test_terminal_record_bytes_changed(self):
+         self.put('progress.md', self.marker + '\nchanged\n')
+         with self.assertRaises(RuntimeError):

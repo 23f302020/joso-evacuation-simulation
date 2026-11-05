@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIDE-PATTERN-three-card-icon-with-subheading</title>
+  <style>
+    /* ページ全体のスタイル */
+    body {
+      background: #E8E8E8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      font-family: sans-serif;
+      margin: 0;
+    }
+
+    /* スライドラベル */
+    .slide-label {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    /* スライド本体 */
+    .slide {
+      width: 960px;
+      height: 540px;
+      background: #FFFFFF;
+      border: 1px solid #CCCCCC;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* タイトルエリア */
+    .slide-title {
+      padding: 14px 40px 12px;
+      border-bottom: 1px dashed #CCCCCC;
+      background: #FAFAFA;
+      flex-shrink: 0;
+    }
+
+    .slide-title h1 {
+      font-size: 15px;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+
+    /* エリアラベル共通 */
+    .area-label {
+      font-size: 11px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    /* コンテンツエリア全体 */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 40px;
+      gap: 12px;
+      flex: 1;
+    }
+
+    /* 区切り見出しエリア */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+
+    .heading-line {
+      flex: 1;
+      height: 1px;
+      background: #CCCCCC;
+    }
+
+    .heading-text {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    /* 3カードグリッド */
+    .card-grid {
+      display: flex;
+      gap: 16px;
+      flex: 1;
+    }
+
+    /* 各カード */
+    .card {
+      flex: 1;
+      border: 1px solid #E0E0E0;
+      background: #F8F8F8;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 番号バナー */
+    .card-number-banner {
+      padding: 4px 12px;
+      background: #E8E8E8;
+      border-bottom: 1px solid #CCCCCC;
+      text-align: center;
+    }
+
+    .card-number-text {
+      font-size: 12px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    /* カード本体 */
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    /* アイコン円 */
+    .icon-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #F0F0F0;
+      border: 1px dashed #CCCCCC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #AAAAAA;
+      flex-shrink: 0;
+    }
+
+    /* カード見出し */
+    .card-heading {
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      margin: 0;
+    }
+
+    /* カード説明テキスト */
+    .card-desc {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- スライドラベル -->
+  <p class="slide-label">[three-card-icon-with-subheading]</p>
+
+  <!-- スライド本体 -->
+  <div class="slide">
+
+    <!-- タイトルエリア -->
+    <div class="slide-title">
+      <h1>私たちが選ばれる3つの理由</h1>
+    </div>
+
+    <!-- コンテンツエリア -->
+    <div class="content-area">
+
+      <!-- 区切り見出し -->
+      <div class="section-heading">
+        <div class="heading-line"></div>
+        <span class="heading-text">他社にはない独自の強みをご紹介します</span>
+        <div class="heading-line"></div>
+      </div>
+
+      <!-- 3カードグリッド -->
+      <div class="card-grid">
+
+        <!-- カード①：実績・信頼性 -->
+        <div class="card">
+          <div class="card-number-banner">
+            <span class="card-number-text">01</span>
+          </div>
+          <div class="card-body">
+            <div class="icon-circle">&#128218;</div>
+            <p class="card-heading">15年以上の豊富な実績</p>
+            <p class="card-desc">
+              2009年の創業以来、累計1,200社を超えるプロジェクトを支援。
+              多様な業種・規模の企業での実績が、確かな品質の証明です。
+            </p>
+          </div>
+        </div>
+
+        <!-- カード②：専門チーム -->
+        <div class="card">
+          <div class="card-number-banner">
+            <span class="card-number-text">02</span>
+          </div>
+          <div class="card-body">
+            <div class="icon-circle">&#128101;</div>
+            <p class="card-heading">業界特化の専門チーム</p>
+            <p class="card-desc">
+              各業界に精通した専門家が50名以上在籍。
+              お客様のビジネス課題を深く理解し、的確なソリューションを提案します。
+            </p>
+          </div>
+        </div>
+
+        <!-- カード③：継続サポート -->
+        <div class="card">
+          <div class="card-number-banner">
+            <span class="card-number-text">03</span>
+          </div>
+          <div class="card-body">
+            <div class="icon-circle">&#128222;</div>
+            <p class="card-heading">導入後の手厚いサポート</p>
+            <p class="card-desc">
+              専任担当者が導入から定着まで伴走。
+              平均的なサポート期間は3年以上で、長期的なパートナーシップを築きます。
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /.card-grid -->
+
+    </div><!-- /.content-area -->
+
+  </div><!-- /.slide -->
+
+</body>
+</html>

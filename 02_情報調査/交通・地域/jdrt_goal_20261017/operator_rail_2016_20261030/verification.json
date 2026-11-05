@@ -1,0 +1,58 @@
+{
+  "at_utc": "2026-10-30T11:11:44.833981+00:00",
+  "source_pdf_matches_http_metadata": true,
+  "physical_pages": 24,
+  "text_extraction": "PDFium native text all24 pages; not exhaustive visual review or OCR",
+  "visually_reviewed_physical_pages": [
+    1,
+    3,
+    9
+  ],
+  "printed_page_correspondence": {
+    "1": "cover",
+    "3": "1",
+    "9": "7"
+  },
+  "files": {
+    "kantetsu_safety_2016.pdf": {
+      "bytes": 3705887,
+      "sha256": "85c38f3dfe285bdf1347d43aa3b3a2bfb685270d0e9383b1258e981f270fbd3a"
+    },
+    "pages.json": {
+      "bytes": 46101,
+      "sha256": "41e34c4464768ff8f947a453f480133016547f0dc1ad3a9f7b41f7aa7f5f011e"
+    },
+    "physical_page_01.png": {
+      "bytes": 530955,
+      "sha256": "bafb32a2de998a520b5aa3c45fb64e9bae8e44ff9acb6511d6353f719a6ece00"
+    },
+    "physical_page_03.png": {
+      "bytes": 418143,
+      "sha256": "3c7d98346c9bad578912896e556ebbe9ca20db1e726b7691437a009ba2aa452a"
+    },
+    "physical_page_09.png": {
+      "bytes": 605764,
+      "sha256": "1fc33f0c9421dd95bf06a8593682593f57be58a4bd90ffc72cc3acc0c4b0e26b"
+    },
+    "search_and_scrape_metadata.json": {
+      "bytes": 5905,
+      "sha256": "49977bf6bb79840590b99c578e20dfe712c1004123507bcf227e79340509a6d5"
+    },
+    "source_metadata.json": {
+      "bytes": 483,
+      "sha256": "e20d41aafc99bc814f565612ef0c21d708ceaea2bda824cf45d2be7758412334"
+    },
+    "事業者原本_鉄道復旧と初動供給の用途監査.md": {
+      "bytes": 5353,
+      "sha256": "89b9b34f30e3e69d7a0ef5f581839ff2ec4ff0ee8e76a0f0f7e6a5178515a967"
+    }
+  },
+  "existing_local_audit_links_checked": [
+    "../transport_supply_pref_20261029/市災害記録・県入口_用途監査.md",
+    "../transport_supply_20261021/供給立上り・輸送目的_原本監査.md"
+  ],
+  "sequence_source_pin_count": 13,
+  "sequence_source_mismatch": [],
+  "adoption_scope": "background/limits only; no fleet/driver/window/trip numbers adopted; no simulation/input/acceptance changes",
+  "feedback_sent": false
+}

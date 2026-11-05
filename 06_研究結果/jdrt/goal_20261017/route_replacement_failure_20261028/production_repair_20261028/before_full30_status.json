@@ -1,0 +1,25 @@
+{
+  "protocol": "realtime_choice_v1",
+  "registered_cells": 70,
+  "recorded_cells": 0,
+  "running": [],
+  "unrecorded": [],
+  "partial_records": [],
+  "record_identity_mismatch": [],
+  "unresolved_failures": [],
+  "unresolved_launches": [],
+  "pending_record_journals": [],
+  "foreign_running_manifests": [],
+  "next_cell": {
+    "cell_id": "fixed_reference_r0_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": null,
+    "scenario": "R0",
+    "seed": 23423
+  },
+  "smoke_completed": [],
+  "failed": [],
+  "active_native_processes": [],
+  "core_ready": false,
+  "core_start_available": false
+}

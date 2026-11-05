@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_sync_status.py", line 350, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_sync_status.py", line 346, in main
+    print(json.dumps(synchronize(apply=args.apply, build_report=args.build_observation), ensure_ascii=False))
+                     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_sync_status.py", line 199, in synchronize
+    raise RuntimeError('Technical run active; do not mislabel it as a core')
+RuntimeError: Technical run active; do not mislabel it as a core

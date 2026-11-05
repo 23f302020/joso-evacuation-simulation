@@ -1,0 +1,88 @@
+{
+  "at_jst": "2026-10-29T15:47:09.569738+09:00",
+  "status": "BOTH_TERMINAL_ROLE_SOURCES_LOGS_LOADER_BYTES_READ_BACK_PENDING_FULL_PAIR",
+  "roles": {
+    "control": {
+      "state": {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build_state.json",
+        "sha256": "710d65952e8b7790d8e026559ee78b618cc1dad123800b77e14b4243476e4ed9",
+        "bytes": 15767
+      },
+      "source_files": 6228,
+      "source_receipt": {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\diagnostic_source_receipt.json",
+        "sha256": "65b9cafd6c1f9169d05407a5f68965a3f68309cf644a7b7e0b864c0781f114bb"
+      },
+      "loader": {
+        "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\repair02_loader2\\diagnosis.json",
+        "sha256": "3929a2fdaa2844a3bf58192ff24a92aec3eb4300bca9d30f5157750871542330",
+        "bytes": 23756
+      },
+      "binaries": [
+        {
+          "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\sumo.exe",
+          "sha256": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+          "bytes": 21982672
+        },
+        {
+          "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair02_20261029\\build\\src\\netconvert.exe",
+          "sha256": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4",
+          "bytes": 14311826
+        }
+      ],
+      "commands_verified": 6
+    },
+    "patched": {
+      "state": {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build_state.json",
+        "sha256": "447f672c87afce14ff945423f224c53ecd2737e7007b1bcf5441daa76df03cbf",
+        "bytes": 15756
+      },
+      "source_files": 6228,
+      "source_receipt": {
+        "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\diagnostic_source_receipt.json",
+        "sha256": "2b0070a92029aeb2007657798326849d4f92422a896fb4c9548c85563d9248de"
+      },
+      "loader": {
+        "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\repair03_loader\\diagnosis.json",
+        "sha256": "27261559a09e0991c21816657a6984ac509c12a537cab95453d84eb1480fad35",
+        "bytes": 23756
+      },
+      "binaries": [
+        {
+          "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build\\src\\sumo.exe",
+          "sha256": "08019a104aaafd1de60ec43be3a06611575c06c7150f1ed7a92d8a587951c6cb",
+          "bytes": 21982672
+        },
+        {
+          "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\build\\src\\netconvert.exe",
+          "sha256": "eeb3318a4e289fee098fa96fc07f0a16a84de8466ace28db260b30553a24239a",
+          "bytes": 14311826
+        }
+      ],
+      "commands_verified": 6
+    }
+  },
+  "parent_original_sessions": {
+    "control": {
+      "session": 49235,
+      "exit_code": 0
+    },
+    "patched": {
+      "session": 97479,
+      "exit_code": 0
+    }
+  },
+  "old_policy_sha256": "7f82a2499bedd7c59874e7fe77f4ab6feea35a9bfaa2a4db3068e4dd416fc30e",
+  "policy": {
+    "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\native_stop_index_pair_policy\\policy.json",
+    "sha256": "a79a0630cf92aef94ff146c65c9b426eded1ffda1ac78d08258f960e4e6c0973",
+    "bytes": 3744
+  },
+  "limitations": [
+    "Full independent archive/patch/source/metadata/compiler/header/loader pair verifier pending",
+    "No package, simulation, selector switch, READY or research adoption"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

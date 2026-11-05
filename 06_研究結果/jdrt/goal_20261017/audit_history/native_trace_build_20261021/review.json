@@ -1,0 +1,30 @@
+{
+  "at_jst": "2026-10-21T08:01:30.430305+09:00",
+  "status": "REVIEWED_FOR_ISOLATED_DIAGNOSTIC_BUILD_NOT_NATIVE_GUARD_PASS",
+  "files": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py": "90bad909f37bdc13fbe45fb471a757f159782c6789bdee48f6f73db472bb8d3d",
+    "04_プログラム/tests/test_choice_native_trace_build.py": "78de0df852a9d94f042fd2d6abbb0dc5a234f9e482b119fe288f61fc11b853d3"
+  },
+  "red": "red_not_implemented.log:5 explicit behavior failures",
+  "green": "green01.log:5 file/config contracts PASS",
+  "prerequisite_sha256": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\attempt08_20261020\\build_state.json": "924d594073688cbb0e88dd479ebdcb3ff6091bba6671524ee2b09fe9ab52dff4",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\control_source_preparation_20261020.json": "3a01fbca6263a1450cb019fc7c3128ab1ba7ce4a8fb98ad7a67bb43bf2212ec6"
+  },
+  "resolved_findings": [
+    "CMake arguments retain prior compile flags and dependencies; only -S/-B replaced",
+    "Use short visible native-root convention for CMake/MinGW; preserve physical path for monitor discovery",
+    "Fresh attempt/source/build, original global state and production bundles never written",
+    "Before/after complete original and trace-only source inventories; exact generator/restoration required",
+    "Source-stage and binary diagnostic role never changes research READY/adoption",
+    "Own-process support waits retain original child; no retry/kill command",
+    "UTF8 CIM in this process preserves Japanese command identity; no persistent env change"
+  ],
+  "limits": [
+    "Tests cover pure plan and temporary source copies; real configure/build/version/import and full binding recheck remain to execute",
+    "No native guard/trajectory/diagnostic-vs-production observation yet",
+    "No claim of hermetic compiler/OS completeness"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

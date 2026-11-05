@@ -1,0 +1,51 @@
+{
+  "at_jst": "2026-10-28T00:13:16.251105+09:00",
+  "run_id": "nv26102705",
+  "runs": [
+    {
+      "run_id": "nv26102705",
+      "cell_id": "fixed_reference_u50_r1_seed23423",
+      "status": "COMPLETED",
+      "start": "2026-10-27T23:19:47.740097+09:00",
+      "end": "2026-10-27T23:32:41.898750+09:00",
+      "compute_elapsed_sec": 774.158653,
+      "manifest_sha256": "b4bff0536ae3c29f9501d714f4e133baf90085017377346154d8a21b0134cabd"
+    }
+  ],
+  "operations": [
+    {
+      "command": "start-next",
+      "end": "2026-10-27T23:19:27.381753+09:00",
+      "duration_sec": 14.393800900084898,
+      "inferred_start": "2026-10-27T23:19:12.987952+09:00",
+      "run_id": "nv26102705",
+      "status": "STARTED"
+    },
+    {
+      "command": "execute",
+      "end": "2026-10-27T23:32:43.372100+09:00",
+      "duration_sec": 795.7808028999716,
+      "inferred_start": "2026-10-27T23:19:27.591297+09:00",
+      "run_id": "nv26102705",
+      "status": "COMPLETED"
+    },
+    {
+      "command": "validate",
+      "end": "2026-10-27T23:49:41.074526+09:00",
+      "duration_sec": 974.5809175999602,
+      "inferred_start": "2026-10-27T23:33:26.493608+09:00",
+      "run_id": "nv26102705",
+      "status": "PASS"
+    },
+    {
+      "command": "record",
+      "end": "2026-10-28T00:05:10.130485+09:00",
+      "duration_sec": 926.9980894000037,
+      "inferred_start": "2026-10-27T23:49:43.132396+09:00",
+      "run_id": "nv26102705",
+      "status": "RECORDED"
+    }
+  ],
+  "errors": [],
+  "scope": "Operational timing of one terminal adopted current-v3 cell only; no research effect comparison"
+}

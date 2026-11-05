@@ -1,0 +1,49 @@
+--- choice_native_guard.py.before
++++ choice_native_guard.py
+@@ -117,6 +117,26 @@
+                          '--no-step-log', 'true', '--remote-port', port,
+                          '--tripinfo-output', output / 'tripinfo.xml',
+                          '--tripinfo-output.write-unfinished', 'true', *options]))
++
++
++def replacement_requests(connection, person, row, spec):
++    edges = row['stage_edges']
++    position = row['lane_position_m']
++    if spec['operation'] == 'internal_replace':
++        next_edge = connection.person.getNextEdge(person)
++        if not row['edge_id'].startswith(':') or edges.count(next_edge) != 1:
++            raise ValueError('Internal replacement requires an unambiguous actual next route edge')
++        edges = [row['edge_id'], *edges[edges.index(next_edge):]]
++    else:
++        if edges.count(row['edge_id']) != 1:
++            raise ValueError('External replacement requires an unambiguous current route edge')
++        edges = edges[edges.index(row['edge_id']):]
++    requests = [('old_remaining', edges, position, row['stage_arrival_pos_m'])]
++    arrival = row['stage_arrival_pos_m'] if spec['operation'] == 'same' else spec['replacement_endpoint_m']
++    if spec['operation'] == 'position_shift':
++        position += (connection.lane.getLength(row['lane_id']) - position) / 4
++    requests.append(('new_route', edges, position, arrival))
++    return requests
+ 
+ 
+ def run_case(traci, binary, net, routes, output, spec, speeds, seed, state, save):
+@@ -183,18 +203,8 @@
+                         if person not in rows or (internal and not rows[person]['edge_id'].startswith(':')):
+                             continue
+                         first = snapshot(connection, person)
+-                        edges = first['stage_edges']
+-                        if first['edge_id'] in edges:
+-                            edges = edges[edges.index(first['edge_id']):]
+-                        elif internal:
+-                            edges = [first['edge_id'], *edges]
+-                        position = first['lane_position_m']
+                         speed = speeds['type' + person[-1]]
+-                        calls = [('old_remaining', edges, position, first['stage_arrival_pos_m'])]
+-                        arrival = first['stage_arrival_pos_m'] if operation == 'same' else spec['replacement_endpoint_m']
+-                        if operation == 'position_shift':
+-                            position += (connection.lane.getLength(first['lane_id']) - position) / 4
+-                        calls.append(('new_route', edges, position, arrival))
++                        calls = replacement_requests(connection, person, first, spec)
+                         for purpose, request_edges, request_position, request_arrival in calls:
+                             before_raw = (output / 'native.stdout.log').read_bytes()
+                             receipt = replacement(connection, person, purpose, request_edges, request_position,

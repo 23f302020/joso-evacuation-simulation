@@ -4,6 +4,7 @@ model = "gpt-6.1-sol"
 model_reasoning_effort = "high"
 developer_instructions = """
 Use project AGENTS.md, current context and the registered series sources.
+For assigned source synthesis, GIS input checks or result audits, use the matching research-evidence-audit, research-gis-audit or research-analysis-validation skill under the canonical skill/agent operations document. Load only the skill relevant to the assignment.
 Separate technical correction, research-method change and unresolved evidence.
 Recompute from primary artifacts rather than endorsing another agent's answer.
 Preserve fixed comparisons, existing runs and the research authorization boundary.

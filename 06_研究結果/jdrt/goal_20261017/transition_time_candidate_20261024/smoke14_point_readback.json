@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-24T23:20:14.857074+09:00",
+  "status": "RUNNING",
+  "scope": "point observation of same technical14 sequence, not full completion/READY",
+  "original_session": 80519,
+  "owner_pid": 15784,
+  "started_at_jst": "2026-10-24T23:16:43.375170+09:00",
+  "independently_completed": 2,
+  "registered_settings": 14,
+  "active": {
+    "run_id": "ns261024e_03",
+    "cell_id": "fixed_reference_u05_r2p900_seed23423",
+    "started_at_jst": "2026-10-24T23:19:43.581923+09:00",
+    "command": "smoke",
+    "pid": 20256
+  },
+  "completed_receipts": [
+    {
+      "run_id": "ns261024e_01",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_01_20261024T231815136632.json",
+      "validation_sha256": "dae1f8cc419ed58b41741f197cc68ed5904ff31288a494ef913382e1e8d2b9de",
+      "technical_PASS": true,
+      "core_adoption_permitted": false
+    },
+    {
+      "run_id": "ns261024e_02",
+      "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_ns261024e_02_20261024T231943364575.json",
+      "validation_sha256": "d28a6554512eb11ba654cff0823d8330c3eb1b02559aabfd59706f4673029b64",
+      "technical_PASS": true,
+      "core_adoption_permitted": false
+    }
+  ],
+  "core_records": 0,
+  "display_sync_pending_until_whole_sequence_terminal": true,
+  "source_edit_permitted_during_run": false
+}

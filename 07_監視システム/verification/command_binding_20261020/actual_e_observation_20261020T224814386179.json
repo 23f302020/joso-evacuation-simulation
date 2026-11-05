@@ -1,0 +1,63 @@
+{
+  "at_jst": "2026-10-20T22:48:14.386156+09:00",
+  "observed_at_utc": "2026-10-20T13:48:06.478394+00:00",
+  "monitor_pid": 29296,
+  "loaded_source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+  "targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020e\\manifest.json": {
+      "status": "RUNNING",
+      "target_id": "np261020e",
+      "observed_at_utc": "2026-10-20T13:48:06.400396+00:00",
+      "protocol": "realtime_choice_fixture_suite_v1",
+      "purpose": "technical_fixture_suite",
+      "state_sha256": "903f6b7e070157198289516119018af28c26582be7ee90a58119d5755b77ce68",
+      "flags": [],
+      "pid": 9368,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020e\\manifest.json",
+      "sim_sec": null,
+      "progress_token": [
+        "RUNNING",
+        null,
+        null
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134369776631674024,
+        "pid": 9368
+      },
+      "command_binding": {
+        "kind": "direct",
+        "command_target_id": "np261020e"
+      },
+      "command_verified_binding": {
+        "kind": "direct",
+        "command_target_id": "np261020e"
+      },
+      "last_progress": 1792504064.563355,
+      "log_offsets": {},
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020e_c25\\execution\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "np261020e_c25",
+      "observed_at_utc": "2026-10-20T13:48:06.421856+00:00",
+      "protocol": "realtime_choice_fixture_v1",
+      "purpose": "fixture",
+      "state_sha256": "433214d86f2ebd9b96b622591126b02ff16bd39e45ca99af98d88ec945be195f",
+      "flags": [],
+      "pid": 9368,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020e_c25\\execution\\manifest.json",
+      "sim_sec": 1500.0,
+      "progress_token": [
+        "COMPLETED",
+        1500.0
+      ],
+      "last_progress": 1792504085.040689,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020e_c25\\execution\\sumo_errors.log": 472
+      },
+      "historical": false
+    }
+  },
+  "scope": "Observed actual technical-fixture suite; no validation/adoption claim"
+}

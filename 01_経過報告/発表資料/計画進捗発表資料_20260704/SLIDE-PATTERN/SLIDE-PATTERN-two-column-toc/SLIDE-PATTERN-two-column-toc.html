@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>SLIDE-PATTERN-two-column-toc</title>
+<style>
+  body { background: #E8E8E8; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; font-family: sans-serif; }
+  .slide-label { font-size: 12px; color: #666; margin-bottom: 6px; }
+  .slide { width: 960px; height: 540px; background: #FFFFFF; border: 1px solid #CCCCCC; overflow: hidden; display: flex; flex-direction: column; }
+  .area-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .title-area { padding: 14px 40px 12px; border-bottom: 1px dashed #CCCCCC; flex-shrink: 0; background: #FAFAFA; }
+  .content-area { flex: 1; display: flex; padding: 24px 60px; gap: 40px; }
+  .toc-col { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+  .toc-item { display: flex; align-items: baseline; gap: 6px; padding: 9px 0; border-bottom: 1px solid #F0F0F0; }
+  .toc-num { font-size: 13px; color: #888; flex-shrink: 0; width: 28px; }
+  .toc-name { font-size: 14px; color: #333; flex: 1; }
+  .toc-dots { flex: 1; border-bottom: 1px dotted #CCCCCC; margin: 0 6px; position: relative; top: -2px; }
+  .toc-page { font-size: 13px; color: #888; flex-shrink: 0; width: 24px; text-align: right; }
+  .col-divider { width: 1px; background: #EEEEEE; }
+</style>
+</head>
+<body>
+<p class="slide-label">[two-column-toc]</p>
+<div class="slide">
+  <!-- タイトルエリア（SLIDE.mdの Slide Frame で定義） -->
+  <div class="title-area">
+    <div class="area-label">Title Area — SLIDE.md 参照</div>
+    <div style="font-size:16px; color:#CCCCCC; margin-top:4px;">スライドタイトルが入ります</div>
+  </div>
+  <!-- コンテンツエリア -->
+  <div class="content-area">
+    <div class="toc-col">
+      <div class="area-label">左列（項目1〜5）</div>
+      <div class="toc-item">
+        <div class="toc-num">1.</div>
+        <div class="toc-name">目次項目1が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">02</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">2.</div>
+        <div class="toc-name">目次項目2が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">04</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">3.</div>
+        <div class="toc-name">目次項目3が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">06</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">4.</div>
+        <div class="toc-name">目次項目4が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">10</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">5.</div>
+        <div class="toc-name">目次項目5が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">14</div>
+      </div>
+    </div>
+    <div class="col-divider"></div>
+    <div class="toc-col">
+      <div class="area-label">右列（項目6〜10）</div>
+      <div class="toc-item">
+        <div class="toc-num">6.</div>
+        <div class="toc-name">目次項目6が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">32</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">7.</div>
+        <div class="toc-name">目次項目7が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">35</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">8.</div>
+        <div class="toc-name">目次項目8が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">40</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">9.</div>
+        <div class="toc-name">目次項目9が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">45</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">10.</div>
+        <div class="toc-name">目次項目10が入ります</div>
+        <div class="toc-dots"></div>
+        <div class="toc-page">48</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "at_jst": "2026-10-24T08:02:49.757153+09:00",
+  "action": "prestart_readonly_environment_selector_omission_preserved",
+  "first_status": "nc26102401_prestart_status.json",
+  "first_ready": false,
+  "new_status": "nc26102401_prestart_status_selected.json",
+  "new_ready": true,
+  "research_start_performed": false,
+  "source_input_changes": false,
+  "limitation": "first shell call session handle was not retained; current CIM had no dedicated owner; no research mutation was attempted"
+}

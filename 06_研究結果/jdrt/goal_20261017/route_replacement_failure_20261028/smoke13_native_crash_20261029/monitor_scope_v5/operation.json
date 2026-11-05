@@ -1,0 +1,24 @@
+{
+  "at_jst": "2026-10-29T21:08:47.852279+09:00",
+  "state": "CONFIG_SCOPE_UPDATED_PENDING_EXISTING_MONITOR_RELOAD",
+  "old_patterns": 18,
+  "new_patterns": 22,
+  "added": [
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\*\\manifest.json",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\*\\manifest.json",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\*\\manifest.json",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\technical\\*\\execution\\manifest.json"
+  ],
+  "config_before_sha256": "6596da63e1f069cd636dde72cd4289f69b99c4d0375e7f5c67e0e8c8c0ff25a0",
+  "config_after_sha256": "dea645750ce7c7347ad17ce4e2c723fbac50a0b0ff0d8f2c992c76a2877ffa75",
+  "watch_source_sha256": "908cff58920c2ae6fd140f7077d9b8fb2c21b3e0bfb78eccfc321f8397ee3d00",
+  "old_monitor_pid": 29900,
+  "research_owners_untouched": [
+    12904,
+    33700
+  ],
+  "events_in_before_inventory": 340,
+  "previous_failure": "daemon read_failures6+ for diag02 command lookup; same console call matched in2.48s. Root cause unproven; no retry classified as scientific success.",
+  "v5_monitoring_gap": "V5 not in configured patterns before this change; point parent/technical checks exist, no continuous coverage invented.",
+  "next": "Stop only existing task; prove original monitor identity absent; start same task, verify exact source/new target bindings/freshness. Do not reset state/events or restart research."
+}

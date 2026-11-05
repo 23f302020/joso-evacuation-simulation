@@ -1,0 +1,25 @@
+--- a/04_プログラム/scripts/jdrt_realtime_choice_validate.py
++++ b/04_プログラム/scripts/jdrt_realtime_choice_validate.py
+@@ -56,7 +56,21 @@
+ def stream_rows(path):
+     opener = gzip.open if path.suffix == '.gz' else Path.open
+     with opener(path, 'rt', encoding='utf-8-sig', newline='') as stream:
+-        yield from csv.DictReader(stream)
++        reader = csv.reader(stream)
++        fields = next(reader, None)
++        if fields is None:
++            return
++        width = len(fields)
++        for values in reader:
++            if not values:
++                continue
++            row = dict(zip(fields, values))
++            if len(values) > width:
++                row[None] = values[width:]
++            elif len(values) < width:
++                for key in fields[len(values):]:
++                    row[key] = None
++            yield row
+ 
+ 
+ class IndependentCarTimes:

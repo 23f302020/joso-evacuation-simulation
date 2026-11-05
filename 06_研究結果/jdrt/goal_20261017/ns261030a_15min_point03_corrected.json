@@ -1,0 +1,620 @@
+{
+  "at_jst": "2026-10-30T09:09:42.754949+09:00",
+  "classification": "VERIFIED_WAIT",
+  "action": "all14_same_owner_15min_point",
+  "original_session": 72385,
+  "sequence_snapshot": {
+    "protocol": "realtime_choice_v1",
+    "purpose": "technical_smoke_sequence",
+    "pid": 36476,
+    "status": "RUNNING",
+    "started_at_jst": "2026-10-30T08:52:17.493751+09:00",
+    "implementation_sha256": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+    },
+    "audit_path": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T212545.json",
+    "audit_sha256": "850d6c13f5d28185228c934a11ef083076abdd177270f9937048b2ad60a21780",
+    "runner_sha256": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920",
+    "research_adoption_permitted": false,
+    "completed": [
+      {
+        "run_id": "ns261030a_01",
+        "cell": {
+          "cell_id": "fixed_reference_r0_seed23423",
+          "destination_policy": "fixed_reference",
+          "demand_level": null,
+          "scenario": "R0",
+          "seed": 23423
+        },
+        "manifest_sha256": "520ea4e3e81264186c6f2996634946975501d51dc1a35f17d6ab6b687cb443f7",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_01_20261030T085334389283.json",
+        "finished_at_jst": "2026-10-30T08:53:34.569580+09:00"
+      },
+      {
+        "run_id": "ns261030a_02",
+        "cell": {
+          "cell_id": "fixed_reference_u05_r1_seed23423",
+          "destination_policy": "fixed_reference",
+          "demand_level": "u05",
+          "scenario": "R1",
+          "seed": 23423
+        },
+        "manifest_sha256": "f2a70699f122a893aaba99ac4abfb4af7ac5ab524058ce763435ddcd03afb094",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_02_20261030T085451758497.json",
+        "finished_at_jst": "2026-10-30T08:54:51.959714+09:00"
+      },
+      {
+        "run_id": "ns261030a_03",
+        "cell": {
+          "cell_id": "fixed_reference_u05_r2p900_seed23423",
+          "destination_policy": "fixed_reference",
+          "demand_level": "u05",
+          "scenario": "R2P900",
+          "seed": 23423
+        },
+        "manifest_sha256": "c5982d4e820704cba8d493696abffa4e18cc9ad0f0f22549882d9a5ae65384d2",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_03_20261030T085613745910.json",
+        "finished_at_jst": "2026-10-30T08:56:13.946308+09:00"
+      },
+      {
+        "run_id": "ns261030a_04",
+        "cell": {
+          "cell_id": "fixed_reference_u05_r2p0_seed23423",
+          "destination_policy": "fixed_reference",
+          "demand_level": "u05",
+          "scenario": "R2P0",
+          "seed": 23423
+        },
+        "manifest_sha256": "5cc858c2319d7d87d518ea7134602301973ae4ee34082e4868c1d2415a4f8789",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_04_20261030T085729229317.json",
+        "finished_at_jst": "2026-10-30T08:57:29.404081+09:00"
+      },
+      {
+        "run_id": "ns261030a_05",
+        "cell": {
+          "cell_id": "fixed_reference_u50_r1_seed23423",
+          "destination_policy": "fixed_reference",
+          "demand_level": "u50",
+          "scenario": "R1",
+          "seed": 23423
+        },
+        "manifest_sha256": "99dea6e9c1b4c7686f2c4f31ac2e3f9a2dc8f22dddc32e441ba778c7f3cc795e",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_05_20261030T085844233368.json",
+        "finished_at_jst": "2026-10-30T08:58:44.480566+09:00"
+      },
+      {
+        "run_id": "ns261030a_06",
+        "cell": {
+          "cell_id": "fixed_reference_u50_r2p900_seed23423",
+          "destination_policy": "fixed_reference",
+          "demand_level": "u50",
+          "scenario": "R2P900",
+          "seed": 23423
+        },
+        "manifest_sha256": "be0723c59c93439c3d3b608c62a5b57c5e3c481283495d4bb7fc6a92274e5210",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_06_20261030T090001469508.json",
+        "finished_at_jst": "2026-10-30T09:00:01.908039+09:00"
+      },
+      {
+        "run_id": "ns261030a_07",
+        "cell": {
+          "cell_id": "fixed_reference_u50_r2p0_seed23423",
+          "destination_policy": "fixed_reference",
+          "demand_level": "u50",
+          "scenario": "R2P0",
+          "seed": 23423
+        },
+        "manifest_sha256": "4d9ace2a4725fbb96a1a9c2e7552bc27c7f4bbb39098dbbb19d39083eb40c8d3",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_07_20261030T090129762181.json",
+        "finished_at_jst": "2026-10-30T09:01:30.356032+09:00"
+      },
+      {
+        "run_id": "ns261030a_08",
+        "cell": {
+          "cell_id": "facility_first_r0_seed23423",
+          "destination_policy": "facility_first",
+          "demand_level": null,
+          "scenario": "R0",
+          "seed": 23423
+        },
+        "manifest_sha256": "201faa504a2e62da26b21253a49e12f6405ca98228779d7d656378634859e18a",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_08_20261030T090257282350.json",
+        "finished_at_jst": "2026-10-30T09:02:57.691474+09:00"
+      },
+      {
+        "run_id": "ns261030a_09",
+        "cell": {
+          "cell_id": "facility_first_u05_r1_seed23423",
+          "destination_policy": "facility_first",
+          "demand_level": "u05",
+          "scenario": "R1",
+          "seed": 23423
+        },
+        "manifest_sha256": "74fbe731666b91ca2fd515b9993029786a49fb63667b6d7f1681ce617bdc7599",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_09_20261030T090418458592.json",
+        "finished_at_jst": "2026-10-30T09:04:18.962905+09:00"
+      },
+      {
+        "run_id": "ns261030a_10",
+        "cell": {
+          "cell_id": "facility_first_u05_r2p900_seed23423",
+          "destination_policy": "facility_first",
+          "demand_level": "u05",
+          "scenario": "R2P900",
+          "seed": 23423
+        },
+        "manifest_sha256": "2cbb7ef80485ab52f44acd03354c8366664ddb260fe807674f7d2cfef1ce7c3f",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_10_20261030T090542051933.json",
+        "finished_at_jst": "2026-10-30T09:05:42.263921+09:00"
+      },
+      {
+        "run_id": "ns261030a_11",
+        "cell": {
+          "cell_id": "facility_first_u05_r2p0_seed23423",
+          "destination_policy": "facility_first",
+          "demand_level": "u05",
+          "scenario": "R2P0",
+          "seed": 23423
+        },
+        "manifest_sha256": "843913b240b623014068ac73f7856dfe56bfd7611fa1f3946883458b0c9e3f6a",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_11_20261030T090701909569.json",
+        "finished_at_jst": "2026-10-30T09:07:02.158059+09:00"
+      },
+      {
+        "run_id": "ns261030a_12",
+        "cell": {
+          "cell_id": "facility_first_u50_r1_seed23423",
+          "destination_policy": "facility_first",
+          "demand_level": "u50",
+          "scenario": "R1",
+          "seed": 23423
+        },
+        "manifest_sha256": "5c208077c6118246020aa1c8c03a1a0d45c1a2409fcd964c7ec1a6ec4d7adc02",
+        "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_12_20261030T090823924954.json",
+        "finished_at_jst": "2026-10-30T09:08:24.203113+09:00"
+      }
+    ],
+    "active": {
+      "run_id": "ns261030a_13",
+      "cell_id": "facility_first_u50_r2p900_seed23423",
+      "started_at_jst": "2026-10-30T09:08:24.211164+09:00",
+      "command": "validate",
+      "pid": 27272
+    }
+  },
+  "owner_identity": {
+    "ProcessId": 36476,
+    "ParentProcessId": 9876,
+    "CreationDate": "2026-10-30T08:52:17.330279+09:00",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_smoke_sequence.py --prefix ns261030a --audit 06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T212545.json"
+  },
+  "observed_run": "ns261030a_13",
+  "manifest_status": "COMPLETED",
+  "progress": {
+    "at_jst": "2026-10-30T09:09:07.322537+09:00",
+    "run_id": "ns261030a_13",
+    "time_sec": 1800.0,
+    "end_sec": 1800,
+    "wall_sec": 20.785188799956813,
+    "counts": {
+      "steps": 3600,
+      "controller_ticks": 1801,
+      "snapshots": 31,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 1633,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 206,
+      "dispatch_cycles": 31,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 30,
+      "departure_pending_frames": 32,
+      "snapshot_actor_rows": 290
+    },
+    "people_states": {
+      "admitted": 12,
+      "travelling_walk": 11,
+      "no_route": 1,
+      "walk_limit": 4,
+      "alighting": 1
+    },
+    "request_states": {
+      "served": 1,
+      "alighting": 1,
+      "cancelled_timeout": 18
+    }
+  },
+  "people_rows": 29,
+  "checks": {
+    "same_original_sequence_owner": true,
+    "input_manifest": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true,
+    "whole_person_accounting": true
+  },
+  "anomaly_flags": [],
+  "native_error_lines": 0,
+  "free_bytes": 234996654080,
+  "independent_monitor_pid": 2476,
+  "independent_monitor_observed": "2026-10-30T00:09:18.507022+00:00",
+  "independent_monitor_age_sec": 63.90677738189697,
+  "independent_current_targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_01\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_01",
+      "observed_at_utc": "2026-10-30T00:08:47.380355+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-29T23:52:24.594363+00:00",
+        "finished_at_utc": "2026-10-29T23:52:58.450745+00:00",
+        "elapsed_sec": 33.856382,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "520ea4e3e81264186c6f2996634946975501d51dc1a35f17d6ab6b687cb443f7",
+      "flags": [],
+      "pid": 13524,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_01\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793317980.6446836,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_01\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_02\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_02",
+      "observed_at_utc": "2026-10-30T00:08:47.413222+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-29T23:53:37.292104+00:00",
+        "finished_at_utc": "2026-10-29T23:54:14.157330+00:00",
+        "elapsed_sec": 36.865226,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "f2a70699f122a893aaba99ac4abfb4af7ac5ab524058ce763435ddcd03afb094",
+      "flags": [],
+      "pid": 18600,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_02\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318045.274647,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_02\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_03\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_03",
+      "observed_at_utc": "2026-10-30T00:08:47.420591+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-29T23:54:54.970808+00:00",
+        "finished_at_utc": "2026-10-29T23:55:35.207792+00:00",
+        "elapsed_sec": 40.236984,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "c5982d4e820704cba8d493696abffa4e18cc9ad0f0f22549882d9a5ae65384d2",
+      "flags": [],
+      "pid": 36624,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_03\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318158.6800086,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_03\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_04\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_04",
+      "observed_at_utc": "2026-10-30T00:08:47.426351+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-29T23:56:17.050199+00:00",
+        "finished_at_utc": "2026-10-29T23:56:53.195287+00:00",
+        "elapsed_sec": 36.145088,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "5cc858c2319d7d87d518ea7134602301973ae4ee34082e4868c1d2415a4f8789",
+      "flags": [],
+      "pid": 19100,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_04\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318213.6616368,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_04\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_05\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_05",
+      "observed_at_utc": "2026-10-30T00:08:47.432347+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-29T23:57:32.316618+00:00",
+        "finished_at_utc": "2026-10-29T23:58:08.178680+00:00",
+        "elapsed_sec": 35.862062,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "99dea6e9c1b4c7686f2c4f31ac2e3f9a2dc8f22dddc32e441ba778c7f3cc795e",
+      "flags": [],
+      "pid": 36088,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_05\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318289.7139368,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_05\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_06\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_06",
+      "observed_at_utc": "2026-10-30T00:08:47.437887+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-29T23:58:47.307471+00:00",
+        "finished_at_utc": "2026-10-29T23:59:22.707647+00:00",
+        "elapsed_sec": 35.400176,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "be0723c59c93439c3d3b608c62a5b57c5e3c481283495d4bb7fc6a92274e5210",
+      "flags": [],
+      "pid": 31496,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_06\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318362.5695987,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_06\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_07\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_07",
+      "observed_at_utc": "2026-10-30T00:08:47.442276+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-30T00:00:05.361130+00:00",
+        "finished_at_utc": "2026-10-30T00:00:43.068633+00:00",
+        "elapsed_sec": 37.707503,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "4d9ace2a4725fbb96a1a9c2e7552bc27c7f4bbb39098dbbb19d39083eb40c8d3",
+      "flags": [],
+      "pid": 27720,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_07\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318415.3755074,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_07\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_08\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_08",
+      "observed_at_utc": "2026-10-30T00:08:47.468479+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-30T00:01:35.777189+00:00",
+        "finished_at_utc": "2026-10-30T00:02:18.825035+00:00",
+        "elapsed_sec": 43.047846,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "201faa504a2e62da26b21253a49e12f6405ca98228779d7d656378634859e18a",
+      "flags": [],
+      "pid": 17292,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_08\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318458.605697,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_08\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_09\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_09",
+      "observed_at_utc": "2026-10-30T00:08:47.488058+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-30T00:03:01.075851+00:00",
+        "finished_at_utc": "2026-10-30T00:03:39.658522+00:00",
+        "elapsed_sec": 38.582671,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "74fbe731666b91ca2fd515b9993029786a49fb63667b6d7f1681ce617bdc7599",
+      "flags": [],
+      "pid": 36512,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_09\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318611.1916697,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_09\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_10\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_10",
+      "observed_at_utc": "2026-10-30T00:08:47.492900+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-30T00:04:23.182964+00:00",
+        "finished_at_utc": "2026-10-30T00:05:02.941384+00:00",
+        "elapsed_sec": 39.75842,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "2cbb7ef80485ab52f44acd03354c8366664ddb260fe807674f7d2cfef1ce7c3f",
+      "flags": [],
+      "pid": 19620,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_10\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318704.6373703,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_10\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_11\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_11",
+      "observed_at_utc": "2026-10-30T00:08:47.497472+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-30T00:05:45.728001+00:00",
+        "finished_at_utc": "2026-10-30T00:06:23.578180+00:00",
+        "elapsed_sec": 37.850179,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "843913b240b623014068ac73f7856dfe56bfd7611fa1f3946883458b0c9e3f6a",
+      "flags": [],
+      "pid": 6452,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_11\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318771.6875687,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_11\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_12\\manifest.json": {
+      "status": "COMPLETED",
+      "target_id": "ns261030a_12",
+      "observed_at_utc": "2026-10-30T00:08:47.502336+00:00",
+      "execution_timing": {
+        "started_at_utc": "2026-10-30T00:07:05.273198+00:00",
+        "finished_at_utc": "2026-10-30T00:07:44.934408+00:00",
+        "elapsed_sec": 39.66121,
+        "start_source": "started_at_jst",
+        "finish_source": "finished_at_jst",
+        "status": "complete"
+      },
+      "protocol": "realtime_choice_v1",
+      "purpose": "smoke",
+      "state_sha256": "5c208077c6118246020aa1c8c03a1a0d45c1a2409fcd964c7ec1a6ec4d7adc02",
+      "flags": [],
+      "pid": 13744,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_12\\manifest.json",
+      "sim_sec": 1800.0,
+      "progress_token": [
+        "COMPLETED",
+        1800.0
+      ],
+      "last_progress": 1793318863.1744297,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_12\\sumo_errors.log": 0
+      },
+      "historical": false
+    },
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_13\\manifest.json": {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\smoke\\ns261030a_13\\manifest.json",
+      "read_failures": 1,
+      "read_error_type": "TimeoutExpired",
+      "read_error": "Command '['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', '[Console]::OutputEncoding = [Text.UTF8Encoding]::new(); Get-CimInstance Win32_Process -Filter \"ProcessId = 32736\" | Select-Object -ExpandProperty CommandLine | ConvertTo-Json -Compress']' timed out after 15 seconds"
+    }
+  },
+  "deferred_document_sync": "Transient writer.lock; apply after terminal, no bypass/removal",
+  "first_observation_attempt": "Target advanced to new smoke13 before progress.json existed; original read failed before any point write. No run/validation restarted. Missing startup progress is not completed/zero progress.",
+  "formal_cells": 0,
+  "core_ready": false,
+  "formal_validation_or_adoption": false,
+  "corrected_at_jst": "2026-10-30T09:10:47.532923+09:00",
+  "supersedes_parent_observation_only": "06_研究結果\\jdrt\\goal_20261017\\ns261030a_15min_point02.json",
+  "original_point_sha256": "887793a6e2c063b9d61498b8cd9a5eb26dee6851eccbab38d9c2fc0156ffe80a",
+  "input_population_rows": 11965,
+  "smoke_observed_population_rows": 29,
+  "correction_reason": "Parent observation compared full input CSV11965 to technical smoke cohort29. Current smoke manifest selection, distinct raw person result rows and progress sum agree. No scientific validator/acceptance/inputs changed. Original false-positive point preserved.",
+  "formal_validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_ns261030a_13_20261030T090948818678.json",
+  "formal_validation_status": "PASS_TECHNICAL_NONADOPTABLE",
+  "person_results_sha256": "3cc23fe632fa6531fca38ebad3ce7f668e09858860063fd68e1c4e1ec9c39939"
+}

@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-21T08:51:42.143327+09:00",
+  "status": "SCOPED_REVIEW_AND_22_UNIT_CONTRACTS_PASS_NATIVE_RETEST_PENDING",
+  "changed_scope": "technical native guard request suffix and its true final-edge endpoint only",
+  "research_implementation_changed": false,
+  "pap_registry_changed": false,
+  "native_physics_changed": false,
+  "unresolved": "Legal internal replacement and negative patch guard need actual three-role native retest",
+  "red": "red.log",
+  "green": "green.log",
+  "sources": {
+    "choice_native_guard.py": "ab2e316176e48f6722b189a57f166d1359623250b1a1b4ac574a4bda2dde8f96",
+    "choice_native_guard_plan.py": "4a3b5cdd0671dfc3f5faac9741743e13a2304e5d4a8cdbae8e5b31b5e00dcf2a",
+    "test_choice_native_guard.py": "b7f2c762d7f6e27103bb549aeccc2be6ce22b4169f690215f9f116b5d160cb1f",
+    "test_choice_native_guard_plan.py": "4975621db95b8d62ae1d8ddab63479d8d6694dbe30fb8051981efa4edf235efa"
+  }
+}

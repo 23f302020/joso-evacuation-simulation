@@ -1,0 +1,42 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "90d0be670d79e2c7a9175d3855cb486e",
+  "at_utc": "2026-10-27T23:50:38.776364+00:00",
+  "target": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\rh261028b\\manifest.json",
+  "kind": "failed",
+  "evidence": {
+    "status": "FAILED",
+    "target_id": "rh261028b",
+    "observed_at_utc": "2026-10-27T23:50:38.775219+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-27T23:50:29.127653+00:00",
+      "finished_at_utc": "2026-10-27T23:50:33.938919+00:00",
+      "elapsed_sec": 4.811266,
+      "start_source": "started_at_jst",
+      "finish_source": "finished_at_jst",
+      "status": "complete"
+    },
+    "protocol": "realtime_choice_v1",
+    "purpose": "technical_probe",
+    "state_sha256": "f3f66d5b4cdbf16b0b4c5b5037e4872702295e360eaeae696d5a21c226b48fcb",
+    "flags": [],
+    "pid": 17692,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\rh261028b\\manifest.json",
+    "sim_sec": null,
+    "progress_token": [
+      "FAILED",
+      null,
+      null
+    ],
+    "last_progress": 1793145037.0386066,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\technical\\rh261028b\\sumo_errors.log": 0
+    },
+    "historical": false
+  },
+  "delivery": "failed_preserved",
+  "notification": "submitted",
+  "research_adoption": false,
+  "delivery_started_epoch": 1793154773.0961037,
+  "error_type": "FileNotFoundError"
+}

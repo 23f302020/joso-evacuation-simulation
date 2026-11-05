@@ -1,0 +1,14 @@
+F
+======================================================================
+FAIL: test_braking_settings_require_motion_identity_and_bound_config (tests.test_jdrt_choice_validate.SparseVerifierContracts.test_braking_settings_require_motion_identity_and_bound_config)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_validate.py", line 47, in test_braking_settings_require_motion_identity_and_bound_config
+    self.assertIsNotNone(validator.native_braking_settings(manifest))
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None
+
+----------------------------------------------------------------------
+Ran 1 test in 0.046s
+
+FAILED (failures=1)

@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-21T19:54:49.968755+09:00",
+  "run_id": "ch261021_001",
+  "cell_id": "fixed_reference_r0_seed23423",
+  "formal_adoption_verified": true,
+  "intervals_sec": {
+    "simulation_loop_wall_sec": 759.2171855999914,
+    "manifest_start_to_finish_sec": 777.940954,
+    "reservation_to_manifest_finish_sec": 797.49972,
+    "validate_process_start_to_stdout_lastwrite_sec": 1090.640044,
+    "record_process_start_to_stdout_lastwrite_sec": 1078.455982,
+    "reservation_to_formal_record_sec": 3157.890913
+  },
+  "timestamps": {
+    "launch_reservation": "2026-10-21T15:31:45.318183+09:00",
+    "manifest_start": "2026-10-21T15:32:04.876949+09:00",
+    "manifest_finish": "2026-10-21T15:45:02.817903+09:00",
+    "validate_actual_process_creation": "2026-10-21T15:46:31.707944+09:00",
+    "validate_stdout_lastwrite": "2026-10-21T16:04:42.347988+09:00",
+    "record_actual_process_creation": "2026-10-21T16:06:25.283953+09:00",
+    "record_stdout_lastwrite": "2026-10-21T16:24:23.739935+09:00",
+    "ledger_recorded": "2026-10-21T16:24:23.209096+09:00"
+  },
+  "measurement_scope": "stdout lastwrite is observed output-emission proxy, not exact CPU or kernel process-exit time. Reservation-to-record includes orchestration gaps. Native loop is separate. One R0 is not measured R1/R2/all70 performance.",
+  "provenance_sha256": {
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261021_001\\manifest.json": "c42db7cf7c240447dfd050de7402838dcec4ba6704ee18ce314e6527c6f6e0f7",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\driver_logs\\ch261021_001.state.json": "f52fea64769de5e9f592b0d37f45f815cf9b36871055c38000497c07ff56e20d",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\runs\\ch261021_001\\progress.json": "7b4321e309846cee608ec53d0270105828b190a8687640853a1ae5cb4fc1d16f",
+    "06_研究結果\\jdrt\\goal_20261017\\ch261021_001_validate.stdout.log": "5a93a7c43449b8025dbb35737d0af9117b3fd1be1e70e78bf4e11db79034e451",
+    "06_研究結果\\jdrt\\goal_20261017\\ch261021_001_record.stdout.log": "e123d5c92d70e4e3ec53827d3fd1c8b9ea6ffece8d3295bd8cca3232ef2101c7",
+    "05_タスク管理\\jdrt\\JDRT-受付代替行動_セル検証台帳.jsonl": "5b3cb5aef20cbccbc3df45914dafa00928b3a5180d123af29e218c8be28fccc6"
+  },
+  "runtime_inputs_changed": false,
+  "whole_goal_eta_revised": false,
+  "reestimate_when": "current accepted R1/R2 execution+validate+record timings and actual full-output storage are available"
+}

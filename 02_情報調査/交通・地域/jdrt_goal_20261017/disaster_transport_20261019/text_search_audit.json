@@ -1,0 +1,148 @@
+[
+  {
+    "file": "city_verification_layout.txt",
+    "physical_pages": 128,
+    "terms": {
+      "バス": [],
+      "福祉車": [],
+      "運転": [],
+      "移送": [],
+      "搬送": [],
+      "輸送": [
+        {
+          "pdf_page": 52,
+          "count": 1
+        },
+        {
+          "pdf_page": 55,
+          "count": 3
+        },
+        {
+          "pdf_page": 56,
+          "count": 3
+        },
+        {
+          "pdf_page": 61,
+          "count": 1
+        }
+      ],
+      "ふれあい号": [
+        {
+          "pdf_page": 117,
+          "count": 2
+        }
+      ],
+      "要援護者": [
+        {
+          "pdf_page": 54,
+          "count": 1
+        },
+        {
+          "pdf_page": 59,
+          "count": 1
+        },
+        {
+          "pdf_page": 61,
+          "count": 3
+        },
+        {
+          "pdf_page": 66,
+          "count": 5
+        }
+      ],
+      "救助": [
+        {
+          "pdf_page": 8,
+          "count": 4
+        },
+        {
+          "pdf_page": 13,
+          "count": 1
+        },
+        {
+          "pdf_page": 29,
+          "count": 1
+        },
+        {
+          "pdf_page": 52,
+          "count": 1
+        },
+        {
+          "pdf_page": 60,
+          "count": 1
+        },
+        {
+          "pdf_page": 61,
+          "count": 1
+        },
+        {
+          "pdf_page": 66,
+          "count": 1
+        },
+        {
+          "pdf_page": 76,
+          "count": 1
+        },
+        {
+          "pdf_page": 80,
+          "count": 1
+        },
+        {
+          "pdf_page": 82,
+          "count": 2
+        },
+        {
+          "pdf_page": 111,
+          "count": 2
+        },
+        {
+          "pdf_page": 112,
+          "count": 3
+        },
+        {
+          "pdf_page": 115,
+          "count": 3
+        }
+      ]
+    }
+  },
+  {
+    "file": "cabinet_disaster_overview_layout.txt",
+    "physical_pages": 10,
+    "terms": {
+      "バス": [],
+      "福祉車": [],
+      "運転": [],
+      "移送": [],
+      "搬送": [],
+      "輸送": [],
+      "ふれあい号": [],
+      "要援護者": [],
+      "救助": [
+        {
+          "pdf_page": 3,
+          "count": 5
+        },
+        {
+          "pdf_page": 8,
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "file": "cabinet_rescue_stockyard_layout.txt",
+    "physical_pages": 9,
+    "terms": {
+      "バス": [],
+      "福祉車": [],
+      "運転": [],
+      "移送": [],
+      "搬送": [],
+      "輸送": [],
+      "ふれあい号": [],
+      "要援護者": [],
+      "救助": []
+    }
+  }
+]

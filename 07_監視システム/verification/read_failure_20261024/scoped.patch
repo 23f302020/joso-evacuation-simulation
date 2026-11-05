@@ -1,0 +1,50 @@
+--- watch.py.before
++++ watch.py
+@@ -445,11 +445,13 @@
+                 for kind in classify(current, old, now, config['stale_sec']):
+                     save_event(runtime / 'events', name, kind, current)
+             known[name] = current
+-        except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError):
++        except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as error:
+             failures = old.get('read_failures', 0) + 1
+-            known[name] = {**old, 'read_failures': failures}
++            failure = {'source': name, 'read_failures': failures,
++                       'read_error_type': type(error).__name__, 'read_error': str(error)[:1000]}
++            known[name] = {**old, **failure}
+             if failures >= 3:
+-                save_event(runtime / 'events', name, 'unreadable_state', {'source': name, 'read_failures': failures})
++                save_event(runtime / 'events', name, 'unreadable_state', failure)
+     for name, old in known.items():
+         if not Path(name).exists() and not old.get('historical'):
+             save_event(runtime / 'events', name, 'state_missing', {'source': name})
+--- test_watch.py.before
++++ test_watch.py
+@@ -122,6 +122,28 @@
+ 
+ 
+ class Contracts(unittest.TestCase):
++    def test_read_failure_records_exception_without_losing_previous_identity(self):
++        with tempfile.TemporaryDirectory() as folder:
++            root = Path(folder)
++            source = root / 'manifest.json'
++            source.write_text('{}', encoding='utf-8')
++            runtime = root / 'runtime'
++            state = {'initialized': True, 'targets': {str(source):
++                     {'status': 'RUNNING', 'target_id': 'artificial', 'pid': 123}}}
++            config = {'patterns': [str(source)], 'stale_sec': 600}
++            with patch.object(watch, 'snapshot', side_effect=FileNotFoundError('Artificial missing executable')):
++                for now in (1, 2, 3):
++                    watch.observe(config, runtime, state, now, lambda _: {'state': 'alive'})
++            recorded = state['targets'][str(source)]
++            self.assertEqual(recorded['status'], 'RUNNING')
++            self.assertEqual(recorded['pid'], 123)
++            self.assertEqual(recorded['read_failures'], 3)
++            self.assertEqual(recorded['read_error_type'], 'FileNotFoundError')
++            self.assertEqual(recorded['read_error'], 'Artificial missing executable')
++            events = list((runtime / 'events').glob('*.json'))
++            self.assertEqual(len(events), 1)
++            self.assertEqual(watch.read_json(events[0])['evidence']['read_error_type'], 'FileNotFoundError')
++
+     def limited_dispatcher(self, root):
+         events = root / 'events'
+         events.mkdir()

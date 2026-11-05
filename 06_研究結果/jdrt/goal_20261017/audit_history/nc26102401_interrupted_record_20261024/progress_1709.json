@@ -1,0 +1,59 @@
+{
+  "at_jst": "2026-10-24T17:06:59.362755+09:00",
+  "classification": "PROGRESS",
+  "work": "orphan precommit confirmed/preserved; dedicated recover-writer succeeded; same core record only live; readback recovery extension RED/27PASS/current5 unchanged",
+  "session": 84801,
+  "owner_pid": 35396,
+  "actual_record_pid": 516,
+  "processes": [
+    {
+      "ProcessId": 35396,
+      "CreationDate": "/Date(1792829052145)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 06_研究結果/jdrt/goal_20261017/audit_history/nc26102401_interrupted_record_20261024/record_once.py",
+      "UserModeTime": 625000,
+      "KernelModeTime": 468750
+    },
+    {
+      "ProcessId": 516,
+      "CreationDate": "/Date(1792829052354)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" record --run-id nc26102401",
+      "UserModeTime": 1355468750,
+      "KernelModeTime": 244218750
+    }
+  ],
+  "record_source": "existing frozen CLI; no core/standalone validate replay",
+  "original_operation_preserved": true,
+  "current_operation": {
+    "kind": "explicit_orphan_precommit_record_recovery_v1",
+    "run_id": "nc26102401",
+    "pid": 35396,
+    "status": "RUNNING",
+    "phase": "record",
+    "started_at_jst": "2026-10-24T17:04:12.309509+09:00",
+    "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "source_sha256": "cf5d00ba1b54f285eb1bb5cf8ee57d35a530be172ddc229ed8522c1c4348386e",
+    "original_operation": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102401.finish/operation.json",
+    "original_operation_sha256": "d3dfd51e5dff85c49084f000465c46afcd0ed8c4753a9ad0e056eb08b5764654",
+    "diagnosis": "06_研究結果/jdrt/goal_20261017/audit_history/nc26102401_interrupted_record_20261024/diagnosis.json",
+    "diagnosis_sha256": "521dc48b1187b6223f2883b4dd72f18e0a222f0f0ad9778337c14ded0dcb3d14",
+    "validation_report_sha256": "5d525e0688469c5e25078341302ead3347a9957f96f647116fc7ee2cba3a3e50",
+    "record_attempted": true,
+    "formal_record_result": null,
+    "next_start_performed": false,
+    "observed_at_jst": "2026-10-24T17:04:12.326400+09:00",
+    "child_launcher_pid": 2124,
+    "child_command": [
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py",
+      "--project-root",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究",
+      "record",
+      "--run-id",
+      "nc26102401"
+    ]
+  },
+  "next_action": "follow same owner/session; terminal7/readback before any canonical display edit"
+}

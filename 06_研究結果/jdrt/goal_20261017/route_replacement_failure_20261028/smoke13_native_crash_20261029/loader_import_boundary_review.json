@@ -1,0 +1,35 @@
+{
+  "at_jst": "2026-10-29T15:13:59.621843+09:00",
+  "status": "SCOPED_LOADER_HELPER_REVIEW_PASSED",
+  "change": "Bound import-table parsing and preserve duplicate import thunks; no science/source gate changes",
+  "source": ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_loader_check.py",
+  "source_sha256": "23a303dfc6754aa290a0e8172f2d5c9f4b5fc31dedd63dbbb5d016a37c6b906e",
+  "test_sha256": "fabe7bd21515e02d63d3be9afcfeeb851f25e67cfd30f0be517eea2ab1403137",
+  "red": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\loader_import_boundary_RED.log",
+    "sha256": "bb98ee54fbd55f9e33e534f8ff6d8dddbbfa0c46dd0d2ee7e01e1c2882c9b35e",
+    "failures": 1,
+    "errors": 2
+  },
+  "green": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\loader_import_boundary_GREEN.log",
+    "sha256": "4a203f958ef9d765ff1f89816631e1bdf553b4acf1d56449f1d10ad92bb46ff3",
+    "tests": 4
+  },
+  "actual_loader": {
+    "path": "06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\repair02_loader2\\diagnosis.json",
+    "sha256": "3929a2fdaa2844a3bf58192ff24a92aec3eb4300bca9d30f5157750871542330"
+  },
+  "review": [
+    "Exact import DLL set independently read from actual PE",
+    "Original raw symbol logs and terminal state hashed before use",
+    "Every thunk retained and each symbol resolved, including duplicates",
+    "System-only module path checked; clean --version only; no simulation",
+    "Output uses unused directory and preserves failed attempt",
+    "Formal research implementation/input/PAP/acceptance gates unchanged"
+  ],
+  "limits": [
+    "Not full pair policy verification, native behavior proof or READY",
+    "Review performed in parent chat; no independent backend/model switch claimed"
+  ]
+}

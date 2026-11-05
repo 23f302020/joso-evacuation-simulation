@@ -1,0 +1,51 @@
+{
+  "protocol": "realtime_choice_v1",
+  "registered_cells": 70,
+  "recorded_cells": 7,
+  "running": [],
+  "unrecorded": [],
+  "partial_records": [],
+  "record_identity_mismatch": [],
+  "unresolved_failures": [],
+  "unresolved_launches": [
+    "nc26102401"
+  ],
+  "pending_record_journals": [],
+  "foreign_running_manifests": [],
+  "next_cell": {
+    "cell_id": "facility_first_r0_seed23423",
+    "destination_policy": "facility_first",
+    "demand_level": null,
+    "scenario": "R0",
+    "seed": 23423
+  },
+  "smoke_completed": [
+    "ns261022c_01",
+    "ns261022c_02",
+    "ns261022c_03",
+    "ns261022c_04",
+    "ns261022c_05",
+    "ns261022c_06",
+    "ns261022c_07",
+    "ns261022c_08",
+    "ns261022c_09",
+    "ns261022c_10",
+    "ns261022c_11",
+    "ns261022c_12",
+    "ns261022c_13",
+    "ns261022c_14"
+  ],
+  "failed": [],
+  "active_native_processes": [
+    {
+      "ProcessId": 33868,
+      "Name": "python.exe"
+    },
+    {
+      "ProcessId": 33444,
+      "Name": "python.exe"
+    }
+  ],
+  "core_ready": true,
+  "core_start_available": false
+}

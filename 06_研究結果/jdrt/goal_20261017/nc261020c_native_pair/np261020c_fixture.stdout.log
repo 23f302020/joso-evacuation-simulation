@@ -1,0 +1,98 @@
+{
+  "protocol": "realtime_choice_fixture_suite_v1",
+  "purpose": "technical_fixture_suite",
+  "run_id": "np261020c",
+  "pid": 25880,
+  "status": "COMPLETED",
+  "started_at_jst": "2026-10-20T21:52:16.280306+09:00",
+  "research_adoption_permitted": false,
+  "factory_sha256": "1cbfd394c1a75d7c2462418c400798097126b95dba9bad37fa5d1884cbfc17d5",
+  "cases": [
+    {
+      "case": "walk_short_calibration",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "both_type3_type4_fixture_people": true,
+        "all_people_short_edge_reroute_sequence": true,
+        "native_forward_then_reverse_positions": true,
+        "two_unchanged_native_replacement_receipts_per_plan": true,
+        "both_types_getter_below_registered_stage_speed": true,
+        "native_invalid_departpos_positive_exact_receipt_count": true,
+        "all_fixture_walkers_reach_fixed_terminal": true,
+        "shared_native_second_short_edge_frame": true
+      },
+      "outcomes": {
+        "admitted": 2
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 2,
+        "walk_plan": 4,
+        "person_state": 4,
+        "walk_departure": 2,
+        "closure_applied": 1,
+        "walk_reroute": 2,
+        "person_terminal": 2
+      },
+      "sumo_log_summary": {
+        "bytes": 472,
+        "warning_count": 4,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "60d9b4c8151b7b41ff3e33b2a865a5429bf6e78e6dc6e81ac218a113740b3958",
+      "child_run_id": "np261020c_c25"
+    },
+    {
+      "case": "walk_short_repeated",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "both_type3_type4_fixture_people": true,
+        "all_people_short_edge_reroute_sequence": true,
+        "native_forward_then_reverse_positions": true,
+        "two_unchanged_native_replacement_receipts_per_plan": true,
+        "both_types_getter_below_registered_stage_speed": true,
+        "native_invalid_departpos_positive_exact_receipt_count": true,
+        "all_fixture_walkers_reach_fixed_terminal": true
+      },
+      "outcomes": {
+        "admitted": 2
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 2,
+        "walk_plan": 6,
+        "person_state": 4,
+        "walk_departure": 2,
+        "closure_applied": 2,
+        "walk_reroute": 4,
+        "person_terminal": 2
+      },
+      "sumo_log_summary": {
+        "bytes": 944,
+        "warning_count": 8,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "5259116b868810fd41c5129b3b125513f34d0feb7f5bd60e76caa9fb4e78ecb7",
+      "child_run_id": "np261020c_c26"
+    }
+  ],
+  "finished_at_jst": "2026-10-20T21:53:02.188870+09:00"
+}

@@ -1,0 +1,60 @@
+{
+  "at_jst": "2026-10-24T22:52:13.779473+09:00",
+  "status": "SCOPED_REVIEW_FOR_FULL_NATIVE_SUITE_NOT_READY",
+  "code_review_skill": ".agents/skills/code-review-and-quality/SKILL.md",
+  "changes": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "before_sha256": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+      "after_sha256": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+      "changed": [
+        "run"
+      ],
+      "added": [
+        "passenger_transition_links",
+        "passenger_transition_source"
+      ]
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "before_sha256": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+      "after_sha256": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+      "changed": [
+        "audit_actor_stream",
+        "audit_movement_events",
+        "audit_fixture_timing"
+      ],
+      "added": [
+        "native_arrival_topology",
+        "arrival_tail_distance",
+        "native_transition_backlinks",
+        "verified_internal_source",
+        "audit_transition_fixture"
+      ]
+    }
+  },
+  "core_start_permitted": false,
+  "unit_tests": 61,
+  "limits": [
+    "native short/closure observations b predate final validator; not current suite receipts",
+    "c29 original dedicated validation remains INVALID; current actor component independently recomputes PASS with original outputs unchanged",
+    "all29 current suite/complete counterexamples/all14smokes/preflight still required"
+  ],
+  "native_callsite_ASTs_unchanged": true,
+  "native_warning_classifier_unchanged": true,
+  "config_identity_only_changes": [
+    "workspace",
+    "record_files",
+    "registration_id",
+    "native_observation_addendum"
+  ],
+  "same70_cells": true,
+  "old8_ledger_unchanged": true,
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "factory_sha256": "5ed0e5f1b49340218079dbfb8e2896a82faa4c2a74fef44bf4a26798f9ac8691",
+  "review": "Observation-only runtime changes; independent reverse transition reconstruction and new bounded native arrival-tail distance proof; same existing residual rounding bound; no result-specific whitelist, no gate or clock change. New tests enter existing preflight explicit runtime module. Unknown/ambiguous endpoint paths reject. Full native suite is now needed."
+}

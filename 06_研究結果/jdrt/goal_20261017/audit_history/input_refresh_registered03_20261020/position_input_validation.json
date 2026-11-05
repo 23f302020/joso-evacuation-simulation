@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "technical_ready": false,
+  "scope": "independent_position_geometry_and_old_choice_invariants",
+  "at_jst": "2026-10-20T17:32:53.061407+09:00",
+  "checks": {
+    "places_unique_and_exact": true,
+    "independent_positions_lanes_projection_ranges": true,
+    "people_destinations_masks_times_cells_unchanged": true,
+    "old_input_and_preregistration_preserved": true,
+    "contracts_bound_to_registry": true
+  },
+  "places": 275,
+  "mismatches": [],
+  "max_numeric_error_m": 1.8189894035458565e-12,
+  "net_offset": [
+    -400762.88,
+    -3981792.9
+  ],
+  "net_projection": "+proj=utm +zone=54 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
+  "archival_manifest_sha256": "3039064c933b5589c9f518bc44dc3d13ffc432b1c8c7df0a8193d18ba99f8a62",
+  "input_manifest_sha256": "d922a2e52e36183451b3ce25f29bed2e85f0a8834b92f833b401799a57d6a4ea",
+  "validator_sha256": "64f194824c879f16e5987d339d9932a6377f55d5f503b332a3661589c7977287"
+}

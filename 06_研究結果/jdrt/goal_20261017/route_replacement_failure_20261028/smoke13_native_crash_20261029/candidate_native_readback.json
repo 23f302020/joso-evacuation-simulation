@@ -1,0 +1,113 @@
+{
+  "at_jst": "2026-10-29T10:53:20.969894+09:00",
+  "purpose": "ISOLATED_NATIVE_CANDIDATE_READBACK_NOT_READY",
+  "build_session": 52332,
+  "build_exit_code": 0,
+  "sequence_session": 91588,
+  "sequence_exit_code": 0,
+  "receipt": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-diagnostics\\stopindex261029c\\receipt.json",
+  "receipt_sha256": "371ee6b7125191f1e215e9753c54538f44e45c573ceafc497277f06beb6baf2b",
+  "raw_scoped_probes": [
+    {
+      "run_id": "ps261029c",
+      "manifest_sha256": "6f11a6feb7f6d95fc14a5b945bec01d6304b4eabd7fdaba0bfefcefcc4e1b01d",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "control_did_not_advance_clock": true,
+        "requested_remaining_excludes_b": true,
+        "candidate_assignment_succeeded": true,
+        "requested_route_exact": true,
+        "immediate_source_valid_or_explicit_native_reentry_pending": true,
+        "cumulative_distance_unchanged": true,
+        "new_route_index_zero": true,
+        "reentry_and_motion_distance_continuous": true,
+        "reached_new_stop": true,
+        "first_reentry_source_edge_retained": true,
+        "first_reentry_position_and_distance_bounded": true
+      },
+      "raw_frames_independent_distance_clock_and_source": true,
+      "native_stop_index": {
+        "time": "674.50",
+        "veh": "v",
+        "route_size": "2",
+        "current_index": "0",
+        "stop_index": "1",
+        "active_prior": "0",
+        "past_count": "1",
+        "past_index": "0",
+        "past_edge": "c"
+      },
+      "source_was_stopped": true
+    },
+    {
+      "run_id": "ps261029d",
+      "manifest_sha256": "640f4a5706f0789b1c9b57a51d72036f39bcb45f2a7497d5ed453e67611a63e7",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "control_did_not_advance_clock": true,
+        "requested_remaining_excludes_b": true,
+        "future_closed_route_rejected": true,
+        "native_error_identifies_future_pair": true
+      }
+    },
+    {
+      "run_id": "ps261029e",
+      "manifest_sha256": "2e545f52ecca23b9475bf1f6ce7a86cee411d1a237a635883c7ce98548f6106e",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "control_did_not_advance_clock": true,
+        "requested_remaining_excludes_b": true,
+        "stopped_cancellation_succeeded": true,
+        "parked_retained_immediately": true,
+        "source_position_unchanged": true,
+        "cumulative_distance_unchanged": true,
+        "parked_wait_did_not_resume": true,
+        "no_wait_teleport_or_collision": true
+      }
+    },
+    {
+      "run_id": "ps261029f",
+      "manifest_sha256": "9e23554896ea8c73283382ac0d277749f29465790bd3862f25a2521e713c7c48",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "control_did_not_advance_clock": true,
+        "requested_remaining_excludes_b": true,
+        "candidate_assignment_succeeded": true,
+        "requested_route_exact": true,
+        "immediate_source_valid_or_explicit_native_reentry_pending": true,
+        "cumulative_distance_unchanged": true,
+        "new_route_index_zero": true,
+        "reentry_and_motion_distance_continuous": true,
+        "reached_new_stop": true,
+        "first_reentry_source_edge_retained": true,
+        "first_reentry_position_and_distance_bounded": true
+      },
+      "raw_frames_independent_distance_clock_and_source": true,
+      "native_stop_index": {
+        "time": "670.00",
+        "veh": "v",
+        "route_size": "2",
+        "current_index": "0",
+        "stop_index": "1",
+        "active_prior": "0",
+        "past_count": "1",
+        "past_index": "0",
+        "past_edge": "c"
+      },
+      "source_was_stopped": false
+    }
+  ],
+  "original_native_inputs_unchanged": true,
+  "research_common5_original_failure_unchanged": true,
+  "cpp_algebraic_contracts": {
+    "original_failed": 4,
+    "candidate_passed": 7
+  },
+  "technical_ready": false,
+  "core_adoption_permitted": false,
+  "review": "Candidate preserves physical controller/clock and future closure rejection in four actual native probes. History mapping remains conditional on route correspondence; no full native regression, official bundle or research retry proved."
+}

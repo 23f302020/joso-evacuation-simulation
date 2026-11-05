@@ -1,0 +1,47 @@
+...............FF
+======================================================================
+FAIL: test_transport_cannot_start_or_recover (__main__.FinishContracts.test_transport_cannot_start_or_recover) (command='start-next')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 191, in test_transport_cannot_start_or_recover
+    helper.call_cli(self.root, operation, self.run_id, command)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_finish_cell.py", line 70, in call_cli
+    child = subprocess.Popen(args, cwd=root, stdin=subprocess.DEVNULL, stdout=out, stderr=err,
+        env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'},
+        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1228, in _execute_mock_call
+    raise effect
+AssertionError: Forbidden child spawn
+
+======================================================================
+FAIL: test_transport_cannot_start_or_recover (__main__.FinishContracts.test_transport_cannot_start_or_recover) (command='recover')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_finish_cell.py", line 191, in test_transport_cannot_start_or_recover
+    helper.call_cli(self.root, operation, self.run_id, command)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_finish_cell.py", line 70, in call_cli
+    child = subprocess.Popen(args, cwd=root, stdin=subprocess.DEVNULL, stdout=out, stderr=err,
+        env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'},
+        creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1228, in _execute_mock_call
+    raise effect
+AssertionError: Forbidden child spawn
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.516s
+
+FAILED (failures=2)

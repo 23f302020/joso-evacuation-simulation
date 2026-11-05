@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.pref.ibaraki.jp/doboku/kasen/keikaku/documents/5-6_s3_housinn.pdf",
+        "title": "資料-3",
+        "description": "平成27年9月関東・東北豪雨では、鬼怒川下流部の堤防決壊などにより、氾. 濫流 ... 検証し精度の向上を計る. 危険度分布の通知サービスを開始(R1～). \"気象\"×\"水害 ...",
+        "position": 1
+      },
+      {
+        "url": "https://www.cas.go.jp/jp/seisaku/mizu_junkan/materials/materials/pdf/jirei.pdf",
+        "title": "水循環に関 する計画事 例集 水循環に関する 計画事例集",
+        "description": "... 平成 27 年 7 月閣議決定）においては、今後、各流域. で流域水循環協議会を設置し ... 検証しながら、計画の実効性の向上を図っていく。 図 4-6 フォローアップの ...",
+        "position": 2
+      },
+      {
+        "url": "https://www.pref.yamaguchi.lg.jp/uploaded/attachment/144372.pdf",
+        "title": "Untitled",
+        "description": "... 平成27）年7月に、「2030（令和12）年度に2013（平成25）年度比で. 26.0％減とする ... バスや合成燃料を活用したバスが普及し、交通ネットワークが再構築され ...",
+        "position": 3
+      },
+      {
+        "url": "https://www.jiban.or.jp/file/saigai/houkoku/H30_TeigenSaishu.pdf",
+        "title": "平成 30 年 7 月豪雨を踏まえた 豪雨地盤災害に対する ...",
+        "description": "岐阜県の国道41号において1968年8月豪雨時に発生した土石流による飛騨川バス転落事故を契機とし ... 12) 茨城大学平成 27 年関東・東北豪雨調査団: 茨城大学 ...",
+        "position": 4
+      },
+      {
+        "url": "https://www.jsnds.org/ssk/ssk_36_1_051.pdf",
+        "title": "2015年鬼怒川水害における被災 地初動応答の調査・分析",
+        "description": "から11日かけて発生した豪雨を「平成27年 9 月関. 東・東北豪雨」と ... 14）常総市水害対策検証員会：平成27年常総市鬼怒. 川水害対応に関する ...",
+        "position": 5
+      }
+    ],
+    "tools": []
+  },
+  "id": "01a15190-e88c-70d6-8644-0c6c2dae0b31",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.pref.ibaraki.jp/doboku/kasen/keikaku/documents/5-6_s3_housinn.pdf\", #2 \"https://www.cas.go.jp/jp/seisaku/mizu_junkan/materials/materials/pdf/jirei.pdf\", #3 \"https://www.pref.yamaguchi.lg.jp/uploaded/attachment/144372.pdf\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

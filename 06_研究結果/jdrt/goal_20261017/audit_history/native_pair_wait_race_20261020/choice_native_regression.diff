@@ -1,0 +1,16 @@
+--- before/.agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py
++++ .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py
+@@ -289,6 +289,13 @@
+                     active['observed_at_utc'] = datetime.now(timezone.utc).isoformat()
+                     active['identity_observation'] = identity(child.pid, active['process_identity'], cim_process)
+                     self.save()
++                    # The owned child may finish while CIM is answering. Its
++                    # original Popen handle, not the numeric PID, proves exit.
++                    try:
++                        active['exit_code'] = child.wait(timeout=0)
++                        break
++                    except subprocess.TimeoutExpired:
++                        pass
+                     require(active['identity_observation']['identity'] == 'matched',
+                             'Active child PID identity is unknown, absent or changed; preserve and stop')
+         active['return_code_evidence'] = 'Popen process handle wait; not numeric PID inference'

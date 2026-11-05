@@ -1,0 +1,72 @@
+test_child_exiting_during_timeout_identity_query_uses_original_handle (tests.test_choice_native_regression.CommandIdentityContracts.test_child_exiting_during_timeout_identity_query_uses_original_handle) ... 
+  test_child_exiting_during_timeout_identity_query_uses_original_handle (tests.test_choice_native_regression.CommandIdentityContracts.test_child_exiting_during_timeout_identity_query_uses_original_handle) (observed=None) ... ERROR
+  test_child_exiting_during_timeout_identity_query_uses_original_handle (tests.test_choice_native_regression.CommandIdentityContracts.test_child_exiting_during_timeout_identity_query_uses_original_handle) (observed={'ProcessId': 123, 'ParentProcessId': 26208, 'CreationDate': 1700000000001, 'CommandLine': 'fake', 'ExecutablePath': 'C:/fake/python.exe'}) ... ERROR
+
+======================================================================
+ERROR: test_child_exiting_during_timeout_identity_query_uses_original_handle (tests.test_choice_native_regression.CommandIdentityContracts.test_child_exiting_during_timeout_identity_query_uses_original_handle) (observed=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\native_pair_wait_race_20261020\choice_native_regression.py.before.bin", line 286, in command
+    active['exit_code'] = child.wait(timeout=15)
+                          ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1232, in _execute_mock_call
+    raise result
+subprocess.TimeoutExpired: Command 'fake' timed out after 15 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 249, in test_child_exiting_during_timeout_identity_query_uses_original_handle
+    code, _ = self.p.command('fixture_' + str(index), 0, ['fake'])
+              ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\native_pair_wait_race_20261020\choice_native_regression.py.before.bin", line 292, in command
+    require(active['identity_observation']['identity'] == 'matched',
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            'Active child PID identity is unknown, absent or changed; preserve and stop')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\native_pair_wait_race_20261020\choice_native_regression.py.before.bin", line 34, in require
+    raise ValueError(message)
+ValueError: Active child PID identity is unknown, absent or changed; preserve and stop
+
+======================================================================
+ERROR: test_child_exiting_during_timeout_identity_query_uses_original_handle (tests.test_choice_native_regression.CommandIdentityContracts.test_child_exiting_during_timeout_identity_query_uses_original_handle) (observed={'ProcessId': 123, 'ParentProcessId': 26208, 'CreationDate': 1700000000001, 'CommandLine': 'fake', 'ExecutablePath': 'C:/fake/python.exe'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\native_pair_wait_race_20261020\choice_native_regression.py.before.bin", line 286, in command
+    active['exit_code'] = child.wait(timeout=15)
+                          ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1232, in _execute_mock_call
+    raise result
+subprocess.TimeoutExpired: Command 'fake' timed out after 15 seconds
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 249, in test_child_exiting_during_timeout_identity_query_uses_original_handle
+    code, _ = self.p.command('fixture_' + str(index), 0, ['fake'])
+              ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\native_pair_wait_race_20261020\choice_native_regression.py.before.bin", line 292, in command
+    require(active['identity_observation']['identity'] == 'matched',
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            'Active child PID identity is unknown, absent or changed; preserve and stop')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\audit_history\native_pair_wait_race_20261020\choice_native_regression.py.before.bin", line 34, in require
+    raise ValueError(message)
+ValueError: Active child PID identity is unknown, absent or changed; preserve and stop
+
+----------------------------------------------------------------------
+Ran 1 test in 0.014s
+
+FAILED (errors=2)

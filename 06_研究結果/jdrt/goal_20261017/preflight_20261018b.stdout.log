@@ -1,0 +1,19 @@
+{
+  "status": "READY",
+  "report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/preflight/20261018T101404862963/receipt.json",
+  "checks": {
+    "required_nonempty_READY_checks": true,
+    "current_metadata": true,
+    "primary_evidence_nonempty_and_current": true,
+    "evidence_schema": true,
+    "all_receipts_bound": true,
+    "independent_input_PASS": true,
+    "unit_and_record_transaction_PASS": true,
+    "storage_and_writer_proof_PASS": true,
+    "complete_native_fixture_suite": true,
+    "fixture_primary_manifest_roles": true,
+    "current_fixture_independent_PASS": true,
+    "current_counterexamples_PASS": true,
+    "all_registered_smoke_settings_PASS": true
+  }
+}

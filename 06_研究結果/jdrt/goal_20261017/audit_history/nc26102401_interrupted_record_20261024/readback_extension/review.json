@@ -1,0 +1,30 @@
+{
+  "at_jst": "2026-10-24T17:06:44.167997+09:00",
+  "scope": "read-only terminal metadata recovery path, not controller/validator/adoption",
+  "tests": 27,
+  "red": "missing explicit recovery API (TypeError), existing19 tests remained green",
+  "review_findings": [],
+  "review_checks": [
+    "normal audit path unchanged and interrupted default still fails",
+    "explicit terminal recovery identity/original-operation/diagnosis SHA required",
+    "seven preserved before bytes and unchanged ledger prefix required",
+    "same seven terminal hashes, markers, COMMITTED journal, current5, both PASS/equalcomponents remain required",
+    "reader has no subprocess/record/recovery/start and no research writes"
+  ],
+  "common5_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "limits": [
+    "artificial metadata tests do not validate SUMO physics",
+    "actual recovered record not yet terminal",
+    "termination cause unknown"
+  ],
+  "sources": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_record_readback.py": "a974afbd3938fb439cfa628d233ac696e75ed4bc030262ba7953c4b94ce9fbfb",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_record_readback.py": "907b05fb1f05e03f8a308d648a190027282917873e38ed6bfb30ec2469c23928"
+  }
+}

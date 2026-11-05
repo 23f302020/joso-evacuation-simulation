@@ -1,0 +1,251 @@
+{
+  "at_jst": "2026-10-24T23:25:13.335352+09:00",
+  "judgment_id": "JD-20261024-research-clock-integral-15",
+  "scope": "CURRENT_V3_EXACT_SOURCE_CLOCK_REUSE_REVIEW_NOT_TIMING_BENCHMARK",
+  "sources": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+    "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md": "4c0a6a674c3e3da26b686c5bfe1bfbaeb5aa53a5b210ee10db6247df2993fb3d"
+  },
+  "clock_calls": [
+    {
+      "line": 114,
+      "function": "time.sleep",
+      "expression": "time.sleep(0.2)"
+    },
+    {
+      "line": 891,
+      "function": "time.monotonic",
+      "expression": "time.monotonic()"
+    },
+    {
+      "line": 893,
+      "function": "t.simulation.getTime",
+      "expression": "t.simulation.getTime()"
+    },
+    {
+      "line": 1276,
+      "function": "time.monotonic",
+      "expression": "time.monotonic()"
+    },
+    {
+      "line": 1301,
+      "function": "t.simulationStep",
+      "expression": "t.simulationStep()"
+    },
+    {
+      "line": 1302,
+      "function": "t.simulation.getTime",
+      "expression": "t.simulation.getTime()"
+    }
+  ],
+  "excerpts": [
+    {
+      "first_line": 407,
+      "last_line": 415,
+      "text": "def closure_timing(scheduled_sec,step_sec):\n    if not math.isfinite(scheduled_sec) or scheduled_sec<0 or step_sec<=0:\n        raise ValueError('Invalid closure clock')\n    if not math.isclose(scheduled_sec/step_sec,round(scheduled_sec/step_sec),abs_tol=1e-9):\n        raise ValueError('Closure must be on the simulation grid')\n    call_sec=max(0,scheduled_sec-step_sec)\n    return {'scheduled_sec':scheduled_sec,'control_call_sec':call_sec,\n            'observation_upper_sec':scheduled_sec,'control_lead_sec':scheduled_sec-call_sec,\n            'phase':'initial_before_observation' if scheduled_sec==0 else 'before_step_ending_at_closure'}"
+    },
+    {
+      "first_line": 600,
+      "last_line": 603,
+      "text": "            mode = 'drt' if p['selected_jdrt'] else p['base_mode']\n            people[p['person_id']] = {**p, 'initial_mode': mode, 'mode': mode, 'status': 'not_ready',\n                **{key: '' for key in time_fields}, 'cancel_reason': '', 'fallback_reason': '',\n                'deadline_sec': p['ready_sec'] + parameters['request_policy']['max_unboarded_wait_sec'] if p['selected_jdrt'] else '',"
+    },
+    {
+      "first_line": 891,
+      "last_line": 896,
+      "text": "        wall_start = time.monotonic()\n        while True:\n            now = float(t.simulation.getTime())\n            controller_tick = now % parameters['simulation']['controller_sec'] == 0\n            if controller_tick:\n                counts['controller_ticks'] += 1"
+    },
+    {
+      "first_line": 1019,
+      "last_line": 1021,
+      "text": "                for pid, p in people.items():\n                    if unboarded_expired(p['status'], now, p['deadline_sec'] if p['deadline_sec'] != '' else math.inf):\n                        cancel_request(pid, now, 'timeout', requests[pid]['vehicle_id'])"
+    },
+    {
+      "first_line": 1049,
+      "last_line": 1062,
+      "text": "            for pid, p in people.items():\n                if p['mode'] == 'car' or p['status'] != 'not_ready' or p['ready_sec'] > now:\n                    continue\n                event(now, 'person_ready', person_id=pid)\n                if p['mode'] == 'walk':\n                    start_walk(pid, now)\n                    continue\n                q = {'request_id': 'request_' + pid, 'person_id': pid, 'status': 'none', 'vehicle_id': '',\n                     'terminal_id': p['terminal_id'], 'deadline_sec': p['deadline_sec'],\n                     **{field: '' for field in time_fields}, 'cancel_reason': ''}\n                requests[pid] = q\n                request_event(pid, 'received', now)\n                q['received_sec'] = p['received_sec'] = now\n                event(now, 'request_received', person_id=pid, deadline_sec=p['deadline_sec'])"
+    },
+    {
+      "first_line": 1090,
+      "last_line": 1099,
+      "text": "                    pid = v['active_person']\n                    boarding = v['status'] == 'pickup'\n                    trigger = 'boarding_started' if boarding else 'alighting_started'\n                    if boarding and not now < people[pid]['deadline_sec']:\n                        raise RuntimeError('Deadline cancellation did not precede boarding')\n                    request_event(pid, trigger, now, vehicle_id=vid)\n                    requests[pid][trigger + '_sec'] = people[pid][trigger + '_sec'] = now\n                    person_state(pid, 'boarding' if boarding else 'alighting', now)\n                    v.update(status='boarding' if boarding else 'alighting', until_sec=now + parameters['operation']['boarding_sec' if boarding else 'alighting_sec'])\n                    event(now, trigger, person_id=pid, vehicle_id=vid)"
+    },
+    {
+      "first_line": 1128,
+      "last_line": 1134,
+      "text": "            if scenario != 'R0' and now % parameters['simulation']['dispatch_sec'] == 0:\n                cycle += 1\n                counts['dispatch_cycles'] += 1\n                free = sorted(vid for vid, v in vehicles.items() if v['kind'] == 'drt' and v['status'] == 'idle')\n                cycle_info = {'cycle': cycle, 'time_sec': now, 'free_start': len(free), 'pending_start': len(waiting),\n                              'stages': 0, 'candidate_rows': 0, 'accepted': 0}\n                while free and waiting:"
+    },
+    {
+      "first_line": 1163,
+      "last_line": 1166,
+      "text": "                            remaining = min((forecast.get(n, math.inf) - now for n in pickup_path + delivery_path), default=math.inf) if forecast is not None else None\n                            check = candidate_checks(now, pickup, delivery, p['deadline_sec'], end,\n                                parameters['operation']['boarding_sec'], parameters['operation']['alighting_sec'],\n                                parameters['operation']['margin_sec'], remaining)"
+    },
+    {
+      "first_line": 1182,
+      "last_line": 1184,
+      "text": "                    chosen = rank_candidates(candidates, forecast is not None, parameters['dispatch_weights'])\n                    if chosen:\n                        chosen['decision'] = 'selected'"
+    },
+    {
+      "first_line": 1198,
+      "last_line": 1208,
+      "text": "                    vid, pid = chosen['vehicle_id'], chosen['person_id']\n                    bus_route(vid, chosen['_pickup_path'], now, chosen['pickup_pos_m'])\n                    vehicles[vid].update(status='pickup', active_person=pid)\n                    requests[pid]['vehicle_id'] = vid\n                    request_event(pid, 'accepted', now, vehicle_id=vid, cycle=cycle, stage=cycle_info['stages'])\n                    requests[pid]['accepted_sec'] = people[pid]['accepted_sec'] = now\n                    person_state(pid, 'assigned_origin', now)\n                    waiting.remove(pid)\n                    free.remove(vid)\n                    cycle_info['accepted'] += 1\n                    event(now, 'request_accepted', person_id=pid, vehicle_id=vid, cycle=cycle, stage=cycle_info['stages'])"
+    },
+    {
+      "first_line": 1274,
+      "last_line": 1278,
+      "text": "                counts['snapshots'] += 1\n                atomic_json(run_dir / 'progress.json', {'at_jst': stamp(), 'run_id': run_id, 'time_sec': now,\n                    'end_sec': end, 'wall_sec': time.monotonic() - wall_start, 'counts': counts.copy(),\n                    'people_states': dict(Counter(p['status'] for p in people.values())),\n                    'request_states': dict(Counter(q['status'] for q in requests.values()))})"
+    },
+    {
+      "first_line": 1285,
+      "last_line": 1286,
+      "text": "            if now >= end:\n                break"
+    },
+    {
+      "first_line": 1301,
+      "last_line": 1303,
+      "text": "            t.simulationStep()\n            upper = float(t.simulation.getTime())\n            counts['steps'] += 1"
+    }
+  ],
+  "parameters": {
+    "simulation": {
+      "start_jst": "2015-09-10T12:50:00+09:00",
+      "duration_sec": 21600,
+      "step_sec": 0.5,
+      "controller_sec": 1,
+      "dispatch_sec": 60,
+      "snapshot_sec": 60,
+      "stop_speed_mps": 0.1
+    },
+    "operation": {
+      "fleet_count": 4,
+      "passenger_capacity": 3,
+      "boarding_sec": 300,
+      "alighting_sec": 300,
+      "margin_sec": 300,
+      "reference_depot_shelter": "shelter_3",
+      "pooling": false,
+      "vehicle_length_m": 4.5,
+      "min_gap_m": 2.5
+    },
+    "request_policy": {
+      "intent_is_not_acceptance": true,
+      "max_unboarded_wait_sec": 900,
+      "deadline_anchor": "ready_sec",
+      "boarding_start_strictly_before_deadline": true,
+      "cancel_at_deadline_before_boarding": true,
+      "fallback": "walk_once_same_origin_same_terminal_current_graph",
+      "retry_requests": false,
+      "fallback_after_boarding_started": false,
+      "communication_delay_sec": 0,
+      "waiting_origin_hazard": "record_overlap_no_casualty_inference",
+      "pickup_estimate_before_deadline": true,
+      "completion_estimate_at_most_horizon": true,
+      "cancel_vehicle": "physical_wait_at_current_safe_external_no_reset"
+    },
+    "forecast": {
+      "R0": null,
+      "R1": null,
+      "R2P900": {
+        "scheduled_time_error_sec": 900
+      },
+      "R2P0": {
+        "scheduled_time_error_sec": 0,
+        "diagnostic_only": true
+      }
+    }
+  },
+  "review": {
+    "model_now": "SUMO getTime at loop head; same now is supplied through dispatch candidate calculation and acceptance before simulationStep",
+    "wall_elapsed": "monotonic elapsed written as progress.wall_sec; not inserted as simulated dispatch/communication duration",
+    "sleep": "file replace PermissionError retry only; does not schedule real-time dispatch",
+    "phase": "scheduled closure, before-step call and observation upper times remain separate",
+    "limits": [
+      "No whole-system real-time deadline benchmark",
+      "No real dispatch compute/communications/forecast-production latency validation",
+      "No empirical latency correction or policy/metric change",
+      "Static AST/source review does not prove all possible native behavior or safety"
+    ]
+  },
+  "new_run_started": false,
+  "new_research_result": false,
+  "implementation_modified": false,
+  "previous_proof": "06_研究結果/jdrt/goal_20261017/G7_モデル時刻・壁時計_契約照合_20261023.json",
+  "previous_proof_sha256": "e06a31bf5f4f950e35164b8a5e8b49a5673ca6e397387b406a8c3ab1141b3dea",
+  "unchanged_excerpt_readback": [
+    {
+      "prior_first_line": 354,
+      "current_first_line": 407,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 547,
+      "current_first_line": 600,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 834,
+      "current_first_line": 891,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 961,
+      "current_first_line": 1019,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 990,
+      "current_first_line": 1049,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1031,
+      "current_first_line": 1090,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1069,
+      "current_first_line": 1128,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1104,
+      "current_first_line": 1163,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1123,
+      "current_first_line": 1182,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1139,
+      "current_first_line": 1198,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1215,
+      "current_first_line": 1274,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1226,
+      "current_first_line": 1285,
+      "text_identical": true
+    },
+    {
+      "prior_first_line": 1242,
+      "current_first_line": 1301,
+      "text_identical": true
+    }
+  ],
+  "registered_data_equivalence": {
+    "all_registered_data_artifacts_identical": true,
+    "artifacts": 20,
+    "old_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/manifest.json",
+    "old_manifest_sha256": "63d0b13bb6e7f1a14dc2d345a57a0a9499dc466e2f2dad50c98df2a81e88c9ed",
+    "current_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/inputs/registered01/manifest.json",
+    "current_manifest_sha256": "95cc4913f2f9a2752781795c9ae276f1a5bb7b73070edb03c64797c25d7d58a9",
+    "scope": "physical/common realization/cell data bytes identical; no permission to reuse old8 outcome records"
+  },
+  "metadata_comparison_correction": "Initial string comparison differed only for .2 versus 0.2; both parse to identical Python clock-call AST. No clock/function/constant change inferred."
+}

@@ -1,0 +1,24 @@
+{
+  "status": "RUNNING",
+  "target_id": "simulation_watch_artificial_child",
+  "observed_at_utc": "2026-10-20T07:47:27.114471+00:00",
+  "state_sha256": "d35953fece6debeda983dc4a685d96b16e0a6db454bdd01d7267099738c70e78",
+  "flags": [],
+  "pid": 27644,
+  "source": "07_監視システム\\verification\\smoke02\\artificial\\manifest.json",
+  "sim_sec": null,
+  "progress_token": [
+    "RUNNING",
+    null,
+    null,
+    null,
+    null
+  ],
+  "process": {
+    "state": "alive",
+    "created": 134369560470669263,
+    "pid": 27644
+  },
+  "last_progress": 1792482447.0851057,
+  "log_offsets": {}
+}

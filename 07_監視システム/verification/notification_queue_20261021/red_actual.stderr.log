@@ -1,0 +1,41 @@
+FFF
+======================================================================
+FAIL: test_notifications_progress_one_per_tick_at_diagnostic_limit (test_watch.Contracts.test_notifications_progress_one_per_tick_at_diagnostic_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 145, in test_notifications_progress_one_per_tick_at_diagnostic_limit
+    self.assertEqual(watch.read_json(root / 'events/b.json')['notification'], 'submitted')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'pending' != 'submitted'
+- pending
++ submitted
+
+
+======================================================================
+FAIL: test_notification_progresses_while_diagnostic_child_is_running (test_watch.Contracts.test_notification_progresses_while_diagnostic_child_is_running)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 165, in test_notification_progresses_while_diagnostic_child_is_running
+    self.assertEqual(watch.read_json(root / 'events/b.json')['notification'], 'submitted')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'pending' != 'submitted'
+- pending
++ submitted
+
+
+======================================================================
+FAIL: test_disabled_notification_is_persisted_despite_diagnostic_limit (test_watch.Contracts.test_disabled_notification_is_persisted_despite_diagnostic_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 178, in test_disabled_notification_is_persisted_despite_diagnostic_limit
+    self.assertEqual(watch.read_json(root / 'events/b.json')['notification'], 'disabled')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'pending' != 'disabled'
+- pending
++ disabled
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.182s
+
+FAILED (failures=3)

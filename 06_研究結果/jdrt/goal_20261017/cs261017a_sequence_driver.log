@@ -1,0 +1,12 @@
+{"at_jst": "2026-10-17T17:57:10.208144+09:00", "action": "smoke_sequence_command_start", "run_id": "cs261017a_01", "command": "smoke", "pid": 25144, "cell": {"cell_id": "fixed_reference_r0_seed23423", "destination_policy": "fixed_reference", "demand_level": null, "scenario": "R0", "seed": 23423}}
+{"at_jst": "2026-10-17T17:57:46.435688+09:00", "action": "smoke_sequence_command_end", "run_id": "cs261017a_01", "command": "smoke", "exit_code": 0}
+{"at_jst": "2026-10-17T17:57:46.463788+09:00", "action": "smoke_sequence_command_start", "run_id": "cs261017a_01", "command": "validate", "pid": 26396, "cell": {"cell_id": "fixed_reference_r0_seed23423", "destination_policy": "fixed_reference", "demand_level": null, "scenario": "R0", "seed": 23423}}
+{"at_jst": "2026-10-17T17:58:03.630963+09:00", "action": "smoke_sequence_command_end", "run_id": "cs261017a_01", "command": "validate", "exit_code": 1}
+{"at_jst": "2026-10-17T17:58:03.632574+09:00", "action": "smoke_sequence_failed_preserved", "error_type": "RuntimeError", "error": "validate failed: cs261017a_01", "active": {"run_id": "cs261017a_01", "cell_id": "fixed_reference_r0_seed23423", "started_at_jst": "2026-10-17T17:57:10.156577+09:00", "command": "validate", "pid": 26396}}
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_最終14設定smoke逐次実行.py", line 98, in <module>
+    main(args.prefix, args.audit)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_最終14設定smoke逐次実行.py", line 70, in main
+    raise RuntimeError(command + ' failed: ' + run_id)
+RuntimeError: validate failed: cs261017a_01

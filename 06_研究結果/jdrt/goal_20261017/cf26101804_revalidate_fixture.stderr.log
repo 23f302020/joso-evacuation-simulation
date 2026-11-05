@@ -1,0 +1,20 @@
+Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.
+Warning: Vehicle 'choice_drt_0' aborts stop.
+Warning: Vehicle 'choice_drt_0' aborts stop.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_technical.py", line 67, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_technical.py", line 46, in main
+    result = run_suite(args.run_id, args.case)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_choice_fixtures.py", line 563, in run_suite
+    report = evaluate(case, directory.parent / 'execution', result)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_choice_fixtures.py", line 507, in evaluate
+    reference = native_walk_reference(directory, cfg['simulation']['step_sec'])
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_choice_fixtures.py", line 80, in native_walk_reference
+    raise ValueError('Calibration lacks a shared interior short-edge walking frame')
+ValueError: Calibration lacks a shared interior short-edge walking frame

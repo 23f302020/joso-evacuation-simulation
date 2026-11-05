@@ -1,0 +1,34 @@
+FFF
+======================================================================
+FAIL: test_backend_route_is_returned_after_remaining_route_id_assignment (tests.test_jdrt_choice_runtime.RuntimeContracts.test_backend_route_is_returned_after_remaining_route_id_assignment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_runtime.py", line 345, in test_backend_route_is_returned_after_remaining_route_id_assignment
+    connection.route.add.assert_called_once()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 958, in assert_called_once
+    raise AssertionError(msg)
+AssertionError: Expected 'add' to have been called once. Called 0 times.
+
+======================================================================
+FAIL: test_remaining_route_ids_are_unique_for_repeated_changes (tests.test_jdrt_choice_runtime.RuntimeContracts.test_remaining_route_ids_are_unique_for_repeated_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_runtime.py", line 363, in test_remaining_route_ids_are_unique_for_repeated_changes
+    self.assertEqual(len(ids), 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_remaining_route_native_rejection_is_not_suppressed (tests.test_jdrt_choice_runtime.RuntimeContracts.test_remaining_route_native_rejection_is_not_suppressed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_runtime.py", line 376, in test_remaining_route_native_rejection_is_not_suppressed
+    with self.assertRaisesRegex(RuntimeError, 'future edge closed'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+FAILED (failures=3)

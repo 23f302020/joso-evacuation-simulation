@@ -1,0 +1,14 @@
+{
+  "at_jst": "2026-10-21T14:57:25.500637+09:00",
+  "status": "EXPECTED_INCOMPLETE_LEDGER_REFUSAL_CONFIRMED",
+  "reason": "Not ready: no formally recorded core ledger",
+  "registered_cells": 70,
+  "recorded_cells": 0,
+  "analysis_source_sha256": "381a76c7b4e5704c3264161629bf68cddf87369ded48395e2b7326a1674d89d2",
+  "ledger_sha256": null,
+  "goal_immediate_children_unchanged_before_report": true,
+  "real_core_population_or_result_tables_read": false,
+  "evidence_for_no_population_read": "Actual analyze calls complete_records before helper loading and all run-table reads; received its expected precondition error",
+  "research_adoption_permitted": false,
+  "analysis_completed": false
+}

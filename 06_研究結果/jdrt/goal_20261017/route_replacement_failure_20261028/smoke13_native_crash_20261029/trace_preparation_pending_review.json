@@ -1,0 +1,20 @@
+{
+  "at_jst": "2026-10-29T20:43:38.582355+09:00",
+  "status": "RED_REPRODUCED_PREPARATION_SCHEMA_GAP_NO_RUNTIME_CHANGE",
+  "target": ".agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py",
+  "target_before_sha256": "802d2fc5316a8bd19bac5760e1d3f7c08463a98176fbfe2e98425edc267a7dbe",
+  "not_captured_by_current_pair": true,
+  "current_pair_still_owned": 88794,
+  "failing_contract": "Bound terminal repaired-source preparation must reach observational source selection; original helper only accepts PREPARED_NOT_BUILT",
+  "red_report": "trace_preparation_RED.log",
+  "red": {
+    "tests": 7,
+    "expected_new_format_error": 1,
+    "other_tests_passed": 6
+  },
+  "planned_minimum_fix": "Accept the explicit terminal shared-source snapshot for observation-only mode, requiring false permission flags and exact matching base-state path/SHA/bytes from its terminal role reference; retain full pair/source/configuration gates and reject reapplying repair to repaired source",
+  "tests_do_not_build_or_simulate": true,
+  "production_helper_changed": false,
+  "ready": false,
+  "next": "After current pair terminal/readback: archive helper, apply scoped TDD change and tests/review; new observation-only source/build from current repaired selected role. Never fake original preparation status."
+}

@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\realtime_choice_cell.py", line 897, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\realtime_choice_cell.py", line 877, in main
+    result = run(args.cell_id, args.run_id, purpose='smoke', smoke_end=args.end_sec)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 1118, in run
+    bus_route(vid, path, now, target_position)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 861, in bus_route
+    actual_path = set_vehicle_route(t, vid, path, lane_info, end + 1, stop_pos=target_position)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 43, in set_vehicle_route
+    connection.vehicle.setStop(vehicle_id, target, pos=stop_pos,
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               laneIndex=lane, duration=duration,
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               flags=STOP_PARKING)
+                               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\_vehicle.py", line 1010, in setStop
+    self._setCmd(tc.CMD_STOP, vehID, "tsdbdbdd", 7, edgeID, pos, laneIndex, duration, flags, startPos, until)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\domain.py", line 169, in _setCmd
+    self._connection._sendCmd(self._cmdSetID, varID, objectID, format, *values)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\connection.py", line 232, in _sendCmd
+    return self._sendExact()
+           ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\output\sumo\toolchains\native_lat_20261020a\tools\traci\connection.py", line 137, in _sendExact
+    raise FatalTraCIError("Connection closed by SUMO.")
+traci.exceptions.FatalTraCIError: Connection closed by SUMO.

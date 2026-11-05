@@ -1,0 +1,109 @@
+{
+  "at": "2026-10-27T10:02:53.272468+09:00",
+  "decision": "B_INCOMPLETE_WAIT_FOR_CURRENT_REGISTERED_NORMAL_RUN",
+  "A": "previous timing decomposition retained; old registration only",
+  "B": "No accepted normal run has complete compute/validate/record resource coverage. Old nc26102402 is invalid; current v3 has no core run directories. Do not mix registrations or substitute smoke/preflight coverage.",
+  "C": "not_started",
+  "D": "not_started_no_speedup_claim",
+  "collector_state": {
+    "schema": "pipeline_measurement_v1",
+    "pid": 30896,
+    "status": "COMPLETED",
+    "source_sha256": "eee695e8a45ab0a8cbe04ee164abbd5fc30dd56f81b0fe9a8edcfdfa34ff91fd",
+    "started_at": "2026-10-24T17:14:22.028864+09:00",
+    "interval_sec": 60.0,
+    "planned_seconds": 86400.0,
+    "samples": 472,
+    "failures": 1,
+    "limitations": [
+      "CPU percent per process: 100=one logical CPU",
+      "Python/SUMO processes may belong to other work; phase is a command-name hint, not research ownership proof",
+      "Sampled memory maxima are lower bounds, not exact peaks",
+      "No temperature sensor or user responsiveness measurement",
+      "Missing/failed observations are not zero; long gaps may include sleep"
+    ],
+    "last_observed_at": "2026-10-25T05:12:33.427128+09:00",
+    "finished_at": "2026-10-27T10:00:06.143597+09:00"
+  },
+  "sources": {
+    "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\performance\\efficiency_20261024a\\state.json": "ea6a2080e1247a7db0b8bb4e1b4c5267b35587976752fb1c3f8e88466034df0c",
+    "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\performance\\efficiency_20261024a\\samples.jsonl": "abdb574d88dd75af095fe9c1e6db99b9483d58b855d2140e38d0c9c00b0f11ea",
+    "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\performance\\efficiency_20261024a\\history.json": "ee644b3b112d98e3fee9e9ca061f510f0287aea43b39b228f59d090fa9ddadf0"
+  },
+  "config_sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+  "current_registration": "choice_native_observation_v3_20261024",
+  "current_workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3",
+  "current_core_directories": 0,
+  "collection_summary": {
+    "total": 472,
+    "successful": 471,
+    "failed": 1,
+    "gaps_gt120_sec": 2,
+    "max_gap_sec": 14012.347848,
+    "successful_collection_p95_sec": 4.472788000013679,
+    "successful_collection_max_sec": 23.798813199973665,
+    "available_mib_min": 165
+  },
+  "old_phase_diagnostics_only": [
+    {
+      "run_id": "nc26102401",
+      "phase": "record",
+      "pid": 516,
+      "created": "2026-10-24T08:04:12.3548190Z",
+      "sample_count": 8,
+      "first": "2026-10-24 17:14:22.030292+09:00",
+      "last": "2026-10-24 17:21:22.033714+09:00",
+      "conservative_between_samples_covered_sec": 420.003422,
+      "cpu_percent_one_core_median": 99.01599467274673,
+      "sampled_private_max_mib": 1530.71875,
+      "manifest_status_now": "COMPLETED",
+      "manifest_sha256": "c4a20ec580eb1168b35eb516f387f53caf3897a97d7130659ee400828f929e0c",
+      "eligible_for_current_registration": false
+    },
+    {
+      "run_id": "nc26102402",
+      "phase": "execute",
+      "pid": 22452,
+      "created": "2026-10-24T08:24:07.0480820Z",
+      "sample_count": 16,
+      "first": "2026-10-24 17:24:22.034975+09:00",
+      "last": "2026-10-24 17:39:22.043934+09:00",
+      "conservative_between_samples_covered_sec": 900.008959,
+      "cpu_percent_one_core_median": 80.80192799694316,
+      "sampled_private_max_mib": 1780.46484375,
+      "manifest_status_now": "INVALID",
+      "manifest_sha256": "0cc05136b01f0d2fa5514e603fb8222d2f90e6a9e5094dd303f9e68ad9f1c0fd",
+      "eligible_for_current_registration": false
+    },
+    {
+      "run_id": "nc26102402",
+      "phase": "validate",
+      "pid": 19672,
+      "created": "2026-10-24T08:41:00.1097070Z",
+      "sample_count": 19,
+      "first": "2026-10-24 17:41:22.045943+09:00",
+      "last": "2026-10-24 17:59:22.054278+09:00",
+      "conservative_between_samples_covered_sec": 1080.008335,
+      "cpu_percent_one_core_median": 98.71151900014965,
+      "sampled_private_max_mib": 1536.80859375,
+      "manifest_status_now": "INVALID",
+      "manifest_sha256": "0cc05136b01f0d2fa5514e603fb8222d2f90e6a9e5094dd303f9e68ad9f1c0fd",
+      "eligible_for_current_registration": false
+    }
+  ],
+  "failed_samples": [
+    {
+      "observed_at": "2026-10-25T05:12:33.427128+09:00",
+      "error": "TimeoutExpired",
+      "collection_wall_sec": 190058.05591919995,
+      "collector_python_cpu_sec": 0.015625
+    }
+  ],
+  "action": "Existing collector completed and original PID absent. No research/SUMO currently active. Do not create an idle replacement collector; retain daily same-thread trigger and resume measurement when an existing authorized current-registration normal run actually starts. No new research runs or owner messages.",
+  "limitations": [
+    "The timeout spanning suspended time is not continuous CPU work or measured continuous collection overhead.",
+    "Coverage is conservative between successful observations <=120s with same PID and creation identity; no interpolation over gaps.",
+    "CIM process-name phase hints alone do not prove owner identity.",
+    "No effect-validation conclusion has been reached; completion stop condition is not satisfied."
+  ]
+}

@@ -1,0 +1,45 @@
+--- c23a839c82ee2bea849e0547ee9e212293934a44ab46d89fc7b4a6d7c7c052b2_before_explicit_build_receipt_version_binding.py
++++ choice_pair_proof.py
+@@ -78,6 +78,15 @@
+                        or not isinstance(c.get('command'), list) or not c['command']
+                        or any(not isinstance(a, str) for a in c['command']) for c in commands)):
+             raise ValueError('Every paired build command must be terminal and successful')
++        if additional_patches:
++            if (state.get('role') != 'ISOLATED_STOP_INDEX_REPAIR_CANDIDATE_NOT_ADOPTED'
++                    or state.get('base_role') != role or state.get('child_pid') is not None
++                    or any(state.get(key) is not False for key in ('simulation_allowed',
++                        'research_cli_switch_allowed', 'technical_ready', 'research_adoption_permitted'))
++                    or [c.get('phase') for c in commands] != ['diagnostic_configure', 'diagnostic_sumo_build',
++                        'sumo_diagnostic_imports', 'sumo_diagnostic_version',
++                        'netconvert_diagnostic_imports', 'netconvert_diagnostic_version']):
++                raise ValueError('Explicit repaired role and all six original build commands required')
+         for c in commands:
+             observed({'path': c['log'], 'sha256': c['log_sha256'], 'bytes': c['log_bytes']})
+         configurations = [c['command'] for c in commands if '-S' in c['command'] and '-B' in c['command']]
+@@ -130,13 +139,20 @@
+                 raise ValueError('Terminal executable is not the declared build target')
+             item = matches[0]
+             actual = observed(item, preserve=False)
+-            if type(item.get('clean_path_version_exit_code')) is not int or item['clean_path_version_exit_code'] != 0:
+-                raise ValueError('Native version invocation failed')
+             versions = [c for c in commands if c['command'] == [str(item['path']), '--version']]
+-            if (len(versions) != 1 or Path(versions[0]['log']).resolve() != Path(item['version_log']).resolve()
+-                    or versions[0]['log_sha256'] != item['version_log_sha256']):
+-                raise ValueError('Version log/command is not bound to the actual target executable')
+-            log = observed({'path': item['version_log'], 'sha256': item['version_log_sha256']})
++            if additional_patches:
++                if len(versions) != 1 or versions[0]['phase'] != name + '_diagnostic_version':
++                    raise ValueError('Original version command is not bound to the repaired target')
++                version_ref = {'path': versions[0]['log'], 'sha256': versions[0]['log_sha256'],
++                               'bytes': versions[0]['log_bytes']}
++            else:
++                if type(item.get('clean_path_version_exit_code')) is not int or item['clean_path_version_exit_code'] != 0:
++                    raise ValueError('Native version invocation failed')
++                if (len(versions) != 1 or Path(versions[0]['log']).resolve() != Path(item['version_log']).resolve()
++                        or versions[0]['log_sha256'] != item['version_log_sha256']):
++                    raise ValueError('Version log/command is not bound to the actual target executable')
++                version_ref = {'path': item['version_log'], 'sha256': item['version_log_sha256']}
++            log = observed(version_ref)
+             if version not in log.read_text(encoding='utf-8'):
+                 raise ValueError('Version log differs from generated build identity')
+             pe_imports(actual)

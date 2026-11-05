@@ -1,0 +1,31 @@
+{
+  "at_jst": "2026-10-29T00:02:56.766089+09:00",
+  "scope": "actual suite parent read-only new-token replay and scoped monitor-only review",
+  "old_parent_progress_token": [
+    "RUNNING",
+    null,
+    null
+  ],
+  "new_parent_progress_token": [
+    "RUNNING",
+    "completed_cases",
+    15
+  ],
+  "new_parent_identity": {
+    "state": "alive",
+    "created": 134376721587991556,
+    "pid": 42508
+  },
+  "binding": {
+    "kind": "direct",
+    "command_target_id": "rt261028b"
+  },
+  "flags": [],
+  "old_event_disposition": "false parent stall: old token ignored completed_cases; original event unchanged, not retried/deleted",
+  "science_common5_unchanged": true,
+  "module_tests_log": "GREEN_module.log",
+  "remaining": "deploy exact new monitor only, preserve interruption and verify same rt261028b owner/new observer source and creation identity",
+  "findings_requiring_fix": [],
+  "diff_scope": "Only technical_fixture_suite exact protocol with absent sim clock and nonnegative integer completed_cases uses distinct progress token; heartbeat/core clocks/command identity/SHA/log/PID/stale rules unchanged",
+  "latency_scope": "Full read-only path12.55sec including one CIM command6.41sec; does not explain whole daemon delay alone. No proven speedup or10sec guarantee; freshness gate remains independently required"
+}

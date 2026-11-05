@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-29T20:31:10.823296+09:00",
+  "status": "V5_SOURCE_AND_REGISTRATION_ENTRY_GATE_VERIFIED_NOT_ANALYSIS",
+  "registration_id": "choice_shared_stopindex_v5_20261029",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5",
+  "ledger": "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl",
+  "formal_cells": 0,
+  "registered_cells": 70,
+  "config_sha256": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+  "input_manifest_sha256": "2fadb08c11698d490926adc34e7a31c7578903c28d9ab9ca1d6b2daa349b7a20",
+  "analysis_sources_unchanged": {
+    "G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+    "G6_要求待ち・打切り_集計.py": "66978b52c8d8a96080e2544f19a17a0b758c2fbd28c4d97a99ff0c0c479854b7",
+    "G6_副指標・理論上限_集計.py": "8b030aa56f9f977aabf16833ab01496546b7fe5ae227adede81a21501ee57d2e",
+    "G6_副指標・理論上限_実装証跡.json": "06578175877d36efd5f7f867bb4bf43d2e5fdd5fbba6af39f096890d141c1056"
+  },
+  "unchanged13_contract_evidence_reused": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_registration_gate_20261022/review.json",
+  "conditional_service_source_proof_revalidated": true,
+  "actual_refusal": "Not ready: complete registered set required",
+  "initial_readback_wrapper_error": "First read-only wrapper caught ValueError but actual require raises RuntimeError. Actual empty-ledger refusal was correct; wrapper corrected without source/run/result changes.",
+  "actual_all70_analysis": false,
+  "native_behavior_revalidated": false,
+  "technical_ready": false,
+  "remaining": "Fresh native/full controller/audit/all14/preflight/capacity/07; all70 formal records before actual comparison; new native safety not inferred from unchanged formulas"
+}

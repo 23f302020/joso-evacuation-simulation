@@ -1,0 +1,107 @@
+{
+  "at_jst": "2026-10-20T22:00:51.509405+09:00",
+  "status": "FAILED_PRESERVED_DIAGNOSED_PREDICATE_NOT_FIXED",
+  "scope": "Read-only exact raw receipt and cached-plan discrepancy; no altered run output or acceptance",
+  "raw_receipts_checked": 8,
+  "reroutes_checked": 4,
+  "facts": [
+    {
+      "actor": "fixture_person_0",
+      "time_sec": 0.5,
+      "raw_position_receipts_exact": true,
+      "contract_original": true,
+      "diagnostic_only_substitution_passes_receipt_predicate": true,
+      "cached_model_previous_plan_m": 239.8125,
+      "raw_native_before_length_m": 239.8125,
+      "difference_native_minus_cached_m": 0.0,
+      "old_remaining_m": 239.8125,
+      "signed_model_progress_m": 0.0,
+      "native_budget_inputs_altered": false
+    },
+    {
+      "actor": "fixture_person_1",
+      "time_sec": 0.5,
+      "raw_position_receipts_exact": true,
+      "contract_original": true,
+      "diagnostic_only_substitution_passes_receipt_predicate": true,
+      "cached_model_previous_plan_m": 231.9375,
+      "raw_native_before_length_m": 231.9375,
+      "difference_native_minus_cached_m": 0.0,
+      "old_remaining_m": 231.9375,
+      "signed_model_progress_m": 0.0,
+      "native_budget_inputs_altered": false
+    },
+    {
+      "actor": "fixture_person_0",
+      "time_sec": 52.5,
+      "raw_position_receipts_exact": true,
+      "contract_original": false,
+      "diagnostic_only_substitution_passes_receipt_predicate": true,
+      "cached_model_previous_plan_m": 368.7212325704741,
+      "raw_native_before_length_m": 361.39079020725706,
+      "difference_native_minus_cached_m": -7.33044236321706,
+      "old_remaining_m": 332.71955362190477,
+      "signed_model_progress_m": 36.00167894856935,
+      "native_budget_inputs_altered": false
+    },
+    {
+      "actor": "fixture_person_1",
+      "time_sec": 52.5,
+      "raw_position_receipts_exact": true,
+      "contract_original": false,
+      "diagnostic_only_substitution_passes_receipt_predicate": true,
+      "cached_model_previous_plan_m": 360.8462325704741,
+      "raw_native_before_length_m": 353.51579020725706,
+      "difference_native_minus_cached_m": -7.33044236321706,
+      "old_remaining_m": 344.2618062429059,
+      "signed_model_progress_m": 16.584426327568224,
+      "native_budget_inputs_altered": false
+    }
+  ],
+  "native_source": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\libsumo\\Person.cpp": {
+      "sha256": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+      "snapshot": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_c_receipt_diagnosis_20261020\\libsumo_Person.cpp"
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSStageWalking.h": {
+      "sha256": "619a49355054daa2bf821a8e76d4b7abbdef2c0adacfd89db4dcdb810156f00a",
+      "snapshot": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_c_receipt_diagnosis_20261020\\microsim_transportables_MSStageWalking.h"
+    },
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSStageWalking.cpp": {
+      "sha256": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+      "snapshot": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_pair_c_receipt_diagnosis_20261020\\microsim_transportables_MSStageWalking.cpp"
+    }
+  },
+  "source_fact": "libsumo Person::getStage result.length=stage->getDistance(); Walking getDistance delegates walkDistance(); walkDistance uses accumulated myInternalDistance once positive instead of summing all junction endpoint distances. It is not declared immutable after native progress.",
+  "hypothesis": "Validator assumes live pre-replacement native length equals cached plan installed at prior reroute; native internal-distance branch may explain this discrepancy. Need independent numeric reconstruction/native trace before changing validator or distance accounting.",
+  "not_a_fix": "Temporary in-memory substitution isolates the false predicate; it must not change event.previous_plan or research metric and is not an acceptance report.",
+  "originals_unchanged": true,
+  "primary_sha256": {
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\actor_observations.csv.gz": "e6a5a24f0a476b0d6ce7c7841946924e9c0810471b346ab3a2d795a36ffc3804",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\candidates.csv.gz": "d4b57e0c8d12000d88133915c00fdb66240cc30cc9fc434979c71bfe064288d1",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\common_realization.csv": "9a85029e8c16de47dabfec106e940c03e34fd6eedc3f24f54f5893d4e57bb5c1",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\dispatch_cycles.csv.gz": "7a2740002769b3ba58fd842e1527410f557431361f5760da8f53087093c3134f",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\edge_observations.csv.gz": "71723c31fe7417052590cc592e7fc6b07dcb39aaf93a433b4f57edf69cbfc323",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\events.jsonl": "9113a452948e033cb5c9b065df0148d1559da6aa9497ad08b341bce4bca434e6",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\facility_results.csv": "5a5b0fcaf5c1eb71cb675a5c0180a16116f5cb07532ed519e45bfe46ec8598f4",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\manifest.json": "5259116b868810fd41c5129b3b125513f34d0feb7f5bd60e76caa9fb4e78ecb7",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\person_results.csv": "182be634e162dc70c0c44508a5910e7f76f806e7673a71b3d6bbcb973f2fc24e",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\progress.json": "defdf45f677543ee871715a6323745de8a89bff0138e8d29f35eef9b6b1210d2",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\request_results.csv": "6daf8f9f8f687d480bae8e5b3047366747ae1562114f2db4caa156434365c39d",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\snapshot_actor_observations.csv.gz": "83449ebb35925cf06f71d884af56d122d76f08e5770101109b114a9acd13081a",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\sumo.log": "2aef6f71b0218c4af8d016bc1b0d5494bfe16a4ce9c2f8fc86baa546e0f26ddb",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\sumo_errors.log": "5d61b23c9dbc4c1bdcfbcb4311534aa399092374cbadffa67beeab78a2c6abb1",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\transitions.csv.gz": "3c4185ed00b0d5edf3383db362877b0de4b484c884d7011908a9c10c61e664ac",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\tripinfo.xml": "59e00cf25890144256d323d4bed0b51fed1c7cd4e4b1375cb0799b08ed233d5b",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\types.rou.xml": "de82d22a628e5f5b079c9e4e78dcab763efcc259426d6fd449aaf71464eaa627",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\vehicle_results.csv": "52eea226695524b0a83140d0423b07c547ad4f929634bb04a4dc063f84433c01",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\implementation\\04_プログラム\\scripts\\jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\implementation\\04_プログラム\\scripts\\jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\implementation\\04_プログラム\\scripts\\jdrt_realtime_choice_inputs.py": "05ddf759f39cdcedb234f4c414198176c117dca02968b93e6d1c46830b2b3819",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\implementation\\04_プログラム\\scripts\\jdrt_realtime_choice_validate.py": "47a34499541790bd90c4672319591d5edec72fdfc9aad02c8116d1c1edf71d2f",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\implementation\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py": "dcaa9fe4ca3854efca38b988f83b9b93d3995d2f3b04039795d1811e1dc88c7f"
+  },
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "next": "Read-only numeric reconstruction and separate-SHA native diagnostic trace; retain exact XY/speed/budget gates, fresh IDs after reviewed repair."
+}

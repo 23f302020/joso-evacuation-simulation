@@ -1,0 +1,26 @@
+test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget (__main__.SuiteInspectionContracts.test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget) ... 
+  test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget (__main__.SuiteInspectionContracts.test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget) (kind='clock') ... FAIL
+  test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget (__main__.SuiteInspectionContracts.test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget) (kind='boolean_distance') ... FAIL
+
+======================================================================
+FAIL: test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget (__main__.SuiteInspectionContracts.test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget) (kind='clock')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 294, in test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget
+    with self.subTest(kind=kind), self.assertRaises(ValueError): target.recompute_plans(p)
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget (__main__.SuiteInspectionContracts.test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget) (kind='boolean_distance')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 294, in test_nonfinite_clock_or_boolean_distance_is_not_a_valid_budget
+    with self.subTest(kind=kind), self.assertRaises(ValueError): target.recompute_plans(p)
+                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.095s
+
+FAILED (failures=2)

@@ -1,0 +1,27 @@
+test_invalid_durations_are_unknown (test_measure_pipeline.TimingTests.test_invalid_durations_are_unknown) ... ok
+test_nested_operation_duration (test_measure_pipeline.TimingTests.test_nested_operation_duration) ... ok
+test_partial_history_line_is_preserved_as_error (test_measure_pipeline.TimingTests.test_partial_history_line_is_preserved_as_error) ... ok
+test_pid_reuse_does_not_produce_cpu_rate (test_measure_pipeline.TimingTests.test_pid_reuse_does_not_produce_cpu_rate) ... ok
+test_timezone_normalization (test_measure_pipeline.TimingTests.test_timezone_normalization) ... ok
+test_unknown_and_reversed_times_are_not_zero (test_measure_pipeline.TimingTests.test_unknown_and_reversed_times_are_not_zero) ... ok
+test_clip_to_stage (test_measurement_coverage.CoverageContracts.test_clip_to_stage) ... ok
+test_contiguous (test_measurement_coverage.CoverageContracts.test_contiguous) ... ok
+test_cpu_reset_and_nonfinite_not_counted (test_measurement_coverage.CoverageContracts.test_cpu_reset_and_nonfinite_not_counted) ... ok
+test_exact_120_boundary_is_valid (test_measurement_coverage.CoverageContracts.test_exact_120_boundary_is_valid) ... ok
+test_failed_sample_not_bridged (test_measurement_coverage.CoverageContracts.test_failed_sample_not_bridged) ... ok
+test_invalid_or_naive_stage_clock_refused (test_measurement_coverage.CoverageContracts.test_invalid_or_naive_stage_clock_refused) ... ok
+test_long_gap_not_filled (test_measurement_coverage.CoverageContracts.test_long_gap_not_filled) ... ok
+test_overlap_not_double_counted (test_measurement_coverage.CoverageContracts.test_overlap_not_double_counted) ... ok
+test_same_pid_new_creation_not_counted (test_measurement_coverage.CoverageContracts.test_same_pid_new_creation_not_counted) ... ok
+test_unknown_creation_not_inferred (test_measurement_coverage.CoverageContracts.test_unknown_creation_not_inferred) ... ok
+test_wrong_pid_not_counted (test_measurement_coverage.CoverageContracts.test_wrong_pid_not_counted) ... ok
+test_changed_stage_evidence_refused (test_measurement_coverage.SnapshotContracts.test_changed_stage_evidence_refused) ... ok
+test_output_reuse_refused (test_measurement_coverage.SnapshotContracts.test_output_reuse_refused) ... ok
+test_partial_jsonl_preserved_and_not_reported_success (test_measurement_coverage.SnapshotContracts.test_partial_jsonl_preserved_and_not_reported_success) ... ok
+test_research_workspace_write_refused (test_measurement_coverage.SnapshotContracts.test_research_workspace_write_refused) ... ok
+test_snapshot_keeps_raw_input_and_does_not_trust_state_count (test_measurement_coverage.SnapshotContracts.test_snapshot_keeps_raw_input_and_does_not_trust_state_count) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.247s
+
+OK

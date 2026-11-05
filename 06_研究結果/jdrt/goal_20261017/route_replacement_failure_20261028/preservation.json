@@ -1,0 +1,386 @@
+{
+  "at_jst": "2026-10-28T08:40:37.293130+09:00",
+  "status": "FAILED_PRESERVED_UNDIAGNOSED",
+  "action": "tenth_route_replacement_failure_preserved",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "original_session": 67031,
+  "original_exit_code": 1,
+  "sequence_id": "sq26102810",
+  "core_run_id": "nv26102810",
+  "process_handle_identities": {
+    "14356": {
+      "state": "absent"
+    },
+    "26556": {
+      "state": "absent"
+    }
+  },
+  "formal_recorded": 9,
+  "formal_record_performed": false,
+  "next_start_performed": false,
+  "scope": "technical diagnosis only; no restart/recovery/reuse/acceptance",
+  "error": "Route replacement failed for vehicle 'choice_drt_0' (No connection between edge '152#2' and edge '152#3'.).",
+  "failed_at_jst": "2026-10-28T08:37:26.938236+09:00",
+  "last_periodic_progress_sec": 3780.0,
+  "exception_snapshot_sec": 3814.0,
+  "preservation_note": "Initial process-absence assertion failed after originals copied; exact failed identity values were not saved and cause is unknown. Reobserved both original PIDs absent at08:40; finalized preservation without replay or overwriting original files.",
+  "originals": [
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0001.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0001.stdout.log",
+      "sha256": "8c80f8191ba4fb94717d29e1727863563919582668160d704206bfe85a196fd8",
+      "bytes": 951,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/8c80f8191ba4fb94717d29e1727863563919582668160d704206bfe85a196fd8.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0002.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0002.stdout.log",
+      "sha256": "a0bb72f0bd5870cbfc5ffd9f6cef21a905156b226a2a247084d5ac087c6ab1af",
+      "bytes": 29043,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/a0bb72f0bd5870cbfc5ffd9f6cef21a905156b226a2a247084d5ac087c6ab1af.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0003.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0003.stdout.log",
+      "sha256": "38b0bd2be9032cc14492b7c13903f2684ddc477e737af2b493a1a05266478b3e",
+      "bytes": 273,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/38b0bd2be9032cc14492b7c13903f2684ddc477e737af2b493a1a05266478b3e.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0004.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0004.stdout.log",
+      "sha256": "6e06f1b87e7470e0a04100ef67aebd0637b20fafb6cfdde782a2a29db21b44c7",
+      "bytes": 1700,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/6e06f1b87e7470e0a04100ef67aebd0637b20fafb6cfdde782a2a29db21b44c7.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0005.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0005.stdout.log",
+      "sha256": "3f2888ec7c08e56e238c811a8a6f16bc1e973a08c294382a0c4e0b3746736ea6",
+      "bytes": 38,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/3f2888ec7c08e56e238c811a8a6f16bc1e973a08c294382a0c4e0b3746736ea6.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0006.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0006.stdout.log",
+      "sha256": "99704ac1c49035897e2ee33038b8803463d69c733b911bb4bec068ef14ccd9ec",
+      "bytes": 29,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/99704ac1c49035897e2ee33038b8803463d69c733b911bb4bec068ef14ccd9ec.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0007.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0007.stdout.log",
+      "sha256": "c92113a4d7be8e40be6987abff2283aa4e3e80b97f83d96d055d2a6df6084b82",
+      "bytes": 197,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/c92113a4d7be8e40be6987abff2283aa4e3e80b97f83d96d055d2a6df6084b82.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0008.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0008.stdout.log",
+      "sha256": "e7f87dcd3f3581a3f9e41b507c71aa29bec9fe086e2638b5e1572b18b7301681",
+      "bytes": 29043,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e7f87dcd3f3581a3f9e41b507c71aa29bec9fe086e2638b5e1572b18b7301681.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0009.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0009.stdout.log",
+      "sha256": "135979799b94bc795060123f747b1b3b3a3392173269f6619c8d5da6d3e6a3b5",
+      "bytes": 29044,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/135979799b94bc795060123f747b1b3b3a3392173269f6619c8d5da6d3e6a3b5.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0010.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0010.stdout.log",
+      "sha256": "cb388dea05653f30299b7d5f369953dd5986483c94cb716a3c75c0936bee8d84",
+      "bytes": 29044,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/cb388dea05653f30299b7d5f369953dd5986483c94cb716a3c75c0936bee8d84.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0011.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0011.stdout.log",
+      "sha256": "140352c11c130f42be59e008667109a2ce327f9cc141d0a28b67dd48218c311f",
+      "bytes": 29043,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/140352c11c130f42be59e008667109a2ce327f9cc141d0a28b67dd48218c311f.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0012.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0012.stdout.log",
+      "sha256": "fcf8241e9296264f88c5ddec32134b97504acf1bc210762bf140b51a5286ddd5",
+      "bytes": 29043,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/fcf8241e9296264f88c5ddec32134b97504acf1bc210762bf140b51a5286ddd5.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0013.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0013.stdout.log",
+      "sha256": "1ed7063d966100a2cdea1555995f07070e9b2f6585dfa6d2b6748929930c6327",
+      "bytes": 198,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/1ed7063d966100a2cdea1555995f07070e9b2f6585dfa6d2b6748929930c6327.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0014.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0014.stdout.log",
+      "sha256": "002118ac810ca1c2576419c9d6f673135256e9df20efa679ce844baee85066d9",
+      "bytes": 29044,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/002118ac810ca1c2576419c9d6f673135256e9df20efa679ce844baee85066d9.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0015.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0015.stdout.log",
+      "sha256": "be179cac0d3fbad5fb1f90463978b61dc10308e77702c50e0796c4147fb48fc3",
+      "bytes": 199,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/be179cac0d3fbad5fb1f90463978b61dc10308e77702c50e0796c4147fb48fc3.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0016.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0016.stdout.log",
+      "sha256": "8592263de630a7e1f7cb93b94fa5f808698f1111a52fccbf4cd54f0f8f21e374",
+      "bytes": 29043,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/8592263de630a7e1f7cb93b94fa5f808698f1111a52fccbf4cd54f0f8f21e374.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0017.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0017.stdout.log",
+      "sha256": "5db7fee16e741282a6a6098b68d9ba22cb11d72eaf944eaadc9f4ed7a79dedac",
+      "bytes": 199,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/5db7fee16e741282a6a6098b68d9ba22cb11d72eaf944eaadc9f4ed7a79dedac.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0018.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0018.stdout.log",
+      "sha256": "f392692817f5dda89a8d23cd5baa0d81f561d0abdaff31cd2ea9825f0f0595b3",
+      "bytes": 29044,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/f392692817f5dda89a8d23cd5baa0d81f561d0abdaff31cd2ea9825f0f0595b3.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0019.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0019.stdout.log",
+      "sha256": "19a5153b029e22fb2265f2cfb50ac720f66f4f2d5d1fb7f8689314bb4d10f27c",
+      "bytes": 199,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/19a5153b029e22fb2265f2cfb50ac720f66f4f2d5d1fb7f8689314bb4d10f27c.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0020.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0020.stdout.log",
+      "sha256": "ec5a58a3d452140c0f456a4e677c87e2f2662c24b0c5b3dfe28a71312a744324",
+      "bytes": 29044,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/ec5a58a3d452140c0f456a4e677c87e2f2662c24b0c5b3dfe28a71312a744324.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0021.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/0021.stdout.log",
+      "sha256": "defbff4a47abb26772a4ed5c669e52b69401404dd2a50d1e7be7eba8c7da9d29",
+      "bytes": 262,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/defbff4a47abb26772a4ed5c669e52b69401404dd2a50d1e7be7eba8c7da9d29.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/driver_logs/core_sequences/sq26102810/state.json",
+      "sha256": "63c4066093a964fb121c34bdeedcf09265d1822214113b5cdb158fc33a58226c",
+      "bytes": 4500,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/63c4066093a964fb121c34bdeedcf09265d1822214113b5cdb158fc33a58226c.json"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/manifest.json",
+      "sha256": "7f28923626adc84a511e0f8dd71870c355b08bba26c5c3baedb60b742d0d26f1",
+      "bytes": 36695,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/7f28923626adc84a511e0f8dd71870c355b08bba26c5c3baedb60b742d0d26f1.json"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/progress.json",
+      "sha256": "b5bd39094b3fffcf7aae2c3423267367312e46d61e35f01e435ad047b8db94b6",
+      "bytes": 1235,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/b5bd39094b3fffcf7aae2c3423267367312e46d61e35f01e435ad047b8db94b6.json"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/exception.txt",
+      "sha256": "176e8a5b002168ba28afe4b7d4a809e2f55f7cd3dbc5def09d29a0692e3988fd",
+      "bytes": 2111,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/176e8a5b002168ba28afe4b7d4a809e2f55f7cd3dbc5def09d29a0692e3988fd.txt"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/runtime_debug.json",
+      "sha256": "f520b1a2a21ec3cb0261bc20d5286e8fc2294dc5b3a71ca18f08f96cdfdcd528",
+      "bytes": 317506,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/f520b1a2a21ec3cb0261bc20d5286e8fc2294dc5b3a71ca18f08f96cdfdcd528.json"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/sumo_errors.log",
+      "sha256": "2a1223b1bff7f09269efa8c73f0b57a7056d012fcee4d70ae45132bf3a0b6f8d",
+      "bytes": 530,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/2a1223b1bff7f09269efa8c73f0b57a7056d012fcee4d70ae45132bf3a0b6f8d.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/sumo.log",
+      "sha256": "676edce66a310e62cce1a1a2df07ac91298542debd9d41b9ddb8cbb021a60ef6",
+      "bytes": 1053,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/676edce66a310e62cce1a1a2df07ac91298542debd9d41b9ddb8cbb021a60ef6.log"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/types.rou.xml",
+      "sha256": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+      "bytes": 323,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18.xml"
+    },
+    {
+      "source": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/runs/nv26102810/events.jsonl",
+      "sha256": "e8b1da677545cad7014aab9eb0c0a4704496e5095b2aa3afa5c3dcab5dbdea03",
+      "bytes": 7476915,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e8b1da677545cad7014aab9eb0c0a4704496e5095b2aa3afa5c3dcab5dbdea03.jsonl"
+    },
+    {
+      "source": "06_研究結果/jdrt/goal_20261017/sq26102810.stdout.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.json"
+    },
+    {
+      "source": "06_研究結果/jdrt/goal_20261017/sq26102810.stderr.log",
+      "sha256": "e5c5aa434ab3289845c70fa644e08eab0bb8d08465844ef865d6530d269881eb",
+      "bytes": 1463,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e5c5aa434ab3289845c70fa644e08eab0bb8d08465844ef865d6530d269881eb.log"
+    },
+    {
+      "source": "04_プログラム/config/jdrt_realtime_choice_v1.json",
+      "sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+      "bytes": 23996,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131.json"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_realtime_choice.py",
+      "sha256": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+      "bytes": 96089,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b.py"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_realtime_choice_inputs.py",
+      "sha256": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+      "bytes": 11434,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182.py"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_realtime_choice_validate.py",
+      "sha256": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+      "bytes": 186102,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36.py"
+    },
+    {
+      "source": "04_プログラム/scripts/jdrt_choice_policy.py",
+      "sha256": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      "bytes": 7128,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7.py"
+    },
+    {
+      "source": ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py",
+      "sha256": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+      "bytes": 52882,
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/originals/658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495.py"
+    }
+  ],
+  "source_pins_all_unchanged": true,
+  "goal_complete": false
+}

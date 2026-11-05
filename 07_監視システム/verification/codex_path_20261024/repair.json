@@ -1,0 +1,16 @@
+{
+  "at_jst": "2026-10-24T08:14:01.546388+09:00",
+  "status": "LOCAL_PATH_ONLY_CONFIG_REPAIR",
+  "changed_fields": [
+    "codex_exe"
+  ],
+  "old_sha256": "731cd813e44bfc139c3bb611fe8776851a34c5c289ba7c21f7cf984a56806ffd",
+  "new_sha256": "9496d2f854feef8e5419dee91ddaf3c08f12539662830d15bfd126228a43435a",
+  "model_unchanged": "gpt-6-luna",
+  "reasoning_effort_unchanged": "low in unchanged diagnostic_command",
+  "required_options_in_current_local_help": true,
+  "actual_AI_delivery": "UNTESTED",
+  "old_events_retried": false,
+  "research_common5_input_native_changed": false,
+  "activation": "existing monitor task restart after old verified monitor exit"
+}

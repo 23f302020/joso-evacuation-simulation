@@ -1,0 +1,84 @@
+{
+  "at_jst": "2026-10-24T08:28:24.234275+09:00",
+  "judgment_id": "JD-20261024-research-facility-capacity-06",
+  "status": "SAME_SOURCE_CAPACITY_PROVENANCE_REUSED_NOT_2015_CALIBRATION",
+  "source_pdf": "02_情報調査\\交通・地域\\jdrt_realistic\\sources_shelters\\joso_plan_appendix_r8_202604.pdf",
+  "source_pdf_sha256": "0fe21a56eb9f07acb26ddde14acbd1bd702f8e5492abea50c5281f2a0906ec84",
+  "source_retrieval": {
+    "source_id": "joso_plan_appendix_r8_202604.pdf",
+    "url": "https://www.city.joso.lg.jp/data/doc/1782889830_doc_28_0.pdf",
+    "final_url": "https://www.city.joso.lg.jp/data/doc/1782889830_doc_28_0.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "http_date": "Thu, 15 Oct 2026 09:58:40 GMT",
+    "last_modified_header": "Thu, 02 Jul 2026 06:22:20 GMT",
+    "fetched_at_jst": "2026-10-15T18:58:39+09:00",
+    "sha256": "0fe21a56eb9f07acb26ddde14acbd1bd702f8e5492abea50c5281f2a0906ec84",
+    "size_bytes": 2201788,
+    "raw_path": "02_情報調査/交通・地域/jdrt_realistic/sources_shelters/joso_plan_appendix_r8_202604.pdf",
+    "published_at": null,
+    "note": "Publication date not inferred from HTTP headers. Identical landing snapshot rechecked when already saved."
+  },
+  "existing_note": "02_情報調査\\交通・地域\\jdrt_realistic\\避難所根拠_20261015.md",
+  "existing_note_sha256": "15d497553a078620f025218a3d5ae90b33d5916b4e51c73c8eb2cf3e80287077",
+  "existing_rendered_page": "02_情報調査\\交通・地域\\jdrt_realistic\\sources_shelters\\verify_page50.png",
+  "image_sha256": "ab20cb76c9715e795ab06015cd82faa52c32257848ec9650a17462e6df62bd5d",
+  "visual_review": "existing image reread: heading収容人数 and four applicable rows; no regeneration",
+  "physical_page": 50,
+  "printed_page": 47,
+  "public_table_version": "令和8年4月",
+  "model_input": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\inputs\\registered01\\terminals.csv",
+  "model_input_sha256": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+  "facility_rows": [
+    {
+      "terminal_id": "shelter_2",
+      "name": "石下小学校",
+      "registered_capacity_persons": 195,
+      "public_table_row": 18,
+      "public_table_version": "令和8年4月",
+      "public_table_page": 50,
+      "initial2015_occupancy": "UNVERIFIED",
+      "Type4_specific_care_slots": "UNVERIFIED"
+    },
+    {
+      "terminal_id": "shelter_3",
+      "name": "水海道第一高等学校",
+      "registered_capacity_persons": 519,
+      "public_table_row": 3,
+      "public_table_version": "令和8年4月",
+      "public_table_page": 50,
+      "initial2015_occupancy": "UNVERIFIED",
+      "Type4_specific_care_slots": "UNVERIFIED"
+    },
+    {
+      "terminal_id": "shelter_4",
+      "name": "水海道小学校",
+      "registered_capacity_persons": 193,
+      "public_table_row": 1,
+      "public_table_version": "令和8年4月",
+      "public_table_page": 50,
+      "initial2015_occupancy": "UNVERIFIED",
+      "Type4_specific_care_slots": "UNVERIFIED"
+    },
+    {
+      "terminal_id": "shelter_8",
+      "name": "豊田小学校",
+      "registered_capacity_persons": 100,
+      "public_table_row": 22,
+      "public_table_version": "令和8年4月",
+      "public_table_page": 50,
+      "initial2015_occupancy": "UNVERIFIED",
+      "Type4_specific_care_slots": "UNVERIFIED"
+    }
+  ],
+  "limits": [
+    "nominal general published shelter headcount, not contemporaneous empty slots",
+    "no welfare/Type4 dedicated service/assistance capacity proven",
+    "candidate status in old Oct15 note is historical; current adoption authority is registered PAP and frozen terminals",
+    "blank flood prohibition is not actual2015 safety or access proof"
+  ],
+  "input_or_PAP_or_metric_changed": false,
+  "new_HTTP_request": false,
+  "new_rendering": false,
+  "real_core_result_interpretation": false
+}

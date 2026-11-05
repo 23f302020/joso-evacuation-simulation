@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-05T08:47:07.466682+09:00",
+  "status": "UNAPPLIED_REQUIRES_SEPARATE_IMPLEMENTATION_PIN_AND_SCIENTIFIC_CHECKS",
+  "base_source_sha256": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+  "production_mutated": false,
+  "candidate_compiles": true,
+  "candidate_speedup_tested": false,
+  "different_from_indexed_two_column_microbenchmark": true,
+  "constraints": [
+    "Do not apply during fixed registered series or reuse prior READY after code hash change.",
+    "Six artificial tests and one archived road file cannot establish complete scientific component equivalence.",
+    "No registered condition, precision, observation or mandatory validation may be reduced."
+  ]
+}

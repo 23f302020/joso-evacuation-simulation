@@ -1,0 +1,558 @@
+{
+  "at_jst": "2026-10-29T21:25:45.020480+09:00",
+  "status": "PASS",
+  "scope": "canonical_validator_fixture_components_not_READY",
+  "suite": "sf261029a",
+  "historical_diagnostic": false,
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "counterexamples": [
+    {
+      "case": "population_missing",
+      "expected": "complete_population",
+      "pass": true,
+      "failed_checks": [
+        "complete_population"
+      ]
+    },
+    {
+      "case": "population_duplicate",
+      "expected": "unique_tables",
+      "pass": true,
+      "failed_checks": [
+        "unique_tables"
+      ]
+    },
+    {
+      "case": "source_attribute_corrupted",
+      "expected": "common_realization_and_attributes",
+      "pass": true,
+      "failed_checks": [
+        "common_realization_and_attributes"
+      ]
+    },
+    {
+      "case": "request_omitted",
+      "expected": "request_set",
+      "pass": true,
+      "failed_checks": [
+        "request_set",
+        "state_chains",
+        "summary_accounting"
+      ]
+    },
+    {
+      "case": "boarding_duration_corrupted",
+      "expected": "request_lifecycle",
+      "pass": true,
+      "failed_checks": [
+        "request_lifecycle"
+      ]
+    },
+    {
+      "case": "shared_capacity_account_corrupted",
+      "expected": "shared_capacity_and_exit",
+      "pass": true,
+      "failed_checks": [
+        "shared_capacity_and_exit"
+      ]
+    },
+    {
+      "case": "candidate_shortest_time_corrupted",
+      "expected": "candidate_shortest_paths",
+      "pass": true,
+      "failed_checks": [
+        "candidate_shortest_paths",
+        "candidate_gates"
+      ]
+    },
+    {
+      "case": "candidate_missing",
+      "expected": "cycle_counts",
+      "pass": true,
+      "failed_checks": [
+        "candidate_selection",
+        "cycle_counts"
+      ]
+    },
+    {
+      "case": "candidate_nan_source_speed",
+      "expected": "ValueError",
+      "pass": true,
+      "failed_checks": [
+        "Nonfinite candidate scalar: source_speed_mps"
+      ]
+    },
+    {
+      "case": "native_braking_bound_corrupted",
+      "expected": "candidate_source",
+      "pass": true,
+      "failed_checks": [
+        "candidate_source"
+      ]
+    },
+    {
+      "case": "native_deceleration_corrupted",
+      "expected": "candidate_source",
+      "pass": true,
+      "failed_checks": [
+        "candidate_source"
+      ]
+    },
+    {
+      "case": "zero_road_row_missing",
+      "expected": "full_road_grid",
+      "pass": true,
+      "failed_checks": [
+        "full_road_grid"
+      ]
+    },
+    {
+      "case": "snapshot_raw_speed_corrupted",
+      "expected": "snapshot_primary_reaggregation",
+      "pass": true,
+      "failed_checks": [
+        "snapshot_primary_reaggregation"
+      ]
+    },
+    {
+      "case": "native_road_membership_corrupted",
+      "expected": "native_edge_membership",
+      "pass": true,
+      "failed_checks": [
+        "native_edge_membership"
+      ]
+    },
+    {
+      "case": "actor_step_omitted",
+      "expected": "actor_grid_completeness",
+      "pass": true,
+      "failed_checks": [
+        "actor_grid_completeness"
+      ]
+    },
+    {
+      "case": "actor_wrong_phase",
+      "expected": "actor_phase_unique_membership",
+      "pass": true,
+      "failed_checks": [
+        "actor_phase_unique_membership"
+      ]
+    },
+    {
+      "case": "actor_route_index_corrupted",
+      "expected": "actor_route_index",
+      "pass": true,
+      "failed_checks": [
+        "actor_route_index"
+      ]
+    },
+    {
+      "case": "walking_speed_exceeded",
+      "expected": "actor_walk_integral_and_speed",
+      "pass": true,
+      "failed_checks": [
+        "actor_walk_integral_and_speed"
+      ]
+    },
+    {
+      "case": "VKT_backend_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "native_controller_clock_conflated",
+      "expected": "actor_arrival_clock",
+      "pass": true,
+      "failed_checks": [
+        "actor_arrival_clock"
+      ]
+    },
+    {
+      "case": "external_entry_omitted",
+      "expected": "all_entries_primary_multiset",
+      "pass": true,
+      "failed_checks": [
+        "all_entries_primary_multiset",
+        "no_closed_or_ambiguous_entries"
+      ]
+    },
+    {
+      "case": "external_entry_duplicate",
+      "expected": "all_entries_primary_multiset",
+      "pass": true,
+      "failed_checks": [
+        "all_entries_primary_multiset",
+        "no_closed_or_ambiguous_entries"
+      ]
+    },
+    {
+      "case": "walk_native_remaining_corrupted",
+      "expected": "walk_stage_budget_recurrence",
+      "pass": true,
+      "failed_checks": [
+        "walk_stage_budget_recurrence"
+      ]
+    },
+    {
+      "case": "walk_native_getter_corrupted",
+      "expected": "walk_native_speed_contract",
+      "pass": true,
+      "failed_checks": [
+        "walk_native_speed_contract"
+      ]
+    },
+    {
+      "case": "walk_native_type_max_corrupted",
+      "expected": "walk_native_speed_contract",
+      "pass": true,
+      "failed_checks": [
+        "walk_native_speed_contract"
+      ]
+    },
+    {
+      "case": "walk_native_factor_corrupted",
+      "expected": "walk_native_speed_contract",
+      "pass": true,
+      "failed_checks": [
+        "walk_native_speed_contract"
+      ]
+    },
+    {
+      "case": "walk_enforced_stage_speed_corrupted",
+      "expected": "walk_native_speed_contract",
+      "pass": true,
+      "failed_checks": [
+        "walk_native_speed_contract"
+      ]
+    },
+    {
+      "case": "walk_replacement_receipts_missing",
+      "expected": "walk_stage_budget_recurrence",
+      "pass": true,
+      "failed_checks": [
+        "walk_stage_budget_recurrence"
+      ]
+    },
+    {
+      "case": "walk_budget_stop_event_omitted",
+      "expected": "walk_pre_step_budget_stop",
+      "pass": true,
+      "failed_checks": [
+        "walk_stage_budget_recurrence",
+        "walk_pre_step_budget_stop"
+      ]
+    },
+    {
+      "case": "person_invalid_state_transition",
+      "expected": "person_fsm",
+      "pass": true,
+      "failed_checks": [
+        "state_chains",
+        "person_fsm"
+      ]
+    },
+    {
+      "case": "vehicle_lane_constraint_flag_corrupted",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "vehicle_lane_braking_room_corrupted",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "vehicle_lane_receipt_missing",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "parked_reference_lane_invented",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "parked_native_stop_missing",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "parked_native_stop_position_corrupted",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "parked_raw_state_not_stopped",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "parked_actor_stop_lane_corrupted",
+      "expected": "vehicle_first_turn_feasibility",
+      "pass": true,
+      "failed_checks": [
+        "vehicle_first_turn_feasibility"
+      ]
+    },
+    {
+      "case": "before_deadline_boarding_moved_to_equality",
+      "expected": "boarding_strictly_before_then_continues",
+      "pass": true,
+      "failed_checks": [
+        "boarding_strictly_before_then_continues"
+      ]
+    },
+    {
+      "case": "internal_cancel_time_corrupted",
+      "expected": "accepted_timeout_before_boarding_once_fallback",
+      "pass": true,
+      "failed_checks": [
+        "accepted_timeout_before_boarding_once_fallback"
+      ]
+    },
+    {
+      "case": "next_closed_edge_removal_time_corrupted",
+      "expected": "next_external_closure_and_removal",
+      "pass": true,
+      "failed_checks": [
+        "next_external_closure_and_removal"
+      ]
+    },
+    {
+      "case": "derived_deadline_metadata_corrupted",
+      "expected": "derived_deadline_registered_only_in_fixture",
+      "pass": true,
+      "failed_checks": [
+        "derived_deadline_registered_only_in_fixture"
+      ]
+    },
+    {
+      "case": "artificial_time_scale_hidden",
+      "expected": "explicit_artificial_underprediction_same_geometry",
+      "pass": true,
+      "failed_checks": [
+        "explicit_artificial_underprediction_same_geometry"
+      ]
+    },
+    {
+      "case": "internal_reference_edge_corrupted",
+      "expected": "native_internal_reference",
+      "pass": true,
+      "failed_checks": [
+        "native_internal_reference"
+      ]
+    },
+    {
+      "case": "short_walk_calibration_time_corrupted",
+      "expected": "native_walk_calibration_time",
+      "pass": true,
+      "failed_checks": [
+        "native_walk_calibration_time"
+      ]
+    },
+    {
+      "case": "short_lane_calibration_position_corrupted",
+      "expected": "native_lane_calibration_frame",
+      "pass": true,
+      "failed_checks": [
+        "native_lane_calibration_frame"
+      ]
+    },
+    {
+      "case": "historical_factory_archive_hash_corrupted",
+      "expected": "all_bound_bytes_before",
+      "pass": true,
+      "failed_checks": [
+        "all_bound_bytes_before"
+      ]
+    },
+    {
+      "case": "unknown_native_warning",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "native_error",
+      "expected": "no_native_errors",
+      "pass": true,
+      "failed_checks": [
+        "no_native_errors",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "known_warning_without_raw_removal_observation",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified"
+      ]
+    },
+    {
+      "case": "short_walk_warning_without_native_receipts",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified",
+        "walk_constructor_warning_multiset"
+      ]
+    },
+    {
+      "case": "short_walk_warning_missing",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified",
+        "walk_constructor_warning_multiset",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "short_walk_warning_extra",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified",
+        "walk_constructor_warning_multiset",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "short_walk_unknown_emergency_stop",
+      "expected": "all_warnings_evidence_classified",
+      "pass": true,
+      "failed_checks": [
+        "all_warnings_evidence_classified",
+        "native_summary_recomputed"
+      ]
+    },
+    {
+      "case": "car_transition_calibration_shared_external_only_timestamp",
+      "expected": "short_entry_upper_is_first_outgoing_frame",
+      "pass": true,
+      "movement_multiset_rejects": true,
+      "failed_checks": [
+        "short_entry_upper_is_first_outgoing_frame"
+      ]
+    },
+    {
+      "case": "car_transition_closure_shared_external_only_timestamp",
+      "expected": "short_entry_upper_is_first_outgoing_frame",
+      "pass": true,
+      "movement_multiset_rejects": true,
+      "failed_checks": [
+        "short_entry_upper_is_first_outgoing_frame",
+        "closed_short_edge_passed_before_actual_call"
+      ]
+    },
+    {
+      "case": "car_transition_arrival_shared_external_only_timestamp",
+      "expected": "short_entry_upper_is_first_outgoing_frame",
+      "pass": true,
+      "movement_multiset_rejects": true,
+      "failed_checks": [
+        "short_entry_upper_is_first_outgoing_frame"
+      ]
+    },
+    {
+      "case": "car_transition_arrival_arrival_start_used_as_step_end",
+      "expected": "native_arrival_final_index_without_external_frame",
+      "pass": true,
+      "movement_multiset_rejects": true,
+      "failed_checks": [
+        "native_arrival_final_index_without_external_frame"
+      ]
+    },
+    {
+      "case": "tail_position_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "tail_route_occurrence_corrupted",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "actor_route_index",
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "tail_lane_unbound",
+      "expected": "backend_vkt",
+      "pass": true,
+      "failed_checks": [
+        "backend_vkt"
+      ]
+    },
+    {
+      "case": "past_route_prefix_restored",
+      "expected": "closed_history_excluded_from_new_route",
+      "pass": true,
+      "failed_checks": [
+        "closed_history_excluded_from_new_route"
+      ]
+    },
+    {
+      "case": "source_route_index_corrupted",
+      "expected": "closed_history_excluded_from_new_route",
+      "pass": true,
+      "failed_checks": [
+        "closed_history_excluded_from_new_route"
+      ]
+    },
+    {
+      "case": "reentry_distance_jump",
+      "expected": "next_native_step_preserves_source_and_distance",
+      "pass": true,
+      "failed_checks": [
+        "next_native_step_preserves_source_and_distance"
+      ]
+    },
+    {
+      "case": "reentry_source_corrupted",
+      "expected": "next_native_step_preserves_source_and_distance",
+      "pass": true,
+      "failed_checks": [
+        "next_native_step_preserves_source_and_distance"
+      ]
+    }
+  ],
+  "current_SHA_gate_rejects_changed_implementation": true,
+  "primary_outputs_unchanged": true,
+  "primary_files_rechecked": 510,
+  "validator_sha256": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+  "test_sha256": "79a32c52304e3c9e499be2f754ed3296d6c186757a8da59374ebde725e1e3ded"
+}

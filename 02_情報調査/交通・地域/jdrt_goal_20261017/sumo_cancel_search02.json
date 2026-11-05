@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://sumo.dlr.de/docs/TraCI/Change_Vehicle_State.html",
+        "title": "Change Vehicle State - Eclipse SUMO - Simulation of Urban MObility",
+        "description": "# Command 0xc4: Change Vehicle State [#](https://sumo.dlr.de/docs/TraCI/Change_Vehicle_State.html#command_0xc4_change_vehicle_state)\n| Variable | ValueType | Description | [Python Method](https://sumo.dlr.de/docs/TraCI/Interfacing_TraCI_from_Python.html) |\n|-|-|-|-|\n| replaceStop (0x17) | compound (edgeID, vehID, nextStopIndex, edgeID, pos, laneIndex, duration, flags, startPos, until, teleport) (see below) | Replaces stop at the given index with a new stop. Automatically modifies the route if the replacement stop is at another location. [See below for additional details](https://sumo.dlr.de/docs/TraCI/Change_Vehicle_State.html#replacestop_0x17) | [replaceStop](https://sumo.dlr.de/pydoc/traci/_vehicle.html#VehicleDomain.replaceStop) |\n\n# compound message details [#](https://sumo.dlr.de/docs/TraCI/Change_Vehicle_State.html#compound_message_details)\n### replaceStop (0x17) [#](https://sumo.dlr.de/docs/TraCI/Change_Vehicle_State.html#replacestop_0x17)\nAutomatically modifies the route if the replacement stop is at another location",
+        "position": 1
+      },
+      {
+        "url": "https://medium.com/@devonfazekas/simulating-dynamic-vehicular-detours-based-on-edge-travel-time-in-sumo-e57a50457dba",
+        "title": "Simulating dynamic vehicular detours based on edge travel time in SUMO",
+        "description": "This article will show you how to dynamically select vehicles to detour around specified roads within a SUMO traffic simulation. Detours are a ...",
+        "position": 2
+      },
+      {
+        "url": "https://github.com/eclipse-sumo/sumo/blob/main/docs/web/docs/TraCI/Change_Vehicle_State.md",
+        "title": "Change_Vehicle_State.md - GitHub",
+        "description": "Replaces stop at the given index with a new stop. Automatically modifies the route if the replacement stop is at another location. See below for additional ...",
+        "position": 3,
+        "category": "github"
+      },
+      {
+        "url": "https://stackoverflow.com/questions/61735386/add-remove-vehicles-in-sumo-via-traci-at-runtime",
+        "title": "Add/remove vehicles in SUMO via TraCI at runtime - Stack Overflow",
+        "description": "How do I make sure that the vehicle is departed? and what is \"trip\" in traci.route.add(\"trip\", [\"startEdge\", \"endEdge\"])?",
+        "position": 4
+      }
+    ]
+  },
+  "id": "01a14724-cce6-709d-82e3-b104612f4935",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 4 web results are excerpts only (#1 \"https://sumo.dlr.de/docs/TraCI/Change_Vehicle_State.html\", #2 \"https://medium.com/@devonfazekas/simulating-dynamic-vehicular-detours-based-on-edge-travel-time-in-sumo-e57a50457dba\", #3 \"https://github.com/eclipse-sumo/sumo/blob/main/docs/web/docs/TraCI/Change_Vehicle_State.md\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}
+

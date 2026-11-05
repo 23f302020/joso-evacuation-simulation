@@ -1,0 +1,1074 @@
+{
+  "protocol": "realtime_choice_fixture_suite_v1",
+  "purpose": "technical_fixture_suite",
+  "run_id": "na26102201",
+  "pid": 26804,
+  "status": "COMPLETED",
+  "started_at_jst": "2026-10-22T08:51:14.802398+09:00",
+  "research_adoption_permitted": false,
+  "factory_sha256": "b3a130bfbee05683c70ff9d751a64c22572e42cbe7a1c522f2a80730b5c621ff",
+  "cases": [
+    {
+      "case": "walk_reroute",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "reroute_exercised": true,
+        "admitted_after_reroute": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 1,
+        "walk_plan": 2,
+        "person_state": 2,
+        "walk_departure": 1,
+        "closure_applied": 1,
+        "walk_reroute": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "fa52ade9e19dcfb79a375a836f213e345fd24925cc7dafbf3cbf6084dc505556",
+      "child_run_id": "na26102201_c01"
+    },
+    {
+      "case": "walk_reroute_limit",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "reroute_plan_exceeds_cumulative_budget": true,
+        "walk_limit_preserves_person": true
+      },
+      "outcomes": {
+        "walk_limit": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 1,
+        "walk_plan": 2,
+        "person_state": 2,
+        "walk_departure": 1,
+        "closure_applied": 1,
+        "actor_removed": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "a20969c108e8e206dc93e1e6b8739ee6c8ad7828c591a2a941ac1a5bd7a3b00e",
+      "child_run_id": "na26102201_c02"
+    },
+    {
+      "case": "walk_budget",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "budget_stop_exercised": true,
+        "walk_limit_no_overshoot": true
+      },
+      "outcomes": {
+        "walk_limit": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 1,
+        "walk_plan": 1,
+        "person_state": 2,
+        "walk_departure": 1,
+        "walk_budget_pre_step_stop": 1,
+        "actor_removed": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "ce1769670169afff50c4f80b133e61ba63b76c87cf0290d6cee58ae4a89f7198",
+      "child_run_id": "na26102201_c03"
+    },
+    {
+      "case": "walk_reverse",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "same_edge_reverse_arrived": true,
+        "reverse_plan_length": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 1,
+        "walk_plan": 1,
+        "person_state": 2,
+        "walk_departure": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "acf993a26bff08aaf617ac05d98106fd78cd29a8c092501f7ffec55ca9b30d44",
+      "child_run_id": "na26102201_c04"
+    },
+    {
+      "case": "pickup_closure",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "assigned_vehicle_failure_fallback_once": true,
+        "no_boarding": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "cancelled_vehicle_failure": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 3,
+        "request_received": 1,
+        "person_state": 5,
+        "drt_route": 1,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 1,
+        "closure_applied": 1,
+        "actor_removed": 1,
+        "request_cancelled": 1,
+        "fallback_attempt": 1,
+        "walk_plan": 1,
+        "walk_departure": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 71,
+        "warning_count": 1,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "5ab95791bfae4ba64d9099b621a7153403ec8ddc529697ef99202b141784c306",
+      "child_run_id": "na26102201_c05"
+    },
+    {
+      "case": "boarding_closure",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "failure_during_registered_service_phase": true,
+        "no_origin_return_after_boarding": true,
+        "stranded_account": true
+      },
+      "outcomes": {
+        "stranded_drt": 1
+      },
+      "request_states": {
+        "failed_after_boarding": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 4,
+        "request_received": 1,
+        "person_state": 4,
+        "drt_route": 1,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 1,
+        "boarding_started": 1,
+        "closure_applied": 1,
+        "actor_removed": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 46,
+        "warning_count": 1,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "01f537ee9847bab9f018e2db8ec716cbdc761827ee069441bddca0c5ef726ed8",
+      "child_run_id": "na26102201_c06"
+    },
+    {
+      "case": "alighting_closure",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "failure_during_registered_service_phase": true,
+        "no_origin_return_after_boarding": true,
+        "stranded_account": true
+      },
+      "outcomes": {
+        "stranded_drt": 1
+      },
+      "request_states": {
+        "failed_after_boarding": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "closure_applied": 1,
+        "actor_removed": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 46,
+        "warning_count": 1,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "e76bf9fb8bae1ec6e5a50b218fc8a1f3c6ca4c3d345f0e537a44860c360e14f2",
+      "child_run_id": "na26102201_c07"
+    },
+    {
+      "case": "forecast_r1",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "service_accepted_and_completed": true,
+        "forecast_mode_respected": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "served": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "closure_applied": 1,
+        "drt_alighted": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "8ca0073c7b9bd34dbe465c695f32d75d1e20bdddc0e2bbf318a9dc722a56bfb9",
+      "child_run_id": "na26102201_c08"
+    },
+    {
+      "case": "forecast_p0",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "forecast_only_rejection_exercised": true,
+        "never_accepted_then_one_timeout_fallback": true,
+        "one_timeout_fallback": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "cancelled_timeout": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 2,
+        "request_received": 1,
+        "person_state": 4,
+        "request_cancelled": 1,
+        "fallback_attempt": 1,
+        "walk_plan": 1,
+        "walk_departure": 1,
+        "closure_applied": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "13f76793ea736d650cc35e3057aa60e23e6d4a539641f26a6860ce3a3c8b4dfd",
+      "child_run_id": "na26102201_c09"
+    },
+    {
+      "case": "forecast_p900",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "service_accepted_and_completed": true,
+        "forecast_mode_respected": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "served": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "closure_applied": 1,
+        "drt_alighted": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "d68beaa037101faeca9d9ebbc092b0bb5aab35c07561ec6d4f828d12957b29d5",
+      "child_run_id": "na26102201_c10"
+    },
+    {
+      "case": "forecast_reroute",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "forecast_rejection_before_native_closure": true,
+        "postclosure_current_detour_accepted": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "served": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "closure_applied": 1,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "drt_alighted": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "f968cfc53b18c802ad495aca7d9c9eb345e34d1cb9275ee9e9f0cd3cdca36adf",
+      "child_run_id": "na26102201_c11"
+    },
+    {
+      "case": "shared_capacity",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "single_shared_capacity_and_separate_exit": true,
+        "facility_account": true
+      },
+      "outcomes": {
+        "admitted": 1,
+        "capacity_rejected": 1,
+        "boundary_exit": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 3,
+        "walk_plan": 3,
+        "person_state": 6,
+        "walk_departure": 3,
+        "person_terminal": 3
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "ee7f51bafae0413632143d18ee0e45ebfa26d7756cee7b187188e5562f4edbd0",
+      "child_run_id": "na26102201_c12"
+    },
+    {
+      "case": "horizon_alighting",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "active_service_at_horizon": true,
+        "horizon_account_no_false_admission": true
+      },
+      "outcomes": {
+        "time_limit": 1
+      },
+      "request_states": {
+        "time_limit": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "horizon_finalize": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "44c51eae274fc80bed3bc2c7a583e2c019d928780aefa286748e378146a8e9a5",
+      "child_run_id": "na26102201_c13"
+    },
+    {
+      "case": "car_backward_cycle",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "forward_cycle_for_backward_target": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "bd0e9df283c3049cc95da97b9d75c4b50f418c6af485c72e1323ffccf1734b47",
+      "child_run_id": "na26102201_c14"
+    },
+    {
+      "case": "car_backward_no_cycle",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "no_reverse_or_teleport_when_no_cycle": true
+      },
+      "outcomes": {
+        "no_route": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "6986eb478bfb0145c89e7612ee9e0cd372797f8f38f4dc7554f2d8693de120e7",
+      "child_run_id": "na26102201_c15"
+    },
+    {
+      "case": "car_reroute",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "private_detour_with_explicit_route_version": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "closure_applied": 1,
+        "vehicle_route_feasibility": 1,
+        "private_reroute": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "2a4a23f42ac51aac86e5e9a1849e33916d6330e525475db5ad41341adf2fcd73",
+      "child_run_id": "na26102201_c16"
+    },
+    {
+      "case": "pickup_deadline_equal",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "accepted_then_deadline_cancel_without_boarding": true,
+        "one_fallback_same_origin_terminal": true,
+        "deadline_equals_native_boarding_reference": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "cancelled_timeout": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 3,
+        "request_received": 1,
+        "person_state": 5,
+        "drt_route": 1,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 1,
+        "request_cancelled": 1,
+        "fallback_attempt": 1,
+        "walk_plan": 1,
+        "walk_departure": 1,
+        "cancel_wait_route": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "7f779dd5ef813553599e733060dd59235dd23289c868c98f89cb174249228541",
+      "child_run_id": "na26102201_c17"
+    },
+    {
+      "case": "pickup_before_deadline",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "boarding_before_deadline_then_continues": true,
+        "no_fallback_after_boarding": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "served": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "drt_alighted": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "2656ff3fb31f27e5118ee24937bd1e58c47c5f927d72a0462dd4d9e620f5108c",
+      "child_run_id": "na26102201_c18"
+    },
+    {
+      "case": "pickup_internal_calibration",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "native_internal_pickup_window_observed": true,
+        "calibration_service_completed": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "served": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "drt_alighted": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "02ad6b87ae37b3770b3386c8bda1d76de95278ffa8b10063f05c66725daeb859",
+      "child_run_id": "na26102201_c19"
+    },
+    {
+      "case": "pickup_internal_timeout",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "accepted_then_deadline_cancel_without_boarding": true,
+        "one_fallback_same_origin_terminal": true,
+        "cancellation_occurs_on_native_internal": true,
+        "later_safe_external_wait_without_respawn": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "cancelled_timeout": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 3,
+        "request_received": 1,
+        "person_state": 5,
+        "drt_route": 1,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 1,
+        "request_cancelled": 1,
+        "fallback_attempt": 1,
+        "walk_plan": 1,
+        "walk_departure": 1,
+        "cancel_wait_route": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "d895b0e3afbe3a7cea51279215496c3f38b4ec5089edd1374e3745344c6b2d0c",
+      "child_run_id": "na26102201_c20"
+    },
+    {
+      "case": "pickup_internal_timeout_closed_next",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "accepted_then_deadline_cancel_without_boarding": true,
+        "one_fallback_same_origin_terminal": true,
+        "cancellation_occurs_on_native_internal": true,
+        "closed_next_external_removes_cancelled_vehicle": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "cancelled_timeout": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 3,
+        "request_received": 1,
+        "person_state": 5,
+        "drt_route": 1,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 1,
+        "request_cancelled": 1,
+        "fallback_attempt": 1,
+        "walk_plan": 1,
+        "walk_departure": 1,
+        "closure_applied": 1,
+        "actor_removed": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "6f1bd31b960399def354e804127c862433705f00f5ff55feb07ce239a6f6195f",
+      "child_run_id": "na26102201_c21"
+    },
+    {
+      "case": "car_lane_calibration",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "no_native_emergency_braking_or_stop": true,
+        "native_short_lane_counterexample_observed": true,
+        "calibration_completes_without_controlled_reroute": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "f45df85a1a6d32fbbcfa37f1b745a5fbabddf6c25c8b5fa521c0b0681bb9da9c",
+      "child_run_id": "na26102201_c22"
+    },
+    {
+      "case": "car_lane_alternative",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "no_native_emergency_braking_or_stop": true,
+        "same_native_lane_and_braking_counterexample": true,
+        "native_connected_alternative_continues": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "closure_applied": 1,
+        "vehicle_route_feasibility": 1,
+        "private_reroute": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "23b7533186ae0d4d238d6676a889c37259c202727f31fd3ffbc80a712ebe3ee4",
+      "child_run_id": "na26102201_c23"
+    },
+    {
+      "case": "car_lane_cut",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "no_native_emergency_braking_or_stop": true,
+        "same_native_lane_and_braking_counterexample": true,
+        "no_native_connection_preserves_route_cut": true
+      },
+      "outcomes": {
+        "route_cut": 1
+      },
+      "request_states": {},
+      "event_counts": {
+        "closure_applied": 2,
+        "person_state": 2,
+        "private_departure_requested": 1,
+        "vehicle_route_feasibility": 1,
+        "actor_removed": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "eb1a7daea2658ae809cd0e5fe770607081a3195b709603b8af18218cc4302688",
+      "child_run_id": "na26102201_c24"
+    },
+    {
+      "case": "walk_short_calibration",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "both_type3_type4_fixture_people": true,
+        "all_people_short_edge_reroute_sequence": true,
+        "native_forward_then_reverse_positions": true,
+        "two_unchanged_native_replacement_receipts_per_plan": true,
+        "both_types_getter_below_registered_stage_speed": true,
+        "native_invalid_departpos_positive_exact_receipt_count": true,
+        "all_fixture_walkers_reach_fixed_terminal": true,
+        "shared_native_second_short_edge_frame": true
+      },
+      "outcomes": {
+        "admitted": 2
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 2,
+        "walk_plan": 4,
+        "person_state": 4,
+        "walk_departure": 2,
+        "closure_applied": 1,
+        "walk_reroute": 2,
+        "person_terminal": 2
+      },
+      "sumo_log_summary": {
+        "bytes": 472,
+        "warning_count": 4,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "8e3f6bf71dc132acbc628b51f27da05585a13f49a0ac2f8773dbd79aa6879182",
+      "child_run_id": "na26102201_c25"
+    },
+    {
+      "case": "walk_short_repeated",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "both_type3_type4_fixture_people": true,
+        "all_people_short_edge_reroute_sequence": true,
+        "native_forward_then_reverse_positions": true,
+        "two_unchanged_native_replacement_receipts_per_plan": true,
+        "both_types_getter_below_registered_stage_speed": true,
+        "native_invalid_departpos_positive_exact_receipt_count": true,
+        "all_fixture_walkers_reach_fixed_terminal": true
+      },
+      "outcomes": {
+        "admitted": 2
+      },
+      "request_states": {},
+      "event_counts": {
+        "person_ready": 2,
+        "walk_plan": 6,
+        "person_state": 4,
+        "walk_departure": 2,
+        "closure_applied": 2,
+        "walk_reroute": 4,
+        "person_terminal": 2
+      },
+      "sumo_log_summary": {
+        "bytes": 944,
+        "warning_count": 8,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "c95cc5f7d0bf320673f817a83578cf6945ec2bf3c7b2bbb5fca70aa6912c3202",
+      "child_run_id": "na26102201_c26"
+    }
+  ],
+  "finished_at_jst": "2026-10-22T08:58:58.013045+09:00"
+}

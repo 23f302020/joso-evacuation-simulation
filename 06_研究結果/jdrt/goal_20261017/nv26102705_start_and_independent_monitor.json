@@ -1,0 +1,67 @@
+{
+  "at_jst": "2026-10-27T23:22:41.109476+09:00",
+  "action": "fifth_registered_core_started_same_one_cell_owner",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102705",
+  "original_session": 46444,
+  "sequence_actual_pid": 15432,
+  "sequence_launcher_pid": 7108,
+  "status": "RUNNING",
+  "phase": "core",
+  "formal_recorded": 4,
+  "current_core": {
+    "run_id": "nv26102705",
+    "cell_id": "fixed_reference_u50_r1_seed23423",
+    "pid": 11300,
+    "status": "RUNNING",
+    "started_at_jst": "2026-10-27T23:19:47.740097+09:00"
+  },
+  "progress": {
+    "at_jst": "2026-10-27T23:22:37.012685+09:00",
+    "time_sec": 2880.0,
+    "end_sec": 21600,
+    "wall_sec": 147.87973139993846
+  },
+  "process_handle_identities": {
+    "15432": {
+      "state": "alive",
+      "created": 134375843366723456,
+      "pid": 15432
+    },
+    "11300": {
+      "state": "alive",
+      "created": 134375843674090512,
+      "pid": 11300
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "independent_target": {
+    "target_id": "nv26102705",
+    "status": "RUNNING",
+    "pid": 11300,
+    "process": {
+      "state": "alive",
+      "created": 134375843674090512,
+      "pid": 11300
+    },
+    "flags": [],
+    "observed_at_utc": "2026-10-27T14:22:33.124020+00:00",
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102705"
+    }
+  },
+  "watch_source_sha256": "080944f6f381ca278f214bc472a0185197c91da56ca06bef504d6c428206689c",
+  "helper_source_sha256": "84cac0861bf617e952ba64b7ac134e08bce1178ee6a460f34d450d70d9f468b4",
+  "fourth_record7_readback": "06_研究結果/jdrt/goal_20261017/nv26102704_record7_readback.json",
+  "fourth_original_session": 77682,
+  "fourth_original_exit_code": 0,
+  "first_failed_sequence_replayed": false,
+  "goal_complete": false,
+  "next": "Follow original46444 and sq26102705/state.json. This owner alone performs finish, original record7 readback BEFORE display, then status; parent does not duplicate validate/record/readback. After successful one-cell terminal, inspect its saved readback and fresh real goal state before a new one-cell invocation."
+}

@@ -1,0 +1,14 @@
+..F..
+======================================================================
+FAIL: test_invalid_stop_target_rejected_before_control (__main__.Contracts.test_invalid_stop_target_rejected_before_control)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_route_history_probe.py", line 71, in test_invalid_stop_target_rejected_before_control
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.640s
+
+FAILED (failures=1)

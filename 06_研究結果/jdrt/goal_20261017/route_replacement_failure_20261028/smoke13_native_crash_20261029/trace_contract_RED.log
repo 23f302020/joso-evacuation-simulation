@@ -1,0 +1,14 @@
+F..
+======================================================================
+FAIL: test_already_instrumented_source_refused (__main__.TraceContract.test_already_instrumented_source_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_stop_index_trace.py", line 32, in test_already_instrumented_source_refused
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+FAILED (failures=1)

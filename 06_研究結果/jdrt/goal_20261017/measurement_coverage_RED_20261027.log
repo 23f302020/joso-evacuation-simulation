@@ -1,0 +1,81 @@
+test_clip_to_stage (test_measurement_coverage.CoverageContracts.test_clip_to_stage) ... FAIL
+test_contiguous (test_measurement_coverage.CoverageContracts.test_contiguous) ... FAIL
+test_cpu_reset_and_nonfinite_not_counted (test_measurement_coverage.CoverageContracts.test_cpu_reset_and_nonfinite_not_counted) ... ok
+test_exact_120_boundary_is_valid (test_measurement_coverage.CoverageContracts.test_exact_120_boundary_is_valid) ... FAIL
+test_failed_sample_not_bridged (test_measurement_coverage.CoverageContracts.test_failed_sample_not_bridged) ... ok
+test_invalid_or_naive_stage_clock_refused (test_measurement_coverage.CoverageContracts.test_invalid_or_naive_stage_clock_refused) ... 
+  test_invalid_or_naive_stage_clock_refused (test_measurement_coverage.CoverageContracts.test_invalid_or_naive_stage_clock_refused) (field='start') ... FAIL
+  test_invalid_or_naive_stage_clock_refused (test_measurement_coverage.CoverageContracts.test_invalid_or_naive_stage_clock_refused) (field='end') ... FAIL
+test_long_gap_not_filled (test_measurement_coverage.CoverageContracts.test_long_gap_not_filled) ... FAIL
+test_overlap_not_double_counted (test_measurement_coverage.CoverageContracts.test_overlap_not_double_counted) ... FAIL
+test_same_pid_new_creation_not_counted (test_measurement_coverage.CoverageContracts.test_same_pid_new_creation_not_counted) ... ok
+test_unknown_creation_not_inferred (test_measurement_coverage.CoverageContracts.test_unknown_creation_not_inferred) ... ok
+test_wrong_pid_not_counted (test_measurement_coverage.CoverageContracts.test_wrong_pid_not_counted) ... ok
+
+======================================================================
+FAIL: test_clip_to_stage (test_measurement_coverage.CoverageContracts.test_clip_to_stage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measurement_coverage.py", line 49, in test_clip_to_stage
+    self.assertEqual(coverage([[sample(0), sample(120)]], stage(30, 90))['covered_seconds'], 60)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 60
+
+======================================================================
+FAIL: test_contiguous (test_measurement_coverage.CoverageContracts.test_contiguous)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measurement_coverage.py", line 28, in test_contiguous
+    self.assertEqual(coverage([[sample(0), sample(60), sample(120)]], stage())['covered_seconds'], 120)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 120
+
+======================================================================
+FAIL: test_exact_120_boundary_is_valid (test_measurement_coverage.CoverageContracts.test_exact_120_boundary_is_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measurement_coverage.py", line 70, in test_exact_120_boundary_is_valid
+    self.assertEqual(coverage([[sample(0), sample(120)]], stage())['covered_seconds'], 120)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 120
+
+======================================================================
+FAIL: test_invalid_or_naive_stage_clock_refused (test_measurement_coverage.CoverageContracts.test_invalid_or_naive_stage_clock_refused) (field='start')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measurement_coverage.py", line 66, in test_invalid_or_naive_stage_clock_refused
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_or_naive_stage_clock_refused (test_measurement_coverage.CoverageContracts.test_invalid_or_naive_stage_clock_refused) (field='end')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measurement_coverage.py", line 66, in test_invalid_or_naive_stage_clock_refused
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_long_gap_not_filled (test_measurement_coverage.CoverageContracts.test_long_gap_not_filled)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measurement_coverage.py", line 31, in test_long_gap_not_filled
+    self.assertEqual(coverage([[sample(0), sample(121), sample(180)]], stage(0, 180))['covered_seconds'], 59)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 59
+
+======================================================================
+FAIL: test_overlap_not_double_counted (test_measurement_coverage.CoverageContracts.test_overlap_not_double_counted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measurement_coverage.py", line 46, in test_overlap_not_double_counted
+    self.assertEqual(coverage([rows, copy.deepcopy(rows)], stage())['covered_seconds'], 120)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 120
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.009s
+
+FAILED (failures=7)

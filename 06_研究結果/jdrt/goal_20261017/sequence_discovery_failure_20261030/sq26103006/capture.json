@@ -1,0 +1,71 @@
+{
+  "at_utc": "2026-10-30T14:11:35.765320+00:00",
+  "files": {
+    "observer_state": {
+      "source": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\state.json",
+      "sha256": "559acf048059650a4461d4dcb832bc84e3def3a6b8d01705976c14158422a143",
+      "bytes": 1093031
+    },
+    "sequence_state": {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\driver_logs\\core_sequences\\sq26103006\\state.json",
+      "sha256": "e502bc28df8a04bc316aa847abd0d66273d5f867c87840b3a9e7989e2f7a0c93",
+      "bytes": 4432
+    },
+    "core_manifest": {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103006\\manifest.json",
+      "sha256": "5087f58efe59e23adfbba816c1277a6a481683ce69fefc62e1480fc0b655645d",
+      "bytes": 35831
+    },
+    "core_progress": {
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103006\\progress.json",
+      "sha256": "6b8bd1f4495cac591c19604217f26805922eb1ed0f25a44acad87dc8d3c1727a",
+      "bytes": 1137
+    }
+  },
+  "target": {
+    "status": "RUNNING",
+    "target_id": "sv26103006",
+    "observed_at_utc": "2026-10-30T14:11:14.616530+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-30T14:07:59.798449+00:00",
+      "finished_at_utc": null,
+      "elapsed_sec": null,
+      "start_source": "started_at_jst",
+      "finish_source": null,
+      "status": "running"
+    },
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "5087f58efe59e23adfbba816c1277a6a481683ce69fefc62e1480fc0b655645d",
+    "flags": [],
+    "pid": 39120,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103006\\manifest.json",
+    "sim_sec": 2880.0,
+    "progress_token": [
+      "RUNNING",
+      2880.0
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134378428612149635,
+      "pid": 39120
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "sv26103006"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "sv26103006"
+    },
+    "last_progress": 1793369470.3569539,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\runs\\sv26103006\\sumo_errors.log": 0,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\driver_logs\\sv26103006.stderr.log": 0
+    },
+    "historical": false
+  },
+  "original_sequence_session": 60088,
+  "original_sequence_exit_code": 1,
+  "scope": "same core preserved; no restart or new adoption"
+}

@@ -1,0 +1,53 @@
+{
+  "at_jst": "2026-10-28T01:33:12.912055+09:00",
+  "action": "seventh_independent_PASS_same_sequence_nested_record_started",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102807",
+  "original_session": 6473,
+  "sequence_actual_pid": 2152,
+  "finish_actual_pid": 17796,
+  "record_actual_pid": 26528,
+  "record_created_jst": "2026-10-28T01:32:34.5719630+09:00",
+  "process_handle_identities": {
+    "2152": {
+      "state": "alive",
+      "created": 134375905806470269,
+      "pid": 2152
+    },
+    "17796": {
+      "state": "alive",
+      "created": 134375913963172444,
+      "pid": 17796
+    },
+    "26528": {
+      "state": "alive",
+      "created": 134375923545719639,
+      "pid": 26528
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "validation_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102807_20261028T013232976070.json",
+  "validation_report_sha256": "8e1036c9b791e699822ec2ea2fb0cfc22568d034723e471c43d07e01a05ebf02",
+  "validation_components": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "PASS",
+    "native_logs": "PASS",
+    "native_fixture_boundaries": "PASS"
+  },
+  "core_adoption_permitted_first_report": true,
+  "formal_recorded": 6,
+  "display_writers_deferred": true,
+  "all_sequence_source_pins_unchanged": true,
+  "current_source_whole_operation_proven": false,
+  "no_duplicate_validate_record": true,
+  "goal_complete": false,
+  "next": "Follow original6473 and sq26102807/state.json with same nested record. Do not duplicate validate/record/readback: this sequence performs its own original record7 readback BEFORE display. After successful terminal inspect existing proof and new status, then fresh goal API/READY/capacity/07 before next one cell. At original measurement59505/23228 actual terminal (planned01:42), preserve source and confirm absence before any unique30sec follow-up capture; no overlap or scientific rerun."
+}

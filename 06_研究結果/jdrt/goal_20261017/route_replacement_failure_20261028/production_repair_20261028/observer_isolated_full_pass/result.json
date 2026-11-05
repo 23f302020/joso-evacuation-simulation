@@ -1,0 +1,11 @@
+{
+  "started_at_jst": "2026-10-29T00:11:22.095323+09:00",
+  "finished_at_jst": "2026-10-29T00:11:42.433966+09:00",
+  "elapsed_sec": 20.31594859994948,
+  "scope": "actual observe including event checks, state atomic write and rendering, but all writes only to isolated proof runtime; no daemon/dispatcher/notifications/LLM/simulation controls",
+  "target_count": 601,
+  "event_copies": 286,
+  "concurrent_native_suite": "rt261028b; this profiling load is not normal-cycle timing",
+  "live_monitor_state_written": false,
+  "latency_cause_proven": false
+}

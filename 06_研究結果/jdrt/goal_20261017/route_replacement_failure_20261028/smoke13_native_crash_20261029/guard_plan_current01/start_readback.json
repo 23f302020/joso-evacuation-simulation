@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-29T21:52:34.609395+09:00",
+  "action": "current_native_guard45_start_and_identity_point",
+  "classification": "PROGRESS",
+  "run_id": "ng261029a",
+  "original_session": 16180,
+  "actual_owner": 40484,
+  "owner_creation": "2026-10-29T21:50:27.026191+09:00",
+  "status": "RUNNING",
+  "completed_runs_observed": 23,
+  "total_runs": 45,
+  "plan_sha256": "8716888526480a8df8b86606b3d5a2eb616fdbd98d80fa3063efe0f17aebd372",
+  "monitor_identity_matches": true,
+  "monitor_observation_age_sec": 15.024412393569946,
+  "core_ready": false,
+  "formal_cells": 0,
+  "prior_turn_classification": "NO_PROGRESS_STATUS_RESPONSE",
+  "no_restart": true,
+  "owner": {
+    "ProcessId": 40484,
+    "ParentProcessId": 41008,
+    "CreationDate": "2026-10-29T21:50:27.026191+09:00",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_guard.py --project-root . --run-id ng261029a --plan 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/guard_plan_current01/plan.json --trace-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/diag02_20261029/build_state.json --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_si29a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_si29a/toolchain.json"
+  }
+}

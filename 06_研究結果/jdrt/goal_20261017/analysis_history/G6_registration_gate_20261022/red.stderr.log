@@ -1,0 +1,39 @@
+test_foreign_registration_record_refused_before_helpers_or_output (__main__.IntegratedContracts.test_foreign_registration_record_refused_before_helpers_or_output) ... FAIL
+test_foreign_registration_manifest_refused_with_other_hashes_consistent (__main__.IntegratedContracts.test_foreign_registration_manifest_refused_with_other_hashes_consistent) ... FAIL
+
+======================================================================
+FAIL: test_foreign_registration_record_refused_before_helpers_or_output (__main__.IntegratedContracts.test_foreign_registration_record_refused_before_helpers_or_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_統合集計_人工契約テスト.py", line 186, in test_foreign_registration_record_refused_before_helpers_or_output
+    analyze_fixture(root)
+    ~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_統合集計_人工契約テスト.py", line 50, in analyze_fixture
+    return analysis.analyze(root)
+           ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_主指標・事前登録差分_集計.py", line 271, in analyze
+    request_component, request_sha = load_request_component()
+                                     ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1228, in _execute_mock_call
+    raise effect
+AssertionError: premature helper
+
+======================================================================
+FAIL: test_foreign_registration_manifest_refused_with_other_hashes_consistent (__main__.IntegratedContracts.test_foreign_registration_manifest_refused_with_other_hashes_consistent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_統合集計_人工契約テスト.py", line 202, in test_foreign_registration_manifest_refused_with_other_hashes_consistent
+    with self.assertRaisesRegex(RuntimeError, 'registration'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 18.654s
+
+FAILED (failures=2)

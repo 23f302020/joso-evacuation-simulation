@@ -1,0 +1,22 @@
+--- before/04_プログラム/scripts/jdrt_realtime_choice_validate.py
++++ current/04_プログラム/scripts/jdrt_realtime_choice_validate.py
+@@ -1797,7 +1797,18 @@
+                 or not 0 < int(options['--remote-port']) < 65536):
+             return None
+         root = Path(runtime['toolchain_manifest_path']).parent
+-        configs = [name for name in runtime['toolchain_files_sha256'] if Path(name).name == 'config.h']
++        provenance = runtime['toolchain_provenance']
++        pair_name = provenance['native_pair']
++        if file_sha(root / pair_name) != runtime['toolchain_files_sha256'][pair_name]:
++            return None
++        pair = json.loads((root / pair_name).read_text(encoding='utf-8'))
++        if (pair['schema'] != 'isolated_native_pair_v1'
++                or pair['source_commit'] != provenance['source_commit']
++                or provenance['role'] not in ('control', 'patched')):
++            return None
++        header_sha = pair['builds'][provenance['role']]['metadata']['src/config.h']['sha256']
++        # Packaging prefixes evidence filenames; selected build metadata binds identity.
++        configs = [name for name, sha in runtime['toolchain_files_sha256'].items() if sha == header_sha]
+         epsilons = []
+         for name in configs:
+             path = root / name

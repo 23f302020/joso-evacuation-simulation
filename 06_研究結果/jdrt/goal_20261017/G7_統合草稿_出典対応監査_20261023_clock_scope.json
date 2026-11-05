@@ -1,0 +1,87 @@
+{
+  "at_jst": "2026-10-23T11:17:51.696720+09:00",
+  "status": "DRAFT_SOURCE_MAPPING_ONLY_NOT_RESEARCH_RESULT",
+  "document": "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+  "document_sha256": "0a386ccfb44e673e3a62b984307e071e77bb3589e527f7068d5599c25fcba0fc",
+  "source_files": {
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v2.md": "9ae9c69b155a2bd2eb063634dc147f03ab2993f2b14f059beaa73a188513ca64",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md": "6bb8a28c0195c3b2b7a02e6e20ed68223a1948bfedeeae48c746911dd91a8446",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/service_continuity_20261021/通常運休と災害時供給_位置づけ.md": "ca1ab19c140dbff139745fc06cc7788bb3b6669049cf872a94d240628ff4a8aa",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md": "01af5c43e480f14cba02fb7e3b6d7e1488f0fde88f27c41e1e730d32159c702d",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md": "3684d19a892854dfc3ec167b5e66fbffcc0e4d7e3dafe02a30ffe718019ae66c",
+    "06_研究結果/jdrt/goal_20261017/G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+    "06_研究結果/jdrt/goal_20261017/G6_副指標・理論上限_実装証跡.json": "eb9047749655e214dfbab0b8f0a4d09fce71267994d7784f4a80422d7f46cd50",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/social_welfare_transport_20261022/災害フェーズ・移送支援_用途監査.md": "4d77e5a5ebc9e5c9c21e0699a1475c8827dabc748184b587f501e87c78182fea",
+    "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md": "58aa22fcde0b6e6ea20cb5cd0b01bdad6900487ad111a7da5aadd5397cad0c53",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261022/市地形図_位置・標高用途監査.md": "2a7a7633523446140d2154f4462a82288b607452ce94f2d652f1781047ae9ae0",
+    "06_研究結果/jdrt/goal_20261017/路面高不確実性_閉鎖時刻への伝播_20261020.md": "a262c3e590b0cb277863028e8b448fdb729cc2af61c9ecda1c2fb6cc7283f712",
+    "06_研究結果/jdrt/goal_20261017/路面高不確実性_閉鎖時刻への伝播_20261020.json": "19c638d31c5e0aeba490c811432b38b7de9b802383a3e5620468d787500b3b59",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+    "06_研究結果/jdrt/goal_20261017/G7_モデル時刻・壁時計_契約照合_20261023.json": "e06a31bf5f4f950e35164b8a5e8b49a5673ca6e397387b406a8c3ab1141b3dea"
+  },
+  "local_links_checked": 16,
+  "research_results_generated": false,
+  "new_method_adopted": false,
+  "previous_document_sha256": "09b4b1b52e19eb8cca799de810d63e4d7a13d3c4e1d3d104213565ac2434f76f",
+  "nested_technical_index": {
+    "at_jst": "2026-10-22T22:14:00.134557+09:00",
+    "scope": "bounded_evidence_index_not_new_native_or_core_test",
+    "document_sha256": "58aa22fcde0b6e6ea20cb5cd0b01bdad6900487ad111a7da5aadd5397cad0c53",
+    "sources": {
+      "audit_history/native_internal_fixture_20261021/actual_native_audit_v2.json": "cf73216ab77c891e874452c6f464d8541359134011316a0df5d68c27a143698a",
+      "audit_history/native_internal_fixture_20261021/source_reachability_review.json": "c60c9ac8411b8bc448dec33e34e128dd33c8ae1456fcd3974cd7a5fc8684b071",
+      "audit_history/native_guard_fragment_20261021/contract01/report.json": "c8a3588918b04fc07c9eabb7d94292f7b05c13c9ec9789d29ea853d7d17fdd05",
+      "正式検証器_表会計候補_20261022T144514.json": "dfbd4bdf1e415ab8fcaa06be56f91092f2c0b4ecaea16ef70beccbbb0833834e",
+      "ns261022c_all14_readback.json": "d14e75e398b2f84e5c7f6991b61b76870584862722249217a83bcddba23a7830"
+    },
+    "links_checked": 5,
+    "new_native_tests_executed": false,
+    "research_adoption_created": false,
+    "native_false_guard_observed": false,
+    "review": "Current Python evidence is separated from preserved same-native regression and artificial C++ fragment. No universal coverage or physical safety claim."
+  },
+  "source_refresh": "Source-bound model/wall/API-phase clock scope. No measured latency, result direction or research-method change.",
+  "document_history_sha256": {
+    "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md": "4ae89a2eec32dc55d080dea17522330ad934e99458e5177323c9d728e2c63c02",
+    "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md": "7169ff0b62520e0a4700121394ca1345447a472111acff1c5565c1672afacce1"
+  },
+  "changed_documents": [
+    "06_研究結果/jdrt/goal_20261017/G7_研究報告_根拠と限界の統合草稿.md",
+    "06_研究結果/jdrt/goal_20261017/G7_技術証跡の適用範囲_20261022.md"
+  ],
+  "checked_links": [
+    "../../../context.md",
+    "../../../05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl",
+    "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
+    "../../../03_研究設計文書/jdrt/常総市JDRT_受付代替行動_native観測監査_技術再登録_v2.md",
+    "G6_主指標・事前登録差分_集計.py",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/service_continuity_20261021/通常運休と災害時供給_位置づけ.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/transport_supply_20261021/供給立上り・輸送目的_原本監査.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/路面高_公開候補・精度・採否監査.md",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/取得監査_G1.md",
+    "G6_副指標・理論上限_実装証跡.json",
+    "路面高不確実性_閉鎖時刻への伝播_20261020.md",
+    "../../../04_プログラム/scripts/jdrt_realtime_choice.py",
+    "G7_モデル時刻・壁時計_契約照合_20261023.json",
+    "analysis_history/G6_registration_gate_20261022/review.json",
+    "../../../02_情報調査/交通・地域/jdrt_goal_20261017/social_welfare_transport_20261022/災害フェーズ・移送支援_用途監査.md",
+    "G7_技術証跡の適用範囲_20261022.md"
+  ],
+  "judgment_id": "JD-20261023-research-clock-04",
+  "math_claim_audit": {
+    "P2": "Nested threshold sets; extended-real infimum; no continuity/monotonicity needed for containment",
+    "P3": "Continuity plus global lower slope and both inner crossings; not local slope alone",
+    "historical_status_references": "Original note/proof current-status and instruction SHAs are point-dated historical snapshots, not present-day status authority",
+    "artificial_confirmation": "Existing same-SHA rational enumeration reused; not rerun or generalized as empirical coverage",
+    "real_E_m": "unverified; no physical time band or safety claim",
+    "source_note_unchanged": true,
+    "new_research_results": false
+  },
+  "wording_review": "Made endpoint inequalities explicit; same original P3 sufficient assumptions, no change to theorem or research conditions",
+  "previous_mapping": "06_研究結果/jdrt/goal_20261017/G7_統合草稿_出典対応監査_20261022_math_integrated_v2.json",
+  "previous_mapping_sha256": "55b984cfd36c8616e3c0fbb3e1a47ac9a6966fea6a6b23bda66e80665f510961",
+  "clock_scope_review": "06_研究結果/jdrt/goal_20261017/G7_モデル時刻・壁時計_契約照合_20261023.json",
+  "clock_scope_review_sha256": "e06a31bf5f4f950e35164b8a5e8b49a5673ca6e397387b406a8c3ab1141b3dea"
+}

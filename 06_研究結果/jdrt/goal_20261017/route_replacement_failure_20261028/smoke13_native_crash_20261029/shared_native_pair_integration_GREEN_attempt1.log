@@ -1,0 +1,48 @@
+EE...
+======================================================================
+ERROR: test_capture_generates_primary_files_and_uses_full_verifier (test_choice_shared_native_pair_proof.SharedNativePairContracts.test_capture_generates_primary_files_and_uses_full_verifier)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 86, in test_capture_generates_primary_files_and_uses_full_verifier
+    output=self.capture();result=json.loads((output/'verification.json').read_bytes())
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 80, in capture
+    primary.capture(c.root,self.policy_path,
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['state']['path']) for r in c.states},
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['loader']['path']) for r in c.states},inventory,output)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_pair_primary.py", line 40, in capture
+    helpers={str(Path(sys.modules[name].__file__).resolve()):sha(sys.modules[name].__file__)
+                                                             ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_package_toolchain.py", line 32, in sha
+    with path.open('rb') as stream:
+         ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'open'
+
+======================================================================
+ERROR: test_capture_preserves_failed_command_evidence_without_verification (test_choice_shared_native_pair_proof.SharedNativePairContracts.test_capture_preserves_failed_command_evidence_without_verification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 95, in test_capture_preserves_failed_command_evidence_without_verification
+    with self.assertRaises(ValueError):self.capture()
+                                       ~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_shared_native_pair_proof.py", line 80, in capture
+    primary.capture(c.root,self.policy_path,
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['state']['path']) for r in c.states},
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    {r:Path(c.pair['builds'][r]['loader']['path']) for r in c.states},inventory,output)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_pair_primary.py", line 40, in capture
+    helpers={str(Path(sys.modules[name].__file__).resolve()):sha(sys.modules[name].__file__)
+                                                             ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_package_toolchain.py", line 32, in sha
+    with path.open('rb') as stream:
+         ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'open'
+
+----------------------------------------------------------------------
+Ran 5 tests in 7.037s
+
+FAILED (errors=2)

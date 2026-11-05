@@ -1,0 +1,44 @@
+{
+  "at_jst": "2026-10-21T09:03:20.242484+09:00",
+  "parent_workflow": {
+    "status": "RUNNING",
+    "target_id": "cf26102101",
+    "observed_at_utc": "2026-10-21T00:03:15.715557+00:00",
+    "protocol": "realtime_choice_fixture_suite_v1",
+    "purpose": "technical_fixture_suite",
+    "state_sha256": "36a81b3c3056bbf2b4853b340be198db8ac20877772e53b3f5931af45d5ae1cd",
+    "flags": [],
+    "pid": 14364,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\cf26102101\\manifest.json",
+    "sim_sec": null,
+    "progress_token": [
+      "RUNNING",
+      null,
+      null
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134370143287819841,
+      "pid": 14364
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "cf26102101"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "cf26102101"
+    },
+    "last_progress": 1792540740.2087805,
+    "log_offsets": {},
+    "historical": false
+  },
+  "monitor_pid": 30168,
+  "monitor_identity": {
+    "state": "alive",
+    "created": 134369798989157015,
+    "pid": 30168
+  },
+  "monitor_source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+  "independent_validation_or_adoption": false
+}

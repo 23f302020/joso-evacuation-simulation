@@ -1,0 +1,21 @@
+--- choice_sync_status.py.before
++++ choice_sync_status.py
+@@ -246,13 +246,15 @@
+                 ('report', 'at_jst', 'status', 'phase', 'attempt_id', 'owner', 'child', 'state_snapshot_sha256', 'anomaly_flags')}
+             report['build_evidence_sha256'] = {p.relative_to(root).as_posix(): expected for p, expected in dependencies.items()}
+         updated = dict(checkpoint)
+-        stale = build is not None or hold or checkpoint.get('current_implementation_sha256') != implementation
++        stale = build is not None or implementation_changed
+         if stale:
+             for key in ('preflight_state', 'independent_audit_status', 'smoke_sequence_status', 'integrated_suite_current_status'):
+                 if key in updated and not str(updated[key]).lower().startswith(('stale', 'historical')):
+                     updated[key] = 'STALE historical: ' + str(updated[key])
+-            updated.update(technical_ready=False, technical_evidence_classification=
+-                           'STALE/historical: legacy PASS fields do not establish current READY')
++        if stale or hold:
++            updated.update(technical_ready=False, technical_evidence_classification=(
++                'STALE/historical: legacy PASS fields do not establish current READY' if stale else
++                'CURRENT_IMPLEMENTATION_HOLD: evidence status metadata is not a READY receipt'))
+         updated.update(at_jst=at, summary=summary, core_runs=len(records),
+                        running=[observed] if observed and observed['status'] == 'RUNNING' else [],
+                        unrecorded_runs=state['unrecorded'], observed_formally_recorded=state['recorded_cells'],

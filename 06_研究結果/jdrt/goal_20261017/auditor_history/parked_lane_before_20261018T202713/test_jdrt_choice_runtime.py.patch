@@ -1,0 +1,58 @@
+diff --git "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\tests\\test_jdrt_choice_runtime.py" "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/tests/test_jdrt_choice_runtime.py"
+index 4afe179..367d95b 100644
+--- "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\parked_lane_before_20261018T202713\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\tests\\test_jdrt_choice_runtime.py"
++++ "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/tests/test_jdrt_choice_runtime.py"
+@@ -127,6 +127,53 @@ class RuntimeContracts(unittest.TestCase):
+             self.assertFalse(receipt['first_turn_constrained'])
+             self.assertEqual(path[1], 'adjacent_turn')
+ 
++    def test_parked_empty_lane_uses_only_native_stop_reference(self):
++        connection, net = Mock(), Mock()
++        vehicle = connection.vehicle
++        for method, value in [('getRoadID', 'a'), ('getLaneID', ''), ('getLanePosition', 9.95),
++                              ('getSpeed', 0.), ('getDecel', 4.5), ('getStopState', 3),
++                              ('getRoute', ('old', 'a')), ('getRouteIndex', 1)]:
++            getattr(vehicle, method).return_value = value
++        stop = types.SimpleNamespace(lane='a_1', startPos=9.9, endPos=10., stopFlags=1)
++        vehicle.getStops.return_value = (stop,)
++        lane = net.getLane.return_value
++        lane.getLength.return_value = 10.
++        lane.getEdge.return_value.getID.return_value = 'a'
++        lane.allows.return_value = True
++        _, receipt = runtime.vehicle_path_source(connection, 'v', net)
++        self.assertEqual(receipt['source_kind'], 'parked_stop')
++        self.assertEqual(receipt['native_source']['lane_id'], '')
++        self.assertEqual(receipt['source_reference_lane_id'], 'a_1')
++        net.getLane.assert_called_once_with('a_1')
++        for method, value in [('getStopState', 1), ('getStopState', 0), ('getSpeed', .1),
++                              ('getLanePosition', 9.8), ('getLanePosition', 10.1),
++                              ('getRoadID', 'other'), ('getRoute', ('a', 'other'))]:
++            getter = getattr(vehicle, method)
++            original = getter.return_value
++            getter.return_value = value
++            with self.subTest(method=method, value=value), self.assertRaises(ValueError):
++                runtime.vehicle_path_source(connection, 'v', net)
++            getter.return_value = original
++        vehicle.getStops.return_value = ()
++        with self.assertRaisesRegex(ValueError, 'lacks its native'):
++            runtime.vehicle_path_source(connection, 'v', net)
++        vehicle.getStops.return_value = (stop,)
++        stop.stopFlags = 0
++        with self.assertRaisesRegex(ValueError, 'contradicts'):
++            runtime.vehicle_path_source(connection, 'v', net)
++        stop.stopFlags = 1
++        lane.allows.return_value = False
++        with self.assertRaisesRegex(ValueError, 'contradicts'):
++            runtime.vehicle_path_source(connection, 'v', net)
++        lane.allows.return_value = True
++        vehicle.getLaneID.return_value = 'a_1'
++        vehicle.getStopState.return_value = 0
++        vehicle.getStops.reset_mock()
++        _, receipt = runtime.vehicle_path_source(connection, 'v', net)
++        self.assertEqual(receipt['source_kind'], 'onroad_lane')
++        self.assertIsNone(receipt['native_parking_stop'])
++        vehicle.getStops.assert_not_called()
++
+     def test_constrained_same_edge_backward_cycle_retains_forward_motion(self):
+         graph = self.lane_turn_graph()
+         graph.add_edge('safe', 'a')

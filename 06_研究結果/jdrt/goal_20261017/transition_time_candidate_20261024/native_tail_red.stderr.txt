@@ -1,0 +1,44 @@
+test_different_possible_internal_lengths_are_rejected (tests.test_choice_transition_timing.NativeArrivalTailTests.test_different_possible_internal_lengths_are_rejected) ... ERROR
+test_native_internal_tail_and_multiple_skipped_externals (tests.test_choice_transition_timing.NativeArrivalTailTests.test_native_internal_tail_and_multiple_skipped_externals) ... ERROR
+test_wrong_occurrence_or_missing_endpoint_is_not_proof (tests.test_choice_transition_timing.NativeArrivalTailTests.test_wrong_occurrence_or_missing_endpoint_is_not_proof) ... ERROR
+
+======================================================================
+ERROR: test_different_possible_internal_lengths_are_rejected (tests.test_choice_transition_timing.NativeArrivalTailTests.test_different_possible_internal_lengths_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 213, in test_different_possible_internal_lengths_are_rejected
+    lanes, reverse = self.topology()
+                     ~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 191, in topology
+    return validator.native_arrival_topology(net)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice_validate' has no attribute 'native_arrival_topology'
+
+======================================================================
+ERROR: test_native_internal_tail_and_multiple_skipped_externals (tests.test_choice_transition_timing.NativeArrivalTailTests.test_native_internal_tail_and_multiple_skipped_externals)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 194, in test_native_internal_tail_and_multiple_skipped_externals
+    lanes, reverse = self.topology()
+                     ~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 191, in topology
+    return validator.native_arrival_topology(net)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice_validate' has no attribute 'native_arrival_topology'
+
+======================================================================
+ERROR: test_wrong_occurrence_or_missing_endpoint_is_not_proof (tests.test_choice_transition_timing.NativeArrivalTailTests.test_wrong_occurrence_or_missing_endpoint_is_not_proof)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 205, in test_wrong_occurrence_or_missing_endpoint_is_not_proof
+    lanes, reverse = self.topology()
+                     ~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 191, in topology
+    return validator.native_arrival_topology(net)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice_validate' has no attribute 'native_arrival_topology'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.017s
+
+FAILED (errors=3)

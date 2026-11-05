@@ -1,0 +1,114 @@
+{
+  "at_jst": "2026-10-22T15:34:51.583728+09:00",
+  "status": "BOUNDED_GIS_SOURCE_AUDIT_NO_INPUT_ADOPTION",
+  "source_files_verified": [
+    {
+      "requested_url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/city_plan/cityplanningmap/page003557.html",
+      "final_url": "https://www.city.joso.lg.jp/kurashi_gyousei/shisei/seisaku/city_plan/cityplanningmap/page003557.html",
+      "status": 200,
+      "content_type": "text/html",
+      "last_modified": null,
+      "retrieved_at_utc": "2026-10-22T06:30:17.066559+00:00",
+      "bytes": 21353,
+      "sha256": "5bc554c03643af31b532970e48222662be95bd9d851d86728e56b55397103368",
+      "coverage_index_url": "https://www.city.joso.lg.jp/data/img/1724205600_280.png?1724205638327",
+      "pdf_links": [
+        "https://www.city.joso.lg.jp/data/doc/1724204786_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724204149_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724206138_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724206395_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724206480_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724206892_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724207093_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724207188_doc_280_0.pdf",
+        "https://www.city.joso.lg.jp/data/doc/1724207301_doc_280_0.pdf"
+      ],
+      "id": "topographic_map_index.html"
+    },
+    {
+      "id": "coverage_index.png",
+      "requested_url": "https://www.city.joso.lg.jp/data/img/1724205600_280.png?1724205638327",
+      "final_url": "https://www.city.joso.lg.jp/data/img/1724205600_280.png?1724205638327",
+      "status": 200,
+      "content_type": "image/png",
+      "retrieved_at_utc": "2026-10-22T06:30:56.987375+00:00",
+      "bytes": 152291,
+      "sha256": "7fd0aed798b79043c228a50ef9fded67a5f78fec6d9c3f81223ed01997dbad29"
+    },
+    {
+      "id": "topographic_10000_3.pdf",
+      "requested_url": "https://www.city.joso.lg.jp/data/doc/1724206480_doc_280_0.pdf",
+      "final_url": "https://www.city.joso.lg.jp/data/doc/1724206480_doc_280_0.pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "last_modified": "Tue, 31 Mar 2026 05:03:03 GMT",
+      "retrieved_at_utc": "2026-10-22T06:31:38.206822+00:00",
+      "bytes": 19696858,
+      "sha256": "db69e73dacae8ae8cb43a5736beb5b2545a6bd56a945ce8826f80af7e955f82a",
+      "selection": "Coverage index sheet3 is southern Joso containing Mitsukaido area. This is a map-scope choice, not a bridge identity or height match."
+    }
+  ],
+  "pdf_pages": 1,
+  "embedded_text_characters": 0,
+  "images_visually_checked": [
+    "coverage_index.png",
+    "sheet3_page01_overview.png",
+    "legend_top.png",
+    "footer_left.png",
+    "footer_right.png"
+  ],
+  "image_sha256": {
+    "coverage_index.png": "7fd0aed798b79043c228a50ef9fded67a5f78fec6d9c3f81223ed01997dbad29",
+    "sheet3_page01_overview.png": "750d9e80e991108bbf9d6678098b365ad000e850c322ccbc4ac96cdd72d6bcdc",
+    "legend_top.png": "9e78015326cf7e8591b59fc1741145a0a10495b383160acbed514b856284e9c1",
+    "footer_left.png": "f5736f21cc1fead9aea5fac533bf455cd8681d9cc029828025450f0e00d640c6",
+    "footer_right.png": "d4c1258d491afcb761b2e2758c72a659e2f2975fc8ad07b7c0a23eb2cdcc1173"
+  },
+  "observed_metadata": {
+    "coordinate_system_label": "第IX系",
+    "contour_interval_m": 10,
+    "photo_date": "2021-12 per municipal page",
+    "map_date": "2022-03 per page and map footnote",
+    "page_updated": "2024-08-21",
+    "vertical_datum": null,
+    "height_accuracy": null,
+    "EPSG": null,
+    "bridge_identity": null,
+    "bridge_road_surface_height": null
+  },
+  "queries": [
+    {
+      "q": "常総市 弁天橋 市道2062 緯度 経度 橋梁",
+      "domains": [
+        "city.joso.lg.jp",
+        "pref.ibaraki.jp",
+        "mlit.go.jp"
+      ]
+    },
+    {
+      "q": "常総市 明橋 東橋 桜橋 橋面 標高 縦断図",
+      "domains": [
+        "city.joso.lg.jp",
+        "mlit.go.jp",
+        "pref.ibaraki.jp"
+      ]
+    },
+    {
+      "q": "常総市 道路台帳 橋梁 GIS オープンデータ 座標",
+      "domains": [
+        "city.joso.lg.jp",
+        "pref.ibaraki.jp"
+      ]
+    }
+  ],
+  "web_sheet2_fetch": "400 content-length limit18229238; not an acquired primary original",
+  "chosen_original_sheet": 3,
+  "model_input_adopted": false,
+  "new_map_created": false,
+  "external_contact_or_application": false,
+  "publication": false,
+  "ace_show_at_jst": "2026-10-22T15:30+09:00",
+  "ace_direct_gis_criterion": null,
+  "ace_not_applied_reason": "Current five criteria address run logs/notifications/reproduction; step-causality err-00004 is not a GIS datum/epoch rule. Used project GIS skill instead.",
+  "report_sha256": "2a7a7633523446140d2154f4462a82288b607452ce94f2d652f1781047ae9ae0"
+}

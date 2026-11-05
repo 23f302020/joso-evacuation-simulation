@@ -1,0 +1,39 @@
+{
+  "at_jst": "2026-10-28T23:41:59.422237+09:00",
+  "scope": "production API repair + full-controller regression + independent boundary coverage; pre-full-suite review",
+  "baseline": "baseline.json",
+  "reviewer_backend": "current parent model kept; backend not independently verified",
+  "findings_requiring_fix": [],
+  "checked": [
+    "Only DRT remaining-route assignment API changes; guard/stop position/duration/public signature unchanged",
+    "Native setRouteID keeps future-route permission rejection and native odometer; raw immediate INVALID position retained",
+    "stopped cancellation stays parked; moving cancellation uses same repaired API",
+    "Independent new boundary requires actual past traversal, closure during full300-second boarding, remaining route/index and next-step source/distance",
+    "Fixture30 is required in producer and verifier; five contracts fail before branch and pass after it",
+    "All122 preflight-listed module unit contracts pass; native full controller passes all7 independent components",
+    "Four saved-native mutations rejected; all39 primary files unchanged",
+    "Config diffs restricted to explicit identity/provenance; same70 and20 input artifacts byte identical",
+    "No external action, binary edit, acceptance relaxation or old9 migration"
+  ],
+  "remaining": [
+    "Complete current30 fixture suite",
+    "Independent whole audit65 planned counterexamples (derive actual count)",
+    "All14 current setting smoke and independent validation",
+    "Fresh input/unit/dependency/capacity READY and G6/monitor registration checks",
+    "All70 unified-source core and analysis; later large bus and final report"
+  ],
+  "files": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+    "04_プログラム/scripts/jdrt_choice_fixtures.py": "ab4e84a8613a7a250af8de4f61aa154723bdfca6ba0ad26234cbebf2703b5f16",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "1be342b7be621793203ba0bcd073e7915d37540dbd25f2cc1fd2dfcdf311aade",
+    "04_プログラム/tests/test_jdrt_choice_runtime.py": "a16dea3dd442ec4026ce044501cfcb52d5fcd8ccc336b960f75829f6dc3dcf69",
+    "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py": "79a32c52304e3c9e499be2f754ed3296d6c186757a8da59374ebde725e1e3ded",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8"
+  },
+  "technical_ready": false,
+  "core_adoption_permitted": false
+}

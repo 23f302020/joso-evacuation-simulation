@@ -1,0 +1,31 @@
+{
+  "at_jst": "2026-10-28T23:50:59.879610+09:00",
+  "status": "SOURCE_AND_DYNAMIC_REGISTRATION_RECHECKED_NOT_ACTUAL_ANALYSIS",
+  "registration_id": "choice_route_control_v4_20261028",
+  "config_sha256": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8",
+  "workspace_selected": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4",
+  "ledger_selected": "05_タスク管理/jdrt/JDRT-受付代替行動_経路監査v4_セル検証台帳.jsonl",
+  "registered_cells": 70,
+  "current_new_accepted": 0,
+  "source_files": {
+    "G6_主指標・事前登録差分_集計.py": "7edf822e3249b8c55b0923d630876d5acc0c1412ade59f4ce781874b0d50876a",
+    "G6_要求待ち・打切り_集計.py": "66978b52c8d8a96080e2544f19a17a0b758c2fbd28c4d97a99ff0c0c479854b7",
+    "G6_副指標・理論上限_集計.py": "8b030aa56f9f977aabf16833ab01496546b7fe5ae227adede81a21501ee57d2e",
+    "G6_副指標・理論上限_実装証跡.json": "06578175877d36efd5f7f867bb4bf43d2e5fdd5fbba6af39f096890d141c1056"
+  },
+  "old13_contract_evidence_reused": "06_研究結果/jdrt/goal_20261017/analysis_history/G6_registration_gate_20261022/review.json",
+  "analysis_code_and_contract_test_sources_unchanged": true,
+  "current_conditional_service_proof": "06_研究結果/jdrt/goal_20261017/G6_副指標・理論上限_実装証跡.json",
+  "current_conditional_service_proof_sha256": "06578175877d36efd5f7f867bb4bf43d2e5fdd5fbba6af39f096890d141c1056",
+  "runtime_change_review": {
+    "changed_functions": [
+      "set_vehicle_route"
+    ],
+    "entire_run_controller_ast_equal": true,
+    "no_hidden_native_time_or_position_calls": true,
+    "native_boundary_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/validation_reports/validate_rt261028a_c30_20261028T233941795887.json",
+    "scope": "conditional mathematical source prerequisites only; no actual throughput or method direction"
+  },
+  "limitations": "Current runtime source changed; previous v3 secondary proof is historical. New exact-source/AST re-audit validates conditional service upper-bound premises only. No all70 real aggregation, direction interpretation, empirical efficacy or READY.",
+  "actual_all70_analysis": false
+}

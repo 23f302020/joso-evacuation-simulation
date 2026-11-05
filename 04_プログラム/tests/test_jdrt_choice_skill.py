@@ -17,6 +17,20 @@ spec.loader.exec_module(skill)
 
 
 class ReadOnlyLiveness(unittest.TestCase):
+    def test_record_rejects_a_different_registration_before_writing(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            names = ['a.md', 'b.md', 'context.md', 'decision.md', 'progress.md', 'ledger.jsonl']
+            for name in names[:-1]:
+                (root / name).write_text('\n<!-- AGENT_CURRENT_END -->\n' if name == 'context.md' else '', encoding='utf-8')
+            parameters = {'protocol': 'synthetic', 'registration_id': 'new',
+                          'workspace': 'work', 'record_files': names}
+            entry = {'protocol': 'synthetic', 'registration_id': 'old', 'purpose': 'core',
+                     'validation_status': 'PASS', 'run_id': 'example', 'cell_id': 'one'}
+            with self.assertRaisesRegex(ValueError, 'registration'):
+                skill.record_six_files(root, parameters, entry, 'synthetic record')
+            self.assertFalse((root / 'ledger.jsonl').exists())
+
     def test_real_venv_launcher_and_executor_identity_are_both_live_and_related(self):
         with tempfile.TemporaryDirectory() as directory:
             receipt = Path(directory) / 'owned_child.json'

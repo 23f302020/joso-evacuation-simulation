@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-20T22:56:46.201391+09:00",
+  "status": "REVIEWED_OWNED_HANDLE_TIMEOUT_RACE_FIX",
+  "scope": "Seven-line post-CIM original Popen zero-timeout wait only",
+  "red": "red03.log:absent and reused CIM both incorrectly rejected owned terminal handle",
+  "green": "green02.log:35 tests PASS",
+  "real_windows_probe": "windows_handle_probe02/result.json:controlled timeout, actual initial CIM/later absent and original Windows process handle exit0",
+  "findings_resolved": [
+    "Owned handle exit code may be accepted even when the numeric PID vanishes/reuses after timeout; no PID-based fabricated exit",
+    "Original handle still active plus absent/reused/unknown CIM remains fail closed with exit_code=None; no kill or retry",
+    "Same Popen and exactly one launch; existing SHA, input, validation, role and core gates unchanged",
+    "Old e failure/unknown exit and all artifacts remain unchanged; new run required"
+  ],
+  "test_harness_history": [
+    "First subtest reused the same artificial label and produced FileExistsError; corrected to distinct labels and kept logs",
+    "First Windows probe intercepted CIM Popen too; corrected probe02 limits wrapper to artificial Python command; owned artificial child cleaned in finally"
+  ],
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py": "6ca9fbf5cfe136a8c19e9fbb7407e5898535219f40be2b4b272dd3dec96cc5af",
+    "04_プログラム/tests/test_choice_native_regression.py": "7390534b1faa827620f3ecca9a9717167445a3af41429f7372857ddc241b3989"
+  },
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "actual_backend": "unverified; parent unchanged; no agent spawned"
+}

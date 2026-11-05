@@ -1,0 +1,68 @@
+--- test_watch.py.before
++++ test_watch.py
+@@ -119,6 +119,65 @@
+             value = watch.snapshot(child, {}, 1, lambda _: next(observed), lambda *_: True)
+             self.assertIn('process_identity_changed', value['flags'])
+             self.assertNotIn('command_verified_binding', value)
++
++
++class ExecutionTiming(unittest.TestCase):
++    def test_manifest_times_are_normalized_and_saved_with_event(self):
++        with tempfile.TemporaryDirectory() as folder:
++            root = Path(folder)
++            source = root / 'manifest.json'
++            data = {'run_id': 'clock-fixture', 'status': 'COMPLETED',
++                    'started_at_jst': '2026-01-01T09:00:00.250000+09:00',
++                    'finished_at_jst': '2026-01-01T00:01:02.750000Z'}
++            watch.atomic_json(source, data)
++            original = source.read_bytes()
++            value = watch.snapshot(source, {}, 1)
++            timing = value['execution_timing']
++            self.assertEqual(timing['started_at_utc'], '2026-01-01T00:00:00.250000+00:00')
++            self.assertEqual(timing['finished_at_utc'], '2026-01-01T00:01:02.750000+00:00')
++            self.assertEqual(timing['elapsed_sec'], 62.5)
++            self.assertEqual(timing['status'], 'complete')
++            self.assertEqual(timing['start_source'], 'started_at_jst')
++            self.assertEqual(timing['finish_source'], 'finished_at_jst')
++            event = watch.save_event(root / 'events', str(source), 'completed', value)
++            self.assertEqual(watch.read_json(event)['evidence']['execution_timing'], timing)
++            saved = event.read_bytes()
++            watch.save_event(root / 'events', str(source), 'completed', {})
++            self.assertEqual(event.read_bytes(), saved)
++            self.assertEqual(source.read_bytes(), original)
++            watch.render_status(root, {'targets': {}, 'observed_epoch': 1})
++            html = (root / 'status.html').read_text(encoding='utf-8')
++            self.assertIn('2026-01-01 09:00:00.250000+09:00', html)
++            self.assertIn('2026-01-01 09:01:02.750000+09:00', html)
++            self.assertIn('1分2.500秒', html)
++
++    def test_missing_invalid_reversed_and_running_times_are_not_guessed(self):
++        cases = [
++            ({}, 'missing', None),
++            ({'started_at_jst': 'bad', 'finished_at_jst': '2026-01-01T00:00:00Z'}, 'invalid', None),
++            ({'started_at_jst': '2026-01-01T00:00:00', 'finished_at_jst': '2026-01-01T00:00:00Z'}, 'invalid', None),
++            ({'started_at_jst': '2026-01-02T00:00:00Z', 'finished_at_jst': '2026-01-01T00:00:00Z'}, 'reversed', None),
++            ({'started_at_utc': '2026-01-01T00:00:00Z', 'finished_at_utc': '2026-01-01T00:00:00Z'}, 'complete', 0),
++        ]
++        for fields, status, elapsed in cases:
++            with self.subTest(fields=fields):
++                timing = watch.execution_timing({'status': 'FAILED', **fields})
++                self.assertEqual(timing['status'], status)
++                self.assertEqual(timing['elapsed_sec'], elapsed)
++        timing = watch.execution_timing({'status': 'RUNNING',
++            'started_at_jst': '2026-01-01T00:00:00Z', 'finished_at_jst': '2026-01-02T00:00:00Z'})
++        self.assertEqual(timing['status'], 'running')
++        self.assertIsNone(timing['elapsed_sec'])
++        self.assertIsNone(timing['finished_at_utc'])
++
++    def test_legacy_event_displays_unknown_without_changing_original(self):
++        with tempfile.TemporaryDirectory() as folder:
++            root = Path(folder)
++            event = watch.save_event(root / 'events', 'legacy', 'completed', {})
++            original = event.read_bytes()
++            watch.render_status(root, {'targets': {}, 'observed_epoch': 1})
++            self.assertIn('所要時間：不明', (root / 'status.html').read_text(encoding='utf-8'))
++            self.assertEqual(event.read_bytes(), original)
+ 
+ 
+ class Contracts(unittest.TestCase):

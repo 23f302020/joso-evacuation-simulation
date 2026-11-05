@@ -1,0 +1,60 @@
+{
+  "protocol": "realtime_choice_fixture_suite_v1",
+  "purpose": "technical_fixture_suite",
+  "run_id": "rt261028a",
+  "pid": 18692,
+  "status": "COMPLETED",
+  "started_at_jst": "2026-10-28T23:38:45.873571+09:00",
+  "research_adoption_permitted": false,
+  "factory_sha256": "ab4e84a8613a7a250af8de4f61aa154723bdfca6ba0ad26234cbebf2703b5f16",
+  "cases": [
+    {
+      "case": "delivery_past_closure",
+      "status": "PASS",
+      "checks": {
+        "same_real_controller_completed": true,
+        "technical_only": true,
+        "zero_physical_errors": true,
+        "sumo_error_zero": true,
+        "all_output_hashes": true,
+        "boarding_then_delivery_after_past_closure": true,
+        "remaining_route_excludes_closed_history": true,
+        "admitted_without_fallback": true
+      },
+      "outcomes": {
+        "admitted": 1
+      },
+      "request_states": {
+        "served": 1
+      },
+      "event_counts": {
+        "person_ready": 1,
+        "request_state": 6,
+        "request_received": 1,
+        "person_state": 6,
+        "drt_route": 2,
+        "request_accepted": 1,
+        "vehicle_reentry_observed": 2,
+        "boarding_started": 1,
+        "closure_applied": 1,
+        "vehicle_route_feasibility": 1,
+        "drt_boarded": 1,
+        "alighting_started": 1,
+        "drt_alighted": 1,
+        "person_terminal": 1
+      },
+      "sumo_log_summary": {
+        "bytes": 0,
+        "warning_count": 0,
+        "error_count": 0,
+        "handled_route_rejection_count": 0,
+        "unhandled_error_count": 0,
+        "collision_teleport_count": 0,
+        "gridlock_teleport_count": 0
+      },
+      "execution_manifest_sha256": "503bdea5c2c0e2768654f64534012d75e31eacc96e03bd2fc366c0ff70eb6add",
+      "child_run_id": "rt261028a_c30"
+    }
+  ],
+  "finished_at_jst": "2026-10-28T23:39:05.196157+09:00"
+}

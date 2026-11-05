@@ -1,0 +1,47 @@
+--- before
++++ after
+@@ -409,12 +409,21 @@
+ class Dispatcher:
+     def __init__(self, config, runtime):
+         self.config, self.runtime, self.child = config, runtime, None
++        self.event_cache = {}
++
++    def read_event(self, path):
++        stat = path.stat()
++        key = (stat.st_mtime_ns, stat.st_size)
++        cached = self.event_cache.get(path)
++        if cached is None or cached[0] != key:
++            self.event_cache[path] = (key, read_json(path))
++        return self.event_cache[path][1]
+ 
+     def tick(self, now):
+         # Local notifications must progress even while AI is busy or rate-limited.
+         # Bound each tick so a backlog does not block process observation in one burst.
+         for path in sorted((self.runtime / 'events').glob('*.json')):
+-            event = read_json(path)
++            event = self.read_event(path)
+             if event['notification'] == 'pending':
+                 try:
+                     event['notification'] = notify(event) if self.config.get('notifications_enabled', True) else 'disabled'
+@@ -427,7 +436,7 @@
+             code = proc.poll()
+             if code is None and now - began < self.config['diagnostic_timeout_sec']:
+                 return
+-            event = read_json(path)
++            event = self.read_event(path)
+             if code is None:
+                 proc.kill()
+                 proc.wait(timeout=10)
+@@ -441,10 +450,10 @@
+             atomic_json(path, event)
+             self.child = None
+         for path in sorted((self.runtime / 'events').glob('*.json')):
+-            event = read_json(path)
++            event = self.read_event(path)
+             if event['delivery'] != 'pending' or not self.config['diagnostics_enabled']:
+                 continue
+-            receipts = [read_json(p).get('delivery_started_epoch', 0) for p in (self.runtime / 'events').glob('*.json')]
++            receipts = [self.read_event(p).get('delivery_started_epoch', 0) for p in (self.runtime / 'events').glob('*.json')]
+             if sum(t > now - 3600 for t in receipts) >= self.config['max_diagnostics_per_hour']:
+                 return
+             # Durable claim BEFORE Popen: restart never silently retries uncertain work.

@@ -1,0 +1,24 @@
+{
+  "status": "RUNNING",
+  "target_id": "simulation_watch_artificial_child",
+  "observed_at_utc": "2026-10-20T07:50:42.758764+00:00",
+  "state_sha256": "2a7ba0164188c03969206adc1cf570efa78cc6e0b457e97431f6907d1e26d8ac",
+  "flags": [],
+  "pid": 12524,
+  "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\smoke05\\artificial\\manifest.json",
+  "sim_sec": null,
+  "progress_token": [
+    "RUNNING",
+    null,
+    null,
+    null,
+    null
+  ],
+  "process": {
+    "state": "alive",
+    "created": 134369562427201495,
+    "pid": 12524
+  },
+  "last_progress": 1792482642.7365687,
+  "log_offsets": {}
+}

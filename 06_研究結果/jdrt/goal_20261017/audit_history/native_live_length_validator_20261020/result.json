@@ -1,0 +1,30 @@
+{
+  "at_jst": "2026-10-20T22:12:12.896832+09:00",
+  "status": "REVIEWED_NUMERIC_PROOF_UNIT_AND_HISTORICAL_RAW",
+  "changed_production_functions": [
+    "walk_replacement_contract"
+  ],
+  "source_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "bda7dcb6d3dcfcdfa1ae977a05d1518bfbfcae0ec090ee4b92f315be43844f8d",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "711ddecffb090db23983234d7588d6e14f3d1b5dd816dea529103f50a22b40ac"
+  },
+  "red": "red.log:2 subcases fail solely at replacement_receipts",
+  "green": "green.log:20 tests PASS",
+  "native_numeric_evidence": "../native_pair_c_numeric_reconstruction_20261020/result.json",
+  "actual_historical_evidence": "historical_raw_recompute.json: all7 PASS; INCOMPLETE/historical, not adoption",
+  "findings_resolved": [
+    "Live native getter is dynamic; equality to installed cached plan is false after internal traversal",
+    "Caller still verifies previous_plan against prior event, signed progression, model passed, speed integral, replacement suffix and next installed length",
+    "Raw live length must remain finite/nonnegative; intermediate receipt equality and all position/route/time/length/speed/warning gates unchanged",
+    "No runtime, input, PAP, budget formula, study indicator, source bundle, or old report changed"
+  ],
+  "limitations": [
+    "No independent generic reconstruction of every live native getter field is claimed",
+    "Exact native lateral guard trace and broad regression remain pending",
+    "Current common validator SHA changed: require fresh-ID selected pair and all later current evidence",
+    "Historical INVALID and FAILED_PRESERVED are immutable; no old run is promoted"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "actual_backend": "unverified; parent unchanged; no new agent"
+}

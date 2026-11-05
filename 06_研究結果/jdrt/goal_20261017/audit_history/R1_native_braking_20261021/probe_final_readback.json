@@ -1,0 +1,70 @@
+{
+  "at_jst": "2026-10-21T21:04:32.521134+09:00",
+  "classification": "progress",
+  "goal_status": "ACTIVE",
+  "current_HOLD": {
+    "run_id": "ch261021_002",
+    "status": "INVALID_PRESERVED",
+    "diagnosis_complete": false,
+    "research_core_restart_permitted": false,
+    "reason": "unknown native emergency braking remains unresolved; dedicated administrative rejection does not establish causal resolution"
+  },
+  "common5_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "original_R1_outputs_unchanged": {
+    "actor_observations.csv.gz": true,
+    "candidates.csv.gz": true,
+    "common_realization.csv": true,
+    "dispatch_cycles.csv.gz": true,
+    "edge_observations.csv.gz": true,
+    "events.jsonl": true,
+    "facility_results.csv": true,
+    "person_results.csv": true,
+    "preflight_ready.json": true,
+    "progress.json": true,
+    "request_results.csv": true,
+    "snapshot_actor_observations.csv.gz": true,
+    "sumo.log": true,
+    "sumo_errors.log": true,
+    "transitions.csv.gz": true,
+    "tripinfo.xml": true,
+    "types.rou.xml": true,
+    "vehicle_results.csv": true
+  },
+  "formal_ledger_count": 1,
+  "formal_doc_markers": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md": 1,
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": 1,
+    "context.md": 1,
+    "00_全体整理/決定ログ.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": 1
+  },
+  "pair_terminal": "COMPLETED_NOT_ADOPTABLE",
+  "warning_reproduced": false,
+  "next": "同一native版/車種/時計/速度差/警告式を拘束する汎用診断契約と改変反証を準備し、受入条件の技術修正か研究方法変更かを整理する。警告が出るまで入力探索、whitelist、旧R0と新validatorの版混在は行わない。",
+  "owned_new_helper_sha256": "da4a49be2e3c312cc37086a0f42a3661ffcdd66f27e9263e2d9f788caab37bb6",
+  "owned_test_sha256": "3ff18bb4f623cc6fe29d6c4d0edaab966790ff3490945aca350d6fd986ab65de",
+  "display_sync": {
+    "applied": true,
+    "changed_files": [
+      "context.md",
+      "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+      "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+      "06_研究結果/jdrt/goal_20261017/G4実装・実SUMO_継続チェックポイント.json"
+    ],
+    "summary": "最新HOLD（2026-10-21T21:03:18.109917+09:00）：正式記録1/70。技術READY=false。R1 ch261021_002はINVALID_PRESERVED。隔離native pair nb26102101は完走したが警告未再現・車軌跡一致。車種の緊急減速度API9.0と元警告数式は整合、元coreの唯一原因・無害性は未確定。正式record/全後続core禁止。",
+    "recorded_cells": 1,
+    "observed_run": null,
+    "build_observation": null,
+    "formal_adoption_created": false
+  },
+  "diff_check": "PASS; EOL warnings only",
+  "dated_progress_check": "PASS",
+  "goal_complete": false
+}

@@ -1,0 +1,70 @@
+{
+  "at_jst": "2026-10-28T01:04:59.926394+09:00",
+  "action": "seventh_registered_core_same_owner_and_independent_target_confirmed",
+  "classification": "PROGRESS",
+  "previous_goal_turn_classification": "PROGRESS",
+  "sequence_id": "sq26102807",
+  "original_session": 6473,
+  "sequence_actual_pid": 2152,
+  "status": "RUNNING",
+  "phase": "core",
+  "formal_recorded": 6,
+  "current_core": {
+    "run_id": "nv26102807",
+    "cell_id": "fixed_reference_u50_r2p0_seed23423",
+    "status": "RUNNING",
+    "pid": 22964,
+    "started_at_jst": "2026-10-28T01:03:48.954688+09:00"
+  },
+  "progress": {
+    "at_jst": "2026-10-28T01:04:56.831956+09:00",
+    "time_sec": 840.0,
+    "end_sec": 21600,
+    "wall_sec": 41.563699200050905
+  },
+  "process_handle_identities": {
+    "2152": {
+      "state": "alive",
+      "created": 134375905806470269,
+      "pid": 2152
+    },
+    "22964": {
+      "state": "alive",
+      "created": 134375906128706748,
+      "pid": 22964
+    },
+    "23228": {
+      "state": "alive",
+      "created": 134375821728918107,
+      "pid": 23228
+    }
+  },
+  "independent_target": {
+    "target_id": "nv26102807",
+    "status": "RUNNING",
+    "pid": 22964,
+    "process": {
+      "state": "alive",
+      "created": 134375906128706748,
+      "pid": 22964
+    },
+    "flags": [],
+    "observed_at_utc": "2026-10-27T16:04:51.380811+00:00",
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "nv26102807"
+    }
+  },
+  "helper_source_sha256": "dff4798eea53f72948523f17072e01a32d9ea6f439378e0edeb05e114839a44b",
+  "helper_contract_tests": 30,
+  "current_source_whole_actual_operation_proven": false,
+  "prior_run_id": "nv26102806",
+  "prior_original_session": 64850,
+  "prior_original_exit_code": 0,
+  "prior_readback": "06_研究結果/jdrt/goal_20261017/nv26102806_record7_readback.json",
+  "automatic_readback_path": "06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102807/nv26102807_record7_readback.json",
+  "all_sequence_source_pins_unchanged": true,
+  "failed_old_sequence_preserved": "sq26102806",
+  "goal_complete": false,
+  "next": "Follow original6473 and sq26102807/state.json. This owner alone performs core -> finish -> original record7 readback BEFORE display -> status. Do not duplicate validate/record/readback. On successful terminal inspect saved proof/unique ledger, then fresh goal API/READY/capacity/07 before next single cell. This is first normal operation of30-contract discovery-epoch source; stop/preserve failures. Original23228 measurement59505 remains bounded until its own3h terminal; do not duplicate."
+}

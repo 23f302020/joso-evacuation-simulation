@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_technical.py", line 67, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_technical.py", line 46, in main
+    result = run_suite(args.run_id, args.case)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_choice_fixtures.py", line 635, in run_suite
+    report = evaluate(case, directory.parent / 'execution', result)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_choice_fixtures.py", line 529, in evaluate
+    reference = native_transition_reference(directory, result['step_sec'])
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_choice_fixtures.py", line 157, in native_transition_reference
+    raise ValueError('Short transition fixture did not skip the short external frame')
+ValueError: Short transition fixture did not skip the short external frame

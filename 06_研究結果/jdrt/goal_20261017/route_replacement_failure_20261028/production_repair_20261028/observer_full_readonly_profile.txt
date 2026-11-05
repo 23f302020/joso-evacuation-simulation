@@ -1,0 +1,33 @@
+         317022 function calls (315439 primitive calls) in 12.544 seconds
+
+   Ordered by: cumulative time
+   List reduced from 432 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.076    0.076   12.544   12.544 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:478(observe)
+      591    0.123    0.000   11.198    0.019 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:261(snapshot)
+1139/1138    6.869    0.006    6.870    0.006 {method 'read' of '_io.BufferedReader' objects}
+        1    0.003    0.003    6.413    6.413 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:185(command_matches)
+        1    0.000    0.000    6.406    6.406 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:512(run)
+        1    0.000    0.000    6.283    6.283 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1178(communicate)
+        1    0.000    0.000    6.253    6.253 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1623(_communicate)
+        2    0.000    0.000    6.253    3.126 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:1059(join)
+        2    0.001    0.000    6.252    3.126 {method 'join' of '_thread._ThreadHandle' objects}
+      2/1    0.000    0.000    6.252    6.252 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:1001(_bootstrap)
+      2/1    0.005    0.003    6.252    6.252 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:1028(_bootstrap_inner)
+      2/1    0.000    0.000    6.247    6.247 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\threading.py:984(run)
+      2/1    0.000    0.000    6.246    6.246 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\subprocess.py:1614(_readerthread)
+     2418    0.009    0.000    1.299    0.001 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:510(stat)
+     2421    1.025    0.000    1.292    0.001 {built-in method nt.stat}
+     1876    0.012    0.000    1.209    0.001 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:442(exists)
+     1699    0.009    0.000    1.179    0.001 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:529(open)
+     1701    1.069    0.001    1.169    0.001 {built-in method _io.open}
+      594    0.010    0.000    1.125    0.002 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:621(read_bytes)
+        1    0.000    0.000    1.067    1.067 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:471(discover)
+      563    0.008    0.000    1.058    0.002 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:43(read_json)
+      563    0.011    0.000    0.983    0.002 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_local.py:539(read_text)
+      563    0.010    0.000    0.971    0.002 C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\pathlib\_abc.py:628(read_text)
+       18    0.002    0.000    0.823    0.046 {method 'update' of 'set' objects}
+      609    0.014    0.000    0.821    0.001 C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\watch.py:474(<genexpr>)
+
+

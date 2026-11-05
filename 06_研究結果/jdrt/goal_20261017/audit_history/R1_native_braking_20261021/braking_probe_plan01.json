@@ -1,0 +1,41 @@
+{
+  "schema": "native_braking_probe_plan_v1",
+  "created_at_jst": "2026-10-21T20:56:12.670188+09:00",
+  "source_run_id": "ch261021_002",
+  "source_diagnostic_observation_time_sec": 6106.0,
+  "sources": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261021_002/manifest.json": "4601a83716bc419a4820626ace04eacddccd273f4b63b74d0672ec32e0483101",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered03/bounded.net.xml": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261021_002/types.rou.xml": "f25e7e3e15292050710b16bf1c3593aa3a11c83eb31ec70ddb85f6cebfc10d18",
+    "06_研究結果/jdrt/goal_20261017/audit_history/R1_native_braking_20261021/window03/window.json": "7f7aa0e5970af5ddf8ae6ac14ab97d68f407e8b489366bec48f494f6b6208649",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_braking_probe.py": "da4a49be2e3c312cc37086a0f42a3661ffcdd66f27e9263e2d9f788caab37bb6"
+  },
+  "net_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered03/bounded.net.xml",
+  "types_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261021_002/types.rou.xml",
+  "toolchain_manifest_sha256": "a323faa16045614f9c31693981a3ffd84b62b34425e76a0007e628185a1bef5c",
+  "car_route": [
+    "9407#2",
+    "9407#3",
+    "9417#0"
+  ],
+  "walk_route": [
+    "9416#1",
+    "9407#3",
+    "9417#0"
+  ],
+  "car_depart_pos_m": 5.393450298295156,
+  "car_depart_lane": "1",
+  "car_depart_speed": "max",
+  "walk_depart_pos_m": 3.7776685230273475,
+  "walk_speed_mps": 1.0,
+  "walk_speed_factor": 0.8725,
+  "seed": 23423,
+  "step_sec": 0.5,
+  "horizon_sec": 20.0,
+  "research_adoption_permitted": false,
+  "cases_in_fixed_order": [
+    "without_person",
+    "with_crossing_person"
+  ],
+  "interpretation": "Two reduced artificial cases differing only by person presence. Positions originate from a recorded external-lane frame; car departSpeed=max uses native insertion. No previous native state, speedFactor/RNG state or complete traffic/controller population is restored. No adaptive warning-seeking parameter sweep."
+}

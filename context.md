@@ -4,7 +4,7 @@
 > **更新のしかた：** 状態が変わったらこのファイルを上書きする。経緯は消さず `00_全体整理/決定ログ.md` へ追記する。
 > **エージェント読込範囲：** 通常は`<!-- AGENT_CURRENT_END -->`までで十分。以降は過去結果を確認するときだけ読む。
 
-**最終更新：** 2026-10-28（短道路・到着観測の技術訂正、新登録v3の全実SUMO再検証）
+**最終更新：** 2026-10-30（停車履歴の共通native修正・技術v5と実動作再検証）
 
 ---
 
@@ -12,15 +12,29 @@
 
 **後続実験の方針（2026-10-24）：** ユーザー指定により、現小型車系列の全登録セルの検証・正式記録・分析と結果整理の後、大型バスが一定区画を巡回して集団輸送する別系列を検証する。[後続実験計画](05_タスク管理/jdrt/大型バス巡回輸送_後続実験計画.md)へ作業順・設計事項・開始条件を登録。台数・定員・停留所・経路・比較条件等は未確定、本実験未開始。現系列・凍結系列の条件変更なし。
 
+**ローカル移行のパス対応（2026-11-05）：** 作業正本は `C:/Users/Ko_rr/Documents/Codex/研究室/4年次本研究`。監視タスクと対象パスをローカルへ切替、既存イベントを保持。移行時の旧完了・失敗の重複351件は原本を保全して通知対象外にした。監視対象704件、旧保留21件、監視本人確認を確認。設定のCodex診断実行ファイルは存在せず、診断復旧は未実施。次の長時間研究計算・技術suite開始または再開前（それ以前に診断が必要なら利用前）に、[復旧タスク](05_タスク管理/jdrt/独立監視システム_導入タスク.md)を実施する。OneDrive側は元データ保全中。研究runや正式記録は変更していない。
+
+**移行後の保全方針（2026-11-05）：** 停止中の研究用自動化3件はPAUSEDのままローカルrootへ更新した。監視移行で生成された重複イベントの変更前バックアップは`07_監視システム/runtime/migration_20261105/`に保存（Git対象外）。外部取得原本と再配布しないUSACE展開物、調査用PDFはGitHubへの公開対象から除外する。大容量の研究output/data・アーカイブは既存の除外設定によりGitHub上のバックアップにはならない。OneDrive元フォルダーは57,502ファイルのSHA-256照合を実施し、57,472件は一致、30件は移行後の設定・Git管理情報などの意図した差分。除外したnode_modulesジャンクションはローカルで再作成済み。元フォルダーの削除はプッシュ確認の後に限る。
+
 ## 一行で言うと
+
+**効率改善の自動処理停止（2026-11-05）：** 読取候補の全19,197,258行・全値/キー順一致と原本不変を隔離比較で確認し、未適用patchを保存しました。固定検証器へ反映する判断待ちとして毎朝の自動処理`automation`をPAUSEDにし、viewと設定を確認。通常3件の総時間短縮は未確認、再開はユーザー指定時のみです。研究runの開始・検証・正式記録を引き継いだものではありません。[作業正本](05_タスク管理/jdrt/シミュレーション進行効率_計測と改善.md)／[確認証跡](07_監視システム/verification/pipeline_efficiency_20261105/review_and_stop_readback.json)。
+
+**改良HTMLの公開更新（2026-10-28）：** ユーザーの明示依頼で既存Cloudflare Workerへ現状把握HTML1件を配信。HTTP200、原本・公開用コピー・配信SHA一致、PC1280px/スマートフォン390px、開閉・節内リンク・ローカル参照の無効化を確認。配信ID `9d9847822fcd41538e4f4927ed48c7b9`。[公開先](https://joso-research-status.30k-012rei.workers.dev/)／[配信証跡](00_全体整理/公開用_cloudflare/deployment_history/20261028T170021219845/verification.final.json)。研究入力・実行器・採用条件は不変。
+
+**デザイン支援の導入（2026-10-28）：** ユーザー依頼でImpeccable/Hallmarkを固定commitから個人用Codexスキルへ導入。導入周辺の重点セキュリティ確認は報告対象0件・partial。明示起動のみ、フックなし、Impeccable telemetry/Live別CLI fallback停止。導入・検証の正本は[運用文書](05_タスク管理/スキル・エージェント運用.md)の「デザイン支援2件の個人用導入」と外部スキル台帳。研究入力・実行器・採用条件は不変。続く明示依頼で現状把握HTMLを改良し、現在の結果を先頭へ配置、条件・背景説明を項目別開閉、比較表をスマートフォン幅で縦表示にした。検証と維持基準は[表示改良の記録](00_全体整理/現状把握_表示改良検証_20261028.md)と既存デザイン維持ガイドを参照。
+
+**中間発表の内容設計（2026-10-28）：** ユーザー依頼で[2026年12月5日用の内容構成案](01_経過報告/発表資料/中間発表資料_20261205/中間発表_文書とスライドの内容構成案.md)を作成。既存テンプレートのWord予稿2ページとPowerPoint本編12枚案を対応づけ、必要図表・参照元・制作タスクを整理。発表時間は未定で確定後に増減する。完了済み成果・現行実験の進捗・大型バスの後続計画を区別し、研究条件・正式記録は変更していない。次は掲載重点と図表を確定し、数値採用を確認してから原稿・PPTXを作成する。
 
 **現状把握・GitHub入口の整理（2026-10-28）：** 現状把握MD/HTMLへ各実験の固定条件・変更条件・進行度・結果と、現行v3の正式9回の個別人数表を追加。READMEに確認先を集約。10:43 JST観測の本実験稼働0・正式9/70・技術停止を区別し、人物CSVの分母・受入・退出と台帳/SHAを照合。[更新検証](00_全体整理/現状把握_更新検証_20261028.md)参照。開始・採用条件は変更していない。
 
 **モデル運用更新（2026-10-21）：** ユーザー承認済みの作業別分担・切替基準・短い引継ぎ・検証証跡再利用条件を[運用正本§0](05_タスク管理/スキル・エージェント運用.md)へ反映し、通常開発用role定義を追加。研究の次の1件・開始/採用ゲートは維持。初回の明示委任による起動確認と代表課題での節約効果比較は未実施。
 
 <!-- CHOICE_CURRENT_CONTEXT_BEGIN -->
-最新HOLD（表示根拠 2026-10-28T10:43:01.498851+09:00）：正式記録9/70。技術READY=false。旧READY/技術PASSはSTALE/historical。後続開始禁止。元summaryと旧証拠はcheckpoint履歴に保全。
+最終goal ACTIVE。受付・代替行動系列realtime_choice_v1：正式記録5/70セル。sv26103006（fixed_reference_u50_r2p900_seed23423）RUNNING・PID生存True・進捗未観測。登録上の次セルはfixed_reference_u50_r2p900_seed23423（開始許可ではない。専用CLIの現行READY/開始gateに従う）。状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。
 <!-- CHOICE_CURRENT_CONTEXT_END -->
+
+**native来歴の続報（2026-10-29 16時台の点観測）：** 両版の全来歴検査を原本から確認し、対照版の新規bundle作成を同一担当で実行中。研究用の選択先・正式採用条件は不変。具体的な現操作はG4 checkpointの`actual_native_packaging`と元handleを参照し、重複起動しない。両bundle・別技術v5・新しい全技術確認とREADY前にcore開始禁止。
 
 **受付・代替行動の次の1件：** 採用数・実行中run・登録上の次セルは上の現行表示と専用CLI status/check、新系列台帳を正本とする。元session/実PID/作成時刻・次の具体操作はG4実装・実SUMO_継続チェックポイント.jsonとoperations.jsonlを参照する。未記録run・未完操作がある間は次セルを開始しない。
 
@@ -171,6 +185,41 @@ protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024
 
 protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=facility_first_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=1/544、退出12は別計上。全登録セル完了前に方向解釈しない。
 一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102809_20261028T082947279559.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103001 -->
+### sv26103001（2026-10-30T10:24:12.352232+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103001_20261030T102412267412.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103002 -->
+### sv26103002（2026-10-30T19:31:57.986923+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103002_20261030T193157904132.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103003 -->
+### sv26103003（2026-10-30T21:12:27.830821+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u05_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103003_20261030T211227634395.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103004 -->
+### sv26103004（2026-10-30T22:08:46.487181+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u05_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103004_20261030T220846395559.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103005 -->
+### sv26103005（2026-10-30T23:03:38.842888+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u50_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103005_20261030T230338736682.json`。次の1件は専用CLI statusを参照。
 
 <!-- AGENT_CURRENT_END -->
 

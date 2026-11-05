@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\\u7814\u7a76\u5ba4\\4\u5e74\u6b21\u672c\u7814\u7a76\\04_\u30d7\u30ed\u30b0\u30e9\u30e0\\venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_choice_package_toolchain.py"
+  ],
+  "exit_code": 0,
+  "source_sha256": {
+    "../.agents/skills/joso-jdrt-runner/scripts/choice_package_toolchain.py": "4b7c2ea0a0b7eea4afc3f8a7e4fdae29bc78c8cc7d3626e48002fb9d9e6e6ace",
+    "tests/test_choice_package_toolchain.py": "dd1162f5f14a0c40643e28686a0fbce561a51a2d763c49ee301aab700f9880fe"
+  }
+}

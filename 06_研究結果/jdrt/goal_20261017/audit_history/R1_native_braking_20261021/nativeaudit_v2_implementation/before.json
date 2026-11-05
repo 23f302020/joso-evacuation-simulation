@@ -1,0 +1,25 @@
+{
+  "at_jst": "2026-10-21T21:23:15.442705+09:00",
+  "files_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "05ddf759f39cdcedb234f4c414198176c117dca02968b93e6d1c46830b2b3819",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "86510a58a1562c1bd9923d10c552c7f7159244161ecdd8f2a3495825309cc419",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "dcaa9fe4ca3854efca38b988f83b9b93d3995d2f3b04039795d1811e1dc88c7f",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "d32d5b5e11652f4ff66273d1a671573760a3665b182b0a68d674f2162d258f9e",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md": "cfafa5cba4566dbe3474619b01b2a97d9c782ee74bb8e8c429f01fe0dd8d59be",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": "c934ca6bca64e5e38cf0b6e1f5daf2009fe0d371d49b34937d2785316919d565",
+    "context.md": "1950cb2bc4dc96f3c3550c36420035803a6d435445e2009a2513fb36a54dccaf",
+    "00_全体整理/決定ログ.md": "e0f61629eac37abedaec461757088e6d13b24c7ea344056a248900b798cce0b3",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": "b44da1395cbbd0ba68a09899c99e878052a5a36af87bf1a5c2de35316e9c3f00",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": "f12516a2572c9756ae22acea298cb34a2330a6130889f012007a22c3927a2b47",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_セル検証台帳.jsonl": "5b3cb5aef20cbccbc3df45914dafa00928b3a5180d123af29e218c8be28fccc6",
+    "04_プログラム/tests/test_jdrt_choice_runtime.py": "346f4ed1b1738261180b5f41b6989b27e37b1860f3bc499e5d8d7daf4bc3e25b",
+    "04_プログラム/tests/test_jdrt_choice_validate.py": "605b31719f78b2c7841e13bfbc00f68e9edab8987b882513ff33fc39f3bd9c89",
+    "04_プログラム/tests/test_jdrt_choice_skill.py": "ec60ea760ae6eefcb103d96e2c6f9b2c8d74354ab3b006e69ddf5e43d5388f0a"
+  },
+  "old_recorded_cells": 1,
+  "old_workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1",
+  "new_ready": false,
+  "core_launch_permitted": false
+}

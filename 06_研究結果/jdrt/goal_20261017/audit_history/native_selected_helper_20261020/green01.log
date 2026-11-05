@@ -1,0 +1,32 @@
+test_bundle_executable_must_match_terminal_state_even_if_manifest_rehashed (test_choice_native_regression.ConsumerContracts.test_bundle_executable_must_match_terminal_state_even_if_manifest_rehashed) ... ok
+test_control_proof_state_cannot_be_forged (test_choice_native_regression.ConsumerContracts.test_control_proof_state_cannot_be_forged) ... ok
+test_copied_pair_must_be_identical_to_original_reference (test_choice_native_regression.ConsumerContracts.test_copied_pair_must_be_identical_to_original_reference) ... ERROR
+test_primary_evidence_missing_or_mixed_commit_rejected (test_choice_native_regression.ConsumerContracts.test_primary_evidence_missing_or_mixed_commit_rejected) ... ok
+test_roles_or_python_mismatch_rejected (test_choice_native_regression.ConsumerContracts.test_roles_or_python_mismatch_rejected) ... ok
+test_valid_roles_bind_copied_binaries_and_primary_proof (test_choice_native_regression.ConsumerContracts.test_valid_roles_bind_copied_binaries_and_primary_proof) ... ok
+test_existing_technical_id_or_live_global_native_prevents_launch (test_choice_native_regression.OrchestrationContracts.test_existing_technical_id_or_live_global_native_prevents_launch) ... ok
+test_interrupted_live_child_preserves_lock_without_retry_or_kill (test_choice_native_regression.OrchestrationContracts.test_interrupted_live_child_preserves_lock_without_retry_or_kill) ... ok
+test_selected_pair_runs_in_order_and_keeps_broad_gates_false (test_choice_native_regression.OrchestrationContracts.test_selected_pair_runs_in_order_and_keeps_broad_gates_false) ... ok
+test_unexpected_control_failure_stops_before_patched (test_choice_native_regression.OrchestrationContracts.test_unexpected_control_failure_stops_before_patched) ... ok
+test_unrecorded_core_blocks_pair (test_choice_native_regression.OrchestrationContracts.test_unrecorded_core_blocks_pair) ... ok
+test_nonfinite_native_receipt_rejected (test_choice_native_regression.ReceiptContracts.test_nonfinite_native_receipt_rejected) ... ok
+test_raw_control_mechanism_recomputed_without_observed_delta (test_choice_native_regression.ReceiptContracts.test_raw_control_mechanism_recomputed_without_observed_delta) ... ok
+
+======================================================================
+ERROR: test_copied_pair_must_be_identical_to_original_reference (test_choice_native_regression.ConsumerContracts.test_copied_pair_must_be_identical_to_original_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 97, in test_copied_pair_must_be_identical_to_original_reference
+    with self.assertRaises(ValueError): self.verify()
+                                        ~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 68, in verify
+    result = target.verify_pair(self.root, *(s['manifest_path'] for s in self.selections))
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 157, in verify_pair
+    require(proof['role'] == role and proof['source_commit'] == pair['source_commit']
+                                                                ~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'source_commit'
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.112s
+
+FAILED (errors=1)

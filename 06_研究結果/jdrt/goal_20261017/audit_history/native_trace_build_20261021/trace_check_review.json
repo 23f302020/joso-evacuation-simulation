@@ -1,0 +1,38 @@
+{
+  "at_jst": "2026-10-21T08:05:51.571501+09:00",
+  "status": "STATIC_COUNTEREXAMPLES_PASS_NO_NATIVE_TRACE_RUN",
+  "sources": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_trace_check.py": "a441c0b4b2645eab98f1fd4f18e8217b58916d4929868441b9bd870d2cdfa52c",
+    "04_プログラム/tests/test_choice_native_trace_check.py": "6ac102b37a517697b4fe962f9ec2112a7400533f3b871ead31adc12f64521146"
+  },
+  "red": "trace_check_red.log:5 tests/15 explicit unimplemented behavior errors",
+  "green": "trace_check_green01.log:5 tests PASS",
+  "native_constants_source": {
+    "src/microsim/transportables/MSPModel.cpp": {
+      "sha256": "4ff4c54c3ffc281ab4d85e8e6abc6eb10c78927e9713fc6e0d291061538ed6e6",
+      "relevant_lines": [
+        "const double MSPModel::UNSPECIFIED_POS_LAT(std::numeric_limits<double>::max());",
+        "const double MSPModel::RANDOM_POS_LAT(-std::numeric_limits<double>::max());"
+      ]
+    },
+    "src/microsim/transportables/MSStage.h": {
+      "sha256": "34b498b94f05fb1553765eba9c1dbf6af694009d5c52f922a1599e6eab31da1c",
+      "relevant_lines": [
+        "    WALKING = 2, // only for persons"
+      ]
+    }
+  },
+  "contract": [
+    "Parse complete XML constructor rows in one raw native process stream; require consecutive sequences; preserve caller raw logs including Warning",
+    "Derive outer guards, stage/time/lane/position conjunction and inheritance from raw fields; verify source-bound lateral sentinels, logged native equality booleans, own person/lane IDs and exact old lateral/new direction",
+    "Reject evaluated fields on skipped branches, missing/extra fields, nonfinite values and false result claims"
+  ],
+  "limitations": [
+    "No native trace rows yet; no native group PASS",
+    "Caller must bind sentinels/walking_type to pinned source, raw log to source/compiler/binary/options/process/operation and production trajectory",
+    "Pointer/null equality Booleans are raw native observations; this helper is not an independent memory-address debugger",
+    "Final default/random/explicit conversion and actual next-step motion require separate native/source/paired-trajectory checks"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

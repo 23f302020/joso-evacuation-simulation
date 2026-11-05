@@ -1,0 +1,45 @@
+{
+  "at_jst": "2026-10-21T20:49:26.920338+09:00",
+  "review_type": "same_chat_scoped_diagnostic_review_not_independent_model",
+  "scope": [
+    "Read-only extraction of two junctions and 75m spatial supplement",
+    "Source ZIP plus exact frozen patch reconstruction",
+    "Original administrative rejection and primary-output preservation",
+    "Current-state and dated-progress documentation"
+  ],
+  "syntax_checks": "2 diagnostic readers AST parsed; no research implementation changes",
+  "formal_record_markers": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md": 1,
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": 1,
+    "context.md": 1,
+    "00_全体整理/決定ログ.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": 1
+  },
+  "frozen_common5_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "owned_diagnostic_sha256": {
+    "extract_junction_window.py": "a2822af49c50e194019109fc16c22394bdd22554a11664583c38bbbaf1342a48",
+    "readback_junction.py": "42b0748a04437dea3f6e4098655101941218d75a2432b2cd4cc87e1d874ad87e",
+    "window03/window.json": "7f7aa0e5970af5ddf8ae6ac14ab97d68f407e8b489366bec48f494f6b6208649",
+    "junction_context_readback.json": "da79f673026600e3d77aaf0dac6daf18b58fe9ad146c9343ccc3a41ac2c60377",
+    "rejection_readback.json": "6de71702e3ebdbd5c47a0208e17f7e53aef098e419f0909544f38393ed81f7fc",
+    "原因診断と次の技術検証.md": "8bb7afb56fe718f63ca1049c066086da32a81f2fa5cde8aaaf50052b554b9465"
+  },
+  "reused_exact_patch_helper_sha256": "1836f98cf48fd15ce2478168e6a23ee7c26be616fcc43f6bbe29ad766726ea80",
+  "findings": "No adoption, physics, data-repair, external-send or direction claim introduced. Window/lane/phase evidence supports hypothesis only. Administrative reject preserved original manifest and all18 output hashes. Formal accepted ledger stays1. No revised validator with old accepted R0.",
+  "limitations": [
+    "No new native simulation or per-link decision trace",
+    "No new native emergencyDecel getter observation",
+    "Finite local window cannot prove unique cause or physical safety",
+    "Diagnostic readers are evidence-specific adapters, not new registered production validators",
+    "Separate reviewer/subagent not used; actual backend not independently verified"
+  ],
+  "research_adoption_permitted": false,
+  "goal_complete": false
+}

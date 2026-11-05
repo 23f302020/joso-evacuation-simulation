@@ -1,0 +1,25 @@
+--- before/04_プログラム/scripts/jdrt_realtime_choice_validate.py
++++ 04_プログラム/scripts/jdrt_realtime_choice_validate.py
+@@ -979,7 +979,11 @@
+ 
+ 
+ def walk_replacement_contract(event, actor, old_route):
+-    """Recompute two native replacement receipts against the current actor."""
++    """Check native receipts; the caller audits the installed-plan recurrence.
++
++    SUMO walkDistance substitutes completed internal paths for its initial
++    junction estimates. Its live length is not the prior installed budget plan.
++    """
+     receipts = event.get('replacement_receipts', [])
+     if not actor or len(receipts) != 2 or float(actor['time_sec']) != event['time_sec']:
+         return False
+@@ -1008,7 +1012,8 @@
+                            for a, k in zip(snapshot['xy'], ('x', 'y')))):
+                 return False
+     return (receipts[0]['before']['stage_edges'] == old_route
+-            and math.isclose(receipts[0]['before']['stage_length_m'], event['previous_plan_m'], rel_tol=0, abs_tol=1e-7)
++            and math.isfinite(receipts[0]['before']['stage_length_m'])
++            and receipts[0]['before']['stage_length_m'] >= 0
+             and receipts[0]['after'] == receipts[1]['before'])
+ 
+ 

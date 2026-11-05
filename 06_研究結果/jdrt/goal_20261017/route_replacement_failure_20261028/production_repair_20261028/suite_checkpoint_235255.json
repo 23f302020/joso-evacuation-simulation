@@ -1,0 +1,77 @@
+{
+  "at_jst": "2026-10-28T23:52:55.250173+09:00",
+  "action": "v4_current_suite_checkpoint",
+  "classification": "PROGRESS: runtime repair/new registration/equal inputs/full-controller independent boundary and math source proof; now original suite verified wait",
+  "original_session": 41223,
+  "original_actual_pid": 42508,
+  "owner_identity": {
+    "state": "alive",
+    "created": 134376721587991556,
+    "pid": 42508
+  },
+  "suite_id": "rt261028b",
+  "suite_status": "RUNNING",
+  "progress": {
+    "at_jst": "2026-10-28T23:52:43.740356+09:00",
+    "completed_cases": 8,
+    "last_case": "forecast_r1",
+    "last_status": "PASS",
+    "child_run_id": "rt261028b_c08"
+  },
+  "observer_identity": {
+    "state": "alive",
+    "created": 134376722868969549,
+    "pid": 39900
+  },
+  "observer_identity_matches": true,
+  "observer_source_matches": true,
+  "observer_age_sec": 58.16254019737244,
+  "observer_specific_suite_target": {
+    "status": "RUNNING",
+    "target_id": "rt261028b",
+    "observed_at_utc": "2026-10-28T14:52:21.208163+00:00",
+    "execution_timing": {
+      "started_at_utc": "2026-10-28T14:42:43.138040+00:00",
+      "finished_at_utc": null,
+      "elapsed_sec": null,
+      "start_source": "started_at_jst",
+      "finish_source": null,
+      "status": "running"
+    },
+    "protocol": "realtime_choice_fixture_suite_v1",
+    "purpose": "technical_fixture_suite",
+    "state_sha256": "d80b40da99da373a8ab721c35424f3b2e346fc6939d212624402834c459a7524",
+    "flags": [],
+    "pid": 42508,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_routeaudit_v4\\technical\\rt261028b\\manifest.json",
+    "sim_sec": null,
+    "progress_token": [
+      "RUNNING",
+      null,
+      null
+    ],
+    "process": {
+      "state": "alive",
+      "created": 134376721587991556,
+      "pid": 42508
+    },
+    "command_binding": {
+      "kind": "direct",
+      "command_target_id": "rt261028b"
+    },
+    "command_verified_binding": {
+      "kind": "direct",
+      "command_target_id": "rt261028b"
+    },
+    "last_progress": 1793198692.0898974,
+    "log_offsets": {},
+    "historical": false
+  },
+  "new_input_checks": 28,
+  "unit_tests": 122,
+  "formal_recorded": 0,
+  "old_v3_recorded_preserved": 9,
+  "technical_ready": false,
+  "core_started": false,
+  "next": "Follow same session41223/PID identity until full30 terminal. No duplicate suite. On complete invoke canonical G4 auditor --suite rt261028b once, then existing smoke sequence fresh prefix and exact PASS report, then new preflight. Never call choice_revalidate on existing suite."
+}

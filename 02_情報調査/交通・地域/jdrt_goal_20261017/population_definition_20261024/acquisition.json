@@ -1,0 +1,79 @@
+{
+  "at_jst": "2026-10-24T08:36:40.514036+09:00",
+  "source": {
+    "requested_url": "https://www.e-stat.go.jp/help/data-definition-information/downloaddata/T001178.pdf",
+    "final_url": "https://www.e-stat.go.jp/help/data-definition-information/downloaddata/T001178.pdf",
+    "http_status": 200,
+    "content_type": "application/pdf",
+    "last_modified_http_not_survey_date": "Mon, 30 Jun 2025 02:33:52 GMT",
+    "retrieval_started_jst": "2026-10-24T08:35:48.171090+09:00",
+    "retrieval_finished_jst": "2026-10-24T08:35:48.483034+09:00",
+    "bytes": 143005,
+    "sha256": "53f918d1d41e09c5c51c8381965604f13df10fe8f0e9b325ed855e88c1a445ad"
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\Ko_rr\\AppData\\Local\\Microsoft\\WinGet\\Packages\\oschwartz10612.Poppler_Microsoft.Winget.Source_8wekyb3d8bbwe\\poppler-25.07.0\\Library\\bin\\pdftotext.exe",
+        "-layout",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\population_definition_20261024\\T001178_definition.pdf",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\population_definition_20261024\\definition_layout.txt"
+      ],
+      "exit_code": 0,
+      "executable_sha256": "e66e7ada660a910918dd2974ce6486170a20c2ac73a78b003e9888b97152a82a"
+    },
+    {
+      "command": [
+        "C:\\Users\\Ko_rr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+        "-f",
+        "1",
+        "-l",
+        "1",
+        "-r",
+        "140",
+        "-singlefile",
+        "-png",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\population_definition_20261024\\T001178_definition.pdf",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\population_definition_20261024\\definition_page1"
+      ],
+      "exit_code": 0,
+      "executable_sha256": "7ca29857be967e4a8c57309e65ef2c3fc62c7993e2ea8da64aaff94749a0cd35"
+    },
+    {
+      "command": [
+        "C:\\Users\\Ko_rr\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+        "-f",
+        "2",
+        "-l",
+        "2",
+        "-r",
+        "140",
+        "-singlefile",
+        "-png",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\population_definition_20261024\\T001178_definition.pdf",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\02_情報調査\\交通・地域\\jdrt_goal_20261017\\population_definition_20261024\\definition_page2"
+      ],
+      "exit_code": 0,
+      "executable_sha256": "7ca29857be967e4a8c57309e65ef2c3fc62c7993e2ea8da64aaff94749a0cd35"
+    }
+  ],
+  "artifacts": {
+    "definition_layout.txt": "00c1513a777d44f450ab9bd9eef73b2607ff54ee3a10e3c1e0075ab6807ca86f",
+    "definition_page1.png": "7c9b7417c4ea168929029290dc023179320f22ca3b4985dafc9472e717d4f2f1",
+    "definition_page2.png": "cd090c35d21e348ac9a182665ea200523bd487bf751444c23efac63aebf1ef8e",
+    "fetch_metadata.json": "cc80c9537272fca4c885628915e53276666ff2afeff032c735bee9aa6ca03b35",
+    "render1.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "render1.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "render2.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "render2.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "T001178_definition.pdf": "53f918d1d41e09c5c51c8381965604f13df10fe8f0e9b325ed855e88c1a445ad",
+    "text.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "text.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "text_executable_resolution_failure.json": "5909d9d3670de8ab3018a90ab755a9a912f791feb5f9b4fa616b9f539baba654",
+    "text_system.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "text_system.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "source_original_unchanged": true,
+  "input_modified": false,
+  "source_scope": "official2015 table definition, not new population calibration or individual medical data"
+}

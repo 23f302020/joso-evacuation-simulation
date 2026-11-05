@@ -1,0 +1,230 @@
+{
+  "at_jst": "2026-10-22T09:29:20.020063+09:00",
+  "failure": "na26102202 independent audit exit1 at fixed old cf26101710_c01 after all26 baseline components PASS; old run absent in new workspace, so missing-evidence report has no all_bound_bytes_before key",
+  "state_sha256": "422adcf3f0ad607c53ba21c592508164ff41242d767ec183c1873ec4fa83a3fe",
+  "pipeline_state": {
+    "purpose": "technical_prerequisites_only",
+    "research_adoption_permitted": false,
+    "status": "FAILED",
+    "pid": 8016,
+    "started_at_jst": "2026-10-22T09:12:01.121899+09:00",
+    "suite": "na26102202",
+    "smoke_prefix": "ns261022b",
+    "implementation_sha256": {
+      "04_プログラム/scripts/jdrt_realtime_choice.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+      "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+      "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+    },
+    "source_sha256": {
+      "04_プログラム/config/jdrt_realtime_choice_v1.json": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+      ".agents/skills/joso-jdrt-runner/scripts/choice_revalidate.py": "9e335faeedd236e8f9934093c6a2362be07b0d9b43e70b2fd730580d4d2fd43a",
+      ".agents/skills/joso-jdrt-runner/scripts/choice_technical.py": "c2a7bd279f84f8aeaabf369fb3eb2fc8a0a39debac874ddf78b53d794a1ccf7b",
+      ".agents/skills/joso-jdrt-runner/scripts/choice_smoke_sequence.py": "4dfe8025b613b735844ff7991a454fb06459f4a5f2c620cdce27bb1096c1f920",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+      "06_研究結果/jdrt/goal_20261017/G4_正式検証器_表会計候補試験.py": "af78c003464dc95ee8829507ed06c5a0dab6ab31d0dab841db4170a74538b42d",
+      "04_プログラム/scripts/jdrt_choice_fixtures.py": "b3a130bfbee05683c70ff9d751a64c22572e42cbe7a1c522f2a80730b5c621ff"
+    },
+    "completed": [
+      {
+        "stage": "fixture",
+        "command": [
+          "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\choice_technical.py",
+          "--project-root",
+          "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究",
+          "fixture",
+          "--run-id",
+          "na26102202"
+        ],
+        "suite": "na26102202",
+        "smoke_prefix": "ns261022b",
+        "started_at_jst": "2026-10-22T09:12:01.131842+09:00",
+        "stdout": "06_研究結果/jdrt/goal_20261017/na26102202_revalidate_fixture.stdout.log",
+        "stderr": "06_研究結果/jdrt/goal_20261017/na26102202_revalidate_fixture.stderr.log",
+        "pid": 32848,
+        "exit_code": 0,
+        "monitor_paths": [
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202/manifest.json",
+          "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202/progress.json",
+          "06_研究結果/jdrt/goal_20261017/ns261022b_smoke_sequence.json"
+        ],
+        "observed_at_jst": "2026-10-22T09:20:01.472665+09:00",
+        "child_alive": false,
+        "elapsed_sec": 480.3,
+        "finished_at_jst": "2026-10-22T09:20:11.577141+09:00",
+        "result_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202/manifest.json"
+      }
+    ],
+    "active": {
+      "stage": "independent",
+      "command": [
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\G4_正式検証器_表会計候補試験.py",
+        "--suite",
+        "na26102202"
+      ],
+      "suite": "na26102202",
+      "smoke_prefix": "ns261022b",
+      "started_at_jst": "2026-10-22T09:20:11.672546+09:00",
+      "stdout": "06_研究結果/jdrt/goal_20261017/na26102202_revalidate_independent.stdout.log",
+      "stderr": "06_研究結果/jdrt/goal_20261017/na26102202_revalidate_independent.stderr.log",
+      "pid": 27644,
+      "exit_code": 1,
+      "monitor_paths": [
+        "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202/manifest.json",
+        "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202/progress.json",
+        "06_研究結果/jdrt/goal_20261017/ns261022b_smoke_sequence.json"
+      ],
+      "observed_at_jst": "2026-10-22T09:27:56.962774+09:00",
+      "child_alive": false,
+      "elapsed_sec": 465.3,
+      "finished_at_jst": "2026-10-22T09:28:02.203882+09:00"
+    },
+    "artifacts": {
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c01/execution/manifest.json": "054d7db7b59f9fb7a50fba742119c6a35d5e1fd1ded41dab6cd1d3fe027feffb",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c02/execution/manifest.json": "2d4ff8bca79ebfef4a3aa01151d69dbd9abb7b0e678f900b67c3b80e352e9e58",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c03/execution/manifest.json": "bb69469d450eab6c2f84a2ab87497c1730eca51c92f2fc1448de27663f22f74e",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c04/execution/manifest.json": "7d3e9e24c9ea370c3e634a6473d5a65819bc31cfc5521357fa0a7131528ab93d",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c05/execution/manifest.json": "a982a0a4fdaae444307771bb9c50c0b74f54fc24bbda41291cfb4cbfd81d932a",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c06/execution/manifest.json": "52a776ba42876daf9a8a181d2150eb85fe679a8e869ae354093f5b7f78cf472d",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c07/execution/manifest.json": "92bf7b32aa85174d442040aac7d5ebf33af0628a1bcf7fc38264493b008fa6e3",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c08/execution/manifest.json": "6992533e2b15c61309eab3b1074fb7e719ea70540327b3f237dca093a0e411b1",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c09/execution/manifest.json": "a2dd7d30d687327ccd7ea8591d525a6c158fe7ae76eb353110e11a89db71a8f8",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c10/execution/manifest.json": "48af68d121fa46c85af9b15d7b33105eb48109deeac041703b90e993a2db9739",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c11/execution/manifest.json": "ea942cb6c0e05ed2a5278848a04b095cc9f941978c5da861470fde0d4cf20620",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c12/execution/manifest.json": "d3631b5b83662be371b841159e079ccc7d0177cbcc12dac9cfaa69242c3537c7",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c13/execution/manifest.json": "27d1f4ff46d90a8a98bc43b1a5296e138edb4ce365f28618407eb5143e765cf8",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c14/execution/manifest.json": "e2732dce3a513382e966d94743fbc2c5a416e969ec7258e4d3e3d30f255c76a0",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c15/execution/manifest.json": "8693e1f9a1395ff315381461cc07a312c750f5d18d5429a1cfe763c062b93b37",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c16/execution/manifest.json": "fc9315fd525d1296ea0cc991f83ce6a76be18b29176c1ca130ffdb4ab0403a34",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c17/execution/manifest.json": "c54a954d429b8f5e8a04a66f66f170309cef06fbb1bf8fb1ab39ad01ee214eea",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c18/execution/manifest.json": "293bd28325655eb6ba24ae7263867dfea65e70fccfe55fbb4a501deb3bbe8226",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c19/execution/manifest.json": "837dea4fb19a1c8005d666dac757529979040f28f8b7eb8d716651aaad6b9fad",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c20/execution/manifest.json": "ff6ba1a2f9872501a53b0fd873b593e97c25cb2c843ac39b2d32c8a94ba36d3d",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c21/execution/manifest.json": "69c139e0337a1f109bed19097d176483bedfd4b36e88846d679d1886d3576be3",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c22/execution/manifest.json": "1d60518cb84768dafdbd24f67d36f3ddff7cc8229be2b542b53663aea67b833c",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c23/execution/manifest.json": "4cf0d04f7572df1e109e56daceaf4a614ba93a925879e7ea93a1976e0965be20",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c24/execution/manifest.json": "4c4b832c0f51362a4ddf999a42daf4b2247a12a2f55a785493779490e5adb23a",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c25/execution/manifest.json": "3db8527993986ad71b2b00408d83134f0bd84cecfb1a2a1e53b097617dc72740",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c26/execution/manifest.json": "e0d27bd489e821849dedf4104c41b1d4d24ffeb09410f3f2e0c2fadb81f3ffaf",
+      "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202/manifest.json": "6fd5da99e893e2890083a10b02c13e3936c7b2dbdb4ec1ec8bbf48b2c25df35c"
+    },
+    "finished_at_jst": "2026-10-22T09:28:02.205575+09:00",
+    "error_type": "ValueError",
+    "error": "independent command failed; preserved exit code 1"
+  },
+  "completed_primary_audits": [
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c01_20261022T092036540595.json",
+      "sha256": "b468b6bdcc90c29233f64fc0441f1de66dc403e0c00d3dcfc9544c660ef12700"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c02_20261022T092058448030.json",
+      "sha256": "20f638c71798e4bae7446871cacfa4d196ae1c07334e4fdac8f6dc75388bc6a4"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c03_20261022T092121522123.json",
+      "sha256": "25d25beb5ede39e33d6a452c9971c6d65b67becdc1aa4f9856ba37658dc297a8"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c04_20261022T092142185929.json",
+      "sha256": "f1b4516ccca33f11780badeaeb68a0b98f10c1b263d613d6f09054f792694346"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c05_20261022T092200743730.json",
+      "sha256": "ace19b9a6b6333d837af759d2bb48392ee9ee7b7a9e9d6326d8c6d4c654319ae"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c06_20261022T092217155290.json",
+      "sha256": "75e30071edd7d44419f5633befb26d825b1a3ff754e9691d00822a6e1c39b975"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c07_20261022T092233253330.json",
+      "sha256": "55a8ec3a3a3a7ae4210ed180daa2db8dbabd447163fdda59db46b7c3aac31431"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c08_20261022T092248350270.json",
+      "sha256": "ef777cf98391ff4bcf3c8c93f1732bf73081a4ad6b3d87fc619b88b994a61a8a"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c09_20261022T092310257590.json",
+      "sha256": "2b91ebdcf342b9ddec7e5654d128b200c3d68e485d7bc47e2ff2ee445107c0e4"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c10_20261022T092326199360.json",
+      "sha256": "e9fcfe5105c3fca5e2023dd7377e7b492dcf7254010fb6ae81848919a8877ccb"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c11_20261022T092341297031.json",
+      "sha256": "d5314a508d76c08be4bb9f8ba08c765c019bd03dcadef5ecc8b3759d08d4e61d"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c12_20261022T092400527010.json",
+      "sha256": "478be7639fac5f160a88563bc9fe1aab5125dffc10528694182b8500fb8e49bb"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c13_20261022T092415423320.json",
+      "sha256": "6f5e2a0b0ba52bf30b5c4c887ea5e3c2076e98d6193c298f4e583b33c4bf4a93"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c14_20261022T092429481778.json",
+      "sha256": "ce8a1cc8381be9e5ff77c3d406a2e52892b070fb05060973ddd59fecb7a30f39"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c15_20261022T092444093950.json",
+      "sha256": "5697496877a00c597514020fa5e7cfd88878a94a3200d9626a96fc8b92ca87f8"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c16_20261022T092459564748.json",
+      "sha256": "058513d81f2df0391d04772a709da06f5aaec1c4520ac0d1e037b344f55ee6d4"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c17_20261022T092519487744.json",
+      "sha256": "dbb2ba1e0efeec521489693742dc25de46dafd7c75c3ca43292e4eb7061bdcc6"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c18_20261022T092534287586.json",
+      "sha256": "b2c2b6f6c90aaa89db3441957211b2b450afa66db6924ec233d00a6a69865e56"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c19_20261022T092549151221.json",
+      "sha256": "742e2123c0fce673c47d8225e7bf64be542c54ac5b226a199d87095c242cc8d4"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c20_20261022T092609561294.json",
+      "sha256": "b0545c6664a479196bf2dbd48678c1684abecb46a92622995cf0708f53abc9f3"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c21_20261022T092631159755.json",
+      "sha256": "df23068af10fc7eeb2ebd5407fb20a4454e4f77c9cafc66dd4d39a3344ee0ac4"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c22_20261022T092646659253.json",
+      "sha256": "77f07cb81187f1f37c56def575258e0d531378d694baef459d01c67ae2a122c5"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c23_20261022T092701807378.json",
+      "sha256": "e19363ddcab5bece431e8977e13316f0ede2f6026f9626e286502e796ed33a2e"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c24_20261022T092716654169.json",
+      "sha256": "ce933df54781639b9b21eb8e08f149cc563fa81129e3107e9466958f53e0c489"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c25_20261022T092736724745.json",
+      "sha256": "d3359c11388a5147f8ab5924bae13bec2ece6f91e63a3def634e5080f6074895"
+    },
+    {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/tables_na26102202_c26_20261022T092801682048.json",
+      "sha256": "8dd866d07575152c8fb75e3a5a81857807532d823f436ec5e6532b4d3014ace1"
+    }
+  ],
+  "original_auditor_sha256": "af78c003464dc95ee8829507ed06c5a0dab6ab31d0dab841db4170a74538b42d",
+  "proposed_reuse": "Same current5 suite26; fix only goal auditor. Do not resume/overwrite failed pipeline or reuse its reserved smoke prefix. Independently rerun corrected audit, then new smoke prefix if PASS."
+}

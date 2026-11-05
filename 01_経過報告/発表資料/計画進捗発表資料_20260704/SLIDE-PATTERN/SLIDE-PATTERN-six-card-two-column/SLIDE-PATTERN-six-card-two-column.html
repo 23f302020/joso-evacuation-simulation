@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>SLIDE-PATTERN-six-card-two-column</title>
+<style>
+  body { background: #E8E8E8; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; font-family: sans-serif; }
+  .slide-label { font-size: 12px; color: #666; margin-bottom: 6px; }
+  .slide { width: 960px; height: 540px; background: #FFFFFF; border: 1px solid #CCCCCC; overflow: hidden; display: flex; flex-direction: column; }
+  .area-label { font-size: 11px; color: #999; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .title-area { padding: 14px 40px 12px; border-bottom: 1px dashed #CCCCCC; flex-shrink: 0; background: #FAFAFA; }
+  .content-area { flex: 1; padding: 12px 32px 16px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr 1fr; gap: 10px; }
+  .card { border: 1px solid #E8E8E8; padding: 10px 16px; display: flex; flex-direction: column; }
+  .card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .card-num { font-size: 20px; font-weight: bold; color: #CCCCCC; }
+  .card-heading { font-size: 13px; font-weight: bold; color: #333; }
+  .card-body { font-size: 11px; color: #666; line-height: 1.6; flex: 1; }
+</style>
+</head>
+<body>
+<p class="slide-label">[six-card-two-column]</p>
+<div class="slide">
+  <!-- タイトルエリア（SLIDE.mdの Slide Frame で定義） -->
+  <div class="title-area">
+    <div class="area-label">Title Area — SLIDE.md 参照</div>
+    <div style="font-size:16px; color:#CCCCCC; margin-top:4px;">スライドタイトルが入ります</div>
+  </div>
+  <!-- コンテンツエリア：2列×3行 -->
+  <div class="content-area">
+    <div class="card">
+      <div class="card-top"><div class="card-num">1</div><div class="card-heading">見出し1が入ります</div></div>
+      <div class="card-body">本文テキストが入ります。詳細説明を2〜3行で記述します。</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-num">4</div><div class="card-heading">見出し4が入ります</div></div>
+      <div class="card-body">本文テキストが入ります。詳細説明を2〜3行で記述します。</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-num">2</div><div class="card-heading">見出し2が入ります</div></div>
+      <div class="card-body">本文テキストが入ります。詳細説明を2〜3行で記述します。</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-num">5</div><div class="card-heading">見出し5が入ります</div></div>
+      <div class="card-body">本文テキストが入ります。詳細説明を2〜3行で記述します。</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-num">3</div><div class="card-heading">見出し3が入ります</div></div>
+      <div class="card-body">本文テキストが入ります。詳細説明を2〜3行で記述します。</div>
+    </div>
+    <div class="card">
+      <div class="card-top"><div class="card-num">6</div><div class="card-heading">見出し6が入ります</div></div>
+      <div class="card-body">本文テキストが入ります。詳細説明を2〜3行で記述します。</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

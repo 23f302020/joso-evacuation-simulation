@@ -1,0 +1,159 @@
+{
+  "at_jst": "2026-10-28T08:57:49.143881+09:00",
+  "status": "ISOLATED_CANDIDATE_AND_FUTURE_GUARD_VERIFIED_NOT_ADOPTED",
+  "original_session": 89716,
+  "original_exit_code": 0,
+  "native_cases": [
+    {
+      "run_id": "rh261028e",
+      "manifest_sha256": "3ba4e586301da093f057b7ea13709fc9e050920dd5a5ecc10dc53750dd6fd2ee",
+      "variant": "route_id",
+      "result": "CANDIDATE_ISOLATED_CHECKS_ONLY_NOT_ADOPTION",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "requested_remaining_excludes_b": true,
+        "candidate_assignment_succeeded": true,
+        "requested_route_exact": true,
+        "immediate_source_valid_or_explicit_native_reentry_pending": true,
+        "cumulative_distance_unchanged": true,
+        "new_route_index_zero": true,
+        "reentry_and_motion_distance_continuous": true,
+        "reached_new_stop": true,
+        "first_reentry_source_edge_retained": true,
+        "first_reentry_position_and_distance_bounded": true
+      },
+      "before": {
+        "time_sec": 33.5,
+        "road": "c",
+        "lane": "",
+        "position": 99.0,
+        "world_position": [
+          299.0,
+          -7.4
+        ],
+        "distance": 299.2,
+        "speed": 0.0,
+        "route": [
+          "a",
+          "b",
+          "c"
+        ],
+        "route_index": 2,
+        "stopped": true
+      },
+      "immediate_after": {
+        "time_sec": 33.5,
+        "road": "",
+        "lane": "",
+        "position": -1073741824.0,
+        "world_position": [
+          -1073741824.0,
+          -1073741824.0
+        ],
+        "distance": 299.2,
+        "speed": -1073741824.0,
+        "route": [
+          "c",
+          "d"
+        ],
+        "route_index": 0,
+        "stopped": false
+      },
+      "first_valid_reentry": {
+        "time_sec": 34.0,
+        "road": "c",
+        "lane": "c_1",
+        "position": 99.0,
+        "world_position": [
+          299.0,
+          -1.6
+        ],
+        "distance": 299.2,
+        "speed": 0.0,
+        "route": [
+          "c",
+          "d"
+        ],
+        "route_index": 0,
+        "stopped": false
+      },
+      "final_native": {
+        "time_sec": 47.5,
+        "road": "d",
+        "lane": "",
+        "position": 99.00000000000003,
+        "world_position": [
+          399.0,
+          -7.4
+        ],
+        "distance": 399.30000000000007,
+        "speed": 0.0,
+        "route": [
+          "c",
+          "d"
+        ],
+        "route_index": 1,
+        "stopped": true
+      },
+      "native_error": null,
+      "source_sha256": {
+        ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_route_history_probe.py": "3e62fc3f04ea870da38d77a01fb2510554ebfe82179c5ce67f2c9a8134900658",
+        "04_プログラム\\scripts\\jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b"
+      }
+    },
+    {
+      "run_id": "rh261028f",
+      "manifest_sha256": "b4e625b9fb3f2c0fc8d40899e9af4f2d80449d6578ee7dc17893886d8db5fddf",
+      "variant": "route_id_future_closed",
+      "result": "CANDIDATE_ISOLATED_CHECKS_ONLY_NOT_ADOPTION",
+      "checks": {
+        "past_b_was_traversed": true,
+        "current_edge_is_c": true,
+        "requested_remaining_excludes_b": true,
+        "future_closed_route_rejected": true,
+        "native_error_identifies_future_pair": true
+      },
+      "before": {
+        "time_sec": 33.5,
+        "road": "c",
+        "lane": "",
+        "position": 99.0,
+        "world_position": [
+          299.0,
+          -7.4
+        ],
+        "distance": 299.2,
+        "speed": 0.0,
+        "route": [
+          "a",
+          "b",
+          "c"
+        ],
+        "route_index": 2,
+        "stopped": true
+      },
+      "immediate_after": null,
+      "first_valid_reentry": null,
+      "final_native": null,
+      "native_error": "Route replacement failed for v",
+      "source_sha256": {
+        ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_route_history_probe.py": "3e62fc3f04ea870da38d77a01fb2510554ebfe82179c5ce67f2c9a8134900658",
+        "04_プログラム\\scripts\\jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b"
+      }
+    }
+  ],
+  "preserved_failed_candidate": "rh261028b: immediate API position unavailable; original failed result not rewritten. Later probes explicitly retain invalid raw getters and bound first valid reentry per existing observation contract.",
+  "source_guard_contract": "Five Python tests, one meaningful RED for invalid target stop before side effects, then5 GREEN. Original control native failure preceded candidate implementation.",
+  "formal_recorded": 9,
+  "core_restart_allowed": false,
+  "scientific_source_edited": false,
+  "research_metric_or_exclusion_changed": false,
+  "remaining": [
+    "Independent integration/source review of candidate",
+    "Full controller real SUMO cases including boarded delivery, cancellation and repeated route index",
+    "Any common-source change requires separate coherent registration/current evidence; never mix old9 records",
+    "Current full suite/all14/unit/independent READY before any new core"
+  ],
+  "goal_complete": false
+}

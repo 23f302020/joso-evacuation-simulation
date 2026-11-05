@@ -1,0 +1,77 @@
+{
+  "at_jst": "2026-10-29T20:59:13.548563+09:00",
+  "classification": "PROGRESS_AND_VERIFIED_WAIT",
+  "operations": {
+    "diagnostic_trace_build": {
+      "original_session": 13836,
+      "actual_owner": 12904,
+      "creation_ms": 1793274848174,
+      "identity": {
+        "pid": 12904,
+        "expected": {
+          "ProcessId": 12904,
+          "ParentProcessId": 13264,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id diag02_20261029 --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair03_20261029/build_state.json --source-preparation 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/native_stop_index_pair_policy/preparation.json --pair-state 06_研究結果/jdrt/goal_20261017/sc261029a_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/current_pair_s_readback.json",
+          "CreationDate": 1793274848174
+        },
+        "identity": "matched",
+        "observed_cim": {
+          "ProcessId": 12904,
+          "ParentProcessId": 13264,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id diag02_20261029 --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair03_20261029/build_state.json --source-preparation 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/native_stop_index_pair_policy/preparation.json --pair-state 06_研究結果/jdrt/goal_20261017/sc261029a_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/current_pair_s_readback.json",
+          "CreationDate": 1793274848174
+        }
+      },
+      "status": "RUNNING_CONFIRMED",
+      "no_restart": true
+    },
+    "full_controller_suite": {
+      "original_session": 54439,
+      "actual_owner": 33700,
+      "creation_ms": 1793274859099,
+      "identity": {
+        "pid": 33700,
+        "expected": {
+          "ProcessId": 33700,
+          "ParentProcessId": 36436,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_technical.py --project-root . fixture --run-id sf261029a",
+          "CreationDate": 1793274859099
+        },
+        "identity": "matched",
+        "observed_cim": {
+          "ProcessId": 33700,
+          "ParentProcessId": 36436,
+          "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+          "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_technical.py --project-root . fixture --run-id sf261029a",
+          "CreationDate": 1793274859099
+        }
+      },
+      "status": "RUNNING_CONFIRMED",
+      "no_restart": true
+    }
+  },
+  "suite": {
+    "id": "sf261029a",
+    "total_current_cases": 30,
+    "last_completed_progress": {
+      "at_jst": "2026-10-29T20:58:37.151134+09:00",
+      "completed_cases": 7,
+      "last_case": "alighting_closure",
+      "last_status": "PASS",
+      "child_run_id": "sf261029a_c07"
+    }
+  },
+  "diagnostic_state": {
+    "path": "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\diag02_20261029\\build_state.json",
+    "exists": true,
+    "status": "RUNNING",
+    "phase": "diagnostic_sumo_build",
+    "child_pid": 3384
+  },
+  "formal_cells": 0,
+  "technical_ready": false,
+  "limits": "Process birth, build-state start and simulation model time remain separate. Point observations only; no invented gaps. No additional monitor/start/record."
+}

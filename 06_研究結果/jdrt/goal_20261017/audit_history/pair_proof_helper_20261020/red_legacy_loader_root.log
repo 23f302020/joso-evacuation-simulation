@@ -1,0 +1,21 @@
+test_loader_root_derived_from_both_bound_executables_when_old_field_absent (__main__.PairContracts.test_loader_root_derived_from_both_bound_executables_when_old_field_absent) ... ERROR
+
+======================================================================
+ERROR: test_loader_root_derived_from_both_bound_executables_when_old_field_absent (__main__.PairContracts.test_loader_root_derived_from_both_bound_executables_when_old_field_absent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_proof.py", line 234, in test_loader_root_derived_from_both_bound_executables_when_old_field_absent
+    self.assertFalse(self.verify()['native_behavior_verified'])
+                     ~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_pair_proof.py", line 156, in verify
+    return target.verify_pair(proof, self.root, track, io.read_json, io.sha, lambda p: ['kernel32.dll'])
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_pair_proof.py", line 127, in verify_pair
+    if (Path(loader['build_directory']).resolve() != build
+             ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'build_directory'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.917s
+
+FAILED (errors=1)

@@ -1,0 +1,64 @@
+{
+  "at_jst": "2026-10-24T08:38:57.728747+09:00",
+  "judgment_id": "JD-20261024-research-population-07",
+  "status": "POPULATION_PROXY_DEFINITION_AUDIT_NOT_MEDICAL_OR_NEW_RESULT_ANALYSIS",
+  "official_definition_url": "https://www.e-stat.go.jp/help/data-definition-information/downloaddata/T001178.pdf",
+  "definition_pdf_sha256": "53f918d1d41e09c5c51c8381965604f13df10fe8f0e9b325ed855e88c1a445ad",
+  "definition_visual_pages": [
+    1,
+    2
+  ],
+  "definition_observation_date": "20151001",
+  "definition_unit": "persons",
+  "model_evaluation_start": "2015-09-10T12:50:00+09:00",
+  "survey_vs_model_date_gap_days": 21,
+  "elderly_columns_and_local_labels": {
+    "T001178043": "　６５～６９歳人口　総数",
+    "T001178046": "　７０～７４歳人口　総数",
+    "T001178049": "　７５～７９歳人口　総数",
+    "T001178052": "　８０～８４歳人口　総数",
+    "T001178055": "　８５歳以上人口　総数"
+  },
+  "elderly_definition_age_lower_bound": 65,
+  "current_population_counts": {
+    "type1": 7114,
+    "type2": 3052,
+    "type3": 1255,
+    "type4": 544
+  },
+  "current_people_rows": 11965,
+  "all_current_people_source_origin_type_mode_join_equal": true,
+  "reference_ownership_scenario": "non_car_15pct",
+  "ownership_role": "reference_assumption_not_observed_individual_access",
+  "primary_type": "type4",
+  "primary_N": 544,
+  "primary_category_combinations": [
+    {
+      "age_group": "elderly",
+      "car_ownership": "non_owner",
+      "base_mode": "walk",
+      "count": 544
+    }
+  ],
+  "current_registered_walk_mps": 0.58,
+  "current_registered_walk_limit_m": 3000,
+  "sources": {
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": "910a32b7e18dd03b7bbefb95ecab8ed6abf69bdc891669e629e43f53906df74f",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/people.csv": "0d40f8c4e7d3d1440377d83e0e89c7d180d75a52f72b2f897f484b1b2a1f57ef",
+    "04_プログラム/scripts/scenario_c_car_walk.py": "58d200cc58cdf2d9ac73a28e8c3f8fcc79e8dca417c59397d1f6c9387a939f07",
+    "04_プログラム/data/population_mesh/5歳階級別人口250メッシュ_茨城/tblT001178Q08.txt": "b4fd718430da2ccedaa3ae63798f4aa5f3d0e733f949fdea061e558779a99183",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md": "61378ac17bb8a2fea00fdc812d97f432053329cf7c727e4302c379f9b86b51e9",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/T001178_definition.pdf": "53f918d1d41e09c5c51c8381965604f13df10fe8f0e9b325ed855e88c1a445ad",
+    "02_情報調査/交通・地域/jdrt_goal_20261017/population_definition_20261024/fetch_metadata.json": "cc80c9537272fca4c885628915e53276666ff2afeff032c735bee9aa6ca03b35"
+  },
+  "limits": [
+    "Age/nonownership category is not individual medical or assistance diagnosis",
+    "source mesh suppression and proportional synthetic redistribution do not measure each synthetic person",
+    "October1 census definition does not measure actual location or evacuation state onSeptember10",
+    "this audit binds local source headers to official definition, not fresh full-data server byte equality",
+    "no old population generation or simulation rerun",
+    "no direction or bias size inferred from21day date gap",
+    "input values and registered estimand not modified"
+  ]
+}

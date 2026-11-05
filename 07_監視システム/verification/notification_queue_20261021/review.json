@@ -1,0 +1,76 @@
+{
+  "at_jst": "2026-10-21T20:03:46.223322+09:00",
+  "scope": "only07 Dispatcher local notification scheduling, tests and README; no research data/CLI/PAP/native/AI model/config change",
+  "cause": "running AI early return and hourly-limit early return occur before later lexical event notifications; real R1 completed event remained notification=pending after3h while3 diagnostic receipts hit cap",
+  "change": "one pending local notification per tick before AI branch; retain original notification states, no retry of submitted/failed, AI semaphore/rate/timeout unchanged",
+  "red": "3 contract failures with real imported Dispatcher and temporary eventJSON; launcher path failure saved separately and not counted as RED",
+  "green": 3,
+  "regression": 30,
+  "real_sumo_started_by_tests": false,
+  "review_findings": [],
+  "review_limits": [
+    "self review, no separate model endorsement",
+    "mocked notify tests prove scheduling only, real Windows submission/read confirmation require separate deployment check",
+    "synchronous Windows notify still can delay nominal monitor tick; no hard realtime guarantee"
+  ],
+  "current_core": "ch261021_002",
+  "current_core_status": "COMPLETED",
+  "frozen_bound_sources_unchanged": {
+    "04_プログラム/config/jdrt_realtime_b_v1.json": true,
+    "04_プログラム/scripts/jdrt_realtime_b_inputs.py": true,
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_original/LifeSim_Validation_Joso/Hydraulic_Data/Calibrated/Calibrated.hdf": true,
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_original/LifeSim_Validation_Joso/Hydraulic_Data/Terrains/Terrain1/Terrain.kinugawa.tif": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/network/08211_ped.net.xml": true,
+    "04_プログラム/output/sumo/regions/08211/network/08211.osm.xml": true,
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/cells_utm54n.geojson": true,
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/network_domain_coverage.csv": true,
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/structure_tags_audit.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_agent_types.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/inputs/ownership_sensitivity_20260826/non_car_15pct/scenario_c_mode_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/scenario_c/preflight_20260810/non_car_15pct/car_occupancy_ledger.csv": true,
+    "04_プログラム/output/sumo/regions/08211/derived/shelters_sumo.csv": true,
+    "02_情報調査/交通・地域/jdrt_realistic/既存9施設_公表容量照合_20261015.csv": true,
+    "03_研究設計文書/jdrt/常総市JDRT_実時間B_PreAnalysisPlan_v1.md": true,
+    "04_プログラム/config/jdrt_realtime_b_boundary_v2.json": true,
+    "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py": true,
+    "03_研究設計文書/jdrt/常総市JDRT_実時間B_境界整合_PreAnalysisPlan_v2.md": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b/inputs/build02/manifest.json": true,
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2/inputs/registered01/manifest.json": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": true,
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md": true,
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md": true,
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_位置・観測整合_事前登録追補_v1.md": true,
+    "06_研究結果/jdrt/goal_20261017/preregistration_before_alignment_20261017T093456/archive_manifest.json": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered01/manifest.json": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "pass_for_deployment": true,
+  "files": {
+    "watch.py": {
+      "before": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+      "after": "c38c1e859f34d462d301b70a235aa8164e8bab42d4f761a3db28208210b56085"
+    },
+    "test_watch.py": {
+      "before": "f3b1772227a5d44d2b1694cdc43194288f5395aaa8e7b72dd97db3a21c470a13",
+      "after": "b82415c65bbf9c6bee0952c00d43d811c8706fc742e30bb98b037355bb2a8412"
+    },
+    "README.md": {
+      "before": "d752440588495f830405be2bf56c7a3020ee15c12b1e03f391b84ccc04426049",
+      "after": "b5222ccc2c1493afe6099959533aadf19943db30d0b96838b5e2ec129ec5ebd8"
+    }
+  },
+  "routine_reference": {
+    "path": ".agents\\skills\\joso-jdrt-runner\\references\\routine_operations.md",
+    "before_sha256": "044eec13fe7720f07b0b5869cacd58b3706c54a3b79be4c587acd3fe165c6786",
+    "after_sha256": "f65ed7ad8692277792458c66a6ac9beab36b99829077f6c54011b5ba1708cec8",
+    "reason": "preserve reusable distinction between local notification, observer and rate-limited diagnostics; refer to existing task/runtime rather than duplicate wakeups",
+    "is_registered_input_dependency": false
+  },
+  "deployment_proof": "07_監視システム/verification/notification_queue_20261021/deployment_observed.json",
+  "config_unchanged": true
+}

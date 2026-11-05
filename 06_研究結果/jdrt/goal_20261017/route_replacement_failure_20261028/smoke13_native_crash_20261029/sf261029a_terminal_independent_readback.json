@@ -1,0 +1,29 @@
+{
+  "at_jst": "2026-10-29T21:32:48.374985+09:00",
+  "status": "ALL30_CANONICAL_COMPONENTS_AND65_COUNTEREXAMPLES_PASS_NOT_READY",
+  "suite": "sf261029a",
+  "suite_original_session": 54439,
+  "suite_exit_code": 0,
+  "audit_original_session": 31734,
+  "audit_exit_code": 0,
+  "audit_report": "06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T212545.json",
+  "audit_report_sha256": "850d6c13f5d28185228c934a11ef083076abdd177270f9937048b2ad60a21780",
+  "cases": 30,
+  "components_per_case": 7,
+  "component_statuses": {
+    "PASS": 210
+  },
+  "canonical_row_statuses": {
+    "INCOMPLETE": 30
+  },
+  "canonical_pending": [
+    "formal_adoption_and_preflight_transaction",
+    "current_complete_suite_and_all14_smokes"
+  ],
+  "counterexamples": 65,
+  "primary_files": 510,
+  "initial_reader_assertion_error": "First metadata wrapper expected row PASS, but canonical component-only reports intentionally use INCOMPLETE with7PASS; wrapper stopped before writes. Corrected from actual auditor assertion/schema; scientific audit not rerun.",
+  "core_adoption_permitted": false,
+  "technical_ready": false,
+  "remaining": "Single-target observational loader/source proof, broad native guards/past-stop cases; all14/preflight/G6/capacity/07 before core"
+}

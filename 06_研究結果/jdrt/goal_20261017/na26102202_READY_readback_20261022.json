@@ -1,0 +1,53 @@
+{
+  "at_jst": "2026-10-22T15:40:48.311099+09:00",
+  "purpose": "current_READY_primary_receipt_readback",
+  "receipt": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/preflight/20261022T150843281652/receipt.json",
+  "receipt_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+  "ready_copy_byte_equal": true,
+  "registration_id": "choice_native_observation_v2_20261021",
+  "input_status": "PASS",
+  "input_checks": 28,
+  "unit_tests_pass": 102,
+  "fixture_proofs_pass": 26,
+  "smoke_proofs_pass": 14,
+  "current5_sha_match": true,
+  "parameter_sha_match": true,
+  "independent_receipt_checks": {
+    "required_nonempty_READY_checks": true,
+    "current_metadata": true,
+    "primary_evidence_nonempty_and_current": true,
+    "evidence_schema": true,
+    "all_receipts_bound": true,
+    "independent_input_PASS": true,
+    "unit_and_record_transaction_PASS": true,
+    "storage_and_writer_proof_PASS": true,
+    "complete_native_fixture_suite": true,
+    "fixture_primary_manifest_roles": true,
+    "current_fixture_independent_PASS": true,
+    "current_counterexamples_PASS": true,
+    "all_registered_smoke_settings_PASS": true
+  },
+  "bound_evidence_files": 1410,
+  "storage": {
+    "free_bytes_now": 263128662016,
+    "one_run_reserve_bytes": 193692970309,
+    "rolling_reserve_pass": true,
+    "all_remaining_projected_fit": false,
+    "remaining_projection_bytes": 13558507921630
+  },
+  "preflight_command_duration_seconds": 1757.948690499994,
+  "preflight_command_finished_at_jst": "2026-10-22T15:37:57.019545+09:00",
+  "record_files": [
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+    "context.md",
+    "00_全体整理/決定ログ.md",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl"
+  ],
+  "formal_records": 0,
+  "proposed_new_run_id": "nc26102201",
+  "core_start_executed": false,
+  "dedicated_precore_status": "same session53483 still pending; will be independently read before actual start"
+}

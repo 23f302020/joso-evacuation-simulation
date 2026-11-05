@@ -1,0 +1,36 @@
+test_current_archive_control_and_corruption_preserve_both_files (__main__.EntryContracts.test_current_archive_control_and_corruption_preserve_both_files) ... ERROR
+test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection (__main__.EntryContracts.test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection) ... 
+  test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection (__main__.EntryContracts.test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection) (control={'status': 'INVALID', 'checks': {}}) ... ERROR
+  test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection (__main__.EntryContracts.test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection) (control={'status': 'INCOMPLETE', 'checks': {'bound': True}, 'components': {'artificial': {'status': 'PASS'}}, 'historical_source_archives': {'wrong': 'wrong'}}) ... ERROR
+
+======================================================================
+ERROR: test_current_archive_control_and_corruption_preserve_both_files (__main__.EntryContracts.test_current_archive_control_and_corruption_preserve_both_files)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_反証監査入口_契約テスト.py", line 41, in test_current_archive_control_and_corruption_preserve_both_files
+    result = audit.historical_factory_archive_counterexample('fresh_suite_c01', archive)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_counterexample_entry' has no attribute 'historical_factory_archive_counterexample'
+
+======================================================================
+ERROR: test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection (__main__.EntryContracts.test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection) (control={'status': 'INVALID', 'checks': {}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_反証監査入口_契約テスト.py", line 55, in test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection
+    audit.historical_factory_archive_counterexample('fresh_suite_c01', archive)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_counterexample_entry' has no attribute 'historical_factory_archive_counterexample'
+
+======================================================================
+ERROR: test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection (__main__.EntryContracts.test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection) (control={'status': 'INCOMPLETE', 'checks': {'bound': True}, 'components': {'artificial': {'status': 'PASS'}}, 'historical_source_archives': {'wrong': 'wrong'}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G4_反証監査入口_契約テスト.py", line 55, in test_missing_control_or_wrong_archive_mapping_cannot_prove_rejection
+    audit.historical_factory_archive_counterexample('fresh_suite_c01', archive)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'choice_counterexample_entry' has no attribute 'historical_factory_archive_counterexample'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.035s
+
+FAILED (errors=3)

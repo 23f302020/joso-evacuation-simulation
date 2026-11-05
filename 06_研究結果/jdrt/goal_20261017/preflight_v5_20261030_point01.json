@@ -1,0 +1,211 @@
+{
+  "at_jst": "2026-10-30T09:22:44.039553+09:00",
+  "classification": "VERIFIED_WAIT",
+  "action": "same_original_current_v5_preflight_point",
+  "original_session": 8079,
+  "owner": {
+    "ProcessId": 8876,
+    "ParentProcessId": 33096,
+    "CreationDate": "2026-10-30T09:14:14.145888+09:00",
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py --project-root . preflight --suite-id sf261029a --counterexamples 06_研究結果/jdrt/goal_20261017/正式検証器_表会計候補_20261029T212545.json"
+  },
+  "attempt": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\preflight\\20261030T091421443729",
+  "input_status": "PASS",
+  "input_checks": 28,
+  "unit_status": "PASS",
+  "unit_tests": 122,
+  "unit_process_exit_code": 0,
+  "completed_strict_validations": 26,
+  "required_strict_validations": 44,
+  "validation_reports": [
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c01_20261030T091538232744.json",
+      "sha256": "5bda6213c94e98757944c7581bf364fa125d988145c26024037ab2d643009061",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c01"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c02_20261030T091558647416.json",
+      "sha256": "e799ce5c51e6a3f3950c0dc9454049d19ee5ee4b686d2846595645fe66cdfcfe",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c02"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c03_20261030T091618043239.json",
+      "sha256": "681d159811c7a7def9646372a6c2838cf663ab632b435e3ce3a9b14f2a65f52a",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c03"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c04_20261030T091636396978.json",
+      "sha256": "8a0885457e7bdbe0567a40a461e6a5be4bbdcee3e9bef41ba66c4d7c5b0e4462",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c04"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c05_20261030T091654777378.json",
+      "sha256": "5f03bcfb3c239a4de95106bce6010c27aac9358a95f5a79e8b4936095465e234",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c05"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c06_20261030T091708820402.json",
+      "sha256": "fda0b64429bd0fdfff0652c74653022e59c89743aa3cc4856028ca2b9d9cc22f",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c06"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c07_20261030T091724881917.json",
+      "sha256": "08dc3a9729bb15cb57bd7bac80be17da7401f218721e36792127e4413c4caadb",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c07"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c08_20261030T091741702749.json",
+      "sha256": "75d386b9c1447d47252f65dbd325b0e621802f3fc5d185caa36cc7919e111167",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c08"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c09_20261030T091802272013.json",
+      "sha256": "3164f445d9c61aa7b0b05a703010a8aeef857c808f6210c6643e28b92be3c019",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c09"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c10_20261030T091820489107.json",
+      "sha256": "1558e98ba060b942a6074ab4c431bddeb9f9ba5fd3bf26a17ae729f23569f269",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c10"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c11_20261030T091838808554.json",
+      "sha256": "910c1197c4a749057524a9a9d90b8f922e1a87ac3568ffde52e1a7e287ccbe82",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c11"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c12_20261030T091857823871.json",
+      "sha256": "db7fab9645822b63163f790cc8f8061adfed73ea021212a6d999a4ec6cff071e",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c12"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c13_20261030T091912642125.json",
+      "sha256": "0ac889d6a06eb2edec47ff945c1444cfaa8428d990ff8911826309d669b804d5",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c13"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c14_20261030T091928105205.json",
+      "sha256": "b7bff741688819a4b55aa44dde7aea65cbdf6bbcc0d6ea67f72b167d75189fcf",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c14"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c15_20261030T091941466629.json",
+      "sha256": "9e0958507251b1783c7b73784aa28a44e3bb083154d05036b392129e8ef4a4fe",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c15"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c16_20261030T091955212250.json",
+      "sha256": "61974f2601e205f3b3572377f566ecf035c37dfe3a8c6fb9ee6dbeac26460d8a",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c16"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c17_20261030T092013672394.json",
+      "sha256": "54f47a49599100ce2192b9a1d8ec80da0e9bcdbf17a2aca3e75ddb5257f32dfe",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c17"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c18_20261030T092027603314.json",
+      "sha256": "08b8a003e7e6ff06f379e7fb60cb25f3aeb62bb06cfa58e21955deb17c81a652",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c18"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c19_20261030T092041427847.json",
+      "sha256": "27c79c91a8574339b8a3592ed2daf2eb79fe92491fca4d11ab9ef800b207715e",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c19"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c20_20261030T092100928876.json",
+      "sha256": "3ea853d9232622308d6fdc0040e6912e46294f7bf75f74203433c65378889c5e",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c20"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c21_20261030T092118477432.json",
+      "sha256": "534b75d07f065749852b358e230630f918914c03e177e64ceefd8d7fc0edfc5d",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c21"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c22_20261030T092132752399.json",
+      "sha256": "6c702eca559cb06e63f516980bde195c0f71aed5261484e752fcd21ad6115266",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c22"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c23_20261030T092146640867.json",
+      "sha256": "9ce81cc38a53cf988e02180457d39ee8999d9fee91dba424ea394daf1151cd93",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c23"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c24_20261030T092200969979.json",
+      "sha256": "89a4c9aa3a685eaa262cd97b887dd6ca786e1c63550ebd22f08562debe6dcaec",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c24"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c25_20261030T092219328134.json",
+      "sha256": "3120a5f28731bf0dee50fe6726b54207b69910e7c6f2878c3c7874a80533952c",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c25"
+    },
+    {
+      "path": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\validation_reports\\validate_sf261029a_c26_20261030T092237774140.json",
+      "sha256": "03395f673ffb5bede799d2a272b71e11406d22367219f6fe25bd26d22ccf82c1",
+      "status": "PASS",
+      "purpose": "fixture",
+      "run_id": "sf261029a_c26"
+    }
+  ],
+  "partial_tables_classification": "Separate INCOMPLETE component table reports are not strict failures or adoption receipts",
+  "core_ready": false,
+  "formal_cells": 0,
+  "no_restart": true,
+  "no_second_validate_or_display_writer": true,
+  "next": "Wait original8079 and same8876; after terminal verify receipt/all bindings/G6/capacity/07 before parent first core"
+}

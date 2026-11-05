@@ -1,0 +1,26 @@
+{
+  "files_sha256": {
+    ".agents\\skills\\joso-jdrt-runner\\scripts\\choice_native_regression.py": "2545b7ce1b64250122d43142086663be51213ba92c20d4fce46a01e9144da369",
+    "04_プログラム\\tests\\test_choice_native_regression.py": "fc3dd343babadfabdd597f7ba98b95f2c31df2fc46fdec99939e77bb3d7fd0cd"
+  },
+  "tests_passed": 30,
+  "native_behavior_verified": false,
+  "technical_ready": false,
+  "source_guard_note": "Initial source/config hashes precede primary verification; mutation stops before launch",
+  "process_probe": "process_probe_20261020T171240526024/state.json",
+  "process_probe_scope": "Unmocked Python launcher/CIM/handle only; command method unchanged after probe; no native simulation",
+  "reviewer": "current parent; actual backend unverified",
+  "unresolved_implementation_findings": [],
+  "review_scope": [
+    "Bundle role/commit/copied EXE/paired original/state bindings",
+    "Immutable source/proof plus paired geometry/closures/people/settings",
+    "Expected control mechanism only; unexpected failure stops second role",
+    "Popen timeout is not a restart; CIM creation/command/parent identity and fast process handle completion",
+    "Failed/partial evidence/locks preserved; no core/READY/record/recovery command"
+  ],
+  "pending": [
+    "real two-case native regression",
+    "broad native guard tests and actual guard trace",
+    "complete current suite/audit/all14smokes/preflight/G6"
+  ]
+}

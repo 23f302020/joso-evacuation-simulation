@@ -1,0 +1,16 @@
+"""Compare paired native build metadata; this does not verify native behavior."""
+import re
+
+FILES = ('CMakeCache.txt', 'src/config.h', *(f'src/CMakeFiles/{target}.dir/{name}'
+          for target in ('sumo', 'netconvert')
+          for name in ('flags.make', 'includes_CXX.rsp', 'link.txt', 'linkLibs.rsp')))
+
+
+def compare_metadata(patched, control, patched_roots, control_roots):
+    def normalized(text, roots):
+        for root, token in zip(roots, ('<SOURCE>', '<BUILD>')):
+            text = re.sub(re.escape(root), lambda match: token, text, flags=re.I)
+        return text.replace('\r\n', '\n')
+    different = [name for name in patched if normalized(patched[name], patched_roots)
+                 != normalized(control[name], control_roots)]
+    return {'equal': not different, 'different_files': different}

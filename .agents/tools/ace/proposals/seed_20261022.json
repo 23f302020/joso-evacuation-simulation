@@ -1,0 +1,46 @@
+{
+  "base_sha256": "87a435a46c5dea7849516b6068ec95708d7e1e312896fef32432569282590292",
+  "operations": [
+    {
+      "type": "ADD",
+      "section": "COMMON MISTAKES TO AVOID",
+      "content": "暫定：複数階層の進捗を監視するときは各ファイルの更新時期と子完了証跡を照合する。親manifestの未更新だけを異常件数へ置き換えず、欠測・矛盾時は判断を保留する。",
+      "evidence": [
+        "JD-20261022-root-01"
+      ]
+    },
+    {
+      "type": "ADD",
+      "section": "COMMON MISTAKES TO AVOID",
+      "content": "暫定：既存の文書反映helperを使う前に入力領域・見出し契約を確認し、実行後は追加した内容が成果物へ反映されたことを確かめる。",
+      "evidence": [
+        "JD-20261022-root-02"
+      ]
+    },
+    {
+      "type": "ADD",
+      "section": "STRATEGIES & INSIGHTS",
+      "content": "暫定：通知と任意のAI診断が同じ経路を通る設計では、診断中・上限到達・失敗時にも通知が進むか確認する。API受付とユーザー閲覧を分ける。",
+      "evidence": [
+        "JD-20261022-root-03"
+      ]
+    },
+    {
+      "type": "ADD",
+      "section": "COMMON MISTAKES TO AVOID",
+      "content": "暫定：異なる観測ログを結ぶ前にstep開始・終了と差分区間を確認する。同じ時刻ラベルだけでは原因と結果を結ばない。",
+      "evidence": [
+        "JD-20261022-root-04"
+      ]
+    },
+    {
+      "type": "ADD",
+      "section": "STRATEGIES & INSIGHTS",
+      "content": "暫定：局所試験で再現しなかった結果は試した条件の範囲で記録する。未復元条件を列挙し、次に変える仮説・追加観測・中止条件を決めてから再試行する。",
+      "evidence": [
+        "JD-20261022-root-05"
+      ]
+    }
+  ],
+  "bullet_tags": []
+}

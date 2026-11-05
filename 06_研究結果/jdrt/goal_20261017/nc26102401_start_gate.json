@@ -1,0 +1,28 @@
+{
+  "at_jst": "2026-10-24T08:02:49.757153+09:00",
+  "judgment_id": "JD-20261024-research-start-02",
+  "status": "SINGLE_NEXT_CELL_START_GATE_PASS",
+  "run_id": "nc26102401",
+  "cell": {
+    "cell_id": "facility_first_r0_seed23423",
+    "destination_policy": "facility_first",
+    "demand_level": null,
+    "scenario": "R0",
+    "seed": 23423
+  },
+  "registration_id": "choice_native_observation_v2_20261021",
+  "fresh_status": "nc26102401_prestart_status_selected.json",
+  "previous_record7": "nc26102304_record7_readback.json",
+  "previous_auxiliary_failure_preserved": true,
+  "technical_repair_review": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\finish_permissionerror_20261024\\review.json",
+  "free_bytes": 255715651584,
+  "one_run_reserve_bytes": 193692970309,
+  "reserve_policy_changed": false,
+  "all70_storage_guaranteed": false,
+  "new_id_unused": true,
+  "started": false,
+  "goal_status_observed": "ACTIVE same preparation group",
+  "preflight_ready_sha256": "2f89acdac28aeaedf470ed5fabedaf10e3344e40a149c9777bbbdd40251c5228",
+  "storage_proof_sha256": "9d0d64d2ba7c2ad45d763f1251ddc293a8ee99a946df724691df170fc3f9bdf0",
+  "selected_toolchain_manifest": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\toolchains\\native_lat_20261020a\\toolchain.json"
+}

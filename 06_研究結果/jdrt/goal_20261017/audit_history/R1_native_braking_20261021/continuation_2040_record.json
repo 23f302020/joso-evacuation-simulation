@@ -1,0 +1,31 @@
+{
+  "at_jst": "2026-10-21T20:43:54.980309+09:00",
+  "operation": "R1_two_junction_primary_source_readback",
+  "classification_previous_goal_turn": "progress",
+  "classification_this_goal_turn": "progress",
+  "run_id": "ch261021_002",
+  "status": "DIAGNOSTIC_NOT_ADOPTABLE",
+  "report": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\R1_native_braking_20261021\\junction_context_readback.json",
+  "sha256": "da79f673026600e3d77aaf0dac6daf18b58fe9ad146c9343ccc3a41ac2c60377",
+  "frozen_common5_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "research_recorded_cells": 1,
+  "no_record_no_next_start": true,
+  "observed_monitor": {
+    "pid": 31344,
+    "created": 134370542901770662,
+    "identity_matches": true,
+    "last_observed_utc": "2026-10-21T11:35:08.652338+00:00",
+    "scope": "point observation only"
+  },
+  "failures_preserved": [
+    "window02 rejected ambiguous downstream edges including pedestrian links; window03 filters actual fromLane",
+    "junction_readback01 rejected patched Striping source as pristine; second readback reconstructs exact frozen registered patch from official ZIP; no native source was edited"
+  ],
+  "summary": "正式1/70・HOLDを維持。R1 ch261021_002の2交差点/全接続29edgeと75m補助範囲の16秒99行を原本から再抽出し、車1・徒歩2を確認。警告6112.5に対応する6113.0観測で徒歩者がcrossingへ進入し、vehicle linkのresponse/foes bitも同crossingを指す。公式ZIP＋凍結patchへ5sourceを照合し、歩行移動が車両計画より先であることを確認。歩行者応答仮説を支持するが内部leader/stopSpeed未記録のため原因確定・無害判定・採用はしない。次は隔離した横断あり/なしnative技術probeの設計・検証。現行common5/原本不変、record/後続開始禁止。"
+}

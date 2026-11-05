@@ -1,0 +1,128 @@
+--- watch.py.before
++++ watch.py
+@@ -355,6 +355,17 @@
+         self.config, self.runtime, self.child = config, runtime, None
+ 
+     def tick(self, now):
++        # Local notifications must progress even while AI is busy or rate-limited.
++        # Bound each tick so a backlog does not block process observation in one burst.
++        for path in sorted((self.runtime / 'events').glob('*.json')):
++            event = read_json(path)
++            if event['notification'] == 'pending':
++                try:
++                    event['notification'] = notify(event) if self.config.get('notifications_enabled', True) else 'disabled'
++                except Exception:
++                    event['notification'] = 'failed'
++                atomic_json(path, event)
++                break
+         if self.child:
+             proc, path, began, out, err = self.child
+             code = proc.poll()
+@@ -375,12 +386,6 @@
+             self.child = None
+         for path in sorted((self.runtime / 'events').glob('*.json')):
+             event = read_json(path)
+-            if event['notification'] == 'pending':
+-                try:
+-                    event['notification'] = notify(event) if self.config.get('notifications_enabled', True) else 'disabled'
+-                except Exception:
+-                    event['notification'] = 'failed'
+-                atomic_json(path, event)
+             if event['delivery'] != 'pending' or not self.config['diagnostics_enabled']:
+                 continue
+             receipts = [read_json(p).get('delivery_started_epoch', 0) for p in (self.runtime / 'events').glob('*.json')]
+--- test_watch.py.before
++++ test_watch.py
+@@ -6,7 +6,7 @@
+ import sys
+ import time
+ import hashlib
+-from unittest.mock import patch
++from unittest.mock import patch, Mock
+ from pathlib import Path
+ 
+ import watch
+@@ -122,6 +122,63 @@
+ 
+ 
+ class Contracts(unittest.TestCase):
++    def limited_dispatcher(self, root):
++        events = root / 'events'
++        events.mkdir()
++        for number in range(3):
++            watch.atomic_json(events / ('r' + str(number) + '.json'), {
++                'delivery': 'done', 'notification': 'submitted', 'delivery_started_epoch': 10000})
++        watch.atomic_json(events / 'a.json', {'delivery': 'pending', 'notification': 'submitted'})
++        for name in ('b', 'c'):
++            watch.atomic_json(events / (name + '.json'), {'delivery': 'pending', 'notification': 'pending'})
++        config = {'diagnostics_enabled': True, 'max_diagnostics_per_hour': 3,
++                  'diagnostic_timeout_sec': 180, 'notifications_enabled': True}
++        return watch.Dispatcher(config, root)
++
++    def test_notifications_progress_one_per_tick_at_diagnostic_limit(self):
++        with tempfile.TemporaryDirectory() as folder:
++            root = Path(folder)
++            dispatcher = self.limited_dispatcher(root)
++            with patch.object(watch, 'notify', return_value='submitted') as notify, \
++                    patch.object(watch.subprocess, 'Popen') as launch:
++                dispatcher.tick(10001)
++                self.assertEqual(watch.read_json(root / 'events/b.json')['notification'], 'submitted')
++                self.assertEqual(watch.read_json(root / 'events/c.json')['notification'], 'pending')
++                self.assertEqual(notify.call_count, 1)
++                dispatcher.tick(10002)
++                self.assertEqual(watch.read_json(root / 'events/c.json')['notification'], 'submitted')
++                self.assertEqual(notify.call_count, 2)
++                launch.assert_not_called()
++            self.assertEqual(watch.read_json(root / 'events/a.json')['delivery'], 'pending')
++
++    def test_notification_progresses_while_diagnostic_child_is_running(self):
++        with tempfile.TemporaryDirectory() as folder:
++            root = Path(folder)
++            dispatcher = self.limited_dispatcher(root)
++            child = Mock()
++            child.poll.return_value = None
++            running = (child, root / 'events/a.json', 10000, Mock(), Mock())
++            dispatcher.child = running
++            with patch.object(watch, 'notify', return_value='submitted'), \
++                    patch.object(watch.subprocess, 'Popen') as launch:
++                dispatcher.tick(10001)
++                self.assertEqual(watch.read_json(root / 'events/b.json')['notification'], 'submitted')
++                self.assertIs(dispatcher.child, running)
++                child.kill.assert_not_called()
++                launch.assert_not_called()
++
++    def test_disabled_notification_is_persisted_despite_diagnostic_limit(self):
++        with tempfile.TemporaryDirectory() as folder:
++            root = Path(folder)
++            dispatcher = self.limited_dispatcher(root)
++            dispatcher.config['notifications_enabled'] = False
++            with patch.object(watch, 'notify') as notify, \
++                    patch.object(watch.subprocess, 'Popen') as launch:
++                dispatcher.tick(10001)
++                self.assertEqual(watch.read_json(root / 'events/b.json')['notification'], 'disabled')
++                notify.assert_not_called()
++                launch.assert_not_called()
++
+     def test_terminal_requires_validation(self):
+         self.assertEqual(watch.classify({'status': 'COMPLETED', 'flags': []}, {}, 10, 60), ['completed'])
+ 
+--- README.md.before
++++ README.md
+@@ -6,7 +6,7 @@
+ 
+ | 処理 | 間隔・契機 |
+ |---|---|
+-| 既知の実行中PIDの終了確認 | Windowsプロセスハンドルで1秒ごと |
++| 既知の実行中PIDの終了確認 | Windowsプロセスハンドルで基準1秒（処理時間により遅れる） |
+ | 新規manifest発見、状態・progress・ログ追記確認 | 10秒ごと |
+ | 孤立RUNNINGの通知 | 終了後のmanifest再読と3秒の猶予後 |
+ | 停滞の疑い | シミュレーション時刻が10分間不変。heartbeat時刻更新だけでは解除しない |
+@@ -19,6 +19,8 @@
+ 最初の起動時に既存の終端履歴を基準登録し、過去の失敗を一斉再通知しない。その後の新しい終了・異常はイベント化する。状態ファイルの部分書込は3回連続で読めないときに通知する。run/attemptの同じパス・同じ異常種類は一度だけ保存し、再起動でも通知・AI処理を重複させない。研究runの再利用は禁止のまま。
+ 
+ イベントを永続化してからWindows通知と診断を実行する。Windows通知の`submitted`はAPIへの送信受付であり、ユーザーの閲覧確認ではない。診断の起動失敗・タイムアウト・中断は保全し、無制限な再試行をしない。診断結果はローカル受信箱で確認する。メール・Slack等への送信は行わない。
++
++Windows通知はAI診断の同時実行・毎時上限と独立に進める。各tickで通知は最大1件とし、保留分を一度に処理して観測を長時間ふさがない。診断が実行中または毎時上限に達していても、次のtickで保留通知を処理する。通知API呼出しの処理時間もあるため、終了検知・通知の厳密な実時間保証はしない。2026-10-21修正の旧版・3件のRED/GREEN・30件の回帰試験と実反映確認は`verification/notification_queue_20261021/`へ保存する。イベントの原証跡と診断の毎時3件・180秒制限は維持する。
+ 
+ 技術suite内の個別`purpose=fixture`の正常終了はイベント保存だけとし、通知・AIを起動しない（`not_required`）。suite全体の完了・個別fixtureの失敗/異常、研究coreやsmokeの完了は通知・診断の対象とする。多数の内部試験成功で診断キューを埋めないための運用上の区別であり、受入条件は変更しない。
+ 

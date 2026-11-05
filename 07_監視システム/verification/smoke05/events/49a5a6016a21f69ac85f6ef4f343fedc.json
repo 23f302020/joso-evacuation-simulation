@@ -1,0 +1,33 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "49a5a6016a21f69ac85f6ef4f343fedc",
+  "at_utc": "2026-10-20T07:50:47.818832+00:00",
+  "target": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\smoke05\\artificial\\manifest.json",
+  "kind": "completed",
+  "evidence": {
+    "status": "COMPLETED",
+    "target_id": "simulation_watch_artificial_child",
+    "observed_at_utc": "2026-10-20T07:50:47.818538+00:00",
+    "state_sha256": "696acc1f27b86370230fd24c227491a7c3300ef50765e6397bd4957eed1d5fb3",
+    "flags": [],
+    "pid": 12524,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\verification\\smoke05\\artificial\\manifest.json",
+    "sim_sec": null,
+    "progress_token": [
+      "COMPLETED",
+      null,
+      null,
+      null,
+      null
+    ],
+    "last_progress": 1792482647.7935646,
+    "log_offsets": {}
+  },
+  "delivery": "done",
+  "notification": "submitted",
+  "research_adoption": false,
+  "delivery_started_epoch": 1792482647.8215983,
+  "diagnostic_pid": 8560,
+  "exit_code": 0,
+  "delivery_finished_at_utc": "2026-10-20T07:50:54.263344+00:00"
+}

@@ -1,0 +1,25 @@
+test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes (tests.test_choice_native_regression.PairedInputContracts.test_geometry_closure_or_parameters_cannot_differ_with_fresh_hashes) ... ok
+test_missing_or_stale_input_manifest_cannot_pass (tests.test_choice_native_regression.PairedInputContracts.test_missing_or_stale_input_manifest_cannot_pass) ... ok
+test_missing_runtime_receipt_cannot_pass (tests.test_choice_native_regression.PairedInputContracts.test_missing_runtime_receipt_cannot_pass) ... ok
+test_only_xml_comments_and_native_converter_log_metadata_may_differ (tests.test_choice_native_regression.PairedInputContracts.test_only_xml_comments_and_native_converter_log_metadata_may_differ) ... ERROR
+test_runtime_receipt_requires_own_bundle_even_with_updated_artifact_hash (tests.test_choice_native_regression.PairedInputContracts.test_runtime_receipt_requires_own_bundle_even_with_updated_artifact_hash) ... ok
+
+======================================================================
+ERROR: test_only_xml_comments_and_native_converter_log_metadata_may_differ (tests.test_choice_native_regression.PairedInputContracts.test_only_xml_comments_and_native_converter_log_metadata_may_differ)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_regression.py", line 389, in test_only_xml_comments_and_native_converter_log_metadata_may_differ
+    rows = self.p.compare_inputs()
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 367, in compare_inputs
+    require(set(table) == required and all(Path(n).name == n and sha(directory / n) == h for n, h in table.items()),
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            'Paired input inventory is incomplete or changed')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_regression.py", line 34, in require
+    raise ValueError(message)
+ValueError: Paired input inventory is incomplete or changed
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.516s
+
+FAILED (errors=1)

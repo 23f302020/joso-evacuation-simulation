@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "registered_physical_and_choice_inputs",
+  "technical_ready": false,
+  "at_jst": "2026-10-29T20:24:33.763053+09:00",
+  "checks": {
+    "choice_all_sources_current": true,
+    "choice_all_artifacts_current": true,
+    "choice_physical_copy_exact": true,
+    "choice_lineage": true,
+    "choice_d0_byte_identical": true,
+    "choice_d1_origins_exact": true,
+    "choice_d1_priority_distance_and_paths": true,
+    "choice_population_unique": true,
+    "choice_common_realization_independent": true,
+    "choice_cell_set_unique_and_exact": true,
+    "physical_current_sources": true,
+    "physical_population_from_primary_domain": true,
+    "physical_attributes_from_primary": true,
+    "physical_source_population_partition": true,
+    "physical_origins_from_primary_domain": true,
+    "physical_native_times_from_hdf": true,
+    "physical_elevation_from_primary_tif": true,
+    "physical_all_road_depths_threshold_intervals_from_hdf_tif": true,
+    "physical_unverified_structures_excluded": true,
+    "physical_facility_capacity_primary": true,
+    "physical_terminal_access_model_dry_window": true,
+    "physical_exit_separate_from_facilities": true,
+    "position_places_unique_and_exact": true,
+    "position_independent_positions_lanes_projection_ranges": true,
+    "position_people_destinations_masks_times_cells_unchanged": true,
+    "position_old_input_and_preregistration_preserved": true,
+    "position_contracts_bound_to_registry": true,
+    "sources_current_after_recomputation": true
+  },
+  "input_manifest_sha256": "2fadb08c11698d490926adc34e7a31c7578903c28d9ab9ca1d6b2daa349b7a20",
+  "validator_sha256": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+  "component_reports_sha256": {
+    "choice_table_validation.json": "6d37a98386890647e0fc84781a166aa92f75affb7f5d2a784832f1c68ac2cac0",
+    "physical_input_validation.json": "3effbe85df6b39e40c1107365061bc144516af10873707df3e78f92eba227bf0",
+    "position_input_validation.json": "e27e423e48b71355984e24e6387ab93dc50d7eb2b37e8efe3adeeee2ca4750f8"
+  },
+  "pending": [
+    "core_executor_and_run_validator",
+    "actual_sumo_cancellation_timing",
+    "all_14_setting_smoke",
+    "skill_cli_and_record"
+  ]
+}

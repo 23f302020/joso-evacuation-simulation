@@ -1,0 +1,16 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "11897083e8753e579824c72f8fccda0c",
+  "at_utc": "2026-10-28T15:21:16.429500+00:00",
+  "target": "monitor-gap:1793200761.1125546",
+  "kind": "monitoring_gap",
+  "evidence": {
+    "gap_sec": 115.18794798851013,
+    "previous_observation_utc": "2026-10-28T15:20:35.300917+00:00"
+  },
+  "delivery": "failed_preserved",
+  "notification": "failed",
+  "research_adoption": false,
+  "delivery_started_epoch": 1793201175.7419171,
+  "error_type": "FileNotFoundError"
+}

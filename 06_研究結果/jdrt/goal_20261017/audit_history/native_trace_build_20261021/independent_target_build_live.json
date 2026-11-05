@@ -1,0 +1,40 @@
+{
+  "at_jst": "2026-10-21T08:07:20.947832+09:00",
+  "monitor_source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+  "target": [
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build_state.json",
+    {
+      "status": "RUNNING",
+      "target_id": "diag01_20261021",
+      "observed_at_utc": "2026-10-20T23:07:17.025280+00:00",
+      "protocol": null,
+      "purpose": null,
+      "state_sha256": "f2ffc3ba0bf742d9df5fee603eeca000d10eb937b89b3fd7609160125f0cd552",
+      "flags": [],
+      "pid": 34116,
+      "source": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\diag01_20261021\\build_state.json",
+      "sim_sec": null,
+      "progress_token": [
+        "RUNNING",
+        "diagnostic_sumo_build",
+        "2026-10-21T08:07:03.622564+09:00"
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134370109031954636,
+        "pid": 34116
+      },
+      "command_binding": {
+        "kind": "direct",
+        "command_target_id": "diag01_20261021"
+      },
+      "command_verified_binding": {
+        "kind": "direct",
+        "command_target_id": "diag01_20261021"
+      },
+      "last_progress": 1792537626.3691592,
+      "log_offsets": {},
+      "historical": false
+    }
+  ]
+}

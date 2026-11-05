@@ -1,0 +1,14 @@
+E
+======================================================================
+ERROR: test_braking_receipt_requires_direct_native_emergency_frames (tests.test_jdrt_choice_validate.SparseVerifierContracts.test_braking_receipt_requires_direct_native_emergency_frames)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_jdrt_choice_validate.py", line 31, in test_braking_receipt_requires_direct_native_emergency_frames
+    self.assertIsNotNone(validator.native_braking_receipt(line, frames, .25, settings))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice_validate' has no attribute 'native_braking_receipt'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

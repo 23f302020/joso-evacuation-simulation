@@ -1,0 +1,39 @@
+--- 43a1fad4a81c8791da1a3698d7a87ca1796c88e9d5945e85f084c787e1256264_before_shared_stop_policy_choice_pair_proof.py
++++ choice_pair_proof.py
+@@ -5,6 +5,7 @@
+ 
+ from choice_pair_metadata import FILES, cache_entries, compare_metadata
+ from choice_pair_sources import source_tree, verify_sources
++from choice_shared_stop_policy import POLICY as STOP_INDEX_POLICY, shared_stop_patch
+ 
+ POLICY = Path('06_研究結果/jdrt/goal_20261017/audit_history/native_pair_policy_20261020/policy.json')
+ TOOLS = {'cmake': 'CMAKE_COMMAND', 'compiler_c': 'CMAKE_C_COMPILER',
+@@ -40,12 +41,16 @@
+             or pair.get('source_commit') != proof.get('source_commit')):
+         raise ValueError('Complete paired primary build schema required')
+     policy_path = observed(pair['policy'])
+-    if policy_path != (Path(project_root) / POLICY).resolve():
++    allowed_schema = {(Path(project_root) / POLICY).resolve(): 'approved_native_pair_policy_v1',
++                      (Path(project_root) / STOP_INDEX_POLICY).resolve(): 'approved_native_pair_stop_index_policy_v1'}.get(policy_path)
++    if allowed_schema is None:
+         raise ValueError('Pair policy must be the reviewed project policy')
+     policy = read_json(policy_path)
+-    if (policy.get('schema') != 'approved_native_pair_policy_v1'
++    if (policy.get('schema') != allowed_schema
+             or policy.get('source_commit') != pair['source_commit']):
+         raise ValueError('Approved pair policy commit/schema differs')
++    additional_patches = (shared_stop_patch(policy, pair['source_commit'], project_root, observed, read_json, sha)
++                          if allowed_schema == 'approved_native_pair_stop_index_policy_v1' else {})
+     archive = observed(policy['archive'], preserve=False)
+     prepared = read_json(observed(policy['preparation']))
+     proposal = read_json(observed(policy['proposal']))
+@@ -223,6 +228,9 @@
+     patches = {proposal['target']: {'path': str(native_patch), 'sha256': proposal['patch_sha256'],
+         'before_sha256': proposal['official_before_sha256'], 'after_sha256': proposal['proposed_sha256'],
+         'roles': ['patched']}, 'src/CMakeLists.txt': {**shared, 'path': str(shared_patch), 'roles': ['control', 'patched']}}
++    if patches.keys() & additional_patches.keys():
++        raise ValueError('Shared stop-history repair overlaps an existing patch target')
++    patches.update(additional_patches)
+     sources = verify_sources(archive, pair['source_commit'], roots, prepared['source_sha256'],
+                              patches, policy['allowed_missing'])
+     tree_snapshots.update({str(roots[role]): tree for role, tree in sources['source_sha256'].items()})

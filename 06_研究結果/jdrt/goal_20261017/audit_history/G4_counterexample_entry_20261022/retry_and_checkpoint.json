@@ -1,0 +1,11 @@
+{
+  "at_jst": "2026-10-22T09:32:18.082643+09:00",
+  "action": "counterexample_entry_fixed_same_suite_audit_retry_started",
+  "summary": "最新HOLD（2026-10-22T09:32:18.082643+09:00）：native観測監査v2は正式記録0/70・研究core稼働0・技術READY=false。現行共通5のna26102202全26統合と独立7成分の26件baselineはPASSしたが、旧固定run IDに依存する反例入口で旧pipelineはFAILED保全。監査だけを現行fixtureのメモリ上SHA改変反例へ修正し3契約試験PASS、同じ26件を独立再監査中（実PID27888/launcher2360・handle30314）。共通5/入力/fixtureは不変。ns261022bは予約履歴を保全し再利用しない。G6登録ID照合の変更範囲13試験PASS、G7草稿/判断台帳を更新。07監視PID3348で継続。",
+  "next": "同じ独立監査handle30314の全26成分・全改変拒否・原本不変を確認する。PASS後に未使用prefix ns261022cで全14smokeを1件ずつ独立validateし、新preflightを取得する。FAILEDのna26102202_revalidateは再開/上書きしない。現行全証跡/READY/容量前にcoreを開始しない。全70実験/数式考察/不足資料/限界/最終報告は未完。",
+  "active_session": 30314,
+  "active_pid": 27888,
+  "source_review": "06_研究結果/jdrt/goal_20261017/audit_history/G4_counterexample_entry_20261022/review.json",
+  "research_adoption_created": false,
+  "judgment_id": "JD-20261022-research-0928-04"
+}

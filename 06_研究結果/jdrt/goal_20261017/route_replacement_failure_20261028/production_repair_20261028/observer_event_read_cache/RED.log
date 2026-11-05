@@ -1,0 +1,14 @@
+..F
+======================================================================
+FAIL: test_unchanged_event_is_parsed_once_across_ticks (test_watch.DispatcherEventReads.test_unchanged_event_is_parsed_once_across_ticks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 139, in test_unchanged_event_is_parsed_once_across_ticks
+    self.assertEqual(read.call_count, 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: 8 != 2
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.285s
+
+FAILED (failures=1)

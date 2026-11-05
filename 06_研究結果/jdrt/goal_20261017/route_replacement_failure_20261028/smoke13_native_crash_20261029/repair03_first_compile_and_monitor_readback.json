@@ -1,0 +1,39 @@
+{
+  "at_jst": "2026-10-29T15:19:13.953414+09:00",
+  "action": "same_patched_full_build_owned_wait_and_07_readback",
+  "classification": "VERIFIED_WAIT_WITH_PROGRESS_THIS_TURN",
+  "build": {
+    "attempt": "repair03_20261029",
+    "role": "patched",
+    "original_session": 97479,
+    "actual_owner_pid": 36908,
+    "creation_ms": 1793254480266,
+    "launcher_pid": 41456,
+    "state": "C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/repair03_20261029/build_state.json",
+    "status": "RUNNING",
+    "research_selector_unchanged": true,
+    "next": "Follow original97479 and actual owner36908/birth1793254480266/child6976/birth1793254673238 to terminal. Do not replay build or modify current-r-bound helpers. Then verify source/log/loader for patched role, compare new pair10 metadata incl Git, explicitly review new shared stop-index policy/source/provenance; only properly packaged native regressions/full30/audit/all14/new preflight/G6/capacity/07 can permit first core. Control verified, do not rebuild. Full70/analysis/large bus/final report remain.",
+    "phase": "diagnostic_sumo_build",
+    "child_cmake": 6976,
+    "child_creation_ms": 1793254673238,
+    "current_observation": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261029T151812229859.json",
+    "last_verified_at_jst": "2026-10-29T15:18:12.229859+09:00",
+    "observer_readback": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/observer_repair03_active.json",
+    "observer_target_command_bound": true,
+    "normal_display_sync_verified": true,
+    "monitor_preparation_phase_false_positive": {
+      "report": "06_研究結果/jdrt/goal_20261017/nativebuild監視_20261029T151614720637.json",
+      "flag": "nonterminal_active_child_evidence_missing_or_ambiguous",
+      "cause": "During diagnostic_source_preparation no command child is expected; actual owner matched. Source binding forbids changing monitor during owned build.",
+      "action": "Preserved failed observation/sync deferral, no restart/no waiver. Later actual compiler child matched; canonical observation and normal sync then passed.",
+      "deferred": "After original build terminal, scoped phase-aware observer contract if needed; do not change current r-bound monitor now."
+    }
+  },
+  "control_terminal_readback": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/repair02_control_terminal_readback.json",
+  "formal_recorded_current": 0,
+  "technical_ready": false,
+  "goal_complete": false,
+  "no_model_switch_claimed": true,
+  "external_send": false,
+  "display_sync": "current apply and status_progress apply/check exit0 at15:18"
+}

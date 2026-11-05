@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-23T11:32:59.044807+09:00",
+  "status": "NORMALIZED_OLD_DISPLAY_BYTE_CHANGE_REJECTION",
+  "run_id": "nc26102301",
+  "actual_owner_path_spelling": "Windows backslash",
+  "actual_journal_path_spelling": "POSIX slash",
+  "normalized_record_keys": [
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_full実験記録.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+    "context.md",
+    "00_全体整理/決定ログ.md",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_native監査v2_セル検証台帳.jsonl"
+  ],
+  "actual_changed_document_hashes": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": {
+      "terminal": "8e8169736022cab094679ede157b53b872b45533082ee9bde9d8d8ec4fa285ba",
+      "current": "20f4deb9e936f049c174e6fbe0a6f5ae0a25c364099c97622a656faed3df7aa5"
+    },
+    "context.md": {
+      "terminal": "cefe6bea6156bcfbfa8a317456e534184b588ff9d35c5048a3c0df39405ab6c8",
+      "current": "356672c5dd264c075abca4b72dc053fe9a2baf37307df98ecf40a95076ae99ce"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": {
+      "terminal": "515f5bc1d39066989b69c4de6b6c39d6e872ef9d28ae4fc61741b669ccb92bfe",
+      "current": "e403c77b4d9dd7326938de7fc1a0ff24b83153614903a9e699787f43c4713655"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": {
+      "terminal": "ac01e71c079aa554dab103e2329854810dafe2e0834267240c80d35009cd464e",
+      "current": "b614ac30a9b36446b42b54cbd4ce3dc0c6f717b8cfbbc5e117937ddd971d6a8a"
+    }
+  },
+  "replayed_research_commands": false,
+  "prior_control_limit": "Earlier negative was confounded by unnormalized key spelling; no actual byte-change attribution from that earlier result alone"
+}

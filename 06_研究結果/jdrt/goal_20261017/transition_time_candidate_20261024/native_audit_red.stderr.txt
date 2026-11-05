@@ -1,0 +1,15 @@
+test_native_outgoing_frame_rejects_shared_external_only_timestamp (tests.test_choice_transition_timing.NativeTransitionFixtureTests.test_native_outgoing_frame_rejects_shared_external_only_timestamp) ... ERROR
+
+======================================================================
+ERROR: test_native_outgoing_frame_rejects_shared_external_only_timestamp (tests.test_choice_transition_timing.NativeTransitionFixtureTests.test_native_outgoing_frame_rejects_shared_external_only_timestamp)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 166, in test_native_outgoing_frame_rejects_shared_external_only_timestamp
+    good = validator.audit_transition_fixture(output, dict(input_directory='inputs'), {}, events, source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice_validate' has no attribute 'audit_transition_fixture'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.034s
+
+FAILED (errors=1)

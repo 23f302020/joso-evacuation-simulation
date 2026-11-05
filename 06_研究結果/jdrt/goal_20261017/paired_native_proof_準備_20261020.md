@@ -1,0 +1,84 @@
+# 未修正版・修正版の比較証拠：準備中
+
+## 最新：2026-10-20T21:44:16.200155+09:00
+
+最新HOLD（2026-10-20T21:43:44.488770+09:00）：goal ACTIVE。choice正式0/70・研究core稼働0・READY=false。registered03は旧20入力artifact全バイト一致・独立入力28検査済み。比較bで対照のXY不連続を再現したが、custom版名の識別不足により校正独立INVALIDを保全。版名と現行固定bundle来歴の照合を修正し18試験PASS、保存raw7成分の履歴再計算合格・原本不変。新nc261020c/np261020cを21:41:56 JST開始、同一owner/handleを監視中。修正版物理結果・広いnative guard・全suite/audit/14smoke/preflight/G6未完、core開始禁止。 [版名の照合修正・原本・RED/GREEN](audit_history/native_version_identity_20261020/result.json)。
+
+
+
+## 履歴：2026-10-20 17:38 JST
+
+2026-10-20 17:38 JST。正式0/70・研究core稼働0・READY=false。selected-pair helper31試験/レビュー完了。旧SHA不一致の初回はSUMO前停止で保全し、新registered03は旧20artifact全バイト一致・独立28検査PASS。新nc261020bで校正case PASSとold_remaining/XYだけの不連続を実再現。校正の独立検証後だけnp261020bへ進む同一workflowを実行中（session38383）。広いnative guard/全26/audit/14smoke/preflight/G6が残る。[詳細](native_selected_helper_20261020.md)。
+
+## 以下は準備段階の履歴
+
+
+
+状態は設計・実装途中。実bundle生成・採用・native simulation・READYを許可しない。
+
+## 履歴：2026-10-20 16:50 JST
+
+P1の両版一次証拠拘束を完了。53試験、実13,003件の照合、対象diffレビューが通過した。新しいcontrol/patched bundleを別directoryへ作成し、各243ファイル固定、fresh-process import/再解決/fingerprint確認済み。[実施JSON](native_bundles_verified_20261020.json)・[実装/RED/GREEN/レビューと限界](pair_proof_helper_20261020.md)。
+
+次はselected-pair helperのproof消費・状態/プロセス/失敗保全・独立再計算の試験とレビューを完成させ、校正/反復置換を新IDで比較する。現在のhelperはまだ起動を無効化している。旧wf失敗原本からcalibrationにもrerouteが存在すること、FAILED repeatedの生receiptがold_remaining/XYだけの不連続であることを読取再確認した。まだ新native simulationは開始していない。広いnative guardと全suite/audit/14smoke/preflight/G6、正式70セルと全体報告は未完。最終goal ACTIVE、正式0/70・READY=false。
+
+## 履歴：2026-10-20 15:06 JST
+
+両版の両targetはcompile・custom versionが終了し、System32 export欠落0。control02終端は[nativebuild監視](nativebuild監視_20261020T145519078252.json)。新しいbuildやSUMO simulationは開始していない。候補archive13件は現物SHAを再照合したが、runtime bundleではない。
+
+全10metadataの実比較は同一条件（表記差の限定正規化のみ）。さらに[現行source全件再照合](native_pair_sources_20261020T150645971959.json)で各6,228件を公式ZIPと2つの厳密適用patchへ照合し、欠損7件の対象外根拠を両buildで再確認した。[helper/12試験と限界](pair_sources_helper_20261020.md)。これはP1のsource部分だけであり、EXE/state/compiler/依存/metadataの拘束と差替え反例は未完。次の作業はそのP1接続で、package・selected pair開始禁止を継続する。正式0/70、READY=false、goal ACTIVE。
+
+## 履歴：2026-10-20 14:39 JST
+
+修正版a08は両target compileと実custom version起動を終了。[終端監視](nativebuild監視_20261020T143555839345.json)はowner不在・異常なし。[loader再照合](audit_history/native_loader_20261020T143548809307/diagnosis.json)では両EXE exit0、要求System32 export欠落0。物理位置/方向/距離の合格は未検証。
+
+control準備は6228 file集合/SHAを照合し、相互差は登録native C++1件だけ。[公式ZIPとのscope比較](native_source_snapshot_audit_20261020T143408483807.json)は2861件中2854件が期待どおり、欠損7件・追加0・未登録改変0。[欠損分類](native_source_missing_files_classification_20261020.json)はFOX guard、HAVE_FOX未定義、utils/tests生成targetなし、Windows MinGWを記録。これは保存snapshot比較であり、現在全sourceの再照合・完全source archive取得を主張しない。
+
+旧control01はcompiler開始前に長パスJava5件の通常列挙がfalseとなり停止。[拡張パス診断](control_source_longpath_diagnosis_20261020.json)で全5件の実体/元SHA一致を確認し、同じ全6228件検査をGREENにした。受入を緩めず旧state/logを保存し、新attempt引数と元patched state拘束を起動helperへ追加。
+
+control02_20261020は14:37:27頃開始。source事前検査と同条件configure後、別build bc01で1コンパイル実行中。handle57474。[14:39監視](nativebuild監視_20261020T143907674044.json)はowner22824/child27296の生成時刻/command matched、異常なし。次は同じhandleを待ち、終了後source/両EXE/設定比較を検証する。P1検査草案・native回帰helperは未完成、package/selected pair起動は引き続き禁止。
+
+---
+
+前goal作業は進行あり。a08の同一owner24352/child27692のCIM生成時刻・コマンドを14:22に再照合し、生存を確認した。14:27には同じビルドログの進行を確認。20秒ごとのbuilder状態更新を独立15分監視とは扱わない。
+
+## 準備したもの
+
+- `prepare_native_control_20261020.py`で、新しい隔離source tree `sources/control126_20261020`を準備中。新directoryだけへコピーし、登録されたnative C++1件を公式ZIPの原bytesへ戻す。コピー後は全file集合・SHAを再計算し、両版の差が当該1件だけであることを検査する。失敗時はpartial treeと理由を保存し、再利用しない。コンパイラやSUMOは起動しない。
+- 14:27時点でコピーprocessの親21760と実child22832が存在する。これはvenv launcherとそのchildという親子関係であり、別のコピーを起動していない。exec session27461の同じhandleを待つ。準備の成功はまだ主張しない。
+- 比較検査関数の草案を`audit_history/packager_review_fix_20261020/native_pair_verifier_proposal.py`へ保全した。両state/EXE、compiler/static依存、CMake cache・config・flags・link・response、source全集合を照合する設計。未試験のため本番packagerには接続していない。本番packagerは前turnの12 tests PASS版SHA `4b7c2ea0a0b7eea4afc3f8a7e4fdae29bc78c8cc7d3626e48002fb9d9e6e6ace`とバイト一致を確認した。
+
+## P1を解消するために残る検証
+
+1. 両stateが独立した終端成功attemptであり、全commandが整数exit0、全logが観測時SHAと等値であること。各EXEはそのstateとbuild directoryの実物へ拘束する。
+2. cacheに記載されたsource/build/compiler pathを実primary fileへ照合する。設定比較ではsource/build root表記だけを正規化し、マクロ・最適化・リンク指定の文字列の違いを隠さない。両compiler/依存fileのSHAは直接比較する。
+3. source全集合の相互比較だけで公式base一致を証明したとはしない。公式ZIPとの全ビルド対象source比較、既知の非build test欠損の明示、共有CMakeリンク修正と登録native差分の区分を実証する。source commitやbooleanを根拠に代用しない。
+4. 両roleで同じ客観的pair evidenceを必須にする。相手EXE差替え、片側compiler/dependency/cache/flags/link改変、patch欠落・未適用、共通の未登録source変更、欠落proofを拒否する人工反例が必要。
+5. 有効な人工pairで成功経路とコピー後の全byte拘束を確認し、差分レビュー後に本番へ接続する。mockの成功をnative物理成立へ拡張しない。
+
+次は同じa08/session53072とcontrol準備/session27461を確認する。a08が実version/PE/source検査を終えた後、別build directoryと同一compiler/flags/dependenciesで未修正版controlを1本だけコンパイルする。コンパイルを重ねない。両版freeze後も、selected pairとnative guardの実証、全fixture/audit/14smoke/input-unit/preflight/G6が残る。正式0/70、後続core開始禁止、最終goal ACTIVEを維持する。
+
+運用正本はユーザー更新済み`05_タスク管理/スキル・エージェント運用.md`§0。credit停止agentは再起動せず、親chatのモデルを変更したとは記録しない。外部送信・公開更新なし。
+
+## 2026-10-20T22:05:33.397367+09:00 — 選定比較cの終端と独立監視使用
+
+最新HOLD（2026-10-20T22:05:33.397367+09:00）：goal ACTIVE。正式0/70・研究core0・READY=false。nc261020c/np261020c比較はFAILED_PRESERVED。修正版の位置連続8receiptは一致し2case完走したが、反復caseの独立検証で2人の旧計画長とnative可変stage長の照合が不合格。原本・INVALID保全、正式採用/後続開始停止。差の原因はnative内部距離の分岐を調査中で、検証条件の変更未実施。独立監視PID25168は22:04 JSTに同一性・直近観測を確認、受信箱を使用。suite/case ID照合警告は未修正。広いnative guard/全suite/audit/14smoke/preflight/G6未完、core開始禁止。
+
+一次診断：`audit_history/native_pair_c_receipt_diagnosis_20261020/diagnosis.json`。4回の置換・8receiptを全件照合。52.5秒の2人でnative live長−cached計画長は双方−7.33044236321706m。位置/edge/longitudinal/XYは一致。C++ getStage.length→getDistance→walkDistanceが内部距離の蓄積状態で分岐する事実を確認したが、この数値差の独立再構成は未完了。in-memory代入で偽predicateを切り分けたのみで、原本/式/検証条件を修正していない。比較workflow exit1、owner PID13420/launcher28208は現CIMで不在。校正2roleは独立PASS、反復修正版はINVALID。次の試行や研究coreは開始しない。
+
+
+## 2026-10-20T22:30:44.499288+09:00 — 比較dは最後のinventoryゲートで停止保全
+
+最新HOLD（2026-10-20T22:30:44.499288+09:00）：goal ACTIVE。正式0/70・研究core0・READY=false。d比較の対照校正と修正版2caseは独立全7成分PASS、対照反復は予定したXY不連続を再現。最終input比較helperの14番目toolchain receiptの一覧漏れでFAILED_PRESERVED。原本不変、helperを各role固定bundleへ完全照合するよう修正し33試験・実4入力SHA/2case物理比較を確認。旧dは昇格せず、現行版の新ID比較が必要。独立監視PID25168は生存・同一性一致、suite/case警告の修正は未実施。次は監視の狭い照合修正後に新比較。native trace13群の契約/7source経路確認済みだが未実装。広いnative guard/全suite/audit/14smoke/preflight/G6未完、core開始禁止。
+
+4caseの全14artifact SHAに不一致なし。相違はbounded.net.xmlのcomment metadataと各roleのtoolchain_runtime.jsonだけ。canonical netと物理/条件表は同一。runtime receipt全辞書を固定selected bundleのbinary/manifest/files/roles/provenance/shared-sourceから再導出し、別role・誤SHA・余剰key・欠損を拒否。RED/GREEN33/差分/実原本154ファイル不変/レビューはaudit_history/native_pair_inventory_20261020。raw比較は診断であり、元dの失敗statusをPASSへ書き換えていない。新しいworkflowで受入を確認する。
+
+次段native traceはaudit_history/native_guard_trace_contract_20261020に13群・7native source SHAを固定。XML walkのdepartPosLatを使う必要があり、person.addへ存在しない引数を渡さない。実装/compile/branch実測は未実施。
+
+
+
+## 2026-10-21T07:58:12.766443+09:00 — fの完了再照合・traceの準備
+
+最新HOLD（2026-10-21T07:58:12.766443+09:00）：goal ACTIVE。正式記録0/70・研究core稼働0・READY=false。選択比較nc261020f/np261020fは正常終了、3独立報告7成分PASS・2物理入力一致・全13,682 binding再照合差異0。反復の4 reroute/8位置receiptを一次証跡から再計算。広いnative guardは未完。観測専用trace挿入helperは6試験と実g++構文検証PASS、未適用で診断binaryは未作成。独立監視PID30168の同一性/直近観測を確認。PC睡眠中の観測空白は補作せず、旧失敗/INVALIDを保全。次は別source/build/SHAの隔離診断build、13群traceとproduction回帰、全suite/audit/14smoke/input-unit/preflight/G6。core開始禁止。
+
+詳細：[確認と準備](native_f確認・trace準備_20261021.md)。静的6試験と構文検証を実native guard合格へ転用しない。

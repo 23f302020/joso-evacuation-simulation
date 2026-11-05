@@ -1,0 +1,77 @@
+{
+  "at_jst": "2026-10-24T22:18:10.033495+09:00",
+  "status": "PRODUCTION_PRIMARY_WINDOW_REPLAY_PASS_NOT_ADOPTABLE",
+  "run_id": "nc26102402",
+  "actor_id": "scen_c_origin_0176_0008",
+  "generated_rows": [
+    {
+      "time_lower_sec": 3298.5,
+      "time_upper_sec": 3299.0,
+      "actor_id": "scen_c_origin_0176_0008",
+      "mode": "passenger",
+      "from_edge": "2013#0",
+      "to_edge": "2013#1",
+      "kind": "transition",
+      "closure_sec": 3300.0,
+      "ambiguous": false
+    },
+    {
+      "time_lower_sec": 3300.0,
+      "time_upper_sec": 3300.5,
+      "actor_id": "scen_c_origin_0176_0008",
+      "mode": "passenger",
+      "from_edge": "2013#1",
+      "to_edge": "2018#0",
+      "kind": "transition",
+      "closure_sec": 3600.0,
+      "ambiguous": false
+    }
+  ],
+  "old_generated_rows": [
+    {
+      "time_lower_sec": 3298.5,
+      "time_upper_sec": 3300.5,
+      "actor_id": "scen_c_origin_0176_0008",
+      "mode": "passenger",
+      "from_edge": "2013#0",
+      "to_edge": "2013#1",
+      "kind": "closed_entry",
+      "closure_sec": 3300.0,
+      "ambiguous": false
+    },
+    {
+      "time_lower_sec": 3298.5,
+      "time_upper_sec": 3300.5,
+      "actor_id": "scen_c_origin_0176_0008",
+      "mode": "passenger",
+      "from_edge": "2013#0",
+      "to_edge": "2018#0",
+      "kind": "transition",
+      "closure_sec": 3600.0,
+      "ambiguous": false
+    }
+  ],
+  "independent_multiset_matches": true,
+  "old_external_only_control_rejected": true,
+  "late_timestamp_mutation_rejected": true,
+  "actual_native_internal_lanes": 39607,
+  "actual_native_internal_route_pairs": 39607,
+  "forward_reverse_topology_relations_equal": true,
+  "bindings": {
+    "06_研究結果/jdrt/goal_20261017/nc26102402_閉鎖進入_個体時刻抽出_20261024.json": "ec4d9d6e5d69bb4431bfbc4639be50504faab8aca714e4df9f56d1e7b75355cc",
+    "06_研究結果/jdrt/goal_20261017/nc26102402_短道路・交差点_閉鎖進入診断_20261024.json": "907f70947c5a1088e672c564351e5127545929ca1493e81171cf6e60cca86a18",
+    "06_研究結果/jdrt/goal_20261017/document_history/90d35516c2b3037527bd716affa36608634257d33b05e63a3047498b62f6bfbc.json": "90d35516c2b3037527bd716affa36608634257d33b05e63a3047498b62f6bfbc",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/inputs/registered01/bounded.net.xml": "3693b8f5451d096662c8b62e091c5fca7437eb6d3e8e8c8e5b3f41c2509aece1",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "c55002e53fb8f700ef0189b24bb7f165ab7f8e21b03d9a07d484e65a8c48c81e",
+    "06_研究結果/jdrt/goal_20261017/document_history/8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96.py": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96"
+  },
+  "original_formal_validation_status": "INVALID_PRESERVED",
+  "formal_adoption_permitted": false,
+  "research_artifacts_modified": false,
+  "limits": [
+    "one preserved actor window, not full-run revalidation",
+    "real-SUMO integration/factory mutants/new registration/full READY remain required",
+    "pure AST replay does not prove native physical safety"
+  ]
+}

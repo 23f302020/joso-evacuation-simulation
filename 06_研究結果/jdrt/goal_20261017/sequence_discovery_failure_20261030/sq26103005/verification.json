@@ -1,0 +1,55 @@
+{
+  "at_utc": "2026-10-30T13:25:51.494771+00:00",
+  "status": "DIAGNOSTIC_DOCUMENTATION_AND_SAME_CORE_BINDING_VERIFIED_NOT_ADOPTION",
+  "files": {
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/capture.json": {
+      "bytes": 2360,
+      "sha256": "c3157543f6d61b406992555b35d235b0e1711cd2a126a92414fe079edc1676cd"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/core_manifest.json": {
+      "bytes": 35823,
+      "sha256": "25fbd07a5ec3473d1ab9d209da3b9c533c62db51cf89078dd058a008a786f0a1"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/core_progress.json": {
+      "bytes": 1182,
+      "sha256": "30bad8567ad982cba5401185dc87a0f35b20112a79143e6b8e7d958c71c1f718"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/diagnosis.md": {
+      "bytes": 5462,
+      "sha256": "fe0264ab31b6970d4645d229a4f58ccb65a370ebfcb2dcb525821ba4cdc0051c"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/manual_process_probe_001.json": {
+      "bytes": 472,
+      "sha256": "17dda071ced567dbc197008ac7727ae8aacd8b9b3295971d05a70404433090a7"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/observer_state.json": {
+      "bytes": 1090063,
+      "sha256": "1742cbedb95205a8c977b17059811416c67586059e69a6694a8b6f0c59fd4d37"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/observer_state_recovered.json": {
+      "bytes": 1091272,
+      "sha256": "75991bb930ff54a68c505ff16ca1e1157d1476e4b16175e6c51a7529db4d3669"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/recovered_binding_readback.json": {
+      "bytes": 1672,
+      "sha256": "6c715ef3b6dff4ae32f9e8bf5630a67119f5d3121feb2809b5fdd426c25ed694"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/routine_operations.before.md": {
+      "bytes": 88320,
+      "sha256": "c6a143cdf84515e07839f7e46ec0b25cca4def269d16a7a67ce77d5447705e75"
+    },
+    "06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/sequence_state.json": {
+      "bytes": 4406,
+      "sha256": "9a06cd88a303fd3b3cfdf63fae0cf6c7f01665190d4d982ecbb16632181835a7"
+    }
+  },
+  "old_routine_prefix_bytes_preserved": true,
+  "routine_new_sha256": "4a6bbc0246cf43e4ca8eb816d099880bf7973d2adfb8250a4c9087fc04e49bf6",
+  "routine_change": "documentation-only existing first-normal-finish procedure; no code/timeouts/acceptance changed",
+  "original_failed_sequence_unchanged": true,
+  "source_pins_unchanged": 13,
+  "core_restarted": false,
+  "monitor_restarted": false,
+  "historical_continuous_coverage_claimed": false,
+  "goal_complete": false
+}

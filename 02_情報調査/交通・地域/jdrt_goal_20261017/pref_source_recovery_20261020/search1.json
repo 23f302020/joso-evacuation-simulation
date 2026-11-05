@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "data": {
+    "web": [
+      {
+        "url": "https://www.pref.ibaraki.jp/doboku/kasen/keikaku/documents/5-6_s3_housinn.pdf",
+        "title": "資料-3",
+        "description": "平成27年9月関東・東北豪雨では、鬼怒川下流部の堤防決壊などにより、氾. 濫流による家屋の倒壊・流失や広範囲かつ長期間の浸水が生じ、これらに避難.",
+        "position": 1
+      },
+      {
+        "url": "https://www.pref.ibaraki.jp/somu/zaisei/kanri/documents/h30_6zaiseikouhyou.pdf",
+        "title": "財 政 状 況 茨 城 県",
+        "description": "・実施期間：平成27～32年度. ・ 防災・減災対策事業（県単公共）. 1 ... ※うち河川激甚災害対策特別緊急事業（関東・東北豪雨関連） 1箇所.",
+        "position": 2
+      },
+      {
+        "url": "https://www.gakusyu.pref.ibaraki.jp/file/1380",
+        "title": "学習プログラム開発 実践報告書 - 茨城の生涯学習",
+        "description": "講座②※関東東北豪雨災害の影響により日程変更. 守谷市市民活動支援 ... カ 第5回講座 （実施日）平成27年10月27日（火）. 内容. 講師. 準備 ...",
+        "position": 3
+      },
+      {
+        "url": "https://www.pref.ibaraki.jp/gikai/report/shinjidai/04sangyou.pdf",
+        "title": "（ 産業戦略部 ）",
+        "description": "関東・東北豪雨災害緊急対策融資. 長期資金 計. 35,870. 589,596,672. 40,614 ... 平成 27 年2月. 協定締結，占用許可. 平成 27 年 11 月. 工事着手 ...",
+        "position": 4
+      },
+      {
+        "url": "https://www.pref.ibaraki.jp/kikaku/kikaku/seisaku/documents/01-3tousinan.pdf",
+        "title": "第 4 部 地 域 づ く り の 基 本 方 向 - 茨城県",
+        "description": "また，「平成 27 年 9. 月関東・東北豪雨」の経験を踏まえ，災害に強い地域づくりに取り組みます。 ・自動車関連産業や流通業などの産業拠点と大規模園芸産地，伝統的な ...",
+        "position": 5
+      }
+    ],
+    "tools": []
+  },
+  "id": "01a15959-b3a7-774d-bdec-3c4c742bdda7",
+  "creditsUsed": 2,
+  "agent_hints": [
+    "All 5 web results are excerpts only (#1 \"https://www.pref.ibaraki.jp/doboku/kasen/keikaku/documents/5-6_s3_housinn.pdf\", #2 \"https://www.pref.ibaraki.jp/somu/zaisei/kanri/documents/h30_6zaiseikouhyou.pdf\", #3 \"https://www.gakusyu.pref.ibaraki.jp/file/1380\" and 2 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "at_jst": "2026-10-29T15:43:27.987759+09:00",
+  "status": "EXPLICIT_SHARED_POLICY_BRANCH_REVIEW_PASSED_ACTUAL_PAIR_PENDING",
+  "old_pair_verifier": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\43a1fad4a81c8791da1a3698d7a87ca1796c88e9d5945e85f084c787e1256264_before_shared_stop_policy_choice_pair_proof.py",
+  "old_sha256": "43a1fad4a81c8791da1a3698d7a87ca1796c88e9d5945e85f084c787e1256264",
+  "new_pair_verifier_sha256": "c23a839c82ee2bea849e0547ee9e212293934a44ab46d89fc7b4a6d7c7c052b2",
+  "diff": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_stop_policy_pair_verifier.diff",
+  "scope": [
+    "Second fixed project policy path with distinct schema; old branch retains original schema",
+    "New branch requires unchanged old policy lineage and exactly one both-role stop-history patch",
+    "Patch target overlap rejected",
+    "Official archive/all source sets and exact patches, metadata10/configure, compiler/static/header, native binary/version/loader checks unchanged",
+    "Current source-bound build was terminal before verifier modification; old r proof preserved as historical build prerequisite"
+  ],
+  "tests": {
+    "new_integration": {
+      "tests": 5,
+      "log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_native_pair_integration_GREEN_attempt4.log",
+      "sha256": "f94c6347cf6714bdf1bf71d4b57da3d8a87d89520928c2a4c2c9d44dd2cb181e"
+    },
+    "legacy": {
+      "tests": 17,
+      "log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_native_pair_legacy_regression.log",
+      "sha256": "e04ee580c22887094891038feb0feefff952099bdf38caaba13a2f124c5129ff"
+    },
+    "scoped_extension": {
+      "tests": 6,
+      "log": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_stop_policy_after_integration.log",
+      "sha256": "acd29446e7f9a81568b0196eae6e6834c09b9c2e1843a5a626eab95e6fd15145"
+    }
+  },
+  "implementation_attempts_preserved": [
+    "shared_native_pair_integration_GREEN_attempt1.log: capture helper str-to-Path API mismatch",
+    "shared_native_pair_integration_GREEN_attempt2.log: artificial policy missing required scope; no production default added",
+    "shared_native_pair_integration_GREEN_attempt3.log: final helper hash loop also required Path values"
+  ],
+  "unchanged_common5_and_config_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8"
+  },
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "limits": [
+    "Artificial contracts are not actual full pair proof, native correctness, package or READY",
+    "One primary-role proof will bind selected binary role; packaging each role must repeat strict pair verification"
+  ]
+}

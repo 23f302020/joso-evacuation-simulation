@@ -1,0 +1,14 @@
+.....F...............
+======================================================================
+FAIL: test_one_invocation_cannot_start_multiple_cells_without_parent_goal_check (test_choice_core_sequence.GateTests.test_one_invocation_cannot_start_multiple_cells_without_parent_goal_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 78, in test_one_invocation_cannot_start_multiple_cells_without_parent_goal_check
+    with self.assertRaisesRegex(RuntimeError, 'one cell'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.610s
+
+FAILED (failures=1)

@@ -1,0 +1,61 @@
+FFFFEF
+======================================================================
+ERROR: test_only_person_presence_changes_between_pair (test_choice_native_braking_probe.BrakingProbeContracts.test_only_person_presence_changes_between_pair)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_probe.py", line 18, in test_only_person_presence_changes_between_pair
+    absent = ET.fromstring(make_routes(self.plan, self.car, False))
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\xml\etree\ElementTree.py", line 1348, in XML
+    parser.feed(text)
+    ~~~~~~~~~~~^^^^^^
+TypeError: a bytes-like object is required, not 'NoneType'
+
+======================================================================
+FAIL: test_changed_source_is_rejected (test_choice_native_braking_probe.BrakingProbeContracts.test_changed_source_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_probe.py", line 38, in test_changed_source_is_rejected
+    self.assertEqual(verify_sources(root, sources), sources)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != {'input.xml': '0682c5f2076f099c34cfdd15a9[35 chars]be5'}
+
+======================================================================
+FAIL: test_negative_or_nonfinite_position_rejected_without_clamping (test_choice_native_braking_probe.BrakingProbeContracts.test_negative_or_nonfinite_position_rejected_without_clamping) (value=-1.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_probe.py", line 29, in test_negative_or_nonfinite_position_rejected_without_clamping
+    with self.subTest(value=value), self.assertRaises(ValueError):
+                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_negative_or_nonfinite_position_rejected_without_clamping (test_choice_native_braking_probe.BrakingProbeContracts.test_negative_or_nonfinite_position_rejected_without_clamping) (value=nan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_probe.py", line 29, in test_negative_or_nonfinite_position_rejected_without_clamping
+    with self.subTest(value=value), self.assertRaises(ValueError):
+                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_negative_or_nonfinite_position_rejected_without_clamping (test_choice_native_braking_probe.BrakingProbeContracts.test_negative_or_nonfinite_position_rejected_without_clamping) (value=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_probe.py", line 29, in test_negative_or_nonfinite_position_rejected_without_clamping
+    with self.subTest(value=value), self.assertRaises(ValueError):
+                                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_source_outside_project_rejected (test_choice_native_braking_probe.BrakingProbeContracts.test_source_outside_project_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_native_braking_probe.py", line 44, in test_source_outside_project_rejected
+    with tempfile.TemporaryDirectory() as directory, self.assertRaises(ValueError):
+                                                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.043s
+
+FAILED (failures=5, errors=1)

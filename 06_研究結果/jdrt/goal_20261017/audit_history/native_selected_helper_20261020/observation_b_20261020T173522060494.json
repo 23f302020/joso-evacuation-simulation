@@ -1,0 +1,21 @@
+{
+  "at_jst": "2026-10-20T17:35:19.811359+09:00",
+  "action": "selected_native_pair_constructor_observation",
+  "status": "PREPARING_BEFORE_STATE",
+  "owner": {
+    "ProcessId": 24548,
+    "ParentProcessId": 26036,
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020b --patched-id np261020b",
+    "CreationDate": 1792485197650
+  },
+  "launcher": {
+    "ProcessId": 26036,
+    "ParentProcessId": 26944,
+    "ExecutablePath": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py run-selected-pair --project-root . --control-manifest 04_プログラム/output/sumo/toolchains/native_ctl_20261020a/toolchain.json --patched-manifest 04_プログラム/output/sumo/toolchains/native_lat_20261020a/toolchain.json --control-id nc261020b --patched-id np261020b",
+    "CreationDate": 1792485197618
+  },
+  "session": 38383,
+  "research_adoption_permitted": false
+}

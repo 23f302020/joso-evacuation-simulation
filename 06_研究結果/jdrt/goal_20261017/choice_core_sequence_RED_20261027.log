@@ -1,0 +1,214 @@
+FFFFFFFFFFFFF.FFFFFFFF
+======================================================================
+FAIL: test_count_cell_or_ready_mismatch_stops (test_choice_core_sequence.GateTests.test_count_cell_or_ready_mismatch_stops) (key='recorded_cells')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 42, in test_count_cell_or_ready_mismatch_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_count_cell_or_ready_mismatch_stops (test_choice_core_sequence.GateTests.test_count_cell_or_ready_mismatch_stops) (key='next_cell')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 42, in test_count_cell_or_ready_mismatch_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_count_cell_or_ready_mismatch_stops (test_choice_core_sequence.GateTests.test_count_cell_or_ready_mismatch_stops) (key='core_ready')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 42, in test_count_cell_or_ready_mismatch_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_count_cell_or_ready_mismatch_stops (test_choice_core_sequence.GateTests.test_count_cell_or_ready_mismatch_stops) (key='core_start_available')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 42, in test_count_cell_or_ready_mismatch_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='running')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='unrecorded')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='partial_records')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='record_identity_mismatch')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='unresolved_failures')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='unresolved_launches')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='pending_record_journals')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='foreign_running_manifests')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_every_unresolved_hold_stops (test_choice_core_sequence.GateTests.test_every_unresolved_hold_stops) (key='active_native_processes')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 29, in test_every_unresolved_hold_stops
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_missing_hold_does_not_default_to_clear (test_choice_core_sequence.GateTests.test_missing_hold_does_not_default_to_clear)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 34, in test_missing_hold_does_not_default_to_clear
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_observer_requires_live_identity_and_freshness (test_choice_core_sequence.GateTests.test_observer_requires_live_identity_and_freshness) (key='monitor_process', value={'state': 'absent'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 54, in test_observer_requires_live_identity_and_freshness
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_observer_requires_live_identity_and_freshness (test_choice_core_sequence.GateTests.test_observer_requires_live_identity_and_freshness) (key='monitor_identity_matches', value=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 54, in test_observer_requires_live_identity_and_freshness
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_observer_requires_live_identity_and_freshness (test_choice_core_sequence.GateTests.test_observer_requires_live_identity_and_freshness) (key='observation_age_sec', value=121)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 54, in test_observer_requires_live_identity_and_freshness
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_observer_requires_live_identity_and_freshness (test_choice_core_sequence.GateTests.test_observer_requires_live_identity_and_freshness) (key='observation_age_sec', value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 54, in test_observer_requires_live_identity_and_freshness
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_observer_requires_live_identity_and_freshness (test_choice_core_sequence.GateTests.test_observer_requires_live_identity_and_freshness) (key='observation_age_sec', value=nan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 54, in test_observer_requires_live_identity_and_freshness
+    with self.assertRaises(RuntimeError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_readback_failure_never_runs_display (test_choice_core_sequence.GateTests.test_readback_failure_never_runs_display)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 70, in test_readback_failure_never_runs_display
+    self.assertEqual(actions, ['finish', 'readback'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['finish', 'sync', 'readback'] != ['finish', 'readback']
+
+First differing element 1:
+'sync'
+'readback'
+
+First list contains 1 additional elements.
+First extra element 2:
+'readback'
+
+- ['finish', 'sync', 'readback']
+?           --------
+
++ ['finish', 'readback']
+
+======================================================================
+FAIL: test_readback_precedes_display_writers (test_choice_core_sequence.GateTests.test_readback_precedes_display_writers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_core_sequence.py", line 60, in test_readback_precedes_display_writers
+    self.assertEqual(actions, ['finish', 'readback', 'sync'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['finish', 'sync', 'readback'] != ['finish', 'readback', 'sync']
+
+First differing element 1:
+'sync'
+'readback'
+
+- ['finish', 'sync', 'readback']
++ ['finish', 'readback', 'sync']
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.043s
+
+FAILED (failures=21)

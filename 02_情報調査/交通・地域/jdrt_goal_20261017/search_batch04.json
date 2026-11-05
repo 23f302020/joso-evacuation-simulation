@@ -1,0 +1,136 @@
+{
+  "recorded_at_utc": "2026-10-16T23:28:00.046Z",
+  "queries": [
+    "site.city.joso.lg.jp 水海道総合体育館 所在地 地図",
+    "site.city.joso.lg.jp あすなろの里 所在地 地図",
+    "site.city.joso.lg.jp LIXIL石下総合体育館 所在地 地図"
+  ],
+  "results": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_sogo.html\",\"title\":\"水海道総合体育館 | 常総市公式ホームページ\",\"description\":\"主にバレーボール、バドミントンがご利用いただけます。 水海道総合体育館(副競技場). 所在地. 常総市坂手町3552（きぬ総合公園内）. ※表 ...\",\"position\":1},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_kyujyo.html\",\"title\":\"水海道球場 | 常総市公式ホームページ\",\"description\":\"所在地常総市坂手町3552（きぬ総合公園内）施設の概要収容人員固定席1300人内野芝生スタンド2020人外野芝生スタンド2180人敷地面積 グランド面積12690平方メ...\",\"position\":2},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/\",\"title\":\"体育施設 | 常総市公式ホームページ\",\"description\":\"所在地 〒303-8501 … 電話番号 0297-23-2111 開庁時間 8時30分から17時15. CITY OF JOSO.\",\"position\":3}]},\"creditsUsed\":2,\"id\":\"01a1470b-0cdb-77ec-ad53-bd415c438390\",\"agent_hints\":[\"All 3 web results are excerpts only (#1 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_sogo.html\\\", #2 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_kyujyo.html\\\", #3 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/\\\"). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_sogo.html",
+                "title": "水海道総合体育館 | 常総市公式ホームページ",
+                "description": "主にバレーボール、バドミントンがご利用いただけます。 水海道総合体育館(副競技場). 所在地. 常総市坂手町3552（きぬ総合公園内）. ※表 ...",
+                "position": 1
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_kyujyo.html",
+                "title": "水海道球場 | 常総市公式ホームページ",
+                "description": "所在地常総市坂手町3552（きぬ総合公園内）施設の概要収容人員固定席1300人内野芝生スタンド2020人外野芝生スタンド2180人敷地面積 グランド面積12690平方メ...",
+                "position": 2
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/",
+                "title": "体育施設 | 常総市公式ホームページ",
+                "description": "所在地 〒303-8501 … 電話番号 0297-23-2111 開庁時間 8時30分から17時15. CITY OF JOSO.",
+                "position": 3
+              }
+            ]
+          },
+          "id": "01a1470b-0cdb-77ec-ad53-bd415c438390",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 3 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_sogo.html\", #2 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/mzkid_kyujyo.html\", #3 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/\"). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/\",\"title\":\"あすなろの里 | 常総市公式ホームページ\",\"description\":\"所在地 〒303-8501 … 電話番号 0297-23-2111 開庁時間 8時30分から17時15分まで(土曜日・日曜日・祝日は除く) CITY OF JOSO.\",\"position\":1},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/page003855.html\",\"title\":\"【結果公表】水海道あすなろの里施設活用に係るサウンディング型市場 ...\",\"description\":\"所在地 茨城県常総市 ・ スケジュール表 ※表は横スクロールできます。 すなろの里 ・ 所在地 〒303-8501 茨城県常総 ・ 電話番号 0297-23-2111 開庁時間 8時30分から17時 ...\",\"position\":2},{\"url\":\"http://asunaronosato.net/\",\"title\":\"水海道あすなろの里 - 常総市生涯学習課所管の野外研修センター「水海道 ...\",\"description\":\"宿泊者がご利用可能な大浴場をご用意しております。（土日祝の13時～16時は日帰り入浴も行っています。） 浴室からは正面に雄大な菅生沼の大自然をご覧いただけます。\",\"position\":3}]},\"creditsUsed\":2,\"id\":\"01a1470b-0cf6-7560-bf93-93f5f43d1666\",\"agent_hints\":[\"All 3 web results are excerpts only (#1 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/\\\", #2 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/page003855.html\\\", #3 \\\"http://asunaronosato.net/\\\"). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/",
+                "title": "あすなろの里 | 常総市公式ホームページ",
+                "description": "所在地 〒303-8501 … 電話番号 0297-23-2111 開庁時間 8時30分から17時15分まで(土曜日・日曜日・祝日は除く) CITY OF JOSO.",
+                "position": 1
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/page003855.html",
+                "title": "【結果公表】水海道あすなろの里施設活用に係るサウンディング型市場 ...",
+                "description": "所在地 茨城県常総市 ・ スケジュール表 ※表は横スクロールできます。 すなろの里 ・ 所在地 〒303-8501 茨城県常総 ・ 電話番号 0297-23-2111 開庁時間 8時30分から17時 ...",
+                "position": 2
+              },
+              {
+                "url": "http://asunaronosato.net/",
+                "title": "水海道あすなろの里 - 常総市生涯学習課所管の野外研修センター「水海道 ...",
+                "description": "宿泊者がご利用可能な大浴場をご用意しております。（土日祝の13時～16時は日帰り入浴も行っています。） 浴室からは正面に雄大な菅生沼の大自然をご覧いただけます。",
+                "position": 3
+              }
+            ]
+          },
+          "id": "01a1470b-0cf6-7560-bf93-93f5f43d1666",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 3 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/\", #2 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/gakkou_kyouiku/asunaro/page003855.html\", #3 \"http://asunaronosato.net/\"). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo_taikukan.html\",\"title\":\"LIXIL石下総合体育館 | 常総市公式ホームページ\",\"description\":\"LIXIL石下総合体育館 ・ 所在地 常総市鴻野山1670 利用案内 ・ 時間 8時30分から17時. CITY OF JOSO.\",\"position\":1},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishigekyujyo.html\",\"title\":\"石下球場 | 常総市公式ホームページ\",\"description\":\"所在地常総市鴻野山1670（石下総合運動公園内） ... 4月1日から石下総合体育館の愛称がLIXIL石下総合体育館になりました。 体育施設 ...\",\"position\":2},{\"url\":\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo.html\",\"title\":\"石下総合運動公園 | 常総市公式ホームページ\",\"description\":\"自然豊かな総合運動公園です。1年中スポーツが楽しめます。LIXIL石下総合体育館 ・ 地図表示 地図情報 ・ 電話番号:0297-23-2111 ・ 所在地 〒303-8501 ...\",\"position\":3}]},\"creditsUsed\":2,\"id\":\"01a1470b-0d0d-766f-81a8-f49cf3aad7b8\",\"agent_hints\":[\"All 3 web results are excerpts only (#1 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo_taikukan.html\\\", #2 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishigekyujyo.html\\\", #3 \\\"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo.html\\\"). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+          }
+        ],
+        "structuredContent": {
+          "success": true,
+          "data": {
+            "web": [
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo_taikukan.html",
+                "title": "LIXIL石下総合体育館 | 常総市公式ホームページ",
+                "description": "LIXIL石下総合体育館 ・ 所在地 常総市鴻野山1670 利用案内 ・ 時間 8時30分から17時. CITY OF JOSO.",
+                "position": 1
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishigekyujyo.html",
+                "title": "石下球場 | 常総市公式ホームページ",
+                "description": "所在地常総市鴻野山1670（石下総合運動公園内） ... 4月1日から石下総合体育館の愛称がLIXIL石下総合体育館になりました。 体育施設 ...",
+                "position": 2
+              },
+              {
+                "url": "https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo.html",
+                "title": "石下総合運動公園 | 常総市公式ホームページ",
+                "description": "自然豊かな総合運動公園です。1年中スポーツが楽しめます。LIXIL石下総合体育館 ・ 地図表示 地図情報 ・ 電話番号:0297-23-2111 ・ 所在地 〒303-8501 ...",
+                "position": 3
+              }
+            ]
+          },
+          "id": "01a1470b-0d0d-766f-81a8-f49cf3aad7b8",
+          "creditsUsed": 2,
+          "agent_hints": [
+            "All 3 web results are excerpts only (#1 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo_taikukan.html\", #2 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishigekyujyo.html\", #3 \"https://www.city.joso.lg.jp/kurashi_gyousei/kurashi/shisetsu_koukyou/facility/sports/ishige_sogo.html\"). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+          ]
+        },
+        "isError": false
+      }
+    }
+  ]
+}

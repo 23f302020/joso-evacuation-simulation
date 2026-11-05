@@ -1,0 +1,13 @@
+{
+  "at_jst": "2026-10-24T08:09:36.041296+09:00",
+  "status": "SCOPED_REVIEW_PASS",
+  "tests_pass": 31,
+  "new_contract_RED": "red.log",
+  "GREEN": "green.log",
+  "scope": "keep previous status and PID on read failure; record exception class/message bounded1000 chars; old event IDs unchanged",
+  "finding": [],
+  "research_actions_added": false,
+  "normal_snapshot_logic_changed": false,
+  "monitor_source_sha256": "655e67fc92db8fe6481a0ebdce73cddc2c4eb51017cc97b4a49a0c5f6af7013b",
+  "deployment_pending": true
+}

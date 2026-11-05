@@ -1,0 +1,35 @@
+[
+  {
+    "id": "city_verification",
+    "requested_url": "https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf",
+    "final_url": "https://www.city.joso.lg.jp/data/doc/1674176111_doc_6_0.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "last_modified": "Mon, 30 Jun 2025 08:28:10 GMT",
+    "retrieved_at": "2026-10-19T09:30:59.361922+09:00",
+    "bytes": 2541900,
+    "sha256": "d33e2f3198d4e410ba33c1bfe7d495566ddc5939bac888c76e1b007622fc10b8"
+  },
+  {
+    "id": "cabinet_rescue_stockyard",
+    "requested_url": "https://www.bousai.go.jp/kaigirep/kentokai/hinanzyokakuho/wg_situ/pdf/dai5kaisiryo1.pdf",
+    "final_url": "https://www.bousai.go.jp/kaigirep/kentokai/hinanzyokakuho/wg_situ/pdf/dai5kaisiryo1.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "last_modified": "Thu, 01 Dec 2022 21:00:11 GMT",
+    "retrieved_at": "2026-10-19T09:30:59.662402+09:00",
+    "bytes": 1286253,
+    "sha256": "c590af62a3ee62404a8437cee497520ec87f7b223e04a6846ef4ea4faefe1cb1"
+  },
+  {
+    "id": "cabinet_disaster_overview",
+    "requested_url": "https://www.bousai.go.jp/fusuigai/suigaiworking/pdf/dai1kai/siryo1.pdf",
+    "final_url": "https://www.bousai.go.jp/fusuigai/suigaiworking/pdf/dai1kai/siryo1.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "last_modified": "Thu, 01 Dec 2022 23:23:31 GMT",
+    "retrieved_at": "2026-10-19T09:31:01.010036+09:00",
+    "bytes": 3270518,
+    "sha256": "a9ac60cc89964f1b3883bfd14e76448653390ba33f898bb341d2761d207d0ada"
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "files": [
+    {
+      "path": ".agents/skills/joso-jdrt-runner/scripts/choice_package_toolchain.py",
+      "sha256": "834f7d28db6e71fba03133490cf5adceeca5721cb21a2d9e2343f5f23bb4b55d",
+      "bytes": 18413,
+      "trailing_whitespace_lines": []
+    },
+    {
+      "path": "04_プログラム/tests/test_choice_package_toolchain.py",
+      "sha256": "42a2ddda5d0b50de1261ad749eb5519a0eb922640be6fb4662976db589052320",
+      "bytes": 12471,
+      "trailing_whitespace_lines": []
+    },
+    {
+      "path": ".agents/skills/joso-jdrt-runner/references/realtime_choice.md",
+      "sha256": "dc18db61571ac1dbbf43a3a36686bbd0e40cc3df591e1e5758924d1184328a80",
+      "bytes": 12098,
+      "trailing_whitespace_lines": []
+    },
+    {
+      "path": "06_研究結果/jdrt/goal_20261017/choice_toolchain_binding_20261020.md",
+      "sha256": "4a82fd8f7f312d92f54129b20b052df08af900e51aa96a11c017c5db6e1daac7",
+      "bytes": 11336,
+      "trailing_whitespace_lines": []
+    }
+  ],
+  "ast_parse": "PASS",
+  "diff_check": [
+    {
+      "path": ".agents/skills/joso-jdrt-runner/scripts/choice_package_toolchain.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "path": "04_プログラム/tests/test_choice_package_toolchain.py",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "path": ".agents/skills/joso-jdrt-runner/references/realtime_choice.md",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "warning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\choice_toolchain_packager_20261020\\previous_realtime_choice.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\references\\realtime_choice.md', LF will be replaced by CRLF the next time Git touches it\n"
+    },
+    {
+      "path": "06_研究結果/jdrt/goal_20261017/choice_toolchain_binding_20261020.md",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "warning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\audit_history\\choice_toolchain_packager_20261020\\previous_binding_report.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\choice_toolchain_binding_20261020.md', LF will be replaced by CRLF the next time Git touches it\n"
+    }
+  ],
+  "requested_model": "gpt-6.1-sol/high",
+  "actual_backend": "unconfirmed",
+  "research_ready": false,
+  "real_bundle_generated": false,
+  "simulation_executed": false
+}

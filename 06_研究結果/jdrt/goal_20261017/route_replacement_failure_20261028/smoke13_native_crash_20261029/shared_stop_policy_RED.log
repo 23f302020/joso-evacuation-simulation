@@ -1,0 +1,21 @@
+....E.
+======================================================================
+ERROR: test_retains_base_policy_and_returns_only_reviewed_both_role_patch (__main__.SharedPolicyContracts.test_retains_base_policy_and_returns_only_reviewed_both_role_patch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_shared_stop_policy.py", line 49, in test_retains_base_policy_and_returns_only_reviewed_both_role_patch
+    self.assertEqual(self.check(),{target.TARGET:{**self.policy['stop_index_patch'],
+                     ~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\test_choice_shared_stop_policy.py", line 45, in check
+    return target.shared_stop_patch(self.policy,self.commit,self.root,self.observed,
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                    lambda p:json.loads(Path(p).read_bytes()),self.sha)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_shared_stop_policy.py", line 12, in shared_stop_patch
+    raise ValueError('Shared stop-history extension is not implemented; no gate connection')
+ValueError: Shared stop-history extension is not implemented; no gate connection
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.301s
+
+FAILED (errors=1)

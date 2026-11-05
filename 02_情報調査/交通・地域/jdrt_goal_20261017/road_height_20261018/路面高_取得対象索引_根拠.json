@@ -1,0 +1,60 @@
+{
+  "at_jst": "2026-10-18T10:00:27.393948+09:00",
+  "source_generated_ways": 178,
+  "quarantined_edges_indexed": 1061,
+  "buckets": {
+    "named_bridge_label": 8,
+    "named_road_or_ref": 49,
+    "unnamed_structure": 121
+  },
+  "named_bridge_labels": [
+    {
+      "way_id": "3175",
+      "label": "弁天橋",
+      "quarantined_edges": 11
+    },
+    {
+      "way_id": "6506",
+      "label": "弁天橋",
+      "quarantined_edges": 11
+    },
+    {
+      "way_id": "11538",
+      "label": "明橋",
+      "quarantined_edges": 6
+    },
+    {
+      "way_id": "6206",
+      "label": "明橋",
+      "quarantined_edges": 6
+    },
+    {
+      "way_id": "153",
+      "label": "東橋",
+      "quarantined_edges": 12
+    },
+    {
+      "way_id": "7026",
+      "label": "東橋",
+      "quarantined_edges": 12
+    },
+    {
+      "way_id": "6198",
+      "label": "桜橋",
+      "quarantined_edges": 5
+    },
+    {
+      "way_id": "9171",
+      "label": "桜橋",
+      "quarantined_edges": 5
+    }
+  ],
+  "source_sha256": {
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/structure_tags_audit.csv": "5bbc6864e769f20e70c0e5d9bee83232b5648fa261b87349779ccdbb83249180",
+    "04_プログラム/output/sumo/regions/08211/network/08211.osm.xml": "fef928042eb345f7c6ecde7989175fe481742596a411f4f7875591c22afd0c36",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/quarantined_edges.csv": "bc349a0ae914c3a4e717358129ff3491613ae885f59d49e19ef272bd90da7c62",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered02/manifest.json": "9820a996739aa1a578cdef977fb1b625c5ba1e10fb176c7042a184ee041af3fe"
+  },
+  "artifact_sha256": "70feb558c42c930d8b82b6aa4d5f088d2eb0002843d83f2a7873fa33a23a63e1",
+  "interpretation": "generated OSM ways/edge fragments, not a count of distinct official bridges; labels not independently verified; no deck heights acquired; no input change"
+}

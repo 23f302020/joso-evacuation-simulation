@@ -1,0 +1,46 @@
+{
+  "at_jst": "2026-10-24T22:20:37.584114+09:00",
+  "status": "STATIC_CONTROL_SCOPE_UNCHANGED_NOT_READY",
+  "function_changes": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": {
+      "changed": [
+        "run"
+      ],
+      "added": [
+        "passenger_transition_links",
+        "passenger_transition_source"
+      ],
+      "removed": [],
+      "before_sha256": "8f671dd549d9a83365ed52c702077164553dcec19eac0330dfa1e5abea216e96",
+      "after_sha256": "e3c087179fe4839da817ae7dc768560591a2a019dd6e259eecca800d6114e32b"
+    },
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": {
+      "changed": [
+        "audit_movement_events"
+      ],
+      "added": [
+        "native_transition_backlinks",
+        "verified_internal_source"
+      ],
+      "removed": [],
+      "before_sha256": "c945ebdafc66ddc7bfb07001a4b69761b8f2fe4578b3a0d00a2191685053a69f",
+      "after_sha256": "c55002e53fb8f700ef0189b24bb7f165ab7f8e21b03d9a07d484e65a8c48c81e"
+    }
+  },
+  "native_callsite_ASTs_unchanged": true,
+  "nested_control_helpers_unchanged": true,
+  "only_nested_observation_function_changed": "observe_transition",
+  "native_warning_classifier_and_other_validator_functions_unchanged": true,
+  "config_and_research_parameters_unchanged": true,
+  "old8_ledger_bytes_unchanged": true,
+  "scope": "static callsites and function ASTs; not dynamic proof of all trajectories or full native integration",
+  "remaining": [
+    "initial/arrival/reset real-SUMO counterexamples",
+    "full fixture/audit/all14smokes/new registration/READY",
+    "full70/analysis/report"
+  ],
+  "source_paths": [
+    "04_プログラム/scripts/jdrt_realtime_choice.py",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py"
+  ]
+}

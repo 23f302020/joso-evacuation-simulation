@@ -1,0 +1,20 @@
+{
+  "at_jst": "2026-10-29T00:01:18.789269+09:00",
+  "files": [
+    {
+      "source": "07_監視システム/watch.py",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/observer_suite_progress_repair/080944f6f381ca278f214bc472a0185197c91da56ca06bef504d6c428206689c_watch.py",
+      "sha256": "080944f6f381ca278f214bc472a0185197c91da56ca06bef504d6c428206689c"
+    },
+    {
+      "source": "07_監視システム/test_watch.py",
+      "copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/observer_suite_progress_repair/9cd3a1f2180c04c4846f397aeac4cf0ee2795164253871958835bf416dee4269_test_watch.py",
+      "sha256": "9cd3a1f2180c04c4846f397aeac4cf0ee2795164253871958835bf416dee4269"
+    }
+  ],
+  "original_stalled_events": [
+    "8181c7a5c8db91352ce7a795d386cc85.json"
+  ],
+  "science_implementation_edited": false,
+  "monitor_daemon_not_yet_changed": true
+}

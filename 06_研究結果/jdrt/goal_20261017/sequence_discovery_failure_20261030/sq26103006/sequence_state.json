@@ -1,0 +1,85 @@
+{
+  "status": "FAILED_PRESERVED",
+  "pid": 39256,
+  "registration_id": "choice_shared_stopindex_v5_20261029",
+  "sequence_id": "sq26103006",
+  "expected_initial_recorded": 5,
+  "maximum_new_cells": 1,
+  "pins": {
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_core_sequence.py": "dff4798eea53f72948523f17072e01a32d9ea6f439378e0edeb05e114839a44b",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_finish_cell.py": "b2c709c4c46e5d09b38347b0d5316326ac1a1699fc60f065fb48f0ead8fe7075",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_record_readback.py": "a974afbd3938fb439cfa628d233ac696e75ed4bc030262ba7953c4b94ce9fbfb",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_monitor.py": "30b22b33fe8e0af897b1e5851b34e13642496ce0faee28f7723212651baa0b8e",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_sync_status.py": "ee029300770db8e284436d0073b18559e52acfbb9dca694733888b35309281ae",
+    ".agents/skills/joso-jdrt-runner/scripts/status_progress.py": "c1974396a7a418dcb07b8c94c66345172dd4561033bfca7cd14cf0aaf74151f5",
+    "07_監視システム/watch.py": "908cff58920c2ae6fd140f7077d9b8fb2c21b3e0bfb78eccfc321f8397ee3d00"
+  },
+  "run_prefix": "sv261030",
+  "initial_readback": "C:/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究/06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26103005_manual_finish/sv26103005_record7_readback.json",
+  "initial_readback_sha256": "595b027af7ba6f4e4a8e192f2555372a6306168750bea5c303099100776ef6fd",
+  "completed": [],
+  "active": {
+    "run_id": "sv26103006",
+    "cell": {
+      "cell_id": "fixed_reference_u50_r2p900_seed23423",
+      "destination_policy": "fixed_reference",
+      "demand_level": "u50",
+      "scenario": "R2P900",
+      "seed": 23423
+    },
+    "launch": {
+      "status": "STARTED",
+      "run_id": "sv26103006",
+      "cell_id": "fixed_reference_u50_r2p900_seed23423",
+      "pid": 30760,
+      "state_path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/driver_logs/sv26103006.state.json"
+    },
+    "startup_processes": [
+      {
+        "state": "alive",
+        "created": 134378428611557449,
+        "pid": 30760
+      },
+      {
+        "state": "alive",
+        "created": 134378428612149635,
+        "pid": 39120
+      }
+    ],
+    "startup_command_verified_pids": [
+      30760,
+      39120
+    ],
+    "process_identity": {
+      "state": "alive",
+      "created": 134378428612149635,
+      "pid": 39120
+    }
+  },
+  "goal_complete": false,
+  "at_jst": "2026-10-30T23:09:13.985302+09:00",
+  "command": {
+    "argv": [
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe",
+      "-B",
+      "-X",
+      "utf8",
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\07_監視システム\\watch.py",
+      "status"
+    ],
+    "stdout": "C:/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究/04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/driver_logs/core_sequences/sq26103006/0018.stdout.log",
+    "stderr": "C:/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究/04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/driver_logs/core_sequences/sq26103006/0018.stderr.log",
+    "launcher_pid": 37772,
+    "exit_code": 0
+  },
+  "phase": "core",
+  "error_type": "RuntimeError",
+  "error": "Independent target discovery remains unproven",
+  "child_may_still_be_running": true
+}

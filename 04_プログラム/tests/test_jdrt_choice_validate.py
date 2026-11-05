@@ -6,6 +6,7 @@ import json
 import tempfile
 import csv
 import gzip
+import hashlib
 from pathlib import Path
 from copy import deepcopy
 from unittest.mock import patch
@@ -17,6 +18,70 @@ from scripts import jdrt_realtime_choice_validate as validator
 
 
 class SparseVerifierContracts(unittest.TestCase):
+    def test_braking_settings_require_motion_identity_and_bound_config(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            config = root / '018_config.h'
+            config.write_text('#define NUMERICAL_EPS 0.001\n', encoding='utf-8')
+            pair = root / 'native_pair.json'
+            pair.write_text(json.dumps({'schema': 'isolated_native_pair_v1',
+                'source_commit': 'fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3',
+                'builds': {'patched': {'metadata': {'src/config.h': {
+                    'sha256': hashlib.sha256(config.read_bytes()).hexdigest()}}}}}), encoding='utf-8')
+            names = ['--net-file', '--route-files', '--step-length', '--seed', '--begin', '--end',
+                     '--time-to-teleport', '--collision.action', '--step-method.ballistic',
+                     '--emergencydecel.warning-threshold', '--no-step-log', '--duration-log.disable',
+                     '--error-log', '--log', '--tripinfo-output', '--tripinfo-output.write-unfinished', '--remote-port']
+            values = ['net.xml', 'types.xml', '.25', '1', '0', '11', '-1', 'teleport', 'false',
+                      '1', 'true', 'true', 'errors.log', 'sumo.log', 'trip.xml', 'true', '12345']
+            manifest = {'step_sec': .25, 'owned_native_process': {'pid': 123, 'popen_args':
+                        ['sumo', *[part for pair in zip(names, values) for part in pair]]},
+                        'native_diagnostic_observation_contract': {'raw_vehicle_emergency_deceleration_required': True,
+                            'motion_integrator': 'semi_implicit_euler_explicit_same_as_prior_native_default',
+                            'emergency_warning_threshold': 1.},
+                        'runtime_sha256': {'sumo_binary_path': 'sumo', 'toolchain_manifest_path': str(root / 'toolchain.json'),
+                            'toolchain_files_sha256': {'018_config.h': hashlib.sha256(config.read_bytes()).hexdigest(),
+                                                      'native_pair.json': hashlib.sha256(pair.read_bytes()).hexdigest()},
+                            'toolchain_provenance': {'source_commit': 'fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3',
+                                                    'native_pair': 'native_pair.json', 'role': 'patched'}}}
+            with patch.object(validator, 'native_walking_version_supported', return_value=True):
+                self.assertIsNotNone(validator.native_braking_settings(manifest))
+                changed = deepcopy(manifest)
+                changed['native_diagnostic_observation_contract']['motion_integrator'] = 'ballistic'
+                self.assertIsNone(validator.native_braking_settings(changed))
+                changed = deepcopy(manifest)
+                changed['owned_native_process']['pid'] = 0
+                self.assertIsNone(validator.native_braking_settings(changed))
+                changed = deepcopy(manifest)
+                changed['runtime_sha256']['toolchain_provenance']['role'] = 'control'
+                self.assertIsNone(validator.native_braking_settings(changed))
+                changed = deepcopy(manifest)
+                changed['runtime_sha256']['toolchain_files_sha256']['native_pair.json'] = 'unbound'
+                self.assertIsNone(validator.native_braking_settings(changed))
+                config.write_text('#define NUMERICAL_EPS 0.002\n', encoding='utf-8')
+                self.assertIsNone(validator.native_braking_settings(manifest))
+
+    def test_braking_receipt_requires_direct_native_emergency_frames(self):
+        line = ("Warning: Vehicle 'synthetic' performs emergency braking on lane 'a_1' "
+                "with decel=7.00, wished=3.00, severity=1.00, time=4.00.")
+        frames = [dict(time_sec=3.75, speed_mps=4.5, distance_m=98.75),
+                  dict(time_sec=4., speed_mps=5., distance_m=100.),
+                  dict(time_sec=4.25, speed_mps=3.25, distance_m=100.8125)]
+        for row in frames:
+            row.update(actor_id='synthetic', lane_id='a_1', kind='car',
+                       phase='after_step_before_control', decel_mps2=3.,
+                       emergency_decel_mps2=7., observation_kind='onroad')
+        settings = {'numerical_eps': .001, 'warning_threshold': 1.}
+        self.assertIsNotNone(validator.native_braking_receipt(line, frames, .25, settings))
+        for field, value in [('emergency_decel_mps2', ''), ('emergency_decel_mps2', 6.),
+                             ('emergency_decel_mps2', math.inf), ('lane_id', 'b_1'),
+                             ('observation_kind', 'reentry_pending'), ('kind', 'walk')]:
+            altered = deepcopy(frames)
+            altered[1][field] = value
+            with self.subTest(field=field, value=value):
+                self.assertIsNone(validator.native_braking_receipt(line, altered, .25, settings))
+        self.assertIsNone(validator.native_braking_receipt(line, frames, .25, None))
+
     def test_partial_edges_backward_cycle_closed_and_unreachable(self):
         graph = {'nodes': {'a': {'length': 100, 'free_sec': 10},
                            'b': {'length': 200, 'free_sec': 20},
@@ -128,6 +193,54 @@ class TechnicalValidationBoundary(unittest.TestCase):
 
 
 class NativeWalkingContracts(unittest.TestCase):
+    def test_native_lateral_step_is_not_an_instantaneous_replacement_jump(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root, maximum=1., factor=1.)
+            def table(path, records):
+                opener = gzip.open if path.suffix == '.gz' else open
+                with opener(path, 'wt', encoding='utf-8', newline='') as stream:
+                    writer = csv.DictWriter(stream, fieldnames=list(records[0]))
+                    writer.writeheader()
+                    writer.writerows(records)
+            person = validator.rows(folder / 'person_results.csv')[0]
+            person['walk_speed_integral_m'] = str(.96 * 1.5)
+            table(folder / 'person_results.csv', [person])
+            positions = [(.2, 0.), (.68, .2), (1.16, .2)]
+            actors = [{'time_sec': str(t), 'actor_id': 'walker', 'kind': 'walk', 'road_id': 'a',
+                       'observation_kind': 'onroad', 'lane_position_m': str(x), 'x': str(x), 'y': str(y),
+                       'speed_mps': '.96', 'phase': 'after_step_before_control',
+                       'status': 'travelling_walk', 'members': '["walker"]'}
+                      for t, (x, y) in zip((.5, 1., 1.5), positions)]
+            table(folder / 'actor_observations.csv.gz', actors)
+            manifest['summary']['counts'].update(departure_pending_frames=0, reentry_pending_frames=0)
+            events = [{'event': 'person_state', 'person_id': 'walker', 'time_sec': 0., 'after': 'travelling_walk'}, *events]
+            # Constructed native-axis example: vx=.96, vy=.4, norm>1, exact replan receipts.
+            self.assertGreater(math.dist(positions[0], positions[1]), .5)
+            with patch.object(validator, 'ROOT', root):
+                result = validator.audit_actor_stream(folder, manifest, cfg, events)
+            self.assertEqual(result['status'], 'PASS', result)
+            changed = deepcopy(events)
+            replan = next(e for e in changed if e.get('stage') == 'reroute')
+            jump = math.nextafter(.2, math.inf)
+            replan['replacement_receipts'][0]['after']['xy'][0] = jump
+            replan['replacement_receipts'][1]['before']['xy'][0] = jump
+            with patch.object(validator, 'ROOT', root):
+                result = validator.audit_actor_stream(folder, manifest, cfg, changed)
+            self.assertFalse(result['checks']['reroute_position_continuity'])
+
+    def test_single_ulp_instantaneous_receipt_jump_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root)
+            reroute = events[2]
+            jump = math.nextafter(.2, math.inf)
+            reroute['replacement_receipts'][0]['after']['xy'][0] = jump
+            reroute['replacement_receipts'][1]['before']['xy'][0] = jump
+            with patch.object(validator, 'ROOT', root):
+                result = validator.audit_movement_events(folder, manifest, cfg, events)
+            self.assertFalse(result['checks']['walk_stage_budget_recurrence'])
+
     def fixture(self, root, maximum=1., factor=.8):
         folder, inputs = root / 'run', root / 'inputs'
         folder.mkdir()
@@ -221,6 +334,45 @@ class NativeWalkingContracts(unittest.TestCase):
                 mutate(altered[2])
                 with patch.object(validator, 'ROOT', root):
                     self.assertFalse(validator.audit_movement_events(folder, manifest, cfg, altered)['checks']['walk_stage_budget_recurrence'])
+
+    def test_live_native_length_is_distinct_from_installed_budget_anchor(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root)
+            for ratio in (.5, 1.5):
+                altered = deepcopy(events)
+                altered[2]['replacement_receipts'][0]['before']['stage_length_m'] *= ratio
+                # Native walkDistance switches from all endpoint estimates to
+                # completed internal paths. The registered budget anchor stays
+                # the length installed at the preceding plan event.
+                with self.subTest(ratio=ratio), patch.object(validator, 'ROOT', root):
+                    report = validator.audit_movement_events(folder, manifest, cfg, altered)
+                    self.assertEqual(report['status'], 'PASS', report)
+                    self.assertTrue(report['checks']['walk_stage_budget_recurrence'])
+                    native = validator.audit_native_logs(folder, manifest, altered,
+                                                        {'removal_observations': {}}, report)
+                    self.assertEqual(native['status'], 'PASS', native)
+
+    def test_live_length_nonfinite_or_negative_and_reanchored_budget_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root)
+            for value in (math.nan, math.inf, -math.inf, -1.):
+                altered = deepcopy(events)
+                altered[2]['replacement_receipts'][0]['before']['stage_length_m'] = value
+                with self.subTest(value=value), patch.object(validator, 'ROOT', root):
+                    report = validator.audit_movement_events(folder, manifest, cfg, altered)
+                    self.assertFalse(report['checks']['walk_stage_budget_recurrence'])
+            altered = deepcopy(events)
+            reroute = altered[2]
+            live = reroute['previous_plan_m'] / 2
+            reroute['replacement_receipts'][0]['before']['stage_length_m'] = live
+            reroute['previous_plan_m'] = live
+            reroute['signed_progress_m'] = live - reroute['old_remaining_m']
+            reroute['model_passed_m'] = max(0, reroute['signed_progress_m'])
+            with patch.object(validator, 'ROOT', root):
+                report = validator.audit_movement_events(folder, manifest, cfg, altered)
+                self.assertFalse(report['checks']['walk_stage_budget_recurrence'])
 
     def test_warning_requires_exact_receipts_native_version_and_count(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -337,6 +489,94 @@ class NativeWalkingContracts(unittest.TestCase):
         self.assertFalse(audit(changed, changed_actor))
 
 
+class PinnedNativeWalkingContracts(unittest.TestCase):
+    fixture = NativeWalkingContracts.fixture
+    def pinned(self, root, manifest):
+        custom = '1.26.0-jdrt-choice-synthetic-contract'
+        bundle = root / 'bundle'
+        bundle.mkdir()
+        proof = bundle / 'native.json'
+        proof.write_text(json.dumps({'schema': 'isolated_native_provenance_v1',
+            'custom_version': custom, 'role': 'control', 'source_commit': 'a' * 40,
+            'state': {'custom_version': custom, 'status': 'COMPILED_VERSION_CHECKED_NOT_SIMULATED'}}))
+        manifest['sumo_version'] = [22, 'SUMO ' + custom]
+        runtime = {'toolchain_manifest_path': str(bundle / 'toolchain.json'),
+            'toolchain_manifest_sha256': 'b' * 64,
+            'toolchain_files_sha256': {'native.json': validator.file_sha(proof)},
+            'toolchain_provenance': {'native_provenance': 'native.json', 'role': 'control',
+                                     'source_commit': 'a' * 40}}
+        manifest['runtime_sha256'] = runtime
+        return runtime, proof
+
+    def test_pinned_custom_version_uses_the_same_speed_and_warning_contract(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root)
+            runtime, _ = self.pinned(root, manifest)
+            with patch.object(validator, 'ROOT', root), patch.object(validator, 'runtime_fingerprint', return_value=runtime):
+                movement = validator.audit_movement_events(folder, manifest, cfg, events)
+                self.assertEqual(movement['status'], 'PASS', movement)
+                native = validator.audit_native_logs(folder, manifest, events, {'removal_observations': {}}, movement)
+                self.assertEqual(native['status'], 'PASS', native)
+
+    def test_custom_version_requires_current_runtime_and_matching_bound_proof(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root)
+            runtime, proof = self.pinned(root, manifest)
+            original = deepcopy(manifest)
+            def check(candidate, current=runtime):
+                with patch.object(validator, 'ROOT', root), patch.object(validator, 'runtime_fingerprint', return_value=current):
+                    report = validator.audit_movement_events(folder, candidate, cfg, events)
+                self.assertFalse(report['checks']['walk_native_speed_contract'])
+            check({**manifest, 'runtime_sha256': {}})
+            check(manifest, {**runtime, 'toolchain_manifest_sha256': 'c' * 64})
+            for key, value in [('custom_version', '1.26.0-jdrt-choice-other'), ('role', 'patched'),
+                               ('source_commit', 'd' * 40), ('schema', 'unverified')]:
+                raw = proof.read_text()
+                changed = json.loads(raw)
+                changed[key] = value
+                proof.write_text(json.dumps(changed))
+                # Rebind bytes so rejection tests semantic disagreement, not only a stale hash.
+                manifest = deepcopy(original)
+                manifest['runtime_sha256']['toolchain_files_sha256']['native.json'] = validator.file_sha(proof)
+                with self.subTest(key=key):
+                    check(manifest, manifest['runtime_sha256'])
+                proof.write_text(raw)
+            manifest = deepcopy(original)
+            proof.write_text('{}')
+            check(manifest)
+            proof.unlink()
+            check(manifest)
+
+    def test_unbound_or_different_native_family_stays_unsupported(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root)
+            for version in ([22, 'SUMO 1.26.0-arbitrary'], [22, 'SUMO 1.27.0'],
+                            [22, 'SUMO 1.26.0-jdrt-choice-unbound'], [21, 'SUMO 1.26.0-jdrt-choice-wrong-api']):
+                with self.subTest(version=version), patch.object(validator, 'ROOT', root):
+                    report = validator.audit_movement_events(folder, {**manifest, 'sumo_version': version}, cfg, events)
+                self.assertFalse(report['checks']['walk_native_speed_contract'])
+
+    def test_pinned_version_does_not_relax_raw_warning_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            folder, manifest, cfg, events = self.fixture(root)
+            runtime, _ = self.pinned(root, manifest)
+            with patch.object(validator, 'ROOT', root), patch.object(validator, 'runtime_fingerprint', return_value=runtime):
+                movement = validator.audit_movement_events(folder, manifest, cfg, events)
+                original = (folder / 'sumo_errors.log').read_text()
+                for text in (original.splitlines()[0] + '\n', original + original,
+                             original.replace("edge 'a'", "edge 'b'"), original.replace('20.00', '19.99'),
+                             original + 'Warning: Unrelated native diagnostic.\n'):
+                    (folder / 'sumo_errors.log').write_text(text)
+                    manifest['summary']['sumo_errors']['bytes'] = (folder / 'sumo_errors.log').stat().st_size
+                    with self.subTest(text=text):
+                        proof = validator.audit_native_logs(folder, manifest, events, {'removal_observations': {}}, movement)
+                        self.assertFalse(proof['checks']['all_warnings_evidence_classified'])
+
+
 class PreflightProvenance(unittest.TestCase):
     def evidence(self, root):
         def save(name, value):
@@ -426,6 +666,66 @@ class PreflightProvenance(unittest.TestCase):
                 self.assertFalse(all(validator.verify_preflight_receipt(modified, cfg).values()))
                 (root / ('ws/smoke/owned' + str(len(validator.REQUIRED_FIXTURE_CASES))) / 'actor.csv').write_text('changed raw evidence')
                 self.assertFalse(all(validator.verify_preflight_receipt(receipt, cfg).values()))
+
+
+class RouteHistoryFixtureContracts(unittest.TestCase):
+    def audit(self, mutation=None):
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            inputs, folder = root / 'inputs', root / 'run'
+            inputs.mkdir()
+            folder.mkdir()
+            (inputs / 'manifest.json').write_text(json.dumps({
+                'fixture_case': 'delivery_past_closure'}), encoding='utf-8')
+            hazard = [{'edge_id': 'g0', 'mode': 'passenger', 'closure_sec': 120}]
+            requests = [{'vehicle_id': 'bus', 'status': 'served',
+                         'boarding_started_sec': 70, 'boarded_sec': 370}]
+            actors = [dict(actor_id='bus', time_sec=61, road_id='g0',
+                           lane_position_m=50, distance_m=50, route_index=0, route_version=1),
+                      dict(actor_id='bus', time_sec=370.5, road_id='e0',
+                           lane_position_m=20, distance_m=100, route_index=0, route_version=2)]
+            events = [dict(event='drt_route', time_sec=60, vehicle_id='bus',
+                           route=['g0', 'e0'], requested_remaining_route=['g0', 'e0']),
+                      dict(event='drt_route', time_sec=370, vehicle_id='bus',
+                           source_edge='e0', source_lane_position=20, source_distance_m=100,
+                           route=['e0', 'e1', 'e2'], requested_remaining_route=['e0', 'e1', 'e2'],
+                           source_route_index=0, route_version=2)]
+            if mutation:
+                mutation(hazard, requests, actors, events)
+            for path, data in [(inputs / 'hazard.csv', hazard),
+                               (folder / 'request_results.csv', requests)]:
+                with path.open('w', encoding='utf-8', newline='') as stream:
+                    writer = csv.DictWriter(stream, fieldnames=list(data[0]))
+                    writer.writeheader()
+                    writer.writerows(data)
+            with gzip.open(folder / 'actor_observations.csv.gz', 'wt', encoding='utf-8', newline='') as stream:
+                writer = csv.DictWriter(stream, fieldnames=list(actors[0]))
+                writer.writeheader()
+                writer.writerows(actors)
+            with patch.object(validator, 'ROOT', root):
+                return validator.audit_fixture_timing(folder,
+                    {'purpose': 'fixture', 'input_directory': 'inputs', 'step_sec': .5},
+                    {'operation': {'boarding_sec': 300}}, events)
+
+    def test_registered_suite_requires_past_closure_delivery(self):
+        self.assertIn('delivery_past_closure', validator.REQUIRED_FIXTURE_CASES)
+
+    def test_actual_history_and_remaining_delivery_are_required(self):
+        result = self.audit()
+        self.assertTrue(result['applicable'])
+        self.assertEqual(result['status'], 'PASS')
+
+    def test_closure_outside_boarding_is_rejected(self):
+        result = self.audit(lambda h, q, a, e: h[0].update(closure_sec=500))
+        self.assertEqual(result['status'], 'INVALID')
+
+    def test_retained_closed_prefix_is_rejected(self):
+        result = self.audit(lambda h, q, a, e: e[-1].update(route=['g0', 'e0', 'e1', 'e2']))
+        self.assertEqual(result['status'], 'INVALID')
+
+    def test_reentry_position_and_distance_jump_is_rejected(self):
+        result = self.audit(lambda h, q, a, e: a[-1].update(distance_m=400, lane_position_m=80))
+        self.assertEqual(result['status'], 'INVALID')
 
 
 if __name__ == '__main__':

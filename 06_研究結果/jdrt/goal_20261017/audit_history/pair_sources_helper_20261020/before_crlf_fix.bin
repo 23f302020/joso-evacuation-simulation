@@ -1,0 +1,146 @@
+"""Read-only native source-pair verification, separate from build/physics proof."""
+import hashlib
+import os
+from pathlib import Path
+import re
+import zipfile
+
+
+def digest(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def safe_name(name):
+    if (not isinstance(name, str) or not name or '\\' in name or ':' in name
+            or name.startswith('/') or any(part in ('', '.', '..') for part in name.split('/'))):
+        raise ValueError('Unsafe source/archive relative path')
+    return name
+
+
+def apply_diff(original, patch, target):
+    """Apply this single-file unified diff exactly: no fuzz or EOL conversion."""
+    lines = patch.splitlines(keepends=True)
+    # These two generated diffs have LF bytes; accepting CRLF would change the source.
+    if b'\r' in patch or not original.endswith(b'\n'):
+        raise ValueError('Unsupported diff/source line endings')
+    if len(lines) < 3 or not lines[0].startswith(b'--- ') or not lines[1].startswith(b'+++ '):
+        raise ValueError('Single-file unified diff headers required')
+    old_name = lines[0][4:].decode('utf-8').rstrip('\n')
+    new_name = lines[1][4:].decode('utf-8').rstrip('\n')
+    if ((old_name, new_name) != ('a/' + target, 'b/' + target)
+            and (old_name, new_name) != (target + '.before', target + '.after')):
+        raise ValueError('Diff target differs from declared source')
+    base = original.splitlines(keepends=True)
+    out, cursor, index, hunks = [], 0, 2, 0
+    while index < len(lines):
+        header = re.fullmatch(rb'@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@[^\n]*\n', lines[index])
+        if not header:
+            raise ValueError('Malformed or multi-file unified diff')
+        start, old_count = int(header[1]), int(header[2] or b'1')
+        new_start, new_count = int(header[3]), int(header[4] or b'1')
+        offset = start - 1 if old_count else start
+        if offset < cursor or offset > len(base):
+            raise ValueError('Diff hunk outside base or overlaps')
+        out.extend(base[cursor:offset])
+        cursor, index = offset, index + 1
+        if (new_start - 1 if new_count else new_start) != len(out):
+            raise ValueError('Diff new-line offset mismatch')
+        used_old = used_new = 0
+        while index < len(lines) and not lines[index].startswith(b'@@ '):
+            line = lines[index]
+            if not line.endswith(b'\n') or line[:1] not in (b' ', b'-', b'+'):
+                raise ValueError('Unsupported diff line')
+            if line[:1] in (b' ', b'-'):
+                if cursor >= len(base) or base[cursor] != line[1:]:
+                    raise ValueError('Diff does not match exact official source')
+                cursor += 1
+                used_old += 1
+            if line[:1] in (b' ', b'+'):
+                out.append(line[1:])
+                used_new += 1
+            index += 1
+        if (used_old, used_new) != (old_count, new_count):
+            raise ValueError('Diff hunk line counts mismatch')
+        hunks += 1
+    if not hunks:
+        raise ValueError('Empty diff')
+    return b''.join(out + base[cursor:])
+
+
+def source_tree(root):
+    root = Path(root).absolute()
+    if any(path.is_symlink() or path.is_junction() for path in (root, *root.parents)):
+        raise ValueError('Source root contains a link')
+    root = root.resolve(strict=True)
+    if os.name == 'nt' and not str(root).startswith('\\\\?\\'):
+        root = Path('\\\\?\\' + str(root))
+    files = {}
+    for path in root.rglob('*'):
+        if path.is_symlink() or path.is_junction():
+            raise ValueError('Source tree contains a link')
+        if path.is_file():
+            with path.open('rb') as stream:
+                files[safe_name(path.relative_to(root).as_posix())] = hashlib.file_digest(stream, 'sha256').hexdigest()
+    if not files:
+        raise ValueError('Empty source tree')
+    return files
+
+
+def verify_sources(archive_path, commit, roots, inventories, patches, allowed_missing=()):
+    """Recompute all current files and apply approved diffs to ZIP primary bytes.
+
+    Caller must SHA-bind the archive, inventories, patch definitions and missing-file
+    policy to reviewed originals. This component never authorizes those policies.
+    """
+    roles = {'control', 'patched'}
+    if (not re.fullmatch('[0-9a-f]{40}', commit) or set(roots) != roles
+            or set(inventories) != roles or Path(roots['control']).resolve() == Path(roots['patched']).resolve()):
+        raise ValueError('Distinct control/patched source roots and official commit required')
+    trees = {role: source_tree(root) for role, root in roots.items()}
+    if (trees != inventories or set(trees['control']) != set(trees['patched'])):
+        raise ValueError('Current source file set/SHA differs from prepared inventories')
+    names = set(trees['control'])
+    missing_policy = {safe_name(name) for name in allowed_missing}
+    prefix = 'sumo-' + commit + '/'
+    members, scope, modifications = {}, set(), {}
+    with zipfile.ZipFile(archive_path) as archive:
+        for item in archive.infolist():
+            if item.is_dir():
+                continue
+            if not item.filename.startswith(prefix):
+                raise ValueError('Archive member outside official commit root')
+            name = safe_name(item.filename[len(prefix):])
+            if name in members or ((item.external_attr >> 16) & 0o170000) == 0o120000:
+                raise ValueError('Duplicate archive file or symlink')
+            members[name] = item
+            if name == 'CMakeLists.txt' or name.startswith(('src/', 'build_config/')):
+                scope.add(name)
+        if names - set(members) or scope - names != missing_policy or missing_policy & names:
+            raise ValueError('Unexpected extra source or missing build-scope file')
+        if not patches or not set(patches) <= names:
+            raise ValueError('Applied native/shared patch references required')
+        for name in sorted(names):
+            raw = archive.read(members[name])
+            expected = {role: digest(raw) for role in roles}
+            if name in patches:
+                entry = patches[name]
+                patch = Path(entry['path']).read_bytes()
+                selected = entry['roles']
+                if (not selected or len(selected) != len(set(selected)) or not set(selected) <= roles
+                        or digest(patch) != entry['sha256'] or digest(raw) != entry['before_sha256']):
+                    raise ValueError('Patch bytes/base/roles differ from approved definition')
+                after = apply_diff(raw, patch, name)
+                if digest(after) != entry['after_sha256'] or after == raw:
+                    raise ValueError('Applied patch bytes differ from declared changed result')
+                for role in selected:
+                    expected[role] = digest(after)
+                modifications[name] = {'roles': selected, 'before_sha256': digest(raw),
+                                       'after_sha256': digest(after), 'patch_sha256': digest(patch)}
+            if any(trees[role][name] != expected[role] for role in roles):
+                raise ValueError('Source differs from official archive and approved patch: ' + name)
+    return {'current_source_bytes_reverified': True, 'source_sha256': trees,
+            'source_files_per_role': len(names), 'archive_files': len(members),
+            'build_scope_archive_files': len(scope), 'build_scope_missing': sorted(missing_policy),
+            'approved_modifications': modifications, 'complete_official_source_archive_extracted': False,
+            'build_and_executable_binding_verified': False, 'native_behavior_verified': False,
+            'simulation_executed': False, 'core_ready': False}

@@ -25,24 +25,24 @@ description: シミュレーションのステップスクリプトを実行す�
 
 引数なしの場合：
 ```bash
-ls "/mnt/c/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究/04_プログラム/scripts/"*.py
+ls "$(git rev-parse --show-toplevel)/04_プログラム/scripts/"*.py
 ```
 一覧を表示して終了。
 
 ### Step 2: venv の確認と有効化
 
 ```bash
-SCRIPTS_DIR="/mnt/c/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究/04_プログラム/scripts"
-VENV_DIR="/mnt/c/Users/Ko_rr/OneDrive - stu.teikyo-u.ac.jp/研究室/4年次本研究/04_プログラム/.venv"
+SCRIPTS_DIR="$(git rev-parse --show-toplevel)/04_プログラム/scripts"
+VENV_DIR="$(git rev-parse --show-toplevel)/04_プログラム/venv"
 
 # venv 存在確認
 if [ ! -d "$VENV_DIR" ]; then
   echo "[ERROR] venv が見つかりません: $VENV_DIR"
-  echo "  → cd 04_プログラム && python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt"
+  echo "  → cd 04_プログラム && python -m venv venv && source venv/Scripts/activate && python -m pip install -r requirements.txt"
   exit 1
 fi
 
-source "$VENV_DIR/bin/activate"
+source "$VENV_DIR/Scripts/activate"
 ```
 
 ### Step 3: スクリプト実行

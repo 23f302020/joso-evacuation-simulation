@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-19",
+  "scope": "2015常総市洪水の公表旅客避難支援輸送",
+  "requested_model": "gpt-6.1-sol",
+  "requested_reasoning": "high",
+  "actual_backend": "unverified",
+  "government_sources": 2,
+  "supplementary_practitioner_sources": 1,
+  "search_queries": 4,
+  "prefectural_verification": "not_retrieved_live_redirect_to_temporary_error_page",
+  "result": "bus_or_welfare_vehicle_passenger_count_operating_time_fleet_driver_joint_evidence_not_confirmed_in_bounded_sources",
+  "absence_claim": false,
+  "research_input_adopted": false,
+  "evidence": [
+    {
+      "id": "E1",
+      "source": "city_verification",
+      "pdf_page": 54,
+      "printed_page": 48,
+      "event_window": "2015-09-15/2015-09-24",
+      "population": "home_visit_targets",
+      "people": 796,
+      "staff_city": 4,
+      "staff_prefecture": 10,
+      "passenger_count": null,
+      "drivers": null,
+      "allowed_use": "context_only",
+      "excluded_use": [
+        "JDRT_denominator",
+        "driver_supply"
+      ]
+    },
+    {
+      "id": "E2",
+      "source": "city_verification",
+      "pdf_page": 55,
+      "printed_page": 49,
+      "event_window": "about_30_hours_after_disaster_onwards",
+      "vehicle_type": "goods_truck_2t_4t",
+      "initial_vehicles": "3-4",
+      "later_vehicles": 2,
+      "trips_per_day": 2,
+      "passenger_count": null,
+      "drivers": null,
+      "allowed_use": "distinguish_goods_transport",
+      "excluded_use": [
+        "passenger_fleet"
+      ]
+    },
+    {
+      "id": "E3",
+      "source": "city_verification",
+      "pdf_page": 56,
+      "printed_page": 50,
+      "event_date": null,
+      "start_time": null,
+      "end_time": "21:00",
+      "vehicle_type": "wooden_boat",
+      "vehicles": 2,
+      "evacuees_reported": 124,
+      "additional_groups": [
+        "city_staff",
+        "media"
+      ],
+      "all_passengers": null,
+      "operator_group": "city_commerce_tourism_staff",
+      "operator_count": null,
+      "allowed_use": "limited_observed_emergency_passenger_transport",
+      "excluded_use": [
+        "road_DRT_supply",
+        "JDRT_demand",
+        "bus_speed"
+      ]
+    },
+    {
+      "id": "E4",
+      "source": "city_verification",
+      "pdf_page": 117,
+      "printed_table_page": "11/11",
+      "web_entry_time": "20:35",
+      "service": "fureai_go",
+      "state": "suspended_due_to_disaster",
+      "suspension_start": null,
+      "restart": null,
+      "allowed_use": "suspension_notice",
+      "excluded_use": [
+        "assume_normal_service_during_disaster"
+      ]
+    },
+    {
+      "id": "E5",
+      "source": "cabinet_disaster_overview",
+      "pdf_page": 3,
+      "printed_page": 2,
+      "population": "rescued_people",
+      "helicopter": 1339,
+      "ground_units": 2919,
+      "allowed_use": "background_only",
+      "excluded_use": [
+        "JDRT_denominator",
+        "bus_passengers"
+      ]
+    },
+    {
+      "id": "E6",
+      "source": "cabinet_disaster_overview",
+      "pdf_page": 10,
+      "printed_page": 9,
+      "observed_at": "2015-09-18T11:00:00+09:00",
+      "population": "evacuees_at_shelters",
+      "people": 1786,
+      "city": 840,
+      "outside_city": 946,
+      "allowed_use": "background_outside_city_evacuation_and_congestion",
+      "excluded_use": [
+        "cumulative_transported_passengers",
+        "mode_share",
+        "JDRT_denominator"
+      ]
+    },
+    {
+      "id": "E7",
+      "source": "cabinet_rescue_stockyard",
+      "pdf_page": 9,
+      "printed_page": 8,
+      "author": "認定NPO法人レスキューストックヤード",
+      "authority": "practitioner_primary_report_on_official_host_not_government_verification",
+      "finding": "qualitative_welfare_shelter_opening_staff_target_identification_information_sharing_constraints",
+      "allowed_use": "qualitative_context",
+      "excluded_use": [
+        "numeric_fleet",
+        "numeric_staff_supply"
+      ]
+    }
+  ],
+  "missing": [
+    "passenger_bus_welfare_vehicle_type_capacity_availability",
+    "driver_attendant_availability_and_shifts",
+    "vehicle_start_end_time",
+    "trip_OD_boarding_alighting_people_times",
+    "unserved_requests"
+  ],
+  "method_change": false,
+  "external_messages": false,
+  "feedback_sent": false,
+  "drive_write": false,
+  "simulation_run": false
+}

@@ -1,0 +1,46 @@
+{
+  "at_jst": "2026-10-23T17:32:56.711441+09:00",
+  "action": "same_original_finish_wait",
+  "run_id": "nc26102303",
+  "session_id": 78558,
+  "operation_snapshot": {
+    "run_id": "nc26102303",
+    "pid": 12952,
+    "status": "RUNNING",
+    "commands": [
+      {
+        "command": "check",
+        "status": "COMPLETED",
+        "run_id": "nc26102303",
+        "validation_report": null
+      }
+    ],
+    "helper_sha256": "e7545e936b68929aadf8247490407b3d0c64d6f1f2adde591862302e332c815f",
+    "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+    "formal_record_result": null,
+    "record_attempted": false,
+    "next_start_performed": false,
+    "observed_at_jst": "2026-10-23T17:13:44.626963+09:00",
+    "phase": "validate"
+  },
+  "process_identity_sample_jst": "2026-10-23T17:32:19.902336+09:00",
+  "validation_child": {
+    "pid": 504,
+    "created_jst": "2026-10-23T17:13:44.733278+09:00",
+    "parent_launcher_pid": 35312,
+    "command_verified": "same-project dedicated validate --run-id nc26102303 --purpose core"
+  },
+  "native_manifest_status": "COMPLETED",
+  "native_finished_at_jst": "2026-10-23T12:00:28.975458+09:00",
+  "native_sim_sec": 21600,
+  "current_common5_sha_unchanged": true,
+  "native_manifest_sha256": "d1350e51fc339beb011f3ce4cc5a0d394456eaee2625d3e54bcc5403627d6642",
+  "stage_log_bytes": {
+    "validate.stderr.log": 0,
+    "validate.stdout.log": 0
+  },
+  "free_bytes": 256882229248,
+  "formal_accepted": 5,
+  "independent_validation_report_pending": true,
+  "research_command_replayed": false
+}

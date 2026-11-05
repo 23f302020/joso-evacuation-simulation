@@ -1,0 +1,35 @@
+{
+  "at_jst": "2026-10-22T08:58:20.976814+09:00",
+  "status": "PASS",
+  "scope": "Existing artificial G6 contracts after exact service source proof refresh/new registration; no real70 result analysis",
+  "results": [
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_要求待ち集計_契約テスト.py",
+      "sha256": "8a508b3f3086661a3c9b5c95b646c1a38ec1aa9c4c497b8b7b2d2dbd906f1f3a",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_boarding_at_zero_and_incomplete_service_do_not_censor_completed_wait (__main__.RequestContracts.test_boarding_at_zero_and_incomplete_service_do_not_censor_completed_wait) ... ok\ntest_cancel_and_horizon_are_distinct_and_receipt_zero_is_valid (__main__.RequestContracts.test_cancel_and_horizon_are_distinct_and_receipt_zero_is_valid) ... ok\ntest_empty_R0_requests_have_explicit_zero_denominators (__main__.RequestContracts.test_empty_R0_requests_have_explicit_zero_denominators) ... ok\ntest_input_rejection_needs_its_actual_event (__main__.RequestContracts.test_input_rejection_needs_its_actual_event) ... ok\ntest_missing_requests_and_boarding_plus_fallback_are_rejected (__main__.RequestContracts.test_missing_requests_and_boarding_plus_fallback_are_rejected) ... ok\ntest_served_request_is_not_automatically_person_admission (__main__.RequestContracts.test_served_request_is_not_automatically_person_admission) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.002s\n\nOK\n"
+    },
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_主指標集計_契約テスト.py",
+      "sha256": "9e58da6b40e2dd82bdaf1a7ccb96bb4a4ad5fc0f07f872e6138e2a89f05042f7",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_D_u_and_D_by_u_diagnostics_use_one_seed_and_explicit_cell_terms (__main__.PrimaryContracts.test_D_u_and_D_by_u_diagnostics_use_one_seed_and_explicit_cell_terms) ... ok\ntest_R0_is_shared_and_percentage_points_have_correct_scale (__main__.PrimaryContracts.test_R0_is_shared_and_percentage_points_have_correct_scale) ... ok\ntest_complete_record_metadata_requires_all_components_and_unchanged_manifest (__main__.PrimaryContracts.test_complete_record_metadata_requires_all_components_and_unchanged_manifest) ... ok\ntest_exits_cannot_masquerade_as_admission_or_missing_person_disappear (__main__.PrimaryContracts.test_exits_cannot_masquerade_as_admission_or_missing_person_disappear) ... ok\ntest_incomplete_set_fails_before_population_or_output_access (__main__.PrimaryContracts.test_incomplete_set_fails_before_population_or_output_access) ... ok\ntest_zero_time_is_admitted_and_exit_retains_full_unadmitted_time (__main__.PrimaryContracts.test_zero_time_is_admitted_and_exit_retains_full_unadmitted_time) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.288s\n\nOK\n"
+    },
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_副指標上限_人工契約テスト.py",
+      "sha256": "a660b42f2a5076ad4a550a94ae5da2f9d5726f3acf2e554ec12e50a2111c8af7",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_complete_serial_services_bound_only_direct_admission_not_fallback (__main__.SecondaryContracts.test_complete_serial_services_bound_only_direct_admission_not_fallback) ... ok\ntest_cycle_stage_all_candidates_and_zero_candidate_cycles (__main__.SecondaryContracts.test_cycle_stage_all_candidates_and_zero_candidate_cycles) ... ok\ntest_facility_upper_retains_disconnected_type4_and_shared_capacity (__main__.SecondaryContracts.test_facility_upper_retains_disconnected_type4_and_shared_capacity) ... ok\ntest_floor_bound_delayed_availability_and_failed_time_never_add_capacity (__main__.SecondaryContracts.test_floor_bound_delayed_availability_and_failed_time_never_add_capacity) ... ok\ntest_missing_native_distance_is_not_zero_total_and_empty_is_subset (__main__.SecondaryContracts.test_missing_native_distance_is_not_zero_total_and_empty_is_subset) ... ok\ntest_overlap_partial_horizon_short_processing_and_pooling_counterexamples_refuse (__main__.SecondaryContracts.test_overlap_partial_horizon_short_processing_and_pooling_counterexamples_refuse) ... ok\ntest_roads_preserve_zero_parked_raw_vs_traffic_and_closed_entry_counts (__main__.SecondaryContracts.test_roads_preserve_zero_parked_raw_vs_traffic_and_closed_entry_counts) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.003s\n\nOK\n"
+    },
+    {
+      "source": "06_研究結果\\jdrt\\goal_20261017\\G6_統合集計_人工契約テスト.py",
+      "sha256": "70e012e0b191c7ea23bf3cb27185294e51f6dabd5118b462f88eb9301f51bcc0",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_all70_gate_precedes_helper_load_and_any_result_write (__main__.IntegratedContracts.test_all70_gate_precedes_helper_load_and_any_result_write) ... ok\ntest_changed_helper_bytes_during_analysis_are_rejected (__main__.IntegratedContracts.test_changed_helper_bytes_during_analysis_are_rejected) ... ok\ntest_changed_primary_artifact_is_rejected_before_result_output (__main__.IntegratedContracts.test_changed_primary_artifact_is_rejected_before_result_output) ... ok\ntest_complete_artificial_set_separates_wait_censoring_exit_and_zero_R0 (__main__.IntegratedContracts.test_complete_artificial_set_separates_wait_censoring_exit_and_zero_R0) ... ok\ntest_stale_frozen_service_source_proof_rejects_before_output (__main__.IntegratedContracts.test_stale_frozen_service_source_proof_rejects_before_output) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 54.199s\n\nOK\n"
+    }
+  ]
+}

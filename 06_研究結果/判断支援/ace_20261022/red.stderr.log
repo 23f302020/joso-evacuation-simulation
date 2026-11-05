@@ -1,0 +1,104 @@
+EEEEEEEEE
+======================================================================
+ERROR: test_duplicate_tag_is_rejected (test_ace_local.DeltaContract.test_duplicate_tag_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 62, in test_duplicate_tag_is_rejected
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_empty_evidence_is_rejected (test_ace_local.DeltaContract.test_empty_evidence_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 35, in test_empty_evidence_is_rejected
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_evidence_backed_add_is_accepted (test_ace_local.DeltaContract.test_evidence_backed_add_is_accepted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 20, in test_evidence_backed_add_is_accepted
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_missing_evidence_is_rejected (test_ace_local.DeltaContract.test_missing_evidence_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 30, in test_missing_evidence_is_rejected
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_newline_cannot_inject_a_new_bullet (test_ace_local.DeltaContract.test_newline_cannot_inject_a_new_bullet)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 40, in test_newline_cannot_inject_a_new_bullet
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_stale_base_is_rejected (test_ace_local.DeltaContract.test_stale_base_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 25, in test_stale_base_is_rejected
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_unknown_bullet_tag_is_rejected (test_ace_local.DeltaContract.test_unknown_bullet_tag_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 56, in test_unknown_bullet_tag_is_rejected
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_unknown_fields_are_rejected (test_ace_local.DeltaContract.test_unknown_fields_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 50, in test_unknown_fields_are_rejected
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+======================================================================
+ERROR: test_unsupported_operation_is_rejected (test_ace_local.DeltaContract.test_unsupported_operation_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\test_ace_local.py", line 45, in test_unsupported_operation_is_rejected
+    validate_delta(self.delta, self.playbook, self.ledger)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\tools\ace\ace_local.py", line 10, in validate_delta
+    raise NotImplementedError('Validate evidence and delta before upstream application')
+NotImplementedError: Validate evidence and delta before upstream application
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+FAILED (errors=9)

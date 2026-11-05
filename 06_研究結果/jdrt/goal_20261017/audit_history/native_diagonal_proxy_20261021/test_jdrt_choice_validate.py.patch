@@ -1,0 +1,57 @@
+--- test_jdrt_choice_validate.py.before
++++ test_jdrt_choice_validate.py
+@@ -128,6 +128,54 @@
+ 
+ 
+ class NativeWalkingContracts(unittest.TestCase):
++    def test_native_lateral_step_is_not_an_instantaneous_replacement_jump(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root, maximum=1., factor=1.)
++            def table(path, records):
++                opener = gzip.open if path.suffix == '.gz' else open
++                with opener(path, 'wt', encoding='utf-8', newline='') as stream:
++                    writer = csv.DictWriter(stream, fieldnames=list(records[0]))
++                    writer.writeheader()
++                    writer.writerows(records)
++            person = validator.rows(folder / 'person_results.csv')[0]
++            person['walk_speed_integral_m'] = str(.96 * 1.5)
++            table(folder / 'person_results.csv', [person])
++            positions = [(.2, 0.), (.68, .2), (1.16, .2)]
++            actors = [{'time_sec': str(t), 'actor_id': 'walker', 'kind': 'walk', 'road_id': 'a',
++                       'observation_kind': 'onroad', 'lane_position_m': str(x), 'x': str(x), 'y': str(y),
++                       'speed_mps': '.96', 'phase': 'after_step_before_control',
++                       'status': 'travelling_walk', 'members': '["walker"]'}
++                      for t, (x, y) in zip((.5, 1., 1.5), positions)]
++            table(folder / 'actor_observations.csv.gz', actors)
++            manifest['summary']['counts'].update(departure_pending_frames=0, reentry_pending_frames=0)
++            events = [{'event': 'person_state', 'person_id': 'walker', 'time_sec': 0., 'after': 'travelling_walk'}, *events]
++            # Constructed native-axis example: vx=.96, vy=.4, norm>1, exact replan receipts.
++            self.assertGreater(math.dist(positions[0], positions[1]), .5)
++            with patch.object(validator, 'ROOT', root):
++                result = validator.audit_actor_stream(folder, manifest, cfg, events)
++            self.assertEqual(result['status'], 'PASS', result)
++            changed = deepcopy(events)
++            replan = next(e for e in changed if e.get('stage') == 'reroute')
++            jump = math.nextafter(.2, math.inf)
++            replan['replacement_receipts'][0]['after']['xy'][0] = jump
++            replan['replacement_receipts'][1]['before']['xy'][0] = jump
++            with patch.object(validator, 'ROOT', root):
++                result = validator.audit_actor_stream(folder, manifest, cfg, changed)
++            self.assertFalse(result['checks']['reroute_position_continuity'])
++
++    def test_single_ulp_instantaneous_receipt_jump_is_rejected(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root)
++            reroute = events[2]
++            jump = math.nextafter(.2, math.inf)
++            reroute['replacement_receipts'][0]['after']['xy'][0] = jump
++            reroute['replacement_receipts'][1]['before']['xy'][0] = jump
++            with patch.object(validator, 'ROOT', root):
++                result = validator.audit_movement_events(folder, manifest, cfg, events)
++            self.assertFalse(result['checks']['walk_stage_budget_recurrence'])
++
+     def fixture(self, root, maximum=1., factor=.8):
+         folder, inputs = root / 'run', root / 'inputs'
+         folder.mkdir()

@@ -140,5 +140,187 @@
       "dated_progress_md_html_check": "PASS",
       "target_diff_check": "PASS"
     }
+  },
+  "remaining_repositories_20261020": {
+    "skill_checks": [
+      {
+        "name": "code-review-and-quality",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "debugging-and-error-recovery",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "joso-jdrt-runner",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "python-performance-optimization",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "python-testing-patterns",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "research-analysis-validation",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "research-evidence-audit",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "research-gis-audit",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "research-status-publisher",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      },
+      {
+        "name": "test-driven-development",
+        "exit_code": 0,
+        "output": "Skill is valid!",
+        "stderr": ""
+      }
+    ],
+    "discovered_skills": 10,
+    "source_files_checked": 25,
+    "source_hashes_pass": true,
+    "adapter_hashes_pass": true,
+    "role_settings_unchanged": true,
+    "local_links_checked": 32,
+    "missing_links": [],
+    "trailing_whitespace": [],
+    "research_files_checked": 107,
+    "research_files_changed_since_baseline": [],
+    "scope": "Instruction/role routing updates only; no research execution or scientific-method change.",
+    "routing_evaluation": "Definition-level scenario review only; actual automatic invocation not measured.",
+    "final_checks": {
+      "target_diff_check": "PASS",
+      "status_progress_md_html": "PASS",
+      "local_revision_snapshot_hashes": "PASS",
+      "final_operating_doc_links_whitespace": "PASS",
+      "discoverable_project_skills": 10
+    }
+  },
+  "design_skills_20261028": {
+    "date": "2026-10-28",
+    "scan_id": "66ad25b9-ffad-4b82-86c1-49512ae43f93",
+    "scope": "pinned personal Codex skill installation, partial static security review",
+    "installations": [
+      {
+        "name": "impeccable",
+        "path": "C:\\Users\\Ko_rr\\.codex\\skills\\impeccable",
+        "commit": "d34c87e1a00989ae8dbdd7f6b30b70f23319e860",
+        "upstream_files_verified": 63,
+        "installed_files_sha_verified": 67,
+        "local_changes": {
+          "SKILL.md": {
+            "upstream_sha256": "fab04b31f946573b00a8559db1fc070f8ea5825254d491c2b13156e5661a86d7",
+            "installed_sha256": "95137673a3a916aed62a15b6ba470892c398281d4a7b60aae45e4ce8a703d482"
+          },
+          "agents/openai.yaml": {
+            "upstream_sha256": "ce9967ad70f99cf04456f3347c266723c2fbbb600267d10a822b7cd20562c321",
+            "installed_sha256": "e07fbaea2f4cc11f1a0ce138d2fe1a6a25be27057853868eff2c9b72d364b65f"
+          },
+          "scripts/impeccable": {
+            "upstream_sha256": "d9709ee88e790bda2d98f55c4d1abe42e28b91db849882a2998bac79b1e074cb",
+            "installed_sha256": "654057f2a72b7cc2eb855790e384d667e7bb2ff690eb3d9ad368ff297ee940ef"
+          },
+          "scripts/impeccable.cmd": {
+            "upstream_sha256": "74154d320dda16e7cb184406a9deecc8c6a5953ab675af99cea207471d63b4b4",
+            "installed_sha256": "791d6d4382b707b03e98c917b048701e280597a1493113fd19e26a4cd824c153"
+          }
+        },
+        "declared_eol_conversions": [
+          {
+            "path": "scripts/impeccable.cmd",
+            "gitattributes": "eol=crlf",
+            "git_blob_sha256": "5d36d9b48e050e20ac5b3823db4d49fd4e84086d4acae6630cade81fd971b68d",
+            "checkout_sha256": "74154d320dda16e7cb184406a9deecc8c6a5953ab675af99cea207471d63b4b4"
+          }
+        ],
+        "implicit_invocation": false,
+        "hooks_installed": false,
+        "engine_downloaded_or_executed": false,
+        "api_invoked": false
+      },
+      {
+        "name": "hallmark",
+        "path": "C:\\Users\\Ko_rr\\.codex\\skills\\hallmark",
+        "commit": "6033bab2a8051b5454552d2e8e6cb8f27c483a42",
+        "upstream_files_verified": 182,
+        "installed_files_sha_verified": 184,
+        "local_changes": {
+          "SKILL.md": {
+            "upstream_sha256": "25a1ff92d925b2389e8409f42fb8ad7e033fceca8b5d1f07ed4ca4c28da53dc3",
+            "installed_sha256": "1c42edc37db7480026fc2f24f448cf2e53f859f27726884d121935fb4bf44356"
+          },
+          "agents/openai.yaml": {
+            "upstream_sha256": "0bc6fa7d573c926e8d3fe04a5afc8191096e5aa7287598a59b6c7e6321b53298",
+            "installed_sha256": "828bbf65671b79bfc4d1f9d952f9427e46f73d370bc3b5c2209a8a91d127fd6c"
+          }
+        },
+        "declared_eol_conversions": [],
+        "implicit_invocation": false,
+        "hooks_installed": false,
+        "engine_downloaded_or_executed": false,
+        "api_invoked": false
+      }
+    ],
+    "unchanged_existing_host_and_research_files": 100,
+    "unexpected_changes": [],
+    "guard_test": {
+      "before": {
+        "IMPECCABLE_NO_TELEMETRY": "0",
+        "IMPECCABLE_LIVE_COPY_AGENT": "codex"
+      },
+      "after": {
+        "IMPECCABLE_NO_TELEMETRY": "1",
+        "IMPECCABLE_LIVE_COPY_AGENT": "off"
+      },
+      "runner": "trusted Windows cmd.exe used as controlled child process; no upstream engine invocation",
+      "result": "PASS"
+    },
+    "checks": {
+      "yaml_and_explicit_invocation_policy": "PASS",
+      "relative_markdown_links": "PASS",
+      "upstream_current_file_sha_readback": "PASS",
+      "node_syntax": {
+        "impeccable": 5,
+        "hallmark": 10
+      },
+      "hallmark_static_fixture": {
+        "fixture": "fixtures/slopped.html",
+        "expected_fails_detected": 24,
+        "exit_code": 1,
+        "render": "off"
+      },
+      "source_review": "No blocking issue in local six-file patch; public functions/protocols unchanged",
+      "full_runtime_or_binary_security_certification": false,
+      "usage_measurement": "unavailable"
+    },
+    "initial_issue": "Initial strict Git-blob equality rejected Impeccable .cmd CRLF; .gitattributes explicitly declares eol=crlf. Only exact declared checkout transform accepted, both hashes recorded; no unexplained difference waived."
   }
 }

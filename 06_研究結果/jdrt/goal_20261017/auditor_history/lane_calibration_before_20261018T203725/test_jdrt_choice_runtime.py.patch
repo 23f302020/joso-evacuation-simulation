@@ -1,0 +1,51 @@
+diff --git "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\lane_calibration_before_20261018T203725\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\tests\\test_jdrt_choice_runtime.py" "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/tests/test_jdrt_choice_runtime.py"
+index 367d95b..ae2302d 100644
+--- "a/06_\347\240\224\347\251\266\347\265\220\346\236\234\\jdrt\\goal_20261017\\auditor_history\\lane_calibration_before_20261018T203725\\04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240\\tests\\test_jdrt_choice_runtime.py"
++++ "b/04_\343\203\227\343\203\255\343\202\260\343\203\251\343\203\240/tests/test_jdrt_choice_runtime.py"
+@@ -237,6 +237,46 @@ class RuntimeContracts(unittest.TestCase):
+                 with self.assertRaisesRegex(ValueError, 'SHA mismatch'):
+                     fixtures.native_walk_reference(execution, .5)
+ 
++    def test_car_fixture_connections_use_passenger_lanes_after_sidewalk_insertion(self):
++        from scripts import jdrt_choice_fixtures as fixtures
++        lanes = {}
++        for edge in ('g0', 'e0', 'e1', 'e2', 'd0', 'd1', 'd2', 's0', 's1'):
++            for index in range(3 if edge in ('g0', 'e0') else 2):
++                lane = Mock()
++                lane.getID.return_value = f'{edge}_{index}'
++                lane.getEdge.return_value.getID.return_value = edge
++                lane.allows.return_value = index > 0
++                lane.getOutgoing.return_value = []
++                lanes[lane.getID()] = lane
++        for first, second, source, target in fixtures.car_lane_connections():
++            link = Mock()
++            link.getToLane.return_value = lanes[f'{second}_{target}']
++            lanes[f'{first}_{source}'].getOutgoing.return_value.append(link)
++        net = Mock()
++        net.getLane.side_effect = lanes.__getitem__
++        fixtures.validate_car_lane_topology(net)
++        graph = nx.DiGraph()
++        graph.add_edges_from((lane.getEdge().getID(), link.getToLane().getEdge().getID())
++            for lane in lanes.values() for link in lane.getOutgoing()
++            if lane.allows('passenger') and link.getToLane().allows('passenger'))
++        self.assertTrue(nx.has_path(graph, 'g0', 'e2'))
++        graph.remove_node('e1')
++        self.assertTrue(nx.has_path(graph, 'g0', 'e2'))
++        original = lanes['e0_1'].getOutgoing.return_value
++        lanes['e0_1'].getOutgoing.return_value = []
++        with self.assertRaisesRegex(ValueError, 'lacks a declared passenger'):
++            fixtures.validate_car_lane_topology(net)
++        lanes['e0_1'].getOutgoing.return_value = original
++        lanes['e1_1'].allows.return_value = False
++        with self.assertRaisesRegex(ValueError, 'lacks a declared passenger'):
++            fixtures.validate_car_lane_topology(net)
++        lanes['e1_1'].allows.return_value = True
++        extra = Mock()
++        extra.getToLane.return_value = lanes['d0_1']
++        lanes['e0_1'].getOutgoing.return_value = original + [extra]
++        with self.assertRaisesRegex(ValueError, 'changed its short-lane'):
++            fixtures.validate_car_lane_topology(net)
++
+     def test_parking_and_reentry_do_not_become_traffic_speed(self):
+         self.assertEqual(runtime.traffic_observation_state(3, True, False), 'parked')
+         self.assertEqual(runtime.traffic_observation_state(0, False, True), 'reentry_pending')

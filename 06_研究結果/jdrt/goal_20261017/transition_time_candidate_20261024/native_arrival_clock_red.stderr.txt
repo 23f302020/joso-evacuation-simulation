@@ -1,0 +1,18 @@
+test_native_outgoing_frame_rejects_shared_external_only_timestamp (tests.test_choice_transition_timing.NativeTransitionFixtureTests.test_native_outgoing_frame_rejects_shared_external_only_timestamp) ... FAIL
+
+======================================================================
+FAIL: test_native_outgoing_frame_rejects_shared_external_only_timestamp (tests.test_choice_transition_timing.NativeTransitionFixtureTests.test_native_outgoing_frame_rejects_shared_external_only_timestamp)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 182, in test_native_outgoing_frame_rejects_shared_external_only_timestamp
+    self.assertEqual(arrival['status'], 'PASS', arrival)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'INVALID' != 'PASS'
+- INVALID
++ PASS
+ : {'status': 'INVALID', 'checks': {'one_explicit_initial_route_anchor': True, 'source_bound_outgoing_internal_observed': True, 'short_external_frame_absent': True, 'short_entry_upper_is_first_outgoing_frame': True, 'native_arrival_final_index_without_external_frame': False}, 'case': 'car_transition_arrival', 'applicable': True, 'core_adoption_permitted': False}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.188s
+
+FAILED (failures=1)

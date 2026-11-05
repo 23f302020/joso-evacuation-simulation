@@ -1,0 +1,11 @@
+test_boarding_at_zero_and_incomplete_service_do_not_censor_completed_wait (__main__.RequestContracts.test_boarding_at_zero_and_incomplete_service_do_not_censor_completed_wait) ... ok
+test_cancel_and_horizon_are_distinct_and_receipt_zero_is_valid (__main__.RequestContracts.test_cancel_and_horizon_are_distinct_and_receipt_zero_is_valid) ... ok
+test_empty_R0_requests_have_explicit_zero_denominators (__main__.RequestContracts.test_empty_R0_requests_have_explicit_zero_denominators) ... ok
+test_input_rejection_needs_its_actual_event (__main__.RequestContracts.test_input_rejection_needs_its_actual_event) ... ok
+test_missing_requests_and_boarding_plus_fallback_are_rejected (__main__.RequestContracts.test_missing_requests_and_boarding_plus_fallback_are_rejected) ... ok
+test_served_request_is_not_automatically_person_admission (__main__.RequestContracts.test_served_request_is_not_automatically_person_admission) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

@@ -1,0 +1,28 @@
+{
+  "at_jst": "2026-10-27T18:41:08.707640+09:00",
+  "status": "PASS_READ_ONLY_DEPLOYED_OBSERVER_PROBE",
+  "scope": "Current observer/source and existing completed core target, not a new core/sequence adoption",
+  "source_sha256": "e77427368838f6ddb60b0fed8f230e85dc8b8b4610b8024bba0c7d43da708b0c",
+  "observations": [
+    {
+      "last_observed": "2026-10-27T09:40:57.407339+00:00",
+      "observation_age_sec": 12.178821325302124,
+      "monitor_process": {
+        "state": "alive",
+        "created": 134375371341239107,
+        "pid": 26988
+      },
+      "monitor_identity_matches": true
+    },
+    {
+      "last_observed": "2026-10-27T09:41:07.937111+00:00",
+      "observation_age_sec": 2.446624279022217,
+      "monitor_process": {
+        "state": "alive",
+        "created": 134375371341239107,
+        "pid": 26988
+      },
+      "monitor_identity_matches": true
+    }
+  ]
+}

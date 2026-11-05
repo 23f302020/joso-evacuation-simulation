@@ -1,0 +1,377 @@
+"""Collect isolated native guard evidence. Never launch/adopt a research core."""
+import math
+import argparse
+from datetime import datetime
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import socket
+import subprocess
+import sys
+import time
+
+from choice_native_trace_build import cim_utf8
+
+
+def sha(path):
+    with Path(path).open('rb') as stream:
+        return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+def write_json(path, value):
+    temporary = path.with_suffix('.tmp')
+    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+    for attempt in range(4):
+        try:
+            temporary.replace(path)
+            return
+        except PermissionError as error:
+            if getattr(error, 'winerror', None) not in (5, 32, 33) or attempt == 3:
+                raise
+            time.sleep(.05 * 2 ** attempt)
+
+
+def now():
+    return datetime.now().astimezone().isoformat()
+
+
+def reserve_output(workspace, run_id):
+    output = workspace / 'technical' / run_id
+    if output.exists():
+        raise ValueError('Technical run already exists; never reuse or overwrite it')
+    lock = workspace / 'driver_logs/native_guard.lock'
+    claim = json.dumps({'run_id': run_id, 'pid': os.getpid(), 'at_jst': now()}).encode()
+    with lock.open('xb') as stream:
+        stream.write(claim)
+    try:
+        output.mkdir()
+    except BaseException:
+        if lock.read_bytes() == claim:
+            lock.unlink()
+        raise
+    return output, lock, claim
+
+
+def endpoint_owners(port):
+    if type(port) is not int or not 0 < port < 65536:
+        raise ValueError('Actual local TCP port required')
+    command = (f'$owners = @(Get-NetTCPConnection -LocalPort {port} -State Established -ErrorAction Stop | '
+               'Select-Object -ExpandProperty OwningProcess); ConvertTo-Json -InputObject $owners -Compress')
+    result = subprocess.run(['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', command],
+                            capture_output=True, text=True, check=True, timeout=30)
+    return json.loads(result.stdout)
+
+
+def connect_native(traci, port, process, api_path):
+    connection = traci.connect(port, numRetries=30, proc=process, waitBetweenRetries=.1)
+    # Constructor-time tracing wraps global domains before Connection copies them.
+    # Trace the already-registered bound domains instead; no global switch needed.
+    connection.startTracing(str(api_path), True, [connection.simulation, connection.person, connection.lane])
+    return connection
+
+
+def snapshot(connection, person):
+    domain = connection.person
+    stage = domain.getStage(person)
+    return {'edge_id': domain.getRoadID(person), 'lane_id': domain.getLaneID(person),
+            'lane_position_m': domain.getLanePosition(person), 'xy': list(domain.getPosition(person)),
+            'speed_mps': domain.getSpeed(person), 'remaining_stages': domain.getRemainingStages(person),
+            'stage_type': stage.type, 'stage_edges': list(stage.edges),
+            'stage_depart_pos_m': stage.departPos, 'stage_arrival_pos_m': stage.arrivalPos,
+            'stage_length_m': stage.length, 'stage_depart_sec': getattr(stage, 'depart', None)}
+
+
+def replacement(connection, person, purpose, edges, position, arrival, speed):
+    before = {p: snapshot(connection, p) for p in connection.person.getIDList()}
+    stage = connection.person.getStage(person)
+    stage.edges, stage.departPos, stage.arrivalPos = list(edges), position, arrival
+    value = {'person': person, 'purpose': purpose, 'requested_edges': list(edges),
+             'requested_depart_pos_m': position, 'requested_arrival_pos_m': arrival,
+             'requested_speed_mps': speed, 'before': before}
+    try:
+        connection.person.replaceStage(person, 0, stage)
+        connection.person.setSpeed(person, speed)
+    except Exception as error:
+        value['api_error'] = {'type': type(error).__name__, 'message': str(error)}
+    value['after'] = {p: snapshot(connection, p) for p in connection.person.getIDList()}
+    return value
+
+
+def signed_side(xy, shape):
+    if len(shape) < 2 or not all(math.isfinite(v) for point in [xy, *shape] for v in point):
+        raise ValueError('Finite straight-lane shape required')
+    x0, y0 = shape[0]
+    dx, dy = shape[-1][0] - x0, shape[-1][1] - y0
+    length = math.hypot(dx, dy)
+    if not length or any(dx * (y - y0) - dy * (x - x0) != 0 for x, y in shape):
+        raise ValueError('This probe selects lateral changes only on a straight native lane')
+    return (dx * (xy[1] - y0) - dy * (xy[0] - x0)) / length
+
+
+def command(binary, net, routes, output, step, horizon, port, seed, options):
+    return list(map(str, [binary, '--net-file', net, '--route-files', routes,
+                         '--begin', 0, '--end', horizon + step, '--step-length', step,
+                         '--seed', seed, '--pedestrian.model', 'striping', '--xml-validation', 'never',
+                         '--no-step-log', 'true', '--remote-port', port,
+                         '--tripinfo-output', output / 'tripinfo.xml',
+                         '--tripinfo-output.write-unfinished', 'true', *options]))
+
+
+def replacement_requests(connection, person, row, spec):
+    edges = row['stage_edges']
+    position = row['lane_position_m']
+    if spec['operation'] == 'internal_replace':
+        next_edge = connection.person.getNextEdge(person)
+        if not row['edge_id'].startswith(':') or edges.count(next_edge) != 1:
+            raise ValueError('Internal replacement requires an unambiguous actual next route edge')
+        edges = [row['edge_id'], *edges[edges.index(next_edge):]]
+    else:
+        if edges.count(row['edge_id']) != 1:
+            raise ValueError('External replacement requires an unambiguous current route edge')
+        edges = edges[edges.index(row['edge_id']):]
+    requests = [('old_remaining', edges, position, row['stage_arrival_pos_m'])]
+    arrival = row['stage_arrival_pos_m'] if spec['operation'] == 'same' else spec['replacement_endpoint_m']
+    if spec['operation'] == 'position_shift':
+        position += (connection.lane.getLength(row['lane_id']) - position) / 4
+    requests.append(('new_route', edges, position, arrival))
+    return requests
+
+
+def run_case(traci, binary, net, routes, output, spec, speeds, seed, state, save):
+    """One owned native child, raw files and exact before/after observations."""
+    output.mkdir()
+    with socket.socket() as reserve:
+        reserve.bind(('127.0.0.1', 0))
+        port = reserve.getsockname()[1]
+    args = command(binary, net, routes, output, spec['step_sec'], spec['horizon_sec'], port, seed, spec['sumo_options'])
+    entry = {'case': spec['id'], 'binary': str(binary), 'binary_sha256': sha(binary),
+             'command': args, 'started_at_jst': now(), 'output': str(output), 'operation_performed': False}
+    connection = None
+    process = None
+    with (output / 'native.stdout.log').open('xb') as native_out, (output / 'native.stderr.log').open('xb') as native_err, \
+            (output / 'actors.jsonl').open('x', encoding='utf-8') as actors, \
+            (output / 'operations.jsonl').open('x', encoding='utf-8') as operations:
+        try:
+            env = {**os.environ, 'PATH': r'C:\Windows\System32;C:\Windows'}
+            env.pop('SUMO_HOME', None)
+            process = subprocess.Popen(args, cwd=output, env=env, stdin=subprocess.DEVNULL,
+                                       stdout=native_out, stderr=native_err,
+                                       creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0))
+            entry['pid'] = process.pid
+            state['active'] = entry
+            save()
+            entry['process_identity'] = cim_utf8(process.pid)
+            save()
+            # Connection retries address this one child; they never spawn another SUMO.
+            connection = connect_native(traci, port, process, output / 'traci_calls.py')
+            entry['server_endpoint_owners'] = endpoint_owners(port)
+            if set(entry['server_endpoint_owners']) != {process.pid}:
+                raise ValueError('Connected TCP endpoint is not owned by the exact native child')
+            entry['api_version'] = connection.getVersion()
+            if entry['api_version'][0] != traci.constants.TRACI_VERSION:
+                raise ValueError('Native TraCI version differs from the pinned transport')
+            initial_side = {}
+            time_sec = 0.
+            while time_sec < spec['horizon_sec']:
+                connection.simulationStep()
+                time_sec = connection.simulation.getTime()
+                rows = {p: snapshot(connection, p) for p in connection.person.getIDList()}
+                observation = {'time_sec': time_sec, 'actors': rows,
+                               'departed': list(connection.simulation.getDepartedPersonIDList()),
+                               'arrived': list(connection.simulation.getArrivedPersonIDList()),
+                               'teleports': list(connection.simulation.getStartingTeleportIDList()),
+                               'collisions': list(connection.simulation.getCollidingVehiclesIDList())}
+                actors.write(json.dumps(observation, allow_nan=False) + '\n')
+                actors.flush()
+                if observation['teleports'] or observation['collisions']:
+                    raise ValueError('Native collision or teleport; preserve and stop')
+                for person, row in rows.items():
+                    if not math.isfinite(row['speed_mps']) or row['speed_mps'] > speeds['type' + person[-1]]:
+                        raise ValueError('Native walking speed exceeds its explicit bound')
+                operation = spec['operation']
+                changed = False
+                if operation in ('same', 'reverse', 'forward', 'position_shift') and set(rows) == {'p3', 'p4'}:
+                    side = {p: signed_side(row['xy'], connection.lane.getShape(row['lane_id'])) for p, row in rows.items()}
+                    if not initial_side:
+                        initial_side = side
+                    changed = any(side[p] != initial_side[p] for p in side)
+                internal = operation == 'internal_replace' and any(row['edge_id'].startswith(':') for row in rows.values())
+                if not entry['operation_performed'] and (changed or internal):
+                    for person in spec['operation_order']:
+                        if person not in rows or (internal and not rows[person]['edge_id'].startswith(':')):
+                            continue
+                        first = snapshot(connection, person)
+                        speed = speeds['type' + person[-1]]
+                        calls = replacement_requests(connection, person, first, spec)
+                        for purpose, request_edges, request_position, request_arrival in calls:
+                            before_raw = (output / 'native.stdout.log').read_bytes()
+                            receipt = replacement(connection, person, purpose, request_edges, request_position,
+                                                  request_arrival, speed)
+                            receipt.update(time_sec=time_sec, trace_count_before=before_raw.count(b'<jdrtLatGuard'),
+                                           trace_count_after=(output / 'native.stdout.log').read_bytes().count(b'<jdrtLatGuard'))
+                            operations.write(json.dumps(receipt, allow_nan=False) + '\n')
+                            operations.flush()
+                            for other in set(receipt['before']) | set(receipt['after']):
+                                if other != person and receipt['before'].get(other) != receipt['after'].get(other):
+                                    raise ValueError('Replacement changed a non-target actor')
+                            if receipt.get('api_error') and operation != 'internal_replace':
+                                raise ValueError('Unexpected native API rejection; raw receipt preserved')
+                            if receipt.get('api_error'):
+                                break
+                    entry['operation_performed'] = True
+                    entry['operation_time_sec'] = time_sec
+                state['progress'] = {'time_sec': time_sec, 'end_sec': spec['horizon_sec'],
+                                     'case': spec['id'], 'role': output.name}
+                save(False)
+                if not rows and connection.simulation.getMinExpectedNumber() == 0:
+                    break
+            if operation != 'observe' and not entry['operation_performed']:
+                raise ValueError('Required native trigger was not observed; never synthesize coverage')
+        finally:
+            if connection is not None:
+                try:
+                    connection.close(wait=False)
+                except Exception as error:
+                    entry['close_error'] = {'type': type(error).__name__, 'message': str(error)}
+            if process is not None and (connection is not None or process.poll() is not None):
+                while True:
+                    try:
+                        entry['exit_code'] = process.wait(timeout=15)
+                        break
+                    except subprocess.TimeoutExpired:
+                        entry['waiting_on_same_child'] = now()
+                        save()
+            entry['ended_at_jst'] = now()
+            write_json(output / 'child.json', entry)
+    if entry.get('exit_code') != 0:
+        raise ValueError('Native child exit is nonzero or unobserved')
+    if entry.get('close_error'):
+        raise ValueError('Native close failed; raw evidence preserved')
+    entry['artifacts'] = {p.name: sha(p) for p in output.iterdir() if p.is_file()}
+    return entry
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--project-root', type=Path, required=True)
+    parser.add_argument('--run-id', required=True)
+    parser.add_argument('--plan', type=Path, required=True)
+    parser.add_argument('--trace-state', type=Path, required=True)
+    parser.add_argument('--control-manifest', type=Path, required=True)
+    parser.add_argument('--patched-manifest', type=Path, required=True)
+    parser.add_argument('--case', help='Explicit subset only; never claims the full13-group scope')
+    options = parser.parse_args()
+    if not re.fullmatch(r'[a-z][a-z0-9_]{0,24}', options.run_id):
+        raise ValueError('Fresh short technical run ID required')
+    root = options.project_root.resolve()
+    sys.path.insert(0, str(root / '04_プログラム'))
+    from realtime_choice_cell import ChoiceController
+    from scripts.jdrt_choice_toolchain import resolve_choice_toolchain, load_choice_traci, MANIFEST_ENV
+    from choice_native_trace_source import verify as verify_trace
+    plan = json.loads(options.plan.read_bytes())
+    build = json.loads(options.trace_state.read_bytes())
+    if (plan['status'] != 'PREPARED_NOT_EXECUTED' or plan['research_adoption_permitted'] is not False
+            or build['status'] != 'COMPILED_VERSION_CHECKED_NOT_SIMULATED'
+            or build['role'] != 'OBSERVATION_ONLY_DIAGNOSTIC_NEVER_PRODUCTION'
+            or build['simulation_allowed'] is not False or build['research_cli_switch_allowed'] is not False):
+        raise ValueError('Completed isolated trace build and unexecuted technical plan required')
+    for path, expected in plan['sources'].items():
+        if sha(path) != expected:
+            raise ValueError('Prepared plan source changed: ' + path)
+    if any(item.get('exit_code') != 0 for item in build['commands']):
+        raise ValueError('Incomplete or failed trace build command')
+    trace_binary = build['binaries'][0]
+    if sha(trace_binary['path']) != trace_binary['sha256']:
+        raise ValueError('Diagnostic binary changed')
+    native = 'src/microsim/transportables/MSPModel_Striping.cpp'
+    preparation = json.loads((options.trace_state.parent / 'source_preparation.json').read_bytes())
+    original = Path(preparation['patched_source_root']) / native
+    traced = Path(build['diagnostic_source']) / native
+    verify_trace(original.read_bytes(), traced.read_bytes())
+    tools = {}
+    for role, manifest in (('control', options.control_manifest), ('patched', options.patched_manifest)):
+        os.environ[MANIFEST_ENV] = str(manifest.resolve())
+        tools[role] = resolve_choice_toolchain(require_manifest=True)
+    traci = load_choice_traci(tools['patched'])
+    controller = ChoiceController(root)
+    status = controller.status()
+    if status['running'] or status['unrecorded'] or status['active_native_processes']:
+        raise ValueError('Existing core/native process or unrecorded core prevents launch')
+    workspace = controller.workspace
+    for pattern in ('technical/*/manifest.json', 'technical/*/execution/manifest.json', 'smoke/*/manifest.json'):
+        for path in workspace.glob(pattern):
+            if json.loads(path.read_bytes()).get('status') == 'RUNNING':
+                raise ValueError('Existing technical RUNNING: ' + str(path))
+    cases = [c for c in plan['cases'] if not options.case or c['id'] == options.case]
+    if not cases:
+        raise ValueError('Unknown technical subset')
+    net_names = [Path(p) for p in plan['sources'] if Path(p).name == 'bounded.net.xml']
+    if len(net_names) != 1:
+        raise ValueError('Ambiguous bound native fixture net')
+    state = {'protocol': 'realtime_choice_v1', 'purpose': 'technical_native_guards', 'schema': 'native_guard_suite_v1',
+             'run_id': options.run_id, 'pid': os.getpid(), 'started_at_jst': now(), 'status': 'RUNNING',
+             'research_adoption_permitted': False, 'technical_ready': False, 'native_regression_complete': False,
+             'cases_requested': [c['id'] for c in cases], 'active': None, 'completed': [],
+             'plan_sha256': sha(options.plan), 'trace_build_sha256': sha(options.trace_state),
+             'collection_source_sha256': sha(__file__), 'transport_bundle': str(options.patched_manifest),
+             'current_implementation_sha256': {name: sha(root / name) for name in
+                                              controller.parameters['execution']['implementation_files']},
+             'transport_note': 'All roles use the verified patched bundle Python transport; each native EXE is separately bound'}
+    output, lock, claim = reserve_output(workspace, options.run_id)
+
+    last_saved = 0.
+
+    def save(force=True):
+        nonlocal last_saved
+        if not force and time.monotonic() - last_saved < 1:
+            return
+        state['updated_at_jst'] = now()
+        write_json(output / 'manifest.json', state)
+        if state.get('progress'):
+            write_json(output / 'progress.json', {**state['progress'], 'at_jst': now()})
+        last_saved = time.monotonic()
+
+    try:
+        (output / 'plan.json').write_bytes(options.plan.read_bytes())
+        (output / 'trace_build.json').write_bytes(options.trace_state.read_bytes())
+        (output / 'collection_source.py').write_bytes(Path(__file__).read_bytes())
+        net = output / 'bounded.net.xml'
+        net.write_bytes(net_names[0].read_bytes())
+        save()
+        binaries = {'control': tools['control']['sumo'], 'patched': tools['patched']['sumo'],
+                    'trace': Path(trace_binary['path'])}
+        speeds = controller.parameters['population']['walk_mps']
+        for case in cases:
+            folder = output / case['id']
+            folder.mkdir()
+            routes = folder / 'routes.xml'
+            routes.write_text(case['routes_xml'], encoding='utf-8')
+            for role, binary in binaries.items():
+                entry = run_case(traci, binary, net, routes, folder / role, case, speeds,
+                                 controller.parameters['seeds'][0], state, save)
+                entry['role'] = role
+                state['completed'].append(entry)
+                state['active'] = None
+                save()
+                print(json.dumps({'case': case['id'], 'role': role, 'native_exit': entry['exit_code']}), flush=True)
+        state.update(status='COMPLETED', finished_at_jst=now(),
+                     result='RAW_EVIDENCE_COLLECTED_PENDING_INDEPENDENT_GUARD_AND_TRAJECTORY_REVIEW')
+        save()
+    except BaseException as error:
+        state.update(status='FAILED_PRESERVED', error={'type': type(error).__name__, 'message': str(error)})
+        if output.is_dir():
+            save()
+        raise
+    finally:
+        active = state.get('active')
+        if not active or 'exit_code' in active:
+            if lock.read_bytes() == claim:
+                lock.unlink()
+    print(json.dumps({'status': state['status'], 'manifest': str(output / 'manifest.json'),
+                      'research_adoption_permitted': False}), flush=True)
+
+
+if __name__ == '__main__':
+    main()

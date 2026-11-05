@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_主指標・事前登録差分_集計.py", line 236, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_主指標・事前登録差分_集計.py", line 175, in main
+    verified = complete_records(root, cfg)  # Must succeed before output directory creation.
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_主指標・事前登録差分_集計.py", line 46, in complete_records
+    require(ledger_path.is_file(), 'Not ready: no formally recorded core ledger')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\06_研究結果\jdrt\goal_20261017\G6_主指標・事前登録差分_集計.py", line 29, in require
+    raise RuntimeError(detail)
+RuntimeError: Not ready: no formally recorded core ledger

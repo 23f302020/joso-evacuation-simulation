@@ -1,0 +1,74 @@
+{
+  "query": "\"常総\" \"平成27年\" \"福祉車両\" \"移送\"",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"data\":{\"web\":[{\"url\":\"https://fukushi-portal.tokyo/archives/225/\",\"title\":\"災害時の要配慮者をめぐる福祉―関東・東北豪雨、熊本地震より\",\"description\":\"平成27年9月9日から9月10日にかけて、関東地方北部から東北地方南部を ... 各観測所で観測史上最多雨量を記録し、常総市三坂町地先で堤防が決壊。\",\"position\":1,\"source\":\"web\"},{\"url\":\"https://www.e-sora.net/k-sts/2022.3Hisaitiidoshisin.pdf\",\"title\":\"[PDF] 災害時の移動サービス対応指針 - い～そら.ネット\",\"description\":\"延移送人数は約 19 万人、延. 協力者は約 28,000 人に上ります。2020 年現在、福祉車両を中心に法人として. 7 台の車両を所有し、15 人の送迎スタッフ、雇用職員、 ...\",\"position\":2,\"source\":\"web\"},{\"url\":\"https://www.nissho.or.jp/publication/pdf/katsudoujirei/h27shobodanjirei_all.pdf\",\"title\":\"[PDF] 地域防災力の 充実強化と消防団\",\"description\":\"平成27年9月に発生した関東・東北豪雨は、茨城県常総市を中心に甚大な被害をもたらしま. した。大会では、いつ発生するか予測のつかない災害から被害を最小限に ...\",\"position\":3,\"source\":\"web\"},{\"url\":\"https://www.asaka-shakyo.or.jp/about/data/jh27.pdf\",\"title\":\"[PDF] Untitled - 朝霞市社会福祉協議会\",\"description\":\"平成27年第6回 平成27年 8月28日. 平成27年8月28日. 13 ... 常総市でボランティア活動を行いました。 ... 図るため、福祉車両を使用し有償ボランティアの協力 ...\",\"position\":4,\"source\":\"web\"}],\"tools\":[{\"provider\":\"mof-go-jp\",\"capability\":\"sanctions/records_list\",\"description\":\"Collect the whole list (default 100 rows per page, about 2,900 rows in the asset-freeze file) or one 区分 of it. For one row by 番号 use `records_get`; for a name use `search`.\"},{\"provider\":\"mof-go-jp\",\"capability\":\"sanctions/search\",\"description\":\"Find whether a person or organization appears on the Japanese list by name. A match or its absence is not a compliance determination.\"},{\"provider\":\"safer-fmcsa-dot-gov\",\"capability\":\"carriers/search_sms_carriers\",\"description\":\"You want a listing with fleet size and safety totals per carrier, or more than SAFER's 500-match cap allows, and want to page through it.\"},{\"provider\":\"safer-fmcsa-dot-gov\",\"capability\":\"carriers/get_carrier_snapshot\",\"description\":\"You have a USDOT or MC/MX number (from search_carriers, search_sms_carriers or elsewhere) and need the carrier's registration, fleet and safety summary.\"}]},\"creditsUsed\":2,\"id\":\"01a18a16-b9f4-7429-af04-584bd5ee9ba7\",\"agent_hints\":[\"All 4 web results are excerpts only (#1 \\\"https://fukushi-portal.tokyo/archives/225/\\\", #2 \\\"https://www.e-sora.net/k-sts/2022.3Hisaitiidoshisin.pdf\\\", #3 \\\"https://www.nissho.or.jp/publication/pdf/katsudoujirei/h27shobodanjirei_all.pdf\\\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\\\"url\\\":\\\"<one of these URLs>\\\",\\\"formats\\\":[\\\"markdown\\\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content.\"]}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "data": {
+        "web": [
+          {
+            "url": "https://fukushi-portal.tokyo/archives/225/",
+            "title": "災害時の要配慮者をめぐる福祉―関東・東北豪雨、熊本地震より",
+            "description": "平成27年9月9日から9月10日にかけて、関東地方北部から東北地方南部を ... 各観測所で観測史上最多雨量を記録し、常総市三坂町地先で堤防が決壊。",
+            "position": 1,
+            "source": "web"
+          },
+          {
+            "url": "https://www.e-sora.net/k-sts/2022.3Hisaitiidoshisin.pdf",
+            "title": "[PDF] 災害時の移動サービス対応指針 - い～そら.ネット",
+            "description": "延移送人数は約 19 万人、延. 協力者は約 28,000 人に上ります。2020 年現在、福祉車両を中心に法人として. 7 台の車両を所有し、15 人の送迎スタッフ、雇用職員、 ...",
+            "position": 2,
+            "source": "web"
+          },
+          {
+            "url": "https://www.nissho.or.jp/publication/pdf/katsudoujirei/h27shobodanjirei_all.pdf",
+            "title": "[PDF] 地域防災力の 充実強化と消防団",
+            "description": "平成27年9月に発生した関東・東北豪雨は、茨城県常総市を中心に甚大な被害をもたらしま. した。大会では、いつ発生するか予測のつかない災害から被害を最小限に ...",
+            "position": 3,
+            "source": "web"
+          },
+          {
+            "url": "https://www.asaka-shakyo.or.jp/about/data/jh27.pdf",
+            "title": "[PDF] Untitled - 朝霞市社会福祉協議会",
+            "description": "平成27年第6回 平成27年 8月28日. 平成27年8月28日. 13 ... 常総市でボランティア活動を行いました。 ... 図るため、福祉車両を使用し有償ボランティアの協力 ...",
+            "position": 4,
+            "source": "web"
+          }
+        ],
+        "tools": [
+          {
+            "provider": "mof-go-jp",
+            "capability": "sanctions/records_list",
+            "description": "Collect the whole list (default 100 rows per page, about 2,900 rows in the asset-freeze file) or one 区分 of it. For one row by 番号 use `records_get`; for a name use `search`."
+          },
+          {
+            "provider": "mof-go-jp",
+            "capability": "sanctions/search",
+            "description": "Find whether a person or organization appears on the Japanese list by name. A match or its absence is not a compliance determination."
+          },
+          {
+            "provider": "safer-fmcsa-dot-gov",
+            "capability": "carriers/search_sms_carriers",
+            "description": "You want a listing with fleet size and safety totals per carrier, or more than SAFER's 500-match cap allows, and want to page through it."
+          },
+          {
+            "provider": "safer-fmcsa-dot-gov",
+            "capability": "carriers/get_carrier_snapshot",
+            "description": "You have a USDOT or MC/MX number (from search_carriers, search_sms_carriers or elsewhere) and need the carrier's registration, fleet and safety summary."
+          }
+        ]
+      },
+      "id": "01a18a16-b9f4-7429-af04-584bd5ee9ba7",
+      "creditsUsed": 2,
+      "agent_hints": [
+        "All 4 web results are excerpts only (#1 \"https://fukushi-portal.tokyo/archives/225/\", #2 \"https://www.e-sora.net/k-sts/2022.3Hisaitiidoshisin.pdf\", #3 \"https://www.nissho.or.jp/publication/pdf/katsudoujirei/h27shobodanjirei_all.pdf\" and 1 more). If you need more than an excerpt, use firecrawl_scrape with {\"url\":\"<one of these URLs>\",\"formats\":[\"markdown\"]}. Retrieve only needed pages; do not re-scrape results that already contain the required content."
+      ]
+    },
+    "isError": false
+  }
+}

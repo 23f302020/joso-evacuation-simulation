@@ -1,0 +1,179 @@
+{
+  "created_at_jst": "2026-10-16T00:09:11.151776+09:00",
+  "scope": "new realtime preparation, not a run manifest",
+  "simulation_started": false,
+  "monitor_started": false,
+  "method_decision": "pending explicit user selection",
+  "source_audit": "USACE_取得・入力化監査.md",
+  "documentation_result": "PASS",
+  "files": {
+    "00_全体整理/INDEX.md": {
+      "bytes": 14760,
+      "sha256": "c0d1229ac4b8ca82a8eae04f92138bd4e745aa1fb9ddf150b943eacf08e0cb0c"
+    },
+    "00_全体整理/決定ログ.md": {
+      "bytes": 75758,
+      "sha256": "6447f479467deb535d12121fe93fa03b5a86228da567c7e8be2e5c82101dfbf9"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": {
+      "bytes": 65863,
+      "sha256": "e3a9f2482d4388bf615b12a93c572a32ed35b027e3f62f30799a12287f486bc2"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": {
+      "bytes": 29759,
+      "sha256": "7818545b480fa3c7c1d6befba4fac64e854fdb8ec955b42f1f4a7d57c22253f9"
+    },
+    "01_経過報告/経過報告2026年08月/経過報告20260826.md": {
+      "bytes": 141583,
+      "sha256": "a018bf03eeef98ac65dbe3ddb121aea74eee13f497b4316f0f2e623b993ec1e1"
+    },
+    "02_情報調査/CLAUDE.md": {
+      "bytes": 5201,
+      "sha256": "b1645d3b742e13d8b3580d87bdd3e9ae749dc181152aa1c6be198d1407f990e0"
+    },
+    "02_情報調査/データソース/データカタログ.md": {
+      "bytes": 20188,
+      "sha256": "403bbe9446ae36a89dad59225a1c274e1e30c11aa2106a8434325624c6ef3a67"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/audit.json": {
+      "bytes": 2730,
+      "sha256": "cb3b6dc1d888c9d1008b6554fb2443e7aa48dc2166fa7e38be87dfad1e6f6f4d"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/cells_utm54n.geojson": {
+      "bytes": 2353459,
+      "sha256": "9209e5019c343d6c49276dae012c5f7a03daa99ead12f7d5b00cffa3b526c306"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/native_times.csv": {
+      "bytes": 27243,
+      "sha256": "618a2086229b42181b6dfa8ac14ee2bbebaab1275e31ef7139d8314a466d3e3e"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/native_water_surface.npz": {
+      "bytes": 21644464,
+      "sha256": "3b186a73278bcf1bb47cb39a5507cccfed2fcc23e30e663e0287ba35e62709ba"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/network_domain_coverage.csv": {
+      "bytes": 1713166,
+      "sha256": "7aea43ef49d2df41cb9102387a6d0edb8303465f5a37b6d288132c10ba1fe1ec"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/population_domain_probe.json": {
+      "bytes": 1220,
+      "sha256": "6ab5ff181f51f8cb03432b06f1d6912bcceebac131405cd4a7f1028376142334"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/structure_tags_audit.csv": {
+      "bytes": 2859446,
+      "sha256": "5bbc6864e769f20e70c0e5d9bee83232b5648fa261b87349779ccdbb83249180"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/usace_candidate_v3/structure_tags_audit.json": {
+      "bytes": 516,
+      "sha256": "ca6d2b39c916efe03c15796a4f84748ef9f00f26f625ebb8267598324af54b42"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/USACE_HDF_inventory.json": {
+      "bytes": 133902,
+      "sha256": "ac9972ac0542650db679a59e32362fc1ef3618dd6797f65ade635151f5876b72"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/USACE_ZIP_inventory.json": {
+      "bytes": 3532,
+      "sha256": "60f7ec03b357b6ae3bf951cac852f48da3f44e240aa1991ac1537731596c05cd"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/USACE_独立照合.json": {
+      "bytes": 1190,
+      "sha256": "2a985a835f39e51870abe42fdf9fcb586c7448e45ad6038f93529acd00d7b845"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/derived/新系列準備_文書照合.json": {
+      "bytes": 2074,
+      "sha256": "edc5356921a7540a17eab92c55130a43a15873aa0f0c9370f3d2c532bab6c041"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/extract_usace.py": {
+      "bytes": 6933,
+      "sha256": "f20346b6c75f6bc93e3b5e0ddb3caa52f79b87e60b32d2e2002a0e1d0d12cc75"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/plot_usace_domain.py": {
+      "bytes": 4032,
+      "sha256": "9a9d3cc1b840a62e3e0af4cc3320ec163b9062379a91562d1e8a4c364d2a8462"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/LifeSim_Validation_Joso.zip": {
+      "bytes": 69764360,
+      "sha256": "2ec5a05ed1180277c4841b51226dfc7f60c4a1eb1b032f04dc9dbc0e56dd8179"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/LifeSim_Validation_Joso.zip.metadata.json": {
+      "bytes": 403,
+      "sha256": "bd8af7e037ee013e5affc9e89a662bc8887b714e8e998de440f745f9cbf6edf9"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/usace_joso_firecrawl.json": {
+      "bytes": 12619,
+      "sha256": "9cbc30fa6127f23fb2782716f0331d29fc35f6755eec4880cb5399421ccc5c98"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/usace_joso_landing.html.metadata.json": {
+      "bytes": 377,
+      "sha256": "60b7588be460a7194f8c1ad9a7595028849a9066c248268938bfbbd614a4115c"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/usace_joso_share.html.metadata.json": {
+      "bytes": 353,
+      "sha256": "30e19b2026a2fe09f4d60b9f95036e4e8d7302c8edaf3dbd651ee6a5635ff288"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/usace_share_firecrawl.json": {
+      "bytes": 4994,
+      "sha256": "1f24525c6f0db3955099ea63d4c2dfcfcfbf288344fbcbc6608ed5955c5bdbc0"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/usace_share_page.json": {
+      "bytes": 1244,
+      "sha256": "7d6cc1781b768e5b53119b912cdc3464d4f3f19aa5fb0f54f72d05468ba58b43"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/raw/usace_terms_firecrawl.json": {
+      "bytes": 5805,
+      "sha256": "fa19d62087272b23d6568726ff826017c0631eb6431234359d457befa683b1f6"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/USACE_取得・入力化監査.md": {
+      "bytes": 8655,
+      "sha256": "e2adb1dc1d2d1dc474f044f71357f55e55fd37b6672f13fe7e36f017f4cf1017"
+    },
+    "02_情報調査/氾濫・浸水/jdrt_realtime_20261015/verify_usace.py": {
+      "bytes": 5453,
+      "sha256": "64e68842aab08ebc0bbe5e4f3a72d497f2494dc90f5fae634a881ced3cc552f7"
+    },
+    "03_研究設計文書/CLAUDE.md": {
+      "bytes": 5664,
+      "sha256": "3aa98666e257b6ca3c11b7c0cbe42ce448685b848871404910e84fcf4ca4f2dc"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_実時間版_開始前判断案_v1.md": {
+      "bytes": 8093,
+      "sha256": "9ca4b3b2cc2decbb6bc6aa6261d3f0d9762e63cedb6c7626bdfe2aaa5db1b6e5"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_現実条件版_PAP・パラメータ判断入力.md": {
+      "bytes": 11710,
+      "sha256": "3d66793067555f80a946e8f84a8d685a140bd5e151aca33da6855a007b929f59"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_現実条件版_人物対応・観測仕様_判断入力.md": {
+      "bytes": 28503,
+      "sha256": "01a709412ea48a2f7f769d8702aa2f1baf515c02d042499a0e1eebf410ae1dcb"
+    },
+    "03_研究設計文書/図表・UML/JDRT_実時間版_新データフロー_v1.html": {
+      "bytes": 7264,
+      "sha256": "771848d744a655452f3c7cf6c0dda453388693e0029ed3bce6734cfeb4ee2edd"
+    },
+    "03_研究設計文書/図表・UML/JDRT_実時間版_新データフロー_v1.md": {
+      "bytes": 3769,
+      "sha256": "f92b7c178fd3575147c5e6051b3e049262f3e251be05ee41ac505aec5a042f7d"
+    },
+    "03_研究設計文書/図表・UML/JDRT_実時間版_計算域照合_v1.metadata.json": {
+      "bytes": 919,
+      "sha256": "44ad7af4a3b2a02d92ed77596912bac950254e66d7d13f1b2927ff27701c54b4"
+    },
+    "03_研究設計文書/図表・UML/JDRT_実時間版_計算域照合_v1.png": {
+      "bytes": 234782,
+      "sha256": "a95b3dfece70ebf712546a7ebda209766c28955b78007e1640ba47599c74a6f2"
+    },
+    "03_研究設計文書/図表・UML/JDRT_実時間版_計算域照合_v1.svg": {
+      "bytes": 336622,
+      "sha256": "f372c609189780598ccf338d9a0125c56e25922c6eef1e17db810347e2131671"
+    },
+    "05_タスク管理/jdrt/JDRT-v2_完了後方針・タスク.md": {
+      "bytes": 19619,
+      "sha256": "54efce1476a89768a9daba49fef771b9fae7d31c26419c7f8fced2df69e4bf5c"
+    },
+    "context.md": {
+      "bytes": 32798,
+      "sha256": "7e2768007a7b0d267e52159d9090e8da3c68d8f0b17ad18b56b9ece7d7c441bb"
+    }
+  }
+}

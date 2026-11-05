@@ -1,4 +1,114 @@
-﻿作成：2026-10-17 JST。protocol `realtime_choice_v1`。最新状態 2026-10-20T08:03 JST：正式記録0/70、研究core稼働0、technical READY=false。wf26101901 c25 PASS/c26 FAILED、native lateral reset +0.64m。旧隔離buildは2026-10-19T10:03:44.674969+09:00にsumo/netconvert compile失敗exit 2で保全。attempt02はZLIB configure成功後helper macro assertで失敗しSUMO build未開始。修正済みhelperのattempt03_20261020は08:02:39.791開始、08:03:02.904時点RUNNING、phase sumo_netconvert_build_static_zlib、owner PID5796・child PID22460（parallel2）。隔離build中、研究core/native simulation未実施。08:01 statusは0/70、running/unrecorded/nativeなし、core_ready=false/start=false。全26/audit/14 smoke/new preflight未完了のためcore開始禁止。
+# 受付・代替行動：詳細タスク
+
+**2026-10-30 09:39以降の本実験：** 現行v5の初回本実験「固定終点・R0・seed23423」を新ID sv26103001で開始しました。実行PythonとSUMOのPID・作成時刻・親子関係・接続先を照合し、独立監視の同一対象認識も確認しました。全人口・6時間の計算中で、終了後の独立検証・正式記録は未実施、採用数は0/70です。 元start39687 exit0、launcher14460/実27828/native31792。最新観測と次の1件はG4 checkpointのcurrent_coreと専用checkを参照。
+
+**2026-10-30 09:32以降の開始前確認：** 現行v5の開始前検査がREADYとなり、1,566参照ファイル・入力28項目・単体122件・全44技術検証の原本を照合しました。本実験はまだ正式0/70です。最新statusに未記録・部分記録・失敗・実行中はなく、初回1セルの開始条件が成立しました。容量は1セル分ずつ再確認し、全70分の保証としません。 原本はG4 checkpointのcurrent_preflightとv5_preflight_terminal_readback_20261030.jsonを参照。
+
+**2026-10-30 09:11以降の確認：** 全14条件の短時間試験が独立検証PASSで終了し、238一次出力と387参照ファイルを現行版へ照合しました。旧版が停止した13番目も含みます。正式採用0/70・READY=falseで、次は入力・単体試験・全44技術実行・容量を確認する専用の開始前検査です。 G4 checkpointのcurrent_smoke_sequenceとns261030a_all14_readback.jsonを参照。
+
+**2026-10-30 朝の進行：** 全14条件の短時間試験を新IDで順次実行しています。独立確認済み1/14、観測時の処理はns261030a_02/validateです。元session72385・同一owner36476を追跡し、別のvalidateや次セルを重複実行しません。本実験は正式0/70・READY=falseで、新しい開始前検査等が終わるまで開始しません。 07監視は同一2476のまま更新回復し再起動なし。観測空白は補作しません。
+
+**2026-10-29 22時台前の独立確認：** 修正版での45人工実行・315原本と、停車履歴を持つ車両の6試験・5,817フレーム・66原本を照合しました。観測できなかった位置/時刻不一致の分岐は未検証のまま明示しています。次は全14条件の短時間試験と新しい開始前検査で、正式0/70・READY=falseを維持します。 G4 checkpointのcurrent_native_guard/current_past_stop_probesを参照。
+
+**2026-10-29 21:50以降：** 観測専用SUMOの全ソース・標準DLL読み込み照合を終え、15人工条件を3バイナリで比べる45実行を新規開始しました。人物会計・位置・方向・時計の原本を収集中で、完了後の独立照合、停車履歴の実動作、全14設定と新しい開始前検査は未完です。正式0/70・READY=falseを維持します。 元handleと原本はG4 checkpointのcurrent_native_guardを参照。
+
+**2026-10-29 21時台の確認：** 全30ケースの実行器側PASSと、独立した210成分・65改変反例・510原本の照合を確認しました。component-only報告は正式採用前のINCOMPLETEを維持しています。観測専用SUMOの別ビルドも正常終了し、広いnative観測・全14設定・新しい開始前検査は未完です。正式0/70・READY=falseです。 読戻しはG4 checkpointのcurrent_complete_fixture_suite/current_observation_only_build、監視復旧と未監視区間はcurrent_independent_monitor_recoveryを参照。
+
+**2026-10-29 20:54以降の進行：** 両版比較の終端と独立13,671原本/3件7成分PASSを確認。観測専用diag02（元13836/実12904）と全30制御試験sf261029a（元54439/実33700）を新IDで開始し、同じプロセスを追跡中です。現在位置と停止条件はG4 checkpointのcurrent_observation_only_build/current_complete_fixture_suiteを参照し、重複起動しません。helperの新形式対応は7新規/5既存契約と原本参照に合格し、common5・config・入力は不変。本実験は0/70・READY=falseです。
+
+**2026-10-29 20時台の続報：** 両版の新しい実行ファイル一式を作成し、各237ファイルのSHAと原本・別プロセスの読み込みを確認しました。研究設定と70条件を変えず、別の技術登録v5と新入力を作成し、全入力artifactの旧v4とのバイト一致と独立28検査を確認しました。正式0/70・READY=falseで、本実験は未開始です。次は新両版の実動作回帰、全controller試験・独立監査・全14設定smoke・開始前検査です。
+
+[技術v5の原本照合](../../06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/readback.json)。
+
+**2026-10-29 16:39以降の続報：** 対照版の新bundle作成が正常終了し、237ファイルのSHAと原本、別プロセスでの読み込み/指紋確認を終えました。選択版を別の新規保存先へ作成中です。研究用の選択先は維持し、両版の動作回帰と全開始条件をそろえるまで本実験を開始しません。v5は科学的設定と70条件が同じ隔離下書きで、未適用です。
+
+**2026-10-29 16:06以降の続報：** 両版の全来歴検査は元処理の正常終了を確認し、13,004ファイル、設定10組、依存ツール9件、ヘッダ471件を照合しました。両版で異なるnativeソースは登録済みの歩行修正だけで、停車履歴修正は共通です。対照版を新しいbundleへまとめる処理を実行中で、研究用選択先・入力は不変です。nativeの動作回帰、別技術v5、全開始前検査と本実験は未完です。
+
+**2026-10-29 16時台の続報：** 両版のビルドが終了し、各6,228ソースの予定した修正と、2実行ファイルずつの標準DLL読み込みを照合しました。一次記録の形式差により全来歴検査の初回を停止・保全し、原ログを直接照合する対応を人工統合・パッケージ8件、旧分岐17件、パッケージ単体13件で確認しました。現在は新しい保存先で、公式ZIPからの全ソース・設定10ファイル・コンパイラ・依存物・読み込み原本の検査を進めています。研究用の選択先は不変、現v4の正式記録0/70・READY=falseです。修正版の採用時は科学的条件を維持する別技術v5へ分けます。
+
+**2026-10-29 15時台の続報：** 対照版の全ソースビルドは11:49に終了し、親は14:56以降に終端を確認しました。6,228ソースの変更は予定した1ファイルのみ、6工程ログ・2実行ファイル・標準DLL読み込み検査を照合済みです。検査補助の重複import誤拒否を4契約と実行ファイルで訂正し、旧失敗は保全しました。旧ビルドとのGit検出版の設定差1項目を隠さず残し、次の選択版repair03を新規起動しています。研究用の選択先は不変、正式0/70・READY=falseです。
+
+**2026-10-29 11:30の続報：** 現行版の対照・選択版比較が完了し、13,682ファイルと3件の独立検証を照合しました。停車履歴修正を両版へ共通に加える方針で、まず対照版を別の全ソースからビルド中です。旧版・研究入力は不変で、本実験の再開条件は未成立です。
+
+**2026-10-29 11時台の続報：** ループと今後の停車予定を含む追加2人工試験も確認しました。旧比較証拠と現行設定の差を検出して全ソース再ビルドを開始前に止め、現行版で対照・選択版の技術比較を実施中です。本実験は0/70のまま停止し、HTMLの通常同期は比較処理の終端まで保留します。
+
+**2026-10-29の技術停止：** 現登録v4は正式0/70です。14条件の短時間試験は12件の独立確認後、13件目でSUMO本体が停止しました。人工診断で新経路と過去停車番号の不整合を観測しましたが、修正は未採用です。[診断と次の作業](../../06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/diagnosis.md)を参照し、本実験・開始前検査・後続条件は停止します。旧v3と旧証跡を保全します。
+
+現在の実行状況と次の1件は[現在地](../../context.md)を正本とし、下表のCH-M1を既存同期処理で更新します。技術欄は新登録v3の開始前証跡を確認した2026-10-27時点の記録です。全70セルの正式採用・比較・研究報告の完了を意味しません。
+
+開始前の照合：[元preflightと現行証跡の読戻し](../../06_研究結果/jdrt/goal_20261017/transition_time_candidate_20261024/v3_preflight_terminal_readback_20261027.json)。監視の復旧：[07の同一実行対象確認](../../07_監視システム/verification/monitor_reentry_20261027/deployment.json)。
+
+<details>
+<summary>過去の時点別状態・停止履歴（現在の開始条件ではありません）</summary>
+
+最新状態（2026-10-24T23:39:54.926219+09:00）：最新HOLD（2026-10-24T23:39:54.926219+09:00）：新登録choice_native_observation_v3_20261024は正式記録0/70・READY=false、旧正式8件/INVALID9件目を保全。現行全29実SUMO/独立全成分・61改変反例がPASS、493一次ファイル不変。ns261024e全14設定smokeも元session80519 exit0/各独立PASSとなり、238一次出力と実装/input/parameter/manifest/非採用を読戻した。関連61unitと入力28項目、G6根拠7同文/人工7、G7時計13引用/6コール・指標4引用・新旧20データ実バイト/53source・39linksを確認済み。次は専用preflightの入力/全unit/全43技術run/容量/新READY照合。coreはまだ開始しない。
+
+最新状態（2026-10-24T23:18:20.680844+09:00）：最新HOLD（2026-10-24T23:18:20.680844+09:00）：新登録choice_native_observation_v3_20261024は正式記録0/70・READY=false、旧v2正式8件/INVALID9件目を保全。新入力28項目と関連61unit、固定共通版の全29実SUMO/独立全成分・61改変反例がPASS、493一次ファイル不変を照合。新prefix ns261024eの全14設定smokeを同一sequence/session80519/実owner15784で逐次実行中（独立完了1/14、観測時active=ns261024e_02/smoke）。全14/新preflight/容量前にcore開始禁止。G6根拠7同文/人工7試験、新入力限定理論、G7の47source/37links照合済み。方式比較・全70実分析は未実施。
+
+最新状態（2026-10-24T23:03:47.090789+09:00）：最新HOLD（2026-10-24T23:03:47.090789+09:00）：新登録choice_native_observation_v3_20261024は正式記録0/70・READY=false、旧v2正式8件/INVALID9件目を保全。観測・独立検証を訂正し、新入力の独立28項目と関連61unitがPASS。固定共通版の全29実SUMO suite nt261024dは23:01:18にCOMPLETED/各case PASS。元一次成果物の全成分・改変反例の独立監査を同一session29777/実PID26196（launcher22760）で実行中。全監査/全14smoke/新preflight/容量前にcore開始禁止。G6根拠7同文と人工7契約、新入力限定理論確認済み。方式比較・全70実分析は未実施。
+
+最新状態（2026-10-24T22:57:19.116447+09:00）：最新HOLD（2026-10-24T22:57:19.116447+09:00）：新登録choice_native_observation_v3_20261024は正式記録0/70・READY=false。旧v2正式8件/INVALID9件目を保全。新入力11965人/70条件の独立28項目PASS、関連61unit PASS。短道路/閉鎖/最終短道路のnative試験を収集し、到着尾距離の既存最終edge前提を接続からの一意距離証明へ訂正。元c29 INVALIDは保全し現成分再計算/5改変拒否PASS。現行全29suite nt261024d（session11036/同一executor34360、完了15/29）を実行中。全反例/全14smoke/新preflight/G6/容量前にcore開始禁止。
+
+最新状態（2026-10-24T22:37:30.390451+09:00）：最新HOLD（2026-10-24T22:37:30.390451+09:00）：新登録choice_native_observation_v3_20261024は正式記録0/70・READY=false。旧v2正式8件/INVALID9件目を保全し新比較へ混ぜない。遷移生成/独立検証の技術修正を組込み、関連58unit PASS。新入力11965人/70セルを準備し独立入力検証中、同一技術suite nt261024aで短道路/下流internal閉鎖境界を実測中。全現行suite/反例/14smoke/新preflight/G6/容量前にcoreを開始しない。 技術fixture session38142/実executor23276、独立入力検証session39480/実PID28624を再開せず追跡する。現在の58unitにはpreflight明示load対象runtime経由で追加10件を含む。旧証拠/変更前バイトはdocument_historyと候補修正baselineへ保全。
+
+最新状態（2026-10-24T18:03:44.851009+09:00）：技術HOLD・旧正式8/70を保全。9件目nc26102402は原validate/session13369/実PID19672がexit1/INVALID終端、recordせず専用rejectでINVALID_PRESERVED。短道路の時刻誤判定とWarning側の依存判定を診断済み。隔離候補13契約/読取replay合格は未組込・非採用。次は物理/時計/研究条件を変えない生成/独立検証の修正と版整合の別技術登録・全開始前証跡。旧新common5混在禁止。
+
+最新状態（2026-10-22T14:48:45.462479+09:00）：最新HOLD（2026-10-22T14:48:45.462479+09:00）：native観測監査v2は正式記録0/70・研究core稼働0・技術READY=false。現行na26102202の全26成分/全54改変反例/442原本不変が独立PASSし、監査/共通5SHA一致を確認。新prefix ns261022cの全14設定smokeを逐次実行中（観測時点で独立完了1/14、owner25072・handle9617、現在ns261022c_02 smoke）。07監視PID3348の同一性と新対象検出を確認。旧採用1件/INVALID/失敗pipeline/旧予約prefixは別保全。 同じsmoke sequenceの全14独立validate PASS/manifest/実装SHA一致を確認し、新preflightを取得する。現行READY・全一次証跡・容量確認前にcoreを開始しない。結果はJD-20261022-research-1446-06へ追記。70正式セル後も分析/数式/不足資料/限界/最終報告まで継続する。
+
+最新状態（2026-10-21T21:17:51.803593+09:00）：最新HOLD（2026-10-21T21:17:51.803593+09:00）：正式記録1/70。技術READY=false。旧R1はINVALID_PRESERVED。非採用の汎用診断で元3時点/警告式が整合し8人工契約・7改変拒否を確認。元coreの緊急減速度直接観測は欠けるため採用不可。70セル/研究条件を維持した技術観測版のconfig候補と変更境界を準備したが未切替・未開始。技術観測版の修正境界.mdに従い、raw emergencyDecel・実native引数/登録IDの保存と既存validatorへの厳格な一般分類を、必要なTDD/原本保全/新版再登録のまとまりとして実装する。旧R0/旧R1・旧台帳は保全し、旧READYや旧セルを新比較へ混ぜない。現行共通5/configはまだ変更していない。
+
+最新状態（2026-10-21T21:03:18.109917+09:00）：最新HOLD（2026-10-21T21:03:18.109917+09:00）：正式記録1/70。技術READY=false。R1 ch261021_002はINVALID_PRESERVED。隔離native pair nb26102101は完走したが警告未再現・車軌跡一致。車種の緊急減速度API9.0と元警告数式は整合、元coreの唯一原因・無害性は未確定。正式record/全後続core禁止。同一native版/車種/時計/速度差/警告式を拘束する汎用診断契約と改変反証を準備し、受入条件の技術修正か研究方法変更かを整理する。警告が出るまで入力探索、whitelist、旧R0と新validatorの版混在は行わない。
+
+最新状態（2026-10-21T20:48:36.220642+09:00）：最新HOLD（2026-10-21T20:48:36.220642+09:00）：正式記録1/70。技術READY=false。ch261021_002は独立INVALIDにより専用rejectでINVALID_PRESERVED。18出力と元完走manifest保全。原因候補は横断歩行者へのnative応答だが未確定、正式record/全後続開始は禁止。隔離した横断者あり/なしの非採用native probeを、原因診断と次の技術検証.mdの契約で準備する。単一run再試行・警告whitelist・現行validator差替え採用をしない。common5変更なら旧R0を保全して新版全比較をそろえ、PAP/除外規則等に及ぶ判断は別途整理する。
+
+最新診断（2026-10-21T20:43:54.980309+09:00）：正式1/70・HOLDを維持。R1 ch261021_002の2交差点/全接続29edgeと75m補助範囲の16秒99行を原本から再抽出し、車1・徒歩2を確認。警告6112.5に対応する6113.0観測で徒歩者がcrossingへ進入し、vehicle linkのresponse/foes bitも同crossingを指す。公式ZIP＋凍結patchへ5sourceを照合し、歩行移動が車両計画より先であることを確認。歩行者応答仮説を支持するが内部leader/stopSpeed未記録のため原因確定・無害判定・採用はしない。次は隔離した横断あり/なしnative技術probeの設計・検証。現行common5/原本不変、record/後続開始禁止。
+
+最新HOLD（2026-10-21T20:20:32.221669+09:00）：正式1/70。R1 ch261021_002は全21600秒完走、独立検証INVALID（未知のnative emergency braking警告1件、人物/候補/道路/actor/移動/fixture境界はPASS）。正式record/全後続を停止し原本保全。sim6112.50秒の車scen_c_origin_0381_0016/lane9407#2_1を一次actor/event/net/車種と固定native sourceで診断する。現行5実装/入力/nativeを変えて旧採用へ混ぜず、PAPの版整合要件を維持。通知queue修正30試験・実反映/11API受付は科学的採用と別。
+
+> 履歴：最新状態（2026-10-21T20:08:39.288677+09:00）：goal ACTIVE。正式1/70。R1 ch261021_002は16:40:45完走、19:55から専用validateを同じhandle70685/実PID22920で実行中。親16:39→19:54空白は補作しない。独立監視は16:40:49に検知済みだが通知待ちだったため、診断上限と通知を分離する修正を30試験・実通知で確認し新PID31344へ反映。原本/共通stack/受入ゲート不変。現runの独立PASS→record7同期後だけ次へ。
+
+> 履歴：最新状態（2026-10-21T16:30:34.258250+09:00）：goal ACTIVE。正式1/70、初回R0 ch261021_001は独立PASS/record7 COMMITTEDと7同期確認済み。新低需要R1 ch261021_002を実PID30440/native35308で実行中。共通stackを凍結し、現runの独立採用・7記録後だけ次へ。初回の生成前ログ読取を保存、同一runのsim600秒/ログ生成/異常flagなしを後続確認。全70実分析・数式考察・不足資料・限界・最終報告まで継続。
+
+> 履歴：最新状態：最新状態（2026-10-21T15:49:51.455449+09:00）：goal ACTIVE。新R0 seed23423 ch261021_001は21600秒までCOMPLETED、正式記録0/70。公開CLI validate --purpose coreを同じhandle25565で実行中。完走は採用ではなく、独立PASS/core_adoption_permitted=trueとrecord7/runID同期・台帳一意まで後続禁止。現行共通5/native/config/registered03は凍結。新READYは1409証跡/13check、入力/98unit/全26・54改変/全14smokeを照合済み。容量はrolling一件予約、全70保証なし。実分析/数式/不足資料/限界/最終報告までgoalを継続。
+
+> 履歴：最新状態：最新状態（2026-10-21T15:37:06.565108+09:00）：goal ACTIVE。現行入力/98unit/全26統合・54改変反例/全14smoke/40技術run再検証と容量条件を通過し新READYを1409証跡・13独立checkで再照合。native実測12群と未到達false位置時計guardのsource/同C++断片16人工条件・2欠落反例を分離した技術レビュー後、新R0 seed23423 ch261021_001を開始。研究core稼働1、正式記録0/70。今回sim 4620.0/21600秒、PID27792/launcher18948、異常flagなし。完走後の独立validate PASSとrecord7同期まで後続禁止。全70換算容量は未保証、毎回1セル予約を再確認。分析/数式/不足資料/限界/報告を含む最終goalは未完。
+
+> 履歴：最新状態：最新HOLD（2026-10-21T15:20:21.795385+09:00）：goal ACTIVE。正式記録0/70・研究core稼働0・READY=false。現行全26統合/54改変反例/全14smokeは独立PASS。新preflight cf26102101を同じhandle7794・実owner33404で再検証中、入力と98unitはPASS。native12群実測/位置時計false guard未実証を維持し、同じC++guard断片の人工16条件PASSと2欠落guard反例の拒否を追加。G6現行source29一致/人工24試験・実台帳未完拒否を確認。残る40run証跡/容量/新READYを独立照合後に初回core開始判断。70正式セルと分析/数式/不足資料/限界/報告は未完。
+
+> 履歴：最新状態：最新HOLD（2026-10-21T15:08:02.316003+09:00）：goal ACTIVE。正式記録0/70・研究core稼働0・READY=false。現行全26統合・442一次ファイル/54改変反例・全14設定smokeが独立PASS、14件の共通5実装/config/runtime/記録対応を再照合。G6現行source契約/入力29SHAを再監査し人工24試験PASS。native12群実測とfalse位置/時計guardの未実証/条件付きソース推論を分離。次は入力/全unit/容量/40技術run再検証の新preflightと最終開始判断。70セル・実分析/数式/不足資料/限界/報告は未完。
+
+> 履歴：最新状態：最新HOLD（2026-10-21T14:53:05.328611+09:00）：goal ACTIVE。正式記録0/70・研究core稼働0・READY=false。現行全26統合・独立442一次証跡/54改変反例PASS。全14設定smoke cs261021aは今回7/14独立PASS、同じhandle47653で継続。G6現行source契約/入力29SHAを再監査、入力限定理論値を再計算し人工集計24試験PASS。native12群実測と位置/時計false guardの未実証/条件付きソース推論を分離。全14完了後input/unit/容量/新preflight・開始判断、70正式実験・分析/数式/不足資料/限界/最終報告が残る。
+
+> 履歴：最新状態：最新HOLD（2026-10-21T08:19:39.639725+09:00）：goal ACTIVE。正式記録0/70・研究core稼働0・READY=false。選択比較fは独立再照合済み。隔離診断diag01_20261021はcompile/imports/版名確認exit0、同一handle97226/owner34116の最終source・全binding照合中。native13群向け15入力を準備し7試験PASS、実guard/専用runnerは未完。全suite/audit/14smoke/input-unit/preflight/G6・70正式実行・分析/数式/不足資料/限界/最終報告が残る。独立監視を使用し旧履歴/観測空白を保全。
+
+> 履歴：最新状態：最新HOLD（2026-10-21T08:07:20.947832+09:00）：goal ACTIVE。正式記録0/70・研究core稼働0・READY=false。選択比較fは正常終了、3独立報告7成分PASS・全13,682 binding再照合差異0。観測専用trace挿入6試験/実g++構文検証、隔離build5試験・読取検査5試験を確認。新diag01_20261021はsource別コピー/設定を完了しコンパイル中。同一handle97226・owner34116/子34144の独立同定が一致。既存独立監視が新attemptを認識しflags空。診断EXE未完成、実native guard未検証。広い回帰/全suite/audit/14smoke/input-unit/preflight/G6未完、core開始禁止。旧run/失敗/観測空白を保全。
+
+> 履歴：最新状態：最新HOLD（2026-10-21T07:58:12.766443+09:00）：goal ACTIVE。正式記録0/70・研究core稼働0・READY=false。選択比較nc261020f/np261020fは正常終了、3独立報告7成分PASS・2物理入力一致・全13,682 binding再照合差異0。反復の4 reroute/8位置receiptを一次証跡から再計算。広いnative guardは未完。観測専用trace挿入helperは6試験と実g++構文検証PASS、未適用で診断binaryは未作成。独立監視PID30168の同一性/直近観測を確認。PC睡眠中の観測空白は補作せず、旧失敗/INVALIDを保全。次は別source/build/SHAの隔離診断build、13群traceとproduction回帰、全suite/audit/14smoke/input-unit/preflight/G6。core開始禁止。
+
+> 最新作業（2026-10-21T08:53:42.383327+09:00）：2026-10-21T08:53:42.383327+09:00：観測専用diag01 buildは最終照合まで正常終了。同方向の置換位置/全人物系列をnative基準と照合し、検証器のXY速度誤判定と微小位置ずれ見逃しを修正（22試験PASS、旧証跡は現行SHAには流用不可）。guard全45本の旧eは39本終了後に試験経路不整合で停止保全。経路/終点を修正し22試験・交差点3版正常終了、新gで全45本を収集中。正式0/70・READY=false、実native独立監査/全suite/14smoke等が残る。
+
+> native一次収集の終了と独立監査PASSは別。旧選択比較fのnative binary/位置証拠は保全し、旧validator SHAの全現行性はSTALE。参考進捗は工数概算40%、正式0/70、残り60〜100時間の条件付き目安。
+
+
+> 履歴：最新状態：最新HOLD（2026-10-20T22:42:37.955366+09:00）：goal ACTIVE。正式0/70・研究core0・READY=false。独立監視のsuite/case対応・exact argv・初回未確認cache・照合中終了/PID再利用を修正。27試験/人工Windows daemon確認、旧24イベント/配送履歴保全。既存タスクだけ再起動しPID29296・読込source一致を確認。修正済みinput比較helperで新nc261020e/np261020eを22:41:07 JST開始、同一executor22048/launcher30140・session18767の来歴照合を観測。旧dは物理/独立PASSだがinventory gate FAILED保全。native trace13群は契約/入力経路確認のみ。広いnative guard/全suite/audit/14smoke/preflight/G6未完、core開始禁止。
+
+> 履歴：最新状態：最新HOLD（2026-10-20T22:30:44.499288+09:00）：goal ACTIVE。正式0/70・研究core0・READY=false。d比較の対照校正と修正版2caseは独立全7成分PASS、対照反復は予定したXY不連続を再現。最終input比較helperの14番目toolchain receiptの一覧漏れでFAILED_PRESERVED。原本不変、helperを各role固定bundleへ完全照合するよう修正し33試験・実4入力SHA/2case物理比較を確認。旧dは昇格せず、現行版の新ID比較が必要。独立監視PID25168は生存・同一性一致、suite/case警告の修正は未実施。次は監視の狭い照合修正後に新比較。native trace13群の契約/7source経路確認済みだが未実装。広いnative guard/全suite/audit/14smoke/preflight/G6未完、core開始禁止。
+
+> 履歴：最新状態：最新HOLD（2026-10-20T22:14:04.149922+09:00）：goal ACTIVE。正式0/70・研究core0・READY=false。旧c比較はFAILED_PRESERVED。距離差をnative形状から2人とも数値再構成し、検証器のlive長と固定計画長の誤った同一視を訂正。20試験PASS・旧raw7成分の履歴再計算、原本/INVALID保全。新nc261020d/np261020dを22:12:28 JST起動し同一executor PID29460/launcher28704・session16184を観測。初期provenance照合中で実fixture開始は未確認。広いnative guard/全suite/audit/14smoke/preflight/G6未完、core開始禁止。独立監視を使用、suite/case ID警告は未修正。
+
+> 履歴：最新状態：最新HOLD（2026-10-20T22:05:33.397367+09:00）：goal ACTIVE。正式0/70・研究core0・READY=false。nc261020c/np261020c比較はFAILED_PRESERVED。修正版の位置連続8receiptは一致し2case完走したが、反復caseの独立検証で2人の旧計画長とnative可変stage長の照合が不合格。原本・INVALID保全、正式採用/後続開始停止。差の原因はnative内部距離の分岐を調査中で、検証条件の変更未実施。独立監視PID25168は22:04 JSTに同一性・直近観測を確認、受信箱を使用。suite/case ID照合警告は未修正。広いnative guard/全suite/audit/14smoke/preflight/G6未完、core開始禁止。
+
+> 履歴：最新状態：最新HOLD（2026-10-20T21:56:07.793370+09:00）：goal ACTIVE。正式0/70・研究core0・READY=false。新c対照校正は独立7成分PASS、対照反復では予定したXY不連続を再現。修正版np261020cの校正/反復2caseは完走・case PASS、独立validate/SHA比較を同一session34648で実行中。既存Windows独立監視PID25168・source一致・新しい観測を確認し受信箱を使用。case/suite ID差のPID照合警告を原イベント付きで調査。県検証入口はlive GETでも臨時ページへ転送、需要/旅客供給実績は未補完。広いnative guard/全suite/audit/14smoke/preflight/G6未完、core開始禁止。
+
+> 履歴：最新状態：最新HOLD（2026-10-20T21:43:44.488770+09:00）：goal ACTIVE。choice正式0/70・研究core稼働0・READY=false。registered03は旧20入力artifact全バイト一致・独立入力28検査済み。比較bで対照のXY不連続を再現したが、custom版名の識別不足により校正独立INVALIDを保全。版名と現行固定bundle来歴の照合を修正し18試験PASS、保存raw7成分の履歴再計算合格・原本不変。新nc261020c/np261020cを21:41:56 JST開始、同一owner/handleを監視中。修正版物理結果・広いnative guard・全suite/audit/14smoke/preflight/G6未完、core開始禁止。
+
+> 履歴：最新状態：2026-10-20 17:38 JST。正式0/70・研究core稼働0・READY=false。selected-pair helper31試験/レビュー完了。旧SHA不一致の初回はSUMO前停止で保全し、新registered03は旧20artifact全バイト一致・独立28検査PASS。新nc261020bで校正case PASSとold_remaining/XYだけの不連続を実再現。校正の独立検証後だけnp261020bへ進む同一workflowを実行中（session38383）。広いnative guard/全26/audit/14smoke/preflight/G6が残る。[比較手順と来歴](../../06_研究結果/jdrt/goal_20261017/native_selected_helper_20261020.md)。
+
+> 履歴：最新状態：2026-10-20 16:50 JST。正式0/70、研究core/native simulationなし、READY=false。P1は53試験・実13,003件照合とレビューを完了。新control/patched bundleを各243ファイルで固定し、fresh-process import/再解決/fingerprint確認済み。次はselected-pair helperの接続・試験・レビュー後に新IDで実回帰。広いnative guardと全26/audit/14smoke/preflight/G6は残る。[bundle一次記録](../../06_研究結果/jdrt/goal_20261017/native_bundles_verified_20261020.json)。
+
+> 履歴：最新状態：2026-10-20 15:06 JST。正式0/70、研究core/native simulationなし、READY=false。修正版a08・未修正版control02の両EXE compile/version正常。source全6,228件×2roleを公式ZIP・登録native差分・共有CMake差分へ再照合し、12人工試験PASS。次はpackager P1のEXE/state/compiler/依存/metadata拘束と反例。実bundle生成・selected pairは未開始。[現行ソース照合](../../06_研究結果/jdrt/goal_20261017/pair_sources_helper_20261020.md)。
+
+> 履歴：﻿作成：2026-10-17 JST。protocol `realtime_choice_v1`。最新状態 2026-10-20T08:03 JST：正式記録0/70、研究core稼働0、technical READY=false。wf26101901 c25 PASS/c26 FAILED、native lateral reset +0.64m。旧隔離buildは2026-10-19T10:03:44.674969+09:00にsumo/netconvert compile失敗exit 2で保全。attempt02はZLIB configure成功後helper macro assertで失敗しSUMO build未開始。修正済みhelperのattempt03_20261020は08:02:39.791開始、08:03:02.904時点RUNNING、phase sumo_netconvert_build_static_zlib、owner PID5796・child PID22460（parallel2）。隔離build中、研究core/native simulation未実施。08:01 statusは0/70、running/unrecorded/nativeなし、core_ready=false/start=false。全26/audit/14 smoke/new preflight未完了のためcore開始禁止。
 
 > **最新HOLD（2026-10-18T20:24:49+09:00）：goal API ACTIVE再開（親の同時点readback共有）。realtime_choice_v1正式記録0/70、実行中coreなし。cf26101802は15:49:37 JST case7 alighting_closureでFAILED、suiteと予約prefix保全。駐車中DRTの空lane IDをnet.getLaneへ渡した例外の技術修正中で新版READY未達。全所有PID不在。修正完了・PASSの根拠は未提示。新IDによる全26ケース、独立反例監査、14設定smoke、preflightの完了まで再検証・core開始を禁止する。旧65unit PASSは失敗時版のため新版PASSへ転用しない。入力/PAP/受入条件不変。15:50頃以降の監視空白と20:08:36 usageLimited観測は履歴として維持し、空白を補作しない。定型記録の要求設定gpt-6-luna/low、実backend identity未確認。**
 
@@ -11,29 +121,32 @@
 
 定型監視・記録の要求設定はgpt-6-luna/low、判断・異常解析・複雑実装・数式考察はgpt-6.1-sol/high。要求設定と実backend identityの確認結果を分けて記録する。成功/失敗、時刻、対象、SHA、コマンド、採否、次の1件を`06_研究結果/jdrt/goal_20261017/operations.jsonl`、開始後は専用workspaceのdriver_logsへ記録する。
 
+
+</details>
+
 | ID | 役割・作業 | 検証/受入条件 | 状態 |
 |---|---|---|---|
 | CH-D1 | 事実と方法判断 | 旧15/G1/G2・代替案・影響・権限出典、実行前PAP/値/全セル | 登録済み。設計の整合監査を継続 |
-| CH-P1 | 物理入力/初期終点 | 新dirを排他作成、旧物理artifact不変。D0原表一致、D1全originの4段優先/距離/tieを独立再計算 | registered02：旧物理入力のバイト一致コピー＋位置表。原本/全入力の独立28検査PASS。registered01保全 |
+| CH-P1 | 物理入力/初期終点 | 新dirを排他作成、旧物理artifact不変。D0原表一致、D1全originの4段優先/距離/tieを独立再計算 | 新登録v3 registered01。現行入力28検査PASS、新旧20データの実バイト一致。登録ID・来歴は別であり旧結果を転用しない。 |
 | CH-P2 | 意思/準備/セル | 安定IDハッシュ、各Type四捨五入、u05部分集合、元車単位準備、14×5一意。R0共用だけを許可 | 5seed共通実現/2意思マスク/全70セルの独立検証PASS |
-| CH-POS | 起点位置の整合 | 共通origin座標/車道・歩道/stop・出発位置を照合し、規則を実行前登録。別入力版を独立検証 | registered02独立入力28検査、現行52unit・cf26101801全21ケース/一次再計算PASS。実core全人口/全時間での照合は各セルで必要 |
-| CH-P3 | 状態・配車の純粋関数 | 期限厳密不等号、H等号、乗降前後/取消/代替、Gate全成分、無限大/欠測を反例検証 | 現行4対象moduleの52unit PASS。期限/状態/配車/起動/記録/復旧を含む。数値の期待結果は固定しない |
-| CH-R1 | 新実行器 | 旧実行器不変。有限待ち/実位置で車取消/原点徒歩/二重移動なし。予測API隔離 | 旧共通5版の実装・ゲート履歴を保全。共通5/runtime変更後のwf26101901 c26がFAILED。新native修正・全再検証は未完。現在core未開始 |
-| CH-OBS | 駐車と交通速度の整合 | SUMO駐車/再出庫/路上状態を実測し、raw道路会計と配車用速度を区別。規則を実行前記録 | 制御前stepと制御後snapshotを分離し同phase再集計。現行21ケース/独立再計算PASS。coreの全行検証は各runで実行 |
-| CH-O1 | 観測・会計 | 人物と要求の別終状態、全遷移/候補/cycle/道路/待機閉鎖の必須出力、0件ヘッダ | 7検証成分とnative境界/全員・要求/候補/道路0件/actor/VKT/遷移/ログを一次再計算。現行21ケースと35改変拒否PASS。core未実施 |
-| CH-V1 | 独立検証器 | 原本/CSV/eventからSHA・入力・全員/車両/要求/施設・時刻/候補/閉鎖/遷移再計算。故意改変を拒否 | 前版の実装/反例監査結果は履歴。common5/runtime変更でsource proof stale。現行suite/独立audit再完了が必要。研究core未開始 |
-| CH-T1 | 実SUMO境界試験 | 期限前/同時、pickup取消/internal、元位置/stop除去、乗降/閉鎖/H等号、容量/退出、未来隔離 | cf26101901 c25校正case PASS、c26 `walk_short_repeated` FAILED（old_remaining置換時にXY横0.64m移動）。現行全suite/audit未完、後続停止 |
-| CH-T2 | 全14設定smoke | 現行コード/入力の全設定、Error/衝突/teleport/状態/会計差/欠測0。core採用しない | cs261018aは旧SHAの履歴。現行common5/runtimeの再監査後に全14設定を再実施する必要があり、現READY根拠ではない |
-| CH-C1 | 専用CLI・スキル拡張 | 新protocolのみ、旧台帳読取混在不可、重複/PID/未記録/版混在阻止、6ファイルrecord/rollback検査 | status/check/正式validate/record/recover/preflight/start-next接続済み、52unit PASS。Windows venv親子PID実証済み。旧launch失敗保全、core未開始 |
-| CH-G1 | 開始前監査 | 全ゲートPASS、共通実装SHA固定、保存容量/ディスク空き、現状把握md/html/新図の同期 | 旧READY/source proofはstale。現行common5/runtime freeze後に全suite/audit/14 smoke/preflightとsource監査が必要。現READYなし |
-| CH-M1 | 逐次実行・監視 | READY後だけ1セル開始、15分監視。validate→record→6ファイル実在/台帳一意→status | 正式記録0/70。最新HOLD（観測時点 2026-10-20T08:28:00.972801+09:00）：goal ACTIVE。realtime_choice_v1正式記録0/70、研究core稼働0、技術READY=false。隔離native build attempt06_20261020 は当該観測時点でRUNNING、phase sumo_netconvert_build_short_path。owner PID 17468 identity=matched、child PID 12700 identity=matched。これは過去のポイント観測で、現在のPID生存や連続監視は主張しない。compile完成はnative回帰の合格やREADYを意味しない。旧FAILED/INVALID・attempt履歴を保全。登録上の次セルはfixed_reference_r0_seed23423（開始許可ではない）。後続開始は禁止。native回帰・現行全fixture suite・独立audit・全設定smoke・新preflight・G6再監査が必要。研究入力/PAP/受入条件不変。Drive読取のみ・外部送信/公開更新なし。観測証拠：06_研究結果/jdrt/goal_20261017/nativebuild監視_20261020T082800972801.json。 |
+| CH-POS | 起点位置の整合 | 共通origin座標/車道・歩道/stop・出発位置を照合し、規則を実行前登録。別入力版を独立検証 | 新登録v3の入力28項目と現行全29実SUMOの独立検証PASS。全人口・全時間の本実験照合は各セルで必要。 |
+| CH-P3 | 状態・配車の純粋関数 | 期限厳密不等号、H等号、乗降前後/取消/代替、Gate全成分、無限大/欠測を反例検証 | 専用preflightの全115単体試験PASS（状態・配車以外のCLI/検証等も含む）。登録式/厳密不等号は不変。 |
+| CH-R1 | 新実行器 | 旧実行器不変。有限待ち/実位置で車取消/原点徒歩/二重移動なし。予測API隔離 | 新登録v3共通5を凍結。全29実SUMO・全14設定smoke・新READYを確認済み。本実験の現在状況はCH-M1と現在地を参照。旧失敗/INVALIDは別保全。 |
+| CH-OBS | 駐車と交通速度の整合 | SUMO駐車/再出庫/路上状態を実測し、raw道路会計と配車用速度を区別。規則を実行前記録 | 制御前step/制御後snapshotを分離した現行全29の独立照合PASS。各本実験では全行を再検証する。 |
+| CH-O1 | 観測・会計 | 人物と要求の別終状態、全遷移/候補/cycle/道路/待機閉鎖の必須出力、0件ヘッダ | 現行全29の7検証成分・61改変反例の独立監査PASS。全70本実験の採用・会計は未完。 |
+| CH-V1 | 独立検証器 | 原本/CSV/eventからSHA・入力・全員/車両/要求/施設・時刻/候補/閉鎖/遷移再計算。故意改変を拒否 | 現validator65543dda・全29独立7成分/61改変拒否を新READYへ結合。各coreの独立PASSと専用recordは別途必要。 |
+| CH-T1 | 実SUMO境界試験 | 期限前/同時、pickup取消/internal、元位置/stop除去、乗降/閉鎖/H等号、容量/退出、未来隔離 | 現行nt261024d全29の実SUMO/独立検証PASS。旧失敗は履歴として保持し、有限試験を現実安全や全core成功の保証にしない。 |
+| CH-T2 | 全14設定smoke | 現行コード/入力の全設定、Error/衝突/teleport/状態/会計差/欠測0。core採用しない | ns261024e全14設定smokeは独立PASS。現共通版/入力/一次出力の一致を新READYへ結合。研究採用ではない。 |
+| CH-C1 | 専用CLI・スキル拡張 | 新protocolのみ、旧台帳読取混在不可、重複/PID/未記録/版混在阻止、7ファイルrecord/rollback検査 | 専用CLIの現行preflight全115単体試験PASS。7ファイルrecord/rollbackと単一writerを維持。旧launch/record失敗・復旧は別履歴。 |
+| CH-G1 | 開始前監査 | 全ゲートPASS、共通実装SHA固定、保存容量/ディスク空き、現状把握md/html/新図の同期 | 新preflight39727 exit0・READY、入力28/全unit115/43技術run・1527証跡を再照合済み。毎回1セルの容量予約を再確認。全70容量の保証なし。 |
+| CH-M1 | 逐次実行・監視 | READY後だけ1セル開始、07独立監視。validate→record→7ファイル実在/台帳一意→status | 正式記録5/70。sv26103006（fixed_reference_u50_r2p900_seed23423）RUNNING・PID生存True・進捗未観測。最新は専用CLI status/check。 |
 | CH-A1 | 全件独立一覧 | 70/70・台帳一意・同一実装SHA、過去系列/fixtureなし、全入力/成果物独立検証 | 未着手 |
-| CH-A2 | 事前登録比較と数式 | 全D/u/方式/seedの人数/%pt、主/副指標・上限/仕事量/不達成内訳、旧新混在なし | G6統合集計の準備コンポーネントPASS（主6+要求6+人工統合4契約試験）。親承認済みのPAP §7 within-scenario診断差分を実装。正式core 0/70のため実データ集計/G6全体/副指標/仕事量上限/最終報告は未完。実core集計なし、current READY=false・core開始禁止 |
-| CH-A3 | 統合研究結果 | 取得/仮定/不足/一般化限界、報告md/html/現在地/全体文書同期、goalの完了条件を実検査 | 未着手 |
+| CH-A2 | 事前登録比較と数式 | 全D/u/方式/seedの人数/%pt、主/副指標・上限/仕事量/不達成内訳、旧新混在なし | G6集計器・指標/理論式の準備と現行source照合済み。全70の正式記録が未完のため、実全70集計・主/副指標の結果・方式方向は未作成。 |
+| CH-A3 | 統合研究結果 | 取得/仮定/不足/一般化限界、報告md/html/現在地/全体文書同期、goalの完了条件を実検査 | 根拠と限界の統合草稿・出典監査を準備済み。実全70分析・不足資料による主張限定・最終報告・全体文書整合は未完。 |
 
 ## G4の作業順
 
-現在はHOLD：ch261018_002は15:32:05に専用CLI reject `INVALID_PRESERVED`。lane-feasibility/runtimeとnative-speed verifierの技術修正を開始、新版READY未達。ch002の再validate/record/再利用は禁止。新common5・全新版suite/反例/全14smoke/preflight完了まで後続start禁止。旧READY/suite/14smokeは旧SHA履歴として保持。下記の初期実装順は経緯として保持。
+> 履歴（旧登録の停止判断）：ch261018_002は15:32:05に専用CLI reject `INVALID_PRESERVED`。lane-feasibility/runtimeとnative-speed verifierの技術修正を開始、新版READY未達。ch002の再validate/record/再利用は禁止。新common5・全新版suite/反例/全14smoke/preflight完了まで後続start禁止。旧READY/suite/14smokeは旧SHA履歴として保持。下記の初期実装順は経緯として保持。
 
 最初に新規のpolicy純粋関数と終点表の計算/独立検証を作る。新PAPを変えず解消できる技術的不明点は公式SUMO資料と実試験で調べる。特に取消時のstop変更とinternal処理を実機で先に確認する。実現できない場合、サイレントな原点回帰や車両削除で代用せず、理由と代替案を設計変更記録へ残す。
 
@@ -339,3 +452,296 @@ GitHubは公開repo 23f302020/joso-evacuation-simulation。取得時masterは202
 
 
 GitHub同期完了：e48972be0469987287e1cd917b8af65aea529e78（622ファイル）をmasterとcodex/update-latest-research-resultsへatomic pushし、両refとGitHub APIをreadback確認。初回はJI-lifeのpush権限不足で403。保存済み所有者アカウント23f302020を使用して成功し、アクティブアカウントはJI-lifeへ復帰した。秘密情報の転記なし。Cloudflare公開更新なし。
+
+
+## 2026-10-20 — 入力来歴の再結合とselected pair実行
+
+最新HOLD（2026-10-20T17:34:50.418519+09:00）：goal ACTIVE。realtime_choice_v1正式0/70・研究core稼働0・READY=false。selected-pair helper31契約試験/レビュー済み。初回nc261020aはSUMO起動前の旧入力source SHA不一致でFAILED保全。新registered03は旧20artifact全バイト一致・独立入力28検査PASS。新nc261020b/np261020bを17:33:17 JST開始し同一handleで技術比較を監視中。native物理合格・広いguard・全suite/audit/14smoke/preflight/G6は未完。後続core開始禁止、旧run/入力/失敗を保全。外部送信/公開なし。
+
+詳細：`06_研究結果/jdrt/goal_20261017/native_selected_helper_20261020.md`、入力原本/28検査は`audit_history/input_refresh_registered03_20261020/result.json`。単なる観測timeoutで初回を再起動したのではなく、原stderrによりsource不一致とSUMO未起動を確認し、原本保全・fresh inputs・独立検証後に新IDを開始した。
+
+
+### 2026-10-21T09:00:03.126529+09:00 native一次証拠の独立照合と現行統合試験
+
+2026-10-21T09:00:03.126529+09:00：native guard新gの45本完走と一次315件を再照合。13群中12群を実測、位置/時刻不一致はAPI同期のため未実証として条件付きソース推論を分離。現行validatorで全26統合suite cf26102101を開始（handle74800）。正式0/70・READY=false、独立監視を継続。 位置不一致を無理に発生させるmoveTo/状態改変は実施しない。native speed/XY契約と現行SHAはnative_guard実証・縦横速度診断_20261021.mdおよびactual_native_audit_v2.jsonを参照。元履歴・旧e300ファイル不変、現在表示同期はtechnical suite稼働中のためhelperが拒否し、終了後に同じ正規helperで実施する。
+
+
+### 2026-10-21T14:45:30.108064+09:00 現行独立検証と全14設定smoke
+
+2026-10-21T14:45:30.108064+09:00：全26統合と独立再計算442ファイル・54改変拒否がPASS。全14設定smoke cs261021aを開始、今回2/14独立PASS（handle47653、後続はPASS後だけ）。技術用の歩行距離/位置連続性数理メモを保存し、縦速度積分とXY折線長を区別。正式0/70・READY=false。親chatの09:08〜14:40観測空白を補作せず保存。
+
+独立報告：06_研究結果\jdrt\goal_20261017\正式検証器_表会計候補_20261021T091121.json（SHA cdfd67bb1104dea5061b3d6cd8feb3a9946d27a5cc5d3317bfc55e0b09f63694）。全26 componentsは現在common5 SHAと一致、stdout/保存報告も一致、stderr0。同じ監査handle58964のexit0を確認し再実行しない。技術smokeは研究台帳に混在させず、1件失敗で後続停止。現在表示の正規同期はtechnical run稼働時にcore誤表示防止で拒否するため、checkpoint/次の1件/日付経過へ現況を記録し全14の区切りで正規helperを再適用する。
+
+
+### 2026-10-21T14:53:05.328611+09:00 G6 current source再監査
+
+2026-10-21T14:53:05.328611+09:00：現行runtime/policyの直列サービス契約を再監査し、登録03 source29/29一致。入力限定の条件付き上限/仕事量を再計算、既存G6人工契約24件PASS（実70集計ではない）。smokeは今回7/14独立PASS・同じhandle47653。正式0/70・READY=false。
+
+座席設定3をサービス上限へ掛けない。pooling=false、active_person一つ、members/maximum_onboardは1、idleだけfreeへ入り割当後freeから除去する現行sourceを抜粋。乗降各configured秒/空の初期車両/時刻resetなしという条件付き上限で、実現可能性/全人物改善差へ転用しない。旧実装証跡はanalysis_history/G6_source_refresh_*へ原本保全。根拠はG6_現行登録入力source・サービス契約監査_20261021.jsonとG6_登録入力_理論値確認_20261021T144925648554.json、人工契約は6+6+7+5=24件。04scripts/config/登録入力/run/研究条件不変。全70実データ・性能・最終報告は未完。
+
+
+<!-- choice_record:ch261021_001 -->
+### ch261021_001（2026-10-21T16:24:23.209096+09:00正式記録）
+
+protocol=realtime_choice_v1、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/validation_reports/validate_ch261021_001_20261021T162423107374.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nc26102201 -->
+### nc26102201（2026-10-22T21:34:37.888584+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102201_20261022T213437797252.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nc26102202 -->
+### nc26102202（2026-10-22T22:43:22.004413+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102202_20261022T224321901062.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nc26102203 -->
+### nc26102203（2026-10-23T09:46:46.812523+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u05_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102203_20261023T094646729135.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nc26102301 -->
+### nc26102301（2026-10-23T10:45:59.599303+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u05_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102301_20261023T104559490974.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nc26102302 -->
+### nc26102302（2026-10-23T11:42:07.707939+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u50_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102302_20261023T114207604398.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nc26102303 -->
+### nc26102303（2026-10-23T17:58:09.033066+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u50_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102303_20261023T175808936607.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nc26102304 -->
+### nc26102304（2026-10-23T18:54:04.292700+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=fixed_reference_u50_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102304_20261023T185404222375.json`。次の1件は専用CLI statusを参照。
+
+## 2026-10-24 現状把握への実験条件表示
+
+ユーザー依頼により、現状把握MD/HTMLの第6節に現在の70セルの静的条件・動的条件・比較条件を追加。既存設定/入力/実行コードを参照し、施設初期状態等の仮定と未確認事項を明記。過去20セルの説明を別見出しで保持。研究条件・現在状況・正式記録は変更しない。
+検証：経過同期apply/check PASS、19行の条件表のMD/HTML一致・参照先実在を確認。変更前のローカル原本と比較しCSS/操作JS/既存節ID/現在状況/正式記録マーカー不変。Edge headlessの1440px/390pxでページ横はみ出し0、表内横スクロール・日付開閉のクリック/Enter操作PASS。390px画面を画像確認。対象3文書のgit diff --check終了0（既存のEOL警告のみ）。既存dirty差分は保全し、公開・commit/pushは行っていない。
+
+## 2026-10-24 後続の大型バス巡回輸送
+
+ユーザー指示により、現70セルの検証・正式記録・分析と結果整理の後に、大型バス巡回輸送の別系列へ進む方針を登録。[後続実験計画](大型バス巡回輸送_後続実験計画.md)を正本とし、BUS-00〜05を管理する。現在の入力・実装・セル・採用条件は維持。具体条件は未採用、実装/run未開始。
+
+
+<!-- choice_record:nc26102401 -->
+### nc26102401（2026-10-24T17:21:48.069182+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v2_20261021、cell=facility_first_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=1/544、退出12は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102401_20261024T172147959246.json`。次の1件は専用CLI statusを参照。
+
+
+## 2026-10-24 中断した8件目の正式記録復旧と9件目開始
+
+- 元finish/session消失と実record不在・未記録/部分0/PREPARED0を確認。原本21件、元RUNNING operation、元PASS、観測空白を保全し、専用recover-writer→既存recordだけを明示実行しました。session84801はexit0/RECORDED_VERIFIED。
+- nc26102401_recovered_record7_readback.jsonで、変更前に原本7・COMMITTED・元と正式の全7検証成分・台帳順/一意を実照合しました。研究計算/standalone validate/元finishを再実行していません。消失原因は未特定です。
+- 9件目の新ID nc26102402を1回開始。開始ゲート・容量証跡はnc26102402_start_gate.json。初期専用監視は監視_nc26102402_20261024T172442328671.json。07監視の同一targetと時刻進行を確認し、15分ごと/終了時の監視へ戻ります。
+- G7の出典対応はG7_統合草稿_出典対応監査_20261024_proxy_scope.json。人口の代理集団と一般化条件の数式・人工検査を接続しました。現実の要支援者対応/残余施設容量/2015供給/路面高の未取得を0へ補いません。
+
+
+## 2026-10-24 9件目の短道路・internal遷移時刻HOLD
+
+- 初期専用/07監視では正常。実行中にclosed_entry_rows=1となり、後続開始/正式採用を保留。原本のままH21600まで完走しました。
+- nc26102402_短道路・交差点_閉鎖進入診断_20261024.md/jsonに、12frame・connection・車道4.34mとinternal0.39m・Euler変位一致を保存。対象道路の進入上限3299.0は閉鎖呼出し前で、raw遷移3300.5の時刻付け誤りです。原runやカウンタは書換えていません。
+- 1回だけの専用validate（session13369/実PID19672/17:41:00.109707+09:00）の結果を待ち、INVALIDを含め保全します。元結果の観測timeoutで再実行せず、完了前に現在の凍結ソースを変更しません。
+- 今後の技術修正は、真の閉鎖後進入を引き続き拒否し、既存の閉鎖時刻/0.5秒制御/物理移動/PAP条件を維持する範囲で設計。全70共通5ゲートを維持し、旧8採用の混在や原本修正を行いません。
+
+
+<!-- choice_record:nv26102701 -->
+### nv26102701（2026-10-27T10:54:15.691248+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102701_20261027T105415588821.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nv26102702 -->
+### nv26102702（2026-10-27T11:42:36.677532+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102702_20261027T114236594092.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nv26102703 -->
+### nv26102703（2026-10-27T19:17:08.842651+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u05_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102703_20261027T191708762630.json`。次の1件は専用CLI statusを参照。
+
+
+## 2026-10-27 — 1セル操作のスキル集約と負荷観測
+
+開始・完了待ち・既存finish・7ファイル原本照合・現在表示同期を順に呼ぶ補助`choice_core_sequence.py`を追加。初版21契約に開始直後の準備待ちを追加し、現行26隔離契約とWindows実プロセスの引継ぎ・現行07の実読取を確認した。各起動は厳密1セルとし、次の起動前に親が実goal APIの状態と専用statusを確認する。現行READY/共通5/入力/PAP/採用条件は維持し、既存runや失敗を再利用しない。実運用は次の許可済み通常セル1件から確認する。
+
+根拠は[補助review](../../06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/review.json)。記録時の再検証が最初の検証より長いため、既存の読取専用計測を新規保存先で3時間・60秒間隔起動した。途中参加の記録尾部を通常セル全工程の被覆とせず、原因/速度改善は未確定。[計測と改善タスク](シミュレーション進行効率_計測と改善.md)にowner/欠測/判定条件を残す。採用数・現在run・次セルはCH-M1/context/専用CLIを正本とする。
+
+
+### 2026-10-27 22時台 — 初回補助の失敗保全と同一4件目の完了
+
+sq26102704は初回monitorが初期sumo_errors.logの作成より先行しFAILED_PRESERVED。元helperの15ファイル・実source・stderrと原因をaudit_history/choice_core_sequence_20261027/first_actual_pilot_failureへ保全した。研究runは同じnv26102704/PID2860のまま21600秒COMPLETED。補助/研究runの再起動・再利用なし。通常monitorはlog作成後に異常なし、正式採用はまだ行わず独立validate/専用record7へ進む。
+
+候補補助はmanifestと初期native logの両方を同じ予約子のidentityで待つ最小修正を加え、RED1→27契約GREEN。初回の端から端の操作が成功したとは扱わず、改訂候補の次の実運用確認は現在runの採用後。19:38の明示的な同一run監視と22:33再入の間はチャット継続監視を主張しない。独立資源計測の180点/失敗0・最大間隔60.01秒はその観測範囲に限る。研究方法・共通5・入力・旧系列は不変。
+
+
+<!-- choice_record:nv26102704 -->
+### nv26102704（2026-10-27T23:16:03.906995+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u05_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102704_20261027T231603812315.json`。次の1件は専用CLI statusを参照。
+
+
+### 2026-10-27 23:16 — 同一4件目の正式記録と原本照合
+
+nv26102704の元finish session77682はexit0/RECORDED_VERIFIEDで終端。独立validateの7成分PASS/core_adoption_permitted=true、専用recordの再検証PASS、COMMITTEDと一意台帳を確認した。現在表示を編集する前に[nv26102704_record7_readback.json](../../06_研究結果/jdrt/goal_20261017/nv26102704_record7_readback.json)で記録直後の7原本SHA・single marker・同一共通5・両検証成分一致を照合PASS。その後に通常表示同期を実施。旧sq26102704はFAILED_PRESERVEDのまま保全し、再実行や成功への付替えを行わない。次の修正補助は新ID・親goal ACTIVE確認・現在READY/容量/監視の照合後、登録順の次1セルだけに使用する。全70採用・実集計・報告・後続大型バスは未完。
+
+
+<!-- choice_record:nv26102705 -->
+### nv26102705（2026-10-28T00:05:09.957506+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u50_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102705_20261028T000509870415.json`。次の1件は専用CLI statusを参照。
+
+
+### 2026-10-28 00:06 — 修正補助の通常1セル一巡
+
+sq26102705/元session46444はexit0、COMPLETED_REGISTERED_SCOPE_PENDING_ANALYSISで終端。元finish nv26102705はRECORDED_VERIFIED、補助自身が原本7照合を表示編集より先に実施し、その後の同期・保留なしstatusまで完了した。親は保存済みreadback・共通source pins・新登録の一意で順序どおりの台帳5件を読戻し、重複readback/validate/recordを行っていない。証跡：[原本照合](../../06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102705/nv26102705_record7_readback.json)、[補助review](../../06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/review.json)。旧sq26102704はFAILED_PRESERVEDのまま。現在の採用数/実行対象はCH-M1/context/専用statusを正本とし、全70比較・数式報告・後続大型バスは未完。
+
+
+### 2026-10-28 00:27 — 終了検知猶予の起点修正と同一6件目の引継ぎ
+
+sq26102806/元7780はexit1/FAILED_PRESERVED。0033の通常checkはRUNNING/sim21600/異常なし、0034のwatch statusは成功・鮮度約5秒だったが、同一manifestの新しい版を待つFalse分岐で直前のsleep60を猶予へ算入していた。旧targetのFalse時点の生バイトはなくmissingかSHA差かは断定しない。本体nv26102806は00:22:25にCOMPLETEDし実17452は不在、現在の独立terminal targetは同SHA/異常なし。失敗操作・旧補助/試験/手順・manifest/progress等75原本を[保全・診断](../../06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/diagnosis.json)へ保存した。
+
+Fake clockで30件中1件の機能REDを再現し、各observer待機の直前へ時計起点を移す最小差分で30GREEN。持続欠測は新しい60秒でも停止し、実anomalyは即停止、同一PID/鮮度/原本照合ゲートは維持。[修正review](../../06_研究結果/jdrt/goal_20261017/audit_history/choice_core_sequence_20261027/second_actual_pilot_failure/repair_review.json)。共通5/入力/nativeに変更なし。失敗seq/coreの再実行・上書きなし。現在6件目は既存の新規finish所有者へ1回だけ引継ぎ、PASS→record7→原本照合を終えるまで次セル禁止。新補助の実一巡は次の通常セルで未確認、旧5件目の成功は旧sourceの範囲で保全する。
+
+
+<!-- choice_record:nv26102806 -->
+### nv26102806（2026-10-28T01:00:29.242226+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u50_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102806_20261028T010029136672.json`。次の1件は専用CLI statusを参照。
+
+
+### 2026-10-28 01時台 — 同一6件目の独立採用完了
+
+nv26102806の元直接finish64850はexit0/RECORDED_VERIFIED。独立PASSとrecord内再検証の7成分一致、7原本SHA/single marker/COMMITTED・一意台帳を[nv26102806_record7_readback.json](../../06_研究結果/jdrt/goal_20261017/nv26102806_record7_readback.json)で表示編集前に確認した。sq26102806はFAILED_PRESERVEDのまま、同じ本体を再実行せず通常採用まで完了した。次は登録順の高需要R2P0だけを親goal実状態とREADY/容量/07の確認後に開始する。30契約の待機起点修正版は次の通常1セルで初回実運用を確認し、旧sourceの5件目成功を新sourceの証明へ流用しない。全70/分析/後続大型バスは未完。
+
+
+<!-- choice_record:nv26102807 -->
+### nv26102807（2026-10-28T01:48:13.117875+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=fixed_reference_u50_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102807_20261028T014813025726.json`。次の1件は専用CLI statusを参照。
+
+
+### 2026-10-28 01:48 — 30契約sourceの実1セル一巡完了
+
+sq26102807/元6473はexit0、COMPLETED_REGISTERED_SCOPE_PENDING_ANALYSISで終端。nv26102807は独立PASS→専用record再検証→原本7読戻しを表示より前に完了し、その後の同期/保留なしstatusも確認した。親は保存済み[原本照合](../../06_研究結果/jdrt/goal_20261017/core_sequence_evidence/sq26102807/nv26102807_record7_readback.json)、一意順序台帳7件、同じcommon5とsource pinsを確認。補助source dff4798...について初めて一巡実証となったが、全70成功/効率効果を保証しない。旧失敗2件と旧sourceの5件目成功を別保全する。次の登録条件は施設優先R0で、元の70条件内の次1件だけを開始する。
+
+
+<!-- choice_record:nv26102808 -->
+### nv26102808（2026-10-28T02:31:22.117948+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=facility_first_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=1/544、退出12は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102808_20261028T023122042209.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:nv26102809 -->
+### nv26102809（2026-10-28T08:29:47.360404+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_native_observation_v3_20261024、cell=facility_first_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=1/544、退出12は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/validation_reports/validate_nv26102809_20261028T082947279559.json`。次の1件は専用CLI statusを参照。
+
+
+### 2026-10-28 — 経路履歴のnative拒否を再現、候補は隔離のまま
+
+経路差替停止の一次診断と人工反例・候補の位置/距離/未来閉鎖拒否を確認。原本・失敗試験は保持し、現行common5/inputは未変更。詳細/次の具体作業は[一次診断](../../06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/diagnosis.md)・[隔離候補の読戻し](../../06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/candidate_native_readback.json)・G4継続checkpointを参照。新しい本体sourceの組込み・別登録・全技術検証を終えるまでcore開始禁止。
+
+### 2026-10-28 23時台 — 残経路API訂正をv4へ分離
+
+旧v3正式9件とFAILED nv26102810は保全。runtimeの残経路設定をroute.add/setRouteIDへ修正し、新技術登録choice_route_control_v4_20261028・別workspace・空の正式台帳を作成。設定の科学部分/全70順序と新入力20成果物の完全一致を確認。修正後122unit、個別native3件、乗車中に既走行g0だけが閉鎖される実controller rt261028a_c30の7成分独立PASS、一次39ファイル不変・4故意改変拒否を確認。これは技術証拠で研究採用0/70、全体READY=false。新全30fixture/独立全反例/全14smoke/新preflight/G6/容量/07照合が必要。証拠はroute_replacement_failure_20261028/production_repair_20261028のscoped_review_v4.json、v4_input_equality.json、route_history_actual_mutations.json。10:43〜23:17のchat観測空白は原因不明で補作しない。親実モデルの切替/外部送信/公開なし。
+
+### 2026-10-28 23:53 — 新v4全30の同一ownerを継続
+
+新入力28独立PASS。全30 rt261028bは元session41223・実42508/FILETIME134376721587991556で実行中、23:52観測で8/30完了。新common5/factoryは開始時SHAと同一、正式0/70。07監視を旧26988の不在確認後に既存タスクから再起動し、新39900/FILETIME134376722868969549・同sourceと新対象のcommand bindingを確認。再設定空白と観測age約60秒の点観測を保全し、連続10秒監視の保証としない。表示同期helperの技術run拒否は保持し、contextへ技術実行中だけ記録、終端まで通常同期を保留。G6新sourceの数式前提と未完集合拒否を再監査。次は同じ30終端→canonical全独立監査/全反例→新prefix全14→新preflight。core開始なし。
+
+### 2026-10-29 — 技術suiteの進捗認識を補修
+
+実際にrt261028bの完了ケースが増えていても親suiteのtokenが[RUNNING,null,null]のままで、10分後に停滞とされた。旧event/state/sourceを保全し、技術suiteの非負整数completed_casesを専用進捗tokenへ使う4行だけを追加。heartbeatのみ/個別core時刻/不正counterを含むRED1→対象4/全38試験と実parent読取を確認。旧39900不在後に既存タスクから新36456/FILETIME134376734283303123へ反映、実loaded source SHAと同じ試験42508を確認。原eventは改変/再送しない。監視の実測一巡遅延は別件で、読取専用profile12.55秒（CIM6.41秒）だけで全daemon遅延の原因・高速化を断定しない。鮮度と空白を記録し、設定10秒の保証としない。証拠はgoal_20261017/route_replacement_failure_20261028/production_repair_20261028/observer_suite_progress_repair/deployment.json。研究common5/input/受入条件不変。
+
+### 2026-10-29 00:21 — 新版の全30実controller完走
+
+rt261028bは元session41223 exit0、全30ケースPASSで完走。原owner42508不在、全30 execution manifest/各結果SHAと同一common5・factoryを確認。研究採用は0/70のまま。一次成果物の全成分と現行反例の独立監査を元session65595で1回開始し、実owner/作成時刻はG4 checkpointとproduction_repair_20261028/full30_audit_owner_point.jsonへ保存した。終端・現行binding・全反例PASS前にsmoke/coreを開始しない。監視一巡の遅延と8GB中空き約23MBのOS点観測を保全し、他のアプリを停止していない。精度/受入条件の緩和や高速化採用なし。
+
+### 2026-10-29 — 通知用イベントの重複読取を抑制
+
+DispatcherだけにイベントJSONのmtime_ns/size照合キャッシュを追加。manifest/progress/研究会計・SHAの読取はキャッシュしない。所有者は従来の単独daemon、ディレクトリを毎回探索し新規/更新/破損を読む。RED1→対象3/全41試験（新規/更新/破損、通知順/制限/実Windows本人確認を含む）を確認。保存済み302実イベントの4tick対照ではJSON読取2416→302、処理後の全ファイルbytes一致、送信なし。計測時間5.20→2.88秒は単発の順次・instrumented比較で実監視短縮率ではない。tracemallocはMock履歴も含むため実RSS減少を主張しない。旧36456不在後に新29900/作成FILETIME134376751074865224・tested SOURCE 908cff58920c2ae6fd140f7077d9b8fb2c21b3e0bfb78eccfc321f8397ee3d00へ反映。原イベント/配送状態と再起動空白を保全。実一巡の遅延・8GBホストのメモリ圧迫は未解決で、core前の鮮度条件を維持。研究common5/input/受入条件不変、全独立監査は同じ元65595/実36548を継続。証拠はproduction_repair_20261028/observer_event_read_cache/のbaseline/RED/GREEN/paired_saved_events/review_before_deployment/deployment。
+
+### 2026-10-29 — 全30独立/65反例PASS、14設定の逐次試験へ
+
+元session65595/実36548の監査はexit0。正式検証器_表会計候補_20261029T100253.jsonで現行30ケース全7成分/65改変反例/一次510ファイル不変を確認。raw基礎監査のINCOMPLETEは研究採用を留保する既存契約で、専用validate_runが技術PASSを包む。親がraw PASSを要求した最初の照合だけが誤りで、CLI未開始のprefixaを不使用履歴へ退役し、原本を再監査せず契約を再確認してprefixbを開始。rs261029bは元36247と同じownerを追跡し1セルずつsmoke/独立validate、全14後に新preflight。OS原本SleepTime00:35:25〜WakeTime09:54:28の区間を確認し、連続監視や通常処理時間へ換算しない。09:57以降の記録時刻と00:31の監視再起動時刻を区別する。復帰後の監視は同じ29900・現SOURCEで更新再開、17.10/17.16/6.84秒以内の3点を保存。core前は改めて鮮度確認。研究採用0/70・READY=false・旧9/失敗10保全、方向解釈なし。
+
+
+## 2026-10-29：新v5の集計入口・報告参照と災害記録の用途監査
+
+G6_現行v5_集計入口・数式前提_参照確認_20261029.jsonで同一分析ソース/サービス式の実装前提と新台帳の空集合拒否を確認。最初の読取wrapperの例外型誤認は保全し、集計器・runは変更していない。G7_現行v5_参照と出典範囲確認_20261029.jsonは数式節不変/32ローカル参照と現系列の旧結果非混在を確認。全70分析やnative再検証済みとはしない。市災害記録の原PDF/SHA/36頁縮小と重点3頁の画像確認はG1取得監査に接続し、初動の実車両・運転者・便別可用窓は未取得のまま。新両版比較は元88794の同じownerを追跡し、タイムアウトによる再起動をしない。
+
+
+<!-- choice_record:sv26103001 -->
+### sv26103001（2026-10-30T10:24:12.352232+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_r0_seed23423、R0、seed=23423。独立検証PASS・研究採用可。人物11965、要求0。主指標の施設受入=0/544、退出182は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103001_20261030T102412267412.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103002 -->
+### sv26103002（2026-10-30T19:31:57.986923+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u05_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103002_20261030T193157904132.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103003 -->
+### sv26103003（2026-10-30T21:12:27.830821+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u05_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103003_20261030T211227634395.json`。次の1件は専用CLI statusを参照。
+
+
+<!-- choice_record:sv26103004 -->
+### sv26103004（2026-10-30T22:08:46.487181+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u05_r2p0_seed23423、R2P0、seed=23423。独立検証PASS・研究採用可。人物11965、要求90。主指標の施設受入=0/544、退出183は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103004_20261030T220846395559.json`。次の1件は専用CLI statusを参照。
+
+## 2026-10-30：運転補助sequenceのCIM照会失敗（JD-20261030-sequence-cim-discovery）
+
+`sv26103005` の本体を維持したまま、外側 `sq26103005` は独立監視の対象binding未確認でFAILED_PRESERVEDとなった。同じ07が対象のPID/作成時刻・run引数・manifest/source SHAを確認し直した。初期の連続監視は立証せず、原本と失敗を保全する。実装・期限・科学条件は変更しない。[診断と次の操作](../../06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/diagnosis.md)に従い、同じcoreのCOMPLETED/実終了後に最初の正常finish→独立PASS→record7→元終端読戻し→status。失敗sequenceの再演・重複runなし。
+
+
+<!-- choice_record:sv26103005 -->
+### sv26103005（2026-10-30T23:03:38.842888+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u50_r1_seed23423、R1、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103005_20261030T230338736682.json`。次の1件は専用CLI statusを参照。
+
+JD-20261030-sequence-cim-discovery の終端：同じcoreの最初の正常finishと表示変更前record7読戻しが完了。独立検証・record再検証ともPASS、元finish exit0、transaction COMMITTEDを確認。外側失敗原本と初期監視の未実証範囲は保全し、[完了証拠](../../06_研究結果/jdrt/goal_20261017/sequence_discovery_failure_20261030/sq26103005/formal_finish_completion.json)へ接続した。研究条件・期限は不変、全70の方向解釈は未実施。

@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-21T08:19:13.414728+09:00",
+  "action": "post_compile_original_owner_and_version_point_observation",
+  "owner_actual": {
+    "ProcessId": 34116,
+    "ParentProcessId": 33896,
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -B -X utf8 .agents/skills/joso-jdrt-runner/scripts/choice_native_trace_build.py --attempt-id diag01_20261021 --base-state C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/attempt08_20261020/build_state.json --source-preparation C:/Users/Ko_rr/AppData/Local/JDRT-native-build/choice_v126_20261019/control_source_preparation_20261020.json --pair-state 06_研究結果/jdrt/goal_20261017/nc261020f_native_pair/state.json --pair-proof 06_研究結果/jdrt/goal_20261017/audit_history/native_pair_f_completion_20261021/result.json",
+    "CreationDate": 1792537303195
+  },
+  "state_sha256": "2ea1da39726e64f57ba3a035c9c15584761434afe64bf3f4ac0dd16d451a6ec1",
+  "last_phase": "diagnostic_version",
+  "last_exit_code": 0,
+  "final_source_binding_checks_pending": true,
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

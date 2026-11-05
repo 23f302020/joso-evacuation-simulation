@@ -1,0 +1,34 @@
+{
+  "at_jst": "2026-10-20T14:39:11.400143+09:00",
+  "scope": "classification of seven absent non-selected-target test/package files, not a complete source archive",
+  "missing": [
+    "build_config/debian/tests/control",
+    "build_config/debian/tests/parade",
+    "src/utils/tests/CMakeLists.txt",
+    "src/utils/tests/InternalTest.cpp",
+    "src/utils/tests/InternalTest.h",
+    "src/utils/tests/InternalTestStep.cpp",
+    "src/utils/tests/InternalTestStep.h"
+  ],
+  "checks": {
+    "utils_tests_guarded_by_FOX": true,
+    "HAVE_FOX_undefined": true,
+    "no_generated_utils_tests_target": true,
+    "windows_mingw_generator": true,
+    "only_expected_missing_paths": true
+  },
+  "source_sha256": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\utils\\CMakeLists.txt": "a3f06f5da826bbcc64d3d0ca3c5e6546c617ac444709e591e6fdfeb480817556",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\sumo-fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3\\src\\CMakeLists.txt": "7588dbd582c5b8e60172b9d8bcb5c3b4630b2a46db67f5de99a6602580521cc7",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\b05\\src\\config.h": "eadd0ab2bf3e8ec54e9964036ed669e0deacf1b45e1de14e15194d11208fc0d7",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\b05\\CMakeFiles\\TargetDirectories.txt": "0e9a047331e72dfbc8e82e29385fff3da7d213b65b0a2b9642b7aa1ff43d59f8",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\b05\\CMakeCache.txt": "dded485a1bbdb441a8e20a25ba9b4ace169845cd44d79eeedabbbb317f0ba951"
+  },
+  "selected_targets": [
+    "sumo",
+    "netconvert"
+  ],
+  "simulation_executed": false,
+  "core_ready": false,
+  "current_control_build_not_yet_verified": true
+}

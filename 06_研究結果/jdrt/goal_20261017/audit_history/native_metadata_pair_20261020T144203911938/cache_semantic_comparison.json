@@ -1,0 +1,2370 @@
+{
+  "normalizations": [
+    {
+      "role": "patched",
+      "key": "CMAKE_C_COMPILER",
+      "original": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe"
+      },
+      "resolved_path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe",
+      "compiler_sha256": "5c25285b4ee7fdd75af34b6e85786828f1002f753c11d25c06280e4a63a1e4c6"
+    },
+    {
+      "role": "patched",
+      "key": "CMAKE_CXX_COMPILER",
+      "original": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe"
+      },
+      "resolved_path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+      "compiler_sha256": "5308f584a4a2ce18aa9da7df4df978b1703e22110f7c857a5d8401977152d5af"
+    },
+    {
+      "role": "control",
+      "key": "CMAKE_C_COMPILER",
+      "original": {
+        "type": "STRING",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc.exe"
+      },
+      "resolved_path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe",
+      "compiler_sha256": "5c25285b4ee7fdd75af34b6e85786828f1002f753c11d25c06280e4a63a1e4c6"
+    },
+    {
+      "role": "control",
+      "key": "CMAKE_CXX_COMPILER",
+      "original": {
+        "type": "STRING",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/g++.exe"
+      },
+      "resolved_path": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe",
+      "compiler_sha256": "5308f584a4a2ce18aa9da7df4df978b1703e22110f7c857a5d8401977152d5af"
+    }
+  ],
+  "raw_entries": {
+    "patched": {
+      "BINARY_SUFFIX": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CCACHE_SUPPORT": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "CHECK_OPTIONAL_LIBS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "CMAKE_ADDR2LINE": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/addr2line.exe"
+      },
+      "CMAKE_AR": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/ar.exe"
+      },
+      "CMAKE_BUILD_TYPE": {
+        "type": "STRING",
+        "value": "Release"
+      },
+      "CMAKE_COLOR_MAKEFILE": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "CMAKE_CXX_COMPILER": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\g++.exe"
+      },
+      "CMAKE_CXX_COMPILER_AR": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ar.exe"
+      },
+      "CMAKE_CXX_COMPILER_RANLIB": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ranlib.exe"
+      },
+      "CMAKE_CXX_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_CXX_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": "-g"
+      },
+      "CMAKE_CXX_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": "-Os -DNDEBUG"
+      },
+      "CMAKE_CXX_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": "-O3 -DNDEBUG"
+      },
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": "-O2 -g -DNDEBUG"
+      },
+      "CMAKE_CXX_STANDARD_LIBRARIES": {
+        "type": "STRING",
+        "value": "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32"
+      },
+      "CMAKE_C_COMPILER": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\gcc.exe"
+      },
+      "CMAKE_C_COMPILER_AR": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ar.exe"
+      },
+      "CMAKE_C_COMPILER_RANLIB": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ranlib.exe"
+      },
+      "CMAKE_C_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_C_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": "-g"
+      },
+      "CMAKE_C_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": "-Os -DNDEBUG"
+      },
+      "CMAKE_C_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": "-O3 -DNDEBUG"
+      },
+      "CMAKE_C_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": "-O2 -g -DNDEBUG"
+      },
+      "CMAKE_C_STANDARD_LIBRARIES": {
+        "type": "STRING",
+        "value": "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_FOX": {
+        "type": "UNINITIALIZED",
+        "value": "TRUE"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_Intl": {
+        "type": "UNINITIALIZED",
+        "value": "TRUE"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_Proj": {
+        "type": "UNINITIALIZED",
+        "value": "TRUE"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_ZLIB": {
+        "type": "UNINITIALIZED",
+        "value": "FALSE"
+      },
+      "CMAKE_DLLTOOL": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/dlltool.exe"
+      },
+      "CMAKE_EXE_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": "-static -static-libgcc -static-libstdc++"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_FIND_PACKAGE_REDIRECTS_DIR": {
+        "type": "STATIC",
+        "value": "<BUILD>/CMakeFiles/pkgRedirects"
+      },
+      "CMAKE_GNUtoMS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "CMAKE_INSTALL_BINDIR": {
+        "type": "PATH",
+        "value": "bin"
+      },
+      "CMAKE_INSTALL_DATADIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_DATAROOTDIR": {
+        "type": "PATH",
+        "value": "share"
+      },
+      "CMAKE_INSTALL_DOCDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_INCLUDEDIR": {
+        "type": "PATH",
+        "value": "include"
+      },
+      "CMAKE_INSTALL_INFODIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_LIBDIR": {
+        "type": "PATH",
+        "value": "lib"
+      },
+      "CMAKE_INSTALL_LIBEXECDIR": {
+        "type": "PATH",
+        "value": "libexec"
+      },
+      "CMAKE_INSTALL_LOCALEDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_LOCALSTATEDIR": {
+        "type": "PATH",
+        "value": "var"
+      },
+      "CMAKE_INSTALL_MANDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_OLDINCLUDEDIR": {
+        "type": "PATH",
+        "value": "/usr/include"
+      },
+      "CMAKE_INSTALL_PREFIX": {
+        "type": "PATH",
+        "value": "C:/Program Files (x86)/SUMO"
+      },
+      "CMAKE_INSTALL_RUNSTATEDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_SBINDIR": {
+        "type": "PATH",
+        "value": "sbin"
+      },
+      "CMAKE_INSTALL_SHAREDSTATEDIR": {
+        "type": "PATH",
+        "value": "com"
+      },
+      "CMAKE_INSTALL_SYSCONFDIR": {
+        "type": "PATH",
+        "value": "etc"
+      },
+      "CMAKE_LINKER": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/ld.exe"
+      },
+      "CMAKE_MAKE_PROGRAM": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_NM": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/nm.exe"
+      },
+      "CMAKE_OBJCOPY": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/objcopy.exe"
+      },
+      "CMAKE_OBJDUMP": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/objdump.exe"
+      },
+      "CMAKE_PREFIX_PATH": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static"
+      },
+      "CMAKE_PROJECT_DESCRIPTION": {
+        "type": "STATIC",
+        "value": ""
+      },
+      "CMAKE_PROJECT_HOMEPAGE_URL": {
+        "type": "STATIC",
+        "value": ""
+      },
+      "CMAKE_PROJECT_NAME": {
+        "type": "STATIC",
+        "value": "SUMO"
+      },
+      "CMAKE_RANLIB": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/ranlib.exe"
+      },
+      "CMAKE_RC_COMPILER": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/windres.exe"
+      },
+      "CMAKE_RC_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_READELF": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/readelf.exe"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SKIP_INSTALL_RPATH": {
+        "type": "BOOL",
+        "value": "NO"
+      },
+      "CMAKE_SKIP_RPATH": {
+        "type": "BOOL",
+        "value": "NO"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STRIP": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/strip.exe"
+      },
+      "CMAKE_TAPI": {
+        "type": "FILEPATH",
+        "value": "CMAKE_TAPI-NOTFOUND"
+      },
+      "CMAKE_VERBOSE_MAKEFILE": {
+        "type": "BOOL",
+        "value": "FALSE"
+      },
+      "COMPILE_DEFINITIONS": {
+        "type": "STRING",
+        "value": "XERCES_STATIC_LIBRARY;HAVE_VERSION_H"
+      },
+      "COVERAGE": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "ENABLE_CS_BINDINGS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "ENABLE_JAVA_BINDINGS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "ENABLE_PYTHON_BINDINGS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "Eigen3_DIR": {
+        "type": "PATH",
+        "value": "Eigen3_DIR-NOTFOUND"
+      },
+      "FMI": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "FREETYPE_INCLUDE_DIR_freetype2": {
+        "type": "PATH",
+        "value": "FREETYPE_INCLUDE_DIR_freetype2-NOTFOUND"
+      },
+      "FREETYPE_INCLUDE_DIR_ft2build": {
+        "type": "PATH",
+        "value": "FREETYPE_INCLUDE_DIR_ft2build-NOTFOUND"
+      },
+      "FREETYPE_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "FREETYPE_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "FREETYPE_LIBRARY_RELEASE": {
+        "type": "FILEPATH",
+        "value": "FREETYPE_LIBRARY_RELEASE-NOTFOUND"
+      },
+      "GETTEXT_MSGFMT_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/msgfmt.exe"
+      },
+      "GETTEXT_MSGMERGE_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/msgmerge.exe"
+      },
+      "GIT_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "C:/Program Files/Git/cmd/git.exe"
+      },
+      "GMOCK_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GMOCK_LIBRARY-NOTFOUND"
+      },
+      "GMOCK_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GMOCK_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GMOCK_MAIN_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GMOCK_MAIN_LIBRARY-NOTFOUND"
+      },
+      "GMOCK_MAIN_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GMOCK_MAIN_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GTEST_INCLUDE_DIR": {
+        "type": "PATH",
+        "value": "GTEST_INCLUDE_DIR-NOTFOUND"
+      },
+      "GTEST_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GTEST_LIBRARY-NOTFOUND"
+      },
+      "GTEST_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GTEST_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GTEST_MAIN_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GTEST_MAIN_LIBRARY-NOTFOUND"
+      },
+      "GTEST_MAIN_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GTest_DIR": {
+        "type": "PATH",
+        "value": "GTest_DIR-NOTFOUND"
+      },
+      "HELPMAN_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "HELPMAN_EXECUTABLE-NOTFOUND"
+      },
+      "INSTALL_DLL_RUNTIMES": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "ISOLATED_BUILD": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "JUPEDSIM_CUSTOMDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "Java_IDLJ_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_IDLJ_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JARSIGNER_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JARSIGNER_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAR_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAR_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVAC_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVAC_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVADOC_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVADOC_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVAH_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVAH_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVA_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVA_EXECUTABLE-NOTFOUND"
+      },
+      "MULTITHREADED_BUILD": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "MVN_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "MVN_EXECUTABLE-NOTFOUND"
+      },
+      "NETEDIT": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PARQUET": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PPROF": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PROFILING": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PROJECT_NAME": {
+        "type": "STRING",
+        "value": "SUMO"
+      },
+      "PYINSTALLER_FOUND": {
+        "type": "FILEPATH",
+        "value": "PYINSTALLER_FOUND-NOTFOUND"
+      },
+      "Python_EXECUTABLE": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+      },
+      "SUMO_BINARY_DIR": {
+        "type": "STATIC",
+        "value": "<BUILD>"
+      },
+      "SUMO_IS_TOP_LEVEL": {
+        "type": "STATIC",
+        "value": "ON"
+      },
+      "SUMO_LIBRARIES": {
+        "type": "PATH",
+        "value": ""
+      },
+      "SUMO_SOURCE_DIR": {
+        "type": "STATIC",
+        "value": "<SOURCE>"
+      },
+      "SUMO_UTILS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "SWIG_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "SWIG_EXECUTABLE-NOTFOUND"
+      },
+      "TCMALLOC": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "USE_MINGW_64BITS": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "VERBOSE_SUB": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "XercesC_INCLUDE_DIR": {
+        "type": "PATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/include"
+      },
+      "XercesC_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "XercesC_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "XercesC_LIBRARY_RELEASE": {
+        "type": "FILEPATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/lib/libxerces-c.a"
+      },
+      "ZLIB_INCLUDE_DIR": {
+        "type": "PATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/include"
+      },
+      "ZLIB_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+      },
+      "ZLIB_LIBRARY_RELEASE": {
+        "type": "FILEPATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+      },
+      "fmt_DIR": {
+        "type": "PATH",
+        "value": "fmt_DIR-NOTFOUND"
+      },
+      "CMAKE_ADDR2LINE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_AR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CACHEFILE_DIR": {
+        "type": "INTERNAL",
+        "value": "<BUILD>"
+      },
+      "CMAKE_CACHE_MAJOR_VERSION": {
+        "type": "INTERNAL",
+        "value": "3"
+      },
+      "CMAKE_CACHE_MINOR_VERSION": {
+        "type": "INTERNAL",
+        "value": "31"
+      },
+      "CMAKE_CACHE_PATCH_VERSION": {
+        "type": "INTERNAL",
+        "value": "9"
+      },
+      "CMAKE_COLOR_MAKEFILE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/cmake.exe"
+      },
+      "CMAKE_CPACK_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/cpack.exe"
+      },
+      "CMAKE_CTEST_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/ctest.exe"
+      },
+      "CMAKE_CXX_COMPILER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_COMPILER_AR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_COMPILER_RANLIB-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_STANDARD_LIBRARIES-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_COMPILER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_COMPILER_AR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_COMPILER_RANLIB-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_STANDARD_LIBRARIES-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_DLLTOOL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EDIT_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/cmake-gui.exe"
+      },
+      "CMAKE_EXECUTABLE_FORMAT": {
+        "type": "INTERNAL",
+        "value": "Unknown"
+      },
+      "CMAKE_EXE_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXTRA_GENERATOR": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_GENERATOR": {
+        "type": "INTERNAL",
+        "value": "MinGW Makefiles"
+      },
+      "CMAKE_GENERATOR_INSTANCE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_GENERATOR_PLATFORM": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_GENERATOR_TOOLSET": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_HOME_DIRECTORY": {
+        "type": "INTERNAL",
+        "value": "<SOURCE>"
+      },
+      "CMAKE_INSTALL_BINDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_DATADIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_DATAROOTDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_DOCDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_INCLUDEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_INFODIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LIBDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LIBEXECDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LOCALEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_MANDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_RUNSTATEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_SBINDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_SYSCONFDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_LINKER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_NM-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_NUMBER_OF_MAKEFILES": {
+        "type": "INTERNAL",
+        "value": "60"
+      },
+      "CMAKE_OBJCOPY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_OBJDUMP-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_PLATFORM_INFO_INITIALIZED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RANLIB-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_COMPILER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_COMPILER_WORKS": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_READELF-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_ROOT": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/share/cmake-3.31"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SKIP_INSTALL_RPATH-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SKIP_RPATH-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STRIP-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_TAPI-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_VERBOSE_MAKEFILE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_Gettext": {
+        "type": "INTERNAL",
+        "value": "[C:/Ruby31-x64/msys64/ucrt64/bin/msgmerge.exe][C:/Ruby31-x64/msys64/ucrt64/bin/msgfmt.exe][v0.21.1()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_Git": {
+        "type": "INTERNAL",
+        "value": "[C:/Program Files/Git/cmd/git.exe][v2.45.0.windows.1()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_Python": {
+        "type": "INTERNAL",
+        "value": "[C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe][cfound components: Interpreter Development.Module ][v3.13.12()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_XercesC": {
+        "type": "INTERNAL",
+        "value": "[C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/lib/libxerces-c.a][C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/include][3.3.0][v3.3.0()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_ZLIB": {
+        "type": "INTERNAL",
+        "value": "[C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a][C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/include][c ][v1.2.13()]"
+      },
+      "FREETYPE_INCLUDE_DIR_freetype2-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FREETYPE_INCLUDE_DIR_ft2build-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FREETYPE_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FREETYPE_LIBRARY_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GIT_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_MAIN_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_MAIN_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_INCLUDE_DIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_MAIN_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_MAIN_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_IDLJ_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JARSIGNER_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAR_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVAC_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVADOC_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVAH_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVA_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "SWIG_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "XercesC_INCLUDE_DIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "XercesC_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "XercesC_LIBRARY_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "ZLIB_INCLUDE_DIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX": {
+        "type": "INTERNAL",
+        "value": "C:/Program Files (x86)/SUMO"
+      },
+      "_Python_Compiler_REASON_FAILURE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "_Python_DEVELOPMENT_MODULE_SIGNATURE": {
+        "type": "INTERNAL",
+        "value": "15c37a385c600475eaa1c33f9a8b216a"
+      },
+      "_Python_Development_REASON_FAILURE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "_Python_EXECUTABLE": {
+        "type": "INTERNAL",
+        "value": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+      },
+      "_Python_EXECUTABLE_DEBUG": {
+        "type": "INTERNAL",
+        "value": "_Python_EXECUTABLE_DEBUG-NOTFOUND"
+      },
+      "_Python_INCLUDE_DIR": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Programs/Python/Python313/include"
+      },
+      "_Python_INTERPRETER_PROPERTIES": {
+        "type": "INTERNAL",
+        "value": "Python;3;13;12;64;<none>;cp313-win_amd64;;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages"
+      },
+      "_Python_INTERPRETER_SIGNATURE": {
+        "type": "INTERNAL",
+        "value": "b0d6fbab5a6f6223dadb312047b414cd"
+      },
+      "_Python_Interpreter_REASON_FAILURE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "_Python_LIBRARY_DEBUG": {
+        "type": "INTERNAL",
+        "value": "_Python_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "_Python_LIBRARY_RELEASE": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Programs/Python/Python313/libs/python313.lib"
+      },
+      "_Python_NumPy_REASON_FAILURE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "_Python_RUNTIME_LIBRARY_RELEASE": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Programs/Python/Python313/python313.dll"
+      }
+    },
+    "control": {
+      "BINARY_SUFFIX": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CCACHE_SUPPORT": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "CHECK_OPTIONAL_LIBS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "CMAKE_ADDR2LINE": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/addr2line.exe"
+      },
+      "CMAKE_AR": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/ar.exe"
+      },
+      "CMAKE_BUILD_TYPE": {
+        "type": "STRING",
+        "value": "Release"
+      },
+      "CMAKE_COLOR_MAKEFILE": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "CMAKE_CXX_COMPILER": {
+        "type": "STRING",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/g++.exe"
+      },
+      "CMAKE_CXX_COMPILER_AR": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ar.exe"
+      },
+      "CMAKE_CXX_COMPILER_RANLIB": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ranlib.exe"
+      },
+      "CMAKE_CXX_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_CXX_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": "-g"
+      },
+      "CMAKE_CXX_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": "-Os -DNDEBUG"
+      },
+      "CMAKE_CXX_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": "-O3 -DNDEBUG"
+      },
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": "-O2 -g -DNDEBUG"
+      },
+      "CMAKE_CXX_STANDARD_LIBRARIES": {
+        "type": "STRING",
+        "value": "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32"
+      },
+      "CMAKE_C_COMPILER": {
+        "type": "STRING",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc.exe"
+      },
+      "CMAKE_C_COMPILER_AR": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ar.exe"
+      },
+      "CMAKE_C_COMPILER_RANLIB": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/gcc-ranlib.exe"
+      },
+      "CMAKE_C_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_C_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": "-g"
+      },
+      "CMAKE_C_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": "-Os -DNDEBUG"
+      },
+      "CMAKE_C_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": "-O3 -DNDEBUG"
+      },
+      "CMAKE_C_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": "-O2 -g -DNDEBUG"
+      },
+      "CMAKE_C_STANDARD_LIBRARIES": {
+        "type": "STRING",
+        "value": "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_FOX": {
+        "type": "UNINITIALIZED",
+        "value": "TRUE"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_Intl": {
+        "type": "UNINITIALIZED",
+        "value": "TRUE"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_Proj": {
+        "type": "UNINITIALIZED",
+        "value": "TRUE"
+      },
+      "CMAKE_DISABLE_FIND_PACKAGE_ZLIB": {
+        "type": "UNINITIALIZED",
+        "value": "FALSE"
+      },
+      "CMAKE_DLLTOOL": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/dlltool.exe"
+      },
+      "CMAKE_EXE_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": "-static -static-libgcc -static-libstdc++"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_FIND_PACKAGE_REDIRECTS_DIR": {
+        "type": "STATIC",
+        "value": "<BUILD>/CMakeFiles/pkgRedirects"
+      },
+      "CMAKE_GNUtoMS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "CMAKE_INSTALL_BINDIR": {
+        "type": "PATH",
+        "value": "bin"
+      },
+      "CMAKE_INSTALL_DATADIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_DATAROOTDIR": {
+        "type": "PATH",
+        "value": "share"
+      },
+      "CMAKE_INSTALL_DOCDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_INCLUDEDIR": {
+        "type": "PATH",
+        "value": "include"
+      },
+      "CMAKE_INSTALL_INFODIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_LIBDIR": {
+        "type": "PATH",
+        "value": "lib"
+      },
+      "CMAKE_INSTALL_LIBEXECDIR": {
+        "type": "PATH",
+        "value": "libexec"
+      },
+      "CMAKE_INSTALL_LOCALEDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_LOCALSTATEDIR": {
+        "type": "PATH",
+        "value": "var"
+      },
+      "CMAKE_INSTALL_MANDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_OLDINCLUDEDIR": {
+        "type": "PATH",
+        "value": "/usr/include"
+      },
+      "CMAKE_INSTALL_PREFIX": {
+        "type": "PATH",
+        "value": "C:/Program Files (x86)/SUMO"
+      },
+      "CMAKE_INSTALL_RUNSTATEDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "CMAKE_INSTALL_SBINDIR": {
+        "type": "PATH",
+        "value": "sbin"
+      },
+      "CMAKE_INSTALL_SHAREDSTATEDIR": {
+        "type": "PATH",
+        "value": "com"
+      },
+      "CMAKE_INSTALL_SYSCONFDIR": {
+        "type": "PATH",
+        "value": "etc"
+      },
+      "CMAKE_LINKER": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/ld.exe"
+      },
+      "CMAKE_MAKE_PROGRAM": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Ruby31-x64\\msys64\\ucrt64\\bin\\mingw32-make.exe"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_NM": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/nm.exe"
+      },
+      "CMAKE_OBJCOPY": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/objcopy.exe"
+      },
+      "CMAKE_OBJDUMP": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/objdump.exe"
+      },
+      "CMAKE_PREFIX_PATH": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\xerces-static"
+      },
+      "CMAKE_PROJECT_DESCRIPTION": {
+        "type": "STATIC",
+        "value": ""
+      },
+      "CMAKE_PROJECT_HOMEPAGE_URL": {
+        "type": "STATIC",
+        "value": ""
+      },
+      "CMAKE_PROJECT_NAME": {
+        "type": "STATIC",
+        "value": "SUMO"
+      },
+      "CMAKE_RANLIB": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/ranlib.exe"
+      },
+      "CMAKE_RC_COMPILER": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/windres.exe"
+      },
+      "CMAKE_RC_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_RC_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_READELF": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/readelf.exe"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_SKIP_INSTALL_RPATH": {
+        "type": "BOOL",
+        "value": "NO"
+      },
+      "CMAKE_SKIP_RPATH": {
+        "type": "BOOL",
+        "value": "NO"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_DEBUG": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELEASE": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO": {
+        "type": "STRING",
+        "value": ""
+      },
+      "CMAKE_STRIP": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/strip.exe"
+      },
+      "CMAKE_TAPI": {
+        "type": "FILEPATH",
+        "value": "CMAKE_TAPI-NOTFOUND"
+      },
+      "CMAKE_VERBOSE_MAKEFILE": {
+        "type": "BOOL",
+        "value": "FALSE"
+      },
+      "COMPILE_DEFINITIONS": {
+        "type": "STRING",
+        "value": "XERCES_STATIC_LIBRARY;HAVE_VERSION_H"
+      },
+      "COVERAGE": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "ENABLE_CS_BINDINGS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "ENABLE_JAVA_BINDINGS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "ENABLE_PYTHON_BINDINGS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "Eigen3_DIR": {
+        "type": "PATH",
+        "value": "Eigen3_DIR-NOTFOUND"
+      },
+      "FMI": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "FREETYPE_INCLUDE_DIR_freetype2": {
+        "type": "PATH",
+        "value": "FREETYPE_INCLUDE_DIR_freetype2-NOTFOUND"
+      },
+      "FREETYPE_INCLUDE_DIR_ft2build": {
+        "type": "PATH",
+        "value": "FREETYPE_INCLUDE_DIR_ft2build-NOTFOUND"
+      },
+      "FREETYPE_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "FREETYPE_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "FREETYPE_LIBRARY_RELEASE": {
+        "type": "FILEPATH",
+        "value": "FREETYPE_LIBRARY_RELEASE-NOTFOUND"
+      },
+      "GETTEXT_MSGFMT_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/msgfmt.exe"
+      },
+      "GETTEXT_MSGMERGE_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "C:/Ruby31-x64/msys64/ucrt64/bin/msgmerge.exe"
+      },
+      "GIT_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "C:/Program Files/Git/cmd/git.exe"
+      },
+      "GMOCK_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GMOCK_LIBRARY-NOTFOUND"
+      },
+      "GMOCK_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GMOCK_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GMOCK_MAIN_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GMOCK_MAIN_LIBRARY-NOTFOUND"
+      },
+      "GMOCK_MAIN_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GMOCK_MAIN_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GTEST_INCLUDE_DIR": {
+        "type": "PATH",
+        "value": "GTEST_INCLUDE_DIR-NOTFOUND"
+      },
+      "GTEST_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GTEST_LIBRARY-NOTFOUND"
+      },
+      "GTEST_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GTEST_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GTEST_MAIN_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "GTEST_MAIN_LIBRARY-NOTFOUND"
+      },
+      "GTEST_MAIN_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "GTest_DIR": {
+        "type": "PATH",
+        "value": "GTest_DIR-NOTFOUND"
+      },
+      "HELPMAN_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "HELPMAN_EXECUTABLE-NOTFOUND"
+      },
+      "INSTALL_DLL_RUNTIMES": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "ISOLATED_BUILD": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "JUPEDSIM_CUSTOMDIR": {
+        "type": "PATH",
+        "value": ""
+      },
+      "Java_IDLJ_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_IDLJ_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JARSIGNER_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JARSIGNER_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAR_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAR_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVAC_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVAC_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVADOC_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVADOC_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVAH_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVAH_EXECUTABLE-NOTFOUND"
+      },
+      "Java_JAVA_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "Java_JAVA_EXECUTABLE-NOTFOUND"
+      },
+      "MULTITHREADED_BUILD": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "MVN_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "MVN_EXECUTABLE-NOTFOUND"
+      },
+      "NETEDIT": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PARQUET": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PPROF": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PROFILING": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "PROJECT_NAME": {
+        "type": "STRING",
+        "value": "SUMO"
+      },
+      "PYINSTALLER_FOUND": {
+        "type": "FILEPATH",
+        "value": "PYINSTALLER_FOUND-NOTFOUND"
+      },
+      "Python_EXECUTABLE": {
+        "type": "UNINITIALIZED",
+        "value": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+      },
+      "SUMO_BINARY_DIR": {
+        "type": "STATIC",
+        "value": "<BUILD>"
+      },
+      "SUMO_IS_TOP_LEVEL": {
+        "type": "STATIC",
+        "value": "ON"
+      },
+      "SUMO_LIBRARIES": {
+        "type": "PATH",
+        "value": ""
+      },
+      "SUMO_SOURCE_DIR": {
+        "type": "STATIC",
+        "value": "<SOURCE>"
+      },
+      "SUMO_UTILS": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "SWIG_EXECUTABLE": {
+        "type": "FILEPATH",
+        "value": "SWIG_EXECUTABLE-NOTFOUND"
+      },
+      "TCMALLOC": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "USE_MINGW_64BITS": {
+        "type": "BOOL",
+        "value": "ON"
+      },
+      "VERBOSE_SUB": {
+        "type": "BOOL",
+        "value": "OFF"
+      },
+      "XercesC_INCLUDE_DIR": {
+        "type": "PATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/include"
+      },
+      "XercesC_LIBRARY_DEBUG": {
+        "type": "FILEPATH",
+        "value": "XercesC_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "XercesC_LIBRARY_RELEASE": {
+        "type": "FILEPATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/lib/libxerces-c.a"
+      },
+      "ZLIB_INCLUDE_DIR": {
+        "type": "PATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/include"
+      },
+      "ZLIB_LIBRARY": {
+        "type": "FILEPATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+      },
+      "ZLIB_LIBRARY_RELEASE": {
+        "type": "FILEPATH",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a"
+      },
+      "fmt_DIR": {
+        "type": "PATH",
+        "value": "fmt_DIR-NOTFOUND"
+      },
+      "CMAKE_ADDR2LINE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_AR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CACHEFILE_DIR": {
+        "type": "INTERNAL",
+        "value": "<BUILD>"
+      },
+      "CMAKE_CACHE_MAJOR_VERSION": {
+        "type": "INTERNAL",
+        "value": "3"
+      },
+      "CMAKE_CACHE_MINOR_VERSION": {
+        "type": "INTERNAL",
+        "value": "31"
+      },
+      "CMAKE_CACHE_PATCH_VERSION": {
+        "type": "INTERNAL",
+        "value": "9"
+      },
+      "CMAKE_COLOR_MAKEFILE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/cmake.exe"
+      },
+      "CMAKE_CPACK_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/cpack.exe"
+      },
+      "CMAKE_CTEST_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/ctest.exe"
+      },
+      "CMAKE_CXX_COMPILER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_COMPILER_AR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_COMPILER_RANLIB-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_CXX_STANDARD_LIBRARIES-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_COMPILER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_COMPILER_AR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_COMPILER_RANLIB-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_C_STANDARD_LIBRARIES-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_DLLTOOL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EDIT_COMMAND": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/bin/cmake-gui.exe"
+      },
+      "CMAKE_EXECUTABLE_FORMAT": {
+        "type": "INTERNAL",
+        "value": "Unknown"
+      },
+      "CMAKE_EXE_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_EXTRA_GENERATOR": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_GENERATOR": {
+        "type": "INTERNAL",
+        "value": "MinGW Makefiles"
+      },
+      "CMAKE_GENERATOR_INSTANCE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_GENERATOR_PLATFORM": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_GENERATOR_TOOLSET": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "CMAKE_HOME_DIRECTORY": {
+        "type": "INTERNAL",
+        "value": "<SOURCE>"
+      },
+      "CMAKE_INSTALL_BINDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_DATADIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_DATAROOTDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_DOCDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_INCLUDEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_INFODIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LIBDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LIBEXECDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LOCALEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_MANDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_RUNSTATEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_SBINDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_INSTALL_SYSCONFDIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_LINKER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_NM-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_NUMBER_OF_MAKEFILES": {
+        "type": "INTERNAL",
+        "value": "60"
+      },
+      "CMAKE_OBJCOPY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_OBJDUMP-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_PLATFORM_INFO_INITIALIZED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RANLIB-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_COMPILER-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_COMPILER_WORKS": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_RC_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_READELF-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_ROOT": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/sources/cmake-3.31.9-windows-x86_64/share/cmake-3.31"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SKIP_INSTALL_RPATH-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_SKIP_RPATH-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_MINSIZEREL-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_STRIP-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_TAPI-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "CMAKE_VERBOSE_MAKEFILE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_Gettext": {
+        "type": "INTERNAL",
+        "value": "[C:/Ruby31-x64/msys64/ucrt64/bin/msgmerge.exe][C:/Ruby31-x64/msys64/ucrt64/bin/msgfmt.exe][v0.21.1()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_Git": {
+        "type": "INTERNAL",
+        "value": "[C:/Program Files/Git/cmd/git.exe][v2.45.0.windows.1()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_Python": {
+        "type": "INTERNAL",
+        "value": "[C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe][cfound components: Interpreter Development.Module ][v3.13.12()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_XercesC": {
+        "type": "INTERNAL",
+        "value": "[C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/lib/libxerces-c.a][C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/xerces-static/include][3.3.0][v3.3.0()]"
+      },
+      "FIND_PACKAGE_MESSAGE_DETAILS_ZLIB": {
+        "type": "INTERNAL",
+        "value": "[C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/lib/libz.a][C:/Users/Ko_rr/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/JDRT-native-build/choice_v126_20261019/attempt03_20261020/zlib-static/include][c ][v1.2.13()]"
+      },
+      "FREETYPE_INCLUDE_DIR_freetype2-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FREETYPE_INCLUDE_DIR_ft2build-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FREETYPE_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "FREETYPE_LIBRARY_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GIT_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_MAIN_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GMOCK_MAIN_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_INCLUDE_DIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_MAIN_LIBRARY-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "GTEST_MAIN_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_IDLJ_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JARSIGNER_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAR_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVAC_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVADOC_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVAH_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "Java_JAVA_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "SWIG_EXECUTABLE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "XercesC_INCLUDE_DIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "XercesC_LIBRARY_DEBUG-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "XercesC_LIBRARY_RELEASE-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "ZLIB_INCLUDE_DIR-ADVANCED": {
+        "type": "INTERNAL",
+        "value": "1"
+      },
+      "_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX": {
+        "type": "INTERNAL",
+        "value": "C:/Program Files (x86)/SUMO"
+      },
+      "_Python_Compiler_REASON_FAILURE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "_Python_DEVELOPMENT_MODULE_SIGNATURE": {
+        "type": "INTERNAL",
+        "value": "15c37a385c600475eaa1c33f9a8b216a"
+      },
+      "_Python_Development_REASON_FAILURE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "_Python_EXECUTABLE": {
+        "type": "INTERNAL",
+        "value": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+      },
+      "_Python_EXECUTABLE_DEBUG": {
+        "type": "INTERNAL",
+        "value": "_Python_EXECUTABLE_DEBUG-NOTFOUND"
+      },
+      "_Python_INCLUDE_DIR": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Programs/Python/Python313/include"
+      },
+      "_Python_INTERPRETER_PROPERTIES": {
+        "type": "INTERNAL",
+        "value": "Python;3;13;12;64;<none>;cp313-win_amd64;;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages;C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages"
+      },
+      "_Python_INTERPRETER_SIGNATURE": {
+        "type": "INTERNAL",
+        "value": "b0d6fbab5a6f6223dadb312047b414cd"
+      },
+      "_Python_LIBRARY_DEBUG": {
+        "type": "INTERNAL",
+        "value": "_Python_LIBRARY_DEBUG-NOTFOUND"
+      },
+      "_Python_LIBRARY_RELEASE": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Programs/Python/Python313/libs/python313.lib"
+      },
+      "_Python_NumPy_REASON_FAILURE": {
+        "type": "INTERNAL",
+        "value": ""
+      },
+      "_Python_RUNTIME_LIBRARY_RELEASE": {
+        "type": "INTERNAL",
+        "value": "C:/Users/Ko_rr/AppData/Local/Programs/Python/Python313/python313.dll"
+      }
+    }
+  },
+  "different_effective_values": {},
+  "scope": "Only comments/types of compiler entries, equivalent compiler path spellings, and absent-versus-empty Python reason diagnostic are normalized; all other cache values compared",
+  "core_ready": false,
+  "native_pair_verified": false
+}

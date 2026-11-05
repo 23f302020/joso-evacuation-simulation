@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-20T21:41:39.947446+09:00",
+  "action": "selected_pair_custom_version_diagnosis_and_repair",
+  "status": "REVIEWED_UNIT_AND_ACTUAL_HISTORICAL_RECOMPUTATION_COMPLETE",
+  "failed_pair": "nc261020b",
+  "control_calibration_case": "PASS but old independent INVALID preserved",
+  "control_repeated": "planned old_remaining XY-only failure reproduced; does not prove patched behavior",
+  "independent_issue": "Custom native version suffix rejected by legacy1.26 version predicate; movement unsupported, log warning rejection secondary",
+  "repair": "runtime/bundle/native-provenance version identity only; no acceptance/method/threshold change",
+  "unit_tests_passed": 18,
+  "historical_raw_components_passed": 7,
+  "old_outputs_unchanged": true,
+  "evidence": "06_研究結果\\jdrt\\goal_20261017\\audit_history\\native_version_identity_20261020\\review.json",
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "actual_backend": "unverified; parent unchanged"
+}

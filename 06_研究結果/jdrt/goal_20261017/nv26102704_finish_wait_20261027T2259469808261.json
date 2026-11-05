@@ -1,0 +1,44 @@
+{
+  "at_jst": "2026-10-27T22:59:46.6528720+09:00",
+  "action": "same_original_finish_runtime_wait_15min",
+  "run_id": "nv26102704",
+  "original_session": 77682,
+  "phase": "validate",
+  "operation_status": "RUNNING",
+  "record_attempted": false,
+  "processes": [
+    {
+      "pid": 23228,
+      "parent_pid": 15960,
+      "created_jst": "2026-10-27T22:42:52.8918100+09:00",
+      "user_100ns": 1562500,
+      "kernel_100ns": 1093750,
+      "read_bytes": 7282093,
+      "written_bytes": 76624
+    },
+    {
+      "pid": 20240,
+      "parent_pid": 32944,
+      "created_jst": "2026-10-27T22:43:27.2129020+09:00",
+      "user_100ns": 156250,
+      "kernel_100ns": 625000,
+      "read_bytes": 1409054,
+      "written_bytes": 3226
+    },
+    {
+      "pid": 31336,
+      "parent_pid": 25020,
+      "created_jst": "2026-10-27T22:43:29.5217950+09:00",
+      "user_100ns": 9081093750,
+      "kernel_100ns": 272812500,
+      "read_bytes": 3318070242,
+      "written_bytes": 404
+    }
+  ],
+  "classification": "VERIFIED_WAIT",
+  "previous_goal_turn_classification": "VERIFIED_WAIT",
+  "display_writers_deferred": true,
+  "no_replay": true,
+  "goal_complete": false,
+  "helper_review_sources_current": true
+}

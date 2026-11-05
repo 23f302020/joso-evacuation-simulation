@@ -1,0 +1,40 @@
+{
+  "at_jst": "2026-10-18T10:09:36.737768+09:00",
+  "action": "public_river_profile_acquired_and_visually_classified",
+  "source_url": "https://www.city.joso.lg.jp/data/doc/1673515718_doc_5_0.pdf",
+  "http_status": 200,
+  "path": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/新八間堀川・八間堀川_河道特性_公表原本.pdf",
+  "bytes": 2294833,
+  "sha256": "adfbd00af1510cb59f60ff0bdadc59acc566e63855e4659430d83e7f1e558d59",
+  "pdf_pages": 6,
+  "visually_reviewed_pages": [
+    1,
+    6
+  ],
+  "renders": [
+    {
+      "path": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/河道特性_目視1.png",
+      "sha256": "4d3ea769c9ac6827e625f1b3d2491243c28caf8c53fcaf3d41060e2dd12a0956"
+    },
+    {
+      "path": "02_情報調査/交通・地域/jdrt_goal_20261017/road_height_20261018/河道特性_目視6.png",
+      "sha256": "b87822278874ab8f412e359efd58a96d91aee61b0d09064af12b33dfd18fe87f"
+    }
+  ],
+  "visual_findings": [
+    "river bed, levee and inner-ground series are labelled Y.P.m",
+    "明橋 and 桜橋 are bridge name annotations, not deck-elevation observations",
+    "page6 is a drainage-facility location map, not a surveyed road-deck elevation table"
+  ],
+  "adopted_to_model": false,
+  "position": "reference for bounded structure-location/hydrology investigation only",
+  "missing": [
+    "verified publication date and source survey year",
+    "exact model-way/official-facility spatial identity",
+    "deck elevation",
+    "vertical datum conversion verified against current hydraulic input"
+  ],
+  "date_handling": "PDF internal creation timestamp2018-01-31 and URL asset timestamp do not establish publication date; search engine date not adopted",
+  "external_send_or_inquiry": false,
+  "current_input_changed": false
+}

@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice_inputs.py", line 13, in <module>
+    from scripts.jdrt_choice_policy import facility_first_destinations, hash_number, select_intents
+ModuleNotFoundError: No module named 'scripts'

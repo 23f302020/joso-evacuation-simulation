@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 
 from realtime_choice_cell import ChoiceController, file_sha, pid_alive, single_writer
+from status_readability import normalize_progress, reader_summary
 
 ROOT = Path(__file__).resolve().parents[4]
 DISPLAY_FILES = ['context.md', '00_全体整理/現状把握_静的・動的シミュレーション整理.md',
@@ -106,7 +107,7 @@ def replace_date(raw, pattern, day):
     return raw[:start] + day.encode() + raw[stop:]
 
 
-def display_plans(root, summary, at, task_summary):
+def display_plans(root, summary, at, task_summary, reader_text=None):
     """Use document-specific encoding; never serialize whole text documents."""
     day = datetime.fromisoformat(at).astimezone(timezone(timedelta(hours=9))).date().isoformat()
     plain = summary.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').encode('utf-8')
@@ -115,7 +116,13 @@ def display_plans(root, summary, at, task_summary):
     for name, label in zip(DISPLAY_FILES[:2], ('CONTEXT', 'MARKDOWN')):
         path = root / name
         raw = path.read_bytes()
-        result = bounded(raw, label, (b'> ' if label == 'MARKDOWN' else b'') + plain,
+        content = plain
+        if label == 'MARKDOWN' and reader_text is not None:
+            content = ('> ' + reader_text + '\n\n<details>\n<summary>運転担当者向けの確認情報</summary>\n\n'
+                       + escape(summary, quote=False) + '\n\n</details>').encode('utf-8')
+        elif label == 'MARKDOWN':
+            content = b'> ' + plain
+        result = bounded(raw, label, content,
                          lambda data: re.search(rb'(?m)^[ \t>]*(?:\*\*)?(?:' + '最新HOLD|最終goal'.encode() + rb')[^\r\n]*', data[:15000]))
         result = replace_date(result, rb'\*\*' + '最終更新：'.encode() + rb'\*\* (\d{4}-\d{2}-\d{2})', day)
         plans[path] = result
@@ -124,11 +131,25 @@ def display_plans(root, summary, at, task_summary):
     top = b'<aside data-choice-current="top" role="status"><p>' + html + b'</p></aside>'
     detail = ('<aside class="callout" id="choice-current-hold" role="status"><h2>'
               + day + '：受付・代替行動系列の観測時点の状況</h2><p>').encode() + html + b'</p></aside>'
+    if reader_text is not None:
+        top = ('<aside data-choice-current="top" role="status"><p>' + escape(reader_text) + '</p></aside>').encode()
+        detail = ('<aside class="callout" id="choice-current-hold"><h2>実行状態の確認情報</h2>'
+                  '<p>冒頭は確認した時点の状況です。ここでは、その表示に使った詳しい記録を確認できます。</p>'
+                  '<details><summary>運転担当者向けの確認情報を開く</summary><p>'
+                  + escape(summary) + '</p></details></aside>').encode()
     result = bounded(raw, 'HTML_TOP', top, lambda data: re.search(rb'<aside\b[^>]*data-choice-technical-hold="[^"]*"[^>]*>.*?</aside>', data, re.S))
     result = bounded(result, 'HTML_DETAIL', detail, lambda data: re.search(rb'<aside\b[^>]*id="choice-current-hold"[^>]*>.*?</aside>', data, re.S))
     result = replace_date(result, rb'<p class="snapshot">(\d{4}-\d{2}-\d{2})', day)
     result = replace_date(result, rb'(?s)<footer\b[^>]*>.*?(\d{4}-\d{2}-\d{2})(?=' + '更新'.encode() + rb')', day)
     plans[path] = result
+    if reader_text is not None:
+        md_path = root / DISPLAY_FILES[1]
+        md_raw = plans[md_path]
+        md = normalize_progress(md_raw.decode('utf-8'))
+        plans[md_path] = md.encode('utf-8')
+        if '<!-- PROGRESS_LOG_BEGIN -->' in md and b'<!-- PROGRESS_HTML_BEGIN -->' in plans[path]:
+            from realtime_choice_cell import reflect_progress
+            plans[path] = reflect_progress(md, plans[path].decode('utf-8')).encode('utf-8')
     task = root / '05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md'
     raw = task.read_bytes()
     matches = list(re.finditer(rb'(?m)^\| CH-M1 \|[^\r\n]*', raw))
@@ -201,7 +222,7 @@ def synchronize(root=ROOT, apply=False, build_report=None, controller=None):
         summary = (f'最終goal {checkpoint["goal_status"]}。受付・代替行動系列realtime_choice_v1：'
                    f'正式記録{state["recorded_cells"]}/{state["registered_cells"]}セル。{activity}。'
                    f'登録上の次セルは{next_cell}（開始許可ではない。専用CLIの現行READY/開始gateに従う）。'
-                   '状態は専用CLI status/check、正式採用は独立validate PASSと6ファイルrecordを正本とする。'
+                   '状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。'
                    '定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。'
                    '反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。'
                    '全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。')
@@ -237,7 +258,8 @@ def synchronize(root=ROOT, apply=False, build_report=None, controller=None):
                 summary += '。専用CLIの今回core観測：' + activity + '。後続開始は禁止。'
         task_summary = (f'正式記録{state["recorded_cells"]}/{state["registered_cells"]}。'
                         + (summary if build else '技術HOLD保全・後続開始禁止。' if hold else activity + '。最新は専用CLI status/check。'))
-        plans = display_plans(root, summary, at, task_summary)
+        reader_text = reader_summary(state, observed, hold or build is not None, at)
+        plans = display_plans(root, summary, at, task_summary, reader_text=reader_text)
         report = {'at_jst': at, 'action': 'skill_current_display_sync',
                   'summary': summary, 'state': state, 'observation': observed,
                   'formal_adoption_created': False, 'skill_source_sha256': file_sha(Path(__file__))}
@@ -246,13 +268,15 @@ def synchronize(root=ROOT, apply=False, build_report=None, controller=None):
                 ('report', 'at_jst', 'status', 'phase', 'attempt_id', 'owner', 'child', 'state_snapshot_sha256', 'anomaly_flags')}
             report['build_evidence_sha256'] = {p.relative_to(root).as_posix(): expected for p, expected in dependencies.items()}
         updated = dict(checkpoint)
-        stale = build is not None or hold or checkpoint.get('current_implementation_sha256') != implementation
+        stale = build is not None or implementation_changed
         if stale:
             for key in ('preflight_state', 'independent_audit_status', 'smoke_sequence_status', 'integrated_suite_current_status'):
                 if key in updated and not str(updated[key]).lower().startswith(('stale', 'historical')):
                     updated[key] = 'STALE historical: ' + str(updated[key])
-            updated.update(technical_ready=False, technical_evidence_classification=
-                           'STALE/historical: legacy PASS fields do not establish current READY')
+        if stale or hold:
+            updated.update(technical_ready=False, technical_evidence_classification=(
+                'STALE/historical: legacy PASS fields do not establish current READY' if stale else
+                'CURRENT_IMPLEMENTATION_HOLD: evidence status metadata is not a READY receipt'))
         updated.update(at_jst=at, summary=summary, core_runs=len(records),
                        running=[observed] if observed and observed['status'] == 'RUNNING' else [],
                        unrecorded_runs=state['unrecorded'], observed_formally_recorded=state['recorded_cells'],
@@ -309,7 +333,8 @@ def synchronize(root=ROOT, apply=False, build_report=None, controller=None):
                         prefix = b'' if stream.read(1) == b'\n' else b'\n'
                     stream.write(prefix + json.dumps(event, ensure_ascii=False).encode() + b'\n')
         return {'applied': apply, 'changed_files': [path.relative_to(root).as_posix() for path in changed_plans],
-                'summary': summary, 'recorded_cells': state['recorded_cells'], 'observed_run': chosen,
+                'summary': summary, 'reader_summary': reader_text,
+                'recorded_cells': state['recorded_cells'], 'observed_run': chosen,
                 'build_observation': report.get('build_observation'), 'formal_adoption_created': False}
 
 

@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-28T23:36:10.792944+09:00",
+  "action": "same_science_route_api_v4_technical_registration",
+  "previous_goal_turn_classification": "NO_PROGRESS(status answer only); revalidated and took safe repair/registration action",
+  "old_config_sha256": "c210d98aa7d3e85731eb58bd15f2a442fb7b3e6c74a3eab3c9c1e8acb7704131",
+  "new_config_sha256": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8",
+  "changed_top_level_fields": [
+    "workspace",
+    "record_files",
+    "amendments",
+    "registration_id",
+    "native_observation_addendum"
+  ],
+  "scientific_fields_identical": true,
+  "all70_cells_order_identical": true,
+  "old9_ledger_unchanged": true,
+  "current_implementation_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "65543ddaf75940c8d87b6ea6b6e0b70254da54b2e35fb9294e8f8a9da80eea36",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "core_started": false,
+  "technical_ready": false,
+  "production_native_readback": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/production_repair_20261028/production_native_readback.json"
+}

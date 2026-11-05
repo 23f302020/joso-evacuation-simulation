@@ -1,0 +1,8 @@
+shortened_source_stop_rebased FAIL
+unchanged_loop_preserves_actual_earlier_occurrence PASS
+future_same_edge_is_not_a_past_stop FAIL
+mismatched_edge_at_projected_index_is_removed PASS
+retained_prefix_offset FAIL
+invalid_future_index_removed FAIL
+empty_history PASS
+

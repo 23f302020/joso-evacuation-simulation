@@ -1,0 +1,32 @@
+{
+  "at_jst": "2026-10-20T22:55:23.252158+09:00",
+  "status": "REAL_WINDOWS_PROCESS_HANDLE_EXIT_AFTER_OBSERVATION_TIMEOUT_VERIFIED",
+  "controlled_timeout": true,
+  "actual_process_pid": 29052,
+  "initial_cim": {
+    "ProcessId": 29052,
+    "ParentProcessId": 22904,
+    "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+    "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -B -c \"import time; time.sleep(3)\"",
+    "CreationDate": 1792504519650
+  },
+  "later_cim": null,
+  "original_handle_exit_code": 0,
+  "helper_identity_observation": {
+    "pid": 29052,
+    "expected": {
+      "ProcessId": 29052,
+      "ParentProcessId": 22904,
+      "ExecutablePath": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "CommandLine": "C:\\Users\\Ko_rr\\AppData\\Local\\Programs\\Python\\Python313\\python.exe -B -c \"import time; time.sleep(3)\"",
+      "CreationDate": 1792504519650
+    },
+    "identity": "absent",
+    "observed_cim": null
+  },
+  "return_code_evidence": "Popen process handle wait; not numeric PID inference",
+  "research_simulation_started": false,
+  "primary_provenance_mocked_for_process_only_probe": true,
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

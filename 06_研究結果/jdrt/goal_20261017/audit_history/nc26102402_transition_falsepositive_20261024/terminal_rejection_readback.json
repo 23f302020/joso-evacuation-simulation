@@ -1,0 +1,35 @@
+{
+  "at_jst": "2026-10-24T18:03:44.851009+09:00",
+  "classification": "PROGRESS",
+  "run_id": "nc26102402",
+  "original_validation_session": 13369,
+  "original_validation_exit_code": 1,
+  "original_validation_actual_pid": 19672,
+  "original_validator_absent_now": true,
+  "status": "INVALID_PRESERVED",
+  "components": {
+    "person_tables": "PASS",
+    "candidate_tables": "PASS",
+    "road_snapshots": "PASS",
+    "actor_stream": "PASS",
+    "movement_events": "INVALID",
+    "native_logs": "INVALID",
+    "native_fixture_boundaries": "PASS"
+  },
+  "movement_errors": {
+    "no_closed_or_ambiguous_entries": 1
+  },
+  "native_warning_dependency": "warning_dependency_diagnosis.json;6receipts match, expected dict blocked by movement INVALID; classifier unchanged",
+  "formal_report": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/validation_reports/validate_nc26102402_20261024T175938614301.json",
+  "formal_report_sha256": "6d101ceea4c18da131fe088b55a7333ebac7a69be5ed9d14481060677454d481",
+  "original_completed_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/driver_logs/nc26102402.20261024T180236935372.original_manifest.json",
+  "original_completed_manifest_sha256": "90d35516c2b3037527bd716affa36608634257d33b05e63a3047498b62f6bfbc",
+  "original_native_started_at_jst": "2026-10-24T17:24:28.003631+09:00",
+  "original_native_finished_at_jst": "2026-10-24T17:40:16.885273+09:00",
+  "administrative_rejection_at_jst": "2026-10-24T18:02:36.936650+09:00",
+  "timing_note": "administrative rejection is not native execution duration; use original completed manifest/previous07completion event",
+  "accepted_rows_preserved": 8,
+  "record_attempted": false,
+  "common5_unchanged": true,
+  "next_action": "no active original validator; implement observation-only producer/independent-validator correction after gate; preserve old8/new70 single-version technical registration/full prerequisites; no old-new mixing"
+}

@@ -1,0 +1,36 @@
+{
+  "run_id": "na26102202_c06",
+  "status": "RUNNING",
+  "pid_alive": true,
+  "progress": {
+    "at_jst": "2026-10-22T09:13:53.166247+09:00",
+    "run_id": "na26102202_c06",
+    "time_sec": 840.0,
+    "end_sec": 2000,
+    "wall_sec": 1.9331346000253689,
+    "counts": {
+      "steps": 1680,
+      "controller_ticks": 841,
+      "snapshots": 15,
+      "teleports": 0,
+      "collisions": 0,
+      "transition_rows": 1,
+      "closed_entry_rows": 0,
+      "ambiguous_transitions": 0,
+      "candidate_rows": 1,
+      "dispatch_cycles": 15,
+      "missing_vehicle_subscriptions": 0,
+      "missing_person_subscriptions": 0,
+      "reentry_pending_frames": 0,
+      "departure_pending_frames": 0,
+      "snapshot_actor_rows": 0
+    },
+    "people_states": {
+      "stranded_drt": 1
+    },
+    "request_states": {
+      "failed_after_boarding": 1
+    }
+  },
+  "error": null
+}

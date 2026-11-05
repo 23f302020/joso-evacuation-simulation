@@ -1,0 +1,55 @@
+{
+  "at_jst": "2026-10-29T16:01:12.171071+09:00",
+  "status": "RAW_PRIMARY_VERSION_DEPENDENCY_ADAPTER_REVIEW_PASSED",
+  "changed_sources": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_pair_proof.py": "bab9428452c2fa8321402d64e2191fd95d815ea1db7caabd90b8bbd80d63240c",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_package_toolchain.py": "c275fbae04f8362f57f9f1f0ad50784bde346e3a2ab1f90b214c746b58617a44",
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_pair_primary.py": "be8f5b00bf3a8c276e86f864b451f28d6e176e058c5dd5754f07214a8868d867",
+    "04_プログラム/tests/test_choice_shared_native_pair_proof.py": "fd02c18c0e68cc95be145c4316cd62ff62d9915018527851d2809fc90c4d1b3e"
+  },
+  "tests": {
+    "integration8": {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_raw_primary_package_GREEN.log",
+      "sha256": "dc28c5da80991dc6858267f59fa1dba62aa4d1b5f7da466d252a474b72bf11f3"
+    },
+    "legacy17": {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_raw_primary_package_legacy_pair.log",
+      "sha256": "dcd3792f7cc85ed52cf49c41c0ed981eb18857177431940452d9313de14aba3d"
+    },
+    "packaging_unit13": {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_raw_primary_package_unit.log",
+      "sha256": "0eb28965a8fdc49839a1474a5cb764957b8b6d3ff23b98528ffcfcb87d1a433e"
+    },
+    "primary_version6": {
+      "path": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\shared_primary_version_binding_GREEN.log",
+      "sha256": "7d204bd414fc70635d7262ba576a6676e61ac67864162ae370df4ab17c04e762"
+    }
+  },
+  "preserved_actual_failure": {
+    "output": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\full_pair_primary01",
+    "original_session": 96557,
+    "exit_code": 1,
+    "reason": "New full-source build state has original six command records and bare binary identities, not old duplicated per-binary version and zlib summary fields. No original state modified."
+  },
+  "review": [
+    "New policy accepts only exact repaired role/base-role, four explicit false permission flags and six ordered terminal successful phases",
+    "Each version derives from unique actual target --version command, integer exit0, original log SHA/bytes and unique generated header; independent clean loader still required",
+    "New package reads zlib library and complete headers directly from strictly verified paired entry, not a fabricated state summary",
+    "New package reads actual per-target command/log while old policy retains original duplicated-summary checks",
+    "Source ZIP/Python inventory/compiler/static/config/header/loader/source archive and copy-window checks retained; new constructor includes complete inherited evidence refs",
+    "Artificial new package without original ZIP reference refused before destination",
+    "No acceptance success value hardcoded into original build state; no native rebuild/replay or selector switch"
+  ],
+  "unchanged_common5_and_config_sha256": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8"
+  },
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "actual_pair_rerun": "Fresh full_pair_primary02 original35631; preserve FAILED01 and original native states/executables",
+  "report_write_note": "Initial report write could not read a long archived filename via ordinary path. Used explicit Windows extended-path read; source/old file untouched."
+}

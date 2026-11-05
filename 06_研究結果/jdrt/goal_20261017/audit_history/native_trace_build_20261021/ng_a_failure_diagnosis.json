@@ -1,0 +1,37 @@
+{
+  "at_jst": "2026-10-21T08:32:33.091807+09:00",
+  "status": "NG_A_DIAGNOSED_PRESERVED_BOUND_DOMAIN_TRACING_FIXED",
+  "old_run_files_sha256": {
+    "bounded.net.xml": "200c167ff0546f001a7738b129de0fb60029b12faabfbc6fef13a81307445c84",
+    "collection_source.py": "bfc9dde02e58a9843636074ae24f4e7a5d15ed8b07e1ecd93aec044a6e49cbe1",
+    "manifest.json": "035cb520b88a3384a469ac9c7dae70a2115f67d2315c5626aeba40141926e013",
+    "plan.json": "235c4d1741732d9f1dcb611031b8ddfa2e75fdd21849bf604bfa56a75037306b",
+    "trace_build.json": "6e9201f13c45a37beb0bde695b22acc01813e46d4f11fa3424ccb448e19b175d",
+    "same_direction\\routes.xml": "41bf72d21a2510a0089dd19f1c2c9ff1b19c24044b1cfacc0d1f8ffb5370ae4a",
+    "same_direction\\control\\actors.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "same_direction\\control\\child.json": "4a8b3731175558965bdc2f046ff441d271fd6ee26fad0880ef42c6a5b42bfb2a",
+    "same_direction\\control\\native.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "same_direction\\control\\native.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "same_direction\\control\\operations.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "same_direction\\control\\traci_calls.py": "c1cd2251253b487da6c9aac1eb98417a2d6433854059f5b0ea65c5ce3c89a0dc",
+    "same_direction\\control\\tripinfo.xml": "f20545cbf589587355fdcf7ab9d5d82963512ec647f0c850e2bcdeb36bf2c4f4"
+  },
+  "old_native_child_exit_code": 0,
+  "old_processes_now": {
+    "22356": null,
+    "23576": null
+  },
+  "cause": "Pinned Connection constructor startTracing wraps original global domains before shallow _register copy; trace wrapper retains global domain _connection=None. Anonymous connect has no global switch. Initial simulationStep succeeded; first getTime wrapper failed before actor capture. Native error log empty, owned child clean close exit0.",
+  "primary_sources": [
+    "bundle tools/traci/connection.py constructor",
+    "tools/traci/domain.py _register",
+    "tools/traci/step.py startTracing/_addTracing"
+  ],
+  "repair": "Connect same original child without constructor-time tracing; call connection.startTracing on already-bound simulation/person/lane domains. No global switch, library edit, reconnect/spawn retry or model condition change.",
+  "red": "guard_runner_bound_domain_red.log: pinned real transport with fake socket reproduces Not connected",
+  "green": "guard_runner_green05.log:11 tests PASS, including same pinned transport bound-domain trace; no native physics claim",
+  "new_source_sha256": "48661bac02ea471baa0749514c86ebe99936e57d01f2aadd3780adaa806cc69a",
+  "next": "Fresh ng261021b same_direction only; independent raw guard/trajectory/budget review before wider cases",
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

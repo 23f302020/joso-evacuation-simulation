@@ -1,0 +1,11 @@
+# native guard実証・縦横速度診断（2026-10-21）
+
+正式0/70・READY=false。全45 native実行は正常終了し、一次315ファイルSHA・人物保存則/時計/native speed・置換receipt・進行方向・観測版と修正版の全人物系列を再照合した。13群のうち12群で予定した分岐/挙動を実測。位置/時刻不一致群はAPIが要求departPosを使わず現位置へ同期するため、今回の経路では未実証。source_reachability_review.jsonはこの経路の条件付きソース推論であり、native false分岐のPASSではない。
+
+旧eは39本終了後に試験経路と終点の生成誤りで停止、原本300ファイルSHAを保全。修正後22人工試験とinternalの3版再試験が正常終了し、新g全45本を採取した。internal3版の各2警告はconstructor時の旧終点と現internal長の差で、proceedで現位置へ復元される原実装に由来する。coreの警告受入規則は変更していない。
+
+同方向patched/traceの物理系列は置換なしnative基準とも一致。native speedは縦方向のgetterで、横移動を含むXYノルムと異なる。登録されたnative speed積分は保持し、検証器の誤った次step XY上限だけを修正、同一呼出し前後の座標はexactに監査する。2反例REDと22試験GREEN。現行validator SHAは86510a58a1562c1bd9923d10c552c7f7159244161ecdd8f2a3495825309cc419。旧fの全現行コードvalidationは履歴化し、native binary/原データは保全。
+
+次は現行全26suite・独立audit・全14smoke・input/unit・新preflight・G6。70正式セル・分析/数式考察・不足資料/限界・最終報告は未完である。
+
+根拠：audit_history/native_internal_fixture_20261021/actual_native_audit_v2.json、source_reachability_review.json、audit_history/native_diagonal_proxy_20261021/diagnosis.json・review.json。

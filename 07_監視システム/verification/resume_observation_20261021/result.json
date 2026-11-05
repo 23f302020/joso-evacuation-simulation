@@ -1,0 +1,71 @@
+{
+  "at_jst": "2026-10-21T07:52:54.415894+09:00",
+  "status": "CURRENT_OBSERVER_FRESH_AFTER_OS_RESUME",
+  "monitor": {
+    "state": "alive",
+    "created": 134369798989157015,
+    "pid": 30168
+  },
+  "identity_matches": true,
+  "loaded_source_sha256": "add2d16192b5257715c0b856271be1a312f18a080976e1c9e283cddec817b21d",
+  "last_observed": "2026-10-20T22:52:41.746052+00:00",
+  "age_sec": 12.333472728729248,
+  "prior_point_observed_at_utc": "2026-10-20T14:52:44.749468+00:00",
+  "coverage_gap_not_backfilled": true,
+  "windows_power_timing": "power_timing.json",
+  "process_seen_at_20261020T232458": "new PID30168; loaded same source. Rescue mechanism consistent, startup cause not independently recovered",
+  "prior_monitor_failure_log": "2026-10-20T14:24:31.566142+00:00 PermissionError; file/lock cause not proved",
+  "f_events": [
+    {
+      "id": "177e3e4381cf177aea7d1d90ecc4e55b",
+      "kind": "completed",
+      "at_utc": "2026-10-20T14:03:31.108047+00:00",
+      "target_id": "np261020f_c25",
+      "flags": [],
+      "delivery": "not_required"
+    },
+    {
+      "id": "1b291662d4fba3ef3cf5aba3cd92d1f4",
+      "kind": "completed",
+      "at_utc": "2026-10-20T14:03:44.091465+00:00",
+      "target_id": "np261020f_c26",
+      "flags": [],
+      "delivery": "not_required"
+    },
+    {
+      "id": "e904dd3e35747a8df04471f849b49db9",
+      "kind": "completed",
+      "at_utc": "2026-10-20T14:03:44.068481+00:00",
+      "target_id": "np261020f",
+      "flags": [],
+      "delivery": "pending"
+    },
+    {
+      "id": "e936e04807498afd23421ea0bdf2113f",
+      "kind": "failed",
+      "at_utc": "2026-10-20T14:00:24.830839+00:00",
+      "target_id": "nc261020f",
+      "flags": [],
+      "delivery": "pending"
+    },
+    {
+      "id": "ef1c8cf15f359818d87e626611f5bae9",
+      "kind": "failed",
+      "at_utc": "2026-10-20T14:00:33.612076+00:00",
+      "target_id": "nc261020f_c26",
+      "flags": [],
+      "delivery": "pending"
+    },
+    {
+      "id": "f7248a8abccd868ed70c32d412602027",
+      "kind": "completed",
+      "at_utc": "2026-10-20T14:00:19.333287+00:00",
+      "target_id": "nc261020f_c25",
+      "flags": [],
+      "delivery": "not_required"
+    }
+  ],
+  "new_observer_started": false,
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

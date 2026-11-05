@@ -1,0 +1,17 @@
+F..
+======================================================================
+FAIL: test_current_version_pass_is_retained_while_other_prerequisites_hold (test_choice_sync_currentness.DisplayCurrentness.test_current_version_pass_is_retained_while_other_prerequisites_hold)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_sync_currentness.py", line 39, in test_current_version_pass_is_retained_while_other_prerequisites_hold
+    self.assertEqual(updated['independent_audit_status'],'PASS_CURRENT')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'STALE historical: PASS_CURRENT' != 'PASS_CURRENT'
+- STALE historical: PASS_CURRENT
++ PASS_CURRENT
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.217s
+
+FAILED (failures=1)

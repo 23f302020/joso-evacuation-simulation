@@ -1,0 +1,14 @@
+..F......
+======================================================================
+FAIL: test_complete_csv_rows_include_quoted_newline (__main__.Contracts.test_complete_csv_rows_include_quoted_newline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\python-performance-optimization\scripts\test_measure_saved_csv_layers.py", line 45, in test_complete_csv_rows_include_quoted_newline
+    self.assertEqual(report['files'][0]['csv_rows'], 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.485s
+
+FAILED (failures=1)

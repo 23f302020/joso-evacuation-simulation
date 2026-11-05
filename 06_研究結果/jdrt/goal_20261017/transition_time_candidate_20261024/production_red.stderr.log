@@ -1,0 +1,124 @@
+EEEEEEEEEEEE
+======================================================================
+ERROR: test_actual_late_and_exact_boundary_are_still_closed (test_choice_transition_timing.TransitionTimingTests.test_actual_late_and_exact_boundary_are_still_closed) (upper=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 107, in test_actual_late_and_exact_boundary_are_still_closed
+    target = next(r for r in self.generated(upper, 1) if r['to_edge'] == 'short')
+                             ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 90, in generated
+    links = runtime.passenger_transition_links(network())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_links'
+
+======================================================================
+ERROR: test_actual_late_and_exact_boundary_are_still_closed (test_choice_transition_timing.TransitionTimingTests.test_actual_late_and_exact_boundary_are_still_closed) (upper=1.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 107, in test_actual_late_and_exact_boundary_are_still_closed
+    target = next(r for r in self.generated(upper, 1) if r['to_edge'] == 'short')
+                             ~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 90, in generated
+    links = runtime.passenger_transition_links(network())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_links'
+
+======================================================================
+ERROR: test_actual_producer_gives_short_edge_early_upper (test_choice_transition_timing.TransitionTimingTests.test_actual_producer_gives_short_edge_early_upper)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 100, in test_actual_producer_gives_short_edge_early_upper
+    rows = self.generated(.5, 1)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 90, in generated
+    links = runtime.passenger_transition_links(network())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_links'
+
+======================================================================
+ERROR: test_allow_all_is_passenger_but_pedestrian_only_is_not (test_choice_transition_timing.TransitionTimingTests.test_allow_all_is_passenger_but_pedestrian_only_is_not)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 74, in test_allow_all_is_passenger_but_pedestrian_only_is_not
+    self.assertIn(':out_0_0', runtime.passenger_transition_links(network(allow='all')))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_links'
+
+======================================================================
+ERROR: test_external_only_mutant_violates_independent_topological_bound (test_choice_transition_timing.TransitionTimingTests.test_external_only_mutant_violates_independent_topological_bound)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 111, in test_external_only_mutant_violates_independent_topological_bound
+    correct = next(r for r in self.generated(.5, 1) if r['to_edge'] == 'short')
+                              ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 90, in generated
+    links = runtime.passenger_transition_links(network())
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_links'
+
+======================================================================
+ERROR: test_forward_and_reverse_internal_proofs_cover_each_chain_lane (test_choice_transition_timing.TransitionTimingTests.test_forward_and_reverse_internal_proofs_cover_each_chain_lane)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 39, in test_forward_and_reverse_internal_proofs_cover_each_chain_lane
+    forward = runtime.passenger_transition_links(net)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_links'
+
+======================================================================
+ERROR: test_internal_before_short_edge_does_not_claim_it_passed (test_choice_transition_timing.TransitionTimingTests.test_internal_before_short_edge_does_not_claim_it_passed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 49, in test_internal_before_short_edge_does_not_claim_it_passed
+    self.assertEqual(runtime.passenger_transition_source(['a', 'short', 'b'], ':in_0', ':in_0_0', 0,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_source'
+
+======================================================================
+ERROR: test_native_arrival_explicit_final_index_is_not_previous_subscription (test_choice_transition_timing.TransitionTimingTests.test_native_arrival_explicit_final_index_is_not_previous_subscription)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 126, in test_native_arrival_explicit_final_index_is_not_previous_subscription
+    context['observe_transition']('actor', 'passenger', 'b', .5, ['a', 'short', 'b'], observed_index=2)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: observe_transition() got an unexpected keyword argument 'observed_index'
+
+======================================================================
+ERROR: test_occurrence_index_not_first_occurrence_of_repeated_edge (test_choice_transition_timing.TransitionTimingTests.test_occurrence_index_not_first_occurrence_of_repeated_edge)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 57, in test_occurrence_index_not_first_occurrence_of_repeated_edge
+    self.assertEqual(runtime.passenger_transition_source(path, ':out_0', ':out_0_0', 2,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_source'
+
+======================================================================
+ERROR: test_unknown_or_incompatible_internal_proof_fails_closed (test_choice_transition_timing.TransitionTimingTests.test_unknown_or_incompatible_internal_proof_fails_closed) (road=':unknown_0', index=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 67, in test_unknown_or_incompatible_internal_proof_fails_closed
+    runtime.passenger_transition_source(['a', 'short', 'b'], road, road + '_0', index,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_source'
+
+======================================================================
+ERROR: test_unknown_or_incompatible_internal_proof_fails_closed (test_choice_transition_timing.TransitionTimingTests.test_unknown_or_incompatible_internal_proof_fails_closed) (road=':out_0', index=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 67, in test_unknown_or_incompatible_internal_proof_fails_closed
+    runtime.passenger_transition_source(['a', 'short', 'b'], road, road + '_0', index,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_source'
+
+======================================================================
+ERROR: test_unknown_or_incompatible_internal_proof_fails_closed (test_choice_transition_timing.TransitionTimingTests.test_unknown_or_incompatible_internal_proof_fails_closed) (road=':out_0', index=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_transition_timing.py", line 67, in test_unknown_or_incompatible_internal_proof_fails_closed
+    runtime.passenger_transition_source(['a', 'short', 'b'], road, road + '_0', index,
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'scripts.jdrt_realtime_choice' has no attribute 'passenger_transition_source'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.134s
+
+FAILED (errors=12)

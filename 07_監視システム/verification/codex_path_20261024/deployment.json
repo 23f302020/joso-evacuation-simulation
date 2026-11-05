@@ -1,0 +1,41 @@
+{
+  "at_jst": "2026-10-24T08:19:58.663588+09:00",
+  "status": "MONITOR_RESTARTED_CURRENT_PATH_SAME_CORE_COMPLETION_OBSERVED",
+  "monitor_process": {
+    "state": "alive",
+    "created": 134372708545912528,
+    "pid": 5632
+  },
+  "last_observed": "2026-10-23T23:19:57.003388+00:00",
+  "monitor_source_sha256": "655e67fc92db8fe6481a0ebdce73cddc2c4eb51017cc97b4a49a0c5f6af7013b",
+  "config_sha256": "9496d2f854feef8e5419dee91ddaf3c08f12539662830d15bfd126228a43435a",
+  "current_core": {
+    "status": "COMPLETED",
+    "target_id": "nc26102401",
+    "observed_at_utc": "2026-10-23T23:19:49.790401+00:00",
+    "protocol": "realtime_choice_v1",
+    "purpose": "core",
+    "state_sha256": "c4a20ec580eb1168b35eb516f387f53caf3897a97d7130659ee400828f929e0c",
+    "flags": [],
+    "pid": 33444,
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\manifest.json",
+    "sim_sec": 21600.0,
+    "progress_token": [
+      "COMPLETED",
+      21600.0
+    ],
+    "last_progress": 1792797491.3088458,
+    "log_offsets": {
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102401\\sumo_errors.log": 518,
+      "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102401.stderr.log": 518
+    },
+    "historical": false
+  },
+  "core_completed_metadata": "監視_nc26102401_20261024T081920136381.json",
+  "old_monitor_pid24000_absence_verified_before_start": true,
+  "stop_guard_waited_then_original_task_started_once": true,
+  "AI_delivery_tested": false,
+  "old_events_retried": false,
+  "research_core_restarted": false,
+  "prior_extraction_error": "KeyError process: target completed between observations; terminal snapshot intentionally has no live process field; no research operation replay"
+}

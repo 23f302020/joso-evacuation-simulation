@@ -1,0 +1,31 @@
+--- before/04_プログラム/tests/test_choice_native_regression.py
++++ 04_プログラム/tests/test_choice_native_regression.py
+@@ -238,6 +238,28 @@
+             code, _ = self.p.command('validate', 0, ['fake'])
+         self.assertEqual(code, 0); self.assertIsNone(self.p.state['active']['process_identity'])
+         self.assertIn('handle wait', self.p.state['active']['return_code_evidence'])
++
++    def test_child_exiting_during_timeout_identity_query_uses_original_handle(self):
++        for index, observed in enumerate((None, dict(self.expected, CreationDate=self.expected['CreationDate'] + 1))):
++            child = Mock(pid=123)
++            child.wait.side_effect = [subprocess.TimeoutExpired('fake', 15), 0]
++            with self.subTest(observed=observed):
++                with patch.object(target.subprocess, 'Popen', return_value=child) as popen, \
++                        patch.object(target, 'cim_process', side_effect=[self.expected, observed]):
++                    code, _ = self.p.command('fixture_' + str(index), 0, ['fake'])
++                self.assertEqual(code, 0)
++                self.assertEqual(child.wait.call_args_list[-1].kwargs, {'timeout': 0})
++                self.assertIn('handle wait', self.p.state['active']['return_code_evidence'])
++                popen.assert_called_once(); child.kill.assert_not_called(); child.terminate.assert_not_called()
++
++    def test_absent_cim_while_original_handle_still_active_is_preserved(self):
++        child = Mock(pid=123); child.wait.side_effect = subprocess.TimeoutExpired('fake', 15)
++        with patch.object(target.subprocess, 'Popen', return_value=child) as popen, \
++                patch.object(target, 'cim_process', side_effect=[self.expected, None]):
++            with self.assertRaises(ValueError): self.p.command('fixture', 0, ['fake'])
++        self.assertIsNone(self.p.state['active']['exit_code'])
++        self.assertEqual(self.p.state['active']['identity_observation']['identity'], 'absent')
++        popen.assert_called_once(); child.kill.assert_not_called(); child.terminate.assert_not_called()
+ 
+ 
+ class SuiteInspectionContracts(unittest.TestCase):

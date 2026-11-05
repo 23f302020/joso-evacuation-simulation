@@ -1,0 +1,27 @@
+{
+  "at_jst": "2026-10-21T08:30:02.130838+09:00",
+  "status": "REVIEWED_FOR_FIRST_SAME_DIRECTION_RAW_COLLECTION",
+  "sources": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_guard.py": "bfc9dde02e58a9843636074ae24f4e7a5d15ed8b07e1ecd93aec044a6e49cbe1",
+    "04_プログラム/tests/test_choice_native_guard.py": "2103dbd4293b9d1329af4c45d1e720609695d321efb5c729cd9ccefa81cfaa2d"
+  },
+  "tests": "guard_runner_green04.log:10 temporary/mock contracts PASS; initial5 unimplemented RED and genuine initial-CIM PID-loss RED retained",
+  "resolved_findings": [
+    "Reserve fresh output before any manifest write; existing directories and concurrent owner locks preserved",
+    "Record actual spawned PID before CIM query; missing identity remains recoverable, never loses child identity",
+    "One Popen per role; connection retries only address the same original child",
+    "Bind local TCP server endpoint to actual native child PID plus actual API version",
+    "Native stdout/stderr, API calls, per-step actors and all-person replacement receipts saved without filtering",
+    "Normal owned child is closed by TraCI and waited on same handle; no terminate/kill/restart path",
+    "No moveTo/XY correction or actor-position tolerance",
+    "Three native roles share only a verified transport bundle; exact EXE SHA and actual command recorded separately",
+    "First launch explicitly same_direction subset only, not all13 native groups"
+  ],
+  "remaining": [
+    "First real collection and independent guard/trajectory/budget/warning audit pending",
+    "Internal/position mismatch reachability and allother groups not established",
+    "Collection COMPLETED is raw data status only, not native PASS/READY/core adoption"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

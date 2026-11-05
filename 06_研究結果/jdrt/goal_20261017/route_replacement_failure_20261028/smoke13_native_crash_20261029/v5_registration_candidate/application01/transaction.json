@@ -1,0 +1,93 @@
+{
+  "at_jst": "2026-10-29T20:23:02.420106+09:00",
+  "state": "APPLIED_METADATA_ONLY_NOT_READY",
+  "previous": {
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": {
+      "sha256": "782252f9f3ffaf044a1598d79ef89a38f63a90ba17ffdd45273f3817f49882b8",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/0.bin"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_経路制御_技術再登録_v4.md": {
+      "sha256": "0ec58e0b2e63fc75d7822a5001f617fed7bc336cb09d6f7132ca51a359dc3b87",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/1.bin"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/inputs/registered01/manifest.json": {
+      "sha256": "32716a1f5963e63a64a6a030292a3a351da301b506d3802eb04123064dad4252",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/2.bin"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_経路監査v4_full実験記録.md": {
+      "sha256": "bdb7b6305e14316eb495719d50af22bfad3c75c45fb5e199e1edf06d4e81f865",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/3.bin"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": {
+      "sha256": "bc6631b3cb7ecf29658f6d3a4e5d790d430bbafe12efbaa366beebefa80f1ca1",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/4.bin"
+    },
+    "context.md": {
+      "sha256": "f9a3c8c041eaaed8c7fd6e38568c365642baf8066287b4ec8c4b8d09c0d9ed08",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/5.bin"
+    },
+    "00_全体整理/決定ログ.md": {
+      "sha256": "fd5ccf7589508df7a9a45189940de8275aa3a95cdcf6864881846ce399f2fcf2",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/6.bin"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": {
+      "sha256": "41c9afff8ddc4d337e55242216dbf33a1d22cc5e286aaacbcf1e684ab92d974e",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/7.bin"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": {
+      "sha256": "62bfaf83f430103e2c666ef274c5735cc0178c77a01a1bfc063e5b2e695eab90",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/8.bin"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_経路監査v4_セル検証台帳.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "archive": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/v5_registration_candidate/application01/before/9.bin"
+    }
+  },
+  "common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "bundles": {
+    "control": {
+      "manifest": "04_プログラム/output/sumo/toolchains/native_ctl_si29a/toolchain.json",
+      "manifest_sha256": "8fc615c82ca284c4f5ff94e808e39f2fa974cb0ef0d76933a2b79373f33cdf98",
+      "files": 237,
+      "all_file_sha256_verified": true,
+      "provenance_exact_copy": true,
+      "binary_sha256": {
+        "sumo": "1243416364651fadf56c78243ed55a2291aa234d2e76f502ec4eba8f0e105157",
+        "netconvert": "85eda5abcd88c192677b90f905f3b1a4c5a5dbbe1ffa2964d9f79a6d2f5869a4"
+      },
+      "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/control_si29a_manifest_verification.json",
+      "fresh_import_report_sha256": "827a12be264e5ad21d3316f7f90739f7aae31b41901444a54a6d652f718aae70"
+    },
+    "patched": {
+      "manifest": "04_プログラム/output/sumo/toolchains/native_lat_si29a/toolchain.json",
+      "manifest_sha256": "9441822d02fe1a068ade0d24aade92ba4228e13d53a3c12edb229cdc80607669",
+      "files": 237,
+      "all_file_sha256_verified": true,
+      "provenance_exact_copy": true,
+      "binary_sha256": {
+        "sumo": "08019a104aaafd1de60ec43be3a06611575c06c7150f1ed7a92d8a587951c6cb",
+        "netconvert": "eeb3318a4e289fee098fa96fc07f0a16a84de8466ace28db260b30553a24239a"
+      },
+      "fresh_import_report": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/smoke13_native_crash_20261029/selected_si29a_manifest_verification.json",
+      "fresh_import_report_sha256": "7db7c5bc7ea97392d4fe389e202450e018676db3b3ac7081f0d6d4f5b0e95ab0"
+    }
+  },
+  "scientific_projection_equal": true,
+  "all70_cells_and_order_equal": true,
+  "prior_input_archive_contract_unchanged": true,
+  "core_ready": false,
+  "core_started": false,
+  "config_sha256": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+  "created": {
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md": "3dc51ed16a172b18bca72afe5c4856400b926208b929aac59c0a7af8164463d4",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md": "4dc56c5e19b81f9c178d016d9fc465d019c34c82f5e827abff20a73b94ff8107",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "next": "Prepare new inputs with existing input builder, verify unchanged artifacts; new native/full controller/audit/all14/preflight/G6/capacity/07 before core"
+}

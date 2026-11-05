@@ -1,0 +1,123 @@
+--- before/test_watch.py
++++ test_watch.py
+@@ -5,10 +5,120 @@
+ import subprocess
+ import sys
+ import time
++import hashlib
+ from unittest.mock import patch
+ from pathlib import Path
+ 
+ import watch
++
++
++class FixtureCommandBinding(unittest.TestCase):
++    def fixture(self, root, pid=123):
++        factory = root / 'technical/suite/factory.py'
++        factory.parent.mkdir(parents=True)
++        factory.write_text("CASES = ('first', 'second')\n", encoding='utf-8')
++        parent = factory.with_name('manifest.json')
++        watch.atomic_json(parent, {'protocol': 'realtime_choice_fixture_suite_v1',
++            'purpose': 'technical_fixture_suite', 'run_id': 'suite', 'pid': pid,
++            'status': 'RUNNING', 'research_adoption_permitted': False,
++            'factory_sha256': hashlib.sha256(factory.read_bytes()).hexdigest()})
++        inputs = root / 'technical/suite_c01/fixture_inputs/manifest.json'
++        watch.atomic_json(inputs, {'protocol': 'realtime_choice_fixture_v1', 'fixture_case': 'first',
++            'research_adoption_permitted': False,
++            'source_sha256': {'04_プログラム/scripts/jdrt_choice_fixtures.py': watch.read_json(parent)['factory_sha256']}})
++        child = root / 'technical/suite_c01/execution/manifest.json'
++        watch.atomic_json(child, {'protocol': 'realtime_choice_fixture_v1', 'purpose': 'fixture',
++            'run_id': 'suite_c01', 'pid': pid, 'status': 'RUNNING', 'fixture_case': 'first',
++            'research_adoption_permitted': False,
++            'input_manifest_sha256': hashlib.sha256(inputs.read_bytes()).hexdigest()})
++        return child, parent, factory, inputs
++
++    def test_verified_suite_command_is_bound_to_child_without_source_writes(self):
++        with tempfile.TemporaryDirectory() as folder:
++            child, parent, factory, inputs = self.fixture(Path(folder))
++            before = {p: p.read_bytes() for p in (child, parent, factory, inputs)}
++            called = []
++            def match(pid, target):
++                called.append((pid, target))
++                return target == 'suite'
++            value = watch.snapshot(child, {}, 1, lambda _: {'state': 'alive', 'created': 100}, match)
++            self.assertEqual(value['flags'], [])
++            self.assertEqual(called, [(123, 'suite')])
++            self.assertEqual(before, {p: p.read_bytes() for p in before})
++
++    def test_wrong_parent_factory_input_or_case_does_not_gain_suite_identity(self):
++        for change in ('parent_pid', 'parent_protocol', 'parent_status', 'factory_sha',
++                       'input_sha', 'case', 'path_identity', 'missing_parent'):
++            with self.subTest(change=change), tempfile.TemporaryDirectory() as folder:
++                child, parent, factory, inputs = self.fixture(Path(folder))
++                c, p = watch.read_json(child), watch.read_json(parent)
++                if change == 'parent_pid': p['pid'] = 999
++                elif change == 'parent_protocol': p['protocol'] = 'unrelated'
++                elif change == 'parent_status': p['status'] = 'FAILED'
++                elif change == 'factory_sha': factory.write_text("CASES = ('forged',)\n")
++                elif change == 'input_sha': c['input_manifest_sha256'] = 'wrong'
++                elif change == 'case': c['fixture_case'] = 'second'
++                elif change == 'path_identity': c['run_id'] = 'other_c01'
++                watch.atomic_json(parent, p); watch.atomic_json(child, c)
++                if change == 'missing_parent': parent.unlink()
++                value = watch.snapshot(child, {}, 1, lambda _: {'state': 'alive', 'created': 100},
++                                       lambda pid, target: target == 'suite')
++                self.assertIn('process_command_mismatch', value['flags'])
++
++    def test_created_pid_without_successful_command_proof_is_rechecked(self):
++        with tempfile.TemporaryDirectory() as folder:
++            child, *_ = self.fixture(Path(folder))
++            match = unittest.mock.Mock(return_value=False)
++            old = {'pid': 123, 'process': {'state': 'alive', 'created': 100}}
++            value = watch.snapshot(child, old, 1, lambda _: {'state': 'alive', 'created': 100}, match)
++            match.assert_called_once()
++            self.assertIn('process_command_mismatch', value['flags'])
++
++    def test_same_pid_cannot_cache_a_changed_parent_binding(self):
++        with tempfile.TemporaryDirectory() as folder:
++            child, parent, *_ = self.fixture(Path(folder))
++            probe = lambda _: {'state': 'alive', 'created': 100}
++            old = watch.snapshot(child, {}, 1, probe, lambda *args: True)
++            p = watch.read_json(parent); p['pid'] = 999; watch.atomic_json(parent, p)
++            current = watch.snapshot(child, old, 2, probe, lambda pid, target: target == 'suite')
++            self.assertIn('process_command_mismatch', current['flags'])
++
++    def test_command_match_uses_exact_windows_arguments(self):
++        command = subprocess.list2cmdline(['C:/Program Files/Python/python.exe', '-c', 'pass', '--run-id', 'suite'])
++        response = subprocess.CompletedProcess([], 0, json.dumps(command).encode(), b'')
++        with patch.object(watch.subprocess, 'run', return_value=response):
++            self.assertTrue(watch.command_matches(123, 'suite'))
++            for wrong in ('suit', 'suite_c01', 'Program', ''):
++                self.assertFalse(watch.command_matches(123, wrong))
++
++    def test_real_windows_suite_command_and_child_manifest(self):
++        if os.name != 'nt': self.skipTest('Windows integration')
++        with tempfile.TemporaryDirectory() as folder:
++            process = subprocess.Popen([sys._base_executable, '-B', '-c', 'import time; time.sleep(20)', '--run-id', 'suite'])
++            try:
++                child, *_ = self.fixture(Path(folder), process.pid)
++                value = watch.snapshot(child, {}, 1)
++                self.assertEqual(value['process']['state'], 'alive')
++                self.assertEqual(value['flags'], [])
++            finally:
++                process.terminate(); process.wait(timeout=5)
++
++    def test_exit_during_command_lookup_keeps_grace_without_false_mismatch(self):
++        with tempfile.TemporaryDirectory() as folder:
++            child, *_ = self.fixture(Path(folder))
++            observed = iter([{'state': 'alive', 'created': 100}, {'state': 'absent'}])
++            value = watch.snapshot(child, {}, 1, lambda _: next(observed), lambda *_: False)
++            self.assertEqual(value['flags'], [])
++            self.assertEqual(value['absent_since'], 1)
++            self.assertNotIn('command_verified_binding', value)
++
++    def test_pid_reused_during_command_lookup_cannot_gain_command_proof(self):
++        with tempfile.TemporaryDirectory() as folder:
++            child, *_ = self.fixture(Path(folder))
++            observed = iter([{'state': 'alive', 'created': 100}, {'state': 'alive', 'created': 200}])
++            value = watch.snapshot(child, {}, 1, lambda _: next(observed), lambda *_: True)
++            self.assertIn('process_identity_changed', value['flags'])
++            self.assertNotIn('command_verified_binding', value)
+ 
+ 
+ class Contracts(unittest.TestCase):

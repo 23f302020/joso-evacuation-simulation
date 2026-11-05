@@ -1,0 +1,23 @@
+Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.
+Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_technical.py", line 67, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_technical.py", line 46, in main
+    result = run_suite(args.run_id, args.case)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_choice_fixtures.py", line 566, in run_suite
+    result = run('fixture_' + case, child, purpose='fixture', fixture_directory=directory)
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 901, in run
+    replacement_receipts = [replace_walk_stage_receipt(t, pid, index, stage, 'old_remaining')]
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts\jdrt_realtime_choice.py", line 230, in replace_walk_stage_receipt
+    raise RuntimeError('Walking stage replacement moved the person')
+RuntimeError: Walking stage replacement moved the person

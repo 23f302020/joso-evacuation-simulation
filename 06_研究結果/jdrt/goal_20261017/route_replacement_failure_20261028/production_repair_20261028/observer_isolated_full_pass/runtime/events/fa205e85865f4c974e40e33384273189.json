@@ -1,0 +1,18 @@
+{
+  "schema": "simulation_watch_event_v1",
+  "id": "fa205e85865f4c974e40e33384273189",
+  "at_utc": "2026-10-27T01:11:05.444286+00:00",
+  "target": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102701\\manifest.json",
+  "kind": "unreadable_state",
+  "evidence": {
+    "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v3\\runs\\nv26102701\\manifest.json",
+    "read_failures": 3,
+    "read_error_type": "TimeoutExpired",
+    "read_error": "Command '['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', '[Console]::OutputEncoding = [Text.UTF8Encoding]::new(); Get-CimInstance Win32_Process -Filter \"ProcessId = 13636\" | Select-Object -ExpandProperty CommandLine | ConvertTo-Json -Compress']' timed out after 15 seconds"
+  },
+  "delivery": "failed_preserved",
+  "notification": "submitted",
+  "research_adoption": false,
+  "delivery_started_epoch": 1793063539.1147044,
+  "error_type": "FileNotFoundError"
+}

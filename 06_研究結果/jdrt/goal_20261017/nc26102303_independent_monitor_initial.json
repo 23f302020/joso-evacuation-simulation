@@ -1,0 +1,49 @@
+{
+  "at_jst": "2026-10-23T11:47:25.676957+09:00",
+  "monitor_observed_at_utc": "2026-10-23T02:47:14.751406+00:00",
+  "monitor_identity": {
+    "state": "alive",
+    "created": 134371000493149926,
+    "pid": 3348
+  },
+  "monitor_source_sha256": "c38c1e859f34d462d301b70a235aa8164e8bab42d4f761a3db28208210b56085",
+  "run_id": "nc26102303",
+  "targets": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102303\\manifest.json": {
+      "status": "RUNNING",
+      "target_id": "nc26102303",
+      "observed_at_utc": "2026-10-23T02:47:13.507606+00:00",
+      "protocol": "realtime_choice_v1",
+      "purpose": "core",
+      "state_sha256": "f7f336805b51d57a045bba40757d8aa4c6f846e67508ab214e12c06a20ce91e9",
+      "flags": [],
+      "pid": 10432,
+      "source": "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102303\\manifest.json",
+      "sim_sec": 180.0,
+      "progress_token": [
+        "RUNNING",
+        180.0
+      ],
+      "process": {
+        "state": "alive",
+        "created": 134371971936955373,
+        "pid": 10432
+      },
+      "command_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102303"
+      },
+      "command_verified_binding": {
+        "kind": "direct",
+        "command_target_id": "nc26102303"
+      },
+      "last_progress": 1792723633.0239964,
+      "log_offsets": {
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\runs\\nc26102303\\sumo_errors.log": 0,
+        "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\driver_logs\\nc26102303.stderr.log": 0
+      },
+      "historical": false
+    }
+  },
+  "scope": "current observer/target point observation, not continuous past monitoring or adoption"
+}

@@ -1,0 +1,140 @@
+{
+  "at_jst": "2026-10-20T22:18:07.230726+09:00",
+  "status": "DESIGN_ONLY_NOT_IMPLEMENTED_NOT_EXECUTED",
+  "parent_plan": "audit_history/walk_native_proposal_20261019/NATIVE_REGRESSION.md",
+  "separate_diagnostic_sha_required": true,
+  "production_bundles_must_remain_immutable": true,
+  "build_not_started": true,
+  "cases": [
+    {
+      "id": "same_direction",
+      "operation": "Current external edge, same legal remaining route at a raw stripe-shifted frame",
+      "expected_guard_branch": "inherit",
+      "primary_check": "exact current XY/longitudinal, next nonzero native step keeps original direction"
+    },
+    {
+      "id": "forward_reverse",
+      "operation": "Current external edge, new legal route departs toward its upstream end",
+      "expected_guard_branch": "inherit",
+      "primary_check": "exact replacement position; next nonzero native step agrees with new upstream endpoint"
+    },
+    {
+      "id": "reverse_forward",
+      "operation": "Initial reverse walk then new legal downstream route",
+      "expected_guard_branch": "inherit",
+      "primary_check": "exact replacement position; next nonzero native step agrees with downstream endpoint"
+    },
+    {
+      "id": "multiple_people_order",
+      "operation": "Two interacting types/stripes; repeat with opposite API operation order in fresh runs",
+      "expected_guard_branch": "per-person inherit",
+      "primary_check": "Only that actor uses its own prior raw latitude; all non-target positions unchanged within the control frame"
+    },
+    {
+      "id": "new_depart",
+      "operation": "First walk with no completed prior stage",
+      "expected_guard_branch": "default",
+      "primary_check": "No inheritance; same seed/input gives same native positions as unpatched"
+    },
+    {
+      "id": "explicit_lateral",
+      "operation": "Legal specified lateral input distinct from UNSPECIFIED sentinel",
+      "expected_guard_branch": "explicit",
+      "primary_check": "No inheritance; preserve original native conversion"
+    },
+    {
+      "id": "random_lateral",
+      "operation": "RANDOM lateral input with same initial RNG seed in both binaries",
+      "expected_guard_branch": "random",
+      "primary_check": "No inheritance; source/log/actual raw initial positions agree without additional RNG draw"
+    },
+    {
+      "id": "legacy",
+      "operation": "Existing native legacy lateral option enabled",
+      "expected_guard_branch": "legacy",
+      "primary_check": "No inheritance; preserve native legacy conversion"
+    },
+    {
+      "id": "natural_walk_walk",
+      "operation": "Natural walk end followed by another walk, same and different external edge",
+      "expected_guard_branch": "default",
+      "primary_check": "Previous naturally completed PState lane is null; guard rejects inheritance"
+    },
+    {
+      "id": "natural_walk_wait_walk",
+      "operation": "Naturally completed walk then waiting then walking",
+      "expected_guard_branch": "default",
+      "primary_check": "Prior-stage type/time and lane guard recorded; no inheritance"
+    },
+    {
+      "id": "non_target_lane_edge",
+      "operation": "Legal distinct-lane/edge native transition",
+      "expected_guard_branch": "default",
+      "primary_check": "Exact lane/edge/pointer booleans prove failed guard; do not force transition with moveTo/XY"
+    },
+    {
+      "id": "internal_walkingarea",
+      "operation": "Legal native start/replacement on an internal/walkingarea path",
+      "expected_guard_branch": "default",
+      "primary_check": "currentEdge normal=false; native original success/rejection retained"
+    },
+    {
+      "id": "position_time_mismatch",
+      "operation": "Reachable constructor invocation with mismatching prior edge-position or stage times",
+      "expected_guard_branch": "default",
+      "primary_check": "Actual mismatch trace required; unreachable case is reported unexercised, never synthetic native PASS"
+    }
+  ],
+  "trace_fields": [
+    "trace_sequence",
+    "native_simstep",
+    "person_id",
+    "stage_type",
+    "remaining_stage_count",
+    "total_stage_count",
+    "current_edge_id",
+    "current_edge_normal",
+    "new_lane_id",
+    "new_longitudinal_raw",
+    "new_direction_from_new_route",
+    "input_lateral_sentinel",
+    "legacy_lateral",
+    "prior_stage_available",
+    "prior_stage_type",
+    "prior_edge_id",
+    "prior_arrived_step",
+    "new_departed_step",
+    "prior_pstate_exists",
+    "prior_person_is_same",
+    "prior_lane_id_or_null",
+    "prior_lane_is_same",
+    "prior_longitudinal_raw",
+    "prior_raw_lateral",
+    "branch_selected",
+    "raw_lateral_before_selection",
+    "raw_lateral_after_selection"
+  ],
+  "independent_checks": [
+    "Derive every guard boolean from logged raw fields; do not trust branch_selected alone",
+    "No prior-stage/PState dereference before the existing guards permit it",
+    "max_digits10 numeric representation; explicit null vs absent vs evaluated-false fields",
+    "Bind trace rows to actual person/API operation/native time and binary/source/compiler/options SHA",
+    "Preserve stdout/stderr/native Error/Warning classification; trace gets separate original file, never filter existing logs",
+    "Compare diagnostic and production native observed trajectories; trace-only build is not production validation",
+    "All planned cases require observed branch evidence; absent branch is incomplete even when Python returns success"
+  ],
+  "integration": [
+    "After selected pair terminates, create a fresh isolated diagnostic source/build; no in-place production/native source edits",
+    "Trace patch must change observability only, not guard expression, RNG, route direction, latitude or budget",
+    "Expose through existing dedicated technical CLI/skill with isolated nonadoptable manifest; no standalone research core path",
+    "Fresh IDs and raw actor/getter/trace evidence for each case; fixture errors remain preserved",
+    "Then recheck final production binary on broad cases; full current suite/audit/14smoke/input-unit/preflight/G6 still required"
+  ],
+  "remaining_uncertainties": [
+    "Some individual false guards may be unreachable through valid native APIs; document reachability and use source reasoning separately instead of fake simulation evidence",
+    "Explicit/random/legacy syntax and effective native options must be verified against pinned bundle before case preparation",
+    "Separate trace build/helper and counterexample tests are not implemented yet"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false
+}

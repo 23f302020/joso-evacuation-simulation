@@ -1,0 +1,35 @@
+{
+  "at_jst": "2026-10-29T00:14:55.631136+09:00",
+  "action": "v4_same_suite_post_monitor_repair_observation",
+  "previous_goal_turn_classification": "PROGRESS: production repair/new registration/equal inputs/native regression, independent boundary and math proof; this turn monitor correctness repair and verified same native wait",
+  "original_session": 41223,
+  "suite_id": "rt261028b",
+  "suite_status": "RUNNING",
+  "suite_owner": {
+    "state": "alive",
+    "created": 134376721587991556,
+    "pid": 42508
+  },
+  "progress": {
+    "at_jst": "2026-10-29T00:13:58.415082+09:00",
+    "completed_cases": 24,
+    "last_case": "car_lane_cut",
+    "last_status": "PASS",
+    "child_run_id": "rt261028b_c24"
+  },
+  "common5_unchanged_since_suite_start": true,
+  "observer": {
+    "state": "alive",
+    "created": 134376734283303123,
+    "pid": 36456
+  },
+  "observer_source_matches_disk": true,
+  "observer_identity_matches": true,
+  "observer_age_start_sec": 172.65062189102173,
+  "observer_age_finished_sec": 104.94287967681885,
+  "observer_performance_proof": "observer_isolated_full_pass/result.json",
+  "latency_status": "OPEN: isolated full read20.32sec, render9.24sec and one CIM4.47sec. Different targets/cache/concurrent suite; no daemon latency root cause or speedup established. Freshness gate must be confirmed before core.",
+  "core_started": false,
+  "technical_ready": false,
+  "next": "Follow same original41223 until complete30, then one canonical G4 auditor --suite rt261028b. No duplicate suite/audit. On failure preserve and stop. After full audit PASS use fresh smoke prefix and exact report, then dedicated preflight. G6 proof current but no realall70 analysis."
+}

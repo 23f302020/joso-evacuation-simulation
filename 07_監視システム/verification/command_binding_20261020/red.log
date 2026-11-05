@@ -1,0 +1,72 @@
+test_command_match_uses_exact_windows_arguments (test_watch.FixtureCommandBinding.test_command_match_uses_exact_windows_arguments) ... FAIL
+test_created_pid_without_successful_command_proof_is_rechecked (test_watch.FixtureCommandBinding.test_created_pid_without_successful_command_proof_is_rechecked) ... FAIL
+test_real_windows_suite_command_and_child_manifest (test_watch.FixtureCommandBinding.test_real_windows_suite_command_and_child_manifest) ... FAIL
+test_same_pid_cannot_cache_a_changed_parent_binding (test_watch.FixtureCommandBinding.test_same_pid_cannot_cache_a_changed_parent_binding) ... FAIL
+test_verified_suite_command_is_bound_to_child_without_source_writes (test_watch.FixtureCommandBinding.test_verified_suite_command_is_bound_to_child_without_source_writes) ... FAIL
+test_wrong_parent_factory_input_or_case_does_not_gain_suite_identity (test_watch.FixtureCommandBinding.test_wrong_parent_factory_input_or_case_does_not_gain_suite_identity) ... ok
+
+======================================================================
+FAIL: test_command_match_uses_exact_windows_arguments (test_watch.FixtureCommandBinding.test_command_match_uses_exact_windows_arguments)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 92, in test_command_match_uses_exact_windows_arguments
+    self.assertFalse(watch.command_matches(123, wrong))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_created_pid_without_successful_command_proof_is_rechecked (test_watch.FixtureCommandBinding.test_created_pid_without_successful_command_proof_is_rechecked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 74, in test_created_pid_without_successful_command_proof_is_rechecked
+    match.assert_called_once()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 958, in assert_called_once
+    raise AssertionError(msg)
+AssertionError: Expected 'mock' to have been called once. Called 0 times.
+
+======================================================================
+FAIL: test_real_windows_suite_command_and_child_manifest (test_watch.FixtureCommandBinding.test_real_windows_suite_command_and_child_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 102, in test_real_windows_suite_command_and_child_manifest
+    self.assertEqual(value['flags'], [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['process_command_mismatch'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'process_command_mismatch'
+
+- ['process_command_mismatch']
++ []
+
+======================================================================
+FAIL: test_same_pid_cannot_cache_a_changed_parent_binding (test_watch.FixtureCommandBinding.test_same_pid_cannot_cache_a_changed_parent_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 84, in test_same_pid_cannot_cache_a_changed_parent_binding
+    self.assertIn('process_command_mismatch', current['flags'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'process_command_mismatch' not found in []
+
+======================================================================
+FAIL: test_verified_suite_command_is_bound_to_child_without_source_writes (test_watch.FixtureCommandBinding.test_verified_suite_command_is_bound_to_child_without_source_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\07_監視システム\test_watch.py", line 45, in test_verified_suite_command_is_bound_to_child_without_source_writes
+    self.assertEqual(value['flags'], [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['process_command_mismatch'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'process_command_mismatch'
+
+- ['process_command_mismatch']
++ []
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.269s
+
+FAILED (failures=5)

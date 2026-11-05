@@ -1,0 +1,40 @@
+{
+  "protocol": "realtime_choice_v1",
+  "registered_cells": 70,
+  "recorded_cells": 1,
+  "running": [],
+  "unrecorded": [],
+  "partial_records": [],
+  "record_identity_mismatch": [],
+  "unresolved_failures": [],
+  "unresolved_launches": [],
+  "pending_record_journals": [],
+  "foreign_running_manifests": [],
+  "next_cell": {
+    "cell_id": "fixed_reference_u05_r1_seed23423",
+    "destination_policy": "fixed_reference",
+    "demand_level": "u05",
+    "scenario": "R1",
+    "seed": 23423
+  },
+  "smoke_completed": [
+    "ns261030a_01",
+    "ns261030a_02",
+    "ns261030a_03",
+    "ns261030a_04",
+    "ns261030a_05",
+    "ns261030a_06",
+    "ns261030a_07",
+    "ns261030a_08",
+    "ns261030a_09",
+    "ns261030a_10",
+    "ns261030a_11",
+    "ns261030a_12",
+    "ns261030a_13",
+    "ns261030a_14"
+  ],
+  "failed": [],
+  "active_native_processes": [],
+  "core_ready": true,
+  "core_start_available": true
+}

@@ -1,0 +1,61 @@
+{
+  "at_jst": "2026-10-22T15:04:32.939965+09:00",
+  "scope": "bounded_primary_source_purpose_audit",
+  "originals_verified": [
+    {
+      "id": "shakyo_disclosure.html",
+      "requested_url": "https://www.joso-shakyo.jp/page/page000059.html",
+      "final_url": "https://www.joso-shakyo.jp/page/page000059.html",
+      "status": 200,
+      "content_type": "text/html",
+      "last_modified": null,
+      "retrieved_at_utc": "2026-10-22T05:53:59.864020+00:00",
+      "bytes": 19447,
+      "sha256": "6d5b1f6dd9792d1ccab5cc76a5d92449d1afed5b45cf280b36e154c592d952d9"
+    },
+    {
+      "id": "case_management_20250127.pdf",
+      "requested_url": "https://www.bousai.go.jp/taisaku/hisaisyagyousei/case/pdf/r7_ibaraki0127_3.pdf",
+      "final_url": "https://www.bousai.go.jp/taisaku/hisaisyagyousei/case/pdf/r7_ibaraki0127_3.pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "last_modified": "Thu, 30 Jan 2025 08:12:49 GMT",
+      "retrieved_at_utc": "2026-10-22T05:54:00.347538+00:00",
+      "bytes": 1540515,
+      "sha256": "6ba25ab6a7f4d6b9dc3578378ccda43e50a6162772f462480483c9d206af24eb"
+    }
+  ],
+  "pdf_pages": 14,
+  "visually_checked_physical_pages": [
+    2,
+    5,
+    6
+  ],
+  "rendered_physical_pages": [
+    1,
+    2,
+    5,
+    6
+  ],
+  "html_h4_headings": [
+    "令和6年度",
+    "令和5年度",
+    "令和4年度",
+    "令和3年度",
+    "令和2年度",
+    "令和元年度、平成31年度",
+    "平成30年度",
+    "平成29年度"
+  ],
+  "h27_heading_found": false,
+  "local_links_checked": 4,
+  "report_sha256": "4d77e5a5ebc9e5c9c21e0699a1475c8827dabc748184b587f501e87c78182fea",
+  "feedback_sent": false,
+  "external_contact": false,
+  "numeric_model_adoption": false,
+  "full_site_absence_claim": false,
+  "first_processing_attempt": "ModuleNotFoundError bs4 before report writes; recovered with stdlib HTMLParser, no install",
+  "ace_criterion": "sai-00005",
+  "ace_evidence_case": "JD-20261022-root-05",
+  "ace_effect": "uncertain_not_measured"
+}

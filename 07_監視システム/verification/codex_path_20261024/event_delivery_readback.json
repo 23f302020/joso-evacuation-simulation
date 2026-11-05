@@ -1,0 +1,52 @@
+{
+  "at_jst": "2026-10-24T08:21:51.793401+09:00",
+  "events": [
+    {
+      "id": "037d5571171a27524353ab0838b4967d",
+      "kind": "unreadable_state",
+      "at_utc": "2026-10-23T23:06:09.099163+00:00",
+      "notification": "failed",
+      "delivery": "failed_preserved",
+      "diagnostic_pid": null,
+      "exit_code": null,
+      "error_type": "FileNotFoundError",
+      "delivery_finished_at_utc": null,
+      "event_sha256": "8fffac5c82dc124d087278fb57764b356a40c20332bb9d8539d7ba73abb03fbc",
+      ".stdout.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      ".stderr.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "e3ba31a84059e5b24e40bc4d24ad84a2",
+      "kind": "completed",
+      "at_utc": "2026-10-23T23:18:11.355414+00:00",
+      "notification": "submitted",
+      "delivery": "done",
+      "diagnostic_pid": 14460,
+      "exit_code": 0,
+      "error_type": null,
+      "delivery_finished_at_utc": "2026-10-23T23:18:20.439916+00:00",
+      "event_sha256": "f02d6269e7da2bb6ba017fb58c6a75761bc597304c2046d683f8db82ac4cca09",
+      ".reply.txt": {
+        "bytes": 660,
+        "sha256": "588978282579bd50fa45640bd3a1d1e676257308089e328cf936930258fd817b"
+      },
+      ".stdout.log": {
+        "bytes": 1006,
+        "sha256": "d815b591181999dd9d68d3056e19d7c228fca94b4852d549021b0dcbe3c219cc"
+      },
+      ".stderr.log": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "scope": "actual durable event/delivery receipts not backend identity or research PASS",
+  "manual_AI_request": false,
+  "failed_event_retry": false
+}

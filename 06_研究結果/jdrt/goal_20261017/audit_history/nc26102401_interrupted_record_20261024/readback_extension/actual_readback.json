@@ -1,0 +1,15 @@
+{
+  "at_jst": "2026-10-24T17:27:02.787630+09:00",
+  "status": "ACTUAL_RECOVERED_RECORD7_READBACK_VERIFIED",
+  "run_id": "nc26102401",
+  "report": "06_研究結果/jdrt/goal_20261017/nc26102401_recovered_record7_readback.json",
+  "report_sha256": "6c9f1b6228943d414eb04b84fbc9c90da31a5335b887d76d93213daf042ad5e0",
+  "recovery_session": 84801,
+  "recovery_exit_code": 0,
+  "formal_recorded": 8,
+  "all7_terminal_bytes_read_before_display": true,
+  "original_operation_status_preserved": "RUNNING",
+  "original_operation_replayed": false,
+  "source_review": "27artificial metadata contracts and scoped same-chat review; actual recovered metadata readback separately PASS",
+  "physical_validation": "existing scientific CLI record independently recalculated original primary; not replaced by metadata tests"
+}

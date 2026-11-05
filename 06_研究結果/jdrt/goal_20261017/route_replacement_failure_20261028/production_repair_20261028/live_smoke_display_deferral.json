@@ -1,0 +1,23 @@
+{
+  "at_jst": "2026-10-29T10:18:00.338943+09:00",
+  "action": "live_smoke_document_sync_deferred_and_routine_clarified",
+  "original_smoke_session": 36247,
+  "smoke_prefix": "rs261029b",
+  "attempted": [
+    "status_progress --apply",
+    "status_progress --check"
+  ],
+  "outcome": "Both refused FileExistsError for live shared writer; neither updated HTML or proved agreement. Last shell gitdiff0 is independent.",
+  "html_sync_status": "DEFERRED until all14 normal terminal",
+  "live_lock_deleted_or_recovered": false,
+  "lock_point_sha256": "c431db9ff8638522b642bebf36ea9ee9430a84c3e6c8e26334e7823326b3ac53",
+  "lock_point_contents": {
+    "pid": 24200,
+    "at_jst": "2026-10-29T10:17:58.661981+09:00"
+  },
+  "reference_old_sha256": "1f4807c744229469dd2e4d5202e8a16390d42fdc0e1f2042d2a5c53f4e33ba7e",
+  "reference_old_copy": "06_研究結果/jdrt/goal_20261017/route_replacement_failure_20261028/source_history/1f4807c744229469dd2e4d5202e8a16390d42fdc0e1f2042d2a5c53f4e33ba7e_routine_operations.md",
+  "reference_new_sha256": "e3957bb51441d7096e4c97b456d463dc3f99a1afd3101950ef61e6939830ce12",
+  "verification": "Read status_progress.main and choice_sync_status.synchronize single_writer calls; text-only clarification, no science source/test/gate change",
+  "future_action": "At original sequence terminal, run apply then check with separate exit-code verification, before preflight owns the next lock"
+}

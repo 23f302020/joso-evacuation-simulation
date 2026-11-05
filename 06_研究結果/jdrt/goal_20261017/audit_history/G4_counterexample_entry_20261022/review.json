@@ -1,0 +1,15 @@
+{
+  "at_jst": "2026-10-22T09:30:47.460891+09:00",
+  "scope": "same_chat_goal_auditor_entry_diff_review_not_common5_change",
+  "status": "PASS_SCOPED_CONTRACT",
+  "fixed": "Hardcoded old workspace run ID removed. Current first suite child supplies real bound evidence; only current implementation file_sha is altered in memory. Missing unrelated evidence cannot satisfy SHA gate assertion. Hash function restored and original bytes checked after patch.",
+  "tests": "3 temporary/mocked entry contracts PASS; RED preserved; actual full26/counterexample audit still required",
+  "common5_unchanged": true,
+  "all_preserved_fixture_manifest_hashes_unchanged": true,
+  "fixture_artifacts_rechecked": 27,
+  "old_failed_pipeline_not_resumed": true,
+  "old_counterexample_field_removed_not_compatibility_alias": "No remaining consumer references old name; new name describes actual experiment",
+  "current_auditor_sha256": "cc1f3dc419eb02a21bc4e990e34979f703ab9ce50c290075645b0e31d8dfe946",
+  "judgment_id": "JD-20261022-research-0928-04",
+  "limitations": "Mock contracts prove entry control/hash mutation isolation only. No physical/SUMO or research acceptance claim."
+}

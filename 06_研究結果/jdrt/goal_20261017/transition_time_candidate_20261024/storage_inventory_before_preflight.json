@@ -1,0 +1,207 @@
+{
+  "at_jst": "2026-10-24T23:30:08.391965+09:00",
+  "scope": "operational logical-byte inventory only, no research method comparison",
+  "available_bytes": 255641300992,
+  "old_preserved_runs": [
+    {
+      "run_id": "nc26102201",
+      "status": "COMPLETED",
+      "cell_id": "fixed_reference_r0_seed23423",
+      "logical_file_bytes": 384989139,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          293725254
+        ],
+        [
+          "edge_observations.csv.gz",
+          66894501
+        ],
+        [
+          "events.jsonl",
+          13247965
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102202",
+      "status": "COMPLETED",
+      "cell_id": "fixed_reference_u05_r1_seed23423",
+      "logical_file_bytes": 388983104,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          296979809
+        ],
+        [
+          "edge_observations.csv.gz",
+          66915533
+        ],
+        [
+          "events.jsonl",
+          13790994
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102203",
+      "status": "COMPLETED",
+      "cell_id": "fixed_reference_u05_r2p900_seed23423",
+      "logical_file_bytes": 389397167,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          297426929
+        ],
+        [
+          "edge_observations.csv.gz",
+          66914173
+        ],
+        [
+          "events.jsonl",
+          13740421
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102301",
+      "status": "COMPLETED",
+      "cell_id": "fixed_reference_u05_r2p0_seed23423",
+      "logical_file_bytes": 389397364,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          297426929
+        ],
+        [
+          "edge_observations.csv.gz",
+          66914173
+        ],
+        [
+          "events.jsonl",
+          13740421
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102302",
+      "status": "COMPLETED",
+      "cell_id": "fixed_reference_u50_r1_seed23423",
+      "logical_file_bytes": 389463143,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          294606425
+        ],
+        [
+          "edge_observations.csv.gz",
+          66918720
+        ],
+        [
+          "events.jsonl",
+          14903030
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102303",
+      "status": "COMPLETED",
+      "cell_id": "fixed_reference_u50_r2p900_seed23423",
+      "logical_file_bytes": 389533197,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          294606425
+        ],
+        [
+          "edge_observations.csv.gz",
+          66918720
+        ],
+        [
+          "events.jsonl",
+          14903030
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102304",
+      "status": "COMPLETED",
+      "cell_id": "fixed_reference_u50_r2p0_seed23423",
+      "logical_file_bytes": 389533487,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          294606425
+        ],
+        [
+          "edge_observations.csv.gz",
+          66918720
+        ],
+        [
+          "events.jsonl",
+          14903030
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102401",
+      "status": "COMPLETED",
+      "cell_id": "facility_first_r0_seed23423",
+      "logical_file_bytes": 341469985,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          252297056
+        ],
+        [
+          "edge_observations.csv.gz",
+          66761252
+        ],
+        [
+          "events.jsonl",
+          11982577
+        ]
+      ]
+    },
+    {
+      "run_id": "nc26102402",
+      "status": "INVALID",
+      "cell_id": "facility_first_u05_r1_seed23423",
+      "logical_file_bytes": 345089887,
+      "files": 24,
+      "largest_files": [
+        [
+          "actor_observations.csv.gz",
+          254862115
+        ],
+        [
+          "edge_observations.csv.gz",
+          66770077
+        ],
+        [
+          "events.jsonl",
+          12889579
+        ]
+      ]
+    }
+  ],
+  "new70_extrapolation_observed_run_range_bytes": [
+    23902898950,
+    27267344090
+  ],
+  "limitations": [
+    "logical file lengths, not allocated clusters/quota or a guaranteed future range",
+    "old completed/invalid runs retained solely as size observations, not scientific adoption",
+    "new preflight/per-cell disclosed reservation remains mandatory; future circumstances/conditions can exceed observed sizes",
+    "no deletion/dehydration/move/source change performed"
+  ],
+  "research_result_analysis": false
+}

@@ -1,0 +1,53 @@
+{
+  "at_jst": "2026-10-21T16:04:23.107489+09:00",
+  "raw_integrity": [
+    {
+      "id": "kanto_bus_case2019",
+      "pdf_magic": true,
+      "bytes_match": true,
+      "sha_match": true,
+      "http200_pdf": true
+    },
+    {
+      "id": "mlit2015_final28",
+      "pdf_magic": true,
+      "bytes_match": true,
+      "sha_match": true,
+      "http200_pdf": true
+    },
+    {
+      "id": "mlit2015_report06",
+      "pdf_magic": true,
+      "bytes_match": true,
+      "sha_match": true,
+      "http200_pdf": true
+    }
+  ],
+  "json_parse": true,
+  "whole_document_text_search_pages": {
+    "kanto_bus_case2019": 92,
+    "mlit2015_final28": 61,
+    "mlit2015_report06": 24
+  },
+  "visually_reviewed_images": {
+    "case2019_physical49.png": "c8065813698360994847538c7b55be0cd98a9684bae56a6ca0b99735346e75ba",
+    "case2019_physical51.png": "b2b8c8f1edfc77a58e949555231ecf78a7582693e58e431f300a01fb4458627b",
+    "case2019_physical75.png": "cfa67cdf0dfde73ebbe4bd509614288a4dda741376f9b18eeb543497064a6f67",
+    "kanto_bus_case2019_physical1.png": "18189ca609ed16dec65c4512dead6f5d3ede61ce4aa800642a6fd1325411a4c5",
+    "mlit2015_final28_physical54.png": "dcc4f6ff1c6fce0410b95a73627239a3cda48a3ded857e9861c8225eeb64872d"
+  },
+  "visual_scope": "2019 cover, Sakai actual transport composition and request-time table, later Kanto Railway preparedness; 2015 final28 community bus support. report06 text-only. Figures are not 2015 Joso available fleet.",
+  "source_same_common5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "research_inputs_adopted": false,
+  "all70_outcome_analysis": false,
+  "outside_contact_or_publish": false,
+  "skill_before": "435d36315509c5351c61f123bc8f0dc8d1b45f57669904eaf4d28a5e4ee78ae4",
+  "skill_after": "526280f3b51517b198a50bffa1bec4d9f4433e883014ca243e100b0f78bac43e",
+  "pass": true
+}

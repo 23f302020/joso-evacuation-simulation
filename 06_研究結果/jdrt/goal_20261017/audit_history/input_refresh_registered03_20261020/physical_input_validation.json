@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "technical_ready": false,
+  "scope": "physical_primary_hdf_terrain_population_capacity_recomputation",
+  "at_jst": "2026-10-20T17:32:51.639141+09:00",
+  "checks": {
+    "current_sources": true,
+    "population_from_primary_domain": true,
+    "attributes_from_primary": true,
+    "source_population_partition": true,
+    "origins_from_primary_domain": true,
+    "native_times_from_hdf": true,
+    "elevation_from_primary_tif": true,
+    "all_road_depths_threshold_intervals_from_hdf_tif": true,
+    "unverified_structures_excluded": true,
+    "facility_capacity_primary": true,
+    "terminal_access_model_dry_window": true,
+    "exit_separate_from_facilities": true
+  },
+  "hazard_rows_recomputed": 35366,
+  "mismatched_edge_modes": [],
+  "input_manifest_sha256": "d922a2e52e36183451b3ce25f29bed2e85f0a8834b92f833b401799a57d6a4ea",
+  "validator_sha256": "64f194824c879f16e5987d339d9932a6377f55d5f503b332a3661589c7977287"
+}

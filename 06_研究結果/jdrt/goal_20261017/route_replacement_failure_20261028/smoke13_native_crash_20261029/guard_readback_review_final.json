@@ -1,0 +1,28 @@
+{
+  "at_jst": "2026-10-29T21:58:44.504119+09:00",
+  "status": "PARAMETERIZED_NATIVE_READBACK_VERIFIED_WITH_LIMITATIONS",
+  "original_collection_session": 16180,
+  "collection_exit_code": 0,
+  "actual_report": "06_研究結果\\jdrt\\goal_20261017\\route_replacement_failure_20261028\\smoke13_native_crash_20261029\\ng261029a_independent02.json",
+  "report_sha256": "0e6db899693a9265b50c7274d54eb736798013d379b35d71b0d996efa7c8c30d",
+  "reader_sha256": "06f2216761e43a3e8253b0c2251857be0dc1c08373cc993e09904c97c1987ff8",
+  "test_sha256": "aff9710225e7fae33fdf4bed4e1a4d574ff0490c804d40e33e5297bc25667654",
+  "actual_contract_tests": 4,
+  "primary_native_files": 315,
+  "source_reachability_proof_reused_only_on_exact_source_hashes": {
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source\\src\\libsumo\\Person.cpp": "dd1cfd5e46753056034c8d0d76a583f625dbfc7aeecb742cbbe3d302ed0010a5",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source\\src\\microsim\\transportables\\MSTransportable.cpp": "d717c0c2eb4623d96803aa6d0f299b29c1691065847695e5cabdc4cbe26a4eb8",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source\\src\\microsim\\transportables\\MSStage.cpp": "7284c708bc2aa3886bcefc452a0777a25dfb0d60c56b31e858304af2bf86c016",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source\\src\\microsim\\transportables\\MSStageWalking.cpp": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\JDRT-native-build\\choice_v126_20261019\\repair03_20261029\\source\\src\\microsim\\transportables\\MSPModel_Interacting.h": "b8af524f1b8340dfb1a390023651d292b098c4ea09e3a3f25d9421514d545e05"
+  },
+  "native_false_position_time_guard_observed": false,
+  "old_reader_failure": "Native API header uses TRACI_CONST int declaration, not assumed #define; independent01 logs preserved, original collection not replayed",
+  "RED_GREEN": [
+    "guard_readback_RED.log",
+    "guard_readback_const_RED.log",
+    "guard_readback_const_GREEN.log"
+  ],
+  "ready": false,
+  "core_adoption_permitted": false
+}

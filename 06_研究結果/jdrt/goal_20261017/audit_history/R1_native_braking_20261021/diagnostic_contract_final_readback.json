@@ -1,0 +1,28 @@
+{
+  "at_jst": "2026-10-21T21:18:49.880446+09:00",
+  "classification": "progress",
+  "current_config_unchanged": true,
+  "frozen_common5_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "formal_ledger_rows": 1,
+  "formal_markers": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_full実験記録.md": 1,
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": 1,
+    "context.md": 1,
+    "00_全体整理/決定ログ.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": 1,
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": 1
+  },
+  "candidate_registration": "NOT_ACTIVE",
+  "new_native_workspace_exists": false,
+  "diagnostic_prototype_adoption": false,
+  "current_operational_HOLD": true,
+  "goal_status": "ACTIVE",
+  "current_document_progress_sync": "PASS",
+  "next": "技術観測版の修正境界.mdに従い、raw emergencyDecel・実native引数/登録IDの保存と既存validatorへの厳格な一般分類を、必要なTDD/原本保全/新版再登録のまとまりとして実装する。旧R0/旧R1・旧台帳は保全し、旧READYや旧セルを新比較へ混ぜない。現行共通5/configはまだ変更していない。"
+}

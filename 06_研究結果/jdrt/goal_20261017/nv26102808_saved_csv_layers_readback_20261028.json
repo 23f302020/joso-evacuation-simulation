@@ -1,0 +1,38 @@
+{
+  "at_jst": "2026-10-28T08:05:07.813842+09:00",
+  "status": "PASS_SCOPED_COMPONENT_PROBE_PRIMARY_READBACK",
+  "run_id": "nv26102808",
+  "original_session": 45034,
+  "original_exit_code": 0,
+  "probe_result_sha256": "8839c1b17efa045f932b50485b12b58ce23e0d44a1f5eaf1eddf10e5008b1624",
+  "manifest_sha256": "d885ef39f6424754e3f465845fc9bb7c8bf990a3fe229cebf039a7fc27d9c7ce",
+  "accepted_record7_sha256": "9dd8244208996455bed41132c9959de50e3d4c3deb23777bddeb540ee42f282a",
+  "source_current": true,
+  "manifest_identity_matches_accepted_record": true,
+  "all18_output_hashes_bound_and_postchecked": true,
+  "csv_row_count_matches_preexisting_independent_report": {
+    "actor_observations.csv.gz": 3518201,
+    "edge_observations.csv.gz": 19197258,
+    "snapshot_actor_observations.csv.gz": 29213,
+    "transitions.csv.gz": 281680,
+    "candidates.csv.gz": 0
+  },
+  "timings_sec": {
+    "hash_wall_sec": 0.5191693999804556,
+    "hash_cpu_sec": 0.453125,
+    "gzip_wall_sec": 5.895814500167035,
+    "gzip_cpu_sec": 5.796875,
+    "csv_wall_sec": 67.54954730009194,
+    "csv_cpu_sec": 66.109375
+  },
+  "current_core_intervention": "Concurrent read-only auxiliary5368 overlapped ninth first validation; no frozen edits/profiler/validator calls. Record09 as diagnostic-load-exposed for future performance comparison, not an excluded scientific cell.",
+  "diagnostic_load_window": {
+    "start": "2026-10-28T08:01:32.015279+09:00",
+    "end": "2026-10-28T08:02:46.492953+09:00",
+    "pid": 5368,
+    "purpose": "saved08 CSV layers"
+  },
+  "C_result": "SHA/gzip single-pass costs small in this warm-cache trial. CSV iteration about68sec; numeric/accounting/shortest-path/native checks and repeated passes remain unpartitioned. No exact residual subtraction or bottleneck cause claim.",
+  "D_effect_confirmation": "NOT_DONE",
+  "goal_complete": false
+}

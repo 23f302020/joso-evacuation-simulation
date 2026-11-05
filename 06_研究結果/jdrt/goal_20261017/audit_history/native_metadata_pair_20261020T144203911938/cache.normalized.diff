@@ -1,0 +1,33 @@
+--- patched
++++ control
+@@ -37,8 +37,8 @@
+ //Enable/Disable color output during build.
+ CMAKE_COLOR_MAKEFILE:BOOL=ON
+ 
+-//No help, variable specified on the command line.
+-CMAKE_CXX_COMPILER:UNINITIALIZED=C:\Ruby31-x64\msys64\ucrt64\bin\g++.exe
++//CXX compiler
++CMAKE_CXX_COMPILER:STRING=C:/Ruby31-x64/msys64/ucrt64/bin/g++.exe
+ 
+ //A wrapper around 'ar' adding the appropriate '--plugin' option
+ // for the GCC compiler
+@@ -66,8 +66,8 @@
+ //Libraries linked by default with all C++ applications.
+ CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+ 
+-//No help, variable specified on the command line.
+-CMAKE_C_COMPILER:UNINITIALIZED=C:\Ruby31-x64\msys64\ucrt64\bin\gcc.exe
++//C compiler
++CMAKE_C_COMPILER:STRING=C:/Ruby31-x64/msys64/ucrt64/bin/gcc.exe
+ 
+ //A wrapper around 'ar' adding the appropriate '--plugin' option
+ // for the GCC compiler
+@@ -766,8 +766,6 @@
+ //Python Properties
+ _Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;13;12;64;<none>;cp313-win_amd64;;C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib;C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib;C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\site-packages;C:\Users\Ko_rr\AppData\Local\Programs\Python\Python313\Lib\site-packages
+ _Python_INTERPRETER_SIGNATURE:INTERNAL=b0d6fbab5a6f6223dadb312047b414cd
+-//Interpreter reason failure
+-_Python_Interpreter_REASON_FAILURE:INTERNAL=
+ //Path to a library.
+ _Python_LIBRARY_DEBUG:INTERNAL=_Python_LIBRARY_DEBUG-NOTFOUND
+ //Path to a library.

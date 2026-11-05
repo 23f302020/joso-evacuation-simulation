@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DADS スライドサンプル</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #0031d8;
+      --color-secondary: #d9e6ff;
+      --color-background: #ffffff;
+      --color-accent: #264af4;
+      --color-text: #1a1a1a;
+      --color-text-muted: #666666;
+      --color-border: #e6e6e6;
+      --font-heading: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-size-h1: 48px;
+      --font-size-h2: 36px;
+      --font-size-body: 16px;
+      --font-size-caption: 14px;
+      --slide-padding-v: 48px;
+      --slide-padding-h: 64px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f2f2f2;
+      font-family: var(--font-body);
+      padding: 40px 20px;
+    }
+
+    .slide-label {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+      font-family: var(--font-body);
+    }
+
+    /* ---- スライド共通 ---- */
+    .slide {
+      position: relative;
+      width: 960px;
+      height: 540px;
+      background: var(--color-background);
+      padding: var(--slide-padding-v) var(--slide-padding-h);
+      font-family: var(--font-body);
+      color: var(--color-text);
+      margin: 0 auto 48px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    /* 左端アクセントバー */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: var(--slide-padding-v);
+      left: 0;
+      width: 4px;
+      height: calc(100% - var(--slide-padding-v) * 2);
+      background: var(--color-primary);
+    }
+
+    /* ページ番号 */
+    .page-number {
+      position: absolute;
+      bottom: 24px;
+      right: var(--slide-padding-h);
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+
+    /* スライドタイトル */
+    .slide-title {
+      font-size: var(--font-size-h2);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    /* タイトル下のアクセントバー */
+    .title-bar {
+      width: 48px;
+      height: 4px;
+      background: var(--color-primary);
+      margin-bottom: 28px;
+    }
+
+    /* ---- スライド1：表紙 ---- */
+    .slide--cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--color-primary);
+    }
+
+    .slide--cover::before {
+      background: var(--color-secondary);
+    }
+
+    .slide--cover .cover-label {
+      font-size: var(--font-size-caption);
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .slide--cover .cover-title {
+      font-size: var(--font-size-h1);
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+
+    .slide--cover .cover-accent {
+      width: 48px;
+      height: 4px;
+      background: var(--color-secondary);
+      margin-bottom: 24px;
+    }
+
+    .slide--cover .cover-subtitle {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .slide--cover .cover-meta {
+      display: flex;
+      gap: 32px;
+    }
+
+    .slide--cover .cover-meta-item {
+      font-size: var(--font-size-caption);
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* ---- スライド2：セクションタイトル ---- */
+    .slide--section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--color-secondary);
+    }
+
+    .slide--section::before {
+      background: var(--color-primary);
+    }
+
+    .slide--section .section-number {
+      font-size: var(--font-size-h1);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1;
+      margin-bottom: 8px;
+      opacity: 0.25;
+    }
+
+    .slide--section .section-name {
+      font-size: var(--font-size-h1);
+      font-weight: 700;
+      color: var(--color-primary);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .slide--section .section-desc {
+      font-size: var(--font-size-body);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* ---- スライド3：箇条書き ---- */
+    .slide--bullets .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .slide--bullets .bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: var(--font-size-body);
+      line-height: 1.6;
+    }
+
+    .slide--bullets .bullet-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      margin-top: 8px;
+    }
+
+    /* ---- スライド4：データチャート ---- */
+    .slide--chart .chart-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      height: 280px;
+      padding: 0 16px;
+      border-bottom: 2px solid var(--color-border);
+      border-left: 2px solid var(--color-border);
+      margin-top: 8px;
+    }
+
+    .slide--chart .bar-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .slide--chart .bar {
+      width: 100%;
+      background: var(--color-primary);
+      border-radius: 2px 2px 0 0;
+      transition: none;
+    }
+
+    .slide--chart .bar.bar--accent {
+      background: var(--color-accent);
+    }
+
+    .slide--chart .bar.bar--light {
+      background: var(--color-secondary);
+      border: 1px solid var(--color-primary);
+    }
+
+    .slide--chart .bar-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      text-align: center;
+    }
+
+    .slide--chart .bar-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .chart-legend {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ---- スライド5：まとめ ---- */
+    .slide--summary .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .slide--summary .summary-card {
+      background: var(--color-secondary);
+      border-left: 4px solid var(--color-primary);
+      padding: 16px 20px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .slide--summary .summary-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 6px;
+    }
+
+    .slide--summary .summary-card-body {
+      font-size: var(--font-size-caption);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .slide--summary .summary-closing {
+      position: absolute;
+      bottom: var(--slide-padding-v);
+      left: var(--slide-padding-h);
+      right: var(--slide-padding-h);
+      font-size: var(--font-size-caption);
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      padding-top: 12px;
+    }
+
+    /* =====================================================
+       DESIGN SYSTEM OVERVIEW SLIDE
+    ===================================================== */
+    .slide-system { padding: 0; }
+
+    .sys-header {
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 20px;
+      letter-spacing: 0.09em;
+    }
+
+    .sys-overview {
+      padding: 0 24px;
+      font-size: 12px;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      height: 96px;
+    }
+
+    .sys-body {
+      display: flex;
+      height: calc(540px - 38px - 96px);
+    }
+
+    .sys-col {
+      flex: 1;
+      padding: 14px 22px;
+      overflow: hidden;
+    }
+
+    .sys-col + .sys-col { border-left: 1px solid #DDE6EE; }
+
+    .sys-col-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 7px;
+    }
+
+    .sys-col-rule {
+      border: none;
+      border-top: 1px solid #D2DCE6;
+      margin-bottom: 10px;
+    }
+
+    .colors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 140px);
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .color-card {
+      border: 1px solid #E5E5E5;
+      border-radius: 7px;
+      overflow: hidden;
+      background: #FFF;
+    }
+
+    .color-swatch { height: 52px; }
+
+    .color-card-body { padding: 5px 7px; }
+
+    .swatch-role { font-size: 10px; font-weight: 600; color: #333; }
+    .swatch-hex  { font-size: 9px; color: #888; font-family: monospace; }
+
+    .type-row { margin-bottom: 11px; }
+
+    .type-role {
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+
+    .type-spec { font-size: 9px; color: #999; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+
+<!-- =====================================================
+     DESIGN SYSTEM OVERVIEW
+===================================================== -->
+  <p class="slide-label">スライド 0 — デザインシステム概要</p>
+  <section class="slide slide-system">
+    <div class="sys-header">DESIGN SYSTEM — デジタル庁（DADS）</div>
+    <div class="sys-overview" style="background:rgba(0,49,216,0.06);">
+      <span><strong>参照ソース：</strong>デジタル庁デザインシステム（DADS）β版</span>
+      <span>／</span>
+      <span><strong>マッチするシーン：</strong>行政・官公庁向けビジネス資料、政策説明資料、DX推進・デジタル化関連の提案資料</span>
+    </div>
+    <div class="sys-body">
+      <!-- Colors -->
+      <div class="sys-col">
+        <div class="sys-col-label">Colors</div>
+        <hr class="sys-col-rule">
+      <div class="colors-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background:#0031d8;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Primary</div>
+            <div class="swatch-hex">#0031d8</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#d9e6ff;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Secondary</div>
+            <div class="swatch-hex">#d9e6ff</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#ffffff; border-bottom:1px solid #E5E5E5;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Background</div>
+            <div class="swatch-hex">#ffffff</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#264af4;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Accent</div>
+            <div class="swatch-hex">#264af4</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:#1a1a1a;"></div>
+          <div class="color-card-body">
+            <div class="swatch-role">Text</div>
+            <div class="swatch-hex">#1a1a1a</div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <!-- Typography -->
+      <div class="sys-col">
+        <div class="sys-col-label">Typography</div>
+        <hr class="sys-col-rule">
+      <div class="type-row">
+        <div class="type-role">Heading H1</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:26px;font-weight:700;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 48px · Bold</div>
+      </div>
+      <div class="type-row">
+        <div class="type-role">Heading H2</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:18px;font-weight:700;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 36px · Bold</div>
+      </div>
+      <div class="type-row">
+        <div class="type-role">Body Text</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:14px;font-weight:400;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 16px · Regular</div>
+      </div>
+      <div class="type-row">
+        <div class="type-role">Caption</div>
+        <div style="font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:400;line-height:1;">あいう ABC 123</div>
+        <div class="type-spec">Noto Sans JP · 14px · Regular</div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- スライド1：表紙 -->
+  <p class="slide-label">スライド 1 — 表紙</p>
+  <section class="slide slide--cover">
+    <div class="cover-label">ビジネスプレゼンテーション</div>
+    <div class="cover-title">プロジェクト名称<br>タイトルをここに入力</div>
+    <div class="cover-accent"></div>
+    <div class="cover-subtitle">サブタイトル・概要説明テキストをここに記入</div>
+    <div class="cover-meta">
+      <span class="cover-meta-item">発表者名</span>
+      <span class="cover-meta-item">部署名</span>
+      <span class="cover-meta-item">2026年6月7日</span>
+    </div>
+    <div class="page-number" style="color: rgba(255,255,255,0.4);">1</div>
+  </section>
+
+  <!-- スライド2：セクションタイトル -->
+  <p class="slide-label">スライド 2 — セクションタイトル</p>
+  <section class="slide slide--section">
+    <div class="section-number">01</div>
+    <div class="section-name">現状分析と<br>課題の整理</div>
+    <div class="section-desc">現在の業務フローにおける主要な課題を整理し、<br>改善に向けた優先順位を明確にします。</div>
+    <div class="page-number">2</div>
+  </section>
+
+  <!-- スライド3：箇条書き -->
+  <p class="slide-label">スライド 3 — 箇条書き（本文）</p>
+  <section class="slide slide--bullets">
+    <h2 class="slide-title">主要な課題と改善ポイント</h2>
+    <div class="title-bar"></div>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <span class="bullet-dot"></span>
+        <span>業務プロセスの一部がアナログ運用のままとなっており、担当者間での情報共有に時間がかかっている</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-dot"></span>
+        <span>データの一元管理ができておらず、複数のシステムをまたいだ確認作業が発生している</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-dot"></span>
+        <span>承認フローが複雑で、案件ごとに対応が異なるためミスやヌケが発生しやすい状況にある</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-dot"></span>
+        <span>外部関係者への情報提供の手段が限られており、リアルタイムでの進捗共有が困難である</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-dot"></span>
+        <span>ナレッジの属人化が進んでおり、担当者不在時の業務継続性に課題がある</span>
+      </li>
+    </ul>
+    <div class="page-number">3</div>
+  </section>
+
+  <!-- スライド4：データチャート -->
+  <p class="slide-label">スライド 4 — データチャート</p>
+  <section class="slide slide--chart">
+    <h2 class="slide-title">業務工数の比較（改善前後）</h2>
+    <div class="title-bar"></div>
+    <div class="chart-area">
+      <div class="bar-group">
+        <div class="bar-value">120h</div>
+        <div class="bar" style="height: 240px;"></div>
+        <div class="bar-label">情報収集</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-value">48h</div>
+        <div class="bar bar--accent" style="height: 96px;"></div>
+        <div class="bar-label">情報収集<br>（改善後）</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-value">80h</div>
+        <div class="bar" style="height: 160px;"></div>
+        <div class="bar-label">承認作業</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-value">24h</div>
+        <div class="bar bar--accent" style="height: 48px;"></div>
+        <div class="bar-label">承認作業<br>（改善後）</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-value">60h</div>
+        <div class="bar" style="height: 120px;"></div>
+        <div class="bar-label">報告作成</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar-value">20h</div>
+        <div class="bar bar--accent" style="height: 40px;"></div>
+        <div class="bar-label">報告作成<br>（改善後）</div>
+      </div>
+    </div>
+    <div class="chart-legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--color-primary);"></div>
+        <span>改善前</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background: var(--color-accent);"></div>
+        <span>改善後（推定）</span>
+      </div>
+    </div>
+    <div class="page-number">4</div>
+  </section>
+
+  <!-- スライド5：まとめ -->
+  <p class="slide-label">スライド 5 — まとめ</p>
+  <section class="slide slide--summary">
+    <h2 class="slide-title">まとめ</h2>
+    <div class="title-bar"></div>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-card-title">01 ／ 課題の明確化</div>
+        <div class="summary-card-body">業務プロセスのアナログ運用・データ分散・承認フローの複雑さが主要な課題として特定されました。</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-title">02 ／ 工数削減の可能性</div>
+        <div class="summary-card-body">デジタル化・一元管理の導入により、主要3業務の工数を平均60%削減できる見込みです。</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-title">03 ／ 次のアクション</div>
+        <div class="summary-card-body">優先度の高い承認フローから段階的に改善を進め、6ヶ月以内に全工程へ展開します。</div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-title">04 ／ 期待される効果</div>
+        <div class="summary-card-body">属人化の解消と情報共有の迅速化により、チーム全体の生産性向上と品質安定が見込まれます。</div>
+      </div>
+    </div>
+    <div class="summary-closing">
+      ご確認・ご質問があればお気軽にお申し付けください。
+    </div>
+    <div class="page-number">5</div>
+  </section>
+
+</body>
+</html>

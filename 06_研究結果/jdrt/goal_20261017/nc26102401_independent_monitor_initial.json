@@ -1,0 +1,32 @@
+{
+  "at_jst": "2026-10-24T08:03:54.682723+09:00",
+  "watch_status": {
+    "last_observed": "2026-10-23T23:03:33.789814+00:00",
+    "observation_age_sec": 26.8116295337677,
+    "monitor_process": {
+      "state": "alive",
+      "created": 134371000493149926,
+      "pid": 3348
+    },
+    "monitor_identity_matches": true,
+    "inbox": "C:\\Users\\Ko_rr\\.jdrt-monitor\\10afa40fb646\\status.html"
+  },
+  "targets": {},
+  "cim": [
+    {
+      "ProcessId": 33868,
+      "ParentProcessId": 23888,
+      "CreationDate": "/Date(1792796592774)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" execute --run-id nc26102401 --cell-id facility_first_r0_seed23423"
+    },
+    {
+      "ProcessId": 33444,
+      "ParentProcessId": 33868,
+      "CreationDate": "/Date(1792796592828)/",
+      "CommandLine": "\"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\venv\\Scripts\\python.exe\" -X utf8 \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\.agents\\skills\\joso-jdrt-runner\\scripts\\realtime_choice_cell.py\" --project-root \"C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\" execute --run-id nc26102401 --cell-id facility_first_r0_seed23423"
+    }
+  ],
+  "start_session": 34028,
+  "start_exit_code": 0,
+  "start_result": "STARTED"
+}

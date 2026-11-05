@@ -1,0 +1,97 @@
+--- before
++++ after
+@@ -335,6 +335,94 @@
+         changed['native_parking_stop']['start_pos_m'] = 9.99
+         changed_actor = {**actor, 'native_stop_start_pos_m': '9.99'}
+         self.assertFalse(audit(changed, changed_actor))
++
++
++class PinnedNativeWalkingContracts(unittest.TestCase):
++    fixture = NativeWalkingContracts.fixture
++    def pinned(self, root, manifest):
++        custom = '1.26.0-jdrt-choice-synthetic-contract'
++        bundle = root / 'bundle'
++        bundle.mkdir()
++        proof = bundle / 'native.json'
++        proof.write_text(json.dumps({'schema': 'isolated_native_provenance_v1',
++            'custom_version': custom, 'role': 'control', 'source_commit': 'a' * 40,
++            'state': {'custom_version': custom, 'status': 'COMPILED_VERSION_CHECKED_NOT_SIMULATED'}}))
++        manifest['sumo_version'] = [22, 'SUMO ' + custom]
++        runtime = {'toolchain_manifest_path': str(bundle / 'toolchain.json'),
++            'toolchain_manifest_sha256': 'b' * 64,
++            'toolchain_files_sha256': {'native.json': validator.file_sha(proof)},
++            'toolchain_provenance': {'native_provenance': 'native.json', 'role': 'control',
++                                     'source_commit': 'a' * 40}}
++        manifest['runtime_sha256'] = runtime
++        return runtime, proof
++
++    def test_pinned_custom_version_uses_the_same_speed_and_warning_contract(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root)
++            runtime, _ = self.pinned(root, manifest)
++            with patch.object(validator, 'ROOT', root), patch.object(validator, 'runtime_fingerprint', return_value=runtime):
++                movement = validator.audit_movement_events(folder, manifest, cfg, events)
++                self.assertEqual(movement['status'], 'PASS', movement)
++                native = validator.audit_native_logs(folder, manifest, events, {'removal_observations': {}}, movement)
++                self.assertEqual(native['status'], 'PASS', native)
++
++    def test_custom_version_requires_current_runtime_and_matching_bound_proof(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root)
++            runtime, proof = self.pinned(root, manifest)
++            original = deepcopy(manifest)
++            def check(candidate, current=runtime):
++                with patch.object(validator, 'ROOT', root), patch.object(validator, 'runtime_fingerprint', return_value=current):
++                    report = validator.audit_movement_events(folder, candidate, cfg, events)
++                self.assertFalse(report['checks']['walk_native_speed_contract'])
++            check({**manifest, 'runtime_sha256': {}})
++            check(manifest, {**runtime, 'toolchain_manifest_sha256': 'c' * 64})
++            for key, value in [('custom_version', '1.26.0-jdrt-choice-other'), ('role', 'patched'),
++                               ('source_commit', 'd' * 40), ('schema', 'unverified')]:
++                raw = proof.read_text()
++                changed = json.loads(raw)
++                changed[key] = value
++                proof.write_text(json.dumps(changed))
++                # Rebind bytes so rejection tests semantic disagreement, not only a stale hash.
++                manifest = deepcopy(original)
++                manifest['runtime_sha256']['toolchain_files_sha256']['native.json'] = validator.file_sha(proof)
++                with self.subTest(key=key):
++                    check(manifest, manifest['runtime_sha256'])
++                proof.write_text(raw)
++            manifest = deepcopy(original)
++            proof.write_text('{}')
++            check(manifest)
++            proof.unlink()
++            check(manifest)
++
++    def test_unbound_or_different_native_family_stays_unsupported(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root)
++            for version in ([22, 'SUMO 1.26.0-arbitrary'], [22, 'SUMO 1.27.0'],
++                            [22, 'SUMO 1.26.0-jdrt-choice-unbound'], [21, 'SUMO 1.26.0-jdrt-choice-wrong-api']):
++                with self.subTest(version=version), patch.object(validator, 'ROOT', root):
++                    report = validator.audit_movement_events(folder, {**manifest, 'sumo_version': version}, cfg, events)
++                self.assertFalse(report['checks']['walk_native_speed_contract'])
++
++    def test_pinned_version_does_not_relax_raw_warning_evidence(self):
++        with tempfile.TemporaryDirectory() as directory:
++            root = Path(directory)
++            folder, manifest, cfg, events = self.fixture(root)
++            runtime, _ = self.pinned(root, manifest)
++            with patch.object(validator, 'ROOT', root), patch.object(validator, 'runtime_fingerprint', return_value=runtime):
++                movement = validator.audit_movement_events(folder, manifest, cfg, events)
++                original = (folder / 'sumo_errors.log').read_text()
++                for text in (original.splitlines()[0] + '\n', original + original,
++                             original.replace("edge 'a'", "edge 'b'"), original.replace('20.00', '19.99'),
++                             original + 'Warning: Unrelated native diagnostic.\n'):
++                    (folder / 'sumo_errors.log').write_text(text)
++                    manifest['summary']['sumo_errors']['bytes'] = (folder / 'sumo_errors.log').stat().st_size
++                    with self.subTest(text=text):
++                        proof = validator.audit_native_logs(folder, manifest, events, {'removal_observations': {}}, movement)
++                        self.assertFalse(proof['checks']['all_warnings_evidence_classified'])
+ 
+ 
+ class PreflightProvenance(unittest.TestCase):

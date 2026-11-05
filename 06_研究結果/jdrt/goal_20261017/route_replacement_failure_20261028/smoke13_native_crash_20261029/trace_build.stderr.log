@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_stop_index_trace.py", line 122, in <module>
+    build(args.project_root, args.output)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_stop_index_trace.py", line 91, in build
+    run('compile', [compiler, *shlex.split(flags['CXX_DEFINES']), '@'+str(includes),
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    '-I'+str(source.parent), *shlex.split(flags['CXX_FLAGS']), '-c', target, '-o', obj], micro)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\.agents\skills\joso-jdrt-runner\scripts\choice_native_stop_index_trace.py", line 69, in run
+    raise RuntimeError(label+' failed; original logs preserved')
+RuntimeError: compile failed; original logs preserved

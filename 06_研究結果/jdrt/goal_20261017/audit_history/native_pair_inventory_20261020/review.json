@@ -1,0 +1,33 @@
+{
+  "at_jst": "2026-10-20T22:29:34.445945+09:00",
+  "status": "REVIEWED_UNIT_AND_ACTUAL_INPUT_COMPARISON",
+  "scope": "Missing role-bound runtime receipt in strict paired input inventory",
+  "changed_functions": [
+    "SelectedPair.compare_inputs"
+  ],
+  "added_functions": [
+    "selected_runtime_receipt"
+  ],
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_regression.py": "9db3394f103e1f6179bd73e30064ebbc534a9c77daf170559d7a971ff19103b2",
+    "04_プログラム/tests/test_choice_native_regression.py": "c2062c6c3e3955895c0cb02073535c3379c393f3a1e65d514b8f6a43b57d7a02"
+  },
+  "red": "realistic receipt-bearing artificial fixture rejected by old13-artifact inventory",
+  "green": "33 tests PASS; subsequent test-name-only correction does not change test logic",
+  "actual_evidence": "actual_input_comparison.json: four14-file inventories have no stale SHA;2 paired cases geometry/physical/config match; own role receipts match selected bundle",
+  "review_findings_resolved": [
+    "Expected inventory now matches actual generator, without dropping receipt checks",
+    "Complete runtime receipt dictionary compared to its own selected/bound bundle; swapped/wrong role/extra/stale/missing rejected",
+    "net attributes and physical data/parameters remain strict cross-role equality",
+    "No renderer/input generator/runtime/native/config/PAP/common-five change",
+    "Old d state and154 primary case files unchanged; no run reuse or recovery"
+  ],
+  "remaining": [
+    "Fresh end-to-end selected workflow required; do not promote failed d state from diagnostic recalculation",
+    "Native trace/broad regression/full suite/audit/14smoke/inputunit/preflight/G6 pending",
+    "Independent observer suite/case command binding issue not yet fixed"
+  ],
+  "technical_ready": false,
+  "research_adoption_permitted": false,
+  "actual_backend": "unverified; parent unchanged; no new agent"
+}

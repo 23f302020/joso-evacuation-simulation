@@ -1,0 +1,22 @@
+{
+  "at_jst": "2026-10-30T09:59:34.049656+09:00",
+  "status": "CURRENT_V5_READY_PROOF_SCOPE_ADDED_NO_RESEARCH_RESULT_CLAIM",
+  "file": "06_研究結果\\jdrt\\goal_20261017\\G7_研究報告_根拠と限界の統合草稿.md",
+  "before_sha256": "7eaa1606b2d204b6319839892944fe1bd85316a53d39d7cf7756a9bf4267d971",
+  "after_sha256": "9fe023a799fe2e913a8f16e3e14af1c8256e38881bf35616c8607581f9568589",
+  "local_links_checked": 35,
+  "primary_proofs": {
+    "ns261030a_all14_readback.json": {
+      "sha256": "a9349e257aff2d54432ae552c1c13a360e47864e51e857bf8cd6bb2bb5ff9b1d",
+      "status": "ALL_CURRENT_SETTING_SMOKES_PRIMARY_READBACK_PASS_NOT_READY"
+    },
+    "v5_preflight_terminal_readback_20261030.json": {
+      "sha256": "5106ec067a6c8c46c3b576acbc8089095186ba7efc02b9fffd2db50d4649da18",
+      "status": "CURRENT_V5_READY_PRIMARY_READBACK_PASS_PENDING_FRESH_STATUS_AND07"
+    }
+  },
+  "math_and_later_sections_unchanged": true,
+  "all70_results_or_direction_claim_added": false,
+  "research_conditions_changed": false,
+  "goal_complete": false
+}

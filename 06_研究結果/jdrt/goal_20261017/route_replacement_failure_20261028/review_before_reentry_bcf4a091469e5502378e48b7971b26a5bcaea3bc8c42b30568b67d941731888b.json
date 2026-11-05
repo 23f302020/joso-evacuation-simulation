@@ -1,0 +1,36 @@
+{
+  "at_jst": "2026-10-28T08:59:36.789322+09:00",
+  "status": "PASS_SCOPED_ISOLATED_DIAGNOSTIC_NOT_PRODUCTION_OR_READY",
+  "reviewer": "Current parent; no delegation/backend switch asserted",
+  "scope": "New diagnostic probe only; current scientific common5/config/inputs unchanged",
+  "source_sha256": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_route_history_probe.py": "3e62fc3f04ea870da38d77a01fb2510554ebfe82179c5ce67f2c9a8134900658",
+    ".agents/skills/joso-jdrt-runner/scripts/test_choice_route_history_probe.py": "da894e77b2543455a27de5d716bf64c61c60c7c22b7fbd4199ed8352c144c876",
+    ".agents/skills/joso-jdrt-runner/references/routine_operations.md": "08a28e53796f8f06cab3711f146c7f09cadf9ce182dd77861bba3cd009491909"
+  },
+  "native_control": "rh261028a: original frozen set_vehicle_route fails solely on formerly traversed now-closed prefix",
+  "preserved_failed_candidate": "rh261028b: actual missing getters, failed unchanged; no fake position receipt introduced",
+  "current_candidate": "rh261028e:12 checks, exact future route/distance/source first valid reentry/stop, no native error",
+  "current_future_guard": "rh261028f:5 checks including exact native c->d connection rejection, no permissive global flags",
+  "python_contracts": {
+    "tests": 5,
+    "RED": "invalid target stop originally not rejected before side effects",
+    "GREEN": 5,
+    "logs": [
+      "route_candidate_RED_stop_guard.log",
+      "route_candidate_GREEN_stop_guard.log"
+    ]
+  },
+  "review_findings_fixed": [
+    "Removed unbound STOP_PARKING fallback; use selected traci constant",
+    "Validate target stop before clearing old stop",
+    "Represent raw unavailable immediate getters explicitly; require first valid position/distance within original artificial step instead of filling source coordinates"
+  ],
+  "remaining_limits": [
+    "Artificial single-vehicle net, not full boarded/passenger/controller integration",
+    "Current-source frozen runtime remains unchanged; helper candidate not used by core",
+    "No full suite/all14/unit/preflight READY for a new production source",
+    "No scientific comparison direction or performance benefit claim"
+  ],
+  "goal_complete": false
+}

@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-22T09:06:03.131991+09:00",
+  "scope": "same_chat_monitor_helper_diff_review_not_separate_model_or_research_validation",
+  "reason": "RUNNING parent cases are only flushed at suite termination; prior monitor treated closed primary children as concurrent unreported children",
+  "tests": {
+    "red": "red.stderr.log: missing reported_children function; initial loop also produced secondary fixture creation error",
+    "green": "14 tests PASS; missing/changed receipts, manifest/output SHA, forged progress, factory change, foreign IDs, selected-case ordinal and remaining multiple children",
+    "actual": "actual_primary_reconstruction.json; actual terminal observation anomaly_flags=[] and originals_unchanged=true"
+  },
+  "review_result": "No remaining finding in this scoped auxiliary change. Primary receipt and archived factory/output SHA required; no acceptance gate or physics change. Running reads can remain partial/ambiguous and are never adoption proof.",
+  "common_five_and_input_dependencies_unchanged": true,
+  "research_ready": false,
+  "sources": {
+    ".agents/skills/joso-jdrt-runner/scripts/choice_technical_monitor.py": "60ec43ecdbb2aa98f21df5a2a77ffbfd3dc131d8728a8ea02e41da08a5fa08ae",
+    ".agents/skills/joso-jdrt-runner/tests/test_choice_technical_monitor.py": "db38240ba0be94fafef6af7e85ece8f66e8e53ec14398982b1d37c23245d6da2"
+  }
+}

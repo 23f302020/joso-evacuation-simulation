@@ -1,0 +1,17 @@
+{
+  "at_jst": "2026-10-27T15:35:21.465796+09:00",
+  "action": "reentry_original_record_terminal",
+  "last_explicit_OS_point_jst": "2026-10-27T11:14:05.4831272+09:00",
+  "later_waits": "Original4900 polled later without a saved offset-aware OS timestamp; exact start of gap unknown.",
+  "first_reentry_OS_point_jst": "2026-10-27T15:30:00.6597901+09:00",
+  "original_session": 4900,
+  "original_session_exit_code": 0,
+  "original_operation_status": "RECORDED_VERIFIED",
+  "actual_formal_record_at_jst": "2026-10-27T11:42:36.677532+09:00",
+  "record7_readback": "06_研究結果/jdrt/goal_20261017/nv26102702_record7_readback.json",
+  "cause": "not established",
+  "continuous_chat_or07_coverage_claimed": false,
+  "core_or_validation_or_record_restarted": false,
+  "formal_recorded": 2,
+  "metadata_script_failure": "Prior snippet SyntaxError from non-ASCII bytes literal before execution; no snippet writes. Following existing display/progress helpers completed, their output preserved. Scientific commands not replayed."
+}

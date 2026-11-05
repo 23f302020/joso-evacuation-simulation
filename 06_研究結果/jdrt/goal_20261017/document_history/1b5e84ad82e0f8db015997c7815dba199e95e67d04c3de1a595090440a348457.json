@@ -1,0 +1,98 @@
+{
+  "protocol": "realtime_b_boundary_v2",
+  "municipality_code": "08211",
+  "user_decision": "2026-10-16: 提案1：移動前制御を登録し15セルを再実行（推奨）",
+  "pap": "03_研究設計文書/jdrt/常総市JDRT_実時間B_境界整合_PreAnalysisPlan_v2.md",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2",
+  "input_directory": "inputs/registered01",
+  "scenarios": [
+    "R0",
+    "R1",
+    "R2"
+  ],
+  "seeds": [
+    23423,
+    42,
+    1,
+    7,
+    101
+  ],
+  "simulation": {
+    "start_jst": "2015-09-10T12:50:00+09:00",
+    "duration_sec": 21600,
+    "step_sec": 0.5,
+    "controller_sec": 1,
+    "dispatch_sec": 60,
+    "snapshot_sec": 60,
+    "stop_speed_mps": 0.1
+  },
+  "hazard": {
+    "sample_spacing_m": 5,
+    "vehicle_depth_m": 0.5,
+    "pedestrian_depth_m": 0.1,
+    "forecast_error_sec": 900,
+    "reopen": false,
+    "unverified_structure_policy": "exclude_edges_keep_people"
+  },
+  "population": {
+    "ownership_reference": "non_car_15pct",
+    "uptake": 0.5,
+    "ready_interval_sec": [
+      0,
+      7200
+    ],
+    "walk_mps": {
+      "type3": 1.0,
+      "type4": 0.58
+    },
+    "walk_limit_m": 3000,
+    "snap_limit_m": 300
+  },
+  "operation": {
+    "fleet_count": 4,
+    "passenger_capacity": 3,
+    "boarding_sec": 300,
+    "alighting_sec": 300,
+    "margin_sec": 300,
+    "reference_depot_shelter": "shelter_3",
+    "pooling": false
+  },
+  "evaluation": {
+    "primary_type": "type4",
+    "primary_status": "admitted",
+    "boundary_exit_in_primary": false,
+    "finite_facility_capacity": true,
+    "same_tick_order": "person_id"
+  },
+  "dispatch_weights": {
+    "waiting": 1,
+    "vulnerability": 1,
+    "pickup": 1,
+    "flood": 1
+  },
+  "gates": {
+    "unhandled_errors": 0,
+    "teleports": 0,
+    "collisions": 0,
+    "accounting_difference": 0,
+    "missing_snapshots": 0
+  },
+  "parent_parameter_registry": "04_プログラム/config/jdrt_realtime_b_v1.json",
+  "parent_input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b/inputs/build02/manifest.json",
+  "execution": {
+    "timing_contract": "pre_step_end_v1",
+    "max_control_lead_sec": 0.5,
+    "initial_closure_call_sec": 0,
+    "strict_closed_entry_inclusive": true,
+    "common_implementation_required": true,
+    "excluded_comparison_protocols": [
+      "realtime_b_v1"
+    ],
+    "implementation_files": [
+      "04_プログラム/scripts/jdrt_realtime_b_boundary.py",
+      "04_プログラム/scripts/jdrt_realtime_b_boundary_inputs.py",
+      "04_プログラム/scripts/jdrt_realtime_b_boundary_validate.py",
+      ".agents/skills/joso-jdrt-runner/scripts/realtime_b_boundary_cell.py"
+    ]
+  }
+}

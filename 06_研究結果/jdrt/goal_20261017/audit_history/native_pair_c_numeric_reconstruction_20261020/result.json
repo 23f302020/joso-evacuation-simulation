@@ -1,0 +1,189 @@
+{
+  "at_jst": "2026-10-20T22:09:00.288779+09:00",
+  "status": "DIAGNOSTIC_GEOMETRY_RECONSTRUCTED_NOT_ACCEPTANCE",
+  "results": [
+    {
+      "actor": "fixture_person_0",
+      "time_sec": 52.5,
+      "route": [
+        "e0",
+        "d0",
+        "d1",
+        "d2",
+        "e2"
+      ],
+      "external_base_m": 339.0825,
+      "junction_endpoint_terms_m": [
+        11.596551211459373,
+        1.109414259868697,
+        5.336215887686724,
+        11.596551211459373
+      ],
+      "junction_endpoint_sum_m": 29.638732570474165,
+      "visited": [
+        "e0",
+        ":B_w1",
+        ":B_c0",
+        ":B_w0",
+        "d0"
+      ],
+      "completed_internal_paths": [
+        {
+          "edge": ":B_w1",
+          "shape_reconstructed": [
+            [
+              126.0,
+              95.8
+            ],
+            [
+              128.0,
+              95.8
+            ],
+            [
+              137.2,
+              94.8
+            ],
+            [
+              137.2,
+              96.8
+            ]
+          ],
+          "length_m": 13.254188241007409
+        },
+        {
+          "edge": ":B_c0",
+          "length_m": 3.2
+        },
+        {
+          "edge": ":B_w0",
+          "shape_reconstructed": [
+            [
+              137.2,
+              100.0
+            ],
+            [
+              137.2,
+              101.25
+            ],
+            [
+              134.2,
+              102.75
+            ],
+            [
+              134.2,
+              104.0
+            ]
+          ],
+          "length_m": 5.854101966249685
+        }
+      ],
+      "completed_internal_sum_m": 22.308290207257095,
+      "reconstructed_installed_plan_m": 368.72123257047417,
+      "raw_installed_plan_m": 368.7212325704741,
+      "reconstructed_live_length_m": 361.39079020725706,
+      "raw_live_length_m": 361.39079020725706,
+      "difference_m": -7.33044236321707,
+      "remaining_length_was_not_substituted": true
+    },
+    {
+      "actor": "fixture_person_1",
+      "time_sec": 52.5,
+      "route": [
+        "e0",
+        "d0",
+        "d1",
+        "d2",
+        "e2"
+      ],
+      "external_base_m": 331.2075,
+      "junction_endpoint_terms_m": [
+        11.596551211459373,
+        1.109414259868697,
+        5.336215887686724,
+        11.596551211459373
+      ],
+      "junction_endpoint_sum_m": 29.638732570474165,
+      "visited": [
+        "e0",
+        ":B_w1",
+        ":B_c0",
+        ":B_w0",
+        "d0"
+      ],
+      "completed_internal_paths": [
+        {
+          "edge": ":B_w1",
+          "shape_reconstructed": [
+            [
+              126.0,
+              95.8
+            ],
+            [
+              128.0,
+              95.8
+            ],
+            [
+              137.2,
+              94.8
+            ],
+            [
+              137.2,
+              96.8
+            ]
+          ],
+          "length_m": 13.254188241007409
+        },
+        {
+          "edge": ":B_c0",
+          "length_m": 3.2
+        },
+        {
+          "edge": ":B_w0",
+          "shape_reconstructed": [
+            [
+              137.2,
+              100.0
+            ],
+            [
+              137.2,
+              101.25
+            ],
+            [
+              134.2,
+              102.75
+            ],
+            [
+              134.2,
+              104.0
+            ]
+          ],
+          "length_m": 5.854101966249685
+        }
+      ],
+      "completed_internal_sum_m": 22.308290207257095,
+      "reconstructed_installed_plan_m": 360.84623257047417,
+      "raw_installed_plan_m": 360.8462325704741,
+      "reconstructed_live_length_m": 353.51579020725706,
+      "raw_live_length_m": 353.51579020725706,
+      "difference_m": -7.33044236321707,
+      "remaining_length_was_not_substituted": true
+    }
+  ],
+  "source_sha256": {
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\fixture_inputs\\bounded.net.xml": "935d15b32388271dd4a0771a46b8dc770035be573bf7cfabf73611d1cee81497",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\actor_observations.csv.gz": "e6a5a24f0a476b0d6ce7c7841946924e9c0810471b346ab3a2d795a36ffc3804",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\events.jsonl": "9113a452948e033cb5c9b065df0148d1559da6aa9497ad08b341bce4bca434e6",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\manifest.json": "5259116b868810fd41c5129b3b125513f34d0feb7f5bd60e76caa9fb4e78ecb7",
+    "C:\\Users\\Ko_rr\\OneDrive - stu.teikyo-u.ac.jp\\研究室\\4年次本研究\\04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\np261020c_c26\\execution\\implementation\\04_プログラム\\scripts\\jdrt_realtime_choice.py": "64f08630b1ab04a7317198a0e5e6b11f21f0dd09adfc10cdc694714c9a5936b9",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSPModel_Striping.cpp": "3f3d4f4c4de22fee3d08a3e3f1bd3f55ee84be4679384725ec9f749e1f65794d",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSPModel_Striping.h": "44d6419e930810ca62d2dd3efbad7786bfc89e157cbca3c4fbc91763174a3e8d",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\transportables\\MSStageWalking.cpp": "677362f460fb4e8eb928d73b785225515d9f2f29380b670862b5aadab533a386",
+    "C:\\Users\\Ko_rr\\AppData\\Local\\JDRT-native-build\\choice_v126_20261019\\sources\\control126_20261020\\src\\microsim\\MSFrame.cpp": "03d2a536a4bfd0103360ad095977528f64b4486ad82e4eb1747b14e1263c2d6b"
+  },
+  "analysis_source_sha256": "7df4cd6ac416f34ba59a18be5dec54beb82cbd2af268bc3010ea056de9f98d02",
+  "originals_unchanged": true,
+  "runtime_or_validator_changed": false,
+  "research_adoption_permitted": false,
+  "technical_ready": false,
+  "limitation": "Only the preserved straight-lane/default-detail fixture branch; no generalized native guard trace or full regression proof."
+}

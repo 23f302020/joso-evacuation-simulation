@@ -1,0 +1,32 @@
+{
+  "at_jst": "2026-10-29T10:19:55.046435+09:00",
+  "action": "same_all14_sequence_point_observation",
+  "original_session": 36247,
+  "state_path": "06_研究結果/jdrt/goal_20261017/rs261029b_smoke_sequence.json",
+  "sequence_status": "RUNNING",
+  "sequence_owner": {
+    "state": "alive",
+    "created": 134377098008043234,
+    "pid": 36796
+  },
+  "completed_independent_smokes": 6,
+  "active": {
+    "run_id": "rs261029b_07",
+    "cell_id": "fixed_reference_u50_r2p0_seed23423",
+    "started_at_jst": "2026-10-29T10:19:22.036225+09:00",
+    "command": "smoke",
+    "pid": 27556
+  },
+  "observer": {
+    "state": "alive",
+    "created": 134376751074865224,
+    "pid": 29900
+  },
+  "observer_age_begin_sec": 36.92699217796326,
+  "observer_source_matches": true,
+  "stderr_tail": "",
+  "core_started": false,
+  "technical_ready": false,
+  "display_sync": "deferred under live workspace writer until sequence terminal",
+  "next": "Follow same original handle/owner; all14 terminal PASS/readback, then normal display apply/check and new preflight once. No duplicate validate or starts."
+}

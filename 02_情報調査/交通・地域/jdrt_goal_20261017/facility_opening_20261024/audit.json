@@ -1,0 +1,86 @@
+{
+  "at_jst": "2026-10-24T08:18:52.814220+09:00",
+  "judgment_id": "JD-20261024-research-facility-05",
+  "status": "BOUNDED_PRIMARY_SOURCE_AUDIT_NOT_INPUT_CALIBRATION",
+  "source_original": "02_情報調査\\交通・地域\\jdrt_goal_20261017\\disaster_transport_20261019\\city_verification.pdf",
+  "source_sha256": "d33e2f3198d4e410ba33c1bfe7d495566ddc5939bac888c76e1b007622fc10b8",
+  "cached_retrieved_at": "2026-10-19T09:30:59.361922+09:00",
+  "new_HTTP_request": false,
+  "reviewed_physical_pages": [
+    41,
+    52,
+    110
+  ],
+  "visual_review": "all three rendered page images inspected; printed35/46 and appendix4/11 headers/columns read",
+  "source_publication": "2016-06-13 committee report per same-SHA prior source audit",
+  "model_start_jst": "2015-09-10T12:50:00+09:00",
+  "event_to_model_seconds": {
+    "01:30": -40800,
+    "04:10": -31200,
+    "06:55": -21300,
+    "09:55": -10500
+  },
+  "model_terminal_source": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_nativeaudit_v2\\inputs\\registered01\\terminals.csv",
+  "model_terminals_sha256": "969802a547c549dd6dbcde16ad9fd57269f226c25a08c44f48223397279e9657",
+  "config_sha256": "76828b797e67009193bec09f476f33824c235e65bb5a6151a664abf2c64c69cc",
+  "facility_rows": [
+    {
+      "terminal_id": "shelter_2",
+      "model_name": "石下小学校",
+      "model_capacity": "195",
+      "model_open_sec": "0",
+      "primary_pages": "41/紙35・52/紙46",
+      "supported_claim": "本監査の3画像頁では石下小学校自体の開設・解錠を同定できない。小学校区という地区名を施設開設証拠にしない。",
+      "evidence_class": "UNCONFIRMED_IN_VISUALLY_REVIEWED_SCOPE",
+      "adopted_into_input": false
+    },
+    {
+      "terminal_id": "shelter_3",
+      "model_name": "水海道第一高等学校",
+      "model_capacity": "519",
+      "model_open_sec": "0",
+      "primary_pages": "110/時系列付表4/11",
+      "supported_claim": "9/10 09:55の防災無線欄に開設済み案内。モデル開始前だが初回解錠・12:50以降の継続受入と残余容量は未確認。",
+      "evidence_class": "ANNOUNCED_OPEN_BEFORE_MODEL_START_NOT_FULL_WINDOW_PROOF",
+      "adopted_into_input": false
+    },
+    {
+      "terminal_id": "shelter_4",
+      "model_name": "水海道小学校",
+      "model_capacity": "193",
+      "model_open_sec": "0",
+      "primary_pages": "110/時系列付表4/11",
+      "supported_claim": "9/10 09:55の防災無線欄に開設済み案内。モデル開始前だが初回解錠・12:50以降の継続受入と残余容量は未確認。",
+      "evidence_class": "ANNOUNCED_OPEN_BEFORE_MODEL_START_NOT_FULL_WINDOW_PROOF",
+      "adopted_into_input": false
+    },
+    {
+      "terminal_id": "shelter_8",
+      "model_name": "豊田小学校",
+      "model_capacity": "100",
+      "model_open_sec": "0",
+      "primary_pages": "41/紙35・52/紙46",
+      "supported_claim": "豊田小学校などの開設決定・職員派遣と、04:10の豊田小学校/文化センターの混雑・満員が記述される。100名以上の対象を学校単独へ配分せず、初期12:50在所や有効容量へ換算しない。",
+      "evidence_class": "OPENING_DECISION_AND_EARLIER_OCCUPANCY_NOT_INITIAL_CENSUS",
+      "adopted_into_input": false
+    }
+  ],
+  "independence": "body narrative and appendix broadcast/web/WB entries are one committee source, not independent replications",
+  "unconfirmed": [
+    "actual initial census at2015-09-10T12:50",
+    "facility-specific remaining space, staffing, care and actual entrances",
+    "full-window continuation2015-09-10T12:50_to18:50",
+    "Ishige elementary actual opening within reviewed3pages"
+  ],
+  "forbidden_inferences": [
+    "09:55 announcement is exact unlock time",
+    "04:10 count is12:50 census",
+    "joint100plus count is Toyoda alone",
+    "school district mention proves school facility open",
+    "yard approx10cm is all road/entry/building depth",
+    "registered capacity is2015 measured remaining capacity",
+    "all-open simulation is a numerical upper bound for actual controller outcomes"
+  ],
+  "research_input_or_conditions_changed": false,
+  "real_core_results_analysed": false
+}

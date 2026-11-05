@@ -1,0 +1,41 @@
+FFFF
+======================================================================
+FAIL: test_clock_mass_speed_and_nonfinite_fail_closed (test_choice_native_guard_audit.AuditContracts.test_clock_mass_speed_and_nonfinite_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_audit.py", line 21, in test_clock_mass_speed_and_nonfinite_fail_closed
+    self.assertIsNotNone(audit,'audit helper is unimplemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : audit helper is unimplemented
+
+======================================================================
+FAIL: test_first_nonzero_step_uses_requested_new_direction (test_choice_native_guard_audit.AuditContracts.test_first_nonzero_step_uses_requested_new_direction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_audit.py", line 39, in test_first_nonzero_step_uses_requested_new_direction
+    self.assertIsNotNone(audit,'audit helper is unimplemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : audit helper is unimplemented
+
+======================================================================
+FAIL: test_one_ulp_same_call_jump_and_non_target_change_are_rejected (test_choice_native_guard_audit.AuditContracts.test_one_ulp_same_call_jump_and_non_target_change_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_audit.py", line 30, in test_one_ulp_same_call_jump_and_non_target_change_are_rejected
+    self.assertIsNotNone(audit,'audit helper is unimplemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : audit helper is unimplemented
+
+======================================================================
+FAIL: test_operation_trace_link_requires_actual_time_person_and_single_new_row (test_choice_native_guard_audit.AuditContracts.test_operation_trace_link_requires_actual_time_person_and_single_new_row)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\tests\test_choice_native_guard_audit.py", line 46, in test_operation_trace_link_requires_actual_time_person_and_single_new_row
+    self.assertIsNotNone(audit,'audit helper is unimplemented')
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: unexpectedly None : audit helper is unimplemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+FAILED (failures=4)

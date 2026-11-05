@@ -1,0 +1,11 @@
+test_command_match_uses_exact_windows_arguments (test_watch.FixtureCommandBinding.test_command_match_uses_exact_windows_arguments) ... ok
+test_created_pid_without_successful_command_proof_is_rechecked (test_watch.FixtureCommandBinding.test_created_pid_without_successful_command_proof_is_rechecked) ... ok
+test_real_windows_suite_command_and_child_manifest (test_watch.FixtureCommandBinding.test_real_windows_suite_command_and_child_manifest) ... ok
+test_same_pid_cannot_cache_a_changed_parent_binding (test_watch.FixtureCommandBinding.test_same_pid_cannot_cache_a_changed_parent_binding) ... ok
+test_verified_suite_command_is_bound_to_child_without_source_writes (test_watch.FixtureCommandBinding.test_verified_suite_command_is_bound_to_child_without_source_writes) ... ok
+test_wrong_parent_factory_input_or_case_does_not_gain_suite_identity (test_watch.FixtureCommandBinding.test_wrong_parent_factory_input_or_case_does_not_gain_suite_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.791s
+
+OK

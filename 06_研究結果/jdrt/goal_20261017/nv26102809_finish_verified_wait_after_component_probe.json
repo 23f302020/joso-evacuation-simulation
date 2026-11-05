@@ -1,0 +1,37 @@
+{
+  "at_jst": "2026-10-28T08:06:45.333444+09:00",
+  "action": "ninth_original_first_validation_verified_wait_after_component_probe",
+  "classification": "VERIFIED_WAIT",
+  "previous_goal_turn_classification": "PROGRESS",
+  "original_session": 55966,
+  "sequence_id": "sq26102809",
+  "sequence_status": "RUNNING",
+  "phase": "validate",
+  "run_id": "nv26102809",
+  "process_handle_identities": {
+    "33684": {
+      "state": "alive",
+      "created": 134376148225121415,
+      "pid": 33684
+    },
+    "34484": {
+      "state": "alive",
+      "created": 134376156909041274,
+      "pid": 34484
+    },
+    "18280": {
+      "state": "alive",
+      "created": 134376156934160871,
+      "pid": 18280
+    }
+  },
+  "formal_recorded": 8,
+  "record_attempted": false,
+  "source_pins_unchanged": true,
+  "component_probe_original_session": 45034,
+  "component_probe_exit": 0,
+  "component_probe_evidence": "06_研究結果/jdrt/goal_20261017/nv26102808_saved_csv_layers_readback_20261028.json",
+  "all70_scientific_analysis_complete": false,
+  "goal_complete": false,
+  "next": "Continue same original55966, finish34484, first validator18280. Defer seven formal/display writers until original saved record7 readback; do not replay."
+}

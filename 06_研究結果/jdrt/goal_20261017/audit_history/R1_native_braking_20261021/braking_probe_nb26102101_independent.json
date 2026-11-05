@@ -1,0 +1,131 @@
+{
+  "at_jst": "2026-10-21T20:58:50.957767+09:00",
+  "status": "INDEPENDENT_RAW_PAIR_READBACK_NOT_ADOPTABLE",
+  "run_id": "nb26102101",
+  "manifest_sha256": "fd6f53a5cb9a7970f8a8bd656a560f49b6fb56942efdd7f60a3a3fcfb40d0d2a",
+  "plan_sha256": "2cf59dc050ba3c44f86928a2a2e052ddfc2d43b076a87da301b2f6514730df6f",
+  "source_checks": {
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261021_002/manifest.json": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/inputs/registered03/bounded.net.xml": true,
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/runs/ch261021_002/types.rou.xml": true,
+    "06_研究結果/jdrt/goal_20261017/audit_history/R1_native_braking_20261021/window03/window.json": true,
+    ".agents/skills/joso-jdrt-runner/scripts/choice_native_braking_probe.py": true
+  },
+  "common5_unchanged": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": true,
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": true,
+    "04_プログラム/scripts/jdrt_choice_policy.py": true,
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": true
+  },
+  "case_summaries": [
+    {
+      "case": "without_person",
+      "pid": 13792,
+      "api_version": [
+        22,
+        "SUMO 1.26.0-jdrt-choice-latpreserve-93d3ca0c-ucrt12-static-zlib1213-a08"
+      ],
+      "type_properties_native_getter": {
+        "decel": 4.5,
+        "emergencyDecel": 9.0,
+        "accel": 2.6,
+        "minGap": 2.5
+      },
+      "frames": 40,
+      "raw_native_warning_lines": [],
+      "raw_native_error_lines": [],
+      "min_car_acceleration_mps2": -4.5,
+      "crossing_occupied_at_sec": [],
+      "primary_artifact_hash_checks": {
+        "actors.jsonl": true,
+        "child.json": true,
+        "native.stderr.log": true,
+        "native.stdout.log": true,
+        "routes.rou.xml": true,
+        "sumo.log": true,
+        "sumo_errors.log": true,
+        "traci_calls.py": true,
+        "tripinfo.xml": true
+      }
+    },
+    {
+      "case": "with_crossing_person",
+      "pid": 27964,
+      "api_version": [
+        22,
+        "SUMO 1.26.0-jdrt-choice-latpreserve-93d3ca0c-ucrt12-static-zlib1213-a08"
+      ],
+      "type_properties_native_getter": {
+        "decel": 4.5,
+        "emergencyDecel": 9.0,
+        "accel": 2.6,
+        "minGap": 2.5
+      },
+      "frames": 40,
+      "raw_native_warning_lines": [],
+      "raw_native_error_lines": [],
+      "min_car_acceleration_mps2": -4.5,
+      "crossing_occupied_at_sec": [
+        9.5,
+        10.0,
+        10.5,
+        11.0,
+        11.5,
+        12.0,
+        12.5,
+        13.0,
+        13.5,
+        14.0,
+        14.5,
+        15.0,
+        15.5,
+        16.0
+      ],
+      "primary_artifact_hash_checks": {
+        "actors.jsonl": true,
+        "child.json": true,
+        "native.stderr.log": true,
+        "native.stdout.log": true,
+        "routes.rou.xml": true,
+        "sumo.log": true,
+        "sumo_errors.log": true,
+        "traci_calls.py": true,
+        "tripinfo.xml": true
+      }
+    }
+  ],
+  "native_car_trajectories_identical": true,
+  "native_pair_inputs_differ_only_by_person_node": true,
+  "original_core_emergency_braking_reproduced": false,
+  "inference": "Reduced artificial initialization produced ordinary bend braking and later pedestrian crossing; car trajectories identical. Mere presence is insufficient to explain original warning. Native default properties are actual API observations for the same frozen binary/car XML, not measurements of the original core vehicle at warning time.",
+  "scope_limitations": [
+    "No source-state/RNG/full-traffic replay",
+    "No unique causal identification or harmlessness/safety proof",
+    "No native emergency warning occurred in this pair; do not claim warning classifier integration coverage",
+    "Native collision/teleport observations use the original core motion options, not an exhaustive physical collision proof"
+  ],
+  "primary_artifacts": {
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\actors.jsonl": "abc036e5d550b5dd23753e371ba22c36d721c7e4b2beab46b43515cd93dafd97",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\child.json": "90d909d7d6cf7675edf6035c7c3aa561b9634d2f6d565ddd151ea89c204a2c1b",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\native.stderr.log": "c38f932a0d3f4fdaf8e6dfb1a7edea883745102be2ddfa799fab419c75f26c4c",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\native.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\routes.rou.xml": "a2acb37e75492a4de1c85614edc8e58a6e150c04a3a417969ce0fd81718261c0",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\sumo.log": "9ccefd6030135bc3c2d1cb0d51aa54a8a1fed27e9a194504ab9eb514df67ee39",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\traci_calls.py": "dd02a7e5823b9bb4ae27d74dc4a70f58d960c70b6f1e34e14cf5719a79643e26",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\without_person\\tripinfo.xml": "fb24b4b5be86c7a5380f03db89a88c55024ac7a2141cb8927091fe4396677e8f",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\actors.jsonl": "83123ac3cd451f1923fd62f7110e3ca3026fa8cc41a6f0553f4cd973233ab03a",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\child.json": "1ec60d5d6cff21bedc496b8d0a614878b58ca8aa0697e46d197e32b37d3fc048",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\native.stderr.log": "c38f932a0d3f4fdaf8e6dfb1a7edea883745102be2ddfa799fab419c75f26c4c",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\native.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\routes.rou.xml": "e11d74d0bd99256a89347a839ebbb1e7eb73965755500eec990d275a32db8b1d",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\sumo.log": "86955fa731c460114c95c0a879aed6bb110ada04634562ab3933afd7d5286e8d",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\sumo_errors.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\traci_calls.py": "c49bf11d34c25d834a82ac46fda35c83416945dafa1436aa80c98acd4c616281",
+    "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_v1\\technical\\nb26102101\\with_crossing_person\\tripinfo.xml": "98e4ed84ed03779318cb9bdeb0621e35ba2cb0bb41b11a72356abf619c56a5ca"
+  },
+  "core_adoption_permitted": false,
+  "recorded_cells": 1,
+  "operational_HOLD": true
+}
