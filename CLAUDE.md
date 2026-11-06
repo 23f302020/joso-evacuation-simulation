@@ -110,3 +110,4 @@ status → start-next（1セル）→ check → validate → record → status
 | JDRTタスク | `05_タスク管理/jdrt/JDRT_実装タスク管理.md` |
 | JDRT運用スキル | `.agents/skills/joso-jdrt-runner/SKILL.md` |
 | 経過報告 | `00_全体整理/現状把握_静的・動的シミュレーション整理.md` → `.html`（更新日別。詳細はGitHubのコミットメッセージ本文） |
+| GitHub運用（commit・push・公開範囲・アカウント） | `00_全体整理/GitHub運用/README.md` |
