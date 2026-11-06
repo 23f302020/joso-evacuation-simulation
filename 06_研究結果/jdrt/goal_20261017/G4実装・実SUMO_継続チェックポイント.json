@@ -2,19 +2,10 @@
   "at_jst": "2026-10-30T23:07:46.682946+09:00",
   "goal_status": "ACTIVE",
   "progress_classification": "FIFTH_V5_CORE_RECORDED_VERIFIED_SIXTH_SINGLE_CELL_SEQUENCE_STARTING",
-  "summary": "最終goal ACTIVE。受付・代替行動系列realtime_choice_v1：正式記録5/70セル。sv26103006（fixed_reference_u50_r2p900_seed23423）RUNNING・PID生存True・進捗未観測。登録上の次セルはfixed_reference_u50_r2p900_seed23423（開始許可ではない。専用CLIの現行READY/開始gateに従う）。状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。",
+  "summary": "最終goal ACTIVE。受付・代替行動系列realtime_choice_v1：正式記録5/70セル。実行中/完了未記録coreなし。登録上の次セルはfixed_reference_u50_r2p900_seed23423（開始許可ではない。専用CLIの現行READY/開始gateに従う）。状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。",
   "core_runs": 6,
   "technical_ready": true,
-  "running": [
-    {
-      "run_id": "sv26103006",
-      "cell_id": "fixed_reference_u50_r2p900_seed23423",
-      "pid": 39120,
-      "pid_alive": true,
-      "status": "RUNNING",
-      "progress": null
-    }
-  ],
+  "running": [],
   "registered_input_directory": "04_プログラム\\output\\sumo\\regions\\08211\\experiments\\jdrt_realtime_choice_stopindex_v5\\inputs\\registered01",
   "input_manifest_sha256": "2fadb08c11698d490926adc34e7a31c7578903c28d9ab9ca1d6b2daa349b7a20",
   "input_validation_checks_pass": 28,
@@ -96,14 +87,12 @@
   "latest_status_sync": {
     "at_jst": "2026-10-30T23:07:46.682946+09:00",
     "action": "skill_current_display_sync",
-    "summary": "最終goal ACTIVE。受付・代替行動系列realtime_choice_v1：正式記録5/70セル。sv26103006（fixed_reference_u50_r2p900_seed23423）RUNNING・PID生存True・進捗未観測。登録上の次セルはfixed_reference_u50_r2p900_seed23423（開始許可ではない。専用CLIの現行READY/開始gateに従う）。状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。",
+    "summary": "最終goal ACTIVE。受付・代替行動系列realtime_choice_v1：正式記録5/70セル。実行中/完了未記録coreなし。登録上の次セルはfixed_reference_u50_r2p900_seed23423（開始許可ではない。専用CLIの現行READY/開始gateに従う）。状態は専用CLI status/check、正式採用は独立validate PASSと7ファイルrecordを正本とする。定型監視/記録はLuna lowを第一候補、判断・異常解析・複雑実装・数式考察は6.1 Sol high指定。反復処理はスキルへ集約し、必要な更新の理由/検証/履歴を保存する。全登録セル採用前の方向解釈なし。旧系列/失敗/旧図保全。Drive読取のみ・外部送信なし。",
     "state": {
       "protocol": "realtime_choice_v1",
       "registered_cells": 70,
       "recorded_cells": 5,
-      "running": [
-        "sv26103006"
-      ],
+      "running": [],
       "unrecorded": [],
       "partial_records": [],
       "record_identity_mismatch": [],
@@ -139,14 +128,7 @@
       "core_ready": false,
       "core_start_available": false
     },
-    "observation": {
-      "run_id": "sv26103006",
-      "cell_id": "fixed_reference_u50_r2p900_seed23423",
-      "pid": 39120,
-      "pid_alive": true,
-      "status": "RUNNING",
-      "progress": null
-    },
+    "observation": null,
     "formal_adoption_created": false,
     "skill_source_sha256": "ee029300770db8e284436d0073b18559e52acfbb9dca694733888b35309281ae"
   },
@@ -894,6 +876,10 @@
     {
       "sha256": "2e332978690af4839679bcc3938b47b8e3fecad9dd1dbc05adbce786a4e4bc1e",
       "file": "06_研究結果/jdrt/goal_20261017/document_history/2e332978690af4839679bcc3938b47b8e3fecad9dd1dbc05adbce786a4e4bc1e.json"
+    },
+    {
+      "sha256": "8cb8d6b96e89379d7ced7ecd19ec204cc658807087dc971abc4cbe2daf449616",
+      "file": "06_研究結果/jdrt/goal_20261017/document_history/8cb8d6b96e89379d7ced7ecd19ec204cc658807087dc971abc4cbe2daf449616.json"
     }
   ],
   "native_bundle_observation": {

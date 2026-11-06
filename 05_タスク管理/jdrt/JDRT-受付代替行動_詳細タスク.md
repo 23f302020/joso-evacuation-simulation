@@ -139,7 +139,7 @@
 | CH-T2 | 全14設定smoke | 現行コード/入力の全設定、Error/衝突/teleport/状態/会計差/欠測0。core採用しない | ns261024e全14設定smokeは独立PASS。現共通版/入力/一次出力の一致を新READYへ結合。研究採用ではない。 |
 | CH-C1 | 専用CLI・スキル拡張 | 新protocolのみ、旧台帳読取混在不可、重複/PID/未記録/版混在阻止、7ファイルrecord/rollback検査 | 専用CLIの現行preflight全115単体試験PASS。7ファイルrecord/rollbackと単一writerを維持。旧launch/record失敗・復旧は別履歴。 |
 | CH-G1 | 開始前監査 | 全ゲートPASS、共通実装SHA固定、保存容量/ディスク空き、現状把握md/html/新図の同期 | 新preflight39727 exit0・READY、入力28/全unit115/43技術run・1527証跡を再照合済み。毎回1セルの容量予約を再確認。全70容量の保証なし。 |
-| CH-M1 | 逐次実行・監視 | READY後だけ1セル開始、07独立監視。validate→record→7ファイル実在/台帳一意→status | 正式記録5/70。sv26103006（fixed_reference_u50_r2p900_seed23423）RUNNING・PID生存True・進捗未観測。最新は専用CLI status/check。 |
+| CH-M1 | 逐次実行・監視 | READY後だけ1セル開始、07独立監視。validate→record→7ファイル実在/台帳一意→status | 正式記録5/70。実行中/完了未記録coreなし。最新は専用CLI status/check。 |
 | CH-A1 | 全件独立一覧 | 70/70・台帳一意・同一実装SHA、過去系列/fixtureなし、全入力/成果物独立検証 | 未着手 |
 | CH-A2 | 事前登録比較と数式 | 全D/u/方式/seedの人数/%pt、主/副指標・上限/仕事量/不達成内訳、旧新混在なし | G6集計器・指標/理論式の準備と現行source照合済み。全70の正式記録が未完のため、実全70集計・主/副指標の結果・方式方向は未作成。 |
 | CH-A3 | 統合研究結果 | 取得/仮定/不足/一般化限界、報告md/html/現在地/全体文書同期、goalの完了条件を実検査 | 根拠と限界の統合草稿・出典監査を準備済み。実全70分析・不足資料による主張限定・最終報告・全体文書整合は未完。 |

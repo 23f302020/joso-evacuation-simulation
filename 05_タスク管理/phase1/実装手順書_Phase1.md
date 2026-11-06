@@ -22,10 +22,12 @@
 config.py の相対パスが `scripts/` 基準になるため、必ずディレクトリを移動してから実行すること。
 
 ```powershell
-cd "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts"
+cd "C:\Users\Ko_rr\Documents\Codex\研究室\4年次本研究\04_プログラム\scripts"
 $python = "..\venv\Scripts\python.exe"
 & $python c3_get_road_network.py
 ```
+
+> 2026-11-06：作業正本の2026-11-05ローカル移行に合わせ、`cd` 先を旧OneDriveパスから現行パスへ更新した。Phase 1は凍結済みのため、手順書の参照先を合わせただけで、再実行はしない。
 
 ---
 
@@ -43,7 +45,7 @@ $python = "..\venv\Scripts\python.exe"
 
 2. **ユーザーが動作確認を実行する**
    ```powershell
-   cd "C:\Users\Ko_rr\OneDrive - stu.teikyo-u.ac.jp\研究室\4年次本研究\04_プログラム\scripts"
+   cd "C:\Users\Ko_rr\Documents\Codex\研究室\4年次本研究\04_プログラム\scripts"
    $python = "..\venv\Scripts\python.exe"
    & $python -c "import config; print('JOSO_CODE:', config.JOSO_CODE); print('CRS:', config.CRS_JGD2011)"
    ```
