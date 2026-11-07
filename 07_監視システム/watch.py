@@ -37,7 +37,16 @@ def atomic_json(path, value):
         json.dump(value, stream, ensure_ascii=False, indent=2, allow_nan=False)
         stream.flush()
         os.fsync(stream.fileno())
-    os.replace(temp, path)
+    for attempt in range(10):
+        try:
+            os.replace(temp, path)
+            return
+        except PermissionError:
+            # Windows refuses to replace a file another process (reader, antivirus, indexer) has open.
+            if attempt == 9:
+                temp.unlink(missing_ok=True)
+                raise
+            time.sleep(0.05)
 
 
 def read_json(path):
@@ -111,6 +120,8 @@ def render_status(runtime, state):
                     + '</p><pre>' + escape(text)
                     + '</pre><a href="' + escape(path.as_uri(), quote=True) + '">イベント原本</a></article>')
     active = sum(v.get('status') in ACTIVE for v in state.get('targets', {}).values())
+    counts = mail_counts(runtime)
+    mail_text = ' / '.join(f'{k} {v}' for k, v in sorted(counts.items(), key=lambda kv: str(kv[0]))) or '記録なし'
     html = ('<!doctype html><html lang="ja"><meta charset="utf-8"><meta http-equiv="refresh" content="10">'
             '<title>シミュレーション監視</title><style>body{font:16px system-ui;max-width:960px;margin:32px auto;padding:0 20px;background:#f4f6f8;color:#172331}'
             'article{background:white;padding:20px;margin:16px 0;border:1px solid #ccd4dd;border-radius:8px}'
@@ -119,6 +130,8 @@ def render_status(runtime, state):
             + ' / 対象 ' + str(len(state.get('targets', {}))) + ' / 実行中の状態 ' + str(active)
             + ' / イベント ' + str(len(events)) + '</p><p>これはローカル監視の受信箱です。完了は検証PASS・研究採用を意味しません。'
             '通知submittedはWindowsへの送信受付であり、閲覧確認ではありません。</p>'
+            '<p>メール送信の状態：' + escape(mail_text)
+            + '（auth_expired・failed_preserved・uncertain_preserved があれば要確認）</p>'
             + ''.join(rows or ['<article>新規イベントはありません。平常時にAIは起動しません。</article>'])
             + '<script>const age=Date.now()/1000-' + str(state.get('observed_epoch', 0))
             + ';const e=document.getElementById("fresh");e.textContent=age>40?"観測の更新が止まっています。監視プロセスを確認してください。":"直近の観測あり（現在の生存はstatusで確認）";'
@@ -187,20 +200,27 @@ def all_complete_evidence(config, state):
     live = [v for v in state.get('targets', {}).values() if not v.get('historical')]
     if any(v.get('status') in ACTIVE for v in live):
         return None
-    counted = [v for v in live if v.get('purpose') != 'fixture' and v.get('status') in SUCCESS]
+
+    def core_run(v):  # research cells only: smoke, technical suites and native builds never count
+        return v.get('purpose') == 'core' and '/runs/' in str(v.get('source', '')).replace('\\', '/')
+
+    counted = [v for v in live if core_run(v) and v.get('status') in SUCCESS]
     if len(counted) < expected:
         return None
-    failed = sum(v.get('status') in FAILURE for v in live)
+    failed = sum(core_run(v) and v.get('status') in FAILURE for v in live)
+    ids = sorted(str(v.get('target_id')) for v in counted)
     return {'target_id': 'all_targets', 'completed_targets': len(counted), 'expected': expected,
             'failed_preserved_targets': failed, 'source': 'monitor state',
+            'targets_digest': hashlib.sha256('\n'.join(ids).encode()).hexdigest()[:12],
             'status': f'ALL_COMPLETE（成功{len(counted)}/期待{expected}、失敗保全{failed}）'}
 
 
 def detect_all_complete(config, runtime, state):
     evidence = all_complete_evidence(config, state)
     if evidence is not None:
-        save_event(runtime / 'events', 'all-targets', 'all_complete', evidence,
-                   ai_diagnostics=ai_enabled(config))
+        # The key carries the expectation and the counted targets: a changed expectation is a new event.
+        key = f"all-targets:{evidence['expected']}:{evidence['targets_digest']}"
+        save_event(runtime / 'events', key, 'all_complete', evidence, ai_diagnostics=ai_enabled(config))
 
 
 def sync_mail_outbox(config, runtime):
@@ -209,16 +229,51 @@ def sync_mail_outbox(config, runtime):
         return 0
     from mail_outbox import Outbox  # lazy: mail_outbox imports this module
     outbox = Outbox(runtime / 'outbox')
+    since = config.get('mail_enabled_since')  # ISO 8601 UTC; older events are never mailed
     queued = 0
     for path in sorted((runtime / 'events').glob('*.json')):
-        event = read_json(path)
+        if (outbox.directory / path.name).exists():
+            continue  # already queued: do not even read the event (it may be open elsewhere)
+        try:
+            event = read_json(path)
+        except (OSError, ValueError):
+            continue  # unreadable now; the next pass tries again
         if event.get('schema') != 'simulation_watch_event_v1' or not mail_worthy(event.get('kind')):
             continue
-        target = outbox.directory / (event['id'] + '.json')
-        if not target.exists():
-            outbox.enqueue(event)
-            queued += 1
+        if since and str(event.get('at_utc', '')) < since:
+            continue
+        outbox.enqueue(event)
+        queued += 1
     return queued
+
+
+MAIL_TROUBLE = ('auth_expired', 'uncertain_preserved', 'failed_preserved')
+
+
+def mail_counts(runtime):
+    """Outbox messages by state (tolerant: an unreadable file is counted as 'unreadable')."""
+    counts = {}
+    for path in (Path(runtime) / 'outbox').glob('*.json'):
+        try:
+            state = read_json(path).get('state')
+        except (OSError, ValueError):
+            state = 'unreadable'
+        counts[state] = counts.get(state, 0) + 1
+    return counts
+
+
+def surface_mail_trouble(config, runtime):
+    """One local event (toast + inbox) per message that needs the user. Never mailed: mail is what is broken."""
+    for path in sorted((Path(runtime) / 'outbox').glob('*.json')):
+        try:
+            message = read_json(path)
+        except (OSError, ValueError):
+            continue
+        state = message.get('state')
+        if state in MAIL_TROUBLE:
+            save_event(Path(runtime) / 'events', 'mail:' + str(message.get('id')), 'mail_' + state,
+                       {'target_id': str(message.get('id')), 'status': state, 'source': str(path)},
+                       ai_diagnostics=ai_enabled(config))
 
 
 def process_identity(pid):
@@ -486,10 +541,11 @@ class Dispatcher:
     def tick(self, now):
         # Local notifications must progress even while AI is busy or rate-limited.
         # Bound each tick so a backlog does not block process observation in one burst.
+        # Only the mail worker enqueues mail (two enqueuers raced). Here: make mail trouble visible.
         try:
-            sync_mail_outbox(self.config, self.runtime)
+            surface_mail_trouble(self.config, self.runtime)
         except Exception:
-            pass  # queueing must never stop observation; the event files stay the source of truth
+            pass  # must never stop observation
         for path in sorted((self.runtime / 'events').glob('*.json')):
             event = self.read_event(path)
             if event['notification'] == 'pending':
@@ -652,6 +708,7 @@ def main():
                           'monitor_process': identity,
                           'monitor_identity_matches': identity == state.get('monitor_identity'),
                           'targets': len(state.get('targets', {})),
+                          'mail': mail_counts(runtime),
                           'inbox': str(runtime / 'status.html'),
                           'events': [{key: read_json(p).get(key) for key in ('id', 'kind', 'delivery', 'notification')}
                                      for p in (runtime / 'events').glob('*.json')]}, ensure_ascii=False))

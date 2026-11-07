@@ -9,8 +9,8 @@ ACTIVE_T = {'status': 'RUNNING', 'historical': False, 'purpose': None}
 
 
 def done(name='a', **extra):
-    return {'status': 'COMPLETED', 'historical': False, 'purpose': None, 'target_id': name,
-            'source': 'D:/x/' + name, **extra}
+    return {'status': 'COMPLETED', 'historical': False, 'purpose': 'core', 'target_id': name,
+            'source': 'D:/ws/runs/' + name + '/manifest.json', **extra}
 
 
 class MailWorthy(unittest.TestCase):
@@ -55,7 +55,7 @@ class AllComplete(unittest.TestCase):
 
     def test_failed_targets_are_reported_not_hidden(self):
         config = {'expected_completed_targets': 1}
-        failed = {'status': 'FAILED', 'historical': False, 'purpose': None}
+        failed = {'status': 'FAILED', 'historical': False, 'purpose': 'core', 'source': 'D:/ws/runs/f/manifest.json'}
         evidence = watch.all_complete_evidence(config, self.targets(done('a'), failed))
         self.assertIn('失敗保全1', evidence['status'])
 
