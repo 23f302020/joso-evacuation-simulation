@@ -1,18 +1,19 @@
 """Microsoft Graph sendMail transport and OAuth device-code sign-in, standard library only.
 
 The transport follows the mail_outbox contract: nothing sent -> TransportUnavailable (retry),
-sign-in needed -> AuthRequired (stop), possibly accepted -> AcceptanceUnknown (never resend).
-Tokens are cached only as Windows DPAPI blobs (current user); they are never logged or returned
-in exception text. The client id comes from config/environment, never from source.
+sign-in needed -> AuthRequired (stop), definite refusal -> Rejected, possibly accepted ->
+AcceptanceUnknown (never resend). Tokens are cached only as Windows DPAPI blobs (current user);
+they are never logged or returned in exception text. The client id comes from config/environment,
+never from source.
 """
 import argparse
 import base64
 import ctypes
+import http.client
 import json
 import os
 from ctypes import wintypes
 from pathlib import Path
-import socket
 import sys
 import time
 import urllib.error
@@ -20,34 +21,64 @@ import urllib.parse
 import urllib.request
 import uuid
 
-from mail_outbox import AcceptanceUnknown, AuthRequired, TransportUnavailable
+from mail_outbox import AcceptanceUnknown, AuthRequired, Rejected, TransportUnavailable
 
 SEND_URL = 'https://graph.microsoft.com/v1.0/me/sendMail'
 AUTHORITY = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/'
 SCOPE = 'Mail.Send offline_access'
 SKEW_SEC = 120
+SIGNIN_ERRORS = ('invalid_grant', 'interaction_required', 'consent_required', 'invalid_client',
+                 'unauthorized_client')
 
 
 class HttpConnectError(Exception):
-    """The server was never reached; the request cannot have been processed."""
+    """The connection was never established; the request cannot have been processed."""
 
 
 class HttpResponseLost(Exception):
-    """The request may have reached the server but no response arrived."""
+    """The request may have reached the server but no usable response arrived."""
+
+
+def _marked(base, state):
+    class Marked(base):
+        def connect(self):
+            super().connect()  # includes any proxy tunnel
+            state['connected'] = True
+    return Marked
+
+
+class _HttpHandler(urllib.request.HTTPHandler):
+    def __init__(self, state):
+        super().__init__()
+        self.state = state
+
+    def http_open(self, req):
+        return self.do_open(_marked(http.client.HTTPConnection, self.state), req)
+
+
+class _HttpsHandler(urllib.request.HTTPSHandler):
+    def __init__(self, state):
+        super().__init__()
+        self.state = state
+
+    def https_open(self, req):
+        return self.do_open(_marked(http.client.HTTPSConnection, self.state), req, context=self._context)
 
 
 def _post(url, headers, body, timeout):
+    """(status, text). Keeps urllib's proxy handling, but records whether the connection was ever
+    established: a failure before that is provably unsent; any failure after may have been processed."""
+    state = {'connected': False}
+    opener = urllib.request.build_opener(_HttpHandler(state), _HttpsHandler(state))
     request = urllib.request.Request(url, data=body, headers=headers, method='POST')
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
+        with opener.open(request, timeout=timeout) as response:
             return response.status, response.read().decode('utf-8', 'replace')
     except urllib.error.HTTPError as error:
         return error.code, error.read().decode('utf-8', 'replace')
-    except urllib.error.URLError as error:
-        if isinstance(error.reason, (socket.gaierror, ConnectionRefusedError)):
-            raise HttpConnectError() from None
-        raise HttpResponseLost() from None
-    except OSError:
+    except urllib.error.URLError:
+        raise (HttpResponseLost() if state['connected'] else HttpConnectError()) from None
+    except Exception:
         raise HttpResponseLost() from None
 
 
@@ -116,10 +147,10 @@ class GraphAuth:
     def __init__(self, client_id, store, http=post_form, clock=time.time):
         self.client_id, self.store, self.http, self.clock = client_id, store, http, clock
 
-    def _store_tokens(self, body, previous_refresh=None):
-        self.store.save({'access_token': body['access_token'],
-                         'refresh_token': body.get('refresh_token') or previous_refresh,
-                         'expires_at': self.clock() + float(body.get('expires_in', 0))})
+    def _tokens(self, body, previous_refresh=None):
+        return {'access_token': body['access_token'],
+                'refresh_token': body.get('refresh_token') or previous_refresh,
+                'expires_at': self.clock() + float(body.get('expires_in', 0))}
 
     def sign_in(self, prompt=print, sleep=time.sleep):
         status, info = self.http(AUTHORITY + 'devicecode', {'client_id': self.client_id, 'scope': SCOPE})
@@ -135,7 +166,7 @@ class GraphAuth:
                 'client_id': self.client_id, 'device_code': info['device_code'],
                 'grant_type': 'urn:ietf:params:oauth:grant-type:device_code'})
             if status == 200 and 'access_token' in body:
-                self._store_tokens(body)
+                self.store.save(self._tokens(body))
                 return
             error = body.get('error')
             if error == 'authorization_pending':
@@ -144,6 +175,16 @@ class GraphAuth:
                 interval += 5
                 continue
             raise AuthRequired(str(error))
+
+    def invalidate(self):
+        """Treat the cached access token as expired (after a 401) so the next call refreshes it."""
+        cached = self.store.load()
+        if cached:
+            cached['expires_at'] = 0
+            try:
+                self.store.save(cached)
+            except OSError:
+                pass
 
     def access_token(self):
         cached = self.store.load()
@@ -157,17 +198,23 @@ class GraphAuth:
                 'refresh_token': cached['refresh_token'], 'scope': SCOPE})
         except (HttpConnectError, HttpResponseLost):
             raise TransportUnavailable() from None
-        if status == 200 and 'access_token' in body:
-            self._store_tokens(body, cached['refresh_token'])
+        if status == 200:
+            if 'access_token' not in body:
+                raise TransportUnavailable()  # unparsable or proxy page: not a sign-in problem
+            try:
+                self.store.save(self._tokens(body, cached['refresh_token']))
+            except OSError:
+                pass  # the token in hand is valid; a lost rotation surfaces later as invalid_grant
             return body['access_token']
-        if body.get('error') in ('invalid_grant', 'interaction_required', 'consent_required'):
-            raise AuthRequired(body['error'])
-        raise RuntimeError(f'token endpoint status {status}')
+        if status == 429 or status >= 500 or not body:
+            raise TransportUnavailable()
+        raise AuthRequired(str(body.get('error')))
 
 
 class GraphTransport:
-    def __init__(self, token_provider, recipient, http=post_json, timeout=30):
+    def __init__(self, token_provider, recipient, http=post_json, timeout=30, on_unauthorized=None):
         self.token_provider, self.recipient, self.http, self.timeout = token_provider, recipient, http, timeout
+        self.on_unauthorized = on_unauthorized
 
     def _attachments(self, message):
         items = []
@@ -181,8 +228,7 @@ class GraphTransport:
                           'contentBytes': base64.b64encode(data).decode('ascii')})
         return items
 
-    def send(self, message):
-        token = self.token_provider()
+    def _send_once(self, message, token):
         payload = {'message': {'subject': message['subject'],
                                'body': {'contentType': 'Text', 'content': message['body']},
                                'toRecipients': [{'emailAddress': {'address': self.recipient}}],
@@ -196,15 +242,23 @@ class GraphTransport:
             raise TransportUnavailable() from None
         except HttpResponseLost:
             raise AcceptanceUnknown() from None
+        return status
+
+    def send(self, message):
+        status = self._send_once(message, self.token_provider())
+        if status == 401 and self.on_unauthorized is not None:
+            # 401 means the request was not processed: refresh once and retry before asking for sign-in.
+            self.on_unauthorized()
+            status = self._send_once(message, self.token_provider())
         if status == 202:
             return
         if status == 401:
             raise AuthRequired('unauthorized')
         if status in (429, 503):
             raise TransportUnavailable()
-        if status in (500, 502, 504):
-            raise AcceptanceUnknown()
-        raise RuntimeError(f'graph status {status}')  # body is not echoed: it may contain request data
+        if 400 <= status < 500 and status not in (401, 408, 429):
+            raise Rejected(f'graph status {status}')  # body is not echoed: it may contain request data
+        raise AcceptanceUnknown()  # other 2xx, 408, other 5xx: the message may have been taken
 
 
 def build_auth(config, runtime):

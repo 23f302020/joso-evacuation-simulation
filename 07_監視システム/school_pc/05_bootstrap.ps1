@@ -57,8 +57,9 @@ function Compare-Freeze($Pins, [string[]]$Freeze) {
     return , @($out)
 }
 
-function Test-TaskOwnership([string]$Arguments, [string]$Root) {
-    if ([string]::IsNullOrWhiteSpace($Arguments)) { return 'none' }
+function Test-TaskOwnership([string]$Arguments, [string]$Root, [bool]$Exists = $false) {
+    # An existing task with no readable arguments is not provably ours: never treat it as free.
+    if ([string]::IsNullOrWhiteSpace($Arguments)) { if ($Exists) { return 'other' } else { return 'none' } }
     $needle = Join-Path $Root.TrimEnd('\') '07_監視システム\watch.py'
     if ($Arguments.IndexOf($needle, [StringComparison]::OrdinalIgnoreCase) -ge 0) { return 'same' }
     return 'other'
@@ -73,6 +74,18 @@ function Get-ExitCode($Results) {
     return $code
 }
 
+function Select-JsonLine([string[]]$Lines) {
+    $m = @($Lines | Where-Object { $_ -match '^\s*\{' })
+    if ($m.Count) { return $m[-1].Trim() }
+    return $null
+}
+
+function Select-Sha256Line([string[]]$Lines) {
+    $m = @($Lines | Where-Object { $_ -match '^[0-9a-fA-F]{64}$' })
+    if ($m.Count) { return $m[-1] }
+    return $null
+}
+
 # ---------- 実行系 ----------
 function Invoke-External([string]$Exe, [string[]]$Arguments) {
     $prev = $ErrorActionPreference
@@ -85,7 +98,7 @@ function Invoke-External([string]$Exe, [string[]]$Arguments) {
 }
 
 function Invoke-Bootstrap {
-    $rootPath = $Root.TrimEnd('\')
+    $rootPath = [IO.Path]::GetFullPath($Root).TrimEnd('\')
     $results = New-Object System.Collections.ArrayList
     $verdict = @{}
     $mode = if ($Apply) { 'APPLY（変更する）' } else { '確認のみ（何も変更しない）' }
@@ -178,15 +191,20 @@ function Invoke-Bootstrap {
             $r = Invoke-External $venvPy @('-B', '-X', 'utf8', '-c', $code)
             if ($r.Code -ne 0) { Add-Result '段3 toolchain' 'STOP' ("toolchain検証に失敗（manifest・SHAは書き換えない）: " + (($r.Out | Select-Object -Last 2) -join ' ')) }
             else {
-                $sha = $r.Out[-1]
-                if ($ExpectedManifestSha256 -and $sha -ne $ExpectedManifestSha256) {
+                $sha = Select-Sha256Line $r.Out
+                if (-not $sha) {
+                    Add-Result '段3 toolchain' 'STOP' 'manifest_sha256 を出力から取得できない'
+                } elseif ($ExpectedManifestSha256 -and $sha -ne $ExpectedManifestSha256) {
                     Add-Result '段3 toolchain' 'STOP' "manifest_sha256 が期待値と不一致: $sha"
                 } else {
                     $userValue = [Environment]::GetEnvironmentVariable('JDRT_CHOICE_TOOLCHAIN_MANIFEST', 'User')
-                    if ($userValue -ne $manifest) {
+                    if ($userValue -and $userValue -ne $manifest) {
+                        Add-Result '段3 toolchain' 'STOP' "ユーザー環境変数が既に別の値になっている: $userValue 。確認せず上書きしない"
+                    } elseif ($userValue -ne $manifest) {
                         if ($Apply) { [Environment]::SetEnvironmentVariable('JDRT_CHOICE_TOOLCHAIN_MANIFEST', $manifest, 'User'); $userValue = $manifest }
                     }
-                    if ($userValue -eq $manifest) { Add-Result '段3 toolchain' 'OK' "manifest_sha256=$sha（元PCの値と突合する）。ユーザー環境変数を設定済み" }
+                    if ($verdict.ContainsKey('段3 toolchain')) { }
+                    elseif ($userValue -eq $manifest) { Add-Result '段3 toolchain' 'OK' "manifest_sha256=$sha（元PCの値と突合する）。ユーザー環境変数を設定済み" }
                     else { Add-Result '段3 toolchain' 'TODO' "検証OK（manifest_sha256=$sha）。ユーザー環境変数が未設定。-Apply で設定する" }
                 }
             }
@@ -240,7 +258,7 @@ function Invoke-Bootstrap {
     if ($b) { Add-Result '段6 タスク' 'SKIP' $b }
     else {
         $task = Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
-        $owner = if ($task) { Test-TaskOwnership $task.Actions[0].Arguments $rootPath } else { 'none' }
+        $owner = if ($task) { Test-TaskOwnership $task.Actions[0].Arguments $rootPath ([bool]$task) } else { 'none' }
         if ($owner -eq 'other') { Add-Result '段6 タスク' 'STOP' "別の配置先のタスク $TaskName が既にある。上書きしない（引数: $($task.Actions[0].Arguments)）" }
         elseif ($owner -eq 'none' -and -not $Apply) { Add-Result '段6 タスク' 'TODO' "$TaskName 未登録。-Apply で install.ps1 を実行する" }
         else {
@@ -253,7 +271,7 @@ function Invoke-Bootstrap {
                 for ($i = 0; $i -lt 9 -and -not $alive; $i++) {
                     $s = Invoke-External $venvPy @('-B', '-X', 'utf8', (Join-Path $watchDir 'watch.py'), 'status')
                     try {
-                        $j = $s.Out[-1] | ConvertFrom-Json
+                        $j = (Select-JsonLine $s.Out) | ConvertFrom-Json
                         $alive = ($j.monitor_process.state -eq 'alive' -and $j.monitor_identity_matches -eq $true -and $j.observation_age_sec -lt 60)
                         $detail = "state=$($j.monitor_process.state) identity=$($j.monitor_identity_matches) age=$([int]$j.observation_age_sec)s"
                     } catch { $detail = 'statusを解釈できない' }
@@ -297,6 +315,12 @@ function Invoke-Bootstrap {
 }
 
 if ($MyInvocation.InvocationName -ne '.') {
-    $final = Invoke-Bootstrap
-    exit (Get-ExitCode $final)
+    try {
+        $final = Invoke-Bootstrap
+        exit (Get-ExitCode $final)
+    } catch {
+        # An unexpected exception must read as STOP (2), never as TODO (1).
+        Write-Host ('[STOP] 予期しない例外: ' + $_.Exception.GetType().Name + ' / ' + $_.Exception.Message)
+        exit 2
+    }
 }

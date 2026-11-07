@@ -136,10 +136,10 @@ class Delivery(OutboxCase):
         self.assertIsNone(self.box.send_next(fake, 10 ** 6))
         self.assertEqual(fake.sent, [])
 
-    def test_unexpected_error_is_preserved_not_retried(self):
+    def test_unexpected_error_is_preserved_as_uncertain_not_retried(self):
         self.box.enqueue(EVENT)
         fake = self.transport(RuntimeError('boom'))
-        self.assertEqual(self.box.send_next(fake, 1000), 'failed_preserved')
+        self.assertEqual(self.box.send_next(fake, 1000), 'uncertain_preserved')
         self.assertIsNone(self.box.send_next(fake, 10 ** 6))
         self.assertEqual(watch.read_json(self.dir / 'e1.json')['error_type'], 'RuntimeError')
 

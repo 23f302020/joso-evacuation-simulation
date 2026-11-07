@@ -42,4 +42,12 @@ Assert-Equal (Get-ExitCode @(@{ Verdict = 'TODO' }, @{ Verdict = 'STOP' })) 2 'S
 Assert-Equal (Get-ExitCode @(@{ Verdict = 'OK' }, @{ Verdict = 'SKIP' })) 0 'SKIPは失敗にしない'
 Assert-Equal (Get-ExitCode @(@{ Verdict = 'STOP' }, @{ Verdict = 'SKIP' })) 2 'STOPとSKIPならSTOP'
 
+# 独立レビュー A11 の修正
+Assert-Equal (Test-TaskOwnership '' $root $true) 'other' '引数が空の既存タスクは他の配置先として扱う'
+Assert-Equal (Test-TaskOwnership $null $root $false) 'none' 'タスクなしなら none'
+Assert-Equal (Select-JsonLine @('warn', '{\"a\":1}', 'trailing warning')) '{\"a\":1}' '末尾の警告を飛ばして JSON 行を取る'
+Assert-Equal (Select-JsonLine @('only text')) $null 'JSON 行が無ければ null'
+Assert-Equal (Select-Sha256Line @('x', ('a' * 64), 'warning')) ('a' * 64) 'SHA 行を取る（末尾の警告を無視）'
+Assert-Equal (Select-Sha256Line @('x')) $null 'SHA 行が無ければ null'
+
 if ($script:failed) { "`n$($script:failed) 件失敗"; exit 1 } else { "`n全件PASS" }
