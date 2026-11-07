@@ -26,3 +26,5 @@ description: 独立監視 JDRT-SimulationWatch を、ソース更新後に安全
 - 研究run・`config.json` の研究パラメータには触れない。
 - 再起動後に `monitoring_gap` イベントが出ることがある（空白が60秒を超え、実行中の対象があった場合）。通常の挙動として記録する。
 - 反映を確かめずに「反映済み」と報告しない。確かめていないときは「稼働中は旧ソース」と書く。
+- `watch.py run` のプロセスが2つ見えるのは正常：venv の `pythonw.exe`（ランチャー）が実インタプリタ（`...\Python313\pythonw.exe`）を子として起動する。`state.json` の `monitor_pid` が実インタプリタ。二重起動かどうかは、親子関係（CIMの ParentProcessId）で確認する。
+- 再起動の前に、`events` に配送が `pending` のものが無いことを確認する（稼働中の config が AI 診断ありの場合、再起動後に診断が始まる）。
