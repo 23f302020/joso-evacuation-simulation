@@ -23,6 +23,9 @@ GOAL = '06_研究結果/jdrt/goal_20261017'
 HOLDS = ('running', 'unrecorded', 'partial_records', 'record_identity_mismatch',
          'unresolved_failures', 'unresolved_launches', 'pending_record_journals',
          'foreign_running_manifests', 'active_native_processes')
+# A transient non-zero `watch.py status` (read-only observation) is retried this often, then stops.
+OBSERVER_STATUS_ATTEMPTS = 3
+OBSERVER_STATUS_RETRY_SEC = 5
 
 
 def require(condition, message):
@@ -167,7 +170,7 @@ class Sequence:
             with path.open('a', encoding='utf-8') as stream:
                 stream.write(json.dumps(row, ensure_ascii=False) + '\n')
 
-    def command(self, script, arguments, parse=True):
+    def command(self, script, arguments, parse=True, allow_failure=False):
         require(all(digest(self.local(p)) == value for p, value in self.pins.items()),
                 'Pinned source/config changed; no subsequent command permitted')
         self.serial += 1
@@ -187,9 +190,11 @@ class Sequence:
             code = child.wait()
         self.state['command']['exit_code'] = code
         self.save()
-        require(code == 0, 'Command failed; inspect its original logs, never replay automatically')
         require(all(digest(self.local(p)) == value for p, value in self.pins.items()),
                 'Pinned source/config changed during command')
+        if code != 0 and allow_failure:
+            return None  # read-only observation only; its original logs stay preserved
+        require(code == 0, 'Command failed; inspect its original logs, never replay automatically')
         return read(out) if parse else None
 
     def cli(self, command, *args):
@@ -201,7 +206,16 @@ class Sequence:
         return [json.loads(line) for line in path.read_text(encoding='utf-8-sig').splitlines() if line.strip()]
 
     def observer(self, run_id=None):
-        status = self.command('07_監視システム/watch.py', ['status'])
+        for attempt in range(1, OBSERVER_STATUS_ATTEMPTS + 1):
+            status = self.command('07_監視システム/watch.py', ['status'], allow_failure=True)
+            if status is not None:
+                break
+            self.event('choice_sequence_observer_status_retry', attempt=attempt,
+                       attempts=OBSERVER_STATUS_ATTEMPTS)
+            if attempt < OBSERVER_STATUS_ATTEMPTS:
+                time.sleep(OBSERVER_STATUS_RETRY_SEC)
+        else:
+            raise RuntimeError('Independent observer status command failed repeatedly; preserve and stop')
         require_observer(status)
         # Inspect the same daemon's current target, not its notification/AI delivery.
         state = read(Path(status['runtime']) / 'state.json')
@@ -338,27 +352,35 @@ class Sequence:
         else:
             raise RuntimeError('Unknown finish action')
 
-    def observer_gap(self, run_id, started, error):
+    def observer_gap(self, run_id, started, spent, error):
+        """One gap episode; the limit applies to all episodes of this core computation together."""
         now = time.monotonic()
         if started is None:
             started = now
-            self.state['observer_gap'] = {'run_id': run_id, 'started_at_jst': datetime.now().astimezone().isoformat(),
-                                          'ended_at_jst': None, 'limit_sec': self.observer_gap_limit_sec,
-                                          'max_elapsed_sec': 0, 'reason': str(error)}
+            gap = self.state.get('observer_gap')
+            if not gap or gap.get('run_id') != run_id:
+                gap = self.state['observer_gap'] = {
+                    'run_id': run_id, 'limit_sec': self.observer_gap_limit_sec, 'episodes': 0,
+                    'cumulative_sec': 0, 'max_elapsed_sec': 0}
+            gap.update(episodes=gap['episodes'] + 1, ended_at_jst=None, reason=str(error),
+                       started_at_jst=datetime.now().astimezone().isoformat())
             self.event('choice_sequence_observer_gap_started', run_id=run_id, reason=str(error),
-                       limit_sec=self.observer_gap_limit_sec)
+                       limit_sec=self.observer_gap_limit_sec, cumulative_before_sec=spent)
         elapsed = now - started
+        total = spent + elapsed
         gap = self.state['observer_gap']
-        gap.update(max_elapsed_sec=max(gap['max_elapsed_sec'], elapsed), last_reason=str(error))
+        gap.update(max_elapsed_sec=max(gap['max_elapsed_sec'], elapsed), cumulative_sec=total,
+                   last_reason=str(error))
         self.save()
-        if elapsed > self.observer_gap_limit_sec:
+        if total > self.observer_gap_limit_sec:
             self.event('choice_sequence_observer_gap_exceeded', run_id=run_id, elapsed_sec=elapsed,
-                       limit_sec=self.observer_gap_limit_sec, reason=str(error))
+                       cumulative_sec=total, limit_sec=self.observer_gap_limit_sec, reason=str(error))
             raise RuntimeError('Independent observer gap exceeded the monitor stale limit; preserve and stop')
         return started
 
     def wait_core(self, run_id):
-        gap = None  # monotonic start of a monitor-only gap during the core phase (D3)
+        gap = None  # monotonic start of the current monitor-only gap during the core phase (D3)
+        spent = 0.0  # gap seconds already used by earlier episodes of this core computation
         while True:
             result = self.command(BASE + 'choice_monitor.py', ['--run-id', run_id])
             require(result.get('anomaly_flags') == []
@@ -372,16 +394,19 @@ class Sequence:
                     time.sleep(5)
             except ObserverGap as error:
                 # choice_monitor (direct core check) keeps running each round; never a retry of the core.
-                gap = self.observer_gap(run_id, gap, error)
-                time.sleep(min(60, max(0, self.observer_gap_limit_sec - (time.monotonic() - gap))))
+                gap = self.observer_gap(run_id, gap, spent, error)
+                remaining = self.observer_gap_limit_sec - spent - (time.monotonic() - gap)
+                time.sleep(min(60, max(0, remaining)))
                 continue
             if gap is not None:
                 elapsed = time.monotonic() - gap
+                spent += elapsed
                 self.state['observer_gap'].update(
-                    ended_at_jst=datetime.now().astimezone().isoformat(),
+                    ended_at_jst=datetime.now().astimezone().isoformat(), cumulative_sec=spent,
                     max_elapsed_sec=max(self.state['observer_gap']['max_elapsed_sec'], elapsed))
                 self.save()
-                self.event('choice_sequence_observer_gap_ended', run_id=run_id, elapsed_sec=elapsed)
+                self.event('choice_sequence_observer_gap_ended', run_id=run_id, elapsed_sec=elapsed,
+                           cumulative_sec=spent)
                 gap = None
             discovery = time.monotonic()
             if result['status'] == 'COMPLETED':

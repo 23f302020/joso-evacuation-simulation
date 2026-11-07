@@ -599,6 +599,73 @@ class ObserverGapTests(unittest.TestCase):
         self.assertEqual(owner.event.call_args.args[0], 'choice_sequence_observer_identity_changed')
         self.assertEqual(owner.state['observer_identity'], restarted)
 
+    # ---- SP-14 review D3: the gap limit is cumulative within one core computation ----
+    @staticmethod
+    def two_gaps(second_recovery):
+        def observer(now):
+            if now < 300 or 360 <= now < second_recovery:
+                raise sequence.ObserverGap('artificial monitor restart')
+            return True
+        return observer
+
+    def test_cumulative_gap_beyond_limit_stops_even_with_a_good_observation_between(self):
+        running = {'status': 'RUNNING', 'pid_alive': True, 'anomaly_flags': []}
+        owner, clock = self.core_fixture([0, 300, 360, 661], [running] * 4, self.two_gaps(10 ** 9))
+        with self.assertRaisesRegex(RuntimeError, 'observer gap'):
+            self.run_core(owner, clock)
+        self.assertEqual(owner.command.call_count, 4)
+        owner.process_identity.assert_not_called()
+
+    def test_cumulative_gap_within_limit_continues_and_is_recorded(self):
+        running = {'status': 'RUNNING', 'pid_alive': True, 'anomaly_flags': []}
+        owner, clock = self.core_fixture([0, 300, 360, 659, 1000],
+                                         [running] * 4 + [{'status': 'COMPLETED', 'anomaly_flags': []}],
+                                         self.two_gaps(659))
+        self.run_core(owner, clock)
+        self.assertEqual(owner.state['observer_gap']['cumulative_sec'], 599)
+        self.assertEqual(owner.state['observer_gap']['episodes'], 2)
+
+    # ---- SP-14 review D5: a transient non-zero `watch.py status` is retried a fixed number of times ----
+    def test_retry_constants_are_fixed(self):
+        self.assertEqual(sequence.OBSERVER_STATUS_ATTEMPTS, 3)
+        self.assertEqual(sequence.OBSERVER_STATUS_RETRY_SEC, 5)
+
+    def test_status_command_failure_is_retried_then_passes(self):
+        helper, owner, state, target = self.observer_fixture()
+        (helper.root / 'state.json').write_text(json.dumps(state), encoding='utf-8')
+        status = owner.command.return_value
+        owner.command = Mock(side_effect=[None, None, status])
+        with patch.object(sequence.time, 'sleep') as sleep:
+            self.assertTrue(owner.observer('artificial'))
+        self.assertEqual([c.args[0] for c in sleep.call_args_list], [sequence.OBSERVER_STATUS_RETRY_SEC] * 2)
+        retries = [c for c in owner.event.call_args_list if c.args[0] == 'choice_sequence_observer_status_retry']
+        self.assertEqual(len(retries), 2)
+        for call in owner.command.call_args_list:
+            self.assertTrue(call.kwargs.get('allow_failure'))
+
+    def test_status_command_failing_every_attempt_stops_hard(self):
+        helper, owner, state, target = self.observer_fixture()
+        owner.command = Mock(return_value=None)
+        with patch.object(sequence.time, 'sleep'), self.assertRaisesRegex(RuntimeError, 'repeatedly') as raised:
+            owner.observer('artificial')
+        self.assertNotIsInstance(raised.exception, sequence.ObserverGap)
+        self.assertEqual(owner.command.call_count, sequence.OBSERVER_STATUS_ATTEMPTS)
+
+    def test_allow_failure_returns_none_but_keeps_logs_and_pins(self):
+        owner = sequence.Sequence.__new__(sequence.Sequence)
+        owner.root, owner.operation = self.root, self.root
+        owner.state, owner.serial = {}, 0
+        script = self.root / 'artificial_child.py'
+        script.write_text('import sys\nprint("preserved output")\nsys.exit(7)\n', encoding='utf-8')
+        owner.pins = {'artificial_child.py': sequence.digest(script)}
+        self.assertIsNone(owner.command('artificial_child.py', [], allow_failure=True))
+        self.assertEqual(owner.state['command']['exit_code'], 7)
+        self.assertEqual((self.root / '0001.stdout.log').read_text().strip(), 'preserved output')
+        script.write_text('changed', encoding='utf-8')
+        with patch.object(sequence.subprocess, 'Popen') as launch, self.assertRaises(RuntimeError):
+            owner.command('artificial_child.py', [], allow_failure=True)
+        launch.assert_not_called()
+
 
 if __name__ == '__main__':
     unittest.main()

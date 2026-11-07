@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import choice_core_sequence as core
 import choice_parent_loop as parent
@@ -137,11 +138,18 @@ class Harness(unittest.TestCase):
         self.events.append((kind, target, evidence))
         return 'artificial_event_path'
 
+    def mail(self):
+        if not getattr(self, 'mail_ok', True):
+            raise parent.ParentStop('MAIL_PATH_NOT_READY', 'artificial broken mail path')
+        return {'mail_path': 'ready'}
+
     def loop(self, prior='default', settings=None, prefix='np2611'):
         prior = self.world.prior if prior == 'default' else prior
-        return parent.ParentLoop(self.world.root, prefix, prior_readback=prior, settings_path=settings,
+        loop = parent.ParentLoop(self.world.root, prefix, prior_readback=prior, settings_path=settings,
                                  runner=self.world.runner, event_writer=self.writer,
                                  monitor_check=self.monitor)
+        loop.mail_check = self.mail  # injected like monitor_check (SP-14 review D2)
+        return loop
 
     def directory(self):
         return self.world.workspace / parent.PARENT_DIR
@@ -457,6 +465,271 @@ class DefaultMonitorAndEvents(unittest.TestCase):
             self.assertEqual(watch.sync_mail_outbox({'mail_enabled': True}, self.runtime), 1)
         finally:
             sys.path.remove(str(MONITOR_DIR))
+
+
+class CompletionEvidence(Harness):
+    """Review F1: a last cell finished by a human can still be proven complete, with provenance."""
+
+    def setUp(self):
+        super().setUp()
+        self.world = FakeWorld(self.temp.name + '/f1', cells=3, recorded=1)
+        self.world.plan = ['ok', 'fail_core']
+        self.assertEqual(self.loop().run(), parent.EXIT_STOPPED)
+        # Human, outside the parent: finishes the last cell and keeps the readback and a status output.
+        self.world.append_row(2, 'manual03')
+        self.manual = self.world.root / core.GOAL / 'core_sequence_evidence/manual/manual03_record7_readback.json'
+        write(self.manual, self.world.proof(self.world.rows()))
+        self.status_path = Path(self.temp.name) / 'human_status.json'
+        write(self.status_path, self.world.status(3))
+        parent.acknowledge(self.world.root, self.last_stop()['stop_id'], '人が最終セルをfinishし読戻しを保存した')
+        self.events.clear()
+
+    def human_loop(self, readback=True, status=True):
+        loop = self.loop(prior=str(self.manual) if readback else None)
+        loop.completion_status = self.status_path if status else None
+        return loop
+
+    def test_human_readback_and_status_prove_completion_with_provenance(self):
+        self.assertEqual(self.human_loop().run(), parent.EXIT_COMPLETE)
+        record = json.loads((self.directory() / 'parent_complete.json').read_text(encoding='utf-8'))
+        self.assertEqual(record['provenance'], 'human_provided')
+        self.assertEqual(record['human_evidence']['completion_status_sha256'], core.digest(self.status_path))
+        self.assertEqual(record['human_evidence']['readback_sha256'], core.digest(self.manual))
+        self.assertEqual([e[0] for e in self.events], ['all_complete'])
+
+    def test_restart_after_human_completion_is_idempotent_but_rechecks_the_evidence(self):
+        self.assertEqual(self.human_loop().run(), parent.EXIT_COMPLETE)
+        self.events.clear()
+        self.assertEqual(self.loop(prior=None).run(), parent.EXIT_COMPLETE)
+        self.assertEqual(self.stop_records()[-1]['code'], 'SEQUENCE_FAILED', 'no new stop')
+        write(self.status_path, self.world.status(3, unrecorded=['manual03']))  # evidence changed afterwards
+        self.assertEqual(self.loop(prior=None).run(), parent.EXIT_STOPPED)
+        self.assertEqual(self.last_stop()['code'], 'COMPLETION_UNPROVEN')
+
+    def test_readback_without_human_status_stays_unproven(self):
+        self.assertEqual(self.human_loop(status=False).run(), parent.EXIT_STOPPED)
+        stop = self.last_stop()
+        self.assertEqual(stop['code'], 'COMPLETION_UNPROVEN')
+        self.assertIn('--completion-status', stop['reason'])
+        self.assertNotIn('all_complete', [e[0] for e in self.events])
+
+    def test_human_status_with_a_hold_is_not_completion(self):
+        write(self.status_path, self.world.status(3, unrecorded=['manual03']))
+        self.assertEqual(self.human_loop().run(), parent.EXIT_STOPPED)
+        self.assertEqual(self.last_stop()['code'], 'COMPLETION_UNPROVEN')
+        self.assertNotIn('all_complete', [e[0] for e in self.events])
+
+    def test_human_readback_must_prove_all_cells(self):
+        write(self.manual, dict(self.world.proof(self.world.rows()), recorded_cells=2))
+        self.assertEqual(self.human_loop().run(), parent.EXIT_STOPPED)
+        self.assertEqual(self.last_stop()['code'], 'COMPLETION_UNPROVEN')
+
+    def test_parent_executed_completion_records_its_provenance(self):
+        world = FakeWorld(self.temp.name + '/plain')
+        self.world = world
+        self.assertEqual(self.loop().run(), parent.EXIT_COMPLETE)
+        record = json.loads((self.directory() / 'parent_complete.json').read_text(encoding='utf-8'))
+        self.assertEqual(record['provenance'], 'parent_executed')
+
+
+class SettingsPersistence(Harness):
+    """Review F2: checkpoints survive restarts; changes need an explicit, reasoned ack."""
+
+    def settings(self, counts, name='settings.json'):
+        path = Path(self.temp.name) / name
+        write(path, {'schema': parent.SETTINGS_SCHEMA, 'checkpoint_recorded_counts': counts})
+        return path
+
+    def readback_of(self, run_id):
+        return str(next((self.world.root / core.GOAL / 'core_sequence_evidence').glob(f'*/{run_id}_record7_readback.json')))
+
+    def test_first_run_stores_settings_content_and_sha(self):
+        path = self.settings([2])
+        self.loop(settings=path).run()
+        stored = json.loads((self.directory() / 'parent_settings.json').read_text(encoding='utf-8'))
+        self.assertEqual(stored['settings'], {'checkpoint_recorded_counts': [2]})
+        self.assertEqual(stored['source_sha256'], core.digest(path))
+        self.assertTrue(stored['sha256'])
+
+    def test_restart_without_settings_cannot_skip_a_checkpoint(self):
+        path = self.settings([3])
+        self.world.plan = ['ok', 'hold_after']  # third record lands, then a post-record hold stops
+        self.assertEqual(self.loop(settings=path).run(), parent.EXIT_STOPPED)
+        parent.acknowledge(self.world.root, self.last_stop()['stop_id'], 'hold を人が解消')
+        self.assertEqual(self.loop(prior=self.readback_of('np261103'), prefix='np2612').run(), parent.EXIT_USAGE)
+        self.assertEqual(len(self.world.rows()), 3)
+        self.assertEqual(len(self.world.calls), 2)
+        self.assertEqual(self.loop(prior=self.readback_of('np261103'), settings=path, prefix='np2612').run(),
+                         parent.EXIT_STOPPED)
+        self.assertEqual(self.last_stop()['code'], 'CHECKPOINT_REACHED')
+        self.assertEqual(len(self.world.calls), 2)
+
+    def test_different_settings_are_refused(self):
+        self.loop(settings=self.settings([2])).run()
+        parent.acknowledge(self.world.root, self.last_stop()['stop_id'], 'checked')
+        self.assertEqual(self.loop(prior=None, settings=self.settings([3], 'other.json')).run(), parent.EXIT_USAGE)
+        self.assertEqual(len(self.world.calls), 1)
+
+    def test_settings_change_only_through_a_reasoned_ack(self):
+        self.loop(settings=self.settings([2])).run()
+        stop = self.last_stop()
+        new = self.settings([3], 'new.json')
+        ack = parent.acknowledge(self.world.root, stop['stop_id'], 'チェックポイントを3件目へ移す', settings_path=new)
+        self.assertEqual(ack['settings_change']['new_settings'], {'checkpoint_recorded_counts': [3]})
+        self.assertNotEqual(ack['settings_change']['previous_sha256'], ack['settings_change']['new_sha256'])
+        self.assertEqual(self.loop(prior=None).run(), parent.EXIT_USAGE)  # still needs the same settings
+        self.assertEqual(self.loop(prior=None, settings=new).run(), parent.EXIT_STOPPED)
+        self.assertEqual(self.last_stop()['code'], 'CHECKPOINT_REACHED')
+        self.assertEqual(self.last_stop()['evidence']['recorded_cells'], 3)
+        parent.acknowledge(self.world.root, self.last_stop()['stop_id'], 'チェックポイントをなくす',
+                           clear_settings=True)
+        self.assertEqual(self.loop(prior=None).run(), parent.EXIT_COMPLETE)
+
+    def test_invalid_settings_change_is_refused(self):
+        self.loop(settings=self.settings([2])).run()
+        stop = self.last_stop()
+        with self.assertRaises(ValueError):
+            parent.acknowledge(self.world.root, stop['stop_id'], 'bad', settings_path=self.settings([9], 'bad.json'))
+        with self.assertRaises(ValueError):
+            parent.acknowledge(self.world.root, stop['stop_id'], 'both', settings_path=self.settings([3], 'x.json'),
+                               clear_settings=True)
+
+
+class StopNotificationRobustness(Harness):
+    """Review F3 and D6: a preserved stop is always notified; stop records are never overwritten."""
+
+    def flaky(self, failing_name):
+        original = parent.atomic_write
+        def writer(path, value):
+            if Path(path).name == failing_name:
+                raise PermissionError('artificial: held open by a reader')
+            return original(path, value)
+        return patch.object(parent, 'atomic_write', side_effect=writer)
+
+    def test_mirror_write_failure_still_notifies(self):
+        self.world.plan = ['fail_core']
+        with self.flaky('parent_stop.json'):
+            self.assertEqual(self.loop().run(), parent.EXIT_STOPPED)
+        stop = self.last_stop()
+        self.assertEqual([e[0] for e in self.events], ['parent_stopped'])
+        notify = json.loads((self.directory() / 'stops' / (stop['stop_id'] + '.notify.json')).read_text(encoding='utf-8'))
+        self.assertEqual(notify['mirror_error']['error_type'], 'PermissionError')
+
+    def test_state_write_failure_still_notifies(self):
+        with self.flaky('parent_state.json'):
+            self.assertEqual(self.loop().run(), parent.EXIT_STOPPED)
+        self.assertEqual([e[0] for e in self.events], ['parent_stopped'])
+
+    def test_unnotified_stop_is_notified_again_at_startup(self):
+        self.world.plan = ['fail_core']
+        self.loop().run()
+        stop = self.last_stop()
+        (self.directory() / 'stops' / (stop['stop_id'] + '.notify.json')).unlink()
+        self.events.clear()
+        self.assertEqual(self.loop().run(), parent.EXIT_UNACKED)
+        self.assertEqual([(e[0], e[1]) for e in self.events], [('parent_stopped', 'choice-parent-stop:' + stop['stop_id'])])
+        notify = json.loads((self.directory() / 'stops' / (stop['stop_id'] + '.notify.json')).read_text(encoding='utf-8'))
+        self.assertTrue(notify['resent'])
+        self.events.clear()
+        self.assertEqual(self.loop().run(), parent.EXIT_UNACKED)
+        self.assertEqual(self.events, [], 'a notified stop is not notified again')
+
+    def test_stop_record_write_failure_still_attempts_notification(self):
+        self.world.plan = ['fail_core']
+        with patch.object(parent, 'create_exclusive', side_effect=PermissionError('artificial disk failure')):
+            with self.assertRaises(PermissionError):
+                self.loop().run()
+        self.assertEqual([e[0] for e in self.events], ['parent_stopped'])
+        self.events.clear()
+        self.assertEqual(self.loop().run(), parent.EXIT_STOPPED)
+        self.assertEqual(self.last_stop()['code'], 'PREVIOUS_PARENT_INTERRUPTED')
+
+    def test_existing_stop_record_is_never_overwritten(self):
+        folder = self.directory() / 'stops'
+        write(folder / 'plfixed_01.json', {'stop_id': 'plfixed_01', 'code': 'OLD_ACKED_STOP'})
+        write(folder / 'plfixed_01.ack.json', {'stop_id': 'plfixed_01', 'reason': 'old'})
+        write(folder / 'plfixed_01.notify.json', {'event': 'old'})
+        before = (folder / 'plfixed_01.json').read_bytes()
+        self.world.plan = ['fail_core']
+        loop = self.loop()
+        loop.session_id = 'plfixed'
+        self.assertEqual(loop.run(), parent.EXIT_STOPPED)
+        self.assertEqual((folder / 'plfixed_01.json').read_bytes(), before)
+        self.assertEqual(self.last_stop()['stop_id'], 'plfixed_02')
+        self.assertEqual(self.last_stop()['code'], 'SEQUENCE_FAILED')
+
+
+class MailPathPrecheck(Harness):
+    """Review D2: never start unattended work while stops would be silent."""
+
+    def test_broken_mail_path_stops_before_any_call(self):
+        self.mail_ok = False
+        self.assert_stopped('MAIL_PATH_NOT_READY', calls=0)
+
+
+class DefaultMailCheck(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        base = Path(self.temp.name)
+        self.world = FakeWorld(base / 'project')
+        self.runtime = base / 'runtime'
+        self.config_path = base / 'monitor_config.json'
+        self.config = {'runtime': str(self.runtime), 'mail_enabled': True, 'mail_to': 'artificial@example.invalid',
+                       'patterns': [str(self.world.workspace / 'runs' / '*' / 'manifest.json')]}
+        self.runtime.mkdir()
+        self.holder = parent.ParentLock(self.runtime / 'mail_worker.lock')  # stands in for a live worker
+        self.addCleanup(lambda: self.holder.close())
+
+    def check(self, **changes):
+        write(self.config_path, dict(self.config, **changes))
+        loop = parent.ParentLoop(self.world.root, 'np2611', prior_readback=self.world.prior,
+                                 monitor_config=self.config_path)
+        return loop.default_mail_check()
+
+    def assert_not_ready(self, **changes):
+        with self.assertRaises(parent.ParentStop) as raised:
+            self.check(**changes)
+        self.assertEqual(raised.exception.code, 'MAIL_PATH_NOT_READY')
+        self.assertNotIn('artificial@example.invalid', json.dumps(raised.exception.evidence))
+
+    def test_ready_mail_path_passes(self):
+        self.check()
+
+    def test_each_broken_part_is_refused(self):
+        for changes in ({'mail_enabled': False}, {'mail_to': ''}, {'patterns': []},
+                        {'patterns': [str(self.world.workspace / 'smoke' / '*' / 'manifest.json')]}):
+            with self.subTest(changes=changes):
+                self.assert_not_ready(**changes)
+
+    def test_dead_worker_or_expired_sign_in_is_refused(self):
+        write(self.runtime / 'outbox' / 'm1.json', {'state': 'auth_expired'})
+        self.assert_not_ready()
+        (self.runtime / 'outbox' / 'm1.json').unlink()
+        self.holder.close()
+        self.assert_not_ready()  # lock file exists but nobody holds it
+        (self.runtime / 'mail_worker.lock').unlink()
+        self.assert_not_ready()
+        self.holder = parent.ParentLock(self.runtime / 'mail_worker.lock')
+
+
+class DefaultRunnerRecordsChild(unittest.TestCase):
+    """Review D1: the child PID and creation time are kept in parent_state (record only)."""
+
+    def test_child_identity_is_saved_before_waiting(self):
+        with tempfile.TemporaryDirectory() as temp:
+            world = FakeWorld(temp)
+            seen = []
+            def probe(pid):
+                seen.append(pid)
+                return {'state': 'alive', 'pid': pid, 'created': 123}
+            loop = parent.ParentLoop(world.root, 'np2611', prior_readback=world.prior, probe=probe)
+            loop.iteration = {'steps_done': []}
+            out, err = Path(temp) / 'o.log', Path(temp) / 'e.log'
+            self.assertEqual(loop.default_runner([sys.executable, '-c', 'pass'], out, err, temp), 0)
+            state = json.loads((loop.directory / 'parent_state.json').read_text(encoding='utf-8'))
+            self.assertEqual(state['iteration']['child']['pid'], seen[0])
+            self.assertEqual(state['iteration']['child']['created'], 123)
 
 
 if __name__ == '__main__':

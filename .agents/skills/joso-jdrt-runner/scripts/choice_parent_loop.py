@@ -20,10 +20,12 @@ import json
 import os
 from pathlib import Path
 import re
+from hashlib import sha256
 import shutil
 import subprocess
 import sys
 import time
+import uuid
 
 import choice_core_sequence as core
 
@@ -127,6 +129,44 @@ def atomic_write(path, value):
             time.sleep(.2)
 
 
+def create_exclusive(path, value):
+    """Create a complete JSON file only if the name is unused; never overwrites. False if it exists."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
+    with temporary.open('x', encoding='utf-8') as stream:
+        stream.write(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+    try:
+        os.link(temporary, path)  # atomic create-if-absent on NTFS
+        return True
+    except FileExistsError:
+        return False
+    except OSError:  # file system without hard links: exclusive create, then the content
+        try:
+            with path.open('x', encoding='utf-8') as stream:
+                stream.write(temporary.read_text(encoding='utf-8'))
+                stream.flush()
+                os.fsync(stream.fileno())
+            return True
+        except FileExistsError:
+            return False
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def settings_digest(settings):
+    return sha256(json.dumps(settings, sort_keys=True, ensure_ascii=False).encode('utf-8')).hexdigest()
+
+
+def settings_record(settings, source_path, reason, previous=None):
+    return {'schema': 'choice_parent_loop_settings_record_v1', 'settings': settings,
+            'sha256': settings_digest(settings), 'source_path': str(source_path or ''),
+            'source_sha256': core.digest(Path(source_path)) if source_path else None,
+            'saved_at_jst': now_jst(), 'reason': reason, 'previous_sha256': previous}
+
+
 def classify_sequence_error(message):
     """Informational sub-code for the notification; the parent stops regardless of the class."""
     text = str(message or '')
@@ -188,19 +228,10 @@ def sequence_summary(state):
                              'stderr': command.get('stderr')}}
 
 
-def default_runner(argv, stdout_path, stderr_path, cwd):
-    with open(stdout_path, 'xb') as stdout, open(stderr_path, 'xb') as stderr:
-        child = subprocess.Popen(argv, cwd=cwd, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr,
-                                 env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'},
-                                 creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
-        # No timeout, kill or retry: the sequence may legitimately run for hours.
-        return child.wait()
-
-
 class ParentLoop:
     def __init__(self, root, prefix, prior_readback=None, settings_path=None, *, monitor_config=None,
-                 watch_path=None, runner=None, event_writer=None, monitor_check=None, probe=None,
-                 clock=None, python=None):
+                 watch_path=None, runner=None, event_writer=None, monitor_check=None, mail_check=None,
+                 probe=None, clock=None, python=None, completion_status=None):
         self.root = Path(root).resolve()
         self.cfg = read_json(self.root / core.CONFIG)
         self.workspace = (self.root / self.cfg['workspace']).resolve()
@@ -210,9 +241,11 @@ class ParentLoop:
         self.settings_path = settings_path
         self.monitor_config = Path(monitor_config) if monitor_config else self.root / MONITOR_CONFIG
         self.watch_path = Path(watch_path) if watch_path else self.root / WATCH
-        self.runner = runner or default_runner
+        self.runner = runner or self.default_runner
         self.event_writer = event_writer or self.default_event_writer
         self.monitor_check = monitor_check or self.default_monitor_check
+        self.mail_check = mail_check or self.default_mail_check
+        self.completion_status = Path(completion_status) if completion_status else None
         self.probe, self.clock = probe, clock or time.time
         self.python = python or sys.executable
         self.session_id = 'pl' + datetime.now().strftime('%Y%m%dT%H%M%S%f')
@@ -292,6 +325,64 @@ class ParentLoop:
         return str(self.watch().save_event(Path(config['runtime']) / 'events', target, kind, evidence,
                                            ai_diagnostics=False))
 
+    def default_mail_check(self):
+        """Refuse unattended work when a stop could not reach the user (mail path broken)."""
+        problems = []
+        try:
+            config = read_json(self.monitor_config)
+            runtime = Path(config['runtime'])
+        except (OSError, ValueError, KeyError) as error:
+            raise ParentStop('MAIL_PATH_NOT_READY', 'Monitor config unreadable', 'MONITOR_CONFIG_UNREADABLE',
+                             error_type=type(error).__name__) from None
+        if config.get('mail_enabled') is not True:
+            problems.append('mail_enabled is not true in the monitor config')
+        if not config.get('mail_to'):
+            problems.append('mail_to is missing in the monitor config')
+        lock = runtime / 'mail_worker.lock'
+        if not lock.exists():
+            problems.append('mail_worker.lock missing (mail worker not started)')
+        else:
+            try:
+                ParentLock(lock).close()
+                problems.append('mail worker not running (its lock is free)')
+            except RuntimeError:
+                pass  # held by the live worker
+        expired = 0
+        for path in sorted((runtime / 'outbox').glob('*.json')) if (runtime / 'outbox').exists() else []:
+            try:
+                expired += read_json(path).get('state') == 'auth_expired'
+            except (OSError, ValueError):
+                problems.append('outbox message unreadable: ' + path.name)
+        if expired:
+            problems.append(f'{expired} outbox message(s) auth_expired (sign in again, then mail_worker.py resume)')
+        wanted = os.path.normcase(str(self.workspace / 'runs' / '*' / 'manifest.json'))
+        if not any(os.path.normcase(str(Path(p))) == wanted for p in config.get('patterns') or []):
+            problems.append('monitor patterns do not include this workspace runs/*/manifest.json')
+        if problems:
+            raise ParentStop('MAIL_PATH_NOT_READY', 'Mail/monitor path not ready; unattended stops would be silent',
+                             problems=problems)
+        return {'mail_path': 'ready'}
+
+    def default_runner(self, argv, stdout_path, stderr_path, cwd):
+        with open(stdout_path, 'xb') as stdout, open(stderr_path, 'xb') as stderr:
+            child = subprocess.Popen(argv, cwd=cwd, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr,
+                                     env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'},
+                                     creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0)
+            # Record only (review D1): lets a human see later whether this child might still be alive.
+            try:
+                identity = (self.probe or self.watch().process_identity)(child.pid)
+            except Exception as error:
+                identity = {'state': 'unknown', 'error_type': type(error).__name__}
+            if self.iteration is not None:
+                self.iteration['child'] = {'pid': child.pid, 'created': identity.get('created'),
+                                           'state': identity.get('state'), 'recorded_at_jst': now_jst()}
+                try:
+                    self.save_state()
+                except Exception:
+                    pass  # recording must never stop or kill the child
+            # No timeout, kill or retry: the sequence may legitimately run for hours.
+            return child.wait()
+
     # ---------- stop / acknowledge ----------
     def stop_paths(self):
         folder = self.directory / 'stops'
@@ -310,42 +401,84 @@ class ParentLoop:
                 return True
         return False
 
+    def notify_stop(self, record, path):
+        """Place the parent_stopped event (idempotent per stop id). Never raises."""
+        iteration = record.get('iteration') or {}
+        sequence = record.get('sequence') or {}
+        code, detail_code, stage = record.get('code'), record.get('detail_code'), sequence.get('phase')
+        label = str(code) + (f'（{detail_code}）' if detail_code else '')
+        where = ''.join(f' {key}={iteration[key]}' for key in ('run_id', 'cell_id') if iteration.get(key))
+        evidence = {
+            'target_id': 'choice_parent_loop', 'source': str(path) if path else '停止記録の書込みに失敗',
+            'stop_id': record.get('stop_id'), 'code': code, 'detail_code': detail_code,
+            'registration_id': self.cfg['registration_id'], 'run_id': iteration.get('run_id'),
+            'cell_id': iteration.get('cell_id'), 'stage': stage,
+            'status': (f'親ループ停止 {label}{where}' + (f' 段階={stage}' if stage else '')
+                       + f"：{record.get('reason')}。再実行・reject・recoverはしていません。")[:900]}
+        try:
+            return {'event': str(self.event_writer('parent_stopped', 'choice-parent-stop:' + str(record.get('stop_id')),
+                                                   evidence))}
+        except Exception as error:
+            return {'error_type': type(error).__name__, 'error': str(error)[:500]}
+
     def stop(self, code, reason, detail_code=None, evidence=None, sequence=None):
-        self.stop_serial += 1
-        stop_id = f'{self.session_id}_{self.stop_serial:02d}'
-        iteration = self.iteration or {}
-        record = {'schema': 'choice_parent_stop_v1', 'stop_id': stop_id, 'code': code,
+        record = {'schema': 'choice_parent_stop_v1', 'code': code,
                   'detail_code': detail_code, 'reason': reason, 'at_jst': now_jst(),
                   'session_id': self.session_id, 'parent_pid': os.getpid(),
                   'registration_id': self.cfg['registration_id'],
                   'evidence': evidence or {}, 'iteration': self.iteration, 'sequence': sequence,
-                  'actions_taken': NO_ACTION,
-                  'resume': ('Fix the cause outside the parent (human decision), then run: '
-                             f'choice_parent_loop.py ack --stop-id {stop_id} --reason "<why>" ; '
-                             'then start the parent again with a new --prefix if the run ID was used')}
-        path = self.directory / 'stops' / (stop_id + '.json')
-        atomic_write(path, record)  # preservation first, notification second
-        atomic_write(self.directory / 'parent_stop.json', record)
-        self.save_state(phase='stopped', last_stop=stop_id)
-        label = code + (f'（{detail_code}）' if detail_code else '')
-        where = ''.join(f' {key}={iteration[key]}' for key in ('run_id', 'cell_id') if iteration.get(key))
-        stage = (sequence or {}).get('phase')
-        evidence_for_mail = {
-            'target_id': 'choice_parent_loop', 'source': str(path), 'stop_id': stop_id, 'code': code,
-            'detail_code': detail_code, 'registration_id': self.cfg['registration_id'],
-            'run_id': iteration.get('run_id'), 'cell_id': iteration.get('cell_id'), 'stage': stage,
-            'status': (f'親ループ停止 {label}{where}' + (f' 段階={stage}' if stage else '')
-                       + f'：{reason}。再実行・reject・recoverはしていません。')[:900]}
+                  'actions_taken': NO_ACTION}
+        path = None
         try:
-            notified = {'event': str(self.event_writer('parent_stopped', 'choice-parent-stop:' + stop_id,
-                                                       evidence_for_mail))}
-        except Exception as error:  # the stop itself is already preserved
-            notified = {'error_type': type(error).__name__, 'error': str(error)[:500]}
-        atomic_write(path.with_name(stop_id + '.notify.json'), {'at_jst': now_jst(), **notified})
-        self.log('parent_stopped', stop_id=stop_id, code=code, detail_code=detail_code, notification=notified)
+            for _ in range(1000):  # new names only: an existing (e.g. acknowledged) stop is never overwritten
+                self.stop_serial += 1
+                stop_id = f'{self.session_id}_{self.stop_serial:02d}'
+                record.update(stop_id=stop_id, resume=(
+                    'Fix the cause outside the parent (human decision), then run: '
+                    f'choice_parent_loop.py ack --stop-id {stop_id} --reason "<why>" ; '
+                    'then start the parent again with a new --prefix if the run ID was used'))
+                candidate = self.directory / 'stops' / (stop_id + '.json')
+                if create_exclusive(candidate, record):  # preservation first, notification second
+                    path = candidate
+                    break
+            else:
+                raise RuntimeError('No unused stop id')
+        except BaseException:
+            self.notify_stop(record, None)  # the user still hears about it; the parent then exits non-zero
+            raise
+        problems = {}
+        for key, action in (('mirror_error', lambda: atomic_write(self.directory / 'parent_stop.json', record)),
+                            ('state_error', lambda: self.save_state(phase='stopped', last_stop=stop_id))):
+            try:
+                action()
+            except Exception as error:
+                problems[key] = {'error_type': type(error).__name__, 'error': str(error)[:300]}
+        notified = self.notify_stop(record, path)
+        try:
+            atomic_write(path.with_name(stop_id + '.notify.json'), {'at_jst': now_jst(), **notified, **problems})
+            self.log('parent_stopped', stop_id=stop_id, code=code, detail_code=detail_code,
+                     notification=notified, write_problems=problems)
+        except Exception:
+            pass  # a missing notify.json makes the next start notify again
         print(json.dumps({'status': 'STOPPED_PRESERVED', 'stop_id': stop_id, 'code': code,
                           'detail_code': detail_code}, ensure_ascii=False))
         return EXIT_STOPPED
+
+    def renotify_unsent(self):
+        """A preserved, unacknowledged stop without notify.json is notified again (event id is idempotent)."""
+        for path in self.stop_paths():
+            receipt = path.with_name(path.stem + '.notify.json')
+            if receipt.exists() or path.with_name(path.stem + '.ack.json').exists():
+                continue
+            try:
+                record = read_json(path)
+            except (OSError, ValueError):
+                record = {'stop_id': path.stem, 'code': 'STOP_RECORD_UNREADABLE', 'reason': 'stop record unreadable'}
+            notified = self.notify_stop(record, path)
+            try:
+                atomic_write(receipt, {'at_jst': now_jst(), 'resent': True, **notified})
+            except Exception:
+                pass
 
     # ---------- per-iteration checks ----------
     def check_readback(self, path, count, ledger, code):
@@ -370,6 +503,11 @@ class ParentLoop:
         except (OSError, ValueError, KeyError, TypeError) as error:
             raise ParentStop('POST_STATUS_UNAVAILABLE',
                              f'Post-record status unreadable: {type(error).__name__}') from None
+        return self.check_status(status, count)
+
+    def check_status(self, status, count):
+        if not isinstance(status, dict):
+            raise ParentStop('POST_STATUS_UNAVAILABLE', 'Status output is not a JSON object')
         total = len(self.cfg['cells'])
         expected = self.cfg['cells'][count] if count < total else None
         holds = nonempty_holds(status)
@@ -389,33 +527,78 @@ class ParentLoop:
         except (OSError, ValueError):
             return path, None
 
+    def earlier_human_completion(self, ledger):
+        path = self.directory / 'parent_complete.json'
+        try:
+            record = read_json(path) if path.exists() else None
+        except (OSError, ValueError):
+            return None
+        if (record and record.get('provenance') == 'human_provided'
+                and record.get('registration_id') == self.cfg['registration_id']
+                and record.get('last_run_id') == ledger[-1]['run_id']):
+            return record.get('human_evidence')
+        return None
+
     def complete(self, ledger):
         """SP-06 §3.1: all five conditions at the same time, from evidence the sequence already made."""
         total = len(self.cfg['cells'])
         last = self.last_completed
+        human = None
         try:
-            if not last or last.get('run_id') != ledger[-1]['run_id']:
-                raise ParentStop('COMPLETION_UNPROVEN', 'No sequence evidence for the last ledger row')
-            _, state = self.sequence_state(last['sequence_id'])
-            if not (state and state.get('status') == EXPECTED_STDOUT['status']
-                    and [c.get('run_id') for c in state.get('completed') or []] == [ledger[-1]['run_id']]):
-                raise ParentStop('COMPLETION_UNPROVEN', 'Last sequence state does not match the last ledger row')
-            self.post_status(state, total)
-            self.check_readback(last['readback'], total, ledger, 'COMPLETION_UNPROVEN')
+            if last and last.get('run_id') == ledger[-1]['run_id']:
+                provenance, readback = 'parent_executed', last['readback']
+                _, state = self.sequence_state(last['sequence_id'])
+                if not (state and state.get('status') == EXPECTED_STDOUT['status']
+                        and [c.get('run_id') for c in state.get('completed') or []] == [ledger[-1]['run_id']]):
+                    raise ParentStop('COMPLETION_UNPROVEN', 'Last sequence state does not match the last ledger row')
+                self.post_status(state, total)
+            else:
+                # Review F1: the last cell was finished outside the parent; accept only human-provided
+                # evidence of the same strength (readback of all cells + a status output) and say so.
+                provenance = 'human_provided'
+                if self.prior_argument is not None and self.completion_status is not None:
+                    readback, status_path, earlier = str(self.readback), self.completion_status, None
+                else:
+                    # A restart after an accepted human completion re-checks the same, unchanged files.
+                    earlier = self.earlier_human_completion(ledger)
+                    if earlier is None:
+                        raise ParentStop('COMPLETION_UNPROVEN',
+                                         'The last ledger row was not recorded by this parent: pass --prior-readback '
+                                         '(readback of the last cell) and --completion-status (a status JSON a '
+                                         'human saved after recording)')
+                    readback, status_path = earlier['readback'], Path(earlier['completion_status'])
+                try:
+                    status = read_json(status_path)
+                    human = {'readback': readback, 'readback_sha256': core.digest(Path(readback)),
+                             'completion_status': str(status_path),
+                             'completion_status_sha256': core.digest(Path(status_path))}
+                except (OSError, ValueError) as error:
+                    raise ParentStop('COMPLETION_UNPROVEN',
+                                     f'Human completion evidence unreadable: {type(error).__name__}') from None
+                if earlier and (human['readback_sha256'] != earlier.get('readback_sha256')
+                                or human['completion_status_sha256'] != earlier.get('completion_status_sha256')):
+                    raise ParentStop('COMPLETION_UNPROVEN', 'Human completion evidence changed since it was accepted')
+                self.check_status(status, total)
+            self.check_readback(readback, total, ledger, 'COMPLETION_UNPROVEN')
         except ParentStop as stop:
             if stop.code != 'COMPLETION_UNPROVEN':
                 stop = ParentStop('COMPLETION_UNPROVEN', stop.reason, stop.code, **stop.evidence)
             raise stop from None
         record = {'schema': 'choice_parent_complete_v1', 'at_jst': now_jst(),
                   'registration_id': self.cfg['registration_id'], 'recorded_cells': total,
-                  'last_run_id': ledger[-1]['run_id'], 'last_sequence_id': last['sequence_id'],
-                  'last_readback': last['readback'],
+                  'last_run_id': ledger[-1]['run_id'], 'provenance': provenance,
+                  'last_sequence_id': last['sequence_id'] if provenance == 'parent_executed' else None,
+                  'last_readback': readback, 'human_evidence': human,
                   'scope': '登録範囲の実行と正式記録が完了（分析は未実施。研究ゴールの完了ではない）'}
         atomic_write(self.directory / 'parent_complete.json', record)
         self.save_state(phase='complete')
         evidence = {'target_id': 'choice_parent_loop', 'source': str(self.directory / 'parent_complete.json'),
                     'registration_id': self.cfg['registration_id'], 'recorded_cells': total,
-                    'status': f'登録範囲{total}セルの実行と正式記録が完了（分析は未実施）。詳細は専用CLIの記録を参照'}
+                    'provenance': provenance,
+                    'status': (f'登録範囲{total}セルの実行と正式記録が完了（分析は未実施）。出所：'
+                               + ('親ループが実行' if provenance == 'parent_executed'
+                                  else '最終セルは人が記録し、人が提供した読戻しとstatusで確認')
+                               + '。詳細は専用CLIの記録を参照')}
         try:
             notified = {'event': str(self.event_writer('all_complete',
                                                        'choice-parent-complete:' + self.cfg['registration_id'],
@@ -518,6 +701,22 @@ class ParentLoop:
         self.log('cell_recorded_by_sequence', sequence_id=sequence_id, run_id=run_id, recorded_cells=count + 1)
         self.save_state(phase='idle')
 
+    def require_stored_settings(self, settings):
+        """Review F2: settings are fixed at the first run; a change needs ack --settings/--clear-settings."""
+        path = self.directory / 'parent_settings.json'
+        if not path.exists():
+            atomic_write(path, settings_record(settings, self.settings_path, 'first run'))
+            return
+        try:
+            stored = read_json(path)
+        except (OSError, ValueError) as error:
+            raise UsageError(f'Stored parent settings unreadable: {type(error).__name__}') from None
+        if stored.get('sha256') != settings_digest(settings) or stored.get('settings') != settings:
+            raise UsageError('Settings differ from the stored settings %s (stored: %s, given: %s). Pass the same '
+                             '--settings, or change them only with ack --settings/--clear-settings and a reason'
+                             % (path, json.dumps(stored.get('settings'), ensure_ascii=False),
+                                json.dumps(settings, ensure_ascii=False)))
+
     # ---------- main loop ----------
     def run(self):
         try:
@@ -536,9 +735,11 @@ class ParentLoop:
             settings = load_settings(self.settings_path, total)
             if not re.fullmatch(r'[A-Za-z0-9_-]{1,36}', str(self.prefix or '')):
                 raise UsageError('A simple new --prefix is required')
+            self.require_stored_settings(settings)
         except UsageError as error:
             print(json.dumps({'status': 'USAGE_ERROR', 'error': str(error)}, ensure_ascii=False))
             return EXIT_USAGE
+        self.renotify_unsent()
         pending = self.unacknowledged()
         if pending:
             print(json.dumps({'status': 'UNACKNOWLEDGED_STOP', 'stop_ids': pending,
@@ -563,6 +764,7 @@ class ParentLoop:
                           'prefix': self.prefix, 'started_at_jst': now_jst()}
             self.save_state(phase='starting')
             self.log('parent_started', prefix=self.prefix, settings=settings)
+            self.state['mail_path'] = self.mail_check()  # review D2: never start while stops would be silent
             while True:
                 self.iteration = None
                 ledger = self.ledger()
@@ -587,13 +789,19 @@ class ParentLoop:
                              evidence={'error_type': type(error).__name__})
 
 
-def acknowledge(root, stop_id, reason):
-    """Record that a human reviewed one stop. Runs nothing and changes no research state."""
+def acknowledge(root, stop_id, reason, settings_path=None, clear_settings=False):
+    """Record that a human reviewed one stop. Runs nothing and changes no research state.
+
+    The only way to change the stored parent settings (review F2) is here, with the same reason:
+    ``settings_path`` replaces them, ``clear_settings`` removes all checkpoints.
+    """
     reason = (reason or '').strip()
     if not reason:
         raise ValueError('A non-empty reason is required')
     if not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', str(stop_id or '')):
         raise ValueError('Invalid stop id')
+    if settings_path is not None and clear_settings:
+        raise ValueError('Give either a new settings file or clear_settings, not both')
     root = Path(root).resolve()
     cfg = read_json(root / core.CONFIG)
     directory = (root / cfg['workspace']).resolve() / PARENT_DIR
@@ -606,11 +814,31 @@ def acknowledge(root, stop_id, reason):
         if ack.exists():
             raise ValueError('Stop already acknowledged')
         record = {'schema': 'choice_parent_ack_v1', 'stop_id': stop_id, 'reason': reason, 'at_jst': now_jst(),
-                  'pid': os.getpid(), 'stop_sha256': core.digest(stop)}
-        atomic_write(ack, record)
+                  'pid': os.getpid(), 'stop_sha256': core.digest(stop), 'settings_change': None}
+        if settings_path is not None or clear_settings:
+            try:
+                new = (load_settings(settings_path, len(cfg['cells'])) if settings_path is not None
+                       else {'checkpoint_recorded_counts': []})
+            except UsageError as error:
+                raise ValueError(str(error)) from None
+            stored_path = directory / 'parent_settings.json'
+            previous = read_json(stored_path).get('sha256') if stored_path.exists() else None
+            stored = settings_record(new, settings_path, reason, previous)
+            record['settings_change'] = {'previous_sha256': previous, 'new_sha256': stored['sha256'],
+                                         'new_settings': new, 'source_path': stored['source_path'],
+                                         'source_sha256': stored['source_sha256']}
+        if not create_exclusive(ack, record):
+            raise ValueError('Stop already acknowledged')
+        if record['settings_change']:
+            atomic_write(directory / 'parent_settings.json', stored)
+            with (directory / 'settings_history.jsonl').open('a', encoding='utf-8') as stream:
+                stream.write(json.dumps({'at_jst': record['at_jst'], 'stop_id': stop_id, 'reason': reason,
+                                         **record['settings_change']}, ensure_ascii=False) + '\n')
         with (directory / 'parent_operations.jsonl').open('a', encoding='utf-8') as stream:
             stream.write(json.dumps({'at_jst': record['at_jst'], 'action': 'stop_acknowledged',
-                                     'stop_id': stop_id, 'reason': reason}, ensure_ascii=False) + '\n')
+                                     'stop_id': stop_id, 'reason': reason,
+                                     'settings_changed': bool(record['settings_change'])},
+                                    ensure_ascii=False) + '\n')
         return record
     finally:
         lock.close()
@@ -642,17 +870,23 @@ def main():
     run.add_argument('--prior-readback', help='Readback JSON of the last recorded cell (default: parent state)')
     run.add_argument('--settings', type=Path, help='Optional choice_parent_loop_settings_v1 JSON (checkpoints)')
     run.add_argument('--monitor-config', type=Path, help='Monitor config.json (default: 07_監視システム)')
+    run.add_argument('--completion-status', type=Path,
+                     help='Status JSON a human saved after recording the last cell outside the parent')
     ack = sub.add_parser('ack', help='Acknowledge one stop with a reason (runs nothing)')
     ack.add_argument('--stop-id', required=True)
     ack.add_argument('--reason', required=True)
+    change = ack.add_mutually_exclusive_group()
+    change.add_argument('--settings', type=Path, help='Replace the stored parent settings (with this reason)')
+    change.add_argument('--clear-settings', action='store_true', help='Remove all checkpoints (with this reason)')
     sub.add_parser('show', help='Print the parent state and stops (read-only)')
     args = parser.parse_args()
     if args.action == 'run':
         sys.exit(ParentLoop(args.project_root, args.prefix, args.prior_readback, args.settings,
-                            monitor_config=args.monitor_config).run())
+                            monitor_config=args.monitor_config, completion_status=args.completion_status).run())
     if args.action == 'ack':
         try:
-            print(json.dumps(acknowledge(args.project_root, args.stop_id, args.reason), ensure_ascii=False))
+            print(json.dumps(acknowledge(args.project_root, args.stop_id, args.reason, args.settings,
+                                         args.clear_settings), ensure_ascii=False))
         except (ValueError, RuntimeError) as error:
             print(json.dumps({'status': 'ACK_REFUSED', 'error': str(error)}, ensure_ascii=False))
             sys.exit(EXIT_USAGE)
