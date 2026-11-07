@@ -16,7 +16,8 @@ def done(name='a', **extra):
 class MailWorthy(unittest.TestCase):
     def test_abnormal_stops_and_all_complete_only(self):
         for kind in ('failed', 'process_absent', 'process_unknown', 'stalled', 'process_identity_changed',
-                     'process_command_mismatch', 'state_missing', 'unreadable_state', 'all_complete'):
+                     'process_command_mismatch', 'state_missing', 'unreadable_state', 'all_complete',
+                     'parent_stopped'):
             self.assertTrue(watch.mail_worthy(kind), kind)
         for kind in ('completed', 'nonzero_teleports', 'nonzero_collisions', 'log_error', 'log_truncated',
                      'unknown_status', 'monitoring_gap', 'target_identity_changed', 'oversize_log_line', ''):
@@ -85,6 +86,15 @@ class Wiring(unittest.TestCase):
         self.assertEqual(watch.sync_mail_outbox(config, self.runtime), 0)
         kinds = sorted(watch.read_json(p)['subject'].split()[1] for p in self.outbox.glob('*.json'))
         self.assertEqual(kinds, ['all_complete', 'failed', 'stalled'])
+
+    def test_parent_loop_stop_is_enqueued_once_per_stop(self):
+        # SP-14: the runner-side parent loop places one event per stop (unique target per stop id).
+        self.event('choice-parent-stop:a', 'parent_stopped')
+        self.event('choice-parent-stop:a', 'parent_stopped')
+        self.event('choice-parent-stop:b', 'parent_stopped')
+        self.assertEqual(watch.sync_mail_outbox({'mail_enabled': True}, self.runtime), 2)
+        subjects = [watch.read_json(p)['subject'] for p in self.outbox.glob('*.json')]
+        self.assertTrue(all('parent_stopped' in s for s in subjects))
 
     def test_enqueue_is_queued_only_and_has_no_network(self):
         self.event('t1', 'failed')

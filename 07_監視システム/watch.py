@@ -165,9 +165,10 @@ def save_event(directory, target, kind, evidence, ai_diagnostics=True):
 
 
 # Only these reach the mail outbox; warnings (nonzero_*, log_error ...) stay local toasts.
+# 'parent_stopped' is placed by the runner-side parent loop (SP-14), never by this observer.
 MAIL_KINDS = frozenset({'failed', 'process_absent', 'process_unknown', 'stalled',
                         'process_identity_changed', 'process_command_mismatch',
-                        'state_missing', 'unreadable_state', 'all_complete'})
+                        'state_missing', 'unreadable_state', 'all_complete', 'parent_stopped'})
 
 
 def mail_worthy(kind):

@@ -454,5 +454,151 @@ class TransactionTests(unittest.TestCase):
         self.assertEqual(owner.state['active']['process_identity'], expected)
 
 
+class ObserverGapTests(unittest.TestCase):
+    """SP-10 D3: only during the core phase, a monitor-only gap may last up to the monitor's stale_sec."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+
+    def core_fixture(self, times, results, observer):
+        owner = sequence.Sequence.__new__(sequence.Sequence)
+        owner.root = owner.workspace = self.root
+        owner.observer_gap_limit_sec = 600
+        owner.state = {'active': {'process_identity': {'state': 'alive', 'pid': 1234, 'created': 111}}}
+        folder = self.root / 'runs/artificial'
+        folder.mkdir(parents=True)
+        (folder / 'manifest.json').write_text(json.dumps({'pid': 1234}), encoding='utf-8')
+        owner.process_identity = Mock(return_value={'state': 'absent'})
+        owner.save = Mock()
+        owner.event = Mock()
+        clock = [0.0]
+        schedule = iter(zip(times, results))
+        def command(*args):
+            moment, result = next(schedule)
+            clock[0] = moment
+            return result
+        owner.command = Mock(side_effect=command)
+        owner.observer = Mock(side_effect=lambda run_id=None: observer(clock[0]))
+        return owner, clock
+
+    @staticmethod
+    def gap_until(recovered_at):
+        def observer(now):
+            if now < recovered_at:
+                raise sequence.ObserverGap('artificial monitor restart')
+            return True
+        return observer
+
+    def run_core(self, owner, clock):
+        with patch.object(sequence.time, 'monotonic', side_effect=lambda: clock[0]), \
+                patch.object(sequence.time, 'sleep'):
+            owner.wait_core('artificial')
+
+    def test_gap_recovered_at_599_seconds_continues(self):
+        running = {'status': 'RUNNING', 'pid_alive': True, 'anomaly_flags': []}
+        owner, clock = self.core_fixture([0, 599, 1000], [running, running,
+                                                          {'status': 'COMPLETED', 'anomaly_flags': []}],
+                                         self.gap_until(599))
+        self.run_core(owner, clock)
+        actions = [call.args[0] for call in owner.event.call_args_list]
+        self.assertIn('choice_sequence_observer_gap_started', actions)
+        self.assertIn('choice_sequence_observer_gap_ended', actions)
+        self.assertEqual(owner.state['observer_gap']['max_elapsed_sec'], 599)
+        self.assertEqual(owner.command.call_count, 3)
+
+    def test_gap_beyond_601_seconds_stops_preserved(self):
+        running = {'status': 'RUNNING', 'pid_alive': True, 'anomaly_flags': []}
+        owner, clock = self.core_fixture([0, 601], [running, running], self.gap_until(10 ** 9))
+        with self.assertRaisesRegex(RuntimeError, 'observer gap'):
+            self.run_core(owner, clock)
+        self.assertEqual(owner.command.call_count, 2)
+        owner.process_identity.assert_not_called()
+
+    def test_core_monitor_anomaly_during_gap_stops_immediately(self):
+        running = {'status': 'RUNNING', 'pid_alive': True, 'anomaly_flags': []}
+        anomaly = dict(running, anomaly_flags=['collisions_nonzero'])
+        owner, clock = self.core_fixture([0, 60], [running, anomaly], self.gap_until(10 ** 9))
+        with self.assertRaisesRegex(RuntimeError, 'Core monitor anomaly'):
+            self.run_core(owner, clock)
+        self.assertEqual(owner.observer.call_count, 1)
+
+    def test_non_gap_observer_failure_is_not_waited_for(self):
+        running = {'status': 'RUNNING', 'pid_alive': True, 'anomaly_flags': []}
+        def observer(now):
+            raise RuntimeError('Observer state source/process differs from the live daemon proof')
+        owner, clock = self.core_fixture([0], [running], observer)
+        with self.assertRaisesRegex(RuntimeError, 'source/process differs'):
+            self.run_core(owner, clock)
+        self.assertEqual(owner.command.call_count, 1)
+
+    def test_gap_before_start_is_not_waited_for(self):
+        helper = TransactionTests('test_readback_requires_same_unique_registered_prefix')
+        helper.setUp()
+        self.addCleanup(helper.temp.cleanup)
+        owner = helper.make_sequence()
+        owner.observer = Mock(side_effect=sequence.ObserverGap('artificial stale observer'))
+        with self.assertRaises(RuntimeError):
+            owner.run()
+        self.assertNotIn('start', owner.events)
+        self.assertEqual(owner.state['status'], 'FAILED_PRESERVED')
+
+    def observer_fixture(self):
+        helper = TransactionTests('test_observer_binds_current_source_process_and_exact_core')
+        helper.setUp()
+        self.addCleanup(helper.temp.cleanup)
+        owner, state, target = helper.observer_fixture()
+        owner.event = Mock()
+        return helper, owner, state, target
+
+    def test_observer_classifies_transient_gaps_but_not_source_or_anomaly(self):
+        helper, owner, state, target = self.observer_fixture()
+        status = owner.command.return_value
+        stale = copy.deepcopy(state)
+        stale['targets'][target['source']]['observed_at_utc'] = (
+            datetime.now().astimezone() - timedelta(minutes=3)).isoformat()
+        failing = copy.deepcopy(state)
+        failing['targets'][target['source']] = {'source': target['source'], 'read_failures': 2,
+                                                'read_error_type': 'TimeoutExpired'}
+        transient = [(dict(status, observation_age_sec=121), state),
+                     (dict(status, monitor_process={'state': 'absent'}), state),
+                     (status, dict(state, monitor_identity={'state': 'alive', 'pid': 9, 'created': 9})),
+                     (status, stale), (status, failing)]
+        for index, (live, saved) in enumerate(transient):
+            with self.subTest(case=index):
+                owner.command.return_value = live
+                (helper.root / 'state.json').write_text(json.dumps(saved), encoding='utf-8')
+                with self.assertRaises(sequence.ObserverGap):
+                    owner.observer('artificial')
+        owner.command.return_value = status
+        flagged = copy.deepcopy(state)
+        flagged['targets'][target['source']]['flags'] = ['process_command_mismatch']
+        for index, saved in enumerate((dict(state, monitor_source_sha256='another_version'), flagged)):
+            with self.subTest(hard=index):
+                (helper.root / 'state.json').write_text(json.dumps(saved), encoding='utf-8')
+                with self.assertRaises(RuntimeError) as raised:
+                    owner.observer('artificial')
+                self.assertNotIsInstance(raised.exception, sequence.ObserverGap)
+        undiscovered = copy.deepcopy(state)
+        undiscovered['targets'] = {}
+        (helper.root / 'state.json').write_text(json.dumps(undiscovered), encoding='utf-8')
+        self.assertFalse(owner.observer('artificial'))  # not yet discovered keeps its own 60 s rule
+
+    def test_monitor_restart_with_same_source_is_accepted_and_recorded(self):
+        helper, owner, state, target = self.observer_fixture()
+        (helper.root / 'state.json').write_text(json.dumps(state), encoding='utf-8')
+        self.assertTrue(owner.observer('artificial'))
+        owner.event.assert_not_called()
+        restarted = {'state': 'alive', 'pid': 456, 'created': 999}
+        owner.command.return_value = dict(owner.command.return_value, monitor_process=restarted)
+        (helper.root / 'state.json').write_text(json.dumps(dict(state, monitor_identity=restarted)),
+                                                encoding='utf-8')
+        self.assertTrue(owner.observer('artificial'))
+        owner.event.assert_called_once()
+        self.assertEqual(owner.event.call_args.args[0], 'choice_sequence_observer_identity_changed')
+        self.assertEqual(owner.state['observer_identity'], restarted)
+
+
 if __name__ == '__main__':
     unittest.main()

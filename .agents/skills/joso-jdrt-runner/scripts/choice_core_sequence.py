@@ -30,6 +30,13 @@ def require(condition, message):
         raise RuntimeError(message)
 
 
+class ObserverGap(RuntimeError):
+    """Monitor-only interruption (restart, staleness, monitor-side read failure).
+
+    Waited for only while the core computes (SP-10 D3); everywhere else it stops like any error.
+    """
+
+
 def read(path):
     return json.loads(path.read_text(encoding='utf-8-sig'))
 
@@ -49,10 +56,10 @@ def require_idle(status, count, cell):
 
 def require_observer(status):
     age = status.get('observation_age_sec')
-    require(status.get('monitor_identity_matches') is True
+    if not (status.get('monitor_identity_matches') is True
             and status.get('monitor_process', {}).get('state') == 'alive'
-            and type(age) in (int, float) and math.isfinite(age) and 0 <= age <= 120,
-            'Independent observer identity/liveness/freshness not proven')
+            and type(age) in (int, float) and math.isfinite(age) and 0 <= age <= 120):
+        raise ObserverGap('Independent observer identity/liveness/freshness not proven')
 
 
 def finish_order(invoke, run_id):
@@ -107,6 +114,11 @@ class Sequence:
         self.workspace = self.local(self.cfg['workspace'])
         require_scope(count, cells, len(self.cfg['cells']))
         require(os.environ.get('JDRT_CHOICE_TOOLCHAIN_MANIFEST'), 'Explicit selected toolchain required')
+        # D3: the core-phase observer gap limit is the monitor's own stall threshold, not a new number.
+        limit = read(self.local('07_監視システム/config.json')).get('stale_sec')
+        require(type(limit) in (int, float) and math.isfinite(limit) and limit > 0,
+                'Monitor stale_sec required for the core observer gap limit')
+        self.observer_gap_limit_sec = limit
         self.prior_readback = self.local(prior_readback)
         self.count, self.cells, self.prefix = count, cells, prefix
         names = [CONFIG, *self.cfg['execution']['implementation_files'],
@@ -126,6 +138,7 @@ class Sequence:
                       'maximum_new_cells': cells, 'pins': self.pins,
                       'run_prefix': prefix, 'initial_readback': self.prior_readback.as_posix(),
                       'initial_readback_sha256': digest(self.prior_readback),
+                      'observer_gap_limit_sec': limit,
                       'completed': [], 'active': None, 'goal_complete': False}
         self.save()
 
@@ -192,13 +205,22 @@ class Sequence:
         require_observer(status)
         # Inspect the same daemon's current target, not its notification/AI delivery.
         state = read(Path(status['runtime']) / 'state.json')
-        require(state.get('monitor_source_sha256') == self.pins['07_監視システム/watch.py']
-                and state.get('monitor_identity') == status['monitor_process'],
-                'Observer state source/process differs from the live daemon proof')
+        require(state.get('monitor_source_sha256') == self.pins['07_監視システム/watch.py'],
+                'Observer state source differs from the pinned watch.py')
+        if state.get('monitor_identity') != status['monitor_process']:
+            raise ObserverGap('Observer state process differs from the live daemon proof')
+        previous, current = self.state.get('observer_identity'), status['monitor_process']
+        if previous != current:
+            if previous is not None:  # restarted monitor, same pinned source and fresh: accepted, recorded
+                self.event('choice_sequence_observer_identity_changed', previous=previous, current=current)
+            self.state['observer_identity'] = current
+            self.save()
         if run_id is None:
             return True
         path = self.workspace / 'runs' / run_id / 'manifest.json'
         target = state['targets'].get(str(path))
+        if target is not None and target.get('read_failures') and target.get('state_sha256') != digest(path):
+            raise ObserverGap('Independent observer cannot currently read the target')
         if target is None or target.get('state_sha256') != digest(path):
             return False  # New/terminal manifest has not yet been discovered.
         manifest = read(path)
@@ -221,7 +243,9 @@ class Sequence:
             self.save()
         observed = datetime.fromisoformat(target['observed_at_utc'])
         age = (datetime.now().astimezone() - observed).total_seconds()
-        require(0 <= age <= 120, 'Independent target observation is stale')
+        require(0 <= age, 'Independent target observation is from the future')
+        if age > 120:
+            raise ObserverGap('Independent target observation is stale')
         return True
 
     def sync(self):
@@ -314,17 +338,51 @@ class Sequence:
         else:
             raise RuntimeError('Unknown finish action')
 
+    def observer_gap(self, run_id, started, error):
+        now = time.monotonic()
+        if started is None:
+            started = now
+            self.state['observer_gap'] = {'run_id': run_id, 'started_at_jst': datetime.now().astimezone().isoformat(),
+                                          'ended_at_jst': None, 'limit_sec': self.observer_gap_limit_sec,
+                                          'max_elapsed_sec': 0, 'reason': str(error)}
+            self.event('choice_sequence_observer_gap_started', run_id=run_id, reason=str(error),
+                       limit_sec=self.observer_gap_limit_sec)
+        elapsed = now - started
+        gap = self.state['observer_gap']
+        gap.update(max_elapsed_sec=max(gap['max_elapsed_sec'], elapsed), last_reason=str(error))
+        self.save()
+        if elapsed > self.observer_gap_limit_sec:
+            self.event('choice_sequence_observer_gap_exceeded', run_id=run_id, elapsed_sec=elapsed,
+                       limit_sec=self.observer_gap_limit_sec, reason=str(error))
+            raise RuntimeError('Independent observer gap exceeded the monitor stale limit; preserve and stop')
+        return started
+
     def wait_core(self, run_id):
+        gap = None  # monotonic start of a monitor-only gap during the core phase (D3)
         while True:
             result = self.command(BASE + 'choice_monitor.py', ['--run-id', run_id])
             require(result.get('anomaly_flags') == []
                     and result.get('status') in ('RUNNING', 'COMPLETED')
                     and (result['status'] != 'RUNNING' or result.get('pid_alive') is True),
                     'Core monitor anomaly; preserve and stop subsequent starts')
-            discovery = time.monotonic()
-            while not self.observer(run_id):
-                require(time.monotonic() - discovery < 60, 'Independent target discovery remains unproven')
-                time.sleep(5)
+            try:
+                discovery = time.monotonic()
+                while not self.observer(run_id):
+                    require(time.monotonic() - discovery < 60, 'Independent target discovery remains unproven')
+                    time.sleep(5)
+            except ObserverGap as error:
+                # choice_monitor (direct core check) keeps running each round; never a retry of the core.
+                gap = self.observer_gap(run_id, gap, error)
+                time.sleep(min(60, max(0, self.observer_gap_limit_sec - (time.monotonic() - gap))))
+                continue
+            if gap is not None:
+                elapsed = time.monotonic() - gap
+                self.state['observer_gap'].update(
+                    ended_at_jst=datetime.now().astimezone().isoformat(),
+                    max_elapsed_sec=max(self.state['observer_gap']['max_elapsed_sec'], elapsed))
+                self.save()
+                self.event('choice_sequence_observer_gap_ended', run_id=run_id, elapsed_sec=elapsed)
+                gap = None
             discovery = time.monotonic()
             if result['status'] == 'COMPLETED':
                 manifest = read(self.workspace / 'runs' / run_id / 'manifest.json')
