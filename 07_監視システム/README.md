@@ -114,3 +114,7 @@ graph_mail.py：標準ライブラリのみ。GraphTransportはmail_outboxの例
 ### 2026-11-07 — 送信ワーカー
 
 `mail_worker.py`：`mail_enabled`が`true`のときだけ、キュー投入と1tick1通の送信を行う。`mail_worker.lock`で二重起動を拒否し、起動時に`sending`のまま残った分は再送しない。試験：`python -m unittest test_mail_worker`。常駐登録と実起動は未実施。
+
+### 2026-11-07 — 学校PC一括整備（SP-21）
+
+`school_pc/05_bootstrap.ps1`：既定は確認のみ。`-Apply`でvenv構築・AIなしconfig生成・環境変数・タスク登録。別の配置先のタスクは上書きせず止まる。基準は`school_pc/venv_lock_20261107.txt`。試験：`powershell -File school_pc/test_bootstrap.ps1`。学校PCでの実行は未実施。
