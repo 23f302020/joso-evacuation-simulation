@@ -106,3 +106,7 @@ DispatcherだけにイベントJSONのmtime_ns/size照合キャッシュを追�
 ### 2026-11-07 — メール通知の接続（SP-05）
 
 異常停止と全対象完了だけをventsからoutboxへ投入する（mail_enabled: trueのときのみ。送信はしない）。全対象完了はxpected_completed_targets（整数）に達し実行中ゼロのときだけ発火する。試験：python -m unittest test_mail_wiring（	est_watch・	est_ai_less・	est_mail_outboxも実行）。
+
+### 2026-11-07 — Graph送信器とOAuth（SP-04）
+
+graph_mail.py：標準ライブラリのみ。GraphTransportはmail_outboxの例外契約（TransportUnavailable／AuthRequired／AcceptanceUnknown）に従う。トークンはDPAPIで暗号化して保存し、ソース・ログ・文書に出さない。試験：`python -m unittest test_graph_mail`。アプリ登録とサインインはメール_アプリ登録とサインイン手順.md（ユーザー操作）。実送信とキュー送信ワーカーは未実施・未実装。

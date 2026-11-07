@@ -1,0 +1,229 @@
+"""Microsoft Graph sendMail transport and OAuth device-code sign-in, standard library only.
+
+The transport follows the mail_outbox contract: nothing sent -> TransportUnavailable (retry),
+sign-in needed -> AuthRequired (stop), possibly accepted -> AcceptanceUnknown (never resend).
+Tokens are cached only as Windows DPAPI blobs (current user); they are never logged or returned
+in exception text. The client id comes from config/environment, never from source.
+"""
+import argparse
+import base64
+import ctypes
+import json
+import os
+from ctypes import wintypes
+from pathlib import Path
+import socket
+import sys
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+import uuid
+
+from mail_outbox import AcceptanceUnknown, AuthRequired, TransportUnavailable
+
+SEND_URL = 'https://graph.microsoft.com/v1.0/me/sendMail'
+AUTHORITY = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/'
+SCOPE = 'Mail.Send offline_access'
+SKEW_SEC = 120
+
+
+class HttpConnectError(Exception):
+    """The server was never reached; the request cannot have been processed."""
+
+
+class HttpResponseLost(Exception):
+    """The request may have reached the server but no response arrived."""
+
+
+def _post(url, headers, body, timeout):
+    request = urllib.request.Request(url, data=body, headers=headers, method='POST')
+    try:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
+            return response.status, response.read().decode('utf-8', 'replace')
+    except urllib.error.HTTPError as error:
+        return error.code, error.read().decode('utf-8', 'replace')
+    except urllib.error.URLError as error:
+        if isinstance(error.reason, (socket.gaierror, ConnectionRefusedError)):
+            raise HttpConnectError() from None
+        raise HttpResponseLost() from None
+    except OSError:
+        raise HttpResponseLost() from None
+
+
+def post_json(url, headers, body, timeout):
+    return _post(url, headers, body, timeout)
+
+
+def post_form(url, data):
+    status, text = _post(url, {'Content-Type': 'application/x-www-form-urlencoded'},
+                         urllib.parse.urlencode(data).encode(), 30)
+    try:
+        parsed = json.loads(text)
+    except ValueError:
+        parsed = {}
+    return status, parsed if isinstance(parsed, dict) else {}
+
+
+class _Blob(ctypes.Structure):
+    _fields_ = [('cbData', wintypes.DWORD), ('pbData', ctypes.POINTER(ctypes.c_char))]
+
+
+def _dpapi(function, raw):
+    crypt = ctypes.WinDLL('crypt32', use_last_error=True)
+    kernel = ctypes.WinDLL('kernel32', use_last_error=True)
+    kernel.LocalFree.argtypes = [ctypes.c_void_p]
+    source = _Blob(len(raw), ctypes.cast(ctypes.create_string_buffer(raw, len(raw)), ctypes.POINTER(ctypes.c_char)))
+    result = _Blob()
+    if function == 'protect':
+        ok = crypt.CryptProtectData(ctypes.byref(source), None, None, None, None, 0, ctypes.byref(result))
+    else:
+        ok = crypt.CryptUnprotectData(ctypes.byref(source), None, None, None, None, 0, ctypes.byref(result))
+    if not ok:
+        raise OSError('DPAPI failed')
+    try:
+        return ctypes.string_at(result.pbData, result.cbData)
+    finally:
+        kernel.LocalFree(ctypes.cast(result.pbData, ctypes.c_void_p))
+
+
+def dpapi_protect(raw):
+    return _dpapi('protect', raw)
+
+
+def dpapi_unprotect(blob):
+    return _dpapi('unprotect', blob)
+
+
+class TokenStore:
+    def __init__(self, path, protect=dpapi_protect, unprotect=dpapi_unprotect):
+        self.path, self.protect, self.unprotect = Path(path), protect, unprotect
+
+    def save(self, value):
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        temp = self.path.with_name(self.path.name + '.' + uuid.uuid4().hex + '.tmp')
+        temp.write_bytes(self.protect(json.dumps(value).encode('utf-8')))
+        os.replace(temp, self.path)
+
+    def load(self):
+        try:
+            return json.loads(self.unprotect(self.path.read_bytes()).decode('utf-8'))
+        except Exception:
+            return None  # missing, other user, or damaged: sign-in is required
+
+
+class GraphAuth:
+    def __init__(self, client_id, store, http=post_form, clock=time.time):
+        self.client_id, self.store, self.http, self.clock = client_id, store, http, clock
+
+    def _store_tokens(self, body, previous_refresh=None):
+        self.store.save({'access_token': body['access_token'],
+                         'refresh_token': body.get('refresh_token') or previous_refresh,
+                         'expires_at': self.clock() + float(body.get('expires_in', 0))})
+
+    def sign_in(self, prompt=print, sleep=time.sleep):
+        status, info = self.http(AUTHORITY + 'devicecode', {'client_id': self.client_id, 'scope': SCOPE})
+        if status != 200 or 'device_code' not in info:
+            raise RuntimeError('device code request failed')
+        prompt(f"{info['verification_uri']} を開き、コード {info['user_code']} を入力してください。")
+        interval, deadline = info.get('interval', 5), self.clock() + info.get('expires_in', 900)
+        while True:
+            sleep(interval)
+            if self.clock() > deadline:
+                raise AuthRequired('device code expired')
+            status, body = self.http(AUTHORITY + 'token', {
+                'client_id': self.client_id, 'device_code': info['device_code'],
+                'grant_type': 'urn:ietf:params:oauth:grant-type:device_code'})
+            if status == 200 and 'access_token' in body:
+                self._store_tokens(body)
+                return
+            error = body.get('error')
+            if error == 'authorization_pending':
+                continue
+            if error == 'slow_down':
+                interval += 5
+                continue
+            raise AuthRequired(str(error))
+
+    def access_token(self):
+        cached = self.store.load()
+        if not cached or not cached.get('refresh_token'):
+            raise AuthRequired('not signed in')
+        if cached.get('expires_at', 0) - SKEW_SEC > self.clock():
+            return cached['access_token']
+        try:
+            status, body = self.http(AUTHORITY + 'token', {
+                'client_id': self.client_id, 'grant_type': 'refresh_token',
+                'refresh_token': cached['refresh_token'], 'scope': SCOPE})
+        except (HttpConnectError, HttpResponseLost):
+            raise TransportUnavailable() from None
+        if status == 200 and 'access_token' in body:
+            self._store_tokens(body, cached['refresh_token'])
+            return body['access_token']
+        if body.get('error') in ('invalid_grant', 'interaction_required', 'consent_required'):
+            raise AuthRequired(body['error'])
+        raise RuntimeError(f'token endpoint status {status}')
+
+
+class GraphTransport:
+    def __init__(self, token_provider, recipient, http=post_json, timeout=30):
+        self.token_provider, self.recipient, self.http, self.timeout = token_provider, recipient, http, timeout
+
+    def _attachments(self, message):
+        items = []
+        for item in message.get('attachments', []):
+            try:
+                data = Path(item['path']).read_bytes()
+            except OSError:
+                continue  # vanished since queuing; the body already names it
+            items.append({'@odata.type': '#microsoft.graph.fileAttachment', 'name': item['name'],
+                          'contentType': 'application/octet-stream',
+                          'contentBytes': base64.b64encode(data).decode('ascii')})
+        return items
+
+    def send(self, message):
+        token = self.token_provider()
+        payload = {'message': {'subject': message['subject'],
+                               'body': {'contentType': 'Text', 'content': message['body']},
+                               'toRecipients': [{'emailAddress': {'address': self.recipient}}],
+                               'attachments': self._attachments(message)},
+                   'saveToSentItems': True}
+        headers = {'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}
+        try:
+            status, _ = self.http(SEND_URL, headers, json.dumps(payload, ensure_ascii=False).encode('utf-8'),
+                                  self.timeout)
+        except HttpConnectError:
+            raise TransportUnavailable() from None
+        except HttpResponseLost:
+            raise AcceptanceUnknown() from None
+        if status == 202:
+            return
+        if status == 401:
+            raise AuthRequired('unauthorized')
+        if status in (429, 503):
+            raise TransportUnavailable()
+        if status in (500, 502, 504):
+            raise AcceptanceUnknown()
+        raise RuntimeError(f'graph status {status}')  # body is not echoed: it may contain request data
+
+
+def build_auth(config, runtime):
+    client_id = os.environ.get('JDRT_MAIL_CLIENT_ID') or config.get('mail_client_id')
+    if not client_id:
+        raise SystemExit('mail client id missing: set JDRT_MAIL_CLIENT_ID or config mail_client_id')
+    return GraphAuth(client_id, TokenStore(Path(runtime) / 'mail_token.bin'))
+
+
+def main():
+    from watch import BASE, read_json
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('action', choices=['signin'])
+    parser.add_argument('--config', type=Path, default=BASE / 'config.json')
+    args = parser.parse_args()
+    config = read_json(args.config)
+    build_auth(config, config['runtime']).sign_in()
+    print('signed in; token cached (DPAPI, current user)')
+
+
+if __name__ == '__main__':
+    sys.exit(main())
