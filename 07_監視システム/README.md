@@ -53,7 +53,7 @@ Start-ScheduledTask -TaskName JDRT-SimulationWatch
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File 07_監視システム/install.ps1 -Uninstall
 ```
 
-別PCで新規導入するときは、現在使用するCodex実行ファイルの絶対パスで`configure.py --codex-exe <absolute-codex.exe>`を実行し、その後`install.ps1`を実行する。native buildも対象にする場合は`configure.py`へ`--native-root <absolute-native-root>`を追加する。`configure.py`は既存設定を上書きしない。移設時はタスクを停止して設定・対象を照合する。
+別PCで新規導入するときは、AI診断を使う場合だけ、現在使用するCodex実行ファイルの絶対パスで`configure.py --codex-exe <absolute-codex.exe>`を実行し、その後`install.ps1`を実行する。**AIを使わない構成（学校PC）は`configure.py --no-ai`**（2026-11-07追加）。`--no-ai`と`--codex-exe`はどちらか一方だけ指定する。`--no-ai`では`diagnostics_enabled: false`とし、codex・モデル関連のキーを書かない。この設定ではAI診断を一切起動せず、新規イベントの`delivery`は`not_applicable`（`pending`のまま残らない）になる。Windows通知の`notification`は従来どおり。設定に`diagnostics_enabled`がない場合もAIは起動しない（安全側）。既存のAIあり設定の動作は変えていない。native buildも対象にする場合は`configure.py`へ`--native-root <absolute-native-root>`を追加する。`configure.py`は既存設定を上書きしない。移設時はタスクを停止して設定・対象を照合する。
 
 `config.json`はこのPCの設定としてGit対象外。研究用設定からworkspaceを読み取り、choiceの`runs/*`・`smoke/*`・`technical/*`・`technical/*/execution`を自動発見する。登録済みnative rootの`build_state.json`と直下attemptの同名ファイルも対象。別系列や新しいnative rootは自動で範囲拡大せず、設定の`patterns`を更新して再起動する。再設定後は必ず対象とイベントを確認する。
 
@@ -65,6 +65,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File 07_監視システム/in
 
 ```powershell
 .\04_プログラム\venv\Scripts\python.exe -B -X utf8 -m unittest discover -s 07_監視システム -p test_watch.py
+# AIなし構成（configure --no-ai、delivery=not_applicable、Popen不呼出し）
+.\04_プログラム\venv\Scripts\python.exe -B -X utf8 -m unittest discover -s 07_監視システム -p test_ai_less.py
 # 毎回新しい出力フォルダを指定。実際のCodex利用はこの人工probeだけでも発生する。
 .\04_プログラム\venv\Scripts\python.exe -B -X utf8 07_監視システム/smoke.py --codex --output 07_監視システム/verification/<fresh-id>
 ```

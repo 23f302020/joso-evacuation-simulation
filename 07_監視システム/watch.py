@@ -144,15 +144,22 @@ def classify(snapshot, previous, now, stale_sec):
     return list(dict.fromkeys(flags))
 
 
-def save_event(directory, target, kind, evidence):
+def ai_enabled(config):
+    """Fail closed: AI diagnostics run only when the config explicitly enables them."""
+    return config.get('diagnostics_enabled', False) is True
+
+
+def save_event(directory, target, kind, evidence, ai_diagnostics=True):
     key = hashlib.sha256((target + '\0' + kind).encode()).hexdigest()[:32]
     path = directory / (key + '.json')
     # Only the exclusive daemon writes events. Existing delivery receipts survive restart.
     if not path.exists():
         routine_fixture = kind == 'completed' and evidence.get('purpose') == 'fixture'
+        # Without AI diagnostics no delivery is ever attempted, so it must not stay 'pending'.
+        delivery = 'not_required' if routine_fixture else ('pending' if ai_diagnostics else 'not_applicable')
         atomic_json(path, {'schema': 'simulation_watch_event_v1', 'id': key,
                           'at_utc': stamp(), 'target': target, 'kind': kind,
-                          'evidence': evidence, 'delivery': 'not_required' if routine_fixture else 'pending',
+                          'evidence': evidence, 'delivery': delivery,
                           'notification': 'not_required' if routine_fixture else 'pending', 'research_adoption': False})
     return path
 
@@ -451,7 +458,7 @@ class Dispatcher:
             self.child = None
         for path in sorted((self.runtime / 'events').glob('*.json')):
             event = self.read_event(path)
-            if event['delivery'] != 'pending' or not self.config['diagnostics_enabled']:
+            if event['delivery'] != 'pending' or not self.config.get('diagnostics_enabled', False):
                 continue
             receipts = [self.read_event(p).get('delivery_started_epoch', 0) for p in (self.runtime / 'events').glob('*.json')]
             if sum(t > now - 3600 for t in receipts) >= self.config['max_diagnostics_per_hour']:
@@ -494,7 +501,8 @@ def observe(config, runtime, state, now, probe=process_identity, match=command_m
     gap = now - state.get('observed_epoch', now)
     if gap > max(60, config.get('sample_sec', 10) * 4) and any(v.get('status') in ACTIVE for v in known.values()):
         save_event(runtime / 'events', 'monitor-gap:' + str(state.get('observed_epoch')), 'monitoring_gap',
-                   {'gap_sec': gap, 'previous_observation_utc': state.get('observed_at_utc')})
+                   {'gap_sec': gap, 'previous_observation_utc': state.get('observed_at_utc')},
+                   ai_diagnostics=ai_enabled(config))
     for name in discover(config):
         path = Path(name)
         old = known.get(name, {})
@@ -508,7 +516,7 @@ def observe(config, runtime, state, now, probe=process_identity, match=command_m
             current['historical'] = historical
             if not historical:
                 for kind in classify(current, old, now, config['stale_sec']):
-                    save_event(runtime / 'events', name, kind, current)
+                    save_event(runtime / 'events', name, kind, current, ai_diagnostics=ai_enabled(config))
             known[name] = current
         except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as error:
             failures = old.get('read_failures', 0) + 1
@@ -516,10 +524,10 @@ def observe(config, runtime, state, now, probe=process_identity, match=command_m
                        'read_error_type': type(error).__name__, 'read_error': str(error)[:1000]}
             known[name] = {**old, **failure}
             if failures >= 3:
-                save_event(runtime / 'events', name, 'unreadable_state', failure)
+                save_event(runtime / 'events', name, 'unreadable_state', failure, ai_diagnostics=ai_enabled(config))
     for name, old in known.items():
         if not Path(name).exists() and not old.get('historical'):
-            save_event(runtime / 'events', name, 'state_missing', {'source': name})
+            save_event(runtime / 'events', name, 'state_missing', {'source': name}, ai_diagnostics=ai_enabled(config))
     state.update(initialized=True, observed_at_utc=stamp(), observed_epoch=now, monitor_pid=os.getpid(),
                  monitor_identity=probe(os.getpid()), monitor_source_sha256=SOURCE_SHA)
     atomic_json(runtime / 'state.json', state)
@@ -553,7 +561,7 @@ def daemon(config, runtime, once=False):
                         try:
                             current = snapshot(Path(name), old, now)
                             for kind in classify(current, old, now, config['stale_sec']):
-                                save_event(runtime / 'events', name, kind, current)
+                                save_event(runtime / 'events', name, kind, current, ai_diagnostics=ai_enabled(config))
                             state['targets'][name] = current
                         except (OSError, ValueError, KeyError, TypeError):
                             pass  # periodic observation applies the partial-write grace period
