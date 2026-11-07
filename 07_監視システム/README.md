@@ -110,3 +110,7 @@ DispatcherだけにイベントJSONのmtime_ns/size照合キャッシュを追�
 ### 2026-11-07 — Graph送信器とOAuth（SP-04）
 
 graph_mail.py：標準ライブラリのみ。GraphTransportはmail_outboxの例外契約（TransportUnavailable／AuthRequired／AcceptanceUnknown）に従う。トークンはDPAPIで暗号化して保存し、ソース・ログ・文書に出さない。試験：`python -m unittest test_graph_mail`。アプリ登録とサインインはメール_アプリ登録とサインイン手順.md（ユーザー操作）。実送信とキュー送信ワーカーは未実施・未実装。
+
+### 2026-11-07 — 送信ワーカー
+
+`mail_worker.py`：`mail_enabled`が`true`のときだけ、キュー投入と1tick1通の送信を行う。`mail_worker.lock`で二重起動を拒否し、起動時に`sending`のまま残った分は再送しない。試験：`python -m unittest test_mail_worker`。常駐登録と実起動は未実施。
