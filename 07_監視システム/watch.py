@@ -164,6 +164,62 @@ def save_event(directory, target, kind, evidence, ai_diagnostics=True):
     return path
 
 
+# Only these reach the mail outbox; warnings (nonzero_*, log_error ...) stay local toasts.
+MAIL_KINDS = frozenset({'failed', 'process_absent', 'process_unknown', 'stalled',
+                        'process_identity_changed', 'process_command_mismatch',
+                        'state_missing', 'unreadable_state', 'all_complete'})
+
+
+def mail_worthy(kind):
+    return kind in MAIL_KINDS
+
+
+def all_complete_evidence(config, state):
+    """Evidence when the expected number of real targets finished and none is active, else None.
+
+    Cells run one after another, so 'nothing active' alone is not completion: the configured
+    expected_completed_targets must be reached. Unset/invalid fails closed (never fires).
+    """
+    expected = config.get('expected_completed_targets')
+    if type(expected) is not int or expected <= 0:
+        return None
+    live = [v for v in state.get('targets', {}).values() if not v.get('historical')]
+    if any(v.get('status') in ACTIVE for v in live):
+        return None
+    counted = [v for v in live if v.get('purpose') != 'fixture' and v.get('status') in SUCCESS]
+    if len(counted) < expected:
+        return None
+    failed = sum(v.get('status') in FAILURE for v in live)
+    return {'target_id': 'all_targets', 'completed_targets': len(counted), 'expected': expected,
+            'failed_preserved_targets': failed, 'source': 'monitor state',
+            'status': f'ALL_COMPLETE（成功{len(counted)}/期待{expected}、失敗保全{failed}）'}
+
+
+def detect_all_complete(config, runtime, state):
+    evidence = all_complete_evidence(config, state)
+    if evidence is not None:
+        save_event(runtime / 'events', 'all-targets', 'all_complete', evidence,
+                   ai_diagnostics=ai_enabled(config))
+
+
+def sync_mail_outbox(config, runtime):
+    """Queue mail-worthy events once; never sends (the transport is a separate, injected step)."""
+    if config.get('mail_enabled', False) is not True:
+        return 0
+    from mail_outbox import Outbox  # lazy: mail_outbox imports this module
+    outbox = Outbox(runtime / 'outbox')
+    queued = 0
+    for path in sorted((runtime / 'events').glob('*.json')):
+        event = read_json(path)
+        if event.get('schema') != 'simulation_watch_event_v1' or not mail_worthy(event.get('kind')):
+            continue
+        target = outbox.directory / (event['id'] + '.json')
+        if not target.exists():
+            outbox.enqueue(event)
+            queued += 1
+    return queued
+
+
 def process_identity(pid):
     """Creation FILETIME and live status from a real Windows process handle."""
     if not isinstance(pid, int) or isinstance(pid, bool) or pid <= 0:
@@ -429,6 +485,10 @@ class Dispatcher:
     def tick(self, now):
         # Local notifications must progress even while AI is busy or rate-limited.
         # Bound each tick so a backlog does not block process observation in one burst.
+        try:
+            sync_mail_outbox(self.config, self.runtime)
+        except Exception:
+            pass  # queueing must never stop observation; the event files stay the source of truth
         for path in sorted((self.runtime / 'events').glob('*.json')):
             event = self.read_event(path)
             if event['notification'] == 'pending':
@@ -528,6 +588,7 @@ def observe(config, runtime, state, now, probe=process_identity, match=command_m
     for name, old in known.items():
         if not Path(name).exists() and not old.get('historical'):
             save_event(runtime / 'events', name, 'state_missing', {'source': name}, ai_diagnostics=ai_enabled(config))
+    detect_all_complete(config, runtime, state)
     state.update(initialized=True, observed_at_utc=stamp(), observed_epoch=now, monitor_pid=os.getpid(),
                  monitor_identity=probe(os.getpid()), monitor_source_sha256=SOURCE_SHA)
     atomic_json(runtime / 'state.json', state)

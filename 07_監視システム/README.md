@@ -102,3 +102,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File 07_監視システム/in
 ### 2026-10-29 — 通知用イベントの重複読取を抑制
 
 DispatcherだけにイベントJSONのmtime_ns/size照合キャッシュを追加。manifest/progress/研究会計・SHAの読取はキャッシュしない。所有者は従来の単独daemon、ディレクトリを毎回探索し新規/更新/破損を読む。RED1→対象3/全41試験（新規/更新/破損、通知順/制限/実Windows本人確認を含む）を確認。保存済み302実イベントの4tick対照ではJSON読取2416→302、処理後の全ファイルbytes一致、送信なし。計測時間5.20→2.88秒は単発の順次・instrumented比較で実監視短縮率ではない。tracemallocはMock履歴も含むため実RSS減少を主張しない。旧36456不在後に新29900/作成FILETIME134376751074865224・tested SOURCE 908cff58920c2ae6fd140f7077d9b8fb2c21b3e0bfb78eccfc321f8397ee3d00へ反映。原イベント/配送状態と再起動空白を保全。実一巡の遅延・8GBホストのメモリ圧迫は未解決で、core前の鮮度条件を維持。研究common5/input/受入条件不変、全独立監査は同じ元65595/実36548を継続。証拠はproduction_repair_20261028/observer_event_read_cache/のbaseline/RED/GREEN/paired_saved_events/review_before_deployment/deployment。
+
+### 2026-11-07 — メール通知の接続（SP-05）
+
+異常停止と全対象完了だけをventsからoutboxへ投入する（mail_enabled: trueのときのみ。送信はしない）。全対象完了はxpected_completed_targets（整数）に達し実行中ゼロのときだけ発火する。試験：python -m unittest test_mail_wiring（	est_watch・	est_ai_less・	est_mail_outboxも実行）。
