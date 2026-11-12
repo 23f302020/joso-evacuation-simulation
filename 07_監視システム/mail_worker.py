@@ -76,10 +76,21 @@ def run(config, runtime, transport, sleep=time.sleep, clock=time.time, stop=lamb
 
 
 def build_transport(config, runtime):
-    import graph_mail
     recipient = config.get('mail_to')
     if not recipient:
         raise SystemExit('mail_to missing in config')
+    provider = config.get('mail_provider', 'graph')
+    if provider == 'gmail_smtp':
+        import graph_mail
+        import smtp_mail
+        sender = config.get('mail_sender')
+        if not sender:
+            raise SystemExit('mail_sender missing in config')
+        store = graph_mail.TokenStore(Path(runtime) / 'smtp_secret.bin')
+        return smtp_mail.SmtpTransport(sender, recipient, smtp_mail.password_from_store(store))
+    if provider != 'graph':
+        raise SystemExit(f'unknown mail_provider: {provider}')
+    import graph_mail
     auth = graph_mail.build_auth(config, runtime)
     transport = graph_mail.GraphTransport(auth.access_token, recipient, on_unauthorized=auth.invalidate)
     transport.keepalive = auth.access_token

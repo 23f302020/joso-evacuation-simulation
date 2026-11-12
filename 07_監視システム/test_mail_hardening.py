@@ -259,7 +259,20 @@ class Phases(unittest.TestCase):
     def test_normal_response_is_returned(self):
         class Ok(socketserver.BaseRequestHandler):
             def handle(self):
-                self.request.recv(65536)
+                data = b''
+                while b'\r\n\r\n' not in data:
+                    chunk = self.request.recv(65536)
+                    if not chunk:
+                        return
+                    data += chunk
+                head, _, body = data.partition(b'\r\n\r\n')
+                length = next((int(l.split(b':')[1]) for l in head.split(b'\r\n')
+                               if l.lower().startswith(b'content-length')), 0)
+                while len(body) < length:  # read the whole request: closing early resets the connection
+                    chunk = self.request.recv(65536)
+                    if not chunk:
+                        break
+                    body += chunk
                 self.request.sendall(b'HTTP/1.1 202 Accepted\r\nContent-Length: 0\r\nConnection: close\r\n\r\n')
         port = self.serve(Ok)
         self.assertEqual(graph_mail._post('http://127.0.0.1:%d/' % port, {}, b'{}', 3), (202, ''))
