@@ -37,7 +37,21 @@ Test-NetConnection smtp.gmail.com -Port 465 -InformationLevel Quiet
 ```
 
 `saved (Windows DPAPI, current user)` と出れば成功。保存先は `~\.jdrt-monitor\<識別子>\smtp_secret.bin`（暗号化）。
-4. **ワーカーを起動する**（試験メールを送る前に、件名・本文・宛先をユーザーが確認する）：
+4. **経路を確認する（メールは送らない）：**
+
+```powershell
+<ROOT>\04_プログラム\venv\Scripts\python.exe -B -X utf8 <ROOT>\07_監視システム\smtp_mail.py check
+```
+
+`OK: connected and signed in (nothing was sent)` と出れば、接続とサインインが通っている。失敗したときは、段階（`connect:…`、`login:…`）が表示される。
+5. **試験メールを1通送る（任意。内容を確認してから）：**
+
+```powershell
+<ROOT>\04_プログラム\venv\Scripts\python.exe -B -X utf8 <ROOT>\07_監視システム\smtp_mail.py send-test
+```
+
+宛先・件名・本文が画面に表示される。**`yes` と入力したときだけ**送られる。届いたら、宛先の受信箱と迷惑メールフォルダを確認する。
+6. **ワーカーを起動する**（試験メールを送る前に、件名・本文・宛先をユーザーが確認する）：
 
 ```powershell
 <ROOT>\04_プログラム\venv\Scripts\python.exe -B -X utf8 <ROOT>\07_監視システム\mail_worker.py run
@@ -61,3 +75,15 @@ Test-NetConnection smtp.gmail.com -Port 465 -InformationLevel Quiet
 ## 未実施・未確認
 - **実メール送信は未実施。** 学校ネットワークから Gmail（465番）に届くか、宛先に届くかは未確認。
 - 実装は偽のSMTPと 127.0.0.1 の擬似サーバーで試験済み。実際の Gmail との接続は未確認。
+
+## 追加の注意（独立レビューの指摘より）
+- アプリパスワードが失効する原因は、Google アカウントのパスワード変更だけではない：2段階認証の無効化、アプリパスワードの手動の削除、Google のセキュリティ判定でも起きる。新しい場所からの最初のログインが、`534 5.7.14` などで止められることもある（その場合は `auth_expired` になる）。
+- `Test-NetConnection` が `True` でも、学校の TLS 検査装置があると、証明書エラーで失敗することがある。`smtp_mail.py check` が確実な確認。
+- **`config.json` を変えたら、ワーカーを再起動する**（設定は起動時に1回だけ読む）。
+- **ワーカーは、まだ常駐タスクになっていない**（`install.ps1` は監視だけ）。PC の再起動やサインアウトで止まる。常駐登録は別作業（未実施）。
+- `mail_enabled_since` は文字列として比較される。`2026-11-12T00:00:00+00:00` の形（`+00:00`）で書く。
+- **`accepted`（受付）は、配達ではない。** 宛先を書き間違えても、送信側は `accepted` のまま、不達通知は送信専用 Gmail の受信箱に入る。試験のときに、送信専用 Gmail の受信箱も確認する。
+- 認証に失敗すると（`auth_expired`）、ワーカーは、`resume` するまで、新しいメールでも、ログインを試みない（失敗ログインを重ねて、Google 側でロックされるのを防ぐため）。
+- 再試行中（3回目以降）は、理由の段階（`connect:TimeoutError`、`rcpt:450` など）が、ローカルの通知と `status.html` に出る。
+- 通信（465 番）がプロキシ必須のネットワークでは使えない。その場合は、HTTPS で動く方式（Gmail API など）が代案になる（未実装）。
+- DATA コマンドへの応答の前に切れた場合も「受付不明」になる（安全側）。再送できる通知を一部失う可能性がある（未対応）。

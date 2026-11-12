@@ -270,10 +270,16 @@ def surface_mail_trouble(config, runtime):
         except (OSError, ValueError):
             continue
         state = message.get('state')
-        if state in MAIL_TROUBLE:
-            save_event(Path(runtime) / 'events', 'mail:' + str(message.get('id')), 'mail_' + state,
-                       {'target_id': str(message.get('id')), 'status': state, 'source': str(path)},
-                       ai_diagnostics=ai_enabled(config))
+        if state == 'queued' and int(message.get('attempts', 0)) >= 3:
+            kind = 'mail_retrying'  # still retrying, but the user should know why
+            status = f"queued（再試行{message.get('attempts')}回目。理由：{message.get('last_error') or '不明'}）"
+        elif state in MAIL_TROUBLE:
+            kind, status = 'mail_' + state, state
+        else:
+            continue
+        save_event(Path(runtime) / 'events', 'mail:' + str(message.get('id')), kind,
+                   {'target_id': str(message.get('id')), 'status': status, 'source': str(path)},
+                   ai_diagnostics=ai_enabled(config))
 
 
 def process_identity(pid):

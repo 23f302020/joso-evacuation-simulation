@@ -137,6 +137,9 @@ function Invoke-Bootstrap {
     $net = $false
     try { $net = Test-NetConnection -ComputerName graph.microsoft.com -Port 443 -InformationLevel Quiet -WarningAction SilentlyContinue } catch { $net = $false }
     $notes += $(if ($net) { 'graph.microsoft.com:443 到達可' } else { 'graph.microsoft.com:443 到達不可（メールのみ影響。段7で要確認）' })
+    $smtp = $false
+    try { $smtp = Test-NetConnection -ComputerName smtp.gmail.com -Port 465 -InformationLevel Quiet -WarningAction SilentlyContinue } catch { $smtp = $false }
+    $notes += $(if ($smtp) { 'smtp.gmail.com:465 到達可' } else { 'smtp.gmail.com:465 到達不可（Gmail送信のみ影響。smtp_mail.py check で確認）' })
     if ($problems) { Add-Result '段0 前提' 'STOP' ($problems -join ' / ') } else { Add-Result '段0 前提' 'OK' ($notes -join ' / ') }
 
     # --- 段2 venv ---
@@ -308,7 +311,7 @@ function Invoke-Bootstrap {
     Write-Host ''
     Write-Host '== ユーザー操作が必要（この関数では行わない）'
     Write-Host '  - 段1: robocopy でのコピー（02_robocopy.ps1。未了ならこの段の前に）'
-    Write-Host '  - 段7: アプリ登録 → JDRT_MAIL_CLIENT_ID の設定 → graph_mail.py signin → 同意 → config の mail_enabled / mail_to / expected_completed_targets'
+    Write-Host '  - 段7: メール（現行は Gmail SMTP）: 送信専用Gmail作成 → 2段階認証 → アプリパスワード → config の mail_provider / mail_sender / mail_to / mail_enabled_since → smtp_mail.py setup → check → send-test → mail_worker.py run（手順書: メール_Gmail送信の設定手順.md）'
     Write-Host '  - 段8: ロック・スリープ・サインアウトの観察と記録、日本語パスでの起動結果の記録'
     Write-Host '  - 研究run・READY・sv26103006の再実行は、ユーザーの指示があるまで行わない'
     return $results

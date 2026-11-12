@@ -142,7 +142,15 @@ class Outbox:
 
     def resume_after_signin(self):
         """Only auth_expired messages return to the queue; uncertain/failed ones never do."""
-        return self._retag('auth_expired', 'queued')
+        return self._retag('auth_expired', 'queued', reset_attempts=True)  # a fresh retry window
+
+    def waiting_for_signin(self):
+        """True while any message waits for a sign-in: nothing should try to log in again meanwhile."""
+        for path in self._files():
+            message = self._read(path)
+            if message is not None and message.get('state') == 'auth_expired':
+                return True
+        return False
 
     def resume_unsent(self):
         """Re-queue only failures where the server never took the message (unsent_confirmed)."""
@@ -162,7 +170,9 @@ class Outbox:
             try:
                 transport.send(message)
                 message.update(state='accepted', accepted_at_utc=stamp())
-            except TransportUnavailable:
+            except TransportUnavailable as error:
+                # Only a stage code such as 'rcpt:450' is kept: never server text, which could echo secrets.
+                message['last_error'] = re.sub(r'[^A-Za-z0-9:_.-]', '', (str(error).split() or [''])[0])[:60]
                 exhausted = ((self.max_attempts is not None and message['attempts'] >= self.max_attempts)
                              or now - first >= self.give_up_after_sec)
                 if exhausted:

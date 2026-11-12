@@ -153,9 +153,9 @@ class Secrets(unittest.TestCase):
             provider = smtp_mail.password_from_store(store)
             with self.assertRaises(AuthRequired):
                 provider()
-            smtp_mail.save_password(store, SECRET)
-            self.assertEqual(provider(), SECRET)
-            self.assertNotIn(SECRET.encode(), (Path(temp) / 's.bin').read_bytes())
+            smtp_mail.save_password(store, 'abcd efgh ijkl mnop')
+            self.assertEqual(provider(), 'abcdefghijklmnop')
+            self.assertNotIn(b'abcdefghijklmnop', (Path(temp) / 's.bin').read_bytes())
 
     def test_module_has_no_embedded_password_or_address(self):
         text = Path(smtp_mail.__file__).read_text(encoding='utf-8')

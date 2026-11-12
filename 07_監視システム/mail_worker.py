@@ -23,7 +23,10 @@ def worker_tick(config, runtime, transport, now):
     if config.get('mail_enabled', False) is not True:
         return None
     watch.sync_mail_outbox(config, Path(runtime))
-    return _outbox(runtime).send_next(transport, now)
+    outbox = _outbox(runtime)
+    if outbox.waiting_for_signin():
+        return None  # every further attempt is another failed login; wait for `resume`
+    return outbox.send_next(transport, now)
 
 
 def start(runtime):
