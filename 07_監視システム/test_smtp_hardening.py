@@ -45,6 +45,37 @@ class Password(unittest.TestCase):
             transport(fake).send(MESSAGE)
 
 
+class PasswordInput(unittest.TestCase):
+    """What a terminal paste can bring along, and a failure message that explains without revealing."""
+
+    def saved(self, raw):
+        with tempfile.TemporaryDirectory() as temp:
+            store = TokenStore(Path(temp) / 's.bin', xor, xor)
+            smtp_mail.save_password(store, raw)
+            return store.load()[smtp_mail.SECRET_KEY]
+
+    def test_paste_markers_and_control_characters_are_ignored(self):
+        for raw in ('\x1b[200~abcdefghijklmnop\x1b[201~', 'abcdefghijklmnop\r\n', '\ufeffabcd efgh ijkl mnop\x00',
+                    'abcdefgh\x08ijklmnop'.replace('\x08', '')):
+            self.assertEqual(self.saved(raw), GOOD, repr(raw))
+
+    def test_the_failure_message_counts_but_never_shows_the_input(self):
+        with tempfile.TemporaryDirectory() as temp:
+            store = TokenStore(Path(temp) / 's.bin', xor, xor)
+            secretish = 'Zq9-Longer-Than-Sixteen-Chars!'
+            with self.assertRaises(ValueError) as caught:
+                smtp_mail.save_password(store, secretish)
+            message = str(caught.exception)
+            self.assertIn(str(len(secretish)), message)  # the length after cleaning
+            self.assertNotIn('Zq9', message)
+            self.assertNotIn('Longer', message)
+            self.assertTrue(any(word in message for word in ('letters', 'symbols', 'non-ASCII')))
+        with tempfile.TemporaryDirectory() as temp:
+            store = TokenStore(Path(temp) / 's.bin', xor, xor)
+            with self.assertRaises(ValueError) as caught:
+                smtp_mail.save_password(store, '')
+            self.assertIn('empty', str(caught.exception).lower())
+
 class Auth(unittest.TestCase):
     def check(self, code, expected):
         with self.assertRaises(expected, msg=code):

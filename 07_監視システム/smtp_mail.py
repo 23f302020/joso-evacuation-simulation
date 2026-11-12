@@ -56,11 +56,30 @@ def build_email(message, sender, recipient):
     return msg.as_bytes(policy=email.policy.SMTP)
 
 
+ANSI_SEQUENCE = re.compile(r'\x1b\[[0-9;?]*[ -/]*[@-~]')
+
+
+def clean_password(raw):
+    """Google shows the 16 characters in groups, and a terminal paste can bring invisible markers
+    (bracketed-paste escapes, a BOM, a trailing newline): drop all of that before validating."""
+    return re.sub(r'[\s\x00-\x1f\x7f﻿]+', '', ANSI_SEQUENCE.sub('', raw))
+
+
+def _password_problem(cleaned):
+    """Explain a rejected input by counts only: the characters themselves are never echoed."""
+    if not cleaned:
+        return 'nothing was entered (empty input)'
+    non_ascii = sum(ord(c) > 127 for c in cleaned)
+    symbols = sum(c.isascii() and not c.isalnum() for c in cleaned)
+    letters = len(cleaned) - non_ascii - symbols
+    return (f'an app password is 16 ASCII letters or digits; the input has {len(cleaned)} characters '
+            f'({letters} letters/digits, {symbols} symbols, {non_ascii} non-ASCII)')
+
+
 def save_password(store, password):
-    """Google shows the 16 characters in groups: drop every kind of whitespace, then validate."""
-    cleaned = re.sub(r'\s+', '', password)
+    cleaned = clean_password(password)
     if not re.fullmatch(r'[A-Za-z0-9]{16}', cleaned):
-        raise ValueError('an app password is 16 ASCII letters or digits (spaces are ignored)')
+        raise ValueError(_password_problem(cleaned))
     store.save({SECRET_KEY: cleaned})
 
 
