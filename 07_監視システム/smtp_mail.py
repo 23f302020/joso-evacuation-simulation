@@ -13,6 +13,7 @@ Commands: `setup` (store the app password), `check` (connect and sign in; sends 
 `send-test` (shows the message and sends one test mail only after you type yes).
 """
 import argparse
+from datetime import datetime, timezone
 import email.policy
 import email.utils
 import getpass
@@ -91,6 +92,45 @@ def password_from_store(store):
             raise AuthRequired('smtp app password not set')
         return password
     return provider
+
+
+GMAIL_SENDER = re.compile(r'[^@\s]+@(gmail|googlemail)\.com', re.IGNORECASE)
+ADDRESS = re.compile(r'[^@\s]+@[^@\s]+\.[^@\s]+')
+
+
+def _utc_text(value):
+    return value.astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%S+00:00')
+
+
+def configure_mail(config_path, sender, recipient, since=None, enable=None, now=None):
+    """Write the Gmail settings into the monitor config.json; every other key is kept.
+
+    Nothing secret is written (the app password is stored separately by `setup`). Invalid input
+    raises ValueError before anything is written. An existing mail_enabled_since is kept unless a
+    new one is given, so the window of mailed events never moves silently. Enabling is explicit.
+    """
+    from watch import atomic_json, read_json
+    path = Path(config_path)
+    config = read_json(path)  # FileNotFoundError when absent: a config is never created here
+    if not GMAIL_SENDER.fullmatch(sender or ''):
+        raise ValueError('mail_sender must be a Gmail address')
+    if not ADDRESS.fullmatch(recipient or ''):
+        raise ValueError('mail_to is not an e-mail address')
+    if since is not None:
+        try:
+            parsed = datetime.fromisoformat(since)
+        except ValueError:
+            raise ValueError('since must be ISO 8601 with a time zone') from None
+        if parsed.tzinfo is None:
+            raise ValueError('since must be ISO 8601 with a time zone')
+        config['mail_enabled_since'] = _utc_text(parsed)
+    elif not config.get('mail_enabled_since'):
+        config['mail_enabled_since'] = _utc_text(now or datetime.now(timezone.utc))
+    config.update(mail_provider='gmail_smtp', mail_sender=sender, mail_to=recipient)
+    if enable is not None:
+        config['mail_enabled'] = bool(enable)
+    atomic_json(path, config)
+    return {key: config.get(key) for key in ('mail_provider', 'mail_enabled_since', 'mail_enabled')}
 
 
 def _stage(stage, detail):
@@ -231,9 +271,23 @@ def main():
     from watch import BASE, read_json
     import mail_worker
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['setup', 'check', 'send-test'])
+    parser.add_argument('action', choices=['setup', 'check', 'send-test', 'configure'])
     parser.add_argument('--config', type=Path, default=BASE / 'config.json')
+    parser.add_argument('--sender', help='configure: the Gmail address that sends the notifications')
+    parser.add_argument('--to', help='configure: the address that receives them')
+    parser.add_argument('--since', help='configure: ISO 8601 with time zone; older events are never mailed')
+    switch = parser.add_mutually_exclusive_group()
+    switch.add_argument('--enable', action='store_true', help='configure: set mail_enabled to true')
+    switch.add_argument('--disable', action='store_true', help='configure: set mail_enabled to false')
     args = parser.parse_args()
+    if args.action == 'configure':
+        enable = True if args.enable else (False if args.disable else None)
+        try:
+            result = configure_mail(args.config, args.sender, args.to, since=args.since, enable=enable)
+        except (ValueError, FileNotFoundError) as error:
+            raise SystemExit(f'not changed: {error}')
+        print('configured (sender and recipient set): ' + ', '.join(f'{k}={v}' for k, v in result.items()))
+        return 0
     config = read_json(args.config)
     if args.action == 'setup':
         password = getpass.getpass('Gmail app password (input is hidden): ')
