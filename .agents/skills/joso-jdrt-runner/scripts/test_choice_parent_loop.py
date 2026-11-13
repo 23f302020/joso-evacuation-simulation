@@ -671,7 +671,7 @@ class DefaultMailCheck(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        base = Path(self.temp.name)
+        base = Path(self.temp.name).resolve()  # patterns are compared with the resolved workspace (8.3 short TEMP)
         self.world = FakeWorld(base / 'project')
         self.runtime = base / 'runtime'
         self.config_path = base / 'monitor_config.json'

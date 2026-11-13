@@ -92,7 +92,7 @@ class TransactionTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        self.root = Path(self.temp.name)
+        self.root = Path(self.temp.name).resolve()  # match the resolved root of production (8.3 short TEMP)
         self.cfg = {'protocol': 'realtime_choice_v1', 'registration_id': 'artificial',
                     'cells': [{'cell_id': f'artificial_{i}'} for i in range(3)]}
         self.rows = [{'protocol': self.cfg['protocol'], 'registration_id': 'artificial',
@@ -460,7 +460,7 @@ class ObserverGapTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        self.root = Path(self.temp.name)
+        self.root = Path(self.temp.name).resolve()  # match the resolved root of production (8.3 short TEMP)
 
     def core_fixture(self, times, results, observer):
         owner = sequence.Sequence.__new__(sequence.Sequence)

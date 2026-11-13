@@ -260,7 +260,8 @@ class ExecutionTiming(unittest.TestCase):
 class Contracts(unittest.TestCase):
     def test_read_failure_records_exception_without_losing_previous_identity(self):
         with tempfile.TemporaryDirectory() as folder:
-            root = Path(folder)
+            # discover() keys targets by resolved paths; TEMP may hold an 8.3 short name (e.g. XXXXX~1).
+            root = Path(folder).resolve()
             source = root / 'manifest.json'
             source.write_text('{}', encoding='utf-8')
             runtime = root / 'runtime'
@@ -494,7 +495,8 @@ class Contracts(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             command = watch.diagnostic_command({'runtime': folder, 'codex_exe': 'codex.exe', 'model': 'test'}, Path('relative.reply'))
             self.assertTrue(Path(command[command.index('-o') + 1]).is_absolute())
-            self.assertEqual(Path(command[command.index('-C') + 1]), Path(folder) / 'diagnostic_context')
+            # diagnostic_command resolves the context path; compare against the resolved form (8.3 short TEMP).
+            self.assertEqual(Path(command[command.index('-C') + 1]), Path(folder).resolve() / 'diagnostic_context')
             self.assertIn('--ignore-user-config', command)
 
     def test_hourly_limit_preserves_pending_events(self):
