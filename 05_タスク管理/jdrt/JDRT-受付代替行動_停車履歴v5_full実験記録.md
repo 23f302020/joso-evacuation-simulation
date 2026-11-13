@@ -43,3 +43,10 @@ protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029�
 
 cell=fixed_reference_u50_r2p900_seed23423。10/30に旧OneDrive rootで完走した後、11/6にローカルrootで独立validateを行いINVALIDとなった。不一致は実行環境の絶対パス3件だけで、SHAはすべて一致。専用rejectでINVALID_PRESERVEDとした。正式記録ではなく、台帳行もない。同じセルは学校PCで新しいREADYを取った後、新しいrun IDで実行する。経緯は決定ログ2026-11-06。
 検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26103006_20261106T180735332274.json`／診断：`…/driver_logs/sv26103006.diagnosis.json`。
+
+
+<!-- choice_record:sv26110801 -->
+### sv26110801（2026-11-08T08:22:02.718047+09:00正式記録）
+
+protocol=realtime_choice_v1、registration=choice_shared_stopindex_v5_20261029、cell=fixed_reference_u50_r2p900_seed23423、R2P900、seed=23423。独立検証PASS・研究採用可。人物11965、要求900。主指標の施設受入=1/544、退出181は別計上。全登録セル完了前に方向解釈しない。
+一次検証：`04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/validation_reports/validate_sv26110801_20261108T082202645449.json`。次の1件は専用CLI statusを参照。
