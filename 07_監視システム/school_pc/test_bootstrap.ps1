@@ -50,4 +50,24 @@ Assert-Equal (Select-JsonLine @('only text')) $null 'JSON 行が無ければ nul
 Assert-Equal (Select-Sha256Line @('x', ('a' * 64), 'warning')) ('a' * 64) 'SHA 行を取る（末尾の警告を無視）'
 Assert-Equal (Select-Sha256Line @('x')) $null 'SHA 行が無ければ null'
 
+# 段8：監視の子孫だけを AI プロセスとして数える（ChatGPT アプリ等の codex は無関係として扱う）
+function P($id, $parent, $name) { [pscustomobject]@{ ProcessId = $id; ParentProcessId = $parent; Name = $name } }
+$procs = @(
+    (P 100 4 'explorer.exe'),
+    (P 200 100 'pythonw.exe'), (P 201 200 'pythonw.exe'),          # 監視（venv の起動シム → 実体）
+    (P 300 201 'codex.exe'),                                      # 監視が起動した AI
+    (P 400 100 'ChatGPT.exe'), (P 401 400 'codex.exe'),            # 無関係
+    (P 402 700 'codex-windows-sandbox-service.exe'),              # 無関係（親は services 等）
+    (P 500 201 'cmd.exe'), (P 501 500 'Claude.exe')               # 孫の AI（大文字小文字は区別しない）
+)
+Assert-Equal (@(Find-AiDescendants $procs @(200)) | ForEach-Object ProcessId | Sort-Object) @(300, 501) '監視の子孫の AI だけを見つける'
+Assert-Equal (@(Get-UnrelatedAi $procs @(200)) | ForEach-Object ProcessId | Sort-Object) @(401, 402) '無関係の AI は別に数える'
+$clean = @((P 200 100 'pythonw.exe'), (P 201 200 'pythonw.exe'), (P 401 400 'codex.exe'))
+Assert-Equal @(Find-AiDescendants $clean @(200)).Count 0 '監視の子孫に AI がなければ 0 件'
+$loop = @((P 600 601 'pythonw.exe'), (P 601 600 'pythonw.exe'))
+Assert-Equal @(Find-AiDescendants $loop @(600)).Count 0 '親子の循環があっても止まる'
+Assert-Equal (Get-Stage8Verdict -AiDescendants 0 -Pending 0 -MonitorFound $true) 'OK' '段8：AIなし・pendingなしは OK'
+Assert-Equal (Get-Stage8Verdict -AiDescendants 1 -Pending 0 -MonitorFound $true) 'STOP' '段8：監視の子孫に AI があれば STOP'
+Assert-Equal (Get-Stage8Verdict -AiDescendants 0 -Pending 2 -MonitorFound $true) 'STOP' '段8：pending が残れば STOP'
+Assert-Equal (Get-Stage8Verdict -AiDescendants 0 -Pending 0 -MonitorFound $false) 'STOP' '段8：監視プロセスが見つからなければ STOP'
 if ($script:failed) { "`n$($script:failed) 件失敗"; exit 1 } else { "`n全件PASS" }

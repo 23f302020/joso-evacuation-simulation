@@ -26,6 +26,7 @@ $ErrorActionPreference = 'Stop'
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 if (-not $Root) { $Root = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)) }
 $TaskName = 'JDRT-SimulationWatch'
+$AiNamePattern = '^(codex|claude)'  # 段8：AI のプロセス名（大文字小文字は区別しない）
 $MinFreeGB = 10
 # 研究は選択済み native toolchain の traci/sumolib を使う（段3で検証）。venv には要求しない。
 $NativeProvided = @('sumolib', 'traci')
@@ -86,6 +87,41 @@ function Select-Sha256Line([string[]]$Lines) {
     return $null
 }
 
+function Find-AiDescendants($Processes, [int[]]$RootIds) {
+    # 監視・ワーカーのプロセスから親子をたどり、子孫のうち AI 名のものだけを返す（循環しても止まる）
+    $children = @{}
+    foreach ($p in $Processes) {
+        $key = [int]$p.ParentProcessId
+        if (-not $children.ContainsKey($key)) { $children[$key] = New-Object System.Collections.ArrayList }
+        [void]$children[$key].Add($p)
+    }
+    $seen = New-Object 'System.Collections.Generic.HashSet[int]'
+    $queue = New-Object System.Collections.Queue
+    foreach ($r in $RootIds) { [void]$seen.Add([int]$r); $queue.Enqueue([int]$r) }
+    $found = @()
+    while ($queue.Count) {
+        $id = $queue.Dequeue()
+        if (-not $children.ContainsKey($id)) { continue }
+        foreach ($c in $children[$id]) {
+            if (-not $seen.Add([int]$c.ProcessId)) { continue }
+            if ($c.Name -match $AiNamePattern) { $found += $c }
+            $queue.Enqueue([int]$c.ProcessId)
+        }
+    }
+    return $found
+}
+
+function Get-UnrelatedAi($Processes, [int[]]$RootIds) {
+    # 監視の子孫ではない AI 名のプロセス（ChatGPT/Codex アプリ等）。判定には含めず、記録として示す
+    $mine = @{}
+    foreach ($d in (Find-AiDescendants $Processes $RootIds)) { $mine[[int]$d.ProcessId] = $true }
+    return @($Processes | Where-Object { $_.Name -match $AiNamePattern -and -not $mine.ContainsKey([int]$_.ProcessId) -and ($RootIds -notcontains [int]$_.ProcessId) })
+}
+
+function Get-Stage8Verdict([int]$AiDescendants, [int]$Pending, [bool]$MonitorFound) {
+    if (-not $MonitorFound -or $AiDescendants -gt 0 -or $Pending -gt 0) { return 'STOP' }
+    return 'OK'
+}
 # ---------- 実行系 ----------
 function Invoke-External([string]$Exe, [string[]]$Arguments) {
     $prev = $ErrorActionPreference
@@ -291,7 +327,10 @@ function Invoke-Bootstrap {
     if ($b) { Add-Result '段8 自動確認' 'SKIP' $b }
     else {
         $cfg = Get-Content -LiteralPath $configPath -Raw -Encoding UTF8 | ConvertFrom-Json
-        $codex = @(Get-Process -Name 'codex*' -ErrorAction SilentlyContinue).Count
+        $table = @(Get-CimInstance Win32_Process | Select-Object ProcessId, ParentProcessId, Name, CommandLine)
+        $roots = @($table | Where-Object { $_.Name -match '^pythonw?(\.exe)?$' -and $_.CommandLine -match '(watch|mail_worker)\.py' } | ForEach-Object { [int]$_.ProcessId })
+        $ai = @(Find-AiDescendants $table $roots)
+        $other = @(Get-UnrelatedAi $table $roots)
         $pending = 0
         $events = Join-Path $cfg.runtime 'events'
         if (Test-Path -LiteralPath $events) {
@@ -299,9 +338,19 @@ function Invoke-Bootstrap {
                 try { if ((Get-Content -LiteralPath $f.FullName -Raw -Encoding UTF8 | ConvertFrom-Json).delivery -eq 'pending') { $pending++ } } catch { }
             }
         }
-        if ($codex -gt 0) { Add-Result '段8 自動確認' 'STOP' "codex プロセスが $codex 件ある（AIなし方針に反する）" }
-        elseif ($pending -gt 0) { Add-Result '段8 自動確認' 'STOP' "delivery=pending のイベントが $pending 件（AIなしでは残らないはず）" }
-        else { Add-Result '段8 自動確認' 'OK' 'AIプロセスなし・pending配送なし。ロック/スリープ/サインアウトの観察は手動（04文書）' }
+        $otherNote = ''
+        if ($other.Count) {
+            $names = foreach ($o in $other) { $par = $table | Where-Object { $_.ProcessId -eq $o.ParentProcessId } | Select-Object -First 1; "$($o.Name)←$(if ($par) { $par.Name } else { '親不明' })" }
+            $otherNote = "監視とは無関係の AI プロセス $($other.Count) 件（$($names -join '、')）は判定に含めない。"
+        }
+        switch (Get-Stage8Verdict -AiDescendants $ai.Count -Pending $pending -MonitorFound ($roots.Count -gt 0)) {
+            'OK' { Add-Result '段8 自動確認' 'OK' "監視・ワーカーの子孫に AI プロセスなし、pending配送なし。$otherNote ロック/スリープ/サインアウトの観察は手動（04文書）" }
+            default {
+                if ($roots.Count -eq 0) { Add-Result '段8 自動確認' 'STOP' '監視（watch.py）のプロセスが見つからない' }
+                elseif ($ai.Count) { Add-Result '段8 自動確認' 'STOP' ("監視・ワーカーの子孫に AI プロセスが $($ai.Count) 件（" + (($ai | ForEach-Object { "$($_.Name) pid=$($_.ProcessId)" }) -join '、') + '）。AIなし方針に反する') }
+                else { Add-Result '段8 自動確認' 'STOP' "delivery=pending のイベントが $pending 件（AIなしでは残らないはず）" }
+            }
+        }
     }
 
     # --- 要約 ---
