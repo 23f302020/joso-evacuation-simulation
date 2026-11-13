@@ -712,6 +712,89 @@ class DefaultMailCheck(unittest.TestCase):
         self.assert_not_ready()
         self.holder = parent.ParentLock(self.runtime / 'mail_worker.lock')
 
+    def test_gmail_smtp_needs_a_sender_and_a_saved_password(self):
+        smtp = {'mail_provider': 'gmail_smtp', 'mail_sender': 'artificial.sender@example.invalid'}
+        self.assert_not_ready(**smtp)  # no smtp_secret.bin yet
+        (self.runtime / 'smtp_secret.bin').write_bytes(b'artificial')
+        self.assertEqual(self.check(**smtp)['mail_path'], 'ready')
+        self.assert_not_ready(**dict(smtp, mail_sender=''))
+
+    def test_failed_or_long_retrying_notices_are_refused_and_uncertain_is_only_reported(self):
+        outbox = self.runtime / 'outbox'
+        write(outbox / 'm1.json', {'state': 'failed_preserved', 'unsent_confirmed': True})
+        self.assert_not_ready()
+        (outbox / 'm1.json').unlink()
+        write(outbox / 'm2.json', {'state': 'queued', 'attempts': 3})
+        self.assert_not_ready()
+        write(outbox / 'm2.json', {'state': 'queued', 'attempts': 2})
+        write(outbox / 'm3.json', {'state': 'uncertain_preserved'})
+        write(outbox / 'm4.json', {'state': 'accepted'})
+        self.assertEqual(self.check(), {'mail_path': 'ready', 'uncertain_preserved': 1})
+
+
+class Preflight(Harness):
+    """`preflight` checks the start conditions of `run` and changes nothing."""
+
+    def snapshot(self):
+        return sorted((str(p.relative_to(self.world.root)), p.stat().st_size)
+                      for p in self.world.root.rglob('*') if p.is_file())
+
+    def test_ready_world_is_ready_and_nothing_is_written_or_called(self):
+        before = self.snapshot()
+        result = self.loop().preflight()
+        self.assertTrue(result['ready'], result)
+        self.assertEqual(result['checks']['ledger'], {'ok': True, 'recorded_cells': 1, 'total_cells': 4,
+                                                      'prior_readback': str(self.world.prior.resolve()),
+                                                      'next_run_id': 'np261102'})
+        self.assertEqual(result['checks']['settings'], {'ok': True, 'stored': False})
+        self.assertEqual(self.snapshot(), before)  # settings are not stored by a preflight
+        self.assertEqual((self.world.calls, self.events), ([], []))
+
+    def test_iteration_prechecks_of_run_are_also_checked(self):
+        bad = self.world.root / 'bad_readback.json'
+        write(bad, {'status': 'INVALID'})
+        self.assertEqual(self.loop(prior=bad).preflight()['checks']['ledger']['code'], 'PRIOR_READBACK_INVALID')
+        (self.world.workspace / 'runs' / 'np261102').mkdir(parents=True)
+        self.assertEqual(self.loop().preflight()['checks']['ledger']['code'], 'RUN_ID_IN_USE')
+        self.assertTrue(self.loop(prefix='np2612').preflight()['ready'])
+        self.assertEqual(self.loop(prefix='bad prefix!').preflight()['checks']['ledger']['code'], 'USAGE_ERROR')
+
+    def test_checkpoint_and_settings_follow_run(self):
+        path = self.world.root / 'settings.json'
+        write(path, {'schema': parent.SETTINGS_SCHEMA, 'checkpoint_recorded_counts': [1]})
+        self.assertEqual(self.loop(settings=path).preflight()['checks']['ledger']['code'], 'CHECKPOINT_REACHED')
+        self.assertEqual(self.loop(settings=path).run(), parent.EXIT_STOPPED)  # run agrees, and stores settings
+        self.assertEqual(self.loop().preflight()['checks']['settings']['code'], 'USAGE_ERROR')  # differ from stored
+
+    def test_each_failing_condition_is_named(self):
+        self.monitor_ok = False
+        self.mail_ok = False
+        result = self.loop().preflight()
+        self.assertFalse(result['ready'])
+        self.assertEqual(result['checks']['monitor']['code'], 'MONITOR_NOT_PROVEN')
+        self.assertEqual(result['checks']['mail_path']['code'], 'MAIL_PATH_NOT_READY')
+        self.assertTrue(result['checks']['ledger']['ok'])
+        self.assertEqual(self.events, [])
+
+    def test_unacknowledged_stop_interrupted_parent_and_missing_readback_are_not_ready(self):
+        write(self.directory() / 'stops' / 's1.json', {'stop_id': 's1', 'code': 'X'})
+        write(self.directory() / 'parent_state.json', {'phase': 'sequence_running'})
+        result = self.loop(prior=None).preflight()
+        self.assertFalse(result['ready'])
+        self.assertEqual(result['checks']['stops'], {'ok': False, 'unacknowledged': ['s1']})
+        self.assertEqual(result['checks']['previous_parent'], {'ok': False, 'phase': 'sequence_running'})
+        self.assertEqual(result['checks']['ledger']['code'], 'USAGE_ERROR')
+
+    def test_held_parent_lock_is_not_ready(self):
+        self.directory().mkdir(parents=True)
+        holder = parent.ParentLock(self.directory() / 'parent.lock')
+        try:
+            self.assertEqual(self.loop().preflight()['checks']['parent_lock'],
+                             {'ok': False, 'code': 'ANOTHER_PARENT_RUNNING'})
+        finally:
+            holder.close()
+        self.assertTrue(self.loop().preflight()['ready'])
+
 
 class DefaultRunnerRecordsChild(unittest.TestCase):
     """Review D1: the child PID and creation time are kept in parent_state (record only)."""

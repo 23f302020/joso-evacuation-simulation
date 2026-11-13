@@ -338,6 +338,11 @@ class ParentLoop:
             problems.append('mail_enabled is not true in the monitor config')
         if not config.get('mail_to'):
             problems.append('mail_to is missing in the monitor config')
+        if config.get('mail_provider') == 'gmail_smtp':
+            if not config.get('mail_sender'):
+                problems.append('mail_sender is missing in the monitor config (gmail_smtp)')
+            if not (runtime / 'smtp_secret.bin').exists():  # existence only: the secret is never read here
+                problems.append('app password not saved (smtp_secret.bin missing; run smtp_mail.py setup)')
         lock = runtime / 'mail_worker.lock'
         if not lock.exists():
             problems.append('mail_worker.lock missing (mail worker not started)')
@@ -347,21 +352,33 @@ class ParentLoop:
                 problems.append('mail worker not running (its lock is free)')
             except RuntimeError:
                 pass  # held by the live worker
-        expired = 0
+        expired = failed = retrying = uncertain = 0
         for path in sorted((runtime / 'outbox').glob('*.json')) if (runtime / 'outbox').exists() else []:
             try:
-                expired += read_json(path).get('state') == 'auth_expired'
+                message = read_json(path)
             except (OSError, ValueError):
                 problems.append('outbox message unreadable: ' + path.name)
+                continue
+            state = message.get('state')
+            expired += state == 'auth_expired'
+            failed += state == 'failed_preserved'
+            retrying += state == 'queued' and int(message.get('attempts') or 0) >= 3
+            uncertain += state == 'uncertain_preserved'
         if expired:
             problems.append(f'{expired} outbox message(s) auth_expired (sign in again, then mail_worker.py resume)')
+        if failed:
+            problems.append(f'{failed} outbox message(s) failed_preserved (a notice never reached the user; '
+                            'review, then mail_worker.py resume-unsent or move the file aside with a reason)')
+        if retrying:
+            problems.append(f'{retrying} outbox message(s) still retrying after 3+ attempts (network or server)')
         wanted = os.path.normcase(str(self.workspace / 'runs' / '*' / 'manifest.json'))
         if not any(os.path.normcase(str(Path(p))) == wanted for p in config.get('patterns') or []):
             problems.append('monitor patterns do not include this workspace runs/*/manifest.json')
         if problems:
             raise ParentStop('MAIL_PATH_NOT_READY', 'Mail/monitor path not ready; unattended stops would be silent',
                              problems=problems)
-        return {'mail_path': 'ready'}
+        # uncertain_preserved may well have been delivered (never resent): reported, not blocking.
+        return {'mail_path': 'ready', 'uncertain_preserved': uncertain}
 
     def default_runner(self, argv, stdout_path, stderr_path, cwd):
         with open(stdout_path, 'xb') as stdout, open(stderr_path, 'xb') as stderr:
@@ -717,6 +734,107 @@ class ParentLoop:
                              % (path, json.dumps(stored.get('settings'), ensure_ascii=False),
                                 json.dumps(settings, ensure_ascii=False)))
 
+    # ---------- read-only readiness check ----------
+    def preflight(self):
+        """The conditions `run` checks up to its first sequence call, without starting, logging or writing.
+
+        Covers the start checks (lock, stops, interrupted parent, settings, mail path) and the first
+        iteration's prechecks (ledger, checkpoint, prior readback, monitor, next run ID when --prefix is
+        given; the sequence ID is new per session). Ready only when all pass. Never runs the research CLI,
+        never writes the parent state, settings or operations log; the lock is only probed.
+        """
+        checks = {}
+
+        def attempt(name, function):
+            try:
+                checks[name] = {'ok': True, **(function() or {})}
+            except ParentStop as stop:
+                checks[name] = {'ok': False, 'code': stop.code, 'detail_code': stop.detail_code,
+                                'reason': stop.reason, **stop.evidence}
+            except Exception as error:
+                checks[name] = {'ok': False, 'code': 'INTERNAL_ERROR', 'error_type': type(error).__name__}
+
+        lock_path = self.directory / 'parent.lock'
+        if lock_path.exists():
+            try:
+                ParentLock(lock_path).close()
+                checks['parent_lock'] = {'ok': True}
+            except RuntimeError:
+                checks['parent_lock'] = {'ok': False, 'code': 'ANOTHER_PARENT_RUNNING'}
+        else:
+            checks['parent_lock'] = {'ok': True}
+        pending = self.unacknowledged()
+        checks['stops'] = {'ok': not pending, 'unacknowledged': pending}
+        state_path = self.directory / 'parent_state.json'
+        previous = None
+        try:
+            previous = read_json(state_path) if state_path.exists() else None
+            interrupted = bool(previous and previous.get('phase') in ACTIVE_PHASES)
+            checks['previous_parent'] = {'ok': not interrupted,
+                                         'phase': previous.get('phase') if previous else None}
+        except (OSError, ValueError) as error:
+            checks['previous_parent'] = {'ok': False, 'code': 'STATE_UNREADABLE', 'error_type': type(error).__name__}
+        total = len(self.cfg['cells'])
+        progress = {}
+
+        def settings_check():
+            """Same rule as require_stored_settings, but read-only (the first run would store them)."""
+            try:
+                settings = load_settings(self.settings_path, total)
+            except UsageError as error:
+                raise ParentStop('USAGE_ERROR', str(error)) from None
+            progress['settings'] = settings
+            stored_path = self.directory / 'parent_settings.json'
+            if not stored_path.exists():
+                return {'stored': False}
+            stored = read_json(stored_path)
+            if stored.get('sha256') != settings_digest(settings) or stored.get('settings') != settings:
+                raise ParentStop('USAGE_ERROR', 'Settings differ from the stored parent settings; pass the same '
+                                 '--settings (a change needs ack --settings/--clear-settings with a reason)',
+                                 stored=stored.get('settings'), given=settings)
+            return {'stored': True, 'checkpoint_recorded_counts': settings['checkpoint_recorded_counts']}
+
+        def ledger_check():
+            ledger = self.ledger()
+            count = len(ledger)
+            result = {'recorded_cells': count, 'total_cells': total}
+            if count == total:
+                return result
+            settings = progress.get('settings')
+            if settings and count in settings['checkpoint_recorded_counts'] and not self.checkpoint_acknowledged(count):
+                raise ParentStop('CHECKPOINT_REACHED', f'Configured checkpoint after {count} recorded cells '
+                                 '(acknowledge it first)', **result)
+            if self.prior_argument is not None:
+                readback = (self.root / self.prior_argument).resolve()
+            else:
+                stored = ((previous or {}).get('last_completed') or {}).get('readback')
+                readback = Path(stored) if stored else None
+            if readback is None:
+                raise ParentStop('USAGE_ERROR', '--prior-readback is required (no last completed cell stored)',
+                                 **result)
+            self.check_readback(readback, count, ledger, 'PRIOR_READBACK_INVALID')  # read-only
+            result['prior_readback'] = str(readback)
+            if self.prefix is not None:
+                if not re.fullmatch(r'[A-Za-z0-9_-]{1,36}', str(self.prefix)):
+                    raise ParentStop('USAGE_ERROR', 'A simple new --prefix is required', **result)
+                run_id = self.prefix + str(count + 1).zfill(2)
+                used = [str(p) for p in (self.workspace / 'driver_logs' / (run_id + '.state.json'),
+                                         *(self.workspace / name / run_id for name in ('runs', 'smoke', 'technical')))
+                        if p.exists()]
+                if used:
+                    raise ParentStop('RUN_ID_IN_USE', 'Next run ID already exists; choose a new --prefix',
+                                     paths=used, **result)
+                result['next_run_id'] = run_id
+            else:
+                result['next_run_id'] = 'not checked (no --prefix given)'
+            return result
+
+        attempt('settings', settings_check)
+        attempt('ledger', ledger_check)
+        attempt('monitor', self.monitor_check)
+        attempt('mail_path', self.mail_check)
+        return {'ready': all(item['ok'] for item in checks.values()), 'checks': checks}
+
     # ---------- main loop ----------
     def run(self):
         try:
@@ -879,7 +997,18 @@ def main():
     change.add_argument('--settings', type=Path, help='Replace the stored parent settings (with this reason)')
     change.add_argument('--clear-settings', action='store_true', help='Remove all checkpoints (with this reason)')
     sub.add_parser('show', help='Print the parent state and stops (read-only)')
+    pre = sub.add_parser('preflight', help='Check every start condition without starting anything (read-only)')
+    pre.add_argument('--prefix', help='Planned run-ID prefix (checks the next run ID is unused)')
+    pre.add_argument('--prior-readback', help='Readback JSON of the last recorded cell (default: parent state)')
+    pre.add_argument('--settings', type=Path, help='Planned choice_parent_loop_settings_v1 JSON')
+    pre.add_argument('--monitor-config', type=Path, help='Monitor config.json (default: 07_監視システム)')
     args = parser.parse_args()
+    if args.action == 'preflight':
+        sys.dont_write_bytecode = True  # watch.py is loaded to probe the monitor: leave no __pycache__
+        result = ParentLoop(args.project_root, args.prefix, args.prior_readback, args.settings,
+                            monitor_config=args.monitor_config).preflight()
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        sys.exit(0 if result['ready'] else EXIT_STOPPED)
     if args.action == 'run':
         sys.exit(ParentLoop(args.project_root, args.prefix, args.prior_readback, args.settings,
                             monitor_config=args.monitor_config, completion_status=args.completion_status).run())
