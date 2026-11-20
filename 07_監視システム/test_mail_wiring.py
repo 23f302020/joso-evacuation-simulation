@@ -17,7 +17,7 @@ class MailWorthy(unittest.TestCase):
     def test_abnormal_stops_and_all_complete_only(self):
         for kind in ('failed', 'process_absent', 'process_unknown', 'stalled', 'process_identity_changed',
                      'process_command_mismatch', 'state_missing', 'unreadable_state', 'all_complete',
-                     'parent_stopped'):
+                     'parent_stopped', 'parent_progress'):
             self.assertTrue(watch.mail_worthy(kind), kind)
         for kind in ('completed', 'nonzero_teleports', 'nonzero_collisions', 'log_error', 'log_truncated',
                      'unknown_status', 'monitoring_gap', 'target_identity_changed', 'oversize_log_line', ''):

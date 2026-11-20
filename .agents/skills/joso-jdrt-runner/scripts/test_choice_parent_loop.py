@@ -196,6 +196,50 @@ class HappyPath(Harness):
         self.assertTrue((self.directory() / 'parent_complete.json').exists())
         self.assertEqual(self.stop_records(), [])
 
+    def test_progress_mail_is_off_by_default(self):
+        self.assertEqual(self.loop().run(), parent.EXIT_COMPLETE)
+        self.assertNotIn('parent_progress', [event[0] for event in self.events])
+
+    def test_progress_mail_never_stops_and_is_sent_once_per_count_without_results(self):
+        loop = self.loop()
+        loop.progress_every = 1
+        self.assertEqual(loop.run(), parent.EXIT_COMPLETE)
+        progress = [event for event in self.events if event[0] == 'parent_progress']
+        self.assertEqual([event[2]['recorded_cells'] for event in progress], [1, 2, 3])  # 4 = complete, not progress
+        self.assertEqual(len({event[1] for event in progress}), 3)  # idempotent key per count
+        self.assertIn('止まらずに続行', progress[0][2]['status'])
+        self.assertIn('見込みは未算出', progress[0][2]['status'])  # no cell finished in this session yet
+        self.assertRegex(progress[2][2]['status'], r'平均\d+分/セル')
+        self.assertEqual([event[0] for event in self.events][-1], 'all_complete')
+        self.assertEqual(self.stop_records(), [])
+
+    def test_progress_every_n_skips_other_counts(self):
+        loop = self.loop()
+        loop.progress_every = 2
+        self.assertEqual(loop.run(), parent.EXIT_COMPLETE)
+        self.assertEqual([e[2]['recorded_cells'] for e in self.events if e[0] == 'parent_progress'], [2])
+
+    def test_progress_mail_failure_does_not_stop_the_run(self):
+        def broken(kind, target, evidence):
+            if kind == 'parent_progress':
+                raise OSError('artificial events folder failure')
+            return self.writer(kind, target, evidence)
+        loop = self.loop()
+        loop.progress_every = 1
+        loop.event_writer = broken
+        self.assertEqual(loop.run(), parent.EXIT_COMPLETE)
+        self.assertEqual(len(self.world.calls), 3)
+        rows = [json.loads(line) for line in (self.directory() / 'parent_operations.jsonl').read_text(
+            encoding='utf-8').splitlines()]
+        failed = [r for r in rows if r['action'] == 'parent_progress' and r['notification'].get('error_type')]
+        self.assertEqual(len(failed), 3)
+
+    def test_invalid_progress_every_is_off(self):
+        for value in (0, -1, True, '2', None):
+            with self.subTest(value=value):
+                loop = parent.ParentLoop(self.world.root, 'np2611', progress_every=value)
+                self.assertEqual(loop.progress_every, 0)
+
     def test_parent_never_calls_research_cli_commands(self):
         self.loop().run()
         forbidden = {'status', 'start-next', 'check', 'validate', 'record', 'reject', 'recover',

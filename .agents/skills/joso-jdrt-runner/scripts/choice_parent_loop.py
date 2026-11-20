@@ -231,7 +231,7 @@ def sequence_summary(state):
 class ParentLoop:
     def __init__(self, root, prefix, prior_readback=None, settings_path=None, *, monitor_config=None,
                  watch_path=None, runner=None, event_writer=None, monitor_check=None, mail_check=None,
-                 probe=None, clock=None, python=None, completion_status=None):
+                 probe=None, clock=None, python=None, completion_status=None, progress_every=0):
         self.root = Path(root).resolve()
         self.cfg = read_json(self.root / core.CONFIG)
         self.workspace = (self.root / self.cfg['workspace']).resolve()
@@ -246,6 +246,9 @@ class ParentLoop:
         self.monitor_check = monitor_check or self.default_monitor_check
         self.mail_check = mail_check or self.default_mail_check
         self.completion_status = Path(completion_status) if completion_status else None
+        # Progress mail is a notice only (never a stop, never a stored setting): every N recorded cells.
+        self.progress_every = progress_every if type(progress_every) is int and progress_every > 0 else 0
+        self.durations = []  # wall seconds of the cells this parent session ran (for the estimate only)
         self.probe, self.clock = probe, clock or time.time
         self.python = python or sys.executable
         self.session_id = 'pl' + datetime.now().strftime('%Y%m%dT%H%M%S%f')
@@ -480,6 +483,41 @@ class ParentLoop:
         print(json.dumps({'status': 'STOPPED_PRESERVED', 'stop_id': stop_id, 'code': code,
                           'detail_code': detail_code}, ensure_ascii=False))
         return EXIT_STOPPED
+
+    def notify_progress(self, count, ledger, settings):
+        """One progress notice per recorded-cell count (idempotent key). Never stops, never raises."""
+        total = len(self.cfg['cells'])
+        if not self.progress_every or count <= 0 or count >= total or count % self.progress_every:
+            return
+        try:
+            recent = self.durations[-5:]
+            average = sum(recent) / len(recent) if recent else None
+
+            def eta(cells):
+                if average is None:
+                    return '見込みは未算出（この起動で完了したセルがまだありません）'
+                seconds = average * cells
+                return f'約{seconds / 3600:.1f}時間後（直近{len(recent)}セルの平均{average / 60:.0f}分/セルによる目安）'
+
+            later = [c for c in settings.get('checkpoint_recorded_counts', []) if c > count]
+            lines = [f'進捗 記録{count}/{total}件（{count * 100 // total}%）',
+                     f"直近の記録：{ledger[-1]['run_id']}" if ledger else '直近の記録：なし',
+                     f'次に実行するセル：{self.cfg["cells"][count]["cell_id"]}',
+                     f'全体完了まで：{eta(total - count)}']
+            if later:
+                lines.append(f'次の停止検査点：記録{later[0]}件（{eta(later[0] - count)}）')
+            lines.append('止まらずに続行しています。研究結果の数値は含みません。')
+            evidence = {'target_id': 'choice_parent_loop', 'source': str(self.directory / 'parent_state.json'),
+                        'registration_id': self.cfg['registration_id'], 'recorded_cells': count,
+                        'total_cells': total, 'status': '／'.join(lines)[:900]}
+            notified = {'event': str(self.event_writer(
+                'parent_progress', f"choice-parent-progress:{self.cfg['registration_id']}:{count}", evidence))}
+        except Exception as error:  # a failed progress notice must never stop or alter the research run
+            notified = {'error_type': type(error).__name__, 'error': str(error)[:300]}
+        try:
+            self.log('parent_progress', recorded_cells=count, notification=notified)
+        except Exception:
+            pass
 
     def renotify_unsent(self):
         """A preserved, unacknowledged stop without notify.json is notified again (event id is idempotent)."""
@@ -889,6 +927,7 @@ class ParentLoop:
                 count = len(ledger)
                 if count == total:
                     return self.complete(ledger)
+                self.notify_progress(count, ledger, settings)
                 if count in settings['checkpoint_recorded_counts'] and not self.checkpoint_acknowledged(count):
                     raise ParentStop('CHECKPOINT_REACHED', f'Configured checkpoint after {count} recorded cells',
                                      recorded_cells=count, registration_id=self.cfg['registration_id'],
@@ -897,7 +936,9 @@ class ParentLoop:
                     print(json.dumps({'status': 'USAGE_ERROR', 'error': '--prior-readback is required'}))
                     self.save_state(phase='idle')
                     return EXIT_USAGE
+                started = self.clock()
                 self.iterate(count, ledger)
+                self.durations.append(self.clock() - started)
         except ParentStop as stop:
             return self.stop(stop.code, stop.reason, stop.detail_code, stop.evidence, stop.sequence)
         except KeyboardInterrupt:
@@ -988,6 +1029,8 @@ def main():
     run.add_argument('--prior-readback', help='Readback JSON of the last recorded cell (default: parent state)')
     run.add_argument('--settings', type=Path, help='Optional choice_parent_loop_settings_v1 JSON (checkpoints)')
     run.add_argument('--monitor-config', type=Path, help='Monitor config.json (default: 07_監視システム)')
+    run.add_argument('--progress-every', type=int, default=0,
+                     help='Send a progress mail (no stop) whenever the recorded count is a multiple of N (0 = off)')
     run.add_argument('--completion-status', type=Path,
                      help='Status JSON a human saved after recording the last cell outside the parent')
     ack = sub.add_parser('ack', help='Acknowledge one stop with a reason (runs nothing)')
@@ -1011,7 +1054,8 @@ def main():
         sys.exit(0 if result['ready'] else EXIT_STOPPED)
     if args.action == 'run':
         sys.exit(ParentLoop(args.project_root, args.prefix, args.prior_readback, args.settings,
-                            monitor_config=args.monitor_config, completion_status=args.completion_status).run())
+                            monitor_config=args.monitor_config, completion_status=args.completion_status,
+                            progress_every=max(0, args.progress_every)).run())
     if args.action == 'ack':
         try:
             print(json.dumps(acknowledge(args.project_root, args.stop_id, args.reason, args.settings,
