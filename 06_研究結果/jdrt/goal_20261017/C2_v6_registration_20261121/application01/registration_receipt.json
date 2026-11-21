@@ -1,0 +1,304 @@
+{
+  "at_jst": "2026-11-21T15:12:52.149286+09:00",
+  "state": "APPLIED_METADATA_ONLY_NOT_READY",
+  "registration_id": "choice_parked_abort_v6_20261121",
+  "previous_registration": "choice_shared_stopindex_v5_20261029",
+  "old_config_sha256": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+  "changed_keys": [
+    "amendments",
+    "native_diagnostic_observation_contract",
+    "native_observation_addendum",
+    "record_files",
+    "registration_id",
+    "status",
+    "workspace"
+  ],
+  "changes": {
+    "native_diagnostic_observation_contract": {
+      "old": {
+        "raw_vehicle_emergency_deceleration_required": true,
+        "motion_integrator": "semi_implicit_euler_explicit_same_as_prior_native_default",
+        "emergency_warning_threshold": 1.0,
+        "generic_emergency_braking_classification": "same_actor_three_raw_frames_source_equation_within_observed_emergency_limit",
+        "unknown_or_missing_evidence": "INVALID_preserve_stop",
+        "native_emergency_stop": "not_newly_accepted",
+        "no_original_core_readoption": true
+      },
+      "new": {
+        "raw_vehicle_emergency_deceleration_required": true,
+        "motion_integrator": "semi_implicit_euler_explicit_same_as_prior_native_default",
+        "emergency_warning_threshold": 1.0,
+        "generic_emergency_braking_classification": "same_actor_three_raw_frames_source_equation_within_observed_emergency_limit",
+        "unknown_or_missing_evidence": "INVALID_preserve_stop",
+        "native_emergency_stop": "not_newly_accepted",
+        "no_original_core_readoption": true,
+        "parked_drt_abort_stop_on_current_closure": "abort_only_with_parked_stop_bit_same_time_closure_applied_initial_or_current_closed"
+      }
+    },
+    "native_observation_addendum": {
+      "old": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md",
+      "new": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車中除去分類_技術再登録_v6.md"
+    },
+    "record_files": {
+      "old": [
+        "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md",
+        "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+        "context.md",
+        "00_全体整理/決定ログ.md",
+        "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+        "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+        "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl"
+      ],
+      "new": [
+        "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_full実験記録.md",
+        "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
+        "context.md",
+        "00_全体整理/決定ログ.md",
+        "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
+        "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
+        "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_セル検証台帳.jsonl"
+      ]
+    },
+    "registration_id": {
+      "old": "choice_shared_stopindex_v5_20261029",
+      "new": "choice_parked_abort_v6_20261121"
+    },
+    "status": {
+      "old": "DESIGN_REGISTERED_TECHNICAL_NOT_READY",
+      "new": "DESIGN_REGISTERED_TECHNICAL_NOT_READY"
+    },
+    "workspace": {
+      "old": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5",
+      "new": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_parkedabort_v6"
+    }
+  },
+  "amendment_appended": {
+    "at_jst": "2026-11-21T15:12:52.149286+09:00",
+    "kind": "parked_abort_stop_classifier_technical_reregistration_v6",
+    "authority": "User decision C2 and choice C (status not a condition); classifier rule text approved by user before registration; no scientific method/metric/comparison/exclusion change",
+    "previous_registered_config_sha256": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+    "previous_registration": "choice_shared_stopindex_v5_20261029",
+    "previous_current_accepted_cells": 24,
+    "v5_recorded24_and_invalid25_preserved": true,
+    "cell_set_changed": false,
+    "scientific_conditions_changed": false,
+    "changed_common_implementation": [
+      "04_プログラム/scripts/jdrt_realtime_choice_validate.py"
+    ],
+    "classifier_rule": "aborts stop accepted only with (a)-(f) of the v6 document; existing boarding/alighting and skips-stop branches unchanged",
+    "new_fixture_case": "drt_parked_current_closure (appended last to CASES)",
+    "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY",
+    "previous_technical_document": {
+      "path": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md",
+      "sha256": "3dc51ed16a172b18bca72afe5c4856400b926208b929aac59c0a7af8164463d4"
+    },
+    "previous_v5_input_manifest": {
+      "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/inputs/registered01/manifest.json",
+      "sha256": "2fadb08c11698d490926adc34e7a31c7578903c28d9ab9ca1d6b2daa349b7a20"
+    }
+  },
+  "checks": [
+    {
+      "check": "current_config_sha256",
+      "pass": true
+    },
+    {
+      "check": "config_lf_roundtrip_format",
+      "pass": true
+    },
+    {
+      "check": "old_registration_id_v5",
+      "pass": true
+    },
+    {
+      "check": "old_amendments_4",
+      "pass": true
+    },
+    {
+      "check": "key_set_equal",
+      "pass": true
+    },
+    {
+      "check": "unchanged_keys_equal",
+      "pass": true
+    },
+    {
+      "check": "value_changed_keys_exactly_6_and_status_same_value",
+      "pass": true
+    },
+    {
+      "check": "cells_70_same_order",
+      "pass": true
+    },
+    {
+      "check": "amendments_prefix_equal",
+      "pass": true
+    },
+    {
+      "check": "record_files_middle_equal",
+      "pass": true
+    },
+    {
+      "check": "previous_choice_input_manifest_equal",
+      "pass": true
+    },
+    {
+      "check": "contract_existing_7_keys_equal",
+      "pass": true
+    },
+    {
+      "check": "new_workspace_absent",
+      "pass": true
+    },
+    {
+      "check": "new_record_files_absent",
+      "pass": true
+    },
+    {
+      "check": "application_dir_absent",
+      "pass": true
+    },
+    {
+      "check": "v5_input_manifest_present",
+      "pass": true
+    },
+    {
+      "check": "v5_common5_has_5",
+      "pass": true
+    },
+    {
+      "check": "common4_sha_same_as_v5",
+      "pass": true
+    },
+    {
+      "check": "validate_sha_changed_from_v5",
+      "pass": true
+    },
+    {
+      "check": "pap_registry_state_sha_unchanged_vs_v5_manifest",
+      "pass": true
+    },
+    {
+      "check": "v6_doc_draft_anchors_once",
+      "pass": true
+    },
+    {
+      "check": "v6_doc_new_text_ok",
+      "pass": true
+    },
+    {
+      "check": "amendment_no_placeholder",
+      "pass": true
+    },
+    {
+      "check": "record8_count_8_present",
+      "pass": true
+    }
+  ],
+  "before": {
+    "04_プログラム/config/jdrt_realtime_choice_v1.json": {
+      "sha256": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/00_jdrt_realtime_choice_v1.json"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md": {
+      "sha256": "3dc51ed16a172b18bca72afe5c4856400b926208b929aac59c0a7af8164463d4",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/01_常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md"
+    },
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/inputs/registered01/manifest.json": {
+      "sha256": "2fadb08c11698d490926adc34e7a31c7578903c28d9ab9ca1d6b2daa349b7a20",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/02_manifest.json"
+    },
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車中除去分類_技術再登録_v6.md": {
+      "sha256": "1c22ff485a7548cb858468f058530dbd2f660a76ab83e1a5bb1ee6280973ff00",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/03_常総市JDRT_受付代替行動_停車中除去分類_技術再登録_v6.md"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md": {
+      "sha256": "32d16e9c24e9edbbf813e3ac82511b1d0e10a6829977d2408ce8e1ccc053b0a1",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/04_JDRT-受付代替行動_停車履歴v5_full実験記録.md"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": {
+      "sha256": "e1a90f3432b6045f266f8eb9213a0a125af1a3afde36f37642692777d12aa280",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/05_JDRT-受付代替行動_詳細タスク.md"
+    },
+    "context.md": {
+      "sha256": "10ab23b38eefe139a0aecf66cb76fd0e94f95147105d61b52da35ea21610de2b",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/06_context.md"
+    },
+    "00_全体整理/決定ログ.md": {
+      "sha256": "9e33c5d89d7dfbac0fe5ccb2c265493454fea52963f837247e4e93ff405c5ad1",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/07_決定ログ.md"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": {
+      "sha256": "b7cc711dc12c6ba7134037dc4b40fda6a3a229d72b627a33da7b5343b18cb1bf",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/08_現状把握_静的・動的シミュレーション整理.md"
+    },
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": {
+      "sha256": "db4ebd6d836ceea5e7d6d1edb7597b37fecbbca0a22e7cd0dbdf728c64a02328",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/09_現状把握_静的・動的シミュレーション整理.html"
+    },
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl": {
+      "sha256": "961d2f54a831c844bb1ef09e7e995e5c6254736bdaeaae8a422e275d686738e3",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/10_JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl"
+    },
+    "06_研究結果/jdrt/goal_20261017/operations.jsonl": {
+      "sha256": "eff206000ddf14f6eac3e2ec1220a5fafa9c21cbb5c6e172fd75e35e7d7ed861",
+      "archive": "06_研究結果/jdrt/goal_20261017/C2_v6_registration_20261121/application01/before/11_operations.jsonl"
+    }
+  },
+  "common5_v5": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "common5_now": {
+    "04_プログラム/scripts/jdrt_realtime_choice.py": "fdbcd93cac620dd60d824cbbbe6019991e6bcd9f5d84e97205f29c89bbbf1fb5",
+    "04_プログラム/scripts/jdrt_realtime_choice_inputs.py": "1142bcc552bcf41de5238a551ba498867856b1855e70b40b966303a5058e1182",
+    "04_プログラム/scripts/jdrt_realtime_choice_validate.py": "50c61fedb6b908b441f13cc66f3563bda4ddffd749b8f9a5e3258074efd0b9e8",
+    "04_プログラム/scripts/jdrt_choice_policy.py": "f67811982026bb83944628fabe10844c62eb665809058a4a7c8ca30296a098c7",
+    ".agents/skills/joso-jdrt-runner/scripts/realtime_choice_cell.py": "658f23199a47ef0e870bb065125254f56e31c539d9789f28a47f3dbba86c1495"
+  },
+  "pap_registry_state_alignment_sha256": {
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md": "4cc394eda12be958e0e3db14c668128c428ad7ab64ee3788446e32616ab5f852",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md": "61378ac17bb8a2fea00fdc812d97f432053329cf7c727e4302c379f9b86b51e9",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md": "55fe4ac4b1ad7456f9b586801fa2527b6bfef67a130ab34a3d3200c8892dde81",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_位置・観測整合_事前登録追補_v1.md": "edcc11835d3fe8ee4a108854b136e267870af771eb86d8a08781db6fe2882756"
+  },
+  "record8_sha256_before": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md": "32d16e9c24e9edbbf813e3ac82511b1d0e10a6829977d2408ce8e1ccc053b0a1",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": "e1a90f3432b6045f266f8eb9213a0a125af1a3afde36f37642692777d12aa280",
+    "context.md": "10ab23b38eefe139a0aecf66cb76fd0e94f95147105d61b52da35ea21610de2b",
+    "00_全体整理/決定ログ.md": "9e33c5d89d7dfbac0fe5ccb2c265493454fea52963f837247e4e93ff405c5ad1",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": "b7cc711dc12c6ba7134037dc4b40fda6a3a229d72b627a33da7b5343b18cb1bf",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": "db4ebd6d836ceea5e7d6d1edb7597b37fecbbca0a22e7cd0dbdf728c64a02328",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl": "961d2f54a831c844bb1ef09e7e995e5c6254736bdaeaae8a422e275d686738e3",
+    "06_研究結果/jdrt/goal_20261017/operations.jsonl": "eff206000ddf14f6eac3e2ec1220a5fafa9c21cbb5c6e172fd75e35e7d7ed861"
+  },
+  "v6_document_sha256_before": "1c22ff485a7548cb858468f058530dbd2f660a76ab83e1a5bb1ee6280973ff00",
+  "core_ready": false,
+  "core_started": false,
+  "new_config_sha256": "99bf3c235a34a4a0b1a28affa71b588d249e0eb0a78169f2be4026f84082e9c3",
+  "created": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_full実験記録.md": "0e33e1e16b64a3127e7b691c0f62ea8ba4a227617bd53667a6c7a9ca37a94c6e",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_セル検証台帳.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "v6_document_sha256_after": "c31ff2443c96afa3faa19bbae7fe5586b012311785b92f00ec5d5c7b6bc30ec9",
+  "written": [
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_full実験記録.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_セル検証台帳.jsonl",
+    "04_プログラム/config/jdrt_realtime_choice_v1.json",
+    "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車中除去分類_技術再登録_v6.md"
+  ],
+  "record8_sha256_after": {
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md": "32d16e9c24e9edbbf813e3ac82511b1d0e10a6829977d2408ce8e1ccc053b0a1",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md": "e1a90f3432b6045f266f8eb9213a0a125af1a3afde36f37642692777d12aa280",
+    "context.md": "10ab23b38eefe139a0aecf66cb76fd0e94f95147105d61b52da35ea21610de2b",
+    "00_全体整理/決定ログ.md": "9e33c5d89d7dfbac0fe5ccb2c265493454fea52963f837247e4e93ff405c5ad1",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.md": "b7cc711dc12c6ba7134037dc4b40fda6a3a229d72b627a33da7b5343b18cb1bf",
+    "00_全体整理/現状把握_静的・動的シミュレーション整理.html": "db4ebd6d836ceea5e7d6d1edb7597b37fecbbca0a22e7cd0dbdf728c64a02328",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl": "961d2f54a831c844bb1ef09e7e995e5c6254736bdaeaae8a422e275d686738e3",
+    "06_研究結果/jdrt/goal_20261017/operations.jsonl": "eff206000ddf14f6eac3e2ec1220a5fafa9c21cbb5c6e172fd75e35e7d7ed861"
+  },
+  "next": "commit/push on dev PC; school PC pulls after reject/ack, builds new inputs, verifies physical SHA equal to v5, READY, U4, monitor patterns, first cell by CLI"
+}

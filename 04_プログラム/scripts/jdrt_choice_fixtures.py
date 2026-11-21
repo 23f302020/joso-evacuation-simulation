@@ -26,7 +26,9 @@ CASES = ('walk_reroute', 'walk_reroute_limit', 'walk_budget', 'walk_reverse',
          'car_lane_calibration', 'car_lane_alternative', 'car_lane_cut',
          'walk_short_calibration', 'walk_short_repeated',
          'car_transition_calibration', 'car_transition_closure', 'car_transition_arrival',
-         'delivery_past_closure')
+         'delivery_past_closure', 'drt_parked_current_closure')
+# Appended last so existing child IDs (CASES.index) never move.
+PARKED_REFERENCE_CASE = 'pickup_internal_timeout'
 
 
 def car_lane_connections():
@@ -142,6 +144,48 @@ def native_pickup_reference(folder, controller_sec, step_sec):
             'source_sha256': {p.relative_to(ROOT).as_posix(): sha(p) for p in paths}}
 
 
+def native_parked_reference(folder, step_sec):
+    """Derive a closure of the road where a cancelled DRT waits parked/idle.
+
+    The closure is the first integer time after the first parked+idle frame on
+    the cancel-wait road. The reference must keep the vehicle parked, idle and
+    stop-bit set on that road through the closure time, so the derived closure
+    hits a parked stop and not a moving vehicle.
+    """
+    manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
+    paths = [folder / 'manifest.json', folder / 'events.jsonl', folder / 'actor_observations.csv.gz']
+    if manifest['status'] != 'COMPLETED' or manifest['purpose'] != 'fixture':
+        raise ValueError('A completed technical cancel-wait reference run is required')
+    if any(sha(p) != manifest['output_sha256'][p.name] for p in paths[1:]):
+        raise ValueError('Parked reference output SHA mismatch')
+    events = [json.loads(line) for line in paths[1].read_text(encoding='utf-8').splitlines()]
+    cancels = [e for e in events if e['event'] == 'request_cancelled' and e['reason'] == 'timeout']
+    waits = [e for e in events if e['event'] == 'cancel_wait_route' and cancels
+             and e['vehicle_id'] == cancels[0]['vehicle_id'] and e['time_sec'] > cancels[0]['time_sec']]
+    if len(cancels) != 1 or len(waits) != 1 or len(waits[0]['route']) != 1 or waits[0]['route'][0].startswith(':'):
+        raise ValueError('Reference needs one timeout cancellation and one external cancel-wait route')
+    vehicle, edge, wait_sec = cancels[0]['vehicle_id'], waits[0]['route'][0], waits[0]['time_sec']
+    if any(e['event'] == 'actor_removed' for e in events):
+        raise ValueError('Parked reference must not already remove an actor')
+    with gzip.open(paths[2], 'rt', encoding='utf-8-sig', newline='') as stream:
+        frames = {float(r['time_sec']): r for r in csv.DictReader(stream) if r['actor_id'] == vehicle}
+
+    def parked_idle(row):
+        return (row is not None and row['road_id'] == edge and row['status'] == 'idle'
+                and row['observation_kind'] == 'parked' and int(row['stop_state']) & 1 == 1)
+
+    first = next((at for at in sorted(frames) if at > wait_sec and parked_idle(frames[at])), None)
+    if first is None:
+        raise ValueError('Cancelled vehicle never parked idle on its cancel-wait road')
+    closure = math.floor(first) + 1
+    span = [first + k * step_sec for k in range(int(round((closure - first) / step_sec)) + 1)]
+    if not all(parked_idle(frames.get(at)) for at in span):
+        raise ValueError('Cancelled vehicle does not stay parked idle through the derived closure')
+    return {'reference_run_id': manifest['run_id'], 'vehicle_id': vehicle, 'parked_edge': edge,
+            'cancel_wait_sec': wait_sec, 'first_parked_idle_sec': first, 'closure_sec': closure,
+            'source_sha256': {p.relative_to(ROOT).as_posix(): sha(p) for p in paths}}
+
+
 def native_transition_reference(folder, step_sec):
     """Derive a closure inside an outgoing junction after a skipped short edge."""
     manifest = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
@@ -174,6 +218,9 @@ def native_transition_reference(folder, step_sec):
 def prepare(case, run_id, params):
     directory = ROOT / params['workspace'] / 'technical' / run_id / 'fixture_inputs'
     directory.mkdir(parents=True, exist_ok=False)
+    # The parked-closure case reuses the cancel-wait fixture inputs exactly and adds
+    # one derived closure, so its run is the same up to that native boundary.
+    base = PARKED_REFERENCE_CASE if case == 'drt_parked_current_closure' else case
     toolchain = resolve_choice_toolchain()
     load_choice_traci(toolchain)
     runtime_fingerprint = choice_runtime_fingerprint(toolchain)
@@ -196,7 +243,7 @@ def prepare(case, run_id, params):
                         100 if name == 'F' else y) for name, x, y in coordinates]
     for name, x, y in coordinates:
         attrs = {'id': name, 'x': str(x), 'y': str(y), 'type': 'priority'}
-        if case.startswith('pickup_internal') and name == 'B':
+        if base.startswith('pickup_internal') and name == 'B':
             attrs['radius'] = '15'  # Artificial long turn exposes integer-controller internal frames.
         if case.startswith('car_transition_') and name == 'C':
             attrs['radius'] = '15'
@@ -264,7 +311,7 @@ def prepare(case, run_id, params):
                       'edges': list(graph.edges(data=True))}
     drt = case in ('pickup_closure', 'boarding_closure', 'alighting_closure',
                    'forecast_r1', 'forecast_p0', 'forecast_p900', 'forecast_reroute', 'horizon_alighting',
-                   'delivery_past_closure') or case.startswith('pickup_')
+                   'delivery_past_closure') or base.startswith('pickup_')
     scenario = 'R2P0' if case in ('forecast_p0', 'forecast_reroute') else 'R2P900' if case == 'forecast_p900' else 'R1' if drt else 'R0'
     parameters = deepcopy(params)
     parameters['protocol'] = 'realtime_choice_fixture_v1'
@@ -292,13 +339,13 @@ def prepare(case, run_id, params):
         reference_id = prefix + '_c' + str(CASES.index('car_lane_calibration') + 1).zfill(2)
         timing = native_lane_reference(ROOT / params['workspace'] / 'technical' / reference_id / 'execution',
                                        params['simulation']['step_sec'])
-    if case in ('pickup_deadline_equal', 'pickup_before_deadline', 'pickup_internal_timeout', 'pickup_internal_timeout_closed_next'):
-        reference_case = 'pickup_internal_calibration' if case.startswith('pickup_internal') else 'forecast_r1'
+    if base in ('pickup_deadline_equal', 'pickup_before_deadline', 'pickup_internal_timeout', 'pickup_internal_timeout_closed_next'):
+        reference_case = 'pickup_internal_calibration' if base.startswith('pickup_internal') else 'forecast_r1'
         prefix = run_id.rsplit('_c', 1)[0]
         reference_id = prefix + '_c' + str(CASES.index(reference_case) + 1).zfill(2)
         reference = ROOT / params['workspace'] / 'technical' / reference_id / 'execution'
         timing = native_pickup_reference(reference, params['simulation']['controller_sec'], params['simulation']['step_sec'])
-        if case.startswith('pickup_internal'):
+        if base.startswith('pickup_internal'):
             if not timing['internal_windows']:
                 raise ValueError('Calibration has no native internal window with a later external step')
             timing['selected_internal_window'] = timing['internal_windows'][0]
@@ -318,6 +365,12 @@ def prepare(case, run_id, params):
             raise ValueError('Derived deadline is not on the controller grid')
         parameters['request_policy']['max_unboarded_wait_sec'] = int(deadline)
         timing['derived_deadline_sec'] = deadline
+    if case == 'drt_parked_current_closure':
+        prefix = run_id.rsplit('_c', 1)[0]
+        parked_id = prefix + '_c' + str(CASES.index(PARKED_REFERENCE_CASE) + 1).zfill(2)
+        timing['parked_reference'] = native_parked_reference(
+            ROOT / params['workspace'] / 'technical' / parked_id / 'execution', params['simulation']['step_sec'])
+        timing['source_sha256'] = {**timing['source_sha256'], **timing['parked_reference']['source_sha256']}
     atomic_json(directory / 'graphs.json', data)
     changes = {}
     if case in ('walk_reroute', 'walk_reroute_limit'):
@@ -350,10 +403,13 @@ def prepare(case, run_id, params):
     if case == 'pickup_internal_timeout_closed_next':
         window = timing['selected_internal_window']
         changes[window['next_external_edge'], 'passenger'] = math.floor(window['next_external_native_sec'])
+    if case == 'drt_parked_current_closure':
+        parked = timing['parked_reference']
+        changes[parked['parked_edge'], 'passenger'] = parked['closure_sec']
     hazard = [{'edge_id': edge, 'mode': mode, 'closure_sec': changes.get((edge, mode), '')}
               for mode, graph in data.items() for edge in sorted(graph['nodes'])]
     write_csv(directory / 'hazard.csv', hazard)
-    origin_edge = ('g0' if case.startswith('car_lane_') else 'd0' if case.startswith('pickup_internal')
+    origin_edge = ('g0' if case.startswith('car_lane_') else 'd0' if base.startswith('pickup_internal')
                    else 'long' if case == 'walk_budget' else 'e0')
     backward = case == 'walk_reverse' or case.startswith('car_backward_')
     terminal_edge = 'long' if case == 'walk_budget' else 'e0' if backward else 'e2'
@@ -385,7 +441,7 @@ def prepare(case, run_id, params):
                        'base_mode': 'car' if case.startswith('car_') else 'walk',
                        'vehicle_id': 'fixture_car' if case.startswith('car_') else '',
                        'ready_sec': 0, 'intent_u05': str(drt), 'intent_u50': str(drt)})
-        path = (['d0', 'd1', 'd2', 'e2'] if case.startswith('pickup_internal') else
+        path = (['d0', 'd1', 'd2', 'e2'] if base.startswith('pickup_internal') else
                 ['g0', 'e0', 'e1', 'e2'] if case.startswith('car_lane_') else
                 ['long'] if case == 'walk_budget' else ['e0'] if backward else ['e0', 'e1', 'e2'])
         origins.append({'origin_id': origin, 'edge_id': origin_edge, 'terminal_id': terminal,
@@ -485,6 +541,33 @@ def evaluate(case, directory, result):
                 else:
                     checks['closed_next_external_removes_cancelled_vehicle'] = any(e['event'] == 'actor_removed'
                         and e['actor_id'] == q['vehicle_id'] and e['time_sec'] > float(q['cancel_sec']) for e in events)
+    elif case == 'drt_parked_current_closure':
+        q = requests[0]
+        source = json.loads((directory.parent / 'fixture_inputs/manifest.json').read_text(encoding='utf-8'))
+        parked = source['native_timing_reference']['parked_reference']
+        vehicle, edge = parked['vehicle_id'], parked['parked_edge']
+        removals = [e for e in events if e['event'] == 'actor_removed' and e['actor_id'] == vehicle]
+        closures = [e for e in events if e['event'] == 'closure_applied' and e['edge_id'] == edge
+                    and e['mode'] == 'passenger']
+        checks['timeout_cancel_then_parked_wait_as_reference'] = (q['status'] == 'cancelled_timeout'
+            and q['vehicle_id'] == vehicle and q['boarding_started_sec'] == ''
+            and any(e['event'] == 'cancel_wait_route' and e['vehicle_id'] == vehicle
+                    and e['time_sec'] == parked['cancel_wait_sec'] and e['route'] == [edge] for e in events))
+        checks['one_current_closure_removal_same_control_step'] = (len(removals) == 1 and len(closures) == 1
+            and removals[0]['mode'] == 'passenger' and removals[0]['reason'] == 'initial_or_current_closed'
+            and removals[0]['time_sec'] == closures[0]['time_sec'])
+        at = removals[0]['time_sec'] if len(removals) == 1 else None
+        with gzip.open(directory / 'actor_observations.csv.gz', 'rt', encoding='utf-8-sig', newline='') as stream:
+            frame = [r for r in csv.DictReader(stream) if r['actor_id'] == vehicle and float(r['time_sec']) == at]
+        checks['removed_while_parked_stop_on_closed_road'] = (len(frame) == 1 and frame[0]['road_id'] == edge
+            and frame[0]['observation_kind'] == 'parked' and int(frame[0]['stop_state']) & 1 == 1)
+        native_log = (directory / 'sumo_errors.log').read_text(encoding='utf-8', errors='replace').splitlines()
+        aborts = [line for line in native_log if re.fullmatch(r"Warning: Vehicle '[^']+' aborts stop\.", line)]
+        checks['native_aborts_stop_once_for_removed_vehicle'] = aborts == [f"Warning: Vehicle '{vehicle}' aborts stop."]
+        with (directory.parents[1] / parked['reference_run_id'] / 'execution' / 'person_results.csv').open(
+                encoding='utf-8', newline='') as stream:
+            reference_people = Counter(p['status'] for p in csv.DictReader(stream))
+        checks['person_account_unchanged_from_reference'] = outcomes == reference_people
     elif case in ('boarding_closure', 'alighting_closure'):
         field = 'boarding_started_sec' if case == 'boarding_closure' else 'alighting_started_sec'
         checks['failure_during_registered_service_phase'] = requests[0][field] != '' and requests[0]['status'] == 'failed_after_boarding'
@@ -641,6 +724,8 @@ def run_suite(run_id, selected_case=None):
     try:
         selected = (('walk_short_calibration', 'walk_short_repeated') if selected_case == 'walk_short_repeated'
                     else ('car_transition_calibration', 'car_transition_closure') if selected_case == 'car_transition_closure'
+                    else ('pickup_internal_calibration', PARKED_REFERENCE_CASE, 'drt_parked_current_closure')
+                    if selected_case == 'drt_parked_current_closure'
                     else (selected_case,) if selected_case else CASES)
         for case in selected:
             if case not in CASES:

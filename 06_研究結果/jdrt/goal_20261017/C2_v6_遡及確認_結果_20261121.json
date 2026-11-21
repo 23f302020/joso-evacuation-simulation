@@ -1,0 +1,2673 @@
+{
+  "at_jst": "2026-11-21T14:19:50.977594+09:00",
+  "v5_validator_sha256_crlf": "d7d920c4b88c0f1664ae97a2461a4575f89e20b9e577584aa78a6b889219e633",
+  "v6_candidate_validator_sha256": "50c61fedb6b908b441f13cc66f3563bda4ddffd749b8f9a5e3258074efd0b9e8",
+  "log_scan_only_unchanged_by_construction": 594,
+  "fully_reaudited": 132,
+  "changed": [
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/pk261121dev_c31/execution"
+  ],
+  "not_evaluable": [
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b1",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b2",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b3",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b4",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b5",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b6",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sc261029a_c26/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101705_c05/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101705_c06/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101705_c07/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101706_c05/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101706_c06/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101706_c07/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101707_c05/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101707_c06/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101707_c07/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101708_c05/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101708_c06/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101708_c07/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101709_c05/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101709_c06/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101709_c07/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101710_c05/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101710_c06/execution",
+    "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101710_c07/execution"
+  ],
+  "ss261119a25": "not on this PC (school PC only): unconfirmed here",
+  "rows": [
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102201_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102201_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102201_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v2/technical/na26102202_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/technical/nt261024d_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/technical/nt261024d_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_nativeaudit_v3/technical/nt261024d_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/technical/rt261028b_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/technical/rt261028b_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/technical/rt261028b_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/pk261121dev_c19/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/pk261121dev_c20/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/pk261121dev_c31/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Vehicle 'choice_drt_0' aborts stop."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "parked_stop_current_closure_abort"
+          ]
+        ]
+      },
+      "changed": true
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b1",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b2",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b3",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b4",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b5",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rp261029b6",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'parameter_path'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c01/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c02/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c03/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c04/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c08/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c09/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c10/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c11/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c12/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c13/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c14/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c15/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c16/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c17/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c18/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c19/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c20/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c21/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c22/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c23/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c24/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c25/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c26/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c27/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c28/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c29/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/rv261108a_c30/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sc261029a_c25/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sc261029a_c26/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\<user>\\\\Documents\\\\Codex\\\\研究室\\\\4年次本研究\\\\04_プログラム\\\\output\\\\sumo\\\\regions\\\\08211\\\\experiments\\\\jdrt_realtime_choice_stopindex_v5\\\\technical\\\\sc261029a_c26\\\\execution\\\\person_results.csv'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\<user>\\\\Documents\\\\Codex\\\\研究室\\\\4年次本研究\\\\04_プログラム\\\\output\\\\sumo\\\\regions\\\\08211\\\\experiments\\\\jdrt_realtime_choice_stopindex_v5\\\\technical\\\\sc261029a_c26\\\\execution\\\\person_results.csv'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c01/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c02/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c03/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c04/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c08/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c09/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c10/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c11/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c12/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c13/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c14/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c15/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c16/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c17/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c18/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c19/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c20/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c21/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c22/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c23/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c24/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c25/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c26/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c27/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c28/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c29/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sf261029a_c30/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sp261029a_c25/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/technical/sp261029a_c26/execution",
+      "aborts_lines": 0,
+      "skips_lines": 0,
+      "v5": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "v6": {
+        "status": "INVALID",
+        "unknown": [
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'e0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_0' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead.",
+          "Warning: Invalid departPos 50.00 given for person 'fixture_person_1' walking from edge 'd0'. Using edge end instead."
+        ],
+        "classified": []
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101705_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101705_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101705_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101706_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101706_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101706_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101707_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101707_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101707_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101708_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101708_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101708_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101709_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101709_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101709_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'phase'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101710_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'decel_mps2'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'decel_mps2'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101710_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'decel_mps2'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'decel_mps2'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101710_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'decel_mps2'"
+      },
+      "v6": {
+        "status": "NOT_EVALUABLE",
+        "error": "KeyError: 'decel_mps2'"
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101711_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101711_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101711_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101712_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101712_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101712_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101713_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101715_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101715_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101715_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101716_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101716_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101716_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101801_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101801_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101801_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101802_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101803_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26101804_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26102101_c05/execution",
+      "aborts_lines": 0,
+      "skips_lines": 1,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' skips stop on lane 'e0_1' time=64.50.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26102101_c06/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    },
+    {
+      "folder": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_v1/technical/cf26102101_c07/execution",
+      "aborts_lines": 1,
+      "skips_lines": 0,
+      "v5": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "v6": {
+        "status": "PASS",
+        "unknown": [],
+        "classified": [
+          [
+            "Warning: Vehicle 'choice_drt_0' aborts stop.",
+            "legacy"
+          ]
+        ]
+      },
+      "changed": false
+    }
+  ]
+}

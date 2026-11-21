@@ -160,6 +160,78 @@ def route_history_counterexamples(technical, cases):
     return results
 
 
+def parked_abort_counterexamples(technical, cases, baseline):
+    """v6: in-memory N1-N9 against the real parked current-closure fixture."""
+    results = []
+    expected = 'all_warnings_evidence_classified'
+    for index, case in enumerate(cases):
+        if case['case'] != 'drt_parked_current_closure':
+            continue
+        folder = technical / case['child_run_id'] / 'execution'
+        m = json.loads((folder / 'manifest.json').read_text(encoding='utf-8'))
+        events = [json.loads(s) for s in (folder / 'events.jsonl').read_text(encoding='utf-8').splitlines()]
+        actor = baseline[index]['components']['actor_stream']
+        movement = baseline[index]['components']['movement_events']
+        removal = next(i for i, e in enumerate(events) if e['event'] == 'actor_removed')
+        vid, at = events[removal]['actor_id'], events[removal]['time_sec']
+        receipt = actor['removal_observations'][vid]
+        closure = next(i for i, e in enumerate(events) if e['event'] == 'closure_applied'
+                       and e['edge_id'] == receipt['road_id'] and e['time_sec'] == at)
+        step = m['step_sec']
+        target, hazard_path = folder / 'sumo_errors.log', ROOT / m['input_directory'] / 'hazard.csv'
+        original_read, original_rows = Path.read_text, validator.rows
+        raw = original_read(target, encoding='utf-8')
+        control = validator.audit_native_logs(folder, m, events, actor, movement)
+        assert (control['status'] == 'PASS' and any(c.get('classification') == 'parked_stop_current_closure_abort'
+                for c in control['classified_warnings'])), 'Parked current-closure control must pass'
+
+        def receipt_with(**fields):
+            return {**actor, 'removal_observations': {**actor['removal_observations'], vid: {**receipt, **fields}}}
+
+        def events_with(i, **fields):
+            changed = deepcopy(events)
+            changed[i].update(fields)
+            return changed
+
+        def shifted(delta):
+            changed = deepcopy(events)
+            changed[removal]['time_sec'] = changed[closure]['time_sec'] = at + delta
+            return changed
+
+        drop_removal = [e for i, e in enumerate(events) if i != removal]
+        drop_closure = [e for i, e in enumerate(events) if i != closure]
+        mutations = [
+            ('parked_abort_onroad', raw, events, receipt_with(observation_kind='onroad'), None),
+            ('parked_abort_stop_bit_zero', raw, events, receipt_with(stop_state=str(int(receipt['stop_state']) & ~1)), None),
+            ('parked_abort_reason_route_cut', raw, events_with(removal, reason='route_cut'), actor, None),
+            ('parked_abort_reason_stranded', raw, events_with(removal, reason='stranded_drt'), actor, None),
+            ('parked_abort_no_removal_event', raw, drop_removal, actor, None),
+            ('parked_abort_no_removal_frame', raw, events, {**actor, 'removal_observations': {}}, None),
+            ('parked_abort_frame_time_mismatch', raw, events, receipt_with(time_sec=str(at - step)), None),
+            ('parked_abort_before_closure_window', raw, shifted(-step),
+             receipt_with(time_sec=str(at - step)), None),
+            ('parked_abort_no_closure_applied', raw, drop_closure, actor, None),
+            ('parked_abort_closure_applied_shifted', raw, events_with(closure, time_sec=at - step), actor, None),
+            ('parked_abort_road_without_closure', raw, events, actor, receipt['road_id']),
+            ('parked_abort_same_warning_twice', raw + f"Warning: Vehicle '{vid}' aborts stop.\n", events, actor, None),
+        ]
+        for name, text, changed_events, changed_actor, unclosed in mutations:
+            def fake_read(path, *args, **kwargs):
+                return text if path == target else original_read(path, *args, **kwargs)
+            def fake_rows(path):
+                data = original_rows(path)
+                if unclosed is not None and path == hazard_path:
+                    return [{**r, 'closure_sec': ''} if r['edge_id'] == unclosed and r['mode'] == 'passenger' else r
+                            for r in data]
+                return data
+            with patch.object(Path, 'read_text', fake_read), patch.object(validator, 'rows', side_effect=fake_rows):
+                result = validator.audit_native_logs(folder, m, changed_events, changed_actor, movement)
+            results.append({'case': name, 'expected': expected,
+                            'pass': result['status'] == 'INVALID' and result['checks'][expected] is False,
+                            'failed_checks': [k for k, v in result['checks'].items() if not v]})
+    return results
+
+
 def main(suite_id, historical=False):
     cfg = json.loads(validator.PARAM.read_text(encoding='utf-8'))
     technical = ROOT / cfg['workspace'] / 'technical'
@@ -404,6 +476,10 @@ def main(suite_id, historical=False):
                         'failed_checks': [k for k, v in result['checks'].items() if not v]})
     results.extend(transition_counterexamples(technical, suite['cases']))
     results.extend(route_history_counterexamples(technical, suite['cases']))
+    parked = parked_abort_counterexamples(technical, suite['cases'], baseline)
+    results.extend(parked)
+    results.append({'case': 'parked_abort_counterexamples_present', 'expected': 'suite_has_parked_fixture',
+                    'pass': bool(parked), 'failed_checks': [] if parked else ['suite_has_parked_fixture']})
     unchanged = all(validator.file_sha(path) == value for path, value in signatures.items())
     report = {'at_jst': datetime.now(timezone(timedelta(hours=9))).isoformat(),
               'status': 'PASS' if all(r['pass'] for r in results) and unchanged else 'FAIL',

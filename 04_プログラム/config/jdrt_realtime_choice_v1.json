@@ -67,7 +67,7 @@
   "pap": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_PreAnalysisPlan_v1.md",
   "registry_document": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_ParameterRegistry_v1.md",
   "state_contract": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_状態遷移仕様_v1.md",
-  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5",
+  "workspace": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_parkedabort_v6",
   "input_directory": "inputs/registered01",
   "parent_input_manifest": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_b_boundary_v2/inputs/registered01/manifest.json",
   "parent_registry": "04_プログラム/config/jdrt_realtime_b_boundary_v2.json",
@@ -161,13 +161,13 @@
     "interpretation": "gate_and_urgency_package_not_gate_only"
   },
   "record_files": [
-    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_full実験記録.md",
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_full実験記録.md",
     "05_タスク管理/jdrt/JDRT-受付代替行動_詳細タスク.md",
     "context.md",
     "00_全体整理/決定ログ.md",
     "00_全体整理/現状把握_静的・動的シミュレーション整理.md",
     "00_全体整理/現状把握_静的・動的シミュレーション整理.html",
-    "05_タスク管理/jdrt/JDRT-受付代替行動_停車履歴v5_セル検証台帳.jsonl"
+    "05_タスク管理/jdrt/JDRT-受付代替行動_停車中除去v6_セル検証台帳.jsonl"
   ],
   "execution": {
     "timing_contract": "pre_step_end_v1",
@@ -835,9 +835,34 @@
         "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_routeaudit_v4/inputs/registered01/manifest.json",
         "sha256": "32716a1f5963e63a64a6a030292a3a351da301b506d3802eb04123064dad4252"
       }
+    },
+    {
+      "at_jst": "2026-11-21T15:12:52.149286+09:00",
+      "kind": "parked_abort_stop_classifier_technical_reregistration_v6",
+      "authority": "User decision C2 and choice C (status not a condition); classifier rule text approved by user before registration; no scientific method/metric/comparison/exclusion change",
+      "previous_registered_config_sha256": "226ee318cfe114dd4ba4361bd4e63e51633b25496d8502c150b288532347bb49",
+      "previous_registration": "choice_shared_stopindex_v5_20261029",
+      "previous_current_accepted_cells": 24,
+      "v5_recorded24_and_invalid25_preserved": true,
+      "cell_set_changed": false,
+      "scientific_conditions_changed": false,
+      "changed_common_implementation": [
+        "04_プログラム/scripts/jdrt_realtime_choice_validate.py"
+      ],
+      "classifier_rule": "aborts stop accepted only with (a)-(f) of the v6 document; existing boarding/alighting and skips-stop branches unchanged",
+      "new_fixture_case": "drt_parked_current_closure (appended last to CASES)",
+      "status": "REGISTERED_TECHNICAL_PREPARATION_NOT_READY",
+      "previous_technical_document": {
+        "path": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md",
+        "sha256": "3dc51ed16a172b18bca72afe5c4856400b926208b929aac59c0a7af8164463d4"
+      },
+      "previous_v5_input_manifest": {
+        "path": "04_プログラム/output/sumo/regions/08211/experiments/jdrt_realtime_choice_stopindex_v5/inputs/registered01/manifest.json",
+        "sha256": "2fadb08c11698d490926adc34e7a31c7578903c28d9ab9ca1d6b2daa349b7a20"
+      }
     }
   ],
-  "registration_id": "choice_shared_stopindex_v5_20261029",
+  "registration_id": "choice_parked_abort_v6_20261121",
   "native_diagnostic_observation_contract": {
     "raw_vehicle_emergency_deceleration_required": true,
     "motion_integrator": "semi_implicit_euler_explicit_same_as_prior_native_default",
@@ -845,7 +870,8 @@
     "generic_emergency_braking_classification": "same_actor_three_raw_frames_source_equation_within_observed_emergency_limit",
     "unknown_or_missing_evidence": "INVALID_preserve_stop",
     "native_emergency_stop": "not_newly_accepted",
-    "no_original_core_readoption": true
+    "no_original_core_readoption": true,
+    "parked_drt_abort_stop_on_current_closure": "abort_only_with_parked_stop_bit_same_time_closure_applied_initial_or_current_closed"
   },
-  "native_observation_addendum": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車履歴_技術再登録_v5.md"
+  "native_observation_addendum": "03_研究設計文書/jdrt/常総市JDRT_受付代替行動_停車中除去分類_技術再登録_v6.md"
 }

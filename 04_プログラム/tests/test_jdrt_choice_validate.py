@@ -728,5 +728,155 @@ class RouteHistoryFixtureContracts(unittest.TestCase):
         self.assertEqual(result['status'], 'INVALID')
 
 
+class ParkedAbortStopContracts(unittest.TestCase):
+    """v6 candidate: an aborted parked stop removed by its current-road closure.
+
+    Synthetic values only. The closure is T on one external road; the removal
+    and closure_applied share the control step T - step (controller loop: apply
+    due closures, then remove vehicles on a closed current road, same `now`).
+    """
+    STEP, CLOSURE, EDGE, ACTOR = .5, 100, 'd0', 'drt'
+    LINE = "Warning: Vehicle 'drt' aborts stop."
+
+    def base(self):
+        at = self.CLOSURE - self.STEP
+        return {'hazard': [{'edge_id': self.EDGE, 'mode': 'passenger', 'closure_sec': self.CLOSURE}],
+                'events': [dict(event='closure_applied', time_sec=at, edge_id=self.EDGE, mode='passenger'),
+                           dict(event='actor_removed', time_sec=at, actor_id=self.ACTOR, mode='passenger',
+                                reason='initial_or_current_closed')],
+                'receipt': {'time_sec': str(at), 'road_id': self.EDGE, 'observation_kind': 'parked',
+                            'reentry_source_edge': '', 'status': 'idle', 'stop_state': '3'},
+                'log': [self.LINE]}
+
+    def audit(self, mutation=None):
+        case = self.base()
+        if mutation:
+            mutation(case)
+        with tempfile.TemporaryDirectory() as name:
+            root = Path(name)
+            inputs, folder = root / 'inputs', root / 'run'
+            inputs.mkdir()
+            folder.mkdir()
+            with (inputs / 'hazard.csv').open('w', encoding='utf-8', newline='') as stream:
+                writer = csv.DictWriter(stream, fieldnames=['edge_id', 'mode', 'closure_sec'])
+                writer.writeheader()
+                writer.writerows(case['hazard'])
+            text = ''.join(line + '\n' for line in case['log'])
+            (folder / 'sumo_errors.log').write_text(text, encoding='utf-8')
+            manifest = {'input_directory': 'inputs', 'step_sec': self.STEP, 'summary': {
+                'counts': {'teleports': 0, 'collisions': 0, 'missing_vehicle_subscriptions': 0,
+                           'missing_person_subscriptions': 0},
+                'sumo_errors': {'bytes': (folder / 'sumo_errors.log').stat().st_size,
+                                'warning_count': sum(line.startswith('Warning:') for line in case['log']),
+                                'error_count': 0, 'handled_route_rejection_count': 0, 'unhandled_error_count': 0,
+                                'collision_teleport_count': 0, 'gridlock_teleport_count': 0}}}
+            receipts = {self.ACTOR: case['receipt']} if case['receipt'] is not None else {}
+            with patch.object(validator, 'ROOT', root):
+                return validator.audit_native_logs(folder, manifest, case['events'],
+                                                   {'status': 'PASS', 'removal_observations': receipts})
+
+    def accepted(self, report):
+        return (report['status'] == 'PASS' and report['checks']['all_warnings_evidence_classified']
+                and len(report['classified_warnings']) == 1)
+
+    def rejected(self, report):
+        return (report['status'] == 'INVALID' and not report['checks']['all_warnings_evidence_classified']
+                and report['unknown'] == [self.LINE])
+
+    # Accepted (P1-P4)
+    def test_p1_idle_parked_stop_on_closed_current_road(self):
+        report = self.audit()
+        self.assertTrue(self.accepted(report))
+        self.assertEqual(report['classified_warnings'][0]['classification'], 'parked_stop_current_closure_abort')
+        self.assertEqual(report['classified_warnings'][0]['evidence']['stop_state'], '3')
+
+    def test_p2_pending_idle_and_p3_cancel_wait_are_not_status_gated(self):
+        for status in ('pending_idle', 'cancel_wait'):
+            with self.subTest(status=status):
+                self.assertTrue(self.accepted(self.audit(lambda c, s=status: c['receipt'].update(status=s))))
+
+    def test_p4_existing_boarding_alighting_branch_unchanged(self):
+        def legacy(status, reason):
+            def mutate(c):
+                c['receipt'].update(status=status, observation_kind='onroad', stop_state='0')
+                c['events'] = [e for e in c['events'] if e['event'] != 'closure_applied']
+                c['events'][0]['reason'] = reason
+            return mutate
+        for status in ('boarding', 'alighting'):
+            for reason in ('initial_or_current_closed', 'route_cut', 'stranded_drt'):
+                with self.subTest(status=status, reason=reason):
+                    report = self.audit(legacy(status, reason))
+                    self.assertTrue(self.accepted(report))
+                    self.assertNotIn('classification', report['classified_warnings'][0])
+
+    # Rejected (N1-N11 and extra)
+    def test_n1_onroad_removal(self):
+        self.assertTrue(self.rejected(self.audit(lambda c: c['receipt'].update(observation_kind='onroad'))))
+
+    def test_n2_stop_bit_zero_or_missing(self):
+        for value in ('2', '0', ''):
+            with self.subTest(stop_state=value):
+                self.assertTrue(self.rejected(self.audit(lambda c, v=value: c['receipt'].update(stop_state=v))))
+
+    def test_n3_route_cut_and_stranded_reasons_not_in_new_branch(self):
+        for reason in ('route_cut', 'stranded_drt'):
+            with self.subTest(reason=reason):
+                self.assertTrue(self.rejected(self.audit(
+                    lambda c, r=reason: c['events'][1].update(reason=r))))
+
+    def test_n4_no_removal_event_or_receipt(self):
+        self.assertTrue(self.rejected(self.audit(lambda c: c['events'].pop(1))))
+        self.assertTrue(self.rejected(self.audit(lambda c: c.update(receipt=None))))
+
+    def test_n5_observation_time_mismatch(self):
+        self.assertTrue(self.rejected(self.audit(
+            lambda c: c['receipt'].update(time_sec=str(self.CLOSURE - 2 * self.STEP)))))
+
+    def test_n6_removal_before_closure_window(self):
+        early = self.CLOSURE - 2 * self.STEP
+        def mutate(c):
+            for e in c['events']:
+                e['time_sec'] = early
+            c['receipt']['time_sec'] = str(early)
+        self.assertTrue(self.rejected(self.audit(mutate)))
+
+    def test_n7_missing_shifted_or_foreign_closure_applied(self):
+        mutations = (lambda c: c['events'].pop(0),
+                     lambda c: c['events'][0].update(time_sec=self.CLOSURE - 2 * self.STEP),
+                     lambda c: c['events'][0].update(edge_id='other'),
+                     lambda c: c['events'][0].update(mode='pedestrian'))
+        for index, mutate in enumerate(mutations):
+            with self.subTest(index=index):
+                self.assertTrue(self.rejected(self.audit(mutate)))
+
+    def test_n8_road_without_registered_closure(self):
+        self.assertTrue(self.rejected(self.audit(lambda c: c['hazard'][0].update(closure_sec=''))))
+        self.assertTrue(self.rejected(self.audit(lambda c: c['hazard'][0].update(mode='pedestrian'))))
+
+    def test_n9_same_warning_twice(self):
+        report = self.audit(lambda c: c['log'].append(self.LINE))
+        self.assertEqual(report['status'], 'INVALID')
+        self.assertEqual(len(report['classified_warnings']), 1)
+        self.assertEqual(report['unknown'], [self.LINE])
+
+    def test_n10_internal_lane(self):
+        def mutate(c):
+            c['receipt']['road_id'] = ':B_1'
+            c['hazard'].append({'edge_id': ':B_1', 'mode': 'passenger', 'closure_sec': self.CLOSURE})
+            c['events'][0]['edge_id'] = ':B_1'
+        self.assertTrue(self.rejected(self.audit(mutate)))
+
+    def test_n11_pedestrian_removal(self):
+        self.assertTrue(self.rejected(self.audit(lambda c: c['events'][1].update(mode='pedestrian'))))
+
+    def test_duplicate_removal_events_rejected(self):
+        self.assertTrue(self.rejected(self.audit(lambda c: c['events'].append(dict(c['events'][1])))))
+
+    def test_registered_suite_requires_parked_closure_fixture_last(self):
+        from scripts import jdrt_choice_fixtures as fixtures
+        self.assertEqual(validator.REQUIRED_FIXTURE_CASES[-1], 'drt_parked_current_closure')
+        self.assertEqual(tuple(fixtures.CASES), validator.REQUIRED_FIXTURE_CASES)
+
+
 if __name__ == '__main__':
     unittest.main()

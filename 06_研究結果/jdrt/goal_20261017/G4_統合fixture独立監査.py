@@ -242,7 +242,8 @@ def audit_case(folder):
         vkt_ok &= abs(difference) <= tolerance and float(v['distance_m']) == float(trip['routeLength'])
     checks['backend_vkt_with_arrival_tail_and_rounding'] = vkt_ok
     warning_lines = [line for line in (folder / 'sumo_errors.log').read_text(encoding='utf-8').splitlines() if line.startswith('Warning:')]
-    checks['warnings_classified'] = all(source['fixture_case'] in ('pickup_closure', 'boarding_closure', 'alighting_closure')
+    checks['warnings_classified'] = all(source['fixture_case'] in ('pickup_closure', 'boarding_closure', 'alighting_closure',
+                                                                   'drt_parked_current_closure')
         and ('skips stop on lane' in line or 'aborts stop.' in line) for line in warning_lines)
     candidate_report = candidate_auditor.audit(m['run_id'], execution_directory=folder)
     checks['candidate_shortest_paths_all_gates_scores_and_choices'] = candidate_report['status'] == 'PASS'
@@ -311,6 +312,23 @@ def audit_case(folder):
     elif case == 'car_reroute':
         checks['named_branch_exercised'] = one_state('admitted') and any(e['event'] == 'private_reroute'
             and e['route_version'] > 0 for e in events)
+    elif case == 'drt_parked_current_closure':
+        # Independent of the factory: recompute from raw frames, events and hazard.
+        removals = [e for e in events if e['event'] == 'actor_removed']
+        ok = len(removals) == 1 and removals[0]['mode'] == 'passenger' and removals[0]['reason'] == 'initial_or_current_closed'
+        if ok:
+            at, vid = removals[0]['time_sec'], removals[0]['actor_id']
+            frame = [r for r in rows(folder / 'actor_observations.csv.gz')
+                     if r['actor_id'] == vid and float(r['time_sec']) == at]
+            road = frame[0]['road_id'] if len(frame) == 1 else ''
+            ok = (len(frame) == 1 and frame[0]['observation_kind'] == 'parked' and int(frame[0]['stop_state']) & 1 == 1
+                  and bool(road) and not road.startswith(':') and (road, 'passenger') in native
+                  and max(0, native[road, 'passenger'] - m['step_sec']) <= at
+                  and any(e['event'] == 'closure_applied' and e['edge_id'] == road and e['mode'] == 'passenger'
+                          and e['time_sec'] == at for e in events)
+                  and warning_lines == [f"Warning: Vehicle '{vid}' aborts stop."]
+                  and all(q['status'] == 'cancelled_timeout' and q['boarding_started_sec'] == '' for q in requests.values()))
+        checks['named_branch_exercised'] = ok
     return {'case': source['fixture_case'], 'run_id': m['run_id'], 'status': 'PASS' if all(checks.values()) else 'FAIL',
             'checks': checks, 'actor_rows': actor_rows, 'actor_kinds': dict(kinds), 'reroute_events': len(reroutes),
             'snapshot_actor_rows': snapshot_rows,

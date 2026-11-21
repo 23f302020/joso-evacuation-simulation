@@ -35,7 +35,7 @@ REQUIRED_FIXTURE_CASES = (
     'car_lane_calibration', 'car_lane_alternative', 'car_lane_cut',
     'walk_short_calibration', 'walk_short_repeated',
     'car_transition_calibration', 'car_transition_closure', 'car_transition_arrival',
-    'delivery_past_closure')
+    'delivery_past_closure', 'drt_parked_current_closure')
 RUN_COMPONENTS = {'person_tables', 'candidate_tables', 'road_snapshots', 'actor_stream',
                   'movement_events', 'native_logs', 'native_fixture_boundaries'}
 
@@ -923,7 +923,7 @@ def audit_actor_stream(folder, manifest, cfg, events):
         previous = last_actor.get(actor)
         if (actor, now) in removal_times:
             removal_observations[actor] = {key: row[key] for key in (
-                'time_sec', 'road_id', 'observation_kind', 'reentry_source_edge', 'status')}
+                'time_sec', 'road_id', 'observation_kind', 'reentry_source_edge', 'status', 'stop_state')}
         if previous and now != float(previous['time_sec']) + manifest['step_sec']:
             fail('actor_grid_completeness', [now, actor, 'missing_step'])
         counts[actor] += 1
@@ -2075,11 +2075,32 @@ def native_braking_receipt(line, frames, step_sec, settings):
         return None
 
 
+def parked_current_closure_abort(event, raw, removal_count, native, closure_receipts):
+    """Physical proof for an aborted parked stop removed by its current-road closure.
+
+    Basis is the controller loop, not an observed run: closures due at a control
+    time are applied and logged as closure_applied, and in the same loop a
+    vehicle whose current external road is closed is removed with reason
+    initial_or_current_closed. SUMO then reports the held stop as aborted.
+    Status is deliberately not a condition (registered choice C); the caller has
+    already required the matching removal frame time and closure time window.
+    """
+    road, stop_state = raw.get('road_id', ''), raw.get('stop_state', '')
+    return (removal_count == 1 and event['reason'] == 'initial_or_current_closed'
+            and raw.get('observation_kind') == 'parked'
+            and stop_state.isdigit() and int(stop_state) & 1 == 1
+            and bool(road) and not road.startswith(':') and math.isfinite(native)
+            and (road, event['time_sec']) in closure_receipts)
+
+
 def audit_native_logs(folder, manifest, events, actor_report, movement_report=None):
     """Classify raw native diagnostics by closure/removal evidence, not fixture name."""
     inputs = ROOT / manifest['input_directory']
     hazard = {(r['edge_id'], r['mode']): float(r['closure_sec']) for r in rows(inputs / 'hazard.csv') if r['closure_sec'] != ''}
     removed = {e['actor_id']: e for e in events if e['event'] == 'actor_removed' and e['mode'] == 'passenger'}
+    removal_counts = Counter(e['actor_id'] for e in events if e['event'] == 'actor_removed')
+    closure_receipts = {(e['edge_id'], e['time_sec']) for e in events
+                        if e['event'] == 'closure_applied' and e['mode'] == 'passenger'}
     receipts = actor_report['removal_observations']
     errors, warnings, classified, unclassified = [], [], [], []
     text = (folder / 'sumo_errors.log').read_text(encoding='utf-8')
@@ -2141,13 +2162,19 @@ def audit_native_logs(folder, manifest, events, actor_report, movement_report=No
                 native = hazard.get((edge, 'passenger'), math.inf)
                 valid &= (float(raw['time_sec']) == at and max(0, native - manifest['step_sec']) <= at
                           and event['reason'] in ('initial_or_current_closed', 'route_cut', 'stranded_drt'))
+                parked_abort = False
                 if skip:
                     valid &= float(skip[3]) == at
-                else:
-                    valid &= raw['status'] in ('boarding', 'alighting')
+                elif raw['status'] not in ('boarding', 'alighting'):
+                    parked_abort = parked_current_closure_abort(event, raw, removal_counts[actor], native,
+                                                                closure_receipts)
+                    valid &= parked_abort
             if valid:
-                classified.append({'raw': line, 'actor': actor, 'closure_native_sec': native,
-                                   'removal_control_sec': event['time_sec'], 'evidence': raw})
+                entry = {'raw': line, 'actor': actor, 'closure_native_sec': native,
+                         'removal_control_sec': event['time_sec'], 'evidence': raw}
+                if parked_abort:
+                    entry['classification'] = 'parked_stop_current_closure_abort'
+                classified.append(entry)
                 used.add(actor)
             else:
                 unclassified.append(line)
