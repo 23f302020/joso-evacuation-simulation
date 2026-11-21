@@ -208,6 +208,7 @@ class HappyPath(Harness):
         self.assertEqual([event[2]['recorded_cells'] for event in progress], [1, 2, 3])  # 4 = complete, not progress
         self.assertEqual(len({event[1] for event in progress}), 3)  # idempotent key per count
         self.assertIn('止まらずに続行', progress[0][2]['status'])
+        self.assertIn('時点の進捗', progress[0][2]['status'])  # a late-delivered mail still says when it was true
         self.assertIn('見込みは未算出', progress[0][2]['status'])  # no cell finished in this session yet
         self.assertRegex(progress[2][2]['status'], r'平均\d+分/セル')
         self.assertEqual([event[0] for event in self.events][-1], 'all_complete')

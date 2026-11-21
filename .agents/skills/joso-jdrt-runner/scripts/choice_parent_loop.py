@@ -500,13 +500,14 @@ class ParentLoop:
                 return f'約{seconds / 3600:.1f}時間後（直近{len(recent)}セルの平均{average / 60:.0f}分/セルによる目安）'
 
             later = [c for c in settings.get('checkpoint_recorded_counts', []) if c > count]
-            lines = [f'進捗 記録{count}/{total}件（{count * 100 // total}%）',
+            lines = [f'{now_jst()} 時点の進捗（遅れて届いた場合、現在の状態と異なることがあります）',
+                     f'記録{count}/{total}件（{count * 100 // total}%）',
                      f"直近の記録：{ledger[-1]['run_id']}" if ledger else '直近の記録：なし',
                      f'次に実行するセル：{self.cfg["cells"][count]["cell_id"]}',
                      f'全体完了まで：{eta(total - count)}']
             if later:
                 lines.append(f'次の停止検査点：記録{later[0]}件（{eta(later[0] - count)}）')
-            lines.append('止まらずに続行しています。研究結果の数値は含みません。')
+            lines.append('この時点では止まらずに続行していました（以後の停止は別のメールで通知）。研究結果の数値は含みません。')
             evidence = {'target_id': 'choice_parent_loop', 'source': str(self.directory / 'parent_state.json'),
                         'registration_id': self.cfg['registration_id'], 'recorded_cells': count,
                         'total_cells': total, 'status': '／'.join(lines)[:900]}

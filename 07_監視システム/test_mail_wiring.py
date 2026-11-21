@@ -24,6 +24,17 @@ class MailWorthy(unittest.TestCase):
             self.assertFalse(watch.mail_worthy(kind), kind)
 
 
+class ComposeTiming(unittest.TestCase):
+    def body(self, kind):
+        import mail_outbox
+        event = {'kind': kind, 'target': 't', 'evidence': {'target_id': 'choice_parent_loop', 'status': 's', 'source': 'x'}}
+        return mail_outbox.compose(event, [], 1000)[1]
+
+    def test_progress_notice_has_no_timing_line_but_other_kinds_keep_it(self):
+        self.assertNotIn('所要時間', self.body('parent_progress'))
+        self.assertIn('所要時間', self.body('parent_stopped'))
+
+
 class AllComplete(unittest.TestCase):
     def targets(self, *items):
         return {'targets': {str(i): item for i, item in enumerate(items)}}

@@ -53,10 +53,11 @@ def compose(event, attachments, max_bytes):
         else:
             omitted.append({**item, 'reason': 'size_limit'})
     target = evidence.get('target_id') or event.get('target', 'monitor')
-    lines = [f'識別：{target}', f"種類：{event.get('kind')}", f"状態：{evidence.get('status', '不明')}",
-             timing_text(evidence.get('execution_timing')),
-             f"保存先（学校PC上）：{evidence.get('source', event.get('target', '不明'))}",
-             '添付：' + (', '.join(a['name'] for a in included) or 'なし')]
+    lines = [f'識別：{target}', f"種類：{event.get('kind')}", f"状態：{evidence.get('status', '不明')}"]
+    if event.get('kind') != 'parent_progress':  # a progress notice has no run to time: "不明" looks like a fault
+        lines.append(timing_text(evidence.get('execution_timing')))
+    lines += [f"保存先（学校PC上）：{evidence.get('source', event.get('target', '不明'))}",
+              '添付：' + (', '.join(a['name'] for a in included) or 'なし')]
     for item in omitted:
         size = '不明' if item['bytes'] is None else f"{item['bytes']}バイト"
         lines.append(f"省略した添付：{item['name']}（{size}、{item['reason']}）保存先：{item['path']}")
